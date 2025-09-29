@@ -76,6 +76,13 @@ jobs:
             sdk/nodejs/package.json
             sdk/python/pyproject.toml
             sdk/java/build.gradle
+            Pulumi.yaml
+            README.md
+            bin/
+            go.mod
+            pulumi_sbercloud/
+            pyproject.toml
+            venv/
       - name: Commit Java SDK changes for migration to pulumi package gen-sdk
         if: failure() && steps.worktreeClean.outcome == 'failure' && matrix.language == 'java' && contains(github.actor, 'pulumi-bot') && github.event_name == 'pull_request'
         shell: bash

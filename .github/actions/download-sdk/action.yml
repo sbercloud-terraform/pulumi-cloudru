@@ -23,15 +23,19 @@ runs:
       shell: bash
 #      run: tar -zxf ${{ github.workspace }}/sdk/${{ inputs.language }}.tar.gz -C ${{ github.workspace }}/sdk/${{ inputs.language }}
       run: |
-        archive_path="${{ github.workspace }}/sdk/${{ inputs.language }}-sdk.tar.gz"
+        archive_path1="${{ github.workspace }}/sdk/${{ inputs.language }}-sdk.tar.gz"
+        archive_path2="${{ github.workspace }}/sdk/${{ inputs.language }}.tar.gz"
         target_dir="${{ github.workspace }}/sdk/${{ inputs.language }}"
-  
-        if [ -f "$archive_path" ]; then
-                  echo "Extracting $archive_path to $target_dir"
-                  tar -zxf "$archive_path" -C "$target_dir"
-                else
-                  echo "Error: Archive not found at $archive_path"
-                  echo "Available files in sdk directory:"
-                  ls -la ${{ github.workspace }}/sdk/
-                  exit 1
-                fi
+        
+        if [ -f "$archive_path1" ]; then
+          echo "Extracting $archive_path1 to $target_dir"
+          tar -zxf "$archive_path1" -C "$target_dir"
+        elif [ -f "$archive_path2" ]; then
+          echo "Extracting $archive_path2 to $target_dir"
+          tar -zxf "$archive_path2" -C "$target_dir"
+        else
+          echo "Error: No archive found!"
+          echo "Available files in sdk directory:"
+          ls -la ${{ github.workspace }}/sdk/
+          exit 1
+        fi

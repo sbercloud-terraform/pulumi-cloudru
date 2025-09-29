@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-xyz/examples
+module github.com/sbercloud-terraform/pulumi-cloudru/examples
 
 go 1.23.11
 

@@ -23,7 +23,6 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/sbercloud-terraform/terraform-provider-sbercloud/sbercloud" // Import the upstream provider
 
 	"github.com/sbercloud-terraform/pulumi-cloudru/provider/pkg/version"
@@ -101,11 +100,11 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:        "https://github.com/sbercloud-terraform/pulumi-cloudru",
 		GitHubOrg:         "sbercloud-terraform",
 		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
-		Config: map[string]*tfbridge.SchemaInfo{
-			"region": {
-				Type: "sbercloud:region/region:Region",
-			},
-		},
+		//Config: map[string]*tfbridge.SchemaInfo{
+		//	"region": {
+		//		Type: "sbercloud:region/region:Region",
+		//	},
+		//},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"sbercloud_aom_service_discovery_rule": {Tok: tfbridge.MakeResource(mainPkg, aomMod, "ServiceDiscoveryRule")},
 
@@ -432,13 +431,13 @@ func Provider() tfbridge.ProviderInfo {
 
 			"sbercloud_dws_flavors": {Tok: tfbridge.MakeDataSource(mainPkg, dwsMod, "getFlaovrs")},
 		},
-		ExtraTypes: map[string]schema.ComplexTypeSpec{
-			"sbercloud:region/region:Region": {
-				ObjectTypeSpec: schema.ObjectTypeSpec{
-					Type: "string",
-				},
-			},
-		},
+		//ExtraTypes: map[string]schema.ComplexTypeSpec{
+		//	"sbercloud:region/region:Region": {
+		//		ObjectTypeSpec: schema.ObjectTypeSpec{
+		//			Type: "string",
+		//		},
+		//	},
+		//},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			RespectSchemaVersion: true,
 		},

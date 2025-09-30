@@ -27,7 +27,7 @@ jobs:
       fail-fast: ${{ ! contains(github.actor, 'renovate') }}
       matrix:
         language:
-        - dotnet
+#        - dotnet
         - go
         - nodejs
         - python

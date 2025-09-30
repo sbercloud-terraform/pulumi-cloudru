@@ -66,9 +66,36 @@ jobs:
         # Avoid creating directories for each artifact
         merge-multiple: true
         path: dist
+
+    - name: Debug file structure before checksums
+      run: |
+        echo "=== Current directory structure ==="
+        find . -type f -name "*.tar.gz" | head -20
+        echo "=== Directory listing ==="
+        ls -la
+        echo "=== Detailed info about potential tar.gz items ==="
+        for item in ./*.tar.gz; do
+          if [ -e "$item" ]; then
+            echo "$item: $(file "$item" || echo 'unknown')"
+          fi
+        done
+
     - name: Calculate checksums
       working-directory: dist
-      run: shasum ./*.tar.gz > "pulumi-clo_${{ inputs.version }}_checksums.txt"
+      run: |
+#        shasum ./*.tar.gz > "pulumi-clo_${{ inputs.version }}_checksums.txt"
+        echo "Current directory contents:"
+            ls -la
+
+            echo "Looking for tar.gz files..."
+            find . -name "pulumi-resource-cloudru-*.tar.gz" -type f
+
+            echo "Calculating checksums..."
+            find . -name "pulumi-resource-cloudru-*.tar.gz" -type f -exec shasum {} \; > "pulumi-clo_${{ env.PROVIDER_VERSION }}_checksums.txt"
+
+            echo "Generated checksums:"
+            cat "pulumi-clo_${{ env.PROVIDER_VERSION }}_checksums.txt"
+
     - name: Get Schema Change Summary
       id: schema-summary
       shell: bash

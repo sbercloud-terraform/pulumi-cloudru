@@ -14,28 +14,6 @@ runs:
       with:
         name: ${{ inputs.language }}-sdk.tar.gz
         path: ${{ github.workspace}}/sdk/
-
-    - name: Create target directory
-      shell: bash
-      run: mkdir -p ${{ github.workspace }}/sdk/${{ inputs.language }}
-
     - name: Uncompress SDK folder
       shell: bash
-#      run: tar -zxf ${{ github.workspace }}/sdk/${{ inputs.language }}.tar.gz -C ${{ github.workspace }}/sdk/${{ inputs.language }}
-      run: |
-        archive_path1="${{ github.workspace }}/sdk/${{ inputs.language }}-sdk.tar.gz"
-        archive_path2="${{ github.workspace }}/sdk/${{ inputs.language }}.tar.gz"
-        target_dir="${{ github.workspace }}/sdk/${{ inputs.language }}"
-        
-        if [ -f "$archive_path1" ]; then
-          echo "Extracting $archive_path1 to $target_dir"
-          tar -zxf "$archive_path1" -C "$target_dir"
-        elif [ -f "$archive_path2" ]; then
-          echo "Extracting $archive_path2 to $target_dir"
-          tar -zxf "$archive_path2" -C "$target_dir"
-        else
-          echo "Error: No archive found!"
-          echo "Available files in sdk directory:"
-          ls -la ${{ github.workspace }}/sdk/
-          exit 1
-        fi
+      run: tar -zxf ${{ github.workspace }}/sdk/${{ inputs.language }}.tar.gz -C ${{ github.workspace }}/sdk/${{ inputs.language }}

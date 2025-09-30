@@ -20,4 +20,4 @@ runs:
     - name: Mark pulumi-resource-cloudru as executable
       shell: bash
       run: |
-        find ${{ github.workspace }} -name "pulumi-*-sbercloud" -print -exec chmod +x {} \;
+        find ${{ github.workspace }} -name "pulumi-*-cloudru" -print -exec chmod +x {} \;

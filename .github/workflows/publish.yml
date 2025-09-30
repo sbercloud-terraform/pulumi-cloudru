@@ -21,9 +21,17 @@ on:
 
 env:
   IS_PRERELEASE: ${{ inputs.isPrerelease }}
+  JAVA_SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
+  JAVA_SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+  JAVA_SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
   PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
+  PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
   TF_APPEND_USER_AGENT: pulumi
 
 jobs:
@@ -44,11 +52,12 @@ jobs:
     - id: esc-secrets
       name: Map environment to ESC outputs
       uses: ./.github/actions/esc-action
-    - name: Setup tools
-      uses: ./.github/actions/setup-tools
+    - name: Setup mise
+      uses: jdx/mise-action@v3
       with:
-        tools: pulumictl, pulumicli, go, schema-tools
-        cache-go: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        cache_key: "mise-{{platform}}-${{ hashFiles('mise.lock') }}"
+        cache_save: false
     - name: Create dist directory
       run: mkdir -p dist
     - name: Download provider assets
@@ -57,7 +66,7 @@ jobs:
         pattern: pulumi-resource-cloudru-v${{ inputs.version }}-*
         path: dist
         # Don't create a directory for each artifact
-        merge-multiple: false
+        merge-multiple: true
     - name: Download schema
       uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
       with:
@@ -66,45 +75,19 @@ jobs:
         # Avoid creating directories for each artifact
         merge-multiple: true
         path: dist
-
-    - name: Debug file structure before checksums
-      run: |
-        echo "=== Current directory structure ==="
-        find . -type f -name "*.tar.gz" | head -20
-        echo "=== Directory listing ==="
-        ls -la
-        echo "=== Detailed info about potential tar.gz items ==="
-        for item in ./*.tar.gz; do
-          if [ -e "$item" ]; then
-            echo "$item: $(file "$item" || echo 'unknown')"
-          fi
-        done
-
     - name: Calculate checksums
       working-directory: dist
-      run: |
-        echo "Current directory contents:"
-        ls -la
-        
-        echo "Looking for tar.gz files..."
-        find . -name "pulumi-resource-cloudru-*.tar.gz" -type f
-        
-        echo "Calculating checksums..."
-        find . -name "pulumi-resource-cloudru-*.tar.gz" -type f -exec shasum {} \; > "pulumi-clo_${{ inputs.version }}_checksums.txt"
-        
-        echo "Generated checksums:"
-        cat "pulumi-clo_${{ inputs.version }}_checksums.txt"
-
+      run: shasum ./*.tar.gz > "pulumi-cloudru_${{ inputs.version }}_checksums.txt"
     - name: Get Schema Change Summary
       id: schema-summary
       shell: bash
       run: |
         # Get latest stable release. Return only first column from result (tag).
-        LAST_VERSION=$(gh release view --repo sbercloud-terraform/pulumi-clo --json tagName -q .tagName || echo "No stable release" )
+        LAST_VERSION=$(gh release view --repo sbercloud-terraform/pulumi-cloudru --json tagName -q .tagName || echo "No stable release" )
         {
           echo 'summary<<EOF'
           if [[ "$LAST_VERSION" != "No stable release" ]]; then
-            schema-tools compare --provider="clo" --old-commit="$LAST_VERSION" --repository="github://api.github.com/sbercloud-terraform" --new-commit="--local-path=provider/cmd/pulumi-resource-clo/schema.json"
+            schema-tools compare --provider="cloudru" --old-commit="$LAST_VERSION" --repository="github://api.github.com/sbercloud-terraform" --new-commit="--local-path=provider/cmd/pulumi-resource-cloudru/schema.json"
           fi
           echo 'EOF'
         } >> "$GITHUB_OUTPUT"
@@ -137,11 +120,19 @@ jobs:
     - id: esc-secrets
       name: Map environment to ESC outputs
       uses: ./.github/actions/esc-action
-    - name: Setup tools
-      uses: ./.github/actions/setup-tools
+    - name: Setup mise
+      uses: jdx/mise-action@v3
       with:
-        tools: pulumictl, pulumicli, dotnet, go, nodejs, python
-        cache-go: false
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        cache_key: "mise-{{platform}}-{{file_hash}}"
+        # only saving the cache in the prerequisites job
+        cache_save: false
+    - name: Setup Node
+      uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+      with:
+        # we don't set node-version because we install with mise.
+        # this step is needed to setup npm auth
+        registry-url: https://registry.npmjs.org
     - name: Publish SDKs
       if: inputs.skipJavaSdk == false
       uses: pulumi/pulumi-package-publisher@c1672c7928591d563dccb12729e05e315c21f8c2 # v0.0.22

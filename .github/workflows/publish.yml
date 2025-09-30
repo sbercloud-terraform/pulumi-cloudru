@@ -125,6 +125,11 @@ jobs:
     - id: esc-secrets
       name: Map environment to ESC outputs
       uses: ./.github/actions/esc-action
+    - name: Setup tools
+      uses: ./.github/actions/setup-tools
+      with:
+        tools: pulumictl, pulumicli, nodejs, python, dotnet, go, java
+        cache-go: false
     - name: Setup mise
       uses: jdx/mise-action@v3
       with:

@@ -97,23 +97,23 @@ export class Monitor extends pulumi.CustomResource {
      *
      * @deprecated tenant_id is deprecated
      */
-    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the maximum time between health checks in the unit of second. The value ranges
      * from 1 to 50.
      */
-    declare public readonly delay: pulumi.Output<number>;
-    declare public readonly domainName: pulumi.Output<string>;
+    public readonly delay!: pulumi.Output<number>;
+    public readonly domainName!: pulumi.Output<string>;
     /**
      * Specifies the expected HTTP status code. Required for HTTP type.
      * You can either specify a single status like "200", or a range like "200-202".
      */
-    declare public readonly expectedCodes: pulumi.Output<string>;
+    public readonly expectedCodes!: pulumi.Output<string>;
     /**
      * Specifies the HTTP request method. Required for HTTP type.
      * The default value is *GET*.
      */
-    declare public readonly httpMethod: pulumi.Output<string>;
+    public readonly httpMethod!: pulumi.Output<string>;
     /**
      * Specifies the maximum number of consecutive health checks after which the backend
      * servers are declared *healthy*. The value ranges from 1 to 10.
@@ -122,46 +122,46 @@ export class Monitor extends pulumi.CustomResource {
      * servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
      * by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
      */
-    declare public readonly maxRetries: pulumi.Output<number>;
+    public readonly maxRetries!: pulumi.Output<number>;
     /**
      * Specifies the health check name. The value contains a maximum of 255 characters.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the id of the pool that this monitor will be assigned to. Changing
      * this creates a new monitor.
      */
-    declare public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
      * the port of the backend server will be used as the health check port.
      */
-    declare public readonly port: pulumi.Output<number | undefined>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The region in which to create the ELB monitor resource. If omitted, the
      * provider-level region will be used. Changing this creates a new monitor.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    declare public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Specifies the health check timeout duration in the unit of second.
      * The value ranges from 1 to 50 and must be less than the `delay` value.
      */
-    declare public readonly timeout: pulumi.Output<number>;
+    public readonly timeout!: pulumi.Output<number>;
     /**
      * Specifies the monitor protocol.
      * The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
      * If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Specifies the HTTP request path for the health check. Required for HTTP type.
      * The value starts with a slash (/) and contains a maximum of 255 characters.
      */
-    declare public readonly urlPath: pulumi.Output<string>;
+    public readonly urlPath!: pulumi.Output<string>;
 
     /**
      * Create a Monitor resource with the given unique name, arguments, and options.
@@ -176,51 +176,51 @@ export class Monitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorState | undefined;
-            resourceInputs["adminStateUp"] = state?.adminStateUp;
-            resourceInputs["delay"] = state?.delay;
-            resourceInputs["domainName"] = state?.domainName;
-            resourceInputs["expectedCodes"] = state?.expectedCodes;
-            resourceInputs["httpMethod"] = state?.httpMethod;
-            resourceInputs["maxRetries"] = state?.maxRetries;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["poolId"] = state?.poolId;
-            resourceInputs["port"] = state?.port;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["tenantId"] = state?.tenantId;
-            resourceInputs["timeout"] = state?.timeout;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["urlPath"] = state?.urlPath;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["delay"] = state ? state.delay : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["expectedCodes"] = state ? state.expectedCodes : undefined;
+            resourceInputs["httpMethod"] = state ? state.httpMethod : undefined;
+            resourceInputs["maxRetries"] = state ? state.maxRetries : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["urlPath"] = state ? state.urlPath : undefined;
         } else {
             const args = argsOrState as MonitorArgs | undefined;
-            if (args?.delay === undefined && !opts.urn) {
+            if ((!args || args.delay === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'delay'");
             }
-            if (args?.maxRetries === undefined && !opts.urn) {
+            if ((!args || args.maxRetries === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if (args?.poolId === undefined && !opts.urn) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (args?.timeout === undefined && !opts.urn) {
+            if ((!args || args.timeout === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["adminStateUp"] = args?.adminStateUp;
-            resourceInputs["delay"] = args?.delay;
-            resourceInputs["domainName"] = args?.domainName;
-            resourceInputs["expectedCodes"] = args?.expectedCodes;
-            resourceInputs["httpMethod"] = args?.httpMethod;
-            resourceInputs["maxRetries"] = args?.maxRetries;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["poolId"] = args?.poolId;
-            resourceInputs["port"] = args?.port;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tenantId"] = args?.tenantId;
-            resourceInputs["timeout"] = args?.timeout;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["urlPath"] = args?.urlPath;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["delay"] = args ? args.delay : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["expectedCodes"] = args ? args.expectedCodes : undefined;
+            resourceInputs["httpMethod"] = args ? args.httpMethod : undefined;
+            resourceInputs["maxRetries"] = args ? args.maxRetries : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["urlPath"] = args ? args.urlPath : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Monitor.__pulumiType, name, resourceInputs, opts);

@@ -79,31 +79,31 @@ export class AddressGroup extends pulumi.CustomResource {
      * Specifies an array of one or more IP addresses. The address can be a single IP
      * address, IP address range or IP address CIDR. The maximum length is 20.
      */
-    declare public readonly addresses: pulumi.Output<string[]>;
+    public readonly addresses!: pulumi.Output<string[]>;
     /**
      * Specifies the supplementary information about the IP address group.
      * The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
-    declare public readonly ipExtraSets: pulumi.Output<outputs.Vpc.AddressGroupIpExtraSet[]>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly ipExtraSets!: pulumi.Output<outputs.Vpc.AddressGroupIpExtraSet[]>;
     /**
      * Specifies the IP version, either `4` (default) or `6`.
      * Changing this creates a new address group.
      */
-    declare public readonly ipVersion: pulumi.Output<number | undefined>;
-    declare public readonly maxCapacity: pulumi.Output<number>;
+    public readonly ipVersion!: pulumi.Output<number | undefined>;
+    public readonly maxCapacity!: pulumi.Output<number>;
     /**
      * Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
      * letters, digits, underscores (_), hyphens (-) and periods (.).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the IP address group. If omitted, the
      * provider-level region will be used. Changing this creates a new address group.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a AddressGroup resource with the given unique name, arguments, and options.
@@ -118,26 +118,26 @@ export class AddressGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressGroupState | undefined;
-            resourceInputs["addresses"] = state?.addresses;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["forceDestroy"] = state?.forceDestroy;
-            resourceInputs["ipExtraSets"] = state?.ipExtraSets;
-            resourceInputs["ipVersion"] = state?.ipVersion;
-            resourceInputs["maxCapacity"] = state?.maxCapacity;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["addresses"] = state ? state.addresses : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["ipExtraSets"] = state ? state.ipExtraSets : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["maxCapacity"] = state ? state.maxCapacity : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as AddressGroupArgs | undefined;
-            resourceInputs["addresses"] = args?.addresses;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["forceDestroy"] = args?.forceDestroy;
-            resourceInputs["ipExtraSets"] = args?.ipExtraSets;
-            resourceInputs["ipVersion"] = args?.ipVersion;
-            resourceInputs["maxCapacity"] = args?.maxCapacity;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["addresses"] = args ? args.addresses : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["ipExtraSets"] = args ? args.ipExtraSets : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["maxCapacity"] = args ? args.maxCapacity : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressGroup.__pulumiType, name, resourceInputs, opts);

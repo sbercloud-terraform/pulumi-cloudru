@@ -112,28 +112,28 @@ export class VpnCustomerGateway extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly asn: pulumi.Output<number | undefined>;
+    public readonly asn!: pulumi.Output<number | undefined>;
     /**
      * The CA certificate content of the customer gateway.
      */
-    declare public readonly certificateContent: pulumi.Output<string | undefined>;
+    public readonly certificateContent!: pulumi.Output<string | undefined>;
     /**
      * Indicates the ID of the customer gateway certificate.
      */
-    declare public /*out*/ readonly certificateId: pulumi.Output<string>;
+    public /*out*/ readonly certificateId!: pulumi.Output<string>;
     /**
      * The create time.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Indicates the expire time of the customer gateway certificate.
      */
-    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * Specifies the identifier type of a customer gateway.
      * The value can be **ip** or **fqdn**. The default value is **ip**.
      */
-    declare public readonly idType: pulumi.Output<string | undefined>;
+    public readonly idType!: pulumi.Output<string | undefined>;
     /**
      * Specifies the identifier of a customer gateway.
      * When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
@@ -142,52 +142,52 @@ export class VpnCustomerGateway extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly idValue: pulumi.Output<string>;
+    public readonly idValue!: pulumi.Output<string>;
     /**
      * The IP address of the customer gateway.
      */
-    declare public readonly ip: pulumi.Output<string | undefined>;
+    public readonly ip!: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the customer gateway certificate is updatable.
      */
-    declare public /*out*/ readonly isUpdatable: pulumi.Output<boolean>;
+    public /*out*/ readonly isUpdatable!: pulumi.Output<boolean>;
     /**
      * Indicates the issuer of the customer gateway certificate.
      */
-    declare public /*out*/ readonly issuer: pulumi.Output<string>;
+    public /*out*/ readonly issuer!: pulumi.Output<string>;
     /**
      * The customer gateway name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The route mode of the customer gateway.
      */
-    declare public readonly routeMode: pulumi.Output<string | undefined>;
+    public readonly routeMode!: pulumi.Output<string | undefined>;
     /**
      * Indicates the serial number of the customer gateway certificate.
      */
-    declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
+    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
     /**
      * Indicates the signature algorithm of the customer gateway certificate.
      */
-    declare public /*out*/ readonly signatureAlgorithm: pulumi.Output<string>;
+    public /*out*/ readonly signatureAlgorithm!: pulumi.Output<string>;
     /**
      * Indicates the subject of the customer gateway certificate.
      */
-    declare public /*out*/ readonly subject: pulumi.Output<string>;
+    public /*out*/ readonly subject!: pulumi.Output<string>;
     /**
      * Specifies the tags of the customer gateway.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The update time.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a VpnCustomerGateway resource with the given unique name, arguments, and options.
@@ -202,35 +202,35 @@ export class VpnCustomerGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnCustomerGatewayState | undefined;
-            resourceInputs["asn"] = state?.asn;
-            resourceInputs["certificateContent"] = state?.certificateContent;
-            resourceInputs["certificateId"] = state?.certificateId;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["expireTime"] = state?.expireTime;
-            resourceInputs["idType"] = state?.idType;
-            resourceInputs["idValue"] = state?.idValue;
-            resourceInputs["ip"] = state?.ip;
-            resourceInputs["isUpdatable"] = state?.isUpdatable;
-            resourceInputs["issuer"] = state?.issuer;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["routeMode"] = state?.routeMode;
-            resourceInputs["serialNumber"] = state?.serialNumber;
-            resourceInputs["signatureAlgorithm"] = state?.signatureAlgorithm;
-            resourceInputs["subject"] = state?.subject;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["asn"] = state ? state.asn : undefined;
+            resourceInputs["certificateContent"] = state ? state.certificateContent : undefined;
+            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["idType"] = state ? state.idType : undefined;
+            resourceInputs["idValue"] = state ? state.idValue : undefined;
+            resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["isUpdatable"] = state ? state.isUpdatable : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routeMode"] = state ? state.routeMode : undefined;
+            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
+            resourceInputs["signatureAlgorithm"] = state ? state.signatureAlgorithm : undefined;
+            resourceInputs["subject"] = state ? state.subject : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as VpnCustomerGatewayArgs | undefined;
-            resourceInputs["asn"] = args?.asn;
-            resourceInputs["certificateContent"] = args?.certificateContent;
-            resourceInputs["idType"] = args?.idType;
-            resourceInputs["idValue"] = args?.idValue;
-            resourceInputs["ip"] = args?.ip;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["routeMode"] = args?.routeMode;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["asn"] = args ? args.asn : undefined;
+            resourceInputs["certificateContent"] = args ? args.certificateContent : undefined;
+            resourceInputs["idType"] = args ? args.idType : undefined;
+            resourceInputs["idValue"] = args ? args.idValue : undefined;
+            resourceInputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routeMode"] = args ? args.routeMode : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["certificateId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;

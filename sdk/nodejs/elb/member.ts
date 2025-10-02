@@ -61,46 +61,46 @@ export class Member extends pulumi.CustomResource {
      * The IP address of the member to receive traffic from the load balancer.
      * Changing this creates a new member.
      */
-    declare public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * The administrative state of the member.
      * A valid value is true (UP) or false (DOWN).
      */
-    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
-    declare public /*out*/ readonly backendServerStatus: pulumi.Output<boolean>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly backendServerStatus!: pulumi.Output<boolean>;
     /**
      * Human-readable name for the member.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public /*out*/ readonly operatingStatus: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly operatingStatus!: pulumi.Output<string>;
     /**
      * The id of the pool that this member will be assigned to.
      */
-    declare public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic. Changing this creates a
      * new member.
      */
-    declare public readonly protocolPort: pulumi.Output<number>;
+    public readonly protocolPort!: pulumi.Output<number>;
     /**
      * The region in which to create the ELB member resource. If omitted, the
      * provider-level region will be used. Changing this creates a new member.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The subnet in which to access the member
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    declare public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * A positive integer value that indicates the relative portion of traffic that this member
      * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
      * member with a weight of 2.
      */
-    declare public readonly weight: pulumi.Output<number>;
+    public readonly weight!: pulumi.Output<number>;
 
     /**
      * Create a Member resource with the given unique name, arguments, and options.
@@ -115,40 +115,40 @@ export class Member extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MemberState | undefined;
-            resourceInputs["address"] = state?.address;
-            resourceInputs["adminStateUp"] = state?.adminStateUp;
-            resourceInputs["backendServerStatus"] = state?.backendServerStatus;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["operatingStatus"] = state?.operatingStatus;
-            resourceInputs["poolId"] = state?.poolId;
-            resourceInputs["protocolPort"] = state?.protocolPort;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tenantId"] = state?.tenantId;
-            resourceInputs["weight"] = state?.weight;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["backendServerStatus"] = state ? state.backendServerStatus : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["operatingStatus"] = state ? state.operatingStatus : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as MemberArgs | undefined;
-            if (args?.address === undefined && !opts.urn) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if (args?.poolId === undefined && !opts.urn) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if (args?.protocolPort === undefined && !opts.urn) {
+            if ((!args || args.protocolPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            resourceInputs["address"] = args?.address;
-            resourceInputs["adminStateUp"] = args?.adminStateUp;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["poolId"] = args?.poolId;
-            resourceInputs["protocolPort"] = args?.protocolPort;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tenantId"] = args?.tenantId;
-            resourceInputs["weight"] = args?.weight;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
             resourceInputs["backendServerStatus"] = undefined /*out*/;
             resourceInputs["operatingStatus"] = undefined /*out*/;
         }

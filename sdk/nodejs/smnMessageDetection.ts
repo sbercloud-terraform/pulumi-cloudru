@@ -32,28 +32,28 @@ export class SmnMessageDetection extends pulumi.CustomResource {
         return obj['__pulumiType'] === SmnMessageDetection.__pulumiType;
     }
 
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the endpoint address to be detected.
      */
-    declare public readonly endpoint: pulumi.Output<string>;
+    public readonly endpoint!: pulumi.Output<string>;
     /**
      * Specifies the extended key/value for subscriptions over HTTP or HTTPS.
      */
-    declare public readonly extension: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly extension!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the protocol type.
      */
-    declare public readonly protocol: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The message detection result.
      */
-    declare public /*out*/ readonly result: pulumi.Output<string>;
+    public /*out*/ readonly result!: pulumi.Output<string>;
     /**
      * Specifies the resource identifier of a topic.
      */
-    declare public readonly topicUrn: pulumi.Output<string>;
+    public readonly topicUrn!: pulumi.Output<string>;
 
     /**
      * Create a SmnMessageDetection resource with the given unique name, arguments, and options.
@@ -68,30 +68,30 @@ export class SmnMessageDetection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmnMessageDetectionState | undefined;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["endpoint"] = state?.endpoint;
-            resourceInputs["extension"] = state?.extension;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["result"] = state?.result;
-            resourceInputs["topicUrn"] = state?.topicUrn;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["extension"] = state ? state.extension : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["result"] = state ? state.result : undefined;
+            resourceInputs["topicUrn"] = state ? state.topicUrn : undefined;
         } else {
             const args = argsOrState as SmnMessageDetectionArgs | undefined;
-            if (args?.endpoint === undefined && !opts.urn) {
+            if ((!args || args.endpoint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if (args?.protocol === undefined && !opts.urn) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (args?.topicUrn === undefined && !opts.urn) {
+            if ((!args || args.topicUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicUrn'");
             }
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["endpoint"] = args?.endpoint;
-            resourceInputs["extension"] = args?.extension;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["topicUrn"] = args?.topicUrn;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["extension"] = args ? args.extension : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["topicUrn"] = args ? args.topicUrn : undefined;
             resourceInputs["result"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

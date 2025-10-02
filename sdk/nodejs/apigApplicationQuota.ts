@@ -35,36 +35,36 @@ export class ApigApplicationQuota extends pulumi.CustomResource {
     /**
      * The number of bound APPs.
      */
-    declare public /*out*/ readonly bindNum: pulumi.Output<number>;
+    public /*out*/ readonly bindNum!: pulumi.Output<number>;
     /**
      * Specifies the access limit of the application quota.
      */
-    declare public readonly callLimits: pulumi.Output<number>;
+    public readonly callLimits!: pulumi.Output<number>;
     /**
      * The creation time of the application quota, in RFC3339 format.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the application quota.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the dedicated instance to which the application quota belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the name of the application quota.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the limited time value for flow control of the application quota.
      */
-    declare public readonly timeInterval: pulumi.Output<number>;
+    public readonly timeInterval!: pulumi.Output<number>;
     /**
      * Specifies the limited time unit of the application quota.
      */
-    declare public readonly timeUnit: pulumi.Output<string>;
+    public readonly timeUnit!: pulumi.Output<string>;
 
     /**
      * Create a ApigApplicationQuota resource with the given unique name, arguments, and options.
@@ -79,36 +79,36 @@ export class ApigApplicationQuota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigApplicationQuotaState | undefined;
-            resourceInputs["bindNum"] = state?.bindNum;
-            resourceInputs["callLimits"] = state?.callLimits;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["timeInterval"] = state?.timeInterval;
-            resourceInputs["timeUnit"] = state?.timeUnit;
+            resourceInputs["bindNum"] = state ? state.bindNum : undefined;
+            resourceInputs["callLimits"] = state ? state.callLimits : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["timeInterval"] = state ? state.timeInterval : undefined;
+            resourceInputs["timeUnit"] = state ? state.timeUnit : undefined;
         } else {
             const args = argsOrState as ApigApplicationQuotaArgs | undefined;
-            if (args?.callLimits === undefined && !opts.urn) {
+            if ((!args || args.callLimits === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'callLimits'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.timeInterval === undefined && !opts.urn) {
+            if ((!args || args.timeInterval === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeInterval'");
             }
-            if (args?.timeUnit === undefined && !opts.urn) {
+            if ((!args || args.timeUnit === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeUnit'");
             }
-            resourceInputs["callLimits"] = args?.callLimits;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["timeInterval"] = args?.timeInterval;
-            resourceInputs["timeUnit"] = args?.timeUnit;
+            resourceInputs["callLimits"] = args ? args.callLimits : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["timeInterval"] = args ? args.timeInterval : undefined;
+            resourceInputs["timeUnit"] = args ? args.timeUnit : undefined;
             resourceInputs["bindNum"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
         }

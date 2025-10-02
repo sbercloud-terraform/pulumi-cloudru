@@ -51,27 +51,27 @@ export class FgsFunctionEvent extends pulumi.CustomResource {
      * Specifies the function event content.  
      * The value is the base64 encoding of the JSON string.
      */
-    declare public readonly content: pulumi.Output<string>;
+    public readonly content!: pulumi.Output<string>;
     /**
      * Specifies the URN of the function to which the event blongs.  
      * Changing this parameter will create a new resource.
      */
-    declare public readonly functionUrn: pulumi.Output<string>;
+    public readonly functionUrn!: pulumi.Output<string>;
     /**
      * Specifies the function event name.  
      * The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
      * Only letters, digits, underscores (_) and hyphens (-) are allowed.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region where the function event is located.  
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The latest update (UTC) time of the function event, in RFC3339 format.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a FgsFunctionEvent resource with the given unique name, arguments, and options.
@@ -86,23 +86,23 @@ export class FgsFunctionEvent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsFunctionEventState | undefined;
-            resourceInputs["content"] = state?.content;
-            resourceInputs["functionUrn"] = state?.functionUrn;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["functionUrn"] = state ? state.functionUrn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as FgsFunctionEventArgs | undefined;
-            if (args?.content === undefined && !opts.urn) {
+            if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if (args?.functionUrn === undefined && !opts.urn) {
+            if ((!args || args.functionUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionUrn'");
             }
-            resourceInputs["content"] = args?.content;
-            resourceInputs["functionUrn"] = args?.functionUrn;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["functionUrn"] = args ? args.functionUrn : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

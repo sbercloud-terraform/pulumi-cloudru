@@ -65,22 +65,22 @@ export class ServiceGroup extends pulumi.CustomResource {
     /**
      * Specifies the service group description.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the service group name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the protected object ID.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly objectId: pulumi.Output<string>;
+    public readonly objectId!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a ServiceGroup resource with the given unique name, arguments, and options.
@@ -95,19 +95,19 @@ export class ServiceGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceGroupState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["objectId"] = state?.objectId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ServiceGroupArgs | undefined;
-            if (args?.objectId === undefined && !opts.urn) {
+            if ((!args || args.objectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["objectId"] = args?.objectId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["objectId"] = args ? args.objectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceGroup.__pulumiType, name, resourceInputs, opts);

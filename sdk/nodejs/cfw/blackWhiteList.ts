@@ -73,39 +73,39 @@ export class BlackWhiteList extends pulumi.CustomResource {
     /**
      * Specifies the address.
      */
-    declare public readonly address: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
     /**
      * Specifies the IP address type.
      * The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
      */
-    declare public readonly addressType: pulumi.Output<number>;
+    public readonly addressType!: pulumi.Output<number>;
     /**
      * Specifies the description of the list.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the address direction.
      * The options are `0` (source address) and `1` (destination address).
      */
-    declare public readonly direction: pulumi.Output<number>;
+    public readonly direction!: pulumi.Output<number>;
     /**
      * Specifies the list type.
      * The options are `4` (blacklist) and `5` (whitelist).
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly listType: pulumi.Output<number>;
+    public readonly listType!: pulumi.Output<number>;
     /**
      * Specifies the protected object ID.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly objectId: pulumi.Output<string>;
+    public readonly objectId!: pulumi.Output<string>;
     /**
      * Specifies the destination port.
      * Required and only available if protocol is **TCP** or **UDP**.
      */
-    declare public readonly port: pulumi.Output<string>;
+    public readonly port!: pulumi.Output<string>;
     /**
      * Specifies the protocol type. The value can be:
      * + **6**: indicates TCP;
@@ -114,12 +114,12 @@ export class BlackWhiteList extends pulumi.CustomResource {
      * + **58**: indicates ICMPv6;
      * + **-1**: indicates any protocol;
      */
-    declare public readonly protocol: pulumi.Output<number>;
+    public readonly protocol!: pulumi.Output<number>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a BlackWhiteList resource with the given unique name, arguments, and options.
@@ -134,44 +134,44 @@ export class BlackWhiteList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BlackWhiteListState | undefined;
-            resourceInputs["address"] = state?.address;
-            resourceInputs["addressType"] = state?.addressType;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["direction"] = state?.direction;
-            resourceInputs["listType"] = state?.listType;
-            resourceInputs["objectId"] = state?.objectId;
-            resourceInputs["port"] = state?.port;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["addressType"] = state ? state.addressType : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["listType"] = state ? state.listType : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as BlackWhiteListArgs | undefined;
-            if (args?.address === undefined && !opts.urn) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if (args?.addressType === undefined && !opts.urn) {
+            if ((!args || args.addressType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'addressType'");
             }
-            if (args?.direction === undefined && !opts.urn) {
+            if ((!args || args.direction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if (args?.listType === undefined && !opts.urn) {
+            if ((!args || args.listType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listType'");
             }
-            if (args?.objectId === undefined && !opts.urn) {
+            if ((!args || args.objectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if (args?.protocol === undefined && !opts.urn) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["address"] = args?.address;
-            resourceInputs["addressType"] = args?.addressType;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["direction"] = args?.direction;
-            resourceInputs["listType"] = args?.listType;
-            resourceInputs["objectId"] = args?.objectId;
-            resourceInputs["port"] = args?.port;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["addressType"] = args ? args.addressType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["listType"] = args ? args.listType : undefined;
+            resourceInputs["objectId"] = args ? args.objectId : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BlackWhiteList.__pulumiType, name, resourceInputs, opts);

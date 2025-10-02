@@ -79,21 +79,21 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    declare public readonly description: pulumi.Output<string | undefined>;
-    declare public readonly force: pulumi.Output<boolean | undefined>;
-    declare public readonly metadata: pulumi.Output<{[key: string]: string}>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
      * The script configuration value of this change is also the original value used for comparison with
      *  the new value next time the change is made. The corresponding parameter name is 'metadata'.
      */
-    declare public /*out*/ readonly metadataOrigin: pulumi.Output<{[key: string]: string}>;
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly size: pulumi.Output<number>;
-    declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    declare public readonly volumeId: pulumi.Output<string>;
+    public /*out*/ readonly metadataOrigin!: pulumi.Output<{[key: string]: string}>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public readonly volumeId!: pulumi.Output<string>;
 
     /**
      * Create a Snapshot resource with the given unique name, arguments, and options.
@@ -108,28 +108,28 @@ export class Snapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["force"] = state?.force;
-            resourceInputs["metadata"] = state?.metadata;
-            resourceInputs["metadataOrigin"] = state?.metadataOrigin;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["size"] = state?.size;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["volumeId"] = state?.volumeId;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["force"] = state ? state.force : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["metadataOrigin"] = state ? state.metadataOrigin : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if (args?.volumeId === undefined && !opts.urn) {
+            if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["force"] = args?.force;
-            resourceInputs["metadata"] = args?.metadata;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["volumeId"] = args?.volumeId;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["metadataOrigin"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;

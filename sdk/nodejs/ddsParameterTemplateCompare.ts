@@ -56,22 +56,22 @@ export class DdsParameterTemplateCompare extends pulumi.CustomResource {
      * Indicates the differences between parameters.
      * The differences structure is documented below.
      */
-    declare public /*out*/ readonly differences: pulumi.Output<outputs.DdsParameterTemplateCompareDifference[]>;
+    public /*out*/ readonly differences!: pulumi.Output<outputs.DdsParameterTemplateCompareDifference[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the ID of the source parameter template to be
      * compared. Changing this parameter will create a new resource.
      */
-    declare public readonly sourceConfigurationId: pulumi.Output<string>;
+    public readonly sourceConfigurationId!: pulumi.Output<string>;
     /**
      * Specifies the ID of the destination parameter template to be
      * compared. Changing this parameter will create a new resource.
      */
-    declare public readonly targetConfigurationId: pulumi.Output<string>;
+    public readonly targetConfigurationId!: pulumi.Output<string>;
 
     /**
      * Create a DdsParameterTemplateCompare resource with the given unique name, arguments, and options.
@@ -86,21 +86,21 @@ export class DdsParameterTemplateCompare extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdsParameterTemplateCompareState | undefined;
-            resourceInputs["differences"] = state?.differences;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sourceConfigurationId"] = state?.sourceConfigurationId;
-            resourceInputs["targetConfigurationId"] = state?.targetConfigurationId;
+            resourceInputs["differences"] = state ? state.differences : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sourceConfigurationId"] = state ? state.sourceConfigurationId : undefined;
+            resourceInputs["targetConfigurationId"] = state ? state.targetConfigurationId : undefined;
         } else {
             const args = argsOrState as DdsParameterTemplateCompareArgs | undefined;
-            if (args?.sourceConfigurationId === undefined && !opts.urn) {
+            if ((!args || args.sourceConfigurationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceConfigurationId'");
             }
-            if (args?.targetConfigurationId === undefined && !opts.urn) {
+            if ((!args || args.targetConfigurationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetConfigurationId'");
             }
-            resourceInputs["region"] = args?.region;
-            resourceInputs["sourceConfigurationId"] = args?.sourceConfigurationId;
-            resourceInputs["targetConfigurationId"] = args?.targetConfigurationId;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sourceConfigurationId"] = args ? args.sourceConfigurationId : undefined;
+            resourceInputs["targetConfigurationId"] = args ? args.targetConfigurationId : undefined;
             resourceInputs["differences"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -37,127 +37,127 @@ export class Api extends pulumi.CustomResource {
     /**
      * The ID of the authorizer to which the API request used.
      */
-    declare public readonly authorizerId: pulumi.Output<string | undefined>;
+    public readonly authorizerId!: pulumi.Output<string | undefined>;
     /**
      * The configurations of the backend parameters.
      */
-    declare public readonly backendParams: pulumi.Output<outputs.DedicatedApig.ApiBackendParam[] | undefined>;
+    public readonly backendParams!: pulumi.Output<outputs.DedicatedApig.ApiBackendParam[] | undefined>;
     /**
      * The description of the API request body, which can be an example request body, media type or parameters.
      */
-    declare public readonly bodyDescription: pulumi.Output<string | undefined>;
+    public readonly bodyDescription!: pulumi.Output<string | undefined>;
     /**
      * The content type of the request body.
      */
-    declare public readonly contentType: pulumi.Output<string>;
+    public readonly contentType!: pulumi.Output<string>;
     /**
      * Whether CORS is supported.
      */
-    declare public readonly cors: pulumi.Output<boolean | undefined>;
+    public readonly cors!: pulumi.Output<boolean | undefined>;
     /**
      * The API description.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The example response for a failure request.
      */
-    declare public readonly failureResponse: pulumi.Output<string | undefined>;
+    public readonly failureResponse!: pulumi.Output<string | undefined>;
     /**
      * The FunctionGraph backend details.
      */
-    declare public readonly funcGraph: pulumi.Output<outputs.DedicatedApig.ApiFuncGraph>;
+    public readonly funcGraph!: pulumi.Output<outputs.DedicatedApig.ApiFuncGraph>;
     /**
      * The policy backends of the FunctionGraph function.
      */
-    declare public readonly funcGraphPolicies: pulumi.Output<outputs.DedicatedApig.ApiFuncGraphPolicy[] | undefined>;
+    public readonly funcGraphPolicies!: pulumi.Output<outputs.DedicatedApig.ApiFuncGraphPolicy[] | undefined>;
     /**
      * The ID of the API group to which the API belongs.
      */
-    declare public readonly groupId: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<string>;
     /**
      * The ID of the instance to which the API belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Whether to perform Base64 encoding on the body for interaction with FunctionGraph.
      */
-    declare public readonly isSendFgBodyBase64: pulumi.Output<boolean | undefined>;
+    public readonly isSendFgBodyBase64!: pulumi.Output<boolean | undefined>;
     /**
      * The matching mode of the API.
      */
-    declare public readonly matching: pulumi.Output<string | undefined>;
+    public readonly matching!: pulumi.Output<string | undefined>;
     /**
      * The mock backend details.
      */
-    declare public readonly mock: pulumi.Output<outputs.DedicatedApig.ApiMock>;
+    public readonly mock!: pulumi.Output<outputs.DedicatedApig.ApiMock>;
     /**
      * The mock policy backends.
      */
-    declare public readonly mockPolicies: pulumi.Output<outputs.DedicatedApig.ApiMockPolicy[] | undefined>;
+    public readonly mockPolicies!: pulumi.Output<outputs.DedicatedApig.ApiMockPolicy[] | undefined>;
     /**
      * The API name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the API is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The registered time of the API.
      */
-    declare public /*out*/ readonly registeredAt: pulumi.Output<string>;
+    public /*out*/ readonly registeredAt!: pulumi.Output<string>;
     /**
      * The request method of the API.
      */
-    declare public readonly requestMethod: pulumi.Output<string>;
+    public readonly requestMethod!: pulumi.Output<string>;
     /**
      * The configurations of the front-end parameters.
      */
-    declare public readonly requestParams: pulumi.Output<outputs.DedicatedApig.ApiRequestParam[]>;
+    public readonly requestParams!: pulumi.Output<outputs.DedicatedApig.ApiRequestParam[]>;
     /**
      * The request address.
      */
-    declare public readonly requestPath: pulumi.Output<string>;
+    public readonly requestPath!: pulumi.Output<string>;
     /**
      * The request protocol of the API request.
      */
-    declare public readonly requestProtocol: pulumi.Output<string>;
+    public readonly requestProtocol!: pulumi.Output<string>;
     /**
      * The ID of the custom response that API used.
      */
-    declare public readonly responseId: pulumi.Output<string | undefined>;
+    public readonly responseId!: pulumi.Output<string | undefined>;
     /**
      * The security authentication mode of the API request.
      */
-    declare public readonly securityAuthentication: pulumi.Output<string | undefined>;
+    public readonly securityAuthentication!: pulumi.Output<string | undefined>;
     /**
      * Whether the authentication of the application code is enabled.
      */
-    declare public readonly simpleAuthentication: pulumi.Output<boolean>;
+    public readonly simpleAuthentication!: pulumi.Output<boolean>;
     /**
      * The example response for a successful request.
      */
-    declare public readonly successResponse: pulumi.Output<string | undefined>;
+    public readonly successResponse!: pulumi.Output<string | undefined>;
     /**
      * The list of tags configuration.
      */
-    declare public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * The API type.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The latest update time of the API.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The web backend details.
      */
-    declare public readonly web: pulumi.Output<outputs.DedicatedApig.ApiWeb>;
+    public readonly web!: pulumi.Output<outputs.DedicatedApig.ApiWeb>;
     /**
      * The web policy backends.
      */
-    declare public readonly webPolicies: pulumi.Output<outputs.DedicatedApig.ApiWebPolicy[] | undefined>;
+    public readonly webPolicies!: pulumi.Output<outputs.DedicatedApig.ApiWebPolicy[] | undefined>;
 
     /**
      * Create a Api resource with the given unique name, arguments, and options.
@@ -172,86 +172,86 @@ export class Api extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiState | undefined;
-            resourceInputs["authorizerId"] = state?.authorizerId;
-            resourceInputs["backendParams"] = state?.backendParams;
-            resourceInputs["bodyDescription"] = state?.bodyDescription;
-            resourceInputs["contentType"] = state?.contentType;
-            resourceInputs["cors"] = state?.cors;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["failureResponse"] = state?.failureResponse;
-            resourceInputs["funcGraph"] = state?.funcGraph;
-            resourceInputs["funcGraphPolicies"] = state?.funcGraphPolicies;
-            resourceInputs["groupId"] = state?.groupId;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["isSendFgBodyBase64"] = state?.isSendFgBodyBase64;
-            resourceInputs["matching"] = state?.matching;
-            resourceInputs["mock"] = state?.mock;
-            resourceInputs["mockPolicies"] = state?.mockPolicies;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["registeredAt"] = state?.registeredAt;
-            resourceInputs["requestMethod"] = state?.requestMethod;
-            resourceInputs["requestParams"] = state?.requestParams;
-            resourceInputs["requestPath"] = state?.requestPath;
-            resourceInputs["requestProtocol"] = state?.requestProtocol;
-            resourceInputs["responseId"] = state?.responseId;
-            resourceInputs["securityAuthentication"] = state?.securityAuthentication;
-            resourceInputs["simpleAuthentication"] = state?.simpleAuthentication;
-            resourceInputs["successResponse"] = state?.successResponse;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["web"] = state?.web;
-            resourceInputs["webPolicies"] = state?.webPolicies;
+            resourceInputs["authorizerId"] = state ? state.authorizerId : undefined;
+            resourceInputs["backendParams"] = state ? state.backendParams : undefined;
+            resourceInputs["bodyDescription"] = state ? state.bodyDescription : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["cors"] = state ? state.cors : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["failureResponse"] = state ? state.failureResponse : undefined;
+            resourceInputs["funcGraph"] = state ? state.funcGraph : undefined;
+            resourceInputs["funcGraphPolicies"] = state ? state.funcGraphPolicies : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["isSendFgBodyBase64"] = state ? state.isSendFgBodyBase64 : undefined;
+            resourceInputs["matching"] = state ? state.matching : undefined;
+            resourceInputs["mock"] = state ? state.mock : undefined;
+            resourceInputs["mockPolicies"] = state ? state.mockPolicies : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["registeredAt"] = state ? state.registeredAt : undefined;
+            resourceInputs["requestMethod"] = state ? state.requestMethod : undefined;
+            resourceInputs["requestParams"] = state ? state.requestParams : undefined;
+            resourceInputs["requestPath"] = state ? state.requestPath : undefined;
+            resourceInputs["requestProtocol"] = state ? state.requestProtocol : undefined;
+            resourceInputs["responseId"] = state ? state.responseId : undefined;
+            resourceInputs["securityAuthentication"] = state ? state.securityAuthentication : undefined;
+            resourceInputs["simpleAuthentication"] = state ? state.simpleAuthentication : undefined;
+            resourceInputs["successResponse"] = state ? state.successResponse : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["web"] = state ? state.web : undefined;
+            resourceInputs["webPolicies"] = state ? state.webPolicies : undefined;
         } else {
             const args = argsOrState as ApiArgs | undefined;
-            if (args?.groupId === undefined && !opts.urn) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.requestMethod === undefined && !opts.urn) {
+            if ((!args || args.requestMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestMethod'");
             }
-            if (args?.requestPath === undefined && !opts.urn) {
+            if ((!args || args.requestPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestPath'");
             }
-            if (args?.requestProtocol === undefined && !opts.urn) {
+            if ((!args || args.requestProtocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestProtocol'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["authorizerId"] = args?.authorizerId;
-            resourceInputs["backendParams"] = args?.backendParams;
-            resourceInputs["bodyDescription"] = args?.bodyDescription;
-            resourceInputs["contentType"] = args?.contentType;
-            resourceInputs["cors"] = args?.cors;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["failureResponse"] = args?.failureResponse;
-            resourceInputs["funcGraph"] = args?.funcGraph;
-            resourceInputs["funcGraphPolicies"] = args?.funcGraphPolicies;
-            resourceInputs["groupId"] = args?.groupId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["isSendFgBodyBase64"] = args?.isSendFgBodyBase64;
-            resourceInputs["matching"] = args?.matching;
-            resourceInputs["mock"] = args?.mock;
-            resourceInputs["mockPolicies"] = args?.mockPolicies;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["requestMethod"] = args?.requestMethod;
-            resourceInputs["requestParams"] = args?.requestParams;
-            resourceInputs["requestPath"] = args?.requestPath;
-            resourceInputs["requestProtocol"] = args?.requestProtocol;
-            resourceInputs["responseId"] = args?.responseId;
-            resourceInputs["securityAuthentication"] = args?.securityAuthentication;
-            resourceInputs["simpleAuthentication"] = args?.simpleAuthentication;
-            resourceInputs["successResponse"] = args?.successResponse;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["web"] = args?.web;
-            resourceInputs["webPolicies"] = args?.webPolicies;
+            resourceInputs["authorizerId"] = args ? args.authorizerId : undefined;
+            resourceInputs["backendParams"] = args ? args.backendParams : undefined;
+            resourceInputs["bodyDescription"] = args ? args.bodyDescription : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["cors"] = args ? args.cors : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["failureResponse"] = args ? args.failureResponse : undefined;
+            resourceInputs["funcGraph"] = args ? args.funcGraph : undefined;
+            resourceInputs["funcGraphPolicies"] = args ? args.funcGraphPolicies : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["isSendFgBodyBase64"] = args ? args.isSendFgBodyBase64 : undefined;
+            resourceInputs["matching"] = args ? args.matching : undefined;
+            resourceInputs["mock"] = args ? args.mock : undefined;
+            resourceInputs["mockPolicies"] = args ? args.mockPolicies : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["requestMethod"] = args ? args.requestMethod : undefined;
+            resourceInputs["requestParams"] = args ? args.requestParams : undefined;
+            resourceInputs["requestPath"] = args ? args.requestPath : undefined;
+            resourceInputs["requestProtocol"] = args ? args.requestProtocol : undefined;
+            resourceInputs["responseId"] = args ? args.responseId : undefined;
+            resourceInputs["securityAuthentication"] = args ? args.securityAuthentication : undefined;
+            resourceInputs["simpleAuthentication"] = args ? args.simpleAuthentication : undefined;
+            resourceInputs["successResponse"] = args ? args.successResponse : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["web"] = args ? args.web : undefined;
+            resourceInputs["webPolicies"] = args ? args.webPolicies : undefined;
             resourceInputs["registeredAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

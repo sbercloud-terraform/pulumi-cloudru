@@ -66,32 +66,32 @@ export class ElbMember extends pulumi.CustomResource {
      * The IP address of the member to receive traffic from the load balancer.
      * Changing this creates a new member.
      */
-    declare public readonly address: pulumi.Output<string>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
-    declare public /*out*/ readonly ipVersion: pulumi.Output<string>;
-    declare public /*out*/ readonly memberType: pulumi.Output<string>;
+    public readonly address!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    public /*out*/ readonly ipVersion!: pulumi.Output<string>;
+    public /*out*/ readonly memberType!: pulumi.Output<string>;
     /**
      * Human-readable name for the member.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public /*out*/ readonly operatingStatus: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly operatingStatus!: pulumi.Output<string>;
     /**
      * The id of the pool that this member will be assigned to.
      */
-    declare public readonly poolId: pulumi.Output<string>;
+    public readonly poolId!: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic. Changing this creates a
      * new member.
      */
-    declare public readonly protocolPort: pulumi.Output<number>;
-    declare public /*out*/ readonly reasons: pulumi.Output<outputs.ElbMemberReason[]>;
+    public readonly protocolPort!: pulumi.Output<number>;
+    public /*out*/ readonly reasons!: pulumi.Output<outputs.ElbMemberReason[]>;
     /**
      * The region in which to create the ELB member resource. If omitted, the the
      * provider-level region will be used. Changing this creates a new member.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly statuses: pulumi.Output<outputs.ElbMemberStatus[]>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly statuses!: pulumi.Output<outputs.ElbMemberStatus[]>;
     /**
      * The **IPv4 or IPv6 subnet ID** of the subnet in which to access the member.
      * + The IPv4 or IPv6 subnet must be in the same VPC as the subnet of the load balancer.
@@ -99,14 +99,14 @@ export class ElbMember extends pulumi.CustomResource {
      * In this case, cross-VPC backend servers must use private IPv4 addresses,
      * and the protocol of the backend server group must be TCP, HTTP, or HTTPS.
      */
-    declare public readonly subnetId: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * A positive integer value that indicates the relative portion of traffic that this member
      * should receive from the pool. For example, a member with a weight of 10 receives five times as much traffic as a
      * member with a weight of 2.
      */
-    declare public readonly weight: pulumi.Output<number>;
+    public readonly weight!: pulumi.Output<number>;
 
     /**
      * Create a ElbMember resource with the given unique name, arguments, and options.
@@ -121,36 +121,36 @@ export class ElbMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbMemberState | undefined;
-            resourceInputs["address"] = state?.address;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["ipVersion"] = state?.ipVersion;
-            resourceInputs["memberType"] = state?.memberType;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["operatingStatus"] = state?.operatingStatus;
-            resourceInputs["poolId"] = state?.poolId;
-            resourceInputs["protocolPort"] = state?.protocolPort;
-            resourceInputs["reasons"] = state?.reasons;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["statuses"] = state?.statuses;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["weight"] = state?.weight;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["memberType"] = state ? state.memberType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["operatingStatus"] = state ? state.operatingStatus : undefined;
+            resourceInputs["poolId"] = state ? state.poolId : undefined;
+            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
+            resourceInputs["reasons"] = state ? state.reasons : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["statuses"] = state ? state.statuses : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as ElbMemberArgs | undefined;
-            if (args?.address === undefined && !opts.urn) {
+            if ((!args || args.address === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if (args?.poolId === undefined && !opts.urn) {
+            if ((!args || args.poolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            resourceInputs["address"] = args?.address;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["poolId"] = args?.poolId;
-            resourceInputs["protocolPort"] = args?.protocolPort;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["weight"] = args?.weight;
+            resourceInputs["address"] = args ? args.address : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["poolId"] = args ? args.poolId : undefined;
+            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["ipVersion"] = undefined /*out*/;

@@ -62,40 +62,40 @@ export class ElbL7policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ElbL7policy.__pulumiType;
     }
 
-    declare public readonly action: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly action!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public readonly fixedResponseConfig: pulumi.Output<outputs.ElbL7policyFixedResponseConfig>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly enterpriseProjectId!: pulumi.Output<string>;
+    public readonly fixedResponseConfig!: pulumi.Output<outputs.ElbL7policyFixedResponseConfig>;
     /**
      * The Listener on which the L7 Policy will be associated with. Changing
      * this creates a new L7 Policy.
      */
-    declare public readonly listenerId: pulumi.Output<string>;
+    public readonly listenerId!: pulumi.Output<string>;
     /**
      * Human-readable name for the L7 Policy. Does not have to be unique.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly priority: pulumi.Output<number>;
-    declare public /*out*/ readonly provisioningStatus: pulumi.Output<string>;
-    declare public readonly redirectListenerId: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly priority!: pulumi.Output<number>;
+    public /*out*/ readonly provisioningStatus!: pulumi.Output<string>;
+    public readonly redirectListenerId!: pulumi.Output<string>;
     /**
      * Requests matching this policy will be redirected to the pool with this ID.
      */
-    declare public readonly redirectPoolId: pulumi.Output<string>;
-    declare public readonly redirectPoolsConfigs: pulumi.Output<outputs.ElbL7policyRedirectPoolsConfig[]>;
-    declare public readonly redirectPoolsExtendConfig: pulumi.Output<outputs.ElbL7policyRedirectPoolsExtendConfig>;
-    declare public readonly redirectPoolsStickySessionConfig: pulumi.Output<outputs.ElbL7policyRedirectPoolsStickySessionConfig>;
-    declare public readonly redirectUrlConfig: pulumi.Output<outputs.ElbL7policyRedirectUrlConfig>;
+    public readonly redirectPoolId!: pulumi.Output<string>;
+    public readonly redirectPoolsConfigs!: pulumi.Output<outputs.ElbL7policyRedirectPoolsConfig[]>;
+    public readonly redirectPoolsExtendConfig!: pulumi.Output<outputs.ElbL7policyRedirectPoolsExtendConfig>;
+    public readonly redirectPoolsStickySessionConfig!: pulumi.Output<outputs.ElbL7policyRedirectPoolsStickySessionConfig>;
+    public readonly redirectUrlConfig!: pulumi.Output<outputs.ElbL7policyRedirectUrlConfig>;
     /**
      * The region in which to create the L7 Policy resource. If omitted, the
      * provider-level region will be used. Changing this creates a new L7 Policy.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ElbL7policy resource with the given unique name, arguments, and options.
@@ -110,41 +110,41 @@ export class ElbL7policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbL7policyState | undefined;
-            resourceInputs["action"] = state?.action;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["fixedResponseConfig"] = state?.fixedResponseConfig;
-            resourceInputs["listenerId"] = state?.listenerId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["priority"] = state?.priority;
-            resourceInputs["provisioningStatus"] = state?.provisioningStatus;
-            resourceInputs["redirectListenerId"] = state?.redirectListenerId;
-            resourceInputs["redirectPoolId"] = state?.redirectPoolId;
-            resourceInputs["redirectPoolsConfigs"] = state?.redirectPoolsConfigs;
-            resourceInputs["redirectPoolsExtendConfig"] = state?.redirectPoolsExtendConfig;
-            resourceInputs["redirectPoolsStickySessionConfig"] = state?.redirectPoolsStickySessionConfig;
-            resourceInputs["redirectUrlConfig"] = state?.redirectUrlConfig;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["fixedResponseConfig"] = state ? state.fixedResponseConfig : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["provisioningStatus"] = state ? state.provisioningStatus : undefined;
+            resourceInputs["redirectListenerId"] = state ? state.redirectListenerId : undefined;
+            resourceInputs["redirectPoolId"] = state ? state.redirectPoolId : undefined;
+            resourceInputs["redirectPoolsConfigs"] = state ? state.redirectPoolsConfigs : undefined;
+            resourceInputs["redirectPoolsExtendConfig"] = state ? state.redirectPoolsExtendConfig : undefined;
+            resourceInputs["redirectPoolsStickySessionConfig"] = state ? state.redirectPoolsStickySessionConfig : undefined;
+            resourceInputs["redirectUrlConfig"] = state ? state.redirectUrlConfig : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ElbL7policyArgs | undefined;
-            if (args?.listenerId === undefined && !opts.urn) {
+            if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["action"] = args?.action;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["fixedResponseConfig"] = args?.fixedResponseConfig;
-            resourceInputs["listenerId"] = args?.listenerId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["priority"] = args?.priority;
-            resourceInputs["redirectListenerId"] = args?.redirectListenerId;
-            resourceInputs["redirectPoolId"] = args?.redirectPoolId;
-            resourceInputs["redirectPoolsConfigs"] = args?.redirectPoolsConfigs;
-            resourceInputs["redirectPoolsExtendConfig"] = args?.redirectPoolsExtendConfig;
-            resourceInputs["redirectPoolsStickySessionConfig"] = args?.redirectPoolsStickySessionConfig;
-            resourceInputs["redirectUrlConfig"] = args?.redirectUrlConfig;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["fixedResponseConfig"] = args ? args.fixedResponseConfig : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["redirectListenerId"] = args ? args.redirectListenerId : undefined;
+            resourceInputs["redirectPoolId"] = args ? args.redirectPoolId : undefined;
+            resourceInputs["redirectPoolsConfigs"] = args ? args.redirectPoolsConfigs : undefined;
+            resourceInputs["redirectPoolsExtendConfig"] = args ? args.redirectPoolsExtendConfig : undefined;
+            resourceInputs["redirectPoolsStickySessionConfig"] = args ? args.redirectPoolsStickySessionConfig : undefined;
+            resourceInputs["redirectUrlConfig"] = args ? args.redirectUrlConfig : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["enterpriseProjectId"] = undefined /*out*/;
             resourceInputs["provisioningStatus"] = undefined /*out*/;

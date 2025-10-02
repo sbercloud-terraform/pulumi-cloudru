@@ -45,90 +45,90 @@ export class Gateway extends pulumi.CustomResource {
         return obj['__pulumiType'] === Gateway.__pulumiType;
     }
 
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * The order information of the NAT gateway.
      */
-    declare public /*out*/ readonly billingInfo: pulumi.Output<string>;
+    public /*out*/ readonly billingInfo!: pulumi.Output<string>;
     /**
      * The bandwidth that the NAT gateway can receive or send per second.
      */
-    declare public /*out*/ readonly bpsMax: pulumi.Output<number>;
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public /*out*/ readonly bpsMax!: pulumi.Output<number>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * The creation time of the NAT gateway.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the nat
      * gateway. The value contains 0 to 255 characters, and angle brackets (<)
      * and (>) are not allowed.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The maximum number of DNAT rules on the NAT gateway.
      */
-    declare public /*out*/ readonly dnatRulesLimit: pulumi.Output<number>;
+    public /*out*/ readonly dnatRulesLimit!: pulumi.Output<number>;
     /**
      * Specifies the
      * enterprise project id of the nat gateway. The value can contains maximum of
      * 36 characters which it is string "0" or in UUID format with hyphens (-).
      * Changing this creates a new nat gateway.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies the nat gateway name. The name can
      * contain only digits, letters, underscores (_), and hyphens(-).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The IP address used for the NG port of the NAT gateway.
      */
-    declare public readonly ngportIpAddress: pulumi.Output<string>;
-    declare public readonly period: pulumi.Output<number | undefined>;
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly ngportIpAddress!: pulumi.Output<string>;
+    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * The number of packets that the NAT gateway can receive or send per second.
      */
-    declare public /*out*/ readonly ppsMax: pulumi.Output<number>;
+    public /*out*/ readonly ppsMax!: pulumi.Output<number>;
     /**
      * Specifies the region in which to
      * create the Nat gateway resource. If omitted, the provider-level region will
      * be used. Changing this creates a new nat gateway.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The session configuration of the NAT gateway.
      */
-    declare public readonly sessionConf: pulumi.Output<outputs.Nat.GatewaySessionConf>;
+    public readonly sessionConf!: pulumi.Output<outputs.Nat.GatewaySessionConf>;
     /**
      * The maximum number of SNAT rules on the NAT gateway.
      */
-    declare public /*out*/ readonly snatRulePublicIpLimit: pulumi.Output<number>;
+    public /*out*/ readonly snatRulePublicIpLimit!: pulumi.Output<number>;
     /**
      * Specifies the nat gateway type.
      * The value can be:
      */
-    declare public readonly spec: pulumi.Output<string>;
+    public readonly spec!: pulumi.Output<string>;
     /**
      * The status of the nat gateway.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the subnet ID of the downstream interface (the next hop of the
      * DVR) of the NAT gateway.
      * Changing this will create a new resource.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the NAT geteway.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the ID of the VPC to which the NAT gateway belongs.  
      * Changing this will create a new resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Gateway resource with the given unique name, arguments, and options.
@@ -143,52 +143,52 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["billingInfo"] = state?.billingInfo;
-            resourceInputs["bpsMax"] = state?.bpsMax;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["dnatRulesLimit"] = state?.dnatRulesLimit;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["ngportIpAddress"] = state?.ngportIpAddress;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["ppsMax"] = state?.ppsMax;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sessionConf"] = state?.sessionConf;
-            resourceInputs["snatRulePublicIpLimit"] = state?.snatRulePublicIpLimit;
-            resourceInputs["spec"] = state?.spec;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["billingInfo"] = state ? state.billingInfo : undefined;
+            resourceInputs["bpsMax"] = state ? state.bpsMax : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnatRulesLimit"] = state ? state.dnatRulesLimit : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ngportIpAddress"] = state ? state.ngportIpAddress : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["ppsMax"] = state ? state.ppsMax : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sessionConf"] = state ? state.sessionConf : undefined;
+            resourceInputs["snatRulePublicIpLimit"] = state ? state.snatRulePublicIpLimit : undefined;
+            resourceInputs["spec"] = state ? state.spec : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if (args?.spec === undefined && !opts.urn) {
+            if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["ngportIpAddress"] = args?.ngportIpAddress;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["sessionConf"] = args?.sessionConf;
-            resourceInputs["spec"] = args?.spec;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ngportIpAddress"] = args ? args.ngportIpAddress : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sessionConf"] = args ? args.sessionConf : undefined;
+            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["billingInfo"] = undefined /*out*/;
             resourceInputs["bpsMax"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

@@ -65,29 +65,29 @@ export class MysqlDatabase extends pulumi.CustomResource {
      * Specifies the character set used by the database, For example **utf8**,
      * **gbk**, **ascii**, etc. Changing this will create a new resource.
      */
-    declare public readonly characterSet: pulumi.Output<string>;
+    public readonly characterSet!: pulumi.Output<string>;
     /**
      * Specifies the database description. The value can contain `0` to `512` characters.
      * This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
      * or **8.0.21.4**.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the RDS instance ID. Changing this will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the database name. The database name contains `1` to `64`
      * characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
      * ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
      * support dollar signs ($). Changing this will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the RDS database resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a MysqlDatabase resource with the given unique name, arguments, and options.
@@ -102,24 +102,24 @@ export class MysqlDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MysqlDatabaseState | undefined;
-            resourceInputs["characterSet"] = state?.characterSet;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["characterSet"] = state ? state.characterSet : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as MysqlDatabaseArgs | undefined;
-            if (args?.characterSet === undefined && !opts.urn) {
+            if ((!args || args.characterSet === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'characterSet'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["characterSet"] = args?.characterSet;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["characterSet"] = args ? args.characterSet : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MysqlDatabase.__pulumiType, name, resourceInputs, opts);

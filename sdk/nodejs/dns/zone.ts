@@ -83,56 +83,56 @@ export class Zone extends pulumi.CustomResource {
     /**
      * A description of the zone.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The email address of the administrator managing the zone.
      */
-    declare public readonly email: pulumi.Output<string>;
+    public readonly email!: pulumi.Output<string>;
     /**
      * The enterprise project id of the zone. Changing this creates a
      * new zone.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * An array of master DNS servers.
      */
-    declare public /*out*/ readonly masters: pulumi.Output<string[]>;
+    public /*out*/ readonly masters!: pulumi.Output<string[]>;
     /**
      * The name of the zone. Note the `.` at the end of the name. Changing this creates
      * a new DNS zone.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The recursive resolution proxy mode for subdomains of the private zone.
      */
-    declare public readonly proxyPattern: pulumi.Output<string>;
+    public readonly proxyPattern!: pulumi.Output<string>;
     /**
      * The region in which to create the DNS zone. If omitted, the `region` argument
      * of the provider will be used. Changing this creates a new DNS zone.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Router configuration block which is required if zoneType is private. The router
      * structure is documented below.
      */
-    declare public readonly routers: pulumi.Output<outputs.Dns.ZoneRouter[] | undefined>;
+    public readonly routers!: pulumi.Output<outputs.Dns.ZoneRouter[] | undefined>;
     /**
      * The status of the zone.
      */
-    declare public readonly status: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the zone.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time to live (TTL) of the zone.
      */
-    declare public readonly ttl: pulumi.Output<number | undefined>;
+    public readonly ttl!: pulumi.Output<number | undefined>;
     /**
      * The type of zone. Can either be `public` or `private`. Changing this
      * creates a new DNS zone.
      */
-    declare public readonly zoneType: pulumi.Output<string | undefined>;
+    public readonly zoneType!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -147,31 +147,31 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["email"] = state?.email;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["masters"] = state?.masters;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["proxyPattern"] = state?.proxyPattern;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["routers"] = state?.routers;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["ttl"] = state?.ttl;
-            resourceInputs["zoneType"] = state?.zoneType;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["email"] = state ? state.email : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["masters"] = state ? state.masters : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["proxyPattern"] = state ? state.proxyPattern : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routers"] = state ? state.routers : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["zoneType"] = state ? state.zoneType : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["email"] = args?.email;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["proxyPattern"] = args?.proxyPattern;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["routers"] = args?.routers;
-            resourceInputs["status"] = args?.status;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["ttl"] = args?.ttl;
-            resourceInputs["zoneType"] = args?.zoneType;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["proxyPattern"] = args ? args.proxyPattern : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routers"] = args ? args.routers : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["zoneType"] = args ? args.zoneType : undefined;
             resourceInputs["masters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

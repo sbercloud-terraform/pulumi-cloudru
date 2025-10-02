@@ -58,50 +58,50 @@ export class SmnTopic extends pulumi.CustomResource {
     /**
      * schema: Internal
      */
-    declare public readonly accessPolicy: pulumi.Output<string | undefined>;
+    public readonly accessPolicy!: pulumi.Output<string | undefined>;
     /**
      * Time when the topic was created.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Topic display name, which is presented as the
      * name of the email sender in an email message.
      */
-    declare public readonly displayName: pulumi.Output<string | undefined>;
+    public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project id of the SMN Topic, Value 0
      * indicates the default enterprise project. Changing this parameter will create a new resource.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public readonly introduction: pulumi.Output<string | undefined>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    public readonly introduction!: pulumi.Output<string | undefined>;
     /**
      * The name of the topic to be created.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Message pushing policy.
      * + **0**: indicates that the message sending fails and the message is cached in the queue.
      * + **1**: indicates that the failed message is discarded.
      */
-    declare public /*out*/ readonly pushPolicy: pulumi.Output<number>;
+    public /*out*/ readonly pushPolicy!: pulumi.Output<number>;
     /**
      * The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly servicesPublishAllowed: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly servicesPublishAllowed!: pulumi.Output<string | undefined>;
     /**
      * Specifies the tags of the SMN topic, key/value pair format.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Resource identifier of a topic, which is unique.
      */
-    declare public /*out*/ readonly topicUrn: pulumi.Output<string>;
+    public /*out*/ readonly topicUrn!: pulumi.Output<string>;
     /**
      * Time when the topic was updated.
      */
-    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
-    declare public readonly usersPublishAllowed: pulumi.Output<string | undefined>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    public readonly usersPublishAllowed!: pulumi.Output<string | undefined>;
 
     /**
      * Create a SmnTopic resource with the given unique name, arguments, and options.
@@ -116,30 +116,30 @@ export class SmnTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmnTopicState | undefined;
-            resourceInputs["accessPolicy"] = state?.accessPolicy;
-            resourceInputs["createTime"] = state?.createTime;
-            resourceInputs["displayName"] = state?.displayName;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["introduction"] = state?.introduction;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["pushPolicy"] = state?.pushPolicy;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["servicesPublishAllowed"] = state?.servicesPublishAllowed;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["topicUrn"] = state?.topicUrn;
-            resourceInputs["updateTime"] = state?.updateTime;
-            resourceInputs["usersPublishAllowed"] = state?.usersPublishAllowed;
+            resourceInputs["accessPolicy"] = state ? state.accessPolicy : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["introduction"] = state ? state.introduction : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pushPolicy"] = state ? state.pushPolicy : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["servicesPublishAllowed"] = state ? state.servicesPublishAllowed : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["topicUrn"] = state ? state.topicUrn : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["usersPublishAllowed"] = state ? state.usersPublishAllowed : undefined;
         } else {
             const args = argsOrState as SmnTopicArgs | undefined;
-            resourceInputs["accessPolicy"] = args?.accessPolicy;
-            resourceInputs["displayName"] = args?.displayName;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["introduction"] = args?.introduction;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["servicesPublishAllowed"] = args?.servicesPublishAllowed;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["usersPublishAllowed"] = args?.usersPublishAllowed;
+            resourceInputs["accessPolicy"] = args ? args.accessPolicy : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["introduction"] = args ? args.introduction : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["servicesPublishAllowed"] = args ? args.servicesPublishAllowed : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["usersPublishAllowed"] = args ? args.usersPublishAllowed : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["pushPolicy"] = undefined /*out*/;
             resourceInputs["topicUrn"] = undefined /*out*/;

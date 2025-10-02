@@ -62,24 +62,24 @@ export class InstanceEipAssociate extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceEipAssociate.__pulumiType;
     }
 
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of an RDS instance.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the EIP address to be bound.
      */
-    declare public readonly publicIp: pulumi.Output<string>;
+    public readonly publicIp!: pulumi.Output<string>;
     /**
      * Specifies the EIP ID.
      */
-    declare public readonly publicIpId: pulumi.Output<string>;
+    public readonly publicIpId!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a InstanceEipAssociate resource with the given unique name, arguments, and options.
@@ -94,27 +94,27 @@ export class InstanceEipAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceEipAssociateState | undefined;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["publicIp"] = state?.publicIp;
-            resourceInputs["publicIpId"] = state?.publicIpId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
+            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as InstanceEipAssociateArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.publicIp === undefined && !opts.urn) {
+            if ((!args || args.publicIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicIp'");
             }
-            if (args?.publicIpId === undefined && !opts.urn) {
+            if ((!args || args.publicIpId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicIpId'");
             }
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["publicIp"] = args?.publicIp;
-            resourceInputs["publicIpId"] = args?.publicIpId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
+            resourceInputs["publicIpId"] = args ? args.publicIpId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(InstanceEipAssociate.__pulumiType, name, resourceInputs, opts);

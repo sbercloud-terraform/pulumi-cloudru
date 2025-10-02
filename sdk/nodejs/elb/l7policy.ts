@@ -82,29 +82,29 @@ export class L7policy extends pulumi.CustomResource {
      * + **REDIRECT_TO_LISTENER**: Requests are redirected from the HTTP listener specified by `listenerId` to the
      * HTTPS listener specified by `redirectListenerId`.
      */
-    declare public readonly action: pulumi.Output<string>;
+    public readonly action!: pulumi.Output<string>;
     /**
      * The administrative state of the L7 Policy. This value can only be true (UP).
      */
-    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the L7 Policy.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the listener for which the forwarding policy is added.
      * Changing this creates a new L7 Policy.
      */
-    declare public readonly listenerId: pulumi.Output<string>;
+    public readonly listenerId!: pulumi.Output<string>;
     /**
      * Human-readable name for the L7 Policy. Does not have to be unique.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The position of this policy on the listener. Positions start at 1.
      * Changing this creates a new L7 Policy.
      */
-    declare public readonly position: pulumi.Output<number>;
+    public readonly position!: pulumi.Output<number>;
     /**
      * Specifies the ID of the listener to which the traffic is redirected.
      * This parameter is mandatory when `action` is set to **REDIRECT_TO_LISTENER**. The listener must meet the
@@ -112,7 +112,7 @@ export class L7policy extends pulumi.CustomResource {
      * + Can only be an HTTPS listener.
      * + Can only be a listener of the same load balancer.
      */
-    declare public readonly redirectListenerId: pulumi.Output<string | undefined>;
+    public readonly redirectListenerId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the backend server group to which traffic is forwarded.
      * This parameter is mandatory when `action` is set to **REDIRECT_TO_POOL**. The backend server group must meet the
@@ -120,16 +120,16 @@ export class L7policy extends pulumi.CustomResource {
      * + Cannot be the default backend server group of the listener.
      * + Cannot be the backend server group used by forwarding policies of other listeners.
      */
-    declare public readonly redirectPoolId: pulumi.Output<string | undefined>;
+    public readonly redirectPoolId!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the L7 Policy resource. If omitted, the
      * provider-level region will be used. Changing this creates a new L7 Policy.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    declare public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
 
     /**
      * Create a L7policy resource with the given unique name, arguments, and options.
@@ -144,34 +144,34 @@ export class L7policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as L7policyState | undefined;
-            resourceInputs["action"] = state?.action;
-            resourceInputs["adminStateUp"] = state?.adminStateUp;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["listenerId"] = state?.listenerId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["position"] = state?.position;
-            resourceInputs["redirectListenerId"] = state?.redirectListenerId;
-            resourceInputs["redirectPoolId"] = state?.redirectPoolId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["position"] = state ? state.position : undefined;
+            resourceInputs["redirectListenerId"] = state ? state.redirectListenerId : undefined;
+            resourceInputs["redirectPoolId"] = state ? state.redirectPoolId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
         } else {
             const args = argsOrState as L7policyArgs | undefined;
-            if (args?.action === undefined && !opts.urn) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if (args?.listenerId === undefined && !opts.urn) {
+            if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["action"] = args?.action;
-            resourceInputs["adminStateUp"] = args?.adminStateUp;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["listenerId"] = args?.listenerId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["position"] = args?.position;
-            resourceInputs["redirectListenerId"] = args?.redirectListenerId;
-            resourceInputs["redirectPoolId"] = args?.redirectPoolId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["position"] = args ? args.position : undefined;
+            resourceInputs["redirectListenerId"] = args ? args.redirectListenerId : undefined;
+            resourceInputs["redirectPoolId"] = args ? args.redirectPoolId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(L7policy.__pulumiType, name, resourceInputs, opts);

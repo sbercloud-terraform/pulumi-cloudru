@@ -105,21 +105,21 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * The ACL policy to apply. Defaults to `private`.
      */
-    declare public readonly acl: pulumi.Output<string | undefined>;
+    public readonly acl!: pulumi.Output<string | undefined>;
     /**
      * The name of the bucket to put the file in.
      */
-    declare public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * The literal content being uploaded to the bucket.
      */
-    declare public readonly content: pulumi.Output<string | undefined>;
+    public readonly content!: pulumi.Output<string | undefined>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream.
      * All Valid MIME Types are valid for this input.
      */
-    declare public readonly contentType: pulumi.Output<string>;
-    declare public readonly encryption: pulumi.Output<boolean | undefined>;
+    public readonly contentType!: pulumi.Output<string>;
+    public readonly encryption!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the unique identifier of the object content. It can be used to trigger updates.
      * The only meaningful value is `md5(file("pathToFile"))`.
@@ -127,35 +127,35 @@ export class BucketObject extends pulumi.CustomResource {
      * Either `source` or `content` must be provided to specify the bucket content.
      * These two arguments are mutually-exclusive.
      */
-    declare public readonly etag: pulumi.Output<string>;
+    public readonly etag!: pulumi.Output<string>;
     /**
      * The name of the object once it is in the bucket.
      */
-    declare public readonly key: pulumi.Output<string>;
+    public readonly key!: pulumi.Output<string>;
     /**
      * The ID of the kms key. If omitted, the default master key will be used.
      */
-    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
+    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * the size of the object in bytes.
      */
-    declare public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * The path to the source file being uploaded to the bucket.
      */
-    declare public readonly source: pulumi.Output<string | undefined>;
+    public readonly source!: pulumi.Output<string | undefined>;
     /**
      * Specifies the storage class of the object. Defaults to `STANDARD`.
      */
-    declare public readonly storageClass: pulumi.Output<string>;
+    public readonly storageClass!: pulumi.Output<string>;
     /**
      * A unique version ID value for the object, if bucket versioning is enabled.
      */
-    declare public /*out*/ readonly versionId: pulumi.Output<string>;
+    public /*out*/ readonly versionId!: pulumi.Output<string>;
 
     /**
      * Create a BucketObject resource with the given unique name, arguments, and options.
@@ -170,38 +170,38 @@ export class BucketObject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketObjectState | undefined;
-            resourceInputs["acl"] = state?.acl;
-            resourceInputs["bucket"] = state?.bucket;
-            resourceInputs["content"] = state?.content;
-            resourceInputs["contentType"] = state?.contentType;
-            resourceInputs["encryption"] = state?.encryption;
-            resourceInputs["etag"] = state?.etag;
-            resourceInputs["key"] = state?.key;
-            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["size"] = state?.size;
-            resourceInputs["source"] = state?.source;
-            resourceInputs["storageClass"] = state?.storageClass;
-            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["acl"] = state ? state.acl : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["contentType"] = state ? state.contentType : undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
-            if (args?.bucket === undefined && !opts.urn) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (args?.key === undefined && !opts.urn) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            resourceInputs["acl"] = args?.acl;
-            resourceInputs["bucket"] = args?.bucket;
-            resourceInputs["content"] = args?.content;
-            resourceInputs["contentType"] = args?.contentType;
-            resourceInputs["encryption"] = args?.encryption;
-            resourceInputs["etag"] = args?.etag;
-            resourceInputs["key"] = args?.key;
-            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["source"] = args?.source;
-            resourceInputs["storageClass"] = args?.storageClass;
+            resourceInputs["acl"] = args ? args.acl : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["contentType"] = args ? args.contentType : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["versionId"] = undefined /*out*/;
         }

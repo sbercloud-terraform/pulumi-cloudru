@@ -255,60 +255,60 @@ export class Node extends pulumi.CustomResource {
     /**
      * schema: Internal
      */
-    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled. Valid values are "true" and "
      * false". Changing this creates a new resource.
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the available partition (AZ). Changing this
      * parameter will create a new resource.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Specifies the bandwidth billing type.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly bandwidthChargeMode: pulumi.Output<string | undefined>;
+    public readonly bandwidthChargeMode!: pulumi.Output<string | undefined>;
     /**
      * Specifies the bandwidth size.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly bandwidthSize: pulumi.Output<number | undefined>;
+    public readonly bandwidthSize!: pulumi.Output<number | undefined>;
     /**
      * @deprecated use chargingMode instead
      */
-    declare public readonly billingMode: pulumi.Output<number>;
+    public readonly billingMode!: pulumi.Output<number>;
     /**
      * Specifies the charging mode of the CCE node. Valid values are *prePaid*
      * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Specifies the ID of the cluster.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly clusterId: pulumi.Output<string>;
+    public readonly clusterId!: pulumi.Output<string>;
     /**
      * Specifies the configurations of the data disk.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly dataVolumes: pulumi.Output<outputs.Cce.NodeDataVolume[]>;
-    declare public readonly dedicatedHostId: pulumi.Output<string | undefined>;
+    public readonly dataVolumes!: pulumi.Output<outputs.Cce.NodeDataVolume[]>;
+    public readonly dedicatedHostId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ECS group ID. If specified, the node will be created under
      * the cloud server group. Changing this parameter will create a new resource.
      */
-    declare public readonly ecsGroupId: pulumi.Output<string | undefined>;
+    public readonly ecsGroupId!: pulumi.Output<string | undefined>;
     /**
      * schema: Deprecated
      */
-    declare public readonly ecsPerformanceType: pulumi.Output<string | undefined>;
+    public readonly ecsPerformanceType!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the EIP.
      * Changing this parameter will create a new resource.
@@ -316,13 +316,13 @@ export class Node extends pulumi.CustomResource {
      * > **NOTE:** If the eipId parameter is configured, you do not need to configure the bandwidth parameters:
      * `iptype`, `bandwidthChargeMode`, `bandwidthSize` and `shareType`.
      */
-    declare public readonly eipId: pulumi.Output<string | undefined>;
+    public readonly eipId!: pulumi.Output<string | undefined>;
     /**
      * @deprecated use eipId instead
      */
-    declare public readonly eipIds: pulumi.Output<string[] | undefined>;
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly eipIds!: pulumi.Output<string[] | undefined>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies the extended parameter.
      * Changing this parameter will create a new resource.
@@ -334,154 +334,154 @@ export class Node extends pulumi.CustomResource {
      *
      * The following is an example default configuration:
      */
-    declare public readonly extendParam: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly extendParam!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated use chargingMode instead
      */
-    declare public readonly extendParamChargingMode: pulumi.Output<number | undefined>;
-    declare public readonly extendParams: pulumi.Output<outputs.Cce.NodeExtendParams | undefined>;
-    declare public readonly extensionNics: pulumi.Output<outputs.Cce.NodeExtensionNic[] | undefined>;
+    public readonly extendParamChargingMode!: pulumi.Output<number | undefined>;
+    public readonly extendParams!: pulumi.Output<outputs.Cce.NodeExtendParams | undefined>;
+    public readonly extensionNics!: pulumi.Output<outputs.Cce.NodeExtensionNic[] | undefined>;
     /**
      * Specifies the fixed IP of the NIC.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly fixedIp: pulumi.Output<string | undefined>;
+    public readonly fixedIp!: pulumi.Output<string | undefined>;
     /**
      * Specifies the flavor ID. Changing this parameter will create a new
      * resource.
      */
-    declare public readonly flavorId: pulumi.Output<string>;
-    declare public readonly hostnameConfig: pulumi.Output<outputs.Cce.NodeHostnameConfig>;
-    declare public readonly initializedConditions: pulumi.Output<string[]>;
+    public readonly flavorId!: pulumi.Output<string>;
+    public readonly hostnameConfig!: pulumi.Output<outputs.Cce.NodeHostnameConfig>;
+    public readonly initializedConditions!: pulumi.Output<string[]>;
     /**
      * Specifies the elastic IP type.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly iptype: pulumi.Output<string | undefined>;
+    public readonly iptype!: pulumi.Output<string | undefined>;
     /**
      * schema: Internal
      */
-    declare public readonly keepEcs: pulumi.Output<boolean | undefined>;
+    public readonly keepEcs!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the key pair name when logging in to select the key pair mode.
      * This parameter and `password` are alternative. Changing this parameter will create a new resource.
      */
-    declare public readonly keyPair: pulumi.Output<string | undefined>;
+    public readonly keyPair!: pulumi.Output<string | undefined>;
     /**
      * Specifies the tags of a Kubernetes node, key/value pair format.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the maximum number of instances a node is allowed to create.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly maxPods: pulumi.Output<number | undefined>;
+    public readonly maxPods!: pulumi.Output<number | undefined>;
     /**
      * Specifies the node name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * @deprecated will be removed after v1.26.0
      */
-    declare public readonly orderId: pulumi.Output<string | undefined>;
+    public readonly orderId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the operating system of the node.
      * Changing this parameter will create a new resource.
      * For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
      */
-    declare public readonly os: pulumi.Output<string>;
-    declare public readonly partition: pulumi.Output<string | undefined>;
+    public readonly os!: pulumi.Output<string>;
+    public readonly partition!: pulumi.Output<string | undefined>;
     /**
      * Specifies the root password when logging in to select the password mode.
      * This parameter can be plain or salted and is alternative to `keyPair`.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the CCE node. If `periodUnit` is set to *month*
      * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter is
      * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the CCE node.
      * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new resource.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Specifies the script to be executed after installation.
      * The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
      */
-    declare public readonly postinstall: pulumi.Output<string | undefined>;
+    public readonly postinstall!: pulumi.Output<string | undefined>;
     /**
      * Specifies the script to be executed before installation.
      * The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
      */
-    declare public readonly preinstall: pulumi.Output<string | undefined>;
+    public readonly preinstall!: pulumi.Output<string | undefined>;
     /**
      * Private IP of the CCE node.
      */
-    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
-    declare public readonly privateKey: pulumi.Output<string | undefined>;
+    public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    public readonly privateKey!: pulumi.Output<string | undefined>;
     /**
      * schema: Deprecated
      */
-    declare public readonly productId: pulumi.Output<string | undefined>;
+    public readonly productId!: pulumi.Output<string | undefined>;
     /**
      * Public IP of the CCE node.
      */
-    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
+    public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
      * schema: Deprecated
      */
-    declare public readonly publicKey: pulumi.Output<string | undefined>;
+    public readonly publicKey!: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the CCE node resource.
      * If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the configuration of the system disk.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly rootVolume: pulumi.Output<outputs.Cce.NodeRootVolume>;
+    public readonly rootVolume!: pulumi.Output<outputs.Cce.NodeRootVolume>;
     /**
      * Specifies the runtime of the CCE node. Valid values are *docker* and
      * *containerd*. Changing this creates a new resource.
      */
-    declare public readonly runtime: pulumi.Output<string>;
+    public readonly runtime!: pulumi.Output<string>;
     /**
      * ID of the ECS instance associated with the node.
      */
-    declare public /*out*/ readonly serverId: pulumi.Output<string>;
+    public /*out*/ readonly serverId!: pulumi.Output<string>;
     /**
      * Specifies the bandwidth sharing type.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly sharetype: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public readonly sharetype!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the disk initialization management parameter.
      * If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
      * This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
      */
-    declare public readonly storage: pulumi.Output<outputs.Cce.NodeStorage | undefined>;
+    public readonly storage!: pulumi.Output<outputs.Cce.NodeStorage | undefined>;
     /**
      * Specifies the ID of the subnet to which the NIC belongs.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * Specifies the tags of a VM node, key/value pair format.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the taints configuration of the nodes to set anti-affinity.
      * Changing this parameter will create a new resource. Each taint contains the following parameters:
      */
-    declare public readonly taints: pulumi.Output<outputs.Cce.NodeTaint[] | undefined>;
+    public readonly taints!: pulumi.Output<outputs.Cce.NodeTaint[] | undefined>;
 
     /**
      * Create a Node resource with the given unique name, arguments, and options.
@@ -496,124 +496,124 @@ export class Node extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeState | undefined;
-            resourceInputs["annotations"] = state?.annotations;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["bandwidthChargeMode"] = state?.bandwidthChargeMode;
-            resourceInputs["bandwidthSize"] = state?.bandwidthSize;
-            resourceInputs["billingMode"] = state?.billingMode;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["clusterId"] = state?.clusterId;
-            resourceInputs["dataVolumes"] = state?.dataVolumes;
-            resourceInputs["dedicatedHostId"] = state?.dedicatedHostId;
-            resourceInputs["ecsGroupId"] = state?.ecsGroupId;
-            resourceInputs["ecsPerformanceType"] = state?.ecsPerformanceType;
-            resourceInputs["eipId"] = state?.eipId;
-            resourceInputs["eipIds"] = state?.eipIds;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["extendParam"] = state?.extendParam;
-            resourceInputs["extendParamChargingMode"] = state?.extendParamChargingMode;
-            resourceInputs["extendParams"] = state?.extendParams;
-            resourceInputs["extensionNics"] = state?.extensionNics;
-            resourceInputs["fixedIp"] = state?.fixedIp;
-            resourceInputs["flavorId"] = state?.flavorId;
-            resourceInputs["hostnameConfig"] = state?.hostnameConfig;
-            resourceInputs["initializedConditions"] = state?.initializedConditions;
-            resourceInputs["iptype"] = state?.iptype;
-            resourceInputs["keepEcs"] = state?.keepEcs;
-            resourceInputs["keyPair"] = state?.keyPair;
-            resourceInputs["labels"] = state?.labels;
-            resourceInputs["maxPods"] = state?.maxPods;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["orderId"] = state?.orderId;
-            resourceInputs["os"] = state?.os;
-            resourceInputs["partition"] = state?.partition;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["postinstall"] = state?.postinstall;
-            resourceInputs["preinstall"] = state?.preinstall;
-            resourceInputs["privateIp"] = state?.privateIp;
-            resourceInputs["privateKey"] = state?.privateKey;
-            resourceInputs["productId"] = state?.productId;
-            resourceInputs["publicIp"] = state?.publicIp;
-            resourceInputs["publicKey"] = state?.publicKey;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["rootVolume"] = state?.rootVolume;
-            resourceInputs["runtime"] = state?.runtime;
-            resourceInputs["serverId"] = state?.serverId;
-            resourceInputs["sharetype"] = state?.sharetype;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["storage"] = state?.storage;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["taints"] = state?.taints;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["bandwidthChargeMode"] = state ? state.bandwidthChargeMode : undefined;
+            resourceInputs["bandwidthSize"] = state ? state.bandwidthSize : undefined;
+            resourceInputs["billingMode"] = state ? state.billingMode : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["dataVolumes"] = state ? state.dataVolumes : undefined;
+            resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
+            resourceInputs["ecsGroupId"] = state ? state.ecsGroupId : undefined;
+            resourceInputs["ecsPerformanceType"] = state ? state.ecsPerformanceType : undefined;
+            resourceInputs["eipId"] = state ? state.eipId : undefined;
+            resourceInputs["eipIds"] = state ? state.eipIds : undefined;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["extendParam"] = state ? state.extendParam : undefined;
+            resourceInputs["extendParamChargingMode"] = state ? state.extendParamChargingMode : undefined;
+            resourceInputs["extendParams"] = state ? state.extendParams : undefined;
+            resourceInputs["extensionNics"] = state ? state.extensionNics : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["hostnameConfig"] = state ? state.hostnameConfig : undefined;
+            resourceInputs["initializedConditions"] = state ? state.initializedConditions : undefined;
+            resourceInputs["iptype"] = state ? state.iptype : undefined;
+            resourceInputs["keepEcs"] = state ? state.keepEcs : undefined;
+            resourceInputs["keyPair"] = state ? state.keyPair : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["maxPods"] = state ? state.maxPods : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orderId"] = state ? state.orderId : undefined;
+            resourceInputs["os"] = state ? state.os : undefined;
+            resourceInputs["partition"] = state ? state.partition : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["postinstall"] = state ? state.postinstall : undefined;
+            resourceInputs["preinstall"] = state ? state.preinstall : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["productId"] = state ? state.productId : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rootVolume"] = state ? state.rootVolume : undefined;
+            resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["serverId"] = state ? state.serverId : undefined;
+            resourceInputs["sharetype"] = state ? state.sharetype : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storage"] = state ? state.storage : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["taints"] = state ? state.taints : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            if (args?.availabilityZone === undefined && !opts.urn) {
+            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if (args?.clusterId === undefined && !opts.urn) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (args?.flavorId === undefined && !opts.urn) {
+            if ((!args || args.flavorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if (args?.rootVolume === undefined && !opts.urn) {
+            if ((!args || args.rootVolume === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rootVolume'");
             }
-            resourceInputs["annotations"] = args?.annotations;
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["bandwidthChargeMode"] = args?.bandwidthChargeMode;
-            resourceInputs["bandwidthSize"] = args?.bandwidthSize;
-            resourceInputs["billingMode"] = args?.billingMode;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["clusterId"] = args?.clusterId;
-            resourceInputs["dataVolumes"] = args?.dataVolumes;
-            resourceInputs["dedicatedHostId"] = args?.dedicatedHostId;
-            resourceInputs["ecsGroupId"] = args?.ecsGroupId;
-            resourceInputs["ecsPerformanceType"] = args?.ecsPerformanceType;
-            resourceInputs["eipId"] = args?.eipId;
-            resourceInputs["eipIds"] = args?.eipIds;
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["extendParam"] = args?.extendParam;
-            resourceInputs["extendParamChargingMode"] = args?.extendParamChargingMode;
-            resourceInputs["extendParams"] = args?.extendParams;
-            resourceInputs["extensionNics"] = args?.extensionNics;
-            resourceInputs["fixedIp"] = args?.fixedIp;
-            resourceInputs["flavorId"] = args?.flavorId;
-            resourceInputs["hostnameConfig"] = args?.hostnameConfig;
-            resourceInputs["initializedConditions"] = args?.initializedConditions;
-            resourceInputs["iptype"] = args?.iptype;
-            resourceInputs["keepEcs"] = args?.keepEcs;
-            resourceInputs["keyPair"] = args?.keyPair;
-            resourceInputs["labels"] = args?.labels;
-            resourceInputs["maxPods"] = args?.maxPods;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["orderId"] = args?.orderId;
-            resourceInputs["os"] = args?.os;
-            resourceInputs["partition"] = args?.partition;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["bandwidthChargeMode"] = args ? args.bandwidthChargeMode : undefined;
+            resourceInputs["bandwidthSize"] = args ? args.bandwidthSize : undefined;
+            resourceInputs["billingMode"] = args ? args.billingMode : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["dataVolumes"] = args ? args.dataVolumes : undefined;
+            resourceInputs["dedicatedHostId"] = args ? args.dedicatedHostId : undefined;
+            resourceInputs["ecsGroupId"] = args ? args.ecsGroupId : undefined;
+            resourceInputs["ecsPerformanceType"] = args ? args.ecsPerformanceType : undefined;
+            resourceInputs["eipId"] = args ? args.eipId : undefined;
+            resourceInputs["eipIds"] = args ? args.eipIds : undefined;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["extendParam"] = args ? args.extendParam : undefined;
+            resourceInputs["extendParamChargingMode"] = args ? args.extendParamChargingMode : undefined;
+            resourceInputs["extendParams"] = args ? args.extendParams : undefined;
+            resourceInputs["extensionNics"] = args ? args.extensionNics : undefined;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["hostnameConfig"] = args ? args.hostnameConfig : undefined;
+            resourceInputs["initializedConditions"] = args ? args.initializedConditions : undefined;
+            resourceInputs["iptype"] = args ? args.iptype : undefined;
+            resourceInputs["keepEcs"] = args ? args.keepEcs : undefined;
+            resourceInputs["keyPair"] = args ? args.keyPair : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["maxPods"] = args ? args.maxPods : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["orderId"] = args ? args.orderId : undefined;
+            resourceInputs["os"] = args ? args.os : undefined;
+            resourceInputs["partition"] = args ? args.partition : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["postinstall"] = args?.postinstall;
-            resourceInputs["preinstall"] = args?.preinstall;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["postinstall"] = args ? args.postinstall : undefined;
+            resourceInputs["preinstall"] = args ? args.preinstall : undefined;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["productId"] = args?.productId;
-            resourceInputs["publicKey"] = args?.publicKey;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["rootVolume"] = args?.rootVolume;
-            resourceInputs["runtime"] = args?.runtime;
-            resourceInputs["sharetype"] = args?.sharetype;
-            resourceInputs["storage"] = args?.storage;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["taints"] = args?.taints;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rootVolume"] = args ? args.rootVolume : undefined;
+            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["sharetype"] = args ? args.sharetype : undefined;
+            resourceInputs["storage"] = args ? args.storage : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["privateIp"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;
             resourceInputs["serverId"] = undefined /*out*/;

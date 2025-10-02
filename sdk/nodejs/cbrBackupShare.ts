@@ -37,15 +37,15 @@ export class CbrBackupShare extends pulumi.CustomResource {
     /**
      * The backup ID.
      */
-    declare public readonly backupId: pulumi.Output<string>;
+    public readonly backupId!: pulumi.Output<string>;
     /**
      * The list of shared members configuration.
      */
-    declare public readonly members: pulumi.Output<outputs.CbrBackupShareMember[]>;
+    public readonly members!: pulumi.Output<outputs.CbrBackupShareMember[]>;
     /**
      * The region where the shared backup is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a CbrBackupShare resource with the given unique name, arguments, and options.
@@ -60,20 +60,20 @@ export class CbrBackupShare extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CbrBackupShareState | undefined;
-            resourceInputs["backupId"] = state?.backupId;
-            resourceInputs["members"] = state?.members;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["backupId"] = state ? state.backupId : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as CbrBackupShareArgs | undefined;
-            if (args?.backupId === undefined && !opts.urn) {
+            if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if (args?.members === undefined && !opts.urn) {
+            if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            resourceInputs["backupId"] = args?.backupId;
-            resourceInputs["members"] = args?.members;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CbrBackupShare.__pulumiType, name, resourceInputs, opts);

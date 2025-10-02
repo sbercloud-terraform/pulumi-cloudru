@@ -75,88 +75,88 @@ export class Subnet extends pulumi.CustomResource {
      * Specifies the availability zone (AZ) to which the subnet belongs.
      * The value must be an existing AZ in the system. Changing this creates a new Subnet.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Specifies the network segment on which the subnet resides. The value must be in
      * CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
      * new Subnet.
      */
-    declare public readonly cidr: pulumi.Output<string>;
+    public readonly cidr!: pulumi.Output<string>;
     /**
      * Specifies supplementary information about the subnet. The value is a string of
      * no more than 255 characters and cannot contain angle brackets (< or >).
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
      */
-    declare public readonly dhcpEnable: pulumi.Output<boolean | undefined>;
-    declare public readonly dhcpLeaseTime: pulumi.Output<string>;
+    public readonly dhcpEnable!: pulumi.Output<boolean | undefined>;
+    public readonly dhcpLeaseTime!: pulumi.Output<string>;
     /**
      * Specifies the DNS server address list of a subnet. This field is required if you need to
      * use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
      * address 2.
      */
-    declare public readonly dnsLists: pulumi.Output<string[]>;
+    public readonly dnsLists!: pulumi.Output<string[]>;
     /**
      * Specifies the gateway of the subnet. The value must be a valid IP address
      * in the subnet segment. Changing this creates a new Subnet.
      */
-    declare public readonly gatewayIp: pulumi.Output<string>;
+    public readonly gatewayIp!: pulumi.Output<string>;
     /**
      * The ID of the IPv4 subnet (Native OpenStack API).
      */
-    declare public /*out*/ readonly ipv4SubnetId: pulumi.Output<string>;
+    public /*out*/ readonly ipv4SubnetId!: pulumi.Output<string>;
     /**
      * The IPv6 subnet CIDR block.
      */
-    declare public /*out*/ readonly ipv6Cidr: pulumi.Output<string>;
+    public /*out*/ readonly ipv6Cidr!: pulumi.Output<string>;
     /**
      * Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
      */
-    declare public readonly ipv6Enable: pulumi.Output<boolean | undefined>;
+    public readonly ipv6Enable!: pulumi.Output<boolean | undefined>;
     /**
      * The IPv6 subnet gateway.
      */
-    declare public /*out*/ readonly ipv6Gateway: pulumi.Output<string>;
+    public /*out*/ readonly ipv6Gateway!: pulumi.Output<string>;
     /**
      * The ID of the IPv6 subnet (Native OpenStack API).
      */
-    declare public /*out*/ readonly ipv6SubnetId: pulumi.Output<string>;
+    public /*out*/ readonly ipv6SubnetId!: pulumi.Output<string>;
     /**
      * Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
      * letters, digits, underscores (_), and hyphens (-).
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly ntpServerAddress: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly ntpServerAddress!: pulumi.Output<string | undefined>;
     /**
      * Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
      * IP address.
      */
-    declare public readonly primaryDns: pulumi.Output<string>;
+    public readonly primaryDns!: pulumi.Output<string>;
     /**
      * Specifies tThe region in which to create the vpc subnet. If omitted, the
      * provider-level region will be used. Changing this creates a new Subnet.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
      * IP address.
      */
-    declare public readonly secondaryDns: pulumi.Output<string>;
+    public readonly secondaryDns!: pulumi.Output<string>;
     /**
      * The subnet (Native OpenStack API) ID.
      */
-    declare public /*out*/ readonly subnetId: pulumi.Output<string>;
+    public /*out*/ readonly subnetId!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the subnet.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the ID of the VPC to which the subnet belongs. Changing this creates
      * a new Subnet.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Subnet resource with the given unique name, arguments, and options.
@@ -171,52 +171,52 @@ export class Subnet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SubnetState | undefined;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["cidr"] = state?.cidr;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["dhcpEnable"] = state?.dhcpEnable;
-            resourceInputs["dhcpLeaseTime"] = state?.dhcpLeaseTime;
-            resourceInputs["dnsLists"] = state?.dnsLists;
-            resourceInputs["gatewayIp"] = state?.gatewayIp;
-            resourceInputs["ipv4SubnetId"] = state?.ipv4SubnetId;
-            resourceInputs["ipv6Cidr"] = state?.ipv6Cidr;
-            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
-            resourceInputs["ipv6Gateway"] = state?.ipv6Gateway;
-            resourceInputs["ipv6SubnetId"] = state?.ipv6SubnetId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["ntpServerAddress"] = state?.ntpServerAddress;
-            resourceInputs["primaryDns"] = state?.primaryDns;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["secondaryDns"] = state?.secondaryDns;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["cidr"] = state ? state.cidr : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dhcpEnable"] = state ? state.dhcpEnable : undefined;
+            resourceInputs["dhcpLeaseTime"] = state ? state.dhcpLeaseTime : undefined;
+            resourceInputs["dnsLists"] = state ? state.dnsLists : undefined;
+            resourceInputs["gatewayIp"] = state ? state.gatewayIp : undefined;
+            resourceInputs["ipv4SubnetId"] = state ? state.ipv4SubnetId : undefined;
+            resourceInputs["ipv6Cidr"] = state ? state.ipv6Cidr : undefined;
+            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
+            resourceInputs["ipv6Gateway"] = state ? state.ipv6Gateway : undefined;
+            resourceInputs["ipv6SubnetId"] = state ? state.ipv6SubnetId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ntpServerAddress"] = state ? state.ntpServerAddress : undefined;
+            resourceInputs["primaryDns"] = state ? state.primaryDns : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secondaryDns"] = state ? state.secondaryDns : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if (args?.cidr === undefined && !opts.urn) {
+            if ((!args || args.cidr === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            if (args?.gatewayIp === undefined && !opts.urn) {
+            if ((!args || args.gatewayIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayIp'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["cidr"] = args?.cidr;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["dhcpEnable"] = args?.dhcpEnable;
-            resourceInputs["dhcpLeaseTime"] = args?.dhcpLeaseTime;
-            resourceInputs["dnsLists"] = args?.dnsLists;
-            resourceInputs["gatewayIp"] = args?.gatewayIp;
-            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["ntpServerAddress"] = args?.ntpServerAddress;
-            resourceInputs["primaryDns"] = args?.primaryDns;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["secondaryDns"] = args?.secondaryDns;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["cidr"] = args ? args.cidr : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dhcpEnable"] = args ? args.dhcpEnable : undefined;
+            resourceInputs["dhcpLeaseTime"] = args ? args.dhcpLeaseTime : undefined;
+            resourceInputs["dnsLists"] = args ? args.dnsLists : undefined;
+            resourceInputs["gatewayIp"] = args ? args.gatewayIp : undefined;
+            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ntpServerAddress"] = args ? args.ntpServerAddress : undefined;
+            resourceInputs["primaryDns"] = args ? args.primaryDns : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["secondaryDns"] = args ? args.secondaryDns : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["ipv4SubnetId"] = undefined /*out*/;
             resourceInputs["ipv6Cidr"] = undefined /*out*/;
             resourceInputs["ipv6Gateway"] = undefined /*out*/;

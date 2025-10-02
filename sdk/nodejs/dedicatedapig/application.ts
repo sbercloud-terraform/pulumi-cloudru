@@ -35,43 +35,43 @@ export class Application extends pulumi.CustomResource {
     /**
      * The array of one or more application codes that the application has.
      */
-    declare public readonly appCodes: pulumi.Output<string[]>;
+    public readonly appCodes!: pulumi.Output<string[]>;
     /**
      * The APP key.
      */
-    declare public /*out*/ readonly appKey: pulumi.Output<string>;
+    public /*out*/ readonly appKey!: pulumi.Output<string>;
     /**
      * The APP secret.
      */
-    declare public /*out*/ readonly appSecret: pulumi.Output<string>;
+    public /*out*/ readonly appSecret!: pulumi.Output<string>;
     /**
      * The application description.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The ID of the dedicated instance to which the application belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The application name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the application is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The registration time.
      */
-    declare public /*out*/ readonly registrationTime: pulumi.Output<string>;
+    public /*out*/ readonly registrationTime!: pulumi.Output<string>;
     /**
      * The secret action to be done for the application.
      */
-    declare public readonly secretAction: pulumi.Output<string | undefined>;
+    public readonly secretAction!: pulumi.Output<string | undefined>;
     /**
      * The latest update time of the application.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -86,27 +86,27 @@ export class Application extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            resourceInputs["appCodes"] = state?.appCodes;
-            resourceInputs["appKey"] = state?.appKey;
-            resourceInputs["appSecret"] = state?.appSecret;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["registrationTime"] = state?.registrationTime;
-            resourceInputs["secretAction"] = state?.secretAction;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["appCodes"] = state ? state.appCodes : undefined;
+            resourceInputs["appKey"] = state ? state.appKey : undefined;
+            resourceInputs["appSecret"] = state ? state.appSecret : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["registrationTime"] = state ? state.registrationTime : undefined;
+            resourceInputs["secretAction"] = state ? state.secretAction : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["appCodes"] = args?.appCodes;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["secretAction"] = args?.secretAction;
+            resourceInputs["appCodes"] = args ? args.appCodes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["secretAction"] = args ? args.secretAction : undefined;
             resourceInputs["appKey"] = undefined /*out*/;
             resourceInputs["appSecret"] = undefined /*out*/;
             resourceInputs["registrationTime"] = undefined /*out*/;

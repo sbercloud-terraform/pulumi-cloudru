@@ -62,17 +62,17 @@ export class Servergroup extends pulumi.CustomResource {
     /**
      * schema: Internal
      */
-    declare public /*out*/ readonly faultDomains: pulumi.Output<string[]>;
+    public /*out*/ readonly faultDomains!: pulumi.Output<string[]>;
     /**
      * Specifies an array of one or more instance ID to attach server group.
      */
-    declare public readonly members: pulumi.Output<string[]>;
+    public readonly members!: pulumi.Output<string[]>;
     /**
      * Specifies a unique name for the server group. This parameter can contain a
      * maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
      * creates a new server group.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the set of policies for the server group. Only *anti-affinity*
      * policies are supported.
@@ -80,12 +80,12 @@ export class Servergroup extends pulumi.CustomResource {
      * + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
      * group.
      */
-    declare public readonly policies: pulumi.Output<string[] | undefined>;
+    public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the region in which to create the server group resource. If omitted,
      * the provider-level region will be used. Changing this creates a new server group.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a Servergroup resource with the given unique name, arguments, and options.
@@ -100,17 +100,17 @@ export class Servergroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServergroupState | undefined;
-            resourceInputs["faultDomains"] = state?.faultDomains;
-            resourceInputs["members"] = state?.members;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["policies"] = state?.policies;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["faultDomains"] = state ? state.faultDomains : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ServergroupArgs | undefined;
-            resourceInputs["members"] = args?.members;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["policies"] = args?.policies;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["faultDomains"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

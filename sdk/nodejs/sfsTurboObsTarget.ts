@@ -34,13 +34,13 @@ export class SfsTurboObsTarget extends pulumi.CustomResource {
         return obj['__pulumiType'] === SfsTurboObsTarget.__pulumiType;
     }
 
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    declare public readonly deleteDataInFileSystem: pulumi.Output<boolean | undefined>;
-    declare public readonly fileSystemPath: pulumi.Output<string>;
-    declare public readonly obs: pulumi.Output<outputs.SfsTurboObsTargetObs>;
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly shareId: pulumi.Output<string>;
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly deleteDataInFileSystem!: pulumi.Output<boolean | undefined>;
+    public readonly fileSystemPath!: pulumi.Output<string>;
+    public readonly obs!: pulumi.Output<outputs.SfsTurboObsTargetObs>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly shareId!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a SfsTurboObsTarget resource with the given unique name, arguments, and options.
@@ -55,29 +55,29 @@ export class SfsTurboObsTarget extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsTurboObsTargetState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["deleteDataInFileSystem"] = state?.deleteDataInFileSystem;
-            resourceInputs["fileSystemPath"] = state?.fileSystemPath;
-            resourceInputs["obs"] = state?.obs;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["shareId"] = state?.shareId;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deleteDataInFileSystem"] = state ? state.deleteDataInFileSystem : undefined;
+            resourceInputs["fileSystemPath"] = state ? state.fileSystemPath : undefined;
+            resourceInputs["obs"] = state ? state.obs : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shareId"] = state ? state.shareId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SfsTurboObsTargetArgs | undefined;
-            if (args?.fileSystemPath === undefined && !opts.urn) {
+            if ((!args || args.fileSystemPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fileSystemPath'");
             }
-            if (args?.obs === undefined && !opts.urn) {
+            if ((!args || args.obs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'obs'");
             }
-            if (args?.shareId === undefined && !opts.urn) {
+            if ((!args || args.shareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            resourceInputs["deleteDataInFileSystem"] = args?.deleteDataInFileSystem;
-            resourceInputs["fileSystemPath"] = args?.fileSystemPath;
-            resourceInputs["obs"] = args?.obs;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["shareId"] = args?.shareId;
+            resourceInputs["deleteDataInFileSystem"] = args ? args.deleteDataInFileSystem : undefined;
+            resourceInputs["fileSystemPath"] = args ? args.fileSystemPath : undefined;
+            resourceInputs["obs"] = args ? args.obs : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shareId"] = args ? args.shareId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

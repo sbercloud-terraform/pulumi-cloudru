@@ -168,22 +168,22 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
      * <a name="RocketMQ_migration_task_topic_configs"></a>
      * The `topicConfigs` block supports:
      */
-    declare public readonly bindings: pulumi.Output<outputs.DmsRocketmqMigrationTaskBinding[]>;
+    public readonly bindings!: pulumi.Output<outputs.DmsRocketmqMigrationTaskBinding[]>;
     /**
      * Specifies the exchange metadata.
      * The exchanges structure is documented below.
      * Changing this creates a new resource.
      */
-    declare public readonly exchanges: pulumi.Output<outputs.DmsRocketmqMigrationTaskExchange[]>;
+    public readonly exchanges!: pulumi.Output<outputs.DmsRocketmqMigrationTaskExchange[]>;
     /**
      * Specifies the ID of the RocketMQ instance.
      * Changing this creates a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the switch name. Changing this creates a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies whether to overwrite configurations with the same name.
      * Value options:
@@ -191,26 +191,26 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
      * + **false**: An error is reported when a topic or group already exists.
      * Changing this creates a new resource.
      */
-    declare public readonly overwrite: pulumi.Output<string>;
+    public readonly overwrite!: pulumi.Output<string>;
     /**
      * Specifies the queue metadata.
      * The queues structure is documented below.
      * Changing this creates a new resource.
      */
-    declare public readonly queues: pulumi.Output<outputs.DmsRocketmqMigrationTaskQueue[]>;
+    public readonly queues!: pulumi.Output<outputs.DmsRocketmqMigrationTaskQueue[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates the start time of the migration task.
      */
-    declare public /*out*/ readonly startDate: pulumi.Output<string>;
+    public /*out*/ readonly startDate!: pulumi.Output<string>;
     /**
      * Indicates the status of the migration task. The value can be **finished** or **failed***.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the consumer group metadata.
      * The subscriptionGroups structure is documented below.
@@ -218,26 +218,26 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
      *
      * > **NOTE:** Parameters `topicConfigs` and `subscriptionGroups` are required when `type` is set to **rocketmq**.
      */
-    declare public readonly subscriptionGroups: pulumi.Output<outputs.DmsRocketmqMigrationTaskSubscriptionGroup[]>;
+    public readonly subscriptionGroups!: pulumi.Output<outputs.DmsRocketmqMigrationTaskSubscriptionGroup[]>;
     /**
      * Specifies the topic metadata.
      * The topicConfigs structure is documented below.
      * Changing this creates a new resource.
      */
-    declare public readonly topicConfigs: pulumi.Output<outputs.DmsRocketmqMigrationTaskTopicConfig[]>;
+    public readonly topicConfigs!: pulumi.Output<outputs.DmsRocketmqMigrationTaskTopicConfig[]>;
     /**
      * Specifies the exchange type. Changing this creates a new resource.
      *
      * <a name="RocketMQ_migration_task_bindings"></a>
      * The `bindings` block supports:
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Specifies the virtual hosts metadata.
      * The vhosts structure is documented below.
      * Changing this creates a new resource.
      */
-    declare public readonly vhosts: pulumi.Output<outputs.DmsRocketmqMigrationTaskVhost[]>;
+    public readonly vhosts!: pulumi.Output<outputs.DmsRocketmqMigrationTaskVhost[]>;
 
     /**
      * Create a DmsRocketmqMigrationTask resource with the given unique name, arguments, and options.
@@ -252,41 +252,41 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqMigrationTaskState | undefined;
-            resourceInputs["bindings"] = state?.bindings;
-            resourceInputs["exchanges"] = state?.exchanges;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["overwrite"] = state?.overwrite;
-            resourceInputs["queues"] = state?.queues;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["startDate"] = state?.startDate;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subscriptionGroups"] = state?.subscriptionGroups;
-            resourceInputs["topicConfigs"] = state?.topicConfigs;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["vhosts"] = state?.vhosts;
+            resourceInputs["bindings"] = state ? state.bindings : undefined;
+            resourceInputs["exchanges"] = state ? state.exchanges : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["overwrite"] = state ? state.overwrite : undefined;
+            resourceInputs["queues"] = state ? state.queues : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["startDate"] = state ? state.startDate : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subscriptionGroups"] = state ? state.subscriptionGroups : undefined;
+            resourceInputs["topicConfigs"] = state ? state.topicConfigs : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vhosts"] = state ? state.vhosts : undefined;
         } else {
             const args = argsOrState as DmsRocketmqMigrationTaskArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.overwrite === undefined && !opts.urn) {
+            if ((!args || args.overwrite === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'overwrite'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["bindings"] = args?.bindings;
-            resourceInputs["exchanges"] = args?.exchanges;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["overwrite"] = args?.overwrite;
-            resourceInputs["queues"] = args?.queues;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["subscriptionGroups"] = args?.subscriptionGroups;
-            resourceInputs["topicConfigs"] = args?.topicConfigs;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["vhosts"] = args?.vhosts;
+            resourceInputs["bindings"] = args ? args.bindings : undefined;
+            resourceInputs["exchanges"] = args ? args.exchanges : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["overwrite"] = args ? args.overwrite : undefined;
+            resourceInputs["queues"] = args ? args.queues : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["subscriptionGroups"] = args ? args.subscriptionGroups : undefined;
+            resourceInputs["topicConfigs"] = args ? args.topicConfigs : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vhosts"] = args ? args.vhosts : undefined;
             resourceInputs["startDate"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

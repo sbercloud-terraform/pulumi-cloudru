@@ -69,23 +69,23 @@ export class ServiceGroupMember extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the destination port.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly destPort: pulumi.Output<string>;
+    public readonly destPort!: pulumi.Output<string>;
     /**
      * Specifies the ID of the service group.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly groupId: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<string>;
     /**
      * Specifies the service group member name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the protocol type.
      * The valid values are:
@@ -97,18 +97,18 @@ export class ServiceGroupMember extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly protocol: pulumi.Output<number>;
+    public readonly protocol!: pulumi.Output<number>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the source port.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly sourcePort: pulumi.Output<string>;
+    public readonly sourcePort!: pulumi.Output<string>;
 
     /**
      * Create a ServiceGroupMember resource with the given unique name, arguments, and options.
@@ -123,34 +123,34 @@ export class ServiceGroupMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceGroupMemberState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["destPort"] = state?.destPort;
-            resourceInputs["groupId"] = state?.groupId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sourcePort"] = state?.sourcePort;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destPort"] = state ? state.destPort : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sourcePort"] = state ? state.sourcePort : undefined;
         } else {
             const args = argsOrState as ServiceGroupMemberArgs | undefined;
-            if (args?.destPort === undefined && !opts.urn) {
+            if ((!args || args.destPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destPort'");
             }
-            if (args?.groupId === undefined && !opts.urn) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (args?.protocol === undefined && !opts.urn) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (args?.sourcePort === undefined && !opts.urn) {
+            if ((!args || args.sourcePort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourcePort'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["destPort"] = args?.destPort;
-            resourceInputs["groupId"] = args?.groupId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["sourcePort"] = args?.sourcePort;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destPort"] = args ? args.destPort : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sourcePort"] = args ? args.sourcePort : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceGroupMember.__pulumiType, name, resourceInputs, opts);

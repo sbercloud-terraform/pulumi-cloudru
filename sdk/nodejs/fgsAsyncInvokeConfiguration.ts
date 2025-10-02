@@ -84,50 +84,50 @@ export class FgsAsyncInvokeConfiguration extends pulumi.CustomResource {
     /**
      * The creation time of the asynchronous invocation, in RFC3339 format.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies whether to enable asynchronous invocation status persistence.
      *
      * <a name="functiongraphDestinationConfig"></a>
      * The `onSuccess` and the `onFailure` blocks support:
      */
-    declare public readonly enableAsyncStatusLog: pulumi.Output<boolean | undefined>;
+    public readonly enableAsyncStatusLog!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the function URN to which the asynchronous invocation belongs.
      * Changing this will create a new resource.
      */
-    declare public readonly functionUrn: pulumi.Output<string>;
+    public readonly functionUrn!: pulumi.Output<string>;
     /**
      * Specifies the maximum validity period of a message.  
      * The valid value is range from `1` to `86,400`.
      */
-    declare public readonly maxAsyncEventAgeInSeconds: pulumi.Output<number>;
+    public readonly maxAsyncEventAgeInSeconds!: pulumi.Output<number>;
     /**
      * Specifies the maximum number of retry attempts to be made if
      * asynchronous invocation fails.
      * The valid value is range from `0` to `3`.
      */
-    declare public readonly maxAsyncRetryAttempts: pulumi.Output<number>;
+    public readonly maxAsyncRetryAttempts!: pulumi.Output<number>;
     /**
      * Specifies the target to be invoked when a function fails to be executed due to a
      * system error or an internal error.
      * The object structure is documented below.
      */
-    declare public readonly onFailure: pulumi.Output<outputs.FgsAsyncInvokeConfigurationOnFailure | undefined>;
+    public readonly onFailure!: pulumi.Output<outputs.FgsAsyncInvokeConfigurationOnFailure | undefined>;
     /**
      * Specifies the target to be invoked when a function is successfully executed.  
      * The object structure is documented below.
      */
-    declare public readonly onSuccess: pulumi.Output<outputs.FgsAsyncInvokeConfigurationOnSuccess | undefined>;
+    public readonly onSuccess!: pulumi.Output<outputs.FgsAsyncInvokeConfigurationOnSuccess | undefined>;
     /**
      * Specifies the region in which to configure the asynchronous invocation.  
      * If omitted, the provider-level region will be used. Changing this will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The latest update time of the asynchronous invocation, in RFC3339 format.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a FgsAsyncInvokeConfiguration resource with the given unique name, arguments, and options.
@@ -142,33 +142,33 @@ export class FgsAsyncInvokeConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsAsyncInvokeConfigurationState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["enableAsyncStatusLog"] = state?.enableAsyncStatusLog;
-            resourceInputs["functionUrn"] = state?.functionUrn;
-            resourceInputs["maxAsyncEventAgeInSeconds"] = state?.maxAsyncEventAgeInSeconds;
-            resourceInputs["maxAsyncRetryAttempts"] = state?.maxAsyncRetryAttempts;
-            resourceInputs["onFailure"] = state?.onFailure;
-            resourceInputs["onSuccess"] = state?.onSuccess;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["enableAsyncStatusLog"] = state ? state.enableAsyncStatusLog : undefined;
+            resourceInputs["functionUrn"] = state ? state.functionUrn : undefined;
+            resourceInputs["maxAsyncEventAgeInSeconds"] = state ? state.maxAsyncEventAgeInSeconds : undefined;
+            resourceInputs["maxAsyncRetryAttempts"] = state ? state.maxAsyncRetryAttempts : undefined;
+            resourceInputs["onFailure"] = state ? state.onFailure : undefined;
+            resourceInputs["onSuccess"] = state ? state.onSuccess : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as FgsAsyncInvokeConfigurationArgs | undefined;
-            if (args?.functionUrn === undefined && !opts.urn) {
+            if ((!args || args.functionUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionUrn'");
             }
-            if (args?.maxAsyncEventAgeInSeconds === undefined && !opts.urn) {
+            if ((!args || args.maxAsyncEventAgeInSeconds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxAsyncEventAgeInSeconds'");
             }
-            if (args?.maxAsyncRetryAttempts === undefined && !opts.urn) {
+            if ((!args || args.maxAsyncRetryAttempts === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxAsyncRetryAttempts'");
             }
-            resourceInputs["enableAsyncStatusLog"] = args?.enableAsyncStatusLog;
-            resourceInputs["functionUrn"] = args?.functionUrn;
-            resourceInputs["maxAsyncEventAgeInSeconds"] = args?.maxAsyncEventAgeInSeconds;
-            resourceInputs["maxAsyncRetryAttempts"] = args?.maxAsyncRetryAttempts;
-            resourceInputs["onFailure"] = args?.onFailure;
-            resourceInputs["onSuccess"] = args?.onSuccess;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["enableAsyncStatusLog"] = args ? args.enableAsyncStatusLog : undefined;
+            resourceInputs["functionUrn"] = args ? args.functionUrn : undefined;
+            resourceInputs["maxAsyncEventAgeInSeconds"] = args ? args.maxAsyncEventAgeInSeconds : undefined;
+            resourceInputs["maxAsyncRetryAttempts"] = args ? args.maxAsyncRetryAttempts : undefined;
+            resourceInputs["onFailure"] = args ? args.onFailure : undefined;
+            resourceInputs["onSuccess"] = args ? args.onSuccess : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

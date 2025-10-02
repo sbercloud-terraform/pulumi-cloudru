@@ -63,20 +63,20 @@ export class DcsParameters extends pulumi.CustomResource {
     /**
      * Indicates the parameter configuration defined by users based on the default parameters.
      */
-    declare public /*out*/ readonly configurationParameters: pulumi.Output<outputs.DcsParametersConfigurationParameter[]>;
+    public /*out*/ readonly configurationParameters!: pulumi.Output<outputs.DcsParametersConfigurationParameter[]>;
     /**
      * Specifies the ID of the instance.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * A mapping of parameters to assign to the DCS instance. 
      * Each parameter is represented by one key-value pair.
      */
-    declare public readonly parameters: pulumi.Output<{[key: string]: string}>;
+    public readonly parameters!: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the project.
      */
-    declare public readonly projectId: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
 
     /**
      * Create a DcsParameters resource with the given unique name, arguments, and options.
@@ -91,24 +91,24 @@ export class DcsParameters extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DcsParametersState | undefined;
-            resourceInputs["configurationParameters"] = state?.configurationParameters;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["parameters"] = state?.parameters;
-            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["configurationParameters"] = state ? state.configurationParameters : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as DcsParametersArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.parameters === undefined && !opts.urn) {
+            if ((!args || args.parameters === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parameters'");
             }
-            if (args?.projectId === undefined && !opts.urn) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["parameters"] = args?.parameters;
-            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["configurationParameters"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

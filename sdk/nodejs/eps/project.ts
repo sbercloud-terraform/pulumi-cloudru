@@ -61,41 +61,41 @@ export class Project extends pulumi.CustomResource {
     /**
      * Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the enterprise project.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the enterprise project. Default to *true*.
      */
-    declare public readonly enable: pulumi.Output<boolean | undefined>;
+    public readonly enable!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the name of the enterprise project.
      * This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
      * The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies whether to skip disable the enterprise project on destroy.
      * Defaults to **false**.
      */
-    declare public readonly skipDisableOnDestroy: pulumi.Output<boolean | undefined>;
+    public readonly skipDisableOnDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates the status of an enterprise project.
      * + 1 indicates Enabled.
      * + 2 indicates Disabled.
      */
-    declare public /*out*/ readonly status: pulumi.Output<number>;
+    public /*out*/ readonly status!: pulumi.Output<number>;
     /**
      * Specifies the type of the enterprise project.
      * The valid values are *poc* and *prod*, default to *prod*.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -110,21 +110,21 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enable"] = state?.enable;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["skipDisableOnDestroy"] = state?.skipDisableOnDestroy;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["skipDisableOnDestroy"] = state ? state.skipDisableOnDestroy : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enable"] = args?.enable;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["skipDisableOnDestroy"] = args?.skipDisableOnDestroy;
-            resourceInputs["type"] = args?.type;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["skipDisableOnDestroy"] = args ? args.skipDisableOnDestroy : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

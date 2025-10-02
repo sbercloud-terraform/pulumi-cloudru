@@ -64,18 +64,18 @@ export class DnatRule extends pulumi.CustomResource {
     /**
      * Dnat rule creation time.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the DNAT rule.  
      * The value is a string of no more than `255` characters, and angle brackets (<>) are not allowed.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies port used by ECSs or
      * BMSs to provide services for external systems.
      * Changing this creates a new dnat rule.
      */
-    declare public readonly externalServicePort: pulumi.Output<number | undefined>;
+    public readonly externalServicePort!: pulumi.Output<number | undefined>;
     /**
      * Specifies port range used by ECSs or BMSs to provide
      * services for external systems.
@@ -83,68 +83,68 @@ export class DnatRule extends pulumi.CustomResource {
      * The valid value for range is **1~65535** and the port ranges can only be concatenated with the `-` character.
      * Required if `internalServicePortRange` is set.
      */
-    declare public readonly externalServicePortRange: pulumi.Output<string | undefined>;
+    public readonly externalServicePortRange!: pulumi.Output<string | undefined>;
     /**
      * The actual floating IP address.
      */
-    declare public /*out*/ readonly floatingIpAddress: pulumi.Output<string>;
+    public /*out*/ readonly floatingIpAddress!: pulumi.Output<string>;
     /**
      * Specifies the ID of the floating IP address.
      * Changing this creates a new resource.
      */
-    declare public readonly floatingIpId: pulumi.Output<string | undefined>;
+    public readonly floatingIpId!: pulumi.Output<string | undefined>;
     /**
      * The global EIP address connected by the DNAT rule.
      */
-    declare public /*out*/ readonly globalEipAddress: pulumi.Output<string>;
+    public /*out*/ readonly globalEipAddress!: pulumi.Output<string>;
     /**
      * The ID of the global EIP connected by the DNAT rule.
      */
-    declare public readonly globalEipId: pulumi.Output<string | undefined>;
+    public readonly globalEipId!: pulumi.Output<string | undefined>;
     /**
      * Specifies port used by ECSs or BMSs
      * to provide services for external systems. Changing this creates a new resource.
      */
-    declare public readonly internalServicePort: pulumi.Output<number | undefined>;
+    public readonly internalServicePort!: pulumi.Output<number | undefined>;
     /**
      * Specifies port range used by Floating IP provide services
      * for external systems.
      * This parameter and `externalServicePortRange` are mapped **1:1** in sequence(, ranges must have the same length).
      * The valid value for range is **1~65535** and the port ranges can only be concatenated with the `-` character.
      */
-    declare public readonly internalServicePortRange: pulumi.Output<string | undefined>;
+    public readonly internalServicePortRange!: pulumi.Output<string | undefined>;
     /**
      * ID of the nat gateway this dnat rule belongs to.
      * Changing this creates a new dnat rule.
      */
-    declare public readonly natGatewayId: pulumi.Output<string>;
+    public readonly natGatewayId!: pulumi.Output<string>;
     /**
      * Specifies the port ID of an ECS or a BMS.
      * This parameter and privateIp are alternative. Changing this creates a
      * new dnat rule.
      */
-    declare public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * Specifies the private IP address of a
      * user, for example, the IP address of a VPC for dedicated connection.
      * This parameter and portId are alternative.
      * Changing this creates a new dnat rule.
      */
-    declare public readonly privateIp: pulumi.Output<string>;
+    public readonly privateIp!: pulumi.Output<string>;
     /**
      * Specifies the protocol type. Currently,
      * TCP, UDP, and ANY are supported.
      * Changing this creates a new dnat rule.
      */
-    declare public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to create the dnat rule resource. If omitted, the provider-level region will be used. Changing this creates a new Dnat rule resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Dnat rule status.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a DnatRule resource with the given unique name, arguments, and options.
@@ -159,42 +159,42 @@ export class DnatRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnatRuleState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["externalServicePort"] = state?.externalServicePort;
-            resourceInputs["externalServicePortRange"] = state?.externalServicePortRange;
-            resourceInputs["floatingIpAddress"] = state?.floatingIpAddress;
-            resourceInputs["floatingIpId"] = state?.floatingIpId;
-            resourceInputs["globalEipAddress"] = state?.globalEipAddress;
-            resourceInputs["globalEipId"] = state?.globalEipId;
-            resourceInputs["internalServicePort"] = state?.internalServicePort;
-            resourceInputs["internalServicePortRange"] = state?.internalServicePortRange;
-            resourceInputs["natGatewayId"] = state?.natGatewayId;
-            resourceInputs["portId"] = state?.portId;
-            resourceInputs["privateIp"] = state?.privateIp;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["externalServicePort"] = state ? state.externalServicePort : undefined;
+            resourceInputs["externalServicePortRange"] = state ? state.externalServicePortRange : undefined;
+            resourceInputs["floatingIpAddress"] = state ? state.floatingIpAddress : undefined;
+            resourceInputs["floatingIpId"] = state ? state.floatingIpId : undefined;
+            resourceInputs["globalEipAddress"] = state ? state.globalEipAddress : undefined;
+            resourceInputs["globalEipId"] = state ? state.globalEipId : undefined;
+            resourceInputs["internalServicePort"] = state ? state.internalServicePort : undefined;
+            resourceInputs["internalServicePortRange"] = state ? state.internalServicePortRange : undefined;
+            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as DnatRuleArgs | undefined;
-            if (args?.natGatewayId === undefined && !opts.urn) {
+            if ((!args || args.natGatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            if (args?.protocol === undefined && !opts.urn) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["externalServicePort"] = args?.externalServicePort;
-            resourceInputs["externalServicePortRange"] = args?.externalServicePortRange;
-            resourceInputs["floatingIpId"] = args?.floatingIpId;
-            resourceInputs["globalEipId"] = args?.globalEipId;
-            resourceInputs["internalServicePort"] = args?.internalServicePort;
-            resourceInputs["internalServicePortRange"] = args?.internalServicePortRange;
-            resourceInputs["natGatewayId"] = args?.natGatewayId;
-            resourceInputs["portId"] = args?.portId;
-            resourceInputs["privateIp"] = args?.privateIp;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalServicePort"] = args ? args.externalServicePort : undefined;
+            resourceInputs["externalServicePortRange"] = args ? args.externalServicePortRange : undefined;
+            resourceInputs["floatingIpId"] = args ? args.floatingIpId : undefined;
+            resourceInputs["globalEipId"] = args ? args.globalEipId : undefined;
+            resourceInputs["internalServicePort"] = args ? args.internalServicePort : undefined;
+            resourceInputs["internalServicePortRange"] = args ? args.internalServicePortRange : undefined;
+            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["floatingIpAddress"] = undefined /*out*/;
             resourceInputs["globalEipAddress"] = undefined /*out*/;

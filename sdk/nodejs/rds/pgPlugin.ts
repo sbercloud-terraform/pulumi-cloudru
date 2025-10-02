@@ -65,34 +65,34 @@ export class PgPlugin extends pulumi.CustomResource {
      * Specifies the database name.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly databaseName: pulumi.Output<string>;
+    public readonly databaseName!: pulumi.Output<string>;
     /**
      * The plugin description.
      */
-    declare public /*out*/ readonly description: pulumi.Output<string>;
+    public /*out*/ readonly description!: pulumi.Output<string>;
     /**
      * Specifies the PostgreSQL instance ID.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the plugin name.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Dependent preloaded library.
      */
-    declare public /*out*/ readonly sharedPreloadLibraries: pulumi.Output<string>;
+    public /*out*/ readonly sharedPreloadLibraries!: pulumi.Output<string>;
     /**
      * The plugin version.
      */
-    declare public /*out*/ readonly version: pulumi.Output<string>;
+    public /*out*/ readonly version!: pulumi.Output<string>;
 
     /**
      * Create a PgPlugin resource with the given unique name, arguments, and options.
@@ -107,25 +107,25 @@ export class PgPlugin extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgPluginState | undefined;
-            resourceInputs["databaseName"] = state?.databaseName;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sharedPreloadLibraries"] = state?.sharedPreloadLibraries;
-            resourceInputs["version"] = state?.version;
+            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sharedPreloadLibraries"] = state ? state.sharedPreloadLibraries : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as PgPluginArgs | undefined;
-            if (args?.databaseName === undefined && !opts.urn) {
+            if ((!args || args.databaseName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["databaseName"] = args?.databaseName;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["sharedPreloadLibraries"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;

@@ -104,72 +104,72 @@ export class Endpoint extends pulumi.CustomResource {
      *
      * Changing this creates a new VPC endpoint.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies whether to create a private domain name. The default value is
      * true. Changing this creates a new VPC endpoint.
      */
-    declare public readonly enableDns: pulumi.Output<boolean | undefined>;
+    public readonly enableDns!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable access control. The default value is
      * false.
      */
-    declare public readonly enableWhitelist: pulumi.Output<boolean | undefined>;
+    public readonly enableWhitelist!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the IP address for accessing the associated VPC endpoint
      * service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
      */
-    declare public readonly ipAddress: pulumi.Output<string>;
+    public readonly ipAddress!: pulumi.Output<string>;
     /**
      * Specifies the network ID of the subnet in the VPC specified by `vpcId`.
      * Changing this creates a new VPC endpoint.
      */
-    declare public readonly networkId: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * The packet ID of the VPC endpoint.
      */
-    declare public /*out*/ readonly packetId: pulumi.Output<number>;
+    public /*out*/ readonly packetId!: pulumi.Output<number>;
     /**
      * The domain name for accessing the associated VPC endpoint service. This parameter is only
      * available when enableDns is set to true.
      */
-    declare public /*out*/ readonly privateDomainName: pulumi.Output<string>;
+    public /*out*/ readonly privateDomainName!: pulumi.Output<string>;
     /**
      * The region in which to create the VPC endpoint. If omitted, the provider-level
      * region will be used. Changing this creates a new VPC endpoint.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the ID of the VPC endpoint service.
      * The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
      */
-    declare public readonly serviceId: pulumi.Output<string>;
+    public readonly serviceId!: pulumi.Output<string>;
     /**
      * The name of the VPC endpoint service.
      */
-    declare public /*out*/ readonly serviceName: pulumi.Output<string>;
+    public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
      * The type of the VPC endpoint service.
      */
-    declare public /*out*/ readonly serviceType: pulumi.Output<string>;
+    public /*out*/ readonly serviceType!: pulumi.Output<string>;
     /**
      * The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the VPC endpoint.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
      * this creates a new VPC endpoint.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * Specifies the list of IP address or CIDR block which can be accessed to the
      * VPC endpoint. This field is valid when `enableWhitelist` is set to **true**. The max length of whitelist is 20.
      */
-    declare public readonly whitelists: pulumi.Output<string[] | undefined>;
+    public readonly whitelists!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -184,42 +184,42 @@ export class Endpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enableDns"] = state?.enableDns;
-            resourceInputs["enableWhitelist"] = state?.enableWhitelist;
-            resourceInputs["ipAddress"] = state?.ipAddress;
-            resourceInputs["networkId"] = state?.networkId;
-            resourceInputs["packetId"] = state?.packetId;
-            resourceInputs["privateDomainName"] = state?.privateDomainName;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["serviceId"] = state?.serviceId;
-            resourceInputs["serviceName"] = state?.serviceName;
-            resourceInputs["serviceType"] = state?.serviceType;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["vpcId"] = state?.vpcId;
-            resourceInputs["whitelists"] = state?.whitelists;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableDns"] = state ? state.enableDns : undefined;
+            resourceInputs["enableWhitelist"] = state ? state.enableWhitelist : undefined;
+            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["packetId"] = state ? state.packetId : undefined;
+            resourceInputs["privateDomainName"] = state ? state.privateDomainName : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if (args?.networkId === undefined && !opts.urn) {
+            if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if (args?.serviceId === undefined && !opts.urn) {
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enableDns"] = args?.enableDns;
-            resourceInputs["enableWhitelist"] = args?.enableWhitelist;
-            resourceInputs["ipAddress"] = args?.ipAddress;
-            resourceInputs["networkId"] = args?.networkId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["serviceId"] = args?.serviceId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
-            resourceInputs["whitelists"] = args?.whitelists;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableDns"] = args ? args.enableDns : undefined;
+            resourceInputs["enableWhitelist"] = args ? args.enableWhitelist : undefined;
+            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serviceId"] = args ? args.serviceId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
             resourceInputs["packetId"] = undefined /*out*/;
             resourceInputs["privateDomainName"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;

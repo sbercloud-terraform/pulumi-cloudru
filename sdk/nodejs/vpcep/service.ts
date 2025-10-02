@@ -72,53 +72,53 @@ export class Service extends pulumi.CustomResource {
     /**
      * Specifies whether connection approval is required. The default value is false.
      */
-    declare public readonly approval: pulumi.Output<boolean>;
+    public readonly approval!: pulumi.Output<boolean>;
     /**
      * An array of VPC endpoints connect to the VPC endpoint service. Structure is documented below.
      */
-    declare public /*out*/ readonly connections: pulumi.Output<outputs.Vpcep.ServiceConnection[]>;
+    public /*out*/ readonly connections!: pulumi.Output<outputs.Vpcep.ServiceConnection[]>;
     /**
      * Specifies the description of the VPC endpoint service.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies whether the VPC endpoint policy is enabled. Defaults to **false**.
      * Changing this creates a new VPC endpoint service resource.
      */
-    declare public readonly enablePolicy: pulumi.Output<boolean>;
+    public readonly enablePolicy!: pulumi.Output<boolean>;
     /**
      * Specifies the name of the VPC endpoint service. The value contains a maximum of 16
      * characters, including letters, digits, underscores (_), and hyphens (-).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the list of organizations to access the VPC endpoint service.
      * The record is in the `organizations:orgPath::org_path` format, while `organizations:orgPath::*` allows all users in
      * organizations to access the VPC endpoint service.
      */
-    declare public readonly organizationPermissions: pulumi.Output<string[]>;
+    public readonly organizationPermissions!: pulumi.Output<string[]>;
     /**
      * Specifies the list of accounts to access the VPC endpoint service.
      * The record is in the `iam:domain::domain_id` format, while `*` allows all users to access the VPC endpoint service.
      */
-    declare public readonly permissions: pulumi.Output<string[] | undefined>;
+    public readonly permissions!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the ID for identifying the backend resource of the VPC endpoint service.
      * + If the `serverType` is **VM**, the value is the NIC ID of the ECS where the VPC endpoint service is deployed.
      * + If the `serverType` is **LB**, the value is the ID of the port bound to the private IP address of the load
      * balancer.
      */
-    declare public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * Specifies the port mappings opened to the VPC endpoint service. Structure is
      * documented below.
      */
-    declare public readonly portMappings: pulumi.Output<outputs.Vpcep.ServicePortMapping[]>;
+    public readonly portMappings!: pulumi.Output<outputs.Vpcep.ServicePortMapping[]>;
     /**
      * The region in which to create the VPC endpoint service. If omitted, the
      * provider-level region will be used. Changing this creates a new VPC endpoint service resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the backend resource type. The valid values are as follows:
      * + **VM**: Indicates the cloud server, which can be used as a server.
@@ -127,28 +127,28 @@ export class Service extends pulumi.CustomResource {
      *
      * Changing this creates a new VPC endpoint service.
      */
-    declare public readonly serverType: pulumi.Output<string>;
+    public readonly serverType!: pulumi.Output<string>;
     /**
      * The full name of the VPC endpoint service in the format: *region.name.id* or *region.id*.
      */
-    declare public /*out*/ readonly serviceName: pulumi.Output<string>;
+    public /*out*/ readonly serviceName!: pulumi.Output<string>;
     /**
      * The type of the VPC endpoint service.
      */
-    declare public readonly serviceType: pulumi.Output<string | undefined>;
+    public readonly serviceType!: pulumi.Output<string | undefined>;
     /**
      * The connection status of the VPC endpoint.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the VPC endpoint service.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the ID of the VPC to which the backend resource of the VPC endpoint
      * service belongs. Changing this creates a new VPC endpoint service.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -163,49 +163,49 @@ export class Service extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
-            resourceInputs["approval"] = state?.approval;
-            resourceInputs["connections"] = state?.connections;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enablePolicy"] = state?.enablePolicy;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["organizationPermissions"] = state?.organizationPermissions;
-            resourceInputs["permissions"] = state?.permissions;
-            resourceInputs["portId"] = state?.portId;
-            resourceInputs["portMappings"] = state?.portMappings;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["serverType"] = state?.serverType;
-            resourceInputs["serviceName"] = state?.serviceName;
-            resourceInputs["serviceType"] = state?.serviceType;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["approval"] = state ? state.approval : undefined;
+            resourceInputs["connections"] = state ? state.connections : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enablePolicy"] = state ? state.enablePolicy : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["organizationPermissions"] = state ? state.organizationPermissions : undefined;
+            resourceInputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["portMappings"] = state ? state.portMappings : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["serverType"] = state ? state.serverType : undefined;
+            resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if (args?.portId === undefined && !opts.urn) {
+            if ((!args || args.portId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portId'");
             }
-            if (args?.portMappings === undefined && !opts.urn) {
+            if ((!args || args.portMappings === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portMappings'");
             }
-            if (args?.serverType === undefined && !opts.urn) {
+            if ((!args || args.serverType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serverType'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["approval"] = args?.approval;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enablePolicy"] = args?.enablePolicy;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["organizationPermissions"] = args?.organizationPermissions;
-            resourceInputs["permissions"] = args?.permissions;
-            resourceInputs["portId"] = args?.portId;
-            resourceInputs["portMappings"] = args?.portMappings;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["serverType"] = args?.serverType;
-            resourceInputs["serviceType"] = args?.serviceType;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["approval"] = args ? args.approval : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enablePolicy"] = args ? args.enablePolicy : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organizationPermissions"] = args ? args.organizationPermissions : undefined;
+            resourceInputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["portMappings"] = args ? args.portMappings : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["serverType"] = args ? args.serverType : undefined;
+            resourceInputs["serviceType"] = args ? args.serviceType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["connections"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

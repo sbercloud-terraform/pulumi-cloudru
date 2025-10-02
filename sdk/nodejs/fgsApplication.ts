@@ -88,53 +88,53 @@ export class FgsApplication extends pulumi.CustomResource {
      * > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
      * permissions. The agency will be deleted when the application is deleted.
      */
-    declare public readonly agencyName: pulumi.Output<string | undefined>;
+    public readonly agencyName!: pulumi.Output<string | undefined>;
     /**
      * Specifies the description of the application.  
      * The description can contain a maximum of `1,024` characters.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the application name.  
      * The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
      * Only letters, digits, underscores (_) and hyphens (-) are allowed.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the template parameters, in JSON format.  
      * Changing this parameter will create a new resource.
      */
-    declare public readonly params: pulumi.Output<string | undefined>;
+    public readonly params!: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create an application.  
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The repository information.  
      * The repository structure is documented below.
      */
-    declare public /*out*/ readonly repositories: pulumi.Output<outputs.FgsApplicationRepository[]>;
+    public /*out*/ readonly repositories!: pulumi.Output<outputs.FgsApplicationRepository[]>;
     /**
      * The ID of the stack where the application is deployed.
      */
-    declare public /*out*/ readonly stackId: pulumi.Output<string>;
+    public /*out*/ readonly stackId!: pulumi.Output<string>;
     /**
      * The list of the stack resources information.  
      * The stackResources structure is documented below.
      */
-    declare public /*out*/ readonly stackResources: pulumi.Output<outputs.FgsApplicationStackResource[]>;
+    public /*out*/ readonly stackResources!: pulumi.Output<outputs.FgsApplicationStackResource[]>;
     /**
      * The repository status.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the ID of the template used by the application.  
      * Changing this parameter will create a new resource.
      */
-    declare public readonly templateId: pulumi.Output<string | undefined>;
+    public readonly templateId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a FgsApplication resource with the given unique name, arguments, and options.
@@ -149,24 +149,24 @@ export class FgsApplication extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsApplicationState | undefined;
-            resourceInputs["agencyName"] = state?.agencyName;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["params"] = state?.params;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["repositories"] = state?.repositories;
-            resourceInputs["stackId"] = state?.stackId;
-            resourceInputs["stackResources"] = state?.stackResources;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["agencyName"] = state ? state.agencyName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["repositories"] = state ? state.repositories : undefined;
+            resourceInputs["stackId"] = state ? state.stackId : undefined;
+            resourceInputs["stackResources"] = state ? state.stackResources : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
         } else {
             const args = argsOrState as FgsApplicationArgs | undefined;
-            resourceInputs["agencyName"] = args?.agencyName;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["params"] = args?.params;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["agencyName"] = args ? args.agencyName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
             resourceInputs["repositories"] = undefined /*out*/;
             resourceInputs["stackId"] = undefined /*out*/;
             resourceInputs["stackResources"] = undefined /*out*/;

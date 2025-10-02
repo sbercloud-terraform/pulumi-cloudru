@@ -35,23 +35,23 @@ export class ApigApplicationAcl extends pulumi.CustomResource {
     /**
      * The ID of the application to which the ACL rules belong.
      */
-    declare public readonly applicationId: pulumi.Output<string>;
+    public readonly applicationId!: pulumi.Output<string>;
     /**
      * The ID of the dedicated instance to which the application belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The region where the application and ACL rules are located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ACL type.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The ACL values.
      */
-    declare public readonly values: pulumi.Output<string[]>;
+    public readonly values!: pulumi.Output<string[]>;
 
     /**
      * Create a ApigApplicationAcl resource with the given unique name, arguments, and options.
@@ -66,30 +66,30 @@ export class ApigApplicationAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigApplicationAclState | undefined;
-            resourceInputs["applicationId"] = state?.applicationId;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["values"] = state?.values;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["values"] = state ? state.values : undefined;
         } else {
             const args = argsOrState as ApigApplicationAclArgs | undefined;
-            if (args?.applicationId === undefined && !opts.urn) {
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if (args?.values === undefined && !opts.urn) {
+            if ((!args || args.values === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'values'");
             }
-            resourceInputs["applicationId"] = args?.applicationId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["values"] = args?.values;
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["values"] = args ? args.values : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigApplicationAcl.__pulumiType, name, resourceInputs, opts);

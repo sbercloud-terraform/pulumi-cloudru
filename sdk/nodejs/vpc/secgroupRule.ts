@@ -97,82 +97,82 @@ export class SecgroupRule extends pulumi.CustomResource {
      * This parameter is not used with `portRangeMin` and `portRangeMax`.
      * Changing this creates a new security group rule.
      */
-    declare public readonly action: pulumi.Output<string>;
+    public readonly action!: pulumi.Output<string>;
     /**
      * Specifies the supplementary information about the networking security
      * group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
      * Changing this creates a new security group rule.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the direction of the rule, valid values are **ingress** or
      * **egress**. Changing this creates a new security group rule.
      */
-    declare public readonly direction: pulumi.Output<string>;
+    public readonly direction!: pulumi.Output<string>;
     /**
      * Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
      * Changing this creates a new security group rule.
      */
-    declare public readonly ethertype: pulumi.Output<string>;
+    public readonly ethertype!: pulumi.Output<string>;
     /**
      * Specifies the higher part of the allowed port range, valid integer value
      * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
      * This parameter and `ports` are alternative.
      */
-    declare public readonly portRangeMax: pulumi.Output<number>;
+    public readonly portRangeMax!: pulumi.Output<number>;
     /**
      * Specifies the lower part of the allowed port range, valid integer value
      * needs to be between `1` and `65,535`. Changing this creates a new security group rule.
      * This parameter and `ports` are alternative.
      */
-    declare public readonly portRangeMin: pulumi.Output<number>;
+    public readonly portRangeMin!: pulumi.Output<number>;
     /**
      * Specifies the allowed port value range, which supports single port (80),
      * continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
      * Changing this creates a new security group rule.
      */
-    declare public readonly ports: pulumi.Output<string>;
+    public readonly ports!: pulumi.Output<string>;
     /**
      * Specifies the priority number.
      * The valid value is range from **1** to **100**. The default value is **1**.
      * This parameter is not used with `portRangeMin` and `portRangeMax`.
      * Changing this creates a new security group rule.
      */
-    declare public readonly priority: pulumi.Output<number>;
+    public readonly priority!: pulumi.Output<number>;
     /**
      * Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
      * **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
      * This is required if you want to specify a port range. Changing this creates a new security group rule.
      */
-    declare public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group rule.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the remote address group ID.
      * This parameter is not used with `portRangeMin` and `portRangeMax`.
      * Changing this creates a new security group rule.
      */
-    declare public readonly remoteAddressGroupId: pulumi.Output<string>;
+    public readonly remoteAddressGroupId!: pulumi.Output<string>;
     /**
      * Specifies the remote group ID. Changing this creates a new security
      * group rule.
      */
-    declare public readonly remoteGroupId: pulumi.Output<string>;
+    public readonly remoteGroupId!: pulumi.Output<string>;
     /**
      * Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
      * 192.168.0.0/16). Changing this creates a new security group rule.
      */
-    declare public readonly remoteIpPrefix: pulumi.Output<string>;
+    public readonly remoteIpPrefix!: pulumi.Output<string>;
     /**
      * Specifies the security group ID the rule should belong to. Changing
      * this creates a new security group rule.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
 
     /**
      * Create a SecgroupRule resource with the given unique name, arguments, and options.
@@ -187,45 +187,45 @@ export class SecgroupRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecgroupRuleState | undefined;
-            resourceInputs["action"] = state?.action;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["direction"] = state?.direction;
-            resourceInputs["ethertype"] = state?.ethertype;
-            resourceInputs["portRangeMax"] = state?.portRangeMax;
-            resourceInputs["portRangeMin"] = state?.portRangeMin;
-            resourceInputs["ports"] = state?.ports;
-            resourceInputs["priority"] = state?.priority;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["remoteAddressGroupId"] = state?.remoteAddressGroupId;
-            resourceInputs["remoteGroupId"] = state?.remoteGroupId;
-            resourceInputs["remoteIpPrefix"] = state?.remoteIpPrefix;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["direction"] = state ? state.direction : undefined;
+            resourceInputs["ethertype"] = state ? state.ethertype : undefined;
+            resourceInputs["portRangeMax"] = state ? state.portRangeMax : undefined;
+            resourceInputs["portRangeMin"] = state ? state.portRangeMin : undefined;
+            resourceInputs["ports"] = state ? state.ports : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["remoteAddressGroupId"] = state ? state.remoteAddressGroupId : undefined;
+            resourceInputs["remoteGroupId"] = state ? state.remoteGroupId : undefined;
+            resourceInputs["remoteIpPrefix"] = state ? state.remoteIpPrefix : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
         } else {
             const args = argsOrState as SecgroupRuleArgs | undefined;
-            if (args?.direction === undefined && !opts.urn) {
+            if ((!args || args.direction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if (args?.ethertype === undefined && !opts.urn) {
+            if ((!args || args.ethertype === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ethertype'");
             }
-            if (args?.securityGroupId === undefined && !opts.urn) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            resourceInputs["action"] = args?.action;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["direction"] = args?.direction;
-            resourceInputs["ethertype"] = args?.ethertype;
-            resourceInputs["portRangeMax"] = args?.portRangeMax;
-            resourceInputs["portRangeMin"] = args?.portRangeMin;
-            resourceInputs["ports"] = args?.ports;
-            resourceInputs["priority"] = args?.priority;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["remoteAddressGroupId"] = args?.remoteAddressGroupId;
-            resourceInputs["remoteGroupId"] = args?.remoteGroupId;
-            resourceInputs["remoteIpPrefix"] = args?.remoteIpPrefix;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["direction"] = args ? args.direction : undefined;
+            resourceInputs["ethertype"] = args ? args.ethertype : undefined;
+            resourceInputs["portRangeMax"] = args ? args.portRangeMax : undefined;
+            resourceInputs["portRangeMin"] = args ? args.portRangeMin : undefined;
+            resourceInputs["ports"] = args ? args.ports : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["remoteAddressGroupId"] = args ? args.remoteAddressGroupId : undefined;
+            resourceInputs["remoteGroupId"] = args ? args.remoteGroupId : undefined;
+            resourceInputs["remoteIpPrefix"] = args ? args.remoteIpPrefix : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SecgroupRule.__pulumiType, name, resourceInputs, opts);

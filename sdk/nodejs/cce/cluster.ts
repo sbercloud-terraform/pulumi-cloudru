@@ -176,87 +176,87 @@ export class Cluster extends pulumi.CustomResource {
      * Specifies the display name of a cluster. The value of `alias` cannot be the same as the `name`
      * and display names of other clusters.
      */
-    declare public readonly alias: pulumi.Output<string>;
+    public readonly alias!: pulumi.Output<string>;
     /**
      * schema: Internal
      */
-    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the CA root certificate provided in the
      * **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly authenticatingProxyCa: pulumi.Output<string | undefined>;
+    public readonly authenticatingProxyCa!: pulumi.Output<string | undefined>;
     /**
      * Specifies the Client certificate provided in the
      * **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly authenticatingProxyCert: pulumi.Output<string | undefined>;
+    public readonly authenticatingProxyCert!: pulumi.Output<string | undefined>;
     /**
      * Specifies the private key of the client certificate
      * provided in the **authenticating_proxy** mode. The input value can be a Base64 encoded string or not.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly authenticatingProxyPrivateKey: pulumi.Output<string | undefined>;
+    public readonly authenticatingProxyPrivateKey!: pulumi.Output<string | undefined>;
     /**
      * Specifies the authentication mode of the cluster, possible values
      * are **rbac** and **authenticating_proxy**. Defaults to **rbac**.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly authenticationMode: pulumi.Output<string | undefined>;
+    public readonly authenticationMode!: pulumi.Output<string | undefined>;
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled. Valid values are **true** and **false**.
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * @deprecated use chargingMode instead
      */
-    declare public readonly billingMode: pulumi.Output<number>;
+    public readonly billingMode!: pulumi.Output<number>;
     /**
      * The category of the cluster. The value can be **CCE** and **Turbo**.
      */
-    declare public /*out*/ readonly category: pulumi.Output<string>;
+    public /*out*/ readonly category!: pulumi.Output<string>;
     /**
      * The certificate clusters. Structure is documented below.
      */
-    declare public /*out*/ readonly certificateClusters: pulumi.Output<outputs.Cce.ClusterCertificateCluster[]>;
+    public /*out*/ readonly certificateClusters!: pulumi.Output<outputs.Cce.ClusterCertificateCluster[]>;
     /**
      * The certificate users. Structure is documented below.
      */
-    declare public /*out*/ readonly certificateUsers: pulumi.Output<outputs.Cce.ClusterCertificateUser[]>;
+    public /*out*/ readonly certificateUsers!: pulumi.Output<outputs.Cce.ClusterCertificateUser[]>;
     /**
      * Specifies the charging mode of the CCE cluster.
      * Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Specifies the cluster Type, possible values are **VirtualMachine** and
      * **ARM64**. Defaults to **VirtualMachine**. Changing this parameter will create a new cluster resource.
      */
-    declare public readonly clusterType: pulumi.Output<string | undefined>;
+    public readonly clusterType!: pulumi.Output<string | undefined>;
     /**
      * Specifies the cluster version, defaults to the latest supported
      * version. Changing this parameter will create a new cluster resource.
      */
-    declare public readonly clusterVersion: pulumi.Output<string>;
+    public readonly clusterVersion!: pulumi.Output<string>;
     /**
      * Specifies the kubernetes component configurations.
      * The object structure is documented below.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly componentConfigurations: pulumi.Output<outputs.Cce.ClusterComponentConfiguration[] | undefined>;
+    public readonly componentConfigurations!: pulumi.Output<outputs.Cce.ClusterComponentConfiguration[] | undefined>;
     /**
      * Specifies the container network segments.
      * In clusters of v1.21 and later, when the `containerNetworkType` is **vpc-router**, you can add multiple container
      * segments, separated with comma (,). In other situations, only the first segment takes effect.
      */
-    declare public readonly containerNetworkCidr: pulumi.Output<string>;
+    public readonly containerNetworkCidr!: pulumi.Output<string>;
     /**
      * Specifies the container network type.
      * Changing this parameter will create a new cluster resource. Possible values:
@@ -266,78 +266,78 @@ export class Cluster extends pulumi.CustomResource {
      * capability of VPC, uses the VPC CIDR block to allocate container addresses, and supports direct connections between
      * ELB and containers to provide high performance.
      */
-    declare public readonly containerNetworkType: pulumi.Output<string>;
+    public readonly containerNetworkType!: pulumi.Output<string>;
     /**
      * Specifies the custom san to add to certificate (array of string).
      */
-    declare public readonly customSans: pulumi.Output<string[]>;
+    public readonly customSans!: pulumi.Output<string[]>;
     /**
      * Specified whether to delete all associated storage resources when deleting the CCE
      * cluster. valid values are **true**, **try** and **false**. Default is **false**.
      */
-    declare public readonly deleteAll: pulumi.Output<string | undefined>;
+    public readonly deleteAll!: pulumi.Output<string | undefined>;
     /**
      * Specified whether to unbind associated SFS Turbo file systems when deleting the CCE
      * cluster. valid values are **true**, **try** and **false**. Default is **false**.
      */
-    declare public readonly deleteEfs: pulumi.Output<string | undefined>;
+    public readonly deleteEfs!: pulumi.Output<string | undefined>;
     /**
      * schema: Internal
      */
-    declare public readonly deleteEni: pulumi.Output<string | undefined>;
+    public readonly deleteEni!: pulumi.Output<string | undefined>;
     /**
      * Specified whether to delete associated EVS disks when deleting the CCE cluster.
      * valid values are **true**, **try** and **false**. Default is **false**.
      */
-    declare public readonly deleteEvs: pulumi.Output<string | undefined>;
+    public readonly deleteEvs!: pulumi.Output<string | undefined>;
     /**
      * schema: Internal
      */
-    declare public readonly deleteNet: pulumi.Output<string | undefined>;
+    public readonly deleteNet!: pulumi.Output<string | undefined>;
     /**
      * Specified whether to delete associated OBS buckets when deleting the CCE cluster.
      * valid values are **true**, **try** and **false**. Default is **false**.
      */
-    declare public readonly deleteObs: pulumi.Output<string | undefined>;
+    public readonly deleteObs!: pulumi.Output<string | undefined>;
     /**
      * Specified whether to delete associated SFS file systems when deleting the CCE
      * cluster. valid values are **true**, **try** and **false**. Default is **false**.
      */
-    declare public readonly deleteSfs: pulumi.Output<string | undefined>;
+    public readonly deleteSfs!: pulumi.Output<string | undefined>;
     /**
      * Specifies the cluster description.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the EIP address of the cluster.
      */
-    declare public readonly eip: pulumi.Output<string | undefined>;
-    declare public readonly enableDistributeManagement: pulumi.Output<boolean>;
-    declare public readonly encryptionConfig: pulumi.Output<outputs.Cce.ClusterEncryptionConfig>;
+    public readonly eip!: pulumi.Output<string | undefined>;
+    public readonly enableDistributeManagement!: pulumi.Output<boolean>;
+    public readonly encryptionConfig!: pulumi.Output<outputs.Cce.ClusterEncryptionConfig>;
     /**
      * The ENI network segment. This value is valid when only one eniSubnetId is specified.
      */
-    declare public readonly eniSubnetCidr: pulumi.Output<string>;
+    public readonly eniSubnetCidr!: pulumi.Output<string>;
     /**
      * Specifies the **IPv4 subnet ID** of the subnet where the ENI resides.
      * Specified when creating a CCE Turbo cluster. You can add multiple IPv4 subnet ID, separated with comma (,).
      * Only adding subnets is allowed, removing subnets is not allowed.
      */
-    declare public readonly eniSubnetId: pulumi.Output<string>;
+    public readonly eniSubnetId!: pulumi.Output<string>;
     /**
      * The enterprise project ID of the CCE cluster.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * schema: Internal
      */
-    declare public readonly extendParam: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly extendParam!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the extended parameter.
      * The object structure is documented below.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly extendParams: pulumi.Output<outputs.Cce.ClusterExtendParam[] | undefined>;
+    public readonly extendParams!: pulumi.Output<outputs.Cce.ClusterExtendParam[] | undefined>;
     /**
      * Specifies the cluster specifications.
      * Possible values:
@@ -350,7 +350,7 @@ export class Cluster extends pulumi.CustomResource {
      *
      * > Changing the number of control nodes or reducing cluster flavor is not supported.
      */
-    declare public readonly flavorId: pulumi.Output<string>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * Specifies whether to hibernate the CCE cluster. Defaults to **false**. After a cluster is
      * hibernated, resources such as workloads cannot be created or managed in the cluster, and the cluster cannot be
@@ -359,20 +359,20 @@ export class Cluster extends pulumi.CustomResource {
      * <a name="cceClusterMasters"></a>
      * The `masters` block supports:
      */
-    declare public readonly hibernate: pulumi.Output<boolean | undefined>;
+    public readonly hibernate!: pulumi.Output<boolean | undefined>;
     /**
      * schema: Internal
      */
-    declare public readonly highwaySubnetId: pulumi.Output<string>;
+    public readonly highwaySubnetId!: pulumi.Output<string>;
     /**
      * Specifies whether to enable IPv6 in the cluster.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly ipv6Enable: pulumi.Output<boolean>;
+    public readonly ipv6Enable!: pulumi.Output<boolean>;
     /**
      * Raw Kubernetes config to be used by kubectl and other compatible tools.
      */
-    declare public /*out*/ readonly kubeConfigRaw: pulumi.Output<string>;
+    public /*out*/ readonly kubeConfigRaw!: pulumi.Output<string>;
     /**
      * Specifies the service forwarding mode.
      * Changing this parameter will create a new cluster resource. Two modes are available:
@@ -383,28 +383,28 @@ export class Cluster extends pulumi.CustomResource {
      * + **ipvs**: Optimized kube-proxy mode with higher throughput and faster speed. This mode supports incremental updates
      * and can keep connections uninterrupted during service updates. It is suitable for large-sized clusters.
      */
-    declare public readonly kubeProxyMode: pulumi.Output<string>;
+    public readonly kubeProxyMode!: pulumi.Output<string>;
     /**
      * schema: Internal
      */
-    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    declare public readonly ltsReclaimPolicy: pulumi.Output<string | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly ltsReclaimPolicy!: pulumi.Output<string | undefined>;
     /**
      * Specifies the advanced configuration of master nodes.
      * The object structure is documented below.
      * This parameter and `multiAz` are alternative. Changing this parameter will create a new cluster resource.
      */
-    declare public readonly masters: pulumi.Output<outputs.Cce.ClusterMaster[]>;
+    public readonly masters!: pulumi.Output<outputs.Cce.ClusterMaster[]>;
     /**
      * Specifies whether to enable multiple AZs for the cluster, only when using HA
      * flavors. Changing this parameter will create a new cluster resource. This parameter and `masters` are alternative.
      */
-    declare public readonly multiAz: pulumi.Output<boolean | undefined>;
+    public readonly multiAz!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the component name.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the charging period of the CCE cluster.
      * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
@@ -412,18 +412,18 @@ export class Cluster extends pulumi.CustomResource {
      * This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the CCE cluster.
      * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the CCE cluster resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new cluster resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the default worker node security group ID of the cluster.
      * If left empty, the system will automatically create a default worker node security group for you.
@@ -431,36 +431,36 @@ export class Cluster extends pulumi.CustomResource {
      * If updated, the modified security group will only be applied to nodes newly created or accepted.
      * For existing nodes, you need to manually modify the security group rules for them.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Specifies the service network segment.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly serviceNetworkCidr: pulumi.Output<string>;
+    public readonly serviceNetworkCidr!: pulumi.Output<string>;
     /**
      * Cluster status information.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the ID of the subnet used to create the node which should be
      * configured with a *DNS address*. Changing this parameter will create a new cluster resource.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * Specifies whether to support Istio in the cluster.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly supportIstio: pulumi.Output<boolean>;
+    public readonly supportIstio!: pulumi.Output<boolean>;
     /**
      * Specifies the tags of the CCE cluster, key/value pair format.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    declare public readonly timezone: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly timezone!: pulumi.Output<string>;
     /**
      * Specifies the ID of the VPC used to create the node.
      * Changing this parameter will create a new cluster resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -475,129 +475,129 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["alias"] = state?.alias;
-            resourceInputs["annotations"] = state?.annotations;
-            resourceInputs["authenticatingProxyCa"] = state?.authenticatingProxyCa;
-            resourceInputs["authenticatingProxyCert"] = state?.authenticatingProxyCert;
-            resourceInputs["authenticatingProxyPrivateKey"] = state?.authenticatingProxyPrivateKey;
-            resourceInputs["authenticationMode"] = state?.authenticationMode;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["billingMode"] = state?.billingMode;
-            resourceInputs["category"] = state?.category;
-            resourceInputs["certificateClusters"] = state?.certificateClusters;
-            resourceInputs["certificateUsers"] = state?.certificateUsers;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["clusterType"] = state?.clusterType;
-            resourceInputs["clusterVersion"] = state?.clusterVersion;
-            resourceInputs["componentConfigurations"] = state?.componentConfigurations;
-            resourceInputs["containerNetworkCidr"] = state?.containerNetworkCidr;
-            resourceInputs["containerNetworkType"] = state?.containerNetworkType;
-            resourceInputs["customSans"] = state?.customSans;
-            resourceInputs["deleteAll"] = state?.deleteAll;
-            resourceInputs["deleteEfs"] = state?.deleteEfs;
-            resourceInputs["deleteEni"] = state?.deleteEni;
-            resourceInputs["deleteEvs"] = state?.deleteEvs;
-            resourceInputs["deleteNet"] = state?.deleteNet;
-            resourceInputs["deleteObs"] = state?.deleteObs;
-            resourceInputs["deleteSfs"] = state?.deleteSfs;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["eip"] = state?.eip;
-            resourceInputs["enableDistributeManagement"] = state?.enableDistributeManagement;
-            resourceInputs["encryptionConfig"] = state?.encryptionConfig;
-            resourceInputs["eniSubnetCidr"] = state?.eniSubnetCidr;
-            resourceInputs["eniSubnetId"] = state?.eniSubnetId;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["extendParam"] = state?.extendParam;
-            resourceInputs["extendParams"] = state?.extendParams;
-            resourceInputs["flavorId"] = state?.flavorId;
-            resourceInputs["hibernate"] = state?.hibernate;
-            resourceInputs["highwaySubnetId"] = state?.highwaySubnetId;
-            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
-            resourceInputs["kubeConfigRaw"] = state?.kubeConfigRaw;
-            resourceInputs["kubeProxyMode"] = state?.kubeProxyMode;
-            resourceInputs["labels"] = state?.labels;
-            resourceInputs["ltsReclaimPolicy"] = state?.ltsReclaimPolicy;
-            resourceInputs["masters"] = state?.masters;
-            resourceInputs["multiAz"] = state?.multiAz;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["serviceNetworkCidr"] = state?.serviceNetworkCidr;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["supportIstio"] = state?.supportIstio;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["timezone"] = state?.timezone;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["alias"] = state ? state.alias : undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
+            resourceInputs["authenticatingProxyCa"] = state ? state.authenticatingProxyCa : undefined;
+            resourceInputs["authenticatingProxyCert"] = state ? state.authenticatingProxyCert : undefined;
+            resourceInputs["authenticatingProxyPrivateKey"] = state ? state.authenticatingProxyPrivateKey : undefined;
+            resourceInputs["authenticationMode"] = state ? state.authenticationMode : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["billingMode"] = state ? state.billingMode : undefined;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["certificateClusters"] = state ? state.certificateClusters : undefined;
+            resourceInputs["certificateUsers"] = state ? state.certificateUsers : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["clusterVersion"] = state ? state.clusterVersion : undefined;
+            resourceInputs["componentConfigurations"] = state ? state.componentConfigurations : undefined;
+            resourceInputs["containerNetworkCidr"] = state ? state.containerNetworkCidr : undefined;
+            resourceInputs["containerNetworkType"] = state ? state.containerNetworkType : undefined;
+            resourceInputs["customSans"] = state ? state.customSans : undefined;
+            resourceInputs["deleteAll"] = state ? state.deleteAll : undefined;
+            resourceInputs["deleteEfs"] = state ? state.deleteEfs : undefined;
+            resourceInputs["deleteEni"] = state ? state.deleteEni : undefined;
+            resourceInputs["deleteEvs"] = state ? state.deleteEvs : undefined;
+            resourceInputs["deleteNet"] = state ? state.deleteNet : undefined;
+            resourceInputs["deleteObs"] = state ? state.deleteObs : undefined;
+            resourceInputs["deleteSfs"] = state ? state.deleteSfs : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["eip"] = state ? state.eip : undefined;
+            resourceInputs["enableDistributeManagement"] = state ? state.enableDistributeManagement : undefined;
+            resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
+            resourceInputs["eniSubnetCidr"] = state ? state.eniSubnetCidr : undefined;
+            resourceInputs["eniSubnetId"] = state ? state.eniSubnetId : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["extendParam"] = state ? state.extendParam : undefined;
+            resourceInputs["extendParams"] = state ? state.extendParams : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["hibernate"] = state ? state.hibernate : undefined;
+            resourceInputs["highwaySubnetId"] = state ? state.highwaySubnetId : undefined;
+            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
+            resourceInputs["kubeConfigRaw"] = state ? state.kubeConfigRaw : undefined;
+            resourceInputs["kubeProxyMode"] = state ? state.kubeProxyMode : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["ltsReclaimPolicy"] = state ? state.ltsReclaimPolicy : undefined;
+            resourceInputs["masters"] = state ? state.masters : undefined;
+            resourceInputs["multiAz"] = state ? state.multiAz : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["serviceNetworkCidr"] = state ? state.serviceNetworkCidr : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["supportIstio"] = state ? state.supportIstio : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timezone"] = state ? state.timezone : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (args?.containerNetworkType === undefined && !opts.urn) {
+            if ((!args || args.containerNetworkType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerNetworkType'");
             }
-            if (args?.flavorId === undefined && !opts.urn) {
+            if ((!args || args.flavorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["alias"] = args?.alias;
-            resourceInputs["annotations"] = args?.annotations;
-            resourceInputs["authenticatingProxyCa"] = args?.authenticatingProxyCa;
-            resourceInputs["authenticatingProxyCert"] = args?.authenticatingProxyCert;
-            resourceInputs["authenticatingProxyPrivateKey"] = args?.authenticatingProxyPrivateKey;
-            resourceInputs["authenticationMode"] = args?.authenticationMode;
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["billingMode"] = args?.billingMode;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["clusterType"] = args?.clusterType;
-            resourceInputs["clusterVersion"] = args?.clusterVersion;
-            resourceInputs["componentConfigurations"] = args?.componentConfigurations;
-            resourceInputs["containerNetworkCidr"] = args?.containerNetworkCidr;
-            resourceInputs["containerNetworkType"] = args?.containerNetworkType;
-            resourceInputs["customSans"] = args?.customSans;
-            resourceInputs["deleteAll"] = args?.deleteAll;
-            resourceInputs["deleteEfs"] = args?.deleteEfs;
-            resourceInputs["deleteEni"] = args?.deleteEni;
-            resourceInputs["deleteEvs"] = args?.deleteEvs;
-            resourceInputs["deleteNet"] = args?.deleteNet;
-            resourceInputs["deleteObs"] = args?.deleteObs;
-            resourceInputs["deleteSfs"] = args?.deleteSfs;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["eip"] = args?.eip;
-            resourceInputs["enableDistributeManagement"] = args?.enableDistributeManagement;
-            resourceInputs["encryptionConfig"] = args?.encryptionConfig;
-            resourceInputs["eniSubnetCidr"] = args?.eniSubnetCidr;
-            resourceInputs["eniSubnetId"] = args?.eniSubnetId;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["extendParam"] = args?.extendParam;
-            resourceInputs["extendParams"] = args?.extendParams;
-            resourceInputs["flavorId"] = args?.flavorId;
-            resourceInputs["hibernate"] = args?.hibernate;
-            resourceInputs["highwaySubnetId"] = args?.highwaySubnetId;
-            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
-            resourceInputs["kubeProxyMode"] = args?.kubeProxyMode;
-            resourceInputs["labels"] = args?.labels;
-            resourceInputs["ltsReclaimPolicy"] = args?.ltsReclaimPolicy;
-            resourceInputs["masters"] = args?.masters;
-            resourceInputs["multiAz"] = args?.multiAz;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["serviceNetworkCidr"] = args?.serviceNetworkCidr;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["supportIstio"] = args?.supportIstio;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["timezone"] = args?.timezone;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["alias"] = args ? args.alias : undefined;
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
+            resourceInputs["authenticatingProxyCa"] = args ? args.authenticatingProxyCa : undefined;
+            resourceInputs["authenticatingProxyCert"] = args ? args.authenticatingProxyCert : undefined;
+            resourceInputs["authenticatingProxyPrivateKey"] = args ? args.authenticatingProxyPrivateKey : undefined;
+            resourceInputs["authenticationMode"] = args ? args.authenticationMode : undefined;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["billingMode"] = args ? args.billingMode : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["clusterVersion"] = args ? args.clusterVersion : undefined;
+            resourceInputs["componentConfigurations"] = args ? args.componentConfigurations : undefined;
+            resourceInputs["containerNetworkCidr"] = args ? args.containerNetworkCidr : undefined;
+            resourceInputs["containerNetworkType"] = args ? args.containerNetworkType : undefined;
+            resourceInputs["customSans"] = args ? args.customSans : undefined;
+            resourceInputs["deleteAll"] = args ? args.deleteAll : undefined;
+            resourceInputs["deleteEfs"] = args ? args.deleteEfs : undefined;
+            resourceInputs["deleteEni"] = args ? args.deleteEni : undefined;
+            resourceInputs["deleteEvs"] = args ? args.deleteEvs : undefined;
+            resourceInputs["deleteNet"] = args ? args.deleteNet : undefined;
+            resourceInputs["deleteObs"] = args ? args.deleteObs : undefined;
+            resourceInputs["deleteSfs"] = args ? args.deleteSfs : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["eip"] = args ? args.eip : undefined;
+            resourceInputs["enableDistributeManagement"] = args ? args.enableDistributeManagement : undefined;
+            resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
+            resourceInputs["eniSubnetCidr"] = args ? args.eniSubnetCidr : undefined;
+            resourceInputs["eniSubnetId"] = args ? args.eniSubnetId : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["extendParam"] = args ? args.extendParam : undefined;
+            resourceInputs["extendParams"] = args ? args.extendParams : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["hibernate"] = args ? args.hibernate : undefined;
+            resourceInputs["highwaySubnetId"] = args ? args.highwaySubnetId : undefined;
+            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
+            resourceInputs["kubeProxyMode"] = args ? args.kubeProxyMode : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["ltsReclaimPolicy"] = args ? args.ltsReclaimPolicy : undefined;
+            resourceInputs["masters"] = args ? args.masters : undefined;
+            resourceInputs["multiAz"] = args ? args.multiAz : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["serviceNetworkCidr"] = args ? args.serviceNetworkCidr : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["supportIstio"] = args ? args.supportIstio : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["timezone"] = args ? args.timezone : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["category"] = undefined /*out*/;
             resourceInputs["certificateClusters"] = undefined /*out*/;
             resourceInputs["certificateUsers"] = undefined /*out*/;

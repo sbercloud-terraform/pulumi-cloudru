@@ -93,7 +93,7 @@ export class SqlserverAccount extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the username of the DB account. The username consists of 1 to 128
      * characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
@@ -101,24 +101,24 @@ export class SqlserverAccount extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the password of the DB account. It consists of 8 to 128 characters and
      * contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
      * characters.
      */
-    declare public readonly password: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates the DB user status. Its value can be any of the following:
      * + **unavailable**: The database user is unavailable.
      * + **available**: The database user is available.
      */
-    declare public /*out*/ readonly state: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a SqlserverAccount resource with the given unique name, arguments, and options.
@@ -133,23 +133,23 @@ export class SqlserverAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlserverAccountState | undefined;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["state"] = state?.state;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as SqlserverAccountArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.password === undefined && !opts.urn) {
+            if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

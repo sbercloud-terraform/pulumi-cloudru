@@ -60,29 +60,29 @@ export class Database extends pulumi.CustomResource {
      * Specifies the description of a queue.
      * Changing this parameter will create a new database resource.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project ID.
      * The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies the database name. The name consists of 1 to 128 characters, starting
      * with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
      * Changing this parameter will create a new database resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the name of the SQL database owner.
      * The owner must be IAM user.
      */
-    declare public readonly owner: pulumi.Output<string>;
+    public readonly owner!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the DLI database resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -97,20 +97,20 @@ export class Database extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["owner"] = state?.owner;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["tags"] = state?.tags;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["owner"] = args?.owner;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Database.__pulumiType, name, resourceInputs, opts);

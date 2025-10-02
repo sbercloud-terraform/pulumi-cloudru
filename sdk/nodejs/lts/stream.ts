@@ -61,33 +61,33 @@ export class Stream extends pulumi.CustomResource {
         return obj['__pulumiType'] === Stream.__pulumiType;
     }
 
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Number of log stream filters.
      */
-    declare public /*out*/ readonly filterCount: pulumi.Output<number>;
+    public /*out*/ readonly filterCount!: pulumi.Output<number>;
     /**
      * Specifies the ID of a created log group. Changing this parameter will create
      * a new resource.
      */
-    declare public readonly groupId: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<string>;
     /**
      * Whether to favorite the log stream.
      */
-    declare public readonly isFavorite: pulumi.Output<boolean | undefined>;
+    public readonly isFavorite!: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to create the log stream resource. If omitted, the
      * provider-level region will be used. Changing this creates a new log stream resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the log stream name. Changing this parameter will create a new
      * resource.
      */
-    declare public readonly streamName: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    declare public readonly ttlInDays: pulumi.Output<number>;
+    public readonly streamName!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly ttlInDays!: pulumi.Output<number>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -102,30 +102,30 @@ export class Stream extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StreamState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["filterCount"] = state?.filterCount;
-            resourceInputs["groupId"] = state?.groupId;
-            resourceInputs["isFavorite"] = state?.isFavorite;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["streamName"] = state?.streamName;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["ttlInDays"] = state?.ttlInDays;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["filterCount"] = state ? state.filterCount : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["isFavorite"] = state ? state.isFavorite : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["streamName"] = state ? state.streamName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["ttlInDays"] = state ? state.ttlInDays : undefined;
         } else {
             const args = argsOrState as StreamArgs | undefined;
-            if (args?.groupId === undefined && !opts.urn) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (args?.streamName === undefined && !opts.urn) {
+            if ((!args || args.streamName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'streamName'");
             }
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["groupId"] = args?.groupId;
-            resourceInputs["isFavorite"] = args?.isFavorite;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["streamName"] = args?.streamName;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["ttlInDays"] = args?.ttlInDays;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["isFavorite"] = args ? args.isFavorite : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["streamName"] = args ? args.streamName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["ttlInDays"] = args ? args.ttlInDays : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["filterCount"] = undefined /*out*/;
         }

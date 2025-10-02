@@ -63,49 +63,49 @@ export class SwrRepository extends pulumi.CustomResource {
      * Specifies the category of the repository.
      * The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
      */
-    declare public readonly category: pulumi.Output<string | undefined>;
+    public readonly category!: pulumi.Output<string | undefined>;
     /**
      * Specifies the description of the repository.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Intra-cluster image address for docker pull.
      */
-    declare public /*out*/ readonly internalPath: pulumi.Output<string>;
+    public /*out*/ readonly internalPath!: pulumi.Output<string>;
     /**
      * Specifies whether the repository is public. Default is false.
      */
-    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
+    public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the name of the repository. Changing this creates a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Number of image tags in a repository.
      */
-    declare public /*out*/ readonly numImages: pulumi.Output<number>;
+    public /*out*/ readonly numImages!: pulumi.Output<number>;
     /**
      * Specifies the name of the organization (namespace) the repository belongs.
      * Changing this creates a new resource.
      */
-    declare public readonly organization: pulumi.Output<string>;
+    public readonly organization!: pulumi.Output<string>;
     /**
      * Image address for docker pull.
      */
-    declare public /*out*/ readonly path: pulumi.Output<string>;
+    public /*out*/ readonly path!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Numeric ID of the repository
      */
-    declare public /*out*/ readonly repositoryId: pulumi.Output<number>;
+    public /*out*/ readonly repositoryId!: pulumi.Output<number>;
     /**
      * Repository size.
      */
-    declare public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
 
     /**
      * Create a SwrRepository resource with the given unique name, arguments, and options.
@@ -120,28 +120,28 @@ export class SwrRepository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SwrRepositoryState | undefined;
-            resourceInputs["category"] = state?.category;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["internalPath"] = state?.internalPath;
-            resourceInputs["isPublic"] = state?.isPublic;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["numImages"] = state?.numImages;
-            resourceInputs["organization"] = state?.organization;
-            resourceInputs["path"] = state?.path;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["repositoryId"] = state?.repositoryId;
-            resourceInputs["size"] = state?.size;
+            resourceInputs["category"] = state ? state.category : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["internalPath"] = state ? state.internalPath : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["numImages"] = state ? state.numImages : undefined;
+            resourceInputs["organization"] = state ? state.organization : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
         } else {
             const args = argsOrState as SwrRepositoryArgs | undefined;
-            if (args?.organization === undefined && !opts.urn) {
+            if ((!args || args.organization === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            resourceInputs["category"] = args?.category;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["isPublic"] = args?.isPublic;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["organization"] = args?.organization;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["category"] = args ? args.category : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["organization"] = args ? args.organization : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["internalPath"] = undefined /*out*/;
             resourceInputs["numImages"] = undefined /*out*/;
             resourceInputs["path"] = undefined /*out*/;

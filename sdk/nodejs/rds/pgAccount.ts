@@ -95,21 +95,21 @@ export class PgAccount extends pulumi.CustomResource {
      * Indicates the permission attributes of a user.
      * The attributes structure is documented below.
      */
-    declare public /*out*/ readonly attributes: pulumi.Output<outputs.Rds.PgAccountAttribute[]>;
+    public /*out*/ readonly attributes!: pulumi.Output<outputs.Rds.PgAccountAttribute[]>;
     /**
      * Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * schema: Deprecated
      */
-    declare public readonly memberofs: pulumi.Output<string[] | undefined>;
+    public readonly memberofs!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the username of the DB account. The username contains 1 to 63
      * characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
@@ -118,18 +118,18 @@ export class PgAccount extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the password of the DB account. The value must be 8 to 32 characters long
      * and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
      * characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
      */
-    declare public readonly password: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a PgAccount resource with the given unique name, arguments, and options.
@@ -144,27 +144,27 @@ export class PgAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgAccountState | undefined;
-            resourceInputs["attributes"] = state?.attributes;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["memberofs"] = state?.memberofs;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["attributes"] = state ? state.attributes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["memberofs"] = state ? state.memberofs : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as PgAccountArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.password === undefined && !opts.urn) {
+            if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["memberofs"] = args?.memberofs;
-            resourceInputs["name"] = args?.name;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["memberofs"] = args ? args.memberofs : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["attributes"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -92,12 +92,12 @@ export class ProviderConversion extends pulumi.CustomResource {
      * <a name="conversionRules"></a>
      * The `conversionRules` block supports:
      */
-    declare public readonly conversionRules: pulumi.Output<outputs.Iam.ProviderConversionConversionRule[]>;
+    public readonly conversionRules!: pulumi.Output<outputs.Iam.ProviderConversionConversionRule[]>;
     /**
      * The ID of the identity provider used to manage the conversion rules.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly providerId: pulumi.Output<string>;
+    public readonly providerId!: pulumi.Output<string>;
 
     /**
      * Create a ProviderConversion resource with the given unique name, arguments, and options.
@@ -112,18 +112,18 @@ export class ProviderConversion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProviderConversionState | undefined;
-            resourceInputs["conversionRules"] = state?.conversionRules;
-            resourceInputs["providerId"] = state?.providerId;
+            resourceInputs["conversionRules"] = state ? state.conversionRules : undefined;
+            resourceInputs["providerId"] = state ? state.providerId : undefined;
         } else {
             const args = argsOrState as ProviderConversionArgs | undefined;
-            if (args?.conversionRules === undefined && !opts.urn) {
+            if ((!args || args.conversionRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversionRules'");
             }
-            if (args?.providerId === undefined && !opts.urn) {
+            if ((!args || args.providerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providerId'");
             }
-            resourceInputs["conversionRules"] = args?.conversionRules;
-            resourceInputs["providerId"] = args?.providerId;
+            resourceInputs["conversionRules"] = args ? args.conversionRules : undefined;
+            resourceInputs["providerId"] = args ? args.providerId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProviderConversion.__pulumiType, name, resourceInputs, opts);

@@ -50,7 +50,7 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
     /**
      * The creation time of the function trigger.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the detailed configuration of the function trigger event, in JSON
      * format.
@@ -60,17 +60,17 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
      * > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
      * for updateable fields.
      */
-    declare public readonly eventData: pulumi.Output<string>;
+    public readonly eventData!: pulumi.Output<string>;
     /**
      * Specifies the function URN to which the function trigger belongs.  
      * Changing this will create a new resource.
      */
-    declare public readonly functionUrn: pulumi.Output<string>;
+    public readonly functionUrn!: pulumi.Output<string>;
     /**
      * Specifies the region where the function trigger is located.  
      * If omitted, the provider-level region will be used. Changing this will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the status of the function trigger.  
      * The valid values are **ACTIVE** and **DISABLED**.
@@ -80,7 +80,7 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
      * > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
      * `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
      */
-    declare public readonly status: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
      * Specifies the type of the function trigger.  
      * The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
@@ -88,11 +88,11 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
      *
      * > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The latest update time of the function trigger.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a FgsFunctionTrigger resource with the given unique name, arguments, and options.
@@ -107,29 +107,29 @@ export class FgsFunctionTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsFunctionTriggerState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["eventData"] = state?.eventData;
-            resourceInputs["functionUrn"] = state?.functionUrn;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["eventData"] = state ? state.eventData : undefined;
+            resourceInputs["functionUrn"] = state ? state.functionUrn : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as FgsFunctionTriggerArgs | undefined;
-            if (args?.eventData === undefined && !opts.urn) {
+            if ((!args || args.eventData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'eventData'");
             }
-            if (args?.functionUrn === undefined && !opts.urn) {
+            if ((!args || args.functionUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionUrn'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["eventData"] = args?.eventData;
-            resourceInputs["functionUrn"] = args?.functionUrn;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["status"] = args?.status;
-            resourceInputs["type"] = args?.type;
+            resourceInputs["eventData"] = args ? args.eventData : undefined;
+            resourceInputs["functionUrn"] = args ? args.functionUrn : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

@@ -124,15 +124,15 @@ export class KafkaInstance extends pulumi.CustomResource {
      * Specifies the username of SASL_SSL user. A username consists of 4
      * to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
      */
-    declare public readonly accessUser: pulumi.Output<string | undefined>;
-    declare public readonly archType: pulumi.Output<string | undefined>;
+    public readonly accessUser!: pulumi.Output<string | undefined>;
+    public readonly archType!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled. Valid values are "true" and "false".
      *
      * <a name="dmsCrossVpcAccesses"></a>
      * The `crossVpcAccesses` block supports:
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * The names of the AZ where the Kafka instances reside.
      * The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
@@ -142,48 +142,48 @@ export class KafkaInstance extends pulumi.CustomResource {
      *
      * > The parameter behavior of `availabilityZones` has been changed from `list` to `set`.
      */
-    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[]>;
     /**
      * @deprecated available_zones has deprecated, please use "availabilityZones" instead.
      */
-    declare public readonly availableZones: pulumi.Output<string[]>;
+    public readonly availableZones!: pulumi.Output<string[]>;
     /**
      * @deprecated The bandwidth has been deprecated. If you need to change the bandwidth, please update the product_id.
      */
-    declare public readonly bandwidth: pulumi.Output<string>;
+    public readonly bandwidth!: pulumi.Output<string>;
     /**
      * Specifies the broker numbers.
      * It is required when creating an instance with `flavorId`.
      */
-    declare public readonly brokerNum: pulumi.Output<number>;
-    declare public /*out*/ readonly certReplaced: pulumi.Output<boolean>;
+    public readonly brokerNum!: pulumi.Output<number>;
+    public /*out*/ readonly certReplaced!: pulumi.Output<boolean>;
     /**
      * Specifies the charging mode of the instance. Valid values are *prePaid*
      * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Indicates the IP address of the DMS Kafka instance.
      */
-    declare public /*out*/ readonly connectAddress: pulumi.Output<string>;
-    declare public /*out*/ readonly connectorId: pulumi.Output<string>;
-    declare public /*out*/ readonly connectorNodeNum: pulumi.Output<number>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly connectAddress!: pulumi.Output<string>;
+    public /*out*/ readonly connectorId!: pulumi.Output<string>;
+    public /*out*/ readonly connectorNodeNum!: pulumi.Output<number>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the cross-VPC access information.
      * The object structure is documented below.
      */
-    declare public readonly crossVpcAccesses: pulumi.Output<outputs.Dms.KafkaInstanceCrossVpcAccess[]>;
+    public readonly crossVpcAccesses!: pulumi.Output<outputs.Dms.KafkaInstanceCrossVpcAccess[]>;
     /**
      * Specifies the description of the DMS Kafka instance. It is a character string
      * containing not more than 1,024 characters.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable message dumping.
      * Changing this creates a new instance resource.
      */
-    declare public readonly dumping: pulumi.Output<boolean>;
+    public readonly dumping!: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable automatic topic creation. If automatic
      * topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
@@ -191,26 +191,26 @@ export class KafkaInstance extends pulumi.CustomResource {
      * The default value is false.
      * Changing this creates a new instance resource.
      */
-    declare public readonly enableAutoTopic: pulumi.Output<boolean>;
+    public readonly enableAutoTopic!: pulumi.Output<boolean>;
     /**
      * Indicates whether public access to the DMS Kafka instance is enabled.
      */
-    declare public /*out*/ readonly enablePublicIp: pulumi.Output<boolean>;
-    declare public readonly enabledMechanisms: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly enablePublicIp!: pulumi.Output<boolean>;
+    public readonly enabledMechanisms!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates the message engine.
      */
-    declare public /*out*/ readonly engine: pulumi.Output<string>;
+    public /*out*/ readonly engine!: pulumi.Output<string>;
     /**
      * Specifies the version of the Kafka engine,
      * such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
      */
-    declare public readonly engineVersion: pulumi.Output<string>;
+    public readonly engineVersion!: pulumi.Output<string>;
     /**
      * Specifies the enterprise project ID of the Kafka instance.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public /*out*/ readonly extendTimes: pulumi.Output<number>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    public /*out*/ readonly extendTimes!: pulumi.Output<number>;
     /**
      * Specifies the Kafka `flavor ID`. This parameter and `productId` are alternative.
      *
@@ -223,14 +223,14 @@ export class KafkaInstance extends pulumi.CustomResource {
      * * c6.16u32g.cluster \
      * Or use data source sbercloud_dms_kafka_flavors
      */
-    declare public readonly flavorId: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly ipv6ConnectAddresses: pulumi.Output<string[]>;
-    declare public readonly ipv6Enable: pulumi.Output<boolean>;
-    declare public /*out*/ readonly isLogicalVolume: pulumi.Output<boolean>;
+    public readonly flavorId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly ipv6ConnectAddresses!: pulumi.Output<string[]>;
+    public readonly ipv6Enable!: pulumi.Output<boolean>;
+    public /*out*/ readonly isLogicalVolume!: pulumi.Output<boolean>;
     /**
      * schema: Internal
      */
-    declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
+    public readonly kmsEncryptedPassword!: pulumi.Output<string | undefined>;
     /**
      * Specifies the time at which a maintenance time window starts. Format: HH:mm. The
      * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
@@ -238,7 +238,7 @@ export class KafkaInstance extends pulumi.CustomResource {
      * and `maintainEnd` must be set in pairs. If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also
      * blank. In this case, the system automatically allocates the default start time 02:00.
      */
-    declare public readonly maintainBegin: pulumi.Output<string>;
+    public readonly maintainBegin!: pulumi.Output<string>;
     /**
      * Specifies the time at which a maintenance time window ends. Format: HH:mm. The
      * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
@@ -247,13 +247,13 @@ export class KafkaInstance extends pulumi.CustomResource {
      * and `maintainEnd` must be set in pairs. If parameter `maintainEnd` is left blank, parameter
      * `maintainBegin` is also blank. In this case, the system automatically allocates the default end time 06:00.
      */
-    declare public readonly maintainEnd: pulumi.Output<string>;
+    public readonly maintainEnd!: pulumi.Output<string>;
     /**
      * Indicates the Kafka Manager connection address of a Kafka instance.
      *
      * @deprecated Deprecated
      */
-    declare public /*out*/ readonly managementConnectAddress: pulumi.Output<string>;
+    public /*out*/ readonly managementConnectAddress!: pulumi.Output<string>;
     /**
      * Specifies the password for logging in to the Kafka Manager. The
      * password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
@@ -264,7 +264,7 @@ export class KafkaInstance extends pulumi.CustomResource {
      *
      * @deprecated Deprecated
      */
-    declare public readonly managerPassword: pulumi.Output<string | undefined>;
+    public readonly managerPassword!: pulumi.Output<string | undefined>;
     /**
      * Specifies the username for logging in to the Kafka Manager. The username
      * consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
@@ -272,29 +272,29 @@ export class KafkaInstance extends pulumi.CustomResource {
      *
      * @deprecated Deprecated
      */
-    declare public readonly managerUser: pulumi.Output<string | undefined>;
+    public readonly managerUser!: pulumi.Output<string | undefined>;
     /**
      * @deprecated typo in manegement_connect_address, please use "managementConnectAddress" instead.
      */
-    declare public /*out*/ readonly manegementConnectAddress: pulumi.Output<string>;
-    declare public /*out*/ readonly messageQueryInstEnable: pulumi.Output<boolean>;
+    public /*out*/ readonly manegementConnectAddress!: pulumi.Output<string>;
+    public /*out*/ readonly messageQueryInstEnable!: pulumi.Output<boolean>;
     /**
      * Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
      * consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the ID of a subnet. Changing this creates a new instance
      * resource.
      */
-    declare public readonly networkId: pulumi.Output<string>;
-    declare public readonly newTenantIps: pulumi.Output<string[] | undefined>;
-    declare public /*out*/ readonly nodeNum: pulumi.Output<number>;
-    declare public readonly parameters: pulumi.Output<outputs.Dms.KafkaInstanceParameter[]>;
+    public readonly networkId!: pulumi.Output<string>;
+    public readonly newTenantIps!: pulumi.Output<string[] | undefined>;
+    public /*out*/ readonly nodeNum!: pulumi.Output<number>;
+    public readonly parameters!: pulumi.Output<outputs.Dms.KafkaInstanceParameter[]>;
     /**
      * Indicates the number of partitions in Kafka instance.
      */
-    declare public /*out*/ readonly partitionNum: pulumi.Output<number>;
+    public /*out*/ readonly partitionNum!: pulumi.Output<number>;
     /**
      * Specifies the password of SASL_SSL user. A password must meet the
      * following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
@@ -304,25 +304,25 @@ export class KafkaInstance extends pulumi.CustomResource {
      * > **NOTE:** `accessUser` and `password` parameters are mandatory when sslEnable is set to true. These parameters are invalid when sslEnable is set to false. \
      * > **NOTE:** If `accessUser` and `password` are specified, set `sslEnable = true`, to enable SASL_SSL for a Kafka instance.
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the instance. If `periodUnit` is set to *month*
      * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter is
      * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new resource.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly podConnectAddress: pulumi.Output<string>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly podConnectAddress!: pulumi.Output<string>;
     /**
      * The port number.
      */
-    declare public /*out*/ readonly port: pulumi.Output<number>;
-    declare public /*out*/ readonly portProtocols: pulumi.Output<outputs.Dms.KafkaInstancePortProtocol[]>;
+    public /*out*/ readonly port!: pulumi.Output<number>;
+    public /*out*/ readonly portProtocols!: pulumi.Output<outputs.Dms.KafkaInstancePortProtocol[]>;
     /**
      * Specifies a product ID, which includes bandwidth, partition, broker and default
      * storage capacity.
@@ -331,9 +331,9 @@ export class KafkaInstance extends pulumi.CustomResource {
      * broker changes may cause storage capacity changes. So, if you specify the value of `storageSpace`, you need to
      * manually modify the value of `storageSpace` after changing the `productId`.
      */
-    declare public readonly productId: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly publicBandwidth: pulumi.Output<number>;
-    declare public /*out*/ readonly publicIpAddresses: pulumi.Output<string[]>;
+    public readonly productId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly publicBandwidth!: pulumi.Output<number>;
+    public /*out*/ readonly publicIpAddresses!: pulumi.Output<string[]>;
     /**
      * Specifies the IDs of the elastic IP address (EIP)
      * bound to the DMS Kafka instance. Changing this creates a new instance resource.
@@ -347,38 +347,38 @@ export class KafkaInstance extends pulumi.CustomResource {
      * | 600MB | 4 |
      * | 1,200MB | 8 |
      */
-    declare public readonly publicIpIds: pulumi.Output<string[] | undefined>;
+    public readonly publicIpIds!: pulumi.Output<string[] | undefined>;
     /**
      * The region in which to create the DMS Kafka instances. If omitted, the
      * provider-level region will be used. Changing this creates a new instance resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates a resource specifications identifier.
      */
-    declare public /*out*/ readonly resourceSpecCode: pulumi.Output<string>;
+    public /*out*/ readonly resourceSpecCode!: pulumi.Output<string>;
     /**
      * Specifies the action to be taken when the memory usage reaches the disk
      * capacity threshold. The valid values are as follows:
      * + **time_base**: Automatically delete the earliest messages.
      * + **produce_reject**: Stop producing new messages.
      */
-    declare public readonly retentionPolicy: pulumi.Output<string>;
+    public readonly retentionPolicy!: pulumi.Output<string>;
     /**
      * Specifies the ID of a security group.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
-    declare public readonly securityProtocol: pulumi.Output<string | undefined>;
+    public readonly securityGroupId!: pulumi.Output<string>;
+    public readonly securityProtocol!: pulumi.Output<string | undefined>;
     /**
      * Indicates whether the Kafka SASL_SSL is enabled.
      */
-    declare public readonly sslEnable: pulumi.Output<boolean>;
-    declare public /*out*/ readonly sslTwoWayEnable: pulumi.Output<boolean>;
+    public readonly sslEnable!: pulumi.Output<boolean>;
+    public /*out*/ readonly sslTwoWayEnable!: pulumi.Output<boolean>;
     /**
      * Indicates the status of the DMS Kafka instance.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public /*out*/ readonly storageResourceId: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly storageResourceId!: pulumi.Output<string>;
     /**
      * Specifies the message storage capacity, the unit is GB.
      * + When bandwidth is 100MB: 600–90000 GB
@@ -390,7 +390,7 @@ export class KafkaInstance extends pulumi.CustomResource {
      *
      * It is required when creating an instance with `flavorId`.
      */
-    declare public readonly storageSpace: pulumi.Output<number>;
+    public readonly storageSpace!: pulumi.Output<number>;
     /**
      * Specifies the storage I/O specification. Value range:
      * + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
@@ -406,33 +406,33 @@ export class KafkaInstance extends pulumi.CustomResource {
      *
      * Changing this creates a new instance resource.
      */
-    declare public readonly storageSpecCode: pulumi.Output<string>;
-    declare public /*out*/ readonly storageType: pulumi.Output<string>;
+    public readonly storageSpecCode!: pulumi.Output<string>;
+    public /*out*/ readonly storageType!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the DMS Kafka instance.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the DMS Kafka instance type.
      */
-    declare public /*out*/ readonly type: pulumi.Output<string>;
+    public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * Indicates the used message storage space. Unit: GB
      */
-    declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
+    public /*out*/ readonly usedStorageSpace!: pulumi.Output<number>;
     /**
      * Indicates the ID of the user who created the DMS Kafka instance
      */
-    declare public /*out*/ readonly userId: pulumi.Output<string>;
+    public /*out*/ readonly userId!: pulumi.Output<string>;
     /**
      * Indicates the name of the user who created the DMS Kafka instance
      */
-    declare public /*out*/ readonly userName: pulumi.Output<string>;
-    declare public readonly vpcClientPlain: pulumi.Output<boolean>;
+    public /*out*/ readonly userName!: pulumi.Output<string>;
+    public readonly vpcClientPlain!: pulumi.Output<boolean>;
     /**
      * Specifies the ID of a VPC. Changing this creates a new instance resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a KafkaInstance resource with the given unique name, arguments, and options.
@@ -447,134 +447,134 @@ export class KafkaInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaInstanceState | undefined;
-            resourceInputs["accessUser"] = state?.accessUser;
-            resourceInputs["archType"] = state?.archType;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZones"] = state?.availabilityZones;
-            resourceInputs["availableZones"] = state?.availableZones;
-            resourceInputs["bandwidth"] = state?.bandwidth;
-            resourceInputs["brokerNum"] = state?.brokerNum;
-            resourceInputs["certReplaced"] = state?.certReplaced;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["connectAddress"] = state?.connectAddress;
-            resourceInputs["connectorId"] = state?.connectorId;
-            resourceInputs["connectorNodeNum"] = state?.connectorNodeNum;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["crossVpcAccesses"] = state?.crossVpcAccesses;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["dumping"] = state?.dumping;
-            resourceInputs["enableAutoTopic"] = state?.enableAutoTopic;
-            resourceInputs["enablePublicIp"] = state?.enablePublicIp;
-            resourceInputs["enabledMechanisms"] = state?.enabledMechanisms;
-            resourceInputs["engine"] = state?.engine;
-            resourceInputs["engineVersion"] = state?.engineVersion;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["extendTimes"] = state?.extendTimes;
-            resourceInputs["flavorId"] = state?.flavorId;
-            resourceInputs["ipv6ConnectAddresses"] = state?.ipv6ConnectAddresses;
-            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
-            resourceInputs["isLogicalVolume"] = state?.isLogicalVolume;
-            resourceInputs["kmsEncryptedPassword"] = state?.kmsEncryptedPassword;
-            resourceInputs["maintainBegin"] = state?.maintainBegin;
-            resourceInputs["maintainEnd"] = state?.maintainEnd;
-            resourceInputs["managementConnectAddress"] = state?.managementConnectAddress;
-            resourceInputs["managerPassword"] = state?.managerPassword;
-            resourceInputs["managerUser"] = state?.managerUser;
-            resourceInputs["manegementConnectAddress"] = state?.manegementConnectAddress;
-            resourceInputs["messageQueryInstEnable"] = state?.messageQueryInstEnable;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["networkId"] = state?.networkId;
-            resourceInputs["newTenantIps"] = state?.newTenantIps;
-            resourceInputs["nodeNum"] = state?.nodeNum;
-            resourceInputs["parameters"] = state?.parameters;
-            resourceInputs["partitionNum"] = state?.partitionNum;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["podConnectAddress"] = state?.podConnectAddress;
-            resourceInputs["port"] = state?.port;
-            resourceInputs["portProtocols"] = state?.portProtocols;
-            resourceInputs["productId"] = state?.productId;
-            resourceInputs["publicBandwidth"] = state?.publicBandwidth;
-            resourceInputs["publicIpAddresses"] = state?.publicIpAddresses;
-            resourceInputs["publicIpIds"] = state?.publicIpIds;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["resourceSpecCode"] = state?.resourceSpecCode;
-            resourceInputs["retentionPolicy"] = state?.retentionPolicy;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["securityProtocol"] = state?.securityProtocol;
-            resourceInputs["sslEnable"] = state?.sslEnable;
-            resourceInputs["sslTwoWayEnable"] = state?.sslTwoWayEnable;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["storageResourceId"] = state?.storageResourceId;
-            resourceInputs["storageSpace"] = state?.storageSpace;
-            resourceInputs["storageSpecCode"] = state?.storageSpecCode;
-            resourceInputs["storageType"] = state?.storageType;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["usedStorageSpace"] = state?.usedStorageSpace;
-            resourceInputs["userId"] = state?.userId;
-            resourceInputs["userName"] = state?.userName;
-            resourceInputs["vpcClientPlain"] = state?.vpcClientPlain;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["accessUser"] = state ? state.accessUser : undefined;
+            resourceInputs["archType"] = state ? state.archType : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
+            resourceInputs["availableZones"] = state ? state.availableZones : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["brokerNum"] = state ? state.brokerNum : undefined;
+            resourceInputs["certReplaced"] = state ? state.certReplaced : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["connectAddress"] = state ? state.connectAddress : undefined;
+            resourceInputs["connectorId"] = state ? state.connectorId : undefined;
+            resourceInputs["connectorNodeNum"] = state ? state.connectorNodeNum : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["crossVpcAccesses"] = state ? state.crossVpcAccesses : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dumping"] = state ? state.dumping : undefined;
+            resourceInputs["enableAutoTopic"] = state ? state.enableAutoTopic : undefined;
+            resourceInputs["enablePublicIp"] = state ? state.enablePublicIp : undefined;
+            resourceInputs["enabledMechanisms"] = state ? state.enabledMechanisms : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["extendTimes"] = state ? state.extendTimes : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["ipv6ConnectAddresses"] = state ? state.ipv6ConnectAddresses : undefined;
+            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
+            resourceInputs["isLogicalVolume"] = state ? state.isLogicalVolume : undefined;
+            resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
+            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
+            resourceInputs["managementConnectAddress"] = state ? state.managementConnectAddress : undefined;
+            resourceInputs["managerPassword"] = state ? state.managerPassword : undefined;
+            resourceInputs["managerUser"] = state ? state.managerUser : undefined;
+            resourceInputs["manegementConnectAddress"] = state ? state.manegementConnectAddress : undefined;
+            resourceInputs["messageQueryInstEnable"] = state ? state.messageQueryInstEnable : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["newTenantIps"] = state ? state.newTenantIps : undefined;
+            resourceInputs["nodeNum"] = state ? state.nodeNum : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["podConnectAddress"] = state ? state.podConnectAddress : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["portProtocols"] = state ? state.portProtocols : undefined;
+            resourceInputs["productId"] = state ? state.productId : undefined;
+            resourceInputs["publicBandwidth"] = state ? state.publicBandwidth : undefined;
+            resourceInputs["publicIpAddresses"] = state ? state.publicIpAddresses : undefined;
+            resourceInputs["publicIpIds"] = state ? state.publicIpIds : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resourceSpecCode"] = state ? state.resourceSpecCode : undefined;
+            resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["securityProtocol"] = state ? state.securityProtocol : undefined;
+            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
+            resourceInputs["sslTwoWayEnable"] = state ? state.sslTwoWayEnable : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storageResourceId"] = state ? state.storageResourceId : undefined;
+            resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
+            resourceInputs["storageSpecCode"] = state ? state.storageSpecCode : undefined;
+            resourceInputs["storageType"] = state ? state.storageType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["usedStorageSpace"] = state ? state.usedStorageSpace : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["vpcClientPlain"] = state ? state.vpcClientPlain : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as KafkaInstanceArgs | undefined;
-            if (args?.engineVersion === undefined && !opts.urn) {
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if (args?.networkId === undefined && !opts.urn) {
+            if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if (args?.securityGroupId === undefined && !opts.urn) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (args?.storageSpecCode === undefined && !opts.urn) {
+            if ((!args || args.storageSpecCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'storageSpecCode'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accessUser"] = args?.accessUser;
-            resourceInputs["archType"] = args?.archType;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZones"] = args?.availabilityZones;
-            resourceInputs["availableZones"] = args?.availableZones;
-            resourceInputs["bandwidth"] = args?.bandwidth;
-            resourceInputs["brokerNum"] = args?.brokerNum;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["crossVpcAccesses"] = args?.crossVpcAccesses;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["dumping"] = args?.dumping;
-            resourceInputs["enableAutoTopic"] = args?.enableAutoTopic;
-            resourceInputs["enabledMechanisms"] = args?.enabledMechanisms;
-            resourceInputs["engineVersion"] = args?.engineVersion;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["flavorId"] = args?.flavorId;
-            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
+            resourceInputs["accessUser"] = args ? args.accessUser : undefined;
+            resourceInputs["archType"] = args ? args.archType : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
+            resourceInputs["availableZones"] = args ? args.availableZones : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["brokerNum"] = args ? args.brokerNum : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["crossVpcAccesses"] = args ? args.crossVpcAccesses : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dumping"] = args ? args.dumping : undefined;
+            resourceInputs["enableAutoTopic"] = args ? args.enableAutoTopic : undefined;
+            resourceInputs["enabledMechanisms"] = args ? args.enabledMechanisms : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
             resourceInputs["kmsEncryptedPassword"] = args?.kmsEncryptedPassword ? pulumi.secret(args.kmsEncryptedPassword) : undefined;
-            resourceInputs["maintainBegin"] = args?.maintainBegin;
-            resourceInputs["maintainEnd"] = args?.maintainEnd;
+            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
             resourceInputs["managerPassword"] = args?.managerPassword ? pulumi.secret(args.managerPassword) : undefined;
-            resourceInputs["managerUser"] = args?.managerUser;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["networkId"] = args?.networkId;
-            resourceInputs["newTenantIps"] = args?.newTenantIps;
-            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["managerUser"] = args ? args.managerUser : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["newTenantIps"] = args ? args.newTenantIps : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["productId"] = args?.productId;
-            resourceInputs["publicIpIds"] = args?.publicIpIds;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["retentionPolicy"] = args?.retentionPolicy;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["securityProtocol"] = args?.securityProtocol;
-            resourceInputs["sslEnable"] = args?.sslEnable;
-            resourceInputs["storageSpace"] = args?.storageSpace;
-            resourceInputs["storageSpecCode"] = args?.storageSpecCode;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcClientPlain"] = args?.vpcClientPlain;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["publicIpIds"] = args ? args.publicIpIds : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["securityProtocol"] = args ? args.securityProtocol : undefined;
+            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
+            resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
+            resourceInputs["storageSpecCode"] = args ? args.storageSpecCode : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcClientPlain"] = args ? args.vpcClientPlain : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["certReplaced"] = undefined /*out*/;
             resourceInputs["connectAddress"] = undefined /*out*/;
             resourceInputs["connectorId"] = undefined /*out*/;

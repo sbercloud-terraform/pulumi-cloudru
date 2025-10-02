@@ -58,68 +58,68 @@ export class Tracker extends pulumi.CustomResource {
         return obj['__pulumiType'] === Tracker.__pulumiType;
     }
 
-    declare public /*out*/ readonly agencyName: pulumi.Output<string>;
+    public /*out*/ readonly agencyName!: pulumi.Output<string>;
     /**
      * Specifies the OBS bucket to which traces will be transferred.
      */
-    declare public readonly bucketName: pulumi.Output<string | undefined>;
-    declare public readonly compressType: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly createTime: pulumi.Output<number>;
-    declare public readonly deleteTracker: pulumi.Output<boolean | undefined>;
-    declare public /*out*/ readonly detail: pulumi.Output<string>;
-    declare public /*out*/ readonly domainId: pulumi.Output<string>;
+    public readonly bucketName!: pulumi.Output<string | undefined>;
+    public readonly compressType!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    public readonly deleteTracker!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly detail!: pulumi.Output<string>;
+    public /*out*/ readonly domainId!: pulumi.Output<string>;
     /**
      * Specifies whether tracker is enabled.
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
-    declare public readonly excludeServices: pulumi.Output<string[] | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly excludeServices!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the file name prefix to mark trace files that need to be stored
      * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
      * and periods (.) are allowed.
      */
-    declare public readonly filePrefix: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly groupId: pulumi.Output<string>;
-    declare public /*out*/ readonly isAuthorizedBucket: pulumi.Output<boolean>;
-    declare public readonly isSortByService: pulumi.Output<boolean | undefined>;
+    public readonly filePrefix!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly groupId!: pulumi.Output<string>;
+    public /*out*/ readonly isAuthorizedBucket!: pulumi.Output<boolean>;
+    public readonly isSortByService!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the ID of KMS key used for trace file encryption.
      */
-    declare public readonly kmsId: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly logGroupName: pulumi.Output<string>;
-    declare public /*out*/ readonly logTopicName: pulumi.Output<string>;
+    public readonly kmsId!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly logGroupName!: pulumi.Output<string>;
+    public /*out*/ readonly logTopicName!: pulumi.Output<string>;
     /**
      * Specifies whether trace analysis is enabled.
      */
-    declare public readonly ltsEnabled: pulumi.Output<boolean | undefined>;
+    public readonly ltsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The tracker name, only **system** is available.
      */
-    declare public /*out*/ readonly name: pulumi.Output<string>;
-    declare public readonly organizationEnabled: pulumi.Output<boolean>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly organizationEnabled!: pulumi.Output<boolean>;
     /**
      * Specifies the region in which to manage the CTS system tracker resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The tracker status, the value can be **enabled**, **disabled** or **error**.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public /*out*/ readonly streamId: pulumi.Output<string>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly streamId!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether traces will be transferred.
      */
-    declare public /*out*/ readonly transferEnabled: pulumi.Output<boolean>;
+    public /*out*/ readonly transferEnabled!: pulumi.Output<boolean>;
     /**
      * The tracker type, only **system** is available.
      */
-    declare public /*out*/ readonly type: pulumi.Output<string>;
+    public /*out*/ readonly type!: pulumi.Output<string>;
     /**
      * Specifies whether trace file verification is enabled during trace transfer.
      */
-    declare public readonly validateFile: pulumi.Output<boolean | undefined>;
+    public readonly validateFile!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Tracker resource with the given unique name, arguments, and options.
@@ -134,47 +134,47 @@ export class Tracker extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TrackerState | undefined;
-            resourceInputs["agencyName"] = state?.agencyName;
-            resourceInputs["bucketName"] = state?.bucketName;
-            resourceInputs["compressType"] = state?.compressType;
-            resourceInputs["createTime"] = state?.createTime;
-            resourceInputs["deleteTracker"] = state?.deleteTracker;
-            resourceInputs["detail"] = state?.detail;
-            resourceInputs["domainId"] = state?.domainId;
-            resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["excludeServices"] = state?.excludeServices;
-            resourceInputs["filePrefix"] = state?.filePrefix;
-            resourceInputs["groupId"] = state?.groupId;
-            resourceInputs["isAuthorizedBucket"] = state?.isAuthorizedBucket;
-            resourceInputs["isSortByService"] = state?.isSortByService;
-            resourceInputs["kmsId"] = state?.kmsId;
-            resourceInputs["logGroupName"] = state?.logGroupName;
-            resourceInputs["logTopicName"] = state?.logTopicName;
-            resourceInputs["ltsEnabled"] = state?.ltsEnabled;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["organizationEnabled"] = state?.organizationEnabled;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["streamId"] = state?.streamId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["transferEnabled"] = state?.transferEnabled;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["validateFile"] = state?.validateFile;
+            resourceInputs["agencyName"] = state ? state.agencyName : undefined;
+            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
+            resourceInputs["compressType"] = state ? state.compressType : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deleteTracker"] = state ? state.deleteTracker : undefined;
+            resourceInputs["detail"] = state ? state.detail : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["excludeServices"] = state ? state.excludeServices : undefined;
+            resourceInputs["filePrefix"] = state ? state.filePrefix : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["isAuthorizedBucket"] = state ? state.isAuthorizedBucket : undefined;
+            resourceInputs["isSortByService"] = state ? state.isSortByService : undefined;
+            resourceInputs["kmsId"] = state ? state.kmsId : undefined;
+            resourceInputs["logGroupName"] = state ? state.logGroupName : undefined;
+            resourceInputs["logTopicName"] = state ? state.logTopicName : undefined;
+            resourceInputs["ltsEnabled"] = state ? state.ltsEnabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["organizationEnabled"] = state ? state.organizationEnabled : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["streamId"] = state ? state.streamId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["transferEnabled"] = state ? state.transferEnabled : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["validateFile"] = state ? state.validateFile : undefined;
         } else {
             const args = argsOrState as TrackerArgs | undefined;
-            resourceInputs["bucketName"] = args?.bucketName;
-            resourceInputs["compressType"] = args?.compressType;
-            resourceInputs["deleteTracker"] = args?.deleteTracker;
-            resourceInputs["enabled"] = args?.enabled;
-            resourceInputs["excludeServices"] = args?.excludeServices;
-            resourceInputs["filePrefix"] = args?.filePrefix;
-            resourceInputs["isSortByService"] = args?.isSortByService;
-            resourceInputs["kmsId"] = args?.kmsId;
-            resourceInputs["ltsEnabled"] = args?.ltsEnabled;
-            resourceInputs["organizationEnabled"] = args?.organizationEnabled;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["validateFile"] = args?.validateFile;
+            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
+            resourceInputs["compressType"] = args ? args.compressType : undefined;
+            resourceInputs["deleteTracker"] = args ? args.deleteTracker : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["excludeServices"] = args ? args.excludeServices : undefined;
+            resourceInputs["filePrefix"] = args ? args.filePrefix : undefined;
+            resourceInputs["isSortByService"] = args ? args.isSortByService : undefined;
+            resourceInputs["kmsId"] = args ? args.kmsId : undefined;
+            resourceInputs["ltsEnabled"] = args ? args.ltsEnabled : undefined;
+            resourceInputs["organizationEnabled"] = args ? args.organizationEnabled : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["validateFile"] = args ? args.validateFile : undefined;
             resourceInputs["agencyName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["detail"] = undefined /*out*/;

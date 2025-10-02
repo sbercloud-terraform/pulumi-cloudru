@@ -108,12 +108,12 @@ export class DmsRocketmqTopic extends pulumi.CustomResource {
      * Changing this parameter will create a new resource.
      * The brokers structure is documented below.
      */
-    declare public readonly brokers: pulumi.Output<outputs.DmsRocketmqTopicBroker[]>;
+    public readonly brokers!: pulumi.Output<outputs.DmsRocketmqTopicBroker[]>;
     /**
      * Specifies the ID of the rocketMQ instance.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the message type of the topic.
      * It's only valid when RocketMQ instance version is **5.x**. Valid values are:
@@ -124,47 +124,47 @@ export class DmsRocketmqTopic extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly messageType: pulumi.Output<string>;
+    public readonly messageType!: pulumi.Output<string>;
     /**
      * Specifies the name of the broker.
      *
      * <a name="DmsRocketMQTopic_QueueRef"></a>
      * The `queues` block supports:
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the permissions of the topic.
      * Value options: **all**, **sub**, **pub**. Defaults to **all**.
      * It's only valid when RocketMQ instance version is **4.8.0**.
      */
-    declare public readonly permission: pulumi.Output<string>;
+    public readonly permission!: pulumi.Output<string>;
     /**
      * Specifies the number of the queues.
      */
-    declare public readonly queueNum: pulumi.Output<number>;
+    public readonly queueNum!: pulumi.Output<number>;
     /**
      * Specifies the queues information of the topic.
      * It's only valid when RocketMQ instance version is **4.8.0**.
      * The queues structure is documented below.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly queues: pulumi.Output<outputs.DmsRocketmqTopicQueue[] | undefined>;
+    public readonly queues!: pulumi.Output<outputs.DmsRocketmqTopicQueue[] | undefined>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the total number of read queues.
      */
-    declare public readonly totalReadQueueNum: pulumi.Output<number>;
+    public readonly totalReadQueueNum!: pulumi.Output<number>;
     /**
      * Specifies the total number of write queues.
      *
      * <a name="DmsRocketMQTopic_BrokerRef"></a>
      * The `brokers` block supports:
      */
-    declare public readonly totalWriteQueueNum: pulumi.Output<number>;
+    public readonly totalWriteQueueNum!: pulumi.Output<number>;
 
     /**
      * Create a DmsRocketmqTopic resource with the given unique name, arguments, and options.
@@ -179,31 +179,31 @@ export class DmsRocketmqTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqTopicState | undefined;
-            resourceInputs["brokers"] = state?.brokers;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["messageType"] = state?.messageType;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["permission"] = state?.permission;
-            resourceInputs["queueNum"] = state?.queueNum;
-            resourceInputs["queues"] = state?.queues;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["totalReadQueueNum"] = state?.totalReadQueueNum;
-            resourceInputs["totalWriteQueueNum"] = state?.totalWriteQueueNum;
+            resourceInputs["brokers"] = state ? state.brokers : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["messageType"] = state ? state.messageType : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["permission"] = state ? state.permission : undefined;
+            resourceInputs["queueNum"] = state ? state.queueNum : undefined;
+            resourceInputs["queues"] = state ? state.queues : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["totalReadQueueNum"] = state ? state.totalReadQueueNum : undefined;
+            resourceInputs["totalWriteQueueNum"] = state ? state.totalWriteQueueNum : undefined;
         } else {
             const args = argsOrState as DmsRocketmqTopicArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["brokers"] = args?.brokers;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["messageType"] = args?.messageType;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["permission"] = args?.permission;
-            resourceInputs["queueNum"] = args?.queueNum;
-            resourceInputs["queues"] = args?.queues;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["totalReadQueueNum"] = args?.totalReadQueueNum;
-            resourceInputs["totalWriteQueueNum"] = args?.totalWriteQueueNum;
+            resourceInputs["brokers"] = args ? args.brokers : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["messageType"] = args ? args.messageType : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["queueNum"] = args ? args.queueNum : undefined;
+            resourceInputs["queues"] = args ? args.queues : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["totalReadQueueNum"] = args ? args.totalReadQueueNum : undefined;
+            resourceInputs["totalWriteQueueNum"] = args ? args.totalWriteQueueNum : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DmsRocketmqTopic.__pulumiType, name, resourceInputs, opts);

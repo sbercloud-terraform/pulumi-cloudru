@@ -63,30 +63,30 @@ export class Parametergroup extends pulumi.CustomResource {
     /**
      * Indicates the parameter configuration defined by users based on the default parameters groups.
      */
-    declare public /*out*/ readonly configurationParameters: pulumi.Output<outputs.Rds.ParametergroupConfigurationParameter[]>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly configurationParameters!: pulumi.Output<outputs.Rds.ParametergroupConfigurationParameter[]>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Database object. The database object structure is documented below. Changing this creates a new parameter group.
      */
-    declare public readonly datastore: pulumi.Output<outputs.Rds.ParametergroupDatastore>;
+    public readonly datastore!: pulumi.Output<outputs.Rds.ParametergroupDatastore>;
     /**
      * The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The parameter group name. It contains a maximum of 64 characters.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the RDS parameter group. If omitted, the
      * provider-level region will be used. Changing this creates a new parameter group.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * Parameter group values key/value pairs defined by users based on the default parameter groups.
      */
-    declare public readonly values: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly values!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Parametergroup resource with the given unique name, arguments, and options.
@@ -101,24 +101,24 @@ export class Parametergroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ParametergroupState | undefined;
-            resourceInputs["configurationParameters"] = state?.configurationParameters;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["datastore"] = state?.datastore;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["values"] = state?.values;
+            resourceInputs["configurationParameters"] = state ? state.configurationParameters : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["datastore"] = state ? state.datastore : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["values"] = state ? state.values : undefined;
         } else {
             const args = argsOrState as ParametergroupArgs | undefined;
-            if (args?.datastore === undefined && !opts.urn) {
+            if ((!args || args.datastore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            resourceInputs["datastore"] = args?.datastore;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["values"] = args?.values;
+            resourceInputs["datastore"] = args ? args.datastore : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["values"] = args ? args.values : undefined;
             resourceInputs["configurationParameters"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

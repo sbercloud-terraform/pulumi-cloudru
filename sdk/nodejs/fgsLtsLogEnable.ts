@@ -51,7 +51,7 @@ export class FgsLtsLogEnable extends pulumi.CustomResource {
      * Specifies the region where the LTS log function is to be enabled.  
      * If omitted, the provider-level region will be used. Changing this will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a FgsLtsLogEnable resource with the given unique name, arguments, and options.
@@ -66,10 +66,10 @@ export class FgsLtsLogEnable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsLtsLogEnableState | undefined;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FgsLtsLogEnableArgs | undefined;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FgsLtsLogEnable.__pulumiType, name, resourceInputs, opts);

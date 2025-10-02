@@ -63,37 +63,37 @@ export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
     /**
      * Indicates the coordinator id of the consumer group.
      */
-    declare public /*out*/ readonly coordinatorId: pulumi.Output<number>;
+    public /*out*/ readonly coordinatorId!: pulumi.Output<number>;
     /**
      * Indicates the create time.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the consumer group.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the DMS kafka instance to which the consumer group belongs.
      * Changing this creates a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Indicates the lag number of the consumer group.
      */
-    declare public /*out*/ readonly lag: pulumi.Output<number>;
+    public /*out*/ readonly lag!: pulumi.Output<number>;
     /**
      * Specifies the name of the consumer group. Changing this creates a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the DMS kafka consumer group resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates the state of the consumer group.
      */
-    declare public /*out*/ readonly state: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a DmsKafkaConsumerGroup resource with the given unique name, arguments, and options.
@@ -108,23 +108,23 @@ export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsKafkaConsumerGroupState | undefined;
-            resourceInputs["coordinatorId"] = state?.coordinatorId;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["lag"] = state?.lag;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["state"] = state?.state;
+            resourceInputs["coordinatorId"] = state ? state.coordinatorId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["lag"] = state ? state.lag : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as DmsKafkaConsumerGroupArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["coordinatorId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["lag"] = undefined /*out*/;

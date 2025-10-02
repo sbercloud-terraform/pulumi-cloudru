@@ -57,51 +57,51 @@ export class Bandwidth extends pulumi.CustomResource {
         return obj['__pulumiType'] === Bandwidth.__pulumiType;
     }
 
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * Indicates the bandwidth type.
      */
-    declare public readonly bandwidthType: pulumi.Output<string>;
+    public readonly bandwidthType!: pulumi.Output<string>;
     /**
      * Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
      */
-    declare public readonly chargeMode: pulumi.Output<string>;
-    declare public readonly chargingMode: pulumi.Output<string>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly chargeMode!: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The enterprise project id of the Shared Bandwidth. Changing
      * this creates a new bandwidth.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * The name of the Shared Bandwidth.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly period: pulumi.Output<number | undefined>;
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
-    declare public readonly publicBorderGroup: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    public readonly publicBorderGroup!: pulumi.Output<string>;
     /**
      * An array of EIPs that use the bandwidth. The object includes the following:
      */
-    declare public /*out*/ readonly publicips: pulumi.Output<outputs.Vpc.BandwidthPublicip[]>;
+    public /*out*/ readonly publicips!: pulumi.Output<outputs.Vpc.BandwidthPublicip[]>;
     /**
      * The region in which to create the Shared Bandwidth. If omitted, the
      * provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates whether the bandwidth is shared or dedicated.
      */
-    declare public /*out*/ readonly shareType: pulumi.Output<string>;
+    public /*out*/ readonly shareType!: pulumi.Output<string>;
     /**
      * The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
      */
-    declare public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * Indicates the bandwidth status.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Bandwidth resource with the given unique name, arguments, and options.
@@ -116,38 +116,38 @@ export class Bandwidth extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthState | undefined;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["bandwidthType"] = state?.bandwidthType;
-            resourceInputs["chargeMode"] = state?.chargeMode;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["publicBorderGroup"] = state?.publicBorderGroup;
-            resourceInputs["publicips"] = state?.publicips;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["shareType"] = state?.shareType;
-            resourceInputs["size"] = state?.size;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["bandwidthType"] = state ? state.bandwidthType : undefined;
+            resourceInputs["chargeMode"] = state ? state.chargeMode : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["publicBorderGroup"] = state ? state.publicBorderGroup : undefined;
+            resourceInputs["publicips"] = state ? state.publicips : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shareType"] = state ? state.shareType : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as BandwidthArgs | undefined;
-            if (args?.size === undefined && !opts.urn) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["bandwidthType"] = args?.bandwidthType;
-            resourceInputs["chargeMode"] = args?.chargeMode;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["publicBorderGroup"] = args?.publicBorderGroup;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["size"] = args?.size;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["bandwidthType"] = args ? args.bandwidthType : undefined;
+            resourceInputs["chargeMode"] = args ? args.chargeMode : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["publicBorderGroup"] = args ? args.publicBorderGroup : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["publicips"] = undefined /*out*/;
             resourceInputs["shareType"] = undefined /*out*/;

@@ -37,35 +37,35 @@ export class CbrCheckpoint extends pulumi.CustomResource {
     /**
      * The list of backups configuration.
      */
-    declare public readonly backups: pulumi.Output<outputs.CbrCheckpointBackup[]>;
+    public readonly backups!: pulumi.Output<outputs.CbrCheckpointBackup[]>;
     /**
      * The creation time of the checkpoint.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The description of the checkpoint.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether the backups are incremental backups.
      */
-    declare public readonly incremental: pulumi.Output<boolean | undefined>;
+    public readonly incremental!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the checkpoint.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the vault and backup resources are located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The status of the checkpoint.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The ID of the vault where the checkpoint to create.
      */
-    declare public readonly vaultId: pulumi.Output<string>;
+    public readonly vaultId!: pulumi.Output<string>;
 
     /**
      * Create a CbrCheckpoint resource with the given unique name, arguments, and options.
@@ -80,28 +80,28 @@ export class CbrCheckpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CbrCheckpointState | undefined;
-            resourceInputs["backups"] = state?.backups;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["incremental"] = state?.incremental;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["vaultId"] = state?.vaultId;
+            resourceInputs["backups"] = state ? state.backups : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["incremental"] = state ? state.incremental : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as CbrCheckpointArgs | undefined;
-            if (args?.backups === undefined && !opts.urn) {
+            if ((!args || args.backups === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backups'");
             }
-            if (args?.vaultId === undefined && !opts.urn) {
+            if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["backups"] = args?.backups;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["incremental"] = args?.incremental;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["vaultId"] = args?.vaultId;
+            resourceInputs["backups"] = args ? args.backups : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["incremental"] = args ? args.incremental : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

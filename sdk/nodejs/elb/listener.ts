@@ -64,8 +64,8 @@ export class Listener extends pulumi.CustomResource {
      *
      * @deprecated admin_state_up is deprecated
      */
-    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
-    declare public readonly clientCaTlsContainerRef: pulumi.Output<string>;
+    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    public readonly clientCaTlsContainerRef!: pulumi.Output<string>;
     /**
      * The maximum number of connections allowed for the listener. The value ranges from
      * -1 to 2,147,483,647. This parameter is reserved and has been not used. Only the administrator can specify the maximum
@@ -73,69 +73,69 @@ export class Listener extends pulumi.CustomResource {
      *
      * @deprecated connection_limit is deprecated
      */
-    declare public readonly connectionLimit: pulumi.Output<number>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly connectionLimit!: pulumi.Output<number>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of the default pool with which the listener is associated.
      * Changing this creates a new listener.
      */
-    declare public readonly defaultPoolId: pulumi.Output<string>;
+    public readonly defaultPoolId!: pulumi.Output<string>;
     /**
      * Specifies the ID of the server certificate used by the listener. This
      * parameter is mandatory when protocol is set to *TERMINATED_HTTPS*.
      */
-    declare public readonly defaultTlsContainerRef: pulumi.Output<string>;
+    public readonly defaultTlsContainerRef!: pulumi.Output<string>;
     /**
      * Human-readable description for the listener.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to use HTTP/2. The default value is false. This parameter is valid
      * only when the protocol is set to *TERMINATED_HTTPS*.
      */
-    declare public readonly http2Enable: pulumi.Output<boolean | undefined>;
-    declare public readonly insertHeaders: pulumi.Output<outputs.Elb.ListenerInsertHeaders>;
+    public readonly http2Enable!: pulumi.Output<boolean | undefined>;
+    public readonly insertHeaders!: pulumi.Output<outputs.Elb.ListenerInsertHeaders>;
     /**
      * The load balancer on which to provision this listener. Changing this
      * creates a new listener.
      */
-    declare public readonly loadbalancerId: pulumi.Output<string>;
+    public readonly loadbalancerId!: pulumi.Output<string>;
     /**
      * Human-readable name for the listener. Does not have to be unique.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly protectionReason: pulumi.Output<string | undefined>;
-    declare public readonly protectionStatus: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly protectionReason!: pulumi.Output<string | undefined>;
+    public readonly protectionStatus!: pulumi.Output<string>;
     /**
      * The protocol can either be TCP, UDP, HTTP or TERMINATED_HTTPS. Changing this
      * creates a new listener.
      */
-    declare public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * The port on which to listen for client traffic. Changing this creates a
      * new listener.
      */
-    declare public readonly protocolPort: pulumi.Output<number>;
+    public readonly protocolPort!: pulumi.Output<number>;
     /**
      * The region in which to create the listener resource. If omitted, the
      * provider-level region will be used. Changing this creates a new listener.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Lists the IDs of SNI certificates (server certificates with a domain name)
      * used by the listener. This parameter is valid when protocol is set to *TERMINATED_HTTPS*.
      */
-    declare public readonly sniContainerRefs: pulumi.Output<string[]>;
+    public readonly sniContainerRefs!: pulumi.Output<string[]>;
     /**
      * The key/value pairs to associate with the listener.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    declare public readonly tenantId: pulumi.Output<string>;
-    declare public readonly tlsCiphersPolicy: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
+    public readonly tlsCiphersPolicy!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Listener resource with the given unique name, arguments, and options.
@@ -150,57 +150,57 @@ export class Listener extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ListenerState | undefined;
-            resourceInputs["adminStateUp"] = state?.adminStateUp;
-            resourceInputs["clientCaTlsContainerRef"] = state?.clientCaTlsContainerRef;
-            resourceInputs["connectionLimit"] = state?.connectionLimit;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["defaultPoolId"] = state?.defaultPoolId;
-            resourceInputs["defaultTlsContainerRef"] = state?.defaultTlsContainerRef;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["http2Enable"] = state?.http2Enable;
-            resourceInputs["insertHeaders"] = state?.insertHeaders;
-            resourceInputs["loadbalancerId"] = state?.loadbalancerId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["protectionReason"] = state?.protectionReason;
-            resourceInputs["protectionStatus"] = state?.protectionStatus;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["protocolPort"] = state?.protocolPort;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sniContainerRefs"] = state?.sniContainerRefs;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["tenantId"] = state?.tenantId;
-            resourceInputs["tlsCiphersPolicy"] = state?.tlsCiphersPolicy;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
+            resourceInputs["clientCaTlsContainerRef"] = state ? state.clientCaTlsContainerRef : undefined;
+            resourceInputs["connectionLimit"] = state ? state.connectionLimit : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["defaultPoolId"] = state ? state.defaultPoolId : undefined;
+            resourceInputs["defaultTlsContainerRef"] = state ? state.defaultTlsContainerRef : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["http2Enable"] = state ? state.http2Enable : undefined;
+            resourceInputs["insertHeaders"] = state ? state.insertHeaders : undefined;
+            resourceInputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protectionReason"] = state ? state.protectionReason : undefined;
+            resourceInputs["protectionStatus"] = state ? state.protectionStatus : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["protocolPort"] = state ? state.protocolPort : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sniContainerRefs"] = state ? state.sniContainerRefs : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["tlsCiphersPolicy"] = state ? state.tlsCiphersPolicy : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ListenerArgs | undefined;
-            if (args?.loadbalancerId === undefined && !opts.urn) {
+            if ((!args || args.loadbalancerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'loadbalancerId'");
             }
-            if (args?.protocol === undefined && !opts.urn) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (args?.protocolPort === undefined && !opts.urn) {
+            if ((!args || args.protocolPort === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocolPort'");
             }
-            resourceInputs["adminStateUp"] = args?.adminStateUp;
-            resourceInputs["clientCaTlsContainerRef"] = args?.clientCaTlsContainerRef;
-            resourceInputs["connectionLimit"] = args?.connectionLimit;
-            resourceInputs["defaultPoolId"] = args?.defaultPoolId;
-            resourceInputs["defaultTlsContainerRef"] = args?.defaultTlsContainerRef;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["http2Enable"] = args?.http2Enable;
-            resourceInputs["insertHeaders"] = args?.insertHeaders;
-            resourceInputs["loadbalancerId"] = args?.loadbalancerId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["protectionReason"] = args?.protectionReason;
-            resourceInputs["protectionStatus"] = args?.protectionStatus;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["protocolPort"] = args?.protocolPort;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["sniContainerRefs"] = args?.sniContainerRefs;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["tenantId"] = args?.tenantId;
-            resourceInputs["tlsCiphersPolicy"] = args?.tlsCiphersPolicy;
+            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
+            resourceInputs["clientCaTlsContainerRef"] = args ? args.clientCaTlsContainerRef : undefined;
+            resourceInputs["connectionLimit"] = args ? args.connectionLimit : undefined;
+            resourceInputs["defaultPoolId"] = args ? args.defaultPoolId : undefined;
+            resourceInputs["defaultTlsContainerRef"] = args ? args.defaultTlsContainerRef : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["http2Enable"] = args ? args.http2Enable : undefined;
+            resourceInputs["insertHeaders"] = args ? args.insertHeaders : undefined;
+            resourceInputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["protectionReason"] = args ? args.protectionReason : undefined;
+            resourceInputs["protectionStatus"] = args ? args.protectionStatus : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["protocolPort"] = args ? args.protocolPort : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sniContainerRefs"] = args ? args.sniContainerRefs : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["tlsCiphersPolicy"] = args ? args.tlsCiphersPolicy : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

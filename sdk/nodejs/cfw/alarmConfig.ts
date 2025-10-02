@@ -76,7 +76,7 @@ export class AlarmConfig extends pulumi.CustomResource {
      * + **0**: 8:00 to 22:00;
      * + **1**: all day;
      */
-    declare public readonly alarmTimePeriod: pulumi.Output<number>;
+    public readonly alarmTimePeriod!: pulumi.Output<number>;
     /**
      * Specifies the alarm type.
      * The valid values are as follows.
@@ -85,33 +85,33 @@ export class AlarmConfig extends pulumi.CustomResource {
      * + **2**: EIP unprotected;
      * + **3**: threat intelligence;
      */
-    declare public readonly alarmType: pulumi.Output<number>;
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
+    public readonly alarmType!: pulumi.Output<number>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the alarm triggering frequency.
      * + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
      * + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
      */
-    declare public readonly frequencyCount: pulumi.Output<number>;
+    public readonly frequencyCount!: pulumi.Output<number>;
     /**
      * Specifies the alarm frequency time range.
      * + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
      * + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
      */
-    declare public readonly frequencyTime: pulumi.Output<number>;
+    public readonly frequencyTime!: pulumi.Output<number>;
     /**
      * Specifies the firewall ID.
      */
-    declare public readonly fwInstanceId: pulumi.Output<string>;
+    public readonly fwInstanceId!: pulumi.Output<string>;
     /**
      * The language.
      */
-    declare public /*out*/ readonly language: pulumi.Output<string>;
+    public /*out*/ readonly language!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this will create new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the alarm severity.
      * + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
@@ -119,15 +119,15 @@ export class AlarmConfig extends pulumi.CustomResource {
      * + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
      * + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
      */
-    declare public readonly severity: pulumi.Output<string>;
+    public readonly severity!: pulumi.Output<string>;
     /**
      * Specifies the alarm URN.
      */
-    declare public readonly topicUrn: pulumi.Output<string>;
+    public readonly topicUrn!: pulumi.Output<string>;
     /**
      * The username.
      */
-    declare public /*out*/ readonly username: pulumi.Output<string>;
+    public /*out*/ readonly username!: pulumi.Output<string>;
 
     /**
      * Create a AlarmConfig resource with the given unique name, arguments, and options.
@@ -142,49 +142,49 @@ export class AlarmConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmConfigState | undefined;
-            resourceInputs["alarmTimePeriod"] = state?.alarmTimePeriod;
-            resourceInputs["alarmType"] = state?.alarmType;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["frequencyCount"] = state?.frequencyCount;
-            resourceInputs["frequencyTime"] = state?.frequencyTime;
-            resourceInputs["fwInstanceId"] = state?.fwInstanceId;
-            resourceInputs["language"] = state?.language;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["severity"] = state?.severity;
-            resourceInputs["topicUrn"] = state?.topicUrn;
-            resourceInputs["username"] = state?.username;
+            resourceInputs["alarmTimePeriod"] = state ? state.alarmTimePeriod : undefined;
+            resourceInputs["alarmType"] = state ? state.alarmType : undefined;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["frequencyCount"] = state ? state.frequencyCount : undefined;
+            resourceInputs["frequencyTime"] = state ? state.frequencyTime : undefined;
+            resourceInputs["fwInstanceId"] = state ? state.fwInstanceId : undefined;
+            resourceInputs["language"] = state ? state.language : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["severity"] = state ? state.severity : undefined;
+            resourceInputs["topicUrn"] = state ? state.topicUrn : undefined;
+            resourceInputs["username"] = state ? state.username : undefined;
         } else {
             const args = argsOrState as AlarmConfigArgs | undefined;
-            if (args?.alarmTimePeriod === undefined && !opts.urn) {
+            if ((!args || args.alarmTimePeriod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alarmTimePeriod'");
             }
-            if (args?.alarmType === undefined && !opts.urn) {
+            if ((!args || args.alarmType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'alarmType'");
             }
-            if (args?.frequencyCount === undefined && !opts.urn) {
+            if ((!args || args.frequencyCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'frequencyCount'");
             }
-            if (args?.frequencyTime === undefined && !opts.urn) {
+            if ((!args || args.frequencyTime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'frequencyTime'");
             }
-            if (args?.fwInstanceId === undefined && !opts.urn) {
+            if ((!args || args.fwInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fwInstanceId'");
             }
-            if (args?.severity === undefined && !opts.urn) {
+            if ((!args || args.severity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'severity'");
             }
-            if (args?.topicUrn === undefined && !opts.urn) {
+            if ((!args || args.topicUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicUrn'");
             }
-            resourceInputs["alarmTimePeriod"] = args?.alarmTimePeriod;
-            resourceInputs["alarmType"] = args?.alarmType;
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["frequencyCount"] = args?.frequencyCount;
-            resourceInputs["frequencyTime"] = args?.frequencyTime;
-            resourceInputs["fwInstanceId"] = args?.fwInstanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["severity"] = args?.severity;
-            resourceInputs["topicUrn"] = args?.topicUrn;
+            resourceInputs["alarmTimePeriod"] = args ? args.alarmTimePeriod : undefined;
+            resourceInputs["alarmType"] = args ? args.alarmType : undefined;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["frequencyCount"] = args ? args.frequencyCount : undefined;
+            resourceInputs["frequencyTime"] = args ? args.frequencyTime : undefined;
+            resourceInputs["fwInstanceId"] = args ? args.fwInstanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["topicUrn"] = args ? args.topicUrn : undefined;
             resourceInputs["language"] = undefined /*out*/;
             resourceInputs["username"] = undefined /*out*/;
         }

@@ -35,24 +35,24 @@ export class SfsTurboDir extends pulumi.CustomResource {
     /**
      * Specifies the group ID of the SFS Turbo directory.
      */
-    declare public readonly gid: pulumi.Output<number | undefined>;
+    public readonly gid!: pulumi.Output<number | undefined>;
     /**
      * Specifies the SFS Turbo directory permissions.
      */
-    declare public readonly mode: pulumi.Output<number | undefined>;
+    public readonly mode!: pulumi.Output<number | undefined>;
     /**
      * Specifies the valid full path of SFS Turbo directory.
      */
-    declare public readonly path: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
+    public readonly path!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the SFS Turbo ID.
      */
-    declare public readonly shareId: pulumi.Output<string>;
+    public readonly shareId!: pulumi.Output<string>;
     /**
      * Specifies the user ID of the SFS Turbo directory.
      */
-    declare public readonly uid: pulumi.Output<number | undefined>;
+    public readonly uid!: pulumi.Output<number | undefined>;
 
     /**
      * Create a SfsTurboDir resource with the given unique name, arguments, and options.
@@ -67,26 +67,26 @@ export class SfsTurboDir extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsTurboDirState | undefined;
-            resourceInputs["gid"] = state?.gid;
-            resourceInputs["mode"] = state?.mode;
-            resourceInputs["path"] = state?.path;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["shareId"] = state?.shareId;
-            resourceInputs["uid"] = state?.uid;
+            resourceInputs["gid"] = state ? state.gid : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shareId"] = state ? state.shareId : undefined;
+            resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as SfsTurboDirArgs | undefined;
-            if (args?.path === undefined && !opts.urn) {
+            if ((!args || args.path === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if (args?.shareId === undefined && !opts.urn) {
+            if ((!args || args.shareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            resourceInputs["gid"] = args?.gid;
-            resourceInputs["mode"] = args?.mode;
-            resourceInputs["path"] = args?.path;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["shareId"] = args?.shareId;
-            resourceInputs["uid"] = args?.uid;
+            resourceInputs["gid"] = args ? args.gid : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shareId"] = args ? args.shareId : undefined;
+            resourceInputs["uid"] = args ? args.uid : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SfsTurboDir.__pulumiType, name, resourceInputs, opts);

@@ -35,19 +35,19 @@ export class CbrBackupShareAccepter extends pulumi.CustomResource {
     /**
      * The ID of the shared source backup.
      */
-    declare public readonly backupId: pulumi.Output<string>;
+    public readonly backupId!: pulumi.Output<string>;
     /**
      * The region where the backup will be stored.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of the project to which the source backup belongs.
      */
-    declare public /*out*/ readonly sourceProjectId: pulumi.Output<string>;
+    public /*out*/ readonly sourceProjectId!: pulumi.Output<string>;
     /**
      * The ID of the vault which the backup will be stored.
      */
-    declare public readonly vaultId: pulumi.Output<string>;
+    public readonly vaultId!: pulumi.Output<string>;
 
     /**
      * Create a CbrBackupShareAccepter resource with the given unique name, arguments, and options.
@@ -62,21 +62,21 @@ export class CbrBackupShareAccepter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CbrBackupShareAccepterState | undefined;
-            resourceInputs["backupId"] = state?.backupId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sourceProjectId"] = state?.sourceProjectId;
-            resourceInputs["vaultId"] = state?.vaultId;
+            resourceInputs["backupId"] = state ? state.backupId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sourceProjectId"] = state ? state.sourceProjectId : undefined;
+            resourceInputs["vaultId"] = state ? state.vaultId : undefined;
         } else {
             const args = argsOrState as CbrBackupShareAccepterArgs | undefined;
-            if (args?.backupId === undefined && !opts.urn) {
+            if ((!args || args.backupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if (args?.vaultId === undefined && !opts.urn) {
+            if ((!args || args.vaultId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vaultId'");
             }
-            resourceInputs["backupId"] = args?.backupId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["vaultId"] = args?.vaultId;
+            resourceInputs["backupId"] = args ? args.backupId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["vaultId"] = args ? args.vaultId : undefined;
             resourceInputs["sourceProjectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

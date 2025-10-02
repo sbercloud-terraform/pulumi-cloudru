@@ -57,7 +57,7 @@ export class CbhAssetAgencyAuthorization extends pulumi.CustomResource {
      * If set to **true** to enable agency authorization, the CBH service will have the permission to query your CSMS
      * credential list. You can select credentials as resource accounts on the CBH instance.
      */
-    declare public readonly csms: pulumi.Output<boolean>;
+    public readonly csms!: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable KMS key agency authorization. The value can be **true** or
      * **false**.
@@ -65,12 +65,12 @@ export class CbhAssetAgencyAuthorization extends pulumi.CustomResource {
      * to obtain the CSMS credential value. You can use this credential value to log in to the managed host on the CBH
      * instance.
      */
-    declare public readonly kms: pulumi.Output<boolean>;
+    public readonly kms!: pulumi.Output<boolean>;
     /**
      * Specifies the region in which to create the CBH asset agency authorization.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a CbhAssetAgencyAuthorization resource with the given unique name, arguments, and options.
@@ -85,20 +85,20 @@ export class CbhAssetAgencyAuthorization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CbhAssetAgencyAuthorizationState | undefined;
-            resourceInputs["csms"] = state?.csms;
-            resourceInputs["kms"] = state?.kms;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["csms"] = state ? state.csms : undefined;
+            resourceInputs["kms"] = state ? state.kms : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as CbhAssetAgencyAuthorizationArgs | undefined;
-            if (args?.csms === undefined && !opts.urn) {
+            if ((!args || args.csms === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'csms'");
             }
-            if (args?.kms === undefined && !opts.urn) {
+            if ((!args || args.kms === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kms'");
             }
-            resourceInputs["csms"] = args?.csms;
-            resourceInputs["kms"] = args?.kms;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["csms"] = args ? args.csms : undefined;
+            resourceInputs["kms"] = args ? args.kms : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CbhAssetAgencyAuthorization.__pulumiType, name, resourceInputs, opts);

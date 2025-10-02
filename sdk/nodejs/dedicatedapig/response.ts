@@ -37,31 +37,31 @@ export class Response extends pulumi.CustomResource {
     /**
      * The creation time of the API custom response.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of the API group to which the API custom response belongs.
      */
-    declare public readonly groupId: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<string>;
     /**
      * The ID of the dedicated instance to which the API group and the API custom response belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The name of the API custom response.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the API custom response is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The API custom response rules definition.
      */
-    declare public readonly rules: pulumi.Output<outputs.DedicatedApig.ResponseRule[]>;
+    public readonly rules!: pulumi.Output<outputs.DedicatedApig.ResponseRule[]>;
     /**
      * The latest update time of the API custom response.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Response resource with the given unique name, arguments, and options.
@@ -76,26 +76,26 @@ export class Response extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResponseState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["groupId"] = state?.groupId;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["rules"] = state?.rules;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ResponseArgs | undefined;
-            if (args?.groupId === undefined && !opts.urn) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["groupId"] = args?.groupId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["rules"] = args?.rules;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

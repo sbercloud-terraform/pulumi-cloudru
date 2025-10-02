@@ -94,17 +94,17 @@ export class PgDatabase extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly characterSet: pulumi.Output<string>;
+    public readonly characterSet!: pulumi.Output<string>;
     /**
      * Specifies the database description. The value contains 0 to 512 characters.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies whether to revoke the PUBLIC CREATE permission of
      * the public schema.
@@ -115,7 +115,7 @@ export class PgDatabase extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly isRevokePublicPrivilege: pulumi.Output<boolean>;
+    public readonly isRevokePublicPrivilege!: pulumi.Output<boolean>;
     /**
      * Specifies the database collocation.
      * Defaults to **en_US.UTF-8**.
@@ -128,14 +128,14 @@ export class PgDatabase extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly lcCollate: pulumi.Output<string>;
+    public readonly lcCollate!: pulumi.Output<string>;
     /**
      * Specifies the database classification.
      * Defaults to: **en_US.UTF-8**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly lcCtype: pulumi.Output<string>;
+    public readonly lcCtype!: pulumi.Output<string>;
     /**
      * Specifies the database name. The value contains 1 to 63 characters, including
      * letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
@@ -144,28 +144,28 @@ export class PgDatabase extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the database user. The value must be an existing username and must be different
      * from system usernames. Defaults to **root**.
      */
-    declare public readonly owner: pulumi.Output<string>;
+    public readonly owner!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates the database size, in bytes.
      */
-    declare public /*out*/ readonly size: pulumi.Output<number>;
+    public /*out*/ readonly size!: pulumi.Output<number>;
     /**
      * Specifies the name of the database template. Value options: **template0**,
      * **template1**. Defaults to **template1**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly template: pulumi.Output<string>;
+    public readonly template!: pulumi.Output<string>;
 
     /**
      * Create a PgDatabase resource with the given unique name, arguments, and options.
@@ -180,32 +180,32 @@ export class PgDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgDatabaseState | undefined;
-            resourceInputs["characterSet"] = state?.characterSet;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["isRevokePublicPrivilege"] = state?.isRevokePublicPrivilege;
-            resourceInputs["lcCollate"] = state?.lcCollate;
-            resourceInputs["lcCtype"] = state?.lcCtype;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["owner"] = state?.owner;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["size"] = state?.size;
-            resourceInputs["template"] = state?.template;
+            resourceInputs["characterSet"] = state ? state.characterSet : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["isRevokePublicPrivilege"] = state ? state.isRevokePublicPrivilege : undefined;
+            resourceInputs["lcCollate"] = state ? state.lcCollate : undefined;
+            resourceInputs["lcCtype"] = state ? state.lcCtype : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["owner"] = state ? state.owner : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["template"] = state ? state.template : undefined;
         } else {
             const args = argsOrState as PgDatabaseArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["characterSet"] = args?.characterSet;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["isRevokePublicPrivilege"] = args?.isRevokePublicPrivilege;
-            resourceInputs["lcCollate"] = args?.lcCollate;
-            resourceInputs["lcCtype"] = args?.lcCtype;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["owner"] = args?.owner;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["template"] = args?.template;
+            resourceInputs["characterSet"] = args ? args.characterSet : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["isRevokePublicPrivilege"] = args ? args.isRevokePublicPrivilege : undefined;
+            resourceInputs["lcCollate"] = args ? args.lcCollate : undefined;
+            resourceInputs["lcCtype"] = args ? args.lcCtype : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["owner"] = args ? args.owner : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["size"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

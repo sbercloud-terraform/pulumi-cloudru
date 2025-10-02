@@ -69,11 +69,11 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * The group ID of this membership.
      */
-    declare public readonly group: pulumi.Output<string>;
+    public readonly group!: pulumi.Output<string>;
     /**
      * A List of user IDs to associate to the group.
      */
-    declare public readonly users: pulumi.Output<string[]>;
+    public readonly users!: pulumi.Output<string[]>;
 
     /**
      * Create a GroupMembership resource with the given unique name, arguments, and options.
@@ -88,18 +88,18 @@ export class GroupMembership extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupMembershipState | undefined;
-            resourceInputs["group"] = state?.group;
-            resourceInputs["users"] = state?.users;
+            resourceInputs["group"] = state ? state.group : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as GroupMembershipArgs | undefined;
-            if (args?.group === undefined && !opts.urn) {
+            if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if (args?.users === undefined && !opts.urn) {
+            if ((!args || args.users === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'users'");
             }
-            resourceInputs["group"] = args?.group;
-            resourceInputs["users"] = args?.users;
+            resourceInputs["group"] = args ? args.group : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupMembership.__pulumiType, name, resourceInputs, opts);

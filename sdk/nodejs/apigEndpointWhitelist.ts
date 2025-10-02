@@ -35,15 +35,15 @@ export class ApigEndpointWhitelist extends pulumi.CustomResource {
     /**
      * The ID of the dedicated instance to which the endpoint service belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The region where the endpoint service is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The whitelist records of the endpoint service.
      */
-    declare public readonly whitelists: pulumi.Output<string[]>;
+    public readonly whitelists!: pulumi.Output<string[]>;
 
     /**
      * Create a ApigEndpointWhitelist resource with the given unique name, arguments, and options.
@@ -58,20 +58,20 @@ export class ApigEndpointWhitelist extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigEndpointWhitelistState | undefined;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["whitelists"] = state?.whitelists;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as ApigEndpointWhitelistArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.whitelists === undefined && !opts.urn) {
+            if ((!args || args.whitelists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'whitelists'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["whitelists"] = args?.whitelists;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigEndpointWhitelist.__pulumiType, name, resourceInputs, opts);

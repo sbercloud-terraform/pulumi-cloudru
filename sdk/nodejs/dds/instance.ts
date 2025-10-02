@@ -183,25 +183,25 @@ export class Instance extends pulumi.CustomResource {
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto-renew is enabled.
      * Valid values are `true` and `false`, defaults to `false`.
      * Changing this creates a new instance.
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the availability zone. Changing this creates a
      * new instance.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Specifies the advanced backup policy. The structure is described below.
      */
-    declare public readonly backupStrategy: pulumi.Output<outputs.Dds.InstanceBackupStrategy>;
-    declare public readonly balancerActiveBegin: pulumi.Output<string | undefined>;
-    declare public readonly balancerActiveEnd: pulumi.Output<string | undefined>;
-    declare public readonly balancerStatus: pulumi.Output<string>;
+    public readonly backupStrategy!: pulumi.Output<outputs.Dds.InstanceBackupStrategy>;
+    public readonly balancerActiveBegin!: pulumi.Output<string | undefined>;
+    public readonly balancerActiveEnd!: pulumi.Output<string | undefined>;
+    public readonly balancerStatus!: pulumi.Output<string>;
     /**
      * Specifies the charging mode of the instance.
      * The valid values are as follows:
@@ -211,60 +211,60 @@ export class Instance extends pulumi.CustomResource {
      * Default value is `postPaid`.
      * Changing this creates a new instance.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
-    declare public readonly clientNetworkRanges: pulumi.Output<string[] | undefined>;
+    public readonly chargingMode!: pulumi.Output<string>;
+    public readonly clientNetworkRanges!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the configuration information.
      * The structure is described below. Changing this creates a new instance.
      */
-    declare public readonly configurations: pulumi.Output<outputs.Dds.InstanceConfiguration[] | undefined>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly configurations!: pulumi.Output<outputs.Dds.InstanceConfiguration[] | undefined>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies database information. The structure is described below. Changing
      * this creates a new instance.
      */
-    declare public readonly datastore: pulumi.Output<outputs.Dds.InstanceDatastore>;
+    public readonly datastore!: pulumi.Output<outputs.Dds.InstanceDatastore>;
     /**
      * Indicates the DB Administator name.
      */
-    declare public /*out*/ readonly dbUsername: pulumi.Output<string>;
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public /*out*/ readonly dbUsername!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the disk encryption ID of the instance. Changing this
      * creates a new instance.
      */
-    declare public readonly diskEncryptionId: pulumi.Output<string | undefined>;
+    public readonly diskEncryptionId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project id of the dds instance.
      * Changing this creates a new instance.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies the flavors information. The structure is described below. Changing
      * this creates a new instance.
      */
-    declare public readonly flavors: pulumi.Output<outputs.Dds.InstanceFlavor[]>;
-    declare public /*out*/ readonly groups: pulumi.Output<outputs.Dds.InstanceGroup[]>;
-    declare public readonly maintainBegin: pulumi.Output<string>;
-    declare public readonly maintainEnd: pulumi.Output<string>;
+    public readonly flavors!: pulumi.Output<outputs.Dds.InstanceFlavor[]>;
+    public /*out*/ readonly groups!: pulumi.Output<outputs.Dds.InstanceGroup[]>;
+    public readonly maintainBegin!: pulumi.Output<string>;
+    public readonly maintainEnd!: pulumi.Output<string>;
     /**
      * Specifies the mode of the database instance. **Sharding**, **ReplicaSet**,
      * **Single** are supported. Changing this creates a new instance.
      */
-    declare public readonly mode: pulumi.Output<string>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * Specifies the DB instance name. The DB instance name of the same type is unique in the
      * same tenant.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Indicates the instance nodes information. Structure is documented below.
      */
-    declare public /*out*/ readonly nodes: pulumi.Output<outputs.Dds.InstanceNode[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.Dds.InstanceNode[]>;
     /**
      * Specifies the Administrator password of the database instance.
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the instance.
      * If `periodUnit` is set to *month*, the value ranges from 1 to 9.
@@ -272,54 +272,54 @@ export class Instance extends pulumi.CustomResource {
      * This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new instance.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new instance.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Specifies the database access port. The valid values are range from `2100` to `9500` and
      * `27017`, `27018`, `27019`. Defaults to `8635`.
      */
-    declare public readonly port: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number>;
     /**
      * Specifies the region of the DDS instance. Changing this creates a new
      * instance.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly replicaSetName: pulumi.Output<string>;
-    declare public readonly secondLevelMonitoringEnabled: pulumi.Output<boolean>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly replicaSetName!: pulumi.Output<string>;
+    public readonly secondLevelMonitoringEnabled!: pulumi.Output<boolean>;
     /**
      * Specifies the security group ID of the DDS instance.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
-    declare public readonly slowLogDesensitization: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
+    public readonly slowLogDesensitization!: pulumi.Output<string>;
     /**
      * Specifies whether to enable or disable SSL. Defaults to true.
      *
      * **NOTE:** The instance will be restarted in the background when switching SSL. Please operate with caution.
      */
-    declare public readonly ssl: pulumi.Output<boolean | undefined>;
+    public readonly ssl!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates the node status.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the subnet Network ID. Changing this creates a new instance.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the DDS instance.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    declare public /*out*/ readonly timeZone: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly timeZone!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * Specifies the VPC ID. Changing this creates a new instance.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -334,100 +334,100 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["backupStrategy"] = state?.backupStrategy;
-            resourceInputs["balancerActiveBegin"] = state?.balancerActiveBegin;
-            resourceInputs["balancerActiveEnd"] = state?.balancerActiveEnd;
-            resourceInputs["balancerStatus"] = state?.balancerStatus;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["clientNetworkRanges"] = state?.clientNetworkRanges;
-            resourceInputs["configurations"] = state?.configurations;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["datastore"] = state?.datastore;
-            resourceInputs["dbUsername"] = state?.dbUsername;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["diskEncryptionId"] = state?.diskEncryptionId;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["flavors"] = state?.flavors;
-            resourceInputs["groups"] = state?.groups;
-            resourceInputs["maintainBegin"] = state?.maintainBegin;
-            resourceInputs["maintainEnd"] = state?.maintainEnd;
-            resourceInputs["mode"] = state?.mode;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["nodes"] = state?.nodes;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["port"] = state?.port;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["replicaSetName"] = state?.replicaSetName;
-            resourceInputs["secondLevelMonitoringEnabled"] = state?.secondLevelMonitoringEnabled;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["slowLogDesensitization"] = state?.slowLogDesensitization;
-            resourceInputs["ssl"] = state?.ssl;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["timeZone"] = state?.timeZone;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["backupStrategy"] = state ? state.backupStrategy : undefined;
+            resourceInputs["balancerActiveBegin"] = state ? state.balancerActiveBegin : undefined;
+            resourceInputs["balancerActiveEnd"] = state ? state.balancerActiveEnd : undefined;
+            resourceInputs["balancerStatus"] = state ? state.balancerStatus : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["clientNetworkRanges"] = state ? state.clientNetworkRanges : undefined;
+            resourceInputs["configurations"] = state ? state.configurations : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["datastore"] = state ? state.datastore : undefined;
+            resourceInputs["dbUsername"] = state ? state.dbUsername : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["diskEncryptionId"] = state ? state.diskEncryptionId : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["flavors"] = state ? state.flavors : undefined;
+            resourceInputs["groups"] = state ? state.groups : undefined;
+            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["replicaSetName"] = state ? state.replicaSetName : undefined;
+            resourceInputs["secondLevelMonitoringEnabled"] = state ? state.secondLevelMonitoringEnabled : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["slowLogDesensitization"] = state ? state.slowLogDesensitization : undefined;
+            resourceInputs["ssl"] = state ? state.ssl : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (args?.availabilityZone === undefined && !opts.urn) {
+            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if (args?.datastore === undefined && !opts.urn) {
+            if ((!args || args.datastore === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
-            if (args?.flavors === undefined && !opts.urn) {
+            if ((!args || args.flavors === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flavors'");
             }
-            if (args?.mode === undefined && !opts.urn) {
+            if ((!args || args.mode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            if (args?.securityGroupId === undefined && !opts.urn) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["backupStrategy"] = args?.backupStrategy;
-            resourceInputs["balancerActiveBegin"] = args?.balancerActiveBegin;
-            resourceInputs["balancerActiveEnd"] = args?.balancerActiveEnd;
-            resourceInputs["balancerStatus"] = args?.balancerStatus;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["clientNetworkRanges"] = args?.clientNetworkRanges;
-            resourceInputs["configurations"] = args?.configurations;
-            resourceInputs["datastore"] = args?.datastore;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["diskEncryptionId"] = args?.diskEncryptionId;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["flavors"] = args?.flavors;
-            resourceInputs["maintainBegin"] = args?.maintainBegin;
-            resourceInputs["maintainEnd"] = args?.maintainEnd;
-            resourceInputs["mode"] = args?.mode;
-            resourceInputs["name"] = args?.name;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["backupStrategy"] = args ? args.backupStrategy : undefined;
+            resourceInputs["balancerActiveBegin"] = args ? args.balancerActiveBegin : undefined;
+            resourceInputs["balancerActiveEnd"] = args ? args.balancerActiveEnd : undefined;
+            resourceInputs["balancerStatus"] = args ? args.balancerStatus : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["clientNetworkRanges"] = args ? args.clientNetworkRanges : undefined;
+            resourceInputs["configurations"] = args ? args.configurations : undefined;
+            resourceInputs["datastore"] = args ? args.datastore : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["diskEncryptionId"] = args ? args.diskEncryptionId : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["flavors"] = args ? args.flavors : undefined;
+            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["port"] = args?.port;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["replicaSetName"] = args?.replicaSetName;
-            resourceInputs["secondLevelMonitoringEnabled"] = args?.secondLevelMonitoringEnabled;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["slowLogDesensitization"] = args?.slowLogDesensitization;
-            resourceInputs["ssl"] = args?.ssl;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["replicaSetName"] = args ? args.replicaSetName : undefined;
+            resourceInputs["secondLevelMonitoringEnabled"] = args ? args.secondLevelMonitoringEnabled : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["slowLogDesensitization"] = args ? args.slowLogDesensitization : undefined;
+            resourceInputs["ssl"] = args ? args.ssl : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["dbUsername"] = undefined /*out*/;
             resourceInputs["groups"] = undefined /*out*/;

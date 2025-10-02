@@ -108,15 +108,15 @@ export class FileSystem extends pulumi.CustomResource {
      * Specifies the access level of the shared file system. Possible values are *ro* (read-only)
      * and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
      */
-    declare public readonly accessLevel: pulumi.Output<string>;
+    public readonly accessLevel!: pulumi.Output<string>;
     /**
      * The status of the share access rule.
      */
-    declare public /*out*/ readonly accessRuleStatus: pulumi.Output<string>;
+    public /*out*/ readonly accessRuleStatus!: pulumi.Output<string>;
     /**
      * All access rules of the shared file system. The object includes the following:
      */
-    declare public /*out*/ readonly accessRules: pulumi.Output<outputs.Sfs.FileSystemAccessRule[]>;
+    public /*out*/ readonly accessRules!: pulumi.Output<outputs.Sfs.FileSystemAccessRule[]>;
     /**
      * Specifies the value that defines the access rule. The value contains 1 to 255 characters.
      * Changing this will create a new access rule. The value varies according to the scenario:
@@ -131,67 +131,67 @@ export class FileSystem extends pulumi.CustomResource {
      *
      * > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
      */
-    declare public readonly accessTo: pulumi.Output<string | undefined>;
+    public readonly accessTo!: pulumi.Output<string | undefined>;
     /**
      * Specifies the type of the share access rule. The default value is *cert*.
      * Changing this will create a new access rule.
      */
-    declare public readonly accessType: pulumi.Output<string>;
+    public readonly accessType!: pulumi.Output<string>;
     /**
      * The availability zone name. Changing this parameter will create a new resource.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Describes the shared file system.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The enterprise project id of the shared file system. Changing this creates a new resource.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * The address for accessing the shared file system.
      */
-    declare public /*out*/ readonly exportLocation: pulumi.Output<string>;
+    public /*out*/ readonly exportLocation!: pulumi.Output<string>;
     /**
      * The level of visibility for the shared file system.
      */
-    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
+    public readonly isPublic!: pulumi.Output<boolean | undefined>;
     /**
      * Metadata key and value pairs as a dictionary of strings.
      * The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
      * and the keys should be exist at the same time to enable the data encryption function.
      * Changing this will create a new resource.
      */
-    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the shared file system.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The UUID of the share access rule.
      */
-    declare public /*out*/ readonly shareAccessId: pulumi.Output<string>;
+    public /*out*/ readonly shareAccessId!: pulumi.Output<string>;
     /**
      * The protocol for sharing file systems. The default value is NFS.
      */
-    declare public readonly shareProto: pulumi.Output<string | undefined>;
+    public readonly shareProto!: pulumi.Output<string | undefined>;
     /**
      * The size (GB) of the shared file system.
      */
-    declare public readonly size: pulumi.Output<number>;
+    public readonly size!: pulumi.Output<number>;
     /**
      * The status of the share access rule.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the shared file system.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a FileSystem resource with the given unique name, arguments, and options.
@@ -206,42 +206,42 @@ export class FileSystem extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FileSystemState | undefined;
-            resourceInputs["accessLevel"] = state?.accessLevel;
-            resourceInputs["accessRuleStatus"] = state?.accessRuleStatus;
-            resourceInputs["accessRules"] = state?.accessRules;
-            resourceInputs["accessTo"] = state?.accessTo;
-            resourceInputs["accessType"] = state?.accessType;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["exportLocation"] = state?.exportLocation;
-            resourceInputs["isPublic"] = state?.isPublic;
-            resourceInputs["metadata"] = state?.metadata;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["shareAccessId"] = state?.shareAccessId;
-            resourceInputs["shareProto"] = state?.shareProto;
-            resourceInputs["size"] = state?.size;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["accessRuleStatus"] = state ? state.accessRuleStatus : undefined;
+            resourceInputs["accessRules"] = state ? state.accessRules : undefined;
+            resourceInputs["accessTo"] = state ? state.accessTo : undefined;
+            resourceInputs["accessType"] = state ? state.accessType : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["exportLocation"] = state ? state.exportLocation : undefined;
+            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shareAccessId"] = state ? state.shareAccessId : undefined;
+            resourceInputs["shareProto"] = state ? state.shareProto : undefined;
+            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FileSystemArgs | undefined;
-            if (args?.size === undefined && !opts.urn) {
+            if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["accessLevel"] = args?.accessLevel;
-            resourceInputs["accessTo"] = args?.accessTo;
-            resourceInputs["accessType"] = args?.accessType;
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["isPublic"] = args?.isPublic;
-            resourceInputs["metadata"] = args?.metadata;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["shareProto"] = args?.shareProto;
-            resourceInputs["size"] = args?.size;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["accessTo"] = args ? args.accessTo : undefined;
+            resourceInputs["accessType"] = args ? args.accessType : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shareProto"] = args ? args.shareProto : undefined;
+            resourceInputs["size"] = args ? args.size : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["accessRuleStatus"] = undefined /*out*/;
             resourceInputs["accessRules"] = undefined /*out*/;
             resourceInputs["exportLocation"] = undefined /*out*/;

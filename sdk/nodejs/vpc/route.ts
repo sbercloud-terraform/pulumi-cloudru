@@ -88,13 +88,13 @@ export class Route extends pulumi.CustomResource {
      * Specifies the supplementary information about the route.
      * The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the destination address in the CIDR notation format,
      * for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
      * subnet in the VPC. Changing this creates a new resource.
      */
-    declare public readonly destination: pulumi.Output<string>;
+    public readonly destination!: pulumi.Output<string>;
     /**
      * Specifies the next hop.
      * + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
@@ -106,31 +106,31 @@ export class Route extends pulumi.CustomResource {
      * + If the route type is **dc**, the value is a Direct Connect gateway ID.
      * + If the route type is **cc**, the value is a Cloud Connection ID.
      */
-    declare public readonly nexthop: pulumi.Output<string>;
+    public readonly nexthop!: pulumi.Output<string>;
     /**
      * The region in which to create the VPC route. If omitted, the provider-level
      * region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the route table ID for which a route is to be added.
      * If the value is not set, the route will be added to the *default* route table.
      */
-    declare public readonly routeTableId: pulumi.Output<string>;
+    public readonly routeTableId!: pulumi.Output<string>;
     /**
      * The name of route table.
      */
-    declare public /*out*/ readonly routeTableName: pulumi.Output<string>;
+    public /*out*/ readonly routeTableName!: pulumi.Output<string>;
     /**
      * Specifies the route type. Currently, the value can be:
      * **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Specifies the VPC for which a route is to be added. Changing this creates a
      * new resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -145,35 +145,35 @@ export class Route extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["destination"] = state?.destination;
-            resourceInputs["nexthop"] = state?.nexthop;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["routeTableId"] = state?.routeTableId;
-            resourceInputs["routeTableName"] = state?.routeTableName;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["nexthop"] = state ? state.nexthop : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["routeTableName"] = state ? state.routeTableName : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if (args?.destination === undefined && !opts.urn) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if (args?.nexthop === undefined && !opts.urn) {
+            if ((!args || args.nexthop === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nexthop'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["destination"] = args?.destination;
-            resourceInputs["nexthop"] = args?.nexthop;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["routeTableId"] = args?.routeTableId;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["nexthop"] = args ? args.nexthop : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["routeTableName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

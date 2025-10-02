@@ -73,40 +73,40 @@ export class Propagation extends pulumi.CustomResource {
      * Specifies the ID of the attachment corresponding to the propagation.  
      * Changing this parameter will create a new resource.
      */
-    declare public readonly attachmentId: pulumi.Output<string>;
+    public readonly attachmentId!: pulumi.Output<string>;
     /**
      * The type of the attachment corresponding to the propagation.
      */
-    declare public /*out*/ readonly attachmentType: pulumi.Output<string>;
+    public /*out*/ readonly attachmentType!: pulumi.Output<string>;
     /**
      * The creation time.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the ID of the ER instance to which the route table and the
      * attachment belongs.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the region where the ER instance and route table are located.  
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the ID of the route table to which the propagation
      * belongs.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly routeTableId: pulumi.Output<string>;
+    public readonly routeTableId!: pulumi.Output<string>;
     /**
      * The current status of the propagation.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The latest update time.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Propagation resource with the given unique name, arguments, and options.
@@ -121,29 +121,29 @@ export class Propagation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PropagationState | undefined;
-            resourceInputs["attachmentId"] = state?.attachmentId;
-            resourceInputs["attachmentType"] = state?.attachmentType;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["routeTableId"] = state?.routeTableId;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["attachmentId"] = state ? state.attachmentId : undefined;
+            resourceInputs["attachmentType"] = state ? state.attachmentType : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as PropagationArgs | undefined;
-            if (args?.attachmentId === undefined && !opts.urn) {
+            if ((!args || args.attachmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attachmentId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.routeTableId === undefined && !opts.urn) {
+            if ((!args || args.routeTableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["attachmentId"] = args?.attachmentId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["routeTableId"] = args?.routeTableId;
+            resourceInputs["attachmentId"] = args ? args.attachmentId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
             resourceInputs["attachmentType"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

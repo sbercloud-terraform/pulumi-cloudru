@@ -35,19 +35,19 @@ export class ApigSignatureAssociate extends pulumi.CustomResource {
     /**
      * The ID of the dedicated instance to which the APIs and the signature belong.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The publish IDs corresponding to the APIs bound by the signature.
      */
-    declare public readonly publishIds: pulumi.Output<string[]>;
+    public readonly publishIds!: pulumi.Output<string[]>;
     /**
      * The region where the signature and the APIs are located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The signature ID for APIs binding.
      */
-    declare public readonly signatureId: pulumi.Output<string>;
+    public readonly signatureId!: pulumi.Output<string>;
 
     /**
      * Create a ApigSignatureAssociate resource with the given unique name, arguments, and options.
@@ -62,25 +62,25 @@ export class ApigSignatureAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigSignatureAssociateState | undefined;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["publishIds"] = state?.publishIds;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["signatureId"] = state?.signatureId;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["publishIds"] = state ? state.publishIds : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["signatureId"] = state ? state.signatureId : undefined;
         } else {
             const args = argsOrState as ApigSignatureAssociateArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.publishIds === undefined && !opts.urn) {
+            if ((!args || args.publishIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publishIds'");
             }
-            if (args?.signatureId === undefined && !opts.urn) {
+            if ((!args || args.signatureId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'signatureId'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["publishIds"] = args?.publishIds;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["signatureId"] = args?.signatureId;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["publishIds"] = args ? args.publishIds : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["signatureId"] = args ? args.signatureId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigSignatureAssociate.__pulumiType, name, resourceInputs, opts);

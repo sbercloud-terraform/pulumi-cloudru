@@ -75,23 +75,23 @@ export class VolumeAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === VolumeAttach.__pulumiType;
     }
 
-    declare public readonly device: pulumi.Output<string>;
+    public readonly device!: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Volume to.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * PCI address of the block device.
      */
-    declare public /*out*/ readonly pciAddress: pulumi.Output<string>;
+    public /*out*/ readonly pciAddress!: pulumi.Output<string>;
     /**
      * The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of the Volume to attach to an Instance.
      */
-    declare public readonly volumeId: pulumi.Output<string>;
+    public readonly volumeId!: pulumi.Output<string>;
 
     /**
      * Create a VolumeAttach resource with the given unique name, arguments, and options.
@@ -106,23 +106,23 @@ export class VolumeAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachState | undefined;
-            resourceInputs["device"] = state?.device;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["pciAddress"] = state?.pciAddress;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["volumeId"] = state?.volumeId;
+            resourceInputs["device"] = state ? state.device : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["pciAddress"] = state ? state.pciAddress : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
         } else {
             const args = argsOrState as VolumeAttachArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.volumeId === undefined && !opts.urn) {
+            if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["device"] = args?.device;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["volumeId"] = args?.volumeId;
+            resourceInputs["device"] = args ? args.device : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
             resourceInputs["pciAddress"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -37,43 +37,43 @@ export class ApiPublishment extends pulumi.CustomResource {
     /**
      * The ID of the API to be published or already published.
      */
-    declare public readonly apiId: pulumi.Output<string>;
+    public readonly apiId!: pulumi.Output<string>;
     /**
      * The description of the current publishment.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The ID of the environment to which the current version of the API will be published or has been published.
      */
-    declare public readonly envId: pulumi.Output<string>;
+    public readonly envId!: pulumi.Output<string>;
     /**
      * The name of the environment to which the current version of the API is published.
      */
-    declare public /*out*/ readonly envName: pulumi.Output<string>;
+    public /*out*/ readonly envName!: pulumi.Output<string>;
     /**
      * All publish informations of the API.
      */
-    declare public /*out*/ readonly histories: pulumi.Output<outputs.DedicatedApig.ApiPublishmentHistory[]>;
+    public /*out*/ readonly histories!: pulumi.Output<outputs.DedicatedApig.ApiPublishmentHistory[]>;
     /**
      * The ID of the dedicated instance to which the API and the environment belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The publish ID of the API in current environment.
      */
-    declare public /*out*/ readonly publishId: pulumi.Output<string>;
+    public /*out*/ readonly publishId!: pulumi.Output<string>;
     /**
      * Time when the current version was published.
      */
-    declare public /*out*/ readonly publishedAt: pulumi.Output<string>;
+    public /*out*/ readonly publishedAt!: pulumi.Output<string>;
     /**
      * The region in which to publish API.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The version ID of the current publishment.
      */
-    declare public readonly versionId: pulumi.Output<string | undefined>;
+    public readonly versionId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ApiPublishment resource with the given unique name, arguments, and options.
@@ -88,33 +88,33 @@ export class ApiPublishment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiPublishmentState | undefined;
-            resourceInputs["apiId"] = state?.apiId;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["envId"] = state?.envId;
-            resourceInputs["envName"] = state?.envName;
-            resourceInputs["histories"] = state?.histories;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["publishId"] = state?.publishId;
-            resourceInputs["publishedAt"] = state?.publishedAt;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["apiId"] = state ? state.apiId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["envId"] = state ? state.envId : undefined;
+            resourceInputs["envName"] = state ? state.envName : undefined;
+            resourceInputs["histories"] = state ? state.histories : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["publishId"] = state ? state.publishId : undefined;
+            resourceInputs["publishedAt"] = state ? state.publishedAt : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as ApiPublishmentArgs | undefined;
-            if (args?.apiId === undefined && !opts.urn) {
+            if ((!args || args.apiId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
-            if (args?.envId === undefined && !opts.urn) {
+            if ((!args || args.envId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["apiId"] = args?.apiId;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["envId"] = args?.envId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["versionId"] = args?.versionId;
+            resourceInputs["apiId"] = args ? args.apiId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["envId"] = args ? args.envId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["envName"] = undefined /*out*/;
             resourceInputs["histories"] = undefined /*out*/;
             resourceInputs["publishId"] = undefined /*out*/;

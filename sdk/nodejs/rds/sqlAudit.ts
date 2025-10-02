@@ -67,27 +67,27 @@ export class SqlAudit extends pulumi.CustomResource {
      * **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
      * It is not supported for PostgreSQL.
      */
-    declare public readonly auditTypes: pulumi.Output<string[]>;
+    public readonly auditTypes!: pulumi.Output<string[]>;
     /**
      * Specifies the ID of the RDS instance.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
      */
-    declare public readonly keepDays: pulumi.Output<number>;
+    public readonly keepDays!: pulumi.Output<number>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies whether the historical audit logs will be reserved for some time
      * when SQL audit is disabled. It is valid only when SQL audit is disabled.
      */
-    declare public readonly reserveAuditlogs: pulumi.Output<boolean | undefined>;
+    public readonly reserveAuditlogs!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a SqlAudit resource with the given unique name, arguments, and options.
@@ -102,24 +102,24 @@ export class SqlAudit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlAuditState | undefined;
-            resourceInputs["auditTypes"] = state?.auditTypes;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["keepDays"] = state?.keepDays;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["reserveAuditlogs"] = state?.reserveAuditlogs;
+            resourceInputs["auditTypes"] = state ? state.auditTypes : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["keepDays"] = state ? state.keepDays : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["reserveAuditlogs"] = state ? state.reserveAuditlogs : undefined;
         } else {
             const args = argsOrState as SqlAuditArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.keepDays === undefined && !opts.urn) {
+            if ((!args || args.keepDays === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keepDays'");
             }
-            resourceInputs["auditTypes"] = args?.auditTypes;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["keepDays"] = args?.keepDays;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["reserveAuditlogs"] = args?.reserveAuditlogs;
+            resourceInputs["auditTypes"] = args ? args.auditTypes : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["keepDays"] = args ? args.keepDays : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["reserveAuditlogs"] = args ? args.reserveAuditlogs : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlAudit.__pulumiType, name, resourceInputs, opts);

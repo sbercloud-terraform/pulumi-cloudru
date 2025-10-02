@@ -69,21 +69,21 @@ export class NetworkingEipAssociate extends pulumi.CustomResource {
         return obj['__pulumiType'] === NetworkingEipAssociate.__pulumiType;
     }
 
-    declare public readonly fixedIp: pulumi.Output<string>;
-    declare public /*out*/ readonly macAddress: pulumi.Output<string>;
-    declare public readonly networkId: pulumi.Output<string>;
+    public readonly fixedIp!: pulumi.Output<string>;
+    public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * ID of an existing port with at least one IP address to
      * associate with this EIP.
      */
-    declare public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The EIP to associate.
      */
-    declare public readonly publicIp: pulumi.Output<string>;
-    declare public /*out*/ readonly publicIpv6: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public readonly publicIp!: pulumi.Output<string>;
+    public /*out*/ readonly publicIpv6!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a NetworkingEipAssociate resource with the given unique name, arguments, and options.
@@ -98,24 +98,24 @@ export class NetworkingEipAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkingEipAssociateState | undefined;
-            resourceInputs["fixedIp"] = state?.fixedIp;
-            resourceInputs["macAddress"] = state?.macAddress;
-            resourceInputs["networkId"] = state?.networkId;
-            resourceInputs["portId"] = state?.portId;
-            resourceInputs["publicIp"] = state?.publicIp;
-            resourceInputs["publicIpv6"] = state?.publicIpv6;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
+            resourceInputs["publicIpv6"] = state ? state.publicIpv6 : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as NetworkingEipAssociateArgs | undefined;
-            if (args?.publicIp === undefined && !opts.urn) {
+            if ((!args || args.publicIp === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicIp'");
             }
-            resourceInputs["fixedIp"] = args?.fixedIp;
-            resourceInputs["networkId"] = args?.networkId;
-            resourceInputs["portId"] = args?.portId;
-            resourceInputs["publicIp"] = args?.publicIp;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["macAddress"] = undefined /*out*/;
             resourceInputs["publicIpv6"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

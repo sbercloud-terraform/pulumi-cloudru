@@ -170,88 +170,88 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
-    declare public /*out*/ readonly activityType: pulumi.Output<string>;
+    public /*out*/ readonly activityType!: pulumi.Output<string>;
     /**
      * Specifies the IAM agency name. If you change the agency,
      * the new agency will be available for ECSs scaled out after the change.
      */
-    declare public readonly agencyName: pulumi.Output<string>;
+    public readonly agencyName!: pulumi.Output<string>;
     /**
      * Specifies the availability zones in which to create the instances in the
      * autoscaling group.
      */
-    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[]>;
     /**
      * schema: Deprecated; use availabilityZones instead
      */
-    declare public readonly availableZones: pulumi.Output<string[] | undefined>;
+    public readonly availableZones!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the cooling duration (in seconds). The value ranges from 0 to 86400,
      * and is 300 by default.
      */
-    declare public readonly coolDownTime: pulumi.Output<number | undefined>;
-    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    public readonly coolDownTime!: pulumi.Output<number | undefined>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The number of current instances in the AS group.
      */
-    declare public /*out*/ readonly currentInstanceNumber: pulumi.Output<number>;
+    public /*out*/ readonly currentInstanceNumber!: pulumi.Output<number>;
     /**
      * Specifies whether to delete the instances in the AS group when deleting
      * the AS group. The options are `yes` and `no`.
      */
-    declare public readonly deleteInstances: pulumi.Output<string | undefined>;
+    public readonly deleteInstances!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to delete the elastic IP address bound to the instances of
      * AS group when deleting the instances. The options are `true` and `false`.
      */
-    declare public readonly deletePublicip: pulumi.Output<boolean | undefined>;
-    declare public readonly deleteVolume: pulumi.Output<boolean>;
+    public readonly deletePublicip!: pulumi.Output<boolean | undefined>;
+    public readonly deleteVolume!: pulumi.Output<boolean>;
     /**
      * Specifies the description of the AS group.
      * The value can contain 0 to 256 characters.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the expected number of instances. The default value is the
      * minimum number of instances. The value ranges from the minimum number of instances to the maximum number of instances.
      */
-    declare public readonly desireInstanceNumber: pulumi.Output<number>;
-    declare public /*out*/ readonly detail: pulumi.Output<string>;
+    public readonly desireInstanceNumber!: pulumi.Output<number>;
+    public /*out*/ readonly detail!: pulumi.Output<string>;
     /**
      * Specifies whether to enable the AS Group. The options are `true` and `false`.
      * The default value is `true`.
      */
-    declare public readonly enable: pulumi.Output<boolean | undefined>;
+    public readonly enable!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the enterprise project id of the AS group.
      *
      * <a name="groupNetworkObject"></a>
      * The `networks` block supports:
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies whether to forcibly delete the AS group, remove the ECS instances and
      * release them. The default value is `false`.
      */
-    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
+    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the health check grace period for instances.
      * The unit is second and the value ranges from 0 to 86400. The default value is 600.
      *
      * > This parameter is valid only when the instance health check method of the AS group is `ELB_AUDIT`.
      */
-    declare public readonly healthPeriodicAuditGracePeriod: pulumi.Output<number>;
+    public readonly healthPeriodicAuditGracePeriod!: pulumi.Output<number>;
     /**
      * Specifies the health check method for instances in the AS group.
      * The health check methods include `ELB_AUDIT` and `NOVA_AUDIT`. If load balancing is configured, the default value of
      * this parameter is `ELB_AUDIT`. Otherwise, the default value is `NOVA_AUDIT`.
      */
-    declare public readonly healthPeriodicAuditMethod: pulumi.Output<string | undefined>;
+    public readonly healthPeriodicAuditMethod!: pulumi.Output<string | undefined>;
     /**
      * Specifies the health check period for instances. The unit is minute
      * and value includes 0, 1, 5 (default), 15, 60, and 180. If the value is set to 0, health check is performed every 10 seconds.
      */
-    declare public readonly healthPeriodicAuditTime: pulumi.Output<number | undefined>;
+    public readonly healthPeriodicAuditTime!: pulumi.Output<number | undefined>;
     /**
      * Specifies the instance removal policy. The policy has four
      * options: `OLD_CONFIG_OLD_INSTANCE` (default), `OLD_CONFIG_NEW_INSTANCE`, `OLD_INSTANCE`, and `NEW_INSTANCE`.
@@ -262,31 +262,31 @@ export class Group extends pulumi.CustomResource {
      * + **OLD_INSTANCE**: The earlier-created instances are removed first.
      * + **NEW_INSTANCE**: The later-created instances are removed first.
      */
-    declare public readonly instanceTerminatePolicy: pulumi.Output<string | undefined>;
+    public readonly instanceTerminatePolicy!: pulumi.Output<string | undefined>;
     /**
      * The instances IDs of the AS group.
      */
-    declare public /*out*/ readonly instances: pulumi.Output<string[]>;
-    declare public /*out*/ readonly isScaling: pulumi.Output<boolean>;
+    public /*out*/ readonly instances!: pulumi.Output<string[]>;
+    public /*out*/ readonly isScaling!: pulumi.Output<boolean>;
     /**
      * The system supports the binding of up to six ELB listeners, the IDs of which are separated using a comma.
      *
      * @deprecated use lbaasListeners instead
      */
-    declare public readonly lbListenerId: pulumi.Output<string | undefined>;
+    public readonly lbListenerId!: pulumi.Output<string | undefined>;
     /**
      * Specifies an array of one or more enhanced load balancer. The system supports
      * the binding of up to six load balancers. The object structure is documented below.
      */
-    declare public readonly lbaasListeners: pulumi.Output<outputs.As.GroupLbaasListener[]>;
+    public readonly lbaasListeners!: pulumi.Output<outputs.As.GroupLbaasListener[]>;
     /**
      * Specifies the maximum number of instances. The default value is 0.
      */
-    declare public readonly maxInstanceNumber: pulumi.Output<number | undefined>;
+    public readonly maxInstanceNumber!: pulumi.Output<number | undefined>;
     /**
      * Specifies the minimum number of instances. The default value is 0.
      */
-    declare public readonly minInstanceNumber: pulumi.Output<number | undefined>;
+    public readonly minInstanceNumber!: pulumi.Output<number | undefined>;
     /**
      * Specifies the priority policy used to select target AZs when adjusting
      * the number of instances in an AS group. The value can be `EQUILIBRIUM_DISTRIBUTE` and `PICK_FIRST`.
@@ -297,32 +297,32 @@ export class Group extends pulumi.CustomResource {
      * + **PICK_FIRST**: When adjusting the number of instances, target AZs are determined in the order in the
      * availabilityZones list.
      */
-    declare public readonly multiAzScalingPolicy: pulumi.Output<string>;
+    public readonly multiAzScalingPolicy!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more network IDs. The system supports up to five networks.
      * The object structure is documented below.
      */
-    declare public readonly networks: pulumi.Output<outputs.As.GroupNetwork[]>;
+    public readonly networks!: pulumi.Output<outputs.As.GroupNetwork[]>;
     /**
      * schema: Deprecated; The notification mode has been canceled
      */
-    declare public readonly notifications: pulumi.Output<string[] | undefined>;
+    public readonly notifications!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the region in which to create the AS group.
      * If omitted, the provider-level region will be used. Changing this creates a new group.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the configuration ID which defines configurations
      * of instances in the AS group.
      */
-    declare public readonly scalingConfigurationId: pulumi.Output<string>;
-    declare public /*out*/ readonly scalingConfigurationName: pulumi.Output<string>;
+    public readonly scalingConfigurationId!: pulumi.Output<string>;
+    public /*out*/ readonly scalingConfigurationName!: pulumi.Output<string>;
     /**
      * Specifies the name of the scaling group. The name can contain
      * letters, digits, underscores(_), and hyphens(-),and cannot exceed 64 characters.
      */
-    declare public readonly scalingGroupName: pulumi.Output<string>;
+    public readonly scalingGroupName!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more security group IDs to associate with the group.
      * The object structure is documented below.
@@ -332,19 +332,19 @@ export class Group extends pulumi.CustomResource {
      * ECS instances will be added to the default security group. For your convenience, you are advised to specify the security
      * group in the AS configuration.
      */
-    declare public readonly securityGroups: pulumi.Output<outputs.As.GroupSecurityGroup[]>;
+    public readonly securityGroups!: pulumi.Output<outputs.As.GroupSecurityGroup[]>;
     /**
      * The status of the AS group.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the AS group.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the VPC ID. Changing this creates a new group.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -359,83 +359,83 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["activityType"] = state?.activityType;
-            resourceInputs["agencyName"] = state?.agencyName;
-            resourceInputs["availabilityZones"] = state?.availabilityZones;
-            resourceInputs["availableZones"] = state?.availableZones;
-            resourceInputs["coolDownTime"] = state?.coolDownTime;
-            resourceInputs["createTime"] = state?.createTime;
-            resourceInputs["currentInstanceNumber"] = state?.currentInstanceNumber;
-            resourceInputs["deleteInstances"] = state?.deleteInstances;
-            resourceInputs["deletePublicip"] = state?.deletePublicip;
-            resourceInputs["deleteVolume"] = state?.deleteVolume;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["desireInstanceNumber"] = state?.desireInstanceNumber;
-            resourceInputs["detail"] = state?.detail;
-            resourceInputs["enable"] = state?.enable;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["forceDelete"] = state?.forceDelete;
-            resourceInputs["healthPeriodicAuditGracePeriod"] = state?.healthPeriodicAuditGracePeriod;
-            resourceInputs["healthPeriodicAuditMethod"] = state?.healthPeriodicAuditMethod;
-            resourceInputs["healthPeriodicAuditTime"] = state?.healthPeriodicAuditTime;
-            resourceInputs["instanceTerminatePolicy"] = state?.instanceTerminatePolicy;
-            resourceInputs["instances"] = state?.instances;
-            resourceInputs["isScaling"] = state?.isScaling;
-            resourceInputs["lbListenerId"] = state?.lbListenerId;
-            resourceInputs["lbaasListeners"] = state?.lbaasListeners;
-            resourceInputs["maxInstanceNumber"] = state?.maxInstanceNumber;
-            resourceInputs["minInstanceNumber"] = state?.minInstanceNumber;
-            resourceInputs["multiAzScalingPolicy"] = state?.multiAzScalingPolicy;
-            resourceInputs["networks"] = state?.networks;
-            resourceInputs["notifications"] = state?.notifications;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["scalingConfigurationId"] = state?.scalingConfigurationId;
-            resourceInputs["scalingConfigurationName"] = state?.scalingConfigurationName;
-            resourceInputs["scalingGroupName"] = state?.scalingGroupName;
-            resourceInputs["securityGroups"] = state?.securityGroups;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["activityType"] = state ? state.activityType : undefined;
+            resourceInputs["agencyName"] = state ? state.agencyName : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
+            resourceInputs["availableZones"] = state ? state.availableZones : undefined;
+            resourceInputs["coolDownTime"] = state ? state.coolDownTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["currentInstanceNumber"] = state ? state.currentInstanceNumber : undefined;
+            resourceInputs["deleteInstances"] = state ? state.deleteInstances : undefined;
+            resourceInputs["deletePublicip"] = state ? state.deletePublicip : undefined;
+            resourceInputs["deleteVolume"] = state ? state.deleteVolume : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["desireInstanceNumber"] = state ? state.desireInstanceNumber : undefined;
+            resourceInputs["detail"] = state ? state.detail : undefined;
+            resourceInputs["enable"] = state ? state.enable : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
+            resourceInputs["healthPeriodicAuditGracePeriod"] = state ? state.healthPeriodicAuditGracePeriod : undefined;
+            resourceInputs["healthPeriodicAuditMethod"] = state ? state.healthPeriodicAuditMethod : undefined;
+            resourceInputs["healthPeriodicAuditTime"] = state ? state.healthPeriodicAuditTime : undefined;
+            resourceInputs["instanceTerminatePolicy"] = state ? state.instanceTerminatePolicy : undefined;
+            resourceInputs["instances"] = state ? state.instances : undefined;
+            resourceInputs["isScaling"] = state ? state.isScaling : undefined;
+            resourceInputs["lbListenerId"] = state ? state.lbListenerId : undefined;
+            resourceInputs["lbaasListeners"] = state ? state.lbaasListeners : undefined;
+            resourceInputs["maxInstanceNumber"] = state ? state.maxInstanceNumber : undefined;
+            resourceInputs["minInstanceNumber"] = state ? state.minInstanceNumber : undefined;
+            resourceInputs["multiAzScalingPolicy"] = state ? state.multiAzScalingPolicy : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["notifications"] = state ? state.notifications : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["scalingConfigurationId"] = state ? state.scalingConfigurationId : undefined;
+            resourceInputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
+            resourceInputs["scalingGroupName"] = state ? state.scalingGroupName : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if (args?.networks === undefined && !opts.urn) {
+            if ((!args || args.networks === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networks'");
             }
-            if (args?.scalingGroupName === undefined && !opts.urn) {
+            if ((!args || args.scalingGroupName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupName'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["agencyName"] = args?.agencyName;
-            resourceInputs["availabilityZones"] = args?.availabilityZones;
-            resourceInputs["availableZones"] = args?.availableZones;
-            resourceInputs["coolDownTime"] = args?.coolDownTime;
-            resourceInputs["deleteInstances"] = args?.deleteInstances;
-            resourceInputs["deletePublicip"] = args?.deletePublicip;
-            resourceInputs["deleteVolume"] = args?.deleteVolume;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["desireInstanceNumber"] = args?.desireInstanceNumber;
-            resourceInputs["enable"] = args?.enable;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["forceDelete"] = args?.forceDelete;
-            resourceInputs["healthPeriodicAuditGracePeriod"] = args?.healthPeriodicAuditGracePeriod;
-            resourceInputs["healthPeriodicAuditMethod"] = args?.healthPeriodicAuditMethod;
-            resourceInputs["healthPeriodicAuditTime"] = args?.healthPeriodicAuditTime;
-            resourceInputs["instanceTerminatePolicy"] = args?.instanceTerminatePolicy;
-            resourceInputs["lbListenerId"] = args?.lbListenerId;
-            resourceInputs["lbaasListeners"] = args?.lbaasListeners;
-            resourceInputs["maxInstanceNumber"] = args?.maxInstanceNumber;
-            resourceInputs["minInstanceNumber"] = args?.minInstanceNumber;
-            resourceInputs["multiAzScalingPolicy"] = args?.multiAzScalingPolicy;
-            resourceInputs["networks"] = args?.networks;
-            resourceInputs["notifications"] = args?.notifications;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["scalingConfigurationId"] = args?.scalingConfigurationId;
-            resourceInputs["scalingGroupName"] = args?.scalingGroupName;
-            resourceInputs["securityGroups"] = args?.securityGroups;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["agencyName"] = args ? args.agencyName : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
+            resourceInputs["availableZones"] = args ? args.availableZones : undefined;
+            resourceInputs["coolDownTime"] = args ? args.coolDownTime : undefined;
+            resourceInputs["deleteInstances"] = args ? args.deleteInstances : undefined;
+            resourceInputs["deletePublicip"] = args ? args.deletePublicip : undefined;
+            resourceInputs["deleteVolume"] = args ? args.deleteVolume : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["desireInstanceNumber"] = args ? args.desireInstanceNumber : undefined;
+            resourceInputs["enable"] = args ? args.enable : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
+            resourceInputs["healthPeriodicAuditGracePeriod"] = args ? args.healthPeriodicAuditGracePeriod : undefined;
+            resourceInputs["healthPeriodicAuditMethod"] = args ? args.healthPeriodicAuditMethod : undefined;
+            resourceInputs["healthPeriodicAuditTime"] = args ? args.healthPeriodicAuditTime : undefined;
+            resourceInputs["instanceTerminatePolicy"] = args ? args.instanceTerminatePolicy : undefined;
+            resourceInputs["lbListenerId"] = args ? args.lbListenerId : undefined;
+            resourceInputs["lbaasListeners"] = args ? args.lbaasListeners : undefined;
+            resourceInputs["maxInstanceNumber"] = args ? args.maxInstanceNumber : undefined;
+            resourceInputs["minInstanceNumber"] = args ? args.minInstanceNumber : undefined;
+            resourceInputs["multiAzScalingPolicy"] = args ? args.multiAzScalingPolicy : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["notifications"] = args ? args.notifications : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["scalingConfigurationId"] = args ? args.scalingConfigurationId : undefined;
+            resourceInputs["scalingGroupName"] = args ? args.scalingGroupName : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["activityType"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentInstanceNumber"] = undefined /*out*/;

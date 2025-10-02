@@ -62,21 +62,21 @@ export class Project extends pulumi.CustomResource {
     /**
      * Specifies the description of the project.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Enabling status of this project.
      */
-    declare public /*out*/ readonly enabled: pulumi.Output<boolean>;
+    public /*out*/ readonly enabled!: pulumi.Output<boolean>;
     /**
      * Specifies the name of the project. it must start with an existing *region* and be less
      * than or equal to 64 characters. Example: ru-moscow-1_project1.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The parent of this project.
      */
-    declare public /*out*/ readonly parentId: pulumi.Output<string>;
-    declare public readonly status: pulumi.Output<string>;
+    public /*out*/ readonly parentId!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -91,16 +91,16 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["parentId"] = state?.parentId;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentId"] = state ? state.parentId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["status"] = args?.status;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["enabled"] = undefined /*out*/;
             resourceInputs["parentId"] = undefined /*out*/;
         }

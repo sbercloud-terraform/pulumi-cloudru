@@ -105,125 +105,125 @@ export class Cluster extends pulumi.CustomResource {
      * AZ in a cluster.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Cluster creation time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
      */
-    declare public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * The description of the cluster.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Dedicated storage pool ID.
      */
-    declare public readonly dssPoolId: pulumi.Output<string>;
+    public readonly dssPoolId!: pulumi.Output<string>;
     /**
      * The ID of the ELB load balancer.
      */
-    declare public readonly elbId: pulumi.Output<string | undefined>;
+    public readonly elbId!: pulumi.Output<string | undefined>;
     /**
      * The ELB information bound to the cluster.
      */
-    declare public /*out*/ readonly elbs: pulumi.Output<outputs.Dws.ClusterElb[]>;
+    public /*out*/ readonly elbs!: pulumi.Output<outputs.Dws.ClusterElb[]>;
     /**
      * View the private network connection information about the cluster. Structure is documented below.
      */
-    declare public /*out*/ readonly endpoints: pulumi.Output<outputs.Dws.ClusterEndpoint[]>;
+    public /*out*/ readonly endpoints!: pulumi.Output<outputs.Dws.ClusterEndpoint[]>;
     /**
      * The enterprise project id of the dws cluster,
      * Value 0 indicates the default enterprise project.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Whether to automatically execute snapshot when shrinking the number of nodes.
      */
-    declare public readonly forceBackup: pulumi.Output<boolean | undefined>;
+    public readonly forceBackup!: pulumi.Output<boolean | undefined>;
     /**
      * The number of latest manual snapshots that need to be retained when deleting the cluster.
      */
-    declare public readonly keepLastManualSnapshot: pulumi.Output<number | undefined>;
+    public readonly keepLastManualSnapshot!: pulumi.Output<number | undefined>;
     /**
      * The KMS key ID.
      */
-    declare public readonly kmsKeyId: pulumi.Output<string>;
+    public readonly kmsKeyId!: pulumi.Output<string>;
     /**
      * Whether to enable logical cluster.
      */
-    declare public readonly logicalClusterEnable: pulumi.Output<boolean | undefined>;
+    public readonly logicalClusterEnable!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable LTS.
      */
-    declare public readonly ltsEnable: pulumi.Output<boolean | undefined>;
+    public readonly ltsEnable!: pulumi.Output<boolean | undefined>;
     /**
      * Cluster maintenance window.
      */
-    declare public /*out*/ readonly maintainWindows: pulumi.Output<outputs.Dws.ClusterMaintainWindow[]>;
+    public /*out*/ readonly maintainWindows!: pulumi.Output<outputs.Dws.ClusterMaintainWindow[]>;
     /**
      * Cluster name, which must be unique and contains 4 to 64 characters, which
      * consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Network ID, which is used for configuring cluster network.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly networkId: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * Node type.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly nodeType: pulumi.Output<string>;
+    public readonly nodeType!: pulumi.Output<string>;
     /**
      * The number of CN. If you use a large-scale cluster, deploy multiple CNs.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly numberOfCn: pulumi.Output<number | undefined>;
+    public readonly numberOfCn!: pulumi.Output<number | undefined>;
     /**
      * Number of nodes in a cluster. The value ranges from 3 to 32. When expanding,
      * add at least 3 nodes.
      */
-    declare public readonly numberOfNode: pulumi.Output<number>;
+    public readonly numberOfNode!: pulumi.Output<number>;
     /**
      * Service port of a cluster (8000 to 10000). The default value is 8000.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly port: pulumi.Output<number | undefined>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * List of private network IP address.
      */
-    declare public /*out*/ readonly privateIps: pulumi.Output<string[]>;
+    public /*out*/ readonly privateIps!: pulumi.Output<string[]>;
     /**
      * Public network connection information about the cluster. If the value is not specified, the
      * public network connection information is not used by default Structure is documented below.
      */
-    declare public /*out*/ readonly publicEndpoints: pulumi.Output<outputs.Dws.ClusterPublicEndpoint[]>;
+    public /*out*/ readonly publicEndpoints!: pulumi.Output<outputs.Dws.ClusterPublicEndpoint[]>;
     /**
      * A nested object resource Structure is documented below.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly publicIp: pulumi.Output<outputs.Dws.ClusterPublicIp>;
+    public readonly publicIp!: pulumi.Output<outputs.Dws.ClusterPublicIp>;
     /**
      * The recent event number.
      */
-    declare public /*out*/ readonly recentEvent: pulumi.Output<number>;
+    public /*out*/ readonly recentEvent!: pulumi.Output<number>;
     /**
      * The region in which to create the cluster resource. If omitted, the
      * provider-level region will be used. Changing this creates a new cluster resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * ID of a security group. The ID is used for configuring cluster
      * network.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Cluster status, which can be one of the following:  CREATING AVAILABLE UNAVAILABLE CREATION FAILED.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Sub-status of clusters in the AVAILABLE state. The value can be one of the following:  NORMAL READONLY
      * REDISTRIBUTING REDISTRIBUTION-FAILURE UNBALANCED UNBALANCED | READONLY DEGRADED DEGRADED | READONLY DEGRADED |
@@ -231,28 +231,28 @@ export class Cluster extends pulumi.CustomResource {
      * UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED |
      * REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY | REDISTRIBUTION-FAILURE DEGRADED | UNBALANCED | READONLY
      */
-    declare public /*out*/ readonly subStatus: pulumi.Output<string>;
+    public /*out*/ readonly subStatus!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the cluster.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Cluster management task. The value can be one of the following:
      * RESTORING SNAPSHOTTING GROWING REBOOTING SETTING_CONFIGURATION CONFIGURING_EXT_DATASOURCE DELETING_EXT_DATASOURCE
      * REBOOT_FAILURE RESIZE_FAILURE
      */
-    declare public /*out*/ readonly taskStatus: pulumi.Output<string>;
+    public /*out*/ readonly taskStatus!: pulumi.Output<string>;
     /**
      * Last modification time of a cluster. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
      */
-    declare public /*out*/ readonly updated: pulumi.Output<string>;
+    public /*out*/ readonly updated!: pulumi.Output<string>;
     /**
      * Administrator username for logging in to a data warehouse cluster The
      * administrator username must:  Consist of lowercase letters, digits, or underscores. Start with a lowercase letter or
      * an underscore. Contain 1 to 63 characters. Cannot be a keyword of the DWS database.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly userName: pulumi.Output<string>;
+    public readonly userName!: pulumi.Output<string>;
     /**
      * Administrator password for logging in to a data warehouse cluster A password
      * must conform to the following rules:  Contains 8 to 32 characters. Cannot be the same as the username or the username
@@ -260,17 +260,17 @@ export class Cluster extends pulumi.CustomResource {
      * Lowercase letters Uppercase letters Digits Special characters
      * ~!@#%^&*()-_=+|[{}];:,<.>/?
      */
-    declare public readonly userPwd: pulumi.Output<string>;
+    public readonly userPwd!: pulumi.Output<string>;
     /**
      * Data warehouse version.
      */
-    declare public readonly version: pulumi.Output<string>;
-    declare public readonly volume: pulumi.Output<outputs.Dws.ClusterVolume>;
+    public readonly version!: pulumi.Output<string>;
+    public readonly volume!: pulumi.Output<outputs.Dws.ClusterVolume>;
     /**
      * VPC ID, which is used for configuring cluster network.
      * Changing this creates a new cluster resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -285,93 +285,93 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["created"] = state?.created;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["dssPoolId"] = state?.dssPoolId;
-            resourceInputs["elbId"] = state?.elbId;
-            resourceInputs["elbs"] = state?.elbs;
-            resourceInputs["endpoints"] = state?.endpoints;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["forceBackup"] = state?.forceBackup;
-            resourceInputs["keepLastManualSnapshot"] = state?.keepLastManualSnapshot;
-            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
-            resourceInputs["logicalClusterEnable"] = state?.logicalClusterEnable;
-            resourceInputs["ltsEnable"] = state?.ltsEnable;
-            resourceInputs["maintainWindows"] = state?.maintainWindows;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["networkId"] = state?.networkId;
-            resourceInputs["nodeType"] = state?.nodeType;
-            resourceInputs["numberOfCn"] = state?.numberOfCn;
-            resourceInputs["numberOfNode"] = state?.numberOfNode;
-            resourceInputs["port"] = state?.port;
-            resourceInputs["privateIps"] = state?.privateIps;
-            resourceInputs["publicEndpoints"] = state?.publicEndpoints;
-            resourceInputs["publicIp"] = state?.publicIp;
-            resourceInputs["recentEvent"] = state?.recentEvent;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subStatus"] = state?.subStatus;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["taskStatus"] = state?.taskStatus;
-            resourceInputs["updated"] = state?.updated;
-            resourceInputs["userName"] = state?.userName;
-            resourceInputs["userPwd"] = state?.userPwd;
-            resourceInputs["version"] = state?.version;
-            resourceInputs["volume"] = state?.volume;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dssPoolId"] = state ? state.dssPoolId : undefined;
+            resourceInputs["elbId"] = state ? state.elbId : undefined;
+            resourceInputs["elbs"] = state ? state.elbs : undefined;
+            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["forceBackup"] = state ? state.forceBackup : undefined;
+            resourceInputs["keepLastManualSnapshot"] = state ? state.keepLastManualSnapshot : undefined;
+            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
+            resourceInputs["logicalClusterEnable"] = state ? state.logicalClusterEnable : undefined;
+            resourceInputs["ltsEnable"] = state ? state.ltsEnable : undefined;
+            resourceInputs["maintainWindows"] = state ? state.maintainWindows : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
+            resourceInputs["numberOfCn"] = state ? state.numberOfCn : undefined;
+            resourceInputs["numberOfNode"] = state ? state.numberOfNode : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
+            resourceInputs["publicEndpoints"] = state ? state.publicEndpoints : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
+            resourceInputs["recentEvent"] = state ? state.recentEvent : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subStatus"] = state ? state.subStatus : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["taskStatus"] = state ? state.taskStatus : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["userPwd"] = state ? state.userPwd : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["volume"] = state ? state.volume : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (args?.availabilityZone === undefined && !opts.urn) {
+            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if (args?.networkId === undefined && !opts.urn) {
+            if ((!args || args.networkId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if (args?.nodeType === undefined && !opts.urn) {
+            if ((!args || args.nodeType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeType'");
             }
-            if (args?.numberOfNode === undefined && !opts.urn) {
+            if ((!args || args.numberOfNode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'numberOfNode'");
             }
-            if (args?.securityGroupId === undefined && !opts.urn) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (args?.userName === undefined && !opts.urn) {
+            if ((!args || args.userName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userName'");
             }
-            if (args?.userPwd === undefined && !opts.urn) {
+            if ((!args || args.userPwd === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userPwd'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["dssPoolId"] = args?.dssPoolId;
-            resourceInputs["elbId"] = args?.elbId;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["forceBackup"] = args?.forceBackup;
-            resourceInputs["keepLastManualSnapshot"] = args?.keepLastManualSnapshot;
-            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
-            resourceInputs["logicalClusterEnable"] = args?.logicalClusterEnable;
-            resourceInputs["ltsEnable"] = args?.ltsEnable;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["networkId"] = args?.networkId;
-            resourceInputs["nodeType"] = args?.nodeType;
-            resourceInputs["numberOfCn"] = args?.numberOfCn;
-            resourceInputs["numberOfNode"] = args?.numberOfNode;
-            resourceInputs["port"] = args?.port;
-            resourceInputs["publicIp"] = args?.publicIp;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["userName"] = args?.userName;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dssPoolId"] = args ? args.dssPoolId : undefined;
+            resourceInputs["elbId"] = args ? args.elbId : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["forceBackup"] = args ? args.forceBackup : undefined;
+            resourceInputs["keepLastManualSnapshot"] = args ? args.keepLastManualSnapshot : undefined;
+            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
+            resourceInputs["logicalClusterEnable"] = args ? args.logicalClusterEnable : undefined;
+            resourceInputs["ltsEnable"] = args ? args.ltsEnable : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
+            resourceInputs["numberOfCn"] = args ? args.numberOfCn : undefined;
+            resourceInputs["numberOfNode"] = args ? args.numberOfNode : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
             resourceInputs["userPwd"] = args?.userPwd ? pulumi.secret(args.userPwd) : undefined;
-            resourceInputs["version"] = args?.version;
-            resourceInputs["volume"] = args?.volume;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["volume"] = args ? args.volume : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["elbs"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;

@@ -90,67 +90,67 @@ export class Eip extends pulumi.CustomResource {
     /**
      * The IP address of the eip.
      */
-    declare public /*out*/ readonly address: pulumi.Output<string>;
-    declare public /*out*/ readonly associateId: pulumi.Output<string>;
-    declare public /*out*/ readonly associateType: pulumi.Output<string>;
+    public /*out*/ readonly address!: pulumi.Output<string>;
+    public /*out*/ readonly associateId!: pulumi.Output<string>;
+    public /*out*/ readonly associateType!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled. Valid values are "true" and "
      * false". Changing this creates a new resource.
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * The bandwidth object.
      */
-    declare public readonly bandwidth: pulumi.Output<outputs.Vpc.EipBandwidth>;
-    declare public readonly chargingMode: pulumi.Output<string>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly bandwidth!: pulumi.Output<outputs.Vpc.EipBandwidth>;
+    public readonly chargingMode!: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The enterprise project id of the elastic IP. Changing this
      * creates a new eip.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
-    declare public /*out*/ readonly instanceType: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    public /*out*/ readonly instanceType!: pulumi.Output<string>;
     /**
      * The IPv6 address of the EIP.
      */
-    declare public /*out*/ readonly ipv6Address: pulumi.Output<string>;
+    public /*out*/ readonly ipv6Address!: pulumi.Output<string>;
     /**
      * The name of the EIP.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly period: pulumi.Output<number | undefined>;
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * The port ID which the EIP associated with.
      */
-    declare public /*out*/ readonly portId: pulumi.Output<string>;
+    public /*out*/ readonly portId!: pulumi.Output<string>;
     /**
      * The private IP address bound to the EIP.
      */
-    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
+    public /*out*/ readonly privateIp!: pulumi.Output<string>;
     /**
      * The elastic IP address object.
      */
-    declare public readonly publicip: pulumi.Output<outputs.Vpc.EipPublicip>;
+    public readonly publicip!: pulumi.Output<outputs.Vpc.EipPublicip>;
     /**
      * The region in which to create the eip resource. If omitted, the provider-level
      * region will be used. Changing this creates a new eip resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The status of eip.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the elastic IP.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Eip resource with the given unique name, arguments, and options.
@@ -165,47 +165,47 @@ export class Eip extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipState | undefined;
-            resourceInputs["address"] = state?.address;
-            resourceInputs["associateId"] = state?.associateId;
-            resourceInputs["associateType"] = state?.associateType;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["bandwidth"] = state?.bandwidth;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["instanceType"] = state?.instanceType;
-            resourceInputs["ipv6Address"] = state?.ipv6Address;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["portId"] = state?.portId;
-            resourceInputs["privateIp"] = state?.privateIp;
-            resourceInputs["publicip"] = state?.publicip;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["address"] = state ? state.address : undefined;
+            resourceInputs["associateId"] = state ? state.associateId : undefined;
+            resourceInputs["associateType"] = state ? state.associateType : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
+            resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["publicip"] = state ? state.publicip : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as EipArgs | undefined;
-            if (args?.bandwidth === undefined && !opts.urn) {
+            if ((!args || args.bandwidth === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidth'");
             }
-            if (args?.publicip === undefined && !opts.urn) {
+            if ((!args || args.publicip === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicip'");
             }
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["bandwidth"] = args?.bandwidth;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["publicip"] = args?.publicip;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["publicip"] = args ? args.publicip : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["address"] = undefined /*out*/;
             resourceInputs["associateId"] = undefined /*out*/;
             resourceInputs["associateType"] = undefined /*out*/;

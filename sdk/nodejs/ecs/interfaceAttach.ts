@@ -98,45 +98,45 @@ export class InterfaceAttach extends pulumi.CustomResource {
      * ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
      * the supplied network.
      */
-    declare public readonly fixedIp: pulumi.Output<string>;
-    declare public /*out*/ readonly fixedIpv6: pulumi.Output<string>;
+    public readonly fixedIp!: pulumi.Output<string>;
+    public /*out*/ readonly fixedIpv6!: pulumi.Output<string>;
     /**
      * The ID of the Instance to attach the Port or Network to.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
-    declare public readonly ipv6BandwidthId: pulumi.Output<string | undefined>;
-    declare public readonly ipv6Enable: pulumi.Output<boolean>;
+    public readonly instanceId!: pulumi.Output<string>;
+    public readonly ipv6BandwidthId!: pulumi.Output<string | undefined>;
+    public readonly ipv6Enable!: pulumi.Output<boolean>;
     /**
      * The MAC address of the NIC.
      */
-    declare public /*out*/ readonly mac: pulumi.Output<string>;
+    public /*out*/ readonly mac!: pulumi.Output<string>;
     /**
      * The ID of the Network to attach to an Instance. A port will be created
      * automatically.
      * This option and `portId` are mutually exclusive.
      */
-    declare public readonly networkId: pulumi.Output<string>;
+    public readonly networkId!: pulumi.Output<string>;
     /**
      * The ID of the Port to attach to an Instance.
      * This option and `networkId` are mutually exclusive.
      */
-    declare public readonly portId: pulumi.Output<string>;
+    public readonly portId!: pulumi.Output<string>;
     /**
      * The region in which to create the network interface attache resource. If
      * omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the list of security group IDs bound to the specified port.  
      * Defaults to the default security group.
      */
-    declare public readonly securityGroupIds: pulumi.Output<string[]>;
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * Specifies whether the ECS processes only traffic that is destined specifically
      * for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
      * virtual IP address bound to it.
      */
-    declare public readonly sourceDestCheck: pulumi.Output<boolean | undefined>;
+    public readonly sourceDestCheck!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a InterfaceAttach resource with the given unique name, arguments, and options.
@@ -151,31 +151,31 @@ export class InterfaceAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InterfaceAttachState | undefined;
-            resourceInputs["fixedIp"] = state?.fixedIp;
-            resourceInputs["fixedIpv6"] = state?.fixedIpv6;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["ipv6BandwidthId"] = state?.ipv6BandwidthId;
-            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
-            resourceInputs["mac"] = state?.mac;
-            resourceInputs["networkId"] = state?.networkId;
-            resourceInputs["portId"] = state?.portId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
-            resourceInputs["sourceDestCheck"] = state?.sourceDestCheck;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["fixedIpv6"] = state ? state.fixedIpv6 : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["ipv6BandwidthId"] = state ? state.ipv6BandwidthId : undefined;
+            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
+            resourceInputs["mac"] = state ? state.mac : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
+            resourceInputs["portId"] = state ? state.portId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["sourceDestCheck"] = state ? state.sourceDestCheck : undefined;
         } else {
             const args = argsOrState as InterfaceAttachArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["fixedIp"] = args?.fixedIp;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["ipv6BandwidthId"] = args?.ipv6BandwidthId;
-            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
-            resourceInputs["networkId"] = args?.networkId;
-            resourceInputs["portId"] = args?.portId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
-            resourceInputs["sourceDestCheck"] = args?.sourceDestCheck;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["ipv6BandwidthId"] = args ? args.ipv6BandwidthId : undefined;
+            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
+            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["portId"] = args ? args.portId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["sourceDestCheck"] = args ? args.sourceDestCheck : undefined;
             resourceInputs["fixedIpv6"] = undefined /*out*/;
             resourceInputs["mac"] = undefined /*out*/;
         }

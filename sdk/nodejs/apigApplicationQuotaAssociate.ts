@@ -37,19 +37,19 @@ export class ApigApplicationQuotaAssociate extends pulumi.CustomResource {
     /**
      * The configuration of applications bound to the quota.
      */
-    declare public readonly applications: pulumi.Output<outputs.ApigApplicationQuotaAssociateApplication[]>;
+    public readonly applications!: pulumi.Output<outputs.ApigApplicationQuotaAssociateApplication[]>;
     /**
      * The ID of the dedicated instance to which the application quota (policy) belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ID of the application quota (policy).
      */
-    declare public readonly quotaId: pulumi.Output<string>;
+    public readonly quotaId!: pulumi.Output<string>;
     /**
      * The region where the application quota (policy) is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a ApigApplicationQuotaAssociate resource with the given unique name, arguments, and options.
@@ -64,25 +64,25 @@ export class ApigApplicationQuotaAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigApplicationQuotaAssociateState | undefined;
-            resourceInputs["applications"] = state?.applications;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["quotaId"] = state?.quotaId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["applications"] = state ? state.applications : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["quotaId"] = state ? state.quotaId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ApigApplicationQuotaAssociateArgs | undefined;
-            if (args?.applications === undefined && !opts.urn) {
+            if ((!args || args.applications === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applications'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.quotaId === undefined && !opts.urn) {
+            if ((!args || args.quotaId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'quotaId'");
             }
-            resourceInputs["applications"] = args?.applications;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["quotaId"] = args?.quotaId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["applications"] = args ? args.applications : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["quotaId"] = args ? args.quotaId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigApplicationQuotaAssociate.__pulumiType, name, resourceInputs, opts);

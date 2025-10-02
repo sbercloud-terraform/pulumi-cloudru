@@ -91,32 +91,32 @@ export class DmsRocketmqConsumerGroup extends pulumi.CustomResource {
     /**
      * Specifies whether to broadcast of the consumer group.
      */
-    declare public readonly broadcast: pulumi.Output<boolean>;
+    public readonly broadcast!: pulumi.Output<boolean>;
     /**
      * Specifies the list of associated brokers of the consumer group.
      * It's only valid when RocketMQ instance version is **4.8.0**.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly brokers: pulumi.Output<string[]>;
+    public readonly brokers!: pulumi.Output<string[]>;
     /**
      * Specifies whether to consume orderly.
      * It's only valid when RocketMQ instance version is **5.x**.
      */
-    declare public readonly consumeOrderly: pulumi.Output<boolean>;
+    public readonly consumeOrderly!: pulumi.Output<boolean>;
     /**
      * Specifies the description of the consumer group.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the consumer group is enabled or not. Defaults to true.
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the ID of the rocketMQ instance.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the name of the consumer group.  
      * The valid length is limited from `3` to `64`, only letters, digits, vertical lines (|), percent sign (%), hyphens (-)
@@ -124,17 +124,17 @@ export class DmsRocketmqConsumerGroup extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the maximum number of retry times.  
      * The valid value is range from `1` to `16`.
      */
-    declare public readonly retryMaxTimes: pulumi.Output<number>;
+    public readonly retryMaxTimes!: pulumi.Output<number>;
 
     /**
      * Create a DmsRocketmqConsumerGroup resource with the given unique name, arguments, and options.
@@ -149,32 +149,32 @@ export class DmsRocketmqConsumerGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqConsumerGroupState | undefined;
-            resourceInputs["broadcast"] = state?.broadcast;
-            resourceInputs["brokers"] = state?.brokers;
-            resourceInputs["consumeOrderly"] = state?.consumeOrderly;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["retryMaxTimes"] = state?.retryMaxTimes;
+            resourceInputs["broadcast"] = state ? state.broadcast : undefined;
+            resourceInputs["brokers"] = state ? state.brokers : undefined;
+            resourceInputs["consumeOrderly"] = state ? state.consumeOrderly : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["retryMaxTimes"] = state ? state.retryMaxTimes : undefined;
         } else {
             const args = argsOrState as DmsRocketmqConsumerGroupArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.retryMaxTimes === undefined && !opts.urn) {
+            if ((!args || args.retryMaxTimes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'retryMaxTimes'");
             }
-            resourceInputs["broadcast"] = args?.broadcast;
-            resourceInputs["brokers"] = args?.brokers;
-            resourceInputs["consumeOrderly"] = args?.consumeOrderly;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enabled"] = args?.enabled;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["retryMaxTimes"] = args?.retryMaxTimes;
+            resourceInputs["broadcast"] = args ? args.broadcast : undefined;
+            resourceInputs["brokers"] = args ? args.brokers : undefined;
+            resourceInputs["consumeOrderly"] = args ? args.consumeOrderly : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["retryMaxTimes"] = args ? args.retryMaxTimes : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DmsRocketmqConsumerGroup.__pulumiType, name, resourceInputs, opts);

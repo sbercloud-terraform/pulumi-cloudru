@@ -112,65 +112,65 @@ export class CaptureTask extends pulumi.CustomResource {
     /**
      * The creation time of the capture task.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the destination configuration.
      * The destination structure is documented below.
      */
-    declare public readonly destination: pulumi.Output<outputs.Cfw.CaptureTaskDestination>;
+    public readonly destination!: pulumi.Output<outputs.Cfw.CaptureTaskDestination>;
     /**
      * Specifies the capture task duration.
      */
-    declare public readonly duration: pulumi.Output<number>;
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
+    public readonly duration!: pulumi.Output<number>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the firewall instance.
      */
-    declare public readonly fwInstanceId: pulumi.Output<string>;
+    public readonly fwInstanceId!: pulumi.Output<string>;
     /**
      * Specifies the maximum number of packets captured.
      * The Maximum value is `1,000,000`.
      */
-    declare public readonly maxPackets: pulumi.Output<number>;
+    public readonly maxPackets!: pulumi.Output<number>;
     /**
      * Specifies the capture task name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the service configuration.
      * The service structure is documented below.
      */
-    declare public readonly service: pulumi.Output<outputs.Cfw.CaptureTaskService>;
+    public readonly service!: pulumi.Output<outputs.Cfw.CaptureTaskService>;
     /**
      * Specifies the source configuration.
      * The source structure is documented below.
      */
-    declare public readonly source: pulumi.Output<outputs.Cfw.CaptureTaskSource>;
+    public readonly source!: pulumi.Output<outputs.Cfw.CaptureTaskSource>;
     /**
      * The status of the capture task.
      */
-    declare public /*out*/ readonly status: pulumi.Output<number>;
+    public /*out*/ readonly status!: pulumi.Output<number>;
     /**
      * Specifies whether to stop the capture task.
      *
      * <a name="Address"></a>
      * The `destination` or `source` block supports:
      */
-    declare public readonly stopCapture: pulumi.Output<boolean | undefined>;
+    public readonly stopCapture!: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the capture task.
      */
-    declare public /*out*/ readonly taskId: pulumi.Output<string>;
+    public /*out*/ readonly taskId!: pulumi.Output<string>;
     /**
      * The update time of the capture task.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a CaptureTask resource with the given unique name, arguments, and options.
@@ -185,50 +185,50 @@ export class CaptureTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaptureTaskState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["destination"] = state?.destination;
-            resourceInputs["duration"] = state?.duration;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["fwInstanceId"] = state?.fwInstanceId;
-            resourceInputs["maxPackets"] = state?.maxPackets;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["service"] = state?.service;
-            resourceInputs["source"] = state?.source;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["stopCapture"] = state?.stopCapture;
-            resourceInputs["taskId"] = state?.taskId;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["destination"] = state ? state.destination : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["fwInstanceId"] = state ? state.fwInstanceId : undefined;
+            resourceInputs["maxPackets"] = state ? state.maxPackets : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["service"] = state ? state.service : undefined;
+            resourceInputs["source"] = state ? state.source : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["stopCapture"] = state ? state.stopCapture : undefined;
+            resourceInputs["taskId"] = state ? state.taskId : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as CaptureTaskArgs | undefined;
-            if (args?.destination === undefined && !opts.urn) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if (args?.duration === undefined && !opts.urn) {
+            if ((!args || args.duration === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'duration'");
             }
-            if (args?.fwInstanceId === undefined && !opts.urn) {
+            if ((!args || args.fwInstanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fwInstanceId'");
             }
-            if (args?.maxPackets === undefined && !opts.urn) {
+            if ((!args || args.maxPackets === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'maxPackets'");
             }
-            if (args?.service === undefined && !opts.urn) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if (args?.source === undefined && !opts.urn) {
+            if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["destination"] = args?.destination;
-            resourceInputs["duration"] = args?.duration;
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["fwInstanceId"] = args?.fwInstanceId;
-            resourceInputs["maxPackets"] = args?.maxPackets;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["service"] = args?.service;
-            resourceInputs["source"] = args?.source;
-            resourceInputs["stopCapture"] = args?.stopCapture;
+            resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["fwInstanceId"] = args ? args.fwInstanceId : undefined;
+            resourceInputs["maxPackets"] = args ? args.maxPackets : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["service"] = args ? args.service : undefined;
+            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["stopCapture"] = args ? args.stopCapture : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["taskId"] = undefined /*out*/;

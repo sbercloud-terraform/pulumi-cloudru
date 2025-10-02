@@ -64,28 +64,28 @@ export class VipAssociate extends pulumi.CustomResource {
     /**
      * The IP addresses of ports to attach the vip to.
      */
-    declare public /*out*/ readonly ipAddresses: pulumi.Output<string[]>;
+    public /*out*/ readonly ipAddresses!: pulumi.Output<string[]>;
     /**
      * An array of one or more IDs of the ports to attach the vip to.
      */
-    declare public readonly portIds: pulumi.Output<string[]>;
+    public readonly portIds!: pulumi.Output<string[]>;
     /**
      * The region in which to create the vip associate resource. If omitted, the
      * provider-level region will be used.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The ID of vip to attach the ports to.
      */
-    declare public readonly vipId: pulumi.Output<string>;
+    public readonly vipId!: pulumi.Output<string>;
     /**
      * The IP address in the subnet for this vip.
      */
-    declare public /*out*/ readonly vipIpAddress: pulumi.Output<string>;
+    public /*out*/ readonly vipIpAddress!: pulumi.Output<string>;
     /**
      * The ID of the subnet this vip connects to.
      */
-    declare public /*out*/ readonly vipSubnetId: pulumi.Output<string>;
+    public /*out*/ readonly vipSubnetId!: pulumi.Output<string>;
 
     /**
      * Create a VipAssociate resource with the given unique name, arguments, and options.
@@ -100,23 +100,23 @@ export class VipAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VipAssociateState | undefined;
-            resourceInputs["ipAddresses"] = state?.ipAddresses;
-            resourceInputs["portIds"] = state?.portIds;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["vipId"] = state?.vipId;
-            resourceInputs["vipIpAddress"] = state?.vipIpAddress;
-            resourceInputs["vipSubnetId"] = state?.vipSubnetId;
+            resourceInputs["ipAddresses"] = state ? state.ipAddresses : undefined;
+            resourceInputs["portIds"] = state ? state.portIds : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["vipId"] = state ? state.vipId : undefined;
+            resourceInputs["vipIpAddress"] = state ? state.vipIpAddress : undefined;
+            resourceInputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
         } else {
             const args = argsOrState as VipAssociateArgs | undefined;
-            if (args?.portIds === undefined && !opts.urn) {
+            if ((!args || args.portIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'portIds'");
             }
-            if (args?.vipId === undefined && !opts.urn) {
+            if ((!args || args.vipId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vipId'");
             }
-            resourceInputs["portIds"] = args?.portIds;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["vipId"] = args?.vipId;
+            resourceInputs["portIds"] = args ? args.portIds : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["vipId"] = args ? args.vipId : undefined;
             resourceInputs["ipAddresses"] = undefined /*out*/;
             resourceInputs["vipIpAddress"] = undefined /*out*/;
             resourceInputs["vipSubnetId"] = undefined /*out*/;

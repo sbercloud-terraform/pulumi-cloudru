@@ -97,49 +97,49 @@ export class DdsParameterTemplateCopy extends pulumi.CustomResource {
      * Specifies the parameter template ID.
      * Changing this creates a new resource.
      */
-    declare public readonly configurationId: pulumi.Output<string>;
+    public readonly configurationId!: pulumi.Output<string>;
     /**
      * The create time of the parameter template.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of replicated parameter template.
      * The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
      * the carriage return character or the following special characters: >!<"&'=
      * Changing this creates a new resource.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of replicated parameter template.
      * The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
      * underscores (_), and periods (.).
      * Changing this creates a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Indicates the database version.
      */
-    declare public /*out*/ readonly nodeVersion: pulumi.Output<string>;
+    public /*out*/ readonly nodeVersion!: pulumi.Output<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
      * You can customize parameter values based on the parameters in the default parameter template.
      */
-    declare public readonly parameterValues: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly parameterValues!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the parameters defined by users based on the default parameter templates.
      * The Parameter structure is documented below.
      */
-    declare public /*out*/ readonly parameters: pulumi.Output<outputs.DdsParameterTemplateCopyParameter[]>;
+    public /*out*/ readonly parameters!: pulumi.Output<outputs.DdsParameterTemplateCopyParameter[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The update time of the parameter template.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a DdsParameterTemplateCopy resource with the given unique name, arguments, and options.
@@ -154,25 +154,25 @@ export class DdsParameterTemplateCopy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdsParameterTemplateCopyState | undefined;
-            resourceInputs["configurationId"] = state?.configurationId;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["nodeVersion"] = state?.nodeVersion;
-            resourceInputs["parameterValues"] = state?.parameterValues;
-            resourceInputs["parameters"] = state?.parameters;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["configurationId"] = state ? state.configurationId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
+            resourceInputs["parameterValues"] = state ? state.parameterValues : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as DdsParameterTemplateCopyArgs | undefined;
-            if (args?.configurationId === undefined && !opts.urn) {
+            if ((!args || args.configurationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configurationId'");
             }
-            resourceInputs["configurationId"] = args?.configurationId;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["parameterValues"] = args?.parameterValues;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["configurationId"] = args ? args.configurationId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parameterValues"] = args ? args.parameterValues : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["nodeVersion"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;

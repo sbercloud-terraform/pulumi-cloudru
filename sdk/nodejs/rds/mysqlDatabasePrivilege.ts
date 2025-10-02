@@ -77,20 +77,20 @@ export class MysqlDatabasePrivilege extends pulumi.CustomResource {
     /**
      * Specifies the database name. Changing this creates a new resource.
      */
-    declare public readonly dbName: pulumi.Output<string>;
+    public readonly dbName!: pulumi.Output<string>;
     /**
      * Specifies the RDS instance ID. Changing this will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The region in which to create the RDS database privilege resource. If omitted,
      * the provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the account that associated with the database. Structure is documented below.
      */
-    declare public readonly users: pulumi.Output<outputs.Rds.MysqlDatabasePrivilegeUser[]>;
+    public readonly users!: pulumi.Output<outputs.Rds.MysqlDatabasePrivilegeUser[]>;
 
     /**
      * Create a MysqlDatabasePrivilege resource with the given unique name, arguments, and options.
@@ -105,25 +105,25 @@ export class MysqlDatabasePrivilege extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MysqlDatabasePrivilegeState | undefined;
-            resourceInputs["dbName"] = state?.dbName;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["users"] = state?.users;
+            resourceInputs["dbName"] = state ? state.dbName : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as MysqlDatabasePrivilegeArgs | undefined;
-            if (args?.dbName === undefined && !opts.urn) {
+            if ((!args || args.dbName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.users === undefined && !opts.urn) {
+            if ((!args || args.users === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'users'");
             }
-            resourceInputs["dbName"] = args?.dbName;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["users"] = args?.users;
+            resourceInputs["dbName"] = args ? args.dbName : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["users"] = args ? args.users : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MysqlDatabasePrivilege.__pulumiType, name, resourceInputs, opts);

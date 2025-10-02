@@ -78,64 +78,64 @@ export class FlowLog extends pulumi.CustomResource {
     /**
      * The creation time of the flow log.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the flow log.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the flow log function. The default value is **true**.
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the ID of the ER instance to which the flow log belongs.
      * Changing this creates a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the LTS log group ID.
      * Changing this creates a new resource.
      */
-    declare public readonly logGroupId: pulumi.Output<string>;
+    public readonly logGroupId!: pulumi.Output<string>;
     /**
      * Specifies the storage type of flow log. The valid value is **LTS**.  
      * Changing this creates a new resource.
      */
-    declare public readonly logStoreType: pulumi.Output<string>;
+    public readonly logStoreType!: pulumi.Output<string>;
     /**
      * Specifies the LTS log stream ID.
      * Changing this creates a new resource.
      */
-    declare public readonly logStreamId: pulumi.Output<string>;
+    public readonly logStreamId!: pulumi.Output<string>;
     /**
      * Specifies the name of the flow log.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the resource ID to which the logs to be collected.
      * Changing this creates a new resource.
      */
-    declare public readonly resourceId: pulumi.Output<string>;
+    public readonly resourceId!: pulumi.Output<string>;
     /**
      * Specifies the resource type to which the logs to be collected.
      * The valid value is **attachment**.
      * Changing this creates a new resource.
      */
-    declare public readonly resourceType: pulumi.Output<string>;
+    public readonly resourceType!: pulumi.Output<string>;
     /**
      * The current status of the flow log.
      */
-    declare public /*out*/ readonly state: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
     /**
      * The latest update time of the flow log.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a FlowLog resource with the given unique name, arguments, and options.
@@ -150,49 +150,49 @@ export class FlowLog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FlowLogState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["logGroupId"] = state?.logGroupId;
-            resourceInputs["logStoreType"] = state?.logStoreType;
-            resourceInputs["logStreamId"] = state?.logStreamId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["resourceId"] = state?.resourceId;
-            resourceInputs["resourceType"] = state?.resourceType;
-            resourceInputs["state"] = state?.state;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["logGroupId"] = state ? state.logGroupId : undefined;
+            resourceInputs["logStoreType"] = state ? state.logStoreType : undefined;
+            resourceInputs["logStreamId"] = state ? state.logStreamId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resourceId"] = state ? state.resourceId : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.logGroupId === undefined && !opts.urn) {
+            if ((!args || args.logGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logGroupId'");
             }
-            if (args?.logStoreType === undefined && !opts.urn) {
+            if ((!args || args.logStoreType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logStoreType'");
             }
-            if (args?.logStreamId === undefined && !opts.urn) {
+            if ((!args || args.logStreamId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'logStreamId'");
             }
-            if (args?.resourceId === undefined && !opts.urn) {
+            if ((!args || args.resourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
-            if (args?.resourceType === undefined && !opts.urn) {
+            if ((!args || args.resourceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceType'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enabled"] = args?.enabled;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["logGroupId"] = args?.logGroupId;
-            resourceInputs["logStoreType"] = args?.logStoreType;
-            resourceInputs["logStreamId"] = args?.logStreamId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["resourceId"] = args?.resourceId;
-            resourceInputs["resourceType"] = args?.resourceType;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["logGroupId"] = args ? args.logGroupId : undefined;
+            resourceInputs["logStoreType"] = args ? args.logStoreType : undefined;
+            resourceInputs["logStreamId"] = args ? args.logStreamId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["resourceId"] = args ? args.resourceId : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

@@ -79,21 +79,21 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
      * to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
      * Changing this parameter will create a new resource.
      */
-    declare public readonly accessKey: pulumi.Output<string>;
+    public readonly accessKey!: pulumi.Output<string>;
     /**
      * Specifies whether the user is an administrator.
      */
-    declare public readonly admin: pulumi.Output<boolean>;
+    public readonly admin!: pulumi.Output<boolean>;
     /**
      * Specifies the default consumer group permissions.
      * Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
      */
-    declare public readonly defaultGroupPerm: pulumi.Output<string>;
+    public readonly defaultGroupPerm!: pulumi.Output<string>;
     /**
      * Specifies the default topic permissions.
      * Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
      */
-    declare public readonly defaultTopicPerm: pulumi.Output<string>;
+    public readonly defaultTopicPerm!: pulumi.Output<string>;
     /**
      * Specifies the special consumer group permissions.
      * The permission structure is documented below.
@@ -101,17 +101,17 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
      * <a name="DmsRocketMQUser_PermsRef"></a>
      * The `topicPerms` and `groupPerms` block supports:
      */
-    declare public readonly groupPerms: pulumi.Output<outputs.DmsRocketmqUserGroupPerm[]>;
+    public readonly groupPerms!: pulumi.Output<outputs.DmsRocketmqUserGroupPerm[]>;
     /**
      * Specifies the ID of the rocketMQ instance.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the password of the user. Use 8 to 32 characters. Contain at
      * least three of the following character types:
@@ -123,16 +123,16 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly secretKey: pulumi.Output<string>;
+    public readonly secretKey!: pulumi.Output<string>;
     /**
      * Specifies the special topic permissions.
      * The permission structure is documented below.
      */
-    declare public readonly topicPerms: pulumi.Output<outputs.DmsRocketmqUserTopicPerm[]>;
+    public readonly topicPerms!: pulumi.Output<outputs.DmsRocketmqUserTopicPerm[]>;
     /**
      * Specifies the IP address whitelist.
      */
-    declare public readonly whiteRemoteAddress: pulumi.Output<string>;
+    public readonly whiteRemoteAddress!: pulumi.Output<string>;
 
     /**
      * Create a DmsRocketmqUser resource with the given unique name, arguments, and options.
@@ -147,37 +147,37 @@ export class DmsRocketmqUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqUserState | undefined;
-            resourceInputs["accessKey"] = state?.accessKey;
-            resourceInputs["admin"] = state?.admin;
-            resourceInputs["defaultGroupPerm"] = state?.defaultGroupPerm;
-            resourceInputs["defaultTopicPerm"] = state?.defaultTopicPerm;
-            resourceInputs["groupPerms"] = state?.groupPerms;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["secretKey"] = state?.secretKey;
-            resourceInputs["topicPerms"] = state?.topicPerms;
-            resourceInputs["whiteRemoteAddress"] = state?.whiteRemoteAddress;
+            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
+            resourceInputs["admin"] = state ? state.admin : undefined;
+            resourceInputs["defaultGroupPerm"] = state ? state.defaultGroupPerm : undefined;
+            resourceInputs["defaultTopicPerm"] = state ? state.defaultTopicPerm : undefined;
+            resourceInputs["groupPerms"] = state ? state.groupPerms : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secretKey"] = state ? state.secretKey : undefined;
+            resourceInputs["topicPerms"] = state ? state.topicPerms : undefined;
+            resourceInputs["whiteRemoteAddress"] = state ? state.whiteRemoteAddress : undefined;
         } else {
             const args = argsOrState as DmsRocketmqUserArgs | undefined;
-            if (args?.accessKey === undefined && !opts.urn) {
+            if ((!args || args.accessKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessKey'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.secretKey === undefined && !opts.urn) {
+            if ((!args || args.secretKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretKey'");
             }
-            resourceInputs["accessKey"] = args?.accessKey;
-            resourceInputs["admin"] = args?.admin;
-            resourceInputs["defaultGroupPerm"] = args?.defaultGroupPerm;
-            resourceInputs["defaultTopicPerm"] = args?.defaultTopicPerm;
-            resourceInputs["groupPerms"] = args?.groupPerms;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["secretKey"] = args?.secretKey;
-            resourceInputs["topicPerms"] = args?.topicPerms;
-            resourceInputs["whiteRemoteAddress"] = args?.whiteRemoteAddress;
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["admin"] = args ? args.admin : undefined;
+            resourceInputs["defaultGroupPerm"] = args ? args.defaultGroupPerm : undefined;
+            resourceInputs["defaultTopicPerm"] = args ? args.defaultTopicPerm : undefined;
+            resourceInputs["groupPerms"] = args ? args.groupPerms : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["topicPerms"] = args ? args.topicPerms : undefined;
+            resourceInputs["whiteRemoteAddress"] = args ? args.whiteRemoteAddress : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DmsRocketmqUser.__pulumiType, name, resourceInputs, opts);

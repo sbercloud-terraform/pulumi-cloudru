@@ -270,178 +270,178 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The first detected Fixed IPv4 address or the Floating IP.
      */
-    declare public /*out*/ readonly accessIpV4: pulumi.Output<string>;
+    public /*out*/ readonly accessIpV4!: pulumi.Output<string>;
     /**
      * The first detected Fixed IPv6 address.
      */
-    declare public /*out*/ readonly accessIpV6: pulumi.Output<string>;
+    public /*out*/ readonly accessIpV6!: pulumi.Output<string>;
     /**
      * Specifies the administrative password to assign to the instance.
      */
-    declare public readonly adminPass: pulumi.Output<string | undefined>;
+    public readonly adminPass!: pulumi.Output<string | undefined>;
     /**
      * Specifies the IAM agency name which is created on IAM to provide
      * temporary credentials for ECS to access cloud services.
      */
-    declare public readonly agencyName: pulumi.Output<string>;
+    public readonly agencyName!: pulumi.Output<string>;
     /**
      * Specifies the agent list in comma-separated string.
      * Available agents are:
      */
-    declare public readonly agentList: pulumi.Output<string>;
+    public readonly agentList!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
-    declare public readonly autoTerminateTime: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    public readonly autoTerminateTime!: pulumi.Output<string | undefined>;
     /**
      * Specifies the availability zone in which to create the instance.
      * Changing this creates a new instance.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
      * The object structure is documented below. Changing this creates a new instance.
      */
-    declare public readonly bandwidth: pulumi.Output<outputs.Ecs.InstanceBandwidth | undefined>;
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly bandwidth!: pulumi.Output<outputs.Ecs.InstanceBandwidth | undefined>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * The creation time, in UTC format.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more data disks to attach to the instance.
      * The dataDisks object structure is documented below. Changing this creates a new instance.
      */
-    declare public readonly dataDisks: pulumi.Output<outputs.Ecs.InstanceDataDisk[] | undefined>;
+    public readonly dataDisks!: pulumi.Output<outputs.Ecs.InstanceDataDisk[] | undefined>;
     /**
      * Specifies whether to delete the data disks when the instance is terminated.
      * Defaults to *false*. This parameter is valid if `chargingMode` is set to *postPaid*, and all data disks will be deleted
      * in *prePaid* charging mode.
      */
-    declare public readonly deleteDisksOnTermination: pulumi.Output<boolean | undefined>;
+    public readonly deleteDisksOnTermination!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether the EIP is released when the instance is terminated.
      * Defaults to *true*.
      */
-    declare public readonly deleteEipOnTermination: pulumi.Output<boolean | undefined>;
+    public readonly deleteEipOnTermination!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the description of the instance. The description consists of 0 to 85
      * characters, and can't contain '<' or '>'.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the ID of an *existing* EIP assigned to the instance.
      * This parameter and `eipType`, `bandwidth` are alternative. Changing this creates a new instance.
      */
-    declare public readonly eipId: pulumi.Output<string | undefined>;
+    public readonly eipId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the type of an EIP that will be automatically assigned to the instance.
      * Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
      */
-    declare public readonly eipType: pulumi.Output<string | undefined>;
+    public readonly eipType!: pulumi.Output<string | undefined>;
     /**
      * Specifies a unique id in UUID format of enterprise project.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public /*out*/ readonly expiredTime: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    public /*out*/ readonly expiredTime!: pulumi.Output<string>;
     /**
      * Specifies the flavor ID of the instance to be created.
      */
-    declare public readonly flavorId: pulumi.Output<string>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * The flavor name of the instance.
      */
-    declare public readonly flavorName: pulumi.Output<string>;
-    declare public readonly hostname: pulumi.Output<string>;
+    public readonly flavorName!: pulumi.Output<string>;
+    public readonly hostname!: pulumi.Output<string>;
     /**
      * Required if `imageName` is empty. Specifies the image ID of the desired
      * image for the instance. Changing this creates a new instance.
      */
-    declare public readonly imageId: pulumi.Output<string>;
+    public readonly imageId!: pulumi.Output<string>;
     /**
      * Required if `imageId` is empty. Specifies the name of the desired image
      * for the instance. Changing this creates a new instance.
      */
-    declare public readonly imageName: pulumi.Output<string>;
+    public readonly imageName!: pulumi.Output<string>;
     /**
      * Specifies the SSH keypair name used for logging in to the instance.
      */
-    declare public readonly keyPair: pulumi.Output<string | undefined>;
-    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly keyPair!: pulumi.Output<string | undefined>;
+    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies a unique name for the instance. The name consists of 1 to 64 characters,
      * including letters, digits, underscores (_), hyphens (-), and periods (.).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more networks to attach to the instance. The
      * network object structure is documented below. Changing this creates a new instance.
      */
-    declare public readonly networks: pulumi.Output<outputs.Ecs.InstanceNetwork[]>;
-    declare public readonly period: pulumi.Output<number | undefined>;
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly networks!: pulumi.Output<outputs.Ecs.InstanceNetwork[]>;
+    public readonly period!: pulumi.Output<number | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Specifies the power action to be done for the instance.
      * The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
      *
      * > **NOTE:** The `powerAction` is a one-time action.
      */
-    declare public readonly powerAction: pulumi.Output<string>;
+    public readonly powerAction!: pulumi.Output<string>;
     /**
      * Specifies the the private key of the keypair in use. This parameter is mandatory
      * when replacing or unbinding a keypair and the instance is in **Running** state.
      */
-    declare public readonly privateKey: pulumi.Output<string | undefined>;
+    public readonly privateKey!: pulumi.Output<string | undefined>;
     /**
      * The EIP address that is associted to the instance.
      */
-    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
+    public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the instance.
      * If omitted, the provider-level region will be used. Changing this creates a new instance.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the scheduler with hints on how the instance should be launched. The
      * available hints are described below.
      */
-    declare public readonly schedulerHints: pulumi.Output<outputs.Ecs.InstanceSchedulerHint[]>;
+    public readonly schedulerHints!: pulumi.Output<outputs.Ecs.InstanceSchedulerHint[]>;
     /**
      * Specifies an array of one or more security group IDs to associate with the
      * instance.
      */
-    declare public readonly securityGroupIds: pulumi.Output<string[]>;
+    public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
      * An array of one or more security groups to associate with the instance.
      */
-    declare public readonly securityGroups: pulumi.Output<string[]>;
-    declare public readonly spotDuration: pulumi.Output<number | undefined>;
-    declare public readonly spotDurationCount: pulumi.Output<number>;
-    declare public readonly spotMaximumPrice: pulumi.Output<string | undefined>;
+    public readonly securityGroups!: pulumi.Output<string[]>;
+    public readonly spotDuration!: pulumi.Output<number | undefined>;
+    public readonly spotDurationCount!: pulumi.Output<number>;
+    public readonly spotMaximumPrice!: pulumi.Output<string | undefined>;
     /**
      * The status of the instance.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies whether to try stop instance gracefully before destroying it, thus giving
      * chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
      */
-    declare public readonly stopBeforeDestroy: pulumi.Output<boolean | undefined>;
-    declare public readonly systemDiskDssPoolId: pulumi.Output<string | undefined>;
+    public readonly stopBeforeDestroy!: pulumi.Output<boolean | undefined>;
+    public readonly systemDiskDssPoolId!: pulumi.Output<string | undefined>;
     /**
      * The system disk voume ID.
      */
-    declare public /*out*/ readonly systemDiskId: pulumi.Output<string>;
-    declare public readonly systemDiskIops: pulumi.Output<number>;
-    declare public readonly systemDiskKmsKeyId: pulumi.Output<string>;
+    public /*out*/ readonly systemDiskId!: pulumi.Output<string>;
+    public readonly systemDiskIops!: pulumi.Output<number>;
+    public readonly systemDiskKmsKeyId!: pulumi.Output<string>;
     /**
      * Specifies the system disk size in GB, The value range is 1 to 1024.
      * Shrinking the disk is not supported.
      */
-    declare public readonly systemDiskSize: pulumi.Output<number>;
-    declare public readonly systemDiskThroughput: pulumi.Output<number>;
+    public readonly systemDiskSize!: pulumi.Output<number>;
+    public readonly systemDiskThroughput!: pulumi.Output<number>;
     /**
      * Specifies the system disk type of the instance. Defaults to `GPSSD`.
      * Changing this creates a new instance.
@@ -451,15 +451,15 @@ export class Instance extends pulumi.CustomResource {
      * + `SSD`: ultra-high I/O disk type.
      * + `ESSD`: Extreme SSD type.
      */
-    declare public readonly systemDiskType: pulumi.Output<string>;
+    public readonly systemDiskType!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the instance.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The last update time, in UTC format.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * Specifies the user data to be injected during the instance creation. Text
      * and text files can be injected. Changing this creates a new instance.
@@ -467,17 +467,17 @@ export class Instance extends pulumi.CustomResource {
      * > **NOTE:** If the `userData` field is specified for a Linux ECS that is created using an image with Cloud-Init
      * installed, the `adminPass` field becomes invalid.
      */
-    declare public readonly userData: pulumi.Output<string | undefined>;
+    public readonly userData!: pulumi.Output<string | undefined>;
     /**
      * Specifies a user ID, required when using keyPair in prePaid charging mode.
      * Changing this creates a new instance.
      */
-    declare public readonly userId: pulumi.Output<string | undefined>;
+    public readonly userId!: pulumi.Output<string | undefined>;
     /**
      * An array of one or more disks to attach to the instance.
      * The volume attached object structure is documented below.
      */
-    declare public /*out*/ readonly volumeAttacheds: pulumi.Output<outputs.Ecs.InstanceVolumeAttached[]>;
+    public /*out*/ readonly volumeAttacheds!: pulumi.Output<outputs.Ecs.InstanceVolumeAttached[]>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -492,112 +492,112 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accessIpV4"] = state?.accessIpV4;
-            resourceInputs["accessIpV6"] = state?.accessIpV6;
-            resourceInputs["adminPass"] = state?.adminPass;
-            resourceInputs["agencyName"] = state?.agencyName;
-            resourceInputs["agentList"] = state?.agentList;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["autoTerminateTime"] = state?.autoTerminateTime;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["bandwidth"] = state?.bandwidth;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["dataDisks"] = state?.dataDisks;
-            resourceInputs["deleteDisksOnTermination"] = state?.deleteDisksOnTermination;
-            resourceInputs["deleteEipOnTermination"] = state?.deleteEipOnTermination;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["eipId"] = state?.eipId;
-            resourceInputs["eipType"] = state?.eipType;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["expiredTime"] = state?.expiredTime;
-            resourceInputs["flavorId"] = state?.flavorId;
-            resourceInputs["flavorName"] = state?.flavorName;
-            resourceInputs["hostname"] = state?.hostname;
-            resourceInputs["imageId"] = state?.imageId;
-            resourceInputs["imageName"] = state?.imageName;
-            resourceInputs["keyPair"] = state?.keyPair;
-            resourceInputs["metadata"] = state?.metadata;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["networks"] = state?.networks;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["powerAction"] = state?.powerAction;
-            resourceInputs["privateKey"] = state?.privateKey;
-            resourceInputs["publicIp"] = state?.publicIp;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["schedulerHints"] = state?.schedulerHints;
-            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
-            resourceInputs["securityGroups"] = state?.securityGroups;
-            resourceInputs["spotDuration"] = state?.spotDuration;
-            resourceInputs["spotDurationCount"] = state?.spotDurationCount;
-            resourceInputs["spotMaximumPrice"] = state?.spotMaximumPrice;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["stopBeforeDestroy"] = state?.stopBeforeDestroy;
-            resourceInputs["systemDiskDssPoolId"] = state?.systemDiskDssPoolId;
-            resourceInputs["systemDiskId"] = state?.systemDiskId;
-            resourceInputs["systemDiskIops"] = state?.systemDiskIops;
-            resourceInputs["systemDiskKmsKeyId"] = state?.systemDiskKmsKeyId;
-            resourceInputs["systemDiskSize"] = state?.systemDiskSize;
-            resourceInputs["systemDiskThroughput"] = state?.systemDiskThroughput;
-            resourceInputs["systemDiskType"] = state?.systemDiskType;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["userData"] = state?.userData;
-            resourceInputs["userId"] = state?.userId;
-            resourceInputs["volumeAttacheds"] = state?.volumeAttacheds;
+            resourceInputs["accessIpV4"] = state ? state.accessIpV4 : undefined;
+            resourceInputs["accessIpV6"] = state ? state.accessIpV6 : undefined;
+            resourceInputs["adminPass"] = state ? state.adminPass : undefined;
+            resourceInputs["agencyName"] = state ? state.agencyName : undefined;
+            resourceInputs["agentList"] = state ? state.agentList : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["autoTerminateTime"] = state ? state.autoTerminateTime : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
+            resourceInputs["deleteDisksOnTermination"] = state ? state.deleteDisksOnTermination : undefined;
+            resourceInputs["deleteEipOnTermination"] = state ? state.deleteEipOnTermination : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["eipId"] = state ? state.eipId : undefined;
+            resourceInputs["eipType"] = state ? state.eipType : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["flavorName"] = state ? state.flavorName : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["imageId"] = state ? state.imageId : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["keyPair"] = state ? state.keyPair : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["powerAction"] = state ? state.powerAction : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["schedulerHints"] = state ? state.schedulerHints : undefined;
+            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
+            resourceInputs["spotDuration"] = state ? state.spotDuration : undefined;
+            resourceInputs["spotDurationCount"] = state ? state.spotDurationCount : undefined;
+            resourceInputs["spotMaximumPrice"] = state ? state.spotMaximumPrice : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["stopBeforeDestroy"] = state ? state.stopBeforeDestroy : undefined;
+            resourceInputs["systemDiskDssPoolId"] = state ? state.systemDiskDssPoolId : undefined;
+            resourceInputs["systemDiskId"] = state ? state.systemDiskId : undefined;
+            resourceInputs["systemDiskIops"] = state ? state.systemDiskIops : undefined;
+            resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
+            resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
+            resourceInputs["systemDiskThroughput"] = state ? state.systemDiskThroughput : undefined;
+            resourceInputs["systemDiskType"] = state ? state.systemDiskType : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["volumeAttacheds"] = state ? state.volumeAttacheds : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (args?.networks === undefined && !opts.urn) {
+            if ((!args || args.networks === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networks'");
             }
             resourceInputs["adminPass"] = args?.adminPass ? pulumi.secret(args.adminPass) : undefined;
-            resourceInputs["agencyName"] = args?.agencyName;
-            resourceInputs["agentList"] = args?.agentList;
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["autoTerminateTime"] = args?.autoTerminateTime;
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["bandwidth"] = args?.bandwidth;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["dataDisks"] = args?.dataDisks;
-            resourceInputs["deleteDisksOnTermination"] = args?.deleteDisksOnTermination;
-            resourceInputs["deleteEipOnTermination"] = args?.deleteEipOnTermination;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["eipId"] = args?.eipId;
-            resourceInputs["eipType"] = args?.eipType;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["flavorId"] = args?.flavorId;
-            resourceInputs["flavorName"] = args?.flavorName;
-            resourceInputs["hostname"] = args?.hostname;
-            resourceInputs["imageId"] = args?.imageId;
-            resourceInputs["imageName"] = args?.imageName;
-            resourceInputs["keyPair"] = args?.keyPair;
-            resourceInputs["metadata"] = args?.metadata;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["networks"] = args?.networks;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["powerAction"] = args?.powerAction;
+            resourceInputs["agencyName"] = args ? args.agencyName : undefined;
+            resourceInputs["agentList"] = args ? args.agentList : undefined;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["autoTerminateTime"] = args ? args.autoTerminateTime : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
+            resourceInputs["deleteDisksOnTermination"] = args ? args.deleteDisksOnTermination : undefined;
+            resourceInputs["deleteEipOnTermination"] = args ? args.deleteEipOnTermination : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["eipId"] = args ? args.eipId : undefined;
+            resourceInputs["eipType"] = args ? args.eipType : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["flavorName"] = args ? args.flavorName : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["imageId"] = args ? args.imageId : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["keyPair"] = args ? args.keyPair : undefined;
+            resourceInputs["metadata"] = args ? args.metadata : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["powerAction"] = args ? args.powerAction : undefined;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["schedulerHints"] = args?.schedulerHints;
-            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
-            resourceInputs["securityGroups"] = args?.securityGroups;
-            resourceInputs["spotDuration"] = args?.spotDuration;
-            resourceInputs["spotDurationCount"] = args?.spotDurationCount;
-            resourceInputs["spotMaximumPrice"] = args?.spotMaximumPrice;
-            resourceInputs["stopBeforeDestroy"] = args?.stopBeforeDestroy;
-            resourceInputs["systemDiskDssPoolId"] = args?.systemDiskDssPoolId;
-            resourceInputs["systemDiskIops"] = args?.systemDiskIops;
-            resourceInputs["systemDiskKmsKeyId"] = args?.systemDiskKmsKeyId;
-            resourceInputs["systemDiskSize"] = args?.systemDiskSize;
-            resourceInputs["systemDiskThroughput"] = args?.systemDiskThroughput;
-            resourceInputs["systemDiskType"] = args?.systemDiskType;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["userData"] = args?.userData;
-            resourceInputs["userId"] = args?.userId;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["schedulerHints"] = args ? args.schedulerHints : undefined;
+            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
+            resourceInputs["spotDuration"] = args ? args.spotDuration : undefined;
+            resourceInputs["spotDurationCount"] = args ? args.spotDurationCount : undefined;
+            resourceInputs["spotMaximumPrice"] = args ? args.spotMaximumPrice : undefined;
+            resourceInputs["stopBeforeDestroy"] = args ? args.stopBeforeDestroy : undefined;
+            resourceInputs["systemDiskDssPoolId"] = args ? args.systemDiskDssPoolId : undefined;
+            resourceInputs["systemDiskIops"] = args ? args.systemDiskIops : undefined;
+            resourceInputs["systemDiskKmsKeyId"] = args ? args.systemDiskKmsKeyId : undefined;
+            resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
+            resourceInputs["systemDiskThroughput"] = args ? args.systemDiskThroughput : undefined;
+            resourceInputs["systemDiskType"] = args ? args.systemDiskType : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["accessIpV4"] = undefined /*out*/;
             resourceInputs["accessIpV6"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

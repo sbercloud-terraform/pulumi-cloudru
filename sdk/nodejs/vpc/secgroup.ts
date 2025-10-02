@@ -46,43 +46,43 @@ export class Secgroup extends pulumi.CustomResource {
     /**
      * The creation time, in UTC format.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Whether or not to delete the default
      * egress security rules. This is `false` by default. See the below note
      * for more information.
      */
-    declare public readonly deleteDefaultRules: pulumi.Output<boolean | undefined>;
+    public readonly deleteDefaultRules!: pulumi.Output<boolean | undefined>;
     /**
      * Description of the security group.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project id of the security group.
      * Changing this creates a new security group.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * A unique name for the security group.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to obtain the V2 networking client.
      * A networking client is needed to create a port. If omitted, the
      * `region` argument of the provider is used. Changing this creates a new
      * security group.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The array of security group rules associating with the security group.
      * The rule object is documented below.
      */
-    declare public /*out*/ readonly rules: pulumi.Output<outputs.Vpc.SecgroupRule[]>;
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public /*out*/ readonly rules!: pulumi.Output<outputs.Vpc.SecgroupRule[]>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The last update time, in UTC format.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Secgroup resource with the given unique name, arguments, and options.
@@ -97,23 +97,23 @@ export class Secgroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecgroupState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["deleteDefaultRules"] = state?.deleteDefaultRules;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["rules"] = state?.rules;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deleteDefaultRules"] = state ? state.deleteDefaultRules : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as SecgroupArgs | undefined;
-            resourceInputs["deleteDefaultRules"] = args?.deleteDefaultRules;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["deleteDefaultRules"] = args ? args.deleteDefaultRules : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["rules"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

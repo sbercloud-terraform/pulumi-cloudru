@@ -105,17 +105,17 @@ export class RouteTable extends pulumi.CustomResource {
      * Specifies the supplementary information about the route.
      * The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the route table name. The value is a string of no more than
      * 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the vpc route table.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the route object list. The route object
      * is documented below.
@@ -123,19 +123,19 @@ export class RouteTable extends pulumi.CustomResource {
      * <a name="routeObject"></a>
      * The `route` block supports:
      */
-    declare public readonly routes: pulumi.Output<outputs.Vpc.RouteTableRoute[]>;
+    public readonly routes!: pulumi.Output<outputs.Vpc.RouteTableRoute[]>;
     /**
      * Specifies an array of one or more subnets associating with the route table.
      *
      * > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
      * The default route table determines the inbound traffic.
      */
-    declare public readonly subnets: pulumi.Output<string[] | undefined>;
+    public readonly subnets!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the VPC ID for which a route table is to be added.
      * Changing this creates a new resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a RouteTable resource with the given unique name, arguments, and options.
@@ -150,23 +150,23 @@ export class RouteTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["routes"] = state?.routes;
-            resourceInputs["subnets"] = state?.subnets;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["routes"] = state ? state.routes : undefined;
+            resourceInputs["subnets"] = state ? state.subnets : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as RouteTableArgs | undefined;
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["routes"] = args?.routes;
-            resourceInputs["subnets"] = args?.subnets;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["routes"] = args ? args.routes : undefined;
+            resourceInputs["subnets"] = args ? args.subnets : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RouteTable.__pulumiType, name, resourceInputs, opts);

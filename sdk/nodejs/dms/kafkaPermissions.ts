@@ -78,7 +78,7 @@ export class KafkaPermissions extends pulumi.CustomResource {
      * Specifies the ID of the DMS kafka instance to which the permissions belongs.
      * Changing this creates a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the permissions policies. The object structure is
      * documented below.
@@ -86,17 +86,17 @@ export class KafkaPermissions extends pulumi.CustomResource {
      * <a name="dmsKafkaPolicies"></a>
      * The `policies` block supports:
      */
-    declare public readonly policies: pulumi.Output<outputs.Dms.KafkaPermissionsPolicy[]>;
+    public readonly policies!: pulumi.Output<outputs.Dms.KafkaPermissionsPolicy[]>;
     /**
      * The region in which to create the DMS kafka permissions resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the name of the topic to which the permissions belongs.
      * Changing this creates a new resource.
      */
-    declare public readonly topicName: pulumi.Output<string>;
+    public readonly topicName!: pulumi.Output<string>;
 
     /**
      * Create a KafkaPermissions resource with the given unique name, arguments, and options.
@@ -111,25 +111,25 @@ export class KafkaPermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaPermissionsState | undefined;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["policies"] = state?.policies;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["topicName"] = state?.topicName;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["topicName"] = state ? state.topicName : undefined;
         } else {
             const args = argsOrState as KafkaPermissionsArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.policies === undefined && !opts.urn) {
+            if ((!args || args.policies === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
-            if (args?.topicName === undefined && !opts.urn) {
+            if ((!args || args.topicName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicName'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["policies"] = args?.policies;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["topicName"] = args?.topicName;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["topicName"] = args ? args.topicName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(KafkaPermissions.__pulumiType, name, resourceInputs, opts);

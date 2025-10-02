@@ -62,16 +62,16 @@ export class MysqlBinlog extends pulumi.CustomResource {
     /**
      * Specifies the binlog retention period. Value range: `1` to `168` (7x24).
      */
-    declare public readonly binlogRetentionHours: pulumi.Output<number>;
+    public readonly binlogRetentionHours!: pulumi.Output<number>;
     /**
      * Specifies the RDS MySQL instance ID. Changing this will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The region in which to create the RDS binlog resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a MysqlBinlog resource with the given unique name, arguments, and options.
@@ -86,20 +86,20 @@ export class MysqlBinlog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MysqlBinlogState | undefined;
-            resourceInputs["binlogRetentionHours"] = state?.binlogRetentionHours;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["binlogRetentionHours"] = state ? state.binlogRetentionHours : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as MysqlBinlogArgs | undefined;
-            if (args?.binlogRetentionHours === undefined && !opts.urn) {
+            if ((!args || args.binlogRetentionHours === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'binlogRetentionHours'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["binlogRetentionHours"] = args?.binlogRetentionHours;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["binlogRetentionHours"] = args ? args.binlogRetentionHours : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MysqlBinlog.__pulumiType, name, resourceInputs, opts);

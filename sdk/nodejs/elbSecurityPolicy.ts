@@ -80,42 +80,42 @@ export class ElbSecurityPolicy extends pulumi.CustomResource {
      * **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
      * **TLS_AES_128_CCM_8_SHA256**.
      */
-    declare public readonly ciphers: pulumi.Output<string[]>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly ciphers!: pulumi.Output<string[]>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the ELB security policy.
      * The value can contain 0 to 255 characters.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the enterprise project ID to which the Enterprise
      * router belongs.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * The listener which the security policy associated with.
      * The ListenerRef structure is documented below.
      */
-    declare public /*out*/ readonly listeners: pulumi.Output<outputs.ElbSecurityPolicyListener[]>;
+    public /*out*/ readonly listeners!: pulumi.Output<outputs.ElbSecurityPolicyListener[]>;
     /**
      * Specifies the ELB security policy name.
      * The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
      * and cannot exceed 255 characters.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the TSL protocol list which the security policy select.
      * Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
      */
-    declare public readonly protocols: pulumi.Output<string[]>;
+    public readonly protocols!: pulumi.Output<string[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ElbSecurityPolicy resource with the given unique name, arguments, and options.
@@ -130,29 +130,29 @@ export class ElbSecurityPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbSecurityPolicyState | undefined;
-            resourceInputs["ciphers"] = state?.ciphers;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["listeners"] = state?.listeners;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["protocols"] = state?.protocols;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["ciphers"] = state ? state.ciphers : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["listeners"] = state ? state.listeners : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["protocols"] = state ? state.protocols : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ElbSecurityPolicyArgs | undefined;
-            if (args?.ciphers === undefined && !opts.urn) {
+            if ((!args || args.ciphers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ciphers'");
             }
-            if (args?.protocols === undefined && !opts.urn) {
+            if ((!args || args.protocols === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocols'");
             }
-            resourceInputs["ciphers"] = args?.ciphers;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["protocols"] = args?.protocols;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["ciphers"] = args ? args.ciphers : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["protocols"] = args ? args.protocols : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["listeners"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

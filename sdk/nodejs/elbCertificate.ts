@@ -136,59 +136,59 @@ export class ElbCertificate extends pulumi.CustomResource {
     /**
      * The public encrypted key of the Certificate, PEM format.
      */
-    declare public readonly certificate: pulumi.Output<string>;
-    declare public /*out*/ readonly commonName: pulumi.Output<string>;
+    public readonly certificate!: pulumi.Output<string>;
+    public /*out*/ readonly commonName!: pulumi.Output<string>;
     /**
      * Indicates the creation time.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Human-readable description for the Certificate.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The domain of the Certificate. The value contains a maximum of 100 characters. This
      * parameter is valid only when `type` is set to "server".
      */
-    declare public readonly domain: pulumi.Output<string | undefined>;
-    declare public readonly encCertificate: pulumi.Output<string | undefined>;
-    declare public readonly encPrivateKey: pulumi.Output<string | undefined>;
+    public readonly domain!: pulumi.Output<string | undefined>;
+    public readonly encCertificate!: pulumi.Output<string | undefined>;
+    public readonly encPrivateKey!: pulumi.Output<string | undefined>;
     /**
      * The enterprise project id of the certificate.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Indicates the expire time.
      */
-    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
-    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Human-readable name for the Certificate. Does not have to be unique.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The private encrypted key of the Certificate, PEM format. This parameter is valid
      * and mandatory only when `type` is set to "server".
      */
-    declare public readonly privateKey: pulumi.Output<string | undefined>;
+    public readonly privateKey!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the ELB certificate resource. If omitted, the
      * provider-level region will be used. Changing this creates a new certificate.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly scmCertificateId: pulumi.Output<string>;
-    declare public /*out*/ readonly subjectAlternativeNames: pulumi.Output<string[]>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly scmCertificateId!: pulumi.Output<string>;
+    public /*out*/ readonly subjectAlternativeNames!: pulumi.Output<string[]>;
     /**
      * Specifies the certificate type. The default value is "server". The value can be
      * one of the following:
      * + server: indicates the server certificate.
      * + client: indicates the CA certificate.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * Indicates the update time.
      */
-    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a ElbCertificate resource with the given unique name, arguments, and options.
@@ -203,39 +203,39 @@ export class ElbCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbCertificateState | undefined;
-            resourceInputs["certificate"] = state?.certificate;
-            resourceInputs["commonName"] = state?.commonName;
-            resourceInputs["createTime"] = state?.createTime;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["domain"] = state?.domain;
-            resourceInputs["encCertificate"] = state?.encCertificate;
-            resourceInputs["encPrivateKey"] = state?.encPrivateKey;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["expireTime"] = state?.expireTime;
-            resourceInputs["fingerprint"] = state?.fingerprint;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["privateKey"] = state?.privateKey;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["scmCertificateId"] = state?.scmCertificateId;
-            resourceInputs["subjectAlternativeNames"] = state?.subjectAlternativeNames;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["commonName"] = state ? state.commonName : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["encCertificate"] = state ? state.encCertificate : undefined;
+            resourceInputs["encPrivateKey"] = state ? state.encPrivateKey : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["scmCertificateId"] = state ? state.scmCertificateId : undefined;
+            resourceInputs["subjectAlternativeNames"] = state ? state.subjectAlternativeNames : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as ElbCertificateArgs | undefined;
-            if (args?.certificate === undefined && !opts.urn) {
+            if ((!args || args.certificate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            resourceInputs["certificate"] = args?.certificate;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["domain"] = args?.domain;
-            resourceInputs["encCertificate"] = args?.encCertificate;
-            resourceInputs["encPrivateKey"] = args?.encPrivateKey;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["privateKey"] = args?.privateKey;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["scmCertificateId"] = args?.scmCertificateId;
-            resourceInputs["type"] = args?.type;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["encCertificate"] = args ? args.encCertificate : undefined;
+            resourceInputs["encPrivateKey"] = args ? args.encPrivateKey : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["scmCertificateId"] = args ? args.scmCertificateId : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["commonName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;

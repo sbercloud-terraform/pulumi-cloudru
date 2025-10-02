@@ -37,55 +37,55 @@ export class CustomAuthorizer extends pulumi.CustomResource {
     /**
      * The maximum cache age.
      */
-    declare public readonly cacheAge: pulumi.Output<number | undefined>;
+    public readonly cacheAge!: pulumi.Output<number | undefined>;
     /**
      * The creation time of the custom authorizer.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The version alias URI of the FGS function.
      */
-    declare public readonly functionAliasUri: pulumi.Output<string>;
+    public readonly functionAliasUri!: pulumi.Output<string>;
     /**
      * The URN of the FGS function.
      */
-    declare public readonly functionUrn: pulumi.Output<string>;
+    public readonly functionUrn!: pulumi.Output<string>;
     /**
      * The version of the FGS function.
      */
-    declare public readonly functionVersion: pulumi.Output<string>;
+    public readonly functionVersion!: pulumi.Output<string>;
     /**
      * The array of one or more parameter identities of the custom authorizer.
      */
-    declare public readonly identities: pulumi.Output<outputs.DedicatedApig.CustomAuthorizerIdentity[] | undefined>;
+    public readonly identities!: pulumi.Output<outputs.DedicatedApig.CustomAuthorizerIdentity[] | undefined>;
     /**
      * The ID of the dedicated instance to which the custom authorizer belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Whether to send the body.
      */
-    declare public readonly isBodySend: pulumi.Output<boolean | undefined>;
+    public readonly isBodySend!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the custom authorizer.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The framework type of the function.
      */
-    declare public readonly networkType: pulumi.Output<string>;
+    public readonly networkType!: pulumi.Output<string>;
     /**
      * The region where the custom authorizer is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The custom authorization type
      */
-    declare public readonly type: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * The user data for custom authorizer function.
      */
-    declare public readonly userData: pulumi.Output<string | undefined>;
+    public readonly userData!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomAuthorizer resource with the given unique name, arguments, and options.
@@ -100,39 +100,39 @@ export class CustomAuthorizer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomAuthorizerState | undefined;
-            resourceInputs["cacheAge"] = state?.cacheAge;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["functionAliasUri"] = state?.functionAliasUri;
-            resourceInputs["functionUrn"] = state?.functionUrn;
-            resourceInputs["functionVersion"] = state?.functionVersion;
-            resourceInputs["identities"] = state?.identities;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["isBodySend"] = state?.isBodySend;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["networkType"] = state?.networkType;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["userData"] = state?.userData;
+            resourceInputs["cacheAge"] = state ? state.cacheAge : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["functionAliasUri"] = state ? state.functionAliasUri : undefined;
+            resourceInputs["functionUrn"] = state ? state.functionUrn : undefined;
+            resourceInputs["functionVersion"] = state ? state.functionVersion : undefined;
+            resourceInputs["identities"] = state ? state.identities : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["isBodySend"] = state ? state.isBodySend : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
         } else {
             const args = argsOrState as CustomAuthorizerArgs | undefined;
-            if (args?.functionUrn === undefined && !opts.urn) {
+            if ((!args || args.functionUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionUrn'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["cacheAge"] = args?.cacheAge;
-            resourceInputs["functionAliasUri"] = args?.functionAliasUri;
-            resourceInputs["functionUrn"] = args?.functionUrn;
-            resourceInputs["functionVersion"] = args?.functionVersion;
-            resourceInputs["identities"] = args?.identities;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["isBodySend"] = args?.isBodySend;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["networkType"] = args?.networkType;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["userData"] = args?.userData;
+            resourceInputs["cacheAge"] = args ? args.cacheAge : undefined;
+            resourceInputs["functionAliasUri"] = args ? args.functionAliasUri : undefined;
+            resourceInputs["functionUrn"] = args ? args.functionUrn : undefined;
+            resourceInputs["functionVersion"] = args ? args.functionVersion : undefined;
+            resourceInputs["identities"] = args ? args.identities : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["isBodySend"] = args ? args.isBodySend : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -62,13 +62,13 @@ export class SqlserverDatabase extends pulumi.CustomResource {
     /**
      * Indicates the character set used by the database.
      */
-    declare public /*out*/ readonly characterSet: pulumi.Output<string>;
+    public /*out*/ readonly characterSet!: pulumi.Output<string>;
     /**
      * Specifies the ID of the RDS SQLServer instance.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the database name. The database name can contain 1 to 64 characters,
      * and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
@@ -77,12 +77,12 @@ export class SqlserverDatabase extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates the database status. Its value can be any of the following:
      * + **Creating**: The database is being created.
@@ -90,7 +90,7 @@ export class SqlserverDatabase extends pulumi.CustomResource {
      * + **Deleting**: The database is being deleted.
      * + **Not Exists**: The database does not exist.
      */
-    declare public /*out*/ readonly state: pulumi.Output<string>;
+    public /*out*/ readonly state!: pulumi.Output<string>;
 
     /**
      * Create a SqlserverDatabase resource with the given unique name, arguments, and options.
@@ -105,19 +105,19 @@ export class SqlserverDatabase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlserverDatabaseState | undefined;
-            resourceInputs["characterSet"] = state?.characterSet;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["state"] = state?.state;
+            resourceInputs["characterSet"] = state ? state.characterSet : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as SqlserverDatabaseArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["characterSet"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }

@@ -65,26 +65,26 @@ export class Whitelist extends pulumi.CustomResource {
     /**
      * Specify whether to enable access control.
      */
-    declare public readonly enableWhitelist: pulumi.Output<boolean | undefined>;
+    public readonly enableWhitelist!: pulumi.Output<boolean | undefined>;
     /**
      * The Listener ID that the whitelist will be associated with. Changing this
      * creates a new whitelist.
      */
-    declare public readonly listenerId: pulumi.Output<string>;
+    public readonly listenerId!: pulumi.Output<string>;
     /**
      * The region in which to create the ELB whitelist resource. If omitted, the
      * provider-level region will be used. Changing this creates a new whitelist.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    declare public readonly tenantId: pulumi.Output<string>;
+    public readonly tenantId!: pulumi.Output<string>;
     /**
      * Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
      * IP addresses.
      */
-    declare public readonly whitelist: pulumi.Output<string | undefined>;
+    public readonly whitelist!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Whitelist resource with the given unique name, arguments, and options.
@@ -99,21 +99,21 @@ export class Whitelist extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WhitelistState | undefined;
-            resourceInputs["enableWhitelist"] = state?.enableWhitelist;
-            resourceInputs["listenerId"] = state?.listenerId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["tenantId"] = state?.tenantId;
-            resourceInputs["whitelist"] = state?.whitelist;
+            resourceInputs["enableWhitelist"] = state ? state.enableWhitelist : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["whitelist"] = state ? state.whitelist : undefined;
         } else {
             const args = argsOrState as WhitelistArgs | undefined;
-            if (args?.listenerId === undefined && !opts.urn) {
+            if ((!args || args.listenerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'listenerId'");
             }
-            resourceInputs["enableWhitelist"] = args?.enableWhitelist;
-            resourceInputs["listenerId"] = args?.listenerId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tenantId"] = args?.tenantId;
-            resourceInputs["whitelist"] = args?.whitelist;
+            resourceInputs["enableWhitelist"] = args ? args.enableWhitelist : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["whitelist"] = args ? args.whitelist : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Whitelist.__pulumiType, name, resourceInputs, opts);

@@ -35,27 +35,27 @@ export class ApigEnvironmentVariable extends pulumi.CustomResource {
     /**
      * Specifies the ID of the environment to which the environment variable belongs.
      */
-    declare public readonly envId: pulumi.Output<string>;
+    public readonly envId!: pulumi.Output<string>;
     /**
      * Specifies the ID of the group to which the environment variable belongs.
      */
-    declare public readonly groupId: pulumi.Output<string>;
+    public readonly groupId!: pulumi.Output<string>;
     /**
      * Specifies the ID of the dedicated instance to which the environment variable belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the name of the environment variable.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the value of the environment variable.
      */
-    declare public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
 
     /**
      * Create a ApigEnvironmentVariable resource with the given unique name, arguments, and options.
@@ -70,32 +70,32 @@ export class ApigEnvironmentVariable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigEnvironmentVariableState | undefined;
-            resourceInputs["envId"] = state?.envId;
-            resourceInputs["groupId"] = state?.groupId;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["value"] = state?.value;
+            resourceInputs["envId"] = state ? state.envId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApigEnvironmentVariableArgs | undefined;
-            if (args?.envId === undefined && !opts.urn) {
+            if ((!args || args.envId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if (args?.groupId === undefined && !opts.urn) {
+            if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.value === undefined && !opts.urn) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["envId"] = args?.envId;
-            resourceInputs["groupId"] = args?.groupId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["value"] = args?.value;
+            resourceInputs["envId"] = args ? args.envId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigEnvironmentVariable.__pulumiType, name, resourceInputs, opts);

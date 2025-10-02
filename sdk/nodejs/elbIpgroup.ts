@@ -53,32 +53,32 @@ export class ElbIpgroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === ElbIpgroup.__pulumiType;
     }
 
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Human-readable description for the ip group.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The enterprise project id of the ip group. Changing this
      * creates a new ip group.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more ip addresses. The ipList object structure is
      * documented below.
      */
-    declare public readonly ipLists: pulumi.Output<outputs.ElbIpgroupIpList[]>;
-    declare public /*out*/ readonly listenerIds: pulumi.Output<string[]>;
+    public readonly ipLists!: pulumi.Output<outputs.ElbIpgroupIpList[]>;
+    public /*out*/ readonly listenerIds!: pulumi.Output<string[]>;
     /**
      * Human-readable name for the ip group.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region in which to create the ip group resource. If omitted, the
      * provider-level region will be used. Changing this creates a new ip group.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ElbIpgroup resource with the given unique name, arguments, and options.
@@ -93,24 +93,24 @@ export class ElbIpgroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbIpgroupState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["ipLists"] = state?.ipLists;
-            resourceInputs["listenerIds"] = state?.listenerIds;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["ipLists"] = state ? state.ipLists : undefined;
+            resourceInputs["listenerIds"] = state ? state.listenerIds : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ElbIpgroupArgs | undefined;
-            if (args?.ipLists === undefined && !opts.urn) {
+            if ((!args || args.ipLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipLists'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["ipLists"] = args?.ipLists;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["ipLists"] = args ? args.ipLists : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["listenerIds"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

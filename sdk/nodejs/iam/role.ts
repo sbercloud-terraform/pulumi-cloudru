@@ -83,23 +83,23 @@ export class Role extends pulumi.CustomResource {
     /**
      * Description of the custom policy.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Name of the custom policy.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Document of the custom policy in JSON format.
      */
-    declare public readonly policy: pulumi.Output<string>;
+    public readonly policy!: pulumi.Output<string>;
     /**
      * The number of references.
      */
-    declare public /*out*/ readonly references: pulumi.Output<number>;
+    public /*out*/ readonly references!: pulumi.Output<number>;
     /**
      * Display mode. Valid options are _AX_: Account level and _XA_: Project level.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -114,26 +114,26 @@ export class Role extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleState | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["policy"] = state?.policy;
-            resourceInputs["references"] = state?.references;
-            resourceInputs["type"] = state?.type;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["references"] = state ? state.references : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as RoleArgs | undefined;
-            if (args?.description === undefined && !opts.urn) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if (args?.policy === undefined && !opts.urn) {
+            if ((!args || args.policy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["policy"] = args?.policy;
-            resourceInputs["type"] = args?.type;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["references"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

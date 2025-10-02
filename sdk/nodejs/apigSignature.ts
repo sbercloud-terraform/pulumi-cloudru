@@ -35,39 +35,39 @@ export class ApigSignature extends pulumi.CustomResource {
     /**
      * The signature algorithm.
      */
-    declare public readonly algorithm: pulumi.Output<string>;
+    public readonly algorithm!: pulumi.Output<string>;
     /**
      * The creation time of the signature.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of the dedicated instance to which the signature belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The signature key.
      */
-    declare public readonly key: pulumi.Output<string>;
+    public readonly key!: pulumi.Output<string>;
     /**
      * The signature name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the signature is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The signature secret.
      */
-    declare public readonly secret: pulumi.Output<string>;
+    public readonly secret!: pulumi.Output<string>;
     /**
      * The signature type.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The latest update time of the signature.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a ApigSignature resource with the given unique name, arguments, and options.
@@ -82,30 +82,30 @@ export class ApigSignature extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigSignatureState | undefined;
-            resourceInputs["algorithm"] = state?.algorithm;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["key"] = state?.key;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["secret"] = state?.secret;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as ApigSignatureArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["algorithm"] = args?.algorithm;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["key"] = args?.key;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["secret"] = args?.secret ? pulumi.secret(args.secret) : undefined;
-            resourceInputs["type"] = args?.type;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

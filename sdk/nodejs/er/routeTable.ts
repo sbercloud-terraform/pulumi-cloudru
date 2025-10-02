@@ -73,48 +73,48 @@ export class RouteTable extends pulumi.CustomResource {
     /**
      * The creation time.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the description of the route table.  
      * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the ER instance to which the route table belongs.  
      * Changing this parameter will create a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Whether this route table is the default association route table.
      */
-    declare public /*out*/ readonly isDefaultAssociation: pulumi.Output<boolean>;
+    public /*out*/ readonly isDefaultAssociation!: pulumi.Output<boolean>;
     /**
      * Whether this route table is the default propagation route table.
      */
-    declare public /*out*/ readonly isDefaultPropagation: pulumi.Output<boolean>;
+    public /*out*/ readonly isDefaultPropagation!: pulumi.Output<boolean>;
     /**
      * Specifies the name of the route table.  
      * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
      * hyphens (-) and dots (.) allowed.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region where the ER instance and route table are located.  
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The current status of the route table.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the route table.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The latest update time.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a RouteTable resource with the given unique name, arguments, and options.
@@ -129,26 +129,26 @@ export class RouteTable extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteTableState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["isDefaultAssociation"] = state?.isDefaultAssociation;
-            resourceInputs["isDefaultPropagation"] = state?.isDefaultPropagation;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["isDefaultAssociation"] = state ? state.isDefaultAssociation : undefined;
+            resourceInputs["isDefaultPropagation"] = state ? state.isDefaultPropagation : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as RouteTableArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["isDefaultAssociation"] = undefined /*out*/;
             resourceInputs["isDefaultPropagation"] = undefined /*out*/;

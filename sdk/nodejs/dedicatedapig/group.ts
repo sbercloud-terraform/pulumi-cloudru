@@ -37,51 +37,51 @@ export class Group extends pulumi.CustomResource {
     /**
      * The creation time of the group, in RFC3339 format.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The group description.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to use the debugging domain name to access the APIs within the group.
      */
-    declare public readonly domainAccessEnabled: pulumi.Output<boolean>;
+    public readonly domainAccessEnabled!: pulumi.Output<boolean>;
     /**
      * The array of one or more environments of the associated group.
      */
-    declare public readonly environments: pulumi.Output<outputs.DedicatedApig.GroupEnvironment[]>;
+    public readonly environments!: pulumi.Output<outputs.DedicatedApig.GroupEnvironment[]>;
     /**
      * Whether to delete all sub-resources (for API) from this group.
      */
-    declare public readonly forceDestroy: pulumi.Output<boolean>;
+    public readonly forceDestroy!: pulumi.Output<boolean>;
     /**
      * The ID of the dedicated instance to which the group belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The group name.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The region where the dedicated instance is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The registration time.
      */
-    declare public /*out*/ readonly registrationTime: pulumi.Output<string>;
+    public /*out*/ readonly registrationTime!: pulumi.Output<string>;
     /**
      * The latest update time of the group.
      */
-    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * The latest update time of the group, in RFC3339 format.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The associated domain information of the group.
      */
-    declare public readonly urlDomains: pulumi.Output<outputs.DedicatedApig.GroupUrlDomain[]>;
+    public readonly urlDomains!: pulumi.Output<outputs.DedicatedApig.GroupUrlDomain[]>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -96,31 +96,31 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["domainAccessEnabled"] = state?.domainAccessEnabled;
-            resourceInputs["environments"] = state?.environments;
-            resourceInputs["forceDestroy"] = state?.forceDestroy;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["registrationTime"] = state?.registrationTime;
-            resourceInputs["updateTime"] = state?.updateTime;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["urlDomains"] = state?.urlDomains;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainAccessEnabled"] = state ? state.domainAccessEnabled : undefined;
+            resourceInputs["environments"] = state ? state.environments : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["registrationTime"] = state ? state.registrationTime : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["urlDomains"] = state ? state.urlDomains : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["domainAccessEnabled"] = args?.domainAccessEnabled;
-            resourceInputs["environments"] = args?.environments;
-            resourceInputs["forceDestroy"] = args?.forceDestroy;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["urlDomains"] = args?.urlDomains;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainAccessEnabled"] = args ? args.domainAccessEnabled : undefined;
+            resourceInputs["environments"] = args ? args.environments : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["urlDomains"] = args ? args.urlDomains : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["registrationTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;

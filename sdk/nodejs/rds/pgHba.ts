@@ -37,12 +37,12 @@ export class PgHba extends pulumi.CustomResource {
     /**
      * Specifies the list of host based authentications.
      */
-    declare public readonly hostBasedAuthentications: pulumi.Output<outputs.Rds.PgHbaHostBasedAuthentication[]>;
+    public readonly hostBasedAuthentications!: pulumi.Output<outputs.Rds.PgHbaHostBasedAuthentication[]>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a PgHba resource with the given unique name, arguments, and options.
@@ -57,20 +57,20 @@ export class PgHba extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgHbaState | undefined;
-            resourceInputs["hostBasedAuthentications"] = state?.hostBasedAuthentications;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["hostBasedAuthentications"] = state ? state.hostBasedAuthentications : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as PgHbaArgs | undefined;
-            if (args?.hostBasedAuthentications === undefined && !opts.urn) {
+            if ((!args || args.hostBasedAuthentications === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostBasedAuthentications'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["hostBasedAuthentications"] = args?.hostBasedAuthentications;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["hostBasedAuthentications"] = args ? args.hostBasedAuthentications : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PgHba.__pulumiType, name, resourceInputs, opts);

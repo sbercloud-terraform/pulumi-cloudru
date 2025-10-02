@@ -50,13 +50,13 @@ export class DdsParameterTemplateReset extends pulumi.CustomResource {
      * Specifies the parameter template ID.
      * Changing this creates a new resource.
      */
-    declare public readonly configurationId: pulumi.Output<string>;
+    public readonly configurationId!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a DdsParameterTemplateReset resource with the given unique name, arguments, and options.
@@ -71,15 +71,15 @@ export class DdsParameterTemplateReset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdsParameterTemplateResetState | undefined;
-            resourceInputs["configurationId"] = state?.configurationId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["configurationId"] = state ? state.configurationId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as DdsParameterTemplateResetArgs | undefined;
-            if (args?.configurationId === undefined && !opts.urn) {
+            if ((!args || args.configurationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configurationId'");
             }
-            resourceInputs["configurationId"] = args?.configurationId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["configurationId"] = args ? args.configurationId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DdsParameterTemplateReset.__pulumiType, name, resourceInputs, opts);

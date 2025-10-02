@@ -35,16 +35,16 @@ export class PgAccountRoles extends pulumi.CustomResource {
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the list of roles.
      */
-    declare public readonly roles: pulumi.Output<string[]>;
+    public readonly roles!: pulumi.Output<string[]>;
     /**
      * Specifies the username of the account.
      */
-    declare public readonly user: pulumi.Output<string>;
+    public readonly user!: pulumi.Output<string>;
 
     /**
      * Create a PgAccountRoles resource with the given unique name, arguments, and options.
@@ -59,25 +59,25 @@ export class PgAccountRoles extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgAccountRolesState | undefined;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["roles"] = state?.roles;
-            resourceInputs["user"] = state?.user;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["roles"] = state ? state.roles : undefined;
+            resourceInputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as PgAccountRolesArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.roles === undefined && !opts.urn) {
+            if ((!args || args.roles === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            if (args?.user === undefined && !opts.urn) {
+            if ((!args || args.user === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["roles"] = args?.roles;
-            resourceInputs["user"] = args?.user;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["roles"] = args ? args.roles : undefined;
+            resourceInputs["user"] = args ? args.user : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PgAccountRoles.__pulumiType, name, resourceInputs, opts);

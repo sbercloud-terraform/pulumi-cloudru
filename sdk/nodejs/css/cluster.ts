@@ -151,7 +151,7 @@ export class Cluster extends pulumi.CustomResource {
      * <a name="Css_ess_node_config"></a>
      * The `essNodeConfig` and `coldNodeConfig` block supports:
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the availability zone name.
      * Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
@@ -159,110 +159,110 @@ export class Cluster extends pulumi.CustomResource {
      * distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
      * between node quantity in any two AZs is **1** at most.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Whether the snapshot function is enabled.
      */
-    declare public /*out*/ readonly backupAvailable: pulumi.Output<boolean>;
+    public /*out*/ readonly backupAvailable!: pulumi.Output<boolean>;
     /**
      * Specifies the advanced backup policy. Structure is documented below.
      */
-    declare public readonly backupStrategy: pulumi.Output<outputs.Css.ClusterBackupStrategy | undefined>;
+    public readonly backupStrategy!: pulumi.Output<outputs.Css.ClusterBackupStrategy | undefined>;
     /**
      * The resource ID of bandwidth.
      */
-    declare public /*out*/ readonly bandwidthResourceId: pulumi.Output<string>;
+    public /*out*/ readonly bandwidthResourceId!: pulumi.Output<string>;
     /**
      * Specifies the charging mode of the cluster.
      * Valid value is **postPaid**, defaults to **postPaid**.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Specifies the config of client node.
      * The clientNodeConfig structure is documented below.
      */
-    declare public readonly clientNodeConfig: pulumi.Output<outputs.Css.ClusterClientNodeConfig | undefined>;
+    public readonly clientNodeConfig!: pulumi.Output<outputs.Css.ClusterClientNodeConfig | undefined>;
     /**
      * Specifies the config of cold data node.
      * The coldNodeConfig structure is documented below.
      */
-    declare public readonly coldNodeConfig: pulumi.Output<outputs.Css.ClusterColdNodeConfig | undefined>;
+    public readonly coldNodeConfig!: pulumi.Output<outputs.Css.ClusterColdNodeConfig | undefined>;
     /**
      * schema: Deprecated; use createdAt instead
      */
-    declare public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Whether disks are encrypted.
      */
-    declare public /*out*/ readonly diskEncrypted: pulumi.Output<boolean>;
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
+    public /*out*/ readonly diskEncrypted!: pulumi.Output<boolean>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
     /**
      * The IP address and port number.
      */
-    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
+    public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
      * Defaults to **elasticsearch**. Changing this parameter will create a new resource.
      */
-    declare public readonly engineType: pulumi.Output<string | undefined>;
+    public readonly engineType!: pulumi.Output<string | undefined>;
     /**
      * Specifies the engine version.
      */
-    declare public readonly engineVersion: pulumi.Output<string>;
+    public readonly engineVersion!: pulumi.Output<string>;
     /**
      * Specifies the enterprise project id of the css cluster, The value **0**
      * indicates the default enterprise project.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies the config of data node.
      * The essNodeConfig structure is documented below.
      */
-    declare public readonly essNodeConfig: pulumi.Output<outputs.Css.ClusterEssNodeConfig>;
+    public readonly essNodeConfig!: pulumi.Output<outputs.Css.ClusterEssNodeConfig>;
     /**
      * @deprecated please use ess_node_config.instance_number instead
      */
-    declare public readonly expectNodeNum: pulumi.Output<number>;
+    public readonly expectNodeNum!: pulumi.Output<number>;
     /**
      * Specifies whether to enable HTTPS. Defaults to **false**.
      * When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly httpsEnabled: pulumi.Output<boolean>;
+    public readonly httpsEnabled!: pulumi.Output<boolean>;
     /**
      * Whether a cluster is billed on the yearly/monthly mode.
      */
-    declare public /*out*/ readonly isPeriod: pulumi.Output<boolean>;
+    public /*out*/ readonly isPeriod!: pulumi.Output<boolean>;
     /**
      * Specifies Kibana public network access information.
      * This parameter is valid only when securityMode is set to **true**.
      * The kibanaPublicAccess structure is documented below.
      */
-    declare public readonly kibanaPublicAccess: pulumi.Output<outputs.Css.ClusterKibanaPublicAccess | undefined>;
+    public readonly kibanaPublicAccess!: pulumi.Output<outputs.Css.ClusterKibanaPublicAccess | undefined>;
     /**
      * Specifies the config of master node.
      * The masterNodeConfig structure is documented below.
      */
-    declare public readonly masterNodeConfig: pulumi.Output<outputs.Css.ClusterMasterNodeConfig | undefined>;
+    public readonly masterNodeConfig!: pulumi.Output<outputs.Css.ClusterMasterNodeConfig | undefined>;
     /**
      * Specifies the cluster name. It contains `4` to `32` characters.
      * Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * @deprecated please use essNodeConfig instead
      */
-    declare public readonly nodeConfig: pulumi.Output<outputs.Css.ClusterNodeConfig>;
+    public readonly nodeConfig!: pulumi.Output<outputs.Css.ClusterNodeConfig>;
     /**
      * List of node objects.
      * The nodes structure is documented below.
      */
-    declare public /*out*/ readonly nodes: pulumi.Output<outputs.Css.ClusterNode[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.Css.ClusterNode[]>;
     /**
      * Specifies the password of the cluster administrator in security mode.
      * This parameter is mandatory only when `securityMode` is set to true.
@@ -271,7 +271,7 @@ export class Cluster extends pulumi.CustomResource {
      * + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
      * and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the instance.
      * If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
@@ -280,26 +280,26 @@ export class Cluster extends pulumi.CustomResource {
      * > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
      * from **postPaid** to **prePaid** billing mode.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are **month** and **year**.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Specifies the public network access information.
      * The publicAccess structure is documented below.
      */
-    declare public readonly publicAccess: pulumi.Output<outputs.Css.ClusterPublicAccess | undefined>;
+    public readonly publicAccess!: pulumi.Output<outputs.Css.ClusterPublicAccess | undefined>;
     /**
      * Specifies the region in which to create the cluster resource. If omitted, the
      * provider-level region will be used. Changing this creates a new cluster resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the security group ID.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Specifies whether to enable authentication.
      * The value can be **true** or **false**. Authentication is disabled by default.
@@ -311,42 +311,42 @@ export class Cluster extends pulumi.CustomResource {
      * After the cluster is restarted, the authentication mode for invoking the cluster changes.
      * You need to adjust the authentication mode accordingly.
      */
-    declare public readonly securityMode: pulumi.Output<boolean | undefined>;
+    public readonly securityMode!: pulumi.Output<boolean | undefined>;
     /**
      * Instance status.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the Subnet ID.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the cluster.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * Specifies the VPC ID.
      * Changing this parameter will create a new resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * Specifies the VPC endpoint service information.
      * The vpcepEndpoint structure is documented below.
      */
-    declare public readonly vpcepEndpoint: pulumi.Output<outputs.Css.ClusterVpcepEndpoint | undefined>;
+    public readonly vpcepEndpoint!: pulumi.Output<outputs.Css.ClusterVpcepEndpoint | undefined>;
     /**
      * The VPC endpoint service ID.
      */
-    declare public /*out*/ readonly vpcepEndpointId: pulumi.Output<string>;
+    public /*out*/ readonly vpcepEndpointId!: pulumi.Output<string>;
     /**
      * The private IP address of VPC endpoint service.
      */
-    declare public /*out*/ readonly vpcepIp: pulumi.Output<string>;
+    public /*out*/ readonly vpcepIp!: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -361,79 +361,79 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["backupAvailable"] = state?.backupAvailable;
-            resourceInputs["backupStrategy"] = state?.backupStrategy;
-            resourceInputs["bandwidthResourceId"] = state?.bandwidthResourceId;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["clientNodeConfig"] = state?.clientNodeConfig;
-            resourceInputs["coldNodeConfig"] = state?.coldNodeConfig;
-            resourceInputs["created"] = state?.created;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["diskEncrypted"] = state?.diskEncrypted;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["endpoint"] = state?.endpoint;
-            resourceInputs["engineType"] = state?.engineType;
-            resourceInputs["engineVersion"] = state?.engineVersion;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["essNodeConfig"] = state?.essNodeConfig;
-            resourceInputs["expectNodeNum"] = state?.expectNodeNum;
-            resourceInputs["httpsEnabled"] = state?.httpsEnabled;
-            resourceInputs["isPeriod"] = state?.isPeriod;
-            resourceInputs["kibanaPublicAccess"] = state?.kibanaPublicAccess;
-            resourceInputs["masterNodeConfig"] = state?.masterNodeConfig;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["nodeConfig"] = state?.nodeConfig;
-            resourceInputs["nodes"] = state?.nodes;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["publicAccess"] = state?.publicAccess;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["securityMode"] = state?.securityMode;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["vpcId"] = state?.vpcId;
-            resourceInputs["vpcepEndpoint"] = state?.vpcepEndpoint;
-            resourceInputs["vpcepEndpointId"] = state?.vpcepEndpointId;
-            resourceInputs["vpcepIp"] = state?.vpcepIp;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["backupAvailable"] = state ? state.backupAvailable : undefined;
+            resourceInputs["backupStrategy"] = state ? state.backupStrategy : undefined;
+            resourceInputs["bandwidthResourceId"] = state ? state.bandwidthResourceId : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["clientNodeConfig"] = state ? state.clientNodeConfig : undefined;
+            resourceInputs["coldNodeConfig"] = state ? state.coldNodeConfig : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["diskEncrypted"] = state ? state.diskEncrypted : undefined;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["engineType"] = state ? state.engineType : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["essNodeConfig"] = state ? state.essNodeConfig : undefined;
+            resourceInputs["expectNodeNum"] = state ? state.expectNodeNum : undefined;
+            resourceInputs["httpsEnabled"] = state ? state.httpsEnabled : undefined;
+            resourceInputs["isPeriod"] = state ? state.isPeriod : undefined;
+            resourceInputs["kibanaPublicAccess"] = state ? state.kibanaPublicAccess : undefined;
+            resourceInputs["masterNodeConfig"] = state ? state.masterNodeConfig : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["publicAccess"] = state ? state.publicAccess : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["securityMode"] = state ? state.securityMode : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vpcepEndpoint"] = state ? state.vpcepEndpoint : undefined;
+            resourceInputs["vpcepEndpointId"] = state ? state.vpcepEndpointId : undefined;
+            resourceInputs["vpcepIp"] = state ? state.vpcepIp : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if (args?.engineVersion === undefined && !opts.urn) {
+            if ((!args || args.engineVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["backupStrategy"] = args?.backupStrategy;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["clientNodeConfig"] = args?.clientNodeConfig;
-            resourceInputs["coldNodeConfig"] = args?.coldNodeConfig;
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["engineType"] = args?.engineType;
-            resourceInputs["engineVersion"] = args?.engineVersion;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["essNodeConfig"] = args?.essNodeConfig;
-            resourceInputs["expectNodeNum"] = args?.expectNodeNum;
-            resourceInputs["httpsEnabled"] = args?.httpsEnabled;
-            resourceInputs["kibanaPublicAccess"] = args?.kibanaPublicAccess;
-            resourceInputs["masterNodeConfig"] = args?.masterNodeConfig;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["nodeConfig"] = args?.nodeConfig;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["backupStrategy"] = args ? args.backupStrategy : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["clientNodeConfig"] = args ? args.clientNodeConfig : undefined;
+            resourceInputs["coldNodeConfig"] = args ? args.coldNodeConfig : undefined;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["engineType"] = args ? args.engineType : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["essNodeConfig"] = args ? args.essNodeConfig : undefined;
+            resourceInputs["expectNodeNum"] = args ? args.expectNodeNum : undefined;
+            resourceInputs["httpsEnabled"] = args ? args.httpsEnabled : undefined;
+            resourceInputs["kibanaPublicAccess"] = args ? args.kibanaPublicAccess : undefined;
+            resourceInputs["masterNodeConfig"] = args ? args.masterNodeConfig : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["publicAccess"] = args?.publicAccess;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["securityMode"] = args?.securityMode;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
-            resourceInputs["vpcepEndpoint"] = args?.vpcepEndpoint;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["publicAccess"] = args ? args.publicAccess : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["securityMode"] = args ? args.securityMode : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["vpcepEndpoint"] = args ? args.vpcepEndpoint : undefined;
             resourceInputs["backupAvailable"] = undefined /*out*/;
             resourceInputs["bandwidthResourceId"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;

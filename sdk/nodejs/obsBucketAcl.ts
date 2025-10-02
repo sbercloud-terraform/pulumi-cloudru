@@ -116,36 +116,36 @@ export class ObsBucketAcl extends pulumi.CustomResource {
      * <a name="OBSBucketAcl_permission_struct"></a>
      * The `permissionStruct` block supports:
      */
-    declare public readonly accountPermissions: pulumi.Output<outputs.ObsBucketAclAccountPermission[] | undefined>;
+    public readonly accountPermissions!: pulumi.Output<outputs.ObsBucketAclAccountPermission[] | undefined>;
     /**
      * Specifies the name of the bucket to which to set the acl.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * Specifies the log delivery user permission.
      * The permissionStruct structure is documented below.
      */
-    declare public readonly logDeliveryUserPermission: pulumi.Output<outputs.ObsBucketAclLogDeliveryUserPermission | undefined>;
+    public readonly logDeliveryUserPermission!: pulumi.Output<outputs.ObsBucketAclLogDeliveryUserPermission | undefined>;
     /**
      * Specifies the bucket owner permission. If omitted, the current obs bucket acl
      * owner permission will not be changed.
      * The permissionStruct structure is documented below.
      */
-    declare public readonly ownerPermission: pulumi.Output<outputs.ObsBucketAclOwnerPermission>;
+    public readonly ownerPermission!: pulumi.Output<outputs.ObsBucketAclOwnerPermission>;
     /**
      * Specifies the public permission.
      * The permissionStruct structure is documented below.
      */
-    declare public readonly publicPermission: pulumi.Output<outputs.ObsBucketAclPublicPermission | undefined>;
+    public readonly publicPermission!: pulumi.Output<outputs.ObsBucketAclPublicPermission | undefined>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a ObsBucketAcl resource with the given unique name, arguments, and options.
@@ -160,23 +160,23 @@ export class ObsBucketAcl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObsBucketAclState | undefined;
-            resourceInputs["accountPermissions"] = state?.accountPermissions;
-            resourceInputs["bucket"] = state?.bucket;
-            resourceInputs["logDeliveryUserPermission"] = state?.logDeliveryUserPermission;
-            resourceInputs["ownerPermission"] = state?.ownerPermission;
-            resourceInputs["publicPermission"] = state?.publicPermission;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["accountPermissions"] = state ? state.accountPermissions : undefined;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["logDeliveryUserPermission"] = state ? state.logDeliveryUserPermission : undefined;
+            resourceInputs["ownerPermission"] = state ? state.ownerPermission : undefined;
+            resourceInputs["publicPermission"] = state ? state.publicPermission : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ObsBucketAclArgs | undefined;
-            if (args?.bucket === undefined && !opts.urn) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["accountPermissions"] = args?.accountPermissions;
-            resourceInputs["bucket"] = args?.bucket;
-            resourceInputs["logDeliveryUserPermission"] = args?.logDeliveryUserPermission;
-            resourceInputs["ownerPermission"] = args?.ownerPermission;
-            resourceInputs["publicPermission"] = args?.publicPermission;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["accountPermissions"] = args ? args.accountPermissions : undefined;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["logDeliveryUserPermission"] = args ? args.logDeliveryUserPermission : undefined;
+            resourceInputs["ownerPermission"] = args ? args.ownerPermission : undefined;
+            resourceInputs["publicPermission"] = args ? args.publicPermission : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObsBucketAcl.__pulumiType, name, resourceInputs, opts);

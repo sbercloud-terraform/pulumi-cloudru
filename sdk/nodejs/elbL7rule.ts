@@ -64,28 +64,28 @@ export class ElbL7rule extends pulumi.CustomResource {
     /**
      * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
      */
-    declare public readonly compareType: pulumi.Output<string>;
-    declare public readonly conditions: pulumi.Output<outputs.ElbL7ruleCondition[]>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public readonly compareType!: pulumi.Output<string>;
+    public readonly conditions!: pulumi.Output<outputs.ElbL7ruleCondition[]>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of the L7 Policy. Changing this creates a new L7 Rule.
      */
-    declare public readonly l7policyId: pulumi.Output<string>;
+    public readonly l7policyId!: pulumi.Output<string>;
     /**
      * The region in which to create the L7 Rule resource. If omitted, the
      * provider-level region will be used. Changing this creates a new L7 Rule.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
      * L7 Rule.
      */
-    declare public readonly type: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The value to use for the comparison.
      */
-    declare public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
 
     /**
      * Create a ElbL7rule resource with the given unique name, arguments, and options.
@@ -100,31 +100,31 @@ export class ElbL7rule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbL7ruleState | undefined;
-            resourceInputs["compareType"] = state?.compareType;
-            resourceInputs["conditions"] = state?.conditions;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["l7policyId"] = state?.l7policyId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["value"] = state?.value;
+            resourceInputs["compareType"] = state ? state.compareType : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["l7policyId"] = state ? state.l7policyId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ElbL7ruleArgs | undefined;
-            if (args?.compareType === undefined && !opts.urn) {
+            if ((!args || args.compareType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'compareType'");
             }
-            if (args?.l7policyId === undefined && !opts.urn) {
+            if ((!args || args.l7policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'l7policyId'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["compareType"] = args?.compareType;
-            resourceInputs["conditions"] = args?.conditions;
-            resourceInputs["l7policyId"] = args?.l7policyId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["value"] = args?.value;
+            resourceInputs["compareType"] = args ? args.compareType : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["l7policyId"] = args ? args.l7policyId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

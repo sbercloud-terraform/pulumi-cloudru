@@ -88,50 +88,50 @@ export class Agency extends pulumi.CustomResource {
      * to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
      * and global services under your account.
      */
-    declare public readonly allResourcesRoles: pulumi.Output<string[] | undefined>;
+    public readonly allResourcesRoles!: pulumi.Output<string[] | undefined>;
     /**
      * The time when the agency was created.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Specifies the name of delegated user domain. This parameter
      * and `delegatedServiceName` are alternative.
      */
-    declare public readonly delegatedDomainName: pulumi.Output<string | undefined>;
+    public readonly delegatedDomainName!: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of delegated cloud service. The value must start
      * with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegatedDomainName` are alternative.
      */
-    declare public readonly delegatedServiceName: pulumi.Output<string | undefined>;
+    public readonly delegatedServiceName!: pulumi.Output<string | undefined>;
     /**
      * Specifies the supplementary information about the agency. The value is a string of
      * 0 to 255 characters, excluding these characters: '__@#$%^&*<>\\__'.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more role names which stand for the permissionis to be
      * granted to agency on domain.
      */
-    declare public readonly domainRoles: pulumi.Output<string[] | undefined>;
+    public readonly domainRoles!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
      * , defaults to *FOREVER*.
      */
-    declare public readonly duration: pulumi.Output<string | undefined>;
+    public readonly duration!: pulumi.Output<string | undefined>;
     /**
      * The expiration time of agency.
      */
-    declare public /*out*/ readonly expireTime: pulumi.Output<string>;
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * Specifies the name of agency. The name is a string of 1 to 64 characters.
      * Changing this will create a new agency.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies an array of one or more roles and projects which are used to grant
      * permissions to agency on project. The structure is documented below.
      */
-    declare public readonly projectRoles: pulumi.Output<outputs.Iam.AgencyProjectRole[] | undefined>;
+    public readonly projectRoles!: pulumi.Output<outputs.Iam.AgencyProjectRole[] | undefined>;
 
     /**
      * Create a Agency resource with the given unique name, arguments, and options.
@@ -146,26 +146,26 @@ export class Agency extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AgencyState | undefined;
-            resourceInputs["allResourcesRoles"] = state?.allResourcesRoles;
-            resourceInputs["createTime"] = state?.createTime;
-            resourceInputs["delegatedDomainName"] = state?.delegatedDomainName;
-            resourceInputs["delegatedServiceName"] = state?.delegatedServiceName;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["domainRoles"] = state?.domainRoles;
-            resourceInputs["duration"] = state?.duration;
-            resourceInputs["expireTime"] = state?.expireTime;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["projectRoles"] = state?.projectRoles;
+            resourceInputs["allResourcesRoles"] = state ? state.allResourcesRoles : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["delegatedDomainName"] = state ? state.delegatedDomainName : undefined;
+            resourceInputs["delegatedServiceName"] = state ? state.delegatedServiceName : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainRoles"] = state ? state.domainRoles : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["projectRoles"] = state ? state.projectRoles : undefined;
         } else {
             const args = argsOrState as AgencyArgs | undefined;
-            resourceInputs["allResourcesRoles"] = args?.allResourcesRoles;
-            resourceInputs["delegatedDomainName"] = args?.delegatedDomainName;
-            resourceInputs["delegatedServiceName"] = args?.delegatedServiceName;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["domainRoles"] = args?.domainRoles;
-            resourceInputs["duration"] = args?.duration;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["projectRoles"] = args?.projectRoles;
+            resourceInputs["allResourcesRoles"] = args ? args.allResourcesRoles : undefined;
+            resourceInputs["delegatedDomainName"] = args ? args.delegatedDomainName : undefined;
+            resourceInputs["delegatedServiceName"] = args ? args.delegatedServiceName : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["domainRoles"] = args ? args.domainRoles : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["projectRoles"] = args ? args.projectRoles : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
         }

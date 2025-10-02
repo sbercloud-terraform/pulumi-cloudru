@@ -51,30 +51,30 @@ export class Policy extends pulumi.CustomResource {
      * Specifies the scheduling rule for the CBR policy backup execution.
      * The object structure is documented below.
      */
-    declare public readonly backupCycle: pulumi.Output<outputs.Cbr.PolicyBackupCycle>;
+    public readonly backupCycle!: pulumi.Output<outputs.Cbr.PolicyBackupCycle>;
     /**
      * Specifies the maximum number of retained backups. The value ranges from `2` to
      * `99,999`. This parameter and `timePeriod` are alternative.
      */
-    declare public readonly backupQuantity: pulumi.Output<number | undefined>;
+    public readonly backupQuantity!: pulumi.Output<number | undefined>;
     /**
      * Specifies the ID of the replication destination project, which is
      * mandatory for cross-region replication. Required if `protectionType` is **replication**.
      */
-    declare public readonly destinationProjectId: pulumi.Output<string | undefined>;
+    public readonly destinationProjectId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the replication destination region, which is mandatory
      * for cross-region replication. Required if `protectionType` is **replication**.
      */
-    declare public readonly destinationRegion: pulumi.Output<string | undefined>;
+    public readonly destinationRegion!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable the acceleration function to shorten the replication time for cross-region
      */
-    declare public readonly enableAcceleration: pulumi.Output<boolean | undefined>;
+    public readonly enableAcceleration!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether to enable the CBR policy. Default to **true**.
      */
-    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the long-term retention rules, which is an advanced options of
      * the `backupQuantity`. The object structure is documented below.
@@ -83,24 +83,24 @@ export class Policy extends pulumi.CustomResource {
      * When the number of retained backups exceeds the preset value (number of `backupQuantity`), the system automatically
      * deletes the earliest backups. By default, the system automatically clears data every other day.
      */
-    declare public readonly longTermRetention: pulumi.Output<outputs.Cbr.PolicyLongTermRetention | undefined>;
+    public readonly longTermRetention!: pulumi.Output<outputs.Cbr.PolicyLongTermRetention | undefined>;
     /**
      * Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
      * characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the CBR policy. If omitted, the
      * provider-level region will be used. Changing this will create a new policy.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the duration (in days) for retained backups. The value ranges from `2` to
      * `99,999`.
      *
      * > **NOTE:** If this `backupQuantity` and `timePeriod` are both left blank, the backups will be retained permanently.
      */
-    declare public readonly timePeriod: pulumi.Output<number | undefined>;
+    public readonly timePeriod!: pulumi.Output<number | undefined>;
     /**
      * Specifies the UTC time zone, e.g.: `UTC+08:00`.
      * Only available if `longTermRetention` is set.
@@ -108,13 +108,13 @@ export class Policy extends pulumi.CustomResource {
      * <a name="cbrPolicyBackupCycle"></a>
      * The `backupCycle` block supports:
      */
-    declare public readonly timeZone: pulumi.Output<string>;
+    public readonly timeZone!: pulumi.Output<string>;
     /**
      * Specifies the protection type of the CBR policy.
      * Valid values are **backup** and **replication**.
      * Changing this will create a new policy.
      */
-    declare public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -129,38 +129,38 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["backupCycle"] = state?.backupCycle;
-            resourceInputs["backupQuantity"] = state?.backupQuantity;
-            resourceInputs["destinationProjectId"] = state?.destinationProjectId;
-            resourceInputs["destinationRegion"] = state?.destinationRegion;
-            resourceInputs["enableAcceleration"] = state?.enableAcceleration;
-            resourceInputs["enabled"] = state?.enabled;
-            resourceInputs["longTermRetention"] = state?.longTermRetention;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["timePeriod"] = state?.timePeriod;
-            resourceInputs["timeZone"] = state?.timeZone;
-            resourceInputs["type"] = state?.type;
+            resourceInputs["backupCycle"] = state ? state.backupCycle : undefined;
+            resourceInputs["backupQuantity"] = state ? state.backupQuantity : undefined;
+            resourceInputs["destinationProjectId"] = state ? state.destinationProjectId : undefined;
+            resourceInputs["destinationRegion"] = state ? state.destinationRegion : undefined;
+            resourceInputs["enableAcceleration"] = state ? state.enableAcceleration : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["longTermRetention"] = state ? state.longTermRetention : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["timePeriod"] = state ? state.timePeriod : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if (args?.backupCycle === undefined && !opts.urn) {
+            if ((!args || args.backupCycle === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupCycle'");
             }
-            if (args?.type === undefined && !opts.urn) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["backupCycle"] = args?.backupCycle;
-            resourceInputs["backupQuantity"] = args?.backupQuantity;
-            resourceInputs["destinationProjectId"] = args?.destinationProjectId;
-            resourceInputs["destinationRegion"] = args?.destinationRegion;
-            resourceInputs["enableAcceleration"] = args?.enableAcceleration;
-            resourceInputs["enabled"] = args?.enabled;
-            resourceInputs["longTermRetention"] = args?.longTermRetention;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["timePeriod"] = args?.timePeriod;
-            resourceInputs["timeZone"] = args?.timeZone;
-            resourceInputs["type"] = args?.type;
+            resourceInputs["backupCycle"] = args ? args.backupCycle : undefined;
+            resourceInputs["backupQuantity"] = args ? args.backupQuantity : undefined;
+            resourceInputs["destinationProjectId"] = args ? args.destinationProjectId : undefined;
+            resourceInputs["destinationRegion"] = args ? args.destinationRegion : undefined;
+            resourceInputs["enableAcceleration"] = args ? args.enableAcceleration : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["longTermRetention"] = args ? args.longTermRetention : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["timePeriod"] = args ? args.timePeriod : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);

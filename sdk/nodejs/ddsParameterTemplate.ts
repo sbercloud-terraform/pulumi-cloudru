@@ -69,19 +69,19 @@ export class DdsParameterTemplate extends pulumi.CustomResource {
     /**
      * The create time of the parameter template.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the parameter template description.
      * The description must consist of a maximum of 256 characters and cannot contain the carriage
      * return character or the following special characters: >!<"&'=.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the parameter template name.
      * The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
      * underscores (_), and periods (.).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the node type of parameter template. Valid value:
      * + **mongos**: the mongos node type.
@@ -92,33 +92,33 @@ export class DdsParameterTemplate extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly nodeType: pulumi.Output<string>;
+    public readonly nodeType!: pulumi.Output<string>;
     /**
      * Specifies the database version.
      * The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly nodeVersion: pulumi.Output<string>;
+    public readonly nodeVersion!: pulumi.Output<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
      * You can customize parameter values based on the parameters in the default parameter template.
      */
-    declare public readonly parameterValues: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly parameterValues!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the parameters defined by users based on the default parameter templates.
      * The Parameter structure is documented below.
      */
-    declare public /*out*/ readonly parameters: pulumi.Output<outputs.DdsParameterTemplateParameter[]>;
+    public /*out*/ readonly parameters!: pulumi.Output<outputs.DdsParameterTemplateParameter[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The update time of the parameter template.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a DdsParameterTemplate resource with the given unique name, arguments, and options.
@@ -133,29 +133,29 @@ export class DdsParameterTemplate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdsParameterTemplateState | undefined;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["nodeType"] = state?.nodeType;
-            resourceInputs["nodeVersion"] = state?.nodeVersion;
-            resourceInputs["parameterValues"] = state?.parameterValues;
-            resourceInputs["parameters"] = state?.parameters;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodeType"] = state ? state.nodeType : undefined;
+            resourceInputs["nodeVersion"] = state ? state.nodeVersion : undefined;
+            resourceInputs["parameterValues"] = state ? state.parameterValues : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as DdsParameterTemplateArgs | undefined;
-            if (args?.nodeType === undefined && !opts.urn) {
+            if ((!args || args.nodeType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeType'");
             }
-            if (args?.nodeVersion === undefined && !opts.urn) {
+            if ((!args || args.nodeVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeVersion'");
             }
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["nodeType"] = args?.nodeType;
-            resourceInputs["nodeVersion"] = args?.nodeVersion;
-            resourceInputs["parameterValues"] = args?.parameterValues;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeType"] = args ? args.nodeType : undefined;
+            resourceInputs["nodeVersion"] = args ? args.nodeVersion : undefined;
+            resourceInputs["parameterValues"] = args ? args.parameterValues : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["parameters"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

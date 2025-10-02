@@ -73,80 +73,80 @@ export class Instance extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly asn: pulumi.Output<number>;
+    public readonly asn!: pulumi.Output<number>;
     /**
      * Whether to automatically accept the creation of shared
      * attachment.
      * The default value is **false**.
      */
-    declare public readonly autoAcceptSharedAttachments: pulumi.Output<boolean | undefined>;
+    public readonly autoAcceptSharedAttachments!: pulumi.Output<boolean | undefined>;
     /**
      * The availability zone list where the ER instance is located.
      * The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
      * availability which will ensure reliability and disaster recovery.
      */
-    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[]>;
     /**
      * The creation time.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The ID of the default association route table.
      *
      * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
      * `enableDefaultAssociation` is set to **true**.
      */
-    declare public readonly defaultAssociationRouteTableId: pulumi.Output<string>;
+    public readonly defaultAssociationRouteTableId!: pulumi.Output<string>;
     /**
      * The ID of the default propagation route table.
      *
      * > Before modifying the default routing table of this instance (except cancel the default route table), make sure
      * `enableDefaultPropagation` is set to **true**.
      */
-    declare public readonly defaultPropagationRouteTableId: pulumi.Output<string>;
+    public readonly defaultPropagationRouteTableId!: pulumi.Output<string>;
     /**
      * The description of the ER instance.  
      * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable the association of the default route table.  
      * The default value is **false**.
      */
-    declare public readonly enableDefaultAssociation: pulumi.Output<boolean | undefined>;
+    public readonly enableDefaultAssociation!: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable the propagation of the default route table.  
      * The default value is **false**.
      */
-    declare public readonly enableDefaultPropagation: pulumi.Output<boolean | undefined>;
+    public readonly enableDefaultPropagation!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the enterprise project ID to which the ER instance
      * belongs.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * The router name.  
      * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
      * hyphens (-) and dots (.) allowed.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Current status of the router.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the instance.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The latest update time.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -161,41 +161,41 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["asn"] = state?.asn;
-            resourceInputs["autoAcceptSharedAttachments"] = state?.autoAcceptSharedAttachments;
-            resourceInputs["availabilityZones"] = state?.availabilityZones;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["defaultAssociationRouteTableId"] = state?.defaultAssociationRouteTableId;
-            resourceInputs["defaultPropagationRouteTableId"] = state?.defaultPropagationRouteTableId;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enableDefaultAssociation"] = state?.enableDefaultAssociation;
-            resourceInputs["enableDefaultPropagation"] = state?.enableDefaultPropagation;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["asn"] = state ? state.asn : undefined;
+            resourceInputs["autoAcceptSharedAttachments"] = state ? state.autoAcceptSharedAttachments : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["defaultAssociationRouteTableId"] = state ? state.defaultAssociationRouteTableId : undefined;
+            resourceInputs["defaultPropagationRouteTableId"] = state ? state.defaultPropagationRouteTableId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableDefaultAssociation"] = state ? state.enableDefaultAssociation : undefined;
+            resourceInputs["enableDefaultPropagation"] = state ? state.enableDefaultPropagation : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (args?.asn === undefined && !opts.urn) {
+            if ((!args || args.asn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'asn'");
             }
-            if (args?.availabilityZones === undefined && !opts.urn) {
+            if ((!args || args.availabilityZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
-            resourceInputs["asn"] = args?.asn;
-            resourceInputs["autoAcceptSharedAttachments"] = args?.autoAcceptSharedAttachments;
-            resourceInputs["availabilityZones"] = args?.availabilityZones;
-            resourceInputs["defaultAssociationRouteTableId"] = args?.defaultAssociationRouteTableId;
-            resourceInputs["defaultPropagationRouteTableId"] = args?.defaultPropagationRouteTableId;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enableDefaultAssociation"] = args?.enableDefaultAssociation;
-            resourceInputs["enableDefaultPropagation"] = args?.enableDefaultPropagation;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["asn"] = args ? args.asn : undefined;
+            resourceInputs["autoAcceptSharedAttachments"] = args ? args.autoAcceptSharedAttachments : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
+            resourceInputs["defaultAssociationRouteTableId"] = args ? args.defaultAssociationRouteTableId : undefined;
+            resourceInputs["defaultPropagationRouteTableId"] = args ? args.defaultPropagationRouteTableId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableDefaultAssociation"] = args ? args.enableDefaultAssociation : undefined;
+            resourceInputs["enableDefaultPropagation"] = args ? args.enableDefaultPropagation : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

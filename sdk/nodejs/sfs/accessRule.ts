@@ -68,7 +68,7 @@ export class AccessRule extends pulumi.CustomResource {
      * Specifies the access level of the shared file system. Possible values are *ro* (read-only)
      * and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
      */
-    declare public readonly accessLevel: pulumi.Output<string | undefined>;
+    public readonly accessLevel!: pulumi.Output<string | undefined>;
     /**
      * Specifies the value that defines the access rule. The value contains 1 to 255 characters.
      * Changing this will create a new access rule. The value varies according to the scenario:
@@ -81,24 +81,24 @@ export class AccessRule extends pulumi.CustomResource {
      * For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
      * For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
      */
-    declare public readonly accessTo: pulumi.Output<string>;
+    public readonly accessTo!: pulumi.Output<string>;
     /**
      * Specifies the type of the share access rule. The default value is *cert*.
      * Changing this will create a new access rule.
      */
-    declare public readonly accessType: pulumi.Output<string | undefined>;
+    public readonly accessType!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the UUID of the shared file system. Changing this will create a new access rule.
      */
-    declare public readonly sfsId: pulumi.Output<string>;
+    public readonly sfsId!: pulumi.Output<string>;
     /**
      * The status of the share access rule.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a AccessRule resource with the given unique name, arguments, and options.
@@ -113,25 +113,25 @@ export class AccessRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
-            resourceInputs["accessLevel"] = state?.accessLevel;
-            resourceInputs["accessTo"] = state?.accessTo;
-            resourceInputs["accessType"] = state?.accessType;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["sfsId"] = state?.sfsId;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["accessTo"] = state ? state.accessTo : undefined;
+            resourceInputs["accessType"] = state ? state.accessType : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sfsId"] = state ? state.sfsId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
-            if (args?.accessTo === undefined && !opts.urn) {
+            if ((!args || args.accessTo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessTo'");
             }
-            if (args?.sfsId === undefined && !opts.urn) {
+            if ((!args || args.sfsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sfsId'");
             }
-            resourceInputs["accessLevel"] = args?.accessLevel;
-            resourceInputs["accessTo"] = args?.accessTo;
-            resourceInputs["accessType"] = args?.accessType;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["sfsId"] = args?.sfsId;
+            resourceInputs["accessLevel"] = args ? args.accessLevel : undefined;
+            resourceInputs["accessTo"] = args ? args.accessTo : undefined;
+            resourceInputs["accessType"] = args ? args.accessType : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["sfsId"] = args ? args.sfsId : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

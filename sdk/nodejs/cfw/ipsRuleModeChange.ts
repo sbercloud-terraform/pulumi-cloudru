@@ -59,25 +59,25 @@ export class IpsRuleModeChange extends pulumi.CustomResource {
     /**
      * Specifies the enterprise project ID.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string | undefined>;
+    public readonly enterpriseProjectId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the IPS rule ID list.
      */
-    declare public readonly ipsIds: pulumi.Output<string[] | undefined>;
+    public readonly ipsIds!: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the protected object ID.
      */
-    declare public readonly objectId: pulumi.Output<string>;
+    public readonly objectId!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this will create new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the IPS rule status.
      * The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
      */
-    declare public readonly status: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a IpsRuleModeChange resource with the given unique name, arguments, and options.
@@ -92,24 +92,24 @@ export class IpsRuleModeChange extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpsRuleModeChangeState | undefined;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["ipsIds"] = state?.ipsIds;
-            resourceInputs["objectId"] = state?.objectId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["ipsIds"] = state ? state.ipsIds : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as IpsRuleModeChangeArgs | undefined;
-            if (args?.objectId === undefined && !opts.urn) {
+            if ((!args || args.objectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if (args?.status === undefined && !opts.urn) {
+            if ((!args || args.status === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["ipsIds"] = args?.ipsIds;
-            resourceInputs["objectId"] = args?.objectId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["status"] = args?.status;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["ipsIds"] = args ? args.ipsIds : undefined;
+            resourceInputs["objectId"] = args ? args.objectId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IpsRuleModeChange.__pulumiType, name, resourceInputs, opts);

@@ -111,18 +111,18 @@ export class CbhInstance extends pulumi.CustomResource {
      * > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
      * <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
      */
-    declare public readonly attachDiskSize: pulumi.Output<number | undefined>;
+    public readonly attachDiskSize!: pulumi.Output<number | undefined>;
     /**
      * Specifies whether auto-renew is enabled.
      * Valid values are **true** and **false**. Defaults to **false**.
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the availability zone name.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly availabilityZone: pulumi.Output<string>;
+    public readonly availabilityZone!: pulumi.Output<string>;
     /**
      * Specifies the charging mode of the CBH instance.
      * The options are as follows:
@@ -130,17 +130,17 @@ export class CbhInstance extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Indicates the data disk size of the instance. The unit is TB. It represents the sum of the disks
      * that come with the flavor and the disks that have already been expanded.
      */
-    declare public /*out*/ readonly dataDiskSize: pulumi.Output<number>;
+    public /*out*/ readonly dataDiskSize!: pulumi.Output<number>;
     /**
      * Specifies the enterprise project ID to which the CBH instance
      * belongs. For enterprise users, if omitted, default enterprise project will be used.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies the product ID of the CBH server. When updating the flavor, it can only be
      * changed to a higher flavor.
@@ -148,20 +148,20 @@ export class CbhInstance extends pulumi.CustomResource {
      * > 1. The flavor change is a high-risk operation, with a certain risk of failure.
      * <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
      */
-    declare public readonly flavorId: pulumi.Output<string>;
+    public readonly flavorId!: pulumi.Output<string>;
     /**
      * Specifies whether the IPv6 network is enabled. Defaults to **false**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly ipv6Enable: pulumi.Output<boolean | undefined>;
+    public readonly ipv6Enable!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the name of the CBH instance. The field can contain `1` to `64` characters.
      * Only letters, digits, underscores (_), and hyphens (-) are allowed.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Specifies the password for logging in to the management console. The value of the field
      * has the following restrictions:
@@ -170,7 +170,7 @@ export class CbhInstance extends pulumi.CustomResource {
      * (!@$%^-_=+[{}]:,./?~#*).
      * + The value of the field cannot contain the username or the username spelled backwards.
      */
-    declare public readonly password: pulumi.Output<string>;
+    public readonly password!: pulumi.Output<string>;
     /**
      * Specifies the charging period of the CBH instance.
      * If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
@@ -178,7 +178,7 @@ export class CbhInstance extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly period: pulumi.Output<number>;
+    public readonly period!: pulumi.Output<number>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are *month* and *year*.
@@ -186,7 +186,7 @@ export class CbhInstance extends pulumi.CustomResource {
      * This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
      * Changing this parameter will create a new resource.
      */
-    declare public readonly periodUnit: pulumi.Output<string>;
+    public readonly periodUnit!: pulumi.Output<string>;
     /**
      * Specifies the power action after the CBH instance is created.
      * The valid values are as follows:
@@ -200,33 +200,33 @@ export class CbhInstance extends pulumi.CustomResource {
      * <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
      * is **ACTIVE**.
      */
-    declare public readonly powerAction: pulumi.Output<string | undefined>;
+    public readonly powerAction!: pulumi.Output<string | undefined>;
     /**
      * Indicates the private IP address of the instance.
      */
-    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
+    public /*out*/ readonly privateIp!: pulumi.Output<string>;
     /**
      * Indicates the elastic IP address.
      */
-    declare public readonly publicIp: pulumi.Output<string>;
+    public readonly publicIp!: pulumi.Output<string>;
     /**
      * Specifies the ID of the elastic IP.
      */
-    declare public readonly publicIpId: pulumi.Output<string | undefined>;
+    public readonly publicIpId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the IDs of the security group. Multiple security group IDs are
      * separated by commas (,) without spaces.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Indicates the status of the instance.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the IP address of the subnet.
      * If not specified, a new IP address will be assigned.
@@ -235,23 +235,23 @@ export class CbhInstance extends pulumi.CustomResource {
      * deleted along with the instance deletion. But if the `subnetAddress` parameter is updated, the elastic network card
      * resource corresponding to the original subnet address will remain, you need to manually delete it in the console.
      */
-    declare public readonly subnetAddress: pulumi.Output<string>;
+    public readonly subnetAddress!: pulumi.Output<string>;
     /**
      * Specifies the ID of a subnet.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the CBH instance.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the current version of the instance image.
      */
-    declare public /*out*/ readonly version: pulumi.Output<string>;
+    public /*out*/ readonly version!: pulumi.Output<string>;
     /**
      * Specifies the ID of a VPC.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a CbhInstance resource with the given unique name, arguments, and options.
@@ -266,79 +266,79 @@ export class CbhInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CbhInstanceState | undefined;
-            resourceInputs["attachDiskSize"] = state?.attachDiskSize;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZone"] = state?.availabilityZone;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["dataDiskSize"] = state?.dataDiskSize;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["flavorId"] = state?.flavorId;
-            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["powerAction"] = state?.powerAction;
-            resourceInputs["privateIp"] = state?.privateIp;
-            resourceInputs["publicIp"] = state?.publicIp;
-            resourceInputs["publicIpId"] = state?.publicIpId;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetAddress"] = state?.subnetAddress;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["version"] = state?.version;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["attachDiskSize"] = state ? state.attachDiskSize : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["dataDiskSize"] = state ? state.dataDiskSize : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
+            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["powerAction"] = state ? state.powerAction : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
+            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetAddress"] = state ? state.subnetAddress : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as CbhInstanceArgs | undefined;
-            if (args?.availabilityZone === undefined && !opts.urn) {
+            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if (args?.chargingMode === undefined && !opts.urn) {
+            if ((!args || args.chargingMode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'chargingMode'");
             }
-            if (args?.flavorId === undefined && !opts.urn) {
+            if ((!args || args.flavorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if (args?.password === undefined && !opts.urn) {
+            if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if (args?.period === undefined && !opts.urn) {
+            if ((!args || args.period === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if (args?.periodUnit === undefined && !opts.urn) {
+            if ((!args || args.periodUnit === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'periodUnit'");
             }
-            if (args?.securityGroupId === undefined && !opts.urn) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["attachDiskSize"] = args?.attachDiskSize;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZone"] = args?.availabilityZone;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["flavorId"] = args?.flavorId;
-            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
-            resourceInputs["name"] = args?.name;
+            resourceInputs["attachDiskSize"] = args ? args.attachDiskSize : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
+            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["powerAction"] = args?.powerAction;
-            resourceInputs["publicIp"] = args?.publicIp;
-            resourceInputs["publicIpId"] = args?.publicIpId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["subnetAddress"] = args?.subnetAddress;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["powerAction"] = args ? args.powerAction : undefined;
+            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
+            resourceInputs["publicIpId"] = args ? args.publicIpId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["subnetAddress"] = args ? args.subnetAddress : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["dataDiskSize"] = undefined /*out*/;
             resourceInputs["privateIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

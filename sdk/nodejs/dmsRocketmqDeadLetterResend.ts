@@ -58,28 +58,28 @@ export class DmsRocketmqDeadLetterResend extends pulumi.CustomResource {
      * Specifies the instance ID.
      * Changing this creates a new resource.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the message ID list.
      * Changing this creates a new resource.
      */
-    declare public readonly messageIdLists: pulumi.Output<string[]>;
+    public readonly messageIdLists!: pulumi.Output<string[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates the resend results.
      * The resendResults structure is documented below.
      */
-    declare public /*out*/ readonly resendResults: pulumi.Output<outputs.DmsRocketmqDeadLetterResendResendResult[]>;
+    public /*out*/ readonly resendResults!: pulumi.Output<outputs.DmsRocketmqDeadLetterResendResendResult[]>;
     /**
      * Specifies the dead letter topic name.
      * Changing this creates a new resource.
      */
-    declare public readonly topic: pulumi.Output<string>;
+    public readonly topic!: pulumi.Output<string>;
 
     /**
      * Create a DmsRocketmqDeadLetterResend resource with the given unique name, arguments, and options.
@@ -94,26 +94,26 @@ export class DmsRocketmqDeadLetterResend extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqDeadLetterResendState | undefined;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["messageIdLists"] = state?.messageIdLists;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["resendResults"] = state?.resendResults;
-            resourceInputs["topic"] = state?.topic;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["messageIdLists"] = state ? state.messageIdLists : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["resendResults"] = state ? state.resendResults : undefined;
+            resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as DmsRocketmqDeadLetterResendArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.messageIdLists === undefined && !opts.urn) {
+            if ((!args || args.messageIdLists === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'messageIdLists'");
             }
-            if (args?.topic === undefined && !opts.urn) {
+            if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["messageIdLists"] = args?.messageIdLists;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["topic"] = args?.topic;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["messageIdLists"] = args ? args.messageIdLists : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["topic"] = args ? args.topic : undefined;
             resourceInputs["resendResults"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -32,8 +32,8 @@ export class IdentityGroupV3 extends pulumi.CustomResource {
         return obj['__pulumiType'] === IdentityGroupV3.__pulumiType;
     }
 
-    declare public readonly description: pulumi.Output<string | undefined>;
-    declare public readonly name: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
 
     /**
      * Create a IdentityGroupV3 resource with the given unique name, arguments, and options.
@@ -48,12 +48,12 @@ export class IdentityGroupV3 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IdentityGroupV3State | undefined;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["name"] = state?.name;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as IdentityGroupV3Args | undefined;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["name"] = args?.name;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IdentityGroupV3.__pulumiType, name, resourceInputs, opts);

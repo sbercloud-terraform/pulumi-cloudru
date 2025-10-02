@@ -443,6 +443,7 @@ func Provider() tfbridge.ProviderInfo {
 			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
+			PackageName:          "pulumi_cloudru",
 			RespectSchemaVersion: true,
 			PyProject:            struct{ Enabled bool }{true},
 		},

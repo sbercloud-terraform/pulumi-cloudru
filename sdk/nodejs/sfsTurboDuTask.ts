@@ -34,13 +34,13 @@ export class SfsTurboDuTask extends pulumi.CustomResource {
         return obj['__pulumiType'] === SfsTurboDuTask.__pulumiType;
     }
 
-    declare public /*out*/ readonly beginTime: pulumi.Output<string>;
-    declare public /*out*/ readonly dirUsages: pulumi.Output<outputs.SfsTurboDuTaskDirUsage[]>;
-    declare public /*out*/ readonly endTime: pulumi.Output<string>;
-    declare public readonly path: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly shareId: pulumi.Output<string>;
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly beginTime!: pulumi.Output<string>;
+    public /*out*/ readonly dirUsages!: pulumi.Output<outputs.SfsTurboDuTaskDirUsage[]>;
+    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    public readonly path!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly shareId!: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a SfsTurboDuTask resource with the given unique name, arguments, and options.
@@ -55,24 +55,24 @@ export class SfsTurboDuTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsTurboDuTaskState | undefined;
-            resourceInputs["beginTime"] = state?.beginTime;
-            resourceInputs["dirUsages"] = state?.dirUsages;
-            resourceInputs["endTime"] = state?.endTime;
-            resourceInputs["path"] = state?.path;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["shareId"] = state?.shareId;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["beginTime"] = state ? state.beginTime : undefined;
+            resourceInputs["dirUsages"] = state ? state.dirUsages : undefined;
+            resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["shareId"] = state ? state.shareId : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as SfsTurboDuTaskArgs | undefined;
-            if (args?.path === undefined && !opts.urn) {
+            if ((!args || args.path === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if (args?.shareId === undefined && !opts.urn) {
+            if ((!args || args.shareId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            resourceInputs["path"] = args?.path;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["shareId"] = args?.shareId;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["shareId"] = args ? args.shareId : undefined;
             resourceInputs["beginTime"] = undefined /*out*/;
             resourceInputs["dirUsages"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;

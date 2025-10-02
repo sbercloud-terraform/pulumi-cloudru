@@ -107,20 +107,20 @@ export class BucketPolicy extends pulumi.CustomResource {
     /**
      * Specifies the name of the bucket to which to apply the policy.
      */
-    declare public readonly bucket: pulumi.Output<string>;
+    public readonly bucket!: pulumi.Output<string>;
     /**
      * Specifies the text of the bucket policy in JSON format. For more information about
      * obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
      */
-    declare public readonly policy: pulumi.Output<string>;
+    public readonly policy!: pulumi.Output<string>;
     /**
      * Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
      */
-    declare public readonly policyFormat: pulumi.Output<string | undefined>;
+    public readonly policyFormat!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a BucketPolicy resource with the given unique name, arguments, and options.
@@ -135,22 +135,22 @@ export class BucketPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketPolicyState | undefined;
-            resourceInputs["bucket"] = state?.bucket;
-            resourceInputs["policy"] = state?.policy;
-            resourceInputs["policyFormat"] = state?.policyFormat;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["bucket"] = state ? state.bucket : undefined;
+            resourceInputs["policy"] = state ? state.policy : undefined;
+            resourceInputs["policyFormat"] = state ? state.policyFormat : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as BucketPolicyArgs | undefined;
-            if (args?.bucket === undefined && !opts.urn) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (args?.policy === undefined && !opts.urn) {
+            if ((!args || args.policy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policy'");
             }
-            resourceInputs["bucket"] = args?.bucket;
-            resourceInputs["policy"] = args?.policy;
-            resourceInputs["policyFormat"] = args?.policyFormat;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["bucket"] = args ? args.bucket : undefined;
+            resourceInputs["policy"] = args ? args.policy : undefined;
+            resourceInputs["policyFormat"] = args ? args.policyFormat : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(BucketPolicy.__pulumiType, name, resourceInputs, opts);

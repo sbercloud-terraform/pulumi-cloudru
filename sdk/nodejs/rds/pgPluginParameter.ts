@@ -35,24 +35,24 @@ export class PgPluginParameter extends pulumi.CustomResource {
     /**
      * Indicates the default values of the plugin parameter.
      */
-    declare public /*out*/ readonly defaultValues: pulumi.Output<string[]>;
+    public /*out*/ readonly defaultValues!: pulumi.Output<string[]>;
     /**
      * Specifies the ID of RDS instance.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * Specifies the name of the plugin parameter.
      */
-    declare public readonly name: pulumi.Output<string>;
-    declare public readonly region: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Indicates whether a reboot is required.
      */
-    declare public /*out*/ readonly restartRequired: pulumi.Output<boolean>;
+    public /*out*/ readonly restartRequired!: pulumi.Output<boolean>;
     /**
      * Specifies the list of plugin parameter values.
      */
-    declare public readonly values: pulumi.Output<string[]>;
+    public readonly values!: pulumi.Output<string[]>;
 
     /**
      * Create a PgPluginParameter resource with the given unique name, arguments, and options.
@@ -67,24 +67,24 @@ export class PgPluginParameter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgPluginParameterState | undefined;
-            resourceInputs["defaultValues"] = state?.defaultValues;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["restartRequired"] = state?.restartRequired;
-            resourceInputs["values"] = state?.values;
+            resourceInputs["defaultValues"] = state ? state.defaultValues : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["restartRequired"] = state ? state.restartRequired : undefined;
+            resourceInputs["values"] = state ? state.values : undefined;
         } else {
             const args = argsOrState as PgPluginParameterArgs | undefined;
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.values === undefined && !opts.urn) {
+            if ((!args || args.values === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'values'");
             }
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["values"] = args?.values;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["values"] = args ? args.values : undefined;
             resourceInputs["defaultValues"] = undefined /*out*/;
             resourceInputs["restartRequired"] = undefined /*out*/;
         }

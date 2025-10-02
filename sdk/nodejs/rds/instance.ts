@@ -235,62 +235,62 @@ export class Instance extends pulumi.CustomResource {
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto-renew is enabled. Valid values are "true" and "false".
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * Specifies the list of AZ name. Changing this parameter will create a
      * new resource.
      */
-    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[]>;
     /**
      * Specifies the advanced backup policy. Structure is documented below.
      */
-    declare public readonly backupStrategy: pulumi.Output<outputs.Rds.InstanceBackupStrategy>;
+    public readonly backupStrategy!: pulumi.Output<outputs.Rds.InstanceBackupStrategy>;
     /**
      * Specify the binlog retention period in hours. This parameter applies only to
      * MySQL Server databases. Value range: **0** to **168 (7x24)**.
      */
-    declare public readonly binlogRetentionHours: pulumi.Output<number | undefined>;
+    public readonly binlogRetentionHours!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging mode of the RDS DB instance. Valid values are
      * **prePaid** and **postPaid**, defaults to **postPaid**. Changing this creates a new resource.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Specifies the Character Set, only available to Microsoft SQL Server DB instances.
      */
-    declare public readonly collation: pulumi.Output<string>;
+    public readonly collation!: pulumi.Output<string>;
     /**
      * Indicates the creation time.
      */
-    declare public /*out*/ readonly created: pulumi.Output<string>;
+    public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * Specifies the database information. Structure is documented below. Changing this
      * parameter will create a new resource.
      */
-    declare public readonly db: pulumi.Output<outputs.Rds.InstanceDb>;
+    public readonly db!: pulumi.Output<outputs.Rds.InstanceDb>;
     /**
      * Specifies the description of the instance. The value consists of 0 to 64
      * characters, including letters, digits, periods (.), underscores (_), and hyphens (-).
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Specifies the exclusive storage ID for Dec users. It is different for each az
      * configuration. When creating an instance for Dec users, it is needed to be specified for all nodes of the instance
      * and separated by commas if database instance type is not standalone or read-only.
      */
-    declare public readonly dssPoolId: pulumi.Output<string | undefined>;
+    public readonly dssPoolId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project id of the RDS instance.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Specifies an intranet floating IP address of RDS DB instance.
      */
-    declare public readonly fixedIp: pulumi.Output<string>;
+    public readonly fixedIp!: pulumi.Output<string>;
     /**
      * Specifies the specification code.
      *
@@ -298,7 +298,7 @@ export class Instance extends pulumi.CustomResource {
      * changed, a temporary instance will be generated. This temporary instance will occupy the association of the VPC
      * security group and cannot be deleted for 12 hours.
      */
-    declare public readonly flavor: pulumi.Output<string>;
+    public readonly flavor!: pulumi.Output<string>;
     /**
      * Required for HA instances. Specifies the replication mode for the standby DB instance.
      * + For MySQL, the value is **async** or **semisync**.
@@ -308,18 +308,18 @@ export class Instance extends pulumi.CustomResource {
      * > **NOTE:** **async** indicates the asynchronous replication mode. **semisync** indicates the semi-synchronous
      * replication mode. **sync** indicates the synchronous replication mode.
      */
-    declare public readonly haReplicationMode: pulumi.Output<string>;
+    public readonly haReplicationMode!: pulumi.Output<string>;
     /**
      * Specifies the case-sensitive state of the database table name,
      * the default value is "1". Changing this parameter will create a new resource.
      * + 0: Table names are stored as fixed and table names are case-sensitive.
      * + 1: Table names will be stored in lower case and table names are not case-sensitive.
      */
-    declare public readonly lowerCaseTableNames: pulumi.Output<string | undefined>;
+    public readonly lowerCaseTableNames!: pulumi.Output<string | undefined>;
     /**
      * Specifies the time at which the maintenance time window starts, for example, **22:00**.
      */
-    declare public readonly maintainBegin: pulumi.Output<string>;
+    public readonly maintainBegin!: pulumi.Output<string>;
     /**
      * Specifies the time at which the maintenance time window ends, for example, **01:00**.
      *
@@ -327,135 +327,135 @@ export class Instance extends pulumi.CustomResource {
      * hour, and the interval between them must be one to four hours.<br>
      * For RDS for SQL Server databases, the interval between the maintenance begin time and end time must be four hours.
      */
-    declare public readonly maintainEnd: pulumi.Output<string>;
+    public readonly maintainEnd!: pulumi.Output<string>;
     /**
      * Specify the host information for MSDTC.
      * The msdtcHosts structure is documented below.
      *
      * > **NOTE:** Only adding MSDTC hosts is supported, deletion is not allowed.
      */
-    declare public readonly msdtcHosts: pulumi.Output<outputs.Rds.InstanceMsdtcHost[]>;
+    public readonly msdtcHosts!: pulumi.Output<outputs.Rds.InstanceMsdtcHost[]>;
     /**
      * Specifies the DB instance name. The DB instance name of the same type must be unique for
      * the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
      * contain only letters, digits, hyphens (-), and underscores (_).
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Indicates the instance nodes information. Structure is documented below.
      */
-    declare public /*out*/ readonly nodes: pulumi.Output<outputs.Rds.InstanceNode[]>;
+    public /*out*/ readonly nodes!: pulumi.Output<outputs.Rds.InstanceNode[]>;
     /**
      * Specifies the parameter group ID.
      */
-    declare public readonly paramGroupId: pulumi.Output<string | undefined>;
+    public readonly paramGroupId!: pulumi.Output<string | undefined>;
     /**
      * Specify an array of one or more parameters to be set to the RDS instance after
      * launched. You can check on console to see which parameters supported. Structure is documented below.
      */
-    declare public readonly parameters: pulumi.Output<outputs.Rds.InstanceParameter[]>;
+    public readonly parameters!: pulumi.Output<outputs.Rds.InstanceParameter[]>;
     /**
      * Specifies the charging period of the RDS DB instance. If `periodUnit` is set
      * to **month**, the value ranges from `1` to `9`. If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
      * This parameter is mandatory if `chargingMode` is set to **prePaid**. Changing this creates a new resource.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the RDS DB instance. Valid values
      * are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**. Changing this
      * creates a new resource.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Specifies the power action to be done for the instance.
      * Value options: **ON**, **OFF** and **REBOOT**.
      *
      * > **NOTE:** The `powerAction` is a one-time action.
      */
-    declare public readonly powerAction: pulumi.Output<string>;
+    public readonly powerAction!: pulumi.Output<string>;
     /**
      * Specifies the prefix of the private domain name. The value contains
      * **8** to **64** characters. Only uppercase letters, lowercase letters, and digits are allowed.
      */
-    declare public readonly privateDnsNamePrefix: pulumi.Output<string>;
+    public readonly privateDnsNamePrefix!: pulumi.Output<string>;
     /**
      * Indicates the private domain name list of the DB instance.
      */
-    declare public /*out*/ readonly privateDnsNames: pulumi.Output<string[]>;
+    public /*out*/ readonly privateDnsNames!: pulumi.Output<string[]>;
     /**
      * Indicates the private IP address list. It is a blank string until an ECS is created.
      */
-    declare public /*out*/ readonly privateIps: pulumi.Output<string[]>;
+    public /*out*/ readonly privateIps!: pulumi.Output<string[]>;
     /**
      * Indicates the public IP address list.
      */
-    declare public /*out*/ readonly publicIps: pulumi.Output<string[]>;
+    public /*out*/ readonly publicIps!: pulumi.Output<string[]>;
     /**
      * Specifies the read write permissions of the instance. Valid values:
      * + **readwrite**: read write permissions.
      * + **readonly**: readonly permissions.
      */
-    declare public readonly readWritePermissions: pulumi.Output<string | undefined>;
+    public readonly readWritePermissions!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the rds instance resource. If omitted, the
      * provider-level region will be used. Changing this creates a new rds instance resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the restoration information. It only supported restore to postpaid
      * instance. Structure is documented below. Changing this parameter will create a new resource.
      */
-    declare public readonly restore: pulumi.Output<outputs.Rds.InstanceRestore | undefined>;
+    public readonly restore!: pulumi.Output<outputs.Rds.InstanceRestore | undefined>;
     /**
      * Specifies the rotation days of TDE rotation.
      */
-    declare public readonly rotateDay: pulumi.Output<number | undefined>;
+    public readonly rotateDay!: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to enable seconds level monitoring.
      */
-    declare public readonly secondsLevelMonitoringEnabled: pulumi.Output<boolean>;
+    public readonly secondsLevelMonitoringEnabled!: pulumi.Output<boolean>;
     /**
      * Specifies the seconds level monitoring interval. Valid values:
      * **1**, **5**. It is mandatory when `secondsLevelMonitoringEnabled` is **true**.
      */
-    declare public readonly secondsLevelMonitoringInterval: pulumi.Output<number>;
+    public readonly secondsLevelMonitoringInterval!: pulumi.Output<number>;
     /**
      * Specifies the key ID of TDE rotation.
      */
-    declare public readonly secretId: pulumi.Output<string | undefined>;
+    public readonly secretId!: pulumi.Output<string | undefined>;
     /**
      * Specifies the key name of TDE rotation.
      */
-    declare public readonly secretName: pulumi.Output<string | undefined>;
+    public readonly secretName!: pulumi.Output<string | undefined>;
     /**
      * Specifies the key version of TDE rotation.
      *
      * > **NOTE:** `rotateDay`, `secretId`, `secretName` and `secretVersion` will only take effect when `tdeEnabled`
      * is **true**.
      */
-    declare public readonly secretVersion: pulumi.Output<string | undefined>;
+    public readonly secretVersion!: pulumi.Output<string | undefined>;
     /**
      * Specifies the security group which the RDS DB instance belongs to.
      */
-    declare public readonly securityGroupId: pulumi.Output<string>;
+    public readonly securityGroupId!: pulumi.Output<string>;
     /**
      * Specifies the slow log show original status of the instance.
      * Only **MySQL** and **PostgreSQL** are supported. Value options: **on**, **off**.
      */
-    declare public readonly slowLogShowOriginalStatus: pulumi.Output<string | undefined>;
+    public readonly slowLogShowOriginalStatus!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the SSL for MySQL database.
      */
-    declare public readonly sslEnable: pulumi.Output<boolean>;
+    public readonly sslEnable!: pulumi.Output<boolean>;
     /**
      * Indicates the node status.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the network id of a subnet. Changing this parameter will create a
      * new resource.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * Specifies the database switchover policy.
      * + **reliability**: reliability first.
@@ -463,33 +463,33 @@ export class Instance extends pulumi.CustomResource {
      *
      * Defaults to **reliability**.
      */
-    declare public readonly switchStrategy: pulumi.Output<string>;
+    public readonly switchStrategy!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the RDS instance. Each tag is represented by one key-value
      * pair.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies whether enable TDE for the instance.
      *
      * > **NOTE:** TDE cannot be disabled after being enabled.
      */
-    declare public readonly tdeEnabled: pulumi.Output<boolean>;
+    public readonly tdeEnabled!: pulumi.Output<boolean>;
     /**
      * Specifies the UTC time zone. For MySQL and PostgreSQL Chinese mainland site
      * and international site use UTC by default. The value ranges from UTC-12:00 to UTC+12:00 at the full hour. For
      * Microsoft SQL Server international site use UTC by default and Chinese mainland site use China Standard Time. The time
      * zone is expressed as a character string.
      */
-    declare public readonly timeZone: pulumi.Output<string>;
+    public readonly timeZone!: pulumi.Output<string>;
     /**
      * Specifies the volume information. Structure is documented below.
      */
-    declare public readonly volume: pulumi.Output<outputs.Rds.InstanceVolume>;
+    public readonly volume!: pulumi.Output<outputs.Rds.InstanceVolume>;
     /**
      * Specifies the VPC ID. Changing this parameter will create a new resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -504,123 +504,123 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZones"] = state?.availabilityZones;
-            resourceInputs["backupStrategy"] = state?.backupStrategy;
-            resourceInputs["binlogRetentionHours"] = state?.binlogRetentionHours;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["collation"] = state?.collation;
-            resourceInputs["created"] = state?.created;
-            resourceInputs["db"] = state?.db;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["dssPoolId"] = state?.dssPoolId;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["fixedIp"] = state?.fixedIp;
-            resourceInputs["flavor"] = state?.flavor;
-            resourceInputs["haReplicationMode"] = state?.haReplicationMode;
-            resourceInputs["lowerCaseTableNames"] = state?.lowerCaseTableNames;
-            resourceInputs["maintainBegin"] = state?.maintainBegin;
-            resourceInputs["maintainEnd"] = state?.maintainEnd;
-            resourceInputs["msdtcHosts"] = state?.msdtcHosts;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["nodes"] = state?.nodes;
-            resourceInputs["paramGroupId"] = state?.paramGroupId;
-            resourceInputs["parameters"] = state?.parameters;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["powerAction"] = state?.powerAction;
-            resourceInputs["privateDnsNamePrefix"] = state?.privateDnsNamePrefix;
-            resourceInputs["privateDnsNames"] = state?.privateDnsNames;
-            resourceInputs["privateIps"] = state?.privateIps;
-            resourceInputs["publicIps"] = state?.publicIps;
-            resourceInputs["readWritePermissions"] = state?.readWritePermissions;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["restore"] = state?.restore;
-            resourceInputs["rotateDay"] = state?.rotateDay;
-            resourceInputs["secondsLevelMonitoringEnabled"] = state?.secondsLevelMonitoringEnabled;
-            resourceInputs["secondsLevelMonitoringInterval"] = state?.secondsLevelMonitoringInterval;
-            resourceInputs["secretId"] = state?.secretId;
-            resourceInputs["secretName"] = state?.secretName;
-            resourceInputs["secretVersion"] = state?.secretVersion;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["slowLogShowOriginalStatus"] = state?.slowLogShowOriginalStatus;
-            resourceInputs["sslEnable"] = state?.sslEnable;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["switchStrategy"] = state?.switchStrategy;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["tdeEnabled"] = state?.tdeEnabled;
-            resourceInputs["timeZone"] = state?.timeZone;
-            resourceInputs["volume"] = state?.volume;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
+            resourceInputs["backupStrategy"] = state ? state.backupStrategy : undefined;
+            resourceInputs["binlogRetentionHours"] = state ? state.binlogRetentionHours : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["collation"] = state ? state.collation : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["db"] = state ? state.db : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dssPoolId"] = state ? state.dssPoolId : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
+            resourceInputs["flavor"] = state ? state.flavor : undefined;
+            resourceInputs["haReplicationMode"] = state ? state.haReplicationMode : undefined;
+            resourceInputs["lowerCaseTableNames"] = state ? state.lowerCaseTableNames : undefined;
+            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
+            resourceInputs["msdtcHosts"] = state ? state.msdtcHosts : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nodes"] = state ? state.nodes : undefined;
+            resourceInputs["paramGroupId"] = state ? state.paramGroupId : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["powerAction"] = state ? state.powerAction : undefined;
+            resourceInputs["privateDnsNamePrefix"] = state ? state.privateDnsNamePrefix : undefined;
+            resourceInputs["privateDnsNames"] = state ? state.privateDnsNames : undefined;
+            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
+            resourceInputs["publicIps"] = state ? state.publicIps : undefined;
+            resourceInputs["readWritePermissions"] = state ? state.readWritePermissions : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["restore"] = state ? state.restore : undefined;
+            resourceInputs["rotateDay"] = state ? state.rotateDay : undefined;
+            resourceInputs["secondsLevelMonitoringEnabled"] = state ? state.secondsLevelMonitoringEnabled : undefined;
+            resourceInputs["secondsLevelMonitoringInterval"] = state ? state.secondsLevelMonitoringInterval : undefined;
+            resourceInputs["secretId"] = state ? state.secretId : undefined;
+            resourceInputs["secretName"] = state ? state.secretName : undefined;
+            resourceInputs["secretVersion"] = state ? state.secretVersion : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["slowLogShowOriginalStatus"] = state ? state.slowLogShowOriginalStatus : undefined;
+            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["switchStrategy"] = state ? state.switchStrategy : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["tdeEnabled"] = state ? state.tdeEnabled : undefined;
+            resourceInputs["timeZone"] = state ? state.timeZone : undefined;
+            resourceInputs["volume"] = state ? state.volume : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (args?.availabilityZones === undefined && !opts.urn) {
+            if ((!args || args.availabilityZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
-            if (args?.db === undefined && !opts.urn) {
+            if ((!args || args.db === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'db'");
             }
-            if (args?.flavor === undefined && !opts.urn) {
+            if ((!args || args.flavor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flavor'");
             }
-            if (args?.securityGroupId === undefined && !opts.urn) {
+            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if (args?.volume === undefined && !opts.urn) {
+            if ((!args || args.volume === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volume'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZones"] = args?.availabilityZones;
-            resourceInputs["backupStrategy"] = args?.backupStrategy;
-            resourceInputs["binlogRetentionHours"] = args?.binlogRetentionHours;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["collation"] = args?.collation;
-            resourceInputs["db"] = args?.db;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["dssPoolId"] = args?.dssPoolId;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["fixedIp"] = args?.fixedIp;
-            resourceInputs["flavor"] = args?.flavor;
-            resourceInputs["haReplicationMode"] = args?.haReplicationMode;
-            resourceInputs["lowerCaseTableNames"] = args?.lowerCaseTableNames;
-            resourceInputs["maintainBegin"] = args?.maintainBegin;
-            resourceInputs["maintainEnd"] = args?.maintainEnd;
-            resourceInputs["msdtcHosts"] = args?.msdtcHosts;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["paramGroupId"] = args?.paramGroupId;
-            resourceInputs["parameters"] = args?.parameters;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["powerAction"] = args?.powerAction;
-            resourceInputs["privateDnsNamePrefix"] = args?.privateDnsNamePrefix;
-            resourceInputs["readWritePermissions"] = args?.readWritePermissions;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["restore"] = args?.restore;
-            resourceInputs["rotateDay"] = args?.rotateDay;
-            resourceInputs["secondsLevelMonitoringEnabled"] = args?.secondsLevelMonitoringEnabled;
-            resourceInputs["secondsLevelMonitoringInterval"] = args?.secondsLevelMonitoringInterval;
-            resourceInputs["secretId"] = args?.secretId;
-            resourceInputs["secretName"] = args?.secretName;
-            resourceInputs["secretVersion"] = args?.secretVersion;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["slowLogShowOriginalStatus"] = args?.slowLogShowOriginalStatus;
-            resourceInputs["sslEnable"] = args?.sslEnable;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["switchStrategy"] = args?.switchStrategy;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["tdeEnabled"] = args?.tdeEnabled;
-            resourceInputs["timeZone"] = args?.timeZone;
-            resourceInputs["volume"] = args?.volume;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
+            resourceInputs["backupStrategy"] = args ? args.backupStrategy : undefined;
+            resourceInputs["binlogRetentionHours"] = args ? args.binlogRetentionHours : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["collation"] = args ? args.collation : undefined;
+            resourceInputs["db"] = args ? args.db : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dssPoolId"] = args ? args.dssPoolId : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
+            resourceInputs["flavor"] = args ? args.flavor : undefined;
+            resourceInputs["haReplicationMode"] = args ? args.haReplicationMode : undefined;
+            resourceInputs["lowerCaseTableNames"] = args ? args.lowerCaseTableNames : undefined;
+            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
+            resourceInputs["msdtcHosts"] = args ? args.msdtcHosts : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["paramGroupId"] = args ? args.paramGroupId : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["powerAction"] = args ? args.powerAction : undefined;
+            resourceInputs["privateDnsNamePrefix"] = args ? args.privateDnsNamePrefix : undefined;
+            resourceInputs["readWritePermissions"] = args ? args.readWritePermissions : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["restore"] = args ? args.restore : undefined;
+            resourceInputs["rotateDay"] = args ? args.rotateDay : undefined;
+            resourceInputs["secondsLevelMonitoringEnabled"] = args ? args.secondsLevelMonitoringEnabled : undefined;
+            resourceInputs["secondsLevelMonitoringInterval"] = args ? args.secondsLevelMonitoringInterval : undefined;
+            resourceInputs["secretId"] = args ? args.secretId : undefined;
+            resourceInputs["secretName"] = args ? args.secretName : undefined;
+            resourceInputs["secretVersion"] = args ? args.secretVersion : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["slowLogShowOriginalStatus"] = args ? args.slowLogShowOriginalStatus : undefined;
+            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["switchStrategy"] = args ? args.switchStrategy : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["tdeEnabled"] = args ? args.tdeEnabled : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
+            resourceInputs["volume"] = args ? args.volume : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
             resourceInputs["privateDnsNames"] = undefined /*out*/;

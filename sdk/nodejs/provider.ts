@@ -30,42 +30,42 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The access key of the SberCloud to use.
      */
-    declare public readonly accessKey: pulumi.Output<string | undefined>;
+    public readonly accessKey!: pulumi.Output<string | undefined>;
     /**
      * The name of the Account to login with.
      */
-    declare public readonly accountName: pulumi.Output<string | undefined>;
+    public readonly accountName!: pulumi.Output<string | undefined>;
     /**
      * The Identity authentication URL.
      */
-    declare public readonly authUrl: pulumi.Output<string | undefined>;
-    declare public readonly domainId: pulumi.Output<string | undefined>;
-    declare public readonly domainName: pulumi.Output<string | undefined>;
-    declare public readonly enterpriseProjectId: pulumi.Output<string | undefined>;
+    public readonly authUrl!: pulumi.Output<string | undefined>;
+    public readonly domainId!: pulumi.Output<string | undefined>;
+    public readonly domainName!: pulumi.Output<string | undefined>;
+    public readonly enterpriseProjectId!: pulumi.Output<string | undefined>;
     /**
      * Password to login with.
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * The name of the Project to login with.
      */
-    declare public readonly projectName: pulumi.Output<string | undefined>;
+    public readonly projectName!: pulumi.Output<string | undefined>;
     /**
      * The SberCloud region to connect to.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    public readonly region!: pulumi.Output<string | undefined>;
     /**
      * The secret key of the SberCloud to use.
      */
-    declare public readonly secretKey: pulumi.Output<string | undefined>;
+    public readonly secretKey!: pulumi.Output<string | undefined>;
     /**
      * The security token to authenticate with a temporary security credential.
      */
-    declare public readonly securityToken: pulumi.Output<string | undefined>;
+    public readonly securityToken!: pulumi.Output<string | undefined>;
     /**
      * Username to login with.
      */
-    declare public readonly userName: pulumi.Output<string | undefined>;
+    public readonly userName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -78,22 +78,22 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["accessKey"] = args?.accessKey;
-            resourceInputs["accountName"] = args?.accountName;
-            resourceInputs["assumeRole"] = pulumi.output(args?.assumeRole).apply(JSON.stringify);
-            resourceInputs["authUrl"] = args?.authUrl;
-            resourceInputs["domainId"] = args?.domainId;
-            resourceInputs["domainName"] = args?.domainName;
-            resourceInputs["endpoints"] = pulumi.output(args?.endpoints).apply(JSON.stringify);
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["insecure"] = pulumi.output(args?.insecure).apply(JSON.stringify);
-            resourceInputs["maxRetries"] = pulumi.output(args?.maxRetries).apply(JSON.stringify);
+            resourceInputs["accessKey"] = args ? args.accessKey : undefined;
+            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["assumeRole"] = pulumi.output(args ? args.assumeRole : undefined).apply(JSON.stringify);
+            resourceInputs["authUrl"] = args ? args.authUrl : undefined;
+            resourceInputs["domainId"] = args ? args.domainId : undefined;
+            resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["endpoints"] = pulumi.output(args ? args.endpoints : undefined).apply(JSON.stringify);
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["insecure"] = pulumi.output(args ? args.insecure : undefined).apply(JSON.stringify);
+            resourceInputs["maxRetries"] = pulumi.output(args ? args.maxRetries : undefined).apply(JSON.stringify);
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["projectName"] = args?.projectName;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["secretKey"] = args?.secretKey;
-            resourceInputs["securityToken"] = args?.securityToken;
-            resourceInputs["userName"] = args?.userName;
+            resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["securityToken"] = args ? args.securityToken : undefined;
+            resourceInputs["userName"] = args ? args.userName : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

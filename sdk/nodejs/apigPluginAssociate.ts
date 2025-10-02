@@ -35,23 +35,23 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
     /**
      * The APIs bound by the plugin.
      */
-    declare public readonly apiIds: pulumi.Output<string[]>;
+    public readonly apiIds!: pulumi.Output<string[]>;
     /**
      * The environment ID where the API was published.
      */
-    declare public readonly envId: pulumi.Output<string>;
+    public readonly envId!: pulumi.Output<string>;
     /**
      * The ID of the dedicated instance to which the plugin belongs.
      */
-    declare public readonly instanceId: pulumi.Output<string>;
+    public readonly instanceId!: pulumi.Output<string>;
     /**
      * The plugin ID.
      */
-    declare public readonly pluginId: pulumi.Output<string>;
+    public readonly pluginId!: pulumi.Output<string>;
     /**
      * The region where the plugin is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
 
     /**
      * Create a ApigPluginAssociate resource with the given unique name, arguments, and options.
@@ -66,30 +66,30 @@ export class ApigPluginAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigPluginAssociateState | undefined;
-            resourceInputs["apiIds"] = state?.apiIds;
-            resourceInputs["envId"] = state?.envId;
-            resourceInputs["instanceId"] = state?.instanceId;
-            resourceInputs["pluginId"] = state?.pluginId;
-            resourceInputs["region"] = state?.region;
+            resourceInputs["apiIds"] = state ? state.apiIds : undefined;
+            resourceInputs["envId"] = state ? state.envId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["pluginId"] = state ? state.pluginId : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ApigPluginAssociateArgs | undefined;
-            if (args?.apiIds === undefined && !opts.urn) {
+            if ((!args || args.apiIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiIds'");
             }
-            if (args?.envId === undefined && !opts.urn) {
+            if ((!args || args.envId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if (args?.instanceId === undefined && !opts.urn) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if (args?.pluginId === undefined && !opts.urn) {
+            if ((!args || args.pluginId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pluginId'");
             }
-            resourceInputs["apiIds"] = args?.apiIds;
-            resourceInputs["envId"] = args?.envId;
-            resourceInputs["instanceId"] = args?.instanceId;
-            resourceInputs["pluginId"] = args?.pluginId;
-            resourceInputs["region"] = args?.region;
+            resourceInputs["apiIds"] = args ? args.apiIds : undefined;
+            resourceInputs["envId"] = args ? args.envId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["pluginId"] = args ? args.pluginId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigPluginAssociate.__pulumiType, name, resourceInputs, opts);

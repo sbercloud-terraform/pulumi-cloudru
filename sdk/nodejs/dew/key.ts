@@ -60,83 +60,83 @@ export class Key extends pulumi.CustomResource {
     /**
      * Creation time (time stamp) of a key.
      */
-    declare public /*out*/ readonly creationDate: pulumi.Output<string>;
+    public /*out*/ readonly creationDate!: pulumi.Output<string>;
     /**
      * Identification of a Master Key. The value 1 indicates a Default
      * Master Key, and the value 0 indicates a key.
      */
-    declare public /*out*/ readonly defaultKeyFlag: pulumi.Output<string>;
+    public /*out*/ readonly defaultKeyFlag!: pulumi.Output<string>;
     /**
      * ID of a user domain for the key.
      */
-    declare public /*out*/ readonly domainId: pulumi.Output<string>;
+    public /*out*/ readonly domainId!: pulumi.Output<string>;
     /**
      * The enterprise project id of the kms key. Changing this creates a new key.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * Expiration time.
      */
-    declare public /*out*/ readonly expirationTime: pulumi.Output<string>;
+    public /*out*/ readonly expirationTime!: pulumi.Output<string>;
     /**
      * Specifies whether the key is enabled. Defaults to true.
      * Changing this updates the state of existing key.
      */
-    declare public readonly isEnabled: pulumi.Output<boolean | undefined>;
+    public readonly isEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The algorithm of the key. Valid values are AES_256, SM4, RSA_2048, RSA_3072,
      * RSA_4096, EC_P256, EC_P384, SM2. Changing this creates a new key.
      */
-    declare public readonly keyAlgorithm: pulumi.Output<string>;
+    public readonly keyAlgorithm!: pulumi.Output<string>;
     /**
      * The alias in which to create the key. It is required when
      * we create a new key. Changing this updates the alias of key.
      */
-    declare public readonly keyAlias: pulumi.Output<string>;
+    public readonly keyAlias!: pulumi.Output<string>;
     /**
      * The description of the key as viewed in Sber console.
      * Changing this updates the description of key.
      */
-    declare public readonly keyDescription: pulumi.Output<string | undefined>;
+    public readonly keyDescription!: pulumi.Output<string | undefined>;
     /**
      * The globally unique identifier for the key.
      */
-    declare public /*out*/ readonly keyId: pulumi.Output<string>;
-    declare public /*out*/ readonly keyState: pulumi.Output<string>;
-    declare public readonly keyUsage: pulumi.Output<string>;
-    declare public readonly keystoreId: pulumi.Output<string>;
-    declare public readonly origin: pulumi.Output<string>;
+    public /*out*/ readonly keyId!: pulumi.Output<string>;
+    public /*out*/ readonly keyState!: pulumi.Output<string>;
+    public readonly keyUsage!: pulumi.Output<string>;
+    public readonly keystoreId!: pulumi.Output<string>;
+    public readonly origin!: pulumi.Output<string>;
     /**
      * Duration in days after which the key is deleted
      * after destruction of the resource, must be between 7 and 1096 days. It doesn't
      * have default value. It only be used when delete a key.
      */
-    declare public readonly pendingDays: pulumi.Output<string | undefined>;
+    public readonly pendingDays!: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the KMS key resource. If omitted, the provider-level region will be used. Changing this creates a new KMS key resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies whether the key rotation is enabled. Defaults to false.
      */
-    declare public readonly rotationEnabled: pulumi.Output<boolean | undefined>;
+    public readonly rotationEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the key rotation interval. The valid value is range from 30 to 365,
      * defaults to 365.
      */
-    declare public readonly rotationInterval: pulumi.Output<number>;
+    public readonly rotationInterval!: pulumi.Output<number>;
     /**
      * The total number of key rotations.
      */
-    declare public /*out*/ readonly rotationNumber: pulumi.Output<number>;
+    public /*out*/ readonly rotationNumber!: pulumi.Output<number>;
     /**
      * Scheduled deletion time (time stamp) of a key.
      */
-    declare public /*out*/ readonly scheduledDeletionDate: pulumi.Output<string>;
+    public /*out*/ readonly scheduledDeletionDate!: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the kms key.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Key resource with the given unique name, arguments, and options.
@@ -151,45 +151,45 @@ export class Key extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyState | undefined;
-            resourceInputs["creationDate"] = state?.creationDate;
-            resourceInputs["defaultKeyFlag"] = state?.defaultKeyFlag;
-            resourceInputs["domainId"] = state?.domainId;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["expirationTime"] = state?.expirationTime;
-            resourceInputs["isEnabled"] = state?.isEnabled;
-            resourceInputs["keyAlgorithm"] = state?.keyAlgorithm;
-            resourceInputs["keyAlias"] = state?.keyAlias;
-            resourceInputs["keyDescription"] = state?.keyDescription;
-            resourceInputs["keyId"] = state?.keyId;
-            resourceInputs["keyState"] = state?.keyState;
-            resourceInputs["keyUsage"] = state?.keyUsage;
-            resourceInputs["keystoreId"] = state?.keystoreId;
-            resourceInputs["origin"] = state?.origin;
-            resourceInputs["pendingDays"] = state?.pendingDays;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["rotationEnabled"] = state?.rotationEnabled;
-            resourceInputs["rotationInterval"] = state?.rotationInterval;
-            resourceInputs["rotationNumber"] = state?.rotationNumber;
-            resourceInputs["scheduledDeletionDate"] = state?.scheduledDeletionDate;
-            resourceInputs["tags"] = state?.tags;
+            resourceInputs["creationDate"] = state ? state.creationDate : undefined;
+            resourceInputs["defaultKeyFlag"] = state ? state.defaultKeyFlag : undefined;
+            resourceInputs["domainId"] = state ? state.domainId : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["isEnabled"] = state ? state.isEnabled : undefined;
+            resourceInputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
+            resourceInputs["keyAlias"] = state ? state.keyAlias : undefined;
+            resourceInputs["keyDescription"] = state ? state.keyDescription : undefined;
+            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["keyState"] = state ? state.keyState : undefined;
+            resourceInputs["keyUsage"] = state ? state.keyUsage : undefined;
+            resourceInputs["keystoreId"] = state ? state.keystoreId : undefined;
+            resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["pendingDays"] = state ? state.pendingDays : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rotationEnabled"] = state ? state.rotationEnabled : undefined;
+            resourceInputs["rotationInterval"] = state ? state.rotationInterval : undefined;
+            resourceInputs["rotationNumber"] = state ? state.rotationNumber : undefined;
+            resourceInputs["scheduledDeletionDate"] = state ? state.scheduledDeletionDate : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
-            if (args?.keyAlias === undefined && !opts.urn) {
+            if ((!args || args.keyAlias === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyAlias'");
             }
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["isEnabled"] = args?.isEnabled;
-            resourceInputs["keyAlgorithm"] = args?.keyAlgorithm;
-            resourceInputs["keyAlias"] = args?.keyAlias;
-            resourceInputs["keyDescription"] = args?.keyDescription;
-            resourceInputs["keyUsage"] = args?.keyUsage;
-            resourceInputs["keystoreId"] = args?.keystoreId;
-            resourceInputs["origin"] = args?.origin;
-            resourceInputs["pendingDays"] = args?.pendingDays;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["rotationEnabled"] = args?.rotationEnabled;
-            resourceInputs["rotationInterval"] = args?.rotationInterval;
-            resourceInputs["tags"] = args?.tags;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["isEnabled"] = args ? args.isEnabled : undefined;
+            resourceInputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
+            resourceInputs["keyAlias"] = args ? args.keyAlias : undefined;
+            resourceInputs["keyDescription"] = args ? args.keyDescription : undefined;
+            resourceInputs["keyUsage"] = args ? args.keyUsage : undefined;
+            resourceInputs["keystoreId"] = args ? args.keystoreId : undefined;
+            resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["pendingDays"] = args ? args.pendingDays : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rotationEnabled"] = args ? args.rotationEnabled : undefined;
+            resourceInputs["rotationInterval"] = args ? args.rotationInterval : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationDate"] = undefined /*out*/;
             resourceInputs["defaultKeyFlag"] = undefined /*out*/;
             resourceInputs["domainId"] = undefined /*out*/;

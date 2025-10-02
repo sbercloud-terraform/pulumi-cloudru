@@ -62,46 +62,46 @@ export class ElbPool extends pulumi.CustomResource {
         return obj['__pulumiType'] === ElbPool.__pulumiType;
     }
 
-    declare public readonly anyPortEnable: pulumi.Output<boolean>;
-    declare public readonly connectionDrainEnabled: pulumi.Output<boolean>;
-    declare public readonly connectionDrainTimeout: pulumi.Output<number>;
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    declare public readonly deletionProtectionEnable: pulumi.Output<boolean | undefined>;
+    public readonly anyPortEnable!: pulumi.Output<boolean>;
+    public readonly connectionDrainEnabled!: pulumi.Output<boolean>;
+    public readonly connectionDrainTimeout!: pulumi.Output<number>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    public readonly deletionProtectionEnable!: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the pool.
      */
-    declare public readonly description: pulumi.Output<string | undefined>;
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
-    declare public /*out*/ readonly enterpriseProjectId: pulumi.Output<string>;
-    declare public readonly ipVersion: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly enterpriseProjectId!: pulumi.Output<string>;
+    public readonly ipVersion!: pulumi.Output<string>;
     /**
      * The load balancing algorithm to distribute traffic to the pool's members. Must be one
      * of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
      */
-    declare public readonly lbMethod: pulumi.Output<string>;
+    public readonly lbMethod!: pulumi.Output<string>;
     /**
      * The Listener on which the members of the pool will be associated with.
      * Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
      */
-    declare public readonly listenerId: pulumi.Output<string>;
+    public readonly listenerId!: pulumi.Output<string>;
     /**
      * The load balancer on which to provision this pool. Changing this
      * creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
      */
-    declare public readonly loadbalancerId: pulumi.Output<string>;
-    declare public readonly minimumHealthyMemberCount: pulumi.Output<number>;
-    declare public /*out*/ readonly monitorId: pulumi.Output<string>;
+    public readonly loadbalancerId!: pulumi.Output<string>;
+    public readonly minimumHealthyMemberCount!: pulumi.Output<number>;
+    public /*out*/ readonly monitorId!: pulumi.Output<string>;
     /**
      * Human-readable name for the pool.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Omit this field to prevent session persistence. Indicates whether
      * connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
      */
-    declare public readonly persistence: pulumi.Output<outputs.ElbPoolPersistence | undefined>;
-    declare public readonly protectionReason: pulumi.Output<string | undefined>;
-    declare public readonly protectionStatus: pulumi.Output<string>;
+    public readonly persistence!: pulumi.Output<outputs.ElbPoolPersistence | undefined>;
+    public readonly protectionReason!: pulumi.Output<string | undefined>;
+    public readonly protectionStatus!: pulumi.Output<string>;
     /**
      * The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
      *
@@ -113,18 +113,18 @@ export class ElbPool extends pulumi.CustomResource {
      *
      * Changing this creates a new pool.
      */
-    declare public readonly protocol: pulumi.Output<string>;
-    declare public readonly publicBorderGroup: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
+    public readonly publicBorderGroup!: pulumi.Output<string>;
     /**
      * The region in which to create the ELB pool resource. If omitted, the the
      * provider-level region will be used. Changing this creates a new pool.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly slowStartDuration: pulumi.Output<number>;
-    declare public readonly slowStartEnabled: pulumi.Output<boolean>;
-    declare public readonly type: pulumi.Output<string>;
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly slowStartDuration!: pulumi.Output<number>;
+    public readonly slowStartEnabled!: pulumi.Output<boolean>;
+    public readonly type!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a ElbPool resource with the given unique name, arguments, and options.
@@ -139,62 +139,62 @@ export class ElbPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbPoolState | undefined;
-            resourceInputs["anyPortEnable"] = state?.anyPortEnable;
-            resourceInputs["connectionDrainEnabled"] = state?.connectionDrainEnabled;
-            resourceInputs["connectionDrainTimeout"] = state?.connectionDrainTimeout;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["deletionProtectionEnable"] = state?.deletionProtectionEnable;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["ipVersion"] = state?.ipVersion;
-            resourceInputs["lbMethod"] = state?.lbMethod;
-            resourceInputs["listenerId"] = state?.listenerId;
-            resourceInputs["loadbalancerId"] = state?.loadbalancerId;
-            resourceInputs["minimumHealthyMemberCount"] = state?.minimumHealthyMemberCount;
-            resourceInputs["monitorId"] = state?.monitorId;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["persistence"] = state?.persistence;
-            resourceInputs["protectionReason"] = state?.protectionReason;
-            resourceInputs["protectionStatus"] = state?.protectionStatus;
-            resourceInputs["protocol"] = state?.protocol;
-            resourceInputs["publicBorderGroup"] = state?.publicBorderGroup;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["slowStartDuration"] = state?.slowStartDuration;
-            resourceInputs["slowStartEnabled"] = state?.slowStartEnabled;
-            resourceInputs["type"] = state?.type;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["anyPortEnable"] = state ? state.anyPortEnable : undefined;
+            resourceInputs["connectionDrainEnabled"] = state ? state.connectionDrainEnabled : undefined;
+            resourceInputs["connectionDrainTimeout"] = state ? state.connectionDrainTimeout : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtectionEnable"] = state ? state.deletionProtectionEnable : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["lbMethod"] = state ? state.lbMethod : undefined;
+            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
+            resourceInputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
+            resourceInputs["minimumHealthyMemberCount"] = state ? state.minimumHealthyMemberCount : undefined;
+            resourceInputs["monitorId"] = state ? state.monitorId : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["persistence"] = state ? state.persistence : undefined;
+            resourceInputs["protectionReason"] = state ? state.protectionReason : undefined;
+            resourceInputs["protectionStatus"] = state ? state.protectionStatus : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["publicBorderGroup"] = state ? state.publicBorderGroup : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["slowStartDuration"] = state ? state.slowStartDuration : undefined;
+            resourceInputs["slowStartEnabled"] = state ? state.slowStartEnabled : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as ElbPoolArgs | undefined;
-            if (args?.lbMethod === undefined && !opts.urn) {
+            if ((!args || args.lbMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if (args?.protocol === undefined && !opts.urn) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["anyPortEnable"] = args?.anyPortEnable;
-            resourceInputs["connectionDrainEnabled"] = args?.connectionDrainEnabled;
-            resourceInputs["connectionDrainTimeout"] = args?.connectionDrainTimeout;
-            resourceInputs["deletionProtectionEnable"] = args?.deletionProtectionEnable;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["ipVersion"] = args?.ipVersion;
-            resourceInputs["lbMethod"] = args?.lbMethod;
-            resourceInputs["listenerId"] = args?.listenerId;
-            resourceInputs["loadbalancerId"] = args?.loadbalancerId;
-            resourceInputs["minimumHealthyMemberCount"] = args?.minimumHealthyMemberCount;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["persistence"] = args?.persistence;
-            resourceInputs["protectionReason"] = args?.protectionReason;
-            resourceInputs["protectionStatus"] = args?.protectionStatus;
-            resourceInputs["protocol"] = args?.protocol;
-            resourceInputs["publicBorderGroup"] = args?.publicBorderGroup;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["slowStartDuration"] = args?.slowStartDuration;
-            resourceInputs["slowStartEnabled"] = args?.slowStartEnabled;
-            resourceInputs["type"] = args?.type;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["anyPortEnable"] = args ? args.anyPortEnable : undefined;
+            resourceInputs["connectionDrainEnabled"] = args ? args.connectionDrainEnabled : undefined;
+            resourceInputs["connectionDrainTimeout"] = args ? args.connectionDrainTimeout : undefined;
+            resourceInputs["deletionProtectionEnable"] = args ? args.deletionProtectionEnable : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["lbMethod"] = args ? args.lbMethod : undefined;
+            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
+            resourceInputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
+            resourceInputs["minimumHealthyMemberCount"] = args ? args.minimumHealthyMemberCount : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["persistence"] = args ? args.persistence : undefined;
+            resourceInputs["protectionReason"] = args ? args.protectionReason : undefined;
+            resourceInputs["protectionStatus"] = args ? args.protectionStatus : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["publicBorderGroup"] = args ? args.publicBorderGroup : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["slowStartDuration"] = args ? args.slowStartDuration : undefined;
+            resourceInputs["slowStartEnabled"] = args ? args.slowStartEnabled : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["enterpriseProjectId"] = undefined /*out*/;
             resourceInputs["monitorId"] = undefined /*out*/;

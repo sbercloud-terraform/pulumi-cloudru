@@ -32,31 +32,31 @@ export class FgsFunctionTriggerStatusAction extends pulumi.CustomResource {
         return obj['__pulumiType'] === FgsFunctionTriggerStatusAction.__pulumiType;
     }
 
-    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
+    public readonly enableForceNew!: pulumi.Output<string | undefined>;
     /**
      * The event data of the trigger.
      */
-    declare public readonly eventData: pulumi.Output<string>;
+    public readonly eventData!: pulumi.Output<string>;
     /**
      * The URN of the function.
      */
-    declare public readonly functionUrn: pulumi.Output<string>;
+    public readonly functionUrn!: pulumi.Output<string>;
     /**
      * The region where the function trigger is located.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * The trigger ID.
      */
-    declare public readonly triggerId: pulumi.Output<string>;
+    public readonly triggerId!: pulumi.Output<string>;
     /**
      * The status of the trigger. Valid values are ACTIVE and DISABLED.
      */
-    declare public readonly triggerStatus: pulumi.Output<string>;
+    public readonly triggerStatus!: pulumi.Output<string>;
     /**
      * The trigger type code.
      */
-    declare public readonly triggerTypeCode: pulumi.Output<string>;
+    public readonly triggerTypeCode!: pulumi.Output<string>;
 
     /**
      * Create a FgsFunctionTriggerStatusAction resource with the given unique name, arguments, and options.
@@ -71,37 +71,37 @@ export class FgsFunctionTriggerStatusAction extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsFunctionTriggerStatusActionState | undefined;
-            resourceInputs["enableForceNew"] = state?.enableForceNew;
-            resourceInputs["eventData"] = state?.eventData;
-            resourceInputs["functionUrn"] = state?.functionUrn;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["triggerId"] = state?.triggerId;
-            resourceInputs["triggerStatus"] = state?.triggerStatus;
-            resourceInputs["triggerTypeCode"] = state?.triggerTypeCode;
+            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
+            resourceInputs["eventData"] = state ? state.eventData : undefined;
+            resourceInputs["functionUrn"] = state ? state.functionUrn : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
+            resourceInputs["triggerStatus"] = state ? state.triggerStatus : undefined;
+            resourceInputs["triggerTypeCode"] = state ? state.triggerTypeCode : undefined;
         } else {
             const args = argsOrState as FgsFunctionTriggerStatusActionArgs | undefined;
-            if (args?.eventData === undefined && !opts.urn) {
+            if ((!args || args.eventData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'eventData'");
             }
-            if (args?.functionUrn === undefined && !opts.urn) {
+            if ((!args || args.functionUrn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'functionUrn'");
             }
-            if (args?.triggerId === undefined && !opts.urn) {
+            if ((!args || args.triggerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerId'");
             }
-            if (args?.triggerStatus === undefined && !opts.urn) {
+            if ((!args || args.triggerStatus === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerStatus'");
             }
-            if (args?.triggerTypeCode === undefined && !opts.urn) {
+            if ((!args || args.triggerTypeCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggerTypeCode'");
             }
-            resourceInputs["enableForceNew"] = args?.enableForceNew;
-            resourceInputs["eventData"] = args?.eventData;
-            resourceInputs["functionUrn"] = args?.functionUrn;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["triggerId"] = args?.triggerId;
-            resourceInputs["triggerStatus"] = args?.triggerStatus;
-            resourceInputs["triggerTypeCode"] = args?.triggerTypeCode;
+            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
+            resourceInputs["eventData"] = args ? args.eventData : undefined;
+            resourceInputs["functionUrn"] = args ? args.functionUrn : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["triggerId"] = args ? args.triggerId : undefined;
+            resourceInputs["triggerStatus"] = args ? args.triggerStatus : undefined;
+            resourceInputs["triggerTypeCode"] = args ? args.triggerTypeCode : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FgsFunctionTriggerStatusAction.__pulumiType, name, resourceInputs, opts);

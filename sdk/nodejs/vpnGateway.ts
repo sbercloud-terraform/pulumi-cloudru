@@ -215,7 +215,7 @@ export class VpnGateway extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly accessPrivateIp1: pulumi.Output<string>;
+    public readonly accessPrivateIp1!: pulumi.Output<string>;
     /**
      * The private IP 2 in private network type VPN gateway.
      * It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
@@ -223,61 +223,61 @@ export class VpnGateway extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly accessPrivateIp2: pulumi.Output<string>;
+    public readonly accessPrivateIp2!: pulumi.Output<string>;
     /**
      * The access subnet ID.
      * The default value is the value of `connectSubnet`.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly accessSubnetId: pulumi.Output<string>;
+    public readonly accessSubnetId!: pulumi.Output<string>;
     /**
      * The access VPC ID.
      * The default value is the value of `vpcId`.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly accessVpcId: pulumi.Output<string>;
+    public readonly accessVpcId!: pulumi.Output<string>;
     /**
      * The ASN number of BGP. The value ranges from **1** to **4294967295**.
      * Defaults to **64512**
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly asn: pulumi.Output<number | undefined>;
+    public readonly asn!: pulumi.Output<number | undefined>;
     /**
      * The attachment type. The value can be **vpc** and **er**.
      * Defaults to **vpc**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly attachmentType: pulumi.Output<string | undefined>;
+    public readonly attachmentType!: pulumi.Output<string | undefined>;
     /**
      * The list of availability zone IDs.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[]>;
     /**
      * The GM certificate of the **GM** flavor gateway.
      * The object structure is documented below.
      */
-    declare public readonly certificate: pulumi.Output<outputs.VpnGatewayCertificate>;
+    public readonly certificate!: pulumi.Output<outputs.VpnGatewayCertificate>;
     /**
      * The Network ID of the VPC subnet used by the VPN gateway.
      * This parameter is mandatory when `attachmentType` is **vpc**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly connectSubnet: pulumi.Output<string>;
+    public readonly connectSubnet!: pulumi.Output<string>;
     /**
      * The create time of the gateway certificate.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Whether to delete the EIP when the VPN gateway is deleted.
      */
-    declare public readonly deleteEipOnTermination: pulumi.Output<boolean | undefined>;
+    public readonly deleteEipOnTermination!: pulumi.Output<boolean | undefined>;
     /**
      * The master 1 IP in active-active VPN gateway or the master IP
      * in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
@@ -285,7 +285,7 @@ export class VpnGateway extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly eip1: pulumi.Output<outputs.VpnGatewayEip1>;
+    public readonly eip1!: pulumi.Output<outputs.VpnGatewayEip1>;
     /**
      * The master 2 IP in active-active VPN gateway or the slave IP
      * in active-standby VPN gateway. This parameter is mandatory when `networkType` is **public** or left empty.
@@ -293,92 +293,92 @@ export class VpnGateway extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly eip2: pulumi.Output<outputs.VpnGatewayEip2>;
+    public readonly eip2!: pulumi.Output<outputs.VpnGatewayEip2>;
     /**
      * The enterprise project ID.
      *
      * <a name="Gateway_CreateRequestEip"></a>
      * The `eip1` or `eip2` block supports:
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * The ER attachment ID.
      */
-    declare public /*out*/ readonly erAttachmentId: pulumi.Output<string>;
+    public /*out*/ readonly erAttachmentId!: pulumi.Output<string>;
     /**
      * The enterprise router ID to attach with to VPN gateway.
      * This parameter is mandatory when `attachmentType` is **er**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly erId: pulumi.Output<string>;
+    public readonly erId!: pulumi.Output<string>;
     /**
      * The flavor of the VPN gateway.
      * The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly flavor: pulumi.Output<string>;
+    public readonly flavor!: pulumi.Output<string>;
     /**
      * The HA mode of VPN gateway. Valid values are **active-active** and
      * **active-standby**. The default value is **active-active**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly haMode: pulumi.Output<string>;
+    public readonly haMode!: pulumi.Output<string>;
     /**
      * The list of local subnets.
      * This parameter is mandatory when `attachmentType` is **vpc**.
      */
-    declare public readonly localSubnets: pulumi.Output<string[]>;
-    declare public readonly masterEip: pulumi.Output<outputs.VpnGatewayMasterEip>;
+    public readonly localSubnets!: pulumi.Output<string[]>;
+    public readonly masterEip!: pulumi.Output<outputs.VpnGatewayMasterEip>;
     /**
      * The name of the gateway certificate.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The network type. The value can be **public** and **private**.
      * Defaults to **public**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly networkType: pulumi.Output<string>;
+    public readonly networkType!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
-    declare public readonly slaveEip: pulumi.Output<outputs.VpnGatewaySlaveEip>;
+    public readonly region!: pulumi.Output<string>;
+    public readonly slaveEip!: pulumi.Output<outputs.VpnGatewaySlaveEip>;
     /**
      * The status of the certificate.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Specifies the tags of the VPN gateway.
      *
      * <a name="Gateway_certificate_attr"></a>
      * The `certificate` block supports:
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The update time of the gateway certificate.
      */
-    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
      * The number of used connection groups.
      */
-    declare public /*out*/ readonly usedConnectionGroup: pulumi.Output<number>;
+    public /*out*/ readonly usedConnectionGroup!: pulumi.Output<number>;
     /**
      * The number of used connections.
      */
-    declare public /*out*/ readonly usedConnectionNumber: pulumi.Output<number>;
+    public /*out*/ readonly usedConnectionNumber!: pulumi.Output<number>;
     /**
      * The ID of the VPC to which the VPN gateway is connected.
      * This parameter is mandatory when `attachmentType` is **vpc**.
      *
      * Changing this parameter will create a new resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
 
     /**
      * Create a VpnGateway resource with the given unique name, arguments, and options.
@@ -393,65 +393,65 @@ export class VpnGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnGatewayState | undefined;
-            resourceInputs["accessPrivateIp1"] = state?.accessPrivateIp1;
-            resourceInputs["accessPrivateIp2"] = state?.accessPrivateIp2;
-            resourceInputs["accessSubnetId"] = state?.accessSubnetId;
-            resourceInputs["accessVpcId"] = state?.accessVpcId;
-            resourceInputs["asn"] = state?.asn;
-            resourceInputs["attachmentType"] = state?.attachmentType;
-            resourceInputs["availabilityZones"] = state?.availabilityZones;
-            resourceInputs["certificate"] = state?.certificate;
-            resourceInputs["connectSubnet"] = state?.connectSubnet;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["deleteEipOnTermination"] = state?.deleteEipOnTermination;
-            resourceInputs["eip1"] = state?.eip1;
-            resourceInputs["eip2"] = state?.eip2;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["erAttachmentId"] = state?.erAttachmentId;
-            resourceInputs["erId"] = state?.erId;
-            resourceInputs["flavor"] = state?.flavor;
-            resourceInputs["haMode"] = state?.haMode;
-            resourceInputs["localSubnets"] = state?.localSubnets;
-            resourceInputs["masterEip"] = state?.masterEip;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["networkType"] = state?.networkType;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["slaveEip"] = state?.slaveEip;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["updatedAt"] = state?.updatedAt;
-            resourceInputs["usedConnectionGroup"] = state?.usedConnectionGroup;
-            resourceInputs["usedConnectionNumber"] = state?.usedConnectionNumber;
-            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["accessPrivateIp1"] = state ? state.accessPrivateIp1 : undefined;
+            resourceInputs["accessPrivateIp2"] = state ? state.accessPrivateIp2 : undefined;
+            resourceInputs["accessSubnetId"] = state ? state.accessSubnetId : undefined;
+            resourceInputs["accessVpcId"] = state ? state.accessVpcId : undefined;
+            resourceInputs["asn"] = state ? state.asn : undefined;
+            resourceInputs["attachmentType"] = state ? state.attachmentType : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["connectSubnet"] = state ? state.connectSubnet : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deleteEipOnTermination"] = state ? state.deleteEipOnTermination : undefined;
+            resourceInputs["eip1"] = state ? state.eip1 : undefined;
+            resourceInputs["eip2"] = state ? state.eip2 : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["erAttachmentId"] = state ? state.erAttachmentId : undefined;
+            resourceInputs["erId"] = state ? state.erId : undefined;
+            resourceInputs["flavor"] = state ? state.flavor : undefined;
+            resourceInputs["haMode"] = state ? state.haMode : undefined;
+            resourceInputs["localSubnets"] = state ? state.localSubnets : undefined;
+            resourceInputs["masterEip"] = state ? state.masterEip : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networkType"] = state ? state.networkType : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["slaveEip"] = state ? state.slaveEip : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["usedConnectionGroup"] = state ? state.usedConnectionGroup : undefined;
+            resourceInputs["usedConnectionNumber"] = state ? state.usedConnectionNumber : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
         } else {
             const args = argsOrState as VpnGatewayArgs | undefined;
-            if (args?.availabilityZones === undefined && !opts.urn) {
+            if ((!args || args.availabilityZones === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
-            resourceInputs["accessPrivateIp1"] = args?.accessPrivateIp1;
-            resourceInputs["accessPrivateIp2"] = args?.accessPrivateIp2;
-            resourceInputs["accessSubnetId"] = args?.accessSubnetId;
-            resourceInputs["accessVpcId"] = args?.accessVpcId;
-            resourceInputs["asn"] = args?.asn;
-            resourceInputs["attachmentType"] = args?.attachmentType;
-            resourceInputs["availabilityZones"] = args?.availabilityZones;
-            resourceInputs["certificate"] = args?.certificate;
-            resourceInputs["connectSubnet"] = args?.connectSubnet;
-            resourceInputs["deleteEipOnTermination"] = args?.deleteEipOnTermination;
-            resourceInputs["eip1"] = args?.eip1;
-            resourceInputs["eip2"] = args?.eip2;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["erId"] = args?.erId;
-            resourceInputs["flavor"] = args?.flavor;
-            resourceInputs["haMode"] = args?.haMode;
-            resourceInputs["localSubnets"] = args?.localSubnets;
-            resourceInputs["masterEip"] = args?.masterEip;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["networkType"] = args?.networkType;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["slaveEip"] = args?.slaveEip;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["accessPrivateIp1"] = args ? args.accessPrivateIp1 : undefined;
+            resourceInputs["accessPrivateIp2"] = args ? args.accessPrivateIp2 : undefined;
+            resourceInputs["accessSubnetId"] = args ? args.accessSubnetId : undefined;
+            resourceInputs["accessVpcId"] = args ? args.accessVpcId : undefined;
+            resourceInputs["asn"] = args ? args.asn : undefined;
+            resourceInputs["attachmentType"] = args ? args.attachmentType : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["connectSubnet"] = args ? args.connectSubnet : undefined;
+            resourceInputs["deleteEipOnTermination"] = args ? args.deleteEipOnTermination : undefined;
+            resourceInputs["eip1"] = args ? args.eip1 : undefined;
+            resourceInputs["eip2"] = args ? args.eip2 : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["erId"] = args ? args.erId : undefined;
+            resourceInputs["flavor"] = args ? args.flavor : undefined;
+            resourceInputs["haMode"] = args ? args.haMode : undefined;
+            resourceInputs["localSubnets"] = args ? args.localSubnets : undefined;
+            resourceInputs["masterEip"] = args ? args.masterEip : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networkType"] = args ? args.networkType : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["slaveEip"] = args ? args.slaveEip : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["erAttachmentId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

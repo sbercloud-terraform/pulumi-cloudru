@@ -185,55 +185,55 @@ export class Instance extends pulumi.CustomResource {
      * The username starts with a letter, consists of 1 to 64 characters, and supports only letters, digits, and
      * hyphens (-). Changing this creates a new instance.
      */
-    declare public readonly accessUser: pulumi.Output<string>;
+    public readonly accessUser!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated
      */
-    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    public readonly autoPay!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled.
      * Valid values are `true` and `false`, defaults to `false`.
      */
-    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    public readonly autoRenew!: pulumi.Output<string | undefined>;
     /**
      * The code of the AZ where the cache node resides.
      * Master/Standby, Proxy Cluster, and Redis Cluster DCS instances support cross-AZ deployment.
      * You can specify an AZ for the standby node. When specifying AZs for nodes, use commas (,) to separate AZs.
      * Changing this creates a new instance.
      */
-    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    public readonly availabilityZones!: pulumi.Output<string[]>;
     /**
      * @deprecated Deprecated, please use `availabilityZones` instead
      */
-    declare public readonly availableZones: pulumi.Output<string[] | undefined>;
+    public readonly availableZones!: pulumi.Output<string[] | undefined>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
-    declare public readonly backupAts: pulumi.Output<number[] | undefined>;
+    public readonly backupAts!: pulumi.Output<number[] | undefined>;
     /**
      * Specifies the backup configuration to be used with the instance.
      * The structure is described below.
      *
      * > **NOTE:** This parameter is not supported when the instance type is single.
      */
-    declare public readonly backupPolicy: pulumi.Output<outputs.Dcs.InstanceBackupPolicy | undefined>;
+    public readonly backupPolicy!: pulumi.Output<outputs.Dcs.InstanceBackupPolicy | undefined>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
-    declare public readonly backupType: pulumi.Output<string | undefined>;
+    public readonly backupType!: pulumi.Output<string | undefined>;
     /**
      * Indicates the bandwidth information of the instance.
      * The bandwidthInfo structure is documented below.
      */
-    declare public /*out*/ readonly bandwidthInfos: pulumi.Output<outputs.Dcs.InstanceBandwidthInfo[]>;
+    public /*out*/ readonly bandwidthInfos!: pulumi.Output<outputs.Dcs.InstanceBandwidthInfo[]>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
-    declare public readonly beginAt: pulumi.Output<string | undefined>;
+    public readonly beginAt!: pulumi.Output<string | undefined>;
     /**
      * Indicates the instance type. The value can be **single**, **ha**, **cluster** or **proxy**.
      */
-    declare public /*out*/ readonly cacheMode: pulumi.Output<string>;
+    public /*out*/ readonly cacheMode!: pulumi.Output<string>;
     /**
      * Specifies the cache capacity. Unit: GB.
      * + **Redis4.0, Redis5.0 and Redis6.0**: Stand-alone and active/standby type instance values: `0.125`, `0.25`,
@@ -244,7 +244,7 @@ export class Instance extends pulumi.CustomResource {
      * Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
      * + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
      */
-    declare public readonly capacity: pulumi.Output<number>;
+    public readonly capacity!: pulumi.Output<number>;
     /**
      * Specifies the charging mode of the redis instance.
      * The valid values are as follows:
@@ -253,49 +253,49 @@ export class Instance extends pulumi.CustomResource {
      * Default value is `postPaid`.
      * Changing this creates a new instance.
      */
-    declare public readonly chargingMode: pulumi.Output<string>;
+    public readonly chargingMode!: pulumi.Output<string>;
     /**
      * Indicates the CPU type of the instance. The value can be **x86_64** or **aarch64**.
      */
-    declare public /*out*/ readonly cpuType: pulumi.Output<string>;
+    public /*out*/ readonly cpuType!: pulumi.Output<string>;
     /**
      * Indicates the time when the instance is created, in RFC3339 format.
      */
-    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * Specifies the ID of the replica to delete. This parameter is mandatory when
      * you delete replicas of a master/standby DCS Redis 4.0 or 5.0 instance. Currently, only one replica can be deleted
      * at a time.
      */
-    declare public readonly deletedNodes: pulumi.Output<string | undefined>;
+    public readonly deletedNodes!: pulumi.Output<string | undefined>;
     /**
      * Specifies the description of an instance.
      * It is a string that contains a maximum of 1024 characters.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Domain name of the instance. Usually, we use domain name and port to connect to the DCS instances.
      */
-    declare public /*out*/ readonly domainName: pulumi.Output<string>;
+    public /*out*/ readonly domainName!: pulumi.Output<string>;
     /**
      * Specifies a cache engine. Options: *Redis* and *Memcached*.
      * Changing this creates a new instance.
      */
-    declare public readonly engine: pulumi.Output<string>;
+    public readonly engine!: pulumi.Output<string>;
     /**
      * Specifies the version of a cache engine.
      * It is mandatory when the engine is *Redis*, the value can be 3.0, 4.0, 5.0 or 6.0.
      * Changing this creates a new instance.
      */
-    declare public readonly engineVersion: pulumi.Output<string | undefined>;
+    public readonly engineVersion!: pulumi.Output<string | undefined>;
     /**
      * The enterprise project id of the dcs instance.
      */
-    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    public readonly enterpriseProjectId!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated, this is a non-public attribute.
      */
-    declare public readonly enterpriseProjectName: pulumi.Output<string>;
+    public readonly enterpriseProjectName!: pulumi.Output<string>;
     /**
      * The flavor of the cache instance, which including the total memory, available memory,
      * maximum number of connections allowed, maximum/assured bandwidth and reference performance.
@@ -304,19 +304,19 @@ export class Instance extends pulumi.CustomResource {
      * + Query some flavors
      * in [DCS Instance Specifications](https://support.hc.sbercloud.ru/usermanual/dcs/en-us_topic_0054235835.html) + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
      */
-    declare public readonly flavor: pulumi.Output<string>;
+    public readonly flavor!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated, please us `engineVersion` instead.
      */
-    declare public /*out*/ readonly internalVersion: pulumi.Output<string>;
+    public /*out*/ readonly internalVersion!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated, please us `privateIp` instead.
      */
-    declare public /*out*/ readonly ip: pulumi.Output<string>;
+    public /*out*/ readonly ip!: pulumi.Output<string>;
     /**
      * Indicates the time when the instance is started, in RFC3339 format.
      */
-    declare public /*out*/ readonly launchedAt: pulumi.Output<string>;
+    public /*out*/ readonly launchedAt!: pulumi.Output<string>;
     /**
      * Time at which the maintenance time window starts. Defaults to **02:00:00**.
      * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
@@ -325,7 +325,7 @@ export class Instance extends pulumi.CustomResource {
      * + If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also blank.
      * In this case, the system automatically allocates the default start time **02:00:00**.
      */
-    declare public readonly maintainBegin: pulumi.Output<string>;
+    public readonly maintainBegin!: pulumi.Output<string>;
     /**
      * Time at which the maintenance time window ends. Defaults to **06:00:00**.
      * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
@@ -337,27 +337,27 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:** Parameters `maintainBegin` and `maintainEnd` must be set in pairs.
      */
-    declare public readonly maintainEnd: pulumi.Output<string>;
+    public readonly maintainEnd!: pulumi.Output<string>;
     /**
      * Total memory size. Unit: MB.
      */
-    declare public /*out*/ readonly maxMemory: pulumi.Output<number>;
+    public /*out*/ readonly maxMemory!: pulumi.Output<number>;
     /**
      * Specifies the name of an instance.
      * The name must be 4 to 64 characters and start with a letter.
      * Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
      */
-    declare public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the order that created the instance.
      */
-    declare public /*out*/ readonly orderId: pulumi.Output<string>;
+    public /*out*/ readonly orderId!: pulumi.Output<string>;
     /**
      * Specify an array of one or more parameters to be set to the DCS instance after
      * launched. You can check on console to see which parameters supported.
      * The parameters structure is documented below.
      */
-    declare public readonly parameters: pulumi.Output<outputs.Dcs.InstanceParameter[]>;
+    public readonly parameters!: pulumi.Output<outputs.Dcs.InstanceParameter[]>;
     /**
      * Specifies the password of a DCS instance.
      * The password of a DCS instance must meet the following complexity requirements:
@@ -366,7 +366,7 @@ export class Instance extends pulumi.CustomResource {
      * Special characters include (`~!@#$^&*()-_=+\\|{}:,<.>/?).
      * + The new password cannot be the same as the old password.
      */
-    declare public readonly password: pulumi.Output<string | undefined>;
+    public readonly password!: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the instance.
      * If `periodUnit` is set to *month*, the value ranges from 1 to 9.
@@ -374,22 +374,22 @@ export class Instance extends pulumi.CustomResource {
      * This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new instance.
      */
-    declare public readonly period: pulumi.Output<number | undefined>;
+    public readonly period!: pulumi.Output<number | undefined>;
     /**
      * @deprecated Please use `backupPolicy` instead
      */
-    declare public readonly periodType: pulumi.Output<string | undefined>;
+    public readonly periodType!: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new instance.
      */
-    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
      * Port customization, which is supported only by Redis 4.0 and Redis 5.0 instances.
      * Redis instance defaults to 6379. Memcached instance does not use this argument.
      */
-    declare public readonly port: pulumi.Output<number>;
+    public readonly port!: pulumi.Output<number>;
     /**
      * The IP address of the DCS instance,
      * which can only be the currently available IP address the selected subnet.
@@ -397,61 +397,61 @@ export class Instance extends pulumi.CustomResource {
      * If omitted, the system will automatically allocate an available IP address to the Redis instance.
      * Changing this creates a new instance resource.
      */
-    declare public readonly privateIp: pulumi.Output<string>;
+    public readonly privateIp!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated, please use `flavor` instead
      */
-    declare public readonly productId: pulumi.Output<string>;
+    public readonly productId!: pulumi.Output<string>;
     /**
      * Indicates the product type of the instance. The value can be: **generic** or **enterprise**.
      */
-    declare public /*out*/ readonly productType: pulumi.Output<string>;
+    public /*out*/ readonly productType!: pulumi.Output<string>;
     /**
      * Indicates the read-only domain name of the instance. This parameter is available
      * only for master/standby instances.
      */
-    declare public /*out*/ readonly readonlyDomainName: pulumi.Output<string>;
+    public /*out*/ readonly readonlyDomainName!: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the DCS instance resource.
      * If omitted, the provider-level region will be used. Changing this creates a new DCS instance resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Critical command renaming, which is supported only by Redis 4.0 and
      * Redis 5.0 instances but not by Redis 3.0 instance.
      * The valid commands that can be renamed are: **command**, **keys**, **flushdb**, **flushall** and **hgetall**.
      */
-    declare public readonly renameCommands: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly renameCommands!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the number of replicas in the instance.
      */
-    declare public /*out*/ readonly replicaCount: pulumi.Output<number>;
+    public /*out*/ readonly replicaCount!: pulumi.Output<number>;
     /**
      * Specifies IP addresses to retain. Mandatory during cluster scale-in. If this
      * parameter is not set, the system randomly deletes unnecessary shards.
      */
-    declare public readonly reservedIps: pulumi.Output<string[] | undefined>;
+    public readonly reservedIps!: pulumi.Output<string[] | undefined>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
-    declare public readonly saveDays: pulumi.Output<number | undefined>;
+    public readonly saveDays!: pulumi.Output<number | undefined>;
     /**
      * The ID of the security group which the instance belongs to.
      * This parameter is mandatory for Memcached and Redis 3.0 version.
      */
-    declare public readonly securityGroupId: pulumi.Output<string | undefined>;
+    public readonly securityGroupId!: pulumi.Output<string | undefined>;
     /**
      * The name of security group which the instance belongs to.
      */
-    declare public /*out*/ readonly securityGroupName: pulumi.Output<string>;
+    public /*out*/ readonly securityGroupName!: pulumi.Output<string>;
     /**
      * Indicates the number of shards in a cluster instance.
      */
-    declare public /*out*/ readonly shardingCount: pulumi.Output<number>;
+    public /*out*/ readonly shardingCount!: pulumi.Output<number>;
     /**
      * Specifies whether to enable the SSL. Value options: **true**, **false**.
      */
-    declare public readonly sslEnable: pulumi.Output<boolean>;
+    public readonly sslEnable!: pulumi.Output<boolean>;
     /**
      * Cache instance status. The valid values are as follows:
      * + `RUNNING`: The instance is running properly.
@@ -464,64 +464,64 @@ export class Instance extends pulumi.CustomResource {
      * + `RESTORING`: The instance data is being restored.
      * + `FLUSHING`: The DCS instance is being cleared.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Indicates the subnet segment.
      */
-    declare public /*out*/ readonly subnetCidr: pulumi.Output<string>;
+    public /*out*/ readonly subnetCidr!: pulumi.Output<string>;
     /**
      * The ID of subnet which the instance belongs to.
      * Changing this creates a new instance resource.
      */
-    declare public readonly subnetId: pulumi.Output<string>;
+    public readonly subnetId!: pulumi.Output<string>;
     /**
      * The name of subnet which the instance belongs to.
      */
-    declare public /*out*/ readonly subnetName: pulumi.Output<string>;
+    public /*out*/ readonly subnetName!: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the dcs instance.
      */
-    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The Parameter Template ID.
      * Changing this creates a new instance resource.
      */
-    declare public readonly templateId: pulumi.Output<string | undefined>;
+    public readonly templateId!: pulumi.Output<string | undefined>;
     /**
      * Indicates whether client IP pass-through is enabled.
      */
-    declare public /*out*/ readonly transparentClientIpEnable: pulumi.Output<boolean>;
+    public /*out*/ readonly transparentClientIpEnable!: pulumi.Output<boolean>;
     /**
      * Size of the used memory. Unit: MB.
      */
-    declare public /*out*/ readonly usedMemory: pulumi.Output<number>;
+    public /*out*/ readonly usedMemory!: pulumi.Output<number>;
     /**
      * @deprecated Deprecated
      */
-    declare public /*out*/ readonly userId: pulumi.Output<string>;
+    public /*out*/ readonly userId!: pulumi.Output<string>;
     /**
      * @deprecated Deprecated
      */
-    declare public /*out*/ readonly userName: pulumi.Output<string>;
+    public /*out*/ readonly userName!: pulumi.Output<string>;
     /**
      * The ID of VPC which the instance belongs to.
      * Changing this creates a new instance resource.
      */
-    declare public readonly vpcId: pulumi.Output<string>;
+    public readonly vpcId!: pulumi.Output<string>;
     /**
      * The name of VPC which the instance belongs to.
      */
-    declare public /*out*/ readonly vpcName: pulumi.Output<string>;
+    public /*out*/ readonly vpcName!: pulumi.Output<string>;
     /**
      * Enable or disable the IP address whitelists. Defaults to true.
      * If the whitelist is disabled, all IP addresses connected to the VPC can access the instance.
      */
-    declare public readonly whitelistEnable: pulumi.Output<boolean | undefined>;
+    public readonly whitelistEnable!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the IP addresses which can access the instance.
      * This parameter is valid for Redis 4.0 and 5.0 versions. The structure is described below.
      */
-    declare public readonly whitelists: pulumi.Output<outputs.Dcs.InstanceWhitelist[] | undefined>;
+    public readonly whitelists!: pulumi.Output<outputs.Dcs.InstanceWhitelist[] | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -536,125 +536,125 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["accessUser"] = state?.accessUser;
-            resourceInputs["autoPay"] = state?.autoPay;
-            resourceInputs["autoRenew"] = state?.autoRenew;
-            resourceInputs["availabilityZones"] = state?.availabilityZones;
-            resourceInputs["availableZones"] = state?.availableZones;
-            resourceInputs["backupAts"] = state?.backupAts;
-            resourceInputs["backupPolicy"] = state?.backupPolicy;
-            resourceInputs["backupType"] = state?.backupType;
-            resourceInputs["bandwidthInfos"] = state?.bandwidthInfos;
-            resourceInputs["beginAt"] = state?.beginAt;
-            resourceInputs["cacheMode"] = state?.cacheMode;
-            resourceInputs["capacity"] = state?.capacity;
-            resourceInputs["chargingMode"] = state?.chargingMode;
-            resourceInputs["cpuType"] = state?.cpuType;
-            resourceInputs["createdAt"] = state?.createdAt;
-            resourceInputs["deletedNodes"] = state?.deletedNodes;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["domainName"] = state?.domainName;
-            resourceInputs["engine"] = state?.engine;
-            resourceInputs["engineVersion"] = state?.engineVersion;
-            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
-            resourceInputs["enterpriseProjectName"] = state?.enterpriseProjectName;
-            resourceInputs["flavor"] = state?.flavor;
-            resourceInputs["internalVersion"] = state?.internalVersion;
-            resourceInputs["ip"] = state?.ip;
-            resourceInputs["launchedAt"] = state?.launchedAt;
-            resourceInputs["maintainBegin"] = state?.maintainBegin;
-            resourceInputs["maintainEnd"] = state?.maintainEnd;
-            resourceInputs["maxMemory"] = state?.maxMemory;
-            resourceInputs["name"] = state?.name;
-            resourceInputs["orderId"] = state?.orderId;
-            resourceInputs["parameters"] = state?.parameters;
-            resourceInputs["password"] = state?.password;
-            resourceInputs["period"] = state?.period;
-            resourceInputs["periodType"] = state?.periodType;
-            resourceInputs["periodUnit"] = state?.periodUnit;
-            resourceInputs["port"] = state?.port;
-            resourceInputs["privateIp"] = state?.privateIp;
-            resourceInputs["productId"] = state?.productId;
-            resourceInputs["productType"] = state?.productType;
-            resourceInputs["readonlyDomainName"] = state?.readonlyDomainName;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["renameCommands"] = state?.renameCommands;
-            resourceInputs["replicaCount"] = state?.replicaCount;
-            resourceInputs["reservedIps"] = state?.reservedIps;
-            resourceInputs["saveDays"] = state?.saveDays;
-            resourceInputs["securityGroupId"] = state?.securityGroupId;
-            resourceInputs["securityGroupName"] = state?.securityGroupName;
-            resourceInputs["shardingCount"] = state?.shardingCount;
-            resourceInputs["sslEnable"] = state?.sslEnable;
-            resourceInputs["status"] = state?.status;
-            resourceInputs["subnetCidr"] = state?.subnetCidr;
-            resourceInputs["subnetId"] = state?.subnetId;
-            resourceInputs["subnetName"] = state?.subnetName;
-            resourceInputs["tags"] = state?.tags;
-            resourceInputs["templateId"] = state?.templateId;
-            resourceInputs["transparentClientIpEnable"] = state?.transparentClientIpEnable;
-            resourceInputs["usedMemory"] = state?.usedMemory;
-            resourceInputs["userId"] = state?.userId;
-            resourceInputs["userName"] = state?.userName;
-            resourceInputs["vpcId"] = state?.vpcId;
-            resourceInputs["vpcName"] = state?.vpcName;
-            resourceInputs["whitelistEnable"] = state?.whitelistEnable;
-            resourceInputs["whitelists"] = state?.whitelists;
+            resourceInputs["accessUser"] = state ? state.accessUser : undefined;
+            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
+            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
+            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
+            resourceInputs["availableZones"] = state ? state.availableZones : undefined;
+            resourceInputs["backupAts"] = state ? state.backupAts : undefined;
+            resourceInputs["backupPolicy"] = state ? state.backupPolicy : undefined;
+            resourceInputs["backupType"] = state ? state.backupType : undefined;
+            resourceInputs["bandwidthInfos"] = state ? state.bandwidthInfos : undefined;
+            resourceInputs["beginAt"] = state ? state.beginAt : undefined;
+            resourceInputs["cacheMode"] = state ? state.cacheMode : undefined;
+            resourceInputs["capacity"] = state ? state.capacity : undefined;
+            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
+            resourceInputs["cpuType"] = state ? state.cpuType : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletedNodes"] = state ? state.deletedNodes : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["engine"] = state ? state.engine : undefined;
+            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
+            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
+            resourceInputs["enterpriseProjectName"] = state ? state.enterpriseProjectName : undefined;
+            resourceInputs["flavor"] = state ? state.flavor : undefined;
+            resourceInputs["internalVersion"] = state ? state.internalVersion : undefined;
+            resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["launchedAt"] = state ? state.launchedAt : undefined;
+            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
+            resourceInputs["maxMemory"] = state ? state.maxMemory : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["orderId"] = state ? state.orderId : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["periodType"] = state ? state.periodType : undefined;
+            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
+            resourceInputs["productId"] = state ? state.productId : undefined;
+            resourceInputs["productType"] = state ? state.productType : undefined;
+            resourceInputs["readonlyDomainName"] = state ? state.readonlyDomainName : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["renameCommands"] = state ? state.renameCommands : undefined;
+            resourceInputs["replicaCount"] = state ? state.replicaCount : undefined;
+            resourceInputs["reservedIps"] = state ? state.reservedIps : undefined;
+            resourceInputs["saveDays"] = state ? state.saveDays : undefined;
+            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
+            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
+            resourceInputs["shardingCount"] = state ? state.shardingCount : undefined;
+            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["subnetCidr"] = state ? state.subnetCidr : undefined;
+            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["subnetName"] = state ? state.subnetName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["transparentClientIpEnable"] = state ? state.transparentClientIpEnable : undefined;
+            resourceInputs["usedMemory"] = state ? state.usedMemory : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["vpcName"] = state ? state.vpcName : undefined;
+            resourceInputs["whitelistEnable"] = state ? state.whitelistEnable : undefined;
+            resourceInputs["whitelists"] = state ? state.whitelists : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (args?.capacity === undefined && !opts.urn) {
+            if ((!args || args.capacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'capacity'");
             }
-            if (args?.engine === undefined && !opts.urn) {
+            if ((!args || args.engine === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if (args?.subnetId === undefined && !opts.urn) {
+            if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if (args?.vpcId === undefined && !opts.urn) {
+            if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accessUser"] = args?.accessUser;
-            resourceInputs["autoPay"] = args?.autoPay;
-            resourceInputs["autoRenew"] = args?.autoRenew;
-            resourceInputs["availabilityZones"] = args?.availabilityZones;
-            resourceInputs["availableZones"] = args?.availableZones;
-            resourceInputs["backupAts"] = args?.backupAts;
-            resourceInputs["backupPolicy"] = args?.backupPolicy;
-            resourceInputs["backupType"] = args?.backupType;
-            resourceInputs["beginAt"] = args?.beginAt;
-            resourceInputs["capacity"] = args?.capacity;
-            resourceInputs["chargingMode"] = args?.chargingMode;
-            resourceInputs["deletedNodes"] = args?.deletedNodes;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["engine"] = args?.engine;
-            resourceInputs["engineVersion"] = args?.engineVersion;
-            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
-            resourceInputs["enterpriseProjectName"] = args?.enterpriseProjectName;
-            resourceInputs["flavor"] = args?.flavor;
-            resourceInputs["maintainBegin"] = args?.maintainBegin;
-            resourceInputs["maintainEnd"] = args?.maintainEnd;
-            resourceInputs["name"] = args?.name;
-            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["accessUser"] = args ? args.accessUser : undefined;
+            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
+            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
+            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
+            resourceInputs["availableZones"] = args ? args.availableZones : undefined;
+            resourceInputs["backupAts"] = args ? args.backupAts : undefined;
+            resourceInputs["backupPolicy"] = args ? args.backupPolicy : undefined;
+            resourceInputs["backupType"] = args ? args.backupType : undefined;
+            resourceInputs["beginAt"] = args ? args.beginAt : undefined;
+            resourceInputs["capacity"] = args ? args.capacity : undefined;
+            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
+            resourceInputs["deletedNodes"] = args ? args.deletedNodes : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["engine"] = args ? args.engine : undefined;
+            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
+            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
+            resourceInputs["enterpriseProjectName"] = args ? args.enterpriseProjectName : undefined;
+            resourceInputs["flavor"] = args ? args.flavor : undefined;
+            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
+            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args?.period;
-            resourceInputs["periodType"] = args?.periodType;
-            resourceInputs["periodUnit"] = args?.periodUnit;
-            resourceInputs["port"] = args?.port;
-            resourceInputs["privateIp"] = args?.privateIp;
-            resourceInputs["productId"] = args?.productId;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["renameCommands"] = args?.renameCommands;
-            resourceInputs["reservedIps"] = args?.reservedIps;
-            resourceInputs["saveDays"] = args?.saveDays;
-            resourceInputs["securityGroupId"] = args?.securityGroupId;
-            resourceInputs["sslEnable"] = args?.sslEnable;
-            resourceInputs["subnetId"] = args?.subnetId;
-            resourceInputs["tags"] = args?.tags;
-            resourceInputs["templateId"] = args?.templateId;
-            resourceInputs["vpcId"] = args?.vpcId;
-            resourceInputs["whitelistEnable"] = args?.whitelistEnable;
-            resourceInputs["whitelists"] = args?.whitelists;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["periodType"] = args ? args.periodType : undefined;
+            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["privateIp"] = args ? args.privateIp : undefined;
+            resourceInputs["productId"] = args ? args.productId : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["renameCommands"] = args ? args.renameCommands : undefined;
+            resourceInputs["reservedIps"] = args ? args.reservedIps : undefined;
+            resourceInputs["saveDays"] = args ? args.saveDays : undefined;
+            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
+            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["whitelistEnable"] = args ? args.whitelistEnable : undefined;
+            resourceInputs["whitelists"] = args ? args.whitelists : undefined;
             resourceInputs["bandwidthInfos"] = undefined /*out*/;
             resourceInputs["cacheMode"] = undefined /*out*/;
             resourceInputs["cpuType"] = undefined /*out*/;

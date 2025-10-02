@@ -124,64 +124,64 @@ export class BandwidthPolicy extends pulumi.CustomResource {
     /**
      * Specifies identification of operation the AS bandwidth policy.
      */
-    declare public readonly action: pulumi.Output<string | undefined>;
+    public readonly action!: pulumi.Output<string | undefined>;
     /**
      * Specifies the alarm rule ID.
      * This parameter is mandatory when `scalingPolicyType` is set to ALARM.
      */
-    declare public readonly alarmId: pulumi.Output<string>;
+    public readonly alarmId!: pulumi.Output<string>;
     /**
      * Specifies the scaling bandwidth ID.
      */
-    declare public readonly bandwidthId: pulumi.Output<string>;
+    public readonly bandwidthId!: pulumi.Output<string>;
     /**
      * Specifies the cooldown period (in seconds).
      * The value ranges from 0 to 86400 and is 300 by default.
      */
-    declare public readonly coolDownTime: pulumi.Output<number>;
+    public readonly coolDownTime!: pulumi.Output<number>;
     /**
      * The creation time of the bandwidth policy.
      */
-    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Specifies the description of the AS policy.
      * The value can contain 0 to 256 characters.
      */
-    declare public readonly description: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * Specifies the alarm interval of the bandwidth policy.
      */
-    declare public readonly intervalAlarmActions: pulumi.Output<outputs.As.BandwidthPolicyIntervalAlarmAction[]>;
+    public readonly intervalAlarmActions!: pulumi.Output<outputs.As.BandwidthPolicyIntervalAlarmAction[]>;
     /**
      * The bandwidth policy additional information.
      */
-    declare public /*out*/ readonly metaDatas: pulumi.Output<outputs.As.BandwidthPolicyMetaData[]>;
+    public /*out*/ readonly metaDatas!: pulumi.Output<outputs.As.BandwidthPolicyMetaData[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    declare public readonly region: pulumi.Output<string>;
+    public readonly region!: pulumi.Output<string>;
     /**
      * Specifies the scaling action of the AS policy.
      * The object structure is documented below.
      */
-    declare public readonly scalingPolicyAction: pulumi.Output<outputs.As.BandwidthPolicyScalingPolicyAction>;
+    public readonly scalingPolicyAction!: pulumi.Output<outputs.As.BandwidthPolicyScalingPolicyAction>;
     /**
      * Specifies the AS policy name.
      * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
      */
-    declare public readonly scalingPolicyName: pulumi.Output<string>;
+    public readonly scalingPolicyName!: pulumi.Output<string>;
     /**
      * Specifies the AS policy type. The options are as follows:
      * - **ALARM** (corresponding to `alarmId`): indicates that the scaling action is triggered by an alarm.
      * - **SCHEDULED** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered as scheduled.
      * - **RECURRENCE** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered periodically.
      */
-    declare public readonly scalingPolicyType: pulumi.Output<string>;
+    public readonly scalingPolicyType!: pulumi.Output<string>;
     /**
      * The scaling resource type. The value is fixed to **BANDWIDTH**.
      */
-    declare public /*out*/ readonly scalingResourceType: pulumi.Output<string>;
+    public /*out*/ readonly scalingResourceType!: pulumi.Output<string>;
     /**
      * Specifies the periodic or scheduled AS policy.
      * This parameter is mandatory when `scalingPolicyType` is set to SCHEDULED or RECURRENCE.
@@ -190,11 +190,11 @@ export class BandwidthPolicy extends pulumi.CustomResource {
      * <a name="ASBandWidthPolicy_ScalingPolicyAction"></a>
      * The `scalingPolicyAction` block supports:
      */
-    declare public readonly scheduledPolicy: pulumi.Output<outputs.As.BandwidthPolicyScheduledPolicy>;
+    public readonly scheduledPolicy!: pulumi.Output<outputs.As.BandwidthPolicyScheduledPolicy>;
     /**
      * The AS policy status. The value can be **INSERVICE**, **PAUSED** and **EXECUTING**.
      */
-    declare public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
 
     /**
      * Create a BandwidthPolicy resource with the given unique name, arguments, and options.
@@ -209,43 +209,43 @@ export class BandwidthPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BandwidthPolicyState | undefined;
-            resourceInputs["action"] = state?.action;
-            resourceInputs["alarmId"] = state?.alarmId;
-            resourceInputs["bandwidthId"] = state?.bandwidthId;
-            resourceInputs["coolDownTime"] = state?.coolDownTime;
-            resourceInputs["createTime"] = state?.createTime;
-            resourceInputs["description"] = state?.description;
-            resourceInputs["intervalAlarmActions"] = state?.intervalAlarmActions;
-            resourceInputs["metaDatas"] = state?.metaDatas;
-            resourceInputs["region"] = state?.region;
-            resourceInputs["scalingPolicyAction"] = state?.scalingPolicyAction;
-            resourceInputs["scalingPolicyName"] = state?.scalingPolicyName;
-            resourceInputs["scalingPolicyType"] = state?.scalingPolicyType;
-            resourceInputs["scalingResourceType"] = state?.scalingResourceType;
-            resourceInputs["scheduledPolicy"] = state?.scheduledPolicy;
-            resourceInputs["status"] = state?.status;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["alarmId"] = state ? state.alarmId : undefined;
+            resourceInputs["bandwidthId"] = state ? state.bandwidthId : undefined;
+            resourceInputs["coolDownTime"] = state ? state.coolDownTime : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["intervalAlarmActions"] = state ? state.intervalAlarmActions : undefined;
+            resourceInputs["metaDatas"] = state ? state.metaDatas : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["scalingPolicyAction"] = state ? state.scalingPolicyAction : undefined;
+            resourceInputs["scalingPolicyName"] = state ? state.scalingPolicyName : undefined;
+            resourceInputs["scalingPolicyType"] = state ? state.scalingPolicyType : undefined;
+            resourceInputs["scalingResourceType"] = state ? state.scalingResourceType : undefined;
+            resourceInputs["scheduledPolicy"] = state ? state.scheduledPolicy : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as BandwidthPolicyArgs | undefined;
-            if (args?.bandwidthId === undefined && !opts.urn) {
+            if ((!args || args.bandwidthId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bandwidthId'");
             }
-            if (args?.scalingPolicyName === undefined && !opts.urn) {
+            if ((!args || args.scalingPolicyName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingPolicyName'");
             }
-            if (args?.scalingPolicyType === undefined && !opts.urn) {
+            if ((!args || args.scalingPolicyType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scalingPolicyType'");
             }
-            resourceInputs["action"] = args?.action;
-            resourceInputs["alarmId"] = args?.alarmId;
-            resourceInputs["bandwidthId"] = args?.bandwidthId;
-            resourceInputs["coolDownTime"] = args?.coolDownTime;
-            resourceInputs["description"] = args?.description;
-            resourceInputs["intervalAlarmActions"] = args?.intervalAlarmActions;
-            resourceInputs["region"] = args?.region;
-            resourceInputs["scalingPolicyAction"] = args?.scalingPolicyAction;
-            resourceInputs["scalingPolicyName"] = args?.scalingPolicyName;
-            resourceInputs["scalingPolicyType"] = args?.scalingPolicyType;
-            resourceInputs["scheduledPolicy"] = args?.scheduledPolicy;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["alarmId"] = args ? args.alarmId : undefined;
+            resourceInputs["bandwidthId"] = args ? args.bandwidthId : undefined;
+            resourceInputs["coolDownTime"] = args ? args.coolDownTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["intervalAlarmActions"] = args ? args.intervalAlarmActions : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["scalingPolicyAction"] = args ? args.scalingPolicyAction : undefined;
+            resourceInputs["scalingPolicyName"] = args ? args.scalingPolicyName : undefined;
+            resourceInputs["scalingPolicyType"] = args ? args.scalingPolicyType : undefined;
+            resourceInputs["scheduledPolicy"] = args ? args.scheduledPolicy : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["metaDatas"] = undefined /*out*/;
             resourceInputs["scalingResourceType"] = undefined /*out*/;

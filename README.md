@@ -54,4 +54,3 @@ The following configuration points are available for the `cloudru` provider:
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/cloudru/api-docs/).
-

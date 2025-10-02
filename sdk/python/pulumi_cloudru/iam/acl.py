@@ -162,7 +162,7 @@ class Acl(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         acl = sbercloud.iam.Acl("acl",
             type="console",
@@ -201,7 +201,7 @@ class Acl(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         acl = sbercloud.iam.Acl("acl",
             type="console",

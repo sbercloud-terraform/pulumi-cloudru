@@ -363,7 +363,7 @@ class LtsLog(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         lts_attack_log_stream_id = config.require_object("ltsAttackLogStreamId")
@@ -423,7 +423,7 @@ class LtsLog(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         lts_attack_log_stream_id = config.require_object("ltsAttackLogStreamId")

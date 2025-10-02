@@ -219,7 +219,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test_keypair = sbercloud.ecs.Keypair("test-keypair",
             name="my-keypair",
@@ -230,7 +230,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test_keypair = sbercloud.ecs.Keypair("test-keypair",
             name="my-keypair",
@@ -278,7 +278,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test_keypair = sbercloud.ecs.Keypair("test-keypair",
             name="my-keypair",
@@ -289,7 +289,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test_keypair = sbercloud.ecs.Keypair("test-keypair",
             name="my-keypair",

@@ -1034,7 +1034,7 @@ class Turbo(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vpc_id = config.require_object("vpcId")
@@ -1059,7 +1059,7 @@ class Turbo(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vpc_id = config.require_object("vpcId")
@@ -1082,7 +1082,7 @@ class Turbo(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vpc_id = config.require_object("vpcId")
@@ -1229,7 +1229,7 @@ class Turbo(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vpc_id = config.require_object("vpcId")
@@ -1254,7 +1254,7 @@ class Turbo(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vpc_id = config.require_object("vpcId")
@@ -1277,7 +1277,7 @@ class Turbo(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vpc_id = config.require_object("vpcId")

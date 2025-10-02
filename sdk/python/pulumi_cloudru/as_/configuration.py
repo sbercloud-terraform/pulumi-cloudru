@@ -192,7 +192,7 @@ class Configuration(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         flavor_id = config.require_object("flavorId")
@@ -218,7 +218,7 @@ class Configuration(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         flavor_id = config.require_object("flavorId")
@@ -253,7 +253,7 @@ class Configuration(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         instance_id = config.require_object("instanceId")
@@ -317,7 +317,7 @@ class Configuration(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         flavor_id = config.require_object("flavorId")
@@ -343,7 +343,7 @@ class Configuration(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         flavor_id = config.require_object("flavorId")
@@ -378,7 +378,7 @@ class Configuration(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         instance_id = config.require_object("instanceId")

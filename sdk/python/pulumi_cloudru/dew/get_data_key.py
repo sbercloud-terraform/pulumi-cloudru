@@ -125,7 +125,7 @@ def get_data_key(datakey_length: Optional[builtins.str] = None,
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     key1 = sbercloud.dew.Key("key1",
@@ -176,7 +176,7 @@ def get_data_key_output(datakey_length: Optional[pulumi.Input[builtins.str]] = N
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     key1 = sbercloud.dew.Key("key1",

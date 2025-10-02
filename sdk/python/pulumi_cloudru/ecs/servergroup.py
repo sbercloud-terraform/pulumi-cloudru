@@ -223,7 +223,7 @@ class Servergroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         instance_demo = sbercloud.Ecs.get_instance(name="ecs-servergroup-demo")
@@ -268,7 +268,7 @@ class Servergroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         instance_demo = sbercloud.Ecs.get_instance(name="ecs-servergroup-demo")

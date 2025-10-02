@@ -2003,7 +2003,7 @@ class Function(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         f1 = sbercloud.functiongraph.Function("f_1",
             name="func_1",
@@ -2022,7 +2022,7 @@ class Function(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         f1 = sbercloud.functiongraph.Function("f_1",
             name="func_1",
@@ -2135,7 +2135,7 @@ class Function(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         f1 = sbercloud.functiongraph.Function("f_1",
             name="func_1",
@@ -2154,7 +2154,7 @@ class Function(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         f1 = sbercloud.functiongraph.Function("f_1",
             name="func_1",

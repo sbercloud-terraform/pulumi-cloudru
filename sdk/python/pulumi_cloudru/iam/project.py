@@ -178,7 +178,7 @@ class Project(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         project1 = sbercloud.iam.Project("project_1",
             name="ru-moscow-1_project1",
@@ -216,7 +216,7 @@ class Project(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         project1 = sbercloud.iam.Project("project_1",
             name="ru-moscow-1_project1",

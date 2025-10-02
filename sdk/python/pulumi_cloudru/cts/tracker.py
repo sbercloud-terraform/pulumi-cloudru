@@ -612,7 +612,7 @@ class Tracker(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bucket_name = config.require_object("bucketName")
@@ -656,7 +656,7 @@ class Tracker(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bucket_name = config.require_object("bucketName")

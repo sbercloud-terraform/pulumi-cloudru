@@ -169,7 +169,7 @@ class SwrOrganization(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.SwrOrganization("test", name="terraform-test")
         ```
@@ -202,7 +202,7 @@ class SwrOrganization(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.SwrOrganization("test", name="terraform-test")
         ```

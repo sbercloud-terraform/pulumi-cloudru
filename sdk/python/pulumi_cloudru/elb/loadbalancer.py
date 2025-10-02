@@ -694,7 +694,7 @@ class Loadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         lb1 = sbercloud.elb.Loadbalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
@@ -703,7 +703,7 @@ class Loadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         lb1 = sbercloud.elb.Loadbalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         eip1 = sbercloud.NetworkingEipAssociate("eip_1",
@@ -754,7 +754,7 @@ class Loadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         lb1 = sbercloud.elb.Loadbalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         ```
@@ -763,7 +763,7 @@ class Loadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         lb1 = sbercloud.elb.Loadbalancer("lb_1", vip_subnet_id="d9415786-5f1a-428b-b35f-2f1523e146d2")
         eip1 = sbercloud.NetworkingEipAssociate("eip_1",

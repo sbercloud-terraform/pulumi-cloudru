@@ -493,7 +493,7 @@ class ElbCertificate(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         certificate1 = sbercloud.ElbCertificate("certificate_1",
             name="certificate_1",
@@ -616,7 +616,7 @@ class ElbCertificate(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         certificate1 = sbercloud.ElbCertificate("certificate_1",
             name="certificate_1",

@@ -294,7 +294,7 @@ class Stream(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test_group = sbercloud.lts.Group("test_group",
             group_name="test_group",
@@ -337,7 +337,7 @@ class Stream(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test_group = sbercloud.lts.Group("test_group",
             group_name="test_group",

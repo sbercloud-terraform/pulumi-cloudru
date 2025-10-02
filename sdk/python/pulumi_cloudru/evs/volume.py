@@ -1055,7 +1055,7 @@ class Volume(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         volume = sbercloud.evs.Volume("volume",
             name="volume",
@@ -1069,7 +1069,7 @@ class Volume(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         volume = sbercloud.evs.Volume("volume",
             name="volume",
@@ -1145,7 +1145,7 @@ class Volume(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         volume = sbercloud.evs.Volume("volume",
             name="volume",
@@ -1159,7 +1159,7 @@ class Volume(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         volume = sbercloud.evs.Volume("volume",
             name="volume",

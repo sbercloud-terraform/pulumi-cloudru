@@ -338,7 +338,7 @@ class SmnSubscription(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         topic1 = sbercloud.SmnTopic("topic_1",
             name="topic_1",
@@ -392,7 +392,7 @@ class SmnSubscription(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         topic1 = sbercloud.SmnTopic("topic_1",
             name="topic_1",

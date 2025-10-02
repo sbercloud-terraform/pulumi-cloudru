@@ -717,7 +717,7 @@ class Listener(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         listener1 = sbercloud.elb.Listener("listener_1",
             protocol="HTTP",
@@ -773,7 +773,7 @@ class Listener(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         listener1 = sbercloud.elb.Listener("listener_1",
             protocol="HTTP",

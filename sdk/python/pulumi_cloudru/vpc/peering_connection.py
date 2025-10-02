@@ -277,7 +277,7 @@ class PeeringConnection(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         peering = sbercloud.vpc.PeeringConnection("peering",
            name=peer_conn_name,
@@ -328,7 +328,7 @@ class PeeringConnection(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         peering = sbercloud.vpc.PeeringConnection("peering",
            name=peer_conn_name,

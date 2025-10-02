@@ -195,7 +195,7 @@ class AntiVirus(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         object_id = config.require_object("objectId")
@@ -248,7 +248,7 @@ class AntiVirus(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         object_id = config.require_object("objectId")

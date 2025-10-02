@@ -574,7 +574,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         router_name = config.require_object("routerName")
@@ -649,7 +649,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         router_name = config.require_object("routerName")

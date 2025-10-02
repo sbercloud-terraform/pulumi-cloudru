@@ -283,7 +283,7 @@ class Project(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.eps.Project("test",
             name="test",
@@ -326,7 +326,7 @@ class Project(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.eps.Project("test",
             name="test",

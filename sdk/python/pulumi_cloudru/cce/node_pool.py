@@ -1732,7 +1732,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         cluster_id = config.require_object("clusterId")
@@ -1766,7 +1766,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         cluster_id = config.require_object("clusterId")
@@ -1805,7 +1805,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         cluster_id = config.require_object("clusterId")
@@ -2020,7 +2020,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         cluster_id = config.require_object("clusterId")
@@ -2054,7 +2054,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         cluster_id = config.require_object("clusterId")
@@ -2093,7 +2093,7 @@ class NodePool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         cluster_id = config.require_object("clusterId")

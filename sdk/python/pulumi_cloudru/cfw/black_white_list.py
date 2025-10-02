@@ -394,7 +394,7 @@ class BlackWhiteList(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         config = pulumi.Config()
@@ -464,7 +464,7 @@ class BlackWhiteList(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         config = pulumi.Config()

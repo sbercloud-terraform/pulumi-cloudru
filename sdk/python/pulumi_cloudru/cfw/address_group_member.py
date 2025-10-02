@@ -283,7 +283,7 @@ class AddressGroupMember(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         group_id = config.require_object("groupId")
@@ -335,7 +335,7 @@ class AddressGroupMember(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         group_id = config.require_object("groupId")

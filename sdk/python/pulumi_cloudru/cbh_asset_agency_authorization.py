@@ -180,7 +180,7 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.CbhAssetAgencyAuthorization("test",
             csms=True,
@@ -218,7 +218,7 @@ class CbhAssetAgencyAuthorization(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.CbhAssetAgencyAuthorization("test",
             csms=True,

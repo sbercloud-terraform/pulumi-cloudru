@@ -1859,7 +1859,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         myaz = sbercloud.get_availability_zones()
@@ -1894,7 +1894,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         mynode = sbercloud.cce.Node("mynode",
             cluster_id=mycluster["id"],
@@ -1921,7 +1921,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         myeip = sbercloud.vpc.Eip("myeip",
             publicip={
@@ -1955,7 +1955,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         mynode = sbercloud.cce.Node("mynode",
             cluster_id=mycluster["id"],
@@ -2160,7 +2160,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         myaz = sbercloud.get_availability_zones()
@@ -2195,7 +2195,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         mynode = sbercloud.cce.Node("mynode",
             cluster_id=mycluster["id"],
@@ -2222,7 +2222,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         myeip = sbercloud.vpc.Eip("myeip",
             publicip={
@@ -2256,7 +2256,7 @@ class Node(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         mynode = sbercloud.cce.Node("mynode",
             cluster_id=mycluster["id"],

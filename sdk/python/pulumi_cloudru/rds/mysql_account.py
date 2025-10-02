@@ -295,7 +295,7 @@ class MysqlAccount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         instance_id = config.require_object("instanceId")
@@ -379,7 +379,7 @@ class MysqlAccount(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         instance_id = config.require_object("instanceId")

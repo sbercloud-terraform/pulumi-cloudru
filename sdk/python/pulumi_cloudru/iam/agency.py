@@ -383,7 +383,7 @@ class Agency(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         agency = sbercloud.iam.Agency("agency",
             name="test_agency",
@@ -400,7 +400,7 @@ class Agency(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         agency = sbercloud.iam.Agency("agency",
             name="test_agency",
@@ -456,7 +456,7 @@ class Agency(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         agency = sbercloud.iam.Agency("agency",
             name="test_agency",
@@ -473,7 +473,7 @@ class Agency(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         agency = sbercloud.iam.Agency("agency",
             name="test_agency",

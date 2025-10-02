@@ -381,7 +381,7 @@ class Provider(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         provider1 = sbercloud.iam.Provider("provider_1",
             name="example_com_provider_saml",
@@ -393,7 +393,7 @@ class Provider(pulumi.CustomResource):
         ```python
         import pulumi
         import json
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         provider2 = sbercloud.iam.Provider("provider_2",
             name="example_com_provider_oidc",
@@ -470,7 +470,7 @@ class Provider(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         provider1 = sbercloud.iam.Provider("provider_1",
             name="example_com_provider_saml",
@@ -482,7 +482,7 @@ class Provider(pulumi.CustomResource):
         ```python
         import pulumi
         import json
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         provider2 = sbercloud.iam.Provider("provider_2",
             name="example_com_provider_oidc",

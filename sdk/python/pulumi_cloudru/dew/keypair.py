@@ -584,7 +584,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         kms_key_id = config.require_object("kmsKeyId")
@@ -604,7 +604,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         public_key = config.require_object("publicKey")
@@ -622,7 +622,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         public_key = config.require_object("publicKey")
@@ -737,7 +737,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         kms_key_id = config.require_object("kmsKeyId")
@@ -757,7 +757,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         public_key = config.require_object("publicKey")
@@ -775,7 +775,7 @@ class Keypair(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         public_key = config.require_object("publicKey")

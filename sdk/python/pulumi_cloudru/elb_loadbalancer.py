@@ -1331,7 +1331,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbLoadbalancer("basic",
             name="basic",
@@ -1352,7 +1352,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbLoadbalancer("basic",
             name="basic",
@@ -1376,7 +1376,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbLoadbalancer("basic",
             name="basic",
@@ -1488,7 +1488,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbLoadbalancer("basic",
             name="basic",
@@ -1509,7 +1509,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbLoadbalancer("basic",
             name="basic",
@@ -1533,7 +1533,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbLoadbalancer("basic",
             name="basic",

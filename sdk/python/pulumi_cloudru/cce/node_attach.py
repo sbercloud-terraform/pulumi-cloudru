@@ -1034,7 +1034,7 @@ class NodeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cce.NodeAttach("test",
             cluster_id=cluster_id,
@@ -1096,7 +1096,7 @@ class NodeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cce.NodeAttach("test",
             cluster_id=cluster_id,

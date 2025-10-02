@@ -356,7 +356,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import json
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         function_urn = config.require_object("functionUrn")
@@ -430,7 +430,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
         ```python
         import pulumi
         import json
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         function_urn = config.require_object("functionUrn")

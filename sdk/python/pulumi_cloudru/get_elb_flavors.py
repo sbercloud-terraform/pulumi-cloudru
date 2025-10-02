@@ -231,7 +231,7 @@ def get_elb_flavors(bandwidth: Optional[builtins.int] = None,
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     flavors = sbercloud.get_elb_flavors(type="L7",
@@ -307,7 +307,7 @@ def get_elb_flavors_output(bandwidth: Optional[pulumi.Input[Optional[builtins.in
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     flavors = sbercloud.get_elb_flavors(type="L7",

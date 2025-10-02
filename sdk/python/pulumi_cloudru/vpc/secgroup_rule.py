@@ -608,7 +608,7 @@ class SecgroupRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         security_group_id = config.require_object("securityGroupId")
@@ -626,7 +626,7 @@ class SecgroupRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         group_name = config.require_object("groupName")
@@ -713,7 +713,7 @@ class SecgroupRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         security_group_id = config.require_object("securityGroupId")
@@ -731,7 +731,7 @@ class SecgroupRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         group_name = config.require_object("groupName")

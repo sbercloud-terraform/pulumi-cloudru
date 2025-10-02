@@ -566,7 +566,7 @@ class Monitor(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         monitor_tcp = sbercloud.elb.Monitor("monitor_tcp",
             pool_id=pool_id,
@@ -580,7 +580,7 @@ class Monitor(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         monitor_udp = sbercloud.elb.Monitor("monitor_udp",
             pool_id=pool_id,
@@ -594,7 +594,7 @@ class Monitor(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         monitor_http = sbercloud.elb.Monitor("monitor_http",
             pool_id=pool_id,
@@ -659,7 +659,7 @@ class Monitor(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         monitor_tcp = sbercloud.elb.Monitor("monitor_tcp",
             pool_id=pool_id,
@@ -673,7 +673,7 @@ class Monitor(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         monitor_udp = sbercloud.elb.Monitor("monitor_udp",
             pool_id=pool_id,
@@ -687,7 +687,7 @@ class Monitor(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         monitor_http = sbercloud.elb.Monitor("monitor_http",
             pool_id=pool_id,

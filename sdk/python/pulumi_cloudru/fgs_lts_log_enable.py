@@ -87,7 +87,7 @@ class FgsLtsLogEnable(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.FgsLtsLogEnable("test")
         ```
@@ -113,7 +113,7 @@ class FgsLtsLogEnable(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.FgsLtsLogEnable("test")
         ```

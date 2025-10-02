@@ -1136,7 +1136,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         availability_zone = config.require_object("availabilityZone")
@@ -1256,7 +1256,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         availability_zone = config.require_object("availabilityZone")

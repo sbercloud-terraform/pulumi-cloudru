@@ -682,7 +682,7 @@ class Queue(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         queue = sbercloud.dli.Queue("queue",
             name="terraform_dli_queue_test",
@@ -697,7 +697,7 @@ class Queue(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         queue = sbercloud.dli.Queue("queue",
             name="terraform_dli_queue_test",
@@ -774,7 +774,7 @@ class Queue(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         queue = sbercloud.dli.Queue("queue",
             name="terraform_dli_queue_test",
@@ -789,7 +789,7 @@ class Queue(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         queue = sbercloud.dli.Queue("queue",
             name="terraform_dli_queue_test",

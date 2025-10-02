@@ -257,7 +257,7 @@ class Parametergroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         pg1 = sbercloud.rds.Parametergroup("pg_1",
             name="pg_1",
@@ -297,7 +297,7 @@ class Parametergroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         pg1 = sbercloud.rds.Parametergroup("pg_1",
             name="pg_1",

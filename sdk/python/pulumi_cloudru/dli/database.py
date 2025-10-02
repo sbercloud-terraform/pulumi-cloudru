@@ -263,7 +263,7 @@ class Database(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         database_name = config.require_object("databaseName")
@@ -307,7 +307,7 @@ class Database(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         database_name = config.require_object("databaseName")

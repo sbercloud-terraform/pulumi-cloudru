@@ -415,7 +415,7 @@ class Notification(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         topic_urn = config.require_object("topicUrn")
@@ -429,7 +429,7 @@ class Notification(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         topic_urn = config.require_object("topicUrn")
@@ -490,7 +490,7 @@ class Notification(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         topic_urn = config.require_object("topicUrn")
@@ -504,7 +504,7 @@ class Notification(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         topic_urn = config.require_object("topicUrn")

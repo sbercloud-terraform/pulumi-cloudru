@@ -125,7 +125,7 @@ def get_peering_connection(id: Optional[builtins.str] = None,
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     vpc = sbercloud.Vpc.get_vpc(name="vpc")
@@ -185,7 +185,7 @@ def get_peering_connection_output(id: Optional[pulumi.Input[Optional[builtins.st
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     vpc = sbercloud.Vpc.get_vpc(name="vpc")

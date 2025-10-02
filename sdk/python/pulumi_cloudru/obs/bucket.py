@@ -870,7 +870,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="my-tf-test-bucket",
@@ -885,7 +885,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="my-tf-test-bucket",
@@ -897,7 +897,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         log_bucket = sbercloud.obs.Bucket("log_bucket",
             bucket="my-tf-log-bucket",
@@ -915,7 +915,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="obs-website-test.hashicorp.com",
@@ -939,7 +939,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="obs-website-test.hashicorp.com",
@@ -960,7 +960,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bucket = sbercloud.obs.Bucket("bucket",
             bucket="my-bucket",
@@ -1072,7 +1072,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="my-tf-test-bucket",
@@ -1087,7 +1087,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="my-tf-test-bucket",
@@ -1099,7 +1099,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         log_bucket = sbercloud.obs.Bucket("log_bucket",
             bucket="my-tf-log-bucket",
@@ -1117,7 +1117,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="obs-website-test.hashicorp.com",
@@ -1141,7 +1141,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         b = sbercloud.obs.Bucket("b",
             bucket="obs-website-test.hashicorp.com",
@@ -1162,7 +1162,7 @@ class Bucket(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bucket = sbercloud.obs.Bucket("bucket",
             bucket="my-bucket",

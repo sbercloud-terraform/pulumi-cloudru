@@ -440,7 +440,7 @@ class AclRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         rule1 = sbercloud.networkacl.AclRule("rule_1",
             name="rule_1",
@@ -456,7 +456,7 @@ class AclRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         rule2 = sbercloud.networkacl.AclRule("rule_2",
             protocol="tcp",
@@ -508,7 +508,7 @@ class AclRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         rule1 = sbercloud.networkacl.AclRule("rule_1",
             name="rule_1",
@@ -524,7 +524,7 @@ class AclRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         rule2 = sbercloud.networkacl.AclRule("rule_2",
             protocol="tcp",

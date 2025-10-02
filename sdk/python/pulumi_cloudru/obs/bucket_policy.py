@@ -183,7 +183,7 @@ class BucketPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
         policy = sbercloud.obs.BucketPolicy("policy",
@@ -206,7 +206,7 @@ class BucketPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
         s3_policy = sbercloud.obs.BucketPolicy("s3_policy",
@@ -267,7 +267,7 @@ class BucketPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
         policy = sbercloud.obs.BucketPolicy("policy",
@@ -290,7 +290,7 @@ class BucketPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
         s3_policy = sbercloud.obs.BucketPolicy("s3_policy",

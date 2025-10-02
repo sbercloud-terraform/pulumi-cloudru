@@ -261,7 +261,7 @@ class ElbIpgroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbIpgroup("basic",
             name="basic",
@@ -296,7 +296,7 @@ class ElbIpgroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         basic = sbercloud.ElbIpgroup("basic",
             name="basic",

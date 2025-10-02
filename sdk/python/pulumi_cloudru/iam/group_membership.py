@@ -113,7 +113,7 @@ class GroupMembership(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         group1 = sbercloud.iam.Group("group_1",
             name="group1",
@@ -154,7 +154,7 @@ class GroupMembership(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         group1 = sbercloud.iam.Group("group_1",
             name="group1",

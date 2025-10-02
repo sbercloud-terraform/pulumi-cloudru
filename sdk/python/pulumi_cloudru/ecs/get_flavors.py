@@ -150,7 +150,7 @@ def get_flavors(availability_zone: Optional[builtins.str] = None,
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
@@ -165,7 +165,7 @@ def get_flavors(availability_zone: Optional[builtins.str] = None,
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
@@ -229,7 +229,7 @@ def get_flavors_output(availability_zone: Optional[pulumi.Input[Optional[builtin
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
@@ -244,7 +244,7 @@ def get_flavors_output(availability_zone: Optional[pulumi.Input[Optional[builtin
 
     ```python
     import pulumi
-    import pulumi-cloudru as sbercloud
+    import pulumi_cloudru as sbercloud
     import pulumi_sbercloud as sbercloud
 
     flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",

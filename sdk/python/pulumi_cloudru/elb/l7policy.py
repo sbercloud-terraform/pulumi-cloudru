@@ -435,7 +435,7 @@ class L7policy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         loadbalancer1 = sbercloud.elb.Loadbalancer("loadbalancer_1",
             name="loadbalancer_1",
@@ -507,7 +507,7 @@ class L7policy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         loadbalancer1 = sbercloud.elb.Loadbalancer("loadbalancer_1",
             name="loadbalancer_1",

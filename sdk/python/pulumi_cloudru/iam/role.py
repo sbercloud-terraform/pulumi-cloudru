@@ -194,7 +194,7 @@ class Role(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         role1 = sbercloud.iam.Role("role1",
             name="test",
@@ -254,7 +254,7 @@ class Role(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         role1 = sbercloud.iam.Role("role1",
             name="test",

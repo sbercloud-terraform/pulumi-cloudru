@@ -187,7 +187,7 @@ class VolumeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         myvol = sbercloud.evs.Volume("myvol",
             name="volume",
@@ -239,7 +239,7 @@ class VolumeAttach(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         myvol = sbercloud.evs.Volume("myvol",
             name="volume",

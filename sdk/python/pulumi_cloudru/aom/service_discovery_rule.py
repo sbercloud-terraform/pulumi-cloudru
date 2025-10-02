@@ -523,7 +523,7 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         discovery_rule = sbercloud.aom.ServiceDiscoveryRule("discovery_rule",
             name="test-rule",
@@ -607,7 +607,7 @@ class ServiceDiscoveryRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         discovery_rule = sbercloud.aom.ServiceDiscoveryRule("discovery_rule",
             name="test-rule",

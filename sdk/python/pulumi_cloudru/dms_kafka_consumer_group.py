@@ -250,7 +250,7 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         kafka_instance_id = config.require_object("kafkaInstanceId")
@@ -292,7 +292,7 @@ class DmsKafkaConsumerGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         kafka_instance_id = config.require_object("kafkaInstanceId")

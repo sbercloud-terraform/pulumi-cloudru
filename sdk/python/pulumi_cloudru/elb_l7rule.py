@@ -268,7 +268,7 @@ class ElbL7rule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         l7policy_id = config.require_object("l7policyId")
@@ -310,7 +310,7 @@ class ElbL7rule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         l7policy_id = config.require_object("l7policyId")

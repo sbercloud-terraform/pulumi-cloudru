@@ -505,7 +505,7 @@ class User(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         user1 = sbercloud.iam.User("user_1",
             name="user_1",
@@ -575,7 +575,7 @@ class User(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         user1 = sbercloud.iam.User("user_1",
             name="user_1",

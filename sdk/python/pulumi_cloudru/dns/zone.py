@@ -450,7 +450,7 @@ class Zone(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         my_public_zone = sbercloud.dns.Zone("my_public_zone",
             name="example.com.",
@@ -464,7 +464,7 @@ class Zone(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         my_private_zone = sbercloud.dns.Zone("my_private_zone",
             name="1.example.com.",
@@ -519,7 +519,7 @@ class Zone(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         my_public_zone = sbercloud.dns.Zone("my_public_zone",
             name="example.com.",
@@ -533,7 +533,7 @@ class Zone(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         my_private_zone = sbercloud.dns.Zone("my_private_zone",
             name="1.example.com.",

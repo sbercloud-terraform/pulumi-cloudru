@@ -486,7 +486,7 @@ class Pool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         pool1 = sbercloud.elb.Pool("pool_1",
             protocol="HTTP",
@@ -540,7 +540,7 @@ class Pool(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         pool1 = sbercloud.elb.Pool("pool_1",
             protocol="HTTP",

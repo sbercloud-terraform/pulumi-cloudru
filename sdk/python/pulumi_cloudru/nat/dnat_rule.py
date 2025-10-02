@@ -587,7 +587,7 @@ class DnatRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         dnat1 = sbercloud.nat.DnatRule("dnat_1",
             floating_ip_id="2bd659ab-bbf7-43d7-928b-9ee6a10de3ef",
@@ -656,7 +656,7 @@ class DnatRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         dnat1 = sbercloud.nat.DnatRule("dnat_1",
             floating_ip_id="2bd659ab-bbf7-43d7-928b-9ee6a10de3ef",

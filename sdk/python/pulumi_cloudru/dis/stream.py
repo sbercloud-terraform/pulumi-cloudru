@@ -622,7 +622,7 @@ class Stream(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         stream = sbercloud.dis.Stream("stream",
             stream_name="terraform_test_dis_stream",
@@ -633,7 +633,7 @@ class Stream(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         stream = sbercloud.dis.Stream("stream",
             stream_name="terraform_test_dis_stream",
@@ -693,7 +693,7 @@ class Stream(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         stream = sbercloud.dis.Stream("stream",
             stream_name="terraform_test_dis_stream",
@@ -704,7 +704,7 @@ class Stream(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         stream = sbercloud.dis.Stream("stream",
             stream_name="terraform_test_dis_stream",

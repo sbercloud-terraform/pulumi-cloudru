@@ -533,7 +533,7 @@ class BandwidthPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bandwidth_id = config.require_object("bandwidthId")
@@ -559,7 +559,7 @@ class BandwidthPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bandwidth_id = config.require_object("bandwidthId")
@@ -581,7 +581,7 @@ class BandwidthPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bandwidth_id = config.require_object("bandwidthId")
@@ -651,7 +651,7 @@ class BandwidthPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bandwidth_id = config.require_object("bandwidthId")
@@ -677,7 +677,7 @@ class BandwidthPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bandwidth_id = config.require_object("bandwidthId")
@@ -699,7 +699,7 @@ class BandwidthPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         bandwidth_id = config.require_object("bandwidthId")

@@ -190,7 +190,7 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         organization_name = config.require_object("organizationName")
@@ -242,7 +242,7 @@ class SwrOrganizationPermissions(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         organization_name = config.require_object("organizationName")

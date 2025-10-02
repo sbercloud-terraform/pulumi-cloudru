@@ -1220,7 +1220,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         instance = sbercloud.dds.Instance("instance",
             name="dds-instance",
@@ -1266,7 +1266,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         instance = sbercloud.dds.Instance("instance",
             name="dds-instance",
@@ -1294,7 +1294,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         instance = sbercloud.dds.Instance("instance",
             name="dds-instance",
@@ -1419,7 +1419,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         instance = sbercloud.dds.Instance("instance",
             name="dds-instance",
@@ -1465,7 +1465,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         instance = sbercloud.dds.Instance("instance",
             name="dds-instance",
@@ -1493,7 +1493,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         instance = sbercloud.dds.Instance("instance",
             name="dds-instance",

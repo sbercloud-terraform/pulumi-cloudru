@@ -410,7 +410,7 @@ class ElbMember(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         elb_pool_id = config.require_object("elbPoolId")
@@ -462,7 +462,7 @@ class ElbMember(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         elb_pool_id = config.require_object("elbPoolId")

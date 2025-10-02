@@ -498,7 +498,7 @@ class Endpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         config = pulumi.Config()
@@ -518,7 +518,7 @@ class Endpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         service_vpc_id = config.require_object("serviceVpcId")
@@ -590,7 +590,7 @@ class Endpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         config = pulumi.Config()
@@ -610,7 +610,7 @@ class Endpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         service_vpc_id = config.require_object("serviceVpcId")

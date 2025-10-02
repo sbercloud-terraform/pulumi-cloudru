@@ -227,7 +227,7 @@ class NetworkingEipAssociate(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         myport = sbercloud.Vpc.get_port(network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
@@ -273,7 +273,7 @@ class NetworkingEipAssociate(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         myport = sbercloud.Vpc.get_port(network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")

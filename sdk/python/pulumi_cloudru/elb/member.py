@@ -388,7 +388,7 @@ class Member(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         member1 = sbercloud.elb.Member("member_1",
             address="192.168.199.23",
@@ -435,7 +435,7 @@ class Member(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         member1 = sbercloud.elb.Member("member_1",
             address="192.168.199.23",

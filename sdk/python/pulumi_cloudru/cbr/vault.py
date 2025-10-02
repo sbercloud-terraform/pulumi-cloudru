@@ -1027,7 +1027,7 @@ class Vault(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vault_name = config.require_object("vaultName")
@@ -1050,7 +1050,7 @@ class Vault(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vault_name = config.require_object("vaultName")
@@ -1072,7 +1072,7 @@ class Vault(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vault_name = config.require_object("vaultName")
@@ -1192,7 +1192,7 @@ class Vault(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vault_name = config.require_object("vaultName")
@@ -1215,7 +1215,7 @@ class Vault(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vault_name = config.require_object("vaultName")
@@ -1237,7 +1237,7 @@ class Vault(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         vault_name = config.require_object("vaultName")

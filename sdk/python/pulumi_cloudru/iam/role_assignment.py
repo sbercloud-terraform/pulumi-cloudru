@@ -214,7 +214,7 @@ class RoleAssignment(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         role1 = sbercloud.Iam.get_role(name="rds_adm")
@@ -229,7 +229,7 @@ class RoleAssignment(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         role1 = sbercloud.Iam.get_role(name="secu_admin")
@@ -266,7 +266,7 @@ class RoleAssignment(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         role1 = sbercloud.Iam.get_role(name="rds_adm")
@@ -281,7 +281,7 @@ class RoleAssignment(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         role1 = sbercloud.Iam.get_role(name="secu_admin")

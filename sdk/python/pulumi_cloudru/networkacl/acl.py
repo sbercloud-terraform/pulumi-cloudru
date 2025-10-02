@@ -321,7 +321,7 @@ class Acl(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         subnet = sbercloud.Vpc.get_subnet(name="subnet-default")
@@ -373,7 +373,7 @@ class Acl(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         subnet = sbercloud.Vpc.get_subnet(name="subnet-default")

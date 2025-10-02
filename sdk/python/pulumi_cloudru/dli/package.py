@@ -374,7 +374,7 @@ class Package(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         group_name = config.require_object("groupName")
@@ -419,7 +419,7 @@ class Package(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         group_name = config.require_object("groupName")

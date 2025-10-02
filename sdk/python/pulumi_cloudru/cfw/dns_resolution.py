@@ -227,7 +227,7 @@ class DnsResolution(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         fw_instance_id = config.require_object("fwInstanceId")
@@ -276,7 +276,7 @@ class DnsResolution(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         fw_instance_id = config.require_object("fwInstanceId")

@@ -336,7 +336,7 @@ class AddressGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         ipv4 = sbercloud.vpc.AddressGroup("ipv4",
             name="group-ipv4",
@@ -350,7 +350,7 @@ class AddressGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         ipv6 = sbercloud.vpc.AddressGroup("ipv6",
             name="group-ipv6",
@@ -394,7 +394,7 @@ class AddressGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         ipv4 = sbercloud.vpc.AddressGroup("ipv4",
             name="group-ipv4",
@@ -408,7 +408,7 @@ class AddressGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         ipv6 = sbercloud.vpc.AddressGroup("ipv6",
             name="group-ipv6",

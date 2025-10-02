@@ -309,7 +309,7 @@ class StaticRoute(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         route_table_id = config.require_object("routeTableId")
@@ -325,7 +325,7 @@ class StaticRoute(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         route_table_id = config.require_object("routeTableId")
@@ -381,7 +381,7 @@ class StaticRoute(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         route_table_id = config.require_object("routeTableId")
@@ -397,7 +397,7 @@ class StaticRoute(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         route_table_id = config.require_object("routeTableId")

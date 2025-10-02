@@ -605,7 +605,7 @@ class Key(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         key1 = sbercloud.dew.Key("key_1",
             key_alias="key_1",
@@ -655,7 +655,7 @@ class Key(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         key1 = sbercloud.dew.Key("key_1",
             key_alias="key_1",

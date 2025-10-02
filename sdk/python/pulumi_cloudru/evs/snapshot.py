@@ -260,7 +260,7 @@ class Snapshot(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         myvolume = sbercloud.evs.Volume("myvolume",
             name="volume",
@@ -314,7 +314,7 @@ class Snapshot(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         myvolume = sbercloud.evs.Volume("myvolume",
             name="volume",

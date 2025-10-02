@@ -807,7 +807,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -824,7 +824,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -845,7 +845,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -865,7 +865,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -990,7 +990,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -1007,7 +1007,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -1028,7 +1028,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",
@@ -1048,7 +1048,7 @@ class Firewall(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.cfw.Firewall("test",
             name="test",

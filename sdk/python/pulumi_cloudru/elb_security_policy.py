@@ -359,7 +359,7 @@ class ElbSecurityPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.ElbSecurityPolicy("test",
             name="security_policy_test",
@@ -424,7 +424,7 @@ class ElbSecurityPolicy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         test = sbercloud.ElbSecurityPolicy("test",
             name="security_policy_test",

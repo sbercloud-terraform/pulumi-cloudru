@@ -552,7 +552,7 @@ class Eip(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         eip1 = sbercloud.vpc.Eip("eip_1",
             publicip={
@@ -570,7 +570,7 @@ class Eip(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bandwidth1 = sbercloud.vpc.Bandwidth("bandwidth_1",
             name="bandwidth_1",
@@ -621,7 +621,7 @@ class Eip(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         eip1 = sbercloud.vpc.Eip("eip_1",
             publicip={
@@ -639,7 +639,7 @@ class Eip(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         bandwidth1 = sbercloud.vpc.Bandwidth("bandwidth_1",
             name="bandwidth_1",

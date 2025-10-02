@@ -451,7 +451,7 @@ class SnatRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         snat1 = sbercloud.nat.SnatRule("snat_1",
             nat_gateway_id="3c0dffda-7c76-452b-9dcc-5bce7ae56b17",
@@ -498,7 +498,7 @@ class SnatRule(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         snat1 = sbercloud.nat.SnatRule("snat_1",
             nat_gateway_id="3c0dffda-7c76-452b-9dcc-5bce7ae56b17",

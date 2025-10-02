@@ -762,7 +762,7 @@ class ReadReplicaInstance(pulumi.CustomResource):
         ### Create a Rds read replica instance
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         secgroup = sbercloud.vpc.Secgroup("secgroup",
             name="test_sg_for_rds",
@@ -845,7 +845,7 @@ class ReadReplicaInstance(pulumi.CustomResource):
         ### Create a Rds read replica instance
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         secgroup = sbercloud.vpc.Secgroup("secgroup",
             name="test_sg_for_rds",

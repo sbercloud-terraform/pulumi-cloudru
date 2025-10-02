@@ -454,7 +454,7 @@ class BucketObject(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         object = sbercloud.obs.BucketObject("object",
             bucket="your_bucket_name",
@@ -467,7 +467,7 @@ class BucketObject(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         examplebucket = sbercloud.obs.Bucket("examplebucket",
             bucket="examplebuckettftest",
@@ -545,7 +545,7 @@ class BucketObject(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         object = sbercloud.obs.BucketObject("object",
             bucket="your_bucket_name",
@@ -558,7 +558,7 @@ class BucketObject(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         examplebucket = sbercloud.obs.Bucket("examplebucket",
             bucket="examplebuckettftest",

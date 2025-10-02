@@ -224,7 +224,7 @@ class Group(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         log_group1 = sbercloud.lts.Group("log_group1",
             group_name="log_group1",
@@ -263,7 +263,7 @@ class Group(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         log_group1 = sbercloud.lts.Group("log_group1",
             group_name="log_group1",

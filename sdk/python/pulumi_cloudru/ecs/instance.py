@@ -1738,7 +1738,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         config = pulumi.Config()
@@ -1766,7 +1766,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -1799,7 +1799,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -1830,7 +1830,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -1863,7 +1863,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -1888,7 +1888,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -2031,7 +2031,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
         import pulumi_sbercloud as sbercloud
 
         config = pulumi.Config()
@@ -2059,7 +2059,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -2092,7 +2092,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -2123,7 +2123,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -2156,7 +2156,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")
@@ -2181,7 +2181,7 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi-cloudru as sbercloud
+        import pulumi_cloudru as sbercloud
 
         config = pulumi.Config()
         secgroup_id = config.require_object("secgroupId")

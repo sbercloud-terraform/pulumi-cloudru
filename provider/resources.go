@@ -438,6 +438,7 @@ func Provider() tfbridge.ProviderInfo {
 		//		},
 		//	},
 		//},
+		//
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName:          "pulumi-cloudru",
 			RespectSchemaVersion: true,

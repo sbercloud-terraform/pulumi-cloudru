@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const monitorTcp = new sbercloud.elb.Monitor("monitor_tcp", {
  *     poolId: poolId,
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const monitorUdp = new sbercloud.elb.Monitor("monitor_udp", {
  *     poolId: poolId,
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const monitorHttp = new sbercloud.elb.Monitor("monitor_http", {
  *     poolId: poolId,

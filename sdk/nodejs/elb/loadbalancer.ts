@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const lb1 = new sbercloud.elb.Loadbalancer("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
  * ```
@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const lb1 = new sbercloud.elb.Loadbalancer("lb_1", {vipSubnetId: "d9415786-5f1a-428b-b35f-2f1523e146d2"});
  * const eip1 = new sbercloud.NetworkingEipAssociate("eip_1", {

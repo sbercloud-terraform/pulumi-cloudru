@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const maintainwindow1 = sbercloud.Dcs.getMaintainwindow({
  *     seq: 1,
@@ -77,7 +77,7 @@ export interface GetMaintainwindowResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const maintainwindow1 = sbercloud.Dcs.getMaintainwindow({
  *     seq: 1,

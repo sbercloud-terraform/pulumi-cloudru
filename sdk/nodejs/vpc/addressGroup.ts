@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const ipv4 = new sbercloud.vpc.AddressGroup("ipv4", {
  *     name: "group-ipv4",
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const ipv6 = new sbercloud.vpc.AddressGroup("ipv6", {
  *     name: "group-ipv6",

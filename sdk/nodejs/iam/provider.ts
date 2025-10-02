@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const provider1 = new sbercloud.iam.Provider("provider_1", {
  *     name: "example_com_provider_saml",
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const provider2 = new sbercloud.iam.Provider("provider_2", {
  *     name: "example_com_provider_oidc",

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const snat1 = new sbercloud.nat.SnatRule("snat_1", {
  *     natGatewayId: "3c0dffda-7c76-452b-9dcc-5bce7ae56b17",

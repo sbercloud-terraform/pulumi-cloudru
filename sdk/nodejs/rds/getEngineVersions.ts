@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.Rds.getEngineVersions({
  *     type: "SQLServer",
@@ -67,7 +67,7 @@ export interface GetEngineVersionsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.Rds.getEngineVersions({
  *     type: "SQLServer",

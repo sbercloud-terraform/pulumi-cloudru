@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const myaz = sbercloud.getAvailabilityZones({});
  * const mykp = new sbercloud.ecs.Keypair("mykp", {
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const mynode = new sbercloud.cce.Node("mynode", {
  *     clusterId: mycluster.id,
@@ -78,7 +78,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const myeip = new sbercloud.vpc.Eip("myeip", {
  *     publicip: {
@@ -114,7 +114,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const mynode = new sbercloud.cce.Node("mynode", {
  *     clusterId: mycluster.id,

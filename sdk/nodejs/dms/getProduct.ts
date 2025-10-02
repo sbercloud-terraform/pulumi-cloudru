@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const product1 = sbercloud.Dms.getProduct({
  *     engine: "kafka",
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const product2 = sbercloud.Dms.getProduct({
  *     engine: "kafka",
@@ -153,7 +153,7 @@ export interface GetProductResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const product1 = sbercloud.Dms.getProduct({
  *     engine: "kafka",
@@ -169,7 +169,7 @@ export interface GetProductResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const product2 = sbercloud.Dms.getProduct({
  *     engine: "kafka",

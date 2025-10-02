@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.Iam.getProjects({
  *     name: "ru-moscow-1",
@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.Iam.getProjects({
  *     name: "MOS",
@@ -81,7 +81,7 @@ export interface GetProjectsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.Iam.getProjects({
  *     name: "ru-moscow-1",
@@ -92,7 +92,7 @@ export interface GetProjectsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.Iam.getProjects({
  *     name: "MOS",

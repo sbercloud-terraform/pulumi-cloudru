@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const f1 = new sbercloud.functiongraph.Function("f_1", {
  *     name: "func_1",
@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const f1 = new sbercloud.functiongraph.Function("f_1", {
  *     name: "func_1",

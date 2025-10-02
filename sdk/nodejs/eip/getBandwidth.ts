@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const bandwidthName = config.requireObject<any>("bandwidthName");
@@ -95,7 +95,7 @@ export interface GetBandwidthResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const bandwidthName = config.requireObject<any>("bandwidthName");

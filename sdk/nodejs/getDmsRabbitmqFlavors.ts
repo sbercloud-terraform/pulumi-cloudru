@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.getDmsRabbitmqFlavors({
  *     type: "cluster",
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.getDmsRabbitmqFlavors({
  *     flavorId: "c6.2u4g.cluster",
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const az1 = config.requireObject<any>("az1");
@@ -145,7 +145,7 @@ export interface GetDmsRabbitmqFlavorsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.getDmsRabbitmqFlavors({
  *     type: "cluster",
@@ -156,7 +156,7 @@ export interface GetDmsRabbitmqFlavorsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.getDmsRabbitmqFlavors({
  *     flavorId: "c6.2u4g.cluster",
@@ -167,7 +167,7 @@ export interface GetDmsRabbitmqFlavorsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const az1 = config.requireObject<any>("az1");

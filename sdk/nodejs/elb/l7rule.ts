@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const loadbalancer1 = new sbercloud.elb.Loadbalancer("loadbalancer_1", {
  *     name: "loadbalancer_1",

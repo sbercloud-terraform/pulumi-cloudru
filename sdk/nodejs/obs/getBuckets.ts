@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const buckets = sbercloud.Obs.getBuckets({
  *     bucket: "your-bucket-name",
@@ -77,7 +77,7 @@ export interface GetBucketsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const buckets = sbercloud.Obs.getBuckets({
  *     bucket: "your-bucket-name",

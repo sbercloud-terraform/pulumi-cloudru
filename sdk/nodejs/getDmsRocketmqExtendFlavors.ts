@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const instanceId = config.requireObject<any>("instanceId");
@@ -101,7 +101,7 @@ export interface GetDmsRocketmqExtendFlavorsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const instanceId = config.requireObject<any>("instanceId");

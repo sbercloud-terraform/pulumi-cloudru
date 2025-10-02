@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const ubuntu = sbercloud.Ims.getImage({
  *     name: "Ubuntu 18.04 server 64bit",
@@ -251,7 +251,7 @@ export interface GetImageResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const ubuntu = sbercloud.Ims.getImage({
  *     name: "Ubuntu 18.04 server 64bit",

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.getDmsRocketmqInstances({
  *     name: "rocketmq_name_test",
@@ -92,7 +92,7 @@ export interface GetDmsRocketmqInstancesResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const test = sbercloud.getDmsRocketmqInstances({
  *     name: "rocketmq_name_test",

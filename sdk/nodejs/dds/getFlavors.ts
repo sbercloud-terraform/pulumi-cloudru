@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const flavor = sbercloud.Dds.getFlavors({
  *     engineName: "DDS-Community",
@@ -92,7 +92,7 @@ export interface GetFlavorsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const flavor = sbercloud.Dds.getFlavors({
  *     engineName: "DDS-Community",

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const groupId = config.requireObject<any>("groupId");
@@ -126,7 +126,7 @@ export interface GetServiceGroupMembersResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const config = new pulumi.Config();
  * const groupId = config.requireObject<any>("groupId");

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const dnat1 = new sbercloud.nat.DnatRule("dnat_1", {
  *     floatingIpId: "2bd659ab-bbf7-43d7-928b-9ee6a10de3ef",

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * ### Create a Rds read replica instance
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const secgroup = new sbercloud.vpc.Secgroup("secgroup", {
  *     name: "test_sg_for_rds",

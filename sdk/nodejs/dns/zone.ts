@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const myPublicZone = new sbercloud.dns.Zone("my_public_zone", {
  *     name: "example.com.",
@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const myPrivateZone = new sbercloud.dns.Zone("my_private_zone", {
  *     name: "1.example.com.",

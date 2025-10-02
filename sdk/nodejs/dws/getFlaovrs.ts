@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const flavor = sbercloud.Dws.getFlaovrs({
  *     vcpus: 8,
@@ -104,7 +104,7 @@ export interface GetFlaovrsResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const flavor = sbercloud.Dws.getFlaovrs({
  *     vcpus: 8,

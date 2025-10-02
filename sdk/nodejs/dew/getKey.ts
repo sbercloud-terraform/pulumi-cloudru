@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const key1 = sbercloud.Dew.getKey({
  *     keyAlias: "test_key",
@@ -134,7 +134,7 @@ export interface GetKeyResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const key1 = sbercloud.Dew.getKey({
  *     keyAlias: "test_key",

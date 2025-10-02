@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const byAddress = sbercloud.Eip.getEip({
  *     publicIp: "123.60.208.163",
@@ -104,7 +104,7 @@ export interface GetEipResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const byAddress = sbercloud.Eip.getEip({
  *     publicIp: "123.60.208.163",

@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const subnet = sbercloud.Vpc.getSubnet({
  *     id: subnetId,
@@ -139,7 +139,7 @@ export interface GetSubnetResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const subnet = sbercloud.Vpc.getSubnet({
  *     id: subnetId,

@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const vpc = sbercloud.Vpc.getVpc({
  *     name: "vpc",
@@ -101,7 +101,7 @@ export interface GetPeeringConnectionResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const vpc = sbercloud.Vpc.getVpc({
  *     name: "vpc",

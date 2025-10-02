@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const authAdmin = sbercloud.Iam.getRole({
  *     name: "secu_admin",
@@ -73,7 +73,7 @@ export interface GetRoleResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const authAdmin = sbercloud.Iam.getRole({
  *     name: "secu_admin",

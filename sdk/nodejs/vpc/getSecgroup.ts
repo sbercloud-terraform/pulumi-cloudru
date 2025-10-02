@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const secgroup = sbercloud.Vpc.getSecgroup({
  *     name: "tf_test_secgroup",
@@ -91,7 +91,7 @@ export interface GetSecgroupResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const secgroup = sbercloud.Vpc.getSecgroup({
  *     name: "tf_test_secgroup",

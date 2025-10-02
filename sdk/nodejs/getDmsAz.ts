@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const az1 = sbercloud.getDmsAz({
  *     code: "ru-moscow-1a",
@@ -72,7 +72,7 @@ export interface GetDmsAzResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const az1 = sbercloud.getDmsAz({
  *     code: "ru-moscow-1a",

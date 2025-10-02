@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const myport = sbercloud.Vpc.getPort({
  *     networkId: "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",

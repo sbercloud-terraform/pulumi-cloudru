@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const b = new sbercloud.obs.Bucket("b", {
  *     bucket: "my-tf-test-bucket",
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const b = new sbercloud.obs.Bucket("b", {
  *     bucket: "my-tf-test-bucket",
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const logBucket = new sbercloud.obs.Bucket("log_bucket", {
  *     bucket: "my-tf-log-bucket",
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const b = new sbercloud.obs.Bucket("b", {
  *     bucket: "obs-website-test.hashicorp.com",
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const b = new sbercloud.obs.Bucket("b", {
  *     bucket: "obs-website-test.hashicorp.com",
@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const bucket = new sbercloud.obs.Bucket("bucket", {
  *     bucket: "my-bucket",

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const all = sbercloud.Er.getAvailabilityZones({});
  * ```
@@ -66,7 +66,7 @@ export interface GetAvailabilityZonesResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const all = sbercloud.Er.getAvailabilityZones({});
  * ```

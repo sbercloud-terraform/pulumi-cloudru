@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const bucket = new sbercloud.obs.Bucket("bucket", {bucket: "my-test-bucket"});
  * const policy = new sbercloud.obs.BucketPolicy("policy", {
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const bucket = new sbercloud.obs.Bucket("bucket", {bucket: "my-test-bucket"});
  * const s3Policy = new sbercloud.obs.BucketPolicy("s3_policy", {

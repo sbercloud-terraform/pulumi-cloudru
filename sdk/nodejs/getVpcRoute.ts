@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const vpcRoute = sbercloud.getVpcRoute({
  *     vpcId: vpcId,
@@ -88,7 +88,7 @@ export interface GetVpcRouteResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "@pulumi/sbercloud";
+ * import * as sbercloud from "pulumi-cloudru";
  *
  * const vpcRoute = sbercloud.getVpcRoute({
  *     vpcId: vpcId,

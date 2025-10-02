@@ -84,16 +84,16 @@ export class ServiceDiscoveryRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServiceDiscoveryRule.__pulumiType;
     }
 
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable log collection. The default value is true.
      */
-    public readonly detectLogEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly detectLogEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies whether the rule is enabled. The default value is true.
      */
-    public readonly discoveryRuleEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly discoveryRuleEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the discovery rule. If the array contains multiple conditions, only the
      * processes that meet all the conditions will be matched. If the value of `checkType` is **cmdLine**, set the value of
@@ -104,51 +104,51 @@ export class ServiceDiscoveryRule extends pulumi.CustomResource {
      * to **equals**. `checkContent` is in the format of ["hostId1","hostId2"], indicating that the rule takes effect only
      * on specified nodes. If no nodes are specified, the rule applies to all nodes of the project.
      */
-    public readonly discoveryRules!: pulumi.Output<outputs.Aom.ServiceDiscoveryRuleDiscoveryRule[]>;
+    declare public readonly discoveryRules: pulumi.Output<outputs.Aom.ServiceDiscoveryRuleDiscoveryRule[]>;
     /**
      * Specifies whether the rule is the default one. The default value is false.
      */
-    public readonly isDefaultRule!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefaultRule: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the log file suffix. This is a list of strings.
      * The values can be: **log**, **trace**, and **out**.
      */
-    public readonly logFileSuffixes!: pulumi.Output<string[]>;
+    declare public readonly logFileSuffixes: pulumi.Output<string[]>;
     /**
      * Specifies the log path configuration rule. If cmdLineHash is a fixed string,
      * logs in the specified log path or log file are collected. Otherwise, only the files whose names end with
      * .log or .trace are collected. If the value of `nameType` is **cmdLineHash**, args is in the format of ["00001"] and
      * value is in the format of ["/xxx/xx.log"], indicating that the log path is /xxx/xx.log when the startup command is 00001.
      */
-    public readonly logPathRules!: pulumi.Output<outputs.Aom.ServiceDiscoveryRuleLogPathRule[] | undefined>;
+    declare public readonly logPathRules: pulumi.Output<outputs.Aom.ServiceDiscoveryRuleLogPathRule[] | undefined>;
     /**
      * Specifies the rule name, which contains 4 to 63 characters. It must start
      * with a lowercase letter but cannot end with a hyphen (-). Only digits, lowercase letters, and hyphens are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the naming rules for discovered services and applications.
      * The object structure is documented below.
      */
-    public readonly nameRules!: pulumi.Output<outputs.Aom.ServiceDiscoveryRuleNameRules>;
+    declare public readonly nameRules: pulumi.Output<outputs.Aom.ServiceDiscoveryRuleNameRules>;
     /**
      * Specifies the rule priority. Value range: 1 to 9999. The default value is 9999.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The region in which to create the service discovery rule resource. If omitted,
      * the provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The rule ID in uuid format.
      */
-    public /*out*/ readonly ruleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ruleId: pulumi.Output<string>;
     /**
      * Specifies the service type, which is used only for rule classification and UI display.
      * You can enter any field. For example, enter Java or Python by technology stack, or enter collector or database by function.
      */
-    public readonly serviceType!: pulumi.Output<string>;
+    declare public readonly serviceType: pulumi.Output<string>;
 
     /**
      * Create a ServiceDiscoveryRule resource with the given unique name, arguments, and options.
@@ -163,46 +163,46 @@ export class ServiceDiscoveryRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceDiscoveryRuleState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["detectLogEnabled"] = state ? state.detectLogEnabled : undefined;
-            resourceInputs["discoveryRuleEnabled"] = state ? state.discoveryRuleEnabled : undefined;
-            resourceInputs["discoveryRules"] = state ? state.discoveryRules : undefined;
-            resourceInputs["isDefaultRule"] = state ? state.isDefaultRule : undefined;
-            resourceInputs["logFileSuffixes"] = state ? state.logFileSuffixes : undefined;
-            resourceInputs["logPathRules"] = state ? state.logPathRules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nameRules"] = state ? state.nameRules : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["detectLogEnabled"] = state?.detectLogEnabled;
+            resourceInputs["discoveryRuleEnabled"] = state?.discoveryRuleEnabled;
+            resourceInputs["discoveryRules"] = state?.discoveryRules;
+            resourceInputs["isDefaultRule"] = state?.isDefaultRule;
+            resourceInputs["logFileSuffixes"] = state?.logFileSuffixes;
+            resourceInputs["logPathRules"] = state?.logPathRules;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nameRules"] = state?.nameRules;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["ruleId"] = state?.ruleId;
+            resourceInputs["serviceType"] = state?.serviceType;
         } else {
             const args = argsOrState as ServiceDiscoveryRuleArgs | undefined;
-            if ((!args || args.discoveryRules === undefined) && !opts.urn) {
+            if (args?.discoveryRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'discoveryRules'");
             }
-            if ((!args || args.logFileSuffixes === undefined) && !opts.urn) {
+            if (args?.logFileSuffixes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'logFileSuffixes'");
             }
-            if ((!args || args.nameRules === undefined) && !opts.urn) {
+            if (args?.nameRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nameRules'");
             }
-            if ((!args || args.serviceType === undefined) && !opts.urn) {
+            if (args?.serviceType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceType'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["detectLogEnabled"] = args ? args.detectLogEnabled : undefined;
-            resourceInputs["discoveryRuleEnabled"] = args ? args.discoveryRuleEnabled : undefined;
-            resourceInputs["discoveryRules"] = args ? args.discoveryRules : undefined;
-            resourceInputs["isDefaultRule"] = args ? args.isDefaultRule : undefined;
-            resourceInputs["logFileSuffixes"] = args ? args.logFileSuffixes : undefined;
-            resourceInputs["logPathRules"] = args ? args.logPathRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nameRules"] = args ? args.nameRules : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serviceType"] = args ? args.serviceType : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["detectLogEnabled"] = args?.detectLogEnabled;
+            resourceInputs["discoveryRuleEnabled"] = args?.discoveryRuleEnabled;
+            resourceInputs["discoveryRules"] = args?.discoveryRules;
+            resourceInputs["isDefaultRule"] = args?.isDefaultRule;
+            resourceInputs["logFileSuffixes"] = args?.logFileSuffixes;
+            resourceInputs["logPathRules"] = args?.logPathRules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nameRules"] = args?.nameRules;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serviceType"] = args?.serviceType;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ruleId"] = undefined /*out*/;
         }

@@ -35,20 +35,20 @@ export class ApigEndpointConnectionManagement extends pulumi.CustomResource {
     /**
      * Specifies the operation type endpoint connection.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Specifies the ID of the endpoint connection.
      */
-    public readonly endpointId!: pulumi.Output<string>;
+    declare public readonly endpointId: pulumi.Output<string>;
     /**
      * Specifies the ID of the dedicated instance to which the endpoint connection belongs.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The current ststus of the endpoint connection.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a ApigEndpointConnectionManagement resource with the given unique name, arguments, and options.
@@ -63,26 +63,26 @@ export class ApigEndpointConnectionManagement extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigEndpointConnectionManagementState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["endpointId"] = state ? state.endpointId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["endpointId"] = state?.endpointId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ApigEndpointConnectionManagementArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.endpointId === undefined) && !opts.urn) {
+            if (args?.endpointId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["endpointId"] = args ? args.endpointId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["endpointId"] = args?.endpointId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

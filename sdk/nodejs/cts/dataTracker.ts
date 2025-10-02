@@ -61,77 +61,77 @@ export class DataTracker extends pulumi.CustomResource {
         return obj['__pulumiType'] === DataTracker.__pulumiType;
     }
 
-    public /*out*/ readonly agencyName!: pulumi.Output<string>;
+    declare public /*out*/ readonly agencyName: pulumi.Output<string>;
     /**
      * Specifies the OBS bucket to which traces will be transferred.
      */
-    public readonly bucketName!: pulumi.Output<string | undefined>;
-    public readonly compressType!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public readonly bucketName: pulumi.Output<string | undefined>;
+    declare public readonly compressType: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Specifies the OBS bucket tracked by the data tracker.
      * Changing this creates a new resource.
      */
-    public readonly dataBucket!: pulumi.Output<string>;
+    declare public readonly dataBucket: pulumi.Output<string>;
     /**
      * Specifies an array of operation types tracked by the data tracker,
      * the value of operation can be **WRITE** or **READ**.
      */
-    public readonly dataOperations!: pulumi.Output<string[]>;
-    public /*out*/ readonly detail!: pulumi.Output<string>;
-    public /*out*/ readonly domainId!: pulumi.Output<string>;
+    declare public readonly dataOperations: pulumi.Output<string[]>;
+    declare public /*out*/ readonly detail: pulumi.Output<string>;
+    declare public /*out*/ readonly domainId: pulumi.Output<string>;
     /**
      * Specifies whether tracker is enabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the file name prefix to mark trace files that need to be stored
      * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
      * and periods (.) are allowed.
      */
-    public readonly filePrefix!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly groupId!: pulumi.Output<string>;
-    public /*out*/ readonly isAuthorizedBucket!: pulumi.Output<boolean>;
-    public readonly isSortByService!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly logGroupName!: pulumi.Output<string>;
-    public /*out*/ readonly logTopicName!: pulumi.Output<string>;
+    declare public readonly filePrefix: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly groupId: pulumi.Output<string>;
+    declare public /*out*/ readonly isAuthorizedBucket: pulumi.Output<boolean>;
+    declare public readonly isSortByService: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly logGroupName: pulumi.Output<string>;
+    declare public /*out*/ readonly logTopicName: pulumi.Output<string>;
     /**
      * Specifies whether trace analysis is enabled.
      */
-    public readonly ltsEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly ltsEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the data tracker name. The name cannot be system or ststem-trace.
      * Changing this creates a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the retention period that traces are stored in `bucketName`,
      * the value can be **0**(permanent), **30**, **60**, **90**, **180** or **1095**.
      */
-    public readonly obsRetentionPeriod!: pulumi.Output<number | undefined>;
+    declare public readonly obsRetentionPeriod: pulumi.Output<number | undefined>;
     /**
      * Specifies the region in which to manage the CTS data tracker resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The tracker status, the value can be **enabled**, **disabled** or **error**.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public /*out*/ readonly streamId!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public /*out*/ readonly streamId: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Whether traces will be transferred.
      */
-    public /*out*/ readonly transferEnabled!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly transferEnabled: pulumi.Output<boolean>;
     /**
      * The tracker type, only **data** is available.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Specifies whether trace file verification is enabled during trace transfer.
      */
-    public readonly validateFile!: pulumi.Output<boolean | undefined>;
+    declare public readonly validateFile: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a DataTracker resource with the given unique name, arguments, and options.
@@ -146,49 +146,49 @@ export class DataTracker extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataTrackerState | undefined;
-            resourceInputs["agencyName"] = state ? state.agencyName : undefined;
-            resourceInputs["bucketName"] = state ? state.bucketName : undefined;
-            resourceInputs["compressType"] = state ? state.compressType : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["dataBucket"] = state ? state.dataBucket : undefined;
-            resourceInputs["dataOperations"] = state ? state.dataOperations : undefined;
-            resourceInputs["detail"] = state ? state.detail : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["filePrefix"] = state ? state.filePrefix : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["isAuthorizedBucket"] = state ? state.isAuthorizedBucket : undefined;
-            resourceInputs["isSortByService"] = state ? state.isSortByService : undefined;
-            resourceInputs["logGroupName"] = state ? state.logGroupName : undefined;
-            resourceInputs["logTopicName"] = state ? state.logTopicName : undefined;
-            resourceInputs["ltsEnabled"] = state ? state.ltsEnabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["obsRetentionPeriod"] = state ? state.obsRetentionPeriod : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["streamId"] = state ? state.streamId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["transferEnabled"] = state ? state.transferEnabled : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["validateFile"] = state ? state.validateFile : undefined;
+            resourceInputs["agencyName"] = state?.agencyName;
+            resourceInputs["bucketName"] = state?.bucketName;
+            resourceInputs["compressType"] = state?.compressType;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["dataBucket"] = state?.dataBucket;
+            resourceInputs["dataOperations"] = state?.dataOperations;
+            resourceInputs["detail"] = state?.detail;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["filePrefix"] = state?.filePrefix;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["isAuthorizedBucket"] = state?.isAuthorizedBucket;
+            resourceInputs["isSortByService"] = state?.isSortByService;
+            resourceInputs["logGroupName"] = state?.logGroupName;
+            resourceInputs["logTopicName"] = state?.logTopicName;
+            resourceInputs["ltsEnabled"] = state?.ltsEnabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["obsRetentionPeriod"] = state?.obsRetentionPeriod;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["streamId"] = state?.streamId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["transferEnabled"] = state?.transferEnabled;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["validateFile"] = state?.validateFile;
         } else {
             const args = argsOrState as DataTrackerArgs | undefined;
-            if ((!args || args.dataBucket === undefined) && !opts.urn) {
+            if (args?.dataBucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dataBucket'");
             }
-            resourceInputs["bucketName"] = args ? args.bucketName : undefined;
-            resourceInputs["compressType"] = args ? args.compressType : undefined;
-            resourceInputs["dataBucket"] = args ? args.dataBucket : undefined;
-            resourceInputs["dataOperations"] = args ? args.dataOperations : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["filePrefix"] = args ? args.filePrefix : undefined;
-            resourceInputs["isSortByService"] = args ? args.isSortByService : undefined;
-            resourceInputs["ltsEnabled"] = args ? args.ltsEnabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["obsRetentionPeriod"] = args ? args.obsRetentionPeriod : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["validateFile"] = args ? args.validateFile : undefined;
+            resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["compressType"] = args?.compressType;
+            resourceInputs["dataBucket"] = args?.dataBucket;
+            resourceInputs["dataOperations"] = args?.dataOperations;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["filePrefix"] = args?.filePrefix;
+            resourceInputs["isSortByService"] = args?.isSortByService;
+            resourceInputs["ltsEnabled"] = args?.ltsEnabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["obsRetentionPeriod"] = args?.obsRetentionPeriod;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["validateFile"] = args?.validateFile;
             resourceInputs["agencyName"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["detail"] = undefined /*out*/;

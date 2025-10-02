@@ -68,26 +68,26 @@ export class DnsResolution extends pulumi.CustomResource {
      * The custom DNS servers.
      * Currently, only two custom DNS server addresses can be specified.
      */
-    public readonly customDnsServers!: pulumi.Output<string[] | undefined>;
+    declare public readonly customDnsServers: pulumi.Output<string[] | undefined>;
     /**
      * The default DNS servers.
      */
-    public readonly defaultDnsServers!: pulumi.Output<string[] | undefined>;
+    declare public readonly defaultDnsServers: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the firewall.
      * Changing this creates a new resource.
      */
-    public readonly fwInstanceId!: pulumi.Output<string>;
+    declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
      * The health check domain name.
      */
-    public readonly healthCheckDomainName!: pulumi.Output<string>;
+    declare public readonly healthCheckDomainName: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a DnsResolution resource with the given unique name, arguments, and options.
@@ -102,21 +102,21 @@ export class DnsResolution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsResolutionState | undefined;
-            resourceInputs["customDnsServers"] = state ? state.customDnsServers : undefined;
-            resourceInputs["defaultDnsServers"] = state ? state.defaultDnsServers : undefined;
-            resourceInputs["fwInstanceId"] = state ? state.fwInstanceId : undefined;
-            resourceInputs["healthCheckDomainName"] = state ? state.healthCheckDomainName : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["customDnsServers"] = state?.customDnsServers;
+            resourceInputs["defaultDnsServers"] = state?.defaultDnsServers;
+            resourceInputs["fwInstanceId"] = state?.fwInstanceId;
+            resourceInputs["healthCheckDomainName"] = state?.healthCheckDomainName;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as DnsResolutionArgs | undefined;
-            if ((!args || args.fwInstanceId === undefined) && !opts.urn) {
+            if (args?.fwInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fwInstanceId'");
             }
-            resourceInputs["customDnsServers"] = args ? args.customDnsServers : undefined;
-            resourceInputs["defaultDnsServers"] = args ? args.defaultDnsServers : undefined;
-            resourceInputs["fwInstanceId"] = args ? args.fwInstanceId : undefined;
-            resourceInputs["healthCheckDomainName"] = args ? args.healthCheckDomainName : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["customDnsServers"] = args?.customDnsServers;
+            resourceInputs["defaultDnsServers"] = args?.defaultDnsServers;
+            resourceInputs["fwInstanceId"] = args?.fwInstanceId;
+            resourceInputs["healthCheckDomainName"] = args?.healthCheckDomainName;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DnsResolution.__pulumiType, name, resourceInputs, opts);

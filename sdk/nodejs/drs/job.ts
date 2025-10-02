@@ -76,24 +76,24 @@ export class Job extends pulumi.CustomResource {
     /**
      * Create time. The format is ISO8601:YYYY-MM-DDThh:mm:ssZ
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the description of the job, which contain a
      * maximum of 256 characters, and certain special characters (including !<>&'"\\) are not allowed.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the destination database configuration.
      * The `dbInfo` object structure of the `destinationDb` is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly destinationDb!: pulumi.Output<outputs.Drs.JobDestinationDb>;
+    declare public readonly destinationDb: pulumi.Output<outputs.Drs.JobDestinationDb>;
     /**
      * Specifies the destination DB instance as read-only helps
      * ensure the migration is successful. Once the migration is complete, the DB instance automatically changes to
      * Read/Write. The default value is `true`. Changing this parameter will create a new resource.
      */
-    public readonly destinationDbReadnoly!: pulumi.Output<boolean | undefined>;
+    declare public readonly destinationDbReadnoly: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the direction of data flow.
      * Changing this parameter will create a new resource. The options are as follows:
@@ -101,7 +101,7 @@ export class Job extends pulumi.CustomResource {
      * + **down**: Out of the cloud. The source database must be a database in the current cloud.
      * + **non-dbs**: self-built database.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * Specifies the migration engine type.
      * Changing this parameter will create a new resource. The options are as follows:
@@ -114,34 +114,34 @@ export class Job extends pulumi.CustomResource {
      * + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
      * + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
      */
-    public readonly engineType!: pulumi.Output<string>;
+    declare public readonly engineType: pulumi.Output<string>;
     /**
      * Specifies the enterprise project id.
      * Changing this parameter will create a new resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string | undefined>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string | undefined>;
     /**
      * Specifies how many days after the task is abnormal, it will automatically
      * end. The value ranges from 14 to 100. the default value is `14`. Changing this parameter will create a new resource.
      */
-    public readonly expiredDays!: pulumi.Output<number | undefined>;
+    declare public readonly expiredDays: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to forcibly destroy the job even if it is running.
      * The default value is `false`.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the migration speed by setting a time period.
      * The default is no speed limit. The maximum length is 3. Structure is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly limitSpeeds!: pulumi.Output<outputs.Drs.JobLimitSpeed[] | undefined>;
+    declare public readonly limitSpeeds: pulumi.Output<outputs.Drs.JobLimitSpeed[] | undefined>;
     /**
      * Specifies whether to migrate the definers of all source database
      * objects to the `user` of `destinationDb`. The default value is `true`.
      * Changing this parameter will create a new resource.
      */
-    public readonly migrateDefiner!: pulumi.Output<boolean | undefined>;
+    declare public readonly migrateDefiner: pulumi.Output<boolean | undefined>;
     /**
      * Specifies migration type.
      * Changing this parameter will create a new resource. The options are as follows:
@@ -155,18 +155,18 @@ export class Job extends pulumi.CustomResource {
      *
      * The default value is `FULL_INCR_TRANS`.
      */
-    public readonly migrationType!: pulumi.Output<string | undefined>;
+    declare public readonly migrationType: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable multi write. It is mandatory when `type`
      * is `cloudDataGuard`. When the disaster recovery type is dual-active disaster recovery, set `multiWrite` to `true`,
      * otherwise to `false`. The default value is `false`. Changing this parameter will create a new resource.
      */
-    public readonly multiWrite!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiWrite: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the job name. The name consists of 4 to 50 characters, starting with
      * a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the network type.
      * Changing this parameter will create a new resource. The options are as follows:
@@ -178,40 +178,40 @@ export class Job extends pulumi.CustomResource {
      *
      * The default value is `eip`.
      */
-    public readonly netType!: pulumi.Output<string | undefined>;
+    declare public readonly netType: pulumi.Output<string | undefined>;
     /**
      * Private IP.
      */
-    public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
      * Public IP.
      */
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
      * The region in which to create the resource. If omitted, the
      * provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the source database configuration.
      * The `dbInfo` object structure of the `sourceDb` is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly sourceDb!: pulumi.Output<outputs.Drs.JobSourceDb>;
+    declare public readonly sourceDb: pulumi.Output<outputs.Drs.JobSourceDb>;
     /**
      * Specifies the time to start the job. The time format
      * is `yyyy-MM-dd HH:mm:ss`. Start immediately by default. Changing this parameter will create a new resource.
      */
-    public readonly startTime!: pulumi.Output<string | undefined>;
+    declare public readonly startTime: pulumi.Output<string | undefined>;
     /**
      * Status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the DRS job.
      * Changing this parameter will create a new resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the job type. Changing this parameter will create a new
      * resource. The options are as follows:
@@ -219,7 +219,7 @@ export class Job extends pulumi.CustomResource {
      * + **sync**: Data Synchronization.
      * + **cloudDataGuard**: Disaster Recovery.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -234,65 +234,65 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationDb"] = state ? state.destinationDb : undefined;
-            resourceInputs["destinationDbReadnoly"] = state ? state.destinationDbReadnoly : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["engineType"] = state ? state.engineType : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["expiredDays"] = state ? state.expiredDays : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["limitSpeeds"] = state ? state.limitSpeeds : undefined;
-            resourceInputs["migrateDefiner"] = state ? state.migrateDefiner : undefined;
-            resourceInputs["migrationType"] = state ? state.migrationType : undefined;
-            resourceInputs["multiWrite"] = state ? state.multiWrite : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["netType"] = state ? state.netType : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sourceDb"] = state ? state.sourceDb : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationDb"] = state?.destinationDb;
+            resourceInputs["destinationDbReadnoly"] = state?.destinationDbReadnoly;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["engineType"] = state?.engineType;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["expiredDays"] = state?.expiredDays;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["limitSpeeds"] = state?.limitSpeeds;
+            resourceInputs["migrateDefiner"] = state?.migrateDefiner;
+            resourceInputs["migrationType"] = state?.migrationType;
+            resourceInputs["multiWrite"] = state?.multiWrite;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["netType"] = state?.netType;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sourceDb"] = state?.sourceDb;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.destinationDb === undefined) && !opts.urn) {
+            if (args?.destinationDb === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationDb'");
             }
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.engineType === undefined) && !opts.urn) {
+            if (args?.engineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineType'");
             }
-            if ((!args || args.sourceDb === undefined) && !opts.urn) {
+            if (args?.sourceDb === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sourceDb'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationDb"] = args ? args.destinationDb : undefined;
-            resourceInputs["destinationDbReadnoly"] = args ? args.destinationDbReadnoly : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["engineType"] = args ? args.engineType : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["expiredDays"] = args ? args.expiredDays : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["limitSpeeds"] = args ? args.limitSpeeds : undefined;
-            resourceInputs["migrateDefiner"] = args ? args.migrateDefiner : undefined;
-            resourceInputs["migrationType"] = args ? args.migrationType : undefined;
-            resourceInputs["multiWrite"] = args ? args.multiWrite : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["netType"] = args ? args.netType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sourceDb"] = args ? args.sourceDb : undefined;
-            resourceInputs["startTime"] = args ? args.startTime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationDb"] = args?.destinationDb;
+            resourceInputs["destinationDbReadnoly"] = args?.destinationDbReadnoly;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["engineType"] = args?.engineType;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["expiredDays"] = args?.expiredDays;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["limitSpeeds"] = args?.limitSpeeds;
+            resourceInputs["migrateDefiner"] = args?.migrateDefiner;
+            resourceInputs["migrationType"] = args?.migrationType;
+            resourceInputs["multiWrite"] = args?.multiWrite;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["netType"] = args?.netType;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sourceDb"] = args?.sourceDb;
+            resourceInputs["startTime"] = args?.startTime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["privateIp"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;

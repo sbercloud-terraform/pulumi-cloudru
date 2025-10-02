@@ -68,50 +68,50 @@ export class Vpc extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vpc.__pulumiType;
     }
 
-    public readonly blockServiceEndpointStates!: pulumi.Output<string | undefined>;
+    declare public readonly blockServiceEndpointStates: pulumi.Output<string | undefined>;
     /**
      * Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
      * 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
      */
-    public readonly cidr!: pulumi.Output<string>;
+    declare public readonly cidr: pulumi.Output<string>;
     /**
      * Specifies supplementary information about the VPC. The value is a string of
      * no more than 255 characters and cannot contain angle brackets (< or >).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly enhancedLocalRoute!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly enhancedLocalRoute: pulumi.Output<string>;
     /**
      * Specifies the enterprise project id of the VPC. Changing this
      * creates a new VPC resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
      * of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the VPC. If omitted, the
      * provider-level region will be used. Changing this creates a new VPC resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * @deprecated use huaweicloudVpcRouteTable data source to get all routes
      */
-    public /*out*/ readonly routes!: pulumi.Output<outputs.Vpc.VpcRoute[]>;
+    declare public /*out*/ readonly routes: pulumi.Output<outputs.Vpc.VpcRoute[]>;
     /**
      * schema: Deprecated; use secondaryCidrs instead
      */
-    public readonly secondaryCidr!: pulumi.Output<string | undefined>;
-    public readonly secondaryCidrs!: pulumi.Output<string[]>;
+    declare public readonly secondaryCidr: pulumi.Output<string | undefined>;
+    declare public readonly secondaryCidrs: pulumi.Output<string[]>;
     /**
      * The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the VPC.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.
@@ -126,33 +126,33 @@ export class Vpc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcState | undefined;
-            resourceInputs["blockServiceEndpointStates"] = state ? state.blockServiceEndpointStates : undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enhancedLocalRoute"] = state ? state.enhancedLocalRoute : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routes"] = state ? state.routes : undefined;
-            resourceInputs["secondaryCidr"] = state ? state.secondaryCidr : undefined;
-            resourceInputs["secondaryCidrs"] = state ? state.secondaryCidrs : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["blockServiceEndpointStates"] = state?.blockServiceEndpointStates;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enhancedLocalRoute"] = state?.enhancedLocalRoute;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routes"] = state?.routes;
+            resourceInputs["secondaryCidr"] = state?.secondaryCidr;
+            resourceInputs["secondaryCidrs"] = state?.secondaryCidrs;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as VpcArgs | undefined;
-            if ((!args || args.cidr === undefined) && !opts.urn) {
+            if (args?.cidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cidr'");
             }
-            resourceInputs["blockServiceEndpointStates"] = args ? args.blockServiceEndpointStates : undefined;
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enhancedLocalRoute"] = args ? args.enhancedLocalRoute : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["secondaryCidr"] = args ? args.secondaryCidr : undefined;
-            resourceInputs["secondaryCidrs"] = args ? args.secondaryCidrs : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["blockServiceEndpointStates"] = args?.blockServiceEndpointStates;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enhancedLocalRoute"] = args?.enhancedLocalRoute;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["secondaryCidr"] = args?.secondaryCidr;
+            resourceInputs["secondaryCidrs"] = args?.secondaryCidrs;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["routes"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

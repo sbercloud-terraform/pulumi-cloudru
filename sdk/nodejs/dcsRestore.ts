@@ -100,23 +100,23 @@ export class DcsRestore extends pulumi.CustomResource {
     /**
      * ID of the backup record.
      */
-    public readonly backupId!: pulumi.Output<string>;
+    declare public readonly backupId: pulumi.Output<string>;
     /**
      * A dcsInstance ID in UUID format.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The enterprise project id of the dcs instance. Changing this creates a new instance.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Description of DCS instance restoration.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * Array of the restoration records.
      */
-    public /*out*/ readonly restoreRecords!: pulumi.Output<outputs.DcsRestoreRestoreRecord[]>;
+    declare public /*out*/ readonly restoreRecords: pulumi.Output<outputs.DcsRestoreRestoreRecord[]>;
 
     /**
      * Create a DcsRestore resource with the given unique name, arguments, and options.
@@ -131,26 +131,26 @@ export class DcsRestore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DcsRestoreState | undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["restoreRecords"] = state ? state.restoreRecords : undefined;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["restoreRecords"] = state?.restoreRecords;
         } else {
             const args = argsOrState as DcsRestoreArgs | undefined;
-            if ((!args || args.backupId === undefined) && !opts.urn) {
+            if (args?.backupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["remark"] = args?.remark;
             resourceInputs["restoreRecords"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

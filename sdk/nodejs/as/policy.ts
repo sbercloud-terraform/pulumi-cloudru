@@ -138,12 +138,12 @@ export class Policy extends pulumi.CustomResource {
         return obj['__pulumiType'] === Policy.__pulumiType;
     }
 
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Specifies the alarm rule ID. This parameter is mandatory when `scalingPolicyType`
      * is set to `ALARM`.
      */
-    public readonly alarmId!: pulumi.Output<string | undefined>;
+    declare public readonly alarmId: pulumi.Output<string | undefined>;
     /**
      * Specifies the cooling duration (in seconds).
      * The value ranges from 0 to 86400 and is 300 by default.
@@ -151,44 +151,44 @@ export class Policy extends pulumi.CustomResource {
      * <a name="scheduledPolicyObject"></a>
      * The `scheduledPolicy` block supports:
      */
-    public readonly coolDownTime!: pulumi.Output<number>;
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public readonly coolDownTime: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the AS policy. If omitted, the
      * provider-level region will be used. Changing this creates a new AS policy.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the AS group ID. Changing this creates a new AS policy.
      */
-    public readonly scalingGroupId!: pulumi.Output<string>;
+    declare public readonly scalingGroupId: pulumi.Output<string>;
     /**
      * Specifies the action of the AS policy.
      * The object structure is documented below.
      */
-    public readonly scalingPolicyAction!: pulumi.Output<outputs.As.PolicyScalingPolicyAction>;
+    declare public readonly scalingPolicyAction: pulumi.Output<outputs.As.PolicyScalingPolicyAction>;
     /**
      * Specifies the name of the AS policy. The name contains only letters, digits,
      * underscores(_), and hyphens(-), and cannot exceed 64 characters.
      */
-    public readonly scalingPolicyName!: pulumi.Output<string>;
+    declare public readonly scalingPolicyName: pulumi.Output<string>;
     /**
      * Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
      * + **ALARM**: indicates that the scaling action is triggered by an alarm.
      * + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
      * + **RECURRENCE**: indicates that the scaling action is triggered periodically.
      */
-    public readonly scalingPolicyType!: pulumi.Output<string>;
+    declare public readonly scalingPolicyType: pulumi.Output<string>;
     /**
      * Specifies the periodic or scheduled AS policy.
      * This parameter is mandatory when `scalingPolicyType` is set to `SCHEDULED` or `RECURRENCE`.
      * The object structure is documented below.
      */
-    public readonly scheduledPolicy!: pulumi.Output<outputs.As.PolicyScheduledPolicy>;
+    declare public readonly scheduledPolicy: pulumi.Output<outputs.As.PolicyScheduledPolicy>;
     /**
      * The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Policy resource with the given unique name, arguments, and options.
@@ -203,37 +203,37 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["alarmId"] = state ? state.alarmId : undefined;
-            resourceInputs["coolDownTime"] = state ? state.coolDownTime : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
-            resourceInputs["scalingPolicyAction"] = state ? state.scalingPolicyAction : undefined;
-            resourceInputs["scalingPolicyName"] = state ? state.scalingPolicyName : undefined;
-            resourceInputs["scalingPolicyType"] = state ? state.scalingPolicyType : undefined;
-            resourceInputs["scheduledPolicy"] = state ? state.scheduledPolicy : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["alarmId"] = state?.alarmId;
+            resourceInputs["coolDownTime"] = state?.coolDownTime;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scalingGroupId"] = state?.scalingGroupId;
+            resourceInputs["scalingPolicyAction"] = state?.scalingPolicyAction;
+            resourceInputs["scalingPolicyName"] = state?.scalingPolicyName;
+            resourceInputs["scalingPolicyType"] = state?.scalingPolicyType;
+            resourceInputs["scheduledPolicy"] = state?.scheduledPolicy;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.scalingGroupId === undefined) && !opts.urn) {
+            if (args?.scalingGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingGroupId'");
             }
-            if ((!args || args.scalingPolicyName === undefined) && !opts.urn) {
+            if (args?.scalingPolicyName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingPolicyName'");
             }
-            if ((!args || args.scalingPolicyType === undefined) && !opts.urn) {
+            if (args?.scalingPolicyType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingPolicyType'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["alarmId"] = args ? args.alarmId : undefined;
-            resourceInputs["coolDownTime"] = args ? args.coolDownTime : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
-            resourceInputs["scalingPolicyAction"] = args ? args.scalingPolicyAction : undefined;
-            resourceInputs["scalingPolicyName"] = args ? args.scalingPolicyName : undefined;
-            resourceInputs["scalingPolicyType"] = args ? args.scalingPolicyType : undefined;
-            resourceInputs["scheduledPolicy"] = args ? args.scheduledPolicy : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["alarmId"] = args?.alarmId;
+            resourceInputs["coolDownTime"] = args?.coolDownTime;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scalingGroupId"] = args?.scalingGroupId;
+            resourceInputs["scalingPolicyAction"] = args?.scalingPolicyAction;
+            resourceInputs["scalingPolicyName"] = args?.scalingPolicyName;
+            resourceInputs["scalingPolicyType"] = args?.scalingPolicyType;
+            resourceInputs["scheduledPolicy"] = args?.scheduledPolicy;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

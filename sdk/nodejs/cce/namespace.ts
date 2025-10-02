@@ -63,44 +63,44 @@ export class Namespace extends pulumi.CustomResource {
      * Specifies an unstructured key value map for external parameters.
      * Changing this will create a new namespace resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the cluster ID to which the CCE namespace belongs.
      * Changing this will create a new namespace resource.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The server time when namespace was created.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Specifies the map of string keys and values for labels.
      * Changing this will create a new namespace resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string}>;
     /**
      * Specifies the unique name of the namespace.
      * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
      * and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
      * Exactly one of `name` or `prefix` must be provided.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies a prefix used by the server to generate a unique name.
      * This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
      * hyphens (-), and must start and end with lowercase letters and digits.
      * Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
      */
-    public readonly prefix!: pulumi.Output<string | undefined>;
+    declare public readonly prefix: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the namespace resource.
      * If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The current phase of the namespace.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -115,25 +115,25 @@ export class Namespace extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["prefix"] = args ? args.prefix : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["prefix"] = args?.prefix;
+            resourceInputs["region"] = args?.region;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

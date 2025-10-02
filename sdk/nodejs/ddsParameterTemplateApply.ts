@@ -56,7 +56,7 @@ export class DdsParameterTemplateApply extends pulumi.CustomResource {
      * Specifies the parameter template ID.
      * Changing this creates a new resource.
      */
-    public readonly configurationId!: pulumi.Output<string>;
+    declare public readonly configurationId: pulumi.Output<string>;
     /**
      * Specifies the entity IDs.
      * + If the DB instance type is cluster and the shard or config parameter template is to be changed, the value is the
@@ -65,13 +65,13 @@ export class DdsParameterTemplateApply extends pulumi.CustomResource {
      *
      * Changing this creates a new resource.
      */
-    public readonly entityIds!: pulumi.Output<string[]>;
+    declare public readonly entityIds: pulumi.Output<string[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a DdsParameterTemplateApply resource with the given unique name, arguments, and options.
@@ -86,20 +86,20 @@ export class DdsParameterTemplateApply extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DdsParameterTemplateApplyState | undefined;
-            resourceInputs["configurationId"] = state ? state.configurationId : undefined;
-            resourceInputs["entityIds"] = state ? state.entityIds : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["configurationId"] = state?.configurationId;
+            resourceInputs["entityIds"] = state?.entityIds;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as DdsParameterTemplateApplyArgs | undefined;
-            if ((!args || args.configurationId === undefined) && !opts.urn) {
+            if (args?.configurationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'configurationId'");
             }
-            if ((!args || args.entityIds === undefined) && !opts.urn) {
+            if (args?.entityIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entityIds'");
             }
-            resourceInputs["configurationId"] = args ? args.configurationId : undefined;
-            resourceInputs["entityIds"] = args ? args.entityIds : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["configurationId"] = args?.configurationId;
+            resourceInputs["entityIds"] = args?.entityIds;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DdsParameterTemplateApply.__pulumiType, name, resourceInputs, opts);

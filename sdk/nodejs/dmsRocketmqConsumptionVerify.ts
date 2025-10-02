@@ -62,38 +62,38 @@ export class DmsRocketmqConsumptionVerify extends pulumi.CustomResource {
      * Specifies the client ID.
      * Changing this creates a new resource.
      */
-    public readonly clientId!: pulumi.Output<string | undefined>;
+    declare public readonly clientId: pulumi.Output<string | undefined>;
     /**
      * Specifies the group name.
      * Changing this creates a new resource.
      */
-    public readonly group!: pulumi.Output<string | undefined>;
+    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * Specifies the instance ID.
      * Changing this creates a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the message ID list.
      * Changing this creates a new resource.
      */
-    public readonly messageIdLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly messageIdLists: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the verify results.
      * The resendResults structure is documented below.
      */
-    public /*out*/ readonly resendResults!: pulumi.Output<outputs.DmsRocketmqConsumptionVerifyResendResult[]>;
+    declare public /*out*/ readonly resendResults: pulumi.Output<outputs.DmsRocketmqConsumptionVerifyResendResult[]>;
     /**
      * Specifies the topic name.
      * Changing this creates a new resource.
      */
-    public readonly topic!: pulumi.Output<string | undefined>;
+    declare public readonly topic: pulumi.Output<string | undefined>;
 
     /**
      * Create a DmsRocketmqConsumptionVerify resource with the given unique name, arguments, and options.
@@ -108,24 +108,24 @@ export class DmsRocketmqConsumptionVerify extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqConsumptionVerifyState | undefined;
-            resourceInputs["clientId"] = state ? state.clientId : undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["messageIdLists"] = state ? state.messageIdLists : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resendResults"] = state ? state.resendResults : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["clientId"] = state?.clientId;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["messageIdLists"] = state?.messageIdLists;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resendResults"] = state?.resendResults;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as DmsRocketmqConsumptionVerifyArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["clientId"] = args ? args.clientId : undefined;
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["messageIdLists"] = args ? args.messageIdLists : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["clientId"] = args?.clientId;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["messageIdLists"] = args?.messageIdLists;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["topic"] = args?.topic;
             resourceInputs["resendResults"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

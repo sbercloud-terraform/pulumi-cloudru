@@ -202,7 +202,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * Specifies the ACL policy for a bucket. The predefined common policies are as follows: "private", "public-read", "public-read-write" and "log-delivery-write". Defaults to `private`.
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the bucket. Changing this parameter will create a new resource.
      * A bucket must be named according to the globally applied DNS naming regulations as follows:
@@ -212,48 +212,48 @@ export class Bucket extends pulumi.CustomResource {
      * * The name cannot be an IP address.
      * * If the name contains any periods (.), a security certificate verification message may appear when you access the bucket or its objects by entering a domain name.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * The bucket domain name. Will be of format `bucketname.obs.region.hc.sbercloud.ru`.
      */
-    public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketDomainName: pulumi.Output<string>;
     /**
      * The OBS version of the bucket.
      */
-    public /*out*/ readonly bucketVersion!: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketVersion: pulumi.Output<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      */
-    public readonly corsRules!: pulumi.Output<outputs.Obs.BucketCorsRule[] | undefined>;
+    declare public readonly corsRules: pulumi.Output<outputs.Obs.BucketCorsRule[] | undefined>;
     /**
      * Whether enable default server-side encryption of the bucket in SSE-KMS mode.
      */
-    public readonly encryption!: pulumi.Output<boolean | undefined>;
+    declare public readonly encryption: pulumi.Output<boolean | undefined>;
     /**
      * The enterprise project id of the OBS bucket. Changing this creates a OBS bucket.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. Default to `false`.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the ID of a KMS key. If omitted, the default master key will be used.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Specifies the project ID to which the KMS key belongs. If omitted, the ID
      * of the provider-level project will be used.
      */
-    public readonly kmsKeyProjectId!: pulumi.Output<string>;
+    declare public readonly kmsKeyProjectId: pulumi.Output<string>;
     /**
      * A configuration of object lifecycle management (documented below).
      */
-    public readonly lifecycleRules!: pulumi.Output<outputs.Obs.BucketLifecycleRule[] | undefined>;
+    declare public readonly lifecycleRules: pulumi.Output<outputs.Obs.BucketLifecycleRule[] | undefined>;
     /**
      * A settings of bucket logging (documented below).
      */
-    public readonly loggings!: pulumi.Output<outputs.Obs.BucketLogging[] | undefined>;
+    declare public readonly loggings: pulumi.Output<outputs.Obs.BucketLogging[] | undefined>;
     /**
      * Whether enable the multi-AZ mode for the bucket. When the multi-AZ mode is
      * enabled, data in the bucket is duplicated and stored in multiple AZs.
@@ -262,53 +262,53 @@ export class Bucket extends pulumi.CustomResource {
      * bucket, but the name of a deleted bucket can be reused for another bucket at least 30 minutes after the deletion.
      * Exercise caution when changing this field.
      */
-    public readonly multiAz!: pulumi.Output<boolean>;
+    declare public readonly multiAz: pulumi.Output<boolean>;
     /**
      * Whether enable a bucket as a parallel file system. Changing this will
      * create a new bucket.
      */
-    public readonly parallelFs!: pulumi.Output<boolean | undefined>;
+    declare public readonly parallelFs: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the text of the bucket policy in JSON format. For more information about
      * obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
      */
-    public readonly policy!: pulumi.Output<string>;
+    declare public readonly policy: pulumi.Output<string>;
     /**
      * Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs*.
      */
-    public readonly policyFormat!: pulumi.Output<string | undefined>;
+    declare public readonly policyFormat: pulumi.Output<string | undefined>;
     /**
      * Specifies bucket storage quota. Must be a positive integer in the unit of byte. The maximum storage quota is 2<sup>63</sup> – 1 bytes. The default bucket storage quota is 0, indicating that the bucket storage quota is not limited.
      */
-    public readonly quota!: pulumi.Output<number | undefined>;
+    declare public readonly quota: pulumi.Output<number | undefined>;
     /**
      * Specified the region where this bucket will be created. If not specified, used the region by the provider.
      */
-    public readonly region!: pulumi.Output<string>;
-    public readonly sseAlgorithm!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly sseAlgorithm: pulumi.Output<string>;
     /**
      * Specifies the storage class of the bucket. OBS provides three storage classes: "STANDARD", "WARM" (Infrequent Access) and "COLD" (Archive). Defaults to `STANDARD`.
      */
-    public readonly storageClass!: pulumi.Output<string | undefined>;
+    declare public readonly storageClass: pulumi.Output<string | undefined>;
     /**
      * The OBS storage info of the bucket.
      * The object structure is documented below.
      */
-    public /*out*/ readonly storageInfos!: pulumi.Output<outputs.Obs.BucketStorageInfo[]>;
+    declare public /*out*/ readonly storageInfos: pulumi.Output<outputs.Obs.BucketStorageInfo[]>;
     /**
      * A mapping of tags to assign to the bucket. Each tag is represented by one key-value pair.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly userDomainNames!: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly userDomainNames: pulumi.Output<string[]>;
     /**
      * Whether enable versioning. Once you version-enable a bucket, it can never return to an unversioned state.
      * You can, however, suspend versioning on that bucket.
      */
-    public readonly versioning!: pulumi.Output<boolean | undefined>;
+    declare public readonly versioning: pulumi.Output<boolean | undefined>;
     /**
      * A website object (documented below).
      */
-    public readonly website!: pulumi.Output<outputs.Obs.BucketWebsite | undefined>;
+    declare public readonly website: pulumi.Output<outputs.Obs.BucketWebsite | undefined>;
 
     /**
      * Create a Bucket resource with the given unique name, arguments, and options.
@@ -323,58 +323,58 @@ export class Bucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BucketState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
-            resourceInputs["bucketVersion"] = state ? state.bucketVersion : undefined;
-            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
-            resourceInputs["encryption"] = state ? state.encryption : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["kmsKeyProjectId"] = state ? state.kmsKeyProjectId : undefined;
-            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            resourceInputs["loggings"] = state ? state.loggings : undefined;
-            resourceInputs["multiAz"] = state ? state.multiAz : undefined;
-            resourceInputs["parallelFs"] = state ? state.parallelFs : undefined;
-            resourceInputs["policy"] = state ? state.policy : undefined;
-            resourceInputs["policyFormat"] = state ? state.policyFormat : undefined;
-            resourceInputs["quota"] = state ? state.quota : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sseAlgorithm"] = state ? state.sseAlgorithm : undefined;
-            resourceInputs["storageClass"] = state ? state.storageClass : undefined;
-            resourceInputs["storageInfos"] = state ? state.storageInfos : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["userDomainNames"] = state ? state.userDomainNames : undefined;
-            resourceInputs["versioning"] = state ? state.versioning : undefined;
-            resourceInputs["website"] = state ? state.website : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["bucketDomainName"] = state?.bucketDomainName;
+            resourceInputs["bucketVersion"] = state?.bucketVersion;
+            resourceInputs["corsRules"] = state?.corsRules;
+            resourceInputs["encryption"] = state?.encryption;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["kmsKeyProjectId"] = state?.kmsKeyProjectId;
+            resourceInputs["lifecycleRules"] = state?.lifecycleRules;
+            resourceInputs["loggings"] = state?.loggings;
+            resourceInputs["multiAz"] = state?.multiAz;
+            resourceInputs["parallelFs"] = state?.parallelFs;
+            resourceInputs["policy"] = state?.policy;
+            resourceInputs["policyFormat"] = state?.policyFormat;
+            resourceInputs["quota"] = state?.quota;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sseAlgorithm"] = state?.sseAlgorithm;
+            resourceInputs["storageClass"] = state?.storageClass;
+            resourceInputs["storageInfos"] = state?.storageInfos;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["userDomainNames"] = state?.userDomainNames;
+            resourceInputs["versioning"] = state?.versioning;
+            resourceInputs["website"] = state?.website;
         } else {
             const args = argsOrState as BucketArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["kmsKeyProjectId"] = args ? args.kmsKeyProjectId : undefined;
-            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            resourceInputs["loggings"] = args ? args.loggings : undefined;
-            resourceInputs["multiAz"] = args ? args.multiAz : undefined;
-            resourceInputs["parallelFs"] = args ? args.parallelFs : undefined;
-            resourceInputs["policy"] = args ? args.policy : undefined;
-            resourceInputs["policyFormat"] = args ? args.policyFormat : undefined;
-            resourceInputs["quota"] = args ? args.quota : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sseAlgorithm"] = args ? args.sseAlgorithm : undefined;
-            resourceInputs["storageClass"] = args ? args.storageClass : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["userDomainNames"] = args ? args.userDomainNames : undefined;
-            resourceInputs["versioning"] = args ? args.versioning : undefined;
-            resourceInputs["website"] = args ? args.website : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["corsRules"] = args?.corsRules;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["kmsKeyProjectId"] = args?.kmsKeyProjectId;
+            resourceInputs["lifecycleRules"] = args?.lifecycleRules;
+            resourceInputs["loggings"] = args?.loggings;
+            resourceInputs["multiAz"] = args?.multiAz;
+            resourceInputs["parallelFs"] = args?.parallelFs;
+            resourceInputs["policy"] = args?.policy;
+            resourceInputs["policyFormat"] = args?.policyFormat;
+            resourceInputs["quota"] = args?.quota;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sseAlgorithm"] = args?.sseAlgorithm;
+            resourceInputs["storageClass"] = args?.storageClass;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["userDomainNames"] = args?.userDomainNames;
+            resourceInputs["versioning"] = args?.versioning;
+            resourceInputs["website"] = args?.website;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
             resourceInputs["bucketVersion"] = undefined /*out*/;
             resourceInputs["storageInfos"] = undefined /*out*/;

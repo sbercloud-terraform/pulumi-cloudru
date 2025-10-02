@@ -262,161 +262,161 @@ export class AclRule extends pulumi.CustomResource {
      * The action type.
      * The value can be `0` (allow), `1` (deny).
      */
-    public readonly actionType!: pulumi.Output<number>;
+    declare public readonly actionType: pulumi.Output<number>;
     /**
      * The address type.
      * The value can be `0` (IPv4), `1` (IPv6).
      */
-    public readonly addressType!: pulumi.Output<number>;
+    declare public readonly addressType: pulumi.Output<number>;
     /**
      * The application list.
      * The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
      * **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
      */
-    public readonly applications!: pulumi.Output<string[] | undefined>;
+    declare public readonly applications: pulumi.Output<string[] | undefined>;
     /**
      * The custom service group list.
      * The customServiceGroups structure is documented below.
      */
-    public readonly customServiceGroups!: pulumi.Output<outputs.Cfw.AclRuleCustomServiceGroups | undefined>;
+    declare public readonly customServiceGroups: pulumi.Output<outputs.Cfw.AclRuleCustomServiceGroups | undefined>;
     /**
      * The custom service configuration.
      * The customServices structure is documented below.
      */
-    public readonly customServices!: pulumi.Output<outputs.Cfw.AclRuleCustomService[] | undefined>;
+    declare public readonly customServices: pulumi.Output<outputs.Cfw.AclRuleCustomService[] | undefined>;
     /**
      * The rule description.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The destination address group list.
      */
-    public readonly destinationAddressGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationAddressGroups: pulumi.Output<string[] | undefined>;
     /**
      * The destination address type.
      * The value can be `0` (IPv4), `1` (IPv6).
      */
-    public readonly destinationAddressType!: pulumi.Output<number | undefined>;
+    declare public readonly destinationAddressType: pulumi.Output<number | undefined>;
     /**
      * The destination IP address list.
      */
-    public readonly destinationAddresses!: pulumi.Output<string[] | undefined>;
+    declare public readonly destinationAddresses: pulumi.Output<string[] | undefined>;
     /**
      * The destination domain address name.
      */
-    public readonly destinationDomainAddressName!: pulumi.Output<string | undefined>;
+    declare public readonly destinationDomainAddressName: pulumi.Output<string | undefined>;
     /**
      * The destination domain group ID.
      */
-    public readonly destinationDomainGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly destinationDomainGroupId: pulumi.Output<string | undefined>;
     /**
      * The destination domain group name.
      */
-    public readonly destinationDomainGroupName!: pulumi.Output<string | undefined>;
+    declare public readonly destinationDomainGroupName: pulumi.Output<string | undefined>;
     /**
      * The destination domain group type.
      * The options are as follows:
      * + **4**: application domain name group;
      * + **6**: network domain name group;
      */
-    public readonly destinationDomainGroupType!: pulumi.Output<number | undefined>;
+    declare public readonly destinationDomainGroupType: pulumi.Output<number | undefined>;
     /**
      * The destination region list.
      * The destinationRegionList structure is documented below.
      */
-    public readonly destinationRegionLists!: pulumi.Output<outputs.Cfw.AclRuleDestinationRegionList[] | undefined>;
+    declare public readonly destinationRegionLists: pulumi.Output<outputs.Cfw.AclRuleDestinationRegionList[] | undefined>;
     /**
      * The rule direction. The options are as follows:
      * + **0**: inbound;
      * + **1**: outbound;
      */
-    public readonly direction!: pulumi.Output<number>;
-    public readonly enableForceNew!: pulumi.Output<string | undefined>;
+    declare public readonly direction: pulumi.Output<number>;
+    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
     /**
      * Whether to support persistent connections.
      */
-    public readonly longConnectEnable!: pulumi.Output<number>;
+    declare public readonly longConnectEnable: pulumi.Output<number>;
     /**
      * The persistent connection duration (hour).
      */
-    public readonly longConnectTimeHour!: pulumi.Output<number>;
+    declare public readonly longConnectTimeHour: pulumi.Output<number>;
     /**
      * The persistent connection duration (minute).
      */
-    public readonly longConnectTimeMinute!: pulumi.Output<number>;
+    declare public readonly longConnectTimeMinute: pulumi.Output<number>;
     /**
      * The persistent Connection Duration (second).
      */
-    public readonly longConnectTimeSecond!: pulumi.Output<number>;
+    declare public readonly longConnectTimeSecond: pulumi.Output<number>;
     /**
      * The rule name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The protected object ID.
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * The predefined service group list.
      * The predefinedServiceGroups structure is documented below.
      */
-    public readonly predefinedServiceGroups!: pulumi.Output<outputs.Cfw.AclRulePredefinedServiceGroups | undefined>;
+    declare public readonly predefinedServiceGroups: pulumi.Output<outputs.Cfw.AclRulePredefinedServiceGroups | undefined>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The number of times the ACL rule is hit.
      * Setting the value to **0** will clear the hit count. Value options: **0**.
      */
-    public readonly ruleHitCount!: pulumi.Output<string>;
+    declare public readonly ruleHitCount: pulumi.Output<string>;
     /**
      * The sequence configuration.
      * The sequence structure is documented below.
      */
-    public readonly sequence!: pulumi.Output<outputs.Cfw.AclRuleSequence>;
+    declare public readonly sequence: pulumi.Output<outputs.Cfw.AclRuleSequence>;
     /**
      * The source address group list.
      */
-    public readonly sourceAddressGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceAddressGroups: pulumi.Output<string[] | undefined>;
     /**
      * The source address type.
      * The value can be `0` (IPv4), `1` (IPv6).
      */
-    public readonly sourceAddressType!: pulumi.Output<number | undefined>;
+    declare public readonly sourceAddressType: pulumi.Output<number | undefined>;
     /**
      * The source IP address list.
      */
-    public readonly sourceAddresses!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourceAddresses: pulumi.Output<string[] | undefined>;
     /**
      * The source predefined address group list.
      */
-    public readonly sourcePredefinedGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly sourcePredefinedGroups: pulumi.Output<string[] | undefined>;
     /**
      * The source region list.
      * The sourceRegionList structure is documented below.
      */
-    public readonly sourceRegionLists!: pulumi.Output<outputs.Cfw.AclRuleSourceRegionList[] | undefined>;
+    declare public readonly sourceRegionLists: pulumi.Output<outputs.Cfw.AclRuleSourceRegionList[] | undefined>;
     /**
      * The rule status. The options are as follows:
      * + **0**: disabled;
      * + **1**: enabled;
      */
-    public readonly status!: pulumi.Output<number>;
+    declare public readonly status: pulumi.Output<number>;
     /**
      * The key/value pairs to associate with the ACL rule.
      *
      * <a name="Sequence"></a>
      * The `sequence` block supports:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The rule type.
      * The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
      */
-    public readonly type!: pulumi.Output<number>;
+    declare public readonly type: pulumi.Output<number>;
 
     /**
      * Create a AclRule resource with the given unique name, arguments, and options.
@@ -431,97 +431,97 @@ export class AclRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRuleState | undefined;
-            resourceInputs["actionType"] = state ? state.actionType : undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["applications"] = state ? state.applications : undefined;
-            resourceInputs["customServiceGroups"] = state ? state.customServiceGroups : undefined;
-            resourceInputs["customServices"] = state ? state.customServices : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationAddressGroups"] = state ? state.destinationAddressGroups : undefined;
-            resourceInputs["destinationAddressType"] = state ? state.destinationAddressType : undefined;
-            resourceInputs["destinationAddresses"] = state ? state.destinationAddresses : undefined;
-            resourceInputs["destinationDomainAddressName"] = state ? state.destinationDomainAddressName : undefined;
-            resourceInputs["destinationDomainGroupId"] = state ? state.destinationDomainGroupId : undefined;
-            resourceInputs["destinationDomainGroupName"] = state ? state.destinationDomainGroupName : undefined;
-            resourceInputs["destinationDomainGroupType"] = state ? state.destinationDomainGroupType : undefined;
-            resourceInputs["destinationRegionLists"] = state ? state.destinationRegionLists : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
-            resourceInputs["longConnectEnable"] = state ? state.longConnectEnable : undefined;
-            resourceInputs["longConnectTimeHour"] = state ? state.longConnectTimeHour : undefined;
-            resourceInputs["longConnectTimeMinute"] = state ? state.longConnectTimeMinute : undefined;
-            resourceInputs["longConnectTimeSecond"] = state ? state.longConnectTimeSecond : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["predefinedServiceGroups"] = state ? state.predefinedServiceGroups : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["ruleHitCount"] = state ? state.ruleHitCount : undefined;
-            resourceInputs["sequence"] = state ? state.sequence : undefined;
-            resourceInputs["sourceAddressGroups"] = state ? state.sourceAddressGroups : undefined;
-            resourceInputs["sourceAddressType"] = state ? state.sourceAddressType : undefined;
-            resourceInputs["sourceAddresses"] = state ? state.sourceAddresses : undefined;
-            resourceInputs["sourcePredefinedGroups"] = state ? state.sourcePredefinedGroups : undefined;
-            resourceInputs["sourceRegionLists"] = state ? state.sourceRegionLists : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["actionType"] = state?.actionType;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["applications"] = state?.applications;
+            resourceInputs["customServiceGroups"] = state?.customServiceGroups;
+            resourceInputs["customServices"] = state?.customServices;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationAddressGroups"] = state?.destinationAddressGroups;
+            resourceInputs["destinationAddressType"] = state?.destinationAddressType;
+            resourceInputs["destinationAddresses"] = state?.destinationAddresses;
+            resourceInputs["destinationDomainAddressName"] = state?.destinationDomainAddressName;
+            resourceInputs["destinationDomainGroupId"] = state?.destinationDomainGroupId;
+            resourceInputs["destinationDomainGroupName"] = state?.destinationDomainGroupName;
+            resourceInputs["destinationDomainGroupType"] = state?.destinationDomainGroupType;
+            resourceInputs["destinationRegionLists"] = state?.destinationRegionLists;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["enableForceNew"] = state?.enableForceNew;
+            resourceInputs["longConnectEnable"] = state?.longConnectEnable;
+            resourceInputs["longConnectTimeHour"] = state?.longConnectTimeHour;
+            resourceInputs["longConnectTimeMinute"] = state?.longConnectTimeMinute;
+            resourceInputs["longConnectTimeSecond"] = state?.longConnectTimeSecond;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["predefinedServiceGroups"] = state?.predefinedServiceGroups;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["ruleHitCount"] = state?.ruleHitCount;
+            resourceInputs["sequence"] = state?.sequence;
+            resourceInputs["sourceAddressGroups"] = state?.sourceAddressGroups;
+            resourceInputs["sourceAddressType"] = state?.sourceAddressType;
+            resourceInputs["sourceAddresses"] = state?.sourceAddresses;
+            resourceInputs["sourcePredefinedGroups"] = state?.sourcePredefinedGroups;
+            resourceInputs["sourceRegionLists"] = state?.sourceRegionLists;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AclRuleArgs | undefined;
-            if ((!args || args.actionType === undefined) && !opts.urn) {
+            if (args?.actionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actionType'");
             }
-            if ((!args || args.addressType === undefined) && !opts.urn) {
+            if (args?.addressType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'addressType'");
             }
-            if ((!args || args.longConnectEnable === undefined) && !opts.urn) {
+            if (args?.longConnectEnable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'longConnectEnable'");
             }
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.sequence === undefined) && !opts.urn) {
+            if (args?.sequence === undefined && !opts.urn) {
                 throw new Error("Missing required property 'sequence'");
             }
-            if ((!args || args.status === undefined) && !opts.urn) {
+            if (args?.status === undefined && !opts.urn) {
                 throw new Error("Missing required property 'status'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["actionType"] = args ? args.actionType : undefined;
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["applications"] = args ? args.applications : undefined;
-            resourceInputs["customServiceGroups"] = args ? args.customServiceGroups : undefined;
-            resourceInputs["customServices"] = args ? args.customServices : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationAddressGroups"] = args ? args.destinationAddressGroups : undefined;
-            resourceInputs["destinationAddressType"] = args ? args.destinationAddressType : undefined;
-            resourceInputs["destinationAddresses"] = args ? args.destinationAddresses : undefined;
-            resourceInputs["destinationDomainAddressName"] = args ? args.destinationDomainAddressName : undefined;
-            resourceInputs["destinationDomainGroupId"] = args ? args.destinationDomainGroupId : undefined;
-            resourceInputs["destinationDomainGroupName"] = args ? args.destinationDomainGroupName : undefined;
-            resourceInputs["destinationDomainGroupType"] = args ? args.destinationDomainGroupType : undefined;
-            resourceInputs["destinationRegionLists"] = args ? args.destinationRegionLists : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
-            resourceInputs["longConnectEnable"] = args ? args.longConnectEnable : undefined;
-            resourceInputs["longConnectTimeHour"] = args ? args.longConnectTimeHour : undefined;
-            resourceInputs["longConnectTimeMinute"] = args ? args.longConnectTimeMinute : undefined;
-            resourceInputs["longConnectTimeSecond"] = args ? args.longConnectTimeSecond : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["predefinedServiceGroups"] = args ? args.predefinedServiceGroups : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["ruleHitCount"] = args ? args.ruleHitCount : undefined;
-            resourceInputs["sequence"] = args ? args.sequence : undefined;
-            resourceInputs["sourceAddressGroups"] = args ? args.sourceAddressGroups : undefined;
-            resourceInputs["sourceAddressType"] = args ? args.sourceAddressType : undefined;
-            resourceInputs["sourceAddresses"] = args ? args.sourceAddresses : undefined;
-            resourceInputs["sourcePredefinedGroups"] = args ? args.sourcePredefinedGroups : undefined;
-            resourceInputs["sourceRegionLists"] = args ? args.sourceRegionLists : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["actionType"] = args?.actionType;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["applications"] = args?.applications;
+            resourceInputs["customServiceGroups"] = args?.customServiceGroups;
+            resourceInputs["customServices"] = args?.customServices;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationAddressGroups"] = args?.destinationAddressGroups;
+            resourceInputs["destinationAddressType"] = args?.destinationAddressType;
+            resourceInputs["destinationAddresses"] = args?.destinationAddresses;
+            resourceInputs["destinationDomainAddressName"] = args?.destinationDomainAddressName;
+            resourceInputs["destinationDomainGroupId"] = args?.destinationDomainGroupId;
+            resourceInputs["destinationDomainGroupName"] = args?.destinationDomainGroupName;
+            resourceInputs["destinationDomainGroupType"] = args?.destinationDomainGroupType;
+            resourceInputs["destinationRegionLists"] = args?.destinationRegionLists;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["enableForceNew"] = args?.enableForceNew;
+            resourceInputs["longConnectEnable"] = args?.longConnectEnable;
+            resourceInputs["longConnectTimeHour"] = args?.longConnectTimeHour;
+            resourceInputs["longConnectTimeMinute"] = args?.longConnectTimeMinute;
+            resourceInputs["longConnectTimeSecond"] = args?.longConnectTimeSecond;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["predefinedServiceGroups"] = args?.predefinedServiceGroups;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["ruleHitCount"] = args?.ruleHitCount;
+            resourceInputs["sequence"] = args?.sequence;
+            resourceInputs["sourceAddressGroups"] = args?.sourceAddressGroups;
+            resourceInputs["sourceAddressType"] = args?.sourceAddressType;
+            resourceInputs["sourceAddresses"] = args?.sourceAddresses;
+            resourceInputs["sourcePredefinedGroups"] = args?.sourcePredefinedGroups;
+            resourceInputs["sourceRegionLists"] = args?.sourceRegionLists;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRule.__pulumiType, name, resourceInputs, opts);

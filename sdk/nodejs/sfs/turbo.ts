@@ -153,75 +153,75 @@ export class Turbo extends pulumi.CustomResource {
      * Specifies whether auto renew is enabled.  
      * The valid values are **true** and **false**.
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the availability zone where the file system is located.
      * Changing this will create a new resource.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The available capacity of the SFS Turbo file system in the unit of GB.
      */
-    public /*out*/ readonly availableCapacity!: pulumi.Output<string>;
+    declare public /*out*/ readonly availableCapacity: pulumi.Output<string>;
     /**
      * Specifies the backup ID.
      *
      * > This parameter is mandatory when a file system is created from a backup.
      */
-    public readonly backupId!: pulumi.Output<string>;
+    declare public readonly backupId: pulumi.Output<string>;
     /**
      * Specifies the charging mode of the SFS Turbo.
      * Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
      * Changing this parameter will create a new cluster resource.
      */
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * Specifies the ID of a KMS key to encrypt the file system. Changing this
      * will create a new resource.
      */
-    public readonly cryptKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly cryptKeyId: pulumi.Output<string | undefined>;
     /**
      * Specifies the VM flavor used for creating a dedicated file system.
      */
-    public readonly dedicatedFlavor!: pulumi.Output<string | undefined>;
+    declare public readonly dedicatedFlavor: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the dedicated distributed storage used
      * when creating a dedicated file system.
      */
-    public readonly dedicatedStorageId!: pulumi.Output<string | undefined>;
+    declare public readonly dedicatedStorageId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the file system is enhanced or not. Changing this will
      * create a new resource.
      *
      * This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
      */
-    public readonly enhanced!: pulumi.Output<boolean>;
+    declare public readonly enhanced: pulumi.Output<boolean>;
     /**
      * The enterprise project id of the file system. Changing this
      * will create a new resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * The mount point of the SFS Turbo file system.
      */
-    public /*out*/ readonly exportLocation!: pulumi.Output<string>;
+    declare public /*out*/ readonly exportLocation: pulumi.Output<string>;
     /**
      * Specifies the HPC bandwidth. Changing this will create a new resource.
      * This parameter is valid and required when `shareType` is set to **HPC**.
      * Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
      */
-    public readonly hpcBandwidth!: pulumi.Output<string>;
+    declare public readonly hpcBandwidth: pulumi.Output<string>;
     /**
      * Specifies the HPC cache bandwidth(GB/s).
      * This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
      * Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
      */
-    public readonly hpcCacheBandwidth!: pulumi.Output<string>;
+    declare public readonly hpcCacheBandwidth: pulumi.Output<string>;
     /**
      * Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
      * characters and must start with a letter.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the charging period of the SFS Turbo.
      * If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
@@ -229,27 +229,27 @@ export class Turbo extends pulumi.CustomResource {
      * This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this parameter will create a new cluster resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the SFS Turbo.
      * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this parameter will create a new cluster resource.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the SFS Turbo resource. If omitted, the
      * provider-level region will be used. Changing this creates a new SFS Turbo resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Specifies the protocol for sharing file systems. The valid value is NFS.
      * Changing this will create a new resource.
      */
-    public readonly shareProto!: pulumi.Output<string | undefined>;
+    declare public readonly shareProto: pulumi.Output<string | undefined>;
     /**
      * Specifies the file system type. Changing this will create a new resource.
      * Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
@@ -257,7 +257,7 @@ export class Turbo extends pulumi.CustomResource {
      *
      * > The share type **HPC_CACHE** only support in postpaid charging mode.
      */
-    public readonly shareType!: pulumi.Output<string | undefined>;
+    declare public readonly shareType: pulumi.Output<string | undefined>;
     /**
      * Specifies the capacity of a sharing file system, in GB.
      * + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
@@ -276,16 +276,16 @@ export class Turbo extends pulumi.CustomResource {
      *
      * > The file system capacity can only be expanded, not reduced.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The status of the SFS Turbo file system.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the network ID of the subnet. Changing this will create a new
      * resource.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the SFS Turbo.
      *
@@ -294,15 +294,15 @@ export class Turbo extends pulumi.CustomResource {
      * normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
      * security group you specified.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The version ID of the SFS Turbo file system.
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
     /**
      * Specifies the VPC ID. Changing this will create a new resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Turbo resource with the given unique name, arguments, and options.
@@ -317,71 +317,71 @@ export class Turbo extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TurboState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["availableCapacity"] = state ? state.availableCapacity : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["cryptKeyId"] = state ? state.cryptKeyId : undefined;
-            resourceInputs["dedicatedFlavor"] = state ? state.dedicatedFlavor : undefined;
-            resourceInputs["dedicatedStorageId"] = state ? state.dedicatedStorageId : undefined;
-            resourceInputs["enhanced"] = state ? state.enhanced : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["exportLocation"] = state ? state.exportLocation : undefined;
-            resourceInputs["hpcBandwidth"] = state ? state.hpcBandwidth : undefined;
-            resourceInputs["hpcCacheBandwidth"] = state ? state.hpcCacheBandwidth : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["shareProto"] = state ? state.shareProto : undefined;
-            resourceInputs["shareType"] = state ? state.shareType : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["availableCapacity"] = state?.availableCapacity;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["cryptKeyId"] = state?.cryptKeyId;
+            resourceInputs["dedicatedFlavor"] = state?.dedicatedFlavor;
+            resourceInputs["dedicatedStorageId"] = state?.dedicatedStorageId;
+            resourceInputs["enhanced"] = state?.enhanced;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["exportLocation"] = state?.exportLocation;
+            resourceInputs["hpcBandwidth"] = state?.hpcBandwidth;
+            resourceInputs["hpcCacheBandwidth"] = state?.hpcCacheBandwidth;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["shareProto"] = state?.shareProto;
+            resourceInputs["shareType"] = state?.shareType;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as TurboArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["cryptKeyId"] = args ? args.cryptKeyId : undefined;
-            resourceInputs["dedicatedFlavor"] = args ? args.dedicatedFlavor : undefined;
-            resourceInputs["dedicatedStorageId"] = args ? args.dedicatedStorageId : undefined;
-            resourceInputs["enhanced"] = args ? args.enhanced : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["hpcBandwidth"] = args ? args.hpcBandwidth : undefined;
-            resourceInputs["hpcCacheBandwidth"] = args ? args.hpcCacheBandwidth : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["shareProto"] = args ? args.shareProto : undefined;
-            resourceInputs["shareType"] = args ? args.shareType : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["cryptKeyId"] = args?.cryptKeyId;
+            resourceInputs["dedicatedFlavor"] = args?.dedicatedFlavor;
+            resourceInputs["dedicatedStorageId"] = args?.dedicatedStorageId;
+            resourceInputs["enhanced"] = args?.enhanced;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["hpcBandwidth"] = args?.hpcBandwidth;
+            resourceInputs["hpcCacheBandwidth"] = args?.hpcCacheBandwidth;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["shareProto"] = args?.shareProto;
+            resourceInputs["shareType"] = args?.shareType;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["availableCapacity"] = undefined /*out*/;
             resourceInputs["exportLocation"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

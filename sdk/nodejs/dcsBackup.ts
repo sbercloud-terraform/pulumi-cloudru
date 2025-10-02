@@ -62,50 +62,50 @@ export class DcsBackup extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly backupFormat!: pulumi.Output<string>;
+    declare public readonly backupFormat: pulumi.Output<string>;
     /**
      * Indicates the ID of the DCS instance backup.
      */
-    public /*out*/ readonly backupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
      * Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
      * The value is in UTC format.
      */
-    public /*out*/ readonly beginTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly beginTime: pulumi.Output<string>;
     /**
      * Specifies the description of DCS instance backup.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
      * The value is in UTC format.
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * Specifies the ID of the DCS instance.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Indicates whether restoration is supported. Value Options: **TRUE**, **FALSE**.
      */
-    public /*out*/ readonly isSupportRestore!: pulumi.Output<string>;
+    declare public /*out*/ readonly isSupportRestore: pulumi.Output<string>;
     /**
      * Indicates the backup name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the size of the backup file (byte).
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Indicates the backup status. Valid value:
      * + **waiting**: The task is waiting to begin.
@@ -115,13 +115,13 @@ export class DcsBackup extends pulumi.CustomResource {
      * + **expired**: The backup file has expired.
      * + **deleted**: The backup file has been deleted manually.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Indicates the backup type. Valid value:
      * + **manual**: indicates manual backup.
      * + **auto**: indicates automatic backup.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a DcsBackup resource with the given unique name, arguments, and options.
@@ -136,27 +136,27 @@ export class DcsBackup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DcsBackupState | undefined;
-            resourceInputs["backupFormat"] = state ? state.backupFormat : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["beginTime"] = state ? state.beginTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["isSupportRestore"] = state ? state.isSupportRestore : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["backupFormat"] = state?.backupFormat;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["beginTime"] = state?.beginTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["isSupportRestore"] = state?.isSupportRestore;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DcsBackupArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["backupFormat"] = args ? args.backupFormat : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["backupFormat"] = args?.backupFormat;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["backupId"] = undefined /*out*/;
             resourceInputs["beginTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;

@@ -54,44 +54,44 @@ export class AccessKey extends pulumi.CustomResource {
     /**
      * The time when the access key was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies the description of the access key.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly encryptedSecret!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly encryptedSecret: pulumi.Output<string>;
     /**
      * The fingerprint of the PGP key used to encrypt the secret
      */
-    public /*out*/ readonly keyFingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyFingerprint: pulumi.Output<string>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form
      * `keybase:some_person_that_exists`. Changing this creates a new resource.
      */
-    public readonly pgpKey!: pulumi.Output<string | undefined>;
+    declare public readonly pgpKey: pulumi.Output<string | undefined>;
     /**
      * The access secret key. Setting the value only when writing to `secretFile` failed.
      */
-    public /*out*/ readonly secret!: pulumi.Output<string>;
+    declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
      * Specifies the file name that can save access key and access secret key.
      * Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
      */
-    public readonly secretFile!: pulumi.Output<string | undefined>;
+    declare public readonly secretFile: pulumi.Output<string | undefined>;
     /**
      * Specifies the status of the access key. It must be *active* or *inactive*. Default value
      * is *active*.
      */
-    public readonly status!: pulumi.Output<string>;
+    declare public readonly status: pulumi.Output<string>;
     /**
      * Specifies the ID of the user who is requesting to create an access key.
      * Changing this creates a new resource.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
     /**
      * The name of IAM user.
      */
-    public /*out*/ readonly userName!: pulumi.Output<string>;
+    declare public /*out*/ readonly userName: pulumi.Output<string>;
 
     /**
      * Create a AccessKey resource with the given unique name, arguments, and options.
@@ -106,26 +106,26 @@ export class AccessKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeyState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptedSecret"] = state ? state.encryptedSecret : undefined;
-            resourceInputs["keyFingerprint"] = state ? state.keyFingerprint : undefined;
-            resourceInputs["pgpKey"] = state ? state.pgpKey : undefined;
-            resourceInputs["secret"] = state ? state.secret : undefined;
-            resourceInputs["secretFile"] = state ? state.secretFile : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptedSecret"] = state?.encryptedSecret;
+            resourceInputs["keyFingerprint"] = state?.keyFingerprint;
+            resourceInputs["pgpKey"] = state?.pgpKey;
+            resourceInputs["secret"] = state?.secret;
+            resourceInputs["secretFile"] = state?.secretFile;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userName"] = state?.userName;
         } else {
             const args = argsOrState as AccessKeyArgs | undefined;
-            if ((!args || args.userId === undefined) && !opts.urn) {
+            if (args?.userId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
-            resourceInputs["secretFile"] = args ? args.secretFile : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["pgpKey"] = args?.pgpKey;
+            resourceInputs["secretFile"] = args?.secretFile;
+            resourceInputs["status"] = args?.status;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["encryptedSecret"] = undefined /*out*/;
             resourceInputs["keyFingerprint"] = undefined /*out*/;

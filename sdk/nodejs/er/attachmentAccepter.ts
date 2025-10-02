@@ -65,21 +65,21 @@ export class AttachmentAccepter extends pulumi.CustomResource {
      * + **accept**
      * + **reject**
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Specifies the ID of the attachment to be accept or reject.
      */
-    public readonly attachmentId!: pulumi.Output<string>;
+    declare public readonly attachmentId: pulumi.Output<string>;
     /**
      * Specifies the ID of the shared ER instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a AttachmentAccepter resource with the given unique name, arguments, and options.
@@ -94,25 +94,25 @@ export class AttachmentAccepter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachmentAccepterState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["attachmentId"] = state ? state.attachmentId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["attachmentId"] = state?.attachmentId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as AttachmentAccepterArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.attachmentId === undefined) && !opts.urn) {
+            if (args?.attachmentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'attachmentId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["attachmentId"] = args ? args.attachmentId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["attachmentId"] = args?.attachmentId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AttachmentAccepter.__pulumiType, name, resourceInputs, opts);

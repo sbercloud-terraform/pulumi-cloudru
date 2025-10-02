@@ -51,42 +51,42 @@ export class Alarmrule extends pulumi.CustomResource {
      * Specifies whether to enable the action to be triggered by an alarm. The
      * default value is true.
      */
-    public readonly alarmActionEnabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly alarmActionEnabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the action triggered by an alarm. The structure is described
      * below.
      */
-    public readonly alarmActions!: pulumi.Output<outputs.Ces.AlarmruleAlarmAction[] | undefined>;
+    declare public readonly alarmActions: pulumi.Output<outputs.Ces.AlarmruleAlarmAction[] | undefined>;
     /**
      * The value can be a string of 0 to 256 characters.
      */
-    public readonly alarmDescription!: pulumi.Output<string | undefined>;
+    declare public readonly alarmDescription: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the alarm. The default value is true.
      */
-    public readonly alarmEnabled!: pulumi.Output<boolean | undefined>;
-    public readonly alarmLevel!: pulumi.Output<number | undefined>;
+    declare public readonly alarmEnabled: pulumi.Output<boolean | undefined>;
+    declare public readonly alarmLevel: pulumi.Output<number | undefined>;
     /**
      * Specifies the name of an alarm rule. The value can be a string of 1 to 128
      * characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
      */
-    public readonly alarmName!: pulumi.Output<string>;
+    declare public readonly alarmName: pulumi.Output<string>;
     /**
      * Indicates the alarm status. The value can be:
      * + ok: The alarm status is normal;
      * + alarm: An alarm is generated;
      * + insufficient_data: The required data is insufficient.
      */
-    public /*out*/ readonly alarmState!: pulumi.Output<string>;
+    declare public /*out*/ readonly alarmState: pulumi.Output<string>;
     /**
      * Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
      * **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
      */
-    public readonly alarmType!: pulumi.Output<string>;
+    declare public readonly alarmType: pulumi.Output<string>;
     /**
      * Specifies the alarm triggering condition. The structure is described below.
      */
-    public readonly condition!: pulumi.Output<outputs.Ces.AlarmruleCondition>;
+    declare public readonly condition: pulumi.Output<outputs.Ces.AlarmruleCondition>;
     /**
      * Specifies the enterprise project id of the alarm rule. Changing
      * this creates a new resource.
@@ -94,30 +94,30 @@ export class Alarmrule extends pulumi.CustomResource {
      * > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
      * and okActions coexist, their corresponding notificationList must be of the **same value**.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * @deprecated insufficientdata_actions is deprecated
      */
-    public readonly insufficientdataActions!: pulumi.Output<outputs.Ces.AlarmruleInsufficientdataAction[] | undefined>;
+    declare public readonly insufficientdataActions: pulumi.Output<outputs.Ces.AlarmruleInsufficientdataAction[] | undefined>;
     /**
      * Specifies the alarm metrics. The structure is described below. Changing this
      * creates a new resource.
      */
-    public readonly metric!: pulumi.Output<outputs.Ces.AlarmruleMetric>;
+    declare public readonly metric: pulumi.Output<outputs.Ces.AlarmruleMetric>;
     /**
      * Specifies the action triggered by the clearing of an alarm. The structure is
      * described below.
      */
-    public readonly okActions!: pulumi.Output<outputs.Ces.AlarmruleOkAction[] | undefined>;
+    declare public readonly okActions: pulumi.Output<outputs.Ces.AlarmruleOkAction[] | undefined>;
     /**
      * The region in which to create the alarm rule resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<number>;
 
     /**
      * Create a Alarmrule resource with the given unique name, arguments, and options.
@@ -132,45 +132,45 @@ export class Alarmrule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlarmruleState | undefined;
-            resourceInputs["alarmActionEnabled"] = state ? state.alarmActionEnabled : undefined;
-            resourceInputs["alarmActions"] = state ? state.alarmActions : undefined;
-            resourceInputs["alarmDescription"] = state ? state.alarmDescription : undefined;
-            resourceInputs["alarmEnabled"] = state ? state.alarmEnabled : undefined;
-            resourceInputs["alarmLevel"] = state ? state.alarmLevel : undefined;
-            resourceInputs["alarmName"] = state ? state.alarmName : undefined;
-            resourceInputs["alarmState"] = state ? state.alarmState : undefined;
-            resourceInputs["alarmType"] = state ? state.alarmType : undefined;
-            resourceInputs["condition"] = state ? state.condition : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["insufficientdataActions"] = state ? state.insufficientdataActions : undefined;
-            resourceInputs["metric"] = state ? state.metric : undefined;
-            resourceInputs["okActions"] = state ? state.okActions : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["alarmActionEnabled"] = state?.alarmActionEnabled;
+            resourceInputs["alarmActions"] = state?.alarmActions;
+            resourceInputs["alarmDescription"] = state?.alarmDescription;
+            resourceInputs["alarmEnabled"] = state?.alarmEnabled;
+            resourceInputs["alarmLevel"] = state?.alarmLevel;
+            resourceInputs["alarmName"] = state?.alarmName;
+            resourceInputs["alarmState"] = state?.alarmState;
+            resourceInputs["alarmType"] = state?.alarmType;
+            resourceInputs["condition"] = state?.condition;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["insufficientdataActions"] = state?.insufficientdataActions;
+            resourceInputs["metric"] = state?.metric;
+            resourceInputs["okActions"] = state?.okActions;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as AlarmruleArgs | undefined;
-            if ((!args || args.alarmName === undefined) && !opts.urn) {
+            if (args?.alarmName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alarmName'");
             }
-            if ((!args || args.condition === undefined) && !opts.urn) {
+            if (args?.condition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'condition'");
             }
-            if ((!args || args.metric === undefined) && !opts.urn) {
+            if (args?.metric === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metric'");
             }
-            resourceInputs["alarmActionEnabled"] = args ? args.alarmActionEnabled : undefined;
-            resourceInputs["alarmActions"] = args ? args.alarmActions : undefined;
-            resourceInputs["alarmDescription"] = args ? args.alarmDescription : undefined;
-            resourceInputs["alarmEnabled"] = args ? args.alarmEnabled : undefined;
-            resourceInputs["alarmLevel"] = args ? args.alarmLevel : undefined;
-            resourceInputs["alarmName"] = args ? args.alarmName : undefined;
-            resourceInputs["alarmType"] = args ? args.alarmType : undefined;
-            resourceInputs["condition"] = args ? args.condition : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["insufficientdataActions"] = args ? args.insufficientdataActions : undefined;
-            resourceInputs["metric"] = args ? args.metric : undefined;
-            resourceInputs["okActions"] = args ? args.okActions : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["alarmActionEnabled"] = args?.alarmActionEnabled;
+            resourceInputs["alarmActions"] = args?.alarmActions;
+            resourceInputs["alarmDescription"] = args?.alarmDescription;
+            resourceInputs["alarmEnabled"] = args?.alarmEnabled;
+            resourceInputs["alarmLevel"] = args?.alarmLevel;
+            resourceInputs["alarmName"] = args?.alarmName;
+            resourceInputs["alarmType"] = args?.alarmType;
+            resourceInputs["condition"] = args?.condition;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["insufficientdataActions"] = args?.insufficientdataActions;
+            resourceInputs["metric"] = args?.metric;
+            resourceInputs["okActions"] = args?.okActions;
+            resourceInputs["region"] = args?.region;
             resourceInputs["alarmState"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }

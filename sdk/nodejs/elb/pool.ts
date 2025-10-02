@@ -66,38 +66,38 @@ export class Pool extends pulumi.CustomResource {
      *
      * @deprecated this field is deprecated
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the pool.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The load balancing algorithm to distribute traffic to the pool's members. Must be one
      * of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
      */
-    public readonly lbMethod!: pulumi.Output<string>;
+    declare public readonly lbMethod: pulumi.Output<string>;
     /**
      * The Listener on which the members of the pool will be associated with.
      * Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
      */
-    public readonly listenerId!: pulumi.Output<string>;
+    declare public readonly listenerId: pulumi.Output<string>;
     /**
      * The load balancer on which to provision this pool. Changing this
      * creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
      */
-    public readonly loadbalancerId!: pulumi.Output<string>;
-    public /*out*/ readonly monitorId!: pulumi.Output<string>;
+    declare public readonly loadbalancerId: pulumi.Output<string>;
+    declare public /*out*/ readonly monitorId: pulumi.Output<string>;
     /**
      * Human-readable name for the pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Omit this field to prevent session persistence. Indicates whether
      * connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
      */
-    public readonly persistences!: pulumi.Output<outputs.Elb.PoolPersistence[] | undefined>;
-    public readonly protectionReason!: pulumi.Output<string | undefined>;
-    public readonly protectionStatus!: pulumi.Output<string>;
+    declare public readonly persistences: pulumi.Output<outputs.Elb.PoolPersistence[] | undefined>;
+    declare public readonly protectionReason: pulumi.Output<string | undefined>;
+    declare public readonly protectionStatus: pulumi.Output<string>;
     /**
      * The protocol - can either be TCP, UDP or HTTP.
      * + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
@@ -106,16 +106,16 @@ export class Pool extends pulumi.CustomResource {
      *
      * Changing this creates a new pool.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The region in which to create the ELB pool resource. If omitted, the the
      * provider-level region will be used. Changing this creates a new pool.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    public readonly tenantId!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
 
     /**
      * Create a Pool resource with the given unique name, arguments, and options.
@@ -130,39 +130,39 @@ export class Pool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PoolState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["lbMethod"] = state ? state.lbMethod : undefined;
-            resourceInputs["listenerId"] = state ? state.listenerId : undefined;
-            resourceInputs["loadbalancerId"] = state ? state.loadbalancerId : undefined;
-            resourceInputs["monitorId"] = state ? state.monitorId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["persistences"] = state ? state.persistences : undefined;
-            resourceInputs["protectionReason"] = state ? state.protectionReason : undefined;
-            resourceInputs["protectionStatus"] = state ? state.protectionStatus : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["lbMethod"] = state?.lbMethod;
+            resourceInputs["listenerId"] = state?.listenerId;
+            resourceInputs["loadbalancerId"] = state?.loadbalancerId;
+            resourceInputs["monitorId"] = state?.monitorId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["persistences"] = state?.persistences;
+            resourceInputs["protectionReason"] = state?.protectionReason;
+            resourceInputs["protectionStatus"] = state?.protectionStatus;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tenantId"] = state?.tenantId;
         } else {
             const args = argsOrState as PoolArgs | undefined;
-            if ((!args || args.lbMethod === undefined) && !opts.urn) {
+            if (args?.lbMethod === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lbMethod'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["lbMethod"] = args ? args.lbMethod : undefined;
-            resourceInputs["listenerId"] = args ? args.listenerId : undefined;
-            resourceInputs["loadbalancerId"] = args ? args.loadbalancerId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["persistences"] = args ? args.persistences : undefined;
-            resourceInputs["protectionReason"] = args ? args.protectionReason : undefined;
-            resourceInputs["protectionStatus"] = args ? args.protectionStatus : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["lbMethod"] = args?.lbMethod;
+            resourceInputs["listenerId"] = args?.listenerId;
+            resourceInputs["loadbalancerId"] = args?.loadbalancerId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["persistences"] = args?.persistences;
+            resourceInputs["protectionReason"] = args?.protectionReason;
+            resourceInputs["protectionStatus"] = args?.protectionStatus;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tenantId"] = args?.tenantId;
             resourceInputs["monitorId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

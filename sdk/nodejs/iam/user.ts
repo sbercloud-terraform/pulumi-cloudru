@@ -82,60 +82,60 @@ export class User extends pulumi.CustomResource {
      * + programmatic: only support programmatic access.
      * + console: only support management console access.
      */
-    public readonly accessType!: pulumi.Output<string>;
+    declare public readonly accessType: pulumi.Output<string>;
     /**
      * Specifies the country code. The country code of the Chinese mainland is 0086. This
      * parameter must be used together with `phone`.
      */
-    public readonly countryCode!: pulumi.Output<string | undefined>;
+    declare public readonly countryCode: pulumi.Output<string | undefined>;
     /**
      * The time when the IAM user was created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies the description of the user.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the email address with a maximum of 255 characters.
      */
-    public readonly email!: pulumi.Output<string | undefined>;
+    declare public readonly email: pulumi.Output<string | undefined>;
     /**
      * Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly externalIdentityId!: pulumi.Output<string | undefined>;
-    public readonly externalIdentityType!: pulumi.Output<string>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly externalIdentityId: pulumi.Output<string | undefined>;
+    declare public readonly externalIdentityType: pulumi.Output<string>;
     /**
      * The tiem when the IAM user last login.
      */
-    public /*out*/ readonly lastLogin!: pulumi.Output<string>;
-    public readonly loginProtectVerificationMethod!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly lastLogin: pulumi.Output<string>;
+    declare public readonly loginProtectVerificationMethod: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the user. The user name consists of 5 to 32 characters. It can
      * contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
      * digit.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the password for the user with 6 to 32 characters. It must contain at least
      * two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Indicates the password strength.
      */
-    public /*out*/ readonly passwordStrength!: pulumi.Output<string>;
+    declare public /*out*/ readonly passwordStrength: pulumi.Output<string>;
     /**
      * Specifies the mobile number with a maximum of 32 digits. This parameter must be used
      * together with `countryCode`.
      */
-    public readonly phone!: pulumi.Output<string | undefined>;
+    declare public readonly phone: pulumi.Output<string | undefined>;
     /**
      * Specifies whether or not the password should be reset. By default, the password is asked
      * to reset at the first login.
      */
-    public readonly pwdReset!: pulumi.Output<boolean | undefined>;
+    declare public readonly pwdReset: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -150,35 +150,35 @@ export class User extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UserState | undefined;
-            resourceInputs["accessType"] = state ? state.accessType : undefined;
-            resourceInputs["countryCode"] = state ? state.countryCode : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["externalIdentityId"] = state ? state.externalIdentityId : undefined;
-            resourceInputs["externalIdentityType"] = state ? state.externalIdentityType : undefined;
-            resourceInputs["lastLogin"] = state ? state.lastLogin : undefined;
-            resourceInputs["loginProtectVerificationMethod"] = state ? state.loginProtectVerificationMethod : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["passwordStrength"] = state ? state.passwordStrength : undefined;
-            resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["pwdReset"] = state ? state.pwdReset : undefined;
+            resourceInputs["accessType"] = state?.accessType;
+            resourceInputs["countryCode"] = state?.countryCode;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["externalIdentityId"] = state?.externalIdentityId;
+            resourceInputs["externalIdentityType"] = state?.externalIdentityType;
+            resourceInputs["lastLogin"] = state?.lastLogin;
+            resourceInputs["loginProtectVerificationMethod"] = state?.loginProtectVerificationMethod;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["passwordStrength"] = state?.passwordStrength;
+            resourceInputs["phone"] = state?.phone;
+            resourceInputs["pwdReset"] = state?.pwdReset;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            resourceInputs["accessType"] = args ? args.accessType : undefined;
-            resourceInputs["countryCode"] = args ? args.countryCode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["externalIdentityId"] = args ? args.externalIdentityId : undefined;
-            resourceInputs["externalIdentityType"] = args ? args.externalIdentityType : undefined;
-            resourceInputs["loginProtectVerificationMethod"] = args ? args.loginProtectVerificationMethod : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["accessType"] = args?.accessType;
+            resourceInputs["countryCode"] = args?.countryCode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["externalIdentityId"] = args?.externalIdentityId;
+            resourceInputs["externalIdentityType"] = args?.externalIdentityType;
+            resourceInputs["loginProtectVerificationMethod"] = args?.loginProtectVerificationMethod;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["pwdReset"] = args ? args.pwdReset : undefined;
+            resourceInputs["phone"] = args?.phone;
+            resourceInputs["pwdReset"] = args?.pwdReset;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastLogin"] = undefined /*out*/;
             resourceInputs["passwordStrength"] = undefined /*out*/;

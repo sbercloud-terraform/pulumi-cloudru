@@ -35,16 +35,16 @@ export class PgPluginUpdate extends pulumi.CustomResource {
     /**
      * Specifies the database name.
      */
-    public readonly databaseName!: pulumi.Output<string>;
+    declare public readonly databaseName: pulumi.Output<string>;
     /**
      * Specifies the extension name.
      */
-    public readonly extensionName!: pulumi.Output<string>;
+    declare public readonly extensionName: pulumi.Output<string>;
     /**
      * Specifies the ID of the RDS instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a PgPluginUpdate resource with the given unique name, arguments, and options.
@@ -59,25 +59,25 @@ export class PgPluginUpdate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgPluginUpdateState | undefined;
-            resourceInputs["databaseName"] = state ? state.databaseName : undefined;
-            resourceInputs["extensionName"] = state ? state.extensionName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["databaseName"] = state?.databaseName;
+            resourceInputs["extensionName"] = state?.extensionName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as PgPluginUpdateArgs | undefined;
-            if ((!args || args.databaseName === undefined) && !opts.urn) {
+            if (args?.databaseName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'databaseName'");
             }
-            if ((!args || args.extensionName === undefined) && !opts.urn) {
+            if (args?.extensionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'extensionName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["databaseName"] = args ? args.databaseName : undefined;
-            resourceInputs["extensionName"] = args ? args.extensionName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["databaseName"] = args?.databaseName;
+            resourceInputs["extensionName"] = args?.extensionName;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(PgPluginUpdate.__pulumiType, name, resourceInputs, opts);

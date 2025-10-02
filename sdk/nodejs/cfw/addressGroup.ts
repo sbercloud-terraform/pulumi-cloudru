@@ -65,26 +65,26 @@ export class AddressGroup extends pulumi.CustomResource {
     /**
      * The address type. The value can be **0** (IPv4) or **1** (IPv6).
      */
-    public readonly addressType!: pulumi.Output<number>;
+    declare public readonly addressType: pulumi.Output<number>;
     /**
      * Specifies the Address group description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the IP address group name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protected object ID.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a AddressGroup resource with the given unique name, arguments, and options.
@@ -99,21 +99,21 @@ export class AddressGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressGroupState | undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as AddressGroupArgs | undefined;
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressGroup.__pulumiType, name, resourceInputs, opts);

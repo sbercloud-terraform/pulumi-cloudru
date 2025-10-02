@@ -91,90 +91,90 @@ export class ReadReplicaInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === ReadReplicaInstance.__pulumiType;
     }
 
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the AZ name.
      * Changing this parameter will create a new resource.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * Indicates the database information. Structure is documented below.
      */
-    public readonly db!: pulumi.Output<outputs.Rds.ReadReplicaInstanceDb>;
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly db: pulumi.Output<outputs.Rds.ReadReplicaInstanceDb>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The enterprise project id of the read replica instance.
      * Changing this parameter will create a new resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
-    public readonly fixedIp!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    declare public readonly fixedIp: pulumi.Output<string>;
     /**
      * Specifies the specification code.
      */
-    public readonly flavor!: pulumi.Output<string>;
-    public readonly maintainBegin!: pulumi.Output<string>;
-    public readonly maintainEnd!: pulumi.Output<string>;
+    declare public readonly flavor: pulumi.Output<string>;
+    declare public readonly maintainBegin: pulumi.Output<string>;
+    declare public readonly maintainEnd: pulumi.Output<string>;
     /**
      * Specifies the DB instance name. The DB instance name of the same type
      * must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
      * It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
      * Changing this parameter will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly parameters!: pulumi.Output<outputs.Rds.ReadReplicaInstanceParameter[]>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly parameters: pulumi.Output<outputs.Rds.ReadReplicaInstanceParameter[]>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * Specifies the DB instance ID, which is used to create a read replica.
      * Changing this parameter will create a new resource.
      */
-    public readonly primaryInstanceId!: pulumi.Output<string>;
+    declare public readonly primaryInstanceId: pulumi.Output<string>;
     /**
      * Indicates the private IP address list.
      */
-    public /*out*/ readonly privateIps!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly privateIps: pulumi.Output<string[]>;
     /**
      * Indicates the public IP address list.
      */
-    public /*out*/ readonly publicIps!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly publicIps: pulumi.Output<string[]>;
     /**
      * The region in which to create the rds read replica instance resource.
      * If omitted, the provider-level region will be used.
      *
      * Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the security group which the RDS DB instance belongs to.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
-    public readonly sslEnable!: pulumi.Output<boolean>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
+    declare public readonly sslEnable: pulumi.Output<boolean>;
     /**
      * Indicates the instance status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Indicates the subnet id.
      */
-    public /*out*/ readonly subnetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetId: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Specifies the volume information. Structure is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly volume!: pulumi.Output<outputs.Rds.ReadReplicaInstanceVolume>;
+    declare public readonly volume: pulumi.Output<outputs.Rds.ReadReplicaInstanceVolume>;
     /**
      * Indicates the VPC ID.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a ReadReplicaInstance resource with the given unique name, arguments, and options.
@@ -189,66 +189,66 @@ export class ReadReplicaInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReadReplicaInstanceState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["db"] = state ? state.db : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
-            resourceInputs["flavor"] = state ? state.flavor : undefined;
-            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["primaryInstanceId"] = state ? state.primaryInstanceId : undefined;
-            resourceInputs["privateIps"] = state ? state.privateIps : undefined;
-            resourceInputs["publicIps"] = state ? state.publicIps : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["volume"] = state ? state.volume : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["db"] = state?.db;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["fixedIp"] = state?.fixedIp;
+            resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["maintainBegin"] = state?.maintainBegin;
+            resourceInputs["maintainEnd"] = state?.maintainEnd;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["primaryInstanceId"] = state?.primaryInstanceId;
+            resourceInputs["privateIps"] = state?.privateIps;
+            resourceInputs["publicIps"] = state?.publicIps;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["sslEnable"] = state?.sslEnable;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["volume"] = state?.volume;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ReadReplicaInstanceArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.flavor === undefined) && !opts.urn) {
+            if (args?.flavor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavor'");
             }
-            if ((!args || args.primaryInstanceId === undefined) && !opts.urn) {
+            if (args?.primaryInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'primaryInstanceId'");
             }
-            if ((!args || args.volume === undefined) && !opts.urn) {
+            if (args?.volume === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volume'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["db"] = args ? args.db : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
-            resourceInputs["flavor"] = args ? args.flavor : undefined;
-            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["primaryInstanceId"] = args ? args.primaryInstanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["volume"] = args ? args.volume : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["db"] = args?.db;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["fixedIp"] = args?.fixedIp;
+            resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["maintainBegin"] = args?.maintainBegin;
+            resourceInputs["maintainEnd"] = args?.maintainEnd;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["primaryInstanceId"] = args?.primaryInstanceId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["sslEnable"] = args?.sslEnable;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["volume"] = args?.volume;
             resourceInputs["privateIps"] = undefined /*out*/;
             resourceInputs["publicIps"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

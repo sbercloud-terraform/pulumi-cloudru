@@ -56,41 +56,41 @@ export class Package extends pulumi.CustomResource {
     /**
      * Time when a queue is created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the group name which the package belongs to.
      * Changing this parameter will delete the current package and upload a new package.
      */
-    public readonly groupName!: pulumi.Output<string | undefined>;
+    declare public readonly groupName: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to upload resource packages in asynchronous mode.
      * The default value is **false**. Changing this parameter will delete the current package and upload a new package.
      */
-    public readonly isAsync!: pulumi.Output<boolean>;
+    declare public readonly isAsync: pulumi.Output<boolean>;
     /**
      * The package name.
      */
-    public /*out*/ readonly objectName!: pulumi.Output<string>;
+    declare public /*out*/ readonly objectName: pulumi.Output<string>;
     /**
      * Specifies the OBS storage path where the package is located.
      * Changing this parameter will delete the current package and upload a new package.
      */
-    public readonly objectPath!: pulumi.Output<string>;
+    declare public readonly objectPath: pulumi.Output<string>;
     /**
      * Specifies the name of the package owner. The owner must be IAM user.
      */
-    public readonly owner!: pulumi.Output<string>;
+    declare public readonly owner: pulumi.Output<string>;
     /**
      * Specifies the region in which to upload packages.
      * If omitted, the provider-level region will be used.
      * Changing this parameter will delete the current package and upload a new package.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Status of a package group to be uploaded.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the package type.
      * + **jar**: `.jar` or jar related files.
@@ -99,11 +99,11 @@ export class Package extends pulumi.CustomResource {
      *
      * Changing this parameter will delete the current package and upload a new package.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The last time when the package configuration update has complated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a Package resource with the given unique name, arguments, and options.
@@ -118,32 +118,32 @@ export class Package extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PackageState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["groupName"] = state ? state.groupName : undefined;
-            resourceInputs["isAsync"] = state ? state.isAsync : undefined;
-            resourceInputs["objectName"] = state ? state.objectName : undefined;
-            resourceInputs["objectPath"] = state ? state.objectPath : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["groupName"] = state?.groupName;
+            resourceInputs["isAsync"] = state?.isAsync;
+            resourceInputs["objectName"] = state?.objectName;
+            resourceInputs["objectPath"] = state?.objectPath;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as PackageArgs | undefined;
-            if ((!args || args.objectPath === undefined) && !opts.urn) {
+            if (args?.objectPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectPath'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["groupName"] = args ? args.groupName : undefined;
-            resourceInputs["isAsync"] = args ? args.isAsync : undefined;
-            resourceInputs["objectPath"] = args ? args.objectPath : undefined;
-            resourceInputs["owner"] = args ? args.owner : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["groupName"] = args?.groupName;
+            resourceInputs["isAsync"] = args?.isAsync;
+            resourceInputs["objectPath"] = args?.objectPath;
+            resourceInputs["owner"] = args?.owner;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["objectName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

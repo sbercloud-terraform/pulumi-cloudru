@@ -94,41 +94,41 @@ export class DcsAccount extends pulumi.CustomResource {
      * Specifies the name of the account.
      * Changing this creates a new resource.
      */
-    public readonly accountName!: pulumi.Output<string>;
+    declare public readonly accountName: pulumi.Output<string>;
     /**
      * Specifies the password of the account.
      */
-    public readonly accountPassword!: pulumi.Output<string>;
+    declare public readonly accountPassword: pulumi.Output<string>;
     /**
      * Specifies the role of the account.
      * Value options:
      * + **read**: The account has read-only privilege.
      * + **write**: The account has read and write privilege.
      */
-    public readonly accountRole!: pulumi.Output<string>;
+    declare public readonly accountRole: pulumi.Output<string>;
     /**
      * Indicates the type of the account. The value can be **normal** or **default**.
      */
-    public /*out*/ readonly accountType!: pulumi.Output<string>;
+    declare public /*out*/ readonly accountType: pulumi.Output<string>;
     /**
      * Specifies the description of the account.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the DCS instance.
      * Changing this creates a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
      * **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a DcsAccount resource with the given unique name, arguments, and options.
@@ -143,34 +143,34 @@ export class DcsAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DcsAccountState | undefined;
-            resourceInputs["accountName"] = state ? state.accountName : undefined;
-            resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
-            resourceInputs["accountRole"] = state ? state.accountRole : undefined;
-            resourceInputs["accountType"] = state ? state.accountType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accountName"] = state?.accountName;
+            resourceInputs["accountPassword"] = state?.accountPassword;
+            resourceInputs["accountRole"] = state?.accountRole;
+            resourceInputs["accountType"] = state?.accountType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DcsAccountArgs | undefined;
-            if ((!args || args.accountName === undefined) && !opts.urn) {
+            if (args?.accountName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountName'");
             }
-            if ((!args || args.accountPassword === undefined) && !opts.urn) {
+            if (args?.accountPassword === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountPassword'");
             }
-            if ((!args || args.accountRole === undefined) && !opts.urn) {
+            if (args?.accountRole === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accountRole'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["accountName"] = args ? args.accountName : undefined;
+            resourceInputs["accountName"] = args?.accountName;
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
-            resourceInputs["accountRole"] = args ? args.accountRole : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["accountRole"] = args?.accountRole;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["accountType"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

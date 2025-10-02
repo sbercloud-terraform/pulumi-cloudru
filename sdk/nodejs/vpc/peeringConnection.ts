@@ -65,37 +65,37 @@ export class PeeringConnection extends pulumi.CustomResource {
         return obj['__pulumiType'] === PeeringConnection.__pulumiType;
     }
 
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies the name of the VPC peering connection. The value can contain 1 to 64
      * characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specified the Tenant Id of the accepter tenant. Changing this creates
      * a new VPC peering connection.
      */
-    public readonly peerTenantId!: pulumi.Output<string>;
+    declare public readonly peerTenantId: pulumi.Output<string>;
     /**
      * Specifies the VPC ID of the accepter tenant. Changing this creates a new
      * VPC peering connection.
      */
-    public readonly peerVpcId!: pulumi.Output<string>;
+    declare public readonly peerVpcId: pulumi.Output<string>;
     /**
      * The region in which to create the VPC peering connection. If omitted, the
      * provider-level region will be used. Changing this creates a new VPC peering connection resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
      * ACTIVE.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the ID of a VPC involved in a VPC peering connection. Changing this
      * creates a new VPC peering connection.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a PeeringConnection resource with the given unique name, arguments, and options.
@@ -110,27 +110,27 @@ export class PeeringConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeringConnectionState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peerTenantId"] = state ? state.peerTenantId : undefined;
-            resourceInputs["peerVpcId"] = state ? state.peerVpcId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peerTenantId"] = state?.peerTenantId;
+            resourceInputs["peerVpcId"] = state?.peerVpcId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as PeeringConnectionArgs | undefined;
-            if ((!args || args.peerVpcId === undefined) && !opts.urn) {
+            if (args?.peerVpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peerVpcId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peerTenantId"] = args ? args.peerTenantId : undefined;
-            resourceInputs["peerVpcId"] = args ? args.peerVpcId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peerTenantId"] = args?.peerTenantId;
+            resourceInputs["peerVpcId"] = args?.peerVpcId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -46,43 +46,43 @@ export class Vip extends pulumi.CustomResource {
     /**
      * The device owner of the VIP.
      */
-    public /*out*/ readonly deviceOwner!: pulumi.Output<string>;
+    declare public /*out*/ readonly deviceOwner: pulumi.Output<string>;
     /**
      * Specifies the IP address desired in the subnet for this VIP.
      * Changing this will create a new VIP resource.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * Specifies the IP version, either `4` (default) or `6`.
      * Changing this will create a new VIP resource.
      */
-    public readonly ipVersion!: pulumi.Output<number>;
+    declare public readonly ipVersion: pulumi.Output<number>;
     /**
      * The MAC address of the VIP.
      */
-    public /*out*/ readonly macAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly macAddress: pulumi.Output<string>;
     /**
      * Specifies a unique name for the VIP.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the network ID of the VPC subnet to which the VIP belongs.
      * Changing this will create a new VIP resource.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the VIP.
      * If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The VIP status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * @deprecated use ipVersion instead
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
 
     /**
      * Create a Vip resource with the given unique name, arguments, and options.
@@ -97,26 +97,26 @@ export class Vip extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VipState | undefined;
-            resourceInputs["deviceOwner"] = state ? state.deviceOwner : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["macAddress"] = state ? state.macAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["deviceOwner"] = state?.deviceOwner;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["macAddress"] = state?.macAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
         } else {
             const args = argsOrState as VipArgs | undefined;
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["deviceOwner"] = undefined /*out*/;
             resourceInputs["macAddress"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

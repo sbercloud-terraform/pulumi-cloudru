@@ -37,55 +37,55 @@ export class ApigChannel extends pulumi.CustomResource {
     /**
      * The distribution algorithm.
      */
-    public readonly balanceStrategy!: pulumi.Output<number>;
+    declare public readonly balanceStrategy: pulumi.Output<number>;
     /**
      * The creation time of the channel.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The health configuration of cloud servers associated with the load balance channel for APIG regularly check.
      */
-    public readonly healthCheck!: pulumi.Output<outputs.ApigChannelHealthCheck>;
+    declare public readonly healthCheck: pulumi.Output<outputs.ApigChannelHealthCheck>;
     /**
      * The ID of the dedicated instance to which the channel belongs.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The backend server groups of the channel.
      */
-    public readonly memberGroups!: pulumi.Output<outputs.ApigChannelMemberGroup[]>;
+    declare public readonly memberGroups: pulumi.Output<outputs.ApigChannelMemberGroup[]>;
     /**
      * The member type of the channel.
      */
-    public readonly memberType!: pulumi.Output<string>;
+    declare public readonly memberType: pulumi.Output<string>;
     /**
      * The backend servers of the channel.
      */
-    public readonly members!: pulumi.Output<outputs.ApigChannelMember[]>;
+    declare public readonly members: pulumi.Output<outputs.ApigChannelMember[]>;
     /**
      * The configuration of the microservice.
      */
-    public readonly microservice!: pulumi.Output<outputs.ApigChannelMicroservice>;
+    declare public readonly microservice: pulumi.Output<outputs.ApigChannelMicroservice>;
     /**
      * The channel name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The default port for health check in channel.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * The region where the dedicated instance is located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The current status of the channel.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * The type of the channel.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ApigChannel resource with the given unique name, arguments, and options.
@@ -100,41 +100,41 @@ export class ApigChannel extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigChannelState | undefined;
-            resourceInputs["balanceStrategy"] = state ? state.balanceStrategy : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["healthCheck"] = state ? state.healthCheck : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["memberGroups"] = state ? state.memberGroups : undefined;
-            resourceInputs["memberType"] = state ? state.memberType : undefined;
-            resourceInputs["members"] = state ? state.members : undefined;
-            resourceInputs["microservice"] = state ? state.microservice : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["balanceStrategy"] = state?.balanceStrategy;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["healthCheck"] = state?.healthCheck;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["memberGroups"] = state?.memberGroups;
+            resourceInputs["memberType"] = state?.memberType;
+            resourceInputs["members"] = state?.members;
+            resourceInputs["microservice"] = state?.microservice;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ApigChannelArgs | undefined;
-            if ((!args || args.balanceStrategy === undefined) && !opts.urn) {
+            if (args?.balanceStrategy === undefined && !opts.urn) {
                 throw new Error("Missing required property 'balanceStrategy'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.port === undefined) && !opts.urn) {
+            if (args?.port === undefined && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
-            resourceInputs["balanceStrategy"] = args ? args.balanceStrategy : undefined;
-            resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["memberGroups"] = args ? args.memberGroups : undefined;
-            resourceInputs["memberType"] = args ? args.memberType : undefined;
-            resourceInputs["members"] = args ? args.members : undefined;
-            resourceInputs["microservice"] = args ? args.microservice : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["balanceStrategy"] = args?.balanceStrategy;
+            resourceInputs["healthCheck"] = args?.healthCheck;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["memberGroups"] = args?.memberGroups;
+            resourceInputs["memberType"] = args?.memberType;
+            resourceInputs["members"] = args?.members;
+            resourceInputs["microservice"] = args?.microservice;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["type"] = args?.type;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

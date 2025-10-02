@@ -80,22 +80,22 @@ export class Keypair extends pulumi.CustomResource {
      *
      * ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
      */
-    public readonly keyFile!: pulumi.Output<string>;
+    declare public readonly keyFile: pulumi.Output<string>;
     /**
      * Specifies a unique name for the keypair. Changing this creates a new keypair.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the imported OpenSSH-formatted public key. Changing this creates
      * a new keypair.
      * This parameter and `keyFile` are alternative.
      */
-    public readonly publicKey!: pulumi.Output<string>;
+    declare public readonly publicKey: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the keypair resource. If omitted, the
      * provider-level region will be used. Changing this creates a new keypair.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Keypair resource with the given unique name, arguments, and options.
@@ -110,16 +110,16 @@ export class Keypair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeypairState | undefined;
-            resourceInputs["keyFile"] = state ? state.keyFile : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["keyFile"] = state?.keyFile;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as KeypairArgs | undefined;
-            resourceInputs["keyFile"] = args ? args.keyFile : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["keyFile"] = args?.keyFile;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Keypair.__pulumiType, name, resourceInputs, opts);

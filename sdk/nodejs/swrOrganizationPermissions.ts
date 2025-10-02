@@ -75,26 +75,26 @@ export class SwrOrganizationPermissions extends pulumi.CustomResource {
     /**
      * The creator user name of the organization.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * Specifies the name of the organization (namespace) to be accessed.
      * Changing this creates a new resource.
      */
-    public readonly organization!: pulumi.Output<string>;
+    declare public readonly organization: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The permission informations of current user.
      */
-    public /*out*/ readonly selfPermissions!: pulumi.Output<outputs.SwrOrganizationPermissionsSelfPermission[]>;
+    declare public /*out*/ readonly selfPermissions: pulumi.Output<outputs.SwrOrganizationPermissionsSelfPermission[]>;
     /**
      * Specifies the users to access to the organization (namespace).
      * Structure is documented below.
      */
-    public readonly users!: pulumi.Output<outputs.SwrOrganizationPermissionsUser[]>;
+    declare public readonly users: pulumi.Output<outputs.SwrOrganizationPermissionsUser[]>;
 
     /**
      * Create a SwrOrganizationPermissions resource with the given unique name, arguments, and options.
@@ -109,22 +109,22 @@ export class SwrOrganizationPermissions extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SwrOrganizationPermissionsState | undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["organization"] = state ? state.organization : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["selfPermissions"] = state ? state.selfPermissions : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["organization"] = state?.organization;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["selfPermissions"] = state?.selfPermissions;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as SwrOrganizationPermissionsArgs | undefined;
-            if ((!args || args.organization === undefined) && !opts.urn) {
+            if (args?.organization === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organization'");
             }
-            if ((!args || args.users === undefined) && !opts.urn) {
+            if (args?.users === undefined && !opts.urn) {
                 throw new Error("Missing required property 'users'");
             }
-            resourceInputs["organization"] = args ? args.organization : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["organization"] = args?.organization;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["users"] = args?.users;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["selfPermissions"] = undefined /*out*/;
         }

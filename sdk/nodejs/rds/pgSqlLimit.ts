@@ -35,44 +35,44 @@ export class PgSqlLimit extends pulumi.CustomResource {
     /**
      * Specifies the name of the database.
      */
-    public readonly dbName!: pulumi.Output<string>;
+    declare public readonly dbName: pulumi.Output<string>;
     /**
      * Specifies the ID of the RDS PostgreSQL instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Indicates whether the SQL limit is effective.
      */
-    public /*out*/ readonly isEffective!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isEffective: pulumi.Output<boolean>;
     /**
      * Specifies the number of SQL statements executed simultaneously
      */
-    public readonly maxConcurrency!: pulumi.Output<number>;
+    declare public readonly maxConcurrency: pulumi.Output<number>;
     /**
      * Specifies the max waiting time in seconds.
      */
-    public readonly maxWaiting!: pulumi.Output<number>;
+    declare public readonly maxWaiting: pulumi.Output<number>;
     /**
      * Specifies the query ID
      */
-    public readonly queryId!: pulumi.Output<string | undefined>;
+    declare public readonly queryId: pulumi.Output<string | undefined>;
     /**
      * Specifies the text form of SQL statement.
      */
-    public readonly queryString!: pulumi.Output<string | undefined>;
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly queryString: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the query order for names that are not schema qualified.
      */
-    public readonly searchPath!: pulumi.Output<string | undefined>;
+    declare public readonly searchPath: pulumi.Output<string | undefined>;
     /**
      * Indicates the ID of SQL limit.
      */
-    public /*out*/ readonly sqlLimitId!: pulumi.Output<string>;
+    declare public /*out*/ readonly sqlLimitId: pulumi.Output<string>;
     /**
      * Specifies the SQL limit switch.
      */
-    public readonly switch!: pulumi.Output<string>;
+    declare public readonly switch: pulumi.Output<string>;
 
     /**
      * Create a PgSqlLimit resource with the given unique name, arguments, and options.
@@ -87,40 +87,40 @@ export class PgSqlLimit extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PgSqlLimitState | undefined;
-            resourceInputs["dbName"] = state ? state.dbName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["isEffective"] = state ? state.isEffective : undefined;
-            resourceInputs["maxConcurrency"] = state ? state.maxConcurrency : undefined;
-            resourceInputs["maxWaiting"] = state ? state.maxWaiting : undefined;
-            resourceInputs["queryId"] = state ? state.queryId : undefined;
-            resourceInputs["queryString"] = state ? state.queryString : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["searchPath"] = state ? state.searchPath : undefined;
-            resourceInputs["sqlLimitId"] = state ? state.sqlLimitId : undefined;
-            resourceInputs["switch"] = state ? state.switch : undefined;
+            resourceInputs["dbName"] = state?.dbName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["isEffective"] = state?.isEffective;
+            resourceInputs["maxConcurrency"] = state?.maxConcurrency;
+            resourceInputs["maxWaiting"] = state?.maxWaiting;
+            resourceInputs["queryId"] = state?.queryId;
+            resourceInputs["queryString"] = state?.queryString;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["searchPath"] = state?.searchPath;
+            resourceInputs["sqlLimitId"] = state?.sqlLimitId;
+            resourceInputs["switch"] = state?.switch;
         } else {
             const args = argsOrState as PgSqlLimitArgs | undefined;
-            if ((!args || args.dbName === undefined) && !opts.urn) {
+            if (args?.dbName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.maxConcurrency === undefined) && !opts.urn) {
+            if (args?.maxConcurrency === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxConcurrency'");
             }
-            if ((!args || args.maxWaiting === undefined) && !opts.urn) {
+            if (args?.maxWaiting === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxWaiting'");
             }
-            resourceInputs["dbName"] = args ? args.dbName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxConcurrency"] = args ? args.maxConcurrency : undefined;
-            resourceInputs["maxWaiting"] = args ? args.maxWaiting : undefined;
-            resourceInputs["queryId"] = args ? args.queryId : undefined;
-            resourceInputs["queryString"] = args ? args.queryString : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["searchPath"] = args ? args.searchPath : undefined;
-            resourceInputs["switch"] = args ? args.switch : undefined;
+            resourceInputs["dbName"] = args?.dbName;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxConcurrency"] = args?.maxConcurrency;
+            resourceInputs["maxWaiting"] = args?.maxWaiting;
+            resourceInputs["queryId"] = args?.queryId;
+            resourceInputs["queryString"] = args?.queryString;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["searchPath"] = args?.searchPath;
+            resourceInputs["switch"] = args?.switch;
             resourceInputs["isEffective"] = undefined /*out*/;
             resourceInputs["sqlLimitId"] = undefined /*out*/;
         }

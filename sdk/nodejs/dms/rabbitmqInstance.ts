@@ -75,11 +75,11 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      * Specifies a username. A username consists of 4 to 64 characters and
      * supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
      */
-    public readonly accessUser!: pulumi.Output<string | undefined>;
+    declare public readonly accessUser: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled. Valid values are **true** and **false**.
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the names of an AZ.
      * The parameter value can not be left blank or an empty array.
@@ -87,11 +87,11 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      *
      * > The parameter behavior of `availabilityZones` has been changed from `list` to `set`.
      */
-    public readonly availabilityZones!: pulumi.Output<string[]>;
+    declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
      * @deprecated available_zones has deprecated, please use "availabilityZones" instead.
      */
-    public readonly availableZones!: pulumi.Output<string[]>;
+    declare public readonly availableZones: pulumi.Output<string[]>;
     /**
      * Specifies the broker numbers.
      * It is required when creating a cluster instance with `flavorId`.
@@ -99,47 +99,47 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      * > **NOTE:** Change this will change number of nodes and storage capacity. If you specify the value of
      * `storageSpace`, you need to manually modify the value of `storageSpace` after changing the `brokerNum`.
      */
-    public readonly brokerNum!: pulumi.Output<number>;
+    declare public readonly brokerNum: pulumi.Output<number>;
     /**
      * Specifies the charging mode of the instance. Valid values are
      * **prePaid** and **postPaid**, defaults to **postPaid**. Changing this creates a new resource.
      */
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * Indicates the IP address of the DMS RabbitMQ instance.
      */
-    public /*out*/ readonly connectAddress!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly connectAddress: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the description of the DMS RabbitMQ instance.
      * It is a character string containing not more than 1,024 characters.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public readonly enableAcl!: pulumi.Output<boolean>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly enableAcl: pulumi.Output<boolean>;
     /**
      * Indicates whether public access to the DMS RabbitMQ instance is enabled.
      */
-    public /*out*/ readonly enablePublicIp!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly enablePublicIp: pulumi.Output<boolean>;
     /**
      * Indicates the message engine.
      */
-    public /*out*/ readonly engine!: pulumi.Output<string>;
+    declare public /*out*/ readonly engine: pulumi.Output<string>;
     /**
      * Specifies the version of the RabbitMQ engine. Default to "3.7.17".
      * Changing this creates a new instance resource.
      */
-    public readonly engineVersion!: pulumi.Output<string | undefined>;
+    declare public readonly engineVersion: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project ID of the RabbitMQ instance.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
-    public /*out*/ readonly extendTimes!: pulumi.Output<number>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    declare public /*out*/ readonly extendTimes: pulumi.Output<number>;
     /**
      * Specifies a flavor ID.
      * It is mandatory when the `chargingMode` is **prePaid**.
      */
-    public readonly flavorId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly isLogicalVolume!: pulumi.Output<boolean>;
+    declare public readonly flavorId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly isLogicalVolume: pulumi.Output<boolean>;
     /**
      * Specifies the time at which a maintenance time window starts. Format: HH:mm.
      * The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
@@ -148,7 +148,7 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      * and `maintainEnd` must be set in pairs. If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also
      * blank. In this case, the system automatically allocates the default start time 02:00.
      */
-    public readonly maintainBegin!: pulumi.Output<string>;
+    declare public readonly maintainBegin: pulumi.Output<string>;
     /**
      * Specifies the time at which a maintenance time window ends. Format: HH:mm.
      * The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
@@ -158,25 +158,25 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      * If parameter `maintainEnd` is left  blank, parameter `maintainBegin` is also blank.
      * In this case, the system automatically allocates the default end time 06:00.
      */
-    public readonly maintainEnd!: pulumi.Output<string>;
+    declare public readonly maintainEnd: pulumi.Output<string>;
     /**
      * Indicates the management address of the DMS RabbitMQ instance.
      */
-    public /*out*/ readonly managementConnectAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly managementConnectAddress: pulumi.Output<string>;
     /**
      * @deprecated typo in manegement_connect_address, please use "managementConnectAddress" instead.
      */
-    public /*out*/ readonly manegementConnectAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly manegementConnectAddress: pulumi.Output<string>;
     /**
      * Specifies the name of the DMS RabbitMQ instance. An instance name starts with a letter,
      * consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the ID of a subnet. Changing this creates a new instance
      * resource.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * Specifies the password of the DMS RabbitMQ instance. A password must meet
      * the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following
@@ -184,60 +184,60 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      * and special characters (`~!@#$%^&*()-_=+\\|[{}]:'",<.>/?).
      * Changing this creates a new instance resource.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the instance. If `periodUnit` is set to
      * **month**, the value ranges from 1 to 9. If `periodUnit` is set to **year**, the value ranges from 1 to 3.
      * This parameter is mandatory if `chargingMode` is set to **prePaid**. Changing this creates a new resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this creates a new resource.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * Indicates the port number of the DMS RabbitMQ instance.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * @deprecated product_id has deprecated, please use "flavorId" instead.
      */
-    public readonly productId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly publicIpAddress!: pulumi.Output<string>;
+    declare public readonly productId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly publicIpAddress: pulumi.Output<string>;
     /**
      * Specifies the ID of the elastic IP address (EIP)
      * bound to the DMS RabbitMQ instance.
      */
-    public readonly publicIpId!: pulumi.Output<string | undefined>;
+    declare public readonly publicIpId: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the DMS RabbitMQ instance resource. If omitted,
      * the provider-level region will be used. Changing this creates a new instance resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates a resource specifications identifier.
      */
-    public /*out*/ readonly resourceSpecCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceSpecCode: pulumi.Output<string>;
     /**
      * Specifies the ID of a security group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Indicates the instance specification. For a single-node DMS RabbitMQ instance, VM specifications are
      * returned. For a cluster DMS RabbitMQ instance, VM specifications and the number of nodes are returned.
      */
-    public /*out*/ readonly specification!: pulumi.Output<string>;
+    declare public /*out*/ readonly specification: pulumi.Output<string>;
     /**
      * Specifies whether to enable public access for the DMS RabbitMQ instance.
      * Changing this creates a new instance resource.
      */
-    public readonly sslEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly sslEnable: pulumi.Output<boolean | undefined>;
     /**
      * Indicates the status of the DMS RabbitMQ instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the message storage space, unit is GB.
      * It is required when creating a instance with `flavorId`. Value range:
@@ -249,37 +249,37 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      *
      * The storage capacity of the product used by default. Changing this creates a new instance resource.
      */
-    public readonly storageSpace!: pulumi.Output<number>;
+    declare public readonly storageSpace: pulumi.Output<number>;
     /**
      * Specifies the storage I/O specification.
      * Valid values are **dms.physical.storage.high** and **dms.physical.storage.ultra**.
      * Changing this creates a new instance resource.
      */
-    public readonly storageSpecCode!: pulumi.Output<string>;
+    declare public readonly storageSpecCode: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the DMS RabbitMQ instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the DMS RabbitMQ instance type.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Indicates the used message storage space. Unit: GB
      */
-    public /*out*/ readonly usedStorageSpace!: pulumi.Output<number>;
+    declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
     /**
      * Indicates the ID of the user who created the DMS RabbitMQ instance
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * Indicates the name of the user who created the DMS RabbitMQ instance
      */
-    public /*out*/ readonly userName!: pulumi.Output<string>;
+    declare public /*out*/ readonly userName: pulumi.Output<string>;
     /**
      * Specifies the ID of a VPC. Changing this creates a new instance resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a RabbitmqInstance resource with the given unique name, arguments, and options.
@@ -294,91 +294,91 @@ export class RabbitmqInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RabbitmqInstanceState | undefined;
-            resourceInputs["accessUser"] = state ? state.accessUser : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["availableZones"] = state ? state.availableZones : undefined;
-            resourceInputs["brokerNum"] = state ? state.brokerNum : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["connectAddress"] = state ? state.connectAddress : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableAcl"] = state ? state.enableAcl : undefined;
-            resourceInputs["enablePublicIp"] = state ? state.enablePublicIp : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["extendTimes"] = state ? state.extendTimes : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["isLogicalVolume"] = state ? state.isLogicalVolume : undefined;
-            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
-            resourceInputs["managementConnectAddress"] = state ? state.managementConnectAddress : undefined;
-            resourceInputs["manegementConnectAddress"] = state ? state.manegementConnectAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
-            resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
-            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceSpecCode"] = state ? state.resourceSpecCode : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
-            resourceInputs["storageSpecCode"] = state ? state.storageSpecCode : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["usedStorageSpace"] = state ? state.usedStorageSpace : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["userName"] = state ? state.userName : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["accessUser"] = state?.accessUser;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["availableZones"] = state?.availableZones;
+            resourceInputs["brokerNum"] = state?.brokerNum;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["connectAddress"] = state?.connectAddress;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableAcl"] = state?.enableAcl;
+            resourceInputs["enablePublicIp"] = state?.enablePublicIp;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["extendTimes"] = state?.extendTimes;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["isLogicalVolume"] = state?.isLogicalVolume;
+            resourceInputs["maintainBegin"] = state?.maintainBegin;
+            resourceInputs["maintainEnd"] = state?.maintainEnd;
+            resourceInputs["managementConnectAddress"] = state?.managementConnectAddress;
+            resourceInputs["manegementConnectAddress"] = state?.manegementConnectAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["productId"] = state?.productId;
+            resourceInputs["publicIpAddress"] = state?.publicIpAddress;
+            resourceInputs["publicIpId"] = state?.publicIpId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceSpecCode"] = state?.resourceSpecCode;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["sslEnable"] = state?.sslEnable;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSpace"] = state?.storageSpace;
+            resourceInputs["storageSpecCode"] = state?.storageSpecCode;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["usedStorageSpace"] = state?.usedStorageSpace;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["userName"] = state?.userName;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as RabbitmqInstanceArgs | undefined;
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.storageSpecCode === undefined) && !opts.urn) {
+            if (args?.storageSpecCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageSpecCode'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accessUser"] = args ? args.accessUser : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["availableZones"] = args ? args.availableZones : undefined;
-            resourceInputs["brokerNum"] = args ? args.brokerNum : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableAcl"] = args ? args.enableAcl : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
+            resourceInputs["accessUser"] = args?.accessUser;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["availableZones"] = args?.availableZones;
+            resourceInputs["brokerNum"] = args?.brokerNum;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableAcl"] = args?.enableAcl;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["maintainBegin"] = args?.maintainBegin;
+            resourceInputs["maintainEnd"] = args?.maintainEnd;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkId"] = args?.networkId;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
-            resourceInputs["publicIpId"] = args ? args.publicIpId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
-            resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
-            resourceInputs["storageSpecCode"] = args ? args.storageSpecCode : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["productId"] = args?.productId;
+            resourceInputs["publicIpId"] = args?.publicIpId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["sslEnable"] = args?.sslEnable;
+            resourceInputs["storageSpace"] = args?.storageSpace;
+            resourceInputs["storageSpecCode"] = args?.storageSpecCode;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["connectAddress"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["enablePublicIp"] = undefined /*out*/;

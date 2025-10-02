@@ -55,25 +55,25 @@ export class SwrOrganization extends pulumi.CustomResource {
     /**
      * The creator user name of the organization.
      */
-    public /*out*/ readonly creator!: pulumi.Output<string>;
+    declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
      * The URL that can be used to log into the container registry.
      */
-    public /*out*/ readonly loginServer!: pulumi.Output<string>;
+    declare public /*out*/ readonly loginServer: pulumi.Output<string>;
     /**
      * Specifies the name of the organization. The organization name must be globally
      * unique.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The permission of the organization, the value can be Manage, Write, and Read.
      */
-    public /*out*/ readonly permission!: pulumi.Output<string>;
+    declare public /*out*/ readonly permission: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a SwrOrganization resource with the given unique name, arguments, and options.
@@ -88,15 +88,15 @@ export class SwrOrganization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SwrOrganizationState | undefined;
-            resourceInputs["creator"] = state ? state.creator : undefined;
-            resourceInputs["loginServer"] = state ? state.loginServer : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["permission"] = state ? state.permission : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["creator"] = state?.creator;
+            resourceInputs["loginServer"] = state?.loginServer;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["permission"] = state?.permission;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as SwrOrganizationArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["loginServer"] = undefined /*out*/;
             resourceInputs["permission"] = undefined /*out*/;

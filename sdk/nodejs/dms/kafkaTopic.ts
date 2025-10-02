@@ -63,46 +63,46 @@ export class KafkaTopic extends pulumi.CustomResource {
     /**
      * Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
      */
-    public readonly agingTime!: pulumi.Output<number>;
-    public readonly configs!: pulumi.Output<outputs.Dms.KafkaTopicConfig[]>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly agingTime: pulumi.Output<number>;
+    declare public readonly configs: pulumi.Output<outputs.Dms.KafkaTopicConfig[]>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the ID of the DMS kafka instance to which the topic belongs.
      * Changing this creates a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the name of the topic. The name starts with a letter, consists of 4 to
      * 64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
      * resource.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly newPartitionBrokers!: pulumi.Output<number[] | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly newPartitionBrokers: pulumi.Output<number[] | undefined>;
     /**
      * Specifies the partition number. The value ranges from 1 to 100.
      */
-    public readonly partitions!: pulumi.Output<number>;
-    public /*out*/ readonly policiesOnly!: pulumi.Output<boolean>;
+    declare public readonly partitions: pulumi.Output<number>;
+    declare public /*out*/ readonly policiesOnly: pulumi.Output<boolean>;
     /**
      * The region in which to create the DMS kafka topic resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
      * Changing this creates a new resource.
      */
-    public readonly replicas!: pulumi.Output<number>;
+    declare public readonly replicas: pulumi.Output<number>;
     /**
      * Whether or not to enable synchronous flushing.
      */
-    public readonly syncFlushing!: pulumi.Output<boolean>;
+    declare public readonly syncFlushing: pulumi.Output<boolean>;
     /**
      * Whether or not to enable synchronous replication.
      */
-    public readonly syncReplication!: pulumi.Output<boolean>;
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public readonly syncReplication: pulumi.Output<boolean>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a KafkaTopic resource with the given unique name, arguments, and options.
@@ -117,39 +117,39 @@ export class KafkaTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KafkaTopicState | undefined;
-            resourceInputs["agingTime"] = state ? state.agingTime : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["newPartitionBrokers"] = state ? state.newPartitionBrokers : undefined;
-            resourceInputs["partitions"] = state ? state.partitions : undefined;
-            resourceInputs["policiesOnly"] = state ? state.policiesOnly : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicas"] = state ? state.replicas : undefined;
-            resourceInputs["syncFlushing"] = state ? state.syncFlushing : undefined;
-            resourceInputs["syncReplication"] = state ? state.syncReplication : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["agingTime"] = state?.agingTime;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["newPartitionBrokers"] = state?.newPartitionBrokers;
+            resourceInputs["partitions"] = state?.partitions;
+            resourceInputs["policiesOnly"] = state?.policiesOnly;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["syncFlushing"] = state?.syncFlushing;
+            resourceInputs["syncReplication"] = state?.syncReplication;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as KafkaTopicArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.partitions === undefined) && !opts.urn) {
+            if (args?.partitions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'partitions'");
             }
-            resourceInputs["agingTime"] = args ? args.agingTime : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["newPartitionBrokers"] = args ? args.newPartitionBrokers : undefined;
-            resourceInputs["partitions"] = args ? args.partitions : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicas"] = args ? args.replicas : undefined;
-            resourceInputs["syncFlushing"] = args ? args.syncFlushing : undefined;
-            resourceInputs["syncReplication"] = args ? args.syncReplication : undefined;
+            resourceInputs["agingTime"] = args?.agingTime;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["newPartitionBrokers"] = args?.newPartitionBrokers;
+            resourceInputs["partitions"] = args?.partitions;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicas"] = args?.replicas;
+            resourceInputs["syncFlushing"] = args?.syncFlushing;
+            resourceInputs["syncReplication"] = args?.syncReplication;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["policiesOnly"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

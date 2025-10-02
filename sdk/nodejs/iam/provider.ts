@@ -96,20 +96,20 @@ export class Provider extends pulumi.CustomResource {
      * Specifies the description of the identity provider.
      * This field is required only if the protocol is set to *oidc*.
      */
-    public readonly accessConfig!: pulumi.Output<outputs.Iam.ProviderAccessConfig | undefined>;
+    declare public readonly accessConfig: pulumi.Output<outputs.Iam.ProviderAccessConfig | undefined>;
     /**
      * The identity conversion rules of the identity provider.
      * The object structure is documented below
      */
-    public /*out*/ readonly conversionRules!: pulumi.Output<outputs.Iam.ProviderConversionRule[]>;
+    declare public /*out*/ readonly conversionRules: pulumi.Output<outputs.Iam.ProviderConversionRule[]>;
     /**
      * Specifies the description of the identity provider.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The login link of the identity provider.
      */
-    public /*out*/ readonly loginLink!: pulumi.Output<string>;
+    declare public /*out*/ readonly loginLink: pulumi.Output<string>;
     /**
      * Specifies the metadata of the IDP(Identity Provider) server.
      * To obtain the metadata file of your enterprise IDP, contact the enterprise administrator.
@@ -123,28 +123,28 @@ export class Provider extends pulumi.CustomResource {
      * for example:
      * <br/>`metadata = file("/usr/local/data/files/metadata.txt")`
      */
-    public readonly metadata!: pulumi.Output<string | undefined>;
+    declare public readonly metadata: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of the identity provider to be registered.
      * The maximum length is 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
      * The name is unique, it is recommended to include domain name information.
      * Changing this creates a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protocol of the identity provider.
      * Valid values are *saml* and *oidc*.
      * Changing this creates a new resource.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The single sign-on type of the identity provider.
      */
-    public readonly ssoType!: pulumi.Output<string>;
+    declare public readonly ssoType: pulumi.Output<string>;
     /**
      * Enabled status for the identity provider. Defaults to true.
      */
-    public readonly status!: pulumi.Output<boolean | undefined>;
+    declare public readonly status: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -159,27 +159,27 @@ export class Provider extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProviderState | undefined;
-            resourceInputs["accessConfig"] = state ? state.accessConfig : undefined;
-            resourceInputs["conversionRules"] = state ? state.conversionRules : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["loginLink"] = state ? state.loginLink : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["ssoType"] = state ? state.ssoType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["accessConfig"] = state?.accessConfig;
+            resourceInputs["conversionRules"] = state?.conversionRules;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["loginLink"] = state?.loginLink;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["ssoType"] = state?.ssoType;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ProviderArgs | undefined;
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["ssoType"] = args ? args.ssoType : undefined;
-            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["accessConfig"] = args?.accessConfig;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["ssoType"] = args?.ssoType;
+            resourceInputs["status"] = args?.status;
             resourceInputs["conversionRules"] = undefined /*out*/;
             resourceInputs["loginLink"] = undefined /*out*/;
         }

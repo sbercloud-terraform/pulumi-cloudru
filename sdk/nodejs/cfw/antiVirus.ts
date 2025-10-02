@@ -70,17 +70,17 @@ export class AntiVirus extends pulumi.CustomResource {
         return obj['__pulumiType'] === AntiVirus.__pulumiType;
     }
 
-    public readonly enableForceNew!: pulumi.Output<string | undefined>;
+    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
     /**
      * Specifies the protected object ID.
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * The region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the scan protocol configurations.
      * The scanProtocolConfigs structure is documented below.
@@ -88,7 +88,7 @@ export class AntiVirus extends pulumi.CustomResource {
      * <a name="ScanProtocolConfigs"></a>
      * The `scanProtocolConfigs` block supports:
      */
-    public readonly scanProtocolConfigs!: pulumi.Output<outputs.Cfw.AntiVirusScanProtocolConfig[]>;
+    declare public readonly scanProtocolConfigs: pulumi.Output<outputs.Cfw.AntiVirusScanProtocolConfig[]>;
 
     /**
      * Create a AntiVirus resource with the given unique name, arguments, and options.
@@ -103,22 +103,22 @@ export class AntiVirus extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AntiVirusState | undefined;
-            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scanProtocolConfigs"] = state ? state.scanProtocolConfigs : undefined;
+            resourceInputs["enableForceNew"] = state?.enableForceNew;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scanProtocolConfigs"] = state?.scanProtocolConfigs;
         } else {
             const args = argsOrState as AntiVirusArgs | undefined;
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.scanProtocolConfigs === undefined) && !opts.urn) {
+            if (args?.scanProtocolConfigs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scanProtocolConfigs'");
             }
-            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scanProtocolConfigs"] = args ? args.scanProtocolConfigs : undefined;
+            resourceInputs["enableForceNew"] = args?.enableForceNew;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scanProtocolConfigs"] = args?.scanProtocolConfigs;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AntiVirus.__pulumiType, name, resourceInputs, opts);

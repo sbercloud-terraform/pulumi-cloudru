@@ -170,60 +170,60 @@ export class Firewall extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging mode of the firewall.
      * Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly chargingMode!: pulumi.Output<string | undefined>;
+    declare public readonly chargingMode: pulumi.Output<string | undefined>;
     /**
      * Enterprise Router and Firewall Connection ID.
      */
-    public /*out*/ readonly eastWestFirewallErAttachmentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly eastWestFirewallErAttachmentId: pulumi.Output<string>;
     /**
      * Specifies the ER ID of the east-west firewall.
      */
-    public readonly eastWestFirewallErId!: pulumi.Output<string>;
+    declare public readonly eastWestFirewallErId: pulumi.Output<string>;
     /**
      * Specifies the inspection cidr of the east-west firewall.
      */
-    public readonly eastWestFirewallInspectionCidr!: pulumi.Output<string>;
+    declare public readonly eastWestFirewallInspectionCidr: pulumi.Output<string>;
     /**
      * The east-west firewall inspection VPC ID.
      */
-    public /*out*/ readonly eastWestFirewallInspectionVpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly eastWestFirewallInspectionVpcId: pulumi.Output<string>;
     /**
      * Specifies the mode of the east-west firewall.
      * The value can be: **er**.
      */
-    public readonly eastWestFirewallMode!: pulumi.Output<string>;
+    declare public readonly eastWestFirewallMode: pulumi.Output<string>;
     /**
      * Specifies the protection statue of the east-west firewall.
      * The value can be: `0`(enabled) and `1`(disabled). Defaults to `0`.
      */
-    public readonly eastWestFirewallStatus!: pulumi.Output<number | undefined>;
+    declare public readonly eastWestFirewallStatus: pulumi.Output<number | undefined>;
     /**
      * The engine type
      */
-    public /*out*/ readonly engineType!: pulumi.Output<number>;
+    declare public /*out*/ readonly engineType: pulumi.Output<number>;
     /**
      * Specifies the enterprise project ID of the firewall.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Specifies the flavor of the firewall.
      * Changing this parameter will create a new resource.
      * The flavor structure is documented below.
      */
-    public readonly flavor!: pulumi.Output<outputs.Cfw.FirewallFlavor>;
+    declare public readonly flavor: pulumi.Output<outputs.Cfw.FirewallFlavor>;
     /**
      * The HA type.
      */
-    public /*out*/ readonly haType!: pulumi.Output<number>;
+    declare public /*out*/ readonly haType: pulumi.Output<number>;
     /**
      * Specifies the IPS protection mode of the firewall. Defaults to `0`.
      *
@@ -233,18 +233,18 @@ export class Firewall extends pulumi.CustomResource {
      * + **2**: Medium Mode.
      * + **3**: Loose Mode.
      */
-    public readonly ipsProtectionMode!: pulumi.Output<number | undefined>;
+    declare public readonly ipsProtectionMode: pulumi.Output<number | undefined>;
     /**
      * Specifies the IPS patch switch status of the firewall.
      * The value can be `0`(disabled) and `1`(enabled). Defaults to `0`.
      */
-    public readonly ipsSwitchStatus!: pulumi.Output<number | undefined>;
+    declare public readonly ipsSwitchStatus: pulumi.Output<number | undefined>;
     /**
      * Specifies the firewall name.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the charging period.
      * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
@@ -253,43 +253,43 @@ export class Firewall extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit.
      * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The protect objects list.
      * The protectObjects structure is documented below.
      */
-    public /*out*/ readonly protectObjects!: pulumi.Output<outputs.Cfw.FirewallProtectObject[]>;
+    declare public /*out*/ readonly protectObjects: pulumi.Output<outputs.Cfw.FirewallProtectObject[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The service type.
      */
-    public /*out*/ readonly serviceType!: pulumi.Output<number>;
+    declare public /*out*/ readonly serviceType: pulumi.Output<number>;
     /**
      * The firewall status.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * Whether IPv6 is supported.
      */
-    public /*out*/ readonly supportIpv6!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly supportIpv6: pulumi.Output<boolean>;
     /**
      * Specifies the key/value pairs to associate with the firewall.
      *
      * <a name="Firewall_Flavor"></a>
      * The `flavor` block supports:
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -304,49 +304,49 @@ export class Firewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["eastWestFirewallErAttachmentId"] = state ? state.eastWestFirewallErAttachmentId : undefined;
-            resourceInputs["eastWestFirewallErId"] = state ? state.eastWestFirewallErId : undefined;
-            resourceInputs["eastWestFirewallInspectionCidr"] = state ? state.eastWestFirewallInspectionCidr : undefined;
-            resourceInputs["eastWestFirewallInspectionVpcId"] = state ? state.eastWestFirewallInspectionVpcId : undefined;
-            resourceInputs["eastWestFirewallMode"] = state ? state.eastWestFirewallMode : undefined;
-            resourceInputs["eastWestFirewallStatus"] = state ? state.eastWestFirewallStatus : undefined;
-            resourceInputs["engineType"] = state ? state.engineType : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["flavor"] = state ? state.flavor : undefined;
-            resourceInputs["haType"] = state ? state.haType : undefined;
-            resourceInputs["ipsProtectionMode"] = state ? state.ipsProtectionMode : undefined;
-            resourceInputs["ipsSwitchStatus"] = state ? state.ipsSwitchStatus : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["protectObjects"] = state ? state.protectObjects : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["supportIpv6"] = state ? state.supportIpv6 : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["eastWestFirewallErAttachmentId"] = state?.eastWestFirewallErAttachmentId;
+            resourceInputs["eastWestFirewallErId"] = state?.eastWestFirewallErId;
+            resourceInputs["eastWestFirewallInspectionCidr"] = state?.eastWestFirewallInspectionCidr;
+            resourceInputs["eastWestFirewallInspectionVpcId"] = state?.eastWestFirewallInspectionVpcId;
+            resourceInputs["eastWestFirewallMode"] = state?.eastWestFirewallMode;
+            resourceInputs["eastWestFirewallStatus"] = state?.eastWestFirewallStatus;
+            resourceInputs["engineType"] = state?.engineType;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["haType"] = state?.haType;
+            resourceInputs["ipsProtectionMode"] = state?.ipsProtectionMode;
+            resourceInputs["ipsSwitchStatus"] = state?.ipsSwitchStatus;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["protectObjects"] = state?.protectObjects;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["supportIpv6"] = state?.supportIpv6;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if ((!args || args.flavor === undefined) && !opts.urn) {
+            if (args?.flavor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavor'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["eastWestFirewallErId"] = args ? args.eastWestFirewallErId : undefined;
-            resourceInputs["eastWestFirewallInspectionCidr"] = args ? args.eastWestFirewallInspectionCidr : undefined;
-            resourceInputs["eastWestFirewallMode"] = args ? args.eastWestFirewallMode : undefined;
-            resourceInputs["eastWestFirewallStatus"] = args ? args.eastWestFirewallStatus : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["flavor"] = args ? args.flavor : undefined;
-            resourceInputs["ipsProtectionMode"] = args ? args.ipsProtectionMode : undefined;
-            resourceInputs["ipsSwitchStatus"] = args ? args.ipsSwitchStatus : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["eastWestFirewallErId"] = args?.eastWestFirewallErId;
+            resourceInputs["eastWestFirewallInspectionCidr"] = args?.eastWestFirewallInspectionCidr;
+            resourceInputs["eastWestFirewallMode"] = args?.eastWestFirewallMode;
+            resourceInputs["eastWestFirewallStatus"] = args?.eastWestFirewallStatus;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["ipsProtectionMode"] = args?.ipsProtectionMode;
+            resourceInputs["ipsSwitchStatus"] = args?.ipsSwitchStatus;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["eastWestFirewallErAttachmentId"] = undefined /*out*/;
             resourceInputs["eastWestFirewallInspectionVpcId"] = undefined /*out*/;
             resourceInputs["engineType"] = undefined /*out*/;

@@ -35,23 +35,23 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
     /**
      * The authorized API IDs
      */
-    public readonly apiIds!: pulumi.Output<string[]>;
+    declare public readonly apiIds: pulumi.Output<string[]>;
     /**
      * The ID of the application authorized to access the APIs.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    declare public readonly applicationId: pulumi.Output<string>;
     /**
      * The environment ID where the APIs were published.
      */
-    public readonly envId!: pulumi.Output<string>;
+    declare public readonly envId: pulumi.Output<string>;
     /**
      * The ID of the dedicated instance to which the application and APIs belong.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The region where the application and APPCODEs are located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a ApigApplicationAuthorization resource with the given unique name, arguments, and options.
@@ -66,30 +66,30 @@ export class ApigApplicationAuthorization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigApplicationAuthorizationState | undefined;
-            resourceInputs["apiIds"] = state ? state.apiIds : undefined;
-            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
-            resourceInputs["envId"] = state ? state.envId : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["apiIds"] = state?.apiIds;
+            resourceInputs["applicationId"] = state?.applicationId;
+            resourceInputs["envId"] = state?.envId;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as ApigApplicationAuthorizationArgs | undefined;
-            if ((!args || args.apiIds === undefined) && !opts.urn) {
+            if (args?.apiIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiIds'");
             }
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
+            if (args?.applicationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.envId === undefined) && !opts.urn) {
+            if (args?.envId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'envId'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["apiIds"] = args ? args.apiIds : undefined;
-            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
-            resourceInputs["envId"] = args ? args.envId : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["apiIds"] = args?.apiIds;
+            resourceInputs["applicationId"] = args?.applicationId;
+            resourceInputs["envId"] = args?.envId;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigApplicationAuthorization.__pulumiType, name, resourceInputs, opts);

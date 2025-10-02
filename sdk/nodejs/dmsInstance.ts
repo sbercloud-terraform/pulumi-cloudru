@@ -32,37 +32,37 @@ export class DmsInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === DmsInstance.__pulumiType;
     }
 
-    public readonly accessUser!: pulumi.Output<string | undefined>;
-    public readonly availableZones!: pulumi.Output<string[]>;
-    public /*out*/ readonly connectAddress!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly description!: pulumi.Output<string>;
-    public readonly engine!: pulumi.Output<string>;
-    public readonly engineVersion!: pulumi.Output<string | undefined>;
-    public readonly maintainBegin!: pulumi.Output<string>;
-    public readonly maintainEnd!: pulumi.Output<string>;
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly orderId!: pulumi.Output<string>;
-    public readonly partitionNum!: pulumi.Output<number | undefined>;
-    public readonly password!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly port!: pulumi.Output<string>;
-    public readonly productId!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
-    public /*out*/ readonly resourceSpecCode!: pulumi.Output<string>;
-    public readonly securityGroupId!: pulumi.Output<string>;
-    public /*out*/ readonly securityGroupName!: pulumi.Output<string>;
-    public readonly specification!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly storageSpace!: pulumi.Output<number>;
-    public readonly storageSpecCode!: pulumi.Output<string>;
-    public readonly subnetId!: pulumi.Output<string>;
-    public /*out*/ readonly subnetName!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly type!: pulumi.Output<string>;
-    public /*out*/ readonly usedStorageSpace!: pulumi.Output<number>;
-    public /*out*/ readonly userId!: pulumi.Output<string>;
-    public readonly vpcId!: pulumi.Output<string>;
-    public /*out*/ readonly vpcName!: pulumi.Output<string>;
+    declare public readonly accessUser: pulumi.Output<string | undefined>;
+    declare public readonly availableZones: pulumi.Output<string[]>;
+    declare public /*out*/ readonly connectAddress: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string | undefined>;
+    declare public readonly maintainBegin: pulumi.Output<string>;
+    declare public readonly maintainEnd: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly orderId: pulumi.Output<string>;
+    declare public readonly partitionNum: pulumi.Output<number | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly port: pulumi.Output<string>;
+    declare public readonly productId: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceSpecCode: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupName: pulumi.Output<string>;
+    declare public readonly specification: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly storageSpace: pulumi.Output<number>;
+    declare public readonly storageSpecCode: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
+    declare public /*out*/ readonly subnetName: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
+    declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcName: pulumi.Output<string>;
 
     /**
      * Create a DmsInstance resource with the given unique name, arguments, and options.
@@ -77,82 +77,82 @@ export class DmsInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsInstanceState | undefined;
-            resourceInputs["accessUser"] = state ? state.accessUser : undefined;
-            resourceInputs["availableZones"] = state ? state.availableZones : undefined;
-            resourceInputs["connectAddress"] = state ? state.connectAddress : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["orderId"] = state ? state.orderId : undefined;
-            resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["productId"] = state ? state.productId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceSpecCode"] = state ? state.resourceSpecCode : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupName"] = state ? state.securityGroupName : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
-            resourceInputs["storageSpecCode"] = state ? state.storageSpecCode : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["subnetName"] = state ? state.subnetName : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["usedStorageSpace"] = state ? state.usedStorageSpace : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcName"] = state ? state.vpcName : undefined;
+            resourceInputs["accessUser"] = state?.accessUser;
+            resourceInputs["availableZones"] = state?.availableZones;
+            resourceInputs["connectAddress"] = state?.connectAddress;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["maintainBegin"] = state?.maintainBegin;
+            resourceInputs["maintainEnd"] = state?.maintainEnd;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["orderId"] = state?.orderId;
+            resourceInputs["partitionNum"] = state?.partitionNum;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["productId"] = state?.productId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceSpecCode"] = state?.resourceSpecCode;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupName"] = state?.securityGroupName;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSpace"] = state?.storageSpace;
+            resourceInputs["storageSpecCode"] = state?.storageSpecCode;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["subnetName"] = state?.subnetName;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["usedStorageSpace"] = state?.usedStorageSpace;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcName"] = state?.vpcName;
         } else {
             const args = argsOrState as DmsInstanceArgs | undefined;
-            if ((!args || args.availableZones === undefined) && !opts.urn) {
+            if (args?.availableZones === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availableZones'");
             }
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.productId === undefined) && !opts.urn) {
+            if (args?.productId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'productId'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.storageSpace === undefined) && !opts.urn) {
+            if (args?.storageSpace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageSpace'");
             }
-            if ((!args || args.storageSpecCode === undefined) && !opts.urn) {
+            if (args?.storageSpecCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageSpecCode'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["accessUser"] = args ? args.accessUser : undefined;
-            resourceInputs["availableZones"] = args ? args.availableZones : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = args ? args.maintainEnd : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["partitionNum"] = args ? args.partitionNum : undefined;
+            resourceInputs["accessUser"] = args?.accessUser;
+            resourceInputs["availableZones"] = args?.availableZones;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["maintainBegin"] = args?.maintainBegin;
+            resourceInputs["maintainEnd"] = args?.maintainEnd;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["partitionNum"] = args?.partitionNum;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["productId"] = args ? args.productId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
-            resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
-            resourceInputs["storageSpecCode"] = args ? args.storageSpecCode : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["productId"] = args?.productId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["specification"] = args?.specification;
+            resourceInputs["storageSpace"] = args?.storageSpace;
+            resourceInputs["storageSpecCode"] = args?.storageSpecCode;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["connectAddress"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["orderId"] = undefined /*out*/;

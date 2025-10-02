@@ -73,11 +73,11 @@ export class DomainNameGroup extends pulumi.CustomResource {
     /**
      * The config status of the domain name group.
      */
-    public /*out*/ readonly configStatus!: pulumi.Output<number>;
+    declare public /*out*/ readonly configStatus: pulumi.Output<number>;
     /**
      * Specifies the description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the list of domain names.
      * The domainNames structure is documented below.
@@ -85,36 +85,36 @@ export class DomainNameGroup extends pulumi.CustomResource {
      * <a name="DomainNameGroup_DomainNames"></a>
      * The `domainNames` block supports:
      */
-    public readonly domainNames!: pulumi.Output<outputs.Cfw.DomainNameGroupDomainName[] | undefined>;
+    declare public readonly domainNames: pulumi.Output<outputs.Cfw.DomainNameGroupDomainName[] | undefined>;
     /**
      * Specifies the firewall instance ID.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly fwInstanceId!: pulumi.Output<string>;
+    declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
      * The exception message of the domain name group.
      */
-    public /*out*/ readonly message!: pulumi.Output<string>;
+    declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
      * Specifies the name of the domain name group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protected object ID.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * The reference count of the domain name group.
      */
-    public /*out*/ readonly refCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly refCount: pulumi.Output<number>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the type of the domain name group.
      * The value can be:
@@ -123,7 +123,7 @@ export class DomainNameGroup extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly type!: pulumi.Output<number>;
+    declare public readonly type: pulumi.Output<number>;
 
     /**
      * Create a DomainNameGroup resource with the given unique name, arguments, and options.
@@ -138,34 +138,34 @@ export class DomainNameGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainNameGroupState | undefined;
-            resourceInputs["configStatus"] = state ? state.configStatus : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["domainNames"] = state ? state.domainNames : undefined;
-            resourceInputs["fwInstanceId"] = state ? state.fwInstanceId : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["refCount"] = state ? state.refCount : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["configStatus"] = state?.configStatus;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["domainNames"] = state?.domainNames;
+            resourceInputs["fwInstanceId"] = state?.fwInstanceId;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["refCount"] = state?.refCount;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as DomainNameGroupArgs | undefined;
-            if ((!args || args.fwInstanceId === undefined) && !opts.urn) {
+            if (args?.fwInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fwInstanceId'");
             }
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["domainNames"] = args ? args.domainNames : undefined;
-            resourceInputs["fwInstanceId"] = args ? args.fwInstanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["domainNames"] = args?.domainNames;
+            resourceInputs["fwInstanceId"] = args?.fwInstanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["type"] = args?.type;
             resourceInputs["configStatus"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["refCount"] = undefined /*out*/;

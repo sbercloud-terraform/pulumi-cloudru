@@ -84,50 +84,50 @@ export class Queue extends pulumi.CustomResource {
     /**
      * Time when a queue is created.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<number>;
+    declare public /*out*/ readonly createTime: pulumi.Output<number>;
     /**
      * Minimum number of CUs that are bound to a queue. Initial value can be `16`,
      * `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
      */
-    public readonly cuCount!: pulumi.Output<number>;
+    declare public readonly cuCount: pulumi.Output<number>;
     /**
      * Description of a queue. Changing this parameter will create a new
      * resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The name of the elastic resource pool to which the queue belongs.
      */
-    public readonly elasticResourcePoolName!: pulumi.Output<string>;
+    declare public readonly elasticResourcePoolName: pulumi.Output<string>;
     /**
      * Enterprise project ID. The value 0 indicates the default
      * enterprise project. Changing this parameter will create a new resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Indicates the queue feature. Changing this parameter will create a new
      * resource. The options are as follows:
      * + basic: basic type (default value)
      * + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
      */
-    public readonly feature!: pulumi.Output<string | undefined>;
+    declare public readonly feature: pulumi.Output<string | undefined>;
     /**
      * @deprecated management_subnet_cidr is Deprecated
      */
-    public readonly managementSubnetCidr!: pulumi.Output<string | undefined>;
+    declare public readonly managementSubnetCidr: pulumi.Output<string | undefined>;
     /**
      * Name of a queue. Name of a newly created resource queue. The name can contain
      * only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
      * range: 1 to 128 characters. Changing this parameter will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * CPU architecture of queue compute resources. Changing this parameter will
      * create a new resource. The options are as follows:
      * + x8664 : default value
      * + aarch64
      */
-    public readonly platform!: pulumi.Output<string | undefined>;
+    declare public readonly platform: pulumi.Output<string | undefined>;
     /**
      * Indicates the queue type. Changing this parameter will create a new
      * resource. The options are as follows:
@@ -136,29 +136,29 @@ export class Queue extends pulumi.CustomResource {
      *
      * The default value is `sql`.
      */
-    public readonly queueType!: pulumi.Output<string | undefined>;
+    declare public readonly queueType: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the dli queue resource. If omitted,
      * the provider-level region will be used. Changing this will create a new VPC channel resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Queue resource mode. Changing this parameter will create a new
      * resource. The options are as follows:
      * + 0: indicates the shared resource mode.
      * + 1: indicates the exclusive resource mode.
      */
-    public readonly resourceMode!: pulumi.Output<number>;
-    public readonly scalingPolicies!: pulumi.Output<outputs.Dli.QueueScalingPolicy[]>;
-    public readonly sparkDriver!: pulumi.Output<outputs.Dli.QueueSparkDriver | undefined>;
+    declare public readonly resourceMode: pulumi.Output<number>;
+    declare public readonly scalingPolicies: pulumi.Output<outputs.Dli.QueueScalingPolicy[]>;
+    declare public readonly sparkDriver: pulumi.Output<outputs.Dli.QueueSparkDriver | undefined>;
     /**
      * @deprecated subnet_cidr is Deprecated
      */
-    public readonly subnetCidr!: pulumi.Output<string | undefined>;
+    declare public readonly subnetCidr: pulumi.Output<string | undefined>;
     /**
      * Label of a queue. Changing this parameter will create a new resource.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
      * cannot be the same as that of the data source.
@@ -168,7 +168,7 @@ export class Queue extends pulumi.CustomResource {
      * 192.168.0.0~192.168.0.0/16~24.
      * + When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
      */
-    public readonly vpcCidr!: pulumi.Output<string>;
+    declare public readonly vpcCidr: pulumi.Output<string>;
 
     /**
      * Create a Queue resource with the given unique name, arguments, and options.
@@ -183,44 +183,44 @@ export class Queue extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["cuCount"] = state ? state.cuCount : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["elasticResourcePoolName"] = state ? state.elasticResourcePoolName : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["feature"] = state ? state.feature : undefined;
-            resourceInputs["managementSubnetCidr"] = state ? state.managementSubnetCidr : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["platform"] = state ? state.platform : undefined;
-            resourceInputs["queueType"] = state ? state.queueType : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceMode"] = state ? state.resourceMode : undefined;
-            resourceInputs["scalingPolicies"] = state ? state.scalingPolicies : undefined;
-            resourceInputs["sparkDriver"] = state ? state.sparkDriver : undefined;
-            resourceInputs["subnetCidr"] = state ? state.subnetCidr : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcCidr"] = state ? state.vpcCidr : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["cuCount"] = state?.cuCount;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["elasticResourcePoolName"] = state?.elasticResourcePoolName;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["feature"] = state?.feature;
+            resourceInputs["managementSubnetCidr"] = state?.managementSubnetCidr;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["platform"] = state?.platform;
+            resourceInputs["queueType"] = state?.queueType;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceMode"] = state?.resourceMode;
+            resourceInputs["scalingPolicies"] = state?.scalingPolicies;
+            resourceInputs["sparkDriver"] = state?.sparkDriver;
+            resourceInputs["subnetCidr"] = state?.subnetCidr;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcCidr"] = state?.vpcCidr;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if ((!args || args.cuCount === undefined) && !opts.urn) {
+            if (args?.cuCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cuCount'");
             }
-            resourceInputs["cuCount"] = args ? args.cuCount : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["elasticResourcePoolName"] = args ? args.elasticResourcePoolName : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["feature"] = args ? args.feature : undefined;
-            resourceInputs["managementSubnetCidr"] = args ? args.managementSubnetCidr : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["platform"] = args ? args.platform : undefined;
-            resourceInputs["queueType"] = args ? args.queueType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourceMode"] = args ? args.resourceMode : undefined;
-            resourceInputs["scalingPolicies"] = args ? args.scalingPolicies : undefined;
-            resourceInputs["sparkDriver"] = args ? args.sparkDriver : undefined;
-            resourceInputs["subnetCidr"] = args ? args.subnetCidr : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcCidr"] = args ? args.vpcCidr : undefined;
+            resourceInputs["cuCount"] = args?.cuCount;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["elasticResourcePoolName"] = args?.elasticResourcePoolName;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["feature"] = args?.feature;
+            resourceInputs["managementSubnetCidr"] = args?.managementSubnetCidr;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["platform"] = args?.platform;
+            resourceInputs["queueType"] = args?.queueType;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourceMode"] = args?.resourceMode;
+            resourceInputs["scalingPolicies"] = args?.scalingPolicies;
+            resourceInputs["sparkDriver"] = args?.sparkDriver;
+            resourceInputs["subnetCidr"] = args?.subnetCidr;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcCidr"] = args?.vpcCidr;
             resourceInputs["createTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

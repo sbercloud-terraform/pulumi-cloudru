@@ -58,137 +58,137 @@ export class NodeAttach extends pulumi.CustomResource {
     /**
      * The name of the available partition (AZ).
      */
-    public /*out*/ readonly availabilityZone!: pulumi.Output<string>;
-    public /*out*/ readonly chargingMode!: pulumi.Output<string>;
+    declare public /*out*/ readonly availabilityZone: pulumi.Output<string>;
+    declare public /*out*/ readonly chargingMode: pulumi.Output<string>;
     /**
      * Specifies the ID of the cluster. Changing this parameter will create a new
      * resource.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The data disks related configuration.
      */
-    public /*out*/ readonly dataVolumes!: pulumi.Output<outputs.Cce.NodeAttachDataVolume[]>;
+    declare public /*out*/ readonly dataVolumes: pulumi.Output<outputs.Cce.NodeAttachDataVolume[]>;
     /**
      * Specifies the available disk space of a single docker container on the
      * node in device mapper mode. Changing this parameter will create a new resource.
      */
-    public readonly dockerBaseSize!: pulumi.Output<number | undefined>;
+    declare public readonly dockerBaseSize: pulumi.Output<number | undefined>;
     /**
      * The Ecs group ID.
      */
-    public /*out*/ readonly ecsGroupId!: pulumi.Output<string>;
-    public /*out*/ readonly enterpriseProjectId!: pulumi.Output<string>;
-    public /*out*/ readonly extensionNics!: pulumi.Output<outputs.Cce.NodeAttachExtensionNic[]>;
+    declare public /*out*/ readonly ecsGroupId: pulumi.Output<string>;
+    declare public /*out*/ readonly enterpriseProjectId: pulumi.Output<string>;
+    declare public /*out*/ readonly extensionNics: pulumi.Output<outputs.Cce.NodeAttachExtensionNic[]>;
     /**
      * The flavor ID of the CCE node.
      */
-    public /*out*/ readonly flavorId!: pulumi.Output<string>;
-    public readonly hostnameConfig!: pulumi.Output<outputs.Cce.NodeAttachHostnameConfig>;
+    declare public /*out*/ readonly flavorId: pulumi.Output<string>;
+    declare public readonly hostnameConfig: pulumi.Output<outputs.Cce.NodeAttachHostnameConfig>;
     /**
      * schema: Internal
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
-    public readonly initializedConditions!: pulumi.Output<string[]>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
+    declare public readonly initializedConditions: pulumi.Output<string[]>;
     /**
      * Specifies the key pair name when logging in to select the key pair mode.
      * This parameter and `password` are alternative. Changing this parameter will reset the node.
      */
-    public readonly keyPair!: pulumi.Output<string | undefined>;
+    declare public readonly keyPair: pulumi.Output<string | undefined>;
     /**
      * Specifies the tags of a Kubernetes node, key/value pair format.
      * Changing this parameter will create a new resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the docker data disk configurations. The following is an
      * example:
      */
-    public readonly lvmConfig!: pulumi.Output<string | undefined>;
+    declare public readonly lvmConfig: pulumi.Output<string | undefined>;
     /**
      * Specifies the the maximum number of instances a node is allowed to create.
      * Changing this parameter will create a new resource.
      */
-    public readonly maxPods!: pulumi.Output<number | undefined>;
+    declare public readonly maxPods: pulumi.Output<number | undefined>;
     /**
      * Specifies the Node Name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * schema: Internal
      */
-    public readonly nicMultiQueue!: pulumi.Output<string | undefined>;
+    declare public readonly nicMultiQueue: pulumi.Output<string | undefined>;
     /**
      * schema: Internal
      */
-    public readonly nicThreshold!: pulumi.Output<string | undefined>;
+    declare public readonly nicThreshold: pulumi.Output<string | undefined>;
     /**
      * Specifies the operating System of the node. Changing this parameter will reset the node.
      * + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
      */
-    public readonly os!: pulumi.Output<string>;
+    declare public readonly os: pulumi.Output<string>;
     /**
      * Specifies the root password when logging in to select the password mode.
      * This parameter can be plain or salted and is alternative to `keyPair`.
      * Changing this parameter will reset the node.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Specifies the script required after installation. The input value can be
      * a Base64 encoded string or not. Changing this parameter will create a new resource.
      */
-    public readonly postinstall!: pulumi.Output<string | undefined>;
+    declare public readonly postinstall: pulumi.Output<string | undefined>;
     /**
      * Specifies the script required before installation. The input value can be
      * a Base64 encoded string or not. Changing this parameter will create a new resource.
      */
-    public readonly preinstall!: pulumi.Output<string | undefined>;
+    declare public readonly preinstall: pulumi.Output<string | undefined>;
     /**
      * Private IP of the CCE node.
      */
-    public /*out*/ readonly privateIp!: pulumi.Output<string>;
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * Public IP of the CCE node.
      */
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
      * The region in which to create the CCE node attach resource. If omitted, the
      * provider-level region will be used. Changing this creates a new CCE node attach resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The system disk related configuration.
      */
-    public /*out*/ readonly rootVolumes!: pulumi.Output<outputs.Cce.NodeAttachRootVolume[]>;
+    declare public /*out*/ readonly rootVolumes: pulumi.Output<outputs.Cce.NodeAttachRootVolume[]>;
     /**
      * The runtime of the CCE node.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * Specifies the ecs server ID. Changing this parameter will create a new
      * resource.
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
     /**
      * Node status information.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly storage!: pulumi.Output<outputs.Cce.NodeAttachStorage | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly storage: pulumi.Output<outputs.Cce.NodeAttachStorage | undefined>;
     /**
      * The ID of the subnet to which the NIC belongs.
      */
-    public /*out*/ readonly subnetId!: pulumi.Output<string>;
-    public readonly systemDiskKmsKeyId!: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly subnetId: pulumi.Output<string>;
+    declare public readonly systemDiskKmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Specifies the tags of a VM node, key/value pair format.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the taints configuration of the nodes to set anti-affinity.
      * Changing this parameter will create a new resource. Each taint contains the following parameters:
      */
-    public readonly taints!: pulumi.Output<outputs.Cce.NodeAttachTaint[] | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.Cce.NodeAttachTaint[] | undefined>;
 
     /**
      * Create a NodeAttach resource with the given unique name, arguments, and options.
@@ -203,77 +203,77 @@ export class NodeAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeAttachState | undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["dataVolumes"] = state ? state.dataVolumes : undefined;
-            resourceInputs["dockerBaseSize"] = state ? state.dockerBaseSize : undefined;
-            resourceInputs["ecsGroupId"] = state ? state.ecsGroupId : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["extensionNics"] = state ? state.extensionNics : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["hostnameConfig"] = state ? state.hostnameConfig : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["initializedConditions"] = state ? state.initializedConditions : undefined;
-            resourceInputs["keyPair"] = state ? state.keyPair : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["lvmConfig"] = state ? state.lvmConfig : undefined;
-            resourceInputs["maxPods"] = state ? state.maxPods : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nicMultiQueue"] = state ? state.nicMultiQueue : undefined;
-            resourceInputs["nicThreshold"] = state ? state.nicThreshold : undefined;
-            resourceInputs["os"] = state ? state.os : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["postinstall"] = state ? state.postinstall : undefined;
-            resourceInputs["preinstall"] = state ? state.preinstall : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rootVolumes"] = state ? state.rootVolumes : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["dataVolumes"] = state?.dataVolumes;
+            resourceInputs["dockerBaseSize"] = state?.dockerBaseSize;
+            resourceInputs["ecsGroupId"] = state?.ecsGroupId;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["extensionNics"] = state?.extensionNics;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["hostnameConfig"] = state?.hostnameConfig;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["initializedConditions"] = state?.initializedConditions;
+            resourceInputs["keyPair"] = state?.keyPair;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["lvmConfig"] = state?.lvmConfig;
+            resourceInputs["maxPods"] = state?.maxPods;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nicMultiQueue"] = state?.nicMultiQueue;
+            resourceInputs["nicThreshold"] = state?.nicThreshold;
+            resourceInputs["os"] = state?.os;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["postinstall"] = state?.postinstall;
+            resourceInputs["preinstall"] = state?.preinstall;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rootVolumes"] = state?.rootVolumes;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["systemDiskKmsKeyId"] = state?.systemDiskKmsKeyId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
         } else {
             const args = argsOrState as NodeAttachArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.os === undefined) && !opts.urn) {
+            if (args?.os === undefined && !opts.urn) {
                 throw new Error("Missing required property 'os'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dockerBaseSize"] = args ? args.dockerBaseSize : undefined;
-            resourceInputs["hostnameConfig"] = args ? args.hostnameConfig : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["initializedConditions"] = args ? args.initializedConditions : undefined;
-            resourceInputs["keyPair"] = args ? args.keyPair : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["lvmConfig"] = args ? args.lvmConfig : undefined;
-            resourceInputs["maxPods"] = args ? args.maxPods : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nicMultiQueue"] = args ? args.nicMultiQueue : undefined;
-            resourceInputs["nicThreshold"] = args ? args.nicThreshold : undefined;
-            resourceInputs["os"] = args ? args.os : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dockerBaseSize"] = args?.dockerBaseSize;
+            resourceInputs["hostnameConfig"] = args?.hostnameConfig;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["initializedConditions"] = args?.initializedConditions;
+            resourceInputs["keyPair"] = args?.keyPair;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["lvmConfig"] = args?.lvmConfig;
+            resourceInputs["maxPods"] = args?.maxPods;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nicMultiQueue"] = args?.nicMultiQueue;
+            resourceInputs["nicThreshold"] = args?.nicThreshold;
+            resourceInputs["os"] = args?.os;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["postinstall"] = args ? args.postinstall : undefined;
-            resourceInputs["preinstall"] = args ? args.preinstall : undefined;
+            resourceInputs["postinstall"] = args?.postinstall;
+            resourceInputs["preinstall"] = args?.preinstall;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["systemDiskKmsKeyId"] = args ? args.systemDiskKmsKeyId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["serverId"] = args?.serverId;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["systemDiskKmsKeyId"] = args?.systemDiskKmsKeyId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
             resourceInputs["availabilityZone"] = undefined /*out*/;
             resourceInputs["chargingMode"] = undefined /*out*/;
             resourceInputs["dataVolumes"] = undefined /*out*/;

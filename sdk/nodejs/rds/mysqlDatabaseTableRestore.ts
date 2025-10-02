@@ -84,24 +84,24 @@ export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
      *
      * Changing this creates a new resource.
      */
-    public readonly databases!: pulumi.Output<outputs.Rds.MysqlDatabaseTableRestoreDatabase[] | undefined>;
+    declare public readonly databases: pulumi.Output<outputs.Rds.MysqlDatabaseTableRestoreDatabase[] | undefined>;
     /**
      * Specifies the ID of RDS MySQL instance.
      *
      * Changing this creates a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies whether to use fast restoration.
      *
      * Changing this creates a new resource.
      */
-    public readonly isFastRestore!: pulumi.Output<boolean | undefined>;
+    declare public readonly isFastRestore: pulumi.Output<boolean | undefined>;
     /**
      * The region in which to create the rds instance resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the tables that will be restored.
      * The restoreTables structure is documented below.
@@ -113,13 +113,13 @@ export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
      * <a name="databasesStruct"></a>
      * The `databases` block supports:
      */
-    public readonly restoreTables!: pulumi.Output<outputs.Rds.MysqlDatabaseTableRestoreRestoreTable[] | undefined>;
+    declare public readonly restoreTables: pulumi.Output<outputs.Rds.MysqlDatabaseTableRestoreRestoreTable[] | undefined>;
     /**
      * Specifies the restoration time point. A timestamp in milliseconds is used.
      *
      * Changing this creates a new resource.
      */
-    public readonly restoreTime!: pulumi.Output<number>;
+    declare public readonly restoreTime: pulumi.Output<number>;
 
     /**
      * Create a MysqlDatabaseTableRestore resource with the given unique name, arguments, and options.
@@ -134,26 +134,26 @@ export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MysqlDatabaseTableRestoreState | undefined;
-            resourceInputs["databases"] = state ? state.databases : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["isFastRestore"] = state ? state.isFastRestore : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["restoreTables"] = state ? state.restoreTables : undefined;
-            resourceInputs["restoreTime"] = state ? state.restoreTime : undefined;
+            resourceInputs["databases"] = state?.databases;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["isFastRestore"] = state?.isFastRestore;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["restoreTables"] = state?.restoreTables;
+            resourceInputs["restoreTime"] = state?.restoreTime;
         } else {
             const args = argsOrState as MysqlDatabaseTableRestoreArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.restoreTime === undefined) && !opts.urn) {
+            if (args?.restoreTime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'restoreTime'");
             }
-            resourceInputs["databases"] = args ? args.databases : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["isFastRestore"] = args ? args.isFastRestore : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["restoreTables"] = args ? args.restoreTables : undefined;
-            resourceInputs["restoreTime"] = args ? args.restoreTime : undefined;
+            resourceInputs["databases"] = args?.databases;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["isFastRestore"] = args?.isFastRestore;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["restoreTables"] = args?.restoreTables;
+            resourceInputs["restoreTime"] = args?.restoreTime;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(MysqlDatabaseTableRestore.__pulumiType, name, resourceInputs, opts);

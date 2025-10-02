@@ -151,144 +151,144 @@ export class ElbLoadbalancer extends pulumi.CustomResource {
     /**
      * @deprecated Deprecated
      */
-    public readonly autoPay!: pulumi.Output<string | undefined>;
+    declare public readonly autoPay: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled. Valid values are **true** and **false**.
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies whether autoscaling is enabled. Valid values are **true** and
      * **false**.
      */
-    public readonly autoscalingEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoscalingEnabled: pulumi.Output<boolean>;
     /**
      * Specifies the list of AZ names. Changing this parameter will create a
      * new resource.
      */
-    public readonly availabilityZones!: pulumi.Output<string[]>;
-    public readonly backendSubnets!: pulumi.Output<string[]>;
+    declare public readonly availabilityZones: pulumi.Output<string[]>;
+    declare public readonly backendSubnets: pulumi.Output<string[]>;
     /**
      * Bandwidth billing type. Changing this parameter will create a
      * new resource.
      */
-    public readonly bandwidthChargeMode!: pulumi.Output<string>;
-    public readonly bandwidthId!: pulumi.Output<string>;
+    declare public readonly bandwidthChargeMode: pulumi.Output<string>;
+    declare public readonly bandwidthId: pulumi.Output<string>;
     /**
      * Bandwidth size. Changing this parameter will create a new resource.
      */
-    public readonly bandwidthSize!: pulumi.Output<number>;
-    public /*out*/ readonly chargeMode!: pulumi.Output<string>;
-    public readonly chargingMode!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly bandwidthSize: pulumi.Output<number>;
+    declare public /*out*/ readonly chargeMode: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Enable this if you want to associate the IP addresses of backend servers with
      * your load balancer. Can only be true when updating.
      */
-    public readonly crossVpcBackend!: pulumi.Output<boolean>;
-    public readonly deletionProtectionEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly crossVpcBackend: pulumi.Output<boolean>;
+    declare public readonly deletionProtectionEnable: pulumi.Output<boolean | undefined>;
     /**
      * Human-readable description for the loadbalancer.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly elbVirsubnetType!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly elbVirsubnetType: pulumi.Output<string>;
     /**
      * The enterprise project id of the loadbalancer. Changing this
      * creates a new loadbalancer.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
-    public readonly forceDelete!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly frozenScene!: pulumi.Output<string>;
-    public /*out*/ readonly guaranteed!: pulumi.Output<boolean>;
-    public /*out*/ readonly gwFlavorId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly frozenScene: pulumi.Output<string>;
+    declare public /*out*/ readonly guaranteed: pulumi.Output<boolean>;
+    declare public /*out*/ readonly gwFlavorId: pulumi.Output<string>;
     /**
      * Elastic IP type. Changing this parameter will create a new resource.
      */
-    public readonly iptype!: pulumi.Output<string>;
+    declare public readonly iptype: pulumi.Output<string>;
     /**
      * The ipv4 address of the load balancer.
      */
-    public readonly ipv4Address!: pulumi.Output<string>;
+    declare public readonly ipv4Address: pulumi.Output<string>;
     /**
      * The ipv4 eip address of the Load Balancer.
      */
-    public /*out*/ readonly ipv4Eip!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv4Eip: pulumi.Output<string>;
     /**
      * The ID of the EIP. Changing this parameter will create a new resource.
      *
      * > **NOTE:** If the ipv4EipId parameter is configured, you do not need to configure the bandwidth parameters:
      * `iptype`, `bandwidthChargeMode`, `bandwidthSize` and `shareType`.
      */
-    public readonly ipv4EipId!: pulumi.Output<string>;
-    public /*out*/ readonly ipv4PortId!: pulumi.Output<string>;
+    declare public readonly ipv4EipId: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv4PortId: pulumi.Output<string>;
     /**
      * The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
      * ipv4 address.
      */
-    public readonly ipv4SubnetId!: pulumi.Output<string | undefined>;
+    declare public readonly ipv4SubnetId: pulumi.Output<string | undefined>;
     /**
      * The ipv6 address of the Load Balancer.
      */
-    public readonly ipv6Address!: pulumi.Output<string>;
+    declare public readonly ipv6Address: pulumi.Output<string>;
     /**
      * The ipv6 bandwidth id. Only support shared bandwidth.
      */
-    public readonly ipv6BandwidthId!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6BandwidthId: pulumi.Output<string | undefined>;
     /**
      * The ipv6 eip address of the Load Balancer.
      */
-    public /*out*/ readonly ipv6Eip!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6Eip: pulumi.Output<string>;
     /**
      * The ipv6 eip id of the Load Balancer.
      */
-    public /*out*/ readonly ipv6EipId!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6EipId: pulumi.Output<string>;
     /**
      * The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
      */
-    public readonly ipv6NetworkId!: pulumi.Output<string | undefined>;
+    declare public readonly ipv6NetworkId: pulumi.Output<string | undefined>;
     /**
      * The L4 flavor id of the load balancer.
      */
-    public readonly l4FlavorId!: pulumi.Output<string>;
+    declare public readonly l4FlavorId: pulumi.Output<string>;
     /**
      * The L7 flavor id of the load balancer.
      */
-    public readonly l7FlavorId!: pulumi.Output<string>;
-    public readonly loadbalancerType!: pulumi.Output<string>;
+    declare public readonly l7FlavorId: pulumi.Output<string>;
+    declare public readonly loadbalancerType: pulumi.Output<string>;
     /**
      * Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
      * This parameter cannot be left blank if there are HTTP or HTTPS listeners.
      */
-    public readonly minL7FlavorId!: pulumi.Output<string>;
+    declare public readonly minL7FlavorId: pulumi.Output<string>;
     /**
      * Human-readable name for the loadbalancer.
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly operatingStatus!: pulumi.Output<string>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
-    public readonly protectionReason!: pulumi.Output<string | undefined>;
-    public readonly protectionStatus!: pulumi.Output<string>;
-    public /*out*/ readonly publicBorderGroup!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly operatingStatus: pulumi.Output<string>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    declare public readonly protectionReason: pulumi.Output<string | undefined>;
+    declare public readonly protectionStatus: pulumi.Output<string>;
+    declare public /*out*/ readonly publicBorderGroup: pulumi.Output<string>;
     /**
      * The region in which to create the loadbalancer resource. If omitted, the
      * provider-level region will be used. Changing this creates a new loadbalancer.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Bandwidth sharing type. Changing this parameter will create a new resource.
      */
-    public readonly sharetype!: pulumi.Output<string>;
+    declare public readonly sharetype: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the loadbalancer.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The vpc on which to create the loadbalancer. Changing this creates a new
      * loadbalancer.
      */
-    public readonly vpcId!: pulumi.Output<string>;
-    public readonly wafFailureAction!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
+    declare public readonly wafFailureAction: pulumi.Output<string>;
 
     /**
      * Create a ElbLoadbalancer resource with the given unique name, arguments, and options.
@@ -303,94 +303,94 @@ export class ElbLoadbalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbLoadbalancerState | undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["autoscalingEnabled"] = state ? state.autoscalingEnabled : undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["backendSubnets"] = state ? state.backendSubnets : undefined;
-            resourceInputs["bandwidthChargeMode"] = state ? state.bandwidthChargeMode : undefined;
-            resourceInputs["bandwidthId"] = state ? state.bandwidthId : undefined;
-            resourceInputs["bandwidthSize"] = state ? state.bandwidthSize : undefined;
-            resourceInputs["chargeMode"] = state ? state.chargeMode : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["crossVpcBackend"] = state ? state.crossVpcBackend : undefined;
-            resourceInputs["deletionProtectionEnable"] = state ? state.deletionProtectionEnable : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["elbVirsubnetType"] = state ? state.elbVirsubnetType : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
-            resourceInputs["frozenScene"] = state ? state.frozenScene : undefined;
-            resourceInputs["guaranteed"] = state ? state.guaranteed : undefined;
-            resourceInputs["gwFlavorId"] = state ? state.gwFlavorId : undefined;
-            resourceInputs["iptype"] = state ? state.iptype : undefined;
-            resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
-            resourceInputs["ipv4Eip"] = state ? state.ipv4Eip : undefined;
-            resourceInputs["ipv4EipId"] = state ? state.ipv4EipId : undefined;
-            resourceInputs["ipv4PortId"] = state ? state.ipv4PortId : undefined;
-            resourceInputs["ipv4SubnetId"] = state ? state.ipv4SubnetId : undefined;
-            resourceInputs["ipv6Address"] = state ? state.ipv6Address : undefined;
-            resourceInputs["ipv6BandwidthId"] = state ? state.ipv6BandwidthId : undefined;
-            resourceInputs["ipv6Eip"] = state ? state.ipv6Eip : undefined;
-            resourceInputs["ipv6EipId"] = state ? state.ipv6EipId : undefined;
-            resourceInputs["ipv6NetworkId"] = state ? state.ipv6NetworkId : undefined;
-            resourceInputs["l4FlavorId"] = state ? state.l4FlavorId : undefined;
-            resourceInputs["l7FlavorId"] = state ? state.l7FlavorId : undefined;
-            resourceInputs["loadbalancerType"] = state ? state.loadbalancerType : undefined;
-            resourceInputs["minL7FlavorId"] = state ? state.minL7FlavorId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["operatingStatus"] = state ? state.operatingStatus : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["protectionReason"] = state ? state.protectionReason : undefined;
-            resourceInputs["protectionStatus"] = state ? state.protectionStatus : undefined;
-            resourceInputs["publicBorderGroup"] = state ? state.publicBorderGroup : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sharetype"] = state ? state.sharetype : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["wafFailureAction"] = state ? state.wafFailureAction : undefined;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["autoscalingEnabled"] = state?.autoscalingEnabled;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["backendSubnets"] = state?.backendSubnets;
+            resourceInputs["bandwidthChargeMode"] = state?.bandwidthChargeMode;
+            resourceInputs["bandwidthId"] = state?.bandwidthId;
+            resourceInputs["bandwidthSize"] = state?.bandwidthSize;
+            resourceInputs["chargeMode"] = state?.chargeMode;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["crossVpcBackend"] = state?.crossVpcBackend;
+            resourceInputs["deletionProtectionEnable"] = state?.deletionProtectionEnable;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["elbVirsubnetType"] = state?.elbVirsubnetType;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["forceDelete"] = state?.forceDelete;
+            resourceInputs["frozenScene"] = state?.frozenScene;
+            resourceInputs["guaranteed"] = state?.guaranteed;
+            resourceInputs["gwFlavorId"] = state?.gwFlavorId;
+            resourceInputs["iptype"] = state?.iptype;
+            resourceInputs["ipv4Address"] = state?.ipv4Address;
+            resourceInputs["ipv4Eip"] = state?.ipv4Eip;
+            resourceInputs["ipv4EipId"] = state?.ipv4EipId;
+            resourceInputs["ipv4PortId"] = state?.ipv4PortId;
+            resourceInputs["ipv4SubnetId"] = state?.ipv4SubnetId;
+            resourceInputs["ipv6Address"] = state?.ipv6Address;
+            resourceInputs["ipv6BandwidthId"] = state?.ipv6BandwidthId;
+            resourceInputs["ipv6Eip"] = state?.ipv6Eip;
+            resourceInputs["ipv6EipId"] = state?.ipv6EipId;
+            resourceInputs["ipv6NetworkId"] = state?.ipv6NetworkId;
+            resourceInputs["l4FlavorId"] = state?.l4FlavorId;
+            resourceInputs["l7FlavorId"] = state?.l7FlavorId;
+            resourceInputs["loadbalancerType"] = state?.loadbalancerType;
+            resourceInputs["minL7FlavorId"] = state?.minL7FlavorId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["operatingStatus"] = state?.operatingStatus;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["protectionReason"] = state?.protectionReason;
+            resourceInputs["protectionStatus"] = state?.protectionStatus;
+            resourceInputs["publicBorderGroup"] = state?.publicBorderGroup;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sharetype"] = state?.sharetype;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["wafFailureAction"] = state?.wafFailureAction;
         } else {
             const args = argsOrState as ElbLoadbalancerArgs | undefined;
-            if ((!args || args.availabilityZones === undefined) && !opts.urn) {
+            if (args?.availabilityZones === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["autoscalingEnabled"] = args ? args.autoscalingEnabled : undefined;
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["backendSubnets"] = args ? args.backendSubnets : undefined;
-            resourceInputs["bandwidthChargeMode"] = args ? args.bandwidthChargeMode : undefined;
-            resourceInputs["bandwidthId"] = args ? args.bandwidthId : undefined;
-            resourceInputs["bandwidthSize"] = args ? args.bandwidthSize : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["crossVpcBackend"] = args ? args.crossVpcBackend : undefined;
-            resourceInputs["deletionProtectionEnable"] = args ? args.deletionProtectionEnable : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
-            resourceInputs["iptype"] = args ? args.iptype : undefined;
-            resourceInputs["ipv4Address"] = args ? args.ipv4Address : undefined;
-            resourceInputs["ipv4EipId"] = args ? args.ipv4EipId : undefined;
-            resourceInputs["ipv4SubnetId"] = args ? args.ipv4SubnetId : undefined;
-            resourceInputs["ipv6Address"] = args ? args.ipv6Address : undefined;
-            resourceInputs["ipv6BandwidthId"] = args ? args.ipv6BandwidthId : undefined;
-            resourceInputs["ipv6NetworkId"] = args ? args.ipv6NetworkId : undefined;
-            resourceInputs["l4FlavorId"] = args ? args.l4FlavorId : undefined;
-            resourceInputs["l7FlavorId"] = args ? args.l7FlavorId : undefined;
-            resourceInputs["loadbalancerType"] = args ? args.loadbalancerType : undefined;
-            resourceInputs["minL7FlavorId"] = args ? args.minL7FlavorId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["protectionReason"] = args ? args.protectionReason : undefined;
-            resourceInputs["protectionStatus"] = args ? args.protectionStatus : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sharetype"] = args ? args.sharetype : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["wafFailureAction"] = args ? args.wafFailureAction : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["autoscalingEnabled"] = args?.autoscalingEnabled;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["backendSubnets"] = args?.backendSubnets;
+            resourceInputs["bandwidthChargeMode"] = args?.bandwidthChargeMode;
+            resourceInputs["bandwidthId"] = args?.bandwidthId;
+            resourceInputs["bandwidthSize"] = args?.bandwidthSize;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["crossVpcBackend"] = args?.crossVpcBackend;
+            resourceInputs["deletionProtectionEnable"] = args?.deletionProtectionEnable;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["forceDelete"] = args?.forceDelete;
+            resourceInputs["iptype"] = args?.iptype;
+            resourceInputs["ipv4Address"] = args?.ipv4Address;
+            resourceInputs["ipv4EipId"] = args?.ipv4EipId;
+            resourceInputs["ipv4SubnetId"] = args?.ipv4SubnetId;
+            resourceInputs["ipv6Address"] = args?.ipv6Address;
+            resourceInputs["ipv6BandwidthId"] = args?.ipv6BandwidthId;
+            resourceInputs["ipv6NetworkId"] = args?.ipv6NetworkId;
+            resourceInputs["l4FlavorId"] = args?.l4FlavorId;
+            resourceInputs["l7FlavorId"] = args?.l7FlavorId;
+            resourceInputs["loadbalancerType"] = args?.loadbalancerType;
+            resourceInputs["minL7FlavorId"] = args?.minL7FlavorId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["protectionReason"] = args?.protectionReason;
+            resourceInputs["protectionStatus"] = args?.protectionStatus;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sharetype"] = args?.sharetype;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["wafFailureAction"] = args?.wafFailureAction;
             resourceInputs["chargeMode"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["elbVirsubnetType"] = undefined /*out*/;

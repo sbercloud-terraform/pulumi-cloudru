@@ -72,11 +72,11 @@ export class Job extends pulumi.CustomResource {
      * Specifies an ID of the MapReduce cluster to which the job belongs to.
      * Changing this will create a new MapReduce job resource.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The completion time of the MapReduce job.
      */
-    public /*out*/ readonly finishTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly finishTime: pulumi.Output<string>;
     /**
      * Specifies the name of the MapReduce job. The name can contain 1 to 64
      * characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
@@ -97,14 +97,14 @@ export class Job extends pulumi.CustomResource {
      *
      * > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the parameters for the MapReduce job. Add an at sign (@) before
      * each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
      * This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
      * MapReduce job resource.
      */
-    public readonly parameters!: pulumi.Output<string | undefined>;
+    declare public readonly parameters: pulumi.Output<string | undefined>;
     /**
      * Specifies the the key/value pairs of the program parameters, such as
      * thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
@@ -112,7 +112,7 @@ export class Job extends pulumi.CustomResource {
      * **HiveScript**. Refer to the documents for each type of support key-values.
      * Changing this will create a new MapReduce job resource.
      */
-    public readonly programParameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly programParameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the .jar package path or .py file path for program execution.
      * The parameter must meet the following requirements:
@@ -123,36 +123,36 @@ export class Job extends pulumi.CustomResource {
      *
      * Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
      */
-    public readonly programPath!: pulumi.Output<string | undefined>;
+    declare public readonly programPath: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the MapReduce job resource. If
      * omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs used to modify service configuration.
      * Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
      * Changing this will create a new MapReduce job resource.
      */
-    public readonly serviceParameters!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly serviceParameters: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the SQL command or file path. Only required if `type` is **HiveSql**
      * or **SparkSql**. Changing this will create a new MapReduce job resource.
      */
-    public readonly sql!: pulumi.Output<string | undefined>;
+    declare public readonly sql: pulumi.Output<string | undefined>;
     /**
      * The creation time of the MapReduce job.
      */
-    public /*out*/ readonly startTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly startTime: pulumi.Output<string>;
     /**
      * Status of the MapReduce job.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The submission time of the MapReduce job.
      */
-    public /*out*/ readonly submitTime!: pulumi.Output<string>;
-    public readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly submitTime: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -167,36 +167,36 @@ export class Job extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["finishTime"] = state ? state.finishTime : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["programParameters"] = state ? state.programParameters : undefined;
-            resourceInputs["programPath"] = state ? state.programPath : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["serviceParameters"] = state ? state.serviceParameters : undefined;
-            resourceInputs["sql"] = state ? state.sql : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["submitTime"] = state ? state.submitTime : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["finishTime"] = state?.finishTime;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["programParameters"] = state?.programParameters;
+            resourceInputs["programPath"] = state?.programPath;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["serviceParameters"] = state?.serviceParameters;
+            resourceInputs["sql"] = state?.sql;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["submitTime"] = state?.submitTime;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["programParameters"] = args ? args.programParameters : undefined;
-            resourceInputs["programPath"] = args ? args.programPath : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serviceParameters"] = args ? args.serviceParameters : undefined;
-            resourceInputs["sql"] = args ? args.sql : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["programParameters"] = args?.programParameters;
+            resourceInputs["programPath"] = args?.programPath;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serviceParameters"] = args?.serviceParameters;
+            resourceInputs["sql"] = args?.sql;
+            resourceInputs["type"] = args?.type;
             resourceInputs["finishTime"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

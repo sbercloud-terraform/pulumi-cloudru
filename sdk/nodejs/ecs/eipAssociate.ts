@@ -51,32 +51,32 @@ export class EipAssociate extends pulumi.CustomResource {
      * It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
      * Changing this creates a new resource.
      */
-    public readonly bandwidthId!: pulumi.Output<string | undefined>;
+    declare public readonly bandwidthId: pulumi.Output<string | undefined>;
     /**
      * Specifies the private IP address to direct traffic to. It's **mandatory**
      * and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
      * Changing this creates a new resource.
      */
-    public readonly fixedIp!: pulumi.Output<string>;
+    declare public readonly fixedIp: pulumi.Output<string>;
     /**
      * Specifies the ID of ECS instance to associated with.
      * Changing this creates a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The port ID of the ECS instance that associated with.
      */
-    public /*out*/ readonly portId!: pulumi.Output<string>;
+    declare public /*out*/ readonly portId: pulumi.Output<string>;
     /**
      * Specifies the EIP address to associate. It's **mandatory**
      * when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
      */
-    public readonly publicIp!: pulumi.Output<string | undefined>;
+    declare public readonly publicIp: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the associated resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a EipAssociate resource with the given unique name, arguments, and options.
@@ -91,22 +91,22 @@ export class EipAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipAssociateState | undefined;
-            resourceInputs["bandwidthId"] = state ? state.bandwidthId : undefined;
-            resourceInputs["fixedIp"] = state ? state.fixedIp : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["portId"] = state ? state.portId : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["bandwidthId"] = state?.bandwidthId;
+            resourceInputs["fixedIp"] = state?.fixedIp;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["portId"] = state?.portId;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as EipAssociateArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["bandwidthId"] = args ? args.bandwidthId : undefined;
-            resourceInputs["fixedIp"] = args ? args.fixedIp : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["bandwidthId"] = args?.bandwidthId;
+            resourceInputs["fixedIp"] = args?.fixedIp;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["publicIp"] = args?.publicIp;
+            resourceInputs["region"] = args?.region;
             resourceInputs["portId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

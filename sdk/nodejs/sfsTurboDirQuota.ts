@@ -35,28 +35,28 @@ export class SfsTurboDirQuota extends pulumi.CustomResource {
     /**
      * Specifies the size of the directory.
      */
-    public readonly capacity!: pulumi.Output<number | undefined>;
+    declare public readonly capacity: pulumi.Output<number | undefined>;
     /**
      * Specifies the maximum number of inodes allowed in the directory.
      */
-    public readonly inode!: pulumi.Output<number | undefined>;
+    declare public readonly inode: pulumi.Output<number | undefined>;
     /**
      * Specifies the valid full path of an existing directory.
      */
-    public readonly path!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly path: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the SFS Turbo ID.
      */
-    public readonly shareId!: pulumi.Output<string>;
+    declare public readonly shareId: pulumi.Output<string>;
     /**
      * Specifies the size of the used directory.
      */
-    public /*out*/ readonly usedCapacity!: pulumi.Output<number>;
+    declare public /*out*/ readonly usedCapacity: pulumi.Output<number>;
     /**
      * Specifies the number of used inodes in the directory.
      */
-    public /*out*/ readonly usedInode!: pulumi.Output<number>;
+    declare public /*out*/ readonly usedInode: pulumi.Output<number>;
 
     /**
      * Create a SfsTurboDirQuota resource with the given unique name, arguments, and options.
@@ -71,26 +71,26 @@ export class SfsTurboDirQuota extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsTurboDirQuotaState | undefined;
-            resourceInputs["capacity"] = state ? state.capacity : undefined;
-            resourceInputs["inode"] = state ? state.inode : undefined;
-            resourceInputs["path"] = state ? state.path : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shareId"] = state ? state.shareId : undefined;
-            resourceInputs["usedCapacity"] = state ? state.usedCapacity : undefined;
-            resourceInputs["usedInode"] = state ? state.usedInode : undefined;
+            resourceInputs["capacity"] = state?.capacity;
+            resourceInputs["inode"] = state?.inode;
+            resourceInputs["path"] = state?.path;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shareId"] = state?.shareId;
+            resourceInputs["usedCapacity"] = state?.usedCapacity;
+            resourceInputs["usedInode"] = state?.usedInode;
         } else {
             const args = argsOrState as SfsTurboDirQuotaArgs | undefined;
-            if ((!args || args.path === undefined) && !opts.urn) {
+            if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
-            if ((!args || args.shareId === undefined) && !opts.urn) {
+            if (args?.shareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            resourceInputs["capacity"] = args ? args.capacity : undefined;
-            resourceInputs["inode"] = args ? args.inode : undefined;
-            resourceInputs["path"] = args ? args.path : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shareId"] = args ? args.shareId : undefined;
+            resourceInputs["capacity"] = args?.capacity;
+            resourceInputs["inode"] = args?.inode;
+            resourceInputs["path"] = args?.path;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shareId"] = args?.shareId;
             resourceInputs["usedCapacity"] = undefined /*out*/;
             resourceInputs["usedInode"] = undefined /*out*/;
         }

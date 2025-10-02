@@ -79,18 +79,18 @@ export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly dbName!: pulumi.Output<string>;
+    declare public readonly dbName: pulumi.Output<string>;
     /**
      * Specifies the ID of the RDS SQL Server instance.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the account that associated with the database
      *
@@ -101,7 +101,7 @@ export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
      * <a name="SQLServerDatabasePrivilege_CreateUser"></a>
      * The `users` block supports:
      */
-    public readonly users!: pulumi.Output<outputs.Rds.SqlserverDatabasePrivilegeUser[]>;
+    declare public readonly users: pulumi.Output<outputs.Rds.SqlserverDatabasePrivilegeUser[]>;
 
     /**
      * Create a SqlserverDatabasePrivilege resource with the given unique name, arguments, and options.
@@ -116,25 +116,25 @@ export class SqlserverDatabasePrivilege extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlserverDatabasePrivilegeState | undefined;
-            resourceInputs["dbName"] = state ? state.dbName : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["users"] = state ? state.users : undefined;
+            resourceInputs["dbName"] = state?.dbName;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["users"] = state?.users;
         } else {
             const args = argsOrState as SqlserverDatabasePrivilegeArgs | undefined;
-            if ((!args || args.dbName === undefined) && !opts.urn) {
+            if (args?.dbName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.users === undefined) && !opts.urn) {
+            if (args?.users === undefined && !opts.urn) {
                 throw new Error("Missing required property 'users'");
             }
-            resourceInputs["dbName"] = args ? args.dbName : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["users"] = args ? args.users : undefined;
+            resourceInputs["dbName"] = args?.dbName;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["users"] = args?.users;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SqlserverDatabasePrivilege.__pulumiType, name, resourceInputs, opts);

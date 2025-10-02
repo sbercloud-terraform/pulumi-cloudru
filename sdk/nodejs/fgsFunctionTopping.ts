@@ -52,12 +52,12 @@ export class FgsFunctionTopping extends pulumi.CustomResource {
      * Specifies the URN of the function to be topped.  
      * Changing this parameter will create a new resource.
      */
-    public readonly functionUrn!: pulumi.Output<string>;
+    declare public readonly functionUrn: pulumi.Output<string>;
     /**
      * Specifies the region where the function is located.  
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a FgsFunctionTopping resource with the given unique name, arguments, and options.
@@ -72,15 +72,15 @@ export class FgsFunctionTopping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsFunctionToppingState | undefined;
-            resourceInputs["functionUrn"] = state ? state.functionUrn : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["functionUrn"] = state?.functionUrn;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as FgsFunctionToppingArgs | undefined;
-            if ((!args || args.functionUrn === undefined) && !opts.urn) {
+            if (args?.functionUrn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionUrn'");
             }
-            resourceInputs["functionUrn"] = args ? args.functionUrn : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["functionUrn"] = args?.functionUrn;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FgsFunctionTopping.__pulumiType, name, resourceInputs, opts);

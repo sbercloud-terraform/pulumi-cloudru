@@ -34,11 +34,11 @@ export class DmsKafkaMessageProduce extends pulumi.CustomResource {
         return obj['__pulumiType'] === DmsKafkaMessageProduce.__pulumiType;
     }
 
-    public readonly body!: pulumi.Output<string>;
-    public readonly instanceId!: pulumi.Output<string>;
-    public readonly propertyLists!: pulumi.Output<outputs.DmsKafkaMessageProducePropertyList[] | undefined>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly body: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public readonly propertyLists: pulumi.Output<outputs.DmsKafkaMessageProducePropertyList[] | undefined>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
 
     /**
      * Create a DmsKafkaMessageProduce resource with the given unique name, arguments, and options.
@@ -53,27 +53,27 @@ export class DmsKafkaMessageProduce extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsKafkaMessageProduceState | undefined;
-            resourceInputs["body"] = state ? state.body : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["propertyLists"] = state ? state.propertyLists : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["body"] = state?.body;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["propertyLists"] = state?.propertyLists;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as DmsKafkaMessageProduceArgs | undefined;
-            if ((!args || args.body === undefined) && !opts.urn) {
+            if (args?.body === undefined && !opts.urn) {
                 throw new Error("Missing required property 'body'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.topic === undefined) && !opts.urn) {
+            if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["body"] = args ? args.body : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["propertyLists"] = args ? args.propertyLists : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["body"] = args?.body;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["propertyLists"] = args?.propertyLists;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["topic"] = args?.topic;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DmsKafkaMessageProduce.__pulumiType, name, resourceInputs, opts);

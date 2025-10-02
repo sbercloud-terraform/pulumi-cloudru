@@ -101,93 +101,93 @@ export class Cluster extends pulumi.CustomResource {
      * Specifies available zone.
      * Changing this parameter will create a new resource.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
      */
-    public /*out*/ readonly created!: pulumi.Output<string>;
+    declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * Specifies email address for receiving notifications when a table/file migration
      * job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
      */
-    public readonly emails!: pulumi.Output<string[] | undefined>;
+    declare public readonly emails: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the enterprise project id.
      * Changing this parameter will create a new resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Specifies flavor id. Changing this parameter will create a new resource.
      */
-    public readonly flavorId!: pulumi.Output<string>;
-    public /*out*/ readonly flavorName!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
+    declare public /*out*/ readonly flavorName: pulumi.Output<string>;
     /**
      * Instance list. Structure is documented below.
      */
-    public /*out*/ readonly instances!: pulumi.Output<outputs.Cdm.ClusterInstance[]>;
+    declare public /*out*/ readonly instances: pulumi.Output<outputs.Cdm.ClusterInstance[]>;
     /**
      * Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
      * startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
      * the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
      * running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
      */
-    public readonly isAutoOff!: pulumi.Output<boolean>;
+    declare public readonly isAutoOff: pulumi.Output<boolean>;
     /**
      * Specifies cluster name. Changing this parameter will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies phone number for receiving notifications when a table/file
      * migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
      */
-    public readonly phoneNums!: pulumi.Output<string[] | undefined>;
+    declare public readonly phoneNums: pulumi.Output<string[] | undefined>;
     /**
      * EIP bound to the cluster.
      */
-    public /*out*/ readonly publicEndpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicEndpoint: pulumi.Output<string>;
     /**
      * Public IP.
      */
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
      * The region in which to create the cluster resource. If omitted, the
      * provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies time for scheduled startup of a CDM cluster.
      * The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
      * enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
      */
-    public readonly scheduleBootTime!: pulumi.Output<string>;
+    declare public readonly scheduleBootTime: pulumi.Output<string>;
     /**
      * Specifies time for scheduled shutdown of a CDM cluster.
      * The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
      * The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
      * The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
      */
-    public readonly scheduleOffTime!: pulumi.Output<string>;
+    declare public readonly scheduleOffTime: pulumi.Output<string>;
     /**
      * Specifies security group ID.
      * Changing this parameter will create a new resource.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies subnet ID. Changing this parameter will create a new resource.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * Specifies the cluster version. Changing this parameter will create a new resource.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * Specifies VPC ID. Changing this parameter will create a new resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -202,57 +202,57 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["created"] = state ? state.created : undefined;
-            resourceInputs["emails"] = state ? state.emails : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["flavorName"] = state ? state.flavorName : undefined;
-            resourceInputs["instances"] = state ? state.instances : undefined;
-            resourceInputs["isAutoOff"] = state ? state.isAutoOff : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["phoneNums"] = state ? state.phoneNums : undefined;
-            resourceInputs["publicEndpoint"] = state ? state.publicEndpoint : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scheduleBootTime"] = state ? state.scheduleBootTime : undefined;
-            resourceInputs["scheduleOffTime"] = state ? state.scheduleOffTime : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["created"] = state?.created;
+            resourceInputs["emails"] = state?.emails;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["flavorName"] = state?.flavorName;
+            resourceInputs["instances"] = state?.instances;
+            resourceInputs["isAutoOff"] = state?.isAutoOff;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["phoneNums"] = state?.phoneNums;
+            resourceInputs["publicEndpoint"] = state?.publicEndpoint;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scheduleBootTime"] = state?.scheduleBootTime;
+            resourceInputs["scheduleOffTime"] = state?.scheduleOffTime;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.flavorId === undefined) && !opts.urn) {
+            if (args?.flavorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["emails"] = args ? args.emails : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["isAutoOff"] = args ? args.isAutoOff : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["phoneNums"] = args ? args.phoneNums : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scheduleBootTime"] = args ? args.scheduleBootTime : undefined;
-            resourceInputs["scheduleOffTime"] = args ? args.scheduleOffTime : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["emails"] = args?.emails;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["isAutoOff"] = args?.isAutoOff;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["phoneNums"] = args?.phoneNums;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scheduleBootTime"] = args?.scheduleBootTime;
+            resourceInputs["scheduleOffTime"] = args?.scheduleOffTime;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["flavorName"] = undefined /*out*/;
             resourceInputs["instances"] = undefined /*out*/;

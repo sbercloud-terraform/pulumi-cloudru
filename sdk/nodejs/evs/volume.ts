@@ -76,71 +76,71 @@ export class Volume extends pulumi.CustomResource {
         return obj['__pulumiType'] === Volume.__pulumiType;
     }
 
-    public /*out*/ readonly allMetadata!: pulumi.Output<{[key: string]: string}>;
-    public /*out*/ readonly allVolumeImageMetadata!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly allMetadata: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly allVolumeImageMetadata: pulumi.Output<{[key: string]: string}>;
     /**
      * If a volume is attached to an instance, this attribute will
      * display the Attachment ID, Instance ID, and the Device as the Instance
      * sees it.
      */
-    public /*out*/ readonly attachments!: pulumi.Output<outputs.Evs.VolumeAttachment[]>;
+    declare public /*out*/ readonly attachments: pulumi.Output<outputs.Evs.VolumeAttachment[]>;
     /**
      * @deprecated Deprecated
      */
-    public readonly autoPay!: pulumi.Output<string | undefined>;
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoPay: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * The availability zone for the volume.
      * Changing this creates a new volume.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The backup ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly backupId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly bootable!: pulumi.Output<string>;
+    declare public readonly backupId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly bootable: pulumi.Output<string>;
     /**
      * Specifies the delete mode of snapshot. The default value is false. All snapshot
      * associated with the disk will also be deleted when the parameter is set to true.
      */
-    public readonly cascade!: pulumi.Output<boolean | undefined>;
-    public readonly chargingMode!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    public readonly dedicatedStorageId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly dedicatedStorageName!: pulumi.Output<string>;
+    declare public readonly cascade: pulumi.Output<boolean | undefined>;
+    declare public readonly chargingMode: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
+    declare public readonly dedicatedStorageId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly dedicatedStorageName: pulumi.Output<string>;
     /**
      * Specifies the disk description. The value can contain a maximum of 255 bytes.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The device type of volume to create. Valid options are VBD and SCSI.
      * Defaults to VBD. Changing this creates a new volume.
      */
-    public readonly deviceType!: pulumi.Output<string | undefined>;
+    declare public readonly deviceType: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project id of the disk. Changing this
      * creates a new disk.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * The image ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
-    public readonly iops!: pulumi.Output<number>;
-    public /*out*/ readonly iopsAttributes!: pulumi.Output<outputs.Evs.VolumeIopsAttribute[]>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
+    declare public readonly iops: pulumi.Output<number>;
+    declare public /*out*/ readonly iopsAttributes: pulumi.Output<outputs.Evs.VolumeIopsAttribute[]>;
     /**
      * The Encryption KMS ID to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly kmsId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly links!: pulumi.Output<outputs.Evs.VolumeLink[]>;
+    declare public readonly kmsId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly links: pulumi.Output<outputs.Evs.VolumeLink[]>;
     /**
      * Default:false. Specifies the shared EVS disk information.
      * Changing this creates a new volume.
      */
-    public readonly multiattach!: pulumi.Output<boolean | undefined>;
+    declare public readonly multiattach: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the disk name.
      * If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
@@ -148,16 +148,16 @@ export class Volume extends pulumi.CustomResource {
      * by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
      * the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
      */
-    public readonly region!: pulumi.Output<string>;
-    public /*out*/ readonly serialNumber!: pulumi.Output<string>;
-    public readonly serverId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly serviceType!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly serviceType: pulumi.Output<string>;
     /**
      * Specifies the disk size, in GB. Its value can be as follows:
      * - System disk: 1 GB to 1024 GB
@@ -170,17 +170,17 @@ export class Volume extends pulumi.CustomResource {
      * Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
      * and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The snapshot ID from which to create the volume.
      * Changing this creates a new volume.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly throughput!: pulumi.Output<number>;
-    public /*out*/ readonly throughputAttributes!: pulumi.Output<outputs.Evs.VolumeThroughputAttribute[]>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly throughput: pulumi.Output<number>;
+    declare public /*out*/ readonly throughputAttributes: pulumi.Output<outputs.Evs.VolumeThroughputAttribute[]>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * Specifies the disk type.
      * Currently, the value can be SSD, SAS, or SATA.
@@ -189,11 +189,11 @@ export class Volume extends pulumi.CustomResource {
      * - SATA: specifies the common I/O disk type.
      * If the specified disk type is not available in the AZ, the disk will fail to create.
      */
-    public readonly volumeType!: pulumi.Output<string>;
+    declare public readonly volumeType: pulumi.Output<string>;
     /**
      * Specifies the unique identifier used for mounting the EVS disk.
      */
-    public /*out*/ readonly wwn!: pulumi.Output<string>;
+    declare public /*out*/ readonly wwn: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -208,76 +208,76 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["allMetadata"] = state ? state.allMetadata : undefined;
-            resourceInputs["allVolumeImageMetadata"] = state ? state.allVolumeImageMetadata : undefined;
-            resourceInputs["attachments"] = state ? state.attachments : undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["backupId"] = state ? state.backupId : undefined;
-            resourceInputs["bootable"] = state ? state.bootable : undefined;
-            resourceInputs["cascade"] = state ? state.cascade : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dedicatedStorageId"] = state ? state.dedicatedStorageId : undefined;
-            resourceInputs["dedicatedStorageName"] = state ? state.dedicatedStorageName : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["deviceType"] = state ? state.deviceType : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["iops"] = state ? state.iops : undefined;
-            resourceInputs["iopsAttributes"] = state ? state.iopsAttributes : undefined;
-            resourceInputs["kmsId"] = state ? state.kmsId : undefined;
-            resourceInputs["links"] = state ? state.links : undefined;
-            resourceInputs["multiattach"] = state ? state.multiattach : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["serviceType"] = state ? state.serviceType : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["throughput"] = state ? state.throughput : undefined;
-            resourceInputs["throughputAttributes"] = state ? state.throughputAttributes : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["volumeType"] = state ? state.volumeType : undefined;
-            resourceInputs["wwn"] = state ? state.wwn : undefined;
+            resourceInputs["allMetadata"] = state?.allMetadata;
+            resourceInputs["allVolumeImageMetadata"] = state?.allVolumeImageMetadata;
+            resourceInputs["attachments"] = state?.attachments;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["backupId"] = state?.backupId;
+            resourceInputs["bootable"] = state?.bootable;
+            resourceInputs["cascade"] = state?.cascade;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dedicatedStorageId"] = state?.dedicatedStorageId;
+            resourceInputs["dedicatedStorageName"] = state?.dedicatedStorageName;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["deviceType"] = state?.deviceType;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["iops"] = state?.iops;
+            resourceInputs["iopsAttributes"] = state?.iopsAttributes;
+            resourceInputs["kmsId"] = state?.kmsId;
+            resourceInputs["links"] = state?.links;
+            resourceInputs["multiattach"] = state?.multiattach;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["serialNumber"] = state?.serialNumber;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["serviceType"] = state?.serviceType;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["throughput"] = state?.throughput;
+            resourceInputs["throughputAttributes"] = state?.throughputAttributes;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["volumeType"] = state?.volumeType;
+            resourceInputs["wwn"] = state?.wwn;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.volumeType === undefined) && !opts.urn) {
+            if (args?.volumeType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeType'");
             }
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["backupId"] = args ? args.backupId : undefined;
-            resourceInputs["cascade"] = args ? args.cascade : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["dedicatedStorageId"] = args ? args.dedicatedStorageId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["deviceType"] = args ? args.deviceType : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["iops"] = args ? args.iops : undefined;
-            resourceInputs["kmsId"] = args ? args.kmsId : undefined;
-            resourceInputs["multiattach"] = args ? args.multiattach : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["throughput"] = args ? args.throughput : undefined;
-            resourceInputs["volumeType"] = args ? args.volumeType : undefined;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["backupId"] = args?.backupId;
+            resourceInputs["cascade"] = args?.cascade;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["dedicatedStorageId"] = args?.dedicatedStorageId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["deviceType"] = args?.deviceType;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["iops"] = args?.iops;
+            resourceInputs["kmsId"] = args?.kmsId;
+            resourceInputs["multiattach"] = args?.multiattach;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["serverId"] = args?.serverId;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["throughput"] = args?.throughput;
+            resourceInputs["volumeType"] = args?.volumeType;
             resourceInputs["allMetadata"] = undefined /*out*/;
             resourceInputs["allVolumeImageMetadata"] = undefined /*out*/;
             resourceInputs["attachments"] = undefined /*out*/;

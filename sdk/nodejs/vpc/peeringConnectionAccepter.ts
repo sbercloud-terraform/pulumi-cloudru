@@ -35,38 +35,38 @@ export class PeeringConnectionAccepter extends pulumi.CustomResource {
     /**
      * Whether or not to accept the peering request. Defaults to `false`.
      */
-    public readonly accept!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public readonly accept: pulumi.Output<boolean | undefined>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * The VPC peering connection name.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * The Tenant Id of the accepter tenant.
      */
-    public /*out*/ readonly peerTenantId!: pulumi.Output<string>;
+    declare public /*out*/ readonly peerTenantId: pulumi.Output<string>;
     /**
      * The VPC ID of the accepter tenant.
      */
-    public /*out*/ readonly peerVpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly peerVpcId: pulumi.Output<string>;
     /**
      * The region in which to create the vpc peering connection accepter. If omitted,
      * the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The VPC peering connection status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of requester VPC involved in a VPC peering connection.
      */
-    public /*out*/ readonly vpcId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcId: pulumi.Output<string>;
     /**
      * The VPC Peering Connection ID to manage. Changing this
      * creates a new VPC peering connection accepter.
      */
-    public readonly vpcPeeringConnectionId!: pulumi.Output<string>;
+    declare public readonly vpcPeeringConnectionId: pulumi.Output<string>;
 
     /**
      * Create a PeeringConnectionAccepter resource with the given unique name, arguments, and options.
@@ -81,23 +81,23 @@ export class PeeringConnectionAccepter extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PeeringConnectionAccepterState | undefined;
-            resourceInputs["accept"] = state ? state.accept : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peerTenantId"] = state ? state.peerTenantId : undefined;
-            resourceInputs["peerVpcId"] = state ? state.peerVpcId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcPeeringConnectionId"] = state ? state.vpcPeeringConnectionId : undefined;
+            resourceInputs["accept"] = state?.accept;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peerTenantId"] = state?.peerTenantId;
+            resourceInputs["peerVpcId"] = state?.peerVpcId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcPeeringConnectionId"] = state?.vpcPeeringConnectionId;
         } else {
             const args = argsOrState as PeeringConnectionAccepterArgs | undefined;
-            if ((!args || args.vpcPeeringConnectionId === undefined) && !opts.urn) {
+            if (args?.vpcPeeringConnectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcPeeringConnectionId'");
             }
-            resourceInputs["accept"] = args ? args.accept : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["vpcPeeringConnectionId"] = args ? args.vpcPeeringConnectionId : undefined;
+            resourceInputs["accept"] = args?.accept;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["vpcPeeringConnectionId"] = args?.vpcPeeringConnectionId;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["peerTenantId"] = undefined /*out*/;

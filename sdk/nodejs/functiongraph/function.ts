@@ -101,250 +101,250 @@ export class Function extends pulumi.CustomResource {
     /**
      * Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
      */
-    public readonly agency!: pulumi.Output<string | undefined>;
+    declare public readonly agency: pulumi.Output<string | undefined>;
     /**
      * Specifies the group to which the function belongs.
      */
-    public readonly app!: pulumi.Output<string | undefined>;
+    declare public readonly app: pulumi.Output<string | undefined>;
     /**
      * Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
      */
-    public readonly appAgency!: pulumi.Output<string>;
+    declare public readonly appAgency: pulumi.Output<string>;
     /**
      * The KMS key ID for encrypting the function code.
      */
-    public readonly codeEncryptKmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly codeEncryptKmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of a function file, This field is mandatory only when coeType is
      * set to jar or zip.
      */
-    public readonly codeFilename!: pulumi.Output<string>;
+    declare public readonly codeFilename: pulumi.Output<string>;
     /**
      * Specifies the function code type, which can be inline: inline code, zip: ZIP file,
      * jar: JAR file or java functions, obs: function code stored in an OBS bucket.
      */
-    public readonly codeType!: pulumi.Output<string>;
+    declare public readonly codeType: pulumi.Output<string>;
     /**
      * Specifies the code url. This parameter is mandatory when codeType is set to obs.
      */
-    public readonly codeUrl!: pulumi.Output<string | undefined>;
+    declare public readonly codeUrl: pulumi.Output<string | undefined>;
     /**
      * The number of concurrent requests of the function.
      */
-    public readonly concurrencyNum!: pulumi.Output<number>;
+    declare public readonly concurrencyNum: pulumi.Output<number>;
     /**
      * The custom image configuration of the function.
      */
-    public readonly customImage!: pulumi.Output<outputs.FunctionGraph.FunctionCustomImage>;
+    declare public readonly customImage: pulumi.Output<outputs.FunctionGraph.FunctionCustomImage>;
     /**
      * Specifies the dependencies of the function.
      */
-    public readonly dependLists!: pulumi.Output<string[]>;
+    declare public readonly dependLists: pulumi.Output<string[]>;
     /**
      * Specifies the description of the function.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The private DNS configuration of the function network.
      */
-    public readonly dnsList!: pulumi.Output<string>;
+    declare public readonly dnsList: pulumi.Output<string>;
     /**
      * Whether the authentication in the request header is enabled.
      */
-    public readonly enableAuthInHeader!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableAuthInHeader: pulumi.Output<boolean | undefined>;
     /**
      * Whether the class isolation is enabled for the JAVA runtime functions.
      */
-    public readonly enableClassIsolation!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableClassIsolation: pulumi.Output<boolean | undefined>;
     /**
      * Whether the dynamic memory configuration is enabled.
      */
-    public readonly enableDynamicMemory!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableDynamicMemory: pulumi.Output<boolean | undefined>;
     /**
      * Whether to enable the LTS log.
      */
-    public readonly enableLtsLog!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableLtsLog: pulumi.Output<boolean | undefined>;
     /**
      * The key/value information defined to be encrypted for the function.
      */
-    public readonly encryptedUserData!: pulumi.Output<string | undefined>;
+    declare public readonly encryptedUserData: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project id of the function.
      * Changing this creates a new function.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * The size of the function ephemeral storage.
      */
-    public readonly ephemeralStorage!: pulumi.Output<number>;
+    declare public readonly ephemeralStorage: pulumi.Output<number>;
     /**
      * Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
      * and the code can be encoded using Base64 or just with the text code.
      */
-    public readonly funcCode!: pulumi.Output<string | undefined>;
+    declare public readonly funcCode: pulumi.Output<string | undefined>;
     /**
      * Specifies the file system list. The `funcMounts` object structure is documented below.
      */
-    public readonly funcMounts!: pulumi.Output<outputs.FunctionGraph.FunctionFuncMount[]>;
+    declare public readonly funcMounts: pulumi.Output<outputs.FunctionGraph.FunctionFuncMount[]>;
     /**
      * The description of the function.
      */
-    public readonly functiongraphVersion!: pulumi.Output<string>;
+    declare public readonly functiongraphVersion: pulumi.Output<string>;
     /**
      * The GPU memory size allocated to the function, in MByte (MB).
      */
-    public readonly gpuMemory!: pulumi.Output<number | undefined>;
+    declare public readonly gpuMemory: pulumi.Output<number | undefined>;
     /**
      * The GPU type of the function.
      */
-    public readonly gpuType!: pulumi.Output<string | undefined>;
+    declare public readonly gpuType: pulumi.Output<string | undefined>;
     /**
      * Specifies the entry point of the function.
      */
-    public readonly handler!: pulumi.Output<string>;
+    declare public readonly handler: pulumi.Output<string>;
     /**
      * The heartbeat handler of the function.
      */
-    public readonly heartbeatHandler!: pulumi.Output<string | undefined>;
+    declare public readonly heartbeatHandler: pulumi.Output<string | undefined>;
     /**
      * Specifies the initializer of the function.
      */
-    public readonly initializerHandler!: pulumi.Output<string>;
+    declare public readonly initializerHandler: pulumi.Output<string>;
     /**
      * Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
      */
-    public readonly initializerTimeout!: pulumi.Output<number>;
+    declare public readonly initializerTimeout: pulumi.Output<number>;
     /**
      * Whether the function is a stateful function.
      */
-    public readonly isStatefulFunction!: pulumi.Output<boolean | undefined>;
+    declare public readonly isStatefulFunction: pulumi.Output<boolean | undefined>;
     /**
      * The LTS group ID for collecting logs.
      */
-    public readonly logGroupId!: pulumi.Output<string>;
+    declare public readonly logGroupId: pulumi.Output<string>;
     /**
      * The LTS group name for collecting logs.
      */
-    public readonly logGroupName!: pulumi.Output<string>;
+    declare public readonly logGroupName: pulumi.Output<string>;
     /**
      * The LTS stream ID for collecting logs.
      */
-    public readonly logStreamId!: pulumi.Output<string>;
+    declare public readonly logStreamId: pulumi.Output<string>;
     /**
      * The LTS stream name for collecting logs.
      */
-    public readonly logStreamName!: pulumi.Output<string>;
+    declare public readonly logStreamName: pulumi.Output<string>;
     /**
      * The custom tags configuration that used to filter the LTS logs.
      */
-    public readonly ltsCustomTag!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly ltsCustomTag: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The script configuration value of this change is also the original value used for comparison with
      *  the new value next time the change is made. The corresponding parameter name is 'lts_custom_tag'.
      */
-    public /*out*/ readonly ltsCustomTagOrigin!: pulumi.Output<{[key: string]: string}>;
+    declare public /*out*/ readonly ltsCustomTagOrigin: pulumi.Output<{[key: string]: string}>;
     /**
      * The maximum number of instances of the function.
      */
-    public readonly maxInstanceNum!: pulumi.Output<string>;
+    declare public readonly maxInstanceNum: pulumi.Output<string>;
     /**
      * Specifies the memory size(MB) allocated to the function.
      */
-    public readonly memorySize!: pulumi.Output<number>;
+    declare public readonly memorySize: pulumi.Output<number>;
     /**
      * Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
      */
-    public readonly mountUserGroupId!: pulumi.Output<number>;
+    declare public readonly mountUserGroupId: pulumi.Output<number>;
     /**
      * Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
      */
-    public readonly mountUserId!: pulumi.Output<number>;
+    declare public readonly mountUserId: pulumi.Output<number>;
     /**
      * Specifies the name of the function.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network configuration of the function.
      */
-    public readonly networkController!: pulumi.Output<outputs.FunctionGraph.FunctionNetworkController | undefined>;
+    declare public readonly networkController: pulumi.Output<outputs.FunctionGraph.FunctionNetworkController | undefined>;
     /**
      * Specifies the ID of subnet.
      */
-    public readonly networkId!: pulumi.Output<string | undefined>;
+    declare public readonly networkId: pulumi.Output<string | undefined>;
     /**
      * @deprecated use app instead
      */
-    public readonly package!: pulumi.Output<string | undefined>;
+    declare public readonly package: pulumi.Output<string | undefined>;
     /**
      * The VPC CIDR blocks used in the function code to detect whether it conflicts with the VPC
      * CIDR blocks used by the service.
      */
-    public readonly peeringCidr!: pulumi.Output<string | undefined>;
+    declare public readonly peeringCidr: pulumi.Output<string | undefined>;
     /**
      * The pre-stop handler of a function.
      */
-    public readonly preStopHandler!: pulumi.Output<string | undefined>;
+    declare public readonly preStopHandler: pulumi.Output<string | undefined>;
     /**
      * The maximum duration that the function can be initialized.
      */
-    public readonly preStopTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly preStopTimeout: pulumi.Output<number | undefined>;
     /**
      * Specifies the region in which to create the Function resource.
      * If omitted, the provider-level region will be used. Changing this creates a new Function resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The reserved instance policies of the function.
      */
-    public readonly reservedInstances!: pulumi.Output<outputs.FunctionGraph.FunctionReservedInstance[] | undefined>;
+    declare public readonly reservedInstances: pulumi.Output<outputs.FunctionGraph.FunctionReservedInstance[] | undefined>;
     /**
      * The restore hook handler of the function.
      */
-    public readonly restoreHookHandler!: pulumi.Output<string | undefined>;
+    declare public readonly restoreHookHandler: pulumi.Output<string | undefined>;
     /**
      * The timeout of the function restore hook.
      */
-    public readonly restoreHookTimeout!: pulumi.Output<number | undefined>;
+    declare public readonly restoreHookTimeout: pulumi.Output<number | undefined>;
     /**
      * Specifies the environment for executing the function.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the function.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the timeout interval of the function, ranges from 3s to 900s.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
      * Uniform Resource Name
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    declare public /*out*/ readonly urn: pulumi.Output<string>;
     /**
      * The key/value information defined for the function.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
     /**
      * The KMS key ID for encrypting the user data.
      */
-    public readonly userDataEncryptKmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly userDataEncryptKmsKeyId: pulumi.Output<string | undefined>;
     /**
      * The version of the function
      */
-    public /*out*/ readonly version!: pulumi.Output<string>;
+    declare public /*out*/ readonly version: pulumi.Output<string>;
     /**
      * The versions management of the function.
      */
-    public readonly versions!: pulumi.Output<outputs.FunctionGraph.FunctionVersion[] | undefined>;
+    declare public readonly versions: pulumi.Output<outputs.FunctionGraph.FunctionVersion[] | undefined>;
     /**
      * Specifies the ID of VPC.
      */
-    public readonly vpcId!: pulumi.Output<string | undefined>;
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
     /**
      * @deprecated use agency instead
      */
-    public readonly xrole!: pulumi.Output<string | undefined>;
+    declare public readonly xrole: pulumi.Output<string | undefined>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -359,134 +359,134 @@ export class Function extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
-            resourceInputs["agency"] = state ? state.agency : undefined;
-            resourceInputs["app"] = state ? state.app : undefined;
-            resourceInputs["appAgency"] = state ? state.appAgency : undefined;
-            resourceInputs["codeEncryptKmsKeyId"] = state ? state.codeEncryptKmsKeyId : undefined;
-            resourceInputs["codeFilename"] = state ? state.codeFilename : undefined;
-            resourceInputs["codeType"] = state ? state.codeType : undefined;
-            resourceInputs["codeUrl"] = state ? state.codeUrl : undefined;
-            resourceInputs["concurrencyNum"] = state ? state.concurrencyNum : undefined;
-            resourceInputs["customImage"] = state ? state.customImage : undefined;
-            resourceInputs["dependLists"] = state ? state.dependLists : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsList"] = state ? state.dnsList : undefined;
-            resourceInputs["enableAuthInHeader"] = state ? state.enableAuthInHeader : undefined;
-            resourceInputs["enableClassIsolation"] = state ? state.enableClassIsolation : undefined;
-            resourceInputs["enableDynamicMemory"] = state ? state.enableDynamicMemory : undefined;
-            resourceInputs["enableLtsLog"] = state ? state.enableLtsLog : undefined;
-            resourceInputs["encryptedUserData"] = state ? state.encryptedUserData : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["ephemeralStorage"] = state ? state.ephemeralStorage : undefined;
-            resourceInputs["funcCode"] = state ? state.funcCode : undefined;
-            resourceInputs["funcMounts"] = state ? state.funcMounts : undefined;
-            resourceInputs["functiongraphVersion"] = state ? state.functiongraphVersion : undefined;
-            resourceInputs["gpuMemory"] = state ? state.gpuMemory : undefined;
-            resourceInputs["gpuType"] = state ? state.gpuType : undefined;
-            resourceInputs["handler"] = state ? state.handler : undefined;
-            resourceInputs["heartbeatHandler"] = state ? state.heartbeatHandler : undefined;
-            resourceInputs["initializerHandler"] = state ? state.initializerHandler : undefined;
-            resourceInputs["initializerTimeout"] = state ? state.initializerTimeout : undefined;
-            resourceInputs["isStatefulFunction"] = state ? state.isStatefulFunction : undefined;
-            resourceInputs["logGroupId"] = state ? state.logGroupId : undefined;
-            resourceInputs["logGroupName"] = state ? state.logGroupName : undefined;
-            resourceInputs["logStreamId"] = state ? state.logStreamId : undefined;
-            resourceInputs["logStreamName"] = state ? state.logStreamName : undefined;
-            resourceInputs["ltsCustomTag"] = state ? state.ltsCustomTag : undefined;
-            resourceInputs["ltsCustomTagOrigin"] = state ? state.ltsCustomTagOrigin : undefined;
-            resourceInputs["maxInstanceNum"] = state ? state.maxInstanceNum : undefined;
-            resourceInputs["memorySize"] = state ? state.memorySize : undefined;
-            resourceInputs["mountUserGroupId"] = state ? state.mountUserGroupId : undefined;
-            resourceInputs["mountUserId"] = state ? state.mountUserId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkController"] = state ? state.networkController : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["package"] = state ? state.package : undefined;
-            resourceInputs["peeringCidr"] = state ? state.peeringCidr : undefined;
-            resourceInputs["preStopHandler"] = state ? state.preStopHandler : undefined;
-            resourceInputs["preStopTimeout"] = state ? state.preStopTimeout : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reservedInstances"] = state ? state.reservedInstances : undefined;
-            resourceInputs["restoreHookHandler"] = state ? state.restoreHookHandler : undefined;
-            resourceInputs["restoreHookTimeout"] = state ? state.restoreHookTimeout : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
-            resourceInputs["userDataEncryptKmsKeyId"] = state ? state.userDataEncryptKmsKeyId : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["versions"] = state ? state.versions : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["xrole"] = state ? state.xrole : undefined;
+            resourceInputs["agency"] = state?.agency;
+            resourceInputs["app"] = state?.app;
+            resourceInputs["appAgency"] = state?.appAgency;
+            resourceInputs["codeEncryptKmsKeyId"] = state?.codeEncryptKmsKeyId;
+            resourceInputs["codeFilename"] = state?.codeFilename;
+            resourceInputs["codeType"] = state?.codeType;
+            resourceInputs["codeUrl"] = state?.codeUrl;
+            resourceInputs["concurrencyNum"] = state?.concurrencyNum;
+            resourceInputs["customImage"] = state?.customImage;
+            resourceInputs["dependLists"] = state?.dependLists;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsList"] = state?.dnsList;
+            resourceInputs["enableAuthInHeader"] = state?.enableAuthInHeader;
+            resourceInputs["enableClassIsolation"] = state?.enableClassIsolation;
+            resourceInputs["enableDynamicMemory"] = state?.enableDynamicMemory;
+            resourceInputs["enableLtsLog"] = state?.enableLtsLog;
+            resourceInputs["encryptedUserData"] = state?.encryptedUserData;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["ephemeralStorage"] = state?.ephemeralStorage;
+            resourceInputs["funcCode"] = state?.funcCode;
+            resourceInputs["funcMounts"] = state?.funcMounts;
+            resourceInputs["functiongraphVersion"] = state?.functiongraphVersion;
+            resourceInputs["gpuMemory"] = state?.gpuMemory;
+            resourceInputs["gpuType"] = state?.gpuType;
+            resourceInputs["handler"] = state?.handler;
+            resourceInputs["heartbeatHandler"] = state?.heartbeatHandler;
+            resourceInputs["initializerHandler"] = state?.initializerHandler;
+            resourceInputs["initializerTimeout"] = state?.initializerTimeout;
+            resourceInputs["isStatefulFunction"] = state?.isStatefulFunction;
+            resourceInputs["logGroupId"] = state?.logGroupId;
+            resourceInputs["logGroupName"] = state?.logGroupName;
+            resourceInputs["logStreamId"] = state?.logStreamId;
+            resourceInputs["logStreamName"] = state?.logStreamName;
+            resourceInputs["ltsCustomTag"] = state?.ltsCustomTag;
+            resourceInputs["ltsCustomTagOrigin"] = state?.ltsCustomTagOrigin;
+            resourceInputs["maxInstanceNum"] = state?.maxInstanceNum;
+            resourceInputs["memorySize"] = state?.memorySize;
+            resourceInputs["mountUserGroupId"] = state?.mountUserGroupId;
+            resourceInputs["mountUserId"] = state?.mountUserId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkController"] = state?.networkController;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["package"] = state?.package;
+            resourceInputs["peeringCidr"] = state?.peeringCidr;
+            resourceInputs["preStopHandler"] = state?.preStopHandler;
+            resourceInputs["preStopTimeout"] = state?.preStopTimeout;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reservedInstances"] = state?.reservedInstances;
+            resourceInputs["restoreHookHandler"] = state?.restoreHookHandler;
+            resourceInputs["restoreHookTimeout"] = state?.restoreHookTimeout;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["urn"] = state?.urn;
+            resourceInputs["userData"] = state?.userData;
+            resourceInputs["userDataEncryptKmsKeyId"] = state?.userDataEncryptKmsKeyId;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["versions"] = state?.versions;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["xrole"] = state?.xrole;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if ((!args || args.memorySize === undefined) && !opts.urn) {
+            if (args?.memorySize === undefined && !opts.urn) {
                 throw new Error("Missing required property 'memorySize'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.timeout === undefined) && !opts.urn) {
+            if (args?.timeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            resourceInputs["agency"] = args ? args.agency : undefined;
-            resourceInputs["app"] = args ? args.app : undefined;
-            resourceInputs["appAgency"] = args ? args.appAgency : undefined;
-            resourceInputs["codeEncryptKmsKeyId"] = args ? args.codeEncryptKmsKeyId : undefined;
-            resourceInputs["codeFilename"] = args ? args.codeFilename : undefined;
-            resourceInputs["codeType"] = args ? args.codeType : undefined;
-            resourceInputs["codeUrl"] = args ? args.codeUrl : undefined;
-            resourceInputs["concurrencyNum"] = args ? args.concurrencyNum : undefined;
-            resourceInputs["customImage"] = args ? args.customImage : undefined;
-            resourceInputs["dependLists"] = args ? args.dependLists : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsList"] = args ? args.dnsList : undefined;
-            resourceInputs["enableAuthInHeader"] = args ? args.enableAuthInHeader : undefined;
-            resourceInputs["enableClassIsolation"] = args ? args.enableClassIsolation : undefined;
-            resourceInputs["enableDynamicMemory"] = args ? args.enableDynamicMemory : undefined;
-            resourceInputs["enableLtsLog"] = args ? args.enableLtsLog : undefined;
+            resourceInputs["agency"] = args?.agency;
+            resourceInputs["app"] = args?.app;
+            resourceInputs["appAgency"] = args?.appAgency;
+            resourceInputs["codeEncryptKmsKeyId"] = args?.codeEncryptKmsKeyId;
+            resourceInputs["codeFilename"] = args?.codeFilename;
+            resourceInputs["codeType"] = args?.codeType;
+            resourceInputs["codeUrl"] = args?.codeUrl;
+            resourceInputs["concurrencyNum"] = args?.concurrencyNum;
+            resourceInputs["customImage"] = args?.customImage;
+            resourceInputs["dependLists"] = args?.dependLists;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsList"] = args?.dnsList;
+            resourceInputs["enableAuthInHeader"] = args?.enableAuthInHeader;
+            resourceInputs["enableClassIsolation"] = args?.enableClassIsolation;
+            resourceInputs["enableDynamicMemory"] = args?.enableDynamicMemory;
+            resourceInputs["enableLtsLog"] = args?.enableLtsLog;
             resourceInputs["encryptedUserData"] = args?.encryptedUserData ? pulumi.secret(args.encryptedUserData) : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["ephemeralStorage"] = args ? args.ephemeralStorage : undefined;
-            resourceInputs["funcCode"] = args ? args.funcCode : undefined;
-            resourceInputs["funcMounts"] = args ? args.funcMounts : undefined;
-            resourceInputs["functiongraphVersion"] = args ? args.functiongraphVersion : undefined;
-            resourceInputs["gpuMemory"] = args ? args.gpuMemory : undefined;
-            resourceInputs["gpuType"] = args ? args.gpuType : undefined;
-            resourceInputs["handler"] = args ? args.handler : undefined;
-            resourceInputs["heartbeatHandler"] = args ? args.heartbeatHandler : undefined;
-            resourceInputs["initializerHandler"] = args ? args.initializerHandler : undefined;
-            resourceInputs["initializerTimeout"] = args ? args.initializerTimeout : undefined;
-            resourceInputs["isStatefulFunction"] = args ? args.isStatefulFunction : undefined;
-            resourceInputs["logGroupId"] = args ? args.logGroupId : undefined;
-            resourceInputs["logGroupName"] = args ? args.logGroupName : undefined;
-            resourceInputs["logStreamId"] = args ? args.logStreamId : undefined;
-            resourceInputs["logStreamName"] = args ? args.logStreamName : undefined;
-            resourceInputs["ltsCustomTag"] = args ? args.ltsCustomTag : undefined;
-            resourceInputs["maxInstanceNum"] = args ? args.maxInstanceNum : undefined;
-            resourceInputs["memorySize"] = args ? args.memorySize : undefined;
-            resourceInputs["mountUserGroupId"] = args ? args.mountUserGroupId : undefined;
-            resourceInputs["mountUserId"] = args ? args.mountUserId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkController"] = args ? args.networkController : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["package"] = args ? args.package : undefined;
-            resourceInputs["peeringCidr"] = args ? args.peeringCidr : undefined;
-            resourceInputs["preStopHandler"] = args ? args.preStopHandler : undefined;
-            resourceInputs["preStopTimeout"] = args ? args.preStopTimeout : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reservedInstances"] = args ? args.reservedInstances : undefined;
-            resourceInputs["restoreHookHandler"] = args ? args.restoreHookHandler : undefined;
-            resourceInputs["restoreHookTimeout"] = args ? args.restoreHookTimeout : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
-            resourceInputs["userDataEncryptKmsKeyId"] = args ? args.userDataEncryptKmsKeyId : undefined;
-            resourceInputs["versions"] = args ? args.versions : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["xrole"] = args ? args.xrole : undefined;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["ephemeralStorage"] = args?.ephemeralStorage;
+            resourceInputs["funcCode"] = args?.funcCode;
+            resourceInputs["funcMounts"] = args?.funcMounts;
+            resourceInputs["functiongraphVersion"] = args?.functiongraphVersion;
+            resourceInputs["gpuMemory"] = args?.gpuMemory;
+            resourceInputs["gpuType"] = args?.gpuType;
+            resourceInputs["handler"] = args?.handler;
+            resourceInputs["heartbeatHandler"] = args?.heartbeatHandler;
+            resourceInputs["initializerHandler"] = args?.initializerHandler;
+            resourceInputs["initializerTimeout"] = args?.initializerTimeout;
+            resourceInputs["isStatefulFunction"] = args?.isStatefulFunction;
+            resourceInputs["logGroupId"] = args?.logGroupId;
+            resourceInputs["logGroupName"] = args?.logGroupName;
+            resourceInputs["logStreamId"] = args?.logStreamId;
+            resourceInputs["logStreamName"] = args?.logStreamName;
+            resourceInputs["ltsCustomTag"] = args?.ltsCustomTag;
+            resourceInputs["maxInstanceNum"] = args?.maxInstanceNum;
+            resourceInputs["memorySize"] = args?.memorySize;
+            resourceInputs["mountUserGroupId"] = args?.mountUserGroupId;
+            resourceInputs["mountUserId"] = args?.mountUserId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkController"] = args?.networkController;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["package"] = args?.package;
+            resourceInputs["peeringCidr"] = args?.peeringCidr;
+            resourceInputs["preStopHandler"] = args?.preStopHandler;
+            resourceInputs["preStopTimeout"] = args?.preStopTimeout;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reservedInstances"] = args?.reservedInstances;
+            resourceInputs["restoreHookHandler"] = args?.restoreHookHandler;
+            resourceInputs["restoreHookTimeout"] = args?.restoreHookTimeout;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["userData"] = args?.userData;
+            resourceInputs["userDataEncryptKmsKeyId"] = args?.userDataEncryptKmsKeyId;
+            resourceInputs["versions"] = args?.versions;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["xrole"] = args?.xrole;
             resourceInputs["ltsCustomTagOrigin"] = undefined /*out*/;
             resourceInputs["urn"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;

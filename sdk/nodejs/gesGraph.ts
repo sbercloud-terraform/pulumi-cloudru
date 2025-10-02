@@ -42,105 +42,105 @@ export class GesGraph extends pulumi.CustomResource {
     /**
      * AZ code
      */
-    public /*out*/ readonly azCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly azCode: pulumi.Output<string>;
     /**
      * Graph instance's CPU architecture type.
      */
-    public readonly cpuArch!: pulumi.Output<string>;
+    declare public readonly cpuArch: pulumi.Output<string>;
     /**
      * Graph instance cryptography algorithm.
      */
-    public readonly cryptAlgorithm!: pulumi.Output<string>;
+    declare public readonly cryptAlgorithm: pulumi.Output<string>;
     /**
      * Whether to enable full-text index control for the created graph.
      */
-    public readonly enableFullTextIndex!: pulumi.Output<boolean>;
+    declare public readonly enableFullTextIndex: pulumi.Output<boolean>;
     /**
      * Whether to enable the security mode. This mode may damage GES performance greatly.
      */
-    public readonly enableHttps!: pulumi.Output<boolean>;
+    declare public readonly enableHttps: pulumi.Output<boolean>;
     /**
      * Whether to enable HyG for the graph. This parameter is available for database edition graphs only.
      */
-    public readonly enableHyg!: pulumi.Output<boolean>;
+    declare public readonly enableHyg: pulumi.Output<boolean>;
     /**
      * Whether the created graph supports the cross-AZ mode. The default value is false.
      */
-    public readonly enableMultiAz!: pulumi.Output<boolean>;
+    declare public readonly enableMultiAz: pulumi.Output<boolean>;
     /**
      * Whether to enable granular permission control for the created graph.
      */
-    public readonly enableRbac!: pulumi.Output<boolean>;
+    declare public readonly enableRbac: pulumi.Output<boolean>;
     /**
      * Whether to enable data encryption The value can be true or false.
      */
-    public readonly encryption!: pulumi.Output<outputs.GesGraphEncryption>;
+    declare public readonly encryption: pulumi.Output<outputs.GesGraphEncryption>;
     /**
      * The enterprise project ID.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Graph size type index.
      */
-    public readonly graphSizeTypeIndex!: pulumi.Output<string>;
+    declare public readonly graphSizeTypeIndex: pulumi.Output<string>;
     /**
      * Whether to retain the backups of a graph after it is deleted.
      */
-    public readonly keepBackup!: pulumi.Output<boolean>;
-    public readonly ltsOperationTrace!: pulumi.Output<outputs.GesGraphLtsOperationTrace>;
+    declare public readonly keepBackup: pulumi.Output<boolean>;
+    declare public readonly ltsOperationTrace: pulumi.Output<outputs.GesGraphLtsOperationTrace>;
     /**
      * Indicates the graph name.  Changing this parameter will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates the private network access address of a graph instance.
      * Users can access the instance using the IP address through the ECS
      * deployed on the private network.
      */
-    public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
      * Graph product type
      */
-    public readonly productType!: pulumi.Output<string>;
+    declare public readonly productType: pulumi.Output<string>;
     /**
      * Indicates the public network access address of a graph instance.
      * Users can access the instance using the IP address from the Internet.
      */
-    public readonly publicIp!: pulumi.Output<outputs.GesGraphPublicIp>;
+    declare public readonly publicIp: pulumi.Output<outputs.GesGraphPublicIp>;
     /**
      * Indicates the region code.  Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
-    public readonly replication!: pulumi.Output<number>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly replication: pulumi.Output<number>;
     /**
      * Indicates the security group ID.  Changing this parameter will create a new resource.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Indicates the OBS file import status:
      * success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * The key/value pairs to associate with the graph.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string}>;
     /**
      * Physical addresses of a graph instance for access from private networks.
      */
-    public /*out*/ readonly trafficIpLists!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly trafficIpLists: pulumi.Output<string[]>;
     /**
      * ID type of vertices. This parameter is mandatory only for database edition graphs.
      */
-    public readonly vertexIdType!: pulumi.Output<outputs.GesGraphVertexIdType>;
+    declare public readonly vertexIdType: pulumi.Output<outputs.GesGraphVertexIdType>;
     /**
      * Indicates the VPC ID.  Changing this parameter will create a new resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a GesGraph resource with the given unique name, arguments, and options.
@@ -155,74 +155,74 @@ export class GesGraph extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GesGraphState | undefined;
-            resourceInputs["azCode"] = state ? state.azCode : undefined;
-            resourceInputs["cpuArch"] = state ? state.cpuArch : undefined;
-            resourceInputs["cryptAlgorithm"] = state ? state.cryptAlgorithm : undefined;
-            resourceInputs["enableFullTextIndex"] = state ? state.enableFullTextIndex : undefined;
-            resourceInputs["enableHttps"] = state ? state.enableHttps : undefined;
-            resourceInputs["enableHyg"] = state ? state.enableHyg : undefined;
-            resourceInputs["enableMultiAz"] = state ? state.enableMultiAz : undefined;
-            resourceInputs["enableRbac"] = state ? state.enableRbac : undefined;
-            resourceInputs["encryption"] = state ? state.encryption : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["graphSizeTypeIndex"] = state ? state.graphSizeTypeIndex : undefined;
-            resourceInputs["keepBackup"] = state ? state.keepBackup : undefined;
-            resourceInputs["ltsOperationTrace"] = state ? state.ltsOperationTrace : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["productType"] = state ? state.productType : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replication"] = state ? state.replication : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["trafficIpLists"] = state ? state.trafficIpLists : undefined;
-            resourceInputs["vertexIdType"] = state ? state.vertexIdType : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["azCode"] = state?.azCode;
+            resourceInputs["cpuArch"] = state?.cpuArch;
+            resourceInputs["cryptAlgorithm"] = state?.cryptAlgorithm;
+            resourceInputs["enableFullTextIndex"] = state?.enableFullTextIndex;
+            resourceInputs["enableHttps"] = state?.enableHttps;
+            resourceInputs["enableHyg"] = state?.enableHyg;
+            resourceInputs["enableMultiAz"] = state?.enableMultiAz;
+            resourceInputs["enableRbac"] = state?.enableRbac;
+            resourceInputs["encryption"] = state?.encryption;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["graphSizeTypeIndex"] = state?.graphSizeTypeIndex;
+            resourceInputs["keepBackup"] = state?.keepBackup;
+            resourceInputs["ltsOperationTrace"] = state?.ltsOperationTrace;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["productType"] = state?.productType;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replication"] = state?.replication;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["trafficIpLists"] = state?.trafficIpLists;
+            resourceInputs["vertexIdType"] = state?.vertexIdType;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as GesGraphArgs | undefined;
-            if ((!args || args.cryptAlgorithm === undefined) && !opts.urn) {
+            if (args?.cryptAlgorithm === undefined && !opts.urn) {
                 throw new Error("Missing required property 'cryptAlgorithm'");
             }
-            if ((!args || args.enableHttps === undefined) && !opts.urn) {
+            if (args?.enableHttps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enableHttps'");
             }
-            if ((!args || args.graphSizeTypeIndex === undefined) && !opts.urn) {
+            if (args?.graphSizeTypeIndex === undefined && !opts.urn) {
                 throw new Error("Missing required property 'graphSizeTypeIndex'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["cpuArch"] = args ? args.cpuArch : undefined;
-            resourceInputs["cryptAlgorithm"] = args ? args.cryptAlgorithm : undefined;
-            resourceInputs["enableFullTextIndex"] = args ? args.enableFullTextIndex : undefined;
-            resourceInputs["enableHttps"] = args ? args.enableHttps : undefined;
-            resourceInputs["enableHyg"] = args ? args.enableHyg : undefined;
-            resourceInputs["enableMultiAz"] = args ? args.enableMultiAz : undefined;
-            resourceInputs["enableRbac"] = args ? args.enableRbac : undefined;
-            resourceInputs["encryption"] = args ? args.encryption : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["graphSizeTypeIndex"] = args ? args.graphSizeTypeIndex : undefined;
-            resourceInputs["keepBackup"] = args ? args.keepBackup : undefined;
-            resourceInputs["ltsOperationTrace"] = args ? args.ltsOperationTrace : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["productType"] = args ? args.productType : undefined;
-            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replication"] = args ? args.replication : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vertexIdType"] = args ? args.vertexIdType : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["cpuArch"] = args?.cpuArch;
+            resourceInputs["cryptAlgorithm"] = args?.cryptAlgorithm;
+            resourceInputs["enableFullTextIndex"] = args?.enableFullTextIndex;
+            resourceInputs["enableHttps"] = args?.enableHttps;
+            resourceInputs["enableHyg"] = args?.enableHyg;
+            resourceInputs["enableMultiAz"] = args?.enableMultiAz;
+            resourceInputs["enableRbac"] = args?.enableRbac;
+            resourceInputs["encryption"] = args?.encryption;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["graphSizeTypeIndex"] = args?.graphSizeTypeIndex;
+            resourceInputs["keepBackup"] = args?.keepBackup;
+            resourceInputs["ltsOperationTrace"] = args?.ltsOperationTrace;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["productType"] = args?.productType;
+            resourceInputs["publicIp"] = args?.publicIp;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replication"] = args?.replication;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vertexIdType"] = args?.vertexIdType;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["azCode"] = undefined /*out*/;
             resourceInputs["privateIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

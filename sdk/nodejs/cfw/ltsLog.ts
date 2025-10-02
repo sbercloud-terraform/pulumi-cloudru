@@ -73,44 +73,44 @@ export class LtsLog extends pulumi.CustomResource {
      * Specifies the ID of the firewall.
      * Changing this creates a new resource.
      */
-    public readonly fwInstanceId!: pulumi.Output<string>;
+    declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
      * Specifies whether to enable the access log stream.
      * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
      */
-    public readonly ltsAccessLogStreamEnable!: pulumi.Output<number>;
+    declare public readonly ltsAccessLogStreamEnable: pulumi.Output<number>;
     /**
      * Specifies the access log stream ID.
      */
-    public readonly ltsAccessLogStreamId!: pulumi.Output<string | undefined>;
+    declare public readonly ltsAccessLogStreamId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the attack log stream.
      * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
      */
-    public readonly ltsAttackLogStreamEnable!: pulumi.Output<number>;
+    declare public readonly ltsAttackLogStreamEnable: pulumi.Output<number>;
     /**
      * Specifies the attack log stream ID.
      */
-    public readonly ltsAttackLogStreamId!: pulumi.Output<string | undefined>;
+    declare public readonly ltsAttackLogStreamId: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to enable the flow log stream.
      * The valid values are `0` and `1`, where `0` means disable and `1` means enable.
      */
-    public readonly ltsFlowLogStreamEnable!: pulumi.Output<number>;
+    declare public readonly ltsFlowLogStreamEnable: pulumi.Output<number>;
     /**
      * Specifies the flow log stream ID.
      */
-    public readonly ltsFlowLogStreamId!: pulumi.Output<string | undefined>;
+    declare public readonly ltsFlowLogStreamId: pulumi.Output<string | undefined>;
     /**
      * Specifies the LTS log group ID.
      */
-    public readonly ltsLogGroupId!: pulumi.Output<string>;
+    declare public readonly ltsLogGroupId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a LtsLog resource with the given unique name, arguments, and options.
@@ -125,41 +125,41 @@ export class LtsLog extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LtsLogState | undefined;
-            resourceInputs["fwInstanceId"] = state ? state.fwInstanceId : undefined;
-            resourceInputs["ltsAccessLogStreamEnable"] = state ? state.ltsAccessLogStreamEnable : undefined;
-            resourceInputs["ltsAccessLogStreamId"] = state ? state.ltsAccessLogStreamId : undefined;
-            resourceInputs["ltsAttackLogStreamEnable"] = state ? state.ltsAttackLogStreamEnable : undefined;
-            resourceInputs["ltsAttackLogStreamId"] = state ? state.ltsAttackLogStreamId : undefined;
-            resourceInputs["ltsFlowLogStreamEnable"] = state ? state.ltsFlowLogStreamEnable : undefined;
-            resourceInputs["ltsFlowLogStreamId"] = state ? state.ltsFlowLogStreamId : undefined;
-            resourceInputs["ltsLogGroupId"] = state ? state.ltsLogGroupId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["fwInstanceId"] = state?.fwInstanceId;
+            resourceInputs["ltsAccessLogStreamEnable"] = state?.ltsAccessLogStreamEnable;
+            resourceInputs["ltsAccessLogStreamId"] = state?.ltsAccessLogStreamId;
+            resourceInputs["ltsAttackLogStreamEnable"] = state?.ltsAttackLogStreamEnable;
+            resourceInputs["ltsAttackLogStreamId"] = state?.ltsAttackLogStreamId;
+            resourceInputs["ltsFlowLogStreamEnable"] = state?.ltsFlowLogStreamEnable;
+            resourceInputs["ltsFlowLogStreamId"] = state?.ltsFlowLogStreamId;
+            resourceInputs["ltsLogGroupId"] = state?.ltsLogGroupId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as LtsLogArgs | undefined;
-            if ((!args || args.fwInstanceId === undefined) && !opts.urn) {
+            if (args?.fwInstanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'fwInstanceId'");
             }
-            if ((!args || args.ltsAccessLogStreamEnable === undefined) && !opts.urn) {
+            if (args?.ltsAccessLogStreamEnable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ltsAccessLogStreamEnable'");
             }
-            if ((!args || args.ltsAttackLogStreamEnable === undefined) && !opts.urn) {
+            if (args?.ltsAttackLogStreamEnable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ltsAttackLogStreamEnable'");
             }
-            if ((!args || args.ltsFlowLogStreamEnable === undefined) && !opts.urn) {
+            if (args?.ltsFlowLogStreamEnable === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ltsFlowLogStreamEnable'");
             }
-            if ((!args || args.ltsLogGroupId === undefined) && !opts.urn) {
+            if (args?.ltsLogGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ltsLogGroupId'");
             }
-            resourceInputs["fwInstanceId"] = args ? args.fwInstanceId : undefined;
-            resourceInputs["ltsAccessLogStreamEnable"] = args ? args.ltsAccessLogStreamEnable : undefined;
-            resourceInputs["ltsAccessLogStreamId"] = args ? args.ltsAccessLogStreamId : undefined;
-            resourceInputs["ltsAttackLogStreamEnable"] = args ? args.ltsAttackLogStreamEnable : undefined;
-            resourceInputs["ltsAttackLogStreamId"] = args ? args.ltsAttackLogStreamId : undefined;
-            resourceInputs["ltsFlowLogStreamEnable"] = args ? args.ltsFlowLogStreamEnable : undefined;
-            resourceInputs["ltsFlowLogStreamId"] = args ? args.ltsFlowLogStreamId : undefined;
-            resourceInputs["ltsLogGroupId"] = args ? args.ltsLogGroupId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["fwInstanceId"] = args?.fwInstanceId;
+            resourceInputs["ltsAccessLogStreamEnable"] = args?.ltsAccessLogStreamEnable;
+            resourceInputs["ltsAccessLogStreamId"] = args?.ltsAccessLogStreamId;
+            resourceInputs["ltsAttackLogStreamEnable"] = args?.ltsAttackLogStreamEnable;
+            resourceInputs["ltsAttackLogStreamId"] = args?.ltsAttackLogStreamId;
+            resourceInputs["ltsFlowLogStreamEnable"] = args?.ltsFlowLogStreamEnable;
+            resourceInputs["ltsFlowLogStreamId"] = args?.ltsFlowLogStreamId;
+            resourceInputs["ltsLogGroupId"] = args?.ltsLogGroupId;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(LtsLog.__pulumiType, name, resourceInputs, opts);

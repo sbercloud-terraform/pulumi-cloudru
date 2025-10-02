@@ -63,17 +63,17 @@ export class Acl extends pulumi.CustomResource {
      * Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
      * The `ipCidrs` cannot repeat. The structure is documented below.
      */
-    public readonly ipCidrs!: pulumi.Output<outputs.Iam.AclIpCidr[] | undefined>;
+    declare public readonly ipCidrs: pulumi.Output<outputs.Iam.AclIpCidr[] | undefined>;
     /**
      * Specifies the IP address ranges from which console access or api access is allowed.
      * The `ipRanges` cannot repeat. The structure is documented below.
      */
-    public readonly ipRanges!: pulumi.Output<outputs.Iam.AclIpRange[] | undefined>;
+    declare public readonly ipRanges: pulumi.Output<outputs.Iam.AclIpRange[] | undefined>;
     /**
      * Specifies the ACL is created through the Console or API. valid value are '
      * console' and 'api'. Changing this parameter will create a new ACL.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -88,17 +88,17 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["ipCidrs"] = state ? state.ipCidrs : undefined;
-            resourceInputs["ipRanges"] = state ? state.ipRanges : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["ipCidrs"] = state?.ipCidrs;
+            resourceInputs["ipRanges"] = state?.ipRanges;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["ipCidrs"] = args ? args.ipCidrs : undefined;
-            resourceInputs["ipRanges"] = args ? args.ipRanges : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["ipCidrs"] = args?.ipCidrs;
+            resourceInputs["ipRanges"] = args?.ipRanges;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Acl.__pulumiType, name, resourceInputs, opts);

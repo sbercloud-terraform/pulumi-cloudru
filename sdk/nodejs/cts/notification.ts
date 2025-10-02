@@ -85,55 +85,55 @@ export class Notification extends pulumi.CustomResource {
         return obj['__pulumiType'] === Notification.__pulumiType;
     }
 
-    public readonly agencyName!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly agencyName: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies whether notification is enabled, defaults to true.
      *
      * <a name="notificationOperationsObject"></a>
      * The `operations` block supports:
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public readonly filter!: pulumi.Output<outputs.Cts.NotificationFilter | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
+    declare public readonly filter: pulumi.Output<outputs.Cts.NotificationFilter | undefined>;
     /**
      * Specifies the notification name. The value contains a maximum of 64 characters,
      * and only letters, digits, underscores(_), and Chinese characters are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The notification ID in UUID format.
      */
-    public /*out*/ readonly notificationId!: pulumi.Output<string>;
+    declare public /*out*/ readonly notificationId: pulumi.Output<string>;
     /**
      * Specifies the operation type, possible options include **complete** and
      * **customized**.
      */
-    public readonly operationType!: pulumi.Output<string>;
+    declare public readonly operationType: pulumi.Output<string>;
     /**
      * Specifies an array of users. Notifications will be sent when specified users
      * perform specified operations. All users are selected by default.
      * The object structure is documented below.
      */
-    public readonly operationUsers!: pulumi.Output<outputs.Cts.NotificationOperationUser[] | undefined>;
+    declare public readonly operationUsers: pulumi.Output<outputs.Cts.NotificationOperationUser[] | undefined>;
     /**
      * Specifies an array of operations that will trigger notifications.
      * For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
      * The object structure is documented below.
      */
-    public readonly operations!: pulumi.Output<outputs.Cts.NotificationOperation[] | undefined>;
+    declare public readonly operations: pulumi.Output<outputs.Cts.NotificationOperation[] | undefined>;
     /**
      * Specifies the region in which to manage the CTS notification resource.
      * If omitted, the provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the URN of a topic.
      */
-    public readonly smnTopic!: pulumi.Output<string | undefined>;
+    declare public readonly smnTopic: pulumi.Output<string | undefined>;
     /**
      * The notification status, the value can be **enabled** or **disabled**.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Notification resource with the given unique name, arguments, and options.
@@ -148,32 +148,32 @@ export class Notification extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationState | undefined;
-            resourceInputs["agencyName"] = state ? state.agencyName : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["filter"] = state ? state.filter : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notificationId"] = state ? state.notificationId : undefined;
-            resourceInputs["operationType"] = state ? state.operationType : undefined;
-            resourceInputs["operationUsers"] = state ? state.operationUsers : undefined;
-            resourceInputs["operations"] = state ? state.operations : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["smnTopic"] = state ? state.smnTopic : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["agencyName"] = state?.agencyName;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["filter"] = state?.filter;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notificationId"] = state?.notificationId;
+            resourceInputs["operationType"] = state?.operationType;
+            resourceInputs["operationUsers"] = state?.operationUsers;
+            resourceInputs["operations"] = state?.operations;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["smnTopic"] = state?.smnTopic;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
-            if ((!args || args.operationType === undefined) && !opts.urn) {
+            if (args?.operationType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'operationType'");
             }
-            resourceInputs["agencyName"] = args ? args.agencyName : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["filter"] = args ? args.filter : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["operationType"] = args ? args.operationType : undefined;
-            resourceInputs["operationUsers"] = args ? args.operationUsers : undefined;
-            resourceInputs["operations"] = args ? args.operations : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["smnTopic"] = args ? args.smnTopic : undefined;
+            resourceInputs["agencyName"] = args?.agencyName;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["filter"] = args?.filter;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["operationType"] = args?.operationType;
+            resourceInputs["operationUsers"] = args?.operationUsers;
+            resourceInputs["operations"] = args?.operations;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["smnTopic"] = args?.smnTopic;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["notificationId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

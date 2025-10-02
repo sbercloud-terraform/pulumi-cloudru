@@ -78,54 +78,54 @@ export class AclRule extends pulumi.CustomResource {
      * Specifies the action in the network ACL rule. Currently, the value can be *allow* or
      * *deny*.
      */
-    public readonly action!: pulumi.Output<string>;
+    declare public readonly action: pulumi.Output<string>;
     /**
      * Specifies the description for the network ACL rule.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the destination IP address to which the traffic is allowed.
      * The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
      */
-    public readonly destinationIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly destinationIpAddress: pulumi.Output<string | undefined>;
     /**
      * Specifies the destination port number or port number range. The value ranges
      * from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
      */
-    public readonly destinationPort!: pulumi.Output<string | undefined>;
+    declare public readonly destinationPort: pulumi.Output<string | undefined>;
     /**
      * Enabled status for the network ACL rule. Defaults to true.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the IP version, either 4 (default) or 6. This parameter is available after
      * the IPv6 function is enabled.
      */
-    public readonly ipVersion!: pulumi.Output<number | undefined>;
+    declare public readonly ipVersion: pulumi.Output<number | undefined>;
     /**
      * Specifies a unique name for the network ACL rule.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
      * *udp* and *icmp*.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The region in which to create the network ACL rule resource. If omitted, the
      * provider-level region will be used. Changing this creates a new network ACL rule resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the source IP address that the traffic is allowed from. The default
      * value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
      */
-    public readonly sourceIpAddress!: pulumi.Output<string | undefined>;
+    declare public readonly sourceIpAddress: pulumi.Output<string | undefined>;
     /**
      * Specifies the source port number or port number range. The value ranges from 1 to
      * 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
      */
-    public readonly sourcePort!: pulumi.Output<string | undefined>;
+    declare public readonly sourcePort: pulumi.Output<string | undefined>;
 
     /**
      * Create a AclRule resource with the given unique name, arguments, and options.
@@ -140,36 +140,36 @@ export class AclRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclRuleState | undefined;
-            resourceInputs["action"] = state ? state.action : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["destinationIpAddress"] = state ? state.destinationIpAddress : undefined;
-            resourceInputs["destinationPort"] = state ? state.destinationPort : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sourceIpAddress"] = state ? state.sourceIpAddress : undefined;
-            resourceInputs["sourcePort"] = state ? state.sourcePort : undefined;
+            resourceInputs["action"] = state?.action;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["destinationIpAddress"] = state?.destinationIpAddress;
+            resourceInputs["destinationPort"] = state?.destinationPort;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["ipVersion"] = state?.ipVersion;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sourceIpAddress"] = state?.sourceIpAddress;
+            resourceInputs["sourcePort"] = state?.sourcePort;
         } else {
             const args = argsOrState as AclRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !opts.urn) {
+            if (args?.action === undefined && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            resourceInputs["action"] = args ? args.action : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["destinationIpAddress"] = args ? args.destinationIpAddress : undefined;
-            resourceInputs["destinationPort"] = args ? args.destinationPort : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sourceIpAddress"] = args ? args.sourceIpAddress : undefined;
-            resourceInputs["sourcePort"] = args ? args.sourcePort : undefined;
+            resourceInputs["action"] = args?.action;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["destinationIpAddress"] = args?.destinationIpAddress;
+            resourceInputs["destinationPort"] = args?.destinationPort;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["ipVersion"] = args?.ipVersion;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sourceIpAddress"] = args?.sourceIpAddress;
+            resourceInputs["sourcePort"] = args?.sourcePort;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AclRule.__pulumiType, name, resourceInputs, opts);

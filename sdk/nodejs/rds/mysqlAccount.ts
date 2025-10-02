@@ -93,7 +93,7 @@ export class MysqlAccount extends pulumi.CustomResource {
      * Specifies remarks of the database account. The parameter must be 1 to 512
      * characters long and is supported only for MySQL 8.0.25 and later versions.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the IP addresses that are allowed to access your DB instance.
      * + If the IP address is set to %, all IP addresses are allowed to access your instance.
@@ -103,29 +103,29 @@ export class MysqlAccount extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly hosts!: pulumi.Output<string[]>;
+    declare public readonly hosts: pulumi.Output<string[]>;
     /**
      * Specifies the rds instance id. Changing this will create a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the username of the db account. Only lowercase letters, digits,
      * hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
      * + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
      * + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the password of the db account. The parameter must be 8 to 32 characters
      * long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
      * different from `name` or `name` spelled backwards.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The region in which to create the rds account resource. If omitted, the
      * provider-level region will be used. Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a MysqlAccount resource with the given unique name, arguments, and options.
@@ -140,26 +140,26 @@ export class MysqlAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MysqlAccountState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["hosts"] = state ? state.hosts : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as MysqlAccountArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["hosts"] = args ? args.hosts : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["hosts"] = args?.hosts;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

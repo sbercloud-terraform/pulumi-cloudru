@@ -45,50 +45,50 @@ export class SparkJob extends pulumi.CustomResource {
      * The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly appName!: pulumi.Output<string>;
+    declare public readonly appName: pulumi.Output<string>;
     /**
      * Specifies the input parameters of the main class.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly appParameters!: pulumi.Output<string[] | undefined>;
+    declare public readonly appParameters: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the configuration items of the DLI spark.
      * Please following the document of Spark [configurations](https://spark.apache.org/docs/latest/configuration.html) for
      * this argument. If you want to enable the `access metadata` of DLI spark in SberCloud, please set
      * `spark.dli.metaAccess.enable` to `true`. Changing this parameter will submit a new spark job.
      */
-    public readonly configurations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly configurations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Time of the DLI spark job submit.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies a list of package resource objects.
      * The object structure is documented below.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly dependentPackages!: pulumi.Output<outputs.Dli.SparkJobDependentPackage[] | undefined>;
+    declare public readonly dependentPackages: pulumi.Output<outputs.Dli.SparkJobDependentPackage[] | undefined>;
     /**
      * Specifies the number of CPU cores of the Spark application driver.
      * The default value of this value corresponds to the configuration of the selected `specification`.
      * If you set this value instead of the default value, `specification` will be invalid.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly driverCores!: pulumi.Output<number | undefined>;
+    declare public readonly driverCores: pulumi.Output<number | undefined>;
     /**
      * Specifies the driver memory of the spark application.
      * The default value of this value corresponds to the configuration of the selected `specification`.
      * If you set this value instead of the default value, `specification` will be invalid.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly driverMemory!: pulumi.Output<string | undefined>;
+    declare public readonly driverMemory: pulumi.Output<string | undefined>;
     /**
      * Specifies the number of CPU cores of each executor in the Spark
      * application. The default value of this value corresponds to the configuration of the selected `specification`.
      * If you set this value instead of the default value, `specification` will be invalid.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly executorCores!: pulumi.Output<number | undefined>;
+    declare public readonly executorCores: pulumi.Output<number | undefined>;
     /**
      * Specifies the executor memory of the spark application.
      * application. The default value of this value corresponds to the configuration of the selected `specification`.
@@ -97,45 +97,45 @@ export class SparkJob extends pulumi.CustomResource {
      *
      * ->**NOTE:** The unit must be provided, such as **GB** or **MB**.
      */
-    public readonly executorMemory!: pulumi.Output<string | undefined>;
+    declare public readonly executorMemory: pulumi.Output<string | undefined>;
     /**
      * Specifies the number of executors in a spark application.
      * The default value of this value corresponds to the configuration of the selected `specification`.
      * If you set this value instead of the default value, `specification` will be invalid.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly executors!: pulumi.Output<number | undefined>;
+    declare public readonly executors: pulumi.Output<number | undefined>;
     /**
      * Specifies the feature name for the Spark Job.
      * Required for Spark 3. Known values: `basic`, `ai`, `custom`.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly feature!: pulumi.Output<string | undefined>;
+    declare public readonly feature: pulumi.Output<string | undefined>;
     /**
      * Specifies a list of the other dependencies name which has been uploaded to the
      * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<dependent files>`.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly files!: pulumi.Output<string[] | undefined>;
+    declare public readonly files: pulumi.Output<string[] | undefined>;
     /**
      * Specifies a list of the jar package name which has been uploaded to the DLI
      * resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly jars!: pulumi.Output<string[] | undefined>;
+    declare public readonly jars: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the main class of the spark job.
      * Required if the `appName` is the JAR type.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly mainClass!: pulumi.Output<string | undefined>;
+    declare public readonly mainClass: pulumi.Output<string | undefined>;
     /**
      * Specifies the maximum retry times.
      * The default value of this value corresponds to the configuration of the selected `specification`.
      * If you set this value instead of the default value, `specification` will be invalid.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly maxRetries!: pulumi.Output<number | undefined>;
+    declare public readonly maxRetries: pulumi.Output<number | undefined>;
     /**
      * Specifies a list of modules that depend on system resources.
      * The dependent modules and corresponding services are as follows.
@@ -145,39 +145,39 @@ export class SparkJob extends pulumi.CustomResource {
      * + **sys.datasource.rds**: RDS MySQL
      * + **sys.datasource.css**: CSS
      */
-    public readonly modules!: pulumi.Output<string[] | undefined>;
+    declare public readonly modules: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the spark job name.
      * The value contains a maximum of 128 characters.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The owner of the spark job.
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * Specifies a list of the python file name which has been uploaded to the
      * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<python file name>`.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly pythonFiles!: pulumi.Output<string[] | undefined>;
+    declare public readonly pythonFiles: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the DLI queue name.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly queueName!: pulumi.Output<string>;
+    declare public readonly queueName: pulumi.Output<string>;
     /**
      * Specifies the region in which to submit a spark job.
      * If omitted, the provider-level region will be used.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Version of Spark to use.
      * Changing this parameter will submit a new spark job.
      */
-    public readonly sparkVersion!: pulumi.Output<string | undefined>;
+    declare public readonly sparkVersion: pulumi.Output<string | undefined>;
     /**
      * Specifies the compute resource type for spark application.
      * The available types and related specifications are as follows, default to minimum configuration (type **A**).
@@ -189,7 +189,7 @@ export class SparkJob extends pulumi.CustomResource {
      * | B | 16 vCPUs, 64-GB memory | 2 | 2 | 7G | 8G | 7 |
      * | C | 32 vCPUs, 128-GB memory | 4 | 2 | 12G | 8G | 14 |
      */
-    public readonly specification!: pulumi.Output<string | undefined>;
+    declare public readonly specification: pulumi.Output<string | undefined>;
 
     /**
      * Create a SparkJob resource with the given unique name, arguments, and options.
@@ -204,58 +204,58 @@ export class SparkJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SparkJobState | undefined;
-            resourceInputs["appName"] = state ? state.appName : undefined;
-            resourceInputs["appParameters"] = state ? state.appParameters : undefined;
-            resourceInputs["configurations"] = state ? state.configurations : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dependentPackages"] = state ? state.dependentPackages : undefined;
-            resourceInputs["driverCores"] = state ? state.driverCores : undefined;
-            resourceInputs["driverMemory"] = state ? state.driverMemory : undefined;
-            resourceInputs["executorCores"] = state ? state.executorCores : undefined;
-            resourceInputs["executorMemory"] = state ? state.executorMemory : undefined;
-            resourceInputs["executors"] = state ? state.executors : undefined;
-            resourceInputs["feature"] = state ? state.feature : undefined;
-            resourceInputs["files"] = state ? state.files : undefined;
-            resourceInputs["jars"] = state ? state.jars : undefined;
-            resourceInputs["mainClass"] = state ? state.mainClass : undefined;
-            resourceInputs["maxRetries"] = state ? state.maxRetries : undefined;
-            resourceInputs["modules"] = state ? state.modules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["pythonFiles"] = state ? state.pythonFiles : undefined;
-            resourceInputs["queueName"] = state ? state.queueName : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sparkVersion"] = state ? state.sparkVersion : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
+            resourceInputs["appName"] = state?.appName;
+            resourceInputs["appParameters"] = state?.appParameters;
+            resourceInputs["configurations"] = state?.configurations;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dependentPackages"] = state?.dependentPackages;
+            resourceInputs["driverCores"] = state?.driverCores;
+            resourceInputs["driverMemory"] = state?.driverMemory;
+            resourceInputs["executorCores"] = state?.executorCores;
+            resourceInputs["executorMemory"] = state?.executorMemory;
+            resourceInputs["executors"] = state?.executors;
+            resourceInputs["feature"] = state?.feature;
+            resourceInputs["files"] = state?.files;
+            resourceInputs["jars"] = state?.jars;
+            resourceInputs["mainClass"] = state?.mainClass;
+            resourceInputs["maxRetries"] = state?.maxRetries;
+            resourceInputs["modules"] = state?.modules;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["pythonFiles"] = state?.pythonFiles;
+            resourceInputs["queueName"] = state?.queueName;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sparkVersion"] = state?.sparkVersion;
+            resourceInputs["specification"] = state?.specification;
         } else {
             const args = argsOrState as SparkJobArgs | undefined;
-            if ((!args || args.appName === undefined) && !opts.urn) {
+            if (args?.appName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'appName'");
             }
-            if ((!args || args.queueName === undefined) && !opts.urn) {
+            if (args?.queueName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'queueName'");
             }
-            resourceInputs["appName"] = args ? args.appName : undefined;
-            resourceInputs["appParameters"] = args ? args.appParameters : undefined;
-            resourceInputs["configurations"] = args ? args.configurations : undefined;
-            resourceInputs["dependentPackages"] = args ? args.dependentPackages : undefined;
-            resourceInputs["driverCores"] = args ? args.driverCores : undefined;
-            resourceInputs["driverMemory"] = args ? args.driverMemory : undefined;
-            resourceInputs["executorCores"] = args ? args.executorCores : undefined;
-            resourceInputs["executorMemory"] = args ? args.executorMemory : undefined;
-            resourceInputs["executors"] = args ? args.executors : undefined;
-            resourceInputs["feature"] = args ? args.feature : undefined;
-            resourceInputs["files"] = args ? args.files : undefined;
-            resourceInputs["jars"] = args ? args.jars : undefined;
-            resourceInputs["mainClass"] = args ? args.mainClass : undefined;
-            resourceInputs["maxRetries"] = args ? args.maxRetries : undefined;
-            resourceInputs["modules"] = args ? args.modules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["pythonFiles"] = args ? args.pythonFiles : undefined;
-            resourceInputs["queueName"] = args ? args.queueName : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sparkVersion"] = args ? args.sparkVersion : undefined;
-            resourceInputs["specification"] = args ? args.specification : undefined;
+            resourceInputs["appName"] = args?.appName;
+            resourceInputs["appParameters"] = args?.appParameters;
+            resourceInputs["configurations"] = args?.configurations;
+            resourceInputs["dependentPackages"] = args?.dependentPackages;
+            resourceInputs["driverCores"] = args?.driverCores;
+            resourceInputs["driverMemory"] = args?.driverMemory;
+            resourceInputs["executorCores"] = args?.executorCores;
+            resourceInputs["executorMemory"] = args?.executorMemory;
+            resourceInputs["executors"] = args?.executors;
+            resourceInputs["feature"] = args?.feature;
+            resourceInputs["files"] = args?.files;
+            resourceInputs["jars"] = args?.jars;
+            resourceInputs["mainClass"] = args?.mainClass;
+            resourceInputs["maxRetries"] = args?.maxRetries;
+            resourceInputs["modules"] = args?.modules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["pythonFiles"] = args?.pythonFiles;
+            resourceInputs["queueName"] = args?.queueName;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sparkVersion"] = args?.sparkVersion;
+            resourceInputs["specification"] = args?.specification;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
         }

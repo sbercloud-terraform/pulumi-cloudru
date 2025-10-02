@@ -408,86 +408,86 @@ export class Cluster extends pulumi.CustomResource {
      * MapReduce cluster.
      * The `nodes` object structure of the `analysisCoreNodes` is documented below.
      */
-    public readonly analysisCoreNodes!: pulumi.Output<outputs.Mrs.ClusterAnalysisCoreNodes | undefined>;
+    declare public readonly analysisCoreNodes: pulumi.Output<outputs.Mrs.ClusterAnalysisCoreNodes | undefined>;
     /**
      * Specifies a list of the informations about the analysis task nodes in the
      * MapReduce cluster.
      * The `nodes` object structure of the `analysisTaskNodes` is documented below.
      */
-    public readonly analysisTaskNodes!: pulumi.Output<outputs.Mrs.ClusterAnalysisTaskNodes | undefined>;
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly analysisTaskNodes: pulumi.Output<outputs.Mrs.ClusterAnalysisTaskNodes | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the availability zone in which to create the cluster.
      * For more information about regions and AZs, see [Regions and Endpoints](https://support.hc.sbercloud.ru/en-us/endpoint/index.html).
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
-    public readonly bootstrapScripts!: pulumi.Output<outputs.Mrs.ClusterBootstrapScript[] | undefined>;
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
+    declare public readonly bootstrapScripts: pulumi.Output<outputs.Mrs.ClusterBootstrapScript[] | undefined>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * The charging start time which is the start time of billing, in RFC-3339 format.
      */
-    public /*out*/ readonly chargingStartTime!: pulumi.Output<string>;
-    public readonly componentConfigs!: pulumi.Output<outputs.Mrs.ClusterComponentConfig[] | undefined>;
+    declare public /*out*/ readonly chargingStartTime: pulumi.Output<string>;
+    declare public readonly componentConfigs: pulumi.Output<outputs.Mrs.ClusterComponentConfig[] | undefined>;
     /**
      * Specifies the list of component names. For the components supported by
      * the cluster, please following [reference](https://support.hc.sbercloud.ru/api/mrs/mrs_02_0101.html)
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly componentLists!: pulumi.Output<string[]>;
+    declare public readonly componentLists: pulumi.Output<string[]>;
     /**
      * The cluster creation time, in RFC-3339 format.
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies a list of the informations about the custom nodes in the MapReduce
      * cluster.
      * The `nodes` object structure of the `customNodes` is documented below.
      * `Unlike other nodes, it needs to specify groupName`
      */
-    public readonly customNodes!: pulumi.Output<outputs.Mrs.ClusterCustomNode[] | undefined>;
+    declare public readonly customNodes: pulumi.Output<outputs.Mrs.ClusterCustomNode[] | undefined>;
     /**
      * Specifies the EIP ID which bound to the MapReduce cluster.
      * The EIP must have been created and must be in the same region as the cluster.
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly eipId!: pulumi.Output<string>;
+    declare public readonly eipId: pulumi.Output<string>;
     /**
      * Specifies a unique ID in UUID format of enterprise project.
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
-    public readonly externalDatasources!: pulumi.Output<outputs.Mrs.ClusterExternalDatasource[] | undefined>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
+    declare public readonly externalDatasources: pulumi.Output<outputs.Mrs.ClusterExternalDatasource[] | undefined>;
     /**
      * Specifies whether logs are collected when cluster installation fails.
      * Default to true. If `logCollection` set true, the OBS buckets will be created and only used to collect logs that
      * record MapReduce cluster creation failures. Changing this will create a new MapReduce cluster resource.
      */
-    public readonly logCollection!: pulumi.Output<boolean | undefined>;
+    declare public readonly logCollection: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the administrator password, which is used to log in to
      * the cluster management page. The password can contain 8 to 26 charactors and cannot be the username or the username
      * spelled backwards. The password must contain lowercase letters, uppercase letters, digits, spaces and the special
      * characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource.
      */
-    public readonly managerAdminPass!: pulumi.Output<string>;
+    declare public readonly managerAdminPass: pulumi.Output<string>;
     /**
      * The IP address of the master node.
      */
-    public /*out*/ readonly masterNodeIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly masterNodeIp: pulumi.Output<string>;
     /**
      * Specifies a list of the information about the master nodes in the
      * MapReduce cluster.
      * The `nodes` object structure of the `masterNodes` is documented below.
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly masterNodes!: pulumi.Output<outputs.Mrs.ClusterMasterNodes>;
+    declare public readonly masterNodes: pulumi.Output<outputs.Mrs.ClusterMasterNodes>;
     /**
      * Specifies the name of the MapReduce cluster. The name can contain 2 to 64
      * characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
      * MapReduce cluster resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the administrator password, which is used to log in to the
      * each nodes(/ECSs). The password can contain 8 to 26 charactors and cannot be the username or the username spelled
@@ -495,67 +495,67 @@ export class Cluster extends pulumi.CustomResource {
      * characters: `!?,.:-_{}[]@$^+=/`. Changing this will create a new MapReduce cluster resource. This parameter
      * and `nodeKeyPair` are alternative.
      */
-    public readonly nodeAdminPass!: pulumi.Output<string | undefined>;
+    declare public readonly nodeAdminPass: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of a key pair, which is used to log in to the each
      * nodes(/ECSs). Changing this will create a new MapReduce cluster resource.
      */
-    public readonly nodeKeyPair!: pulumi.Output<string | undefined>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly nodeKeyPair: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The preferred private IP address of the master node.
      */
-    public /*out*/ readonly privateIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
      * Specifies the EIP address which bound to the MapReduce cluster.
      * The EIP must have been created and must be in the same region as the cluster.
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly publicIp!: pulumi.Output<string>;
+    declare public readonly publicIp: pulumi.Output<string>;
     /**
      * The region in which to create the MapReduce cluster resource. If omitted, the
      * provider-level region will be used. Changing this will create a new MapReduce cluster resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies whether the running mode of the MapReduce cluster is secure,
      * default to true.
      * + true: enable Kerberos authentication.
      * + false: disable Kerberos authentication. Changing this will create a new MapReduce cluster resource.
      */
-    public readonly safeMode!: pulumi.Output<boolean | undefined>;
+    declare public readonly safeMode: pulumi.Output<boolean | undefined>;
     /**
      * Specifies an array of one or more security group ID to attach to the
      * MapReduce cluster. If using the specified security group, the group need to open the specified port (9022) rules.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
-    public readonly smnNotify!: pulumi.Output<outputs.Mrs.ClusterSmnNotify | undefined>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
+    declare public readonly smnNotify: pulumi.Output<outputs.Mrs.ClusterSmnNotify | undefined>;
     /**
      * The cluster state, which include: running, frozen, abnormal and failed.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies a list of the informations about the streaming core nodes in the
      * MapReduce cluster.
      * The `nodes` object structure of the `streamingCoreNodes` is documented below.
      */
-    public readonly streamingCoreNodes!: pulumi.Output<outputs.Mrs.ClusterStreamingCoreNodes | undefined>;
+    declare public readonly streamingCoreNodes: pulumi.Output<outputs.Mrs.ClusterStreamingCoreNodes | undefined>;
     /**
      * Specifies a list of the informations about the streaming task nodes in the
      * MapReduce cluster.
      * The `nodes` object structure of the `streamingTaskNodes` is documented below.
      */
-    public readonly streamingTaskNodes!: pulumi.Output<outputs.Mrs.ClusterStreamingTaskNodes | undefined>;
+    declare public readonly streamingTaskNodes: pulumi.Output<outputs.Mrs.ClusterStreamingTaskNodes | undefined>;
     /**
      * Specifies the network ID of a subnet which bound to the MapReduce cluster.
      * Changing this will create a new MapReduce cluster resource.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the cluster.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the template used for node deployment when the cluster type is
      * CUSTOM.
@@ -569,30 +569,30 @@ export class Cluster extends pulumi.CustomResource {
      * and data instances are deployed in different node groups. This deployment mode is applicable to a cluster with more
      * than 500 nodes. Components can be deployed separately, which can be used for a larger cluster scale.
      */
-    public readonly templateId!: pulumi.Output<string | undefined>;
+    declare public readonly templateId: pulumi.Output<string | undefined>;
     /**
      * The total number of nodes deployed in the cluster.
      */
-    public /*out*/ readonly totalNodeNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalNodeNumber: pulumi.Output<number>;
     /**
      * Specifies the type of the MapReduce cluster. The valid values are *ANALYSIS*,
      * *STREAMING* and *MIXED*, default to *ANALYSIS*. Changing this will create a new MapReduce cluster resource.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The cluster update time, in RFC-3339 format.
      */
-    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
      * Specifies the MapReduce cluster version. The valid values are `MRS 2.1.0`
      * , `MRS 3.0.5` and `MRS 3.1.0`. Changing this will create a new MapReduce cluster resource.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * Specifies the ID of the VPC which bound to the MapReduce cluster. Changing
      * this will create a new MapReduce cluster resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -607,102 +607,102 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
-            resourceInputs["analysisCoreNodes"] = state ? state.analysisCoreNodes : undefined;
-            resourceInputs["analysisTaskNodes"] = state ? state.analysisTaskNodes : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["bootstrapScripts"] = state ? state.bootstrapScripts : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["chargingStartTime"] = state ? state.chargingStartTime : undefined;
-            resourceInputs["componentConfigs"] = state ? state.componentConfigs : undefined;
-            resourceInputs["componentLists"] = state ? state.componentLists : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["customNodes"] = state ? state.customNodes : undefined;
-            resourceInputs["eipId"] = state ? state.eipId : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["externalDatasources"] = state ? state.externalDatasources : undefined;
-            resourceInputs["logCollection"] = state ? state.logCollection : undefined;
-            resourceInputs["managerAdminPass"] = state ? state.managerAdminPass : undefined;
-            resourceInputs["masterNodeIp"] = state ? state.masterNodeIp : undefined;
-            resourceInputs["masterNodes"] = state ? state.masterNodes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeAdminPass"] = state ? state.nodeAdminPass : undefined;
-            resourceInputs["nodeKeyPair"] = state ? state.nodeKeyPair : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["privateIp"] = state ? state.privateIp : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["safeMode"] = state ? state.safeMode : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["smnNotify"] = state ? state.smnNotify : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["streamingCoreNodes"] = state ? state.streamingCoreNodes : undefined;
-            resourceInputs["streamingTaskNodes"] = state ? state.streamingTaskNodes : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["templateId"] = state ? state.templateId : undefined;
-            resourceInputs["totalNodeNumber"] = state ? state.totalNodeNumber : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["analysisCoreNodes"] = state?.analysisCoreNodes;
+            resourceInputs["analysisTaskNodes"] = state?.analysisTaskNodes;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["bootstrapScripts"] = state?.bootstrapScripts;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["chargingStartTime"] = state?.chargingStartTime;
+            resourceInputs["componentConfigs"] = state?.componentConfigs;
+            resourceInputs["componentLists"] = state?.componentLists;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["customNodes"] = state?.customNodes;
+            resourceInputs["eipId"] = state?.eipId;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["externalDatasources"] = state?.externalDatasources;
+            resourceInputs["logCollection"] = state?.logCollection;
+            resourceInputs["managerAdminPass"] = state?.managerAdminPass;
+            resourceInputs["masterNodeIp"] = state?.masterNodeIp;
+            resourceInputs["masterNodes"] = state?.masterNodes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeAdminPass"] = state?.nodeAdminPass;
+            resourceInputs["nodeKeyPair"] = state?.nodeKeyPair;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["privateIp"] = state?.privateIp;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["safeMode"] = state?.safeMode;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["smnNotify"] = state?.smnNotify;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["streamingCoreNodes"] = state?.streamingCoreNodes;
+            resourceInputs["streamingTaskNodes"] = state?.streamingTaskNodes;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["templateId"] = state?.templateId;
+            resourceInputs["totalNodeNumber"] = state?.totalNodeNumber;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updateTime"] = state?.updateTime;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.componentLists === undefined) && !opts.urn) {
+            if (args?.componentLists === undefined && !opts.urn) {
                 throw new Error("Missing required property 'componentLists'");
             }
-            if ((!args || args.managerAdminPass === undefined) && !opts.urn) {
+            if (args?.managerAdminPass === undefined && !opts.urn) {
                 throw new Error("Missing required property 'managerAdminPass'");
             }
-            if ((!args || args.masterNodes === undefined) && !opts.urn) {
+            if (args?.masterNodes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'masterNodes'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["analysisCoreNodes"] = args ? args.analysisCoreNodes : undefined;
-            resourceInputs["analysisTaskNodes"] = args ? args.analysisTaskNodes : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["bootstrapScripts"] = args ? args.bootstrapScripts : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["componentConfigs"] = args ? args.componentConfigs : undefined;
-            resourceInputs["componentLists"] = args ? args.componentLists : undefined;
-            resourceInputs["customNodes"] = args ? args.customNodes : undefined;
-            resourceInputs["eipId"] = args ? args.eipId : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["externalDatasources"] = args ? args.externalDatasources : undefined;
-            resourceInputs["logCollection"] = args ? args.logCollection : undefined;
+            resourceInputs["analysisCoreNodes"] = args?.analysisCoreNodes;
+            resourceInputs["analysisTaskNodes"] = args?.analysisTaskNodes;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["bootstrapScripts"] = args?.bootstrapScripts;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["componentConfigs"] = args?.componentConfigs;
+            resourceInputs["componentLists"] = args?.componentLists;
+            resourceInputs["customNodes"] = args?.customNodes;
+            resourceInputs["eipId"] = args?.eipId;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["externalDatasources"] = args?.externalDatasources;
+            resourceInputs["logCollection"] = args?.logCollection;
             resourceInputs["managerAdminPass"] = args?.managerAdminPass ? pulumi.secret(args.managerAdminPass) : undefined;
-            resourceInputs["masterNodes"] = args ? args.masterNodes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["masterNodes"] = args?.masterNodes;
+            resourceInputs["name"] = args?.name;
             resourceInputs["nodeAdminPass"] = args?.nodeAdminPass ? pulumi.secret(args.nodeAdminPass) : undefined;
-            resourceInputs["nodeKeyPair"] = args ? args.nodeKeyPair : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["publicIp"] = args ? args.publicIp : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["safeMode"] = args ? args.safeMode : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["smnNotify"] = args ? args.smnNotify : undefined;
-            resourceInputs["streamingCoreNodes"] = args ? args.streamingCoreNodes : undefined;
-            resourceInputs["streamingTaskNodes"] = args ? args.streamingTaskNodes : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["templateId"] = args ? args.templateId : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["nodeKeyPair"] = args?.nodeKeyPair;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["publicIp"] = args?.publicIp;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["safeMode"] = args?.safeMode;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["smnNotify"] = args?.smnNotify;
+            resourceInputs["streamingCoreNodes"] = args?.streamingCoreNodes;
+            resourceInputs["streamingTaskNodes"] = args?.streamingTaskNodes;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["templateId"] = args?.templateId;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["chargingStartTime"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["masterNodeIp"] = undefined /*out*/;

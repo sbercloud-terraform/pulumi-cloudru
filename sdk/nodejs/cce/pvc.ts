@@ -145,52 +145,52 @@ export class Pvc extends pulumi.CustomResource {
      * + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
      * + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
      */
-    public readonly accessModes!: pulumi.Output<string[]>;
+    declare public readonly accessModes: pulumi.Output<string[]>;
     /**
      * Specifies the unstructured key value map for external parameters.
      * Changing this will create a new PVC resource.
      */
-    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly annotations: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the cluster ID to which the CCE PVC belongs.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The server time when PVC was created.
      */
-    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
      * Specifies the map of string keys and values for labels.
      * Changing this will create a new PVC resource.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the unique name of the PVC resource. This parameter can contain a
      * maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
      * lowercase letters and digits. Changing this will create a new PVC resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the namespace to logically divide your containers into different
      * group. Changing this will create a new PVC resource.
      */
-    public readonly namespace!: pulumi.Output<string>;
+    declare public readonly namespace: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the PVC resource.
      * If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The current phase of the PVC.
      * + **Pending**: Not yet bound.
      * + **Bound**: Already bound.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the minimum amount of storage resources required.
      * Changing this creates a new PVC resource.
      */
-    public readonly storage!: pulumi.Output<string>;
+    declare public readonly storage: pulumi.Output<string>;
     /**
      * Specifies the type of the storage bound to the CCE PVC.
      * The valid values are as follows:
@@ -199,7 +199,7 @@ export class Pvc extends pulumi.CustomResource {
      * + **csi-nas**: SFS.
      * + **csi-sfsturbo**: SFS-Turbo.
      */
-    public readonly storageClassName!: pulumi.Output<string>;
+    declare public readonly storageClassName: pulumi.Output<string>;
 
     /**
      * Create a Pvc resource with the given unique name, arguments, and options.
@@ -214,43 +214,43 @@ export class Pvc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PvcState | undefined;
-            resourceInputs["accessModes"] = state ? state.accessModes : undefined;
-            resourceInputs["annotations"] = state ? state.annotations : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namespace"] = state ? state.namespace : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["storageClassName"] = state ? state.storageClassName : undefined;
+            resourceInputs["accessModes"] = state?.accessModes;
+            resourceInputs["annotations"] = state?.annotations;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namespace"] = state?.namespace;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["storageClassName"] = state?.storageClassName;
         } else {
             const args = argsOrState as PvcArgs | undefined;
-            if ((!args || args.accessModes === undefined) && !opts.urn) {
+            if (args?.accessModes === undefined && !opts.urn) {
                 throw new Error("Missing required property 'accessModes'");
             }
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.namespace === undefined) && !opts.urn) {
+            if (args?.namespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if ((!args || args.storage === undefined) && !opts.urn) {
+            if (args?.storage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storage'");
             }
-            if ((!args || args.storageClassName === undefined) && !opts.urn) {
+            if (args?.storageClassName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageClassName'");
             }
-            resourceInputs["accessModes"] = args ? args.accessModes : undefined;
-            resourceInputs["annotations"] = args ? args.annotations : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["namespace"] = args ? args.namespace : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["storageClassName"] = args ? args.storageClassName : undefined;
+            resourceInputs["accessModes"] = args?.accessModes;
+            resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["namespace"] = args?.namespace;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["storageClassName"] = args?.storageClassName;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

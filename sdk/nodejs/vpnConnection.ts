@@ -114,31 +114,31 @@ export class VpnConnection extends pulumi.CustomResource {
     /**
      * The create time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The customer gateway ID.
      */
-    public readonly customerGatewayId!: pulumi.Output<string>;
+    declare public readonly customerGatewayId: pulumi.Output<string>;
     /**
      * Whether to enable NQA check. Defaults to **false**.
      */
-    public readonly enableNqa!: pulumi.Output<boolean>;
+    declare public readonly enableNqa: pulumi.Output<boolean>;
     /**
      * The enterprise project ID.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * The VPN gateway ID.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly gatewayId!: pulumi.Output<string>;
+    declare public readonly gatewayId: pulumi.Output<string>;
     /**
      * The VPN gateway IP ID.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly gatewayIp!: pulumi.Output<string>;
+    declare public readonly gatewayIp: pulumi.Output<string>;
     /**
      * Specifies the mode of the VPN connection.
      * The valid values are **master** and **slave**, defaults to **master**.
@@ -154,67 +154,67 @@ export class VpnConnection extends pulumi.CustomResource {
      * <a name="Connection_CreateRequestIkePolicy"></a>
      * The `ikepolicy` block supports:
      */
-    public readonly haRole!: pulumi.Output<string>;
+    declare public readonly haRole: pulumi.Output<string>;
     /**
      * The IKE policy configurations.
      * The ikepolicy structure is documented below.
      */
-    public readonly ikepolicy!: pulumi.Output<outputs.VpnConnectionIkepolicy>;
+    declare public readonly ikepolicy: pulumi.Output<outputs.VpnConnectionIkepolicy>;
     /**
      * The IPsec policy configurations.
      * The ipsecpolicy structure is documented below.
      */
-    public readonly ipsecpolicy!: pulumi.Output<outputs.VpnConnectionIpsecpolicy>;
+    declare public readonly ipsecpolicy: pulumi.Output<outputs.VpnConnectionIpsecpolicy>;
     /**
      * The name of the VPN connection.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The CIDR list of customer subnets. This parameter must be empty
      * when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
      * This parameter is mandatory in other scenarios.
      */
-    public readonly peerSubnets!: pulumi.Output<string[]>;
+    declare public readonly peerSubnets: pulumi.Output<string[]>;
     /**
      * The policy rules. Only works when vpnType is set to **policy**
      * The policyRules structure is documented below.
      */
-    public readonly policyRules!: pulumi.Output<outputs.VpnConnectionPolicyRule[]>;
+    declare public readonly policyRules: pulumi.Output<outputs.VpnConnectionPolicyRule[]>;
     /**
      * The pre-shared key.
      */
-    public readonly psk!: pulumi.Output<string>;
+    declare public readonly psk: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The status of the VPN connection.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the tags of the VPN connection.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The local tunnel address.
      */
-    public readonly tunnelLocalAddress!: pulumi.Output<string>;
+    declare public readonly tunnelLocalAddress: pulumi.Output<string>;
     /**
      * The peer tunnel address.
      */
-    public readonly tunnelPeerAddress!: pulumi.Output<string>;
+    declare public readonly tunnelPeerAddress: pulumi.Output<string>;
     /**
      * The update time.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The connection type. The value can be **policy**, **static** or **bgp**.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly vpnType!: pulumi.Output<string>;
+    declare public readonly vpnType: pulumi.Output<string>;
 
     /**
      * Create a VpnConnection resource with the given unique name, arguments, and options.
@@ -229,60 +229,60 @@ export class VpnConnection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnConnectionState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customerGatewayId"] = state ? state.customerGatewayId : undefined;
-            resourceInputs["enableNqa"] = state ? state.enableNqa : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["gatewayId"] = state ? state.gatewayId : undefined;
-            resourceInputs["gatewayIp"] = state ? state.gatewayIp : undefined;
-            resourceInputs["haRole"] = state ? state.haRole : undefined;
-            resourceInputs["ikepolicy"] = state ? state.ikepolicy : undefined;
-            resourceInputs["ipsecpolicy"] = state ? state.ipsecpolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["peerSubnets"] = state ? state.peerSubnets : undefined;
-            resourceInputs["policyRules"] = state ? state.policyRules : undefined;
-            resourceInputs["psk"] = state ? state.psk : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tunnelLocalAddress"] = state ? state.tunnelLocalAddress : undefined;
-            resourceInputs["tunnelPeerAddress"] = state ? state.tunnelPeerAddress : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["vpnType"] = state ? state.vpnType : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customerGatewayId"] = state?.customerGatewayId;
+            resourceInputs["enableNqa"] = state?.enableNqa;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["gatewayId"] = state?.gatewayId;
+            resourceInputs["gatewayIp"] = state?.gatewayIp;
+            resourceInputs["haRole"] = state?.haRole;
+            resourceInputs["ikepolicy"] = state?.ikepolicy;
+            resourceInputs["ipsecpolicy"] = state?.ipsecpolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["peerSubnets"] = state?.peerSubnets;
+            resourceInputs["policyRules"] = state?.policyRules;
+            resourceInputs["psk"] = state?.psk;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tunnelLocalAddress"] = state?.tunnelLocalAddress;
+            resourceInputs["tunnelPeerAddress"] = state?.tunnelPeerAddress;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["vpnType"] = state?.vpnType;
         } else {
             const args = argsOrState as VpnConnectionArgs | undefined;
-            if ((!args || args.customerGatewayId === undefined) && !opts.urn) {
+            if (args?.customerGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'customerGatewayId'");
             }
-            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+            if (args?.gatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.gatewayIp === undefined) && !opts.urn) {
+            if (args?.gatewayIp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'gatewayIp'");
             }
-            if ((!args || args.psk === undefined) && !opts.urn) {
+            if (args?.psk === undefined && !opts.urn) {
                 throw new Error("Missing required property 'psk'");
             }
-            if ((!args || args.vpnType === undefined) && !opts.urn) {
+            if (args?.vpnType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpnType'");
             }
-            resourceInputs["customerGatewayId"] = args ? args.customerGatewayId : undefined;
-            resourceInputs["enableNqa"] = args ? args.enableNqa : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["gatewayId"] = args ? args.gatewayId : undefined;
-            resourceInputs["gatewayIp"] = args ? args.gatewayIp : undefined;
-            resourceInputs["haRole"] = args ? args.haRole : undefined;
-            resourceInputs["ikepolicy"] = args ? args.ikepolicy : undefined;
-            resourceInputs["ipsecpolicy"] = args ? args.ipsecpolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["peerSubnets"] = args ? args.peerSubnets : undefined;
-            resourceInputs["policyRules"] = args ? args.policyRules : undefined;
-            resourceInputs["psk"] = args ? args.psk : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tunnelLocalAddress"] = args ? args.tunnelLocalAddress : undefined;
-            resourceInputs["tunnelPeerAddress"] = args ? args.tunnelPeerAddress : undefined;
-            resourceInputs["vpnType"] = args ? args.vpnType : undefined;
+            resourceInputs["customerGatewayId"] = args?.customerGatewayId;
+            resourceInputs["enableNqa"] = args?.enableNqa;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["gatewayId"] = args?.gatewayId;
+            resourceInputs["gatewayIp"] = args?.gatewayIp;
+            resourceInputs["haRole"] = args?.haRole;
+            resourceInputs["ikepolicy"] = args?.ikepolicy;
+            resourceInputs["ipsecpolicy"] = args?.ipsecpolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["peerSubnets"] = args?.peerSubnets;
+            resourceInputs["policyRules"] = args?.policyRules;
+            resourceInputs["psk"] = args?.psk;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tunnelLocalAddress"] = args?.tunnelLocalAddress;
+            resourceInputs["tunnelPeerAddress"] = args?.tunnelPeerAddress;
+            resourceInputs["vpnType"] = args?.vpnType;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;

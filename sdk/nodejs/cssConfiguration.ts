@@ -64,61 +64,61 @@ export class CssConfiguration extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Whether to return the Access-Control-Allow-Credentials of
      * the header during cross-domain access.
      * The value can be **true** or **false**. Default value: **false**.
      */
-    public readonly httpCorsAllowCredetials!: pulumi.Output<string>;
+    declare public readonly httpCorsAllowCredetials: pulumi.Output<string>;
     /**
      * Headers allowed for cross-domain access.  
      * Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
      * Use commas (,) and spaces to separate headers.
      */
-    public readonly httpCorsAllowHeaders!: pulumi.Output<string>;
+    declare public readonly httpCorsAllowHeaders: pulumi.Output<string>;
     /**
      * Methods allowed for cross-domain access.  
      * Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
      * Use commas (,) and spaces to separate methods.
      */
-    public readonly httpCorsAllowMethods!: pulumi.Output<string>;
+    declare public readonly httpCorsAllowMethods: pulumi.Output<string>;
     /**
      * Origin IP address allowed for cross-domain access, for example, **122.122.122.122:9200**.
      */
-    public readonly httpCorsAllowOrigin!: pulumi.Output<string>;
+    declare public readonly httpCorsAllowOrigin: pulumi.Output<string>;
     /**
      * Whether to allow cross-domain access.  
      * The value can be **true** or **false**. Default value: **false**.
      */
-    public readonly httpCorsEnabled!: pulumi.Output<string>;
+    declare public readonly httpCorsEnabled: pulumi.Output<string>;
     /**
      * Cache duration of the browser. The cache is automatically cleared
      * after the time range you specify.
      * Unit: s, Default value: **1,728,000**.
      */
-    public readonly httpCorsMaxAge!: pulumi.Output<string>;
+    declare public readonly httpCorsMaxAge: pulumi.Output<string>;
     /**
      * Cache size in the query phase. Value range: **1%** to **100%**.  
      * Unit: %, Default value: **10%**.
      */
-    public readonly indicesQueriesCacheSize!: pulumi.Output<string>;
+    declare public readonly indicesQueriesCacheSize: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Configured for migrating data from the current cluster to
      * the target cluster through the reindex API.
      * The example value is **122.122.122.122:9200**.
      */
-    public readonly reindexRemoteWhitelist!: pulumi.Output<string>;
+    declare public readonly reindexRemoteWhitelist: pulumi.Output<string>;
     /**
      * Queue size in the force merge thread pool.  
      * Default value: **1**.
      */
-    public readonly threadPoolForceMergeSize!: pulumi.Output<string>;
+    declare public readonly threadPoolForceMergeSize: pulumi.Output<string>;
 
     /**
      * Create a CssConfiguration resource with the given unique name, arguments, and options.
@@ -133,33 +133,33 @@ export class CssConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CssConfigurationState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["httpCorsAllowCredetials"] = state ? state.httpCorsAllowCredetials : undefined;
-            resourceInputs["httpCorsAllowHeaders"] = state ? state.httpCorsAllowHeaders : undefined;
-            resourceInputs["httpCorsAllowMethods"] = state ? state.httpCorsAllowMethods : undefined;
-            resourceInputs["httpCorsAllowOrigin"] = state ? state.httpCorsAllowOrigin : undefined;
-            resourceInputs["httpCorsEnabled"] = state ? state.httpCorsEnabled : undefined;
-            resourceInputs["httpCorsMaxAge"] = state ? state.httpCorsMaxAge : undefined;
-            resourceInputs["indicesQueriesCacheSize"] = state ? state.indicesQueriesCacheSize : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["reindexRemoteWhitelist"] = state ? state.reindexRemoteWhitelist : undefined;
-            resourceInputs["threadPoolForceMergeSize"] = state ? state.threadPoolForceMergeSize : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["httpCorsAllowCredetials"] = state?.httpCorsAllowCredetials;
+            resourceInputs["httpCorsAllowHeaders"] = state?.httpCorsAllowHeaders;
+            resourceInputs["httpCorsAllowMethods"] = state?.httpCorsAllowMethods;
+            resourceInputs["httpCorsAllowOrigin"] = state?.httpCorsAllowOrigin;
+            resourceInputs["httpCorsEnabled"] = state?.httpCorsEnabled;
+            resourceInputs["httpCorsMaxAge"] = state?.httpCorsMaxAge;
+            resourceInputs["indicesQueriesCacheSize"] = state?.indicesQueriesCacheSize;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["reindexRemoteWhitelist"] = state?.reindexRemoteWhitelist;
+            resourceInputs["threadPoolForceMergeSize"] = state?.threadPoolForceMergeSize;
         } else {
             const args = argsOrState as CssConfigurationArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["httpCorsAllowCredetials"] = args ? args.httpCorsAllowCredetials : undefined;
-            resourceInputs["httpCorsAllowHeaders"] = args ? args.httpCorsAllowHeaders : undefined;
-            resourceInputs["httpCorsAllowMethods"] = args ? args.httpCorsAllowMethods : undefined;
-            resourceInputs["httpCorsAllowOrigin"] = args ? args.httpCorsAllowOrigin : undefined;
-            resourceInputs["httpCorsEnabled"] = args ? args.httpCorsEnabled : undefined;
-            resourceInputs["httpCorsMaxAge"] = args ? args.httpCorsMaxAge : undefined;
-            resourceInputs["indicesQueriesCacheSize"] = args ? args.indicesQueriesCacheSize : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["reindexRemoteWhitelist"] = args ? args.reindexRemoteWhitelist : undefined;
-            resourceInputs["threadPoolForceMergeSize"] = args ? args.threadPoolForceMergeSize : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["httpCorsAllowCredetials"] = args?.httpCorsAllowCredetials;
+            resourceInputs["httpCorsAllowHeaders"] = args?.httpCorsAllowHeaders;
+            resourceInputs["httpCorsAllowMethods"] = args?.httpCorsAllowMethods;
+            resourceInputs["httpCorsAllowOrigin"] = args?.httpCorsAllowOrigin;
+            resourceInputs["httpCorsEnabled"] = args?.httpCorsEnabled;
+            resourceInputs["httpCorsMaxAge"] = args?.httpCorsMaxAge;
+            resourceInputs["indicesQueriesCacheSize"] = args?.indicesQueriesCacheSize;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["reindexRemoteWhitelist"] = args?.reindexRemoteWhitelist;
+            resourceInputs["threadPoolForceMergeSize"] = args?.threadPoolForceMergeSize;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(CssConfiguration.__pulumiType, name, resourceInputs, opts);

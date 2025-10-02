@@ -35,19 +35,19 @@ export class ThrottlingPolicyAssociate extends pulumi.CustomResource {
     /**
      * The ID of the dedicated instance to which the APIs and the throttling policy belongs.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The ID of the throttling policy.
      */
-    public readonly policyId!: pulumi.Output<string>;
+    declare public readonly policyId: pulumi.Output<string>;
     /**
      * The publish IDs corresponding to the APIs bound by the throttling policy.
      */
-    public readonly publishIds!: pulumi.Output<string[]>;
+    declare public readonly publishIds: pulumi.Output<string[]>;
     /**
      * The region where the dedicated instance and the throttling policy are located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a ThrottlingPolicyAssociate resource with the given unique name, arguments, and options.
@@ -62,25 +62,25 @@ export class ThrottlingPolicyAssociate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ThrottlingPolicyAssociateState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["publishIds"] = state ? state.publishIds : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["publishIds"] = state?.publishIds;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as ThrottlingPolicyAssociateArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.policyId === undefined) && !opts.urn) {
+            if (args?.policyId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.publishIds === undefined) && !opts.urn) {
+            if (args?.publishIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publishIds'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["publishIds"] = args ? args.publishIds : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["publishIds"] = args?.publishIds;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ThrottlingPolicyAssociate.__pulumiType, name, resourceInputs, opts);

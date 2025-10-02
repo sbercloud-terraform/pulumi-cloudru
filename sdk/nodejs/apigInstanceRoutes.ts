@@ -35,15 +35,15 @@ export class ApigInstanceRoutes extends pulumi.CustomResource {
     /**
      * The ID of the dedicated instance to which the routes belong.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The configuration of the next hop routes.
      */
-    public readonly nexthops!: pulumi.Output<string[]>;
+    declare public readonly nexthops: pulumi.Output<string[]>;
     /**
      * The region where the dedicated instance and routes are located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a ApigInstanceRoutes resource with the given unique name, arguments, and options.
@@ -58,20 +58,20 @@ export class ApigInstanceRoutes extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigInstanceRoutesState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["nexthops"] = state ? state.nexthops : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["nexthops"] = state?.nexthops;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as ApigInstanceRoutesArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.nexthops === undefined) && !opts.urn) {
+            if (args?.nexthops === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nexthops'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["nexthops"] = args ? args.nexthops : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["nexthops"] = args?.nexthops;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ApigInstanceRoutes.__pulumiType, name, resourceInputs, opts);

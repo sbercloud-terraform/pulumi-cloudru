@@ -78,45 +78,45 @@ export class SmnSubscription extends pulumi.CustomResource {
      * the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
      * + **For a functiongraph subscription**, the endpoint is a workflow ID.
      */
-    public readonly endpoint!: pulumi.Output<string>;
-    public readonly extension!: pulumi.Output<outputs.SmnSubscriptionExtension>;
+    declare public readonly endpoint: pulumi.Output<string>;
+    declare public readonly extension: pulumi.Output<outputs.SmnSubscriptionExtension>;
     /**
      * The message filter policies of a subscriber.
      */
-    public /*out*/ readonly filterPolicies!: pulumi.Output<outputs.SmnSubscriptionFilterPolicy[]>;
+    declare public /*out*/ readonly filterPolicies: pulumi.Output<outputs.SmnSubscriptionFilterPolicy[]>;
     /**
      * Project ID of the topic creator.
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * Protocol of the message endpoint. Currently, email,
      * sms, http, and https are supported.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Remark information. The remarks must be a UTF-8-coded
      * character string containing 128 bytes.
      */
-    public readonly remark!: pulumi.Output<string | undefined>;
+    declare public readonly remark: pulumi.Output<string | undefined>;
     /**
      * Subscription status.
      * + **0**: indicates that the subscription is not confirmed.
      * + **1**: indicates that the subscription is confirmed.
      * + **3**: indicates that the subscription is canceled.
      */
-    public /*out*/ readonly status!: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<number>;
     /**
      * Resource identifier of a subscription, which is unique.
      */
-    public /*out*/ readonly subscriptionUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly subscriptionUrn: pulumi.Output<string>;
     /**
      * Resource identifier of a topic, which is unique.
      */
-    public readonly topicUrn!: pulumi.Output<string>;
+    declare public readonly topicUrn: pulumi.Output<string>;
 
     /**
      * Create a SmnSubscription resource with the given unique name, arguments, and options.
@@ -131,33 +131,33 @@ export class SmnSubscription extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SmnSubscriptionState | undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["extension"] = state ? state.extension : undefined;
-            resourceInputs["filterPolicies"] = state ? state.filterPolicies : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["remark"] = state ? state.remark : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subscriptionUrn"] = state ? state.subscriptionUrn : undefined;
-            resourceInputs["topicUrn"] = state ? state.topicUrn : undefined;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["extension"] = state?.extension;
+            resourceInputs["filterPolicies"] = state?.filterPolicies;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["remark"] = state?.remark;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subscriptionUrn"] = state?.subscriptionUrn;
+            resourceInputs["topicUrn"] = state?.topicUrn;
         } else {
             const args = argsOrState as SmnSubscriptionArgs | undefined;
-            if ((!args || args.endpoint === undefined) && !opts.urn) {
+            if (args?.endpoint === undefined && !opts.urn) {
                 throw new Error("Missing required property 'endpoint'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.topicUrn === undefined) && !opts.urn) {
+            if (args?.topicUrn === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topicUrn'");
             }
-            resourceInputs["endpoint"] = args ? args.endpoint : undefined;
-            resourceInputs["extension"] = args ? args.extension : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["remark"] = args ? args.remark : undefined;
-            resourceInputs["topicUrn"] = args ? args.topicUrn : undefined;
+            resourceInputs["endpoint"] = args?.endpoint;
+            resourceInputs["extension"] = args?.extension;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["remark"] = args?.remark;
+            resourceInputs["topicUrn"] = args?.topicUrn;
             resourceInputs["filterPolicies"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

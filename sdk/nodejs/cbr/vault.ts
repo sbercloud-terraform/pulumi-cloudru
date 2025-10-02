@@ -139,22 +139,22 @@ export class Vault extends pulumi.CustomResource {
     /**
      * The allocated capacity of the vault, in GB.
      */
-    public /*out*/ readonly allocated!: pulumi.Output<number>;
+    declare public /*out*/ readonly allocated: pulumi.Output<number>;
     /**
      * Specifies whether automatic association is enabled. Defaults to **false**.
      */
-    public readonly autoBind!: pulumi.Output<boolean>;
+    declare public readonly autoBind: pulumi.Output<boolean>;
     /**
      * Specifies to enable auto capacity expansion for the backup protection type vault.
      * Defaults to **false**.
      *
      * > You cannot configure `autoExpand` if the vault is **prePaid** mode.
      */
-    public readonly autoExpand!: pulumi.Output<boolean>;
+    declare public readonly autoExpand: pulumi.Output<boolean>;
     /**
      * @deprecated Deprecated
      */
-    public readonly autoPay!: pulumi.Output<string | undefined>;
+    declare public readonly autoPay: pulumi.Output<string | undefined>;
     /**
      * Specifies whether auto renew is enabled.
      * Valid values are **true** and **false**. Defaults to **false**.
@@ -162,15 +162,15 @@ export class Vault extends pulumi.CustomResource {
      * <a name="cbrVaultResources"></a>
      * The `resources` block supports:
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * The backup name prefix.
      */
-    public readonly backupNamePrefix!: pulumi.Output<string>;
+    declare public readonly backupNamePrefix: pulumi.Output<string>;
     /**
      * Specifies the tags to filter resources for automatic association with **auto_bind**.
      */
-    public readonly bindRules!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly bindRules: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the charging mode of the vault.
      * The valid values are as follows:
@@ -179,37 +179,37 @@ export class Vault extends pulumi.CustomResource {
      *
      * Changing this will create a new vault.
      */
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * The cloud type of the vault.
      */
-    public readonly cloudType!: pulumi.Output<string>;
+    declare public readonly cloudType: pulumi.Output<string>;
     /**
      * Specifies the backup specifications.
      *
      * Only **server** type vaults support application consistent and defaults to **crash_consistent**.
      * Changing this will create a new vault.
      */
-    public readonly consistentLevel!: pulumi.Output<string | undefined>;
+    declare public readonly consistentLevel: pulumi.Output<string | undefined>;
     /**
      * Specifies a unique ID in UUID format of enterprise project.
      * Changing this will create a new vault.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Specifies whether multiple availability zones are used for backing up.
      * Defaults to **false**.
      */
-    public readonly isMultiAz!: pulumi.Output<boolean>;
+    declare public readonly isMultiAz: pulumi.Output<boolean>;
     /**
      * Locked status of the vault.
      */
-    public readonly locked!: pulumi.Output<boolean>;
+    declare public readonly locked: pulumi.Output<boolean>;
     /**
      * Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
      * characters, which may consist of letters, digits, underscores(_) and hyphens (-).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the charging period of the vault.
      * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
@@ -217,60 +217,60 @@ export class Vault extends pulumi.CustomResource {
      * This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this will create a new vault.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the vault.
      * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
      * Changing this will create a new vault.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The policy details to associate with the CBR vault.
      */
-    public readonly policies!: pulumi.Output<outputs.Cbr.VaultPolicy[]>;
+    declare public readonly policies: pulumi.Output<outputs.Cbr.VaultPolicy[]>;
     /**
      * Specifies a policy to associate with the CBR vault.
      * `policyId` cannot be used with the vault of replicate protection type.
      */
-    public readonly policyId!: pulumi.Output<string | undefined>;
+    declare public readonly policyId: pulumi.Output<string | undefined>;
     /**
      * Specifies the protection type of the CBR vault.
      * The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
      * Changing this will create a new vault.
      */
-    public readonly protectionType!: pulumi.Output<string>;
+    declare public readonly protectionType: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the CBR vault. If omitted, the
      * provider-level region will be used. Changing this will create a new vault.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies an array of one or more resources to attach to the CBR vault.
      * The object structure is documented below.
      */
-    public readonly resources!: pulumi.Output<outputs.Cbr.VaultResource[]>;
+    declare public readonly resources: pulumi.Output<outputs.Cbr.VaultResource[]>;
     /**
      * Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
      *
      * > You cannot update `size` if the vault is **prePaid** mode.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The specification code.
      */
-    public /*out*/ readonly specCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly specCode: pulumi.Output<string>;
     /**
      * The vault status.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The name of the bucket for the vault.
      */
-    public /*out*/ readonly storage!: pulumi.Output<string>;
+    declare public /*out*/ readonly storage: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the CBR vault.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the object type of the CBR vault.
      * Changing this will create a new vault. Vaild values are as follows:
@@ -278,11 +278,11 @@ export class Vault extends pulumi.CustomResource {
      * + **disk** (EVS Disks)
      * + **turbo** (SFS Turbo file systems)
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The used capacity, in GB.
      */
-    public /*out*/ readonly used!: pulumi.Output<number>;
+    declare public /*out*/ readonly used: pulumi.Output<number>;
 
     /**
      * Create a Vault resource with the given unique name, arguments, and options.
@@ -297,68 +297,68 @@ export class Vault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VaultState | undefined;
-            resourceInputs["allocated"] = state ? state.allocated : undefined;
-            resourceInputs["autoBind"] = state ? state.autoBind : undefined;
-            resourceInputs["autoExpand"] = state ? state.autoExpand : undefined;
-            resourceInputs["autoPay"] = state ? state.autoPay : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["backupNamePrefix"] = state ? state.backupNamePrefix : undefined;
-            resourceInputs["bindRules"] = state ? state.bindRules : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["cloudType"] = state ? state.cloudType : undefined;
-            resourceInputs["consistentLevel"] = state ? state.consistentLevel : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["isMultiAz"] = state ? state.isMultiAz : undefined;
-            resourceInputs["locked"] = state ? state.locked : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["policies"] = state ? state.policies : undefined;
-            resourceInputs["policyId"] = state ? state.policyId : undefined;
-            resourceInputs["protectionType"] = state ? state.protectionType : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["specCode"] = state ? state.specCode : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["used"] = state ? state.used : undefined;
+            resourceInputs["allocated"] = state?.allocated;
+            resourceInputs["autoBind"] = state?.autoBind;
+            resourceInputs["autoExpand"] = state?.autoExpand;
+            resourceInputs["autoPay"] = state?.autoPay;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["backupNamePrefix"] = state?.backupNamePrefix;
+            resourceInputs["bindRules"] = state?.bindRules;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["cloudType"] = state?.cloudType;
+            resourceInputs["consistentLevel"] = state?.consistentLevel;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["isMultiAz"] = state?.isMultiAz;
+            resourceInputs["locked"] = state?.locked;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["policies"] = state?.policies;
+            resourceInputs["policyId"] = state?.policyId;
+            resourceInputs["protectionType"] = state?.protectionType;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["specCode"] = state?.specCode;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["used"] = state?.used;
         } else {
             const args = argsOrState as VaultArgs | undefined;
-            if ((!args || args.protectionType === undefined) && !opts.urn) {
+            if (args?.protectionType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protectionType'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["autoBind"] = args ? args.autoBind : undefined;
-            resourceInputs["autoExpand"] = args ? args.autoExpand : undefined;
-            resourceInputs["autoPay"] = args ? args.autoPay : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["backupNamePrefix"] = args ? args.backupNamePrefix : undefined;
-            resourceInputs["bindRules"] = args ? args.bindRules : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["cloudType"] = args ? args.cloudType : undefined;
-            resourceInputs["consistentLevel"] = args ? args.consistentLevel : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["isMultiAz"] = args ? args.isMultiAz : undefined;
-            resourceInputs["locked"] = args ? args.locked : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["policies"] = args ? args.policies : undefined;
-            resourceInputs["policyId"] = args ? args.policyId : undefined;
-            resourceInputs["protectionType"] = args ? args.protectionType : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["autoBind"] = args?.autoBind;
+            resourceInputs["autoExpand"] = args?.autoExpand;
+            resourceInputs["autoPay"] = args?.autoPay;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["backupNamePrefix"] = args?.backupNamePrefix;
+            resourceInputs["bindRules"] = args?.bindRules;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["cloudType"] = args?.cloudType;
+            resourceInputs["consistentLevel"] = args?.consistentLevel;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["isMultiAz"] = args?.isMultiAz;
+            resourceInputs["locked"] = args?.locked;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["policies"] = args?.policies;
+            resourceInputs["policyId"] = args?.policyId;
+            resourceInputs["protectionType"] = args?.protectionType;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resources"] = args?.resources;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["allocated"] = undefined /*out*/;
             resourceInputs["specCode"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

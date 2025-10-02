@@ -73,27 +73,27 @@ export class ElbMonitor extends pulumi.CustomResource {
      * load balancer is used as the destination address of HTTP requests. This parameter is available only when `protocol`
      * is set to **HTTP** or **HTTPS**.
      */
-    public readonly domainName!: pulumi.Output<string>;
+    declare public readonly domainName: pulumi.Output<string>;
     /**
      * Specifies the interval between health checks, in seconds.
      * Value ranges from **1** to **50**.
      */
-    public readonly interval!: pulumi.Output<number>;
+    declare public readonly interval: pulumi.Output<number>;
     /**
      * Specifies the number of consecutive health checks when the health check result of
      * a backend server changes from OFFLINE to ONLINE. Value ranges from **1** to **50**.
      */
-    public readonly maxRetries!: pulumi.Output<number>;
+    declare public readonly maxRetries: pulumi.Output<number>;
     /**
      * Specifies the ID of the backend server group for which the health check is
      * configured. Changing this creates a new monitor.
      */
-    public readonly poolId!: pulumi.Output<string>;
+    declare public readonly poolId: pulumi.Output<string>;
     /**
      * Specifies the port used for the health check. If this parameter is left blank, a port of
      * the backend server will be used by default.  Value ranges from **1** to **65535**.
      */
-    public readonly port!: pulumi.Output<number>;
+    declare public readonly port: pulumi.Output<number>;
     /**
      * Specifies the health check protocol. Value options: **TCP**, **UDP_CONNECT**,
      * **HTTP**, or **HTTPS**.
@@ -103,12 +103,12 @@ export class ElbMonitor extends pulumi.CustomResource {
      * + If the protocol of the backend server is **HTTP**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
      * + If the protocol of the backend server is **HTTPS**, the value can only be **TCP**, **HTTP**, or **HTTPS**.
      */
-    public readonly protocol!: pulumi.Output<string>;
+    declare public readonly protocol: pulumi.Output<string>;
     /**
      * The region in which to create the ELB monitor resource. If omitted, the
      * provider-level region will be used. Changing this creates a new monitor.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the expected HTTP status code. This parameter will take effect only when
      * `protocol` is set to **HTTP** or **HTTPS**. Value options are as follows:
@@ -118,20 +118,20 @@ export class ElbMonitor extends pulumi.CustomResource {
      *
      * Defaults to **200**.
      */
-    public readonly statusCode!: pulumi.Output<string>;
+    declare public readonly statusCode: pulumi.Output<string>;
     /**
      * Specifies the maximum time required for waiting for a response from the health check,
      * in seconds. Value ranges from **1** to **50**. It is recommended that you set the value less than that of
      * parameter `interval`.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
      * Specifies the HTTP request path for the health check. The value must start with a
      * slash (/), can contain letters, digits, hyphens (-), slash (/), periods (.), percent signs (%), hashes(#), and(&)
      * and the special characters: `~!()*[]@$^:',+`, and the default value is **&#47;**. This parameter is available only when
      * `protocol` is set to **HTTP** or **HTTPS**.
      */
-    public readonly urlPath!: pulumi.Output<string>;
+    declare public readonly urlPath: pulumi.Output<string>;
 
     /**
      * Create a ElbMonitor resource with the given unique name, arguments, and options.
@@ -146,43 +146,43 @@ export class ElbMonitor extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ElbMonitorState | undefined;
-            resourceInputs["domainName"] = state ? state.domainName : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["maxRetries"] = state ? state.maxRetries : undefined;
-            resourceInputs["poolId"] = state ? state.poolId : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["statusCode"] = state ? state.statusCode : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["urlPath"] = state ? state.urlPath : undefined;
+            resourceInputs["domainName"] = state?.domainName;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["maxRetries"] = state?.maxRetries;
+            resourceInputs["poolId"] = state?.poolId;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["statusCode"] = state?.statusCode;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["urlPath"] = state?.urlPath;
         } else {
             const args = argsOrState as ElbMonitorArgs | undefined;
-            if ((!args || args.interval === undefined) && !opts.urn) {
+            if (args?.interval === undefined && !opts.urn) {
                 throw new Error("Missing required property 'interval'");
             }
-            if ((!args || args.maxRetries === undefined) && !opts.urn) {
+            if (args?.maxRetries === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxRetries'");
             }
-            if ((!args || args.poolId === undefined) && !opts.urn) {
+            if (args?.poolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'poolId'");
             }
-            if ((!args || args.protocol === undefined) && !opts.urn) {
+            if (args?.protocol === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.timeout === undefined) && !opts.urn) {
+            if (args?.timeout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timeout'");
             }
-            resourceInputs["domainName"] = args ? args.domainName : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["maxRetries"] = args ? args.maxRetries : undefined;
-            resourceInputs["poolId"] = args ? args.poolId : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["statusCode"] = args ? args.statusCode : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["urlPath"] = args ? args.urlPath : undefined;
+            resourceInputs["domainName"] = args?.domainName;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["maxRetries"] = args?.maxRetries;
+            resourceInputs["poolId"] = args?.poolId;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["statusCode"] = args?.statusCode;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["urlPath"] = args?.urlPath;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ElbMonitor.__pulumiType, name, resourceInputs, opts);

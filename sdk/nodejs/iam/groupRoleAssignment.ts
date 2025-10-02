@@ -32,11 +32,11 @@ export class GroupRoleAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === GroupRoleAssignment.__pulumiType;
     }
 
-    public readonly domainId!: pulumi.Output<string | undefined>;
-    public readonly enterpriseProjectId!: pulumi.Output<string | undefined>;
-    public readonly groupId!: pulumi.Output<string>;
-    public readonly projectId!: pulumi.Output<string | undefined>;
-    public readonly roleId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string | undefined>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string | undefined>;
+    declare public readonly groupId: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string | undefined>;
+    declare public readonly roleId: pulumi.Output<string>;
 
     /**
      * Create a GroupRoleAssignment resource with the given unique name, arguments, and options.
@@ -51,24 +51,24 @@ export class GroupRoleAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupRoleAssignmentState | undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["roleId"] = state ? state.roleId : undefined;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["roleId"] = state?.roleId;
         } else {
             const args = argsOrState as GroupRoleAssignmentArgs | undefined;
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
+            if (args?.roleId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["roleId"] = args ? args.roleId : undefined;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["roleId"] = args?.roleId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GroupRoleAssignment.__pulumiType, name, resourceInputs, opts);

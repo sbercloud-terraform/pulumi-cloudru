@@ -37,112 +37,112 @@ export class Instance extends pulumi.CustomResource {
     /**
      * schema: Required; The name list of availability zones for the dedicated instance.
      */
-    public readonly availabilityZones!: pulumi.Output<string[]>;
+    declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
      * schema: Deprecated; The name list of availability zones for the dedicated instance.
      */
-    public readonly availableZones!: pulumi.Output<string[] | undefined>;
+    declare public readonly availableZones: pulumi.Output<string[] | undefined>;
     /**
      * The egress bandwidth size of the dedicated instance.
      */
-    public readonly bandwidthSize!: pulumi.Output<number | undefined>;
+    declare public readonly bandwidthSize: pulumi.Output<number | undefined>;
     /**
      * schema: Deprecated; Time when the dedicated instance is created.
      *
      * @deprecated Use 'created_at' instead
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Time when the dedicated instance is created, in RFC-3339 format.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specified the list of the instance custom ingress ports.
      */
-    public readonly customIngressPorts!: pulumi.Output<outputs.DedicatedApig.InstanceCustomIngressPort[] | undefined>;
+    declare public readonly customIngressPorts: pulumi.Output<outputs.DedicatedApig.InstanceCustomIngressPort[] | undefined>;
     /**
      * The description of the dedicated instance.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The edition of the dedicated instance.
      */
-    public readonly edition!: pulumi.Output<string>;
+    declare public readonly edition: pulumi.Output<string>;
     /**
      * The egress (NAT) public IP address.
      */
-    public /*out*/ readonly egressAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly egressAddress: pulumi.Output<string>;
     /**
      * The EIP ID associated with the dedicated instance.
      */
-    public readonly eipId!: pulumi.Output<string>;
+    declare public readonly eipId: pulumi.Output<string>;
     /**
      * The enterprise project ID to which the dedicated instance belongs.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * The ingress EIP address.
      */
-    public /*out*/ readonly ingressAddress!: pulumi.Output<string>;
-    public readonly ingressBandwidthChargingMode!: pulumi.Output<string | undefined>;
-    public readonly ingressBandwidthSize!: pulumi.Output<number | undefined>;
+    declare public /*out*/ readonly ingressAddress: pulumi.Output<string>;
+    declare public readonly ingressBandwidthChargingMode: pulumi.Output<string | undefined>;
+    declare public readonly ingressBandwidthSize: pulumi.Output<number | undefined>;
     /**
      * Whether public access with an IPv6 address is supported.
      */
-    public readonly ipv6Enable!: pulumi.Output<boolean>;
+    declare public readonly ipv6Enable: pulumi.Output<boolean>;
     /**
      * The type of loadbalancer provider used by the instance.
      */
-    public readonly loadbalancerProvider!: pulumi.Output<string>;
+    declare public readonly loadbalancerProvider: pulumi.Output<string>;
     /**
      * The start time of the maintenance time window.
      */
-    public readonly maintainBegin!: pulumi.Output<string>;
+    declare public readonly maintainBegin: pulumi.Output<string>;
     /**
      * End time of the maintenance time window, 4-hour difference between the start time and end time.
      */
-    public /*out*/ readonly maintainEnd!: pulumi.Output<string>;
+    declare public /*out*/ readonly maintainEnd: pulumi.Output<string>;
     /**
      * The name of the dedicated instance.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region in which to create the dedicated instance resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The ID of the security group to which the dedicated instance belongs to.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Status of the dedicated instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The ID of the VPC subnet used to create the dedicated instance.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * The supported features of the dedicated instance.
      */
-    public /*out*/ readonly supportedFeatures!: pulumi.Output<string[]>;
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public /*out*/ readonly supportedFeatures: pulumi.Output<string[]>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The ID of the VPC used to create the dedicated instance.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
     /**
      * The ingress private IP address of the VPC.
      */
-    public /*out*/ readonly vpcIngressAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcIngressAddress: pulumi.Output<string>;
     /**
      * The address (full name) of the VPC endpoint service.
      */
-    public /*out*/ readonly vpcepServiceAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcepServiceAddress: pulumi.Output<string>;
     /**
      * Name of the VPC endpoint service.
      */
-    public readonly vpcepServiceName!: pulumi.Output<string>;
+    declare public readonly vpcepServiceName: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -157,69 +157,69 @@ export class Instance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["availableZones"] = state ? state.availableZones : undefined;
-            resourceInputs["bandwidthSize"] = state ? state.bandwidthSize : undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customIngressPorts"] = state ? state.customIngressPorts : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["edition"] = state ? state.edition : undefined;
-            resourceInputs["egressAddress"] = state ? state.egressAddress : undefined;
-            resourceInputs["eipId"] = state ? state.eipId : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["ingressAddress"] = state ? state.ingressAddress : undefined;
-            resourceInputs["ingressBandwidthChargingMode"] = state ? state.ingressBandwidthChargingMode : undefined;
-            resourceInputs["ingressBandwidthSize"] = state ? state.ingressBandwidthSize : undefined;
-            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
-            resourceInputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
-            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["supportedFeatures"] = state ? state.supportedFeatures : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
-            resourceInputs["vpcIngressAddress"] = state ? state.vpcIngressAddress : undefined;
-            resourceInputs["vpcepServiceAddress"] = state ? state.vpcepServiceAddress : undefined;
-            resourceInputs["vpcepServiceName"] = state ? state.vpcepServiceName : undefined;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["availableZones"] = state?.availableZones;
+            resourceInputs["bandwidthSize"] = state?.bandwidthSize;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customIngressPorts"] = state?.customIngressPorts;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["edition"] = state?.edition;
+            resourceInputs["egressAddress"] = state?.egressAddress;
+            resourceInputs["eipId"] = state?.eipId;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["ingressAddress"] = state?.ingressAddress;
+            resourceInputs["ingressBandwidthChargingMode"] = state?.ingressBandwidthChargingMode;
+            resourceInputs["ingressBandwidthSize"] = state?.ingressBandwidthSize;
+            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
+            resourceInputs["loadbalancerProvider"] = state?.loadbalancerProvider;
+            resourceInputs["maintainBegin"] = state?.maintainBegin;
+            resourceInputs["maintainEnd"] = state?.maintainEnd;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["supportedFeatures"] = state?.supportedFeatures;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcIngressAddress"] = state?.vpcIngressAddress;
+            resourceInputs["vpcepServiceAddress"] = state?.vpcepServiceAddress;
+            resourceInputs["vpcepServiceName"] = state?.vpcepServiceName;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.edition === undefined) && !opts.urn) {
+            if (args?.edition === undefined && !opts.urn) {
                 throw new Error("Missing required property 'edition'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["availableZones"] = args ? args.availableZones : undefined;
-            resourceInputs["bandwidthSize"] = args ? args.bandwidthSize : undefined;
-            resourceInputs["customIngressPorts"] = args ? args.customIngressPorts : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["edition"] = args ? args.edition : undefined;
-            resourceInputs["eipId"] = args ? args.eipId : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["ingressBandwidthChargingMode"] = args ? args.ingressBandwidthChargingMode : undefined;
-            resourceInputs["ingressBandwidthSize"] = args ? args.ingressBandwidthSize : undefined;
-            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
-            resourceInputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
-            resourceInputs["maintainBegin"] = args ? args.maintainBegin : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
-            resourceInputs["vpcepServiceName"] = args ? args.vpcepServiceName : undefined;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["availableZones"] = args?.availableZones;
+            resourceInputs["bandwidthSize"] = args?.bandwidthSize;
+            resourceInputs["customIngressPorts"] = args?.customIngressPorts;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["edition"] = args?.edition;
+            resourceInputs["eipId"] = args?.eipId;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["ingressBandwidthChargingMode"] = args?.ingressBandwidthChargingMode;
+            resourceInputs["ingressBandwidthSize"] = args?.ingressBandwidthSize;
+            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
+            resourceInputs["loadbalancerProvider"] = args?.loadbalancerProvider;
+            resourceInputs["maintainBegin"] = args?.maintainBegin;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
+            resourceInputs["vpcepServiceName"] = args?.vpcepServiceName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["egressAddress"] = undefined /*out*/;

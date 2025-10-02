@@ -105,21 +105,21 @@ export class FgsDependencyVersion extends pulumi.CustomResource {
     /**
      * The ID of the dependency package corresponding to the version.
      */
-    public /*out*/ readonly dependencyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly dependencyId: pulumi.Output<string>;
     /**
      * Specifies the description of the custom dependency version.  
      * The description can contain a maximum of `512` characters.
      * Changing this will create a new resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The unique ID of the dependency.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The OBS bucket path where the dependency package is located.
      */
-    public readonly link!: pulumi.Output<string>;
+    declare public readonly link: pulumi.Output<string>;
     /**
      * Specifies the name of the custom dependency package to which the version
      * belongs.
@@ -127,16 +127,16 @@ export class FgsDependencyVersion extends pulumi.CustomResource {
      * Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
      * Changing this will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The dependency owner, **public** indicates a public dependency.
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * Specifies the region where the custom dependency version is located.  
      * If omitted, the provider-level region will be used. Changing this will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the runtime of the custom dependency version.
      * The valid values are as follows:
@@ -161,19 +161,19 @@ export class FgsDependencyVersion extends pulumi.CustomResource {
      *
      * Changing this will create a new resource.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * The dependency size, in bytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The dependency package version.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
     /**
      * The ID of the dependency package version.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
 
     /**
      * Create a FgsDependencyVersion resource with the given unique name, arguments, and options.
@@ -188,30 +188,30 @@ export class FgsDependencyVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FgsDependencyVersionState | undefined;
-            resourceInputs["dependencyId"] = state ? state.dependencyId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["link"] = state ? state.link : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
+            resourceInputs["dependencyId"] = state?.dependencyId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["link"] = state?.link;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["versionId"] = state?.versionId;
         } else {
             const args = argsOrState as FgsDependencyVersionArgs | undefined;
-            if ((!args || args.link === undefined) && !opts.urn) {
+            if (args?.link === undefined && !opts.urn) {
                 throw new Error("Missing required property 'link'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["link"] = args ? args.link : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["link"] = args?.link;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["runtime"] = args?.runtime;
             resourceInputs["dependencyId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;

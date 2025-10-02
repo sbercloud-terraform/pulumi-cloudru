@@ -142,11 +142,11 @@ export class Keypair extends pulumi.CustomResource {
     /**
      * The keypair creation time.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the description of keypair.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies encryption mode. The options are as follows:
      * + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
@@ -155,15 +155,15 @@ export class Keypair extends pulumi.CustomResource {
      * > 1. Please configure this field to **default** if the KMS service is not available at the site.
      * <br/>2. Due to API restrictions, `privateKey` must be configured when editing this field.
      */
-    public readonly encryptionType!: pulumi.Output<string>;
+    declare public readonly encryptionType: pulumi.Output<string>;
     /**
      * Fingerprint information about a keypair.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Whether the private key is managed by sberCloud.
      */
-    public /*out*/ readonly isManaged!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly isManaged: pulumi.Output<boolean>;
     /**
      * Specifies the path of the created private key.
      * The private key file (**.pem**) is created only when creating a KPS keypair.
@@ -173,11 +173,11 @@ export class Keypair extends pulumi.CustomResource {
      *
      * ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
      */
-    public readonly keyFile!: pulumi.Output<string>;
+    declare public readonly keyFile: pulumi.Output<string>;
     /**
      * Specifies the KMS key ID to encrypt private keys.
      */
-    public readonly kmsKeyId!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyId: pulumi.Output<string | undefined>;
     /**
      * Specifies the KMS key name to encrypt private keys.
      *
@@ -185,30 +185,30 @@ export class Keypair extends pulumi.CustomResource {
      * <br/>2. Due to API restrictions, `privateKey` and `encryptionType` must be configured when editing `kmsKeyId` or
      * `kmsKeyName`.
      */
-    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    declare public readonly kmsKeyName: pulumi.Output<string | undefined>;
     /**
      * Specifies a unique name for the keypair. The name can contain a maximum of `64`
      * characters, including letters, digits, underscores (_) and hyphens (-).
      * Changing this parameter will create a new resource.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the imported OpenSSH-formatted private key.
      *
      * > 1. Setting this field to empty during editing will clear the private key.
      * <br/>2. Due to API restrictions, `encryptionType` must be configured when configuring this field.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * Specifies the imported OpenSSH-formatted public key.
      * It is required when import keypair. Changing this parameter will create a new resource.
      */
-    public readonly publicKey!: pulumi.Output<string>;
+    declare public readonly publicKey: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the keypair resource. If omitted, the
      * provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the scope of keypair. The options are as follows:
      * + **account**: Tenant-level, available to all users under the same account.
@@ -216,14 +216,14 @@ export class Keypair extends pulumi.CustomResource {
      *
      * Defaults to `user`. Changing this parameter will create a new resource.
      */
-    public readonly scope!: pulumi.Output<string>;
+    declare public readonly scope: pulumi.Output<string>;
     /**
      * Specifies the user ID to which the keypair belongs.
      *
      * > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
      * <br/>2. Due to API restrictions, `privateKey` and `encryptionType` must be configured when editing this field.
      */
-    public readonly userId!: pulumi.Output<string>;
+    declare public readonly userId: pulumi.Output<string>;
 
     /**
      * Create a Keypair resource with the given unique name, arguments, and options.
@@ -238,33 +238,33 @@ export class Keypair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeypairState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["encryptionType"] = state ? state.encryptionType : undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["isManaged"] = state ? state.isManaged : undefined;
-            resourceInputs["keyFile"] = state ? state.keyFile : undefined;
-            resourceInputs["kmsKeyId"] = state ? state.kmsKeyId : undefined;
-            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scope"] = state ? state.scope : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["encryptionType"] = state?.encryptionType;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["isManaged"] = state?.isManaged;
+            resourceInputs["keyFile"] = state?.keyFile;
+            resourceInputs["kmsKeyId"] = state?.kmsKeyId;
+            resourceInputs["kmsKeyName"] = state?.kmsKeyName;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scope"] = state?.scope;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as KeypairArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["encryptionType"] = args ? args.encryptionType : undefined;
-            resourceInputs["keyFile"] = args ? args.keyFile : undefined;
-            resourceInputs["kmsKeyId"] = args ? args.kmsKeyId : undefined;
-            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["encryptionType"] = args?.encryptionType;
+            resourceInputs["keyFile"] = args?.keyFile;
+            resourceInputs["kmsKeyId"] = args?.kmsKeyId;
+            resourceInputs["kmsKeyName"] = args?.kmsKeyName;
+            resourceInputs["name"] = args?.name;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scope"] = args?.scope;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["isManaged"] = undefined /*out*/;

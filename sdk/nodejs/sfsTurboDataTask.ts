@@ -32,17 +32,17 @@ export class SfsTurboDataTask extends pulumi.CustomResource {
         return obj['__pulumiType'] === SfsTurboDataTask.__pulumiType;
     }
 
-    public readonly destPrefix!: pulumi.Output<string | undefined>;
-    public readonly destTarget!: pulumi.Output<string>;
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
-    public /*out*/ readonly message!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly shareId!: pulumi.Output<string>;
-    public readonly srcPrefix!: pulumi.Output<string | undefined>;
-    public readonly srcTarget!: pulumi.Output<string>;
-    public /*out*/ readonly startTime!: pulumi.Output<string>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly destPrefix: pulumi.Output<string | undefined>;
+    declare public readonly destTarget: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
+    declare public /*out*/ readonly message: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly shareId: pulumi.Output<string>;
+    declare public readonly srcPrefix: pulumi.Output<string | undefined>;
+    declare public readonly srcTarget: pulumi.Output<string>;
+    declare public /*out*/ readonly startTime: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a SfsTurboDataTask resource with the given unique name, arguments, and options.
@@ -57,38 +57,38 @@ export class SfsTurboDataTask extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsTurboDataTaskState | undefined;
-            resourceInputs["destPrefix"] = state ? state.destPrefix : undefined;
-            resourceInputs["destTarget"] = state ? state.destTarget : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["message"] = state ? state.message : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["shareId"] = state ? state.shareId : undefined;
-            resourceInputs["srcPrefix"] = state ? state.srcPrefix : undefined;
-            resourceInputs["srcTarget"] = state ? state.srcTarget : undefined;
-            resourceInputs["startTime"] = state ? state.startTime : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["destPrefix"] = state?.destPrefix;
+            resourceInputs["destTarget"] = state?.destTarget;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["message"] = state?.message;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["shareId"] = state?.shareId;
+            resourceInputs["srcPrefix"] = state?.srcPrefix;
+            resourceInputs["srcTarget"] = state?.srcTarget;
+            resourceInputs["startTime"] = state?.startTime;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SfsTurboDataTaskArgs | undefined;
-            if ((!args || args.destTarget === undefined) && !opts.urn) {
+            if (args?.destTarget === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destTarget'");
             }
-            if ((!args || args.shareId === undefined) && !opts.urn) {
+            if (args?.shareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            if ((!args || args.srcTarget === undefined) && !opts.urn) {
+            if (args?.srcTarget === undefined && !opts.urn) {
                 throw new Error("Missing required property 'srcTarget'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["destPrefix"] = args ? args.destPrefix : undefined;
-            resourceInputs["destTarget"] = args ? args.destTarget : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["shareId"] = args ? args.shareId : undefined;
-            resourceInputs["srcPrefix"] = args ? args.srcPrefix : undefined;
-            resourceInputs["srcTarget"] = args ? args.srcTarget : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["destPrefix"] = args?.destPrefix;
+            resourceInputs["destTarget"] = args?.destTarget;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["shareId"] = args?.shareId;
+            resourceInputs["srcPrefix"] = args?.srcPrefix;
+            resourceInputs["srcTarget"] = args?.srcTarget;
+            resourceInputs["type"] = args?.type;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["message"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;

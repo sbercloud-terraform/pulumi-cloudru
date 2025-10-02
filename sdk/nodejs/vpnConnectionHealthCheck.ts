@@ -61,24 +61,24 @@ export class VpnConnectionHealthCheck extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly connectionId!: pulumi.Output<string>;
+    declare public readonly connectionId: pulumi.Output<string>;
     /**
      * The destination IP address of the VPN connection.
      */
-    public /*out*/ readonly destinationIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly destinationIp: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The source IP address of the VPN connection.
      */
-    public /*out*/ readonly sourceIp!: pulumi.Output<string>;
+    declare public /*out*/ readonly sourceIp: pulumi.Output<string>;
     /**
      * The status of the connection health check.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a VpnConnectionHealthCheck resource with the given unique name, arguments, and options.
@@ -93,18 +93,18 @@ export class VpnConnectionHealthCheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpnConnectionHealthCheckState | undefined;
-            resourceInputs["connectionId"] = state ? state.connectionId : undefined;
-            resourceInputs["destinationIp"] = state ? state.destinationIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sourceIp"] = state ? state.sourceIp : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["destinationIp"] = state?.destinationIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sourceIp"] = state?.sourceIp;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as VpnConnectionHealthCheckArgs | undefined;
-            if ((!args || args.connectionId === undefined) && !opts.urn) {
+            if (args?.connectionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionId'");
             }
-            resourceInputs["connectionId"] = args ? args.connectionId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["destinationIp"] = undefined /*out*/;
             resourceInputs["sourceIp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

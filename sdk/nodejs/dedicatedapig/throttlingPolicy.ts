@@ -37,59 +37,59 @@ export class ThrottlingPolicy extends pulumi.CustomResource {
     /**
      * The array of one or more special throttling policies for APP limit.
      */
-    public readonly appThrottles!: pulumi.Output<outputs.DedicatedApig.ThrottlingPolicyAppThrottle[] | undefined>;
+    declare public readonly appThrottles: pulumi.Output<outputs.DedicatedApig.ThrottlingPolicyAppThrottle[] | undefined>;
     /**
      * The creation time of the throttling policy.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The description about the API throttling policy.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the dedicated instance to which the throttling policy belongs.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The maximum number of times an API can be accessed within a specified period..
      */
-    public readonly maxApiRequests!: pulumi.Output<number>;
+    declare public readonly maxApiRequests: pulumi.Output<number>;
     /**
      * The maximum number of times the API can be accessed by an app within the same period.
      */
-    public readonly maxAppRequests!: pulumi.Output<number | undefined>;
+    declare public readonly maxAppRequests: pulumi.Output<number | undefined>;
     /**
      * The maximum number of times the API can be accessed by an IP address within the same period.
      */
-    public readonly maxIpRequests!: pulumi.Output<number | undefined>;
+    declare public readonly maxIpRequests: pulumi.Output<number | undefined>;
     /**
      * The maximum number of times the API can be accessed by a user within the same period.
      */
-    public readonly maxUserRequests!: pulumi.Output<number | undefined>;
+    declare public readonly maxUserRequests: pulumi.Output<number | undefined>;
     /**
      * The name of the throttling policy.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The period of time for limiting the number of API calls.
      */
-    public readonly period!: pulumi.Output<number>;
+    declare public readonly period: pulumi.Output<number>;
     /**
      * The time unit for limiting the number of API calls.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The region where the throttling policy is located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The type of the request throttling policy.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The array of one or more special throttling policies for IAM user limit.
      */
-    public readonly userThrottles!: pulumi.Output<outputs.DedicatedApig.ThrottlingPolicyUserThrottle[] | undefined>;
+    declare public readonly userThrottles: pulumi.Output<outputs.DedicatedApig.ThrottlingPolicyUserThrottle[] | undefined>;
 
     /**
      * Create a ThrottlingPolicy resource with the given unique name, arguments, and options.
@@ -104,44 +104,44 @@ export class ThrottlingPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ThrottlingPolicyState | undefined;
-            resourceInputs["appThrottles"] = state ? state.appThrottles : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["maxApiRequests"] = state ? state.maxApiRequests : undefined;
-            resourceInputs["maxAppRequests"] = state ? state.maxAppRequests : undefined;
-            resourceInputs["maxIpRequests"] = state ? state.maxIpRequests : undefined;
-            resourceInputs["maxUserRequests"] = state ? state.maxUserRequests : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["userThrottles"] = state ? state.userThrottles : undefined;
+            resourceInputs["appThrottles"] = state?.appThrottles;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["maxApiRequests"] = state?.maxApiRequests;
+            resourceInputs["maxAppRequests"] = state?.maxAppRequests;
+            resourceInputs["maxIpRequests"] = state?.maxIpRequests;
+            resourceInputs["maxUserRequests"] = state?.maxUserRequests;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["userThrottles"] = state?.userThrottles;
         } else {
             const args = argsOrState as ThrottlingPolicyArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.maxApiRequests === undefined) && !opts.urn) {
+            if (args?.maxApiRequests === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maxApiRequests'");
             }
-            if ((!args || args.period === undefined) && !opts.urn) {
+            if (args?.period === undefined && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            resourceInputs["appThrottles"] = args ? args.appThrottles : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["maxApiRequests"] = args ? args.maxApiRequests : undefined;
-            resourceInputs["maxAppRequests"] = args ? args.maxAppRequests : undefined;
-            resourceInputs["maxIpRequests"] = args ? args.maxIpRequests : undefined;
-            resourceInputs["maxUserRequests"] = args ? args.maxUserRequests : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["userThrottles"] = args ? args.userThrottles : undefined;
+            resourceInputs["appThrottles"] = args?.appThrottles;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["maxApiRequests"] = args?.maxApiRequests;
+            resourceInputs["maxAppRequests"] = args?.maxAppRequests;
+            resourceInputs["maxIpRequests"] = args?.maxIpRequests;
+            resourceInputs["maxUserRequests"] = args?.maxUserRequests;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["userThrottles"] = args?.userThrottles;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

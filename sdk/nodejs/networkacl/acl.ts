@@ -74,45 +74,45 @@ export class Acl extends pulumi.CustomResource {
      * Specifies the supplementary information about the network ACL. This parameter can
      * contain a maximum of 255 characters and cannot contain angle brackets (< or >).
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The ID of the ingress firewall policy for the network ACL.
      */
-    public /*out*/ readonly inboundPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly inboundPolicyId: pulumi.Output<string>;
     /**
      * A list of the IDs of ingress rules associated with the network ACL.
      */
-    public readonly inboundRules!: pulumi.Output<string[] | undefined>;
+    declare public readonly inboundRules: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
      * which may consist of letters, digits, underscores (_), and hyphens (-).
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The ID of the egress firewall policy for the network ACL.
      */
-    public /*out*/ readonly outboundPolicyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly outboundPolicyId: pulumi.Output<string>;
     /**
      * A list of the IDs of egress rules associated with the network ACL.
      */
-    public readonly outboundRules!: pulumi.Output<string[] | undefined>;
+    declare public readonly outboundRules: pulumi.Output<string[] | undefined>;
     /**
      * A list of the port IDs of the subnet gateway.
      */
-    public /*out*/ readonly ports!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly ports: pulumi.Output<string[]>;
     /**
      * The region in which to create the network acl resource. If omitted, the
      * provider-level region will be used. Changing this creates a new network acl resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The status of the network ACL.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A list of the IDs of networks associated with the network ACL.
      */
-    public readonly subnets!: pulumi.Output<string[] | undefined>;
+    declare public readonly subnets: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Acl resource with the given unique name, arguments, and options.
@@ -127,24 +127,24 @@ export class Acl extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AclState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["inboundPolicyId"] = state ? state.inboundPolicyId : undefined;
-            resourceInputs["inboundRules"] = state ? state.inboundRules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["outboundPolicyId"] = state ? state.outboundPolicyId : undefined;
-            resourceInputs["outboundRules"] = state ? state.outboundRules : undefined;
-            resourceInputs["ports"] = state ? state.ports : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnets"] = state ? state.subnets : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["inboundPolicyId"] = state?.inboundPolicyId;
+            resourceInputs["inboundRules"] = state?.inboundRules;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["outboundPolicyId"] = state?.outboundPolicyId;
+            resourceInputs["outboundRules"] = state?.outboundRules;
+            resourceInputs["ports"] = state?.ports;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnets"] = state?.subnets;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["inboundRules"] = args ? args.inboundRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["outboundRules"] = args ? args.outboundRules : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subnets"] = args ? args.subnets : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["inboundRules"] = args?.inboundRules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["outboundRules"] = args?.outboundRules;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subnets"] = args?.subnets;
             resourceInputs["inboundPolicyId"] = undefined /*out*/;
             resourceInputs["outboundPolicyId"] = undefined /*out*/;
             resourceInputs["ports"] = undefined /*out*/;

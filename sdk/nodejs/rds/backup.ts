@@ -63,11 +63,11 @@ export class Backup extends pulumi.CustomResource {
     /**
      * Whether a DDM instance has been associated.
      */
-    public /*out*/ readonly associatedWithDdm!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly associatedWithDdm: pulumi.Output<boolean>;
     /**
      * Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
      */
-    public /*out*/ readonly beginTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly beginTime: pulumi.Output<string>;
     /**
      * List of self-built Microsoft SQL Server databases that are partially
      * backed up.
@@ -79,37 +79,37 @@ export class Backup extends pulumi.CustomResource {
      * <a name="Backup_BackupDatabase"></a>
      * The `BackupDatabase` block supports:
      */
-    public readonly databases!: pulumi.Output<outputs.Rds.BackupDatabase[]>;
+    declare public readonly databases: pulumi.Output<outputs.Rds.BackupDatabase[]>;
     /**
      * The description about the backup.  
      * It contains a maximum of 256 characters and cannot contain the following special characters: >!<"&'=.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
      */
-    public /*out*/ readonly endTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * Instance ID. This resource works only with Postgre SQL databases.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Database to be backed up for Microsoft SQL Server.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Backup size in KB.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * Backup status.  
      * The options are as follows:
@@ -118,7 +118,7 @@ export class Backup extends pulumi.CustomResource {
      * + **FAILED**: Backup failed.
      * + **DELETING**: Backup being deleted.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -133,26 +133,26 @@ export class Backup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupState | undefined;
-            resourceInputs["associatedWithDdm"] = state ? state.associatedWithDdm : undefined;
-            resourceInputs["beginTime"] = state ? state.beginTime : undefined;
-            resourceInputs["databases"] = state ? state.databases : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["endTime"] = state ? state.endTime : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["associatedWithDdm"] = state?.associatedWithDdm;
+            resourceInputs["beginTime"] = state?.beginTime;
+            resourceInputs["databases"] = state?.databases;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["endTime"] = state?.endTime;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as BackupArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            resourceInputs["databases"] = args ? args.databases : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["databases"] = args?.databases;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
             resourceInputs["associatedWithDdm"] = undefined /*out*/;
             resourceInputs["beginTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;

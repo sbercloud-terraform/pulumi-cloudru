@@ -60,65 +60,65 @@ export class SnatRule extends pulumi.CustomResource {
      * Specifies CIDR, which can be in the format of a network segment or a host IP address.
      * This parameter and `networkId` are alternative. Changing this creates a new snat rule.
      */
-    public readonly cidr!: pulumi.Output<string | undefined>;
+    declare public readonly cidr: pulumi.Output<string | undefined>;
     /**
      * The creation time of the SNAT rule.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the description of the SNAT rule.
      * The value is a string of no more than `255` characters, and angle brackets (<>) are not allowed.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The actual floating IP address.
      */
-    public /*out*/ readonly floatingIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly floatingIpAddress: pulumi.Output<string>;
     /**
      * ID of the floating ip this snat rule connets to.
      * Changing this creates a new snat rule.
      */
-    public readonly floatingIpId!: pulumi.Output<string>;
+    declare public readonly floatingIpId: pulumi.Output<string>;
     /**
      * The frozen EIP associated with the SNAT rule.
      */
-    public /*out*/ readonly freezedIpAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly freezedIpAddress: pulumi.Output<string>;
     /**
      * The global EIP addresses (separated by commas) connected by SNAT rule.
      */
-    public /*out*/ readonly globalEipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly globalEipAddress: pulumi.Output<string>;
     /**
      * The IDs (separated by commas) of global EIPs connected by SNAT rule.
      */
-    public readonly globalEipId!: pulumi.Output<string>;
+    declare public readonly globalEipId: pulumi.Output<string>;
     /**
      * ID of the nat gateway this snat rule belongs to.
      * Changing this creates a new snat rule.
      */
-    public readonly natGatewayId!: pulumi.Output<string>;
+    declare public readonly natGatewayId: pulumi.Output<string>;
     /**
      * @deprecated schema: Deprecated; Use 'subnet_id' instead.
      */
-    public readonly networkId!: pulumi.Output<string | undefined>;
+    declare public readonly networkId: pulumi.Output<string | undefined>;
     /**
      * The region in which to create the snat rule resource. If omitted, the provider-level region will be used. Changing this creates a new snat rule resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the scenario. The valid value is 0 (VPC scenario) and 1 (Direct Connect scenario).
      * Defaults to 0, only `cidr` can be specified over a Direct Connect connection.
      * Changing this creates a new snat rule.
      */
-    public readonly sourceType!: pulumi.Output<number | undefined>;
+    declare public readonly sourceType: pulumi.Output<number | undefined>;
     /**
      * The status of the snat rule.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the network IDs of subnet connected by SNAT rule (VPC side).  
      * This parameter and `cidr` are alternative. Changing this will create a new resource.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
 
     /**
      * Create a SnatRule resource with the given unique name, arguments, and options.
@@ -133,34 +133,34 @@ export class SnatRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnatRuleState | undefined;
-            resourceInputs["cidr"] = state ? state.cidr : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["floatingIpAddress"] = state ? state.floatingIpAddress : undefined;
-            resourceInputs["floatingIpId"] = state ? state.floatingIpId : undefined;
-            resourceInputs["freezedIpAddress"] = state ? state.freezedIpAddress : undefined;
-            resourceInputs["globalEipAddress"] = state ? state.globalEipAddress : undefined;
-            resourceInputs["globalEipId"] = state ? state.globalEipId : undefined;
-            resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sourceType"] = state ? state.sourceType : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
+            resourceInputs["cidr"] = state?.cidr;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["floatingIpAddress"] = state?.floatingIpAddress;
+            resourceInputs["floatingIpId"] = state?.floatingIpId;
+            resourceInputs["freezedIpAddress"] = state?.freezedIpAddress;
+            resourceInputs["globalEipAddress"] = state?.globalEipAddress;
+            resourceInputs["globalEipId"] = state?.globalEipId;
+            resourceInputs["natGatewayId"] = state?.natGatewayId;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sourceType"] = state?.sourceType;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["subnetId"] = state?.subnetId;
         } else {
             const args = argsOrState as SnatRuleArgs | undefined;
-            if ((!args || args.natGatewayId === undefined) && !opts.urn) {
+            if (args?.natGatewayId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'natGatewayId'");
             }
-            resourceInputs["cidr"] = args ? args.cidr : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["floatingIpId"] = args ? args.floatingIpId : undefined;
-            resourceInputs["globalEipId"] = args ? args.globalEipId : undefined;
-            resourceInputs["natGatewayId"] = args ? args.natGatewayId : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["sourceType"] = args ? args.sourceType : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
+            resourceInputs["cidr"] = args?.cidr;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["floatingIpId"] = args?.floatingIpId;
+            resourceInputs["globalEipId"] = args?.globalEipId;
+            resourceInputs["natGatewayId"] = args?.natGatewayId;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["sourceType"] = args?.sourceType;
+            resourceInputs["subnetId"] = args?.subnetId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["floatingIpAddress"] = undefined /*out*/;
             resourceInputs["freezedIpAddress"] = undefined /*out*/;

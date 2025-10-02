@@ -76,28 +76,28 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
     /**
      * Specifies whether auto renew is enabled. Valid values are "true" and "false".
      */
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * Specifies the list of availability zone names, where
      * instance brokers reside and which has available resources.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly availabilityZones!: pulumi.Output<string[]>;
+    declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
      * Indicates the service data address.
      */
-    public /*out*/ readonly brokerAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly brokerAddress: pulumi.Output<string>;
     /**
      * Specifies the broker numbers. It's **required** when instance architecture is
      * **cluster**. Defaults to `1` when instance architecture is **single node**.
      */
-    public readonly brokerNum!: pulumi.Output<number | undefined>;
+    declare public readonly brokerNum: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging mode of the instance. Valid values are *prePaid*
      * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
      */
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * Specifies the instance configs.
      * The configs structure is documented below.
@@ -105,135 +105,135 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      * <a name="dmsConfigs"></a>
      * The `configs` block supports:
      */
-    public readonly configs!: pulumi.Output<outputs.DmsRocketmqInstanceConfig[]>;
+    declare public readonly configs: pulumi.Output<outputs.DmsRocketmqInstanceConfig[]>;
     /**
      * Indicates the Access information of cross-VPC. The structure is documented below.
      */
-    public /*out*/ readonly crossVpcAccesses!: pulumi.Output<outputs.DmsRocketmqInstanceCrossVpcAccess[]>;
+    declare public /*out*/ readonly crossVpcAccesses: pulumi.Output<outputs.DmsRocketmqInstanceCrossVpcAccess[]>;
     /**
      * Specifies the description of the DMS RocketMQ instance.
      * The description can contain a maximum of `1,024` characters.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies whether access control is enabled.
      */
-    public readonly enableAcl!: pulumi.Output<boolean>;
+    declare public readonly enableAcl: pulumi.Output<boolean>;
     /**
      * Specifies whether to enable public access. By default, public access is disabled.
      */
-    public readonly enablePublicip!: pulumi.Output<boolean | undefined>;
+    declare public readonly enablePublicip: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the version of the RocketMQ engine.
      * Valid values are **4.8.0** and **5.x**.
      * Changing this parameter will create a new resource.
      */
-    public readonly engineVersion!: pulumi.Output<string>;
+    declare public readonly engineVersion: pulumi.Output<string>;
     /**
      * Specifies the enterprise project id of the instance.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * Specifies the flavor ID.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * Specifies whether to support IPv6. Defaults to **false**.
      * Changing this parameter will create a new resource.
      */
-    public readonly ipv6Enable!: pulumi.Output<boolean | undefined>;
+    declare public readonly ipv6Enable: pulumi.Output<boolean | undefined>;
     /**
      * Indicates the time at which the maintenance window starts. The format is HH:mm:ss.
      */
-    public /*out*/ readonly maintainBegin!: pulumi.Output<string>;
+    declare public /*out*/ readonly maintainBegin: pulumi.Output<string>;
     /**
      * Indicates the time at which the maintenance window ends. The format is HH:mm:ss.
      */
-    public /*out*/ readonly maintainEnd!: pulumi.Output<string>;
+    declare public /*out*/ readonly maintainEnd: pulumi.Output<string>;
     /**
      * Specifies the config name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates the metadata address.
      */
-    public /*out*/ readonly namesrvAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly namesrvAddress: pulumi.Output<string>;
     /**
      * Indicates whether billing based on new specifications is enabled.
      */
-    public /*out*/ readonly newSpecBillingEnable!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly newSpecBillingEnable: pulumi.Output<boolean>;
     /**
      * Indicates the node quantity.
      */
-    public /*out*/ readonly nodeNum!: pulumi.Output<number>;
+    declare public /*out*/ readonly nodeNum: pulumi.Output<number>;
     /**
      * Specifies the charging period of the instance. If `periodUnit` is set to *month*
      * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from `1` to `3`. This parameter is
      * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the instance.
      * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this creates a new resource.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * Indicates the public network service data address.
      */
-    public /*out*/ readonly publicBrokerAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicBrokerAddress: pulumi.Output<string>;
     /**
      * Indicates the public network metadata address.
      */
-    public /*out*/ readonly publicNamesrvAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicNamesrvAddress: pulumi.Output<string>;
     /**
      * Indicates the public IP address.
      */
-    public /*out*/ readonly publicipAddress!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicipAddress: pulumi.Output<string>;
     /**
      * Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
      * multiple EIP IDs. It is mandatory if `enablePublicip` is **true** and should be empty when `enablePublicip` is **false**.
      */
-    public readonly publicipId!: pulumi.Output<string | undefined>;
+    declare public readonly publicipId: pulumi.Output<string | undefined>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the resource specifications.
      */
-    public /*out*/ readonly resourceSpecCode!: pulumi.Output<string>;
+    declare public /*out*/ readonly resourceSpecCode: pulumi.Output<string>;
     /**
      * Specifies whether access control is enabled.
      *
      * @deprecated Use 'enable_acl' instead
      */
-    public readonly retentionPolicy!: pulumi.Output<boolean>;
+    declare public readonly retentionPolicy: pulumi.Output<boolean>;
     /**
      * Specifies the ID of a security group.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
      * and the number of nodes are returned.
      */
-    public /*out*/ readonly specification!: pulumi.Output<string>;
+    declare public /*out*/ readonly specification: pulumi.Output<string>;
     /**
      * Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
      * Changing this parameter will create a new resource.
      */
-    public readonly sslEnable!: pulumi.Output<boolean>;
+    declare public readonly sslEnable: pulumi.Output<boolean>;
     /**
      * Indicates the status of the DMS RocketMQ instance.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the message storage capacity, Unit: GB.
      * When `engineVersion` is **4.8.0**, value ranges from `300` to `30,000`.
      * When `engineVersion` is **5.x**, value ranges from `200` to `60,000`.
      */
-    public readonly storageSpace!: pulumi.Output<number>;
+    declare public readonly storageSpace: pulumi.Output<number>;
     /**
      * Specifies the storage I/O specification.
      * The options are as follows:
@@ -241,29 +241,29 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      * + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
      * Changing this parameter will create a new resource.
      */
-    public readonly storageSpecCode!: pulumi.Output<string>;
+    declare public readonly storageSpecCode: pulumi.Output<string>;
     /**
      * Specifies the ID of a subnet.
      * Changing this parameter will create a new resource.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * Specifies the key/value pairs to associate with the instance.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the DMS RocketMQ instance type. Value: cluster.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * Indicates the used message storage space. Unit: GB.
      */
-    public /*out*/ readonly usedStorageSpace!: pulumi.Output<number>;
+    declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
     /**
      * Specifies the ID of a VPC.
      * Changing this parameter will create a new resource.
      */
-    public readonly vpcId!: pulumi.Output<string>;
+    declare public readonly vpcId: pulumi.Output<string>;
 
     /**
      * Create a DmsRocketmqInstance resource with the given unique name, arguments, and options.
@@ -278,97 +278,97 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqInstanceState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZones"] = state ? state.availabilityZones : undefined;
-            resourceInputs["brokerAddress"] = state ? state.brokerAddress : undefined;
-            resourceInputs["brokerNum"] = state ? state.brokerNum : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["crossVpcAccesses"] = state ? state.crossVpcAccesses : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableAcl"] = state ? state.enableAcl : undefined;
-            resourceInputs["enablePublicip"] = state ? state.enablePublicip : undefined;
-            resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["ipv6Enable"] = state ? state.ipv6Enable : undefined;
-            resourceInputs["maintainBegin"] = state ? state.maintainBegin : undefined;
-            resourceInputs["maintainEnd"] = state ? state.maintainEnd : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["namesrvAddress"] = state ? state.namesrvAddress : undefined;
-            resourceInputs["newSpecBillingEnable"] = state ? state.newSpecBillingEnable : undefined;
-            resourceInputs["nodeNum"] = state ? state.nodeNum : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["publicBrokerAddress"] = state ? state.publicBrokerAddress : undefined;
-            resourceInputs["publicNamesrvAddress"] = state ? state.publicNamesrvAddress : undefined;
-            resourceInputs["publicipAddress"] = state ? state.publicipAddress : undefined;
-            resourceInputs["publicipId"] = state ? state.publicipId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["resourceSpecCode"] = state ? state.resourceSpecCode : undefined;
-            resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["specification"] = state ? state.specification : undefined;
-            resourceInputs["sslEnable"] = state ? state.sslEnable : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storageSpace"] = state ? state.storageSpace : undefined;
-            resourceInputs["storageSpecCode"] = state ? state.storageSpecCode : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["usedStorageSpace"] = state ? state.usedStorageSpace : undefined;
-            resourceInputs["vpcId"] = state ? state.vpcId : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZones"] = state?.availabilityZones;
+            resourceInputs["brokerAddress"] = state?.brokerAddress;
+            resourceInputs["brokerNum"] = state?.brokerNum;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["crossVpcAccesses"] = state?.crossVpcAccesses;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enableAcl"] = state?.enableAcl;
+            resourceInputs["enablePublicip"] = state?.enablePublicip;
+            resourceInputs["engineVersion"] = state?.engineVersion;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["ipv6Enable"] = state?.ipv6Enable;
+            resourceInputs["maintainBegin"] = state?.maintainBegin;
+            resourceInputs["maintainEnd"] = state?.maintainEnd;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["namesrvAddress"] = state?.namesrvAddress;
+            resourceInputs["newSpecBillingEnable"] = state?.newSpecBillingEnable;
+            resourceInputs["nodeNum"] = state?.nodeNum;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["publicBrokerAddress"] = state?.publicBrokerAddress;
+            resourceInputs["publicNamesrvAddress"] = state?.publicNamesrvAddress;
+            resourceInputs["publicipAddress"] = state?.publicipAddress;
+            resourceInputs["publicipId"] = state?.publicipId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["resourceSpecCode"] = state?.resourceSpecCode;
+            resourceInputs["retentionPolicy"] = state?.retentionPolicy;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["specification"] = state?.specification;
+            resourceInputs["sslEnable"] = state?.sslEnable;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storageSpace"] = state?.storageSpace;
+            resourceInputs["storageSpecCode"] = state?.storageSpecCode;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["usedStorageSpace"] = state?.usedStorageSpace;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as DmsRocketmqInstanceArgs | undefined;
-            if ((!args || args.availabilityZones === undefined) && !opts.urn) {
+            if (args?.availabilityZones === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZones'");
             }
-            if ((!args || args.engineVersion === undefined) && !opts.urn) {
+            if (args?.engineVersion === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engineVersion'");
             }
-            if ((!args || args.flavorId === undefined) && !opts.urn) {
+            if (args?.flavorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            if ((!args || args.storageSpace === undefined) && !opts.urn) {
+            if (args?.storageSpace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageSpace'");
             }
-            if ((!args || args.storageSpecCode === undefined) && !opts.urn) {
+            if (args?.storageSpecCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storageSpecCode'");
             }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
+            if (args?.subnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
             }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
+            if (args?.vpcId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZones"] = args ? args.availabilityZones : undefined;
-            resourceInputs["brokerNum"] = args ? args.brokerNum : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableAcl"] = args ? args.enableAcl : undefined;
-            resourceInputs["enablePublicip"] = args ? args.enablePublicip : undefined;
-            resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["ipv6Enable"] = args ? args.ipv6Enable : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["publicipId"] = args ? args.publicipId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
-            resourceInputs["sslEnable"] = args ? args.sslEnable : undefined;
-            resourceInputs["storageSpace"] = args ? args.storageSpace : undefined;
-            resourceInputs["storageSpecCode"] = args ? args.storageSpecCode : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcId"] = args ? args.vpcId : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZones"] = args?.availabilityZones;
+            resourceInputs["brokerNum"] = args?.brokerNum;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enableAcl"] = args?.enableAcl;
+            resourceInputs["enablePublicip"] = args?.enablePublicip;
+            resourceInputs["engineVersion"] = args?.engineVersion;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["ipv6Enable"] = args?.ipv6Enable;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["publicipId"] = args?.publicipId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["retentionPolicy"] = args?.retentionPolicy;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
+            resourceInputs["sslEnable"] = args?.sslEnable;
+            resourceInputs["storageSpace"] = args?.storageSpace;
+            resourceInputs["storageSpecCode"] = args?.storageSpecCode;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["brokerAddress"] = undefined /*out*/;
             resourceInputs["crossVpcAccesses"] = undefined /*out*/;
             resourceInputs["maintainBegin"] = undefined /*out*/;

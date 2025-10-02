@@ -71,71 +71,71 @@ export class Loadbalancer extends pulumi.CustomResource {
      * The administrative state of the loadbalancer. A valid value is true (UP) or
      * false (DOWN).
      */
-    public readonly adminStateUp!: pulumi.Output<boolean | undefined>;
-    public readonly autoRenew!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly chargeMode!: pulumi.Output<string>;
-    public readonly chargingMode!: pulumi.Output<string>;
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
+    declare public readonly autoRenew: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly chargeMode: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Human-readable description for the loadbalancer.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The enterprise project id of the loadbalancer. Changing this
      * creates a new loadbalancer.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * schema: Deprecated
      */
-    public readonly flavor!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly frozenScene!: pulumi.Output<string>;
+    declare public readonly flavor: pulumi.Output<string | undefined>;
+    declare public /*out*/ readonly frozenScene: pulumi.Output<string>;
     /**
      * schema: Deprecated
      */
-    public readonly loadbalancerProvider!: pulumi.Output<string>;
+    declare public readonly loadbalancerProvider: pulumi.Output<string>;
     /**
      * Human-readable name for the loadbalancer. Does not have to be unique.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly period!: pulumi.Output<number | undefined>;
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
-    public readonly protectionReason!: pulumi.Output<string | undefined>;
-    public readonly protectionStatus!: pulumi.Output<string>;
-    public /*out*/ readonly publicIp!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly period: pulumi.Output<number | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
+    declare public readonly protectionReason: pulumi.Output<string | undefined>;
+    declare public readonly protectionStatus: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
      * The region in which to create the loadbalancer resource. If omitted, the
      * provider-level region will be used. Changing this creates a new loadbalancer.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * schema: Deprecated
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * The key/value pairs to associate with the loadbalancer.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated tenant_id is deprecated
      */
-    public readonly tenantId!: pulumi.Output<string>;
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public readonly tenantId: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The ip address of the load balancer. Changing this creates a new
      * loadbalancer.
      */
-    public readonly vipAddress!: pulumi.Output<string>;
+    declare public readonly vipAddress: pulumi.Output<string>;
     /**
      * The Port ID of the Load Balancer IP.
      */
-    public /*out*/ readonly vipPortId!: pulumi.Output<string>;
+    declare public /*out*/ readonly vipPortId: pulumi.Output<string>;
     /**
      * The network on which to allocate the loadbalancer's address. A tenant
      * can only create Loadbalancers on networks authorized by policy (e.g. networks that belong to them or networks that are
      * shared). Changing this creates a new loadbalancer.
      */
-    public readonly vipSubnetId!: pulumi.Output<string>;
+    declare public readonly vipSubnetId: pulumi.Output<string>;
 
     /**
      * Create a Loadbalancer resource with the given unique name, arguments, and options.
@@ -150,53 +150,53 @@ export class Loadbalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadbalancerState | undefined;
-            resourceInputs["adminStateUp"] = state ? state.adminStateUp : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["chargeMode"] = state ? state.chargeMode : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["flavor"] = state ? state.flavor : undefined;
-            resourceInputs["frozenScene"] = state ? state.frozenScene : undefined;
-            resourceInputs["loadbalancerProvider"] = state ? state.loadbalancerProvider : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["protectionReason"] = state ? state.protectionReason : undefined;
-            resourceInputs["protectionStatus"] = state ? state.protectionStatus : undefined;
-            resourceInputs["publicIp"] = state ? state.publicIp : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["tenantId"] = state ? state.tenantId : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["vipAddress"] = state ? state.vipAddress : undefined;
-            resourceInputs["vipPortId"] = state ? state.vipPortId : undefined;
-            resourceInputs["vipSubnetId"] = state ? state.vipSubnetId : undefined;
+            resourceInputs["adminStateUp"] = state?.adminStateUp;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["chargeMode"] = state?.chargeMode;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["frozenScene"] = state?.frozenScene;
+            resourceInputs["loadbalancerProvider"] = state?.loadbalancerProvider;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["protectionReason"] = state?.protectionReason;
+            resourceInputs["protectionStatus"] = state?.protectionStatus;
+            resourceInputs["publicIp"] = state?.publicIp;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["tenantId"] = state?.tenantId;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["vipAddress"] = state?.vipAddress;
+            resourceInputs["vipPortId"] = state?.vipPortId;
+            resourceInputs["vipSubnetId"] = state?.vipSubnetId;
         } else {
             const args = argsOrState as LoadbalancerArgs | undefined;
-            if ((!args || args.vipSubnetId === undefined) && !opts.urn) {
+            if (args?.vipSubnetId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vipSubnetId'");
             }
-            resourceInputs["adminStateUp"] = args ? args.adminStateUp : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["flavor"] = args ? args.flavor : undefined;
-            resourceInputs["loadbalancerProvider"] = args ? args.loadbalancerProvider : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["protectionReason"] = args ? args.protectionReason : undefined;
-            resourceInputs["protectionStatus"] = args ? args.protectionStatus : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["vipAddress"] = args ? args.vipAddress : undefined;
-            resourceInputs["vipSubnetId"] = args ? args.vipSubnetId : undefined;
+            resourceInputs["adminStateUp"] = args?.adminStateUp;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["loadbalancerProvider"] = args?.loadbalancerProvider;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["protectionReason"] = args?.protectionReason;
+            resourceInputs["protectionStatus"] = args?.protectionStatus;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["tenantId"] = args?.tenantId;
+            resourceInputs["vipAddress"] = args?.vipAddress;
+            resourceInputs["vipSubnetId"] = args?.vipSubnetId;
             resourceInputs["chargeMode"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["frozenScene"] = undefined /*out*/;

@@ -54,30 +54,30 @@ export class Dependency extends pulumi.CustomResource {
      * Specifies the dependency description.
      * The description can contain a maximum of `512` characters.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The unique ID of the dependency package.
      */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
+    declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
      * The OBS storage URL of the dependency package.
      */
-    public readonly link!: pulumi.Output<string>;
+    declare public readonly link: pulumi.Output<string>;
     /**
      * Specifies the dependency name.
      * The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
      * Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The base64 encoded digest of the dependency after encryption by MD5.
      */
-    public /*out*/ readonly owner!: pulumi.Output<string>;
+    declare public /*out*/ readonly owner: pulumi.Output<string>;
     /**
      * Specifies the region in which to create a custom dependency package.
      * If omitted, the provider-level region will be used. Changing this will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the dependency package runtime.
      * The valid values are as follows:
@@ -100,15 +100,15 @@ export class Dependency extends pulumi.CustomResource {
      * + **Custom**
      * + **http**
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * The dependency package size in bytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * The dependency package version.
      */
-    public /*out*/ readonly version!: pulumi.Output<number>;
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a Dependency resource with the given unique name, arguments, and options.
@@ -123,28 +123,28 @@ export class Dependency extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DependencyState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["link"] = state ? state.link : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["owner"] = state ? state.owner : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["link"] = state?.link;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["owner"] = state?.owner;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as DependencyArgs | undefined;
-            if ((!args || args.link === undefined) && !opts.urn) {
+            if (args?.link === undefined && !opts.urn) {
                 throw new Error("Missing required property 'link'");
             }
-            if ((!args || args.runtime === undefined) && !opts.urn) {
+            if (args?.runtime === undefined && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["link"] = args ? args.link : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["link"] = args?.link;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["runtime"] = args?.runtime;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["owner"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;

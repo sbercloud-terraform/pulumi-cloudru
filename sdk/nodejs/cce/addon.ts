@@ -64,36 +64,36 @@ export class Addon extends pulumi.CustomResource {
      * Specifies the cluster ID.
      * Changing this parameter will create a new resource.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Description of add-on instance.
      */
-    public /*out*/ readonly description!: pulumi.Output<string>;
+    declare public /*out*/ readonly description: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the CCE add-on resource.
      * If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Add-on status information.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the name of the add-on template.
      * Changing this parameter will create a new resource.
      */
-    public readonly templateName!: pulumi.Output<string>;
+    declare public readonly templateName: pulumi.Output<string>;
     /**
      * Specifies the add-on template installation parameters.
      * These parameters vary depending on the add-on. Structure is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly values!: pulumi.Output<outputs.Cce.AddonValues | undefined>;
+    declare public readonly values: pulumi.Output<outputs.Cce.AddonValues | undefined>;
     /**
      * Specifies the version of the add-on.
      * Changing this parameter will create a new resource.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a Addon resource with the given unique name, arguments, and options.
@@ -108,26 +108,26 @@ export class Addon extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddonState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["templateName"] = state ? state.templateName : undefined;
-            resourceInputs["values"] = state ? state.values : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["templateName"] = state?.templateName;
+            resourceInputs["values"] = state?.values;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as AddonArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.templateName === undefined) && !opts.urn) {
+            if (args?.templateName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'templateName'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["templateName"] = args ? args.templateName : undefined;
-            resourceInputs["values"] = args ? args.values : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["templateName"] = args?.templateName;
+            resourceInputs["values"] = args?.values;
+            resourceInputs["version"] = args?.version;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

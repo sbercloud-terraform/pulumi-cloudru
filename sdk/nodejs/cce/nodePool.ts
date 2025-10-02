@@ -235,120 +235,120 @@ export class NodePool extends pulumi.CustomResource {
      * Specifies whether auto renew is enabled. Valid values are "true" and "false".
      * Changing this parameter will create a new resource.
      */
-    public readonly autoRenew!: pulumi.Output<string>;
+    declare public readonly autoRenew: pulumi.Output<string>;
     /**
      * Specifies the name of the available partition (AZ). Default value
      * is random to create nodes in a random AZ in the node pool. Changing this parameter will create a new resource.
      */
-    public readonly availabilityZone!: pulumi.Output<string | undefined>;
+    declare public readonly availabilityZone: pulumi.Output<string | undefined>;
     /**
      * Billing mode of a node.
      */
-    public /*out*/ readonly billingMode!: pulumi.Output<number>;
+    declare public /*out*/ readonly billingMode: pulumi.Output<number>;
     /**
      * Specifies the charging mode of the CCE node pool. Valid values are
      * *prePaid* and *postPaid*, defaults to *postPaid*. Changing this parameter will create a new resource.
      */
-    public readonly chargingMode!: pulumi.Output<string>;
+    declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * Specifies the cluster ID.
      * Changing this parameter will create a new resource.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The current number of the nodes.
      */
-    public /*out*/ readonly currentNodeCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly currentNodeCount: pulumi.Output<number>;
     /**
      * Specifies the configuration of the data disks.
      * The structure is described below. Changing this parameter will create a new resource.
      */
-    public readonly dataVolumes!: pulumi.Output<outputs.Cce.NodePoolDataVolume[]>;
+    declare public readonly dataVolumes: pulumi.Output<outputs.Cce.NodePoolDataVolume[]>;
     /**
      * Specifies the ECS group ID. If specified, the node will be created under
      * the cloud server group. Changing this parameter will create a new resource.
      */
-    public readonly ecsGroupId!: pulumi.Output<string | undefined>;
-    public readonly enableForceNew!: pulumi.Output<string | undefined>;
+    declare public readonly ecsGroupId: pulumi.Output<string | undefined>;
+    declare public readonly enableForceNew: pulumi.Output<string | undefined>;
     /**
      * Specifies the enterprise project ID of the node pool.
      * If updated, the new value will apply only to new nodes.
      */
-    public readonly enterpriseProjectId!: pulumi.Output<string>;
+    declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * schema: Deprecated; This parameter has been replaced by the 'extend_params' parameter.
      */
-    public readonly extendParam!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly extendParam: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the extended parameters.
      * The object structure is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly extendParams!: pulumi.Output<outputs.Cce.NodePoolExtendParams>;
+    declare public readonly extendParams: pulumi.Output<outputs.Cce.NodePoolExtendParams>;
     /**
      * Specifies the configurations of extended scaling groups in the node pool.
      * The object structure is documented below.
      */
-    public readonly extensionScaleGroups!: pulumi.Output<outputs.Cce.NodePoolExtensionScaleGroup[] | undefined>;
+    declare public readonly extensionScaleGroups: pulumi.Output<outputs.Cce.NodePoolExtensionScaleGroup[] | undefined>;
     /**
      * Specifies the flavor ID. Changing this parameter will create a new
      * resource.
      */
-    public readonly flavorId!: pulumi.Output<string>;
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * Specifies the hostname config of the kubernetes node,
      * which is supported by clusters of v1.23.6-r0 to v1.25 or clusters of v1.25.2-r0 or later versions.
      * The object structure is documented below.
      * Changing this parameter will create a new resource.
      */
-    public readonly hostnameConfig!: pulumi.Output<outputs.Cce.NodePoolHostnameConfig>;
+    declare public readonly hostnameConfig: pulumi.Output<outputs.Cce.NodePoolHostnameConfig>;
     /**
      * Specifies the initial number of expected nodes in the node pool.
      * This parameter can be also used to manually scale the node count afterwards.
      */
-    public readonly initialNodeCount!: pulumi.Output<number>;
+    declare public readonly initialNodeCount: pulumi.Output<number>;
     /**
      * Specifies the custom initialization flags.
      */
-    public readonly initializedConditions!: pulumi.Output<string[]>;
+    declare public readonly initializedConditions: pulumi.Output<string[]>;
     /**
      * Specifies the key pair name when logging in to select the key pair mode.
      * This parameter and `password` are alternative. Changing this parameter will create a new resource.
      */
-    public readonly keyPair!: pulumi.Output<string | undefined>;
+    declare public readonly keyPair: pulumi.Output<string | undefined>;
     /**
      * Specifies the label policy on existing nodes.
      * The value can be **ignore** and **refresh**, defaults to **refresh**.
      */
-    public readonly labelPolicyOnExistingNodes!: pulumi.Output<string>;
+    declare public readonly labelPolicyOnExistingNodes: pulumi.Output<string>;
     /**
      * Specifies the tags of a Kubernetes node, key/value pair format.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the maximum number of nodes allowed if auto scaling is enabled.
      */
-    public readonly maxNodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly maxNodeCount: pulumi.Output<number | undefined>;
     /**
      * schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
      */
-    public readonly maxPods!: pulumi.Output<number>;
+    declare public readonly maxPods: pulumi.Output<number>;
     /**
      * Specifies the minimum number of nodes allowed if auto scaling is enabled.
      */
-    public readonly minNodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly minNodeCount: pulumi.Output<number | undefined>;
     /**
      * Specifies the node pool name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the operating system of the node.
      * The value can be **EulerOS 2.9** and **CentOS 7.6** e.g. For more details,
      * please see [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_10_0476.html).
      * This parameter is required when the `nodeImageId` in `extendParams` is not specified.
      */
-    public readonly os!: pulumi.Output<string>;
-    public readonly partition!: pulumi.Output<string | undefined>;
+    declare public readonly os: pulumi.Output<string>;
+    declare public readonly partition: pulumi.Output<string | undefined>;
     /**
      * Specifies the root password when logging in to select the password mode.
      * The password consists of 8 to 26 characters and must contain at least three of following: uppercase letters,
@@ -356,109 +356,109 @@ export class NodePool extends pulumi.CustomResource {
      * This parameter can be plain or salted and is alternative to `keyPair`.
      * Changing this parameter will create a new resource.
      */
-    public readonly password!: pulumi.Output<string | undefined>;
+    declare public readonly password: pulumi.Output<string | undefined>;
     /**
      * Specifies the charging period of the CCE node pool. If `periodUnit` is set to
      * *month*, the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter
      * is mandatory if `chargingMode` is set to *prePaid*. Changing this parameter will create a new resource.
      */
-    public readonly period!: pulumi.Output<number | undefined>;
+    declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * Specifies the charging period unit of the CCE node pool.
      * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
      * Changing this parameter will create a new resource.
      */
-    public readonly periodUnit!: pulumi.Output<string | undefined>;
+    declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * Specifies the list of security group IDs for the pod.
      * Only supported in CCE Turbo clusters of v1.19 and above. Changing this parameter will create a new resource.
      */
-    public readonly podSecurityGroups!: pulumi.Output<string[] | undefined>;
+    declare public readonly podSecurityGroups: pulumi.Output<string[] | undefined>;
     /**
      * schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
      */
-    public readonly postinstall!: pulumi.Output<string | undefined>;
+    declare public readonly postinstall: pulumi.Output<string | undefined>;
     /**
      * schema: Deprecated; This parameter can be configured in the 'extend_params' parameter.
      */
-    public readonly preinstall!: pulumi.Output<string | undefined>;
+    declare public readonly preinstall: pulumi.Output<string | undefined>;
     /**
      * Specifies the weight of the node pool.
      * A node pool with a higher weight has a higher priority during scaling.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The region in which to create the CCE pool resource. If omitted, the
      * provider-level region will be used. Changing this creates a new CCE node pool resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the configuration of the system disk.
      * The structure is described below. Changing this parameter will create a new resource.
      */
-    public readonly rootVolume!: pulumi.Output<outputs.Cce.NodePoolRootVolume>;
+    declare public readonly rootVolume: pulumi.Output<outputs.Cce.NodePoolRootVolume>;
     /**
      * Specifies the runtime of the CCE node pool. Valid values are *docker* and
      * *containerd*. Changing this creates a new resource.
      */
-    public readonly runtime!: pulumi.Output<string>;
+    declare public readonly runtime: pulumi.Output<string>;
     /**
      * Specifies the time interval between two scaling operations, in minutes.
      */
-    public readonly scaleDownCooldownTime!: pulumi.Output<number | undefined>;
+    declare public readonly scaleDownCooldownTime: pulumi.Output<number | undefined>;
     /**
      * Specifies whether to enable auto scaling.
      * If Autoscaler is enabled, install the autoscaler add-on to use the auto scaling feature.
      */
-    public readonly scallEnable!: pulumi.Output<boolean | undefined>;
+    declare public readonly scallEnable: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the list of custom security group IDs for the node pool.
      * If specified, the nodes will be put in these security groups. When specifying a security group, do not modify
      * the rules of the port on which CCE running depends. For details, see
      * [documentation](https://support.hc.sbercloud.ru/usermanual/cce/cce_faq_00265.html).
      */
-    public readonly securityGroups!: pulumi.Output<string[]>;
+    declare public readonly securityGroups: pulumi.Output<string[]>;
     /**
      * Node status information.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the disk initialization management parameter.
      * If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
      * This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
      */
-    public readonly storage!: pulumi.Output<outputs.Cce.NodePoolStorage | undefined>;
+    declare public readonly storage: pulumi.Output<outputs.Cce.NodePoolStorage | undefined>;
     /**
      * Specifies the ID of the subnet to which the NIC belongs.
      */
-    public readonly subnetId!: pulumi.Output<string>;
+    declare public readonly subnetId: pulumi.Output<string>;
     /**
      * Specifies the ID list of the subnet to which the NIC belongs.
      */
-    public readonly subnetLists!: pulumi.Output<string[] | undefined>;
+    declare public readonly subnetLists: pulumi.Output<string[] | undefined>;
     /**
      * Specifies the tag policy on existing nodes.
      * The value can be **ignore** and **refresh**, defaults to **ignore**.
      */
-    public readonly tagPolicyOnExistingNodes!: pulumi.Output<string>;
+    declare public readonly tagPolicyOnExistingNodes: pulumi.Output<string>;
     /**
      * Specifies the tags of a VM node, key/value pair format.
      */
-    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Specifies the taint policy on existing nodes.
      * The value can be **ignore** and **refresh**, defaults to **refresh**.
      */
-    public readonly taintPolicyOnExistingNodes!: pulumi.Output<string>;
+    declare public readonly taintPolicyOnExistingNodes: pulumi.Output<string>;
     /**
      * Specifies the taints configuration of the nodes to set anti-affinity.
      * The structure is described below.
      */
-    public readonly taints!: pulumi.Output<outputs.Cce.NodePoolTaint[] | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.Cce.NodePoolTaint[] | undefined>;
     /**
      * Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a NodePool resource with the given unique name, arguments, and options.
@@ -473,113 +473,113 @@ export class NodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["billingMode"] = state ? state.billingMode : undefined;
-            resourceInputs["chargingMode"] = state ? state.chargingMode : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["currentNodeCount"] = state ? state.currentNodeCount : undefined;
-            resourceInputs["dataVolumes"] = state ? state.dataVolumes : undefined;
-            resourceInputs["ecsGroupId"] = state ? state.ecsGroupId : undefined;
-            resourceInputs["enableForceNew"] = state ? state.enableForceNew : undefined;
-            resourceInputs["enterpriseProjectId"] = state ? state.enterpriseProjectId : undefined;
-            resourceInputs["extendParam"] = state ? state.extendParam : undefined;
-            resourceInputs["extendParams"] = state ? state.extendParams : undefined;
-            resourceInputs["extensionScaleGroups"] = state ? state.extensionScaleGroups : undefined;
-            resourceInputs["flavorId"] = state ? state.flavorId : undefined;
-            resourceInputs["hostnameConfig"] = state ? state.hostnameConfig : undefined;
-            resourceInputs["initialNodeCount"] = state ? state.initialNodeCount : undefined;
-            resourceInputs["initializedConditions"] = state ? state.initializedConditions : undefined;
-            resourceInputs["keyPair"] = state ? state.keyPair : undefined;
-            resourceInputs["labelPolicyOnExistingNodes"] = state ? state.labelPolicyOnExistingNodes : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxNodeCount"] = state ? state.maxNodeCount : undefined;
-            resourceInputs["maxPods"] = state ? state.maxPods : undefined;
-            resourceInputs["minNodeCount"] = state ? state.minNodeCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["os"] = state ? state.os : undefined;
-            resourceInputs["partition"] = state ? state.partition : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
-            resourceInputs["podSecurityGroups"] = state ? state.podSecurityGroups : undefined;
-            resourceInputs["postinstall"] = state ? state.postinstall : undefined;
-            resourceInputs["preinstall"] = state ? state.preinstall : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rootVolume"] = state ? state.rootVolume : undefined;
-            resourceInputs["runtime"] = state ? state.runtime : undefined;
-            resourceInputs["scaleDownCooldownTime"] = state ? state.scaleDownCooldownTime : undefined;
-            resourceInputs["scallEnable"] = state ? state.scallEnable : undefined;
-            resourceInputs["securityGroups"] = state ? state.securityGroups : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["subnetId"] = state ? state.subnetId : undefined;
-            resourceInputs["subnetLists"] = state ? state.subnetLists : undefined;
-            resourceInputs["tagPolicyOnExistingNodes"] = state ? state.tagPolicyOnExistingNodes : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taintPolicyOnExistingNodes"] = state ? state.taintPolicyOnExistingNodes : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["billingMode"] = state?.billingMode;
+            resourceInputs["chargingMode"] = state?.chargingMode;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["currentNodeCount"] = state?.currentNodeCount;
+            resourceInputs["dataVolumes"] = state?.dataVolumes;
+            resourceInputs["ecsGroupId"] = state?.ecsGroupId;
+            resourceInputs["enableForceNew"] = state?.enableForceNew;
+            resourceInputs["enterpriseProjectId"] = state?.enterpriseProjectId;
+            resourceInputs["extendParam"] = state?.extendParam;
+            resourceInputs["extendParams"] = state?.extendParams;
+            resourceInputs["extensionScaleGroups"] = state?.extensionScaleGroups;
+            resourceInputs["flavorId"] = state?.flavorId;
+            resourceInputs["hostnameConfig"] = state?.hostnameConfig;
+            resourceInputs["initialNodeCount"] = state?.initialNodeCount;
+            resourceInputs["initializedConditions"] = state?.initializedConditions;
+            resourceInputs["keyPair"] = state?.keyPair;
+            resourceInputs["labelPolicyOnExistingNodes"] = state?.labelPolicyOnExistingNodes;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxNodeCount"] = state?.maxNodeCount;
+            resourceInputs["maxPods"] = state?.maxPods;
+            resourceInputs["minNodeCount"] = state?.minNodeCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["os"] = state?.os;
+            resourceInputs["partition"] = state?.partition;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["periodUnit"] = state?.periodUnit;
+            resourceInputs["podSecurityGroups"] = state?.podSecurityGroups;
+            resourceInputs["postinstall"] = state?.postinstall;
+            resourceInputs["preinstall"] = state?.preinstall;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rootVolume"] = state?.rootVolume;
+            resourceInputs["runtime"] = state?.runtime;
+            resourceInputs["scaleDownCooldownTime"] = state?.scaleDownCooldownTime;
+            resourceInputs["scallEnable"] = state?.scallEnable;
+            resourceInputs["securityGroups"] = state?.securityGroups;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["subnetId"] = state?.subnetId;
+            resourceInputs["subnetLists"] = state?.subnetLists;
+            resourceInputs["tagPolicyOnExistingNodes"] = state?.tagPolicyOnExistingNodes;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taintPolicyOnExistingNodes"] = state?.taintPolicyOnExistingNodes;
+            resourceInputs["taints"] = state?.taints;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.flavorId === undefined) && !opts.urn) {
+            if (args?.flavorId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavorId'");
             }
-            if ((!args || args.initialNodeCount === undefined) && !opts.urn) {
+            if (args?.initialNodeCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'initialNodeCount'");
             }
-            if ((!args || args.rootVolume === undefined) && !opts.urn) {
+            if (args?.rootVolume === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rootVolume'");
             }
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["chargingMode"] = args ? args.chargingMode : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dataVolumes"] = args ? args.dataVolumes : undefined;
-            resourceInputs["ecsGroupId"] = args ? args.ecsGroupId : undefined;
-            resourceInputs["enableForceNew"] = args ? args.enableForceNew : undefined;
-            resourceInputs["enterpriseProjectId"] = args ? args.enterpriseProjectId : undefined;
-            resourceInputs["extendParam"] = args ? args.extendParam : undefined;
-            resourceInputs["extendParams"] = args ? args.extendParams : undefined;
-            resourceInputs["extensionScaleGroups"] = args ? args.extensionScaleGroups : undefined;
-            resourceInputs["flavorId"] = args ? args.flavorId : undefined;
-            resourceInputs["hostnameConfig"] = args ? args.hostnameConfig : undefined;
-            resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
-            resourceInputs["initializedConditions"] = args ? args.initializedConditions : undefined;
-            resourceInputs["keyPair"] = args ? args.keyPair : undefined;
-            resourceInputs["labelPolicyOnExistingNodes"] = args ? args.labelPolicyOnExistingNodes : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxNodeCount"] = args ? args.maxNodeCount : undefined;
-            resourceInputs["maxPods"] = args ? args.maxPods : undefined;
-            resourceInputs["minNodeCount"] = args ? args.minNodeCount : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["os"] = args ? args.os : undefined;
-            resourceInputs["partition"] = args ? args.partition : undefined;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["chargingMode"] = args?.chargingMode;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dataVolumes"] = args?.dataVolumes;
+            resourceInputs["ecsGroupId"] = args?.ecsGroupId;
+            resourceInputs["enableForceNew"] = args?.enableForceNew;
+            resourceInputs["enterpriseProjectId"] = args?.enterpriseProjectId;
+            resourceInputs["extendParam"] = args?.extendParam;
+            resourceInputs["extendParams"] = args?.extendParams;
+            resourceInputs["extensionScaleGroups"] = args?.extensionScaleGroups;
+            resourceInputs["flavorId"] = args?.flavorId;
+            resourceInputs["hostnameConfig"] = args?.hostnameConfig;
+            resourceInputs["initialNodeCount"] = args?.initialNodeCount;
+            resourceInputs["initializedConditions"] = args?.initializedConditions;
+            resourceInputs["keyPair"] = args?.keyPair;
+            resourceInputs["labelPolicyOnExistingNodes"] = args?.labelPolicyOnExistingNodes;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxNodeCount"] = args?.maxNodeCount;
+            resourceInputs["maxPods"] = args?.maxPods;
+            resourceInputs["minNodeCount"] = args?.minNodeCount;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["os"] = args?.os;
+            resourceInputs["partition"] = args?.partition;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
-            resourceInputs["podSecurityGroups"] = args ? args.podSecurityGroups : undefined;
-            resourceInputs["postinstall"] = args ? args.postinstall : undefined;
-            resourceInputs["preinstall"] = args ? args.preinstall : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rootVolume"] = args ? args.rootVolume : undefined;
-            resourceInputs["runtime"] = args ? args.runtime : undefined;
-            resourceInputs["scaleDownCooldownTime"] = args ? args.scaleDownCooldownTime : undefined;
-            resourceInputs["scallEnable"] = args ? args.scallEnable : undefined;
-            resourceInputs["securityGroups"] = args ? args.securityGroups : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["subnetId"] = args ? args.subnetId : undefined;
-            resourceInputs["subnetLists"] = args ? args.subnetLists : undefined;
-            resourceInputs["tagPolicyOnExistingNodes"] = args ? args.tagPolicyOnExistingNodes : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taintPolicyOnExistingNodes"] = args ? args.taintPolicyOnExistingNodes : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["periodUnit"] = args?.periodUnit;
+            resourceInputs["podSecurityGroups"] = args?.podSecurityGroups;
+            resourceInputs["postinstall"] = args?.postinstall;
+            resourceInputs["preinstall"] = args?.preinstall;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rootVolume"] = args?.rootVolume;
+            resourceInputs["runtime"] = args?.runtime;
+            resourceInputs["scaleDownCooldownTime"] = args?.scaleDownCooldownTime;
+            resourceInputs["scallEnable"] = args?.scallEnable;
+            resourceInputs["securityGroups"] = args?.securityGroups;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["subnetId"] = args?.subnetId;
+            resourceInputs["subnetLists"] = args?.subnetLists;
+            resourceInputs["tagPolicyOnExistingNodes"] = args?.tagPolicyOnExistingNodes;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taintPolicyOnExistingNodes"] = args?.taintPolicyOnExistingNodes;
+            resourceInputs["taints"] = args?.taints;
+            resourceInputs["type"] = args?.type;
             resourceInputs["billingMode"] = undefined /*out*/;
             resourceInputs["currentNodeCount"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

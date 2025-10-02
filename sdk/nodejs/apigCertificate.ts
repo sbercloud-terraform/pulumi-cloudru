@@ -35,47 +35,47 @@ export class ApigCertificate extends pulumi.CustomResource {
     /**
      * The certificate content.
      */
-    public readonly content!: pulumi.Output<string>;
+    declare public readonly content: pulumi.Output<string>;
     /**
      * The effective time of the certificate.
      */
-    public /*out*/ readonly effectedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly effectedAt: pulumi.Output<string>;
     /**
      * The expiration time of the certificate.
      */
-    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * The dedicated instance ID to which the certificate belongs.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * The certificate name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The private key of the certificate.
      */
-    public readonly privateKey!: pulumi.Output<string>;
+    declare public readonly privateKey: pulumi.Output<string>;
     /**
      * The region where the certificate is located.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The SAN (Subject Alternative Names) of the certificate.
      */
-    public /*out*/ readonly sans!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly sans: pulumi.Output<string[]>;
     /**
      * What signature algorithm the certificate uses.
      */
-    public /*out*/ readonly signatureAlgorithm!: pulumi.Output<string>;
+    declare public /*out*/ readonly signatureAlgorithm: pulumi.Output<string>;
     /**
      * The trusted root CA certificate.
      */
-    public readonly trustedRootCa!: pulumi.Output<string | undefined>;
+    declare public readonly trustedRootCa: pulumi.Output<string | undefined>;
     /**
      * The certificate type.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a ApigCertificate resource with the given unique name, arguments, and options.
@@ -90,32 +90,32 @@ export class ApigCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApigCertificateState | undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["effectedAt"] = state ? state.effectedAt : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sans"] = state ? state.sans : undefined;
-            resourceInputs["signatureAlgorithm"] = state ? state.signatureAlgorithm : undefined;
-            resourceInputs["trustedRootCa"] = state ? state.trustedRootCa : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["effectedAt"] = state?.effectedAt;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sans"] = state?.sans;
+            resourceInputs["signatureAlgorithm"] = state?.signatureAlgorithm;
+            resourceInputs["trustedRootCa"] = state?.trustedRootCa;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as ApigCertificateArgs | undefined;
-            if ((!args || args.content === undefined) && !opts.urn) {
+            if (args?.content === undefined && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.privateKey === undefined) && !opts.urn) {
+            if (args?.privateKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
             resourceInputs["content"] = args?.content ? pulumi.secret(args.content) : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["region"] = args?.region;
             resourceInputs["trustedRootCa"] = args?.trustedRootCa ? pulumi.secret(args.trustedRootCa) : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["type"] = args?.type;
             resourceInputs["effectedAt"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;
             resourceInputs["sans"] = undefined /*out*/;

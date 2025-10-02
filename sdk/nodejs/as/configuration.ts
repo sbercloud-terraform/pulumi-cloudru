@@ -146,27 +146,27 @@ export class Configuration extends pulumi.CustomResource {
         return obj['__pulumiType'] === Configuration.__pulumiType;
     }
 
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies the information about instance configuration.
      * The object structure is documented below. Changing this will create a new resource.
      */
-    public readonly instanceConfig!: pulumi.Output<outputs.As.ConfigurationInstanceConfig>;
+    declare public readonly instanceConfig: pulumi.Output<outputs.As.ConfigurationInstanceConfig>;
     /**
      * Specifies the region in which to create the AS configuration.
      * If omitted, the provider-level region will be used. Changing this will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the AS configuration name.
      * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
      * Changing this will create a new resource.
      */
-    public readonly scalingConfigurationName!: pulumi.Output<string>;
+    declare public readonly scalingConfigurationName: pulumi.Output<string>;
     /**
      * The AS configuration status, the value can be **Bound** or **Unbound**.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a Configuration resource with the given unique name, arguments, and options.
@@ -181,22 +181,22 @@ export class Configuration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigurationState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
-            resourceInputs["instanceConfig"] = state ? state.instanceConfig : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["instanceConfig"] = state?.instanceConfig;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["scalingConfigurationName"] = state?.scalingConfigurationName;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as ConfigurationArgs | undefined;
-            if ((!args || args.instanceConfig === undefined) && !opts.urn) {
+            if (args?.instanceConfig === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceConfig'");
             }
-            if ((!args || args.scalingConfigurationName === undefined) && !opts.urn) {
+            if (args?.scalingConfigurationName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scalingConfigurationName'");
             }
-            resourceInputs["instanceConfig"] = args ? args.instanceConfig : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["scalingConfigurationName"] = args ? args.scalingConfigurationName : undefined;
+            resourceInputs["instanceConfig"] = args?.instanceConfig;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["scalingConfigurationName"] = args?.scalingConfigurationName;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

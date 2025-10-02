@@ -88,46 +88,46 @@ export class StaticRoute extends pulumi.CustomResource {
     /**
      * Specifies the ID of the corresponding attachment.
      */
-    public readonly attachmentId!: pulumi.Output<string | undefined>;
+    declare public readonly attachmentId: pulumi.Output<string | undefined>;
     /**
      * The creation time of the static route.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the destination of the static route.  
      * Changing this parameter will create a new resource.
      */
-    public readonly destination!: pulumi.Output<string>;
+    declare public readonly destination: pulumi.Output<string>;
     /**
      * Specifies whether route is the black hole route, defaults to `false`.  
      * + If the value is empty or `false`, the parameter `attachmentId` is required.
      * + If the value is `true`, the parameter `attachmentId` must be empty.
      */
-    public readonly isBlackhole!: pulumi.Output<boolean | undefined>;
+    declare public readonly isBlackhole: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the region where the static route and related route table are
      * located.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the ID of the route table to which the static route
      * belongs.
      * Changing this parameter will create a new resource.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    declare public readonly routeTableId: pulumi.Output<string>;
     /**
      * The current status of the static route.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The type of the static route.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * The latest update time of the static route.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a StaticRoute resource with the given unique name, arguments, and options.
@@ -142,28 +142,28 @@ export class StaticRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StaticRouteState | undefined;
-            resourceInputs["attachmentId"] = state ? state.attachmentId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["destination"] = state ? state.destination : undefined;
-            resourceInputs["isBlackhole"] = state ? state.isBlackhole : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["routeTableId"] = state ? state.routeTableId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["attachmentId"] = state?.attachmentId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["destination"] = state?.destination;
+            resourceInputs["isBlackhole"] = state?.isBlackhole;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["routeTableId"] = state?.routeTableId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as StaticRouteArgs | undefined;
-            if ((!args || args.destination === undefined) && !opts.urn) {
+            if (args?.destination === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.routeTableId === undefined) && !opts.urn) {
+            if (args?.routeTableId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'routeTableId'");
             }
-            resourceInputs["attachmentId"] = args ? args.attachmentId : undefined;
-            resourceInputs["destination"] = args ? args.destination : undefined;
-            resourceInputs["isBlackhole"] = args ? args.isBlackhole : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
+            resourceInputs["attachmentId"] = args?.attachmentId;
+            resourceInputs["destination"] = args?.destination;
+            resourceInputs["isBlackhole"] = args?.isBlackhole;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["routeTableId"] = args?.routeTableId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;

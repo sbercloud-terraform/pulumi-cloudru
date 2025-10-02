@@ -65,35 +65,35 @@ export class AddressGroupMember extends pulumi.CustomResource {
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly address!: pulumi.Output<string>;
+    declare public readonly address: pulumi.Output<string>;
     /**
      * Specifies the address type.
      * The value can be **0** (IPv4) or **1** (IPv6).
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly addressType!: pulumi.Output<number>;
+    declare public readonly addressType: pulumi.Output<number>;
     /**
      * Specifies address description.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies the ID of the IP address group.
      *
      * Changing this parameter will create a new resource.
      */
-    public readonly groupId!: pulumi.Output<string>;
+    declare public readonly groupId: pulumi.Output<string>;
     /**
      * schema: Deprecated; Specifies the address name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a AddressGroupMember resource with the given unique name, arguments, and options.
@@ -108,26 +108,26 @@ export class AddressGroupMember extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AddressGroupMemberState | undefined;
-            resourceInputs["address"] = state ? state.address : undefined;
-            resourceInputs["addressType"] = state ? state.addressType : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["groupId"] = state ? state.groupId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["address"] = state?.address;
+            resourceInputs["addressType"] = state?.addressType;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["groupId"] = state?.groupId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as AddressGroupMemberArgs | undefined;
-            if ((!args || args.address === undefined) && !opts.urn) {
+            if (args?.address === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address'");
             }
-            if ((!args || args.groupId === undefined) && !opts.urn) {
+            if (args?.groupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
-            resourceInputs["address"] = args ? args.address : undefined;
-            resourceInputs["addressType"] = args ? args.addressType : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["groupId"] = args ? args.groupId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["address"] = args?.address;
+            resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["groupId"] = args?.groupId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AddressGroupMember.__pulumiType, name, resourceInputs, opts);

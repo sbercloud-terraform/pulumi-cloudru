@@ -32,11 +32,11 @@ export class SfsTurboPermRule extends pulumi.CustomResource {
         return obj['__pulumiType'] === SfsTurboPermRule.__pulumiType;
     }
 
-    public readonly ipCidr!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly rwType!: pulumi.Output<string>;
-    public readonly shareId!: pulumi.Output<string>;
-    public readonly userType!: pulumi.Output<string>;
+    declare public readonly ipCidr: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly rwType: pulumi.Output<string>;
+    declare public readonly shareId: pulumi.Output<string>;
+    declare public readonly userType: pulumi.Output<string>;
 
     /**
      * Create a SfsTurboPermRule resource with the given unique name, arguments, and options.
@@ -51,30 +51,30 @@ export class SfsTurboPermRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsTurboPermRuleState | undefined;
-            resourceInputs["ipCidr"] = state ? state.ipCidr : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rwType"] = state ? state.rwType : undefined;
-            resourceInputs["shareId"] = state ? state.shareId : undefined;
-            resourceInputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["ipCidr"] = state?.ipCidr;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rwType"] = state?.rwType;
+            resourceInputs["shareId"] = state?.shareId;
+            resourceInputs["userType"] = state?.userType;
         } else {
             const args = argsOrState as SfsTurboPermRuleArgs | undefined;
-            if ((!args || args.ipCidr === undefined) && !opts.urn) {
+            if (args?.ipCidr === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipCidr'");
             }
-            if ((!args || args.rwType === undefined) && !opts.urn) {
+            if (args?.rwType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rwType'");
             }
-            if ((!args || args.shareId === undefined) && !opts.urn) {
+            if (args?.shareId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'shareId'");
             }
-            if ((!args || args.userType === undefined) && !opts.urn) {
+            if (args?.userType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'userType'");
             }
-            resourceInputs["ipCidr"] = args ? args.ipCidr : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rwType"] = args ? args.rwType : undefined;
-            resourceInputs["shareId"] = args ? args.shareId : undefined;
-            resourceInputs["userType"] = args ? args.userType : undefined;
+            resourceInputs["ipCidr"] = args?.ipCidr;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rwType"] = args?.rwType;
+            resourceInputs["shareId"] = args?.shareId;
+            resourceInputs["userType"] = args?.userType;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SfsTurboPermRule.__pulumiType, name, resourceInputs, opts);

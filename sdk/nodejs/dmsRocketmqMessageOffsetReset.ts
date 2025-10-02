@@ -57,18 +57,18 @@ export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
      * Specifies the group name.
      * Changing this creates a new resource.
      */
-    public readonly group!: pulumi.Output<string>;
+    declare public readonly group: pulumi.Output<string>;
     /**
      * Specifies the instance ID.
      * Changing this creates a new resource.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used.
      * Changing this creates a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the timestamp.
      * + If it is specified as **0**, reset to earliset.
@@ -77,12 +77,12 @@ export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
      *
      * Changing this creates a new resource.
      */
-    public readonly timestamp!: pulumi.Output<string>;
+    declare public readonly timestamp: pulumi.Output<string>;
     /**
      * Specifies the topic name.
      * Changing this creates a new resource.
      */
-    public readonly topic!: pulumi.Output<string>;
+    declare public readonly topic: pulumi.Output<string>;
 
     /**
      * Create a DmsRocketmqMessageOffsetReset resource with the given unique name, arguments, and options.
@@ -97,30 +97,30 @@ export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DmsRocketmqMessageOffsetResetState | undefined;
-            resourceInputs["group"] = state ? state.group : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["timestamp"] = state ? state.timestamp : undefined;
-            resourceInputs["topic"] = state ? state.topic : undefined;
+            resourceInputs["group"] = state?.group;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["timestamp"] = state?.timestamp;
+            resourceInputs["topic"] = state?.topic;
         } else {
             const args = argsOrState as DmsRocketmqMessageOffsetResetArgs | undefined;
-            if ((!args || args.group === undefined) && !opts.urn) {
+            if (args?.group === undefined && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.timestamp === undefined) && !opts.urn) {
+            if (args?.timestamp === undefined && !opts.urn) {
                 throw new Error("Missing required property 'timestamp'");
             }
-            if ((!args || args.topic === undefined) && !opts.urn) {
+            if (args?.topic === undefined && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
-            resourceInputs["group"] = args ? args.group : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["timestamp"] = args ? args.timestamp : undefined;
-            resourceInputs["topic"] = args ? args.topic : undefined;
+            resourceInputs["group"] = args?.group;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["timestamp"] = args?.timestamp;
+            resourceInputs["topic"] = args?.topic;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DmsRocketmqMessageOffsetReset.__pulumiType, name, resourceInputs, opts);

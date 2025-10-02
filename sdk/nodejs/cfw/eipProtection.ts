@@ -54,7 +54,7 @@ export class EipProtection extends pulumi.CustomResource {
      * The protected object ID.
      * Changing this parameter will create a new resource.
      */
-    public readonly objectId!: pulumi.Output<string>;
+    declare public readonly objectId: pulumi.Output<string>;
     /**
      * The protected EIP configurations.
      * The object structure is documented below.
@@ -62,12 +62,12 @@ export class EipProtection extends pulumi.CustomResource {
      * <a name="cfwProtectedEip"></a>
      * The `protectedEip` block supports:
      */
-    public readonly protectedEips!: pulumi.Output<outputs.Cfw.EipProtectionProtectedEip[]>;
+    declare public readonly protectedEips: pulumi.Output<outputs.Cfw.EipProtectionProtectedEip[]>;
     /**
      * Specifies the region in which to create the resource.
      * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a EipProtection resource with the given unique name, arguments, and options.
@@ -82,20 +82,20 @@ export class EipProtection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EipProtectionState | undefined;
-            resourceInputs["objectId"] = state ? state.objectId : undefined;
-            resourceInputs["protectedEips"] = state ? state.protectedEips : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["objectId"] = state?.objectId;
+            resourceInputs["protectedEips"] = state?.protectedEips;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as EipProtectionArgs | undefined;
-            if ((!args || args.objectId === undefined) && !opts.urn) {
+            if (args?.objectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'objectId'");
             }
-            if ((!args || args.protectedEips === undefined) && !opts.urn) {
+            if (args?.protectedEips === undefined && !opts.urn) {
                 throw new Error("Missing required property 'protectedEips'");
             }
-            resourceInputs["objectId"] = args ? args.objectId : undefined;
-            resourceInputs["protectedEips"] = args ? args.protectedEips : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["objectId"] = args?.objectId;
+            resourceInputs["protectedEips"] = args?.protectedEips;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EipProtection.__pulumiType, name, resourceInputs, opts);

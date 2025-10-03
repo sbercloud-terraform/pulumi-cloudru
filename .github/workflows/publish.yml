@@ -191,6 +191,9 @@ jobs:
           go.*
           go/**
           !*.tar.gz
+    - name: Normalize python version for PyPI (strip '+')
+      run: |
+        sed -i -E 's/(version = "[^"+]+)[+][^"]*"/\1"/' sdk/python/pyproject.toml
     - name: Extract python version
       id: python_version
       working-directory: sdk/python

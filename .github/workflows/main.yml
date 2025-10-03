@@ -76,7 +76,7 @@ jobs:
     with:
       version: ${{ needs.prerequisites.outputs.version }}
       isPrerelease: true
-      skipGoSdk: true
+      skipGoSdk: false
       skipJavaSdk: true
 
   tag_release_if_labeled_needs_release:

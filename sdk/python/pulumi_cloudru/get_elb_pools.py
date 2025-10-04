@@ -120,9 +120,6 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The description of pool.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -133,9 +130,6 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter(name="healthmonitorId")
     def healthmonitor_id(self) -> Optional[_builtins.str]:
-        """
-        The health monitor ID of the LB pool.
-        """
         return pulumi.get(self, "healthmonitor_id")
 
     @_builtins.property
@@ -149,17 +143,11 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[_builtins.str]:
-        """
-        The IP version of the LB pool.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> Optional[_builtins.str]:
-        """
-        The load balancing algorithm to distribute traffic to the pool's members.
-        """
         return pulumi.get(self, "lb_method")
 
     @_builtins.property
@@ -195,9 +183,6 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The pool name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -213,10 +198,6 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter
     def pools(self) -> Sequence['outputs.GetElbPoolsPoolResult']:
-        """
-        Pool list. For details, see data structure of the pool field.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "pools")
 
     @_builtins.property
@@ -227,9 +208,6 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
-        """
-        The protocol of pool.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
@@ -255,9 +233,6 @@ class GetElbPoolsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The type of persistence mode.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
@@ -326,33 +301,7 @@ def get_elb_pools(any_port_enable: Optional[_builtins.str] = None,
                   vpc_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetElbPoolsResult:
     """
-    Use this data source to get the list of ELB pools.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    pool_name = config.require_object("poolName")
-    test = sbercloud.get_elb_pools(name=pool_name)
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the ELB pool.
-    :param _builtins.str healthmonitor_id: Specifies the health monitor ID of the ELB pool.
-    :param _builtins.str ip_version: The IP version of the LB pool.
-    :param _builtins.str lb_method: Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-           or SOURCE_IP.
-    :param _builtins.str listener_id: Specifies the listener ID of the ELB pool.
-    :param _builtins.str loadbalancer_id: Specifies the loadbalancer ID of the ELB pool.
-    :param _builtins.str name: Specifies the name of the ELB pool.
-    :param _builtins.str pool_id: Specifies the ID of the ELB pool.
-    :param _builtins.str protocol: Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: The type of persistence mode.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['anyPortEnable'] = any_port_enable
@@ -435,33 +384,7 @@ def get_elb_pools_output(any_port_enable: Optional[pulumi.Input[Optional[_builti
                          vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetElbPoolsResult]:
     """
-    Use this data source to get the list of ELB pools.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    pool_name = config.require_object("poolName")
-    test = sbercloud.get_elb_pools(name=pool_name)
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the ELB pool.
-    :param _builtins.str healthmonitor_id: Specifies the health monitor ID of the ELB pool.
-    :param _builtins.str ip_version: The IP version of the LB pool.
-    :param _builtins.str lb_method: Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-           or SOURCE_IP.
-    :param _builtins.str listener_id: Specifies the listener ID of the ELB pool.
-    :param _builtins.str loadbalancer_id: Specifies the loadbalancer ID of the ELB pool.
-    :param _builtins.str name: Specifies the name of the ELB pool.
-    :param _builtins.str pool_id: Specifies the ID of the ELB pool.
-    :param _builtins.str protocol: Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: The type of persistence mode.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['anyPortEnable'] = any_port_enable

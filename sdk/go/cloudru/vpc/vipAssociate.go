@@ -12,65 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Using this resource, one or more NICs (to which the ECS instance belongs) can be bound to the VIP.
-//
-// > A VIP can only have one resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vipId := cfg.RequireObject("vipId")
-//			portIds := cfg.Require("portIds")
-//			_, err := vpc.NewVipAssociate(ctx, "vip_associated", &vpc.VipAssociateArgs{
-//				VipId:   pulumi.Any(vipId),
-//				PortIds: portIds,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Vip associate can be imported using the `vip_id` and port IDs separated by slashes (no limit on the number of
-// port IDs), e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/vipAssociate:VipAssociate vip_associated vip_id/port1_id/port2_id
-// ```
 type VipAssociate struct {
 	pulumi.CustomResourceState
 
-	// The IP addresses of ports to attach the vip to.
-	IpAddresses pulumi.StringArrayOutput `pulumi:"ipAddresses"`
-	// An array of one or more IDs of the ports to attach the vip to.
-	PortIds pulumi.StringArrayOutput `pulumi:"portIds"`
-	// The region in which to create the vip associate resource. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The ID of vip to attach the ports to.
-	VipId pulumi.StringOutput `pulumi:"vipId"`
-	// The IP address in the subnet for this vip.
-	VipIpAddress pulumi.StringOutput `pulumi:"vipIpAddress"`
-	// The ID of the subnet this vip connects to.
-	VipSubnetId pulumi.StringOutput `pulumi:"vipSubnetId"`
+	IpAddresses  pulumi.StringArrayOutput `pulumi:"ipAddresses"`
+	PortIds      pulumi.StringArrayOutput `pulumi:"portIds"`
+	Region       pulumi.StringOutput      `pulumi:"region"`
+	VipId        pulumi.StringOutput      `pulumi:"vipId"`
+	VipIpAddress pulumi.StringOutput      `pulumi:"vipIpAddress"`
+	VipSubnetId  pulumi.StringOutput      `pulumi:"vipSubnetId"`
 }
 
 // NewVipAssociate registers a new resource with the given unique name, arguments, and options.
@@ -109,35 +59,21 @@ func GetVipAssociate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VipAssociate resources.
 type vipAssociateState struct {
-	// The IP addresses of ports to attach the vip to.
-	IpAddresses []string `pulumi:"ipAddresses"`
-	// An array of one or more IDs of the ports to attach the vip to.
-	PortIds []string `pulumi:"portIds"`
-	// The region in which to create the vip associate resource. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// The ID of vip to attach the ports to.
-	VipId *string `pulumi:"vipId"`
-	// The IP address in the subnet for this vip.
-	VipIpAddress *string `pulumi:"vipIpAddress"`
-	// The ID of the subnet this vip connects to.
-	VipSubnetId *string `pulumi:"vipSubnetId"`
+	IpAddresses  []string `pulumi:"ipAddresses"`
+	PortIds      []string `pulumi:"portIds"`
+	Region       *string  `pulumi:"region"`
+	VipId        *string  `pulumi:"vipId"`
+	VipIpAddress *string  `pulumi:"vipIpAddress"`
+	VipSubnetId  *string  `pulumi:"vipSubnetId"`
 }
 
 type VipAssociateState struct {
-	// The IP addresses of ports to attach the vip to.
-	IpAddresses pulumi.StringArrayInput
-	// An array of one or more IDs of the ports to attach the vip to.
-	PortIds pulumi.StringArrayInput
-	// The region in which to create the vip associate resource. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput
-	// The ID of vip to attach the ports to.
-	VipId pulumi.StringPtrInput
-	// The IP address in the subnet for this vip.
+	IpAddresses  pulumi.StringArrayInput
+	PortIds      pulumi.StringArrayInput
+	Region       pulumi.StringPtrInput
+	VipId        pulumi.StringPtrInput
 	VipIpAddress pulumi.StringPtrInput
-	// The ID of the subnet this vip connects to.
-	VipSubnetId pulumi.StringPtrInput
+	VipSubnetId  pulumi.StringPtrInput
 }
 
 func (VipAssociateState) ElementType() reflect.Type {
@@ -145,24 +81,16 @@ func (VipAssociateState) ElementType() reflect.Type {
 }
 
 type vipAssociateArgs struct {
-	// An array of one or more IDs of the ports to attach the vip to.
 	PortIds []string `pulumi:"portIds"`
-	// The region in which to create the vip associate resource. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// The ID of vip to attach the ports to.
-	VipId string `pulumi:"vipId"`
+	Region  *string  `pulumi:"region"`
+	VipId   string   `pulumi:"vipId"`
 }
 
 // The set of arguments for constructing a VipAssociate resource.
 type VipAssociateArgs struct {
-	// An array of one or more IDs of the ports to attach the vip to.
 	PortIds pulumi.StringArrayInput
-	// The region in which to create the vip associate resource. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput
-	// The ID of vip to attach the ports to.
-	VipId pulumi.StringInput
+	Region  pulumi.StringPtrInput
+	VipId   pulumi.StringInput
 }
 
 func (VipAssociateArgs) ElementType() reflect.Type {
@@ -252,33 +180,26 @@ func (o VipAssociateOutput) ToVipAssociateOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The IP addresses of ports to attach the vip to.
 func (o VipAssociateOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VipAssociate) pulumi.StringArrayOutput { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
 
-// An array of one or more IDs of the ports to attach the vip to.
 func (o VipAssociateOutput) PortIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VipAssociate) pulumi.StringArrayOutput { return v.PortIds }).(pulumi.StringArrayOutput)
 }
 
-// The region in which to create the vip associate resource. If omitted, the
-// provider-level region will be used.
 func (o VipAssociateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VipAssociate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The ID of vip to attach the ports to.
 func (o VipAssociateOutput) VipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VipAssociate) pulumi.StringOutput { return v.VipId }).(pulumi.StringOutput)
 }
 
-// The IP address in the subnet for this vip.
 func (o VipAssociateOutput) VipIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *VipAssociate) pulumi.StringOutput { return v.VipIpAddress }).(pulumi.StringOutput)
 }
 
-// The ID of the subnet this vip connects to.
 func (o VipAssociateOutput) VipSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VipAssociate) pulumi.StringOutput { return v.VipSubnetId }).(pulumi.StringOutput)
 }

@@ -11,49 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the tag list of all resources of the same type within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := er.GetTags(ctx, &er.GetTagsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult
@@ -66,31 +23,17 @@ func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getTags.
 type GetTagsArgs struct {
-	// Specifies the region in which to query the resource tags.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the resource type to which the tags belong that to be queried.\
-	// The valid values are as follows:
-	// + **instance**: enterprise router instance.
-	// + **route-table**: route table.
-	// + **vpc-attachment**: VPC connection.
-	// + **vgw-attachment**: virtual gateway connection.
-	// + **peering-attachment**: peering connection.
-	// + **vpn-attachment**: VPN gateway connection.
-	// + **ecn-attachment**: enterprise network connection.
-	// + **cfw-attachment**: cloud firewall connection.
-	ResourceType string `pulumi:"resourceType"`
+	Region       *string `pulumi:"region"`
+	ResourceType string  `pulumi:"resourceType"`
 }
 
 // A collection of values returned by getTags.
 type GetTagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	Region       string `pulumi:"region"`
-	ResourceType string `pulumi:"resourceType"`
-	// The list of all tags for resources of the same type.\
-	// The tags structure is documented below.
-	Tags []GetTagsTag `pulumi:"tags"`
+	Id           string       `pulumi:"id"`
+	Region       string       `pulumi:"region"`
+	ResourceType string       `pulumi:"resourceType"`
+	Tags         []GetTagsTag `pulumi:"tags"`
 }
 
 func GetTagsOutput(ctx *pulumi.Context, args GetTagsOutputArgs, opts ...pulumi.InvokeOption) GetTagsResultOutput {
@@ -104,20 +47,8 @@ func GetTagsOutput(ctx *pulumi.Context, args GetTagsOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getTags.
 type GetTagsOutputArgs struct {
-	// Specifies the region in which to query the resource tags.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the resource type to which the tags belong that to be queried.\
-	// The valid values are as follows:
-	// + **instance**: enterprise router instance.
-	// + **route-table**: route table.
-	// + **vpc-attachment**: VPC connection.
-	// + **vgw-attachment**: virtual gateway connection.
-	// + **peering-attachment**: peering connection.
-	// + **vpn-attachment**: VPN gateway connection.
-	// + **ecn-attachment**: enterprise network connection.
-	// + **cfw-attachment**: cloud firewall connection.
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	ResourceType pulumi.StringInput    `pulumi:"resourceType"`
 }
 
 func (GetTagsOutputArgs) ElementType() reflect.Type {
@@ -152,8 +83,6 @@ func (o GetTagsResultOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagsResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The list of all tags for resources of the same type.\
-// The tags structure is documented below.
 func (o GetTagsResultOutput) Tags() GetTagsTagArrayOutput {
 	return o.ApplyT(func(v GetTagsResult) []GetTagsTag { return v.Tags }).(GetTagsTagArrayOutput)
 }

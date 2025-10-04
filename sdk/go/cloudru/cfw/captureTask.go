@@ -12,129 +12,30 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW capture task resource within SberCloud.
-//
-// > **NOTE:** For the Cloud Firewall service, you can only initiate up to 20 packet capture tasks per day.
-// Beyond this limit, no additional packet capture tasks can be initiated. Furthermore, only one packet capture task can be
-// in progress at any given time.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			name := cfg.RequireObject("name")
-//			duration := cfg.RequireObject("duration")
-//			maxPackets := cfg.RequireObject("maxPackets")
-//			_, err := cfw.NewCaptureTask(ctx, "test", &cfw.CaptureTaskArgs{
-//				FwInstanceId: pulumi.Any(fwInstanceId),
-//				Name:         pulumi.Any(name),
-//				Duration:     pulumi.Any(duration),
-//				MaxPackets:   pulumi.Any(maxPackets),
-//				Destination: &cfw.CaptureTaskDestinationArgs{
-//					Address:     pulumi.String("1.1.1.1"),
-//					AddressType: pulumi.Int(0),
-//				},
-//				Source: &cfw.CaptureTaskSourceArgs{
-//					Address:     pulumi.String("2.2.2.2"),
-//					AddressType: pulumi.Int(0),
-//				},
-//				Service: &cfw.CaptureTaskServiceArgs{
-//					Protocol: pulumi.Int(-1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The capture task can be imported using `fw_instance_id`, `name`, separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/captureTask:CaptureTask test <fw_instance_id>/<name>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason.
-//
-// The missing attributes is `stop_capture`. It is generally recommended running `pulumi preview` after importing the resource.
-//
-// # You can then decide if changes should be applied to the capture task, or the resource definition should be updated to
-//
-// align with the capture task. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_cfw_capture_task" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    stop_capture,
-//
-//	  ]
-//
-//	}
-//
-// }
 type CaptureTask struct {
 	pulumi.CustomResourceState
 
 	// The creation time of the capture task.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the destination configuration.
-	// The destination structure is documented below.
+	// The destination configuration.
 	Destination CaptureTaskDestinationOutput `pulumi:"destination"`
-	// Specifies the capture task duration.
+	// The capture task duration.
 	Duration       pulumi.IntOutput       `pulumi:"duration"`
 	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
-	// Specifies the ID of the firewall instance.
+	// The ID of the firewall instance.
 	FwInstanceId pulumi.StringOutput `pulumi:"fwInstanceId"`
-	// Specifies the maximum number of packets captured.
-	// The Maximum value is `1,000,000`.
+	// The maximum number of packets captured.
 	MaxPackets pulumi.IntOutput `pulumi:"maxPackets"`
-	// Specifies the capture task name.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The capture task name.
+	Name   pulumi.StringOutput `pulumi:"name"`
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the service configuration.
-	// The service structure is documented below.
+	// The service configuration.
 	Service CaptureTaskServiceOutput `pulumi:"service"`
-	// Specifies the source configuration.
-	// The source structure is documented below.
+	// The source configuration.
 	Source CaptureTaskSourceOutput `pulumi:"source"`
 	// The status of the capture task.
 	Status pulumi.IntOutput `pulumi:"status"`
-	// Specifies whether to stop the capture task.
-	//
-	// <a name="Address"></a>
-	// The `destination` or `source` block supports:
+	// Whether to stop the capture.
 	StopCapture pulumi.BoolPtrOutput `pulumi:"stopCapture"`
 	// The ID of the capture task.
 	TaskId pulumi.StringOutput `pulumi:"taskId"`
@@ -192,35 +93,25 @@ func GetCaptureTask(ctx *pulumi.Context,
 type captureTaskState struct {
 	// The creation time of the capture task.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the destination configuration.
-	// The destination structure is documented below.
+	// The destination configuration.
 	Destination *CaptureTaskDestination `pulumi:"destination"`
-	// Specifies the capture task duration.
+	// The capture task duration.
 	Duration       *int    `pulumi:"duration"`
 	EnableForceNew *string `pulumi:"enableForceNew"`
-	// Specifies the ID of the firewall instance.
+	// The ID of the firewall instance.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the maximum number of packets captured.
-	// The Maximum value is `1,000,000`.
+	// The maximum number of packets captured.
 	MaxPackets *int `pulumi:"maxPackets"`
-	// Specifies the capture task name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The capture task name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Specifies the service configuration.
-	// The service structure is documented below.
+	// The service configuration.
 	Service *CaptureTaskService `pulumi:"service"`
-	// Specifies the source configuration.
-	// The source structure is documented below.
+	// The source configuration.
 	Source *CaptureTaskSource `pulumi:"source"`
 	// The status of the capture task.
 	Status *int `pulumi:"status"`
-	// Specifies whether to stop the capture task.
-	//
-	// <a name="Address"></a>
-	// The `destination` or `source` block supports:
+	// Whether to stop the capture.
 	StopCapture *bool `pulumi:"stopCapture"`
 	// The ID of the capture task.
 	TaskId *string `pulumi:"taskId"`
@@ -231,35 +122,25 @@ type captureTaskState struct {
 type CaptureTaskState struct {
 	// The creation time of the capture task.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the destination configuration.
-	// The destination structure is documented below.
+	// The destination configuration.
 	Destination CaptureTaskDestinationPtrInput
-	// Specifies the capture task duration.
+	// The capture task duration.
 	Duration       pulumi.IntPtrInput
 	EnableForceNew pulumi.StringPtrInput
-	// Specifies the ID of the firewall instance.
+	// The ID of the firewall instance.
 	FwInstanceId pulumi.StringPtrInput
-	// Specifies the maximum number of packets captured.
-	// The Maximum value is `1,000,000`.
+	// The maximum number of packets captured.
 	MaxPackets pulumi.IntPtrInput
-	// Specifies the capture task name.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The capture task name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Specifies the service configuration.
-	// The service structure is documented below.
+	// The service configuration.
 	Service CaptureTaskServicePtrInput
-	// Specifies the source configuration.
-	// The source structure is documented below.
+	// The source configuration.
 	Source CaptureTaskSourcePtrInput
 	// The status of the capture task.
 	Status pulumi.IntPtrInput
-	// Specifies whether to stop the capture task.
-	//
-	// <a name="Address"></a>
-	// The `destination` or `source` block supports:
+	// Whether to stop the capture.
 	StopCapture pulumi.BoolPtrInput
 	// The ID of the capture task.
 	TaskId pulumi.StringPtrInput
@@ -272,65 +153,45 @@ func (CaptureTaskState) ElementType() reflect.Type {
 }
 
 type captureTaskArgs struct {
-	// Specifies the destination configuration.
-	// The destination structure is documented below.
+	// The destination configuration.
 	Destination CaptureTaskDestination `pulumi:"destination"`
-	// Specifies the capture task duration.
+	// The capture task duration.
 	Duration       int     `pulumi:"duration"`
 	EnableForceNew *string `pulumi:"enableForceNew"`
-	// Specifies the ID of the firewall instance.
+	// The ID of the firewall instance.
 	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the maximum number of packets captured.
-	// The Maximum value is `1,000,000`.
+	// The maximum number of packets captured.
 	MaxPackets int `pulumi:"maxPackets"`
-	// Specifies the capture task name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The capture task name.
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Specifies the service configuration.
-	// The service structure is documented below.
+	// The service configuration.
 	Service CaptureTaskService `pulumi:"service"`
-	// Specifies the source configuration.
-	// The source structure is documented below.
+	// The source configuration.
 	Source CaptureTaskSource `pulumi:"source"`
-	// Specifies whether to stop the capture task.
-	//
-	// <a name="Address"></a>
-	// The `destination` or `source` block supports:
+	// Whether to stop the capture.
 	StopCapture *bool `pulumi:"stopCapture"`
 }
 
 // The set of arguments for constructing a CaptureTask resource.
 type CaptureTaskArgs struct {
-	// Specifies the destination configuration.
-	// The destination structure is documented below.
+	// The destination configuration.
 	Destination CaptureTaskDestinationInput
-	// Specifies the capture task duration.
+	// The capture task duration.
 	Duration       pulumi.IntInput
 	EnableForceNew pulumi.StringPtrInput
-	// Specifies the ID of the firewall instance.
+	// The ID of the firewall instance.
 	FwInstanceId pulumi.StringInput
-	// Specifies the maximum number of packets captured.
-	// The Maximum value is `1,000,000`.
+	// The maximum number of packets captured.
 	MaxPackets pulumi.IntInput
-	// Specifies the capture task name.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The capture task name.
+	Name   pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
-	// Specifies the service configuration.
-	// The service structure is documented below.
+	// The service configuration.
 	Service CaptureTaskServiceInput
-	// Specifies the source configuration.
-	// The source structure is documented below.
+	// The source configuration.
 	Source CaptureTaskSourceInput
-	// Specifies whether to stop the capture task.
-	//
-	// <a name="Address"></a>
-	// The `destination` or `source` block supports:
+	// Whether to stop the capture.
 	StopCapture pulumi.BoolPtrInput
 }
 
@@ -426,13 +287,12 @@ func (o CaptureTaskOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the destination configuration.
-// The destination structure is documented below.
+// The destination configuration.
 func (o CaptureTaskOutput) Destination() CaptureTaskDestinationOutput {
 	return o.ApplyT(func(v *CaptureTask) CaptureTaskDestinationOutput { return v.Destination }).(CaptureTaskDestinationOutput)
 }
 
-// Specifies the capture task duration.
+// The capture task duration.
 func (o CaptureTaskOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.IntOutput { return v.Duration }).(pulumi.IntOutput)
 }
@@ -441,37 +301,31 @@ func (o CaptureTaskOutput) EnableForceNew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.StringPtrOutput { return v.EnableForceNew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of the firewall instance.
+// The ID of the firewall instance.
 func (o CaptureTaskOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.StringOutput { return v.FwInstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum number of packets captured.
-// The Maximum value is `1,000,000`.
+// The maximum number of packets captured.
 func (o CaptureTaskOutput) MaxPackets() pulumi.IntOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.IntOutput { return v.MaxPackets }).(pulumi.IntOutput)
 }
 
-// Specifies the capture task name.
+// The capture task name.
 func (o CaptureTaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o CaptureTaskOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the service configuration.
-// The service structure is documented below.
+// The service configuration.
 func (o CaptureTaskOutput) Service() CaptureTaskServiceOutput {
 	return o.ApplyT(func(v *CaptureTask) CaptureTaskServiceOutput { return v.Service }).(CaptureTaskServiceOutput)
 }
 
-// Specifies the source configuration.
-// The source structure is documented below.
+// The source configuration.
 func (o CaptureTaskOutput) Source() CaptureTaskSourceOutput {
 	return o.ApplyT(func(v *CaptureTask) CaptureTaskSourceOutput { return v.Source }).(CaptureTaskSourceOutput)
 }
@@ -481,10 +335,7 @@ func (o CaptureTaskOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
-// Specifies whether to stop the capture task.
-//
-// <a name="Address"></a>
-// The `destination` or `source` block supports:
+// Whether to stop the capture.
 func (o CaptureTaskOutput) StopCapture() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CaptureTask) pulumi.BoolPtrOutput { return v.StopCapture }).(pulumi.BoolPtrOutput)
 }

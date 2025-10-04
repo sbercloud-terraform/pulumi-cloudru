@@ -6,45 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manage DMS RocketMQ instance resources within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const availabilityZones = config.requireObject<Array<string>>("availabilityZones");
- * const test = new sbercloud.DmsRocketmqInstance("test", {
- *     name: "rocketmq_name_test",
- *     description: "this is a rocketmq instance",
- *     engineVersion: "4.8.0",
- *     storageSpace: 300,
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- *     securityGroupId: securityGroupId,
- *     availabilityZones: availabilityZones,
- *     flavorId: "c6.4u8g.cluster",
- *     storageSpecCode: "dms.physical.storage.high.v2",
- *     brokerNum: 1,
- * });
- * ```
- *
- * ## Import
- *
- * The rocketmq instance can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dmsRocketmqInstance:DmsRocketmqInstance test 8d3c7938-dc47-4937-a30f-c80de381c5e3
- * ```
- */
 export class DmsRocketmqInstance extends pulumi.CustomResource {
     /**
      * Get an existing DmsRocketmqInstance resource's state with the given name, ID, and optional extra
@@ -73,15 +34,9 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === DmsRocketmqInstance.__pulumiType;
     }
 
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "false".
-     */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
-     * Specifies the list of availability zone names, where
-     * instance brokers reside and which has available resources.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the list of availability zone names
      */
     declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
@@ -89,30 +44,17 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly brokerAddress: pulumi.Output<string>;
     /**
-     * Specifies the broker numbers. It's **required** when instance architecture is
-     * **cluster**. Defaults to `1` when instance architecture is **single node**.
+     * Specifies the broker numbers.
      */
     declare public readonly brokerNum: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the charging mode of the instance. Valid values are *prePaid*
-     * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-     */
     declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * Specifies the instance configs.
-     * The configs structure is documented below.
-     *
-     * <a name="dmsConfigs"></a>
-     * The `configs` block supports:
      */
     declare public readonly configs: pulumi.Output<outputs.DmsRocketmqInstanceConfig[]>;
-    /**
-     * Indicates the Access information of cross-VPC. The structure is documented below.
-     */
     declare public /*out*/ readonly crossVpcAccesses: pulumi.Output<outputs.DmsRocketmqInstanceCrossVpcAccess[]>;
     /**
      * Specifies the description of the DMS RocketMQ instance.
-     * The description can contain a maximum of `1,024` characters.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
@@ -120,13 +62,11 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public readonly enableAcl: pulumi.Output<boolean>;
     /**
-     * Specifies whether to enable public access. By default, public access is disabled.
+     * Specifies whether to enable public access.
      */
     declare public readonly enablePublicip: pulumi.Output<boolean | undefined>;
     /**
      * Specifies the version of the RocketMQ engine.
-     * Valid values are **4.8.0** and **5.x**.
-     * Changing this parameter will create a new resource.
      */
     declare public readonly engineVersion: pulumi.Output<string>;
     /**
@@ -134,12 +74,11 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
-     * Specifies the flavor ID.
+     * Specifies a product ID
      */
     declare public readonly flavorId: pulumi.Output<string>;
     /**
-     * Specifies whether to support IPv6. Defaults to **false**.
-     * Changing this parameter will create a new resource.
+     * Specifies whether to support IPv6
      */
     declare public readonly ipv6Enable: pulumi.Output<boolean | undefined>;
     /**
@@ -151,7 +90,7 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly maintainEnd: pulumi.Output<string>;
     /**
-     * Specifies the config name.
+     * Specifies the name of the DMS RocketMQ instance
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -166,17 +105,7 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      * Indicates the node quantity.
      */
     declare public /*out*/ readonly nodeNum: pulumi.Output<number>;
-    /**
-     * Specifies the charging period of the instance. If `periodUnit` is set to *month*
-     * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-     * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
-     */
     declare public readonly period: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new resource.
-     */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * Indicates the public network service data address.
@@ -191,14 +120,9 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly publicipAddress: pulumi.Output<string>;
     /**
-     * Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-     * multiple EIP IDs. It is mandatory if `enablePublicip` is **true** and should be empty when `enablePublicip` is **false**.
+     * Specifies the ID of the EIP bound to the instance.
      */
     declare public readonly publicipId: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the resource specifications.
@@ -211,17 +135,16 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public readonly retentionPolicy: pulumi.Output<boolean>;
     /**
-     * Specifies the ID of a security group.
+     * Specifies the ID of a security group
      */
     declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-     * and the number of nodes are returned.
+     *   and the number of nodes are returned.
      */
     declare public /*out*/ readonly specification: pulumi.Output<string>;
     /**
-     * Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-     * Changing this parameter will create a new resource.
+     * Specifies whether the RocketMQ SASL_SSL is enabled.
      */
     declare public readonly sslEnable: pulumi.Output<boolean>;
     /**
@@ -230,26 +153,16 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the message storage capacity, Unit: GB.
-     * When `engineVersion` is **4.8.0**, value ranges from `300` to `30,000`.
-     * When `engineVersion` is **5.x**, value ranges from `200` to `60,000`.
      */
     declare public readonly storageSpace: pulumi.Output<number>;
     /**
-     * Specifies the storage I/O specification.
-     * The options are as follows:
-     * + **dms.physical.storage.high.v2**: high I/O disk
-     * + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-     * Changing this parameter will create a new resource.
+     * Specifies the storage I/O specification
      */
     declare public readonly storageSpecCode: pulumi.Output<string>;
     /**
-     * Specifies the ID of a subnet.
-     * Changing this parameter will create a new resource.
+     * Specifies the ID of a subnet
      */
     declare public readonly subnetId: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the instance.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the DMS RocketMQ instance type. Value: cluster.
@@ -260,8 +173,7 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
     /**
-     * Specifies the ID of a VPC.
-     * Changing this parameter will create a new resource.
+     * Specifies the ID of a VPC
      */
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -394,15 +306,9 @@ export class DmsRocketmqInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DmsRocketmqInstance resources.
  */
 export interface DmsRocketmqInstanceState {
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "false".
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * Specifies the list of availability zone names, where
-     * instance brokers reside and which has available resources.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the list of availability zone names
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -410,30 +316,17 @@ export interface DmsRocketmqInstanceState {
      */
     brokerAddress?: pulumi.Input<string>;
     /**
-     * Specifies the broker numbers. It's **required** when instance architecture is
-     * **cluster**. Defaults to `1` when instance architecture is **single node**.
+     * Specifies the broker numbers.
      */
     brokerNum?: pulumi.Input<number>;
-    /**
-     * Specifies the charging mode of the instance. Valid values are *prePaid*
-     * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-     */
     chargingMode?: pulumi.Input<string>;
     /**
      * Specifies the instance configs.
-     * The configs structure is documented below.
-     *
-     * <a name="dmsConfigs"></a>
-     * The `configs` block supports:
      */
     configs?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqInstanceConfig>[]>;
-    /**
-     * Indicates the Access information of cross-VPC. The structure is documented below.
-     */
     crossVpcAccesses?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqInstanceCrossVpcAccess>[]>;
     /**
      * Specifies the description of the DMS RocketMQ instance.
-     * The description can contain a maximum of `1,024` characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -441,13 +334,11 @@ export interface DmsRocketmqInstanceState {
      */
     enableAcl?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable public access. By default, public access is disabled.
+     * Specifies whether to enable public access.
      */
     enablePublicip?: pulumi.Input<boolean>;
     /**
      * Specifies the version of the RocketMQ engine.
-     * Valid values are **4.8.0** and **5.x**.
-     * Changing this parameter will create a new resource.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -455,12 +346,11 @@ export interface DmsRocketmqInstanceState {
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the flavor ID.
+     * Specifies a product ID
      */
     flavorId?: pulumi.Input<string>;
     /**
-     * Specifies whether to support IPv6. Defaults to **false**.
-     * Changing this parameter will create a new resource.
+     * Specifies whether to support IPv6
      */
     ipv6Enable?: pulumi.Input<boolean>;
     /**
@@ -472,7 +362,7 @@ export interface DmsRocketmqInstanceState {
      */
     maintainEnd?: pulumi.Input<string>;
     /**
-     * Specifies the config name.
+     * Specifies the name of the DMS RocketMQ instance
      */
     name?: pulumi.Input<string>;
     /**
@@ -487,17 +377,7 @@ export interface DmsRocketmqInstanceState {
      * Indicates the node quantity.
      */
     nodeNum?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period of the instance. If `periodUnit` is set to *month*
-     * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-     * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new resource.
-     */
     periodUnit?: pulumi.Input<string>;
     /**
      * Indicates the public network service data address.
@@ -512,14 +392,9 @@ export interface DmsRocketmqInstanceState {
      */
     publicipAddress?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-     * multiple EIP IDs. It is mandatory if `enablePublicip` is **true** and should be empty when `enablePublicip` is **false**.
+     * Specifies the ID of the EIP bound to the instance.
      */
     publicipId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Indicates the resource specifications.
@@ -532,17 +407,16 @@ export interface DmsRocketmqInstanceState {
      */
     retentionPolicy?: pulumi.Input<boolean>;
     /**
-     * Specifies the ID of a security group.
+     * Specifies the ID of a security group
      */
     securityGroupId?: pulumi.Input<string>;
     /**
      * Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-     * and the number of nodes are returned.
+     *   and the number of nodes are returned.
      */
     specification?: pulumi.Input<string>;
     /**
-     * Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-     * Changing this parameter will create a new resource.
+     * Specifies whether the RocketMQ SASL_SSL is enabled.
      */
     sslEnable?: pulumi.Input<boolean>;
     /**
@@ -551,26 +425,16 @@ export interface DmsRocketmqInstanceState {
     status?: pulumi.Input<string>;
     /**
      * Specifies the message storage capacity, Unit: GB.
-     * When `engineVersion` is **4.8.0**, value ranges from `300` to `30,000`.
-     * When `engineVersion` is **5.x**, value ranges from `200` to `60,000`.
      */
     storageSpace?: pulumi.Input<number>;
     /**
-     * Specifies the storage I/O specification.
-     * The options are as follows:
-     * + **dms.physical.storage.high.v2**: high I/O disk
-     * + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-     * Changing this parameter will create a new resource.
+     * Specifies the storage I/O specification
      */
     storageSpecCode?: pulumi.Input<string>;
     /**
-     * Specifies the ID of a subnet.
-     * Changing this parameter will create a new resource.
+     * Specifies the ID of a subnet
      */
     subnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Indicates the DMS RocketMQ instance type. Value: cluster.
@@ -581,8 +445,7 @@ export interface DmsRocketmqInstanceState {
      */
     usedStorageSpace?: pulumi.Input<number>;
     /**
-     * Specifies the ID of a VPC.
-     * Changing this parameter will create a new resource.
+     * Specifies the ID of a VPC
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -591,38 +454,22 @@ export interface DmsRocketmqInstanceState {
  * The set of arguments for constructing a DmsRocketmqInstance resource.
  */
 export interface DmsRocketmqInstanceArgs {
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "false".
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * Specifies the list of availability zone names, where
-     * instance brokers reside and which has available resources.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the list of availability zone names
      */
     availabilityZones: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the broker numbers. It's **required** when instance architecture is
-     * **cluster**. Defaults to `1` when instance architecture is **single node**.
+     * Specifies the broker numbers.
      */
     brokerNum?: pulumi.Input<number>;
-    /**
-     * Specifies the charging mode of the instance. Valid values are *prePaid*
-     * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-     */
     chargingMode?: pulumi.Input<string>;
     /**
      * Specifies the instance configs.
-     * The configs structure is documented below.
-     *
-     * <a name="dmsConfigs"></a>
-     * The `configs` block supports:
      */
     configs?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqInstanceConfig>[]>;
     /**
      * Specifies the description of the DMS RocketMQ instance.
-     * The description can contain a maximum of `1,024` characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -630,13 +477,11 @@ export interface DmsRocketmqInstanceArgs {
      */
     enableAcl?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable public access. By default, public access is disabled.
+     * Specifies whether to enable public access.
      */
     enablePublicip?: pulumi.Input<boolean>;
     /**
      * Specifies the version of the RocketMQ engine.
-     * Valid values are **4.8.0** and **5.x**.
-     * Changing this parameter will create a new resource.
      */
     engineVersion: pulumi.Input<string>;
     /**
@@ -644,39 +489,23 @@ export interface DmsRocketmqInstanceArgs {
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the flavor ID.
+     * Specifies a product ID
      */
     flavorId: pulumi.Input<string>;
     /**
-     * Specifies whether to support IPv6. Defaults to **false**.
-     * Changing this parameter will create a new resource.
+     * Specifies whether to support IPv6
      */
     ipv6Enable?: pulumi.Input<boolean>;
     /**
-     * Specifies the config name.
+     * Specifies the name of the DMS RocketMQ instance
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the instance. If `periodUnit` is set to *month*
-     * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from `1` to `3`. This parameter is
-     * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new resource.
-     */
     periodUnit?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the EIP bound to the instance. Use commas (,) to separate
-     * multiple EIP IDs. It is mandatory if `enablePublicip` is **true** and should be empty when `enablePublicip` is **false**.
+     * Specifies the ID of the EIP bound to the instance.
      */
     publicipId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies whether access control is enabled.
@@ -685,40 +514,28 @@ export interface DmsRocketmqInstanceArgs {
      */
     retentionPolicy?: pulumi.Input<boolean>;
     /**
-     * Specifies the ID of a security group.
+     * Specifies the ID of a security group
      */
     securityGroupId: pulumi.Input<string>;
     /**
-     * Specifies whether the RocketMQ SASL_SSL is enabled. Defaults to **false**.
-     * Changing this parameter will create a new resource.
+     * Specifies whether the RocketMQ SASL_SSL is enabled.
      */
     sslEnable?: pulumi.Input<boolean>;
     /**
      * Specifies the message storage capacity, Unit: GB.
-     * When `engineVersion` is **4.8.0**, value ranges from `300` to `30,000`.
-     * When `engineVersion` is **5.x**, value ranges from `200` to `60,000`.
      */
     storageSpace: pulumi.Input<number>;
     /**
-     * Specifies the storage I/O specification.
-     * The options are as follows:
-     * + **dms.physical.storage.high.v2**: high I/O disk
-     * + **dms.physical.storage.ultra.v2**: ultra-high I/O disk
-     * Changing this parameter will create a new resource.
+     * Specifies the storage I/O specification
      */
     storageSpecCode: pulumi.Input<string>;
     /**
-     * Specifies the ID of a subnet.
-     * Changing this parameter will create a new resource.
+     * Specifies the ID of a subnet
      */
     subnetId: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the ID of a VPC.
-     * Changing this parameter will create a new resource.
+     * Specifies the ID of a VPC
      */
     vpcId: pulumi.Input<string>;
 }

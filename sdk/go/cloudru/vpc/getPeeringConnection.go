@@ -11,55 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// The VPC Peering Connection data source provides details about a specific VPC peering connection.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			vpc, err := vpc.GetVpc(ctx, &vpc.GetVpcArgs{
-//				Name: pulumi.StringRef("vpc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			peerVpc, err := vpc.GetVpc(ctx, &vpc.GetVpcArgs{
-//				Name: pulumi.StringRef("peer_vpc"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			peering, err := vpc.GetPeeringConnection(ctx, &vpc.GetPeeringConnectionArgs{
-//				VpcId:     pulumi.StringRef(vpc.Id),
-//				PeerVpcId: pulumi.StringRef(peerVpc.Id),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewRoute(ctx, "vpc_route", &vpc.RouteArgs{
-//				Type:        pulumi.String("peering"),
-//				Nexthop:     pulumi.String(peering.Id),
-//				Destination: pulumi.String("192.168.0.0/16"),
-//				VpcId:       pulumi.String(vpc.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPeeringConnection(ctx *pulumi.Context, args *LookupPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeeringConnectionResult
@@ -72,22 +23,13 @@ func LookupPeeringConnection(ctx *pulumi.Context, args *LookupPeeringConnectionA
 
 // A collection of arguments for invoking getPeeringConnection.
 type LookupPeeringConnectionArgs struct {
-	// The ID of the specific VPC Peering Connection to retrieve.
-	Id *string `pulumi:"id"`
-	// The name of the specific VPC Peering Connection to retrieve.
-	Name *string `pulumi:"name"`
-	// The Tenant ID of the accepter/peer VPC of the specific VPC Peering Connection to
-	// retrieve.
+	Id           *string `pulumi:"id"`
+	Name         *string `pulumi:"name"`
 	PeerTenantId *string `pulumi:"peerTenantId"`
-	// The ID of the accepter/peer VPC of the specific VPC Peering Connection to retrieve.
-	PeerVpcId *string `pulumi:"peerVpcId"`
-	// The region in which to obtain the VPC Peering Connection. If omitted, the provider-level
-	// region will be used.
-	Region *string `pulumi:"region"`
-	// The status of the specific VPC Peering Connection to retrieve.
-	Status *string `pulumi:"status"`
-	// The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-	VpcId *string `pulumi:"vpcId"`
+	PeerVpcId    *string `pulumi:"peerVpcId"`
+	Region       *string `pulumi:"region"`
+	Status       *string `pulumi:"status"`
+	VpcId        *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getPeeringConnection.
@@ -113,22 +55,13 @@ func LookupPeeringConnectionOutput(ctx *pulumi.Context, args LookupPeeringConnec
 
 // A collection of arguments for invoking getPeeringConnection.
 type LookupPeeringConnectionOutputArgs struct {
-	// The ID of the specific VPC Peering Connection to retrieve.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The name of the specific VPC Peering Connection to retrieve.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The Tenant ID of the accepter/peer VPC of the specific VPC Peering Connection to
-	// retrieve.
+	Id           pulumi.StringPtrInput `pulumi:"id"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
 	PeerTenantId pulumi.StringPtrInput `pulumi:"peerTenantId"`
-	// The ID of the accepter/peer VPC of the specific VPC Peering Connection to retrieve.
-	PeerVpcId pulumi.StringPtrInput `pulumi:"peerVpcId"`
-	// The region in which to obtain the VPC Peering Connection. If omitted, the provider-level
-	// region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The status of the specific VPC Peering Connection to retrieve.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the requester VPC of the specific VPC Peering Connection to retrieve.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	PeerVpcId    pulumi.StringPtrInput `pulumi:"peerVpcId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	Status       pulumi.StringPtrInput `pulumi:"status"`
+	VpcId        pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (LookupPeeringConnectionOutputArgs) ElementType() reflect.Type {

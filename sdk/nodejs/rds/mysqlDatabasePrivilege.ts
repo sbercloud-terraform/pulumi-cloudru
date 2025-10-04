@@ -6,46 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS Mysql database privilege resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const dbName = config.requireObject<any>("dbName");
- * const userName1 = config.requireObject<any>("userName1");
- * const userName2 = config.requireObject<any>("userName2");
- * const test = new sbercloud.rds.MysqlDatabasePrivilege("test", {
- *     instanceId: instanceId,
- *     dbName: dbName,
- *     users: [
- *         {
- *             name: userName1,
- *             readonly: true,
- *         },
- *         {
- *             name: userName2,
- *             readonly: false,
- *         },
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * RDS database privilege can be imported using the `instance id` and `db_name`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/mysqlDatabasePrivilege:MysqlDatabasePrivilege test <instance_id>/<db_name>
- * ```
- */
 export class MysqlDatabasePrivilege extends pulumi.CustomResource {
     /**
      * Get an existing MysqlDatabasePrivilege resource's state with the given name, ID, and optional extra
@@ -75,20 +35,16 @@ export class MysqlDatabasePrivilege extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the database name. Changing this creates a new resource.
+     * Specifies the database name.
      */
     declare public readonly dbName: pulumi.Output<string>;
     /**
-     * Specifies the RDS instance ID. Changing this will create a new resource.
+     * Specifies the ID of the RDS Mysql instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * The region in which to create the RDS database privilege resource. If omitted,
-     * the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the account that associated with the database. Structure is documented below.
+     * Specifies the account that associated with the database.
      */
     declare public readonly users: pulumi.Output<outputs.Rds.MysqlDatabasePrivilegeUser[]>;
 
@@ -135,20 +91,16 @@ export class MysqlDatabasePrivilege extends pulumi.CustomResource {
  */
 export interface MysqlDatabasePrivilegeState {
     /**
-     * Specifies the database name. Changing this creates a new resource.
+     * Specifies the database name.
      */
     dbName?: pulumi.Input<string>;
     /**
-     * Specifies the RDS instance ID. Changing this will create a new resource.
+     * Specifies the ID of the RDS Mysql instance.
      */
     instanceId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the RDS database privilege resource. If omitted,
-     * the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the account that associated with the database. Structure is documented below.
+     * Specifies the account that associated with the database.
      */
     users?: pulumi.Input<pulumi.Input<inputs.Rds.MysqlDatabasePrivilegeUser>[]>;
 }
@@ -158,20 +110,16 @@ export interface MysqlDatabasePrivilegeState {
  */
 export interface MysqlDatabasePrivilegeArgs {
     /**
-     * Specifies the database name. Changing this creates a new resource.
+     * Specifies the database name.
      */
     dbName: pulumi.Input<string>;
     /**
-     * Specifies the RDS instance ID. Changing this will create a new resource.
+     * Specifies the ID of the RDS Mysql instance.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * The region in which to create the RDS database privilege resource. If omitted,
-     * the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the account that associated with the database. Structure is documented below.
+     * Specifies the account that associated with the database.
      */
     users: pulumi.Input<pulumi.Input<inputs.Rds.MysqlDatabasePrivilegeUser>[]>;
 }

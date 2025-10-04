@@ -12,140 +12,35 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS Read Replica Instance resource.
-//
-// ## Example Usage
-//
-// ### Create a Rds read replica instance
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			secgroup, err := vpc.NewSecgroup(ctx, "secgroup", &vpc.SecgroupArgs{
-//				Name:        pulumi.String("test_sg_for_rds"),
-//				Description: pulumi.String("security group for rds read replica instance"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			instance, err := rds.NewInstance(ctx, "instance", &rds.InstanceArgs{
-//				Name:   pulumi.String("terraform_test_rds_instance"),
-//				Flavor: pulumi.String("rds.pg.c6.large.4"),
-//				AvailabilityZones: pulumi.StringArray{
-//					pulumi.String("{{ availability_zone }}"),
-//				},
-//				VpcId:               pulumi.String("{{ vpc_id }}"),
-//				SubnetId:            pulumi.String("{{ subnet_id }}"),
-//				SecurityGroupId:     secgroup.ID(),
-//				EnterpriseProjectId: pulumi.String("{{ enterprise_project_id }}"),
-//				Db: &rds.InstanceDbArgs{
-//					Type:     pulumi.String("PostgreSQL"),
-//					Version:  pulumi.String("12"),
-//					Password: pulumi.String("Huangwei!120521"),
-//					Port:     pulumi.Int(8635),
-//				},
-//				Volume: &rds.InstanceVolumeArgs{
-//					Type: pulumi.String("ULTRAHIGH"),
-//					Size: pulumi.Int(50),
-//				},
-//				BackupStrategy: &rds.InstanceBackupStrategyArgs{
-//					StartTime: pulumi.String("08:00-09:00"),
-//					KeepDays:  pulumi.Int(1),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = rds.NewReadReplicaInstance(ctx, "replica_instance", &rds.ReadReplicaInstanceArgs{
-//				Name:                pulumi.String("test_rds_readonly_instance"),
-//				Flavor:              pulumi.String("rds.pg.c6.large.4.rr"),
-//				PrimaryInstanceId:   instance.ID(),
-//				AvailabilityZone:    pulumi.String("{{ availability_zone }}"),
-//				EnterpriseProjectId: pulumi.String("{{ enterprise_project_id }}"),
-//				Volume: &rds.ReadReplicaInstanceVolumeArgs{
-//					Type: pulumi.String("ULTRAHIGH"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// RDS read replica instance can be imported by `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/readReplicaInstance:ReadReplicaInstance replica_instance 92302c133d13424cbe357506ce057ea5in03
-// ```
 type ReadReplicaInstance struct {
 	pulumi.CustomResourceState
 
-	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	// Specifies the AZ name.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	ChargingMode     pulumi.StringOutput `pulumi:"chargingMode"`
-	// Indicates the database information. Structure is documented below.
-	Db          ReadReplicaInstanceDbOutput `pulumi:"db"`
-	Description pulumi.StringPtrOutput      `pulumi:"description"`
-	// The enterprise project id of the read replica instance.
-	// Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	FixedIp             pulumi.StringOutput `pulumi:"fixedIp"`
-	// Specifies the specification code.
-	Flavor        pulumi.StringOutput `pulumi:"flavor"`
-	MaintainBegin pulumi.StringOutput `pulumi:"maintainBegin"`
-	MaintainEnd   pulumi.StringOutput `pulumi:"maintainEnd"`
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
-	Name       pulumi.StringOutput                     `pulumi:"name"`
-	Parameters ReadReplicaInstanceParameterArrayOutput `pulumi:"parameters"`
-	Period     pulumi.IntPtrOutput                     `pulumi:"period"`
-	PeriodUnit pulumi.StringPtrOutput                  `pulumi:"periodUnit"`
-	// Specifies the DB instance ID, which is used to create a read replica.
-	// Changing this parameter will create a new resource.
-	PrimaryInstanceId pulumi.StringOutput `pulumi:"primaryInstanceId"`
-	// Indicates the private IP address list.
-	PrivateIps pulumi.StringArrayOutput `pulumi:"privateIps"`
-	// Indicates the public IP address list.
-	PublicIps pulumi.StringArrayOutput `pulumi:"publicIps"`
-	// The region in which to create the rds read replica instance resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates the security group which the RDS DB instance belongs to.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	SslEnable       pulumi.BoolOutput   `pulumi:"sslEnable"`
-	// Indicates the instance status.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Indicates the subnet id.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Specifies the volume information. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Volume ReadReplicaInstanceVolumeOutput `pulumi:"volume"`
-	// Indicates the VPC ID.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	AutoRenew           pulumi.StringPtrOutput                  `pulumi:"autoRenew"`
+	AvailabilityZone    pulumi.StringOutput                     `pulumi:"availabilityZone"`
+	ChargingMode        pulumi.StringOutput                     `pulumi:"chargingMode"`
+	Db                  ReadReplicaInstanceDbOutput             `pulumi:"db"`
+	Description         pulumi.StringPtrOutput                  `pulumi:"description"`
+	EnterpriseProjectId pulumi.StringOutput                     `pulumi:"enterpriseProjectId"`
+	FixedIp             pulumi.StringOutput                     `pulumi:"fixedIp"`
+	Flavor              pulumi.StringOutput                     `pulumi:"flavor"`
+	MaintainBegin       pulumi.StringOutput                     `pulumi:"maintainBegin"`
+	MaintainEnd         pulumi.StringOutput                     `pulumi:"maintainEnd"`
+	Name                pulumi.StringOutput                     `pulumi:"name"`
+	Parameters          ReadReplicaInstanceParameterArrayOutput `pulumi:"parameters"`
+	Period              pulumi.IntPtrOutput                     `pulumi:"period"`
+	PeriodUnit          pulumi.StringPtrOutput                  `pulumi:"periodUnit"`
+	PrimaryInstanceId   pulumi.StringOutput                     `pulumi:"primaryInstanceId"`
+	PrivateIps          pulumi.StringArrayOutput                `pulumi:"privateIps"`
+	PublicIps           pulumi.StringArrayOutput                `pulumi:"publicIps"`
+	Region              pulumi.StringOutput                     `pulumi:"region"`
+	SecurityGroupId     pulumi.StringOutput                     `pulumi:"securityGroupId"`
+	SslEnable           pulumi.BoolOutput                       `pulumi:"sslEnable"`
+	Status              pulumi.StringOutput                     `pulumi:"status"`
+	SubnetId            pulumi.StringOutput                     `pulumi:"subnetId"`
+	Tags                pulumi.StringMapOutput                  `pulumi:"tags"`
+	Type                pulumi.StringOutput                     `pulumi:"type"`
+	Volume              ReadReplicaInstanceVolumeOutput         `pulumi:"volume"`
+	VpcId               pulumi.StringOutput                     `pulumi:"vpcId"`
 }
 
 // NewReadReplicaInstance registers a new resource with the given unique name, arguments, and options.
@@ -190,113 +85,61 @@ func GetReadReplicaInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReadReplicaInstance resources.
 type readReplicaInstanceState struct {
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the AZ name.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	ChargingMode     *string `pulumi:"chargingMode"`
-	// Indicates the database information. Structure is documented below.
-	Db          *ReadReplicaInstanceDb `pulumi:"db"`
-	Description *string                `pulumi:"description"`
-	// The enterprise project id of the read replica instance.
-	// Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	FixedIp             *string `pulumi:"fixedIp"`
-	// Specifies the specification code.
-	Flavor        *string `pulumi:"flavor"`
-	MaintainBegin *string `pulumi:"maintainBegin"`
-	MaintainEnd   *string `pulumi:"maintainEnd"`
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
-	Name       *string                        `pulumi:"name"`
-	Parameters []ReadReplicaInstanceParameter `pulumi:"parameters"`
-	Period     *int                           `pulumi:"period"`
-	PeriodUnit *string                        `pulumi:"periodUnit"`
-	// Specifies the DB instance ID, which is used to create a read replica.
-	// Changing this parameter will create a new resource.
-	PrimaryInstanceId *string `pulumi:"primaryInstanceId"`
-	// Indicates the private IP address list.
-	PrivateIps []string `pulumi:"privateIps"`
-	// Indicates the public IP address list.
-	PublicIps []string `pulumi:"publicIps"`
-	// The region in which to create the rds read replica instance resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-	Region *string `pulumi:"region"`
-	// Indicates the security group which the RDS DB instance belongs to.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	SslEnable       *bool   `pulumi:"sslEnable"`
-	// Indicates the instance status.
-	Status *string `pulumi:"status"`
-	// Indicates the subnet id.
-	SubnetId *string `pulumi:"subnetId"`
-	// A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-	Tags map[string]string `pulumi:"tags"`
-	// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	Type *string `pulumi:"type"`
-	// Specifies the volume information. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Volume *ReadReplicaInstanceVolume `pulumi:"volume"`
-	// Indicates the VPC ID.
-	VpcId *string `pulumi:"vpcId"`
+	AutoRenew           *string                        `pulumi:"autoRenew"`
+	AvailabilityZone    *string                        `pulumi:"availabilityZone"`
+	ChargingMode        *string                        `pulumi:"chargingMode"`
+	Db                  *ReadReplicaInstanceDb         `pulumi:"db"`
+	Description         *string                        `pulumi:"description"`
+	EnterpriseProjectId *string                        `pulumi:"enterpriseProjectId"`
+	FixedIp             *string                        `pulumi:"fixedIp"`
+	Flavor              *string                        `pulumi:"flavor"`
+	MaintainBegin       *string                        `pulumi:"maintainBegin"`
+	MaintainEnd         *string                        `pulumi:"maintainEnd"`
+	Name                *string                        `pulumi:"name"`
+	Parameters          []ReadReplicaInstanceParameter `pulumi:"parameters"`
+	Period              *int                           `pulumi:"period"`
+	PeriodUnit          *string                        `pulumi:"periodUnit"`
+	PrimaryInstanceId   *string                        `pulumi:"primaryInstanceId"`
+	PrivateIps          []string                       `pulumi:"privateIps"`
+	PublicIps           []string                       `pulumi:"publicIps"`
+	Region              *string                        `pulumi:"region"`
+	SecurityGroupId     *string                        `pulumi:"securityGroupId"`
+	SslEnable           *bool                          `pulumi:"sslEnable"`
+	Status              *string                        `pulumi:"status"`
+	SubnetId            *string                        `pulumi:"subnetId"`
+	Tags                map[string]string              `pulumi:"tags"`
+	Type                *string                        `pulumi:"type"`
+	Volume              *ReadReplicaInstanceVolume     `pulumi:"volume"`
+	VpcId               *string                        `pulumi:"vpcId"`
 }
 
 type ReadReplicaInstanceState struct {
-	AutoRenew pulumi.StringPtrInput
-	// Specifies the AZ name.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	ChargingMode     pulumi.StringPtrInput
-	// Indicates the database information. Structure is documented below.
-	Db          ReadReplicaInstanceDbPtrInput
-	Description pulumi.StringPtrInput
-	// The enterprise project id of the read replica instance.
-	// Changing this parameter will create a new resource.
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	Db                  ReadReplicaInstanceDbPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	FixedIp             pulumi.StringPtrInput
-	// Specifies the specification code.
-	Flavor        pulumi.StringPtrInput
-	MaintainBegin pulumi.StringPtrInput
-	MaintainEnd   pulumi.StringPtrInput
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
-	Name       pulumi.StringPtrInput
-	Parameters ReadReplicaInstanceParameterArrayInput
-	Period     pulumi.IntPtrInput
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the DB instance ID, which is used to create a read replica.
-	// Changing this parameter will create a new resource.
-	PrimaryInstanceId pulumi.StringPtrInput
-	// Indicates the private IP address list.
-	PrivateIps pulumi.StringArrayInput
-	// Indicates the public IP address list.
-	PublicIps pulumi.StringArrayInput
-	// The region in which to create the rds read replica instance resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-	Region pulumi.StringPtrInput
-	// Indicates the security group which the RDS DB instance belongs to.
-	SecurityGroupId pulumi.StringPtrInput
-	SslEnable       pulumi.BoolPtrInput
-	// Indicates the instance status.
-	Status pulumi.StringPtrInput
-	// Indicates the subnet id.
-	SubnetId pulumi.StringPtrInput
-	// A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-	Tags pulumi.StringMapInput
-	// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	Type pulumi.StringPtrInput
-	// Specifies the volume information. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Volume ReadReplicaInstanceVolumePtrInput
-	// Indicates the VPC ID.
-	VpcId pulumi.StringPtrInput
+	Flavor              pulumi.StringPtrInput
+	MaintainBegin       pulumi.StringPtrInput
+	MaintainEnd         pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Parameters          ReadReplicaInstanceParameterArrayInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	PrimaryInstanceId   pulumi.StringPtrInput
+	PrivateIps          pulumi.StringArrayInput
+	PublicIps           pulumi.StringArrayInput
+	Region              pulumi.StringPtrInput
+	SecurityGroupId     pulumi.StringPtrInput
+	SslEnable           pulumi.BoolPtrInput
+	Status              pulumi.StringPtrInput
+	SubnetId            pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
+	Type                pulumi.StringPtrInput
+	Volume              ReadReplicaInstanceVolumePtrInput
+	VpcId               pulumi.StringPtrInput
 }
 
 func (ReadReplicaInstanceState) ElementType() reflect.Type {
@@ -304,90 +147,50 @@ func (ReadReplicaInstanceState) ElementType() reflect.Type {
 }
 
 type readReplicaInstanceArgs struct {
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the AZ name.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone string  `pulumi:"availabilityZone"`
-	ChargingMode     *string `pulumi:"chargingMode"`
-	// Indicates the database information. Structure is documented below.
-	Db          *ReadReplicaInstanceDb `pulumi:"db"`
-	Description *string                `pulumi:"description"`
-	// The enterprise project id of the read replica instance.
-	// Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	FixedIp             *string `pulumi:"fixedIp"`
-	// Specifies the specification code.
-	Flavor        string  `pulumi:"flavor"`
-	MaintainBegin *string `pulumi:"maintainBegin"`
-	MaintainEnd   *string `pulumi:"maintainEnd"`
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
-	Name       *string                        `pulumi:"name"`
-	Parameters []ReadReplicaInstanceParameter `pulumi:"parameters"`
-	Period     *int                           `pulumi:"period"`
-	PeriodUnit *string                        `pulumi:"periodUnit"`
-	// Specifies the DB instance ID, which is used to create a read replica.
-	// Changing this parameter will create a new resource.
-	PrimaryInstanceId string `pulumi:"primaryInstanceId"`
-	// The region in which to create the rds read replica instance resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-	Region *string `pulumi:"region"`
-	// Indicates the security group which the RDS DB instance belongs to.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	SslEnable       *bool   `pulumi:"sslEnable"`
-	// A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the volume information. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Volume ReadReplicaInstanceVolume `pulumi:"volume"`
+	AutoRenew           *string                        `pulumi:"autoRenew"`
+	AvailabilityZone    string                         `pulumi:"availabilityZone"`
+	ChargingMode        *string                        `pulumi:"chargingMode"`
+	Db                  *ReadReplicaInstanceDb         `pulumi:"db"`
+	Description         *string                        `pulumi:"description"`
+	EnterpriseProjectId *string                        `pulumi:"enterpriseProjectId"`
+	FixedIp             *string                        `pulumi:"fixedIp"`
+	Flavor              string                         `pulumi:"flavor"`
+	MaintainBegin       *string                        `pulumi:"maintainBegin"`
+	MaintainEnd         *string                        `pulumi:"maintainEnd"`
+	Name                *string                        `pulumi:"name"`
+	Parameters          []ReadReplicaInstanceParameter `pulumi:"parameters"`
+	Period              *int                           `pulumi:"period"`
+	PeriodUnit          *string                        `pulumi:"periodUnit"`
+	PrimaryInstanceId   string                         `pulumi:"primaryInstanceId"`
+	Region              *string                        `pulumi:"region"`
+	SecurityGroupId     *string                        `pulumi:"securityGroupId"`
+	SslEnable           *bool                          `pulumi:"sslEnable"`
+	Tags                map[string]string              `pulumi:"tags"`
+	Volume              ReadReplicaInstanceVolume      `pulumi:"volume"`
 }
 
 // The set of arguments for constructing a ReadReplicaInstance resource.
 type ReadReplicaInstanceArgs struct {
-	AutoRenew pulumi.StringPtrInput
-	// Specifies the AZ name.
-	// Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringInput
-	ChargingMode     pulumi.StringPtrInput
-	// Indicates the database information. Structure is documented below.
-	Db          ReadReplicaInstanceDbPtrInput
-	Description pulumi.StringPtrInput
-	// The enterprise project id of the read replica instance.
-	// Changing this parameter will create a new resource.
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringInput
+	ChargingMode        pulumi.StringPtrInput
+	Db                  ReadReplicaInstanceDbPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	FixedIp             pulumi.StringPtrInput
-	// Specifies the specification code.
-	Flavor        pulumi.StringInput
-	MaintainBegin pulumi.StringPtrInput
-	MaintainEnd   pulumi.StringPtrInput
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
-	Name       pulumi.StringPtrInput
-	Parameters ReadReplicaInstanceParameterArrayInput
-	Period     pulumi.IntPtrInput
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the DB instance ID, which is used to create a read replica.
-	// Changing this parameter will create a new resource.
-	PrimaryInstanceId pulumi.StringInput
-	// The region in which to create the rds read replica instance resource.
-	// If omitted, the provider-level region will be used.
-	//
-	// Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
-	Region pulumi.StringPtrInput
-	// Indicates the security group which the RDS DB instance belongs to.
-	SecurityGroupId pulumi.StringPtrInput
-	SslEnable       pulumi.BoolPtrInput
-	// A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
-	Tags pulumi.StringMapInput
-	// Specifies the volume information. Structure is documented below.
-	// Changing this parameter will create a new resource.
-	Volume ReadReplicaInstanceVolumeInput
+	Flavor              pulumi.StringInput
+	MaintainBegin       pulumi.StringPtrInput
+	MaintainEnd         pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Parameters          ReadReplicaInstanceParameterArrayInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	PrimaryInstanceId   pulumi.StringInput
+	Region              pulumi.StringPtrInput
+	SecurityGroupId     pulumi.StringPtrInput
+	SslEnable           pulumi.BoolPtrInput
+	Tags                pulumi.StringMapInput
+	Volume              ReadReplicaInstanceVolumeInput
 }
 
 func (ReadReplicaInstanceArgs) ElementType() reflect.Type {
@@ -481,8 +284,6 @@ func (o ReadReplicaInstanceOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the AZ name.
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -491,7 +292,6 @@ func (o ReadReplicaInstanceOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Indicates the database information. Structure is documented below.
 func (o ReadReplicaInstanceOutput) Db() ReadReplicaInstanceDbOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) ReadReplicaInstanceDbOutput { return v.Db }).(ReadReplicaInstanceDbOutput)
 }
@@ -500,8 +300,6 @@ func (o ReadReplicaInstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The enterprise project id of the read replica instance.
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -510,7 +308,6 @@ func (o ReadReplicaInstanceOutput) FixedIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.FixedIp }).(pulumi.StringOutput)
 }
 
-// Specifies the specification code.
 func (o ReadReplicaInstanceOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
@@ -523,10 +320,6 @@ func (o ReadReplicaInstanceOutput) MaintainEnd() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.MaintainEnd }).(pulumi.StringOutput)
 }
 
-// Specifies the DB instance name. The DB instance name of the same type
-// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -543,31 +336,22 @@ func (o ReadReplicaInstanceOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB instance ID, which is used to create a read replica.
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceOutput) PrimaryInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.PrimaryInstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the private IP address list.
 func (o ReadReplicaInstanceOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringArrayOutput { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the public IP address list.
 func (o ReadReplicaInstanceOutput) PublicIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringArrayOutput { return v.PublicIps }).(pulumi.StringArrayOutput)
 }
 
-// The region in which to create the rds read replica instance resource.
-// If omitted, the provider-level region will be used.
-//
-// Currently, read replicas can be created *only* in the same region as that of the primary DB instance.
 func (o ReadReplicaInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the security group which the RDS DB instance belongs to.
 func (o ReadReplicaInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
@@ -576,33 +360,26 @@ func (o ReadReplicaInstanceOutput) SslEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.BoolOutput { return v.SslEnable }).(pulumi.BoolOutput)
 }
 
-// Indicates the instance status.
 func (o ReadReplicaInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Indicates the subnet id.
 func (o ReadReplicaInstanceOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the RDS read replica instance. Each tag is represented by one key-value pair.
 func (o ReadReplicaInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
 func (o ReadReplicaInstanceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the volume information. Structure is documented below.
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceOutput) Volume() ReadReplicaInstanceVolumeOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) ReadReplicaInstanceVolumeOutput { return v.Volume }).(ReadReplicaInstanceVolumeOutput)
 }
 
-// Indicates the VPC ID.
 func (o ReadReplicaInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReadReplicaInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

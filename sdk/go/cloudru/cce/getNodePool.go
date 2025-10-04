@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// To get the specified node pool in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			nodePoolName := cfg.RequireObject("nodePoolName")
-//			_, err := cce.GetNodePool(ctx, &cce.GetNodePoolArgs{
-//				ClusterId: clusterId,
-//				Name:      pulumi.StringRef(nodePoolName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupNodePool(ctx *pulumi.Context, args *LookupNodePoolArgs, opts ...pulumi.InvokeOption) (*LookupNodePoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodePoolResult
@@ -55,68 +23,43 @@ func LookupNodePool(ctx *pulumi.Context, args *LookupNodePoolArgs, opts ...pulum
 
 // A collection of arguments for invoking getNodePool.
 type LookupNodePoolArgs struct {
-	// Specifies the ID of container cluster.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the name of the node pool.
-	Name *string `pulumi:"name"`
-	// Specifies the ID of the node pool.
+	ClusterId  string  `pulumi:"clusterId"`
+	Name       *string `pulumi:"name"`
 	NodePoolId *string `pulumi:"nodePoolId"`
-	// Specifies the region in which to obtain the CCE node pools.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the state of the node pool.
-	Status *string `pulumi:"status"`
+	Region     *string `pulumi:"region"`
+	Status     *string `pulumi:"status"`
 }
 
 // A collection of values returned by getNodePool.
 type LookupNodePoolResult struct {
-	// The name of the available partition (AZ).
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	ClusterId        string `pulumi:"clusterId"`
-	// Current number of nodes in the node pool.
-	CurrentNodeCount int `pulumi:"currentNodeCount"`
-	// Represents the data disk to be created. Structure is documented below.
-	DataVolumes         []GetNodePoolDataVolume `pulumi:"dataVolumes"`
-	EnterpriseProjectId string                  `pulumi:"enterpriseProjectId"`
-	// Extended parameter.
-	ExtendParam map[string]string `pulumi:"extendParam"`
-	// The flavor ID.
-	FlavorId        string                      `pulumi:"flavorId"`
-	HostnameConfigs []GetNodePoolHostnameConfig `pulumi:"hostnameConfigs"`
+	AvailabilityZone    string                      `pulumi:"availabilityZone"`
+	ClusterId           string                      `pulumi:"clusterId"`
+	CurrentNodeCount    int                         `pulumi:"currentNodeCount"`
+	DataVolumes         []GetNodePoolDataVolume     `pulumi:"dataVolumes"`
+	EnterpriseProjectId string                      `pulumi:"enterpriseProjectId"`
+	ExtendParam         map[string]string           `pulumi:"extendParam"`
+	FlavorId            string                      `pulumi:"flavorId"`
+	HostnameConfigs     []GetNodePoolHostnameConfig `pulumi:"hostnameConfigs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Initial number of nodes in the node pool.
-	InitialNodeCount int `pulumi:"initialNodeCount"`
-	// Key pair name when logging in to select the key pair mode.
-	KeyPair string `pulumi:"keyPair"`
-	// Tags of a Kubernetes node, key/value pair format.
-	Labels map[string]string `pulumi:"labels"`
-	// Maximum number of nodes allowed if auto scaling is enabled.
-	MaxNodeCount int `pulumi:"maxNodeCount"`
-	// The maximum number of instances a node is allowed to create.
-	MaxPods int `pulumi:"maxPods"`
-	// Minimum number of nodes allowed if auto scaling is enabled.
-	MinNodeCount int    `pulumi:"minNodeCount"`
-	Name         string `pulumi:"name"`
-	NodePoolId   string `pulumi:"nodePoolId"`
-	// Operating System of the node.
-	Os string `pulumi:"os"`
-	// Weight of a node pool. A node pool with a higher weight has a higher priority during scaling.
-	Priority int    `pulumi:"priority"`
-	Region   string `pulumi:"region"`
-	// It corresponds to the system disk related configuration. Structure is documented below.
-	RootVolumes []GetNodePoolRootVolume `pulumi:"rootVolumes"`
-	// Interval between two scaling operations, in minutes.
-	ScaleDownCooldownTime int `pulumi:"scaleDownCooldownTime"`
-	// Whether auto scaling is enabled.
-	ScallEnable bool   `pulumi:"scallEnable"`
-	Status      string `pulumi:"status"`
-	// The ID of the subnet to which the NIC belongs.
-	SubnetId string `pulumi:"subnetId"`
-	// Tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
-	// Node Pool type.
-	Type string `pulumi:"type"`
+	Id                    string                  `pulumi:"id"`
+	InitialNodeCount      int                     `pulumi:"initialNodeCount"`
+	KeyPair               string                  `pulumi:"keyPair"`
+	Labels                map[string]string       `pulumi:"labels"`
+	MaxNodeCount          int                     `pulumi:"maxNodeCount"`
+	MaxPods               int                     `pulumi:"maxPods"`
+	MinNodeCount          int                     `pulumi:"minNodeCount"`
+	Name                  string                  `pulumi:"name"`
+	NodePoolId            string                  `pulumi:"nodePoolId"`
+	Os                    string                  `pulumi:"os"`
+	Priority              int                     `pulumi:"priority"`
+	Region                string                  `pulumi:"region"`
+	RootVolumes           []GetNodePoolRootVolume `pulumi:"rootVolumes"`
+	ScaleDownCooldownTime int                     `pulumi:"scaleDownCooldownTime"`
+	ScallEnable           bool                    `pulumi:"scallEnable"`
+	Status                string                  `pulumi:"status"`
+	SubnetId              string                  `pulumi:"subnetId"`
+	Tags                  map[string]string       `pulumi:"tags"`
+	Type                  string                  `pulumi:"type"`
 }
 
 func LookupNodePoolOutput(ctx *pulumi.Context, args LookupNodePoolOutputArgs, opts ...pulumi.InvokeOption) LookupNodePoolResultOutput {
@@ -130,17 +73,11 @@ func LookupNodePoolOutput(ctx *pulumi.Context, args LookupNodePoolOutputArgs, op
 
 // A collection of arguments for invoking getNodePool.
 type LookupNodePoolOutputArgs struct {
-	// Specifies the ID of container cluster.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Specifies the name of the node pool.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the ID of the node pool.
+	ClusterId  pulumi.StringInput    `pulumi:"clusterId"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
 	NodePoolId pulumi.StringPtrInput `pulumi:"nodePoolId"`
-	// Specifies the region in which to obtain the CCE node pools.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the state of the node pool.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
+	Status     pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (LookupNodePoolOutputArgs) ElementType() reflect.Type {
@@ -162,7 +99,6 @@ func (o LookupNodePoolResultOutput) ToLookupNodePoolResultOutputWithContext(ctx 
 	return o
 }
 
-// The name of the available partition (AZ).
 func (o LookupNodePoolResultOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -171,12 +107,10 @@ func (o LookupNodePoolResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Current number of nodes in the node pool.
 func (o LookupNodePoolResultOutput) CurrentNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.CurrentNodeCount }).(pulumi.IntOutput)
 }
 
-// Represents the data disk to be created. Structure is documented below.
 func (o LookupNodePoolResultOutput) DataVolumes() GetNodePoolDataVolumeArrayOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) []GetNodePoolDataVolume { return v.DataVolumes }).(GetNodePoolDataVolumeArrayOutput)
 }
@@ -185,12 +119,10 @@ func (o LookupNodePoolResultOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Extended parameter.
 func (o LookupNodePoolResultOutput) ExtendParam() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) map[string]string { return v.ExtendParam }).(pulumi.StringMapOutput)
 }
 
-// The flavor ID.
 func (o LookupNodePoolResultOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -204,32 +136,26 @@ func (o LookupNodePoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Initial number of nodes in the node pool.
 func (o LookupNodePoolResultOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
 
-// Key pair name when logging in to select the key pair mode.
 func (o LookupNodePoolResultOutput) KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.KeyPair }).(pulumi.StringOutput)
 }
 
-// Tags of a Kubernetes node, key/value pair format.
 func (o LookupNodePoolResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Maximum number of nodes allowed if auto scaling is enabled.
 func (o LookupNodePoolResultOutput) MaxNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.MaxNodeCount }).(pulumi.IntOutput)
 }
 
-// The maximum number of instances a node is allowed to create.
 func (o LookupNodePoolResultOutput) MaxPods() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.MaxPods }).(pulumi.IntOutput)
 }
 
-// Minimum number of nodes allowed if auto scaling is enabled.
 func (o LookupNodePoolResultOutput) MinNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
@@ -242,12 +168,10 @@ func (o LookupNodePoolResultOutput) NodePoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.NodePoolId }).(pulumi.StringOutput)
 }
 
-// Operating System of the node.
 func (o LookupNodePoolResultOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Os }).(pulumi.StringOutput)
 }
 
-// Weight of a node pool. A node pool with a higher weight has a higher priority during scaling.
 func (o LookupNodePoolResultOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.Priority }).(pulumi.IntOutput)
 }
@@ -256,17 +180,14 @@ func (o LookupNodePoolResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// It corresponds to the system disk related configuration. Structure is documented below.
 func (o LookupNodePoolResultOutput) RootVolumes() GetNodePoolRootVolumeArrayOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) []GetNodePoolRootVolume { return v.RootVolumes }).(GetNodePoolRootVolumeArrayOutput)
 }
 
-// Interval between two scaling operations, in minutes.
 func (o LookupNodePoolResultOutput) ScaleDownCooldownTime() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.ScaleDownCooldownTime }).(pulumi.IntOutput)
 }
 
-// Whether auto scaling is enabled.
 func (o LookupNodePoolResultOutput) ScallEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) bool { return v.ScallEnable }).(pulumi.BoolOutput)
 }
@@ -275,17 +196,14 @@ func (o LookupNodePoolResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the subnet to which the NIC belongs.
 func (o LookupNodePoolResultOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Tags of a VM node, key/value pair format.
 func (o LookupNodePoolResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Node Pool type.
 func (o LookupNodePoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Type }).(pulumi.StringOutput)
 }

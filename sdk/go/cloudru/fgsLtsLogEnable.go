@@ -11,40 +11,10 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this resource to enable LTS logs for FunctionGraph within SberCloud.
-//
-// > This resource is only a one-time action resource for enabling LTS logs for FunctionGraph. Deleting this resource will
-//
-//	not disable the LTS logs, but will only remove the resource information from the tfstate file.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewFgsLtsLogEnable(ctx, "test", nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type FgsLtsLogEnable struct {
 	pulumi.CustomResourceState
 
-	// Specifies the region where the LTS log function is to be enabled.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the LTS log function is to be enabled.
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
@@ -78,14 +48,12 @@ func GetFgsLtsLogEnable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FgsLtsLogEnable resources.
 type fgsLtsLogEnableState struct {
-	// Specifies the region where the LTS log function is to be enabled.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the LTS log function is to be enabled.
 	Region *string `pulumi:"region"`
 }
 
 type FgsLtsLogEnableState struct {
-	// Specifies the region where the LTS log function is to be enabled.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the LTS log function is to be enabled.
 	Region pulumi.StringPtrInput
 }
 
@@ -94,15 +62,13 @@ func (FgsLtsLogEnableState) ElementType() reflect.Type {
 }
 
 type fgsLtsLogEnableArgs struct {
-	// Specifies the region where the LTS log function is to be enabled.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the LTS log function is to be enabled.
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a FgsLtsLogEnable resource.
 type FgsLtsLogEnableArgs struct {
-	// Specifies the region where the LTS log function is to be enabled.\
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the LTS log function is to be enabled.
 	Region pulumi.StringPtrInput
 }
 
@@ -193,8 +159,7 @@ func (o FgsLtsLogEnableOutput) ToFgsLtsLogEnableOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies the region where the LTS log function is to be enabled.\
-// If omitted, the provider-level region will be used. Changing this will create a new resource.
+// The region where the LTS log function is to be enabled.
 func (o FgsLtsLogEnableOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsLtsLogEnable) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this resource to enable LTS logs for FunctionGraph within SberCloud.
- *
- * > This resource is only a one-time action resource for enabling LTS logs for FunctionGraph. Deleting this resource will
- *    not disable the LTS logs, but will only remove the resource information from the tfstate file.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = new sbercloud.FgsLtsLogEnable("test", {});
- * ```
- */
 export class FgsLtsLogEnable extends pulumi.CustomResource {
     /**
      * Get an existing FgsLtsLogEnable resource's state with the given name, ID, and optional extra
@@ -48,8 +33,7 @@ export class FgsLtsLogEnable extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the region where the LTS log function is to be enabled.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the LTS log function is to be enabled.
      */
     declare public readonly region: pulumi.Output<string>;
 
@@ -81,8 +65,7 @@ export class FgsLtsLogEnable extends pulumi.CustomResource {
  */
 export interface FgsLtsLogEnableState {
     /**
-     * Specifies the region where the LTS log function is to be enabled.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the LTS log function is to be enabled.
      */
     region?: pulumi.Input<string>;
 }
@@ -92,8 +75,7 @@ export interface FgsLtsLogEnableState {
  */
 export interface FgsLtsLogEnableArgs {
     /**
-     * Specifies the region where the LTS log function is to be enabled.  
-     * If omitted, the provider-level region will be used. Changing this will create a new resource.
+     * The region where the LTS log function is to be enabled.
      */
     region?: pulumi.Input<string>;
 }

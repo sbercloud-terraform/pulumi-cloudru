@@ -6,38 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of Kafka instance consumer groups.
- *
- * ## Example Usage
- *
- * ### Get all groups for an instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsKafkaConsumerGroups({
- *     instanceId: instanceId,
- * });
- * ```
- *
- * ### Get specific group for an instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsKafkaConsumerGroups({
- *     instanceId: instanceId,
- *     name: "test_group",
- * });
- * ```
- */
 export function getDmsKafkaConsumerGroups(args: GetDmsKafkaConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsKafkaConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", {
@@ -55,34 +23,12 @@ export function getDmsKafkaConsumerGroups(args: GetDmsKafkaConsumerGroupsArgs, o
  * A collection of arguments for invoking getDmsKafkaConsumerGroups.
  */
 export interface GetDmsKafkaConsumerGroupsArgs {
-    /**
-     * Specifies the coordinator ID.
-     */
     coordinatorId?: number;
-    /**
-     * Specifies the group description.
-     */
     description?: string;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the number of accumulated messages.
-     */
     lag?: number;
-    /**
-     * Specifies the group name.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the consumer group status.
-     */
     state?: string;
 }
 
@@ -90,69 +36,19 @@ export interface GetDmsKafkaConsumerGroupsArgs {
  * A collection of values returned by getDmsKafkaConsumerGroups.
  */
 export interface GetDmsKafkaConsumerGroupsResult {
-    /**
-     * Indicates the coordinator ID.
-     */
     readonly coordinatorId?: number;
-    /**
-     * Indicates the consumer group description.
-     */
     readonly description?: string;
-    /**
-     * Indicates the groups list.
-     */
     readonly groups: outputs.GetDmsKafkaConsumerGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Indicates the number of accumulated messages.
-     */
     readonly lag?: number;
-    /**
-     * Indicates the consumer group name.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the consumer group status.
-     */
     readonly state?: string;
 }
-/**
- * Use this data source to get the list of Kafka instance consumer groups.
- *
- * ## Example Usage
- *
- * ### Get all groups for an instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsKafkaConsumerGroups({
- *     instanceId: instanceId,
- * });
- * ```
- *
- * ### Get specific group for an instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsKafkaConsumerGroups({
- *     instanceId: instanceId,
- *     name: "test_group",
- * });
- * ```
- */
 export function getDmsKafkaConsumerGroupsOutput(args: GetDmsKafkaConsumerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsKafkaConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsKafkaConsumerGroups:getDmsKafkaConsumerGroups", {
@@ -170,33 +66,11 @@ export function getDmsKafkaConsumerGroupsOutput(args: GetDmsKafkaConsumerGroupsO
  * A collection of arguments for invoking getDmsKafkaConsumerGroups.
  */
 export interface GetDmsKafkaConsumerGroupsOutputArgs {
-    /**
-     * Specifies the coordinator ID.
-     */
     coordinatorId?: pulumi.Input<number>;
-    /**
-     * Specifies the group description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the number of accumulated messages.
-     */
     lag?: pulumi.Input<number>;
-    /**
-     * Specifies the group name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the consumer group status.
-     */
     state?: pulumi.Input<string>;
 }

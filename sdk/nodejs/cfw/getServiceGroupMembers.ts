@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW service group members.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupId = config.requireObject<any>("groupId");
- * const test = sbercloud.Cfw.getServiceGroupMembers({
- *     groupId: groupId,
- * });
- * ```
- */
 export function getServiceGroupMembers(args: GetServiceGroupMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceGroupMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getServiceGroupMembers:getServiceGroupMembers", {
@@ -41,47 +25,14 @@ export function getServiceGroupMembers(args: GetServiceGroupMembersArgs, opts?: 
  * A collection of arguments for invoking getServiceGroupMembers.
  */
 export interface GetServiceGroupMembersArgs {
-    /**
-     * Specifies the destination port.
-     */
     destPort?: string;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: string;
-    /**
-     * Specifies the service group ID.
-     */
     groupId: string;
-    /**
-     * Specifies the service group type.
-     * The value can be **0** (custom service group), **1** (predefined service group).
-     */
     groupType?: string;
-    /**
-     * Specifies the service group member ID.
-     */
     itemId?: string;
-    /**
-     * Specifies the key word.
-     */
     keyWord?: string;
-    /**
-     * Specifies the protocol type.
-     * The options are as follows:
-     * + **6**: TCP;
-     * + **17**: UDP;
-     * + **1**: ICMP.
-     */
     protocol?: number;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the source port.
-     */
     sourcePort?: string;
 }
 
@@ -89,9 +40,6 @@ export interface GetServiceGroupMembersArgs {
  * A collection of values returned by getServiceGroupMembers.
  */
 export interface GetServiceGroupMembersResult {
-    /**
-     * The destination port.
-     */
     readonly destPort?: string;
     readonly fwInstanceId?: string;
     readonly groupId: string;
@@ -100,41 +48,13 @@ export interface GetServiceGroupMembersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The service group member ID.
-     */
     readonly itemId?: string;
     readonly keyWord?: string;
-    /**
-     * The protocol type.
-     */
     readonly protocol?: number;
-    /**
-     * The service group member list.
-     */
     readonly records: outputs.Cfw.GetServiceGroupMembersRecord[];
     readonly region: string;
-    /**
-     * The source port.
-     */
     readonly sourcePort?: string;
 }
-/**
- * Use this data source to get the list of CFW service group members.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupId = config.requireObject<any>("groupId");
- * const test = sbercloud.Cfw.getServiceGroupMembers({
- *     groupId: groupId,
- * });
- * ```
- */
 export function getServiceGroupMembersOutput(args: GetServiceGroupMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceGroupMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getServiceGroupMembers:getServiceGroupMembers", {
@@ -154,46 +74,13 @@ export function getServiceGroupMembersOutput(args: GetServiceGroupMembersOutputA
  * A collection of arguments for invoking getServiceGroupMembers.
  */
 export interface GetServiceGroupMembersOutputArgs {
-    /**
-     * Specifies the destination port.
-     */
     destPort?: pulumi.Input<string>;
-    /**
-     * Specifies the firewall instance ID.
-     */
     fwInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the service group ID.
-     */
     groupId: pulumi.Input<string>;
-    /**
-     * Specifies the service group type.
-     * The value can be **0** (custom service group), **1** (predefined service group).
-     */
     groupType?: pulumi.Input<string>;
-    /**
-     * Specifies the service group member ID.
-     */
     itemId?: pulumi.Input<string>;
-    /**
-     * Specifies the key word.
-     */
     keyWord?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol type.
-     * The options are as follows:
-     * + **6**: TCP;
-     * + **17**: UDP;
-     * + **1**: ICMP.
-     */
     protocol?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the source port.
-     */
     sourcePort?: pulumi.Input<string>;
 }

@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of the available SFS turbos.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const sfsTurboName = config.requireObject<any>("sfsTurboName");
- * const test = sbercloud.Sfs.getTurbos({
- *     name: sfsTurboName,
- * });
- * ```
- */
 export function getTurbos(args?: GetTurbosArgs, opts?: pulumi.InvokeOptions): Promise<GetTurbosResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,32 +23,11 @@ export function getTurbos(args?: GetTurbosArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getTurbos.
  */
 export interface GetTurbosArgs {
-    /**
-     * The enterprise project ID of the SFS turbo file system.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the name of the SFS turbo file system.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the SFS turbo file systems.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-     */
     shareProto?: string;
-    /**
-     * Specifies the type of the SFS turbo file system.
-     * The valid values are **STANDARD** and **PERFORMANCE**.
-     */
     shareType?: string;
-    /**
-     * Specifies the capacity of the SFS turbo file system, in GB.
-     * The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-     */
     size?: number;
 }
 
@@ -72,52 +35,18 @@ export interface GetTurbosArgs {
  * A collection of values returned by getTurbos.
  */
 export interface GetTurbosResult {
-    /**
-     * The enterprise project ID of the SFS turbo file system.
-     */
     readonly enterpriseProjectId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The name of the SFS turbo file system.
-     */
     readonly name?: string;
     readonly region?: string;
-    /**
-     * The protocol of the SFS turbo file system.
-     */
     readonly shareProto?: string;
-    /**
-     * The type of the SFS turbo file system.
-     */
     readonly shareType?: string;
-    /**
-     * The capacity of the SFS turbo file system.
-     */
     readonly size?: number;
-    /**
-     * The list of the SFS turbo file systems. The object structure is documented below.
-     */
     readonly turbos: outputs.Sfs.GetTurbosTurbo[];
 }
-/**
- * Use this data source to get the list of the available SFS turbos.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const sfsTurboName = config.requireObject<any>("sfsTurboName");
- * const test = sbercloud.Sfs.getTurbos({
- *     name: sfsTurboName,
- * });
- * ```
- */
 export function getTurbosOutput(args?: GetTurbosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTurbosResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -135,31 +64,10 @@ export function getTurbosOutput(args?: GetTurbosOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getTurbos.
  */
 export interface GetTurbosOutputArgs {
-    /**
-     * The enterprise project ID of the SFS turbo file system.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the SFS turbo file system.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the SFS turbo file systems.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-     */
     shareProto?: pulumi.Input<string>;
-    /**
-     * Specifies the type of the SFS turbo file system.
-     * The valid values are **STANDARD** and **PERFORMANCE**.
-     */
     shareType?: pulumi.Input<string>;
-    /**
-     * Specifies the capacity of the SFS turbo file system, in GB.
-     * The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-     */
     size?: pulumi.Input<number>;
 }

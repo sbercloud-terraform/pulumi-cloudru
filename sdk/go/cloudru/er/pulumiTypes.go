@@ -14,27 +14,15 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetAssociationsAssociation struct {
-	// Specifies the attachment ID corresponding to the association.
-	AttachmentId string `pulumi:"attachmentId"`
-	// Specifies the attachment type corresponding to the association.
+	AttachmentId   string `pulumi:"attachmentId"`
 	AttachmentType string `pulumi:"attachmentType"`
-	// The creation time.
-	CreatedAt string `pulumi:"createdAt"`
-	// The association ID.
-	Id string `pulumi:"id"`
-	// The resource ID of the attachment corresponding to the association.
-	ResourceId string `pulumi:"resourceId"`
-	// The route policy ID of the egress IPv4 protocol.
-	RoutePolicyId string `pulumi:"routePolicyId"`
-	// Specifies the route table ID to which the association belongs.
-	RouteTableId string `pulumi:"routeTableId"`
-	// Specifies the status of the association. Default value is `available`.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	Status string `pulumi:"status"`
-	// The latest update time.
-	UpdatedAt string `pulumi:"updatedAt"`
+	CreatedAt      string `pulumi:"createdAt"`
+	Id             string `pulumi:"id"`
+	ResourceId     string `pulumi:"resourceId"`
+	RoutePolicyId  string `pulumi:"routePolicyId"`
+	RouteTableId   string `pulumi:"routeTableId"`
+	Status         string `pulumi:"status"`
+	UpdatedAt      string `pulumi:"updatedAt"`
 }
 
 // GetAssociationsAssociationInput is an input type that accepts GetAssociationsAssociationArgs and GetAssociationsAssociationOutput values.
@@ -49,27 +37,15 @@ type GetAssociationsAssociationInput interface {
 }
 
 type GetAssociationsAssociationArgs struct {
-	// Specifies the attachment ID corresponding to the association.
-	AttachmentId pulumi.StringInput `pulumi:"attachmentId"`
-	// Specifies the attachment type corresponding to the association.
+	AttachmentId   pulumi.StringInput `pulumi:"attachmentId"`
 	AttachmentType pulumi.StringInput `pulumi:"attachmentType"`
-	// The creation time.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The association ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The resource ID of the attachment corresponding to the association.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// The route policy ID of the egress IPv4 protocol.
-	RoutePolicyId pulumi.StringInput `pulumi:"routePolicyId"`
-	// Specifies the route table ID to which the association belongs.
-	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
-	// Specifies the status of the association. Default value is `available`.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	Status pulumi.StringInput `pulumi:"status"`
-	// The latest update time.
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	CreatedAt      pulumi.StringInput `pulumi:"createdAt"`
+	Id             pulumi.StringInput `pulumi:"id"`
+	ResourceId     pulumi.StringInput `pulumi:"resourceId"`
+	RoutePolicyId  pulumi.StringInput `pulumi:"routePolicyId"`
+	RouteTableId   pulumi.StringInput `pulumi:"routeTableId"`
+	Status         pulumi.StringInput `pulumi:"status"`
+	UpdatedAt      pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetAssociationsAssociationArgs) ElementType() reflect.Type {
@@ -123,50 +99,38 @@ func (o GetAssociationsAssociationOutput) ToGetAssociationsAssociationOutputWith
 	return o
 }
 
-// Specifies the attachment ID corresponding to the association.
 func (o GetAssociationsAssociationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.AttachmentId }).(pulumi.StringOutput)
 }
 
-// Specifies the attachment type corresponding to the association.
 func (o GetAssociationsAssociationOutput) AttachmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.AttachmentType }).(pulumi.StringOutput)
 }
 
-// The creation time.
 func (o GetAssociationsAssociationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The association ID.
 func (o GetAssociationsAssociationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource ID of the attachment corresponding to the association.
 func (o GetAssociationsAssociationOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The route policy ID of the egress IPv4 protocol.
 func (o GetAssociationsAssociationOutput) RoutePolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.RoutePolicyId }).(pulumi.StringOutput)
 }
 
-// Specifies the route table ID to which the association belongs.
 func (o GetAssociationsAssociationOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the association. Default value is `available`.
-// The valid values are as follows:
-// + **available**
-// + **failed**
 func (o GetAssociationsAssociationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The latest update time.
 func (o GetAssociationsAssociationOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAssociationsAssociation) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -200,28 +164,17 @@ type GetAttachmentsAttachment struct {
 	Description string `pulumi:"description"`
 	// The attachment ID.
 	Id string `pulumi:"id"`
-	// Specifies the name used to filter the attachments.
+	// The attachment name.
 	Name string `pulumi:"name"`
-	// Specifies the associated resource ID used to filter the attachments.
+	// The associated resource ID.
 	ResourceId string `pulumi:"resourceId"`
 	// The associated route table ID.
 	RouteTableId string `pulumi:"routeTableId"`
-	// Specifies the status used to filter the attachments.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	// + **pending_acceptance**
-	// + **rejected**
+	// The current status of the attachment.
 	Status string `pulumi:"status"`
-	// The key/value pairs used to filter the attachments.
+	// The key/value pairs to associate with the attachment.
 	Tags map[string]string `pulumi:"tags"`
-	// Specifies the resource type to be filtered.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
+	// The attachment type.
 	Type string `pulumi:"type"`
 	// The latest update time of the attachment.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -247,28 +200,17 @@ type GetAttachmentsAttachmentArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The attachment ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name used to filter the attachments.
+	// The attachment name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the associated resource ID used to filter the attachments.
+	// The associated resource ID.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// The associated route table ID.
 	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
-	// Specifies the status used to filter the attachments.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	// + **pending_acceptance**
-	// + **rejected**
+	// The current status of the attachment.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The key/value pairs used to filter the attachments.
+	// The key/value pairs to associate with the attachment.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the resource type to be filtered.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
+	// The attachment type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The latest update time of the attachment.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
@@ -345,12 +287,12 @@ func (o GetAttachmentsAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name used to filter the attachments.
+// The attachment name.
 func (o GetAttachmentsAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the associated resource ID used to filter the attachments.
+// The associated resource ID.
 func (o GetAttachmentsAttachmentOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) string { return v.ResourceId }).(pulumi.StringOutput)
 }
@@ -360,28 +302,17 @@ func (o GetAttachmentsAttachmentOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// Specifies the status used to filter the attachments.
-// The valid values are as follows:
-// + **available**
-// + **failed**
-// + **pending_acceptance**
-// + **rejected**
+// The current status of the attachment.
 func (o GetAttachmentsAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The key/value pairs used to filter the attachments.
+// The key/value pairs to associate with the attachment.
 func (o GetAttachmentsAttachmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the resource type to be filtered.\
-// The valid values are as follows:
-//   - **vpc**: Virtual private cloud.
-//   - **vpn**: VPN gateway.
-//   - **vgw**: Virtual gateway of cloud private line.
-//   - **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-//     peering connection.
+// The attachment type.
 func (o GetAttachmentsAttachmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAttachmentsAttachment) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -412,7 +343,7 @@ func (o GetAttachmentsAttachmentArrayOutput) Index(i pulumi.IntInput) GetAttachm
 }
 
 type GetAvailableRoutesRoute struct {
-	// The destination address of the routes to be queried.
+	// The destination address of the route.
 	Destination string `pulumi:"destination"`
 	// The route ID.
 	Id string `pulumi:"id"`
@@ -436,7 +367,7 @@ type GetAvailableRoutesRouteInput interface {
 }
 
 type GetAvailableRoutesRouteArgs struct {
-	// The destination address of the routes to be queried.
+	// The destination address of the route.
 	Destination pulumi.StringInput `pulumi:"destination"`
 	// The route ID.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -499,7 +430,7 @@ func (o GetAvailableRoutesRouteOutput) ToGetAvailableRoutesRouteOutputWithContex
 	return o
 }
 
-// The destination address of the routes to be queried.
+// The destination address of the route.
 func (o GetAvailableRoutesRouteOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailableRoutesRoute) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -550,13 +481,6 @@ type GetAvailableRoutesRouteNextHop struct {
 	// The attached resource ID.
 	ResourceId string `pulumi:"resourceId"`
 	// The attachment type.
-	// The valid values are as follows:
-	// + **vpc**: VPC attachment.
-	// + **vpn**: VPN gateway attachment.
-	// + **vgw**: virtual gateway attachment.
-	// + **peering**: peering connection attachment.
-	// + **ecn**: ECN attachment.
-	// + **cfw**: CFW instance attachment.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -577,13 +501,6 @@ type GetAvailableRoutesRouteNextHopArgs struct {
 	// The attached resource ID.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// The attachment type.
-	// The valid values are as follows:
-	// + **vpc**: VPC attachment.
-	// + **vpn**: VPN gateway attachment.
-	// + **vgw**: virtual gateway attachment.
-	// + **peering**: peering connection attachment.
-	// + **ecn**: ECN attachment.
-	// + **cfw**: CFW instance attachment.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -649,13 +566,6 @@ func (o GetAvailableRoutesRouteNextHopOutput) ResourceId() pulumi.StringOutput {
 }
 
 // The attachment type.
-// The valid values are as follows:
-// + **vpc**: VPC attachment.
-// + **vpn**: VPN gateway attachment.
-// + **vgw**: virtual gateway attachment.
-// + **peering**: peering connection attachment.
-// + **ecn**: ECN attachment.
-// + **cfw**: CFW instance attachment.
 func (o GetAvailableRoutesRouteNextHopOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailableRoutesRouteNextHop) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -685,26 +595,23 @@ type GetFlowLogsFlowLog struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// The description of the flow log.
 	Description string `pulumi:"description"`
-	// Specifies the switch status of the flow log.
-	// The value can be **true** and **false**.
+	// The switch of the flow log.
 	Enabled bool `pulumi:"enabled"`
 	// The ID of the flow log.
 	Id string `pulumi:"id"`
-	// Specifies the ID of the log group to which the flow logs belong.
+	// The ID of the log group to which the flow log belongs.
 	LogGroupId string `pulumi:"logGroupId"`
 	// The storage type of the flow log.
 	LogStoreType string `pulumi:"logStoreType"`
-	// Specifies the ID of the log stream to which the flow logs belong.
+	// The ID of the log stream to which the flow log belongs.
 	LogStreamId string `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
+	// The name of the flow log.
 	Name string `pulumi:"name"`
-	// Specifies the ID of the attachment to which the flow logs belong.
+	// The ID of the attachment to which the flow log belongs.
 	ResourceId string `pulumi:"resourceId"`
-	// Specifies the type of the flow logs.
-	// The valid values are as follows:
-	// + **attachment**: The flow logs type are attachment.
+	// The type of the flow log.
 	ResourceType string `pulumi:"resourceType"`
-	// Specifies the status of the flow logs.
+	// The status of the flow log.
 	Status string `pulumi:"status"`
 	// The latest update time of the flow log.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -726,26 +633,23 @@ type GetFlowLogsFlowLogArgs struct {
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The description of the flow log.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the switch status of the flow log.
-	// The value can be **true** and **false**.
+	// The switch of the flow log.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The ID of the flow log.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the ID of the log group to which the flow logs belong.
+	// The ID of the log group to which the flow log belongs.
 	LogGroupId pulumi.StringInput `pulumi:"logGroupId"`
 	// The storage type of the flow log.
 	LogStoreType pulumi.StringInput `pulumi:"logStoreType"`
-	// Specifies the ID of the log stream to which the flow logs belong.
+	// The ID of the log stream to which the flow log belongs.
 	LogStreamId pulumi.StringInput `pulumi:"logStreamId"`
-	// Specifies the name of the flow log.
+	// The name of the flow log.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the ID of the attachment to which the flow logs belong.
+	// The ID of the attachment to which the flow log belongs.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// Specifies the type of the flow logs.
-	// The valid values are as follows:
-	// + **attachment**: The flow logs type are attachment.
+	// The type of the flow log.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// Specifies the status of the flow logs.
+	// The status of the flow log.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The latest update time of the flow log.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
@@ -812,8 +716,7 @@ func (o GetFlowLogsFlowLogOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the switch status of the flow log.
-// The value can be **true** and **false**.
+// The switch of the flow log.
 func (o GetFlowLogsFlowLogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -823,7 +726,7 @@ func (o GetFlowLogsFlowLogOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the log group to which the flow logs belong.
+// The ID of the log group to which the flow log belongs.
 func (o GetFlowLogsFlowLogOutput) LogGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.LogGroupId }).(pulumi.StringOutput)
 }
@@ -833,29 +736,27 @@ func (o GetFlowLogsFlowLogOutput) LogStoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.LogStoreType }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the log stream to which the flow logs belong.
+// The ID of the log stream to which the flow log belongs.
 func (o GetFlowLogsFlowLogOutput) LogStreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.LogStreamId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the flow log.
+// The name of the flow log.
 func (o GetFlowLogsFlowLogOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the attachment to which the flow logs belong.
+// The ID of the attachment to which the flow log belongs.
 func (o GetFlowLogsFlowLogOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the flow logs.
-// The valid values are as follows:
-// + **attachment**: The flow logs type are attachment.
+// The type of the flow log.
 func (o GetFlowLogsFlowLogOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the flow logs.
+// The status of the flow log.
 func (o GetFlowLogsFlowLogOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsFlowLog) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -892,31 +793,29 @@ type GetInstancesInstance struct {
 	AutoAcceptSharedAttachments bool `pulumi:"autoAcceptSharedAttachments"`
 	// The availability zone list where the ER instance is located.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The creation time of the ER instance.
+	// The creation time of the instance.
 	CreatedAt string `pulumi:"createdAt"`
 	// The ID of the default association route table.
 	DefaultAssociationRouteTableId string `pulumi:"defaultAssociationRouteTableId"`
 	// The ID of the default propagation route table.
 	DefaultPropagationRouteTableId string `pulumi:"defaultPropagationRouteTableId"`
-	// The description of the ER instance.
+	// The description of the instance.
 	Description string `pulumi:"description"`
 	// Whether to enable the association of the default route table.
 	EnableDefaultAssociation bool `pulumi:"enableDefaultAssociation"`
 	// Whether to enable the propagation of the default route table.
 	EnableDefaultPropagation bool `pulumi:"enableDefaultPropagation"`
-	// Specifies the enterprise project ID of the ER instances to be queried.
+	// The ID of enterprise project to which the instance belongs.
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The ER instance ID.
+	// The instance ID.
 	Id string `pulumi:"id"`
-	// Specifies the name used to filter the ER instances.
-	// The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-	// hyphens (-) are allowed.
+	// The name of the instance.
 	Name string `pulumi:"name"`
-	// Specifies the status used to filter the ER instances.
+	// The current status of the instance.
 	Status string `pulumi:"status"`
-	// Specifies the key/value pairs used to filter the ER instances.
+	// The key/value pairs to associate with the instance.
 	Tags map[string]string `pulumi:"tags"`
-	// The last update time of the ER instance.
+	// The last update time of the instance.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
 
@@ -938,31 +837,29 @@ type GetInstancesInstanceArgs struct {
 	AutoAcceptSharedAttachments pulumi.BoolInput `pulumi:"autoAcceptSharedAttachments"`
 	// The availability zone list where the ER instance is located.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// The creation time of the ER instance.
+	// The creation time of the instance.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The ID of the default association route table.
 	DefaultAssociationRouteTableId pulumi.StringInput `pulumi:"defaultAssociationRouteTableId"`
 	// The ID of the default propagation route table.
 	DefaultPropagationRouteTableId pulumi.StringInput `pulumi:"defaultPropagationRouteTableId"`
-	// The description of the ER instance.
+	// The description of the instance.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Whether to enable the association of the default route table.
 	EnableDefaultAssociation pulumi.BoolInput `pulumi:"enableDefaultAssociation"`
 	// Whether to enable the propagation of the default route table.
 	EnableDefaultPropagation pulumi.BoolInput `pulumi:"enableDefaultPropagation"`
-	// Specifies the enterprise project ID of the ER instances to be queried.
+	// The ID of enterprise project to which the instance belongs.
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The ER instance ID.
+	// The instance ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name used to filter the ER instances.
-	// The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-	// hyphens (-) are allowed.
+	// The name of the instance.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the status used to filter the ER instances.
+	// The current status of the instance.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the key/value pairs used to filter the ER instances.
+	// The key/value pairs to associate with the instance.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The last update time of the ER instance.
+	// The last update time of the instance.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
@@ -1032,7 +929,7 @@ func (o GetInstancesInstanceOutput) AvailabilityZones() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The creation time of the ER instance.
+// The creation time of the instance.
 func (o GetInstancesInstanceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -1047,7 +944,7 @@ func (o GetInstancesInstanceOutput) DefaultPropagationRouteTableId() pulumi.Stri
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DefaultPropagationRouteTableId }).(pulumi.StringOutput)
 }
 
-// The description of the ER instance.
+// The description of the instance.
 func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -1062,34 +959,32 @@ func (o GetInstancesInstanceOutput) EnableDefaultPropagation() pulumi.BoolOutput
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.EnableDefaultPropagation }).(pulumi.BoolOutput)
 }
 
-// Specifies the enterprise project ID of the ER instances to be queried.
+// The ID of enterprise project to which the instance belongs.
 func (o GetInstancesInstanceOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The ER instance ID.
+// The instance ID.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name used to filter the ER instances.
-// The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-// hyphens (-) are allowed.
+// The name of the instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the status used to filter the ER instances.
+// The current status of the instance.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs used to filter the ER instances.
+// The key/value pairs to associate with the instance.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The last update time of the ER instance.
+// The last update time of the instance.
 func (o GetInstancesInstanceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -1115,37 +1010,16 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetPropagationsPropagation struct {
-	// Specifies the attachment ID to which the propagation belongs.
-	AttachmentId string `pulumi:"attachmentId"`
-	// Specifies the attachment type of corresponding to the propagation.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
-	// + **enc**: Enterprise connect network in EC.
-	// + **cfw**: VPC border firewall.
+	AttachmentId   string `pulumi:"attachmentId"`
 	AttachmentType string `pulumi:"attachmentType"`
-	// The creation time of the propagation.
-	CreatedAt string `pulumi:"createdAt"`
-	// The propagation ID.
-	Id string `pulumi:"id"`
-	// Specifies the ER instance ID to which the propagation belongs.
-	InstanceId string `pulumi:"instanceId"`
-	// The resource ID of the attachment associated with the propagation.
-	ResourceId string `pulumi:"resourceId"`
-	// The route policy ID of the ingress IPv4 protocol.
-	RoutePolicyId string `pulumi:"routePolicyId"`
-	// Specifies the route table ID to which the propagation belongs.
-	RouteTableId string `pulumi:"routeTableId"`
-	// Specifies the status of the propagation. Default value is `available`.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	Status string `pulumi:"status"`
-	// The latest update time of the propagation.
-	UpdatedAt string `pulumi:"updatedAt"`
+	CreatedAt      string `pulumi:"createdAt"`
+	Id             string `pulumi:"id"`
+	InstanceId     string `pulumi:"instanceId"`
+	ResourceId     string `pulumi:"resourceId"`
+	RoutePolicyId  string `pulumi:"routePolicyId"`
+	RouteTableId   string `pulumi:"routeTableId"`
+	Status         string `pulumi:"status"`
+	UpdatedAt      string `pulumi:"updatedAt"`
 }
 
 // GetPropagationsPropagationInput is an input type that accepts GetPropagationsPropagationArgs and GetPropagationsPropagationOutput values.
@@ -1160,37 +1034,16 @@ type GetPropagationsPropagationInput interface {
 }
 
 type GetPropagationsPropagationArgs struct {
-	// Specifies the attachment ID to which the propagation belongs.
-	AttachmentId pulumi.StringInput `pulumi:"attachmentId"`
-	// Specifies the attachment type of corresponding to the propagation.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
-	// + **enc**: Enterprise connect network in EC.
-	// + **cfw**: VPC border firewall.
+	AttachmentId   pulumi.StringInput `pulumi:"attachmentId"`
 	AttachmentType pulumi.StringInput `pulumi:"attachmentType"`
-	// The creation time of the propagation.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The propagation ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the ER instance ID to which the propagation belongs.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The resource ID of the attachment associated with the propagation.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// The route policy ID of the ingress IPv4 protocol.
-	RoutePolicyId pulumi.StringInput `pulumi:"routePolicyId"`
-	// Specifies the route table ID to which the propagation belongs.
-	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
-	// Specifies the status of the propagation. Default value is `available`.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	Status pulumi.StringInput `pulumi:"status"`
-	// The latest update time of the propagation.
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	CreatedAt      pulumi.StringInput `pulumi:"createdAt"`
+	Id             pulumi.StringInput `pulumi:"id"`
+	InstanceId     pulumi.StringInput `pulumi:"instanceId"`
+	ResourceId     pulumi.StringInput `pulumi:"resourceId"`
+	RoutePolicyId  pulumi.StringInput `pulumi:"routePolicyId"`
+	RouteTableId   pulumi.StringInput `pulumi:"routeTableId"`
+	Status         pulumi.StringInput `pulumi:"status"`
+	UpdatedAt      pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetPropagationsPropagationArgs) ElementType() reflect.Type {
@@ -1244,63 +1097,42 @@ func (o GetPropagationsPropagationOutput) ToGetPropagationsPropagationOutputWith
 	return o
 }
 
-// Specifies the attachment ID to which the propagation belongs.
 func (o GetPropagationsPropagationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.AttachmentId }).(pulumi.StringOutput)
 }
 
-// Specifies the attachment type of corresponding to the propagation.\
-// The valid values are as follows:
-//   - **vpc**: Virtual private cloud.
-//   - **vpn**: VPN gateway.
-//   - **vgw**: Virtual gateway of cloud private line.
-//   - **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-//     peering connection.
-//   - **enc**: Enterprise connect network in EC.
-//   - **cfw**: VPC border firewall.
 func (o GetPropagationsPropagationOutput) AttachmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.AttachmentType }).(pulumi.StringOutput)
 }
 
-// The creation time of the propagation.
 func (o GetPropagationsPropagationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The propagation ID.
 func (o GetPropagationsPropagationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the ER instance ID to which the propagation belongs.
 func (o GetPropagationsPropagationOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The resource ID of the attachment associated with the propagation.
 func (o GetPropagationsPropagationOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The route policy ID of the ingress IPv4 protocol.
 func (o GetPropagationsPropagationOutput) RoutePolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.RoutePolicyId }).(pulumi.StringOutput)
 }
 
-// Specifies the route table ID to which the propagation belongs.
 func (o GetPropagationsPropagationOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// Specifies the status of the propagation. Default value is `available`.
-// The valid values are as follows:
-// + **available**
-// + **failed**
 func (o GetPropagationsPropagationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The latest update time of the propagation.
 func (o GetPropagationsPropagationOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsPropagation) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -1328,18 +1160,7 @@ func (o GetPropagationsPropagationArrayOutput) Index(i pulumi.IntInput) GetPropa
 type GetQuotasQuota struct {
 	// The number of available quotas, `-1` means unlimited.
 	Limit int `pulumi:"limit"`
-	// The quota type to be queried.
-	// The valid values are as follows:
-	// + **er_instance**: Quotas and usage for enterprise router instances.
-	// + **dc_attachment**: Quotas and usage for DC attachment.
-	// + **vpc_attachment**: Quotas and usage for VPC attachment.
-	// + **vpn_attachment**: Quotas and usage for VPN attachment.
-	// + **peering_attachment**: Quotas and usage for peering attachment.
-	// + **can_attachment**: Quotas and usage for can attachment.
-	// + **route_table**: Quotas and usage for route table.
-	// + **static_route**: Quotas and usage for static route.
-	// + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-	// + **flow_log**: The number of flow logs that can be created per attachment.
+	// The quota type.
 	Type string `pulumi:"type"`
 	// The unit of usage.
 	Unit string `pulumi:"unit"`
@@ -1361,18 +1182,7 @@ type GetQuotasQuotaInput interface {
 type GetQuotasQuotaArgs struct {
 	// The number of available quotas, `-1` means unlimited.
 	Limit pulumi.IntInput `pulumi:"limit"`
-	// The quota type to be queried.
-	// The valid values are as follows:
-	// + **er_instance**: Quotas and usage for enterprise router instances.
-	// + **dc_attachment**: Quotas and usage for DC attachment.
-	// + **vpc_attachment**: Quotas and usage for VPC attachment.
-	// + **vpn_attachment**: Quotas and usage for VPN attachment.
-	// + **peering_attachment**: Quotas and usage for peering attachment.
-	// + **can_attachment**: Quotas and usage for can attachment.
-	// + **route_table**: Quotas and usage for route table.
-	// + **static_route**: Quotas and usage for static route.
-	// + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-	// + **flow_log**: The number of flow logs that can be created per attachment.
+	// The quota type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The unit of usage.
 	Unit pulumi.StringInput `pulumi:"unit"`
@@ -1436,18 +1246,7 @@ func (o GetQuotasQuotaOutput) Limit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetQuotasQuota) int { return v.Limit }).(pulumi.IntOutput)
 }
 
-// The quota type to be queried.
-// The valid values are as follows:
-// + **er_instance**: Quotas and usage for enterprise router instances.
-// + **dc_attachment**: Quotas and usage for DC attachment.
-// + **vpc_attachment**: Quotas and usage for VPC attachment.
-// + **vpn_attachment**: Quotas and usage for VPN attachment.
-// + **peering_attachment**: Quotas and usage for peering attachment.
-// + **can_attachment**: Quotas and usage for can attachment.
-// + **route_table**: Quotas and usage for route table.
-// + **static_route**: Quotas and usage for static route.
-// + **vpc_er**: The number of enterprise routers that each VPC can access and the current usage.
-// + **flow_log**: The number of flow logs that can be created per attachment.
+// The quota type.
 func (o GetQuotasQuotaOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotasQuota) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1483,32 +1282,27 @@ func (o GetQuotasQuotaArrayOutput) Index(i pulumi.IntInput) GetQuotasQuotaOutput
 }
 
 type GetRouteTablesRouteTable struct {
-	// The association configurations of the route table.\
-	// The object structure is documented below.
+	// The association configuration of the route table.
 	Associations []GetRouteTablesRouteTableAssociation `pulumi:"associations"`
 	// The creation time.
 	CreatedAt string `pulumi:"createdAt"`
 	// The description of the route table.
 	Description string `pulumi:"description"`
-	// The route ID.
+	// The route table ID.
 	Id string `pulumi:"id"`
 	// Whether this route table is the default association route table.
 	IsDefaultAssociation bool `pulumi:"isDefaultAssociation"`
 	// Whether this route table is the default propagation route table.
 	IsDefaultPropagation bool `pulumi:"isDefaultPropagation"`
-	// Specifies the name used to filter the route tables.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name string `pulumi:"name"`
-	// The propagation configurations of the route table.\
-	// The object structure is documented below.
+	// The propagation configuration of the route table.
 	Propagations []GetRouteTablesRouteTablePropagation `pulumi:"propagations"`
-	// The route details of the route table.\
-	// The object structure is documented below.
+	// The route details of the route table.
 	Routes []GetRouteTablesRouteTableRoute `pulumi:"routes"`
-	// The current status of the route.
+	// The current status of the route table.
 	Status string `pulumi:"status"`
-	// Specifies the key/value pairs used to filter the route tables.
+	// The tags configuration of the route table.
 	Tags map[string]string `pulumi:"tags"`
 	// The latest update time.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -1526,32 +1320,27 @@ type GetRouteTablesRouteTableInput interface {
 }
 
 type GetRouteTablesRouteTableArgs struct {
-	// The association configurations of the route table.\
-	// The object structure is documented below.
+	// The association configuration of the route table.
 	Associations GetRouteTablesRouteTableAssociationArrayInput `pulumi:"associations"`
 	// The creation time.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// The description of the route table.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The route ID.
+	// The route table ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Whether this route table is the default association route table.
 	IsDefaultAssociation pulumi.BoolInput `pulumi:"isDefaultAssociation"`
 	// Whether this route table is the default propagation route table.
 	IsDefaultPropagation pulumi.BoolInput `pulumi:"isDefaultPropagation"`
-	// Specifies the name used to filter the route tables.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
+	// The name of the route table.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The propagation configurations of the route table.\
-	// The object structure is documented below.
+	// The propagation configuration of the route table.
 	Propagations GetRouteTablesRouteTablePropagationArrayInput `pulumi:"propagations"`
-	// The route details of the route table.\
-	// The object structure is documented below.
+	// The route details of the route table.
 	Routes GetRouteTablesRouteTableRouteArrayInput `pulumi:"routes"`
-	// The current status of the route.
+	// The current status of the route table.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the key/value pairs used to filter the route tables.
+	// The tags configuration of the route table.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The latest update time.
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
@@ -1608,8 +1397,7 @@ func (o GetRouteTablesRouteTableOutput) ToGetRouteTablesRouteTableOutputWithCont
 	return o
 }
 
-// The association configurations of the route table.\
-// The object structure is documented below.
+// The association configuration of the route table.
 func (o GetRouteTablesRouteTableOutput) Associations() GetRouteTablesRouteTableAssociationArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) []GetRouteTablesRouteTableAssociation { return v.Associations }).(GetRouteTablesRouteTableAssociationArrayOutput)
 }
@@ -1624,7 +1412,7 @@ func (o GetRouteTablesRouteTableOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The route ID.
+// The route table ID.
 func (o GetRouteTablesRouteTableOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1639,31 +1427,27 @@ func (o GetRouteTablesRouteTableOutput) IsDefaultPropagation() pulumi.BoolOutput
 	return o.ApplyT(func(v GetRouteTablesRouteTable) bool { return v.IsDefaultPropagation }).(pulumi.BoolOutput)
 }
 
-// Specifies the name used to filter the route tables.\
-// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-// hyphens (-) and dots (.) allowed.
+// The name of the route table.
 func (o GetRouteTablesRouteTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The propagation configurations of the route table.\
-// The object structure is documented below.
+// The propagation configuration of the route table.
 func (o GetRouteTablesRouteTableOutput) Propagations() GetRouteTablesRouteTablePropagationArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) []GetRouteTablesRouteTablePropagation { return v.Propagations }).(GetRouteTablesRouteTablePropagationArrayOutput)
 }
 
-// The route details of the route table.\
-// The object structure is documented below.
+// The route details of the route table.
 func (o GetRouteTablesRouteTableOutput) Routes() GetRouteTablesRouteTableRouteArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) []GetRouteTablesRouteTableRoute { return v.Routes }).(GetRouteTablesRouteTableRouteArrayOutput)
 }
 
-// The current status of the route.
+// The current status of the route table.
 func (o GetRouteTablesRouteTableOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs used to filter the route tables.
+// The tags configuration of the route table.
 func (o GetRouteTablesRouteTableOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTable) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1694,11 +1478,11 @@ func (o GetRouteTablesRouteTableArrayOutput) Index(i pulumi.IntInput) GetRouteTa
 }
 
 type GetRouteTablesRouteTableAssociation struct {
-	// The ID of the nexthop attachment.
+	// The attachment ID corresponding to the routing association/propagation.
 	AttachmentId string `pulumi:"attachmentId"`
-	// The type of the nexthop attachment.
+	// The attachment type corresponding to the routing association/propagation.
 	AttachmentType string `pulumi:"attachmentType"`
-	// The route ID.
+	// The ID of the association/propagation.
 	Id string `pulumi:"id"`
 }
 
@@ -1714,11 +1498,11 @@ type GetRouteTablesRouteTableAssociationInput interface {
 }
 
 type GetRouteTablesRouteTableAssociationArgs struct {
-	// The ID of the nexthop attachment.
+	// The attachment ID corresponding to the routing association/propagation.
 	AttachmentId pulumi.StringInput `pulumi:"attachmentId"`
-	// The type of the nexthop attachment.
+	// The attachment type corresponding to the routing association/propagation.
 	AttachmentType pulumi.StringInput `pulumi:"attachmentType"`
-	// The route ID.
+	// The ID of the association/propagation.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1773,17 +1557,17 @@ func (o GetRouteTablesRouteTableAssociationOutput) ToGetRouteTablesRouteTableAss
 	return o
 }
 
-// The ID of the nexthop attachment.
+// The attachment ID corresponding to the routing association/propagation.
 func (o GetRouteTablesRouteTableAssociationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableAssociation) string { return v.AttachmentId }).(pulumi.StringOutput)
 }
 
-// The type of the nexthop attachment.
+// The attachment type corresponding to the routing association/propagation.
 func (o GetRouteTablesRouteTableAssociationOutput) AttachmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableAssociation) string { return v.AttachmentType }).(pulumi.StringOutput)
 }
 
-// The route ID.
+// The ID of the association/propagation.
 func (o GetRouteTablesRouteTableAssociationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableAssociation) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1809,11 +1593,11 @@ func (o GetRouteTablesRouteTableAssociationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRouteTablesRouteTablePropagation struct {
-	// The ID of the nexthop attachment.
+	// The attachment ID corresponding to the routing association/propagation.
 	AttachmentId string `pulumi:"attachmentId"`
-	// The type of the nexthop attachment.
+	// The attachment type corresponding to the routing association/propagation.
 	AttachmentType string `pulumi:"attachmentType"`
-	// The route ID.
+	// The ID of the association/propagation.
 	Id string `pulumi:"id"`
 }
 
@@ -1829,11 +1613,11 @@ type GetRouteTablesRouteTablePropagationInput interface {
 }
 
 type GetRouteTablesRouteTablePropagationArgs struct {
-	// The ID of the nexthop attachment.
+	// The attachment ID corresponding to the routing association/propagation.
 	AttachmentId pulumi.StringInput `pulumi:"attachmentId"`
-	// The type of the nexthop attachment.
+	// The attachment type corresponding to the routing association/propagation.
 	AttachmentType pulumi.StringInput `pulumi:"attachmentType"`
-	// The route ID.
+	// The ID of the association/propagation.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1888,17 +1672,17 @@ func (o GetRouteTablesRouteTablePropagationOutput) ToGetRouteTablesRouteTablePro
 	return o
 }
 
-// The ID of the nexthop attachment.
+// The attachment ID corresponding to the routing association/propagation.
 func (o GetRouteTablesRouteTablePropagationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTablePropagation) string { return v.AttachmentId }).(pulumi.StringOutput)
 }
 
-// The type of the nexthop attachment.
+// The attachment type corresponding to the routing association/propagation.
 func (o GetRouteTablesRouteTablePropagationOutput) AttachmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTablePropagation) string { return v.AttachmentType }).(pulumi.StringOutput)
 }
 
-// The route ID.
+// The ID of the association/propagation.
 func (o GetRouteTablesRouteTablePropagationOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTablePropagation) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1924,8 +1708,7 @@ func (o GetRouteTablesRouteTablePropagationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRouteTablesRouteTableRoute struct {
-	// The details of the attachment corresponding to the route.\
-	// The object structure is documented below.
+	// The details of the attachment corresponding to the route.
 	Attachments []GetRouteTablesRouteTableRouteAttachment `pulumi:"attachments"`
 	// The destination address (CIDR) of the route.
 	Destination string `pulumi:"destination"`
@@ -1949,8 +1732,7 @@ type GetRouteTablesRouteTableRouteInput interface {
 }
 
 type GetRouteTablesRouteTableRouteArgs struct {
-	// The details of the attachment corresponding to the route.\
-	// The object structure is documented below.
+	// The details of the attachment corresponding to the route.
 	Attachments GetRouteTablesRouteTableRouteAttachmentArrayInput `pulumi:"attachments"`
 	// The destination address (CIDR) of the route.
 	Destination pulumi.StringInput `pulumi:"destination"`
@@ -2013,8 +1795,7 @@ func (o GetRouteTablesRouteTableRouteOutput) ToGetRouteTablesRouteTableRouteOutp
 	return o
 }
 
-// The details of the attachment corresponding to the route.\
-// The object structure is documented below.
+// The details of the attachment corresponding to the route.
 func (o GetRouteTablesRouteTableRouteOutput) Attachments() GetRouteTablesRouteTableRouteAttachmentArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesRouteTableRoute) []GetRouteTablesRouteTableRouteAttachment { return v.Attachments }).(GetRouteTablesRouteTableRouteAttachmentArrayOutput)
 }

@@ -12,84 +12,22 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB pool resource within SberCloud.
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := elb.NewPool(ctx, "pool_1", &elb.PoolArgs{
-//				Protocol:   pulumi.String("HTTP"),
-//				LbMethod:   pulumi.String("ROUND_ROBIN"),
-//				ListenerId: pulumi.String("d9415786-5f1a-428b-b35f-2f1523e146d2"),
-//				Persistences: elb.PoolPersistenceArray{
-//					&elb.PoolPersistenceArgs{
-//						Type:       pulumi.String("HTTP_COOKIE"),
-//						CookieName: pulumi.String("testCookie"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB pool can be imported using the pool ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Elb/pool:Pool pool_1 5c20fdad-7288-11eb-b817-0255ac10158b
-// ```
 type Pool struct {
 	pulumi.CustomResourceState
 
-	// The administrative state of the pool. A valid value is true (UP) or false (DOWN).
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
-	// Human-readable description for the pool.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod pulumi.StringOutput `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId pulumi.StringOutput `pulumi:"loadbalancerId"`
-	MonitorId      pulumi.StringOutput `pulumi:"monitorId"`
-	// Human-readable name for the pool.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
+	AdminStateUp     pulumi.BoolPtrOutput       `pulumi:"adminStateUp"`
+	Description      pulumi.StringPtrOutput     `pulumi:"description"`
+	LbMethod         pulumi.StringOutput        `pulumi:"lbMethod"`
+	ListenerId       pulumi.StringOutput        `pulumi:"listenerId"`
+	LoadbalancerId   pulumi.StringOutput        `pulumi:"loadbalancerId"`
+	MonitorId        pulumi.StringOutput        `pulumi:"monitorId"`
+	Name             pulumi.StringOutput        `pulumi:"name"`
 	Persistences     PoolPersistenceArrayOutput `pulumi:"persistences"`
 	ProtectionReason pulumi.StringPtrOutput     `pulumi:"protectionReason"`
 	ProtectionStatus pulumi.StringOutput        `pulumi:"protectionStatus"`
-	// The protocol - can either be TCP, UDP or HTTP.
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP or TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Protocol         pulumi.StringOutput        `pulumi:"protocol"`
+	Region           pulumi.StringOutput        `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 }
@@ -130,77 +68,37 @@ func GetPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pool resources.
 type poolState struct {
-	// The administrative state of the pool. A valid value is true (UP) or false (DOWN).
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// Human-readable description for the pool.
-	Description *string `pulumi:"description"`
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod *string `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	ListenerId *string `pulumi:"listenerId"`
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId *string `pulumi:"loadbalancerId"`
-	MonitorId      *string `pulumi:"monitorId"`
-	// Human-readable name for the pool.
-	Name *string `pulumi:"name"`
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
+	AdminStateUp     *bool             `pulumi:"adminStateUp"`
+	Description      *string           `pulumi:"description"`
+	LbMethod         *string           `pulumi:"lbMethod"`
+	ListenerId       *string           `pulumi:"listenerId"`
+	LoadbalancerId   *string           `pulumi:"loadbalancerId"`
+	MonitorId        *string           `pulumi:"monitorId"`
+	Name             *string           `pulumi:"name"`
 	Persistences     []PoolPersistence `pulumi:"persistences"`
 	ProtectionReason *string           `pulumi:"protectionReason"`
 	ProtectionStatus *string           `pulumi:"protectionStatus"`
-	// The protocol - can either be TCP, UDP or HTTP.
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP or TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol *string `pulumi:"protocol"`
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region *string `pulumi:"region"`
+	Protocol         *string           `pulumi:"protocol"`
+	Region           *string           `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
 }
 
 type PoolState struct {
-	// The administrative state of the pool. A valid value is true (UP) or false (DOWN).
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp pulumi.BoolPtrInput
-	// Human-readable description for the pool.
-	Description pulumi.StringPtrInput
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod pulumi.StringPtrInput
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	ListenerId pulumi.StringPtrInput
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId pulumi.StringPtrInput
-	MonitorId      pulumi.StringPtrInput
-	// Human-readable name for the pool.
-	Name pulumi.StringPtrInput
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
+	AdminStateUp     pulumi.BoolPtrInput
+	Description      pulumi.StringPtrInput
+	LbMethod         pulumi.StringPtrInput
+	ListenerId       pulumi.StringPtrInput
+	LoadbalancerId   pulumi.StringPtrInput
+	MonitorId        pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
 	Persistences     PoolPersistenceArrayInput
 	ProtectionReason pulumi.StringPtrInput
 	ProtectionStatus pulumi.StringPtrInput
-	// The protocol - can either be TCP, UDP or HTTP.
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP or TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol pulumi.StringPtrInput
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region pulumi.StringPtrInput
+	Protocol         pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
 }
@@ -210,76 +108,36 @@ func (PoolState) ElementType() reflect.Type {
 }
 
 type poolArgs struct {
-	// The administrative state of the pool. A valid value is true (UP) or false (DOWN).
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// Human-readable description for the pool.
-	Description *string `pulumi:"description"`
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod string `pulumi:"lbMethod"`
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	ListenerId *string `pulumi:"listenerId"`
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId *string `pulumi:"loadbalancerId"`
-	// Human-readable name for the pool.
-	Name *string `pulumi:"name"`
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
+	AdminStateUp     *bool             `pulumi:"adminStateUp"`
+	Description      *string           `pulumi:"description"`
+	LbMethod         string            `pulumi:"lbMethod"`
+	ListenerId       *string           `pulumi:"listenerId"`
+	LoadbalancerId   *string           `pulumi:"loadbalancerId"`
+	Name             *string           `pulumi:"name"`
 	Persistences     []PoolPersistence `pulumi:"persistences"`
 	ProtectionReason *string           `pulumi:"protectionReason"`
 	ProtectionStatus *string           `pulumi:"protectionStatus"`
-	// The protocol - can either be TCP, UDP or HTTP.
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP or TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol string `pulumi:"protocol"`
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region *string `pulumi:"region"`
+	Protocol         string            `pulumi:"protocol"`
+	Region           *string           `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
 }
 
 // The set of arguments for constructing a Pool resource.
 type PoolArgs struct {
-	// The administrative state of the pool. A valid value is true (UP) or false (DOWN).
-	//
 	// Deprecated: this field is deprecated
-	AdminStateUp pulumi.BoolPtrInput
-	// Human-readable description for the pool.
-	Description pulumi.StringPtrInput
-	// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-	// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-	LbMethod pulumi.StringInput
-	// The Listener on which the members of the pool will be associated with.
-	// Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	ListenerId pulumi.StringPtrInput
-	// The load balancer on which to provision this pool. Changing this
-	// creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
-	LoadbalancerId pulumi.StringPtrInput
-	// Human-readable name for the pool.
-	Name pulumi.StringPtrInput
-	// Omit this field to prevent session persistence. Indicates whether
-	// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
+	AdminStateUp     pulumi.BoolPtrInput
+	Description      pulumi.StringPtrInput
+	LbMethod         pulumi.StringInput
+	ListenerId       pulumi.StringPtrInput
+	LoadbalancerId   pulumi.StringPtrInput
+	Name             pulumi.StringPtrInput
 	Persistences     PoolPersistenceArrayInput
 	ProtectionReason pulumi.StringPtrInput
 	ProtectionStatus pulumi.StringPtrInput
-	// The protocol - can either be TCP, UDP or HTTP.
-	// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
-	// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-	// + When the protocol used by the listener is HTTP or TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-	//
-	// Changing this creates a new pool.
-	Protocol pulumi.StringInput
-	// The region in which to create the ELB pool resource. If omitted, the the
-	// provider-level region will be used. Changing this creates a new pool.
-	Region pulumi.StringPtrInput
+	Protocol         pulumi.StringInput
+	Region           pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
 }
@@ -371,32 +229,23 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
-// The administrative state of the pool. A valid value is true (UP) or false (DOWN).
-//
 // Deprecated: this field is deprecated
 func (o PoolOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
 }
 
-// Human-readable description for the pool.
 func (o PoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The load balancing algorithm to distribute traffic to the pool's members. Must be one
-// of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
 func (o PoolOutput) LbMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.LbMethod }).(pulumi.StringOutput)
 }
 
-// The Listener on which the members of the pool will be associated with.
-// Changing this creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
 func (o PoolOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The load balancer on which to provision this pool. Changing this
-// creates a new pool. Note:  At least one of LoadbalancerID or ListenerID must be provided.
 func (o PoolOutput) LoadbalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.LoadbalancerId }).(pulumi.StringOutput)
 }
@@ -405,13 +254,10 @@ func (o PoolOutput) MonitorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.MonitorId }).(pulumi.StringOutput)
 }
 
-// Human-readable name for the pool.
 func (o PoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Omit this field to prevent session persistence. Indicates whether
-// connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
 func (o PoolOutput) Persistences() PoolPersistenceArrayOutput {
 	return o.ApplyT(func(v *Pool) PoolPersistenceArrayOutput { return v.Persistences }).(PoolPersistenceArrayOutput)
 }
@@ -424,18 +270,10 @@ func (o PoolOutput) ProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.ProtectionStatus }).(pulumi.StringOutput)
 }
 
-// The protocol - can either be TCP, UDP or HTTP.
-// + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP.
-// + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-// + When the protocol used by the listener is HTTP or TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-//
-// Changing this creates a new pool.
 func (o PoolOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The region in which to create the ELB pool resource. If omitted, the the
-// provider-level region will be used. Changing this creates a new pool.
 func (o PoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

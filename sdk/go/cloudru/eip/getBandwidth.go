@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides details about a specific bandwidth.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/eip"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			bandwidthName := cfg.RequireObject("bandwidthName")
-//			_, err := eip.GetBandwidth(ctx, &eip.GetBandwidthArgs{
-//				Name: bandwidthName,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBandwidth(ctx *pulumi.Context, args *GetBandwidthArgs, opts ...pulumi.InvokeOption) (*GetBandwidthResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBandwidthResult
@@ -53,35 +23,25 @@ func GetBandwidth(ctx *pulumi.Context, args *GetBandwidthArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getBandwidth.
 type GetBandwidthArgs struct {
-	// The enterprise project id of the Shared Bandwidth to retrieve.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The name of the Shared Bandwidth to retrieve.
-	Name string `pulumi:"name"`
-	// The region in which to obtain the bandwidth. If omitted, the provider-level region will
-	// be used.
-	Region *string `pulumi:"region"`
-	// The size of the Shared Bandwidth to retrieve. The value ranges from 5 to 2000 G.
-	Size *int `pulumi:"size"`
+	Name                string  `pulumi:"name"`
+	Region              *string `pulumi:"region"`
+	Size                *int    `pulumi:"size"`
 }
 
 // A collection of values returned by getBandwidth.
 type GetBandwidthResult struct {
-	// Indicates the bandwidth type.
-	BandwidthType string `pulumi:"bandwidthType"`
-	// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
+	BandwidthType       string `pulumi:"bandwidthType"`
 	ChargeMode          string `pulumi:"chargeMode"`
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	// An array of EIPs that use the bandwidth. The object includes the following:
+	Id        string                 `pulumi:"id"`
+	Name      string                 `pulumi:"name"`
 	Publicips []GetBandwidthPublicip `pulumi:"publicips"`
 	Region    string                 `pulumi:"region"`
-	// Indicates whether the bandwidth is shared or dedicated.
-	ShareType string `pulumi:"shareType"`
-	Size      int    `pulumi:"size"`
-	// Indicates the bandwidth status.
-	Status string `pulumi:"status"`
+	ShareType string                 `pulumi:"shareType"`
+	Size      int                    `pulumi:"size"`
+	Status    string                 `pulumi:"status"`
 }
 
 func GetBandwidthOutput(ctx *pulumi.Context, args GetBandwidthOutputArgs, opts ...pulumi.InvokeOption) GetBandwidthResultOutput {
@@ -95,15 +55,10 @@ func GetBandwidthOutput(ctx *pulumi.Context, args GetBandwidthOutputArgs, opts .
 
 // A collection of arguments for invoking getBandwidth.
 type GetBandwidthOutputArgs struct {
-	// The enterprise project id of the Shared Bandwidth to retrieve.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// The name of the Shared Bandwidth to retrieve.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The region in which to obtain the bandwidth. If omitted, the provider-level region will
-	// be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The size of the Shared Bandwidth to retrieve. The value ranges from 5 to 2000 G.
-	Size pulumi.IntPtrInput `pulumi:"size"`
+	Name                pulumi.StringInput    `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Size                pulumi.IntPtrInput    `pulumi:"size"`
 }
 
 func (GetBandwidthOutputArgs) ElementType() reflect.Type {
@@ -125,12 +80,10 @@ func (o GetBandwidthResultOutput) ToGetBandwidthResultOutputWithContext(ctx cont
 	return o
 }
 
-// Indicates the bandwidth type.
 func (o GetBandwidthResultOutput) BandwidthType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthResult) string { return v.BandwidthType }).(pulumi.StringOutput)
 }
 
-// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
 func (o GetBandwidthResultOutput) ChargeMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthResult) string { return v.ChargeMode }).(pulumi.StringOutput)
 }
@@ -148,7 +101,6 @@ func (o GetBandwidthResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An array of EIPs that use the bandwidth. The object includes the following:
 func (o GetBandwidthResultOutput) Publicips() GetBandwidthPublicipArrayOutput {
 	return o.ApplyT(func(v GetBandwidthResult) []GetBandwidthPublicip { return v.Publicips }).(GetBandwidthPublicipArrayOutput)
 }
@@ -157,7 +109,6 @@ func (o GetBandwidthResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates whether the bandwidth is shared or dedicated.
 func (o GetBandwidthResultOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthResult) string { return v.ShareType }).(pulumi.StringOutput)
 }
@@ -166,7 +117,6 @@ func (o GetBandwidthResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBandwidthResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Indicates the bandwidth status.
 func (o GetBandwidthResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthResult) string { return v.Status }).(pulumi.StringOutput)
 }

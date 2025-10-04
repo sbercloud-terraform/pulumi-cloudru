@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW domain name groups.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			objectId := cfg.RequireObject("objectId")
-//			_, err := cfw.GetDomainNameGroups(ctx, &cfw.GetDomainNameGroupsArgs{
-//				FwInstanceId: fwInstanceId,
-//				ObjectId:     objectId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDomainNameGroups(ctx *pulumi.Context, args *GetDomainNameGroupsArgs, opts ...pulumi.InvokeOption) (*GetDomainNameGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainNameGroupsResult
@@ -55,60 +23,33 @@ func GetDomainNameGroups(ctx *pulumi.Context, args *GetDomainNameGroupsArgs, opt
 
 // A collection of arguments for invoking getDomainNameGroups.
 type GetDomainNameGroupsArgs struct {
-	// Specifies the configuration status.
-	// The valid values are as follows:
-	// + **-1**: not configured.
-	// + **0**: configuration failed.
-	// + **1**: configuration succeeded.
-	// + **2**: configuration in progress.
-	// + **3**: normal.
-	// + **4**: configuration exception - domain group usage.
-	ConfigStatus *string `pulumi:"configStatus"`
-	// Specifies the enterprise project ID.
+	ConfigStatus        *string `pulumi:"configStatus"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the domain name group ID.
-	GroupId *string `pulumi:"groupId"`
-	// Specifies the key word.
-	KeyWord *string `pulumi:"keyWord"`
-	// Specifies the name of a domain name group.
-	Name *string `pulumi:"name"`
-	// Specifies the protected object ID.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the domain name group reference count.
-	RefCount *string `pulumi:"refCount"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the domain name group type.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type.
-	Type *string `pulumi:"type"`
+	FwInstanceId        string  `pulumi:"fwInstanceId"`
+	GroupId             *string `pulumi:"groupId"`
+	KeyWord             *string `pulumi:"keyWord"`
+	Name                *string `pulumi:"name"`
+	ObjectId            string  `pulumi:"objectId"`
+	RefCount            *string `pulumi:"refCount"`
+	Region              *string `pulumi:"region"`
+	Type                *string `pulumi:"type"`
 }
 
 // A collection of values returned by getDomainNameGroups.
 type GetDomainNameGroupsResult struct {
-	// The configuration status.
 	ConfigStatus        *string `pulumi:"configStatus"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FwInstanceId        string  `pulumi:"fwInstanceId"`
-	// The domain name group ID.
-	GroupId *string `pulumi:"groupId"`
+	GroupId             *string `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
-	KeyWord *string `pulumi:"keyWord"`
-	// The rule name.
-	Name     *string `pulumi:"name"`
-	ObjectId string  `pulumi:"objectId"`
-	// The domain name group list.
-	Records []GetDomainNameGroupsRecord `pulumi:"records"`
-	// The domain name group reference count.
-	RefCount *string `pulumi:"refCount"`
-	Region   string  `pulumi:"region"`
-	// The domain name group type.
-	Type *string `pulumi:"type"`
+	Id       string                      `pulumi:"id"`
+	KeyWord  *string                     `pulumi:"keyWord"`
+	Name     *string                     `pulumi:"name"`
+	ObjectId string                      `pulumi:"objectId"`
+	Records  []GetDomainNameGroupsRecord `pulumi:"records"`
+	RefCount *string                     `pulumi:"refCount"`
+	Region   string                      `pulumi:"region"`
+	Type     *string                     `pulumi:"type"`
 }
 
 func GetDomainNameGroupsOutput(ctx *pulumi.Context, args GetDomainNameGroupsOutputArgs, opts ...pulumi.InvokeOption) GetDomainNameGroupsResultOutput {
@@ -122,37 +63,16 @@ func GetDomainNameGroupsOutput(ctx *pulumi.Context, args GetDomainNameGroupsOutp
 
 // A collection of arguments for invoking getDomainNameGroups.
 type GetDomainNameGroupsOutputArgs struct {
-	// Specifies the configuration status.
-	// The valid values are as follows:
-	// + **-1**: not configured.
-	// + **0**: configuration failed.
-	// + **1**: configuration succeeded.
-	// + **2**: configuration in progress.
-	// + **3**: normal.
-	// + **4**: configuration exception - domain group usage.
-	ConfigStatus pulumi.StringPtrInput `pulumi:"configStatus"`
-	// Specifies the enterprise project ID.
+	ConfigStatus        pulumi.StringPtrInput `pulumi:"configStatus"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the domain name group ID.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Specifies the key word.
-	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
-	// Specifies the name of a domain name group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the protected object ID.
-	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// Specifies the domain name group reference count.
-	RefCount pulumi.StringPtrInput `pulumi:"refCount"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the domain name group type.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	FwInstanceId        pulumi.StringInput    `pulumi:"fwInstanceId"`
+	GroupId             pulumi.StringPtrInput `pulumi:"groupId"`
+	KeyWord             pulumi.StringPtrInput `pulumi:"keyWord"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	ObjectId            pulumi.StringInput    `pulumi:"objectId"`
+	RefCount            pulumi.StringPtrInput `pulumi:"refCount"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Type                pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetDomainNameGroupsOutputArgs) ElementType() reflect.Type {
@@ -174,7 +94,6 @@ func (o GetDomainNameGroupsResultOutput) ToGetDomainNameGroupsResultOutputWithCo
 	return o
 }
 
-// The configuration status.
 func (o GetDomainNameGroupsResultOutput) ConfigStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) *string { return v.ConfigStatus }).(pulumi.StringPtrOutput)
 }
@@ -187,7 +106,6 @@ func (o GetDomainNameGroupsResultOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) string { return v.FwInstanceId }).(pulumi.StringOutput)
 }
 
-// The domain name group ID.
 func (o GetDomainNameGroupsResultOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
@@ -201,7 +119,6 @@ func (o GetDomainNameGroupsResultOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
 }
 
-// The rule name.
 func (o GetDomainNameGroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -210,12 +127,10 @@ func (o GetDomainNameGroupsResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The domain name group list.
 func (o GetDomainNameGroupsResultOutput) Records() GetDomainNameGroupsRecordArrayOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) []GetDomainNameGroupsRecord { return v.Records }).(GetDomainNameGroupsRecordArrayOutput)
 }
 
-// The domain name group reference count.
 func (o GetDomainNameGroupsResultOutput) RefCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) *string { return v.RefCount }).(pulumi.StringPtrOutput)
 }
@@ -224,7 +139,6 @@ func (o GetDomainNameGroupsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The domain name group type.
 func (o GetDomainNameGroupsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDomainNameGroupsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -11,54 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Using this data source to query the list of available routes within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			routeTableId := cfg.RequireObject("routeTableId")
-//			_, err := er.GetAvailableRoutes(ctx, &er.GetAvailableRoutesArgs{
-//				RouteTableId: routeTableId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAvailableRoutes(ctx *pulumi.Context, args *GetAvailableRoutesArgs, opts ...pulumi.InvokeOption) (*GetAvailableRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailableRoutesResult
@@ -71,36 +23,21 @@ func GetAvailableRoutes(ctx *pulumi.Context, args *GetAvailableRoutesArgs, opts 
 
 // A collection of arguments for invoking getAvailableRoutes.
 type GetAvailableRoutesArgs struct {
-	// The destination address of the routes to be queried.
-	Destination *string `pulumi:"destination"`
-	// Specifies the region in which to query the available routes.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// The attachment type.
-	// The valid values are as follows:
-	// + **vpc**: VPC attachment.
-	// + **vpn**: VPN gateway attachment.
-	// + **vgw**: virtual gateway attachment.
-	// + **peering**: peering connection attachment.
-	// + **ecn**: ECN attachment.
-	// + **cfw**: CFW instance attachment.
+	Destination  *string `pulumi:"destination"`
+	Region       *string `pulumi:"region"`
 	ResourceType *string `pulumi:"resourceType"`
-	// The route table ID to which the available routes belong.
-	RouteTableId string `pulumi:"routeTableId"`
+	RouteTableId string  `pulumi:"routeTableId"`
 }
 
 // A collection of values returned by getAvailableRoutes.
 type GetAvailableRoutesResult struct {
-	// The destination address of the route.
 	Destination *string `pulumi:"destination"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The attachment type.
-	ResourceType *string `pulumi:"resourceType"`
-	RouteTableId string  `pulumi:"routeTableId"`
-	// All available routes that match the filter parameters.
-	Routes []GetAvailableRoutesRoute `pulumi:"routes"`
+	Id           string                    `pulumi:"id"`
+	Region       string                    `pulumi:"region"`
+	ResourceType *string                   `pulumi:"resourceType"`
+	RouteTableId string                    `pulumi:"routeTableId"`
+	Routes       []GetAvailableRoutesRoute `pulumi:"routes"`
 }
 
 func GetAvailableRoutesOutput(ctx *pulumi.Context, args GetAvailableRoutesOutputArgs, opts ...pulumi.InvokeOption) GetAvailableRoutesResultOutput {
@@ -114,22 +51,10 @@ func GetAvailableRoutesOutput(ctx *pulumi.Context, args GetAvailableRoutesOutput
 
 // A collection of arguments for invoking getAvailableRoutes.
 type GetAvailableRoutesOutputArgs struct {
-	// The destination address of the routes to be queried.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// Specifies the region in which to query the available routes.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The attachment type.
-	// The valid values are as follows:
-	// + **vpc**: VPC attachment.
-	// + **vpn**: VPN gateway attachment.
-	// + **vgw**: virtual gateway attachment.
-	// + **peering**: peering connection attachment.
-	// + **ecn**: ECN attachment.
-	// + **cfw**: CFW instance attachment.
+	Destination  pulumi.StringPtrInput `pulumi:"destination"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
-	// The route table ID to which the available routes belong.
-	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
+	RouteTableId pulumi.StringInput    `pulumi:"routeTableId"`
 }
 
 func (GetAvailableRoutesOutputArgs) ElementType() reflect.Type {
@@ -151,7 +76,6 @@ func (o GetAvailableRoutesResultOutput) ToGetAvailableRoutesResultOutputWithCont
 	return o
 }
 
-// The destination address of the route.
 func (o GetAvailableRoutesResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAvailableRoutesResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -165,7 +89,6 @@ func (o GetAvailableRoutesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailableRoutesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The attachment type.
 func (o GetAvailableRoutesResultOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAvailableRoutesResult) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -174,7 +97,6 @@ func (o GetAvailableRoutesResultOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailableRoutesResult) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// All available routes that match the filter parameters.
 func (o GetAvailableRoutesResultOutput) Routes() GetAvailableRoutesRouteArrayOutput {
 	return o.ApplyT(func(v GetAvailableRoutesResult) []GetAvailableRoutesRoute { return v.Routes }).(GetAvailableRoutesRouteArrayOutput)
 }

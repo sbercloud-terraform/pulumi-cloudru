@@ -6,28 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a VPN connection health checks data source within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const connectionId = config.requireObject<any>("connectionId");
- * const status = config.requireObject<any>("status");
- * const sourceIp = config.requireObject<any>("sourceIp");
- * const destinationIp = config.requireObject<any>("destinationIp");
- * const services = sbercloud.getVpnConnectionHealthChecks({
- *     connectionId: connectionId,
- *     status: status,
- *     sourceIp: sourceIp,
- *     destinationIp: destinationIp,
- * });
- * ```
- */
 export function getVpnConnectionHealthChecks(args?: GetVpnConnectionHealthChecksArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnConnectionHealthChecksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -44,26 +22,10 @@ export function getVpnConnectionHealthChecks(args?: GetVpnConnectionHealthChecks
  * A collection of arguments for invoking getVpnConnectionHealthChecks.
  */
 export interface GetVpnConnectionHealthChecksArgs {
-    /**
-     * Specifies the ID of the VPN connection.
-     */
     connectionId?: string;
-    /**
-     * Specifies the destination IP of the VPN connection health check.
-     */
     destinationIp?: string;
-    /**
-     * Specifies the region in which to obtain the VPN connection health check.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the source IP of the VPN connection health check.
-     */
     sourceIp?: string;
-    /**
-     * Specifies the status of the VPN connection health check.
-     */
     status?: string;
 }
 
@@ -71,55 +33,17 @@ export interface GetVpnConnectionHealthChecksArgs {
  * A collection of values returned by getVpnConnectionHealthChecks.
  */
 export interface GetVpnConnectionHealthChecksResult {
-    /**
-     * All resource connection health checks that match the filter parameters.
-     * The connectionHealthChecks structure is documented below.
-     */
     readonly connectionHealthChecks: outputs.GetVpnConnectionHealthChecksConnectionHealthCheck[];
-    /**
-     * The connection ID of the connection health check.
-     */
     readonly connectionId?: string;
-    /**
-     * The destination IP address of the VPN connection.
-     */
     readonly destinationIp?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The source IP address of the VPN connection.
-     */
     readonly sourceIp?: string;
-    /**
-     * The status of the connection health check.
-     */
     readonly status?: string;
 }
-/**
- * Manages a VPN connection health checks data source within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const connectionId = config.requireObject<any>("connectionId");
- * const status = config.requireObject<any>("status");
- * const sourceIp = config.requireObject<any>("sourceIp");
- * const destinationIp = config.requireObject<any>("destinationIp");
- * const services = sbercloud.getVpnConnectionHealthChecks({
- *     connectionId: connectionId,
- *     status: status,
- *     sourceIp: sourceIp,
- *     destinationIp: destinationIp,
- * });
- * ```
- */
 export function getVpnConnectionHealthChecksOutput(args?: GetVpnConnectionHealthChecksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnConnectionHealthChecksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -136,25 +60,9 @@ export function getVpnConnectionHealthChecksOutput(args?: GetVpnConnectionHealth
  * A collection of arguments for invoking getVpnConnectionHealthChecks.
  */
 export interface GetVpnConnectionHealthChecksOutputArgs {
-    /**
-     * Specifies the ID of the VPN connection.
-     */
     connectionId?: pulumi.Input<string>;
-    /**
-     * Specifies the destination IP of the VPN connection health check.
-     */
     destinationIp?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the VPN connection health check.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the source IP of the VPN connection health check.
-     */
     sourceIp?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the VPN connection health check.
-     */
     status?: pulumi.Input<string>;
 }

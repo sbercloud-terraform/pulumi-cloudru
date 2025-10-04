@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ message traces.
 func GetDmsRocketmqMessageTraces(ctx *pulumi.Context, args *GetDmsRocketmqMessageTracesArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqMessageTracesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqMessageTracesResult
@@ -24,25 +23,19 @@ func GetDmsRocketmqMessageTraces(ctx *pulumi.Context, args *GetDmsRocketmqMessag
 
 // A collection of arguments for invoking getDmsRocketmqMessageTraces.
 type GetDmsRocketmqMessageTracesArgs struct {
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the message ID.
-	MessageId string `pulumi:"messageId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	InstanceId string  `pulumi:"instanceId"`
+	MessageId  string  `pulumi:"messageId"`
+	Region     *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDmsRocketmqMessageTraces.
 type GetDmsRocketmqMessageTracesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the message ID.
-	MessageId string `pulumi:"messageId"`
-	Region    string `pulumi:"region"`
-	// Specifies the message trace list.
-	Traces []GetDmsRocketmqMessageTracesTrace `pulumi:"traces"`
+	Id         string                             `pulumi:"id"`
+	InstanceId string                             `pulumi:"instanceId"`
+	MessageId  string                             `pulumi:"messageId"`
+	Region     string                             `pulumi:"region"`
+	Traces     []GetDmsRocketmqMessageTracesTrace `pulumi:"traces"`
 }
 
 func GetDmsRocketmqMessageTracesOutput(ctx *pulumi.Context, args GetDmsRocketmqMessageTracesOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqMessageTracesResultOutput {
@@ -56,13 +49,9 @@ func GetDmsRocketmqMessageTracesOutput(ctx *pulumi.Context, args GetDmsRocketmqM
 
 // A collection of arguments for invoking getDmsRocketmqMessageTraces.
 type GetDmsRocketmqMessageTracesOutputArgs struct {
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the message ID.
-	MessageId pulumi.StringInput `pulumi:"messageId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	MessageId  pulumi.StringInput    `pulumi:"messageId"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDmsRocketmqMessageTracesOutputArgs) ElementType() reflect.Type {
@@ -93,7 +82,6 @@ func (o GetDmsRocketmqMessageTracesResultOutput) InstanceId() pulumi.StringOutpu
 	return o.ApplyT(func(v GetDmsRocketmqMessageTracesResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the message ID.
 func (o GetDmsRocketmqMessageTracesResultOutput) MessageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessageTracesResult) string { return v.MessageId }).(pulumi.StringOutput)
 }
@@ -102,7 +90,6 @@ func (o GetDmsRocketmqMessageTracesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessageTracesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the message trace list.
 func (o GetDmsRocketmqMessageTracesResultOutput) Traces() GetDmsRocketmqMessageTracesTraceArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessageTracesResult) []GetDmsRocketmqMessageTracesTrace { return v.Traces }).(GetDmsRocketmqMessageTracesTraceArrayOutput)
 }

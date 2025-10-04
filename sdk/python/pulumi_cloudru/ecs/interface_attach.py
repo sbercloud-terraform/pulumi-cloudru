@@ -30,23 +30,6 @@ class InterfaceAttachArgs:
                  source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a InterfaceAttach resource.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Port or Network to.
-        :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
-               
-               ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-               the supplied network.
-        :param pulumi.Input[_builtins.str] network_id: The ID of the Network to attach to an Instance. A port will be created
-               automatically.
-               This option and `port_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] port_id: The ID of the Port to attach to an Instance.
-               This option and `network_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network interface attache resource. If
-               omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies the list of security group IDs bound to the specified port.  
-               Defaults to the default security group.
-        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether the ECS processes only traffic that is destined specifically
-               for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-               virtual IP address bound to it.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if fixed_ip is not None:
@@ -69,9 +52,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of the Instance to attach the Port or Network to.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -81,12 +61,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An IP address to assosciate with the port.
-
-        ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-        the supplied network.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -114,11 +88,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Network to attach to an Instance. A port will be created
-        automatically.
-        This option and `port_id` are mutually exclusive.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -128,10 +97,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Port to attach to an Instance.
-        This option and `network_id` are mutually exclusive.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -141,10 +106,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the network interface attache resource. If
-        omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -154,10 +115,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the list of security group IDs bound to the specified port.  
-        Defaults to the default security group.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -167,11 +124,6 @@ class InterfaceAttachArgs:
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the ECS processes only traffic that is destined specifically
-        for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-        virtual IP address bound to it.
-        """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
@@ -195,24 +147,6 @@ class _InterfaceAttachState:
                  source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering InterfaceAttach resources.
-        :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
-               
-               ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-               the supplied network.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Port or Network to.
-        :param pulumi.Input[_builtins.str] mac: The MAC address of the NIC.
-        :param pulumi.Input[_builtins.str] network_id: The ID of the Network to attach to an Instance. A port will be created
-               automatically.
-               This option and `port_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] port_id: The ID of the Port to attach to an Instance.
-               This option and `network_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network interface attache resource. If
-               omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies the list of security group IDs bound to the specified port.  
-               Defaults to the default security group.
-        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether the ECS processes only traffic that is destined specifically
-               for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-               virtual IP address bound to it.
         """
         if fixed_ip is not None:
             pulumi.set(__self__, "fixed_ip", fixed_ip)
@@ -240,12 +174,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        An IP address to assosciate with the port.
-
-        ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-        the supplied network.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -264,9 +192,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Instance to attach the Port or Network to.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -294,9 +219,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The MAC address of the NIC.
-        """
         return pulumi.get(self, "mac")
 
     @mac.setter
@@ -306,11 +228,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Network to attach to an Instance. A port will be created
-        automatically.
-        This option and `port_id` are mutually exclusive.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -320,10 +237,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Port to attach to an Instance.
-        This option and `network_id` are mutually exclusive.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -333,10 +246,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the network interface attache resource. If
-        omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -346,10 +255,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the list of security group IDs bound to the specified port.  
-        Defaults to the default security group.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -359,11 +264,6 @@ class _InterfaceAttachState:
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the ECS processes only traffic that is destined specifically
-        for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-        virtual IP address bound to it.
-        """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
@@ -388,78 +288,9 @@ class InterfaceAttach(pulumi.CustomResource):
                  source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Attaches a Network Interface to an Instance.
-
-        ## Example Usage
-
-        ### Attach a port (under the specified network) to the ECS instance and generate a random IP address
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        network_id = config.require_object("networkId")
-        test = sbercloud.ecs.InterfaceAttach("test",
-            instance_id=instance_id,
-            network_id=network_id)
-        ```
-
-        ### Attach a custom port to the ECS instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        security_group_id = config.require_object("securityGroupId")
-        mynet = sbercloud.Vpc.get_subnet(name="subnet-default")
-        myport = sbercloud.Vpc.get_port(network_id=mynet.id,
-            fixed_ip="192.168.0.100")
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="instance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[security_group_id],
-            availability_zone="cn-north-4a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        attached = sbercloud.ecs.InterfaceAttach("attached",
-            instance_id=myinstance.id,
-            port_id=myport.id)
-        ```
-
-        ## Import
-
-        Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
-        ```
-
+        Create a InterfaceAttach resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
-               
-               ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-               the supplied network.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Port or Network to.
-        :param pulumi.Input[_builtins.str] network_id: The ID of the Network to attach to an Instance. A port will be created
-               automatically.
-               This option and `port_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] port_id: The ID of the Port to attach to an Instance.
-               This option and `network_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network interface attache resource. If
-               omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies the list of security group IDs bound to the specified port.  
-               Defaults to the default security group.
-        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether the ECS processes only traffic that is destined specifically
-               for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-               virtual IP address bound to it.
         """
         ...
     @overload
@@ -468,59 +299,7 @@ class InterfaceAttach(pulumi.CustomResource):
                  args: InterfaceAttachArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Attaches a Network Interface to an Instance.
-
-        ## Example Usage
-
-        ### Attach a port (under the specified network) to the ECS instance and generate a random IP address
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        network_id = config.require_object("networkId")
-        test = sbercloud.ecs.InterfaceAttach("test",
-            instance_id=instance_id,
-            network_id=network_id)
-        ```
-
-        ### Attach a custom port to the ECS instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        security_group_id = config.require_object("securityGroupId")
-        mynet = sbercloud.Vpc.get_subnet(name="subnet-default")
-        myport = sbercloud.Vpc.get_port(network_id=mynet.id,
-            fixed_ip="192.168.0.100")
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="instance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[security_group_id],
-            availability_zone="cn-north-4a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        attached = sbercloud.ecs.InterfaceAttach("attached",
-            instance_id=myinstance.id,
-            port_id=myport.id)
-        ```
-
-        ## Import
-
-        Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
-        ```
-
+        Create a InterfaceAttach resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param InterfaceAttachArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -595,24 +374,6 @@ class InterfaceAttach(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] fixed_ip: An IP address to assosciate with the port.
-               
-               ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-               the supplied network.
-        :param pulumi.Input[_builtins.str] instance_id: The ID of the Instance to attach the Port or Network to.
-        :param pulumi.Input[_builtins.str] mac: The MAC address of the NIC.
-        :param pulumi.Input[_builtins.str] network_id: The ID of the Network to attach to an Instance. A port will be created
-               automatically.
-               This option and `port_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] port_id: The ID of the Port to attach to an Instance.
-               This option and `network_id` are mutually exclusive.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network interface attache resource. If
-               omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies the list of security group IDs bound to the specified port.  
-               Defaults to the default security group.
-        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether the ECS processes only traffic that is destined specifically
-               for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-               virtual IP address bound to it.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -634,12 +395,6 @@ class InterfaceAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        An IP address to assosciate with the port.
-
-        ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-        the supplied network.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @_builtins.property
@@ -650,9 +405,6 @@ class InterfaceAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the Instance to attach the Port or Network to.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
@@ -668,55 +420,30 @@ class InterfaceAttach(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def mac(self) -> pulumi.Output[_builtins.str]:
-        """
-        The MAC address of the NIC.
-        """
         return pulumi.get(self, "mac")
 
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the Network to attach to an Instance. A port will be created
-        automatically.
-        This option and `port_id` are mutually exclusive.
-        """
         return pulumi.get(self, "network_id")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the Port to attach to an Instance.
-        This option and `network_id` are mutually exclusive.
-        """
         return pulumi.get(self, "port_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the network interface attache resource. If
-        omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the list of security group IDs bound to the specified port.  
-        Defaults to the default security group.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the ECS processes only traffic that is destined specifically
-        for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-        virtual IP address bound to it.
-        """
         return pulumi.get(self, "source_dest_check")
 

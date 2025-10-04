@@ -11,110 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ instance messages.
-//
-// ## Example Usage
-//
-// ### Query message by topic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			startTime := cfg.RequireObject("startTime")
-//			endTime := cfg.RequireObject("endTime")
-//			_, err := sbercloud.GetDmsRocketmqMessages(ctx, &cloudru.GetDmsRocketmqMessagesArgs{
-//				InstanceId: instanceId,
-//				Topic:      topic,
-//				StartTime:  pulumi.StringRef(startTime),
-//				EndTime:    pulumi.StringRef(endTime),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query message by key
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			key := cfg.RequireObject("key")
-//			_, err := sbercloud.GetDmsRocketmqMessages(ctx, &cloudru.GetDmsRocketmqMessagesArgs{
-//				InstanceId: instanceId,
-//				Topic:      topic,
-//				Key:        pulumi.StringRef(key),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query message by message ID
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			messageId := cfg.RequireObject("messageId")
-//			_, err := sbercloud.GetDmsRocketmqMessages(ctx, &cloudru.GetDmsRocketmqMessagesArgs{
-//				InstanceId: instanceId,
-//				Topic:      topic,
-//				MessageId:  pulumi.StringRef(messageId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqMessages(ctx *pulumi.Context, args *GetDmsRocketmqMessagesArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqMessagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqMessagesResult
@@ -127,38 +23,27 @@ func GetDmsRocketmqMessages(ctx *pulumi.Context, args *GetDmsRocketmqMessagesArg
 
 // A collection of arguments for invoking getDmsRocketmqMessages.
 type GetDmsRocketmqMessagesArgs struct {
-	// Specifies the end time, a Unix timestamp in millisecond.
-	EndTime *string `pulumi:"endTime"`
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the message key.
-	Key *string `pulumi:"key"`
-	// Specifies the message ID.
-	MessageId *string `pulumi:"messageId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the start time, a Unix timestamp in millisecond.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies the topic name.
-	Topic string `pulumi:"topic"`
+	EndTime    *string `pulumi:"endTime"`
+	InstanceId string  `pulumi:"instanceId"`
+	Key        *string `pulumi:"key"`
+	MessageId  *string `pulumi:"messageId"`
+	Region     *string `pulumi:"region"`
+	StartTime  *string `pulumi:"startTime"`
+	Topic      string  `pulumi:"topic"`
 }
 
 // A collection of values returned by getDmsRocketmqMessages.
 type GetDmsRocketmqMessagesResult struct {
 	EndTime *string `pulumi:"endTime"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId string  `pulumi:"instanceId"`
-	Key        *string `pulumi:"key"`
-	// Indicates the message ID.
-	MessageId *string `pulumi:"messageId"`
-	// Indicates the message list.
-	// The messages structure is documented below.
-	Messages  []GetDmsRocketmqMessagesMessage `pulumi:"messages"`
-	Region    string                          `pulumi:"region"`
-	StartTime *string                         `pulumi:"startTime"`
-	Topic     string                          `pulumi:"topic"`
+	Id         string                          `pulumi:"id"`
+	InstanceId string                          `pulumi:"instanceId"`
+	Key        *string                         `pulumi:"key"`
+	MessageId  *string                         `pulumi:"messageId"`
+	Messages   []GetDmsRocketmqMessagesMessage `pulumi:"messages"`
+	Region     string                          `pulumi:"region"`
+	StartTime  *string                         `pulumi:"startTime"`
+	Topic      string                          `pulumi:"topic"`
 }
 
 func GetDmsRocketmqMessagesOutput(ctx *pulumi.Context, args GetDmsRocketmqMessagesOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqMessagesResultOutput {
@@ -172,21 +57,13 @@ func GetDmsRocketmqMessagesOutput(ctx *pulumi.Context, args GetDmsRocketmqMessag
 
 // A collection of arguments for invoking getDmsRocketmqMessages.
 type GetDmsRocketmqMessagesOutputArgs struct {
-	// Specifies the end time, a Unix timestamp in millisecond.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the message key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Specifies the message ID.
-	MessageId pulumi.StringPtrInput `pulumi:"messageId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the start time, a Unix timestamp in millisecond.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies the topic name.
-	Topic pulumi.StringInput `pulumi:"topic"`
+	EndTime    pulumi.StringPtrInput `pulumi:"endTime"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Key        pulumi.StringPtrInput `pulumi:"key"`
+	MessageId  pulumi.StringPtrInput `pulumi:"messageId"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
+	StartTime  pulumi.StringPtrInput `pulumi:"startTime"`
+	Topic      pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (GetDmsRocketmqMessagesOutputArgs) ElementType() reflect.Type {
@@ -225,13 +102,10 @@ func (o GetDmsRocketmqMessagesResultOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesResult) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the message ID.
 func (o GetDmsRocketmqMessagesResultOutput) MessageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesResult) *string { return v.MessageId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the message list.
-// The messages structure is documented below.
 func (o GetDmsRocketmqMessagesResultOutput) Messages() GetDmsRocketmqMessagesMessageArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMessagesResult) []GetDmsRocketmqMessagesMessage { return v.Messages }).(GetDmsRocketmqMessagesMessageArrayOutput)
 }

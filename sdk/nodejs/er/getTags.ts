@@ -6,23 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to query the tag list of all resources of the same type within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Er.getTags({});
- * ```
- */
 export function getTags(args: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Er/getTags:getTags", {
@@ -35,23 +18,7 @@ export function getTags(args: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getTags.
  */
 export interface GetTagsArgs {
-    /**
-     * Specifies the region in which to query the resource tags.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the resource type to which the tags belong that to be queried.  
-     * The valid values are as follows:
-     * + **instance**: enterprise router instance.
-     * + **route-table**: route table.
-     * + **vpc-attachment**: VPC connection.
-     * + **vgw-attachment**: virtual gateway connection.
-     * + **peering-attachment**: peering connection.
-     * + **vpn-attachment**: VPN gateway connection.
-     * + **ecn-attachment**: enterprise network connection.
-     * + **cfw-attachment**: cloud firewall connection.
-     */
     resourceType: string;
 }
 
@@ -65,29 +32,8 @@ export interface GetTagsResult {
     readonly id: string;
     readonly region: string;
     readonly resourceType: string;
-    /**
-     * The list of all tags for resources of the same type.  
-     * The tags structure is documented below.
-     */
     readonly tags: outputs.Er.GetTagsTag[];
 }
-/**
- * Use this data source to query the tag list of all resources of the same type within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Er.getTags({});
- * ```
- */
 export function getTagsOutput(args: GetTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Er/getTags:getTags", {
@@ -100,22 +46,6 @@ export function getTagsOutput(args: GetTagsOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getTags.
  */
 export interface GetTagsOutputArgs {
-    /**
-     * Specifies the region in which to query the resource tags.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the resource type to which the tags belong that to be queried.  
-     * The valid values are as follows:
-     * + **instance**: enterprise router instance.
-     * + **route-table**: route table.
-     * + **vpc-attachment**: VPC connection.
-     * + **vgw-attachment**: virtual gateway connection.
-     * + **peering-attachment**: peering connection.
-     * + **vpn-attachment**: VPN gateway connection.
-     * + **ecn-attachment**: enterprise network connection.
-     * + **cfw-attachment**: cloud firewall connection.
-     */
     resourceType: pulumi.Input<string>;
 }

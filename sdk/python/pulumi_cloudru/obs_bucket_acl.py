@@ -30,24 +30,10 @@ class ObsBucketAclArgs:
         """
         The set of arguments for constructing a ObsBucketAcl resource.
         :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to set the acl.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['ObsBucketAclAccountPermissionArgs']]] account_permissions: Specifies the account permissions.
-               The account_permission_struct structure is documented below.
-               
-               <a name="OBSBucketAcl_permission_struct"></a>
-               The `permission_struct` block supports:
         :param pulumi.Input['ObsBucketAclLogDeliveryUserPermissionArgs'] log_delivery_user_permission: Specifies the log delivery user permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input['ObsBucketAclOwnerPermissionArgs'] owner_permission: Specifies the bucket owner permission. If omitted, the current obs bucket acl
-               owner permission will not be changed.
-               The permission_struct structure is documented below.
+        :param pulumi.Input['ObsBucketAclOwnerPermissionArgs'] owner_permission: Specifies the bucket owner permission.
         :param pulumi.Input['ObsBucketAclPublicPermissionArgs'] public_permission: Specifies the public permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "bucket", bucket)
         if account_permissions is not None:
@@ -66,8 +52,6 @@ class ObsBucketAclArgs:
     def bucket(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the name of the bucket to which to set the acl.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bucket")
 
@@ -80,10 +64,6 @@ class ObsBucketAclArgs:
     def account_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObsBucketAclAccountPermissionArgs']]]]:
         """
         Specifies the account permissions.
-        The account_permission_struct structure is documented below.
-
-        <a name="OBSBucketAcl_permission_struct"></a>
-        The `permission_struct` block supports:
         """
         return pulumi.get(self, "account_permissions")
 
@@ -96,7 +76,6 @@ class ObsBucketAclArgs:
     def log_delivery_user_permission(self) -> Optional[pulumi.Input['ObsBucketAclLogDeliveryUserPermissionArgs']]:
         """
         Specifies the log delivery user permission.
-        The permission_struct structure is documented below.
         """
         return pulumi.get(self, "log_delivery_user_permission")
 
@@ -108,9 +87,7 @@ class ObsBucketAclArgs:
     @pulumi.getter(name="ownerPermission")
     def owner_permission(self) -> Optional[pulumi.Input['ObsBucketAclOwnerPermissionArgs']]:
         """
-        Specifies the bucket owner permission. If omitted, the current obs bucket acl
-        owner permission will not be changed.
-        The permission_struct structure is documented below.
+        Specifies the bucket owner permission.
         """
         return pulumi.get(self, "owner_permission")
 
@@ -123,7 +100,6 @@ class ObsBucketAclArgs:
     def public_permission(self) -> Optional[pulumi.Input['ObsBucketAclPublicPermissionArgs']]:
         """
         Specifies the public permission.
-        The permission_struct structure is documented below.
         """
         return pulumi.get(self, "public_permission")
 
@@ -134,12 +110,6 @@ class ObsBucketAclArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -159,24 +129,10 @@ class _ObsBucketAclState:
         """
         Input properties used for looking up and filtering ObsBucketAcl resources.
         :param pulumi.Input[Sequence[pulumi.Input['ObsBucketAclAccountPermissionArgs']]] account_permissions: Specifies the account permissions.
-               The account_permission_struct structure is documented below.
-               
-               <a name="OBSBucketAcl_permission_struct"></a>
-               The `permission_struct` block supports:
         :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to set the acl.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input['ObsBucketAclLogDeliveryUserPermissionArgs'] log_delivery_user_permission: Specifies the log delivery user permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input['ObsBucketAclOwnerPermissionArgs'] owner_permission: Specifies the bucket owner permission. If omitted, the current obs bucket acl
-               owner permission will not be changed.
-               The permission_struct structure is documented below.
+        :param pulumi.Input['ObsBucketAclOwnerPermissionArgs'] owner_permission: Specifies the bucket owner permission.
         :param pulumi.Input['ObsBucketAclPublicPermissionArgs'] public_permission: Specifies the public permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               
-               Changing this parameter will create a new resource.
         """
         if account_permissions is not None:
             pulumi.set(__self__, "account_permissions", account_permissions)
@@ -196,10 +152,6 @@ class _ObsBucketAclState:
     def account_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObsBucketAclAccountPermissionArgs']]]]:
         """
         Specifies the account permissions.
-        The account_permission_struct structure is documented below.
-
-        <a name="OBSBucketAcl_permission_struct"></a>
-        The `permission_struct` block supports:
         """
         return pulumi.get(self, "account_permissions")
 
@@ -212,8 +164,6 @@ class _ObsBucketAclState:
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the name of the bucket to which to set the acl.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bucket")
 
@@ -226,7 +176,6 @@ class _ObsBucketAclState:
     def log_delivery_user_permission(self) -> Optional[pulumi.Input['ObsBucketAclLogDeliveryUserPermissionArgs']]:
         """
         Specifies the log delivery user permission.
-        The permission_struct structure is documented below.
         """
         return pulumi.get(self, "log_delivery_user_permission")
 
@@ -238,9 +187,7 @@ class _ObsBucketAclState:
     @pulumi.getter(name="ownerPermission")
     def owner_permission(self) -> Optional[pulumi.Input['ObsBucketAclOwnerPermissionArgs']]:
         """
-        Specifies the bucket owner permission. If omitted, the current obs bucket acl
-        owner permission will not be changed.
-        The permission_struct structure is documented below.
+        Specifies the bucket owner permission.
         """
         return pulumi.get(self, "owner_permission")
 
@@ -253,7 +200,6 @@ class _ObsBucketAclState:
     def public_permission(self) -> Optional[pulumi.Input['ObsBucketAclPublicPermissionArgs']]:
         """
         Specifies the public permission.
-        The permission_struct structure is documented below.
         """
         return pulumi.get(self, "public_permission")
 
@@ -264,12 +210,6 @@ class _ObsBucketAclState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -291,100 +231,14 @@ class ObsBucketAcl(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an OBS bucket acl resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        bucket = config.require_object("bucket")
-        account1 = config.require_object("account1")
-        account2 = config.require_object("account2")
-        test = sbercloud.ObsBucketAcl("test",
-            bucket=bucket,
-            owner_permission={
-                "access_to_buckets": [
-                    "READ",
-                    "WRITE",
-                ],
-                "access_to_acls": [
-                    "READ_ACP",
-                    "WRITE_ACP",
-                ],
-            },
-            account_permissions=[
-                {
-                    "access_to_buckets": [
-                        "READ",
-                        "WRITE",
-                    ],
-                    "access_to_acls": [
-                        "READ_ACP",
-                        "WRITE_ACP",
-                    ],
-                    "account_id": account1,
-                },
-                {
-                    "access_to_buckets": ["READ"],
-                    "access_to_acls": [
-                        "READ_ACP",
-                        "WRITE_ACP",
-                    ],
-                    "account_id": account2,
-                },
-            ],
-            public_permission={
-                "access_to_buckets": [
-                    "READ",
-                    "WRITE",
-                ],
-            },
-            log_delivery_user_permission={
-                "access_to_buckets": [
-                    "READ",
-                    "WRITE",
-                ],
-                "access_to_acls": [
-                    "READ_ACP",
-                    "WRITE_ACP",
-                ],
-            })
-        ```
-
-        ## Import
-
-        The obs bucket acl can be imported using the `bucket`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/obsBucketAcl:ObsBucketAcl test <bucket-name>
-        ```
-
+        Create a ObsBucketAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObsBucketAclAccountPermissionArgs', 'ObsBucketAclAccountPermissionArgsDict']]]] account_permissions: Specifies the account permissions.
-               The account_permission_struct structure is documented below.
-               
-               <a name="OBSBucketAcl_permission_struct"></a>
-               The `permission_struct` block supports:
         :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to set the acl.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Union['ObsBucketAclLogDeliveryUserPermissionArgs', 'ObsBucketAclLogDeliveryUserPermissionArgsDict']] log_delivery_user_permission: Specifies the log delivery user permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input[Union['ObsBucketAclOwnerPermissionArgs', 'ObsBucketAclOwnerPermissionArgsDict']] owner_permission: Specifies the bucket owner permission. If omitted, the current obs bucket acl
-               owner permission will not be changed.
-               The permission_struct structure is documented below.
+        :param pulumi.Input[Union['ObsBucketAclOwnerPermissionArgs', 'ObsBucketAclOwnerPermissionArgsDict']] owner_permission: Specifies the bucket owner permission.
         :param pulumi.Input[Union['ObsBucketAclPublicPermissionArgs', 'ObsBucketAclPublicPermissionArgsDict']] public_permission: Specifies the public permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -393,79 +247,7 @@ class ObsBucketAcl(pulumi.CustomResource):
                  args: ObsBucketAclArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an OBS bucket acl resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        bucket = config.require_object("bucket")
-        account1 = config.require_object("account1")
-        account2 = config.require_object("account2")
-        test = sbercloud.ObsBucketAcl("test",
-            bucket=bucket,
-            owner_permission={
-                "access_to_buckets": [
-                    "READ",
-                    "WRITE",
-                ],
-                "access_to_acls": [
-                    "READ_ACP",
-                    "WRITE_ACP",
-                ],
-            },
-            account_permissions=[
-                {
-                    "access_to_buckets": [
-                        "READ",
-                        "WRITE",
-                    ],
-                    "access_to_acls": [
-                        "READ_ACP",
-                        "WRITE_ACP",
-                    ],
-                    "account_id": account1,
-                },
-                {
-                    "access_to_buckets": ["READ"],
-                    "access_to_acls": [
-                        "READ_ACP",
-                        "WRITE_ACP",
-                    ],
-                    "account_id": account2,
-                },
-            ],
-            public_permission={
-                "access_to_buckets": [
-                    "READ",
-                    "WRITE",
-                ],
-            },
-            log_delivery_user_permission={
-                "access_to_buckets": [
-                    "READ",
-                    "WRITE",
-                ],
-                "access_to_acls": [
-                    "READ_ACP",
-                    "WRITE_ACP",
-                ],
-            })
-        ```
-
-        ## Import
-
-        The obs bucket acl can be imported using the `bucket`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/obsBucketAcl:ObsBucketAcl test <bucket-name>
-        ```
-
+        Create a ObsBucketAcl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ObsBucketAclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -528,24 +310,10 @@ class ObsBucketAcl(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObsBucketAclAccountPermissionArgs', 'ObsBucketAclAccountPermissionArgsDict']]]] account_permissions: Specifies the account permissions.
-               The account_permission_struct structure is documented below.
-               
-               <a name="OBSBucketAcl_permission_struct"></a>
-               The `permission_struct` block supports:
         :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to set the acl.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Union['ObsBucketAclLogDeliveryUserPermissionArgs', 'ObsBucketAclLogDeliveryUserPermissionArgsDict']] log_delivery_user_permission: Specifies the log delivery user permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input[Union['ObsBucketAclOwnerPermissionArgs', 'ObsBucketAclOwnerPermissionArgsDict']] owner_permission: Specifies the bucket owner permission. If omitted, the current obs bucket acl
-               owner permission will not be changed.
-               The permission_struct structure is documented below.
+        :param pulumi.Input[Union['ObsBucketAclOwnerPermissionArgs', 'ObsBucketAclOwnerPermissionArgsDict']] owner_permission: Specifies the bucket owner permission.
         :param pulumi.Input[Union['ObsBucketAclPublicPermissionArgs', 'ObsBucketAclPublicPermissionArgsDict']] public_permission: Specifies the public permission.
-               The permission_struct structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -564,10 +332,6 @@ class ObsBucketAcl(pulumi.CustomResource):
     def account_permissions(self) -> pulumi.Output[Optional[Sequence['outputs.ObsBucketAclAccountPermission']]]:
         """
         Specifies the account permissions.
-        The account_permission_struct structure is documented below.
-
-        <a name="OBSBucketAcl_permission_struct"></a>
-        The `permission_struct` block supports:
         """
         return pulumi.get(self, "account_permissions")
 
@@ -576,8 +340,6 @@ class ObsBucketAcl(pulumi.CustomResource):
     def bucket(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the name of the bucket to which to set the acl.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bucket")
 
@@ -586,7 +348,6 @@ class ObsBucketAcl(pulumi.CustomResource):
     def log_delivery_user_permission(self) -> pulumi.Output[Optional['outputs.ObsBucketAclLogDeliveryUserPermission']]:
         """
         Specifies the log delivery user permission.
-        The permission_struct structure is documented below.
         """
         return pulumi.get(self, "log_delivery_user_permission")
 
@@ -594,9 +355,7 @@ class ObsBucketAcl(pulumi.CustomResource):
     @pulumi.getter(name="ownerPermission")
     def owner_permission(self) -> pulumi.Output['outputs.ObsBucketAclOwnerPermission']:
         """
-        Specifies the bucket owner permission. If omitted, the current obs bucket acl
-        owner permission will not be changed.
-        The permission_struct structure is documented below.
+        Specifies the bucket owner permission.
         """
         return pulumi.get(self, "owner_permission")
 
@@ -605,18 +364,11 @@ class ObsBucketAcl(pulumi.CustomResource):
     def public_permission(self) -> pulumi.Output[Optional['outputs.ObsBucketAclPublicPermission']]:
         """
         Specifies the public permission.
-        The permission_struct structure is documented below.
         """
         return pulumi.get(self, "public_permission")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

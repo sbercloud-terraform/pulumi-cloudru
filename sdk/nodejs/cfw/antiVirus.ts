@@ -6,42 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW anti virus resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = new sbercloud.cfw.AntiVirus("test", {
- *     objectId: objectId,
- *     scanProtocolConfigs: [
- *         {
- *             protocolType: 3,
- *             action: 1,
- *         },
- *         {
- *             protocolType: 2,
- *             action: 1,
- *         },
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * The anti virus can be imported using `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/antiVirus:AntiVirus test <id>
- * ```
- */
 export class AntiVirus extends pulumi.CustomResource {
     /**
      * Get an existing AntiVirus resource's state with the given name, ID, and optional extra
@@ -76,17 +40,11 @@ export class AntiVirus extends pulumi.CustomResource {
      */
     declare public readonly objectId: pulumi.Output<string>;
     /**
-     * The region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the scan protocol configurations.
-     * The scanProtocolConfigs structure is documented below.
-     *
-     * <a name="ScanProtocolConfigs"></a>
-     * The `scanProtocolConfigs` block supports:
      */
     declare public readonly scanProtocolConfigs: pulumi.Output<outputs.Cfw.AntiVirusScanProtocolConfig[]>;
 
@@ -135,17 +93,11 @@ export interface AntiVirusState {
      */
     objectId?: pulumi.Input<string>;
     /**
-     * The region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     region?: pulumi.Input<string>;
     /**
      * Specifies the scan protocol configurations.
-     * The scanProtocolConfigs structure is documented below.
-     *
-     * <a name="ScanProtocolConfigs"></a>
-     * The `scanProtocolConfigs` block supports:
      */
     scanProtocolConfigs?: pulumi.Input<pulumi.Input<inputs.Cfw.AntiVirusScanProtocolConfig>[]>;
 }
@@ -160,17 +112,11 @@ export interface AntiVirusArgs {
      */
     objectId: pulumi.Input<string>;
     /**
-     * The region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     region?: pulumi.Input<string>;
     /**
      * Specifies the scan protocol configurations.
-     * The scanProtocolConfigs structure is documented below.
-     *
-     * <a name="ScanProtocolConfigs"></a>
-     * The `scanProtocolConfigs` block supports:
      */
     scanProtocolConfigs: pulumi.Input<pulumi.Input<inputs.Cfw.AntiVirusScanProtocolConfig>[]>;
 }

@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ consumer group access users.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			group := cfg.RequireObject("group")
-//			_, err := sbercloud.GetDmsRocketmqConsumerGroupAccessUsers(ctx, &cloudru.GetDmsRocketmqConsumerGroupAccessUsersArgs{
-//				InstanceId: instanceId,
-//				Group:      group,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqConsumerGroupAccessUsers(ctx *pulumi.Context, args *GetDmsRocketmqConsumerGroupAccessUsersArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqConsumerGroupAccessUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqConsumerGroupAccessUsersResult
@@ -55,24 +23,19 @@ func GetDmsRocketmqConsumerGroupAccessUsers(ctx *pulumi.Context, args *GetDmsRoc
 
 // A collection of arguments for invoking getDmsRocketmqConsumerGroupAccessUsers.
 type GetDmsRocketmqConsumerGroupAccessUsersArgs struct {
-	// Specifies the consumer group.
-	Group string `pulumi:"group"`
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Group      string  `pulumi:"group"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDmsRocketmqConsumerGroupAccessUsers.
 type GetDmsRocketmqConsumerGroupAccessUsersResult struct {
 	Group string `pulumi:"group"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Indicates the user list.
-	Policies []GetDmsRocketmqConsumerGroupAccessUsersPolicy `pulumi:"policies"`
-	Region   string                                         `pulumi:"region"`
+	Id         string                                         `pulumi:"id"`
+	InstanceId string                                         `pulumi:"instanceId"`
+	Policies   []GetDmsRocketmqConsumerGroupAccessUsersPolicy `pulumi:"policies"`
+	Region     string                                         `pulumi:"region"`
 }
 
 func GetDmsRocketmqConsumerGroupAccessUsersOutput(ctx *pulumi.Context, args GetDmsRocketmqConsumerGroupAccessUsersOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqConsumerGroupAccessUsersResultOutput {
@@ -86,13 +49,9 @@ func GetDmsRocketmqConsumerGroupAccessUsersOutput(ctx *pulumi.Context, args GetD
 
 // A collection of arguments for invoking getDmsRocketmqConsumerGroupAccessUsers.
 type GetDmsRocketmqConsumerGroupAccessUsersOutputArgs struct {
-	// Specifies the consumer group.
-	Group pulumi.StringInput `pulumi:"group"`
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Group      pulumi.StringInput    `pulumi:"group"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDmsRocketmqConsumerGroupAccessUsersOutputArgs) ElementType() reflect.Type {
@@ -127,7 +86,6 @@ func (o GetDmsRocketmqConsumerGroupAccessUsersResultOutput) InstanceId() pulumi.
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupAccessUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the user list.
 func (o GetDmsRocketmqConsumerGroupAccessUsersResultOutput) Policies() GetDmsRocketmqConsumerGroupAccessUsersPolicyArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumerGroupAccessUsersResult) []GetDmsRocketmqConsumerGroupAccessUsersPolicy {
 		return v.Policies

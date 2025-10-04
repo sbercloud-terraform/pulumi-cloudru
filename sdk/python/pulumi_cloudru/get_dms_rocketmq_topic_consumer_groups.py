@@ -46,9 +46,6 @@ class GetDmsRocketmqTopicConsumerGroupsResult:
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the consumer group list.
-        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
@@ -93,26 +90,7 @@ def get_dms_rocketmq_topic_consumer_groups(instance_id: Optional[_builtins.str] 
                                            topic_name: Optional[_builtins.str] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqTopicConsumerGroupsResult:
     """
-    Use this data source to get the list of RocketMQ topic consumer groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic_name = config.require_object("topicName")
-    test = sbercloud.get_dms_rocketmq_topic_consumer_groups(instance_id=instance_id,
-        topic_name=topic_name)
-    ```
-
-
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str topic_name: Specifies the topic name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -132,26 +110,7 @@ def get_dms_rocketmq_topic_consumer_groups_output(instance_id: Optional[pulumi.I
                                                   topic_name: Optional[pulumi.Input[_builtins.str]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqTopicConsumerGroupsResult]:
     """
-    Use this data source to get the list of RocketMQ topic consumer groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    topic_name = config.require_object("topicName")
-    test = sbercloud.get_dms_rocketmq_topic_consumer_groups(instance_id=instance_id,
-        topic_name=topic_name)
-    ```
-
-
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str topic_name: Specifies the topic name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

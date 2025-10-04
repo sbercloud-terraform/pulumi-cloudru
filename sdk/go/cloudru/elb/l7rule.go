@@ -12,104 +12,19 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB L7 Rule resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			loadbalancer1, err := elb.NewLoadbalancer(ctx, "loadbalancer_1", &elb.LoadbalancerArgs{
-//				Name:        pulumi.String("loadbalancer_1"),
-//				VipSubnetId: pulumi.Any(subnetId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			listener1, err := elb.NewListener(ctx, "listener_1", &elb.ListenerArgs{
-//				Name:           pulumi.String("listener_1"),
-//				Protocol:       pulumi.String("HTTP"),
-//				ProtocolPort:   pulumi.Int(8080),
-//				LoadbalancerId: loadbalancer1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			pool1, err := elb.NewPool(ctx, "pool_1", &elb.PoolArgs{
-//				Name:           pulumi.String("pool_1"),
-//				Protocol:       pulumi.String("HTTP"),
-//				LbMethod:       pulumi.String("ROUND_ROBIN"),
-//				LoadbalancerId: loadbalancer1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			l7policy1, err := elb.NewL7policy(ctx, "l7policy_1", &elb.L7policyArgs{
-//				Name:           pulumi.String("test"),
-//				Action:         pulumi.String("REDIRECT_TO_POOL"),
-//				Description:    pulumi.String("test l7 policy"),
-//				Position:       pulumi.Int(1),
-//				ListenerId:     listener1.ID(),
-//				RedirectPoolId: pool1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = elb.NewL7rule(ctx, "l7rule_1", &elb.L7ruleArgs{
-//				L7policyId:  l7policy1.ID(),
-//				Type:        pulumi.String("PATH"),
-//				CompareType: pulumi.String("EQUAL_TO"),
-//				Value:       pulumi.String("/api"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:Elb/l7rule:L7rule l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-// ```
 type L7rule struct {
 	pulumi.CustomResourceState
 
-	// The administrative state of the L7 Rule. The value can only be true (UP).
-	AdminStateUp pulumi.BoolPtrOutput `pulumi:"adminStateUp"`
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-	CompareType pulumi.StringOutput `pulumi:"compareType"`
-	// The key to use for the comparison. For example, the name of the cookie to
-	// evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-	Key pulumi.StringPtrOutput `pulumi:"key"`
-	// The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-	L7policyId pulumi.StringOutput `pulumi:"l7policyId"`
-	// The ID of the Listener owning this resource.
-	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region pulumi.StringOutput `pulumi:"region"`
+	AdminStateUp pulumi.BoolPtrOutput   `pulumi:"adminStateUp"`
+	CompareType  pulumi.StringOutput    `pulumi:"compareType"`
+	Key          pulumi.StringPtrOutput `pulumi:"key"`
+	L7policyId   pulumi.StringOutput    `pulumi:"l7policyId"`
+	ListenerId   pulumi.StringOutput    `pulumi:"listenerId"`
+	Region       pulumi.StringOutput    `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// The value to use for the comparison. For example, the file type to compare.
-	Value pulumi.StringOutput `pulumi:"value"`
+	Type     pulumi.StringOutput `pulumi:"type"`
+	Value    pulumi.StringOutput `pulumi:"value"`
 }
 
 // NewL7rule registers a new resource with the given unique name, arguments, and options.
@@ -154,51 +69,29 @@ func GetL7rule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering L7rule resources.
 type l7ruleState struct {
-	// The administrative state of the L7 Rule. The value can only be true (UP).
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-	CompareType *string `pulumi:"compareType"`
-	// The key to use for the comparison. For example, the name of the cookie to
-	// evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-	Key *string `pulumi:"key"`
-	// The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-	L7policyId *string `pulumi:"l7policyId"`
-	// The ID of the Listener owning this resource.
-	ListenerId *string `pulumi:"listenerId"`
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region *string `pulumi:"region"`
+	AdminStateUp *bool   `pulumi:"adminStateUp"`
+	CompareType  *string `pulumi:"compareType"`
+	Key          *string `pulumi:"key"`
+	L7policyId   *string `pulumi:"l7policyId"`
+	ListenerId   *string `pulumi:"listenerId"`
+	Region       *string `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type *string `pulumi:"type"`
-	// The value to use for the comparison. For example, the file type to compare.
-	Value *string `pulumi:"value"`
+	Type     *string `pulumi:"type"`
+	Value    *string `pulumi:"value"`
 }
 
 type L7ruleState struct {
-	// The administrative state of the L7 Rule. The value can only be true (UP).
 	AdminStateUp pulumi.BoolPtrInput
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-	CompareType pulumi.StringPtrInput
-	// The key to use for the comparison. For example, the name of the cookie to
-	// evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-	Key pulumi.StringPtrInput
-	// The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-	L7policyId pulumi.StringPtrInput
-	// The ID of the Listener owning this resource.
-	ListenerId pulumi.StringPtrInput
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region pulumi.StringPtrInput
+	CompareType  pulumi.StringPtrInput
+	Key          pulumi.StringPtrInput
+	L7policyId   pulumi.StringPtrInput
+	ListenerId   pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type pulumi.StringPtrInput
-	// The value to use for the comparison. For example, the file type to compare.
-	Value pulumi.StringPtrInput
+	Type     pulumi.StringPtrInput
+	Value    pulumi.StringPtrInput
 }
 
 func (L7ruleState) ElementType() reflect.Type {
@@ -206,48 +99,28 @@ func (L7ruleState) ElementType() reflect.Type {
 }
 
 type l7ruleArgs struct {
-	// The administrative state of the L7 Rule. The value can only be true (UP).
-	AdminStateUp *bool `pulumi:"adminStateUp"`
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-	CompareType string `pulumi:"compareType"`
-	// The key to use for the comparison. For example, the name of the cookie to
-	// evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-	Key *string `pulumi:"key"`
-	// The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-	L7policyId string `pulumi:"l7policyId"`
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region *string `pulumi:"region"`
+	AdminStateUp *bool   `pulumi:"adminStateUp"`
+	CompareType  string  `pulumi:"compareType"`
+	Key          *string `pulumi:"key"`
+	L7policyId   string  `pulumi:"l7policyId"`
+	Region       *string `pulumi:"region"`
 	// Deprecated: tenant_id is deprecated
 	TenantId *string `pulumi:"tenantId"`
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type string `pulumi:"type"`
-	// The value to use for the comparison. For example, the file type to compare.
-	Value string `pulumi:"value"`
+	Type     string  `pulumi:"type"`
+	Value    string  `pulumi:"value"`
 }
 
 // The set of arguments for constructing a L7rule resource.
 type L7ruleArgs struct {
-	// The administrative state of the L7 Rule. The value can only be true (UP).
 	AdminStateUp pulumi.BoolPtrInput
-	// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-	CompareType pulumi.StringInput
-	// The key to use for the comparison. For example, the name of the cookie to
-	// evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-	Key pulumi.StringPtrInput
-	// The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-	L7policyId pulumi.StringInput
-	// The region in which to create the L7 Rule resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Rule.
-	Region pulumi.StringPtrInput
+	CompareType  pulumi.StringInput
+	Key          pulumi.StringPtrInput
+	L7policyId   pulumi.StringInput
+	Region       pulumi.StringPtrInput
 	// Deprecated: tenant_id is deprecated
 	TenantId pulumi.StringPtrInput
-	// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-	// L7 Rule.
-	Type pulumi.StringInput
-	// The value to use for the comparison. For example, the file type to compare.
-	Value pulumi.StringInput
+	Type     pulumi.StringInput
+	Value    pulumi.StringInput
 }
 
 func (L7ruleArgs) ElementType() reflect.Type {
@@ -337,34 +210,26 @@ func (o L7ruleOutput) ToL7ruleOutputWithContext(ctx context.Context) L7ruleOutpu
 	return o
 }
 
-// The administrative state of the L7 Rule. The value can only be true (UP).
 func (o L7ruleOutput) AdminStateUp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.BoolPtrOutput { return v.AdminStateUp }).(pulumi.BoolPtrOutput)
 }
 
-// The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
 func (o L7ruleOutput) CompareType() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.CompareType }).(pulumi.StringOutput)
 }
 
-// The key to use for the comparison. For example, the name of the cookie to
-// evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
 func (o L7ruleOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
 func (o L7ruleOutput) L7policyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.L7policyId }).(pulumi.StringOutput)
 }
 
-// The ID of the Listener owning this resource.
 func (o L7ruleOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the L7 Rule resource. If omitted, the
-// provider-level region will be used. Changing this creates a new L7 Rule.
 func (o L7ruleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -374,13 +239,10 @@ func (o L7ruleOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-// L7 Rule.
 func (o L7ruleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value to use for the comparison. For example, the file type to compare.
 func (o L7ruleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *L7rule) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

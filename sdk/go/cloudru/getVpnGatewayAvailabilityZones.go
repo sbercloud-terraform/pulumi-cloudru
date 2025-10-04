@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of VPN gateway availability zones.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			flavor := cfg.RequireObject("flavor")
-//			_, err := sbercloud.GetVpnGatewayAvailabilityZones(ctx, &cloudru.GetVpnGatewayAvailabilityZonesArgs{
-//				Flavor: flavor,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpnGatewayAvailabilityZones(ctx *pulumi.Context, args *GetVpnGatewayAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetVpnGatewayAvailabilityZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnGatewayAvailabilityZonesResult
@@ -53,15 +23,9 @@ func GetVpnGatewayAvailabilityZones(ctx *pulumi.Context, args *GetVpnGatewayAvai
 
 // A collection of arguments for invoking getVpnGatewayAvailabilityZones.
 type GetVpnGatewayAvailabilityZonesArgs struct {
-	// Specifies the attachment type.
-	// The value can be **vpc** and **er**. Defaults to **vpc**.
 	AttachmentType *string `pulumi:"attachmentType"`
-	// Specifies the flavor name.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**.
-	Flavor string `pulumi:"flavor"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Flavor         string  `pulumi:"flavor"`
+	Region         *string `pulumi:"region"`
 }
 
 // A collection of values returned by getVpnGatewayAvailabilityZones.
@@ -69,8 +33,7 @@ type GetVpnGatewayAvailabilityZonesResult struct {
 	AttachmentType *string `pulumi:"attachmentType"`
 	Flavor         string  `pulumi:"flavor"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The names of the availability zones.
+	Id     string   `pulumi:"id"`
 	Names  []string `pulumi:"names"`
 	Region string   `pulumi:"region"`
 }
@@ -86,15 +49,9 @@ func GetVpnGatewayAvailabilityZonesOutput(ctx *pulumi.Context, args GetVpnGatewa
 
 // A collection of arguments for invoking getVpnGatewayAvailabilityZones.
 type GetVpnGatewayAvailabilityZonesOutputArgs struct {
-	// Specifies the attachment type.
-	// The value can be **vpc** and **er**. Defaults to **vpc**.
 	AttachmentType pulumi.StringPtrInput `pulumi:"attachmentType"`
-	// Specifies the flavor name.
-	// The value can be **Basic**, **Professional1**, **Professional2** and **GM**.
-	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Flavor         pulumi.StringInput    `pulumi:"flavor"`
+	Region         pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetVpnGatewayAvailabilityZonesOutputArgs) ElementType() reflect.Type {
@@ -129,7 +86,6 @@ func (o GetVpnGatewayAvailabilityZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewayAvailabilityZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The names of the availability zones.
 func (o GetVpnGatewayAvailabilityZonesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpnGatewayAvailabilityZonesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

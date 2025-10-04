@@ -50,9 +50,6 @@ class GetRoutesResult:
     @_builtins.property
     @pulumi.getter
     def destination(self) -> Optional[_builtins.str]:
-        """
-        The route destination.
-        """
         return pulumi.get(self, "destination")
 
     @_builtins.property
@@ -71,25 +68,16 @@ class GetRoutesResult:
     @_builtins.property
     @pulumi.getter
     def routes(self) -> Sequence['outputs.GetRoutesRouteResult']:
-        """
-        The list of routes.
-        """
         return pulumi.get(self, "routes")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The route type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the VPC to which the route belongs.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -113,23 +101,7 @@ def get_routes(destination: Optional[_builtins.str] = None,
                vpc_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRoutesResult:
     """
-    Use this data source to get the list of VPC routes.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Vpc.get_routes(type="peering")
-    ```
-
-
-    :param _builtins.str destination: Specifies the route destination.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the route type.
-    :param _builtins.str vpc_id: Specifies the ID of the VPC to which the route belongs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destination'] = destination
@@ -152,23 +124,7 @@ def get_routes_output(destination: Optional[pulumi.Input[Optional[_builtins.str]
                       vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoutesResult]:
     """
-    Use this data source to get the list of VPC routes.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Vpc.get_routes(type="peering")
-    ```
-
-
-    :param _builtins.str destination: Specifies the route destination.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the route type.
-    :param _builtins.str vpc_id: Specifies the ID of the VPC to which the route belongs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destination'] = destination

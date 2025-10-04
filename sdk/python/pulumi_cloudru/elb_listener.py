@@ -67,46 +67,6 @@ class ElbListenerArgs:
                  tls_ciphers_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElbListener resource.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this listener. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] protocol: The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.str] access_policy: Specifies the access policy for the listener. Valid options are *white* and
-               *black*.
-        :param pulumi.Input[_builtins.bool] advanced_forwarding_enabled: Specifies whether to enable advanced forwarding.
-               If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        :param pulumi.Input[_builtins.str] ca_certificate: Specifies the ID of the CA certificate used by the listener. This parameter is
-               valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.str] default_pool_id: The ID of the default pool with which the listener is associated. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the listener.
-        :param pulumi.Input[_builtins.bool] forward_eip: Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-               backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-               *HTTPS*.
-        :param pulumi.Input[_builtins.bool] http2_enable: Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-               only when the protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        :param pulumi.Input[_builtins.str] ip_group: Specifies the ip group id for the listener.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the listener.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.bool] real_ip: Specifies whether to transfer the source IP address of the client to backend servers
-               through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-               set to **HTTP** or **HTTPS**.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the listener resource. If omitted, the
-               provider-level region will be used. Changing this creates a new listener.
-        :param pulumi.Input[_builtins.int] request_timeout: Specifies the request timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.int] response_timeout: Specifies the response timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.str] server_certificate: Specifies the ID of the server certificate used by the listener. This
-               parameter is mandatory when protocol is set to *HTTPS*.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sni_certificates: Lists the IDs of SNI certificates (server certificates with a domain name) used
-               by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the listener.
-        :param pulumi.Input[_builtins.str] tls_ciphers_policy: Specifies the TLS cipher policy for the listener. Valid options are:
-               tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-               This parameter is valid when protocol is set to *HTTPS*.
         """
         pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
         pulumi.set(__self__, "protocol", protocol)
@@ -198,10 +158,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The load balancer on which to provision this listener. Changing this
-        creates a new listener.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -211,10 +167,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
-        """
-        The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-        new listener.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -224,10 +176,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access policy for the listener. Valid options are *white* and
-        *black*.
-        """
         return pulumi.get(self, "access_policy")
 
     @access_policy.setter
@@ -237,10 +185,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="advancedForwardingEnabled")
     def advanced_forwarding_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable advanced forwarding.
-        If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        """
         return pulumi.get(self, "advanced_forwarding_enabled")
 
     @advanced_forwarding_enabled.setter
@@ -250,10 +194,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the CA certificate used by the listener. This parameter is
-        valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
@@ -272,10 +212,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the default pool with which the listener is associated. Changing this
-        creates a new listener.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @default_pool_id.setter
@@ -285,9 +221,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the listener.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -324,11 +257,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="forwardEip")
     def forward_eip(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-        backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-        *HTTPS*.
-        """
         return pulumi.get(self, "forward_eip")
 
     @forward_eip.setter
@@ -419,10 +347,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="http2Enable")
     def http2_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-        only when the protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "http2_enable")
 
     @http2_enable.setter
@@ -432,9 +356,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
@@ -444,9 +365,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="ipGroup")
     def ip_group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ip group id for the listener.
-        """
         return pulumi.get(self, "ip_group")
 
     @ip_group.setter
@@ -474,9 +392,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the listener.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -513,10 +428,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port on which to listen for client traffic. Changing this creates a
-        new listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -544,11 +455,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="realIp")
     def real_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to transfer the source IP address of the client to backend servers
-        through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-        set to **HTTP** or **HTTPS**.
-        """
         return pulumi.get(self, "real_ip")
 
     @real_ip.setter
@@ -558,10 +464,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the listener resource. If omitted, the
-        provider-level region will be used. Changing this creates a new listener.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -571,10 +473,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the request timeout for the listener. Value range: 1 to 300. This
-        parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        """
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
@@ -584,10 +482,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="responseTimeout")
     def response_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the response timeout for the listener. Value range: 1 to 300. This
-        parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        """
         return pulumi.get(self, "response_timeout")
 
     @response_timeout.setter
@@ -606,10 +500,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the server certificate used by the listener. This
-        parameter is mandatory when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "server_certificate")
 
     @server_certificate.setter
@@ -619,10 +509,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="sniCertificates")
     def sni_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Lists the IDs of SNI certificates (server certificates with a domain name) used
-        by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "sni_certificates")
 
     @sni_certificates.setter
@@ -650,9 +536,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the listener.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -662,11 +545,6 @@ class ElbListenerArgs:
     @_builtins.property
     @pulumi.getter(name="tlsCiphersPolicy")
     def tls_ciphers_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the TLS cipher policy for the listener. Valid options are:
-        tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-        This parameter is valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "tls_ciphers_policy")
 
     @tls_ciphers_policy.setter
@@ -726,46 +604,6 @@ class _ElbListenerState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElbListener resources.
-        :param pulumi.Input[_builtins.str] access_policy: Specifies the access policy for the listener. Valid options are *white* and
-               *black*.
-        :param pulumi.Input[_builtins.bool] advanced_forwarding_enabled: Specifies whether to enable advanced forwarding.
-               If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        :param pulumi.Input[_builtins.str] ca_certificate: Specifies the ID of the CA certificate used by the listener. This parameter is
-               valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.str] default_pool_id: The ID of the default pool with which the listener is associated. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the listener.
-        :param pulumi.Input[_builtins.bool] forward_eip: Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-               backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-               *HTTPS*.
-        :param pulumi.Input[_builtins.bool] http2_enable: Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-               only when the protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        :param pulumi.Input[_builtins.str] ip_group: Specifies the ip group id for the listener.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this listener. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the listener.
-        :param pulumi.Input[_builtins.str] protocol: The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.bool] real_ip: Specifies whether to transfer the source IP address of the client to backend servers
-               through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-               set to **HTTP** or **HTTPS**.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the listener resource. If omitted, the
-               provider-level region will be used. Changing this creates a new listener.
-        :param pulumi.Input[_builtins.int] request_timeout: Specifies the request timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.int] response_timeout: Specifies the response timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.str] server_certificate: Specifies the ID of the server certificate used by the listener. This
-               parameter is mandatory when protocol is set to *HTTPS*.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sni_certificates: Lists the IDs of SNI certificates (server certificates with a domain name) used
-               by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the listener.
-        :param pulumi.Input[_builtins.str] tls_ciphers_policy: Specifies the TLS cipher policy for the listener. Valid options are:
-               tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-               This parameter is valid when protocol is set to *HTTPS*.
         """
         if access_policy is not None:
             pulumi.set(__self__, "access_policy", access_policy)
@@ -865,10 +703,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access policy for the listener. Valid options are *white* and
-        *black*.
-        """
         return pulumi.get(self, "access_policy")
 
     @access_policy.setter
@@ -878,10 +712,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="advancedForwardingEnabled")
     def advanced_forwarding_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable advanced forwarding.
-        If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        """
         return pulumi.get(self, "advanced_forwarding_enabled")
 
     @advanced_forwarding_enabled.setter
@@ -891,10 +721,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the CA certificate used by the listener. This parameter is
-        valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
@@ -922,10 +748,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the default pool with which the listener is associated. Changing this
-        creates a new listener.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @default_pool_id.setter
@@ -935,9 +757,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the listener.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -983,11 +802,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="forwardEip")
     def forward_eip(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-        backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-        *HTTPS*.
-        """
         return pulumi.get(self, "forward_eip")
 
     @forward_eip.setter
@@ -1078,10 +892,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="http2Enable")
     def http2_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-        only when the protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "http2_enable")
 
     @http2_enable.setter
@@ -1091,9 +901,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
@@ -1103,9 +910,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="ipGroup")
     def ip_group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ip group id for the listener.
-        """
         return pulumi.get(self, "ip_group")
 
     @ip_group.setter
@@ -1124,10 +928,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The load balancer on which to provision this listener. Changing this
-        creates a new listener.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -1146,9 +946,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the listener.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1185,10 +982,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-        new listener.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1198,10 +991,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port on which to listen for client traffic. Changing this creates a
-        new listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -1229,11 +1018,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="realIp")
     def real_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to transfer the source IP address of the client to backend servers
-        through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-        set to **HTTP** or **HTTPS**.
-        """
         return pulumi.get(self, "real_ip")
 
     @real_ip.setter
@@ -1243,10 +1027,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the listener resource. If omitted, the
-        provider-level region will be used. Changing this creates a new listener.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1256,10 +1036,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the request timeout for the listener. Value range: 1 to 300. This
-        parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        """
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
@@ -1269,10 +1045,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="responseTimeout")
     def response_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the response timeout for the listener. Value range: 1 to 300. This
-        parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        """
         return pulumi.get(self, "response_timeout")
 
     @response_timeout.setter
@@ -1291,10 +1063,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the server certificate used by the listener. This
-        parameter is mandatory when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "server_certificate")
 
     @server_certificate.setter
@@ -1304,10 +1072,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="sniCertificates")
     def sni_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Lists the IDs of SNI certificates (server certificates with a domain name) used
-        by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "sni_certificates")
 
     @sni_certificates.setter
@@ -1335,9 +1099,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the listener.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1347,11 +1108,6 @@ class _ElbListenerState:
     @_builtins.property
     @pulumi.getter(name="tlsCiphersPolicy")
     def tls_ciphers_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the TLS cipher policy for the listener. Valid options are:
-        tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-        This parameter is valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "tls_ciphers_policy")
 
     @tls_ciphers_policy.setter
@@ -1420,58 +1176,9 @@ class ElbListener(pulumi.CustomResource):
                  tls_ciphers_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB listener resource within SberCloud.
-
-        ## Import
-
-        ELB listener can be imported using the listener ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbListener:ElbListener listener_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a ElbListener resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_policy: Specifies the access policy for the listener. Valid options are *white* and
-               *black*.
-        :param pulumi.Input[_builtins.bool] advanced_forwarding_enabled: Specifies whether to enable advanced forwarding.
-               If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        :param pulumi.Input[_builtins.str] ca_certificate: Specifies the ID of the CA certificate used by the listener. This parameter is
-               valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.str] default_pool_id: The ID of the default pool with which the listener is associated. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the listener.
-        :param pulumi.Input[_builtins.bool] forward_eip: Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-               backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-               *HTTPS*.
-        :param pulumi.Input[_builtins.bool] http2_enable: Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-               only when the protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        :param pulumi.Input[_builtins.str] ip_group: Specifies the ip group id for the listener.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this listener. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the listener.
-        :param pulumi.Input[_builtins.str] protocol: The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.bool] real_ip: Specifies whether to transfer the source IP address of the client to backend servers
-               through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-               set to **HTTP** or **HTTPS**.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the listener resource. If omitted, the
-               provider-level region will be used. Changing this creates a new listener.
-        :param pulumi.Input[_builtins.int] request_timeout: Specifies the request timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.int] response_timeout: Specifies the response timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.str] server_certificate: Specifies the ID of the server certificate used by the listener. This
-               parameter is mandatory when protocol is set to *HTTPS*.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sni_certificates: Lists the IDs of SNI certificates (server certificates with a domain name) used
-               by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the listener.
-        :param pulumi.Input[_builtins.str] tls_ciphers_policy: Specifies the TLS cipher policy for the listener. Valid options are:
-               tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-               This parameter is valid when protocol is set to *HTTPS*.
         """
         ...
     @overload
@@ -1480,16 +1187,7 @@ class ElbListener(pulumi.CustomResource):
                  args: ElbListenerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB listener resource within SberCloud.
-
-        ## Import
-
-        ELB listener can be imported using the listener ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbListener:ElbListener listener_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a ElbListener resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbListenerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1673,46 +1371,6 @@ class ElbListener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_policy: Specifies the access policy for the listener. Valid options are *white* and
-               *black*.
-        :param pulumi.Input[_builtins.bool] advanced_forwarding_enabled: Specifies whether to enable advanced forwarding.
-               If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        :param pulumi.Input[_builtins.str] ca_certificate: Specifies the ID of the CA certificate used by the listener. This parameter is
-               valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.str] default_pool_id: The ID of the default pool with which the listener is associated. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the listener.
-        :param pulumi.Input[_builtins.bool] forward_eip: Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-               backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-               *HTTPS*.
-        :param pulumi.Input[_builtins.bool] http2_enable: Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-               only when the protocol is set to *HTTPS*.
-        :param pulumi.Input[_builtins.int] idle_timeout: Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        :param pulumi.Input[_builtins.str] ip_group: Specifies the ip group id for the listener.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this listener. Changing this
-               creates a new listener.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the listener.
-        :param pulumi.Input[_builtins.str] protocol: The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.int] protocol_port: The port on which to listen for client traffic. Changing this creates a
-               new listener.
-        :param pulumi.Input[_builtins.bool] real_ip: Specifies whether to transfer the source IP address of the client to backend servers
-               through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-               set to **HTTP** or **HTTPS**.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the listener resource. If omitted, the
-               provider-level region will be used. Changing this creates a new listener.
-        :param pulumi.Input[_builtins.int] request_timeout: Specifies the request timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.int] response_timeout: Specifies the response timeout for the listener. Value range: 1 to 300. This
-               parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        :param pulumi.Input[_builtins.str] server_certificate: Specifies the ID of the server certificate used by the listener. This
-               parameter is mandatory when protocol is set to *HTTPS*.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sni_certificates: Lists the IDs of SNI certificates (server certificates with a domain name) used
-               by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the listener.
-        :param pulumi.Input[_builtins.str] tls_ciphers_policy: Specifies the TLS cipher policy for the listener. Valid options are:
-               tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-               This parameter is valid when protocol is set to *HTTPS*.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1770,28 +1428,16 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the access policy for the listener. Valid options are *white* and
-        *black*.
-        """
         return pulumi.get(self, "access_policy")
 
     @_builtins.property
     @pulumi.getter(name="advancedForwardingEnabled")
     def advanced_forwarding_enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to enable advanced forwarding.
-        If advanced forwarding is enabled, more flexible forwarding policies and rules are supported.
-        """
         return pulumi.get(self, "advanced_forwarding_enabled")
 
     @_builtins.property
     @pulumi.getter(name="caCertificate")
     def ca_certificate(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of the CA certificate used by the listener. This parameter is
-        valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "ca_certificate")
 
     @_builtins.property
@@ -1807,18 +1453,11 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the default pool with which the listener is associated. Changing this
-        creates a new listener.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Human-readable description for the listener.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -1844,11 +1483,6 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="forwardEip")
     def forward_eip(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether transfer the load balancer EIP in the X-Forward-EIP header to
-        backend servers. The default value is false. This parameter is valid only when the protocol is set to *HTTP* or
-        *HTTPS*.
-        """
         return pulumi.get(self, "forward_eip")
 
     @_builtins.property
@@ -1899,26 +1533,16 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="http2Enable")
     def http2_enable(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-        only when the protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "http2_enable")
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
     def idle_timeout(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the idle timeout for the listener. Value range: 0 to 4000.
-        """
         return pulumi.get(self, "idle_timeout")
 
     @_builtins.property
     @pulumi.getter(name="ipGroup")
     def ip_group(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ip group id for the listener.
-        """
         return pulumi.get(self, "ip_group")
 
     @_builtins.property
@@ -1929,10 +1553,6 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The load balancer on which to provision this listener. Changing this
-        creates a new listener.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @_builtins.property
@@ -1943,9 +1563,6 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the listener.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1966,19 +1583,11 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
-        """
-        The protocol can either be TCP, UDP, HTTP or HTTPS. Changing this creates a
-        new listener.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Output[_builtins.int]:
-        """
-        The port on which to listen for client traffic. Changing this creates a
-        new listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @_builtins.property
@@ -1994,38 +1603,21 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="realIp")
     def real_ip(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to transfer the source IP address of the client to backend servers
-        through the HTTP header of the packet. The default value is false. This parameter is valid only when the protocol is
-        set to **HTTP** or **HTTPS**.
-        """
         return pulumi.get(self, "real_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the listener resource. If omitted, the
-        provider-level region will be used. Changing this creates a new listener.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
     def request_timeout(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the request timeout for the listener. Value range: 1 to 300. This
-        parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        """
         return pulumi.get(self, "request_timeout")
 
     @_builtins.property
     @pulumi.getter(name="responseTimeout")
     def response_timeout(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the response timeout for the listener. Value range: 1 to 300. This
-        parameter is valid when protocol is set to *HTTP* or *HTTPS*.
-        """
         return pulumi.get(self, "response_timeout")
 
     @_builtins.property
@@ -2036,19 +1628,11 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of the server certificate used by the listener. This
-        parameter is mandatory when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "server_certificate")
 
     @_builtins.property
     @pulumi.getter(name="sniCertificates")
     def sni_certificates(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Lists the IDs of SNI certificates (server certificates with a domain name) used
-        by the listener. This parameter is valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "sni_certificates")
 
     @_builtins.property
@@ -2064,19 +1648,11 @@ class ElbListener(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the listener.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="tlsCiphersPolicy")
     def tls_ciphers_policy(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the TLS cipher policy for the listener. Valid options are:
-        tls-1-0-inherit, tls-1-0, tls-1-1, tls-1-2, tls-1-2-strict, tls-1-2-fs, tls-1-0-with-1-3, and tls-1-2-fs-with-1-3.
-        This parameter is valid when protocol is set to *HTTPS*.
-        """
         return pulumi.get(self, "tls_ciphers_policy")
 
     @_builtins.property

@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of DMS RocketMQ instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getDmsRocketmqInstances({
- *     name: "rocketmq_name_test",
- * });
- * ```
- */
 export function getDmsRocketmqInstances(args?: GetDmsRocketmqInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,27 +22,10 @@ export function getDmsRocketmqInstances(args?: GetDmsRocketmqInstancesArgs, opts
  * A collection of arguments for invoking getDmsRocketmqInstances.
  */
 export interface GetDmsRocketmqInstancesArgs {
-    /**
-     * Specifies whether to search for the instance that precisely matches a
-     * specified instance name. Value options: **true**, **false**. Defaults to **false**.
-     */
     exactMatchName?: string;
-    /**
-     * Specifies the ID of the RocketMQ instance.
-     */
     instanceId?: string;
-    /**
-     * Specifies the name of the DMS RocketMQ instance.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the status of the DMS RocketMQ instance.
-     */
     status?: string;
 }
 
@@ -70,35 +39,11 @@ export interface GetDmsRocketmqInstancesResult {
      */
     readonly id: string;
     readonly instanceId?: string;
-    /**
-     * Indicates the list of DMS RocketMQ instances.
-     * The Instance structure is documented below.
-     */
     readonly instances: outputs.GetDmsRocketmqInstancesInstance[];
-    /**
-     * Indicates the name of the DMS RocketMQ instance.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the status of the DMS RocketMQ instance.
-     */
     readonly status?: string;
 }
-/**
- * Use this data source to get the list of DMS RocketMQ instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getDmsRocketmqInstances({
- *     name: "rocketmq_name_test",
- * });
- * ```
- */
 export function getDmsRocketmqInstancesOutput(args?: GetDmsRocketmqInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -115,26 +60,9 @@ export function getDmsRocketmqInstancesOutput(args?: GetDmsRocketmqInstancesOutp
  * A collection of arguments for invoking getDmsRocketmqInstances.
  */
 export interface GetDmsRocketmqInstancesOutputArgs {
-    /**
-     * Specifies whether to search for the instance that precisely matches a
-     * specified instance name. Value options: **true**, **false**. Defaults to **false**.
-     */
     exactMatchName?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the RocketMQ instance.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the DMS RocketMQ instance.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the DMS RocketMQ instance.
-     */
     status?: pulumi.Input<string>;
 }

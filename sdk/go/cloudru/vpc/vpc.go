@@ -12,92 +12,23 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPC resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcName := "sbercloud_vpc"
-//			if param := cfg.Get("vpcName"); param != "" {
-//				vpcName = param
-//			}
-//			vpcCidr := "192.168.0.0/16"
-//			if param := cfg.Get("vpcCidr"); param != "" {
-//				vpcCidr = param
-//			}
-//			_, err := vpc.NewVpc(ctx, "vpc", &vpc.VpcArgs{
-//				Name: pulumi.String(vpcName),
-//				Cidr: pulumi.String(vpcCidr),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewVpc(ctx, "vpc_with_tags", &vpc.VpcArgs{
-//				Name: pulumi.String(vpcName),
-//				Cidr: pulumi.String(vpcCidr),
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// VPCs can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/vpc:Vpc vpc_v1 7117d38e-4c8f-4624-a505-bd96b97d024c
-// ```
 type Vpc struct {
 	pulumi.CustomResourceState
 
 	BlockServiceEndpointStates pulumi.StringPtrOutput `pulumi:"blockServiceEndpointStates"`
-	// Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-	// 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-	Cidr pulumi.StringOutput `pulumi:"cidr"`
-	// Specifies supplementary information about the VPC. The value is a string of
-	// no more than 255 characters and cannot contain angle brackets (< or >).
-	Description        pulumi.StringPtrOutput `pulumi:"description"`
-	EnhancedLocalRoute pulumi.StringOutput    `pulumi:"enhancedLocalRoute"`
-	// Specifies the enterprise project id of the VPC. Changing this
-	// creates a new VPC resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-	// of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the VPC. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Cidr                       pulumi.StringOutput    `pulumi:"cidr"`
+	Description                pulumi.StringPtrOutput `pulumi:"description"`
+	EnhancedLocalRoute         pulumi.StringOutput    `pulumi:"enhancedLocalRoute"`
+	EnterpriseProjectId        pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	Name                       pulumi.StringOutput    `pulumi:"name"`
+	Region                     pulumi.StringOutput    `pulumi:"region"`
 	// Deprecated: use huaweicloudVpcRouteTable data source to get all routes
 	Routes VpcRouteArrayOutput `pulumi:"routes"`
 	// schema: Deprecated; use secondaryCidrs instead
 	SecondaryCidr  pulumi.StringPtrOutput   `pulumi:"secondaryCidr"`
 	SecondaryCidrs pulumi.StringArrayOutput `pulumi:"secondaryCidrs"`
-	// The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the VPC.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Status         pulumi.StringOutput      `pulumi:"status"`
+	Tags           pulumi.StringMapOutput   `pulumi:"tags"`
 }
 
 // NewVpc registers a new resource with the given unique name, arguments, and options.
@@ -134,60 +65,36 @@ func GetVpc(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Vpc resources.
 type vpcState struct {
 	BlockServiceEndpointStates *string `pulumi:"blockServiceEndpointStates"`
-	// Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-	// 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-	Cidr *string `pulumi:"cidr"`
-	// Specifies supplementary information about the VPC. The value is a string of
-	// no more than 255 characters and cannot contain angle brackets (< or >).
-	Description        *string `pulumi:"description"`
-	EnhancedLocalRoute *string `pulumi:"enhancedLocalRoute"`
-	// Specifies the enterprise project id of the VPC. Changing this
-	// creates a new VPC resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-	// of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the VPC. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC resource.
-	Region *string `pulumi:"region"`
+	Cidr                       *string `pulumi:"cidr"`
+	Description                *string `pulumi:"description"`
+	EnhancedLocalRoute         *string `pulumi:"enhancedLocalRoute"`
+	EnterpriseProjectId        *string `pulumi:"enterpriseProjectId"`
+	Name                       *string `pulumi:"name"`
+	Region                     *string `pulumi:"region"`
 	// Deprecated: use huaweicloudVpcRouteTable data source to get all routes
 	Routes []VpcRoute `pulumi:"routes"`
 	// schema: Deprecated; use secondaryCidrs instead
-	SecondaryCidr  *string  `pulumi:"secondaryCidr"`
-	SecondaryCidrs []string `pulumi:"secondaryCidrs"`
-	// The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-	Status *string `pulumi:"status"`
-	// Specifies the key/value pairs to associate with the VPC.
-	Tags map[string]string `pulumi:"tags"`
+	SecondaryCidr  *string           `pulumi:"secondaryCidr"`
+	SecondaryCidrs []string          `pulumi:"secondaryCidrs"`
+	Status         *string           `pulumi:"status"`
+	Tags           map[string]string `pulumi:"tags"`
 }
 
 type VpcState struct {
 	BlockServiceEndpointStates pulumi.StringPtrInput
-	// Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-	// 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-	Cidr pulumi.StringPtrInput
-	// Specifies supplementary information about the VPC. The value is a string of
-	// no more than 255 characters and cannot contain angle brackets (< or >).
-	Description        pulumi.StringPtrInput
-	EnhancedLocalRoute pulumi.StringPtrInput
-	// Specifies the enterprise project id of the VPC. Changing this
-	// creates a new VPC resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-	// of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the VPC. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC resource.
-	Region pulumi.StringPtrInput
+	Cidr                       pulumi.StringPtrInput
+	Description                pulumi.StringPtrInput
+	EnhancedLocalRoute         pulumi.StringPtrInput
+	EnterpriseProjectId        pulumi.StringPtrInput
+	Name                       pulumi.StringPtrInput
+	Region                     pulumi.StringPtrInput
 	// Deprecated: use huaweicloudVpcRouteTable data source to get all routes
 	Routes VpcRouteArrayInput
 	// schema: Deprecated; use secondaryCidrs instead
 	SecondaryCidr  pulumi.StringPtrInput
 	SecondaryCidrs pulumi.StringArrayInput
-	// The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-	Status pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the VPC.
-	Tags pulumi.StringMapInput
+	Status         pulumi.StringPtrInput
+	Tags           pulumi.StringMapInput
 }
 
 func (VpcState) ElementType() reflect.Type {
@@ -196,53 +103,31 @@ func (VpcState) ElementType() reflect.Type {
 
 type vpcArgs struct {
 	BlockServiceEndpointStates *string `pulumi:"blockServiceEndpointStates"`
-	// Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-	// 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-	Cidr string `pulumi:"cidr"`
-	// Specifies supplementary information about the VPC. The value is a string of
-	// no more than 255 characters and cannot contain angle brackets (< or >).
-	Description        *string `pulumi:"description"`
-	EnhancedLocalRoute *string `pulumi:"enhancedLocalRoute"`
-	// Specifies the enterprise project id of the VPC. Changing this
-	// creates a new VPC resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-	// of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the VPC. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC resource.
-	Region *string `pulumi:"region"`
+	Cidr                       string  `pulumi:"cidr"`
+	Description                *string `pulumi:"description"`
+	EnhancedLocalRoute         *string `pulumi:"enhancedLocalRoute"`
+	EnterpriseProjectId        *string `pulumi:"enterpriseProjectId"`
+	Name                       *string `pulumi:"name"`
+	Region                     *string `pulumi:"region"`
 	// schema: Deprecated; use secondaryCidrs instead
-	SecondaryCidr  *string  `pulumi:"secondaryCidr"`
-	SecondaryCidrs []string `pulumi:"secondaryCidrs"`
-	// Specifies the key/value pairs to associate with the VPC.
-	Tags map[string]string `pulumi:"tags"`
+	SecondaryCidr  *string           `pulumi:"secondaryCidr"`
+	SecondaryCidrs []string          `pulumi:"secondaryCidrs"`
+	Tags           map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Vpc resource.
 type VpcArgs struct {
 	BlockServiceEndpointStates pulumi.StringPtrInput
-	// Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-	// 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-	Cidr pulumi.StringInput
-	// Specifies supplementary information about the VPC. The value is a string of
-	// no more than 255 characters and cannot contain angle brackets (< or >).
-	Description        pulumi.StringPtrInput
-	EnhancedLocalRoute pulumi.StringPtrInput
-	// Specifies the enterprise project id of the VPC. Changing this
-	// creates a new VPC resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-	// of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the VPC. If omitted, the
-	// provider-level region will be used. Changing this creates a new VPC resource.
-	Region pulumi.StringPtrInput
+	Cidr                       pulumi.StringInput
+	Description                pulumi.StringPtrInput
+	EnhancedLocalRoute         pulumi.StringPtrInput
+	EnterpriseProjectId        pulumi.StringPtrInput
+	Name                       pulumi.StringPtrInput
+	Region                     pulumi.StringPtrInput
 	// schema: Deprecated; use secondaryCidrs instead
 	SecondaryCidr  pulumi.StringPtrInput
 	SecondaryCidrs pulumi.StringArrayInput
-	// Specifies the key/value pairs to associate with the VPC.
-	Tags pulumi.StringMapInput
+	Tags           pulumi.StringMapInput
 }
 
 func (VpcArgs) ElementType() reflect.Type {
@@ -336,14 +221,10 @@ func (o VpcOutput) BlockServiceEndpointStates() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringPtrOutput { return v.BlockServiceEndpointStates }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-// 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
 func (o VpcOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Specifies supplementary information about the VPC. The value is a string of
-// no more than 255 characters and cannot contain angle brackets (< or >).
 func (o VpcOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -352,20 +233,14 @@ func (o VpcOutput) EnhancedLocalRoute() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.EnhancedLocalRoute }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project id of the VPC. Changing this
-// creates a new VPC resource.
 func (o VpcOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-// of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
 func (o VpcOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the VPC. If omitted, the
-// provider-level region will be used. Changing this creates a new VPC resource.
 func (o VpcOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -384,12 +259,10 @@ func (o VpcOutput) SecondaryCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringArrayOutput { return v.SecondaryCidrs }).(pulumi.StringArrayOutput)
 }
 
-// The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
 func (o VpcOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the VPC.
 func (o VpcOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

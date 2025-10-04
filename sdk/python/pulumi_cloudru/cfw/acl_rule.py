@@ -58,64 +58,37 @@ class AclRuleArgs:
         """
         The set of arguments for constructing a AclRule resource.
         :param pulumi.Input[_builtins.int] action_type: The action type.
-               The value can be `0` (allow), `1` (deny).
         :param pulumi.Input[_builtins.int] address_type: The address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[_builtins.int] long_connect_enable: Whether to support persistent connections.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
         :param pulumi.Input['AclRuleSequenceArgs'] sequence: The sequence configuration.
-               The sequence structure is documented below.
-        :param pulumi.Input[_builtins.int] status: The rule status. The options are as follows:
-               + **0**: disabled;
-               + **1**: enabled;
+        :param pulumi.Input[_builtins.int] status: The rule status.
         :param pulumi.Input[_builtins.int] type: The rule type.
-               The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The application list.
-               The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-               **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         :param pulumi.Input['AclRuleCustomServiceGroupsArgs'] custom_service_groups: The custom service group list.
-               The custom_service_groups structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleCustomServiceArgs']]] custom_services: The custom service configuration.
-               The custom_services structure is documented below.
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_address_groups: The destination address group list.
         :param pulumi.Input[_builtins.int] destination_address_type: The destination address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_addresses: The destination IP address list.
         :param pulumi.Input[_builtins.str] destination_domain_address_name: The destination domain address name.
         :param pulumi.Input[_builtins.str] destination_domain_group_id: The destination domain group ID.
         :param pulumi.Input[_builtins.str] destination_domain_group_name: The destination domain group name.
         :param pulumi.Input[_builtins.int] destination_domain_group_type: The destination domain group type.
-               The options are as follows:
-               + **4**: application domain name group;
-               + **6**: network domain name group;
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleDestinationRegionListArgs']]] destination_region_lists: The destination region list.
-               The destination_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] direction: The rule direction. The options are as follows:
-               + **0**: inbound;
-               + **1**: outbound;
+        :param pulumi.Input[_builtins.int] direction: The rule direction.
         :param pulumi.Input[_builtins.int] long_connect_time_hour: The persistent connection duration (hour).
         :param pulumi.Input[_builtins.int] long_connect_time_minute: The persistent connection duration (minute).
         :param pulumi.Input[_builtins.int] long_connect_time_second: The persistent Connection Duration (second).
         :param pulumi.Input[_builtins.str] name: The rule name.
         :param pulumi.Input['AclRulePredefinedServiceGroupsArgs'] predefined_service_groups: The predefined service group list.
-               The predefined_service_groups structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] rule_hit_count: The number of times the ACL rule is hit.
-               Setting the value to **0** will clear the hit count. Value options: **0**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_address_groups: The source address group list.
         :param pulumi.Input[_builtins.int] source_address_type: The source address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_addresses: The source IP address list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleSourceRegionListArgs']]] source_region_lists: The source region list.
-               The source_region_list structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
-               
-               <a name="Sequence"></a>
-               The `sequence` block supports:
         """
         pulumi.set(__self__, "action_type", action_type)
         pulumi.set(__self__, "address_type", address_type)
@@ -184,7 +157,6 @@ class AclRuleArgs:
     def action_type(self) -> pulumi.Input[_builtins.int]:
         """
         The action type.
-        The value can be `0` (allow), `1` (deny).
         """
         return pulumi.get(self, "action_type")
 
@@ -197,7 +169,6 @@ class AclRuleArgs:
     def address_type(self) -> pulumi.Input[_builtins.int]:
         """
         The address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "address_type")
 
@@ -234,7 +205,6 @@ class AclRuleArgs:
     def sequence(self) -> pulumi.Input['AclRuleSequenceArgs']:
         """
         The sequence configuration.
-        The sequence structure is documented below.
         """
         return pulumi.get(self, "sequence")
 
@@ -246,9 +216,7 @@ class AclRuleArgs:
     @pulumi.getter
     def status(self) -> pulumi.Input[_builtins.int]:
         """
-        The rule status. The options are as follows:
-        + **0**: disabled;
-        + **1**: enabled;
+        The rule status.
         """
         return pulumi.get(self, "status")
 
@@ -261,7 +229,6 @@ class AclRuleArgs:
     def type(self) -> pulumi.Input[_builtins.int]:
         """
         The rule type.
-        The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         """
         return pulumi.get(self, "type")
 
@@ -274,8 +241,6 @@ class AclRuleArgs:
     def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application list.
-        The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-        **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         """
         return pulumi.get(self, "applications")
 
@@ -288,7 +253,6 @@ class AclRuleArgs:
     def custom_service_groups(self) -> Optional[pulumi.Input['AclRuleCustomServiceGroupsArgs']]:
         """
         The custom service group list.
-        The custom_service_groups structure is documented below.
         """
         return pulumi.get(self, "custom_service_groups")
 
@@ -301,7 +265,6 @@ class AclRuleArgs:
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRuleCustomServiceArgs']]]]:
         """
         The custom service configuration.
-        The custom_services structure is documented below.
         """
         return pulumi.get(self, "custom_services")
 
@@ -338,7 +301,6 @@ class AclRuleArgs:
     def destination_address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The destination address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "destination_address_type")
 
@@ -399,9 +361,6 @@ class AclRuleArgs:
     def destination_domain_group_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The destination domain group type.
-        The options are as follows:
-        + **4**: application domain name group;
-        + **6**: network domain name group;
         """
         return pulumi.get(self, "destination_domain_group_type")
 
@@ -414,7 +373,6 @@ class AclRuleArgs:
     def destination_region_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRuleDestinationRegionListArgs']]]]:
         """
         The destination region list.
-        The destination_region_list structure is documented below.
         """
         return pulumi.get(self, "destination_region_lists")
 
@@ -426,9 +384,7 @@ class AclRuleArgs:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The rule direction. The options are as follows:
-        + **0**: inbound;
-        + **1**: outbound;
+        The rule direction.
         """
         return pulumi.get(self, "direction")
 
@@ -498,7 +454,6 @@ class AclRuleArgs:
     def predefined_service_groups(self) -> Optional[pulumi.Input['AclRulePredefinedServiceGroupsArgs']]:
         """
         The predefined service group list.
-        The predefined_service_groups structure is documented below.
         """
         return pulumi.get(self, "predefined_service_groups")
 
@@ -509,11 +464,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -525,7 +475,6 @@ class AclRuleArgs:
     def rule_hit_count(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The number of times the ACL rule is hit.
-        Setting the value to **0** will clear the hit count. Value options: **0**.
         """
         return pulumi.get(self, "rule_hit_count")
 
@@ -550,7 +499,6 @@ class AclRuleArgs:
     def source_address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The source address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "source_address_type")
 
@@ -587,7 +535,6 @@ class AclRuleArgs:
     def source_region_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRuleSourceRegionListArgs']]]]:
         """
         The source region list.
-        The source_region_list structure is documented below.
         """
         return pulumi.get(self, "source_region_lists")
 
@@ -600,9 +547,6 @@ class AclRuleArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key/value pairs to associate with the ACL rule.
-
-        <a name="Sequence"></a>
-        The `sequence` block supports:
         """
         return pulumi.get(self, "tags")
 
@@ -651,33 +595,20 @@ class _AclRuleState:
         """
         Input properties used for looking up and filtering AclRule resources.
         :param pulumi.Input[_builtins.int] action_type: The action type.
-               The value can be `0` (allow), `1` (deny).
         :param pulumi.Input[_builtins.int] address_type: The address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The application list.
-               The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-               **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         :param pulumi.Input['AclRuleCustomServiceGroupsArgs'] custom_service_groups: The custom service group list.
-               The custom_service_groups structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleCustomServiceArgs']]] custom_services: The custom service configuration.
-               The custom_services structure is documented below.
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_address_groups: The destination address group list.
         :param pulumi.Input[_builtins.int] destination_address_type: The destination address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_addresses: The destination IP address list.
         :param pulumi.Input[_builtins.str] destination_domain_address_name: The destination domain address name.
         :param pulumi.Input[_builtins.str] destination_domain_group_id: The destination domain group ID.
         :param pulumi.Input[_builtins.str] destination_domain_group_name: The destination domain group name.
         :param pulumi.Input[_builtins.int] destination_domain_group_type: The destination domain group type.
-               The options are as follows:
-               + **4**: application domain name group;
-               + **6**: network domain name group;
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleDestinationRegionListArgs']]] destination_region_lists: The destination region list.
-               The destination_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] direction: The rule direction. The options are as follows:
-               + **0**: inbound;
-               + **1**: outbound;
+        :param pulumi.Input[_builtins.int] direction: The rule direction.
         :param pulumi.Input[_builtins.int] long_connect_enable: Whether to support persistent connections.
         :param pulumi.Input[_builtins.int] long_connect_time_hour: The persistent connection duration (hour).
         :param pulumi.Input[_builtins.int] long_connect_time_minute: The persistent connection duration (minute).
@@ -685,30 +616,16 @@ class _AclRuleState:
         :param pulumi.Input[_builtins.str] name: The rule name.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
         :param pulumi.Input['AclRulePredefinedServiceGroupsArgs'] predefined_service_groups: The predefined service group list.
-               The predefined_service_groups structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] rule_hit_count: The number of times the ACL rule is hit.
-               Setting the value to **0** will clear the hit count. Value options: **0**.
         :param pulumi.Input['AclRuleSequenceArgs'] sequence: The sequence configuration.
-               The sequence structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_address_groups: The source address group list.
         :param pulumi.Input[_builtins.int] source_address_type: The source address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_addresses: The source IP address list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input['AclRuleSourceRegionListArgs']]] source_region_lists: The source region list.
-               The source_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] status: The rule status. The options are as follows:
-               + **0**: disabled;
-               + **1**: enabled;
+        :param pulumi.Input[_builtins.int] status: The rule status.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
-               
-               <a name="Sequence"></a>
-               The `sequence` block supports:
         :param pulumi.Input[_builtins.int] type: The rule type.
-               The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         """
         if action_type is not None:
             pulumi.set(__self__, "action_type", action_type)
@@ -784,7 +701,6 @@ class _AclRuleState:
     def action_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The action type.
-        The value can be `0` (allow), `1` (deny).
         """
         return pulumi.get(self, "action_type")
 
@@ -797,7 +713,6 @@ class _AclRuleState:
     def address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "address_type")
 
@@ -810,8 +725,6 @@ class _AclRuleState:
     def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The application list.
-        The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-        **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         """
         return pulumi.get(self, "applications")
 
@@ -824,7 +737,6 @@ class _AclRuleState:
     def custom_service_groups(self) -> Optional[pulumi.Input['AclRuleCustomServiceGroupsArgs']]:
         """
         The custom service group list.
-        The custom_service_groups structure is documented below.
         """
         return pulumi.get(self, "custom_service_groups")
 
@@ -837,7 +749,6 @@ class _AclRuleState:
     def custom_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRuleCustomServiceArgs']]]]:
         """
         The custom service configuration.
-        The custom_services structure is documented below.
         """
         return pulumi.get(self, "custom_services")
 
@@ -874,7 +785,6 @@ class _AclRuleState:
     def destination_address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The destination address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "destination_address_type")
 
@@ -935,9 +845,6 @@ class _AclRuleState:
     def destination_domain_group_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The destination domain group type.
-        The options are as follows:
-        + **4**: application domain name group;
-        + **6**: network domain name group;
         """
         return pulumi.get(self, "destination_domain_group_type")
 
@@ -950,7 +857,6 @@ class _AclRuleState:
     def destination_region_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRuleDestinationRegionListArgs']]]]:
         """
         The destination region list.
-        The destination_region_list structure is documented below.
         """
         return pulumi.get(self, "destination_region_lists")
 
@@ -962,9 +868,7 @@ class _AclRuleState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The rule direction. The options are as follows:
-        + **0**: inbound;
-        + **1**: outbound;
+        The rule direction.
         """
         return pulumi.get(self, "direction")
 
@@ -1058,7 +962,6 @@ class _AclRuleState:
     def predefined_service_groups(self) -> Optional[pulumi.Input['AclRulePredefinedServiceGroupsArgs']]:
         """
         The predefined service group list.
-        The predefined_service_groups structure is documented below.
         """
         return pulumi.get(self, "predefined_service_groups")
 
@@ -1069,11 +972,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1085,7 +983,6 @@ class _AclRuleState:
     def rule_hit_count(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The number of times the ACL rule is hit.
-        Setting the value to **0** will clear the hit count. Value options: **0**.
         """
         return pulumi.get(self, "rule_hit_count")
 
@@ -1098,7 +995,6 @@ class _AclRuleState:
     def sequence(self) -> Optional[pulumi.Input['AclRuleSequenceArgs']]:
         """
         The sequence configuration.
-        The sequence structure is documented below.
         """
         return pulumi.get(self, "sequence")
 
@@ -1123,7 +1019,6 @@ class _AclRuleState:
     def source_address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The source address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "source_address_type")
 
@@ -1160,7 +1055,6 @@ class _AclRuleState:
     def source_region_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AclRuleSourceRegionListArgs']]]]:
         """
         The source region list.
-        The source_region_list structure is documented below.
         """
         return pulumi.get(self, "source_region_lists")
 
@@ -1172,9 +1066,7 @@ class _AclRuleState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The rule status. The options are as follows:
-        + **0**: disabled;
-        + **1**: enabled;
+        The rule status.
         """
         return pulumi.get(self, "status")
 
@@ -1187,9 +1079,6 @@ class _AclRuleState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The key/value pairs to associate with the ACL rule.
-
-        <a name="Sequence"></a>
-        The `sequence` block supports:
         """
         return pulumi.get(self, "tags")
 
@@ -1202,7 +1091,6 @@ class _AclRuleState:
     def type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The rule type.
-        The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         """
         return pulumi.get(self, "type")
 
@@ -1253,254 +1141,24 @@ class AclRule(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages a CFW ACL rule resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a basic rule
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_addresses=["1.1.1.1"],
-            destination_addresses=["1.1.1.2"],
-            custom_services=[{
-                "protocol": 6,
-                "source_port": "81",
-                "dest_port": "82",
-            }],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with the source address using the region list
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_region_lists=[{
-                "description_cn": "中国",
-                "description_en": "Chinese Mainland",
-                "region_id": "CN",
-                "region_type": 0,
-            }],
-            destination_addresses=["1.1.1.2"],
-            custom_services=[{
-                "protocol": 6,
-                "source_port": "81",
-                "dest_port": "82",
-            }],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with the custom service groups
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        service_group_id = config.require_object("serviceGroupId")
-        protocol = config.require_object("protocol")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_addresses=["1.1.1.1"],
-            destination_addresses=["1.1.1.2"],
-            custom_service_groups={
-                "protocols": [protocol],
-                "group_ids": [service_group_id],
-            },
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with any service
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        service_group_id = config.require_object("serviceGroupId")
-        protocol = config.require_object("protocol")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_addresses=["1.1.1.1"],
-            destination_addresses=["1.1.1.2"],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with any source address
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        service_group_id = config.require_object("serviceGroupId")
-        protocol = config.require_object("protocol")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            destination_addresses=["1.1.1.2"],
-            custom_services=[{
-                "protocol": 6,
-                "source_port": "81",
-                "dest_port": "82",
-            }],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        The ACL rule can be imported using `object_id`, `id`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/aclRule:AclRule test <object_id>/<id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `sequence`, `type`, `predefined_service_groups` and `source_predefined_groups`.
-
-        It is generally recommended running `pulumi preview` after importing the resource.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_cfw_acl_rule" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              sequence, type, predefined_service_groups, source_predefined_groups,
-            
-            ]
-
-          }
-
-        }
-
+        Create a AclRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] action_type: The action type.
-               The value can be `0` (allow), `1` (deny).
         :param pulumi.Input[_builtins.int] address_type: The address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The application list.
-               The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-               **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         :param pulumi.Input[Union['AclRuleCustomServiceGroupsArgs', 'AclRuleCustomServiceGroupsArgsDict']] custom_service_groups: The custom service group list.
-               The custom_service_groups structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleCustomServiceArgs', 'AclRuleCustomServiceArgsDict']]]] custom_services: The custom service configuration.
-               The custom_services structure is documented below.
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_address_groups: The destination address group list.
         :param pulumi.Input[_builtins.int] destination_address_type: The destination address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_addresses: The destination IP address list.
         :param pulumi.Input[_builtins.str] destination_domain_address_name: The destination domain address name.
         :param pulumi.Input[_builtins.str] destination_domain_group_id: The destination domain group ID.
         :param pulumi.Input[_builtins.str] destination_domain_group_name: The destination domain group name.
         :param pulumi.Input[_builtins.int] destination_domain_group_type: The destination domain group type.
-               The options are as follows:
-               + **4**: application domain name group;
-               + **6**: network domain name group;
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleDestinationRegionListArgs', 'AclRuleDestinationRegionListArgsDict']]]] destination_region_lists: The destination region list.
-               The destination_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] direction: The rule direction. The options are as follows:
-               + **0**: inbound;
-               + **1**: outbound;
+        :param pulumi.Input[_builtins.int] direction: The rule direction.
         :param pulumi.Input[_builtins.int] long_connect_enable: Whether to support persistent connections.
         :param pulumi.Input[_builtins.int] long_connect_time_hour: The persistent connection duration (hour).
         :param pulumi.Input[_builtins.int] long_connect_time_minute: The persistent connection duration (minute).
@@ -1508,30 +1166,16 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The rule name.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
         :param pulumi.Input[Union['AclRulePredefinedServiceGroupsArgs', 'AclRulePredefinedServiceGroupsArgsDict']] predefined_service_groups: The predefined service group list.
-               The predefined_service_groups structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] rule_hit_count: The number of times the ACL rule is hit.
-               Setting the value to **0** will clear the hit count. Value options: **0**.
         :param pulumi.Input[Union['AclRuleSequenceArgs', 'AclRuleSequenceArgsDict']] sequence: The sequence configuration.
-               The sequence structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_address_groups: The source address group list.
         :param pulumi.Input[_builtins.int] source_address_type: The source address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_addresses: The source IP address list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleSourceRegionListArgs', 'AclRuleSourceRegionListArgsDict']]]] source_region_lists: The source region list.
-               The source_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] status: The rule status. The options are as follows:
-               + **0**: disabled;
-               + **1**: enabled;
+        :param pulumi.Input[_builtins.int] status: The rule status.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
-               
-               <a name="Sequence"></a>
-               The `sequence` block supports:
         :param pulumi.Input[_builtins.int] type: The rule type.
-               The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         """
         ...
     @overload
@@ -1540,224 +1184,7 @@ class AclRule(pulumi.CustomResource):
                  args: AclRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW ACL rule resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a basic rule
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_addresses=["1.1.1.1"],
-            destination_addresses=["1.1.1.2"],
-            custom_services=[{
-                "protocol": 6,
-                "source_port": "81",
-                "dest_port": "82",
-            }],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with the source address using the region list
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_region_lists=[{
-                "description_cn": "中国",
-                "description_en": "Chinese Mainland",
-                "region_id": "CN",
-                "region_type": 0,
-            }],
-            destination_addresses=["1.1.1.2"],
-            custom_services=[{
-                "protocol": 6,
-                "source_port": "81",
-                "dest_port": "82",
-            }],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with the custom service groups
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        service_group_id = config.require_object("serviceGroupId")
-        protocol = config.require_object("protocol")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_addresses=["1.1.1.1"],
-            destination_addresses=["1.1.1.2"],
-            custom_service_groups={
-                "protocols": [protocol],
-                "group_ids": [service_group_id],
-            },
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with any service
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        service_group_id = config.require_object("serviceGroupId")
-        protocol = config.require_object("protocol")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            source_addresses=["1.1.1.1"],
-            destination_addresses=["1.1.1.2"],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### Create a rule with any source address
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        object_id = config.require_object("objectId")
-        service_group_id = config.require_object("serviceGroupId")
-        protocol = config.require_object("protocol")
-        test = sbercloud.cfw.AclRule("test",
-            name=name,
-            object_id=object_id,
-            description=description,
-            type=0,
-            address_type=0,
-            action_type=0,
-            long_connect_enable=0,
-            status=1,
-            destination_addresses=["1.1.1.2"],
-            custom_services=[{
-                "protocol": 6,
-                "source_port": "81",
-                "dest_port": "82",
-            }],
-            sequence={
-                "top": 1,
-            },
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        The ACL rule can be imported using `object_id`, `id`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/aclRule:AclRule test <object_id>/<id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `sequence`, `type`, `predefined_service_groups` and `source_predefined_groups`.
-
-        It is generally recommended running `pulumi preview` after importing the resource.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_cfw_acl_rule" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              sequence, type, predefined_service_groups, source_predefined_groups,
-            
-            ]
-
-          }
-
-        }
-
+        Create a AclRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AclRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1916,33 +1343,20 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] action_type: The action type.
-               The value can be `0` (allow), `1` (deny).
         :param pulumi.Input[_builtins.int] address_type: The address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] applications: The application list.
-               The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-               **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         :param pulumi.Input[Union['AclRuleCustomServiceGroupsArgs', 'AclRuleCustomServiceGroupsArgsDict']] custom_service_groups: The custom service group list.
-               The custom_service_groups structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleCustomServiceArgs', 'AclRuleCustomServiceArgsDict']]]] custom_services: The custom service configuration.
-               The custom_services structure is documented below.
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_address_groups: The destination address group list.
         :param pulumi.Input[_builtins.int] destination_address_type: The destination address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] destination_addresses: The destination IP address list.
         :param pulumi.Input[_builtins.str] destination_domain_address_name: The destination domain address name.
         :param pulumi.Input[_builtins.str] destination_domain_group_id: The destination domain group ID.
         :param pulumi.Input[_builtins.str] destination_domain_group_name: The destination domain group name.
         :param pulumi.Input[_builtins.int] destination_domain_group_type: The destination domain group type.
-               The options are as follows:
-               + **4**: application domain name group;
-               + **6**: network domain name group;
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleDestinationRegionListArgs', 'AclRuleDestinationRegionListArgsDict']]]] destination_region_lists: The destination region list.
-               The destination_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] direction: The rule direction. The options are as follows:
-               + **0**: inbound;
-               + **1**: outbound;
+        :param pulumi.Input[_builtins.int] direction: The rule direction.
         :param pulumi.Input[_builtins.int] long_connect_enable: Whether to support persistent connections.
         :param pulumi.Input[_builtins.int] long_connect_time_hour: The persistent connection duration (hour).
         :param pulumi.Input[_builtins.int] long_connect_time_minute: The persistent connection duration (minute).
@@ -1950,30 +1364,16 @@ class AclRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The rule name.
         :param pulumi.Input[_builtins.str] object_id: The protected object ID.
         :param pulumi.Input[Union['AclRulePredefinedServiceGroupsArgs', 'AclRulePredefinedServiceGroupsArgsDict']] predefined_service_groups: The predefined service group list.
-               The predefined_service_groups structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] rule_hit_count: The number of times the ACL rule is hit.
-               Setting the value to **0** will clear the hit count. Value options: **0**.
         :param pulumi.Input[Union['AclRuleSequenceArgs', 'AclRuleSequenceArgsDict']] sequence: The sequence configuration.
-               The sequence structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_address_groups: The source address group list.
         :param pulumi.Input[_builtins.int] source_address_type: The source address type.
-               The value can be `0` (IPv4), `1` (IPv6).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_addresses: The source IP address list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] source_predefined_groups: The source predefined address group list.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AclRuleSourceRegionListArgs', 'AclRuleSourceRegionListArgsDict']]]] source_region_lists: The source region list.
-               The source_region_list structure is documented below.
-        :param pulumi.Input[_builtins.int] status: The rule status. The options are as follows:
-               + **0**: disabled;
-               + **1**: enabled;
+        :param pulumi.Input[_builtins.int] status: The rule status.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the ACL rule.
-               
-               <a name="Sequence"></a>
-               The `sequence` block supports:
         :param pulumi.Input[_builtins.int] type: The rule type.
-               The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2020,7 +1420,6 @@ class AclRule(pulumi.CustomResource):
     def action_type(self) -> pulumi.Output[_builtins.int]:
         """
         The action type.
-        The value can be `0` (allow), `1` (deny).
         """
         return pulumi.get(self, "action_type")
 
@@ -2029,7 +1428,6 @@ class AclRule(pulumi.CustomResource):
     def address_type(self) -> pulumi.Output[_builtins.int]:
         """
         The address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "address_type")
 
@@ -2038,8 +1436,6 @@ class AclRule(pulumi.CustomResource):
     def applications(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         The application list.
-        The valid value can be **HTTP**, **HTTPS**, **TLS1**, **DNS**, **SSH**, **MYSQL**, **SMTP**, **RDP**, **RDPS**,
-        **VNC**, **POP3**, **IMAP4**, **SMTPS**, **POP3S**, **FTPS**, **ANY**, **BGP** and so on.
         """
         return pulumi.get(self, "applications")
 
@@ -2048,7 +1444,6 @@ class AclRule(pulumi.CustomResource):
     def custom_service_groups(self) -> pulumi.Output[Optional['outputs.AclRuleCustomServiceGroups']]:
         """
         The custom service group list.
-        The custom_service_groups structure is documented below.
         """
         return pulumi.get(self, "custom_service_groups")
 
@@ -2057,7 +1452,6 @@ class AclRule(pulumi.CustomResource):
     def custom_services(self) -> pulumi.Output[Optional[Sequence['outputs.AclRuleCustomService']]]:
         """
         The custom service configuration.
-        The custom_services structure is documented below.
         """
         return pulumi.get(self, "custom_services")
 
@@ -2082,7 +1476,6 @@ class AclRule(pulumi.CustomResource):
     def destination_address_type(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The destination address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "destination_address_type")
 
@@ -2123,9 +1516,6 @@ class AclRule(pulumi.CustomResource):
     def destination_domain_group_type(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The destination domain group type.
-        The options are as follows:
-        + **4**: application domain name group;
-        + **6**: network domain name group;
         """
         return pulumi.get(self, "destination_domain_group_type")
 
@@ -2134,7 +1524,6 @@ class AclRule(pulumi.CustomResource):
     def destination_region_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AclRuleDestinationRegionList']]]:
         """
         The destination region list.
-        The destination_region_list structure is documented below.
         """
         return pulumi.get(self, "destination_region_lists")
 
@@ -2142,9 +1531,7 @@ class AclRule(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[_builtins.int]:
         """
-        The rule direction. The options are as follows:
-        + **0**: inbound;
-        + **1**: outbound;
+        The rule direction.
         """
         return pulumi.get(self, "direction")
 
@@ -2206,18 +1593,12 @@ class AclRule(pulumi.CustomResource):
     def predefined_service_groups(self) -> pulumi.Output[Optional['outputs.AclRulePredefinedServiceGroups']]:
         """
         The predefined service group list.
-        The predefined_service_groups structure is documented below.
         """
         return pulumi.get(self, "predefined_service_groups")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -2225,7 +1606,6 @@ class AclRule(pulumi.CustomResource):
     def rule_hit_count(self) -> pulumi.Output[_builtins.str]:
         """
         The number of times the ACL rule is hit.
-        Setting the value to **0** will clear the hit count. Value options: **0**.
         """
         return pulumi.get(self, "rule_hit_count")
 
@@ -2234,7 +1614,6 @@ class AclRule(pulumi.CustomResource):
     def sequence(self) -> pulumi.Output['outputs.AclRuleSequence']:
         """
         The sequence configuration.
-        The sequence structure is documented below.
         """
         return pulumi.get(self, "sequence")
 
@@ -2251,7 +1630,6 @@ class AclRule(pulumi.CustomResource):
     def source_address_type(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         The source address type.
-        The value can be `0` (IPv4), `1` (IPv6).
         """
         return pulumi.get(self, "source_address_type")
 
@@ -2276,7 +1654,6 @@ class AclRule(pulumi.CustomResource):
     def source_region_lists(self) -> pulumi.Output[Optional[Sequence['outputs.AclRuleSourceRegionList']]]:
         """
         The source region list.
-        The source_region_list structure is documented below.
         """
         return pulumi.get(self, "source_region_lists")
 
@@ -2284,9 +1661,7 @@ class AclRule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.int]:
         """
-        The rule status. The options are as follows:
-        + **0**: disabled;
-        + **1**: enabled;
+        The rule status.
         """
         return pulumi.get(self, "status")
 
@@ -2295,9 +1670,6 @@ class AclRule(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         The key/value pairs to associate with the ACL rule.
-
-        <a name="Sequence"></a>
-        The `sequence` block supports:
         """
         return pulumi.get(self, "tags")
 
@@ -2306,7 +1678,6 @@ class AclRule(pulumi.CustomResource):
     def type(self) -> pulumi.Output[_builtins.int]:
         """
         The rule type.
-        The value can be `0` (Internet rule), `1` (VPC rule), or `2` (NAT rule).
         """
         return pulumi.get(self, "type")
 

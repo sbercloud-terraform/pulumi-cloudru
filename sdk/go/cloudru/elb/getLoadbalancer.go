@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get available SberCloud elb load balancer.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			lbName := cfg.RequireObject("lbName")
-//			_, err := elb.GetLoadbalancer(ctx, &elb.GetLoadbalancerArgs{
-//				Name: pulumi.StringRef(lbName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupLoadbalancer(ctx *pulumi.Context, args *LookupLoadbalancerArgs, opts ...pulumi.InvokeOption) (*LookupLoadbalancerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupLoadbalancerResult
@@ -53,42 +23,29 @@ func LookupLoadbalancer(ctx *pulumi.Context, args *LookupLoadbalancerArgs, opts 
 
 // A collection of arguments for invoking getLoadbalancer.
 type LookupLoadbalancerArgs struct {
-	// Specifies the supplementary information about the load balancer.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project id of the load balancer.
+	Description         *string `pulumi:"description"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the data source ID of the load balancer in UUID format.
-	Id *string `pulumi:"id"`
-	// Specifies the name of the load balancer.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the load balancer. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the operating status of the load balancer. Valid values are *ONLINE* and
-	// *FROZEN*.
-	Status *string `pulumi:"status"`
-	// Specifies the private IP address of the load balancer.
-	VipAddress *string `pulumi:"vipAddress"`
-	// Specifies the **IPv4 subnet ID** of the subnet where the load balancer works.
-	VipSubnetId *string `pulumi:"vipSubnetId"`
+	Id                  *string `pulumi:"id"`
+	Name                *string `pulumi:"name"`
+	Region              *string `pulumi:"region"`
+	Status              *string `pulumi:"status"`
+	VipAddress          *string `pulumi:"vipAddress"`
+	VipSubnetId         *string `pulumi:"vipSubnetId"`
 }
 
 // A collection of values returned by getLoadbalancer.
 type LookupLoadbalancerResult struct {
-	Description         string `pulumi:"description"`
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	Id                  string `pulumi:"id"`
-	Name                string `pulumi:"name"`
-	// The EIP address that is associated to the Load Balancer instance.
-	PublicIp string `pulumi:"publicIp"`
-	Region   string `pulumi:"region"`
-	Status   string `pulumi:"status"`
-	// The tags associated with the load balancer.
-	Tags       map[string]string `pulumi:"tags"`
-	VipAddress string            `pulumi:"vipAddress"`
-	// The ID of the port bound to the private IP address of the load balancer.
-	VipPortId   string `pulumi:"vipPortId"`
-	VipSubnetId string `pulumi:"vipSubnetId"`
+	Description         string            `pulumi:"description"`
+	EnterpriseProjectId string            `pulumi:"enterpriseProjectId"`
+	Id                  string            `pulumi:"id"`
+	Name                string            `pulumi:"name"`
+	PublicIp            string            `pulumi:"publicIp"`
+	Region              string            `pulumi:"region"`
+	Status              string            `pulumi:"status"`
+	Tags                map[string]string `pulumi:"tags"`
+	VipAddress          string            `pulumi:"vipAddress"`
+	VipPortId           string            `pulumi:"vipPortId"`
+	VipSubnetId         string            `pulumi:"vipSubnetId"`
 }
 
 func LookupLoadbalancerOutput(ctx *pulumi.Context, args LookupLoadbalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadbalancerResultOutput {
@@ -102,24 +59,14 @@ func LookupLoadbalancerOutput(ctx *pulumi.Context, args LookupLoadbalancerOutput
 
 // A collection of arguments for invoking getLoadbalancer.
 type LookupLoadbalancerOutputArgs struct {
-	// Specifies the supplementary information about the load balancer.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the enterprise project id of the load balancer.
+	Description         pulumi.StringPtrInput `pulumi:"description"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the data source ID of the load balancer in UUID format.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the name of the load balancer.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the load balancer. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the operating status of the load balancer. Valid values are *ONLINE* and
-	// *FROZEN*.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the private IP address of the load balancer.
-	VipAddress pulumi.StringPtrInput `pulumi:"vipAddress"`
-	// Specifies the **IPv4 subnet ID** of the subnet where the load balancer works.
-	VipSubnetId pulumi.StringPtrInput `pulumi:"vipSubnetId"`
+	Id                  pulumi.StringPtrInput `pulumi:"id"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Status              pulumi.StringPtrInput `pulumi:"status"`
+	VipAddress          pulumi.StringPtrInput `pulumi:"vipAddress"`
+	VipSubnetId         pulumi.StringPtrInput `pulumi:"vipSubnetId"`
 }
 
 func (LookupLoadbalancerOutputArgs) ElementType() reflect.Type {
@@ -157,7 +104,6 @@ func (o LookupLoadbalancerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The EIP address that is associated to the Load Balancer instance.
 func (o LookupLoadbalancerResultOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.PublicIp }).(pulumi.StringOutput)
 }
@@ -170,7 +116,6 @@ func (o LookupLoadbalancerResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The tags associated with the load balancer.
 func (o LookupLoadbalancerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -179,7 +124,6 @@ func (o LookupLoadbalancerResultOutput) VipAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.VipAddress }).(pulumi.StringOutput)
 }
 
-// The ID of the port bound to the private IP address of the load balancer.
 func (o LookupLoadbalancerResultOutput) VipPortId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.VipPortId }).(pulumi.StringOutput)
 }

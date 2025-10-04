@@ -32,50 +32,14 @@ class PgDatabaseArgs:
         """
         The set of arguments for constructing a PgDatabase resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] character_set: Specifies the database character set.
-               For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-               Defaults to **UTF8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value contains 0 to 512 characters.
-        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of
-               the public schema.
-               + **true**: indicates that the permission will be revoked.
-               + **false**: indicates that the permission will not be revoked.
-               
-               Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
+        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         :param pulumi.Input[_builtins.str] lc_collate: Specifies the database collocation.
-               Defaults to **en_US.UTF-8**.
-               
-               > **NOTE:** For different collation rules, the execution result of a statement may be different.
-               <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-               **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-               PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-               collation rules from the pg_collation table.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] lc_ctype: Specifies the database classification.
-               Defaults to: **en_US.UTF-8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The value contains 1 to 63 characters, including
-               letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-               PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-               **template1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the database user. The value must be an existing username and must be different
-               from system usernames. Defaults to **root**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template. Value options: **template0**,
-               **template1**. Defaults to **template1**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] owner: Specifies the database user.
+        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if character_set is not None:
@@ -102,8 +66,6 @@ class PgDatabaseArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RDS PostgreSQL instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -116,10 +78,6 @@ class PgDatabaseArgs:
     def character_set(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database character set.
-        For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-        Defaults to **UTF8**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "character_set")
 
@@ -131,7 +89,7 @@ class PgDatabaseArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database description. The value contains 0 to 512 characters.
+        Specifies the database description.
         """
         return pulumi.get(self, "description")
 
@@ -143,14 +101,7 @@ class PgDatabaseArgs:
     @pulumi.getter(name="isRevokePublicPrivilege")
     def is_revoke_public_privilege(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to revoke the PUBLIC CREATE permission of
-        the public schema.
-        + **true**: indicates that the permission will be revoked.
-        + **false**: indicates that the permission will not be revoked.
-
-        Defaults to **false**.
-
-        Changing this parameter will create a new resource.
+        Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         """
         return pulumi.get(self, "is_revoke_public_privilege")
 
@@ -163,15 +114,6 @@ class PgDatabaseArgs:
     def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database collocation.
-        Defaults to **en_US.UTF-8**.
-
-        > **NOTE:** For different collation rules, the execution result of a statement may be different.
-        <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-        **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-        PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-        collation rules from the pg_collation table.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -184,9 +126,6 @@ class PgDatabaseArgs:
     def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database classification.
-        Defaults to: **en_US.UTF-8**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -198,12 +137,7 @@ class PgDatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. The value contains 1 to 63 characters, including
-        letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-        PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-        **template1**.
-
-        Changing this parameter will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -215,8 +149,7 @@ class PgDatabaseArgs:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database user. The value must be an existing username and must be different
-        from system usernames. Defaults to **root**.
+        Specifies the database user.
         """
         return pulumi.get(self, "owner")
 
@@ -227,10 +160,6 @@ class PgDatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -241,10 +170,7 @@ class PgDatabaseArgs:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the database template. Value options: **template0**,
-        **template1**. Defaults to **template1**.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the database template.
         """
         return pulumi.get(self, "template")
 
@@ -270,51 +196,15 @@ class _PgDatabaseState:
         """
         Input properties used for looking up and filtering PgDatabase resources.
         :param pulumi.Input[_builtins.str] character_set: Specifies the database character set.
-               For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-               Defaults to **UTF8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value contains 0 to 512 characters.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of
-               the public schema.
-               + **true**: indicates that the permission will be revoked.
-               + **false**: indicates that the permission will not be revoked.
-               
-               Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         :param pulumi.Input[_builtins.str] lc_collate: Specifies the database collocation.
-               Defaults to **en_US.UTF-8**.
-               
-               > **NOTE:** For different collation rules, the execution result of a statement may be different.
-               <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-               **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-               PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-               collation rules from the pg_collation table.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] lc_ctype: Specifies the database classification.
-               Defaults to: **en_US.UTF-8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The value contains 1 to 63 characters, including
-               letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-               PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-               **template1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the database user. The value must be an existing username and must be different
-               from system usernames. Defaults to **root**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] owner: Specifies the database user.
         :param pulumi.Input[_builtins.int] size: Indicates the database size, in bytes.
-        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template. Value options: **template0**,
-               **template1**. Defaults to **template1**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template.
         """
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
@@ -344,10 +234,6 @@ class _PgDatabaseState:
     def character_set(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database character set.
-        For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-        Defaults to **UTF8**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "character_set")
 
@@ -359,7 +245,7 @@ class _PgDatabaseState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database description. The value contains 0 to 512 characters.
+        Specifies the database description.
         """
         return pulumi.get(self, "description")
 
@@ -372,8 +258,6 @@ class _PgDatabaseState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RDS PostgreSQL instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -385,14 +269,7 @@ class _PgDatabaseState:
     @pulumi.getter(name="isRevokePublicPrivilege")
     def is_revoke_public_privilege(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to revoke the PUBLIC CREATE permission of
-        the public schema.
-        + **true**: indicates that the permission will be revoked.
-        + **false**: indicates that the permission will not be revoked.
-
-        Defaults to **false**.
-
-        Changing this parameter will create a new resource.
+        Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         """
         return pulumi.get(self, "is_revoke_public_privilege")
 
@@ -405,15 +282,6 @@ class _PgDatabaseState:
     def lc_collate(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database collocation.
-        Defaults to **en_US.UTF-8**.
-
-        > **NOTE:** For different collation rules, the execution result of a statement may be different.
-        <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-        **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-        PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-        collation rules from the pg_collation table.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -426,9 +294,6 @@ class _PgDatabaseState:
     def lc_ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database classification.
-        Defaults to: **en_US.UTF-8**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -440,12 +305,7 @@ class _PgDatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. The value contains 1 to 63 characters, including
-        letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-        PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-        **template1**.
-
-        Changing this parameter will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -457,8 +317,7 @@ class _PgDatabaseState:
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database user. The value must be an existing username and must be different
-        from system usernames. Defaults to **root**.
+        Specifies the database user.
         """
         return pulumi.get(self, "owner")
 
@@ -469,10 +328,6 @@ class _PgDatabaseState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -495,10 +350,7 @@ class _PgDatabaseState:
     @pulumi.getter
     def template(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the database template. Value options: **template0**,
-        **template1**. Defaults to **template1**.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the database template.
         """
         return pulumi.get(self, "template")
 
@@ -525,106 +377,18 @@ class PgDatabase(pulumi.CustomResource):
                  template: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS PostgreSQL database resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.PgDatabase("test",
-            instance_id=instance_id,
-            name="test")
-        ```
-
-        ## Import
-
-        The RDS postgresql database can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/pgDatabase:PgDatabase test <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `template`, `is_revoke_public_privilege`
-
-        `lc_ctype`. It is generally recommended running `pulumi preview` after importing the RDS PostgreSQL database. You can
-
-        then decide if changes should be applied to the RDS PostgreSQL database, or the resource definition should be updated
-
-        to align with the RDS PostgreSQL database. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_pg_database" "account_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              template, is_revoke_public_privilege, lc_ctype,
-            
-            ]
-
-          }
-
-        }
-
+        Create a PgDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] character_set: Specifies the database character set.
-               For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-               Defaults to **UTF8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value contains 0 to 512 characters.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of
-               the public schema.
-               + **true**: indicates that the permission will be revoked.
-               + **false**: indicates that the permission will not be revoked.
-               
-               Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         :param pulumi.Input[_builtins.str] lc_collate: Specifies the database collocation.
-               Defaults to **en_US.UTF-8**.
-               
-               > **NOTE:** For different collation rules, the execution result of a statement may be different.
-               <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-               **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-               PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-               collation rules from the pg_collation table.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] lc_ctype: Specifies the database classification.
-               Defaults to: **en_US.UTF-8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The value contains 1 to 63 characters, including
-               letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-               PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-               **template1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the database user. The value must be an existing username and must be different
-               from system usernames. Defaults to **root**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template. Value options: **template0**,
-               **template1**. Defaults to **template1**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] owner: Specifies the database user.
+        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template.
         """
         ...
     @overload
@@ -633,59 +397,7 @@ class PgDatabase(pulumi.CustomResource):
                  args: PgDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS PostgreSQL database resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.PgDatabase("test",
-            instance_id=instance_id,
-            name="test")
-        ```
-
-        ## Import
-
-        The RDS postgresql database can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/pgDatabase:PgDatabase test <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `template`, `is_revoke_public_privilege`
-
-        `lc_ctype`. It is generally recommended running `pulumi preview` after importing the RDS PostgreSQL database. You can
-
-        then decide if changes should be applied to the RDS PostgreSQL database, or the resource definition should be updated
-
-        to align with the RDS PostgreSQL database. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_pg_database" "account_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              template, is_revoke_public_privilege, lc_ctype,
-            
-            ]
-
-          }
-
-        }
-
+        Create a PgDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PgDatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -762,51 +474,15 @@ class PgDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] character_set: Specifies the database character set.
-               For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-               Defaults to **UTF8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value contains 0 to 512 characters.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS PostgreSQL instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of
-               the public schema.
-               + **true**: indicates that the permission will be revoked.
-               + **false**: indicates that the permission will not be revoked.
-               
-               Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] is_revoke_public_privilege: Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         :param pulumi.Input[_builtins.str] lc_collate: Specifies the database collocation.
-               Defaults to **en_US.UTF-8**.
-               
-               > **NOTE:** For different collation rules, the execution result of a statement may be different.
-               <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-               **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-               PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-               collation rules from the pg_collation table.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] lc_ctype: Specifies the database classification.
-               Defaults to: **en_US.UTF-8**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The value contains 1 to 63 characters, including
-               letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-               PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-               **template1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] owner: Specifies the database user. The value must be an existing username and must be different
-               from system usernames. Defaults to **root**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
+        :param pulumi.Input[_builtins.str] owner: Specifies the database user.
         :param pulumi.Input[_builtins.int] size: Indicates the database size, in bytes.
-        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template. Value options: **template0**,
-               **template1**. Defaults to **template1**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] template: Specifies the name of the database template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -830,10 +506,6 @@ class PgDatabase(pulumi.CustomResource):
     def character_set(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the database character set.
-        For details, see [documentation](https://www.postgresql.org/docs/16/infoschema-character-sets.html).
-        Defaults to **UTF8**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "character_set")
 
@@ -841,7 +513,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the database description. The value contains 0 to 512 characters.
+        Specifies the database description.
         """
         return pulumi.get(self, "description")
 
@@ -850,8 +522,6 @@ class PgDatabase(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RDS PostgreSQL instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -859,14 +529,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter(name="isRevokePublicPrivilege")
     def is_revoke_public_privilege(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether to revoke the PUBLIC CREATE permission of
-        the public schema.
-        + **true**: indicates that the permission will be revoked.
-        + **false**: indicates that the permission will not be revoked.
-
-        Defaults to **false**.
-
-        Changing this parameter will create a new resource.
+        Specifies whether to revoke the PUBLIC CREATE permission of the public schema.
         """
         return pulumi.get(self, "is_revoke_public_privilege")
 
@@ -875,15 +538,6 @@ class PgDatabase(pulumi.CustomResource):
     def lc_collate(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the database collocation.
-        Defaults to **en_US.UTF-8**.
-
-        > **NOTE:** For different collation rules, the execution result of a statement may be different.
-        <br/> For example, the execution result of select 'a'>'A'; is false when this parameter is set to
-        **en_US.utf8** and is true when this parameter is set to 'C'. If a database is migrated from "O" to
-        PostgreSQL, this parameter needs to be set to 'C' to meet your expectations. You can query the supported
-        collation rules from the pg_collation table.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -892,9 +546,6 @@ class PgDatabase(pulumi.CustomResource):
     def lc_ctype(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the database classification.
-        Defaults to: **en_US.UTF-8**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -902,12 +553,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the database name. The value contains 1 to 63 characters, including
-        letters, digits, and underscores (_). It cannot start with pg or a digit, and must be different from RDS for
-        PostgreSQL template library names. RDS for PostgreSQL template libraries include **postgres**, **template0**, and
-        **template1**.
-
-        Changing this parameter will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -915,18 +561,13 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the database user. The value must be an existing username and must be different
-        from system usernames. Defaults to **root**.
+        Specifies the database user.
         """
         return pulumi.get(self, "owner")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -941,10 +582,7 @@ class PgDatabase(pulumi.CustomResource):
     @pulumi.getter
     def template(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the database template. Value options: **template0**,
-        **template1**. Defaults to **template1**.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the database template.
         """
         return pulumi.get(self, "template")
 

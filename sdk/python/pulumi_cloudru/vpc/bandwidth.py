@@ -34,14 +34,6 @@ class BandwidthArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Bandwidth resource.
-        :param pulumi.Input[_builtins.int] size: The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-        :param pulumi.Input[_builtins.str] bandwidth_type: Indicates the bandwidth type.
-        :param pulumi.Input[_builtins.str] charge_mode: Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the Shared Bandwidth. Changing
-               this creates a new bandwidth.
-        :param pulumi.Input[_builtins.str] name: The name of the Shared Bandwidth.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the Shared Bandwidth. If omitted, the
-               provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
         """
         pulumi.set(__self__, "size", size)
         if auto_renew is not None:
@@ -68,9 +60,6 @@ class BandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -89,9 +78,6 @@ class BandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="bandwidthType")
     def bandwidth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the bandwidth type.
-        """
         return pulumi.get(self, "bandwidth_type")
 
     @bandwidth_type.setter
@@ -101,9 +87,6 @@ class BandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        """
         return pulumi.get(self, "charge_mode")
 
     @charge_mode.setter
@@ -122,10 +105,6 @@ class BandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the Shared Bandwidth. Changing
-        this creates a new bandwidth.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -135,9 +114,6 @@ class BandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the Shared Bandwidth.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -174,10 +150,6 @@ class BandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the Shared Bandwidth. If omitted, the
-        provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -206,17 +178,6 @@ class _BandwidthState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Bandwidth resources.
-        :param pulumi.Input[_builtins.str] bandwidth_type: Indicates the bandwidth type.
-        :param pulumi.Input[_builtins.str] charge_mode: Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the Shared Bandwidth. Changing
-               this creates a new bandwidth.
-        :param pulumi.Input[_builtins.str] name: The name of the Shared Bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input['BandwidthPublicipArgs']]] publicips: An array of EIPs that use the bandwidth. The object includes the following:
-        :param pulumi.Input[_builtins.str] region: The region in which to create the Shared Bandwidth. If omitted, the
-               provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-        :param pulumi.Input[_builtins.str] share_type: Indicates whether the bandwidth is shared or dedicated.
-        :param pulumi.Input[_builtins.int] size: The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-        :param pulumi.Input[_builtins.str] status: Indicates the bandwidth status.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -263,9 +224,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter(name="bandwidthType")
     def bandwidth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the bandwidth type.
-        """
         return pulumi.get(self, "bandwidth_type")
 
     @bandwidth_type.setter
@@ -275,9 +233,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        """
         return pulumi.get(self, "charge_mode")
 
     @charge_mode.setter
@@ -305,10 +260,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the Shared Bandwidth. Changing
-        this creates a new bandwidth.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -318,9 +269,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the Shared Bandwidth.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -357,9 +305,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter
     def publicips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BandwidthPublicipArgs']]]]:
-        """
-        An array of EIPs that use the bandwidth. The object includes the following:
-        """
         return pulumi.get(self, "publicips")
 
     @publicips.setter
@@ -369,10 +314,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the Shared Bandwidth. If omitted, the
-        provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -382,9 +323,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates whether the bandwidth is shared or dedicated.
-        """
         return pulumi.get(self, "share_type")
 
     @share_type.setter
@@ -394,9 +332,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -406,9 +341,6 @@ class _BandwidthState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the bandwidth status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -444,37 +376,9 @@ class Bandwidth(pulumi.CustomResource):
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages a Shared Bandwidth resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bandwidth1 = sbercloud.vpc.Bandwidth("bandwidth_1",
-            name="bandwidth_1",
-            size=5)
-        ```
-
-        ## Import
-
-        Shared Bandwidths can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/bandwidth:Bandwidth bandwidth_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Bandwidth resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bandwidth_type: Indicates the bandwidth type.
-        :param pulumi.Input[_builtins.str] charge_mode: Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the Shared Bandwidth. Changing
-               this creates a new bandwidth.
-        :param pulumi.Input[_builtins.str] name: The name of the Shared Bandwidth.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the Shared Bandwidth. If omitted, the
-               provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-        :param pulumi.Input[_builtins.int] size: The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
         """
         ...
     @overload
@@ -483,27 +387,7 @@ class Bandwidth(pulumi.CustomResource):
                  args: BandwidthArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Shared Bandwidth resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bandwidth1 = sbercloud.vpc.Bandwidth("bandwidth_1",
-            name="bandwidth_1",
-            size=5)
-        ```
-
-        ## Import
-
-        Shared Bandwidths can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/bandwidth:Bandwidth bandwidth_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-        ```
-
+        Create a Bandwidth resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BandwidthArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -590,17 +474,6 @@ class Bandwidth(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bandwidth_type: Indicates the bandwidth type.
-        :param pulumi.Input[_builtins.str] charge_mode: Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the Shared Bandwidth. Changing
-               this creates a new bandwidth.
-        :param pulumi.Input[_builtins.str] name: The name of the Shared Bandwidth.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['BandwidthPublicipArgs', 'BandwidthPublicipArgsDict']]]] publicips: An array of EIPs that use the bandwidth. The object includes the following:
-        :param pulumi.Input[_builtins.str] region: The region in which to create the Shared Bandwidth. If omitted, the
-               provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-        :param pulumi.Input[_builtins.str] share_type: Indicates whether the bandwidth is shared or dedicated.
-        :param pulumi.Input[_builtins.int] size: The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-        :param pulumi.Input[_builtins.str] status: Indicates the bandwidth status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -632,17 +505,11 @@ class Bandwidth(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="bandwidthType")
     def bandwidth_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the bandwidth type.
-        """
         return pulumi.get(self, "bandwidth_type")
 
     @_builtins.property
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        """
         return pulumi.get(self, "charge_mode")
 
     @_builtins.property
@@ -658,18 +525,11 @@ class Bandwidth(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the Shared Bandwidth. Changing
-        this creates a new bandwidth.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the Shared Bandwidth.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -690,42 +550,26 @@ class Bandwidth(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def publicips(self) -> pulumi.Output[Sequence['outputs.BandwidthPublicip']]:
-        """
-        An array of EIPs that use the bandwidth. The object includes the following:
-        """
         return pulumi.get(self, "publicips")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the Shared Bandwidth. If omitted, the
-        provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates whether the bandwidth is shared or dedicated.
-        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
-        """
-        The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the bandwidth status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property

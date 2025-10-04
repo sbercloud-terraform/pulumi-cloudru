@@ -14,12 +14,9 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ServiceDiscoveryRuleDiscoveryRule struct {
-	// Specifies the matched value. This is a list of strings.
 	CheckContents []string `pulumi:"checkContents"`
-	// Specifies the match condition. The values can be **contain** and **equals**.
-	CheckMode string `pulumi:"checkMode"`
-	// Specifies the match type. The values can be **cmdLine**, **env** and **scope**.
-	CheckType string `pulumi:"checkType"`
+	CheckMode     string   `pulumi:"checkMode"`
+	CheckType     string   `pulumi:"checkType"`
 }
 
 // ServiceDiscoveryRuleDiscoveryRuleInput is an input type that accepts ServiceDiscoveryRuleDiscoveryRuleArgs and ServiceDiscoveryRuleDiscoveryRuleOutput values.
@@ -34,12 +31,9 @@ type ServiceDiscoveryRuleDiscoveryRuleInput interface {
 }
 
 type ServiceDiscoveryRuleDiscoveryRuleArgs struct {
-	// Specifies the matched value. This is a list of strings.
 	CheckContents pulumi.StringArrayInput `pulumi:"checkContents"`
-	// Specifies the match condition. The values can be **contain** and **equals**.
-	CheckMode pulumi.StringInput `pulumi:"checkMode"`
-	// Specifies the match type. The values can be **cmdLine**, **env** and **scope**.
-	CheckType pulumi.StringInput `pulumi:"checkType"`
+	CheckMode     pulumi.StringInput      `pulumi:"checkMode"`
+	CheckType     pulumi.StringInput      `pulumi:"checkType"`
 }
 
 func (ServiceDiscoveryRuleDiscoveryRuleArgs) ElementType() reflect.Type {
@@ -93,17 +87,14 @@ func (o ServiceDiscoveryRuleDiscoveryRuleOutput) ToServiceDiscoveryRuleDiscovery
 	return o
 }
 
-// Specifies the matched value. This is a list of strings.
 func (o ServiceDiscoveryRuleDiscoveryRuleOutput) CheckContents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleDiscoveryRule) []string { return v.CheckContents }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the match condition. The values can be **contain** and **equals**.
 func (o ServiceDiscoveryRuleDiscoveryRuleOutput) CheckMode() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleDiscoveryRule) string { return v.CheckMode }).(pulumi.StringOutput)
 }
 
-// Specifies the match type. The values can be **cmdLine**, **env** and **scope**.
 func (o ServiceDiscoveryRuleDiscoveryRuleOutput) CheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleDiscoveryRule) string { return v.CheckType }).(pulumi.StringOutput)
 }
@@ -129,15 +120,9 @@ func (o ServiceDiscoveryRuleDiscoveryRuleArrayOutput) Index(i pulumi.IntInput) S
 }
 
 type ServiceDiscoveryRuleLogPathRule struct {
-	// Specifies the command. This is a list of strings.
-	Args []string `pulumi:"args"`
-	// Specifies the value type, which can be **cmdLineHash**.
-	NameType string `pulumi:"nameType"`
-	// Specifies the log path. This is a list of strings.
-	//
-	// <a name="nameRulesObject"></a>
-	// The `nameRules` block supports:
-	Values []string `pulumi:"values"`
+	Args     []string `pulumi:"args"`
+	NameType string   `pulumi:"nameType"`
+	Values   []string `pulumi:"values"`
 }
 
 // ServiceDiscoveryRuleLogPathRuleInput is an input type that accepts ServiceDiscoveryRuleLogPathRuleArgs and ServiceDiscoveryRuleLogPathRuleOutput values.
@@ -152,15 +137,9 @@ type ServiceDiscoveryRuleLogPathRuleInput interface {
 }
 
 type ServiceDiscoveryRuleLogPathRuleArgs struct {
-	// Specifies the command. This is a list of strings.
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Specifies the value type, which can be **cmdLineHash**.
-	NameType pulumi.StringInput `pulumi:"nameType"`
-	// Specifies the log path. This is a list of strings.
-	//
-	// <a name="nameRulesObject"></a>
-	// The `nameRules` block supports:
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Args     pulumi.StringArrayInput `pulumi:"args"`
+	NameType pulumi.StringInput      `pulumi:"nameType"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (ServiceDiscoveryRuleLogPathRuleArgs) ElementType() reflect.Type {
@@ -214,20 +193,14 @@ func (o ServiceDiscoveryRuleLogPathRuleOutput) ToServiceDiscoveryRuleLogPathRule
 	return o
 }
 
-// Specifies the command. This is a list of strings.
 func (o ServiceDiscoveryRuleLogPathRuleOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleLogPathRule) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the value type, which can be **cmdLineHash**.
 func (o ServiceDiscoveryRuleLogPathRuleOutput) NameType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleLogPathRule) string { return v.NameType }).(pulumi.StringOutput)
 }
 
-// Specifies the log path. This is a list of strings.
-//
-// <a name="nameRulesObject"></a>
-// The `nameRules` block supports:
 func (o ServiceDiscoveryRuleLogPathRuleOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleLogPathRule) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -253,27 +226,8 @@ func (o ServiceDiscoveryRuleLogPathRuleArrayOutput) Index(i pulumi.IntInput) Ser
 }
 
 type ServiceDiscoveryRuleNameRules struct {
-	// Specifies the application name rule. If the value of `nameType` is
-	// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-	// the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"], indicating that
-	// the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the format of
-	// ["fix"], indicating that the application name is suffixed with fix. If the value of `nameType` is **cmdLineHash**,
-	// `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-	// ser when the startup command is 0001. The object structure is documented below.
-	//
-	// <a name="basicNameRuleObject"></a>
-	// The `serviceNameRule` block and `applicationNameRule` block support:
 	ApplicationNameRules []ServiceDiscoveryRuleNameRulesApplicationNameRule `pulumi:"applicationNameRules"`
-	// Specifies the service name rule. If there are multiple objects in the array,
-	// the character strings extracted from these objects constitute the service name. If the value of `nameType` is
-	// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-	// in the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"],
-	// indicating that the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the
-	// format of ["fix"], indicating that the service name is suffixed with fix. If the value of `nameType` is
-	// **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-	// service name is ser when the startup command is 0001. The object structure is
-	// documented below.
-	ServiceNameRules []ServiceDiscoveryRuleNameRulesServiceNameRule `pulumi:"serviceNameRules"`
+	ServiceNameRules     []ServiceDiscoveryRuleNameRulesServiceNameRule     `pulumi:"serviceNameRules"`
 }
 
 // ServiceDiscoveryRuleNameRulesInput is an input type that accepts ServiceDiscoveryRuleNameRulesArgs and ServiceDiscoveryRuleNameRulesOutput values.
@@ -288,27 +242,8 @@ type ServiceDiscoveryRuleNameRulesInput interface {
 }
 
 type ServiceDiscoveryRuleNameRulesArgs struct {
-	// Specifies the application name rule. If the value of `nameType` is
-	// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-	// the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"], indicating that
-	// the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the format of
-	// ["fix"], indicating that the application name is suffixed with fix. If the value of `nameType` is **cmdLineHash**,
-	// `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-	// ser when the startup command is 0001. The object structure is documented below.
-	//
-	// <a name="basicNameRuleObject"></a>
-	// The `serviceNameRule` block and `applicationNameRule` block support:
 	ApplicationNameRules ServiceDiscoveryRuleNameRulesApplicationNameRuleArrayInput `pulumi:"applicationNameRules"`
-	// Specifies the service name rule. If there are multiple objects in the array,
-	// the character strings extracted from these objects constitute the service name. If the value of `nameType` is
-	// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-	// in the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"],
-	// indicating that the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the
-	// format of ["fix"], indicating that the service name is suffixed with fix. If the value of `nameType` is
-	// **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-	// service name is ser when the startup command is 0001. The object structure is
-	// documented below.
-	ServiceNameRules ServiceDiscoveryRuleNameRulesServiceNameRuleArrayInput `pulumi:"serviceNameRules"`
+	ServiceNameRules     ServiceDiscoveryRuleNameRulesServiceNameRuleArrayInput     `pulumi:"serviceNameRules"`
 }
 
 func (ServiceDiscoveryRuleNameRulesArgs) ElementType() reflect.Type {
@@ -388,31 +323,12 @@ func (o ServiceDiscoveryRuleNameRulesOutput) ToServiceDiscoveryRuleNameRulesPtrO
 	}).(ServiceDiscoveryRuleNameRulesPtrOutput)
 }
 
-// Specifies the application name rule. If the value of `nameType` is
-// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-// the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"], indicating that
-// the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the format of
-// ["fix"], indicating that the application name is suffixed with fix. If the value of `nameType` is **cmdLineHash**,
-// `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-// ser when the startup command is 0001. The object structure is documented below.
-//
-// <a name="basicNameRuleObject"></a>
-// The `serviceNameRule` block and `applicationNameRule` block support:
 func (o ServiceDiscoveryRuleNameRulesOutput) ApplicationNameRules() ServiceDiscoveryRuleNameRulesApplicationNameRuleArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRules) []ServiceDiscoveryRuleNameRulesApplicationNameRule {
 		return v.ApplicationNameRules
 	}).(ServiceDiscoveryRuleNameRulesApplicationNameRuleArrayOutput)
 }
 
-// Specifies the service name rule. If there are multiple objects in the array,
-// the character strings extracted from these objects constitute the service name. If the value of `nameType` is
-// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-// in the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"],
-// indicating that the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the
-// format of ["fix"], indicating that the service name is suffixed with fix. If the value of `nameType` is
-// **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-// service name is ser when the startup command is 0001. The object structure is
-// documented below.
 func (o ServiceDiscoveryRuleNameRulesOutput) ServiceNameRules() ServiceDiscoveryRuleNameRulesServiceNameRuleArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRules) []ServiceDiscoveryRuleNameRulesServiceNameRule {
 		return v.ServiceNameRules
@@ -443,16 +359,6 @@ func (o ServiceDiscoveryRuleNameRulesPtrOutput) Elem() ServiceDiscoveryRuleNameR
 	}).(ServiceDiscoveryRuleNameRulesOutput)
 }
 
-// Specifies the application name rule. If the value of `nameType` is
-// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-// the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"], indicating that
-// the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the format of
-// ["fix"], indicating that the application name is suffixed with fix. If the value of `nameType` is **cmdLineHash**,
-// `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-// ser when the startup command is 0001. The object structure is documented below.
-//
-// <a name="basicNameRuleObject"></a>
-// The `serviceNameRule` block and `applicationNameRule` block support:
 func (o ServiceDiscoveryRuleNameRulesPtrOutput) ApplicationNameRules() ServiceDiscoveryRuleNameRulesApplicationNameRuleArrayOutput {
 	return o.ApplyT(func(v *ServiceDiscoveryRuleNameRules) []ServiceDiscoveryRuleNameRulesApplicationNameRule {
 		if v == nil {
@@ -462,15 +368,6 @@ func (o ServiceDiscoveryRuleNameRulesPtrOutput) ApplicationNameRules() ServiceDi
 	}).(ServiceDiscoveryRuleNameRulesApplicationNameRuleArrayOutput)
 }
 
-// Specifies the service name rule. If there are multiple objects in the array,
-// the character strings extracted from these objects constitute the service name. If the value of `nameType` is
-// **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-// in the command are extracted. If the value of `nameType` is **env**, `args` is in the format of ["aa"],
-// indicating that the environment variable named aa is extracted. If the value of `nameType` is **str**, `args` is in the
-// format of ["fix"], indicating that the service name is suffixed with fix. If the value of `nameType` is
-// **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-// service name is ser when the startup command is 0001. The object structure is
-// documented below.
 func (o ServiceDiscoveryRuleNameRulesPtrOutput) ServiceNameRules() ServiceDiscoveryRuleNameRulesServiceNameRuleArrayOutput {
 	return o.ApplyT(func(v *ServiceDiscoveryRuleNameRules) []ServiceDiscoveryRuleNameRulesServiceNameRule {
 		if v == nil {
@@ -481,14 +378,9 @@ func (o ServiceDiscoveryRuleNameRulesPtrOutput) ServiceNameRules() ServiceDiscov
 }
 
 type ServiceDiscoveryRuleNameRulesApplicationNameRule struct {
-	// Specifies the input value.
-	Args []string `pulumi:"args"`
-	// Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-	// and **str**.
-	NameType string `pulumi:"nameType"`
-	// Specifies the application name, which is mandatory only when the value of
-	// `nameType` is **cmdLineHash**.
-	Values []string `pulumi:"values"`
+	Args     []string `pulumi:"args"`
+	NameType string   `pulumi:"nameType"`
+	Values   []string `pulumi:"values"`
 }
 
 // ServiceDiscoveryRuleNameRulesApplicationNameRuleInput is an input type that accepts ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs and ServiceDiscoveryRuleNameRulesApplicationNameRuleOutput values.
@@ -503,14 +395,9 @@ type ServiceDiscoveryRuleNameRulesApplicationNameRuleInput interface {
 }
 
 type ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs struct {
-	// Specifies the input value.
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-	// and **str**.
-	NameType pulumi.StringInput `pulumi:"nameType"`
-	// Specifies the application name, which is mandatory only when the value of
-	// `nameType` is **cmdLineHash**.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Args     pulumi.StringArrayInput `pulumi:"args"`
+	NameType pulumi.StringInput      `pulumi:"nameType"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs) ElementType() reflect.Type {
@@ -564,19 +451,14 @@ func (o ServiceDiscoveryRuleNameRulesApplicationNameRuleOutput) ToServiceDiscove
 	return o
 }
 
-// Specifies the input value.
 func (o ServiceDiscoveryRuleNameRulesApplicationNameRuleOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRulesApplicationNameRule) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-// and **str**.
 func (o ServiceDiscoveryRuleNameRulesApplicationNameRuleOutput) NameType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRulesApplicationNameRule) string { return v.NameType }).(pulumi.StringOutput)
 }
 
-// Specifies the application name, which is mandatory only when the value of
-// `nameType` is **cmdLineHash**.
 func (o ServiceDiscoveryRuleNameRulesApplicationNameRuleOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRulesApplicationNameRule) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -602,14 +484,9 @@ func (o ServiceDiscoveryRuleNameRulesApplicationNameRuleArrayOutput) Index(i pul
 }
 
 type ServiceDiscoveryRuleNameRulesServiceNameRule struct {
-	// Specifies the input value.
-	Args []string `pulumi:"args"`
-	// Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-	// and **str**.
-	NameType string `pulumi:"nameType"`
-	// Specifies the application name, which is mandatory only when the value of
-	// `nameType` is **cmdLineHash**.
-	Values []string `pulumi:"values"`
+	Args     []string `pulumi:"args"`
+	NameType string   `pulumi:"nameType"`
+	Values   []string `pulumi:"values"`
 }
 
 // ServiceDiscoveryRuleNameRulesServiceNameRuleInput is an input type that accepts ServiceDiscoveryRuleNameRulesServiceNameRuleArgs and ServiceDiscoveryRuleNameRulesServiceNameRuleOutput values.
@@ -624,14 +501,9 @@ type ServiceDiscoveryRuleNameRulesServiceNameRuleInput interface {
 }
 
 type ServiceDiscoveryRuleNameRulesServiceNameRuleArgs struct {
-	// Specifies the input value.
-	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-	// and **str**.
-	NameType pulumi.StringInput `pulumi:"nameType"`
-	// Specifies the application name, which is mandatory only when the value of
-	// `nameType` is **cmdLineHash**.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+	Args     pulumi.StringArrayInput `pulumi:"args"`
+	NameType pulumi.StringInput      `pulumi:"nameType"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (ServiceDiscoveryRuleNameRulesServiceNameRuleArgs) ElementType() reflect.Type {
@@ -685,19 +557,14 @@ func (o ServiceDiscoveryRuleNameRulesServiceNameRuleOutput) ToServiceDiscoveryRu
 	return o
 }
 
-// Specifies the input value.
 func (o ServiceDiscoveryRuleNameRulesServiceNameRuleOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRulesServiceNameRule) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-// and **str**.
 func (o ServiceDiscoveryRuleNameRulesServiceNameRuleOutput) NameType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRulesServiceNameRule) string { return v.NameType }).(pulumi.StringOutput)
 }
 
-// Specifies the application name, which is mandatory only when the value of
-// `nameType` is **cmdLineHash**.
 func (o ServiceDiscoveryRuleNameRulesServiceNameRuleOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceDiscoveryRuleNameRulesServiceNameRule) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

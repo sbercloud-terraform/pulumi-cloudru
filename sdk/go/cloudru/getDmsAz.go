@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available SberCloud DMS AZ.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetDmsAz(ctx, &cloudru.GetDmsAzArgs{
-//				Code: pulumi.StringRef("ru-moscow-1a"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsAz(ctx *pulumi.Context, args *GetDmsAzArgs, opts ...pulumi.InvokeOption) (*GetDmsAzResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsAzResult
@@ -50,13 +23,9 @@ func GetDmsAz(ctx *pulumi.Context, args *GetDmsAzArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getDmsAz.
 type GetDmsAzArgs struct {
-	// Indicates the code of an AZ.
-	Code *string `pulumi:"code"`
-	// Indicates the name of an AZ.
-	Name *string `pulumi:"name"`
-	// Indicates the port number of an AZ.
-	Port *string `pulumi:"port"`
-	// The region in which to obtain the dms az. If omitted, the provider-level region will be used.
+	Code   *string `pulumi:"code"`
+	Name   *string `pulumi:"name"`
+	Port   *string `pulumi:"port"`
 	Region *string `pulumi:"region"`
 }
 
@@ -82,13 +51,9 @@ func GetDmsAzOutput(ctx *pulumi.Context, args GetDmsAzOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getDmsAz.
 type GetDmsAzOutputArgs struct {
-	// Indicates the code of an AZ.
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// Indicates the name of an AZ.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the port number of an AZ.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The region in which to obtain the dms az. If omitted, the provider-level region will be used.
+	Code   pulumi.StringPtrInput `pulumi:"code"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
+	Port   pulumi.StringPtrInput `pulumi:"port"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 

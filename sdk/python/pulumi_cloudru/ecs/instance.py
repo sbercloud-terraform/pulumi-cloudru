@@ -69,72 +69,9 @@ class InstanceArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: Specifies an array of one or more networks to attach to the instance. The
-               network object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] admin_pass: Specifies the administrative password to assign to the instance.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the IAM agency name which is created on IAM to provide
-               temporary credentials for ECS to access cloud services.
-        :param pulumi.Input[_builtins.str] agent_list: Specifies the agent list in comma-separated string.
-               Available agents are:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the instance.
-               Changing this creates a new instance.
-        :param pulumi.Input['InstanceBandwidthArgs'] bandwidth: Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-               The object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: Specifies an array of one or more data disks to attach to the instance.
-               The data_disks object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.bool] delete_disks_on_termination: Specifies whether to delete the data disks when the instance is terminated.
-               Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-               in *prePaid* charging mode.
-        :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Specifies whether the EIP is released when the instance is terminated.
-               Defaults to *true*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the instance. The description consists of 0 to 85
-               characters, and can't contain '<' or '>'.
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of an *existing* EIP assigned to the instance.
-               This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] eip_type: Specifies the type of an EIP that will be automatically assigned to the instance.
-               Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique id in UUID format of enterprise project.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID of the instance to be created.
-        :param pulumi.Input[_builtins.str] flavor_name: The flavor name of the instance.
-        :param pulumi.Input[_builtins.str] image_id: Required if `image_name` is empty. Specifies the image ID of the desired
-               image for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] image_name: Required if `image_id` is empty. Specifies the name of the desired image
-               for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the SSH keypair name used for logging in to the instance.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-               including letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[_builtins.str] power_action: Specifies the power action to be done for the instance.
-               The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-               
-               > **NOTE:** The `power_action` is a one-time action.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the the private key of the keypair in use. This parameter is mandatory
-               when replacing or unbinding a keypair and the instance is in **Running** state.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the instance.
-               If omitted, the provider-level region will be used. Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]] scheduler_hints: Specifies the scheduler with hints on how the instance should be launched. The
-               available hints are described below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group IDs to associate with the
-               instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: An array of one or more security groups to associate with the instance.
-        :param pulumi.Input[_builtins.bool] stop_before_destroy: Specifies whether to try stop instance gracefully before destroying it, thus giving
-               chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        :param pulumi.Input[_builtins.int] system_disk_size: Specifies the system disk size in GB, The value range is 1 to 1024.
-               Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] system_disk_type: Specifies the system disk type of the instance. Defaults to `GPSSD`.
-               Changing this creates a new instance.
-               
-               Available options are:
-               + `SAS`: high I/O disk type.
-               + `SSD`: ultra-high I/O disk type.
-               + `ESSD`: Extreme SSD type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
-        :param pulumi.Input[_builtins.str] user_data: Specifies the user data to be injected during the instance creation. Text
-               and text files can be injected. Changing this creates a new instance.
-               
-               > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-               installed, the `admin_pass` field becomes invalid.
-        :param pulumi.Input[_builtins.str] user_id: Specifies a user ID, required when using key_pair in prePaid charging mode.
-               Changing this creates a new instance.
+        :param pulumi.Input[_builtins.str] flavor_id: schema: Required
+        :param pulumi.Input[_builtins.str] flavor_name: schema: Computed
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: schema: Computed
         """
         pulumi.set(__self__, "networks", networks)
         if admin_pass is not None:
@@ -234,10 +171,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]:
-        """
-        Specifies an array of one or more networks to attach to the instance. The
-        network object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -247,9 +180,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="adminPass")
     def admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the administrative password to assign to the instance.
-        """
         return pulumi.get(self, "admin_pass")
 
     @admin_pass.setter
@@ -259,10 +189,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IAM agency name which is created on IAM to provide
-        temporary credentials for ECS to access cloud services.
-        """
         return pulumi.get(self, "agency_name")
 
     @agency_name.setter
@@ -272,10 +198,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="agentList")
     def agent_list(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the agent list in comma-separated string.
-        Available agents are:
-        """
         return pulumi.get(self, "agent_list")
 
     @agent_list.setter
@@ -313,10 +235,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone in which to create the instance.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -326,10 +244,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input['InstanceBandwidthArgs']]:
-        """
-        Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-        The object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -348,10 +262,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]]:
-        """
-        Specifies an array of one or more data disks to attach to the instance.
-        The data_disks object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
@@ -361,11 +271,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="deleteDisksOnTermination")
     def delete_disks_on_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to delete the data disks when the instance is terminated.
-        Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-        in *prePaid* charging mode.
-        """
         return pulumi.get(self, "delete_disks_on_termination")
 
     @delete_disks_on_termination.setter
@@ -375,10 +280,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="deleteEipOnTermination")
     def delete_eip_on_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the EIP is released when the instance is terminated.
-        Defaults to *true*.
-        """
         return pulumi.get(self, "delete_eip_on_termination")
 
     @delete_eip_on_termination.setter
@@ -388,10 +289,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the instance. The description consists of 0 to 85
-        characters, and can't contain '<' or '>'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -401,10 +298,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of an *existing* EIP assigned to the instance.
-        This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        """
         return pulumi.get(self, "eip_id")
 
     @eip_id.setter
@@ -414,10 +307,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="eipType")
     def eip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of an EIP that will be automatically assigned to the instance.
-        Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        """
         return pulumi.get(self, "eip_type")
 
     @eip_type.setter
@@ -427,9 +316,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique id in UUID format of enterprise project.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -440,7 +326,7 @@ class InstanceArgs:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the flavor ID of the instance to be created.
+        schema: Required
         """
         return pulumi.get(self, "flavor_id")
 
@@ -452,7 +338,7 @@ class InstanceArgs:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The flavor name of the instance.
+        schema: Computed
         """
         return pulumi.get(self, "flavor_name")
 
@@ -472,10 +358,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Required if `image_name` is empty. Specifies the image ID of the desired
-        image for the instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -485,10 +367,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Required if `image_id` is empty. Specifies the name of the desired image
-        for the instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -498,9 +376,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the SSH keypair name used for logging in to the instance.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -519,10 +394,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-        including letters, digits, underscores (_), hyphens (-), and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -550,12 +421,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="powerAction")
     def power_action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the power action to be done for the instance.
-        The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-
-        > **NOTE:** The `power_action` is a one-time action.
-        """
         return pulumi.get(self, "power_action")
 
     @power_action.setter
@@ -565,10 +430,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the the private key of the keypair in use. This parameter is mandatory
-        when replacing or unbinding a keypair and the instance is in **Running** state.
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -578,10 +439,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the instance.
-        If omitted, the provider-level region will be used. Changing this creates a new instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -591,10 +448,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
-        """
-        Specifies the scheduler with hints on how the instance should be launched. The
-        available hints are described below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
@@ -604,10 +457,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more security group IDs to associate with the
-        instance.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -618,7 +467,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        An array of one or more security groups to associate with the instance.
+        schema: Computed
         """
         return pulumi.get(self, "security_groups")
 
@@ -656,10 +505,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
     def stop_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to try stop instance gracefully before destroying it, thus giving
-        chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        """
         return pulumi.get(self, "stop_before_destroy")
 
     @stop_before_destroy.setter
@@ -696,10 +541,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the system disk size in GB, The value range is 1 to 1024.
-        Shrinking the disk is not supported.
-        """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -718,15 +559,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="systemDiskType")
     def system_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the system disk type of the instance. Defaults to `GPSSD`.
-        Changing this creates a new instance.
-
-        Available options are:
-        + `SAS`: high I/O disk type.
-        + `SSD`: ultra-high I/O disk type.
-        + `ESSD`: Extreme SSD type.
-        """
         return pulumi.get(self, "system_disk_type")
 
     @system_disk_type.setter
@@ -736,9 +568,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -748,13 +577,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the user data to be injected during the instance creation. Text
-        and text files can be injected. Changing this creates a new instance.
-
-        > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-        installed, the `admin_pass` field becomes invalid.
-        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -764,10 +586,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a user ID, required when using key_pair in prePaid charging mode.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -835,81 +653,9 @@ class _InstanceState:
                  volume_attacheds: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeAttachedArgs']]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.str] access_ip_v4: The first detected Fixed IPv4 address or the Floating IP.
-        :param pulumi.Input[_builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
-        :param pulumi.Input[_builtins.str] admin_pass: Specifies the administrative password to assign to the instance.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the IAM agency name which is created on IAM to provide
-               temporary credentials for ECS to access cloud services.
-        :param pulumi.Input[_builtins.str] agent_list: Specifies the agent list in comma-separated string.
-               Available agents are:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the instance.
-               Changing this creates a new instance.
-        :param pulumi.Input['InstanceBandwidthArgs'] bandwidth: Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-               The object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] created_at: The creation time, in UTC format.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: Specifies an array of one or more data disks to attach to the instance.
-               The data_disks object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.bool] delete_disks_on_termination: Specifies whether to delete the data disks when the instance is terminated.
-               Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-               in *prePaid* charging mode.
-        :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Specifies whether the EIP is released when the instance is terminated.
-               Defaults to *true*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the instance. The description consists of 0 to 85
-               characters, and can't contain '<' or '>'.
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of an *existing* EIP assigned to the instance.
-               This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] eip_type: Specifies the type of an EIP that will be automatically assigned to the instance.
-               Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique id in UUID format of enterprise project.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID of the instance to be created.
-        :param pulumi.Input[_builtins.str] flavor_name: The flavor name of the instance.
-        :param pulumi.Input[_builtins.str] image_id: Required if `image_name` is empty. Specifies the image ID of the desired
-               image for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] image_name: Required if `image_id` is empty. Specifies the name of the desired image
-               for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the SSH keypair name used for logging in to the instance.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-               including letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: Specifies an array of one or more networks to attach to the instance. The
-               network object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] power_action: Specifies the power action to be done for the instance.
-               The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-               
-               > **NOTE:** The `power_action` is a one-time action.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the the private key of the keypair in use. This parameter is mandatory
-               when replacing or unbinding a keypair and the instance is in **Running** state.
-        :param pulumi.Input[_builtins.str] public_ip: The EIP address that is associted to the instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the instance.
-               If omitted, the provider-level region will be used. Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]] scheduler_hints: Specifies the scheduler with hints on how the instance should be launched. The
-               available hints are described below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group IDs to associate with the
-               instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: An array of one or more security groups to associate with the instance.
-        :param pulumi.Input[_builtins.str] status: The status of the instance.
-        :param pulumi.Input[_builtins.bool] stop_before_destroy: Specifies whether to try stop instance gracefully before destroying it, thus giving
-               chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        :param pulumi.Input[_builtins.str] system_disk_id: The system disk voume ID.
-        :param pulumi.Input[_builtins.int] system_disk_size: Specifies the system disk size in GB, The value range is 1 to 1024.
-               Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] system_disk_type: Specifies the system disk type of the instance. Defaults to `GPSSD`.
-               Changing this creates a new instance.
-               
-               Available options are:
-               + `SAS`: high I/O disk type.
-               + `SSD`: ultra-high I/O disk type.
-               + `ESSD`: Extreme SSD type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
-        :param pulumi.Input[_builtins.str] updated_at: The last update time, in UTC format.
-        :param pulumi.Input[_builtins.str] user_data: Specifies the user data to be injected during the instance creation. Text
-               and text files can be injected. Changing this creates a new instance.
-               
-               > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-               installed, the `admin_pass` field becomes invalid.
-        :param pulumi.Input[_builtins.str] user_id: Specifies a user ID, required when using key_pair in prePaid charging mode.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceVolumeAttachedArgs']]] volume_attacheds: An array of one or more disks to attach to the instance.
-               The volume attached object structure is documented below.
+        :param pulumi.Input[_builtins.str] flavor_id: schema: Required
+        :param pulumi.Input[_builtins.str] flavor_name: schema: Computed
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: schema: Computed
         """
         if access_ip_v4 is not None:
             pulumi.set(__self__, "access_ip_v4", access_ip_v4)
@@ -1028,9 +774,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="accessIpV4")
     def access_ip_v4(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The first detected Fixed IPv4 address or the Floating IP.
-        """
         return pulumi.get(self, "access_ip_v4")
 
     @access_ip_v4.setter
@@ -1040,9 +783,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="accessIpV6")
     def access_ip_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The first detected Fixed IPv6 address.
-        """
         return pulumi.get(self, "access_ip_v6")
 
     @access_ip_v6.setter
@@ -1052,9 +792,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="adminPass")
     def admin_pass(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the administrative password to assign to the instance.
-        """
         return pulumi.get(self, "admin_pass")
 
     @admin_pass.setter
@@ -1064,10 +801,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IAM agency name which is created on IAM to provide
-        temporary credentials for ECS to access cloud services.
-        """
         return pulumi.get(self, "agency_name")
 
     @agency_name.setter
@@ -1077,10 +810,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="agentList")
     def agent_list(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the agent list in comma-separated string.
-        Available agents are:
-        """
         return pulumi.get(self, "agent_list")
 
     @agent_list.setter
@@ -1118,10 +847,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone in which to create the instance.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -1131,10 +856,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input['InstanceBandwidthArgs']]:
-        """
-        Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-        The object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -1153,9 +874,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The creation time, in UTC format.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -1165,10 +883,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]]:
-        """
-        Specifies an array of one or more data disks to attach to the instance.
-        The data_disks object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
@@ -1178,11 +892,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="deleteDisksOnTermination")
     def delete_disks_on_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to delete the data disks when the instance is terminated.
-        Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-        in *prePaid* charging mode.
-        """
         return pulumi.get(self, "delete_disks_on_termination")
 
     @delete_disks_on_termination.setter
@@ -1192,10 +901,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="deleteEipOnTermination")
     def delete_eip_on_termination(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the EIP is released when the instance is terminated.
-        Defaults to *true*.
-        """
         return pulumi.get(self, "delete_eip_on_termination")
 
     @delete_eip_on_termination.setter
@@ -1205,10 +910,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the instance. The description consists of 0 to 85
-        characters, and can't contain '<' or '>'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1218,10 +919,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of an *existing* EIP assigned to the instance.
-        This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        """
         return pulumi.get(self, "eip_id")
 
     @eip_id.setter
@@ -1231,10 +928,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="eipType")
     def eip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of an EIP that will be automatically assigned to the instance.
-        Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        """
         return pulumi.get(self, "eip_type")
 
     @eip_type.setter
@@ -1244,9 +937,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique id in UUID format of enterprise project.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -1266,7 +956,7 @@ class _InstanceState:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the flavor ID of the instance to be created.
+        schema: Required
         """
         return pulumi.get(self, "flavor_id")
 
@@ -1278,7 +968,7 @@ class _InstanceState:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The flavor name of the instance.
+        schema: Computed
         """
         return pulumi.get(self, "flavor_name")
 
@@ -1298,10 +988,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Required if `image_name` is empty. Specifies the image ID of the desired
-        image for the instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
@@ -1311,10 +997,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Required if `image_id` is empty. Specifies the name of the desired image
-        for the instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -1324,9 +1006,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the SSH keypair name used for logging in to the instance.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -1345,10 +1024,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-        including letters, digits, underscores (_), hyphens (-), and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1358,10 +1033,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]]:
-        """
-        Specifies an array of one or more networks to attach to the instance. The
-        network object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "networks")
 
     @networks.setter
@@ -1389,12 +1060,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="powerAction")
     def power_action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the power action to be done for the instance.
-        The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-
-        > **NOTE:** The `power_action` is a one-time action.
-        """
         return pulumi.get(self, "power_action")
 
     @power_action.setter
@@ -1404,10 +1069,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the the private key of the keypair in use. This parameter is mandatory
-        when replacing or unbinding a keypair and the instance is in **Running** state.
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -1417,9 +1078,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The EIP address that is associted to the instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -1429,10 +1087,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the instance.
-        If omitted, the provider-level region will be used. Changing this creates a new instance.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1442,10 +1096,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceSchedulerHintArgs']]]]:
-        """
-        Specifies the scheduler with hints on how the instance should be launched. The
-        available hints are described below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @scheduler_hints.setter
@@ -1455,10 +1105,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more security group IDs to associate with the
-        instance.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
@@ -1469,7 +1115,7 @@ class _InstanceState:
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        An array of one or more security groups to associate with the instance.
+        schema: Computed
         """
         return pulumi.get(self, "security_groups")
 
@@ -1507,9 +1153,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the instance.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1519,10 +1162,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
     def stop_before_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to try stop instance gracefully before destroying it, thus giving
-        chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        """
         return pulumi.get(self, "stop_before_destroy")
 
     @stop_before_destroy.setter
@@ -1541,9 +1180,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="systemDiskId")
     def system_disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The system disk voume ID.
-        """
         return pulumi.get(self, "system_disk_id")
 
     @system_disk_id.setter
@@ -1571,10 +1207,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the system disk size in GB, The value range is 1 to 1024.
-        Shrinking the disk is not supported.
-        """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
@@ -1593,15 +1225,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="systemDiskType")
     def system_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the system disk type of the instance. Defaults to `GPSSD`.
-        Changing this creates a new instance.
-
-        Available options are:
-        + `SAS`: high I/O disk type.
-        + `SSD`: ultra-high I/O disk type.
-        + `ESSD`: Extreme SSD type.
-        """
         return pulumi.get(self, "system_disk_type")
 
     @system_disk_type.setter
@@ -1611,9 +1234,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1623,9 +1243,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The last update time, in UTC format.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -1635,13 +1252,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the user data to be injected during the instance creation. Text
-        and text files can be injected. Changing this creates a new instance.
-
-        > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-        installed, the `admin_pass` field becomes invalid.
-        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -1651,10 +1261,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a user ID, required when using key_pair in prePaid charging mode.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -1664,10 +1270,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter(name="volumeAttacheds")
     def volume_attacheds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceVolumeAttachedArgs']]]]:
-        """
-        An array of one or more disks to attach to the instance.
-        The volume attached object structure is documented below.
-        """
         return pulumi.get(self, "volume_attacheds")
 
     @volume_attacheds.setter
@@ -1729,291 +1331,12 @@ class Instance(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a ECS VM instance resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myaz = sbercloud.get_availability_zones()
-        myflavor = sbercloud.Ecs.get_flavors(availability_zone=myaz.names[0],
-            performance_type="normal",
-            cpu_core_count=2,
-            memory_size=4)
-        mynet = sbercloud.Vpc.get_subnet(name="subnet-default")
-        myimage = sbercloud.Ims.get_image(name="Ubuntu 18.04 server 64bit",
-            most_recent=True)
-        basic = sbercloud.ecs.Instance("basic",
-            name="basic",
-            image_id=myimage.id,
-            flavor_id=myflavor.ids[0],
-            security_group_ids=[secgroup_id],
-            availability_zone=myaz.names[0],
-            networks=[{
-                "uuid": mynet.id,
-            }])
-        ```
-
-        ### Instance With Associated Eip
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="myinstance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        myeip = sbercloud.vpc.Eip("myeip",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "name": "test",
-                "size": 8,
-                "share_type": "PER",
-                "charge_mode": "traffic",
-            })
-        associated = sbercloud.ecs.EipAssociate("associated",
-            public_ip=myeip.address,
-            instance_id=myinstance.id)
-        ```
-
-        ### Instance With Attached Volume
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myvolume = sbercloud.evs.Volume("myvolume",
-            name="myvolume",
-            availability_zone="ru-moscow-1a",
-            volume_type="SAS",
-            size=10)
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="myinstance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        attached = sbercloud.ecs.VolumeAttach("attached",
-            instance_id=myinstance.id,
-            volume_id=myvolume.id)
-        ```
-
-        ### Instance With Multiple Data Disks
-
-        It's possible to specify multiple `data_disks` entries to create an instance with multiple data disks, but we can't
-        ensure the volume attached order. So it's recommended to use `Instance With Attached Volume` above.
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        multi_disk = sbercloud.ecs.Instance("multi-disk",
-            name="multi-net",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            system_disk_type="SAS",
-            system_disk_size=40,
-            data_disks=[
-                {
-                    "type": "SAS",
-                    "size": 10,
-                },
-                {
-                    "type": "SAS",
-                    "size": 20,
-                },
-            ],
-            delete_disks_on_termination=True,
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        ```
-
-        ### Instance With Multiple Networks
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        multi_net = sbercloud.ecs.Instance("multi-net",
-            name="multi-net",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            networks=[
-                {
-                    "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-                },
-                {
-                    "uuid": "3c4a0d74-24b9-46cf-9d7f-8b7a4dc2f65c",
-                },
-            ])
-        ```
-
-        ### Instance with User Data (cloud-init)
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="instance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            user_data=\"\"\"#cloud-config
-        hostname: instance_1.example.com
-        fqdn: instance_1.example.com\"\"\",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        ```
-
-        ## Import
-
-        Instances can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/instance:Instance my_instance b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `admin_pass`, `user_data`, `data_disks`, `scheduler_hints`, `stop_before_destroy`,
-
-        `delete_disks_on_termination`, `delete_eip_on_termination`, `network/access_network`, `bandwidth`, `eip_type`,
-
-        `power_action` and arguments for pre-paid and spot price.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_compute_instance" "myinstance" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              user_data, data_disks,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] admin_pass: Specifies the administrative password to assign to the instance.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the IAM agency name which is created on IAM to provide
-               temporary credentials for ECS to access cloud services.
-        :param pulumi.Input[_builtins.str] agent_list: Specifies the agent list in comma-separated string.
-               Available agents are:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the instance.
-               Changing this creates a new instance.
-        :param pulumi.Input[Union['InstanceBandwidthArgs', 'InstanceBandwidthArgsDict']] bandwidth: Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-               The object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: Specifies an array of one or more data disks to attach to the instance.
-               The data_disks object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.bool] delete_disks_on_termination: Specifies whether to delete the data disks when the instance is terminated.
-               Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-               in *prePaid* charging mode.
-        :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Specifies whether the EIP is released when the instance is terminated.
-               Defaults to *true*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the instance. The description consists of 0 to 85
-               characters, and can't contain '<' or '>'.
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of an *existing* EIP assigned to the instance.
-               This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] eip_type: Specifies the type of an EIP that will be automatically assigned to the instance.
-               Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique id in UUID format of enterprise project.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID of the instance to be created.
-        :param pulumi.Input[_builtins.str] flavor_name: The flavor name of the instance.
-        :param pulumi.Input[_builtins.str] image_id: Required if `image_name` is empty. Specifies the image ID of the desired
-               image for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] image_name: Required if `image_id` is empty. Specifies the name of the desired image
-               for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the SSH keypair name used for logging in to the instance.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-               including letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: Specifies an array of one or more networks to attach to the instance. The
-               network object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] power_action: Specifies the power action to be done for the instance.
-               The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-               
-               > **NOTE:** The `power_action` is a one-time action.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the the private key of the keypair in use. This parameter is mandatory
-               when replacing or unbinding a keypair and the instance is in **Running** state.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the instance.
-               If omitted, the provider-level region will be used. Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]] scheduler_hints: Specifies the scheduler with hints on how the instance should be launched. The
-               available hints are described below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group IDs to associate with the
-               instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: An array of one or more security groups to associate with the instance.
-        :param pulumi.Input[_builtins.bool] stop_before_destroy: Specifies whether to try stop instance gracefully before destroying it, thus giving
-               chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        :param pulumi.Input[_builtins.int] system_disk_size: Specifies the system disk size in GB, The value range is 1 to 1024.
-               Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] system_disk_type: Specifies the system disk type of the instance. Defaults to `GPSSD`.
-               Changing this creates a new instance.
-               
-               Available options are:
-               + `SAS`: high I/O disk type.
-               + `SSD`: ultra-high I/O disk type.
-               + `ESSD`: Extreme SSD type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
-        :param pulumi.Input[_builtins.str] user_data: Specifies the user data to be injected during the instance creation. Text
-               and text files can be injected. Changing this creates a new instance.
-               
-               > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-               installed, the `admin_pass` field becomes invalid.
-        :param pulumi.Input[_builtins.str] user_id: Specifies a user ID, required when using key_pair in prePaid charging mode.
-               Changing this creates a new instance.
+        :param pulumi.Input[_builtins.str] flavor_id: schema: Required
+        :param pulumi.Input[_builtins.str] flavor_name: schema: Computed
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: schema: Computed
         """
         ...
     @overload
@@ -2022,223 +1345,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a ECS VM instance resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myaz = sbercloud.get_availability_zones()
-        myflavor = sbercloud.Ecs.get_flavors(availability_zone=myaz.names[0],
-            performance_type="normal",
-            cpu_core_count=2,
-            memory_size=4)
-        mynet = sbercloud.Vpc.get_subnet(name="subnet-default")
-        myimage = sbercloud.Ims.get_image(name="Ubuntu 18.04 server 64bit",
-            most_recent=True)
-        basic = sbercloud.ecs.Instance("basic",
-            name="basic",
-            image_id=myimage.id,
-            flavor_id=myflavor.ids[0],
-            security_group_ids=[secgroup_id],
-            availability_zone=myaz.names[0],
-            networks=[{
-                "uuid": mynet.id,
-            }])
-        ```
-
-        ### Instance With Associated Eip
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="myinstance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        myeip = sbercloud.vpc.Eip("myeip",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "name": "test",
-                "size": 8,
-                "share_type": "PER",
-                "charge_mode": "traffic",
-            })
-        associated = sbercloud.ecs.EipAssociate("associated",
-            public_ip=myeip.address,
-            instance_id=myinstance.id)
-        ```
-
-        ### Instance With Attached Volume
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myvolume = sbercloud.evs.Volume("myvolume",
-            name="myvolume",
-            availability_zone="ru-moscow-1a",
-            volume_type="SAS",
-            size=10)
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="myinstance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        attached = sbercloud.ecs.VolumeAttach("attached",
-            instance_id=myinstance.id,
-            volume_id=myvolume.id)
-        ```
-
-        ### Instance With Multiple Data Disks
-
-        It's possible to specify multiple `data_disks` entries to create an instance with multiple data disks, but we can't
-        ensure the volume attached order. So it's recommended to use `Instance With Attached Volume` above.
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        multi_disk = sbercloud.ecs.Instance("multi-disk",
-            name="multi-net",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            system_disk_type="SAS",
-            system_disk_size=40,
-            data_disks=[
-                {
-                    "type": "SAS",
-                    "size": 10,
-                },
-                {
-                    "type": "SAS",
-                    "size": 20,
-                },
-            ],
-            delete_disks_on_termination=True,
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        ```
-
-        ### Instance With Multiple Networks
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        multi_net = sbercloud.ecs.Instance("multi-net",
-            name="multi-net",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            networks=[
-                {
-                    "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-                },
-                {
-                    "uuid": "3c4a0d74-24b9-46cf-9d7f-8b7a4dc2f65c",
-                },
-            ])
-        ```
-
-        ### Instance with User Data (cloud-init)
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        secgroup_id = config.require_object("secgroupId")
-        myinstance = sbercloud.ecs.Instance("myinstance",
-            name="instance",
-            image_id="ad091b52-742f-469e-8f3c-fd81cadf0743",
-            flavor_id="s6.small.1",
-            key_pair="my_key_pair_name",
-            security_group_ids=[secgroup_id],
-            availability_zone="ru-moscow-1a",
-            user_data=\"\"\"#cloud-config
-        hostname: instance_1.example.com
-        fqdn: instance_1.example.com\"\"\",
-            networks=[{
-                "uuid": "55534eaa-533a-419d-9b40-ec427ea7195a",
-            }])
-        ```
-
-        ## Import
-
-        Instances can be imported by their `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/instance:Instance my_instance b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `admin_pass`, `user_data`, `data_disks`, `scheduler_hints`, `stop_before_destroy`,
-
-        `delete_disks_on_termination`, `delete_eip_on_termination`, `network/access_network`, `bandwidth`, `eip_type`,
-
-        `power_action` and arguments for pre-paid and spot price.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_compute_instance" "myinstance" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              user_data, data_disks,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2440,81 +1547,9 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_ip_v4: The first detected Fixed IPv4 address or the Floating IP.
-        :param pulumi.Input[_builtins.str] access_ip_v6: The first detected Fixed IPv6 address.
-        :param pulumi.Input[_builtins.str] admin_pass: Specifies the administrative password to assign to the instance.
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the IAM agency name which is created on IAM to provide
-               temporary credentials for ECS to access cloud services.
-        :param pulumi.Input[_builtins.str] agent_list: Specifies the agent list in comma-separated string.
-               Available agents are:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone in which to create the instance.
-               Changing this creates a new instance.
-        :param pulumi.Input[Union['InstanceBandwidthArgs', 'InstanceBandwidthArgsDict']] bandwidth: Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-               The object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] created_at: The creation time, in UTC format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: Specifies an array of one or more data disks to attach to the instance.
-               The data_disks object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.bool] delete_disks_on_termination: Specifies whether to delete the data disks when the instance is terminated.
-               Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-               in *prePaid* charging mode.
-        :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Specifies whether the EIP is released when the instance is terminated.
-               Defaults to *true*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the instance. The description consists of 0 to 85
-               characters, and can't contain '<' or '>'.
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of an *existing* EIP assigned to the instance.
-               This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] eip_type: Specifies the type of an EIP that will be automatically assigned to the instance.
-               Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies a unique id in UUID format of enterprise project.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID of the instance to be created.
-        :param pulumi.Input[_builtins.str] flavor_name: The flavor name of the instance.
-        :param pulumi.Input[_builtins.str] image_id: Required if `image_name` is empty. Specifies the image ID of the desired
-               image for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] image_name: Required if `image_id` is empty. Specifies the name of the desired image
-               for the instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the SSH keypair name used for logging in to the instance.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-               including letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: Specifies an array of one or more networks to attach to the instance. The
-               network object structure is documented below. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] power_action: Specifies the power action to be done for the instance.
-               The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-               
-               > **NOTE:** The `power_action` is a one-time action.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the the private key of the keypair in use. This parameter is mandatory
-               when replacing or unbinding a keypair and the instance is in **Running** state.
-        :param pulumi.Input[_builtins.str] public_ip: The EIP address that is associted to the instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the instance.
-               If omitted, the provider-level region will be used. Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict']]]] scheduler_hints: Specifies the scheduler with hints on how the instance should be launched. The
-               available hints are described below.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group IDs to associate with the
-               instance.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: An array of one or more security groups to associate with the instance.
-        :param pulumi.Input[_builtins.str] status: The status of the instance.
-        :param pulumi.Input[_builtins.bool] stop_before_destroy: Specifies whether to try stop instance gracefully before destroying it, thus giving
-               chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        :param pulumi.Input[_builtins.str] system_disk_id: The system disk voume ID.
-        :param pulumi.Input[_builtins.int] system_disk_size: Specifies the system disk size in GB, The value range is 1 to 1024.
-               Shrinking the disk is not supported.
-        :param pulumi.Input[_builtins.str] system_disk_type: Specifies the system disk type of the instance. Defaults to `GPSSD`.
-               Changing this creates a new instance.
-               
-               Available options are:
-               + `SAS`: high I/O disk type.
-               + `SSD`: ultra-high I/O disk type.
-               + `ESSD`: Extreme SSD type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
-        :param pulumi.Input[_builtins.str] updated_at: The last update time, in UTC format.
-        :param pulumi.Input[_builtins.str] user_data: Specifies the user data to be injected during the instance creation. Text
-               and text files can be injected. Changing this creates a new instance.
-               
-               > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-               installed, the `admin_pass` field becomes invalid.
-        :param pulumi.Input[_builtins.str] user_id: Specifies a user ID, required when using key_pair in prePaid charging mode.
-               Changing this creates a new instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceVolumeAttachedArgs', 'InstanceVolumeAttachedArgsDict']]]] volume_attacheds: An array of one or more disks to attach to the instance.
-               The volume attached object structure is documented below.
+        :param pulumi.Input[_builtins.str] flavor_id: schema: Required
+        :param pulumi.Input[_builtins.str] flavor_name: schema: Computed
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_groups: schema: Computed
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2580,43 +1615,26 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessIpV4")
     def access_ip_v4(self) -> pulumi.Output[_builtins.str]:
-        """
-        The first detected Fixed IPv4 address or the Floating IP.
-        """
         return pulumi.get(self, "access_ip_v4")
 
     @_builtins.property
     @pulumi.getter(name="accessIpV6")
     def access_ip_v6(self) -> pulumi.Output[_builtins.str]:
-        """
-        The first detected Fixed IPv6 address.
-        """
         return pulumi.get(self, "access_ip_v6")
 
     @_builtins.property
     @pulumi.getter(name="adminPass")
     def admin_pass(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the administrative password to assign to the instance.
-        """
         return pulumi.get(self, "admin_pass")
 
     @_builtins.property
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the IAM agency name which is created on IAM to provide
-        temporary credentials for ECS to access cloud services.
-        """
         return pulumi.get(self, "agency_name")
 
     @_builtins.property
     @pulumi.getter(name="agentList")
     def agent_list(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the agent list in comma-separated string.
-        Available agents are:
-        """
         return pulumi.get(self, "agent_list")
 
     @_builtins.property
@@ -2638,19 +1656,11 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the availability zone in which to create the instance.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[Optional['outputs.InstanceBandwidth']]:
-        """
-        Specifies the bandwidth of an EIP that will be automatically assigned to the instance.
-        The object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
@@ -2661,72 +1671,41 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The creation time, in UTC format.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceDataDisk']]]:
-        """
-        Specifies an array of one or more data disks to attach to the instance.
-        The data_disks object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "data_disks")
 
     @_builtins.property
     @pulumi.getter(name="deleteDisksOnTermination")
     def delete_disks_on_termination(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to delete the data disks when the instance is terminated.
-        Defaults to *false*. This parameter is valid if `charging_mode` is set to *postPaid*, and all data disks will be deleted
-        in *prePaid* charging mode.
-        """
         return pulumi.get(self, "delete_disks_on_termination")
 
     @_builtins.property
     @pulumi.getter(name="deleteEipOnTermination")
     def delete_eip_on_termination(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the EIP is released when the instance is terminated.
-        Defaults to *true*.
-        """
         return pulumi.get(self, "delete_eip_on_termination")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the description of the instance. The description consists of 0 to 85
-        characters, and can't contain '<' or '>'.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of an *existing* EIP assigned to the instance.
-        This parameter and `eip_type`, `bandwidth` are alternative. Changing this creates a new instance.
-        """
         return pulumi.get(self, "eip_id")
 
     @_builtins.property
     @pulumi.getter(name="eipType")
     def eip_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the type of an EIP that will be automatically assigned to the instance.
-        Available values are *5_bgp* (dynamic BGP) and *5_sbgp* (static BGP). Changing this creates a new instance.
-        """
         return pulumi.get(self, "eip_type")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique id in UUID format of enterprise project.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -2738,7 +1717,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the flavor ID of the instance to be created.
+        schema: Required
         """
         return pulumi.get(self, "flavor_id")
 
@@ -2746,7 +1725,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The flavor name of the instance.
+        schema: Computed
         """
         return pulumi.get(self, "flavor_name")
 
@@ -2758,27 +1737,16 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Required if `image_name` is empty. Specifies the image ID of the desired
-        image for the instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
     @pulumi.getter(name="imageName")
     def image_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Required if `image_id` is empty. Specifies the name of the desired image
-        for the instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "image_name")
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the SSH keypair name used for logging in to the instance.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
@@ -2789,19 +1757,11 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique name for the instance. The name consists of 1 to 64 characters,
-        including letters, digits, underscores (_), hyphens (-), and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def networks(self) -> pulumi.Output[Sequence['outputs.InstanceNetwork']]:
-        """
-        Specifies an array of one or more networks to attach to the instance. The
-        network object structure is documented below. Changing this creates a new instance.
-        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
@@ -2817,63 +1777,38 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="powerAction")
     def power_action(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the power action to be done for the instance.
-        The valid values are *ON*, *OFF*, *REBOOT*, *FORCE-OFF* and *FORCE-REBOOT*.
-
-        > **NOTE:** The `power_action` is a one-time action.
-        """
         return pulumi.get(self, "power_action")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the the private key of the keypair in use. This parameter is mandatory
-        when replacing or unbinding a keypair and the instance is in **Running** state.
-        """
         return pulumi.get(self, "private_key")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The EIP address that is associted to the instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the instance.
-        If omitted, the provider-level region will be used. Changing this creates a new instance.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> pulumi.Output[Sequence['outputs.InstanceSchedulerHint']]:
-        """
-        Specifies the scheduler with hints on how the instance should be launched. The
-        available hints are described below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies an array of one or more security group IDs to associate with the
-        instance.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        An array of one or more security groups to associate with the instance.
+        schema: Computed
         """
         return pulumi.get(self, "security_groups")
 
@@ -2895,18 +1830,11 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the instance.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="stopBeforeDestroy")
     def stop_before_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to try stop instance gracefully before destroying it, thus giving
-        chance for guest OS daemons to stop correctly. If instance doesn't stop within timeout, it will be destroyed anyway.
-        """
         return pulumi.get(self, "stop_before_destroy")
 
     @_builtins.property
@@ -2917,9 +1845,6 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="systemDiskId")
     def system_disk_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The system disk voume ID.
-        """
         return pulumi.get(self, "system_disk_id")
 
     @_builtins.property
@@ -2935,10 +1860,6 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the system disk size in GB, The value range is 1 to 1024.
-        Shrinking the disk is not supported.
-        """
         return pulumi.get(self, "system_disk_size")
 
     @_builtins.property
@@ -2949,60 +1870,30 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="systemDiskType")
     def system_disk_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the system disk type of the instance. Defaults to `GPSSD`.
-        Changing this creates a new instance.
-
-        Available options are:
-        + `SAS`: high I/O disk type.
-        + `SSD`: ultra-high I/O disk type.
-        + `ESSD`: Extreme SSD type.
-        """
         return pulumi.get(self, "system_disk_type")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The last update time, in UTC format.
-        """
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the user data to be injected during the instance creation. Text
-        and text files can be injected. Changing this creates a new instance.
-
-        > **NOTE:** If the `user_data` field is specified for a Linux ECS that is created using an image with Cloud-Init
-        installed, the `admin_pass` field becomes invalid.
-        """
         return pulumi.get(self, "user_data")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies a user ID, required when using key_pair in prePaid charging mode.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "user_id")
 
     @_builtins.property
     @pulumi.getter(name="volumeAttacheds")
     def volume_attacheds(self) -> pulumi.Output[Sequence['outputs.InstanceVolumeAttached']]:
-        """
-        An array of one or more disks to attach to the instance.
-        The volume attached object structure is documented below.
-        """
         return pulumi.get(self, "volume_attacheds")
 

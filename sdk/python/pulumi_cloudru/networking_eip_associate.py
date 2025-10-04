@@ -26,9 +26,6 @@ class NetworkingEipAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkingEipAssociate resource.
-        :param pulumi.Input[_builtins.str] public_ip: The EIP to associate.
-        :param pulumi.Input[_builtins.str] port_id: ID of an existing port with at least one IP address to
-               associate with this EIP.
         """
         pulumi.set(__self__, "public_ip", public_ip)
         if fixed_ip is not None:
@@ -43,9 +40,6 @@ class NetworkingEipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        The EIP to associate.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -73,10 +67,6 @@ class NetworkingEipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of an existing port with at least one IP address to
-        associate with this EIP.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -106,9 +96,6 @@ class _NetworkingEipAssociateState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkingEipAssociate resources.
-        :param pulumi.Input[_builtins.str] port_id: ID of an existing port with at least one IP address to
-               associate with this EIP.
-        :param pulumi.Input[_builtins.str] public_ip: The EIP to associate.
         """
         if fixed_ip is not None:
             pulumi.set(__self__, "fixed_ip", fixed_ip)
@@ -157,10 +144,6 @@ class _NetworkingEipAssociateState:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of an existing port with at least one IP address to
-        associate with this EIP.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -170,9 +153,6 @@ class _NetworkingEipAssociateState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The EIP to associate.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -220,44 +200,9 @@ class NetworkingEipAssociate(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Associates an EIP to a port.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        myport = sbercloud.Vpc.get_port(network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
-        myeip = sbercloud.vpc.Eip("myeip",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "name": "test",
-                "size": 8,
-                "share_type": "PER",
-                "charge_mode": "traffic",
-            })
-        associated = sbercloud.NetworkingEipAssociate("associated",
-            public_ip=myeip.address,
-            port_id=myport.id)
-        ```
-
-        ## Import
-
-        EIP associations can be imported using the `id` of the EIP, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/networkingEipAssociate:NetworkingEipAssociate eip 2c7f39f3-702b-48d1-940c-b50384177ee1
-        ```
-
+        Create a NetworkingEipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] port_id: ID of an existing port with at least one IP address to
-               associate with this EIP.
-        :param pulumi.Input[_builtins.str] public_ip: The EIP to associate.
         """
         ...
     @overload
@@ -266,39 +211,7 @@ class NetworkingEipAssociate(pulumi.CustomResource):
                  args: NetworkingEipAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Associates an EIP to a port.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        myport = sbercloud.Vpc.get_port(network_id="a5bbd213-e1d3-49b6-aed1-9df60ea94b9a")
-        myeip = sbercloud.vpc.Eip("myeip",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "name": "test",
-                "size": 8,
-                "share_type": "PER",
-                "charge_mode": "traffic",
-            })
-        associated = sbercloud.NetworkingEipAssociate("associated",
-            public_ip=myeip.address,
-            port_id=myport.id)
-        ```
-
-        ## Import
-
-        EIP associations can be imported using the `id` of the EIP, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/networkingEipAssociate:NetworkingEipAssociate eip 2c7f39f3-702b-48d1-940c-b50384177ee1
-        ```
-
+        Create a NetworkingEipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NetworkingEipAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -363,9 +276,6 @@ class NetworkingEipAssociate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] port_id: ID of an existing port with at least one IP address to
-               associate with this EIP.
-        :param pulumi.Input[_builtins.str] public_ip: The EIP to associate.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -399,18 +309,11 @@ class NetworkingEipAssociate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        ID of an existing port with at least one IP address to
-        associate with this EIP.
-        """
         return pulumi.get(self, "port_id")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The EIP to associate.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property

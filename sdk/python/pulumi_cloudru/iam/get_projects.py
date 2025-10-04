@@ -49,17 +49,11 @@ class GetProjectsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The project name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def projects(self) -> Sequence['outputs.GetProjectsProjectResult']:
-        """
-        The details of the query projects. The structure is documented below.
-        """
         return pulumi.get(self, "projects")
 
 
@@ -77,32 +71,7 @@ class AwaitableGetProjectsResult(GetProjectsResult):
 def get_projects(name: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectsResult:
     """
-    Use this data source to query the project list within SberCloud.
-
-    > You *must* have IAM read privileges to use this data source.
-
-    ## Example Usage
-
-    ### Obtain project information by name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Iam.get_projects(name="ru-moscow-1")
-    ```
-
-    ### Obtain special project information by name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Iam.get_projects(name="MOS")
-    ```
-
-
-    :param _builtins.str name: Specifies the project name to query.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -116,32 +85,7 @@ def get_projects(name: Optional[_builtins.str] = None,
 def get_projects_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
-    Use this data source to query the project list within SberCloud.
-
-    > You *must* have IAM read privileges to use this data source.
-
-    ## Example Usage
-
-    ### Obtain project information by name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Iam.get_projects(name="ru-moscow-1")
-    ```
-
-    ### Obtain special project information by name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Iam.get_projects(name="MOS")
-    ```
-
-
-    :param _builtins.str name: Specifies the project name to query.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

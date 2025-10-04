@@ -47,9 +47,6 @@ class GetFgsApplicationTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def category(self) -> Optional[_builtins.str]:
-        """
-        The template category.
-        """
         return pulumi.get(self, "category")
 
     @_builtins.property
@@ -68,18 +65,11 @@ class GetFgsApplicationTemplatesResult:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[_builtins.str]:
-        """
-        The template runtime.
-        """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetFgsApplicationTemplatesTemplateResult']:
-        """
-        All application templates that match the filter parameters.  
-        The templates structure is documented below.
-        """
         return pulumi.get(self, "templates")
 
 
@@ -101,42 +91,7 @@ def get_fgs_application_templates(category: Optional[_builtins.str] = None,
                                   runtime: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsApplicationTemplatesResult:
     """
-    Use this data source to get the list of application templates within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_fgs_application_templates(runtime="Python2.7")
-    ```
-
-
-    :param _builtins.str category: Specifies the category used to query the application templates.
-    :param _builtins.str region: Specifies the region where the application templates are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the runtime name used to query the application templates.  
-           The valid values are as follows:
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Node.js16.17**
-           + **Node.js18.15**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Python3.10**
-           + **Java8**
-           + **Java11**
-           + **Go1.x**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **http**
-           + **PHP7.3**
-           + **Custom**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['category'] = category
@@ -156,42 +111,7 @@ def get_fgs_application_templates_output(category: Optional[pulumi.Input[Optiona
                                          runtime: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsApplicationTemplatesResult]:
     """
-    Use this data source to get the list of application templates within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_fgs_application_templates(runtime="Python2.7")
-    ```
-
-
-    :param _builtins.str category: Specifies the category used to query the application templates.
-    :param _builtins.str region: Specifies the region where the application templates are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the runtime name used to query the application templates.  
-           The valid values are as follows:
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Node.js16.17**
-           + **Node.js18.15**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Python3.10**
-           + **Java8**
-           + **Java11**
-           + **Go1.x**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **http**
-           + **PHP7.3**
-           + **Custom**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['category'] = category

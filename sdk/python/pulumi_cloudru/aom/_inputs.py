@@ -32,17 +32,8 @@ MYPY = False
 if not MYPY:
     class ServiceDiscoveryRuleDiscoveryRuleArgsDict(TypedDict):
         check_contents: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the matched value. This is a list of strings.
-        """
         check_mode: pulumi.Input[_builtins.str]
-        """
-        Specifies the match condition. The values can be **contain** and **equals**.
-        """
         check_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the match type. The values can be **cmdLine**, **env** and **scope**.
-        """
 elif False:
     ServiceDiscoveryRuleDiscoveryRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -52,11 +43,6 @@ class ServiceDiscoveryRuleDiscoveryRuleArgs:
                  check_contents: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  check_mode: pulumi.Input[_builtins.str],
                  check_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] check_contents: Specifies the matched value. This is a list of strings.
-        :param pulumi.Input[_builtins.str] check_mode: Specifies the match condition. The values can be **contain** and **equals**.
-        :param pulumi.Input[_builtins.str] check_type: Specifies the match type. The values can be **cmdLine**, **env** and **scope**.
-        """
         pulumi.set(__self__, "check_contents", check_contents)
         pulumi.set(__self__, "check_mode", check_mode)
         pulumi.set(__self__, "check_type", check_type)
@@ -64,9 +50,6 @@ class ServiceDiscoveryRuleDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="checkContents")
     def check_contents(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the matched value. This is a list of strings.
-        """
         return pulumi.get(self, "check_contents")
 
     @check_contents.setter
@@ -76,9 +59,6 @@ class ServiceDiscoveryRuleDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="checkMode")
     def check_mode(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the match condition. The values can be **contain** and **equals**.
-        """
         return pulumi.get(self, "check_mode")
 
     @check_mode.setter
@@ -88,9 +68,6 @@ class ServiceDiscoveryRuleDiscoveryRuleArgs:
     @_builtins.property
     @pulumi.getter(name="checkType")
     def check_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the match type. The values can be **cmdLine**, **env** and **scope**.
-        """
         return pulumi.get(self, "check_type")
 
     @check_type.setter
@@ -101,20 +78,8 @@ class ServiceDiscoveryRuleDiscoveryRuleArgs:
 if not MYPY:
     class ServiceDiscoveryRuleLogPathRuleArgsDict(TypedDict):
         args: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the command. This is a list of strings.
-        """
         name_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the value type, which can be **cmdLineHash**.
-        """
         values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the log path. This is a list of strings.
-
-        <a name="name_rules_object"></a>
-        The `name_rules` block supports:
-        """
 elif False:
     ServiceDiscoveryRuleLogPathRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -124,14 +89,6 @@ class ServiceDiscoveryRuleLogPathRuleArgs:
                  args: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  name_type: pulumi.Input[_builtins.str],
                  values: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Specifies the command. This is a list of strings.
-        :param pulumi.Input[_builtins.str] name_type: Specifies the value type, which can be **cmdLineHash**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Specifies the log path. This is a list of strings.
-               
-               <a name="name_rules_object"></a>
-               The `name_rules` block supports:
-        """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "name_type", name_type)
         pulumi.set(__self__, "values", values)
@@ -139,9 +96,6 @@ class ServiceDiscoveryRuleLogPathRuleArgs:
     @_builtins.property
     @pulumi.getter
     def args(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the command. This is a list of strings.
-        """
         return pulumi.get(self, "args")
 
     @args.setter
@@ -151,9 +105,6 @@ class ServiceDiscoveryRuleLogPathRuleArgs:
     @_builtins.property
     @pulumi.getter(name="nameType")
     def name_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the value type, which can be **cmdLineHash**.
-        """
         return pulumi.get(self, "name_type")
 
     @name_type.setter
@@ -163,12 +114,6 @@ class ServiceDiscoveryRuleLogPathRuleArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the log path. This is a list of strings.
-
-        <a name="name_rules_object"></a>
-        The `name_rules` block supports:
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -179,30 +124,7 @@ class ServiceDiscoveryRuleLogPathRuleArgs:
 if not MYPY:
     class ServiceDiscoveryRuleNameRulesArgsDict(TypedDict):
         application_name_rules: pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesApplicationNameRuleArgsDict']]]
-        """
-        Specifies the application name rule. If the value of `name_type` is
-        **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-        the command are extracted. If the value of `name_type` is **env**, `args` is in the format of ["aa"], indicating that
-        the environment variable named aa is extracted. If the value of `name_type` is **str**, `args` is in the format of
-        ["fix"], indicating that the application name is suffixed with fix. If the value of `name_type` is **cmdLineHash**,
-        `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-        ser when the startup command is 0001. The object structure is documented below.
-
-        <a name="basic_name_rule_object"></a>
-        The `service_name_rule` block and `application_name_rule` block support:
-        """
         service_name_rules: pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesServiceNameRuleArgsDict']]]
-        """
-        Specifies the service name rule. If there are multiple objects in the array,
-        the character strings extracted from these objects constitute the service name. If the value of `name_type` is
-        **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-        in the command are extracted. If the value of `name_type` is **env**, `args` is in the format of ["aa"],
-        indicating that the environment variable named aa is extracted. If the value of `name_type` is **str**, `args` is in the
-        format of ["fix"], indicating that the service name is suffixed with fix. If the value of `name_type` is
-        **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-        service name is ser when the startup command is 0001. The object structure is
-        documented below.
-        """
 elif False:
     ServiceDiscoveryRuleNameRulesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -211,45 +133,12 @@ class ServiceDiscoveryRuleNameRulesArgs:
     def __init__(__self__, *,
                  application_name_rules: pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs']]],
                  service_name_rules: pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesServiceNameRuleArgs']]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs']]] application_name_rules: Specifies the application name rule. If the value of `name_type` is
-               **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-               the command are extracted. If the value of `name_type` is **env**, `args` is in the format of ["aa"], indicating that
-               the environment variable named aa is extracted. If the value of `name_type` is **str**, `args` is in the format of
-               ["fix"], indicating that the application name is suffixed with fix. If the value of `name_type` is **cmdLineHash**,
-               `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-               ser when the startup command is 0001. The object structure is documented below.
-               
-               <a name="basic_name_rule_object"></a>
-               The `service_name_rule` block and `application_name_rule` block support:
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesServiceNameRuleArgs']]] service_name_rules: Specifies the service name rule. If there are multiple objects in the array,
-               the character strings extracted from these objects constitute the service name. If the value of `name_type` is
-               **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-               in the command are extracted. If the value of `name_type` is **env**, `args` is in the format of ["aa"],
-               indicating that the environment variable named aa is extracted. If the value of `name_type` is **str**, `args` is in the
-               format of ["fix"], indicating that the service name is suffixed with fix. If the value of `name_type` is
-               **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-               service name is ser when the startup command is 0001. The object structure is
-               documented below.
-        """
         pulumi.set(__self__, "application_name_rules", application_name_rules)
         pulumi.set(__self__, "service_name_rules", service_name_rules)
 
     @_builtins.property
     @pulumi.getter(name="applicationNameRules")
     def application_name_rules(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs']]]:
-        """
-        Specifies the application name rule. If the value of `name_type` is
-        **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end in
-        the command are extracted. If the value of `name_type` is **env**, `args` is in the format of ["aa"], indicating that
-        the environment variable named aa is extracted. If the value of `name_type` is **str**, `args` is in the format of
-        ["fix"], indicating that the application name is suffixed with fix. If the value of `name_type` is **cmdLineHash**,
-        `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the application name is
-        ser when the startup command is 0001. The object structure is documented below.
-
-        <a name="basic_name_rule_object"></a>
-        The `service_name_rule` block and `application_name_rule` block support:
-        """
         return pulumi.get(self, "application_name_rules")
 
     @application_name_rules.setter
@@ -259,17 +148,6 @@ class ServiceDiscoveryRuleNameRulesArgs:
     @_builtins.property
     @pulumi.getter(name="serviceNameRules")
     def service_name_rules(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceDiscoveryRuleNameRulesServiceNameRuleArgs']]]:
-        """
-        Specifies the service name rule. If there are multiple objects in the array,
-        the character strings extracted from these objects constitute the service name. If the value of `name_type` is
-        **cmdLine**, `args` is in the format of ["start", "end"], indicating that the characters between start and end
-        in the command are extracted. If the value of `name_type` is **env**, `args` is in the format of ["aa"],
-        indicating that the environment variable named aa is extracted. If the value of `name_type` is **str**, `args` is in the
-        format of ["fix"], indicating that the service name is suffixed with fix. If the value of `name_type` is
-        **cmdLineHash**, `args` is in the format of ["0001"] and `value` is in the format of ["ser"], indicating that the
-        service name is ser when the startup command is 0001. The object structure is
-        documented below.
-        """
         return pulumi.get(self, "service_name_rules")
 
     @service_name_rules.setter
@@ -280,19 +158,8 @@ class ServiceDiscoveryRuleNameRulesArgs:
 if not MYPY:
     class ServiceDiscoveryRuleNameRulesApplicationNameRuleArgsDict(TypedDict):
         args: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the input value.
-        """
         name_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-        and **str**.
-        """
         values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the application name, which is mandatory only when the value of
-        `name_type` is **cmdLineHash**.
-        """
 elif False:
     ServiceDiscoveryRuleNameRulesApplicationNameRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -302,13 +169,6 @@ class ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs:
                  args: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  name_type: pulumi.Input[_builtins.str],
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Specifies the input value.
-        :param pulumi.Input[_builtins.str] name_type: Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-               and **str**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Specifies the application name, which is mandatory only when the value of
-               `name_type` is **cmdLineHash**.
-        """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "name_type", name_type)
         if values is not None:
@@ -317,9 +177,6 @@ class ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs:
     @_builtins.property
     @pulumi.getter
     def args(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the input value.
-        """
         return pulumi.get(self, "args")
 
     @args.setter
@@ -329,10 +186,6 @@ class ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs:
     @_builtins.property
     @pulumi.getter(name="nameType")
     def name_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-        and **str**.
-        """
         return pulumi.get(self, "name_type")
 
     @name_type.setter
@@ -342,10 +195,6 @@ class ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the application name, which is mandatory only when the value of
-        `name_type` is **cmdLineHash**.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -356,19 +205,8 @@ class ServiceDiscoveryRuleNameRulesApplicationNameRuleArgs:
 if not MYPY:
     class ServiceDiscoveryRuleNameRulesServiceNameRuleArgsDict(TypedDict):
         args: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the input value.
-        """
         name_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-        and **str**.
-        """
         values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the application name, which is mandatory only when the value of
-        `name_type` is **cmdLineHash**.
-        """
 elif False:
     ServiceDiscoveryRuleNameRulesServiceNameRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -378,13 +216,6 @@ class ServiceDiscoveryRuleNameRulesServiceNameRuleArgs:
                  args: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  name_type: pulumi.Input[_builtins.str],
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Specifies the input value.
-        :param pulumi.Input[_builtins.str] name_type: Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-               and **str**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Specifies the application name, which is mandatory only when the value of
-               `name_type` is **cmdLineHash**.
-        """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "name_type", name_type)
         if values is not None:
@@ -393,9 +224,6 @@ class ServiceDiscoveryRuleNameRulesServiceNameRuleArgs:
     @_builtins.property
     @pulumi.getter
     def args(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the input value.
-        """
         return pulumi.get(self, "args")
 
     @args.setter
@@ -405,10 +233,6 @@ class ServiceDiscoveryRuleNameRulesServiceNameRuleArgs:
     @_builtins.property
     @pulumi.getter(name="nameType")
     def name_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the value type. The value can be **cmdLineHash**, **cmdLine**, **env**
-        and **str**.
-        """
         return pulumi.get(self, "name_type")
 
     @name_type.setter
@@ -418,10 +242,6 @@ class ServiceDiscoveryRuleNameRulesServiceNameRuleArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the application name, which is mandatory only when the value of
-        `name_type` is **cmdLineHash**.
-        """
         return pulumi.get(self, "values")
 
     @values.setter

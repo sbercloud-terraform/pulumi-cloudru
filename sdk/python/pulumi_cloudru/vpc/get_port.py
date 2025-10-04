@@ -93,18 +93,11 @@ class GetPortResult:
     @_builtins.property
     @pulumi.getter(name="allFixedIps")
     def all_fixed_ips(self) -> Sequence[_builtins.str]:
-        """
-        The collection of Fixed IP addresses on the port in the
-        order returned by the Network v2 API.
-        """
         return pulumi.get(self, "all_fixed_ips")
 
     @_builtins.property
     @pulumi.getter(name="allSecurityGroupIds")
     def all_security_group_ids(self) -> Sequence[_builtins.str]:
-        """
-        The set of security group IDs applied on the port.
-        """
         return pulumi.get(self, "all_security_group_ids")
 
     @_builtins.property
@@ -218,32 +211,7 @@ def get_port(admin_state_up: Optional[_builtins.bool] = None,
              tenant_id: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPortResult:
     """
-    Use this data source to get the ID of an available Sbercloud port.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    port1 = sbercloud.Vpc.get_port(name="port_1")
-    ```
-
-
-    :param _builtins.bool admin_state_up: The administrative state of the port.
-    :param _builtins.str device_id: The ID of the device the port belongs to.
-    :param _builtins.str device_owner: The device owner of the port.
-    :param _builtins.str fixed_ip: The port IP address filter.
-    :param _builtins.str mac_address: The MAC address of the port.
-    :param _builtins.str name: The name of the port.
-    :param _builtins.str network_id: The ID of the network the port belongs to.
-    :param _builtins.str port_id: The ID of the port.
-    :param _builtins.str project_id: The owner of the port.
-    :param _builtins.str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve port ids. If omitted, the
-           `region` argument of the provider is used.
-    :param Sequence[_builtins.str] security_group_ids: The list of port security group IDs to filter.
-    :param _builtins.str status: The status of the port.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up
@@ -295,32 +263,7 @@ def get_port_output(admin_state_up: Optional[pulumi.Input[Optional[_builtins.boo
                     tenant_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPortResult]:
     """
-    Use this data source to get the ID of an available Sbercloud port.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    port1 = sbercloud.Vpc.get_port(name="port_1")
-    ```
-
-
-    :param _builtins.bool admin_state_up: The administrative state of the port.
-    :param _builtins.str device_id: The ID of the device the port belongs to.
-    :param _builtins.str device_owner: The device owner of the port.
-    :param _builtins.str fixed_ip: The port IP address filter.
-    :param _builtins.str mac_address: The MAC address of the port.
-    :param _builtins.str name: The name of the port.
-    :param _builtins.str network_id: The ID of the network the port belongs to.
-    :param _builtins.str port_id: The ID of the port.
-    :param _builtins.str project_id: The owner of the port.
-    :param _builtins.str region: The region in which to obtain the V2 Neutron client.
-           A Neutron client is needed to retrieve port ids. If omitted, the
-           `region` argument of the provider is used.
-    :param Sequence[_builtins.str] security_group_ids: The list of port security group IDs to filter.
-    :param _builtins.str status: The status of the port.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['adminStateUp'] = admin_state_up

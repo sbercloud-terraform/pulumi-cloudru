@@ -12,68 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manage a log stream resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### create a log stream
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/lts"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testGroup, err := lts.NewGroup(ctx, "test_group", &lts.GroupArgs{
-//				GroupName: pulumi.String("test_group"),
-//				TtlInDays: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = lts.NewStream(ctx, "test_stream", &lts.StreamArgs{
-//				GroupId:    testGroup.ID(),
-//				StreamName: pulumi.String("testacc_stream"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Log stream can be imported using the lts group ID and stream ID separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Lts/stream:Stream stream_1 393f2bfd-2244-11ea-adb7-286ed488c87f/72855918-20b1-11ea-80e0-286ed488c880
-// ```
 type Stream struct {
 	pulumi.CustomResourceState
 
 	CreatedAt           pulumi.StringOutput `pulumi:"createdAt"`
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Number of log stream filters.
-	FilterCount pulumi.IntOutput `pulumi:"filterCount"`
-	// Specifies the ID of a created log group. Changing this parameter will create
-	// a new resource.
-	GroupId pulumi.StringOutput `pulumi:"groupId"`
+	FilterCount         pulumi.IntOutput    `pulumi:"filterCount"`
+	GroupId             pulumi.StringOutput `pulumi:"groupId"`
 	// Whether to favorite the log stream.
-	IsFavorite pulumi.BoolPtrOutput `pulumi:"isFavorite"`
-	// The region in which to create the log stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log stream resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the log stream name. Changing this parameter will create a new
-	// resource.
+	IsFavorite pulumi.BoolPtrOutput   `pulumi:"isFavorite"`
+	Region     pulumi.StringOutput    `pulumi:"region"`
 	StreamName pulumi.StringOutput    `pulumi:"streamName"`
 	Tags       pulumi.StringMapOutput `pulumi:"tags"`
 	TtlInDays  pulumi.IntOutput       `pulumi:"ttlInDays"`
@@ -117,18 +65,11 @@ func GetStream(ctx *pulumi.Context,
 type streamState struct {
 	CreatedAt           *string `pulumi:"createdAt"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Number of log stream filters.
-	FilterCount *int `pulumi:"filterCount"`
-	// Specifies the ID of a created log group. Changing this parameter will create
-	// a new resource.
-	GroupId *string `pulumi:"groupId"`
+	FilterCount         *int    `pulumi:"filterCount"`
+	GroupId             *string `pulumi:"groupId"`
 	// Whether to favorite the log stream.
-	IsFavorite *bool `pulumi:"isFavorite"`
-	// The region in which to create the log stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log stream resource.
-	Region *string `pulumi:"region"`
-	// Specifies the log stream name. Changing this parameter will create a new
-	// resource.
+	IsFavorite *bool             `pulumi:"isFavorite"`
+	Region     *string           `pulumi:"region"`
 	StreamName *string           `pulumi:"streamName"`
 	Tags       map[string]string `pulumi:"tags"`
 	TtlInDays  *int              `pulumi:"ttlInDays"`
@@ -137,18 +78,11 @@ type streamState struct {
 type StreamState struct {
 	CreatedAt           pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Number of log stream filters.
-	FilterCount pulumi.IntPtrInput
-	// Specifies the ID of a created log group. Changing this parameter will create
-	// a new resource.
-	GroupId pulumi.StringPtrInput
+	FilterCount         pulumi.IntPtrInput
+	GroupId             pulumi.StringPtrInput
 	// Whether to favorite the log stream.
 	IsFavorite pulumi.BoolPtrInput
-	// The region in which to create the log stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log stream resource.
-	Region pulumi.StringPtrInput
-	// Specifies the log stream name. Changing this parameter will create a new
-	// resource.
+	Region     pulumi.StringPtrInput
 	StreamName pulumi.StringPtrInput
 	Tags       pulumi.StringMapInput
 	TtlInDays  pulumi.IntPtrInput
@@ -160,16 +94,10 @@ func (StreamState) ElementType() reflect.Type {
 
 type streamArgs struct {
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the ID of a created log group. Changing this parameter will create
-	// a new resource.
-	GroupId string `pulumi:"groupId"`
+	GroupId             string  `pulumi:"groupId"`
 	// Whether to favorite the log stream.
-	IsFavorite *bool `pulumi:"isFavorite"`
-	// The region in which to create the log stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log stream resource.
-	Region *string `pulumi:"region"`
-	// Specifies the log stream name. Changing this parameter will create a new
-	// resource.
+	IsFavorite *bool             `pulumi:"isFavorite"`
+	Region     *string           `pulumi:"region"`
 	StreamName string            `pulumi:"streamName"`
 	Tags       map[string]string `pulumi:"tags"`
 	TtlInDays  *int              `pulumi:"ttlInDays"`
@@ -178,16 +106,10 @@ type streamArgs struct {
 // The set of arguments for constructing a Stream resource.
 type StreamArgs struct {
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the ID of a created log group. Changing this parameter will create
-	// a new resource.
-	GroupId pulumi.StringInput
+	GroupId             pulumi.StringInput
 	// Whether to favorite the log stream.
 	IsFavorite pulumi.BoolPtrInput
-	// The region in which to create the log stream resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log stream resource.
-	Region pulumi.StringPtrInput
-	// Specifies the log stream name. Changing this parameter will create a new
-	// resource.
+	Region     pulumi.StringPtrInput
 	StreamName pulumi.StringInput
 	Tags       pulumi.StringMapInput
 	TtlInDays  pulumi.IntPtrInput
@@ -288,13 +210,10 @@ func (o StreamOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Number of log stream filters.
 func (o StreamOutput) FilterCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Stream) pulumi.IntOutput { return v.FilterCount }).(pulumi.IntOutput)
 }
 
-// Specifies the ID of a created log group. Changing this parameter will create
-// a new resource.
 func (o StreamOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
@@ -304,14 +223,10 @@ func (o StreamOutput) IsFavorite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.BoolPtrOutput { return v.IsFavorite }).(pulumi.BoolPtrOutput)
 }
 
-// The region in which to create the log stream resource. If omitted, the
-// provider-level region will be used. Changing this creates a new log stream resource.
 func (o StreamOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the log stream name. Changing this parameter will create a new
-// resource.
 func (o StreamOutput) StreamName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringOutput { return v.StreamName }).(pulumi.StringOutput)
 }

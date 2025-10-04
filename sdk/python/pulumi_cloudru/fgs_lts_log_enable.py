@@ -22,8 +22,7 @@ class FgsLtsLogEnableArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FgsLtsLogEnable resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the LTS log function is to be enabled.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] region: The region where the LTS log function is to be enabled.
         """
         if region is not None:
             pulumi.set(__self__, "region", region)
@@ -32,8 +31,7 @@ class FgsLtsLogEnableArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the LTS log function is to be enabled.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the LTS log function is to be enabled.
         """
         return pulumi.get(self, "region")
 
@@ -48,8 +46,7 @@ class _FgsLtsLogEnableState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FgsLtsLogEnable resources.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the LTS log function is to be enabled.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] region: The region where the LTS log function is to be enabled.
         """
         if region is not None:
             pulumi.set(__self__, "region", region)
@@ -58,8 +55,7 @@ class _FgsLtsLogEnableState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the LTS log function is to be enabled.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the LTS log function is to be enabled.
         """
         return pulumi.get(self, "region")
 
@@ -77,24 +73,10 @@ class FgsLtsLogEnable(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Use this resource to enable LTS logs for FunctionGraph within SberCloud.
-
-        > This resource is only a one-time action resource for enabling LTS logs for FunctionGraph. Deleting this resource will
-           not disable the LTS logs, but will only remove the resource information from the tfstate file.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.FgsLtsLogEnable("test")
-        ```
-
+        Create a FgsLtsLogEnable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the LTS log function is to be enabled.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] region: The region where the LTS log function is to be enabled.
         """
         ...
     @overload
@@ -103,20 +85,7 @@ class FgsLtsLogEnable(pulumi.CustomResource):
                  args: Optional[FgsLtsLogEnableArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to enable LTS logs for FunctionGraph within SberCloud.
-
-        > This resource is only a one-time action resource for enabling LTS logs for FunctionGraph. Deleting this resource will
-           not disable the LTS logs, but will only remove the resource information from the tfstate file.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.FgsLtsLogEnable("test")
-        ```
-
+        Create a FgsLtsLogEnable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FgsLtsLogEnableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,8 +130,7 @@ class FgsLtsLogEnable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the LTS log function is to be enabled.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] region: The region where the LTS log function is to be enabled.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -175,8 +143,7 @@ class FgsLtsLogEnable(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the LTS log function is to be enabled.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the LTS log function is to be enabled.
         """
         return pulumi.get(self, "region")
 

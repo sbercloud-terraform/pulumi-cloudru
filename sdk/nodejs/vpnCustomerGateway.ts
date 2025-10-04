@@ -4,79 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a VPN customer gateway resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Manages a common VPN customer gateway
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const idValue = config.requireObject<any>("idValue");
- * const test = new sbercloud.VpnCustomerGateway("test", {
- *     name: name,
- *     idValue: idValue,
- * });
- * ```
- *
- * ### Manages a VPN customer gateway with CA certificate
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const idValue = config.requireObject<any>("idValue");
- * const certificateContent = config.requireObject<any>("certificateContent");
- * const test = new sbercloud.VpnCustomerGateway("test", {
- *     name: name,
- *     idValue: idValue,
- *     certificateContent: certificateContent,
- * });
- * ```
- *
- * ## Import
- *
- * The customer gateway can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/vpnCustomerGateway:VpnCustomerGateway test <id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attribute is `certificate_content`. It is generally recommended
- *
- * running `pulumi preview` after importing the resource. You can then decide if changes should be applied to the instance,
- *
- * or the resource definition should be updated to align with the instance. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_vpn_customer_gateway" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       certificate_content,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class VpnCustomerGateway extends pulumi.CustomResource {
     /**
      * Get an existing VpnCustomerGateway resource's state with the given name, ID, and optional extra
@@ -106,83 +33,42 @@ export class VpnCustomerGateway extends pulumi.CustomResource {
     }
 
     /**
-     * The BGP ASN number of the customer gateway.
-     * The value ranges from **1** to **4294967295**, the default value is **65000**.
-     * Set this parameter to **0** when `idType` is set to **fqdn**.
-     *
-     * Changing this parameter will create a new resource.
+     * The BGP ASN number of the customer gateway, the default value is 65000.
      */
     declare public readonly asn: pulumi.Output<number | undefined>;
-    /**
-     * The CA certificate content of the customer gateway.
-     */
     declare public readonly certificateContent: pulumi.Output<string | undefined>;
-    /**
-     * Indicates the ID of the customer gateway certificate.
-     */
     declare public /*out*/ readonly certificateId: pulumi.Output<string>;
     /**
      * The create time.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Indicates the expire time of the customer gateway certificate.
-     */
     declare public /*out*/ readonly expireTime: pulumi.Output<string>;
     /**
-     * Specifies the identifier type of a customer gateway.
-     * The value can be **ip** or **fqdn**. The default value is **ip**.
+     * The identifier type of a customer gateway.
      */
     declare public readonly idType: pulumi.Output<string | undefined>;
     /**
-     * Specifies the identifier of a customer gateway.
-     * When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-     * When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-     * digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-     *
-     * Changing this parameter will create a new resource.
+     * The identifier of a customer gateway.
      */
     declare public readonly idValue: pulumi.Output<string>;
     /**
      * The IP address of the customer gateway.
      */
     declare public readonly ip: pulumi.Output<string | undefined>;
-    /**
-     * Indicates whether the customer gateway certificate is updatable.
-     */
     declare public /*out*/ readonly isUpdatable: pulumi.Output<boolean>;
-    /**
-     * Indicates the issuer of the customer gateway certificate.
-     */
     declare public /*out*/ readonly issuer: pulumi.Output<string>;
     /**
      * The customer gateway name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * The route mode of the customer gateway.
      */
     declare public readonly routeMode: pulumi.Output<string | undefined>;
-    /**
-     * Indicates the serial number of the customer gateway certificate.
-     */
     declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
-    /**
-     * Indicates the signature algorithm of the customer gateway certificate.
-     */
     declare public /*out*/ readonly signatureAlgorithm: pulumi.Output<string>;
-    /**
-     * Indicates the subject of the customer gateway certificate.
-     */
     declare public /*out*/ readonly subject: pulumi.Output<string>;
-    /**
-     * Specifies the tags of the customer gateway.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The update time.
@@ -251,83 +137,42 @@ export class VpnCustomerGateway extends pulumi.CustomResource {
  */
 export interface VpnCustomerGatewayState {
     /**
-     * The BGP ASN number of the customer gateway.
-     * The value ranges from **1** to **4294967295**, the default value is **65000**.
-     * Set this parameter to **0** when `idType` is set to **fqdn**.
-     *
-     * Changing this parameter will create a new resource.
+     * The BGP ASN number of the customer gateway, the default value is 65000.
      */
     asn?: pulumi.Input<number>;
-    /**
-     * The CA certificate content of the customer gateway.
-     */
     certificateContent?: pulumi.Input<string>;
-    /**
-     * Indicates the ID of the customer gateway certificate.
-     */
     certificateId?: pulumi.Input<string>;
     /**
      * The create time.
      */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Indicates the expire time of the customer gateway certificate.
-     */
     expireTime?: pulumi.Input<string>;
     /**
-     * Specifies the identifier type of a customer gateway.
-     * The value can be **ip** or **fqdn**. The default value is **ip**.
+     * The identifier type of a customer gateway.
      */
     idType?: pulumi.Input<string>;
     /**
-     * Specifies the identifier of a customer gateway.
-     * When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-     * When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-     * digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-     *
-     * Changing this parameter will create a new resource.
+     * The identifier of a customer gateway.
      */
     idValue?: pulumi.Input<string>;
     /**
      * The IP address of the customer gateway.
      */
     ip?: pulumi.Input<string>;
-    /**
-     * Indicates whether the customer gateway certificate is updatable.
-     */
     isUpdatable?: pulumi.Input<boolean>;
-    /**
-     * Indicates the issuer of the customer gateway certificate.
-     */
     issuer?: pulumi.Input<string>;
     /**
      * The customer gateway name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * The route mode of the customer gateway.
      */
     routeMode?: pulumi.Input<string>;
-    /**
-     * Indicates the serial number of the customer gateway certificate.
-     */
     serialNumber?: pulumi.Input<string>;
-    /**
-     * Indicates the signature algorithm of the customer gateway certificate.
-     */
     signatureAlgorithm?: pulumi.Input<string>;
-    /**
-     * Indicates the subject of the customer gateway certificate.
-     */
     subject?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of the customer gateway.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The update time.
@@ -340,29 +185,16 @@ export interface VpnCustomerGatewayState {
  */
 export interface VpnCustomerGatewayArgs {
     /**
-     * The BGP ASN number of the customer gateway.
-     * The value ranges from **1** to **4294967295**, the default value is **65000**.
-     * Set this parameter to **0** when `idType` is set to **fqdn**.
-     *
-     * Changing this parameter will create a new resource.
+     * The BGP ASN number of the customer gateway, the default value is 65000.
      */
     asn?: pulumi.Input<number>;
-    /**
-     * The CA certificate content of the customer gateway.
-     */
     certificateContent?: pulumi.Input<string>;
     /**
-     * Specifies the identifier type of a customer gateway.
-     * The value can be **ip** or **fqdn**. The default value is **ip**.
+     * The identifier type of a customer gateway.
      */
     idType?: pulumi.Input<string>;
     /**
-     * Specifies the identifier of a customer gateway.
-     * When `idType` is set to **ip**, the value is an IPv4 address in dotted decimal notation, for example, 192.168.45.7.
-     * When `idType` is set to **fqdn**, the value is a string of characters that can contain uppercase letters, lowercase letters,
-     * digits, and special characters. Spaces and the following special characters are not supported: & < > [ ] \ ?.
-     *
-     * Changing this parameter will create a new resource.
+     * The identifier of a customer gateway.
      */
     idValue?: pulumi.Input<string>;
     /**
@@ -373,17 +205,10 @@ export interface VpnCustomerGatewayArgs {
      * The customer gateway name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * The route mode of the customer gateway.
      */
     routeMode?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of the customer gateway.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -54,9 +54,6 @@ class GetKpsRunningTasksResult:
     @_builtins.property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetKpsRunningTasksTaskResult']:
-        """
-        The list of the running tasks.
-        """
         return pulumi.get(self, "tasks")
 
 
@@ -74,20 +71,7 @@ class AwaitableGetKpsRunningTasksResult(GetKpsRunningTasksResult):
 def get_kps_running_tasks(region: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKpsRunningTasksResult:
     """
-    Use this data source to get a list of running tasks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_kps_running_tasks()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -101,20 +85,7 @@ def get_kps_running_tasks(region: Optional[_builtins.str] = None,
 def get_kps_running_tasks_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKpsRunningTasksResult]:
     """
-    Use this data source to get a list of running tasks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_kps_running_tasks()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

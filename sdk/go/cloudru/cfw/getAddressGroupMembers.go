@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW address group members.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			groupId := cfg.RequireObject("groupId")
-//			_, err := cfw.GetAddressGroupMembers(ctx, &cfw.GetAddressGroupMembersArgs{
-//				GroupId: groupId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAddressGroupMembers(ctx *pulumi.Context, args *GetAddressGroupMembersArgs, opts ...pulumi.InvokeOption) (*GetAddressGroupMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressGroupMembersResult
@@ -53,40 +23,27 @@ func GetAddressGroupMembers(ctx *pulumi.Context, args *GetAddressGroupMembersArg
 
 // A collection of arguments for invoking getAddressGroupMembers.
 type GetAddressGroupMembersArgs struct {
-	// Specifies the IP address
-	Address *string `pulumi:"address"`
-	// Specifies the firewall instance ID.
-	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the ID of the IP address group.
-	GroupId string `pulumi:"groupId"`
-	// Specifies the address group member ID.
-	ItemId *string `pulumi:"itemId"`
-	// Specifies the keyword.
-	KeyWord *string `pulumi:"keyWord"`
-	// Specifies the query address group type.
-	// + **0** means custom define address set.
-	// + **1** means predefined address set.
+	Address             *string `pulumi:"address"`
+	FwInstanceId        *string `pulumi:"fwInstanceId"`
+	GroupId             string  `pulumi:"groupId"`
+	ItemId              *string `pulumi:"itemId"`
+	KeyWord             *string `pulumi:"keyWord"`
 	QueryAddressSetType *string `pulumi:"queryAddressSetType"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getAddressGroupMembers.
 type GetAddressGroupMembersResult struct {
-	// The IP address.
 	Address      *string `pulumi:"address"`
 	FwInstanceId *string `pulumi:"fwInstanceId"`
 	GroupId      string  `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The ID of an address group member.
-	ItemId              *string `pulumi:"itemId"`
-	KeyWord             *string `pulumi:"keyWord"`
-	QueryAddressSetType *string `pulumi:"queryAddressSetType"`
-	// The IP address group member list.
-	Records []GetAddressGroupMembersRecord `pulumi:"records"`
-	Region  string                         `pulumi:"region"`
+	Id                  string                         `pulumi:"id"`
+	ItemId              *string                        `pulumi:"itemId"`
+	KeyWord             *string                        `pulumi:"keyWord"`
+	QueryAddressSetType *string                        `pulumi:"queryAddressSetType"`
+	Records             []GetAddressGroupMembersRecord `pulumi:"records"`
+	Region              string                         `pulumi:"region"`
 }
 
 func GetAddressGroupMembersOutput(ctx *pulumi.Context, args GetAddressGroupMembersOutputArgs, opts ...pulumi.InvokeOption) GetAddressGroupMembersResultOutput {
@@ -100,23 +57,13 @@ func GetAddressGroupMembersOutput(ctx *pulumi.Context, args GetAddressGroupMembe
 
 // A collection of arguments for invoking getAddressGroupMembers.
 type GetAddressGroupMembersOutputArgs struct {
-	// Specifies the IP address
-	Address pulumi.StringPtrInput `pulumi:"address"`
-	// Specifies the firewall instance ID.
-	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the ID of the IP address group.
-	GroupId pulumi.StringInput `pulumi:"groupId"`
-	// Specifies the address group member ID.
-	ItemId pulumi.StringPtrInput `pulumi:"itemId"`
-	// Specifies the keyword.
-	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
-	// Specifies the query address group type.
-	// + **0** means custom define address set.
-	// + **1** means predefined address set.
+	Address             pulumi.StringPtrInput `pulumi:"address"`
+	FwInstanceId        pulumi.StringPtrInput `pulumi:"fwInstanceId"`
+	GroupId             pulumi.StringInput    `pulumi:"groupId"`
+	ItemId              pulumi.StringPtrInput `pulumi:"itemId"`
+	KeyWord             pulumi.StringPtrInput `pulumi:"keyWord"`
 	QueryAddressSetType pulumi.StringPtrInput `pulumi:"queryAddressSetType"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetAddressGroupMembersOutputArgs) ElementType() reflect.Type {
@@ -138,7 +85,6 @@ func (o GetAddressGroupMembersResultOutput) ToGetAddressGroupMembersResultOutput
 	return o
 }
 
-// The IP address.
 func (o GetAddressGroupMembersResultOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersResult) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
@@ -156,7 +102,6 @@ func (o GetAddressGroupMembersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of an address group member.
 func (o GetAddressGroupMembersResultOutput) ItemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersResult) *string { return v.ItemId }).(pulumi.StringPtrOutput)
 }
@@ -169,7 +114,6 @@ func (o GetAddressGroupMembersResultOutput) QueryAddressSetType() pulumi.StringP
 	return o.ApplyT(func(v GetAddressGroupMembersResult) *string { return v.QueryAddressSetType }).(pulumi.StringPtrOutput)
 }
 
-// The IP address group member list.
 func (o GetAddressGroupMembersResultOutput) Records() GetAddressGroupMembersRecordArrayOutput {
 	return o.ApplyT(func(v GetAddressGroupMembersResult) []GetAddressGroupMembersRecord { return v.Records }).(GetAddressGroupMembersRecordArrayOutput)
 }

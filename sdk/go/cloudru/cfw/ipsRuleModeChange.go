@@ -12,58 +12,18 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW IPS rule mode change resource within SberCloud.
-//
-// > This resource is only a one-time action resource for operating the API.
-// Deleting this resource will not clear the corresponding request record,
-// but will only remove the resource information from the tfstate file.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			objectId := cfg.RequireObject("objectId")
-//			ipsIds := cfg.RequireObject("ipsIds")
-//			status := cfg.RequireObject("status")
-//			_, err := cfw.NewIpsRuleModeChange(ctx, "test", &cfw.IpsRuleModeChangeArgs{
-//				ObjectId: pulumi.Any(objectId),
-//				IpsIds:   pulumi.Any(ipsIds),
-//				Status:   pulumi.Any(status),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type IpsRuleModeChange struct {
 	pulumi.CustomResourceState
 
 	// Specifies the enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the IPS rule ID list.
+	// Specifies the IPS ID list.
 	IpsIds pulumi.StringArrayOutput `pulumi:"ipsIds"`
 	// Specifies the protected object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -105,30 +65,26 @@ func GetIpsRuleModeChange(ctx *pulumi.Context,
 type ipsRuleModeChangeState struct {
 	// Specifies the enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the IPS rule ID list.
+	// Specifies the IPS ID list.
 	IpsIds []string `pulumi:"ipsIds"`
 	// Specifies the protected object ID.
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
 	Status *string `pulumi:"status"`
 }
 
 type IpsRuleModeChangeState struct {
 	// Specifies the enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the IPS rule ID list.
+	// Specifies the IPS ID list.
 	IpsIds pulumi.StringArrayInput
 	// Specifies the protected object ID.
 	ObjectId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput
 	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
 	Status pulumi.StringPtrInput
 }
 
@@ -139,15 +95,13 @@ func (IpsRuleModeChangeState) ElementType() reflect.Type {
 type ipsRuleModeChangeArgs struct {
 	// Specifies the enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the IPS rule ID list.
+	// Specifies the IPS ID list.
 	IpsIds []string `pulumi:"ipsIds"`
 	// Specifies the protected object ID.
 	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
 	Status string `pulumi:"status"`
 }
 
@@ -155,15 +109,13 @@ type ipsRuleModeChangeArgs struct {
 type IpsRuleModeChangeArgs struct {
 	// Specifies the enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the IPS rule ID list.
+	// Specifies the IPS ID list.
 	IpsIds pulumi.StringArrayInput
 	// Specifies the protected object ID.
 	ObjectId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput
 	// Specifies the IPS rule status.
-	// The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
 	Status pulumi.StringInput
 }
 
@@ -259,7 +211,7 @@ func (o IpsRuleModeChangeOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpsRuleModeChange) pulumi.StringPtrOutput { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the IPS rule ID list.
+// Specifies the IPS ID list.
 func (o IpsRuleModeChangeOutput) IpsIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IpsRuleModeChange) pulumi.StringArrayOutput { return v.IpsIds }).(pulumi.StringArrayOutput)
 }
@@ -269,14 +221,12 @@ func (o IpsRuleModeChangeOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpsRuleModeChange) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this will create new resource.
+// The region in which to create the resource. If omitted, the provider-level region will be used.
 func (o IpsRuleModeChangeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpsRuleModeChange) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the IPS rule status.
-// The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
 func (o IpsRuleModeChangeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpsRuleModeChange) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

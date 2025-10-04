@@ -11,37 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available SberCloud dcs az.
-//
-// !> **WARNING:** It has been deprecated. This data source is used for the `availableZones` of the
-// `Dcs.Instance` resource. Now `availableZones` has been deprecated and this data source is no longer used.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetDcsAz(ctx, &cloudru.GetDcsAzArgs{
-//				Port: pulumi.StringRef("443"),
-//				Code: pulumi.StringRef("ru-moscow-1a"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDcsAz(ctx *pulumi.Context, args *GetDcsAzArgs, opts ...pulumi.InvokeOption) (*GetDcsAzResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDcsAzResult
@@ -54,14 +23,9 @@ func GetDcsAz(ctx *pulumi.Context, args *GetDcsAzArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getDcsAz.
 type GetDcsAzArgs struct {
-	// Specifies the code of an AZ, e.g. "ru-moscow-1a".
-	Code *string `pulumi:"code"`
-	// Indicates the name of an AZ.
-	Name *string `pulumi:"name"`
-	// Indicates the port number of an AZ.
-	Port *string `pulumi:"port"`
-	// The region in which to obtain the dcs az. If omitted, the provider-level region will be
-	// used.
+	Code   *string `pulumi:"code"`
+	Name   *string `pulumi:"name"`
+	Port   *string `pulumi:"port"`
 	Region *string `pulumi:"region"`
 }
 
@@ -69,10 +33,8 @@ type GetDcsAzArgs struct {
 type GetDcsAzResult struct {
 	Code string `pulumi:"code"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates the name of an AZ.
-	Name string `pulumi:"name"`
-	// Indicates the port number of an AZ.
+	Id     string `pulumi:"id"`
+	Name   string `pulumi:"name"`
 	Port   string `pulumi:"port"`
 	Region string `pulumi:"region"`
 }
@@ -88,14 +50,9 @@ func GetDcsAzOutput(ctx *pulumi.Context, args GetDcsAzOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getDcsAz.
 type GetDcsAzOutputArgs struct {
-	// Specifies the code of an AZ, e.g. "ru-moscow-1a".
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// Indicates the name of an AZ.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the port number of an AZ.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The region in which to obtain the dcs az. If omitted, the provider-level region will be
-	// used.
+	Code   pulumi.StringPtrInput `pulumi:"code"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
+	Port   pulumi.StringPtrInput `pulumi:"port"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -127,12 +84,10 @@ func (o GetDcsAzResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsAzResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the name of an AZ.
 func (o GetDcsAzResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsAzResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the port number of an AZ.
 func (o GetDcsAzResultOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDcsAzResult) string { return v.Port }).(pulumi.StringOutput)
 }

@@ -4,44 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW black white list resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const listType = config.requireObject<any>("listType");
- * const direction = config.requireObject<any>("direction");
- * const addressType = config.requireObject<any>("addressType");
- * const address = config.requireObject<any>("address");
- * const protocol = config.requireObject<any>("protocol");
- * const port = config.requireObject<any>("port");
- * const test = sbercloud.Cfw.getFirewalls({});
- * const testBlackWhiteList = new sbercloud.cfw.BlackWhiteList("test", {
- *     objectId: test.then(test => test.records?.[0]?.protectObjects?.[0]?.objectId),
- *     listType: listType,
- *     direction: direction,
- *     addressType: addressType,
- *     address: address,
- *     protocol: protocol,
- *     port: port,
- * });
- * ```
- *
- * ## Import
- *
- * The black whitelist can be imported using `object_id`, `list_type`, `address`, separated by slashes, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/blackWhiteList:BlackWhiteList test <object_id>/<list_type>/<address>
- * ```
- */
 export class BlackWhiteList extends pulumi.CustomResource {
     /**
      * Get an existing BlackWhiteList resource's state with the given name, ID, and optional extra
@@ -76,49 +38,32 @@ export class BlackWhiteList extends pulumi.CustomResource {
     declare public readonly address: pulumi.Output<string>;
     /**
      * Specifies the IP address type.
-     * The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
      */
     declare public readonly addressType: pulumi.Output<number>;
     /**
-     * Specifies the description of the list.
+     * Specifies the description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the address direction.
-     * The options are `0` (source address) and `1` (destination address).
      */
     declare public readonly direction: pulumi.Output<number>;
     /**
      * Specifies the list type.
-     * The options are `4` (blacklist) and `5` (whitelist).
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly listType: pulumi.Output<number>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly objectId: pulumi.Output<string>;
     /**
      * Specifies the destination port.
-     * Required and only available if protocol is **TCP** or **UDP**.
      */
     declare public readonly port: pulumi.Output<string>;
     /**
-     * Specifies the protocol type. The value can be:
-     * + **6**: indicates TCP;
-     * + **17**: indicates UDP;
-     * + **1**: indicates ICMP;
-     * + **58**: indicates ICMPv6;
-     * + **-1**: indicates any protocol;
+     * Specifies the protocol type.
      */
     declare public readonly protocol: pulumi.Output<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -188,49 +133,32 @@ export interface BlackWhiteListState {
     address?: pulumi.Input<string>;
     /**
      * Specifies the IP address type.
-     * The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
      */
     addressType?: pulumi.Input<number>;
     /**
-     * Specifies the description of the list.
+     * Specifies the description.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the address direction.
-     * The options are `0` (source address) and `1` (destination address).
      */
     direction?: pulumi.Input<number>;
     /**
      * Specifies the list type.
-     * The options are `4` (blacklist) and `5` (whitelist).
-     *
-     * Changing this parameter will create a new resource.
      */
     listType?: pulumi.Input<number>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId?: pulumi.Input<string>;
     /**
      * Specifies the destination port.
-     * Required and only available if protocol is **TCP** or **UDP**.
      */
     port?: pulumi.Input<string>;
     /**
-     * Specifies the protocol type. The value can be:
-     * + **6**: indicates TCP;
-     * + **17**: indicates UDP;
-     * + **1**: indicates ICMP;
-     * + **58**: indicates ICMPv6;
-     * + **-1**: indicates any protocol;
+     * Specifies the protocol type.
      */
     protocol?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -244,48 +172,31 @@ export interface BlackWhiteListArgs {
     address: pulumi.Input<string>;
     /**
      * Specifies the IP address type.
-     * The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
      */
     addressType: pulumi.Input<number>;
     /**
-     * Specifies the description of the list.
+     * Specifies the description.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the address direction.
-     * The options are `0` (source address) and `1` (destination address).
      */
     direction: pulumi.Input<number>;
     /**
      * Specifies the list type.
-     * The options are `4` (blacklist) and `5` (whitelist).
-     *
-     * Changing this parameter will create a new resource.
      */
     listType: pulumi.Input<number>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId: pulumi.Input<string>;
     /**
      * Specifies the destination port.
-     * Required and only available if protocol is **TCP** or **UDP**.
      */
     port?: pulumi.Input<string>;
     /**
-     * Specifies the protocol type. The value can be:
-     * + **6**: indicates TCP;
-     * + **17**: indicates UDP;
-     * + **1**: indicates ICMP;
-     * + **58**: indicates ICMPv6;
-     * + **-1**: indicates any protocol;
+     * Specifies the protocol type.
      */
     protocol: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

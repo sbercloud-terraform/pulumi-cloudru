@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Using this function to top function within SberCloud.
- *
- * ## Example Usage
- *
- * ### Topping function
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const functionUrn = config.requireObject<any>("functionUrn");
- * const test = new sbercloud.FgsFunctionTopping("test", {functionUrn: functionUrn});
- * ```
- */
 export class FgsFunctionTopping extends pulumi.CustomResource {
     /**
      * Get an existing FgsFunctionTopping resource's state with the given name, ID, and optional extra
@@ -49,13 +33,11 @@ export class FgsFunctionTopping extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the URN of the function to be topped.  
-     * Changing this parameter will create a new resource.
+     * The URN of the function to be topped.
      */
     declare public readonly functionUrn: pulumi.Output<string>;
     /**
-     * Specifies the region where the function is located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the function is located.
      */
     declare public readonly region: pulumi.Output<string>;
 
@@ -92,13 +74,11 @@ export class FgsFunctionTopping extends pulumi.CustomResource {
  */
 export interface FgsFunctionToppingState {
     /**
-     * Specifies the URN of the function to be topped.  
-     * Changing this parameter will create a new resource.
+     * The URN of the function to be topped.
      */
     functionUrn?: pulumi.Input<string>;
     /**
-     * Specifies the region where the function is located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the function is located.
      */
     region?: pulumi.Input<string>;
 }
@@ -108,13 +88,11 @@ export interface FgsFunctionToppingState {
  */
 export interface FgsFunctionToppingArgs {
     /**
-     * Specifies the URN of the function to be topped.  
-     * Changing this parameter will create a new resource.
+     * The URN of the function to be topped.
      */
     functionUrn: pulumi.Input<string>;
     /**
-     * Specifies the region where the function is located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the function is located.
      */
     region?: pulumi.Input<string>;
 }

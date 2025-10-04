@@ -11,59 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to filter FGS functions within SberCloud.
-//
-// ## Example Usage
-//
-// ### Obtain all public functions
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetFgsFunctions(ctx, &cloudru.GetFgsFunctionsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Obtain specific public function by package name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetFgsFunctions(ctx, &cloudru.GetFgsFunctionsArgs{
-//				PackageName: pulumi.StringRef("default"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFgsFunctions(ctx *pulumi.Context, args *GetFgsFunctionsArgs, opts ...pulumi.InvokeOption) (*GetFgsFunctionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsFunctionsResult
@@ -76,60 +23,25 @@ func GetFgsFunctions(ctx *pulumi.Context, args *GetFgsFunctionsArgs, opts ...pul
 
 // A collection of arguments for invoking getFgsFunctions.
 type GetFgsFunctionsArgs struct {
-	// Specifies the ID of the enterprise project to which the functions belong.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the function name used to query the specified function.
-	Name *string `pulumi:"name"`
-	// Specifies the package name used to query the functions.
-	PackageName *string `pulumi:"packageName"`
-	// Specifies the region in which to obtain the functions.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the dependency package runtime used to query the functions.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP7.3**
-	// + **http**
-	// + **Custom Image**
-	// + **Cangjie1.0**
-	Runtime *string `pulumi:"runtime"`
-	// Specifies the function URN used to query the specified function.
-	Urn *string `pulumi:"urn"`
+	Name                *string `pulumi:"name"`
+	PackageName         *string `pulumi:"packageName"`
+	Region              *string `pulumi:"region"`
+	Runtime             *string `pulumi:"runtime"`
+	Urn                 *string `pulumi:"urn"`
 }
 
 // A collection of values returned by getFgsFunctions.
 type GetFgsFunctionsResult struct {
-	// The enterprise project ID to which the function belongs.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// All functions that match the filter parameters.\
-	// The functions structure is documented below.
-	Functions []GetFgsFunctionsFunction `pulumi:"functions"`
+	EnterpriseProjectId *string                   `pulumi:"enterpriseProjectId"`
+	Functions           []GetFgsFunctionsFunction `pulumi:"functions"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The function name.
+	Id          string  `pulumi:"id"`
 	Name        *string `pulumi:"name"`
 	PackageName *string `pulumi:"packageName"`
 	Region      string  `pulumi:"region"`
-	// The dependency package runtime of the function.
-	Runtime *string `pulumi:"runtime"`
-	// The function URN.
-	Urn *string `pulumi:"urn"`
+	Runtime     *string `pulumi:"runtime"`
+	Urn         *string `pulumi:"urn"`
 }
 
 func GetFgsFunctionsOutput(ctx *pulumi.Context, args GetFgsFunctionsOutputArgs, opts ...pulumi.InvokeOption) GetFgsFunctionsResultOutput {
@@ -143,41 +55,12 @@ func GetFgsFunctionsOutput(ctx *pulumi.Context, args GetFgsFunctionsOutputArgs, 
 
 // A collection of arguments for invoking getFgsFunctions.
 type GetFgsFunctionsOutputArgs struct {
-	// Specifies the ID of the enterprise project to which the functions belong.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the function name used to query the specified function.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the package name used to query the functions.
-	PackageName pulumi.StringPtrInput `pulumi:"packageName"`
-	// Specifies the region in which to obtain the functions.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the dependency package runtime used to query the functions.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Node.js16.17**
-	// + **Node.js18.15**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Python3.10**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP7.3**
-	// + **http**
-	// + **Custom Image**
-	// + **Cangjie1.0**
-	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
-	// Specifies the function URN used to query the specified function.
-	Urn pulumi.StringPtrInput `pulumi:"urn"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	PackageName         pulumi.StringPtrInput `pulumi:"packageName"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Runtime             pulumi.StringPtrInput `pulumi:"runtime"`
+	Urn                 pulumi.StringPtrInput `pulumi:"urn"`
 }
 
 func (GetFgsFunctionsOutputArgs) ElementType() reflect.Type {
@@ -199,13 +82,10 @@ func (o GetFgsFunctionsResultOutput) ToGetFgsFunctionsResultOutputWithContext(ct
 	return o
 }
 
-// The enterprise project ID to which the function belongs.
 func (o GetFgsFunctionsResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// All functions that match the filter parameters.\
-// The functions structure is documented below.
 func (o GetFgsFunctionsResultOutput) Functions() GetFgsFunctionsFunctionArrayOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) []GetFgsFunctionsFunction { return v.Functions }).(GetFgsFunctionsFunctionArrayOutput)
 }
@@ -215,7 +95,6 @@ func (o GetFgsFunctionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The function name.
 func (o GetFgsFunctionsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -228,12 +107,10 @@ func (o GetFgsFunctionsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The dependency package runtime of the function.
 func (o GetFgsFunctionsResultOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) *string { return v.Runtime }).(pulumi.StringPtrOutput)
 }
 
-// The function URN.
 func (o GetFgsFunctionsResultOutput) Urn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionsResult) *string { return v.Urn }).(pulumi.StringPtrOutput)
 }

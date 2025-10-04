@@ -11,63 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the project list within SberCloud.
-//
-// > You *must* have IAM read privileges to use this data source.
-//
-// ## Example Usage
-//
-// ### Obtain project information by name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.GetProjects(ctx, &iam.GetProjectsArgs{
-//				Name: pulumi.StringRef("ru-moscow-1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Obtain special project information by name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.GetProjects(ctx, &iam.GetProjectsArgs{
-//				Name: pulumi.StringRef("MOS"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.InvokeOption) (*GetProjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectsResult
@@ -80,17 +23,14 @@ func GetProjects(ctx *pulumi.Context, args *GetProjectsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsArgs struct {
-	// Specifies the project name to query.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getProjects.
 type GetProjectsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The project name.
-	Name *string `pulumi:"name"`
-	// The details of the query projects. The structure is documented below.
+	Id       string               `pulumi:"id"`
+	Name     *string              `pulumi:"name"`
 	Projects []GetProjectsProject `pulumi:"projects"`
 }
 
@@ -105,7 +45,6 @@ func GetProjectsOutput(ctx *pulumi.Context, args GetProjectsOutputArgs, opts ...
 
 // A collection of arguments for invoking getProjects.
 type GetProjectsOutputArgs struct {
-	// Specifies the project name to query.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -133,12 +72,10 @@ func (o GetProjectsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The project name.
 func (o GetProjectsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetProjectsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The details of the query projects. The structure is documented below.
 func (o GetProjectsResultOutput) Projects() GetProjectsProjectArrayOutput {
 	return o.ApplyT(func(v GetProjectsResult) []GetProjectsProject { return v.Projects }).(GetProjectsProjectArrayOutput)
 }

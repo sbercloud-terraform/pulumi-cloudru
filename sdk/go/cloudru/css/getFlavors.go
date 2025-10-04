@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get available flavors of SberCloud CSS node instance.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/css"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := css.GetFlavors(ctx, &css.GetFlavorsArgs{
-//				Type:    pulumi.StringRef("ess"),
-//				Version: pulumi.StringRef("7.9.3"),
-//				Vcpus:   pulumi.IntRef(4),
-//				Memory:  pulumi.IntRef(32),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.InvokeOption) (*GetFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorsResult
@@ -53,40 +23,24 @@ func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsArgs struct {
-	// Specifies the memory size(GB) in the CSS flavor.
-	Memory *int `pulumi:"memory"`
-	// Specifies the name of the CSS flavor.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the CSS flavors. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-	// and `ess-client`.
-	Type *string `pulumi:"type"`
-	// Specifies the number of vCPUs in the CSS flavor.
-	Vcpus *int `pulumi:"vcpus"`
-	// Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-	// `7.6.2` and `7.9.3`.
+	Memory  *int    `pulumi:"memory"`
+	Name    *string `pulumi:"name"`
+	Region  *string `pulumi:"region"`
+	Type    *string `pulumi:"type"`
+	Vcpus   *int    `pulumi:"vcpus"`
 	Version *string `pulumi:"version"`
 }
 
 // A collection of values returned by getFlavors.
 type GetFlavorsResult struct {
-	// Indicates the flavors information. Structure is documented below.
 	Flavors []GetFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The memory size in GB.
-	Memory *int `pulumi:"memory"`
-	// The name of the CSS flavor. It is referenced by `node_config.flavor` in `Css.Cluster`.
-	Name *string `pulumi:"name"`
-	// The region where the node resides.
-	Region string `pulumi:"region"`
-	// The node instance type.
-	Type *string `pulumi:"type"`
-	// The number of vCPUs.
-	Vcpus *int `pulumi:"vcpus"`
-	// The engine version.
+	Id      string  `pulumi:"id"`
+	Memory  *int    `pulumi:"memory"`
+	Name    *string `pulumi:"name"`
+	Region  string  `pulumi:"region"`
+	Type    *string `pulumi:"type"`
+	Vcpus   *int    `pulumi:"vcpus"`
 	Version *string `pulumi:"version"`
 }
 
@@ -101,20 +55,11 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsOutputArgs struct {
-	// Specifies the memory size(GB) in the CSS flavor.
-	Memory pulumi.IntPtrInput `pulumi:"memory"`
-	// Specifies the name of the CSS flavor.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the CSS flavors. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-	// and `ess-client`.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the number of vCPUs in the CSS flavor.
-	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
-	// Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-	// `7.6.2` and `7.9.3`.
+	Memory  pulumi.IntPtrInput    `pulumi:"memory"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
+	Region  pulumi.StringPtrInput `pulumi:"region"`
+	Type    pulumi.StringPtrInput `pulumi:"type"`
+	Vcpus   pulumi.IntPtrInput    `pulumi:"vcpus"`
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -137,7 +82,6 @@ func (o GetFlavorsResultOutput) ToGetFlavorsResultOutputWithContext(ctx context.
 	return o
 }
 
-// Indicates the flavors information. Structure is documented below.
 func (o GetFlavorsResultOutput) Flavors() GetFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetFlavorsResult) []GetFlavorsFlavor { return v.Flavors }).(GetFlavorsFlavorArrayOutput)
 }
@@ -147,32 +91,26 @@ func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The memory size in GB.
 func (o GetFlavorsResultOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
 
-// The name of the CSS flavor. It is referenced by `node_config.flavor` in `Css.Cluster`.
 func (o GetFlavorsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The region where the node resides.
 func (o GetFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The node instance type.
 func (o GetFlavorsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The number of vCPUs.
 func (o GetFlavorsResultOutput) Vcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
-// The engine version.
 func (o GetFlavorsResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

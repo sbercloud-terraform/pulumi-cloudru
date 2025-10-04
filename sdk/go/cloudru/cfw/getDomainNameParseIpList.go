@@ -11,68 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the DNS resolution result of a domain name.
-//
-// ## Example Usage
-//
-// ### DNS resolution result of a domain name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.GetDomainNameParseIpList(ctx, &cfw.GetDomainNameParseIpListArgs{
-//				DomainName: pulumi.StringRef("www.cloud.ru"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### DNS resolution result of a domain name in a domain name group
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			domainNameGroupId := cfg.RequireObject("domainNameGroupId")
-//			domainAddressId := cfg.RequireObject("domainAddressId")
-//			_, err := cfw.GetDomainNameParseIpList(ctx, &cfw.GetDomainNameParseIpListArgs{
-//				FwInstanceId:    pulumi.StringRef(fwInstanceId),
-//				GroupId:         pulumi.StringRef(domainNameGroupId),
-//				DomainAddressId: pulumi.StringRef(domainAddressId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDomainNameParseIpList(ctx *pulumi.Context, args *GetDomainNameParseIpListArgs, opts ...pulumi.InvokeOption) (*GetDomainNameParseIpListResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainNameParseIpListResult
@@ -85,28 +23,18 @@ func GetDomainNameParseIpList(ctx *pulumi.Context, args *GetDomainNameParseIpLis
 
 // A collection of arguments for invoking getDomainNameParseIpList.
 type GetDomainNameParseIpListArgs struct {
-	// Specifies the address type.
-	// The valid value can be **0** (IPv4) or **1** (IPv6).
-	AddressType *string `pulumi:"addressType"`
-	// Specifies the domain name ID in a domain name group.
-	DomainAddressId *string `pulumi:"domainAddressId"`
-	// Specifies the domain name.
-	DomainName *string `pulumi:"domainName"`
-	// Specifies the enterprise project ID.
+	AddressType         *string `pulumi:"addressType"`
+	DomainAddressId     *string `pulumi:"domainAddressId"`
+	DomainName          *string `pulumi:"domainName"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall ID.
-	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the domain name group ID.
-	GroupId *string `pulumi:"groupId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FwInstanceId        *string `pulumi:"fwInstanceId"`
+	GroupId             *string `pulumi:"groupId"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDomainNameParseIpList.
 type GetDomainNameParseIpListResult struct {
-	AddressType *string `pulumi:"addressType"`
-	// The IP address list for domain name resolution.
+	AddressType         *string  `pulumi:"addressType"`
 	Datas               []string `pulumi:"datas"`
 	DomainAddressId     *string  `pulumi:"domainAddressId"`
 	DomainName          *string  `pulumi:"domainName"`
@@ -129,22 +57,13 @@ func GetDomainNameParseIpListOutput(ctx *pulumi.Context, args GetDomainNameParse
 
 // A collection of arguments for invoking getDomainNameParseIpList.
 type GetDomainNameParseIpListOutputArgs struct {
-	// Specifies the address type.
-	// The valid value can be **0** (IPv4) or **1** (IPv6).
-	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
-	// Specifies the domain name ID in a domain name group.
-	DomainAddressId pulumi.StringPtrInput `pulumi:"domainAddressId"`
-	// Specifies the domain name.
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
-	// Specifies the enterprise project ID.
+	AddressType         pulumi.StringPtrInput `pulumi:"addressType"`
+	DomainAddressId     pulumi.StringPtrInput `pulumi:"domainAddressId"`
+	DomainName          pulumi.StringPtrInput `pulumi:"domainName"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall ID.
-	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the domain name group ID.
-	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FwInstanceId        pulumi.StringPtrInput `pulumi:"fwInstanceId"`
+	GroupId             pulumi.StringPtrInput `pulumi:"groupId"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDomainNameParseIpListOutputArgs) ElementType() reflect.Type {
@@ -170,7 +89,6 @@ func (o GetDomainNameParseIpListResultOutput) AddressType() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GetDomainNameParseIpListResult) *string { return v.AddressType }).(pulumi.StringPtrOutput)
 }
 
-// The IP address list for domain name resolution.
 func (o GetDomainNameParseIpListResultOutput) Datas() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDomainNameParseIpListResult) []string { return v.Datas }).(pulumi.StringArrayOutput)
 }

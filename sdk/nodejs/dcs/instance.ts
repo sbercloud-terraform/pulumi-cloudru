@@ -6,151 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a DCS instance within SberCloud.
- *
- * !> **WARNING:** DCS for Memcached is about to become unavailable and is no longer sold in some regions.
- * You can use DCS for Redis 4.0, 5.0 or 6.0 instead. It is not possible to create Memcached instances through this resource.
- * You can use this resource to manage Memcached instances that exist in SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a single mode Redis instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const singleFlavors = sbercloud.Dcs.getFlavors({
- *     cacheMode: "single",
- *     capacity: 0.125,
- * });
- * const instance1 = new sbercloud.dcs.Instance("instance_1", {
- *     name: "redis_single_instance",
- *     engine: "Redis",
- *     engineVersion: "5.0",
- *     capacity: singleFlavors.then(singleFlavors => singleFlavors.capacity),
- *     flavor: singleFlavors.then(singleFlavors => singleFlavors.flavors?.[0]?.name),
- *     availabilityZones: ["ru-moscow-1a"],
- *     password: "YourPassword@123",
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- * });
- * ```
- *
- * ### Create Master/Standby mode Redis instances with backup policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const instance2 = new sbercloud.dcs.Instance("instance_2", {
- *     name: "redis_name",
- *     engine: "Redis",
- *     engineVersion: "5.0",
- *     capacity: 4,
- *     flavor: "redis.ha.xu1.large.r2.4",
- *     availabilityZones: [
- *         "ru-moscow-1a",
- *         "ru-moscow-1b",
- *     ],
- *     password: "YourPassword@123",
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- *     chargingMode: "prePaid",
- *     periodUnit: "month",
- *     autoRenew: "true",
- *     period: 1,
- *     backupPolicy: {
- *         backupType: "auto",
- *         saveDays: 3,
- *         backupAts: [
- *             1,
- *             3,
- *             5,
- *             7,
- *         ],
- *         beginAt: "02:00-04:00",
- *     },
- *     whitelists: [
- *         {
- *             groupName: "test-group1",
- *             ipAddresses: [
- *                 "192.168.10.100",
- *                 "192.168.0.0/24",
- *             ],
- *         },
- *         {
- *             groupName: "test-group2",
- *             ipAddresses: [
- *                 "172.16.10.100",
- *                 "172.16.0.0/24",
- *             ],
- *         },
- *     ],
- *     parameters: [
- *         {
- *             id: "1",
- *             name: "timeout",
- *             value: "500",
- *         },
- *         {
- *             id: "3",
- *             name: "hash-max-ziplist-entries",
- *             value: "4096",
- *         },
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * DCS instance can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Dcs/instance:Instance instance_1 80e373f9-872e-4046-aae9-ccd9ddc55511
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason.
- *
- * The missing attributes include: `password`, `auto_renew`, `period`, `period_unit`, `rename_commands`,
- *
- * `internal_version`, `save_days`, `backup_type`, `begin_at`, `period_type`, `backup_at`, `parameters`.
- *
- * It is generally recommended running `pulumi preview` after importing an instance.
- *
- * You can then decide if changes should be applied to the instance, or the resource definition should be updated to
- *
- * align with the instance. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_dcs_instance" "instance_1" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       password, rename_commands,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class Instance extends pulumi.CustomResource {
     /**
      * Get an existing Instance resource's state with the given name, ID, and optional extra
@@ -179,27 +34,14 @@ export class Instance extends pulumi.CustomResource {
         return obj['__pulumiType'] === Instance.__pulumiType;
     }
 
-    /**
-     * Specifies the username used for accessing a DCS Memcached instance.
-     * If the cache engine is *Redis*, you do not need to set this parameter.
-     * The username starts with a letter, consists of 1 to 64 characters, and supports only letters, digits, and
-     * hyphens (-). Changing this creates a new instance.
-     */
     declare public readonly accessUser: pulumi.Output<string>;
     /**
      * @deprecated Deprecated
      */
     declare public readonly autoPay: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether auto renew is enabled.
-     * Valid values are `true` and `false`, defaults to `false`.
-     */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
-     * The code of the AZ where the cache node resides.
-     * Master/Standby, Proxy Cluster, and Redis Cluster DCS instances support cross-AZ deployment.
-     * You can specify an AZ for the standby node. When specifying AZs for nodes, use commas (,) to separate AZs.
-     * Changing this creates a new instance.
+     * schema: Required
      */
     declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
@@ -210,99 +52,33 @@ export class Instance extends pulumi.CustomResource {
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     declare public readonly backupAts: pulumi.Output<number[] | undefined>;
-    /**
-     * Specifies the backup configuration to be used with the instance.
-     * The structure is described below.
-     *
-     * > **NOTE:** This parameter is not supported when the instance type is single.
-     */
     declare public readonly backupPolicy: pulumi.Output<outputs.Dcs.InstanceBackupPolicy | undefined>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     declare public readonly backupType: pulumi.Output<string | undefined>;
-    /**
-     * Indicates the bandwidth information of the instance.
-     * The bandwidthInfo structure is documented below.
-     */
     declare public /*out*/ readonly bandwidthInfos: pulumi.Output<outputs.Dcs.InstanceBandwidthInfo[]>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     declare public readonly beginAt: pulumi.Output<string | undefined>;
-    /**
-     * Indicates the instance type. The value can be **single**, **ha**, **cluster** or **proxy**.
-     */
     declare public /*out*/ readonly cacheMode: pulumi.Output<string>;
-    /**
-     * Specifies the cache capacity. Unit: GB.
-     * + **Redis4.0, Redis5.0 and Redis6.0**: Stand-alone and active/standby type instance values: `0.125`, `0.25`,
-     * `0.5`, `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-     * Cluster instance specifications support `4`,`8`,`16`, `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`,
-     * `384`, `512`, `768` and `1024`.
-     * + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-     * Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-     * + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-     */
     declare public readonly capacity: pulumi.Output<number>;
-    /**
-     * Specifies the charging mode of the redis instance.
-     * The valid values are as follows:
-     * + `prePaid`: indicates the yearly/monthly billing mode.
-     * + `postPaid`: indicates the pay-per-use billing mode.
-     * Default value is `postPaid`.
-     * Changing this creates a new instance.
-     */
     declare public readonly chargingMode: pulumi.Output<string>;
-    /**
-     * Indicates the CPU type of the instance. The value can be **x86_64** or **aarch64**.
-     */
     declare public /*out*/ readonly cpuType: pulumi.Output<string>;
-    /**
-     * Indicates the time when the instance is created, in RFC3339 format.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the replica to delete. This parameter is mandatory when
-     * you delete replicas of a master/standby DCS Redis 4.0 or 5.0 instance. Currently, only one replica can be deleted
-     * at a time.
-     */
     declare public readonly deletedNodes: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the description of an instance.
-     * It is a string that contains a maximum of 1024 characters.
-     */
     declare public readonly description: pulumi.Output<string>;
-    /**
-     * Domain name of the instance. Usually, we use domain name and port to connect to the DCS instances.
-     */
     declare public /*out*/ readonly domainName: pulumi.Output<string>;
-    /**
-     * Specifies a cache engine. Options: *Redis* and *Memcached*.
-     * Changing this creates a new instance.
-     */
     declare public readonly engine: pulumi.Output<string>;
-    /**
-     * Specifies the version of a cache engine.
-     * It is mandatory when the engine is *Redis*, the value can be 3.0, 4.0, 5.0 or 6.0.
-     * Changing this creates a new instance.
-     */
     declare public readonly engineVersion: pulumi.Output<string | undefined>;
-    /**
-     * The enterprise project id of the dcs instance.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * @deprecated Deprecated, this is a non-public attribute.
      */
     declare public readonly enterpriseProjectName: pulumi.Output<string>;
     /**
-     * The flavor of the cache instance, which including the total memory, available memory,
-     * maximum number of connections allowed, maximum/assured bandwidth and reference performance.
-     * It also includes the modes of Redis instances. You can query the *flavor* as follows:
-     * + It can be obtained through this data source `sbercloud.Dcs.getFlavors`.
-     * + Query some flavors
-     * in [DCS Instance Specifications](https://support.hc.sbercloud.ru/usermanual/dcs/en-us_topic_0054235835.html) + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+     * schema: Required
      */
     declare public readonly flavor: pulumi.Output<string>;
     /**
@@ -313,187 +89,47 @@ export class Instance extends pulumi.CustomResource {
      * @deprecated Deprecated, please us `privateIp` instead.
      */
     declare public /*out*/ readonly ip: pulumi.Output<string>;
-    /**
-     * Indicates the time when the instance is started, in RFC3339 format.
-     */
     declare public /*out*/ readonly launchedAt: pulumi.Output<string>;
-    /**
-     * Time at which the maintenance time window starts. Defaults to **02:00:00**.
-     * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
-     * time window.
-     * + The start time must be on the hour, such as **18:00:00**.
-     * + If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also blank.
-     * In this case, the system automatically allocates the default start time **02:00:00**.
-     */
     declare public readonly maintainBegin: pulumi.Output<string>;
-    /**
-     * Time at which the maintenance time window ends. Defaults to **06:00:00**.
-     * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
-     * time window.
-     * + The end time is one hour later than the start time. For example, if the start time is **18:00:00**, the end time is
-     * **19:00:00**.
-     * + If parameter `maintainEnd` is left blank, parameter `maintainBegin` is also blank.
-     * In this case, the system automatically allocates the default end time **06:00:00**.
-     *
-     * > **NOTE:** Parameters `maintainBegin` and `maintainEnd` must be set in pairs.
-     */
     declare public readonly maintainEnd: pulumi.Output<string>;
-    /**
-     * Total memory size. Unit: MB.
-     */
     declare public /*out*/ readonly maxMemory: pulumi.Output<number>;
-    /**
-     * Specifies the name of an instance.
-     * The name must be 4 to 64 characters and start with a letter.
-     * Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the order that created the instance.
-     */
     declare public /*out*/ readonly orderId: pulumi.Output<string>;
-    /**
-     * Specify an array of one or more parameters to be set to the DCS instance after
-     * launched. You can check on console to see which parameters supported.
-     * The parameters structure is documented below.
-     */
     declare public readonly parameters: pulumi.Output<outputs.Dcs.InstanceParameter[]>;
-    /**
-     * Specifies the password of a DCS instance.
-     * The password of a DCS instance must meet the following complexity requirements:
-     * + Must be a string of 8 to 32 bits in length.
-     * + Must contain three combinations of the following four characters: Lower case letters, uppercase letter, digital,
-     * Special characters include (`~!@#$^&*()-_=+\\|{}:,<.>/?).
-     * + The new password cannot be the same as the old password.
-     */
     declare public readonly password: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the charging period of the instance.
-     * If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-     * If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-     * This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new instance.
-     */
     declare public readonly period: pulumi.Output<number | undefined>;
     /**
      * @deprecated Please use `backupPolicy` instead
      */
     declare public readonly periodType: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new instance.
-     */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
-    /**
-     * Port customization, which is supported only by Redis 4.0 and Redis 5.0 instances.
-     * Redis instance defaults to 6379. Memcached instance does not use this argument.
-     */
     declare public readonly port: pulumi.Output<number>;
-    /**
-     * The IP address of the DCS instance,
-     * which can only be the currently available IP address the selected subnet.
-     * You can specify an available IP for the Redis instance (except for the Redis Cluster type).
-     * If omitted, the system will automatically allocate an available IP address to the Redis instance.
-     * Changing this creates a new instance resource.
-     */
     declare public readonly privateIp: pulumi.Output<string>;
     /**
      * @deprecated Deprecated, please use `flavor` instead
      */
     declare public readonly productId: pulumi.Output<string>;
-    /**
-     * Indicates the product type of the instance. The value can be: **generic** or **enterprise**.
-     */
     declare public /*out*/ readonly productType: pulumi.Output<string>;
-    /**
-     * Indicates the read-only domain name of the instance. This parameter is available
-     * only for master/standby instances.
-     */
     declare public /*out*/ readonly readonlyDomainName: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the DCS instance resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new DCS instance resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Critical command renaming, which is supported only by Redis 4.0 and
-     * Redis 5.0 instances but not by Redis 3.0 instance.
-     * The valid commands that can be renamed are: **command**, **keys**, **flushdb**, **flushall** and **hgetall**.
-     */
     declare public readonly renameCommands: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Indicates the number of replicas in the instance.
-     */
     declare public /*out*/ readonly replicaCount: pulumi.Output<number>;
-    /**
-     * Specifies IP addresses to retain. Mandatory during cluster scale-in. If this
-     * parameter is not set, the system randomly deletes unnecessary shards.
-     */
     declare public readonly reservedIps: pulumi.Output<string[] | undefined>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     declare public readonly saveDays: pulumi.Output<number | undefined>;
-    /**
-     * The ID of the security group which the instance belongs to.
-     * This parameter is mandatory for Memcached and Redis 3.0 version.
-     */
     declare public readonly securityGroupId: pulumi.Output<string | undefined>;
-    /**
-     * The name of security group which the instance belongs to.
-     */
     declare public /*out*/ readonly securityGroupName: pulumi.Output<string>;
-    /**
-     * Indicates the number of shards in a cluster instance.
-     */
     declare public /*out*/ readonly shardingCount: pulumi.Output<number>;
-    /**
-     * Specifies whether to enable the SSL. Value options: **true**, **false**.
-     */
     declare public readonly sslEnable: pulumi.Output<boolean>;
-    /**
-     * Cache instance status. The valid values are as follows:
-     * + `RUNNING`: The instance is running properly.
-     * Only instances in the Running state can provide in-memory cache service.
-     * + `ERROR`: The instance is not running properly.
-     * + `RESTARTING`: The instance is being restarted.
-     * + `FROZEN`: The instance has been frozen due to low balance.
-     * You can unfreeze the instance by recharging your account in My Order.
-     * + `EXTENDING`: The instance is being scaled up.
-     * + `RESTORING`: The instance data is being restored.
-     * + `FLUSHING`: The DCS instance is being cleared.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Indicates the subnet segment.
-     */
     declare public /*out*/ readonly subnetCidr: pulumi.Output<string>;
-    /**
-     * The ID of subnet which the instance belongs to.
-     * Changing this creates a new instance resource.
-     */
     declare public readonly subnetId: pulumi.Output<string>;
-    /**
-     * The name of subnet which the instance belongs to.
-     */
     declare public /*out*/ readonly subnetName: pulumi.Output<string>;
-    /**
-     * The key/value pairs to associate with the dcs instance.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The Parameter Template ID.
-     * Changing this creates a new instance resource.
-     */
     declare public readonly templateId: pulumi.Output<string | undefined>;
-    /**
-     * Indicates whether client IP pass-through is enabled.
-     */
     declare public /*out*/ readonly transparentClientIpEnable: pulumi.Output<boolean>;
-    /**
-     * Size of the used memory. Unit: MB.
-     */
     declare public /*out*/ readonly usedMemory: pulumi.Output<number>;
     /**
      * @deprecated Deprecated
@@ -503,24 +139,9 @@ export class Instance extends pulumi.CustomResource {
      * @deprecated Deprecated
      */
     declare public /*out*/ readonly userName: pulumi.Output<string>;
-    /**
-     * The ID of VPC which the instance belongs to.
-     * Changing this creates a new instance resource.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
-    /**
-     * The name of VPC which the instance belongs to.
-     */
     declare public /*out*/ readonly vpcName: pulumi.Output<string>;
-    /**
-     * Enable or disable the IP address whitelists. Defaults to true.
-     * If the whitelist is disabled, all IP addresses connected to the VPC can access the instance.
-     */
     declare public readonly whitelistEnable: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the IP addresses which can access the instance.
-     * This parameter is valid for Redis 4.0 and 5.0 versions. The structure is described below.
-     */
     declare public readonly whitelists: pulumi.Output<outputs.Dcs.InstanceWhitelist[] | undefined>;
 
     /**
@@ -690,27 +311,14 @@ export class Instance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Instance resources.
  */
 export interface InstanceState {
-    /**
-     * Specifies the username used for accessing a DCS Memcached instance.
-     * If the cache engine is *Redis*, you do not need to set this parameter.
-     * The username starts with a letter, consists of 1 to 64 characters, and supports only letters, digits, and
-     * hyphens (-). Changing this creates a new instance.
-     */
     accessUser?: pulumi.Input<string>;
     /**
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled.
-     * Valid values are `true` and `false`, defaults to `false`.
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * The code of the AZ where the cache node resides.
-     * Master/Standby, Proxy Cluster, and Redis Cluster DCS instances support cross-AZ deployment.
-     * You can specify an AZ for the standby node. When specifying AZs for nodes, use commas (,) to separate AZs.
-     * Changing this creates a new instance.
+     * schema: Required
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -721,99 +329,33 @@ export interface InstanceState {
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     backupAts?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Specifies the backup configuration to be used with the instance.
-     * The structure is described below.
-     *
-     * > **NOTE:** This parameter is not supported when the instance type is single.
-     */
     backupPolicy?: pulumi.Input<inputs.Dcs.InstanceBackupPolicy>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     backupType?: pulumi.Input<string>;
-    /**
-     * Indicates the bandwidth information of the instance.
-     * The bandwidthInfo structure is documented below.
-     */
     bandwidthInfos?: pulumi.Input<pulumi.Input<inputs.Dcs.InstanceBandwidthInfo>[]>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     beginAt?: pulumi.Input<string>;
-    /**
-     * Indicates the instance type. The value can be **single**, **ha**, **cluster** or **proxy**.
-     */
     cacheMode?: pulumi.Input<string>;
-    /**
-     * Specifies the cache capacity. Unit: GB.
-     * + **Redis4.0, Redis5.0 and Redis6.0**: Stand-alone and active/standby type instance values: `0.125`, `0.25`,
-     * `0.5`, `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-     * Cluster instance specifications support `4`,`8`,`16`, `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`,
-     * `384`, `512`, `768` and `1024`.
-     * + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-     * Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-     * + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-     */
     capacity?: pulumi.Input<number>;
-    /**
-     * Specifies the charging mode of the redis instance.
-     * The valid values are as follows:
-     * + `prePaid`: indicates the yearly/monthly billing mode.
-     * + `postPaid`: indicates the pay-per-use billing mode.
-     * Default value is `postPaid`.
-     * Changing this creates a new instance.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Indicates the CPU type of the instance. The value can be **x86_64** or **aarch64**.
-     */
     cpuType?: pulumi.Input<string>;
-    /**
-     * Indicates the time when the instance is created, in RFC3339 format.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the replica to delete. This parameter is mandatory when
-     * you delete replicas of a master/standby DCS Redis 4.0 or 5.0 instance. Currently, only one replica can be deleted
-     * at a time.
-     */
     deletedNodes?: pulumi.Input<string>;
-    /**
-     * Specifies the description of an instance.
-     * It is a string that contains a maximum of 1024 characters.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Domain name of the instance. Usually, we use domain name and port to connect to the DCS instances.
-     */
     domainName?: pulumi.Input<string>;
-    /**
-     * Specifies a cache engine. Options: *Redis* and *Memcached*.
-     * Changing this creates a new instance.
-     */
     engine?: pulumi.Input<string>;
-    /**
-     * Specifies the version of a cache engine.
-     * It is mandatory when the engine is *Redis*, the value can be 3.0, 4.0, 5.0 or 6.0.
-     * Changing this creates a new instance.
-     */
     engineVersion?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the dcs instance.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * @deprecated Deprecated, this is a non-public attribute.
      */
     enterpriseProjectName?: pulumi.Input<string>;
     /**
-     * The flavor of the cache instance, which including the total memory, available memory,
-     * maximum number of connections allowed, maximum/assured bandwidth and reference performance.
-     * It also includes the modes of Redis instances. You can query the *flavor* as follows:
-     * + It can be obtained through this data source `sbercloud.Dcs.getFlavors`.
-     * + Query some flavors
-     * in [DCS Instance Specifications](https://support.hc.sbercloud.ru/usermanual/dcs/en-us_topic_0054235835.html) + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+     * schema: Required
      */
     flavor?: pulumi.Input<string>;
     /**
@@ -824,187 +366,47 @@ export interface InstanceState {
      * @deprecated Deprecated, please us `privateIp` instead.
      */
     ip?: pulumi.Input<string>;
-    /**
-     * Indicates the time when the instance is started, in RFC3339 format.
-     */
     launchedAt?: pulumi.Input<string>;
-    /**
-     * Time at which the maintenance time window starts. Defaults to **02:00:00**.
-     * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
-     * time window.
-     * + The start time must be on the hour, such as **18:00:00**.
-     * + If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also blank.
-     * In this case, the system automatically allocates the default start time **02:00:00**.
-     */
     maintainBegin?: pulumi.Input<string>;
-    /**
-     * Time at which the maintenance time window ends. Defaults to **06:00:00**.
-     * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
-     * time window.
-     * + The end time is one hour later than the start time. For example, if the start time is **18:00:00**, the end time is
-     * **19:00:00**.
-     * + If parameter `maintainEnd` is left blank, parameter `maintainBegin` is also blank.
-     * In this case, the system automatically allocates the default end time **06:00:00**.
-     *
-     * > **NOTE:** Parameters `maintainBegin` and `maintainEnd` must be set in pairs.
-     */
     maintainEnd?: pulumi.Input<string>;
-    /**
-     * Total memory size. Unit: MB.
-     */
     maxMemory?: pulumi.Input<number>;
-    /**
-     * Specifies the name of an instance.
-     * The name must be 4 to 64 characters and start with a letter.
-     * Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the order that created the instance.
-     */
     orderId?: pulumi.Input<string>;
-    /**
-     * Specify an array of one or more parameters to be set to the DCS instance after
-     * launched. You can check on console to see which parameters supported.
-     * The parameters structure is documented below.
-     */
     parameters?: pulumi.Input<pulumi.Input<inputs.Dcs.InstanceParameter>[]>;
-    /**
-     * Specifies the password of a DCS instance.
-     * The password of a DCS instance must meet the following complexity requirements:
-     * + Must be a string of 8 to 32 bits in length.
-     * + Must contain three combinations of the following four characters: Lower case letters, uppercase letter, digital,
-     * Special characters include (`~!@#$^&*()-_=+\\|{}:,<.>/?).
-     * + The new password cannot be the same as the old password.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the instance.
-     * If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-     * If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-     * This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new instance.
-     */
     period?: pulumi.Input<number>;
     /**
      * @deprecated Please use `backupPolicy` instead
      */
     periodType?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new instance.
-     */
     periodUnit?: pulumi.Input<string>;
-    /**
-     * Port customization, which is supported only by Redis 4.0 and Redis 5.0 instances.
-     * Redis instance defaults to 6379. Memcached instance does not use this argument.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * The IP address of the DCS instance,
-     * which can only be the currently available IP address the selected subnet.
-     * You can specify an available IP for the Redis instance (except for the Redis Cluster type).
-     * If omitted, the system will automatically allocate an available IP address to the Redis instance.
-     * Changing this creates a new instance resource.
-     */
     privateIp?: pulumi.Input<string>;
     /**
      * @deprecated Deprecated, please use `flavor` instead
      */
     productId?: pulumi.Input<string>;
-    /**
-     * Indicates the product type of the instance. The value can be: **generic** or **enterprise**.
-     */
     productType?: pulumi.Input<string>;
-    /**
-     * Indicates the read-only domain name of the instance. This parameter is available
-     * only for master/standby instances.
-     */
     readonlyDomainName?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the DCS instance resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new DCS instance resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Critical command renaming, which is supported only by Redis 4.0 and
-     * Redis 5.0 instances but not by Redis 3.0 instance.
-     * The valid commands that can be renamed are: **command**, **keys**, **flushdb**, **flushall** and **hgetall**.
-     */
     renameCommands?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Indicates the number of replicas in the instance.
-     */
     replicaCount?: pulumi.Input<number>;
-    /**
-     * Specifies IP addresses to retain. Mandatory during cluster scale-in. If this
-     * parameter is not set, the system randomly deletes unnecessary shards.
-     */
     reservedIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     saveDays?: pulumi.Input<number>;
-    /**
-     * The ID of the security group which the instance belongs to.
-     * This parameter is mandatory for Memcached and Redis 3.0 version.
-     */
     securityGroupId?: pulumi.Input<string>;
-    /**
-     * The name of security group which the instance belongs to.
-     */
     securityGroupName?: pulumi.Input<string>;
-    /**
-     * Indicates the number of shards in a cluster instance.
-     */
     shardingCount?: pulumi.Input<number>;
-    /**
-     * Specifies whether to enable the SSL. Value options: **true**, **false**.
-     */
     sslEnable?: pulumi.Input<boolean>;
-    /**
-     * Cache instance status. The valid values are as follows:
-     * + `RUNNING`: The instance is running properly.
-     * Only instances in the Running state can provide in-memory cache service.
-     * + `ERROR`: The instance is not running properly.
-     * + `RESTARTING`: The instance is being restarted.
-     * + `FROZEN`: The instance has been frozen due to low balance.
-     * You can unfreeze the instance by recharging your account in My Order.
-     * + `EXTENDING`: The instance is being scaled up.
-     * + `RESTORING`: The instance data is being restored.
-     * + `FLUSHING`: The DCS instance is being cleared.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Indicates the subnet segment.
-     */
     subnetCidr?: pulumi.Input<string>;
-    /**
-     * The ID of subnet which the instance belongs to.
-     * Changing this creates a new instance resource.
-     */
     subnetId?: pulumi.Input<string>;
-    /**
-     * The name of subnet which the instance belongs to.
-     */
     subnetName?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the dcs instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The Parameter Template ID.
-     * Changing this creates a new instance resource.
-     */
     templateId?: pulumi.Input<string>;
-    /**
-     * Indicates whether client IP pass-through is enabled.
-     */
     transparentClientIpEnable?: pulumi.Input<boolean>;
-    /**
-     * Size of the used memory. Unit: MB.
-     */
     usedMemory?: pulumi.Input<number>;
     /**
      * @deprecated Deprecated
@@ -1014,24 +416,9 @@ export interface InstanceState {
      * @deprecated Deprecated
      */
     userName?: pulumi.Input<string>;
-    /**
-     * The ID of VPC which the instance belongs to.
-     * Changing this creates a new instance resource.
-     */
     vpcId?: pulumi.Input<string>;
-    /**
-     * The name of VPC which the instance belongs to.
-     */
     vpcName?: pulumi.Input<string>;
-    /**
-     * Enable or disable the IP address whitelists. Defaults to true.
-     * If the whitelist is disabled, all IP addresses connected to the VPC can access the instance.
-     */
     whitelistEnable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the IP addresses which can access the instance.
-     * This parameter is valid for Redis 4.0 and 5.0 versions. The structure is described below.
-     */
     whitelists?: pulumi.Input<pulumi.Input<inputs.Dcs.InstanceWhitelist>[]>;
 }
 
@@ -1039,27 +426,14 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * Specifies the username used for accessing a DCS Memcached instance.
-     * If the cache engine is *Redis*, you do not need to set this parameter.
-     * The username starts with a letter, consists of 1 to 64 characters, and supports only letters, digits, and
-     * hyphens (-). Changing this creates a new instance.
-     */
     accessUser?: pulumi.Input<string>;
     /**
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled.
-     * Valid values are `true` and `false`, defaults to `false`.
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * The code of the AZ where the cache node resides.
-     * Master/Standby, Proxy Cluster, and Redis Cluster DCS instances support cross-AZ deployment.
-     * You can specify an AZ for the standby node. When specifying AZs for nodes, use commas (,) to separate AZs.
-     * Changing this creates a new instance.
+     * schema: Required
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1070,12 +444,6 @@ export interface InstanceArgs {
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     backupAts?: pulumi.Input<pulumi.Input<number>[]>;
-    /**
-     * Specifies the backup configuration to be used with the instance.
-     * The structure is described below.
-     *
-     * > **NOTE:** This parameter is not supported when the instance type is single.
-     */
     backupPolicy?: pulumi.Input<inputs.Dcs.InstanceBackupPolicy>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
@@ -1085,198 +453,51 @@ export interface InstanceArgs {
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     beginAt?: pulumi.Input<string>;
-    /**
-     * Specifies the cache capacity. Unit: GB.
-     * + **Redis4.0, Redis5.0 and Redis6.0**: Stand-alone and active/standby type instance values: `0.125`, `0.25`,
-     * `0.5`, `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-     * Cluster instance specifications support `4`,`8`,`16`, `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`,
-     * `384`, `512`, `768` and `1024`.
-     * + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-     * Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-     * + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-     */
     capacity: pulumi.Input<number>;
-    /**
-     * Specifies the charging mode of the redis instance.
-     * The valid values are as follows:
-     * + `prePaid`: indicates the yearly/monthly billing mode.
-     * + `postPaid`: indicates the pay-per-use billing mode.
-     * Default value is `postPaid`.
-     * Changing this creates a new instance.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the replica to delete. This parameter is mandatory when
-     * you delete replicas of a master/standby DCS Redis 4.0 or 5.0 instance. Currently, only one replica can be deleted
-     * at a time.
-     */
     deletedNodes?: pulumi.Input<string>;
-    /**
-     * Specifies the description of an instance.
-     * It is a string that contains a maximum of 1024 characters.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies a cache engine. Options: *Redis* and *Memcached*.
-     * Changing this creates a new instance.
-     */
     engine: pulumi.Input<string>;
-    /**
-     * Specifies the version of a cache engine.
-     * It is mandatory when the engine is *Redis*, the value can be 3.0, 4.0, 5.0 or 6.0.
-     * Changing this creates a new instance.
-     */
     engineVersion?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the dcs instance.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * @deprecated Deprecated, this is a non-public attribute.
      */
     enterpriseProjectName?: pulumi.Input<string>;
     /**
-     * The flavor of the cache instance, which including the total memory, available memory,
-     * maximum number of connections allowed, maximum/assured bandwidth and reference performance.
-     * It also includes the modes of Redis instances. You can query the *flavor* as follows:
-     * + It can be obtained through this data source `sbercloud.Dcs.getFlavors`.
-     * + Query some flavors
-     * in [DCS Instance Specifications](https://support.hc.sbercloud.ru/usermanual/dcs/en-us_topic_0054235835.html) + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+     * schema: Required
      */
     flavor?: pulumi.Input<string>;
-    /**
-     * Time at which the maintenance time window starts. Defaults to **02:00:00**.
-     * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
-     * time window.
-     * + The start time must be on the hour, such as **18:00:00**.
-     * + If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also blank.
-     * In this case, the system automatically allocates the default start time **02:00:00**.
-     */
     maintainBegin?: pulumi.Input<string>;
-    /**
-     * Time at which the maintenance time window ends. Defaults to **06:00:00**.
-     * + The start time and end time of a maintenance time window must indicate the time segment of a supported maintenance
-     * time window.
-     * + The end time is one hour later than the start time. For example, if the start time is **18:00:00**, the end time is
-     * **19:00:00**.
-     * + If parameter `maintainEnd` is left blank, parameter `maintainBegin` is also blank.
-     * In this case, the system automatically allocates the default end time **06:00:00**.
-     *
-     * > **NOTE:** Parameters `maintainBegin` and `maintainEnd` must be set in pairs.
-     */
     maintainEnd?: pulumi.Input<string>;
-    /**
-     * Specifies the name of an instance.
-     * The name must be 4 to 64 characters and start with a letter.
-     * Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specify an array of one or more parameters to be set to the DCS instance after
-     * launched. You can check on console to see which parameters supported.
-     * The parameters structure is documented below.
-     */
     parameters?: pulumi.Input<pulumi.Input<inputs.Dcs.InstanceParameter>[]>;
-    /**
-     * Specifies the password of a DCS instance.
-     * The password of a DCS instance must meet the following complexity requirements:
-     * + Must be a string of 8 to 32 bits in length.
-     * + Must contain three combinations of the following four characters: Lower case letters, uppercase letter, digital,
-     * Special characters include (`~!@#$^&*()-_=+\\|{}:,<.>/?).
-     * + The new password cannot be the same as the old password.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the instance.
-     * If `periodUnit` is set to *month*, the value ranges from 1 to 9.
-     * If `periodUnit` is set to *year*, the value ranges from 1 to 3.
-     * This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new instance.
-     */
     period?: pulumi.Input<number>;
     /**
      * @deprecated Please use `backupPolicy` instead
      */
     periodType?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new instance.
-     */
     periodUnit?: pulumi.Input<string>;
-    /**
-     * Port customization, which is supported only by Redis 4.0 and Redis 5.0 instances.
-     * Redis instance defaults to 6379. Memcached instance does not use this argument.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * The IP address of the DCS instance,
-     * which can only be the currently available IP address the selected subnet.
-     * You can specify an available IP for the Redis instance (except for the Redis Cluster type).
-     * If omitted, the system will automatically allocate an available IP address to the Redis instance.
-     * Changing this creates a new instance resource.
-     */
     privateIp?: pulumi.Input<string>;
     /**
      * @deprecated Deprecated, please use `flavor` instead
      */
     productId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the DCS instance resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new DCS instance resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Critical command renaming, which is supported only by Redis 4.0 and
-     * Redis 5.0 instances but not by Redis 3.0 instance.
-     * The valid commands that can be renamed are: **command**, **keys**, **flushdb**, **flushall** and **hgetall**.
-     */
     renameCommands?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies IP addresses to retain. Mandatory during cluster scale-in. If this
-     * parameter is not set, the system randomly deletes unnecessary shards.
-     */
     reservedIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated Deprecated, please use `backupPolicy` instead
      */
     saveDays?: pulumi.Input<number>;
-    /**
-     * The ID of the security group which the instance belongs to.
-     * This parameter is mandatory for Memcached and Redis 3.0 version.
-     */
     securityGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the SSL. Value options: **true**, **false**.
-     */
     sslEnable?: pulumi.Input<boolean>;
-    /**
-     * The ID of subnet which the instance belongs to.
-     * Changing this creates a new instance resource.
-     */
     subnetId: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the dcs instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The Parameter Template ID.
-     * Changing this creates a new instance resource.
-     */
     templateId?: pulumi.Input<string>;
-    /**
-     * The ID of VPC which the instance belongs to.
-     * Changing this creates a new instance resource.
-     */
     vpcId: pulumi.Input<string>;
-    /**
-     * Enable or disable the IP address whitelists. Defaults to true.
-     * If the whitelist is disabled, all IP addresses connected to the VPC can access the instance.
-     */
     whitelistEnable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the IP addresses which can access the instance.
-     * This parameter is valid for Redis 4.0 and 5.0 versions. The structure is described below.
-     */
     whitelists?: pulumi.Input<pulumi.Input<inputs.Dcs.InstanceWhitelist>[]>;
 }

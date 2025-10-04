@@ -6,74 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages DMS RocketMQ topic resources within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a topic for 5.x version instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.DmsRocketmqTopic("test", {
- *     instanceId: instanceId,
- *     name: "topic_test",
- *     messageType: "NORMAL",
- * });
- * ```
- *
- * ### Create a topic with brokers for 4.8.0 version instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.DmsRocketmqTopic("test", {
- *     instanceId: instanceId,
- *     name: "topic_test",
- *     queueNum: 3,
- *     permission: "all",
- *     brokers: [{
- *         name: "broker-0",
- *     }],
- * });
- * ```
- *
- * ### Create a topic with queues for 4.8.0 version instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.DmsRocketmqTopic("test", {
- *     instanceId: instanceId,
- *     name: "topic_test",
- *     permission: "all",
- *     queues: [{
- *         broker: "broker-0",
- *         queueNum: 3,
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * The rocketmq topic can be imported using the rocketMQ instance ID and topic name separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dmsRocketmqTopic:DmsRocketmqTopic test c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
- * ```
- */
 export class DmsRocketmqTopic extends pulumi.CustomResource {
     /**
      * Get an existing DmsRocketmqTopic resource's state with the given name, ID, and optional extra
@@ -104,55 +36,29 @@ export class DmsRocketmqTopic extends pulumi.CustomResource {
 
     /**
      * Specifies the list of associated brokers of the topic.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
-     * Changing this parameter will create a new resource.
-     * The brokers structure is documented below.
      */
     declare public readonly brokers: pulumi.Output<outputs.DmsRocketmqTopicBroker[]>;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the message type of the topic.
-     * It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-     * + **NORMAL**: Normal messages.
-     * + **FIFO**: Ordered messages.
-     * + **DELAY**: Scheduled messages.
-     * + **TRANSACTION**: Transactional messages.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly messageType: pulumi.Output<string>;
     /**
-     * Specifies the name of the broker.
-     *
-     * <a name="DmsRocketMQTopic_QueueRef"></a>
-     * The `queues` block supports:
+     * Specifies the name of the topic.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the permissions of the topic.
-     * Value options: **all**, **sub**, **pub**. Defaults to **all**.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
      */
     declare public readonly permission: pulumi.Output<string>;
     /**
-     * Specifies the number of the queues.
+     * Specifies the number of queues.
      */
     declare public readonly queueNum: pulumi.Output<number>;
     /**
-     * Specifies the queues information of the topic.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
-     * The queues structure is documented below.
-     * Changing this parameter will create a new resource.
+     * Specifies the queue info of the topic.
      */
     declare public readonly queues: pulumi.Output<outputs.DmsRocketmqTopicQueue[] | undefined>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the total number of read queues.
@@ -160,9 +66,6 @@ export class DmsRocketmqTopic extends pulumi.CustomResource {
     declare public readonly totalReadQueueNum: pulumi.Output<number>;
     /**
      * Specifies the total number of write queues.
-     *
-     * <a name="DmsRocketMQTopic_BrokerRef"></a>
-     * The `brokers` block supports:
      */
     declare public readonly totalWriteQueueNum: pulumi.Output<number>;
 
@@ -216,55 +119,29 @@ export class DmsRocketmqTopic extends pulumi.CustomResource {
 export interface DmsRocketmqTopicState {
     /**
      * Specifies the list of associated brokers of the topic.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
-     * Changing this parameter will create a new resource.
-     * The brokers structure is documented below.
      */
     brokers?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqTopicBroker>[]>;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     * Changing this parameter will create a new resource.
-     */
     instanceId?: pulumi.Input<string>;
     /**
      * Specifies the message type of the topic.
-     * It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-     * + **NORMAL**: Normal messages.
-     * + **FIFO**: Ordered messages.
-     * + **DELAY**: Scheduled messages.
-     * + **TRANSACTION**: Transactional messages.
-     *
-     * Changing this parameter will create a new resource.
      */
     messageType?: pulumi.Input<string>;
     /**
-     * Specifies the name of the broker.
-     *
-     * <a name="DmsRocketMQTopic_QueueRef"></a>
-     * The `queues` block supports:
+     * Specifies the name of the topic.
      */
     name?: pulumi.Input<string>;
     /**
      * Specifies the permissions of the topic.
-     * Value options: **all**, **sub**, **pub**. Defaults to **all**.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
      */
     permission?: pulumi.Input<string>;
     /**
-     * Specifies the number of the queues.
+     * Specifies the number of queues.
      */
     queueNum?: pulumi.Input<number>;
     /**
-     * Specifies the queues information of the topic.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
-     * The queues structure is documented below.
-     * Changing this parameter will create a new resource.
+     * Specifies the queue info of the topic.
      */
     queues?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqTopicQueue>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the total number of read queues.
@@ -272,9 +149,6 @@ export interface DmsRocketmqTopicState {
     totalReadQueueNum?: pulumi.Input<number>;
     /**
      * Specifies the total number of write queues.
-     *
-     * <a name="DmsRocketMQTopic_BrokerRef"></a>
-     * The `brokers` block supports:
      */
     totalWriteQueueNum?: pulumi.Input<number>;
 }
@@ -285,55 +159,29 @@ export interface DmsRocketmqTopicState {
 export interface DmsRocketmqTopicArgs {
     /**
      * Specifies the list of associated brokers of the topic.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
-     * Changing this parameter will create a new resource.
-     * The brokers structure is documented below.
      */
     brokers?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqTopicBroker>[]>;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     * Changing this parameter will create a new resource.
-     */
     instanceId: pulumi.Input<string>;
     /**
      * Specifies the message type of the topic.
-     * It's only valid when RocketMQ instance version is **5.x**. Valid values are:
-     * + **NORMAL**: Normal messages.
-     * + **FIFO**: Ordered messages.
-     * + **DELAY**: Scheduled messages.
-     * + **TRANSACTION**: Transactional messages.
-     *
-     * Changing this parameter will create a new resource.
      */
     messageType?: pulumi.Input<string>;
     /**
-     * Specifies the name of the broker.
-     *
-     * <a name="DmsRocketMQTopic_QueueRef"></a>
-     * The `queues` block supports:
+     * Specifies the name of the topic.
      */
     name?: pulumi.Input<string>;
     /**
      * Specifies the permissions of the topic.
-     * Value options: **all**, **sub**, **pub**. Defaults to **all**.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
      */
     permission?: pulumi.Input<string>;
     /**
-     * Specifies the number of the queues.
+     * Specifies the number of queues.
      */
     queueNum?: pulumi.Input<number>;
     /**
-     * Specifies the queues information of the topic.
-     * It's only valid when RocketMQ instance version is **4.8.0**.
-     * The queues structure is documented below.
-     * Changing this parameter will create a new resource.
+     * Specifies the queue info of the topic.
      */
     queues?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqTopicQueue>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the total number of read queues.
@@ -341,9 +189,6 @@ export interface DmsRocketmqTopicArgs {
     totalReadQueueNum?: pulumi.Input<number>;
     /**
      * Specifies the total number of write queues.
-     *
-     * <a name="DmsRocketMQTopic_BrokerRef"></a>
-     * The `brokers` block supports:
      */
     totalWriteQueueNum?: pulumi.Input<number>;
 }

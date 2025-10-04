@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get all OBS buckets.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const buckets = sbercloud.Obs.getBuckets({
- *     bucket: "your-bucket-name",
- * });
- * ```
- */
 export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -32,18 +20,8 @@ export function getBuckets(args?: GetBucketsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getBuckets.
  */
 export interface GetBucketsArgs {
-    /**
-     * The name of the OBS bucket.
-     */
     bucket?: string;
-    /**
-     * The enterprise project id of the OBS bucket.
-     */
     enterpriseProjectId?: string;
-    /**
-     * The region in which to obtain the OBS bucket.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -51,39 +29,15 @@ export interface GetBucketsArgs {
  * A collection of values returned by getBuckets.
  */
 export interface GetBucketsResult {
-    /**
-     * The name of the OBS bucket.
-     */
     readonly bucket?: string;
-    /**
-     * A list of OBS buckets.
-     */
     readonly buckets: outputs.Obs.GetBucketsBucket[];
-    /**
-     * The enterprise project id of the OBS bucket.
-     */
     readonly enterpriseProjectId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The region where the OBS bucket belongs.
-     */
     readonly region?: string;
 }
-/**
- * Use this data source to get all OBS buckets.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const buckets = sbercloud.Obs.getBuckets({
- *     bucket: "your-bucket-name",
- * });
- * ```
- */
 export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -98,17 +52,7 @@ export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getBuckets.
  */
 export interface GetBucketsOutputArgs {
-    /**
-     * The name of the OBS bucket.
-     */
     bucket?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the OBS bucket.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the OBS bucket.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

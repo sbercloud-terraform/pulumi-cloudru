@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a CSS configuration resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const test = new sbercloud.CssConfiguration("test", {
- *     clusterId: clusterId,
- *     threadPoolForceMergeSize: "3",
- * });
- * ```
- *
- * ## Import
- *
- * The CSS configuration can be imported using the `id` which equals the `cluster_id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/cssConfiguration:CssConfiguration test <id>
- * ```
- */
 export class CssConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing CssConfiguration resource's state with the given name, ID, and optional extra
@@ -61,26 +34,18 @@ export class CssConfiguration extends pulumi.CustomResource {
 
     /**
      * The CSS cluster ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly clusterId: pulumi.Output<string>;
     /**
-     * Whether to return the Access-Control-Allow-Credentials of
-     * the header during cross-domain access.
-     * The value can be **true** or **false**. Default value: **false**.
+     * Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
      */
     declare public readonly httpCorsAllowCredetials: pulumi.Output<string>;
     /**
-     * Headers allowed for cross-domain access.  
-     * Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-     * Use commas (,) and spaces to separate headers.
+     * Headers allowed for cross-domain access.
      */
     declare public readonly httpCorsAllowHeaders: pulumi.Output<string>;
     /**
-     * Methods allowed for cross-domain access.  
-     * Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-     * Use commas (,) and spaces to separate methods.
+     * Methods allowed for cross-domain access.
      */
     declare public readonly httpCorsAllowMethods: pulumi.Output<string>;
     /**
@@ -88,35 +53,24 @@ export class CssConfiguration extends pulumi.CustomResource {
      */
     declare public readonly httpCorsAllowOrigin: pulumi.Output<string>;
     /**
-     * Whether to allow cross-domain access.  
-     * The value can be **true** or **false**. Default value: **false**.
+     * Whether to allow cross-domain access.
      */
     declare public readonly httpCorsEnabled: pulumi.Output<string>;
     /**
-     * Cache duration of the browser. The cache is automatically cleared
-     * after the time range you specify.
-     * Unit: s, Default value: **1,728,000**.
+     * Cache duration of the browser. The cache is automatically cleared after the time range you specify.
      */
     declare public readonly httpCorsMaxAge: pulumi.Output<string>;
     /**
-     * Cache size in the query phase. Value range: **1%** to **100%**.  
-     * Unit: %, Default value: **10%**.
+     * Cache size in the query phase. Value range: **1** to **100**.
      */
     declare public readonly indicesQueriesCacheSize: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Configured for migrating data from the current cluster to
-     * the target cluster through the reindex API.
-     * The example value is **122.122.122.122:9200**.
+     * Configured for migrating data from the current cluster to the target cluster through the reindex API.
      */
     declare public readonly reindexRemoteWhitelist: pulumi.Output<string>;
     /**
-     * Queue size in the force merge thread pool.  
-     * Default value: **1**.
+     * Queue size in the force merge thread pool.
      */
     declare public readonly threadPoolForceMergeSize: pulumi.Output<string>;
 
@@ -172,26 +126,18 @@ export class CssConfiguration extends pulumi.CustomResource {
 export interface CssConfigurationState {
     /**
      * The CSS cluster ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Whether to return the Access-Control-Allow-Credentials of
-     * the header during cross-domain access.
-     * The value can be **true** or **false**. Default value: **false**.
+     * Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
      */
     httpCorsAllowCredetials?: pulumi.Input<string>;
     /**
-     * Headers allowed for cross-domain access.  
-     * Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-     * Use commas (,) and spaces to separate headers.
+     * Headers allowed for cross-domain access.
      */
     httpCorsAllowHeaders?: pulumi.Input<string>;
     /**
-     * Methods allowed for cross-domain access.  
-     * Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-     * Use commas (,) and spaces to separate methods.
+     * Methods allowed for cross-domain access.
      */
     httpCorsAllowMethods?: pulumi.Input<string>;
     /**
@@ -199,35 +145,24 @@ export interface CssConfigurationState {
      */
     httpCorsAllowOrigin?: pulumi.Input<string>;
     /**
-     * Whether to allow cross-domain access.  
-     * The value can be **true** or **false**. Default value: **false**.
+     * Whether to allow cross-domain access.
      */
     httpCorsEnabled?: pulumi.Input<string>;
     /**
-     * Cache duration of the browser. The cache is automatically cleared
-     * after the time range you specify.
-     * Unit: s, Default value: **1,728,000**.
+     * Cache duration of the browser. The cache is automatically cleared after the time range you specify.
      */
     httpCorsMaxAge?: pulumi.Input<string>;
     /**
-     * Cache size in the query phase. Value range: **1%** to **100%**.  
-     * Unit: %, Default value: **10%**.
+     * Cache size in the query phase. Value range: **1** to **100**.
      */
     indicesQueriesCacheSize?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Configured for migrating data from the current cluster to
-     * the target cluster through the reindex API.
-     * The example value is **122.122.122.122:9200**.
+     * Configured for migrating data from the current cluster to the target cluster through the reindex API.
      */
     reindexRemoteWhitelist?: pulumi.Input<string>;
     /**
-     * Queue size in the force merge thread pool.  
-     * Default value: **1**.
+     * Queue size in the force merge thread pool.
      */
     threadPoolForceMergeSize?: pulumi.Input<string>;
 }
@@ -238,26 +173,18 @@ export interface CssConfigurationState {
 export interface CssConfigurationArgs {
     /**
      * The CSS cluster ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Whether to return the Access-Control-Allow-Credentials of
-     * the header during cross-domain access.
-     * The value can be **true** or **false**. Default value: **false**.
+     * Whether to return the Access-Control-Allow-Credentials of the header during cross-domain access.
      */
     httpCorsAllowCredetials?: pulumi.Input<string>;
     /**
-     * Headers allowed for cross-domain access.  
-     * Including **X-Requested-With**, **Content-Type**, and **Content-Length**.
-     * Use commas (,) and spaces to separate headers.
+     * Headers allowed for cross-domain access.
      */
     httpCorsAllowHeaders?: pulumi.Input<string>;
     /**
-     * Methods allowed for cross-domain access.  
-     * Including **OPTIONS**, **HEAD**, **GET**, **POST**, **PUT**, and **DELETE**.
-     * Use commas (,) and spaces to separate methods.
+     * Methods allowed for cross-domain access.
      */
     httpCorsAllowMethods?: pulumi.Input<string>;
     /**
@@ -265,35 +192,24 @@ export interface CssConfigurationArgs {
      */
     httpCorsAllowOrigin?: pulumi.Input<string>;
     /**
-     * Whether to allow cross-domain access.  
-     * The value can be **true** or **false**. Default value: **false**.
+     * Whether to allow cross-domain access.
      */
     httpCorsEnabled?: pulumi.Input<string>;
     /**
-     * Cache duration of the browser. The cache is automatically cleared
-     * after the time range you specify.
-     * Unit: s, Default value: **1,728,000**.
+     * Cache duration of the browser. The cache is automatically cleared after the time range you specify.
      */
     httpCorsMaxAge?: pulumi.Input<string>;
     /**
-     * Cache size in the query phase. Value range: **1%** to **100%**.  
-     * Unit: %, Default value: **10%**.
+     * Cache size in the query phase. Value range: **1** to **100**.
      */
     indicesQueriesCacheSize?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Configured for migrating data from the current cluster to
-     * the target cluster through the reindex API.
-     * The example value is **122.122.122.122:9200**.
+     * Configured for migrating data from the current cluster to the target cluster through the reindex API.
      */
     reindexRemoteWhitelist?: pulumi.Input<string>;
     /**
-     * Queue size in the force merge thread pool.  
-     * Default value: **1**.
+     * Queue size in the force merge thread pool.
      */
     threadPoolForceMergeSize?: pulumi.Input<string>;
 }

@@ -11,42 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of EIPs.
-//
-// ## Example Usage
-//
-// # An example filter by name and tag
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/eip"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// publicIp := cfg.RequireObject("publicIp")
-// eip, err := eip.GetEips(ctx, &eip.GetEipsArgs{
-// PublicIps: interface{}{
-// publicIp,
-// },
-// Tags: map[string]interface{}{
-// "foo": "bar",
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("eipIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:11,11-25)))
-// return nil
-// })
-// }
-// ```
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEipsResult
@@ -59,46 +23,29 @@ func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getEips.
 type GetEipsArgs struct {
-	// Specifies the enterprise project ID which the desired EIP belongs to.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies an array of one or more IDs of the desired EIP.
-	Ids []string `pulumi:"ids"`
-	// Specifies ip version of the desired EIP. The options are:
-	IpVersion *int `pulumi:"ipVersion"`
-	// Specifies an array of one or more port ids which bound to the desired EIP.
-	PortIds    []string `pulumi:"portIds"`
-	PrivateIps []string `pulumi:"privateIps"`
-	// Specifies an array of one or more public ip addresses of the desired EIP.
-	PublicIps []string `pulumi:"publicIps"`
-	// Specifies the region in which to obtain the EIP. If omitted, the provider-level region
-	// will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the included key/value pairs which associated with the desired EIP.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags map[string]string `pulumi:"tags"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	Ids                 []string          `pulumi:"ids"`
+	IpVersion           *int              `pulumi:"ipVersion"`
+	PortIds             []string          `pulumi:"portIds"`
+	PrivateIps          []string          `pulumi:"privateIps"`
+	PublicIps           []string          `pulumi:"publicIps"`
+	Region              *string           `pulumi:"region"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getEips.
 type GetEipsResult struct {
-	// Indicates a list of all EIPs found. Structure is documented below.
-	Eips []GetEipsEip `pulumi:"eips"`
-	// The the enterprise project ID of the EIP.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	Eips                []GetEipsEip `pulumi:"eips"`
+	EnterpriseProjectId *string      `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id  string   `pulumi:"id"`
-	Ids []string `pulumi:"ids"`
-	// The ip version of the EIP.
-	IpVersion  *int     `pulumi:"ipVersion"`
-	PortIds    []string `pulumi:"portIds"`
-	PrivateIps []string `pulumi:"privateIps"`
-	PublicIps  []string `pulumi:"publicIps"`
-	Region     string   `pulumi:"region"`
-	// The key/value pairs which associated with the EIP.
-	Tags map[string]string `pulumi:"tags"`
+	Id         string            `pulumi:"id"`
+	Ids        []string          `pulumi:"ids"`
+	IpVersion  *int              `pulumi:"ipVersion"`
+	PortIds    []string          `pulumi:"portIds"`
+	PrivateIps []string          `pulumi:"privateIps"`
+	PublicIps  []string          `pulumi:"publicIps"`
+	Region     string            `pulumi:"region"`
+	Tags       map[string]string `pulumi:"tags"`
 }
 
 func GetEipsOutput(ctx *pulumi.Context, args GetEipsOutputArgs, opts ...pulumi.InvokeOption) GetEipsResultOutput {
@@ -112,27 +59,14 @@ func GetEipsOutput(ctx *pulumi.Context, args GetEipsOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getEips.
 type GetEipsOutputArgs struct {
-	// Specifies the enterprise project ID which the desired EIP belongs to.
-	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies an array of one or more IDs of the desired EIP.
-	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Specifies ip version of the desired EIP. The options are:
-	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
-	// Specifies an array of one or more port ids which bound to the desired EIP.
-	PortIds    pulumi.StringArrayInput `pulumi:"portIds"`
-	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
-	// Specifies an array of one or more public ip addresses of the desired EIP.
-	PublicIps pulumi.StringArrayInput `pulumi:"publicIps"`
-	// Specifies the region in which to obtain the EIP. If omitted, the provider-level region
-	// will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the included key/value pairs which associated with the desired EIP.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	EnterpriseProjectId pulumi.StringPtrInput   `pulumi:"enterpriseProjectId"`
+	Ids                 pulumi.StringArrayInput `pulumi:"ids"`
+	IpVersion           pulumi.IntPtrInput      `pulumi:"ipVersion"`
+	PortIds             pulumi.StringArrayInput `pulumi:"portIds"`
+	PrivateIps          pulumi.StringArrayInput `pulumi:"privateIps"`
+	PublicIps           pulumi.StringArrayInput `pulumi:"publicIps"`
+	Region              pulumi.StringPtrInput   `pulumi:"region"`
+	Tags                pulumi.StringMapInput   `pulumi:"tags"`
 }
 
 func (GetEipsOutputArgs) ElementType() reflect.Type {
@@ -154,12 +88,10 @@ func (o GetEipsResultOutput) ToGetEipsResultOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Indicates a list of all EIPs found. Structure is documented below.
 func (o GetEipsResultOutput) Eips() GetEipsEipArrayOutput {
 	return o.ApplyT(func(v GetEipsResult) []GetEipsEip { return v.Eips }).(GetEipsEipArrayOutput)
 }
 
-// The the enterprise project ID of the EIP.
 func (o GetEipsResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEipsResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -173,7 +105,6 @@ func (o GetEipsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEipsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// The ip version of the EIP.
 func (o GetEipsResultOutput) IpVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetEipsResult) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
 }
@@ -194,7 +125,6 @@ func (o GetEipsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The key/value pairs which associated with the EIP.
 func (o GetEipsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEipsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -6,19 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Cloud Eye alarm rule resource within SberCloud.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * CES alarm rules can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Ces/alarmrule:Alarmrule alarm_rule al1619578509719Ga0X1RGWv
- * ```
- */
 export class Alarmrule extends pulumi.CustomResource {
     /**
      * Get an existing Alarmrule resource's state with the given name, ID, and optional extra
@@ -47,76 +34,23 @@ export class Alarmrule extends pulumi.CustomResource {
         return obj['__pulumiType'] === Alarmrule.__pulumiType;
     }
 
-    /**
-     * Specifies whether to enable the action to be triggered by an alarm. The
-     * default value is true.
-     */
     declare public readonly alarmActionEnabled: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the action triggered by an alarm. The structure is described
-     * below.
-     */
     declare public readonly alarmActions: pulumi.Output<outputs.Ces.AlarmruleAlarmAction[] | undefined>;
-    /**
-     * The value can be a string of 0 to 256 characters.
-     */
     declare public readonly alarmDescription: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable the alarm. The default value is true.
-     */
     declare public readonly alarmEnabled: pulumi.Output<boolean | undefined>;
     declare public readonly alarmLevel: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the name of an alarm rule. The value can be a string of 1 to 128
-     * characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-     */
     declare public readonly alarmName: pulumi.Output<string>;
-    /**
-     * Indicates the alarm status. The value can be:
-     * + ok: The alarm status is normal;
-     * + alarm: An alarm is generated;
-     * + insufficient_data: The required data is insufficient.
-     */
     declare public /*out*/ readonly alarmState: pulumi.Output<string>;
-    /**
-     * Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-     * **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-     */
     declare public readonly alarmType: pulumi.Output<string>;
-    /**
-     * Specifies the alarm triggering condition. The structure is described below.
-     */
     declare public readonly condition: pulumi.Output<outputs.Ces.AlarmruleCondition>;
-    /**
-     * Specifies the enterprise project id of the alarm rule. Changing
-     * this creates a new resource.
-     *
-     * > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-     * and okActions coexist, their corresponding notificationList must be of the **same value**.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
      * @deprecated insufficientdata_actions is deprecated
      */
     declare public readonly insufficientdataActions: pulumi.Output<outputs.Ces.AlarmruleInsufficientdataAction[] | undefined>;
-    /**
-     * Specifies the alarm metrics. The structure is described below. Changing this
-     * creates a new resource.
-     */
     declare public readonly metric: pulumi.Output<outputs.Ces.AlarmruleMetric>;
-    /**
-     * Specifies the action triggered by the clearing of an alarm. The structure is
-     * described below.
-     */
     declare public readonly okActions: pulumi.Output<outputs.Ces.AlarmruleOkAction[] | undefined>;
-    /**
-     * The region in which to create the alarm rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-     */
     declare public /*out*/ readonly updateTime: pulumi.Output<number>;
 
     /**
@@ -183,76 +117,23 @@ export class Alarmrule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Alarmrule resources.
  */
 export interface AlarmruleState {
-    /**
-     * Specifies whether to enable the action to be triggered by an alarm. The
-     * default value is true.
-     */
     alarmActionEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the action triggered by an alarm. The structure is described
-     * below.
-     */
     alarmActions?: pulumi.Input<pulumi.Input<inputs.Ces.AlarmruleAlarmAction>[]>;
-    /**
-     * The value can be a string of 0 to 256 characters.
-     */
     alarmDescription?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the alarm. The default value is true.
-     */
     alarmEnabled?: pulumi.Input<boolean>;
     alarmLevel?: pulumi.Input<number>;
-    /**
-     * Specifies the name of an alarm rule. The value can be a string of 1 to 128
-     * characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-     */
     alarmName?: pulumi.Input<string>;
-    /**
-     * Indicates the alarm status. The value can be:
-     * + ok: The alarm status is normal;
-     * + alarm: An alarm is generated;
-     * + insufficient_data: The required data is insufficient.
-     */
     alarmState?: pulumi.Input<string>;
-    /**
-     * Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-     * **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-     */
     alarmType?: pulumi.Input<string>;
-    /**
-     * Specifies the alarm triggering condition. The structure is described below.
-     */
     condition?: pulumi.Input<inputs.Ces.AlarmruleCondition>;
-    /**
-     * Specifies the enterprise project id of the alarm rule. Changing
-     * this creates a new resource.
-     *
-     * > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-     * and okActions coexist, their corresponding notificationList must be of the **same value**.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * @deprecated insufficientdata_actions is deprecated
      */
     insufficientdataActions?: pulumi.Input<pulumi.Input<inputs.Ces.AlarmruleInsufficientdataAction>[]>;
-    /**
-     * Specifies the alarm metrics. The structure is described below. Changing this
-     * creates a new resource.
-     */
     metric?: pulumi.Input<inputs.Ces.AlarmruleMetric>;
-    /**
-     * Specifies the action triggered by the clearing of an alarm. The structure is
-     * described below.
-     */
     okActions?: pulumi.Input<pulumi.Input<inputs.Ces.AlarmruleOkAction>[]>;
-    /**
-     * The region in which to create the alarm rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-     */
     updateTime?: pulumi.Input<number>;
 }
 
@@ -260,64 +141,20 @@ export interface AlarmruleState {
  * The set of arguments for constructing a Alarmrule resource.
  */
 export interface AlarmruleArgs {
-    /**
-     * Specifies whether to enable the action to be triggered by an alarm. The
-     * default value is true.
-     */
     alarmActionEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the action triggered by an alarm. The structure is described
-     * below.
-     */
     alarmActions?: pulumi.Input<pulumi.Input<inputs.Ces.AlarmruleAlarmAction>[]>;
-    /**
-     * The value can be a string of 0 to 256 characters.
-     */
     alarmDescription?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable the alarm. The default value is true.
-     */
     alarmEnabled?: pulumi.Input<boolean>;
     alarmLevel?: pulumi.Input<number>;
-    /**
-     * Specifies the name of an alarm rule. The value can be a string of 1 to 128
-     * characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-     */
     alarmName: pulumi.Input<string>;
-    /**
-     * Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-     * **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-     */
     alarmType?: pulumi.Input<string>;
-    /**
-     * Specifies the alarm triggering condition. The structure is described below.
-     */
     condition: pulumi.Input<inputs.Ces.AlarmruleCondition>;
-    /**
-     * Specifies the enterprise project id of the alarm rule. Changing
-     * this creates a new resource.
-     *
-     * > **Note** If alarmActionEnabled is set to true, either alarmActions or okActions cannot be empty. If alarmActions
-     * and okActions coexist, their corresponding notificationList must be of the **same value**.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
      * @deprecated insufficientdata_actions is deprecated
      */
     insufficientdataActions?: pulumi.Input<pulumi.Input<inputs.Ces.AlarmruleInsufficientdataAction>[]>;
-    /**
-     * Specifies the alarm metrics. The structure is described below. Changing this
-     * creates a new resource.
-     */
     metric: pulumi.Input<inputs.Ces.AlarmruleMetric>;
-    /**
-     * Specifies the action triggered by the clearing of an alarm. The structure is
-     * described below.
-     */
     okActions?: pulumi.Input<pulumi.Input<inputs.Ces.AlarmruleOkAction>[]>;
-    /**
-     * The region in which to create the alarm rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

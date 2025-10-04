@@ -14,12 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ApiBackendParam struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description *string `pulumi:"description"`
 	// Where the parameter is located.
 	Location string `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            string  `pulumi:"name"`
 	SystemParamType *string `pulumi:"systemParamType"`
 	// The parameter type.
@@ -40,12 +39,11 @@ type ApiBackendParamInput interface {
 }
 
 type ApiBackendParamArgs struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Where the parameter is located.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            pulumi.StringInput    `pulumi:"name"`
 	SystemParamType pulumi.StringPtrInput `pulumi:"systemParamType"`
 	// The parameter type.
@@ -105,7 +103,7 @@ func (o ApiBackendParamOutput) ToApiBackendParamOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies the description of the API. The description cannot exceed 255 characters.
+// The description of the parameter.
 func (o ApiBackendParamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiBackendParam) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -115,8 +113,7 @@ func (o ApiBackendParamOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiBackendParam) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The parameter name.
 func (o ApiBackendParamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiBackendParam) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -166,12 +163,11 @@ type ApiFuncGraph struct {
 	InvocationType *string `pulumi:"invocationType"`
 	// The network architecture (framework) type of the FunctionGraph function.
 	NetworkType *string `pulumi:"networkType"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the FunctionGraph function.
 	RequestProtocol *string `pulumi:"requestProtocol"`
 	// The timeout for API requests to backend service.
 	Timeout *int `pulumi:"timeout"`
-	// Specifies the version of the API. A maximum of 16 characters are allowed.
+	// The version of the FunctionGraph function.
 	Version *string `pulumi:"version"`
 }
 
@@ -197,12 +193,11 @@ type ApiFuncGraphArgs struct {
 	InvocationType pulumi.StringPtrInput `pulumi:"invocationType"`
 	// The network architecture (framework) type of the FunctionGraph function.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the FunctionGraph function.
 	RequestProtocol pulumi.StringPtrInput `pulumi:"requestProtocol"`
 	// The timeout for API requests to backend service.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// Specifies the version of the API. A maximum of 16 characters are allowed.
+	// The version of the FunctionGraph function.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -308,8 +303,7 @@ func (o ApiFuncGraphOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraph) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The request protocol of the FunctionGraph function.
 func (o ApiFuncGraphOutput) RequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraph) *string { return v.RequestProtocol }).(pulumi.StringPtrOutput)
 }
@@ -319,7 +313,7 @@ func (o ApiFuncGraphOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraph) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the version of the API. A maximum of 16 characters are allowed.
+// The version of the FunctionGraph function.
 func (o ApiFuncGraphOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraph) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -398,8 +392,7 @@ func (o ApiFuncGraphPtrOutput) NetworkType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The request protocol of the FunctionGraph function.
 func (o ApiFuncGraphPtrOutput) RequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFuncGraph) *string {
 		if v == nil {
@@ -419,7 +412,7 @@ func (o ApiFuncGraphPtrOutput) Timeout() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the version of the API. A maximum of 16 characters are allowed.
+// The version of the FunctionGraph function.
 func (o ApiFuncGraphPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiFuncGraph) *string {
 		if v == nil {
@@ -446,17 +439,15 @@ type ApiFuncGraphPolicy struct {
 	InvocationMode *string `pulumi:"invocationMode"`
 	// The invocation mode of the FunctionGraph function.
 	InvocationType *string `pulumi:"invocationType"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The name of the backend policy.
 	Name string `pulumi:"name"`
 	// The network (framework) type of the FunctionGraph function.
 	NetworkType *string `pulumi:"networkType"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the FunctionGraph function.
 	RequestProtocol *string `pulumi:"requestProtocol"`
 	// The timeout for API requests to backend service.
 	Timeout *int `pulumi:"timeout"`
-	// Specifies the version of the API. A maximum of 16 characters are allowed.
+	// The version of the FunctionGraph function.
 	Version *string `pulumi:"version"`
 }
 
@@ -488,17 +479,15 @@ type ApiFuncGraphPolicyArgs struct {
 	InvocationMode pulumi.StringPtrInput `pulumi:"invocationMode"`
 	// The invocation mode of the FunctionGraph function.
 	InvocationType pulumi.StringPtrInput `pulumi:"invocationType"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The name of the backend policy.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The network (framework) type of the FunctionGraph function.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the FunctionGraph function.
 	RequestProtocol pulumi.StringPtrInput `pulumi:"requestProtocol"`
 	// The timeout for API requests to backend service.
 	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// Specifies the version of the API. A maximum of 16 characters are allowed.
+	// The version of the FunctionGraph function.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -593,8 +582,7 @@ func (o ApiFuncGraphPolicyOutput) InvocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicy) *string { return v.InvocationType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The name of the backend policy.
 func (o ApiFuncGraphPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -604,8 +592,7 @@ func (o ApiFuncGraphPolicyOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicy) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The request protocol of the FunctionGraph function.
 func (o ApiFuncGraphPolicyOutput) RequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicy) *string { return v.RequestProtocol }).(pulumi.StringPtrOutput)
 }
@@ -615,7 +602,7 @@ func (o ApiFuncGraphPolicyOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicy) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the version of the API. A maximum of 16 characters are allowed.
+// The version of the FunctionGraph function.
 func (o ApiFuncGraphPolicyOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicy) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -641,12 +628,11 @@ func (o ApiFuncGraphPolicyArrayOutput) Index(i pulumi.IntInput) ApiFuncGraphPoli
 }
 
 type ApiFuncGraphPolicyBackendParam struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description *string `pulumi:"description"`
 	// Where the parameter is located.
 	Location string `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            string  `pulumi:"name"`
 	SystemParamType *string `pulumi:"systemParamType"`
 	// The parameter type.
@@ -667,12 +653,11 @@ type ApiFuncGraphPolicyBackendParamInput interface {
 }
 
 type ApiFuncGraphPolicyBackendParamArgs struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Where the parameter is located.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            pulumi.StringInput    `pulumi:"name"`
 	SystemParamType pulumi.StringPtrInput `pulumi:"systemParamType"`
 	// The parameter type.
@@ -732,7 +717,7 @@ func (o ApiFuncGraphPolicyBackendParamOutput) ToApiFuncGraphPolicyBackendParamOu
 	return o
 }
 
-// Specifies the description of the API. The description cannot exceed 255 characters.
+// The description of the parameter.
 func (o ApiFuncGraphPolicyBackendParamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicyBackendParam) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -742,8 +727,7 @@ func (o ApiFuncGraphPolicyBackendParamOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicyBackendParam) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The parameter name.
 func (o ApiFuncGraphPolicyBackendParamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiFuncGraphPolicyBackendParam) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1135,8 +1119,7 @@ type ApiMockPolicy struct {
 	Conditions []ApiMockPolicyCondition `pulumi:"conditions"`
 	// The effective mode of the backend policy.
 	EffectiveMode *string `pulumi:"effectiveMode"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The backend policy name.
 	Name string `pulumi:"name"`
 	// The response content of the mock.
 	Response *string `pulumi:"response"`
@@ -1164,8 +1147,7 @@ type ApiMockPolicyArgs struct {
 	Conditions ApiMockPolicyConditionArrayInput `pulumi:"conditions"`
 	// The effective mode of the backend policy.
 	EffectiveMode pulumi.StringPtrInput `pulumi:"effectiveMode"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The backend policy name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The response content of the mock.
 	Response pulumi.StringPtrInput `pulumi:"response"`
@@ -1244,8 +1226,7 @@ func (o ApiMockPolicyOutput) EffectiveMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiMockPolicy) *string { return v.EffectiveMode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The backend policy name.
 func (o ApiMockPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiMockPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1281,12 +1262,11 @@ func (o ApiMockPolicyArrayOutput) Index(i pulumi.IntInput) ApiMockPolicyOutput {
 }
 
 type ApiMockPolicyBackendParam struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description *string `pulumi:"description"`
 	// Where the parameter is located.
 	Location string `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            string  `pulumi:"name"`
 	SystemParamType *string `pulumi:"systemParamType"`
 	// The parameter type.
@@ -1307,12 +1287,11 @@ type ApiMockPolicyBackendParamInput interface {
 }
 
 type ApiMockPolicyBackendParamArgs struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Where the parameter is located.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            pulumi.StringInput    `pulumi:"name"`
 	SystemParamType pulumi.StringPtrInput `pulumi:"systemParamType"`
 	// The parameter type.
@@ -1372,7 +1351,7 @@ func (o ApiMockPolicyBackendParamOutput) ToApiMockPolicyBackendParamOutputWithCo
 	return o
 }
 
-// Specifies the description of the API. The description cannot exceed 255 characters.
+// The description of the parameter.
 func (o ApiMockPolicyBackendParamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiMockPolicyBackendParam) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1382,8 +1361,7 @@ func (o ApiMockPolicyBackendParamOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiMockPolicyBackendParam) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The parameter name.
 func (o ApiMockPolicyBackendParamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiMockPolicyBackendParam) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1594,7 +1572,7 @@ func (o ApiMockPolicyConditionArrayOutput) Index(i pulumi.IntInput) ApiMockPolic
 type ApiRequestParam struct {
 	// The default value of the parameter.
 	Default *string `pulumi:"default"`
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The parameter description.
 	Description *string `pulumi:"description"`
 	// The enumerated value.
 	Enumeration *string `pulumi:"enumeration"`
@@ -1606,8 +1584,7 @@ type ApiRequestParam struct {
 	Maximum *int `pulumi:"maximum"`
 	// The minimum value or length (string parameter) for parameter.
 	Minimum *int `pulumi:"minimum"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The name of the request parameter.
 	Name string `pulumi:"name"`
 	// The list of orchestration rules that parameter used.
 	Orchestrations []string `pulumi:"orchestrations"`
@@ -1635,7 +1612,7 @@ type ApiRequestParamInput interface {
 type ApiRequestParamArgs struct {
 	// The default value of the parameter.
 	Default pulumi.StringPtrInput `pulumi:"default"`
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The parameter description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The enumerated value.
 	Enumeration pulumi.StringPtrInput `pulumi:"enumeration"`
@@ -1647,8 +1624,7 @@ type ApiRequestParamArgs struct {
 	Maximum pulumi.IntPtrInput `pulumi:"maximum"`
 	// The minimum value or length (string parameter) for parameter.
 	Minimum pulumi.IntPtrInput `pulumi:"minimum"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The name of the request parameter.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The list of orchestration rules that parameter used.
 	Orchestrations pulumi.StringArrayInput `pulumi:"orchestrations"`
@@ -1718,7 +1694,7 @@ func (o ApiRequestParamOutput) Default() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestParam) *string { return v.Default }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the description of the API. The description cannot exceed 255 characters.
+// The parameter description.
 func (o ApiRequestParamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiRequestParam) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1748,8 +1724,7 @@ func (o ApiRequestParamOutput) Minimum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApiRequestParam) *int { return v.Minimum }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The name of the request parameter.
 func (o ApiRequestParamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiRequestParam) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1808,10 +1783,9 @@ type ApiWeb struct {
 	HostHeader *string `pulumi:"hostHeader"`
 	// The backend request path.
 	Path string `pulumi:"path"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The backend request method of the API.
 	RequestMethod *string `pulumi:"requestMethod"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The web protocol type of the API request.
 	RequestProtocol *string `pulumi:"requestProtocol"`
 	// The number of retry attempts to request the backend service.
 	RetryCount *int `pulumi:"retryCount"`
@@ -1843,10 +1817,9 @@ type ApiWebArgs struct {
 	HostHeader pulumi.StringPtrInput `pulumi:"hostHeader"`
 	// The backend request path.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The backend request method of the API.
 	RequestMethod pulumi.StringPtrInput `pulumi:"requestMethod"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The web protocol type of the API request.
 	RequestProtocol pulumi.StringPtrInput `pulumi:"requestProtocol"`
 	// The number of retry attempts to request the backend service.
 	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
@@ -1955,13 +1928,12 @@ func (o ApiWebOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiWeb) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Specifies the request method, including 'GET','POST','PUT' and etc..
+// The backend request method of the API.
 func (o ApiWebOutput) RequestMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiWeb) *string { return v.RequestMethod }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The web protocol type of the API request.
 func (o ApiWebOutput) RequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiWeb) *string { return v.RequestProtocol }).(pulumi.StringPtrOutput)
 }
@@ -2050,7 +2022,7 @@ func (o ApiWebPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the request method, including 'GET','POST','PUT' and etc..
+// The backend request method of the API.
 func (o ApiWebPtrOutput) RequestMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiWeb) *string {
 		if v == nil {
@@ -2060,8 +2032,7 @@ func (o ApiWebPtrOutput) RequestMethod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The web protocol type of the API request.
 func (o ApiWebPtrOutput) RequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiWeb) *string {
 		if v == nil {
@@ -2124,15 +2095,13 @@ type ApiWebPolicy struct {
 	EffectiveMode *string `pulumi:"effectiveMode"`
 	// The proxy host header.
 	HostHeader *string `pulumi:"hostHeader"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The name of the web policy.
 	Name string `pulumi:"name"`
 	// The backend request address.
 	Path string `pulumi:"path"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The backend request method of the API.
 	RequestMethod string `pulumi:"requestMethod"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The backend request protocol.
 	RequestProtocol *string `pulumi:"requestProtocol"`
 	// The number of retry attempts to request the backend service.
 	RetryCount *int `pulumi:"retryCount"`
@@ -2166,15 +2135,13 @@ type ApiWebPolicyArgs struct {
 	EffectiveMode pulumi.StringPtrInput `pulumi:"effectiveMode"`
 	// The proxy host header.
 	HostHeader pulumi.StringPtrInput `pulumi:"hostHeader"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The name of the web policy.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The backend request address.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The backend request method of the API.
 	RequestMethod pulumi.StringInput `pulumi:"requestMethod"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The backend request protocol.
 	RequestProtocol pulumi.StringPtrInput `pulumi:"requestProtocol"`
 	// The number of retry attempts to request the backend service.
 	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
@@ -2265,8 +2232,7 @@ func (o ApiWebPolicyOutput) HostHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiWebPolicy) *string { return v.HostHeader }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The name of the web policy.
 func (o ApiWebPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiWebPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2276,13 +2242,12 @@ func (o ApiWebPolicyOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiWebPolicy) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Specifies the request method, including 'GET','POST','PUT' and etc..
+// The backend request method of the API.
 func (o ApiWebPolicyOutput) RequestMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiWebPolicy) string { return v.RequestMethod }).(pulumi.StringOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The backend request protocol.
 func (o ApiWebPolicyOutput) RequestProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiWebPolicy) *string { return v.RequestProtocol }).(pulumi.StringPtrOutput)
 }
@@ -2323,12 +2288,11 @@ func (o ApiWebPolicyArrayOutput) Index(i pulumi.IntInput) ApiWebPolicyOutput {
 }
 
 type ApiWebPolicyBackendParam struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description *string `pulumi:"description"`
 	// Where the parameter is located.
 	Location string `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            string  `pulumi:"name"`
 	SystemParamType *string `pulumi:"systemParamType"`
 	// The parameter type.
@@ -2349,12 +2313,11 @@ type ApiWebPolicyBackendParamInput interface {
 }
 
 type ApiWebPolicyBackendParamArgs struct {
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The description of the parameter.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Where the parameter is located.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The parameter name.
 	Name            pulumi.StringInput    `pulumi:"name"`
 	SystemParamType pulumi.StringPtrInput `pulumi:"systemParamType"`
 	// The parameter type.
@@ -2414,7 +2377,7 @@ func (o ApiWebPolicyBackendParamOutput) ToApiWebPolicyBackendParamOutputWithCont
 	return o
 }
 
-// Specifies the description of the API. The description cannot exceed 255 characters.
+// The description of the parameter.
 func (o ApiWebPolicyBackendParamOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApiWebPolicyBackendParam) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -2424,8 +2387,7 @@ func (o ApiWebPolicyBackendParamOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiWebPolicyBackendParam) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The parameter name.
 func (o ApiWebPolicyBackendParamOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiWebPolicyBackendParam) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2636,7 +2598,7 @@ func (o ApiWebPolicyConditionArrayOutput) Index(i pulumi.IntInput) ApiWebPolicyC
 type GroupEnvironment struct {
 	// The ID of the environment to which the variables belongs.
 	EnvironmentId string `pulumi:"environmentId"`
-	// The array of one or more environment variables. Each `variable` block supports the following:
+	// The array of one or more environment variables.
 	Variables []GroupEnvironmentVariable `pulumi:"variables"`
 }
 
@@ -2654,7 +2616,7 @@ type GroupEnvironmentInput interface {
 type GroupEnvironmentArgs struct {
 	// The ID of the environment to which the variables belongs.
 	EnvironmentId pulumi.StringInput `pulumi:"environmentId"`
-	// The array of one or more environment variables. Each `variable` block supports the following:
+	// The array of one or more environment variables.
 	Variables GroupEnvironmentVariableArrayInput `pulumi:"variables"`
 }
 
@@ -2714,7 +2676,7 @@ func (o GroupEnvironmentOutput) EnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupEnvironment) string { return v.EnvironmentId }).(pulumi.StringOutput)
 }
 
-// The array of one or more environment variables. Each `variable` block supports the following:
+// The array of one or more environment variables.
 func (o GroupEnvironmentOutput) Variables() GroupEnvironmentVariableArrayOutput {
 	return o.ApplyT(func(v GroupEnvironment) []GroupEnvironmentVariable { return v.Variables }).(GroupEnvironmentVariableArrayOutput)
 }
@@ -2746,8 +2708,7 @@ type GroupEnvironmentVariable struct {
 	Name string `pulumi:"name"`
 	// The variable value.
 	Value string `pulumi:"value"`
-	// The ID of the variable that the group has.\
-	// _Deprecated: Use `id` instead._
+	// schema: Deprecated; The ID of the variable that the group has.
 	//
 	// Deprecated: Use 'id' instead
 	VariableId *string `pulumi:"variableId"`
@@ -2771,8 +2732,7 @@ type GroupEnvironmentVariableArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The variable value.
 	Value pulumi.StringInput `pulumi:"value"`
-	// The ID of the variable that the group has.\
-	// _Deprecated: Use `id` instead._
+	// schema: Deprecated; The ID of the variable that the group has.
 	//
 	// Deprecated: Use 'id' instead
 	VariableId pulumi.StringPtrInput `pulumi:"variableId"`
@@ -2844,8 +2804,7 @@ func (o GroupEnvironmentVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupEnvironmentVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The ID of the variable that the group has.\
-// _Deprecated: Use `id` instead._
+// schema: Deprecated; The ID of the variable that the group has.
 //
 // Deprecated: Use 'id' instead
 func (o GroupEnvironmentVariableOutput) VariableId() pulumi.StringPtrOutput {
@@ -2877,7 +2836,7 @@ type GroupUrlDomain struct {
 	IsHttpRedirectToHttps *bool `pulumi:"isHttpRedirectToHttps"`
 	// The minimum SSL protocol version.
 	MinSslVersion *string `pulumi:"minSslVersion"`
-	// The group name.
+	// The associated domain name.
 	Name string `pulumi:"name"`
 }
 
@@ -2897,7 +2856,7 @@ type GroupUrlDomainArgs struct {
 	IsHttpRedirectToHttps pulumi.BoolPtrInput `pulumi:"isHttpRedirectToHttps"`
 	// The minimum SSL protocol version.
 	MinSslVersion pulumi.StringPtrInput `pulumi:"minSslVersion"`
-	// The group name.
+	// The associated domain name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2962,7 +2921,7 @@ func (o GroupUrlDomainOutput) MinSslVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupUrlDomain) *string { return v.MinSslVersion }).(pulumi.StringPtrOutput)
 }
 
-// The group name.
+// The associated domain name.
 func (o GroupUrlDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupUrlDomain) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -34,9 +34,6 @@ if not MYPY:
         device: NotRequired[pulumi.Input[_builtins.str]]
         host_name: NotRequired[pulumi.Input[_builtins.str]]
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a resource ID in UUID format.
-        """
         instance_id: NotRequired[pulumi.Input[_builtins.str]]
         volume_id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -52,9 +49,6 @@ class VolumeAttachmentArgs:
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: Specifies a resource ID in UUID format.
-        """
         if attached_at is not None:
             pulumi.set(__self__, "attached_at", attached_at)
         if attached_volume_id is not None:
@@ -109,9 +103,6 @@ class VolumeAttachmentArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -141,9 +132,6 @@ if not MYPY:
     class VolumeIopsAttributeArgsDict(TypedDict):
         frozened: NotRequired[pulumi.Input[_builtins.bool]]
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a resource ID in UUID format.
-        """
         total_val: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
     VolumeIopsAttributeArgsDict: TypeAlias = Mapping[str, Any]
@@ -154,9 +142,6 @@ class VolumeIopsAttributeArgs:
                  frozened: Optional[pulumi.Input[_builtins.bool]] = None,
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  total_val: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: Specifies a resource ID in UUID format.
-        """
         if frozened is not None:
             pulumi.set(__self__, "frozened", frozened)
         if id is not None:
@@ -176,9 +161,6 @@ class VolumeIopsAttributeArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -235,9 +217,6 @@ if not MYPY:
     class VolumeThroughputAttributeArgsDict(TypedDict):
         frozened: NotRequired[pulumi.Input[_builtins.bool]]
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a resource ID in UUID format.
-        """
         total_val: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
     VolumeThroughputAttributeArgsDict: TypeAlias = Mapping[str, Any]
@@ -248,9 +227,6 @@ class VolumeThroughputAttributeArgs:
                  frozened: Optional[pulumi.Input[_builtins.bool]] = None,
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  total_val: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: Specifies a resource ID in UUID format.
-        """
         if frozened is not None:
             pulumi.set(__self__, "frozened", frozened)
         if id is not None:
@@ -270,9 +246,6 @@ class VolumeThroughputAttributeArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @id.setter

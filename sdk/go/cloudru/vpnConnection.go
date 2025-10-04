@@ -12,117 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPN connection resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			peerSubnet := cfg.RequireObject("peerSubnet")
-//			gatewayId := cfg.RequireObject("gatewayId")
-//			gatewayIp := cfg.RequireObject("gatewayIp")
-//			customerGatewayId := cfg.RequireObject("customerGatewayId")
-//			_, err := sbercloud.NewVpnConnection(ctx, "test", &sbercloud.VpnConnectionArgs{
-//				Name:              pulumi.Any(name),
-//				GatewayId:         pulumi.Any(gatewayId),
-//				GatewayIp:         pulumi.Any(gatewayIp),
-//				CustomerGatewayId: pulumi.Any(customerGatewayId),
-//				PeerSubnets: pulumi.StringArray{
-//					peerSubnet,
-//				},
-//				VpnType: pulumi.String("static"),
-//				Psk:     pulumi.String("Test@123"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### VPN connection with policy
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			peerSubnet := cfg.RequireObject("peerSubnet")
-//			gatewayId := cfg.RequireObject("gatewayId")
-//			gatewayIp := cfg.RequireObject("gatewayIp")
-//			customerGatewayId := cfg.RequireObject("customerGatewayId")
-//			_, err := sbercloud.NewVpnConnection(ctx, "test", &sbercloud.VpnConnectionArgs{
-//				Name:              pulumi.Any(name),
-//				GatewayId:         pulumi.Any(gatewayId),
-//				GatewayIp:         pulumi.Any(gatewayIp),
-//				CustomerGatewayId: pulumi.Any(customerGatewayId),
-//				PeerSubnets: pulumi.StringArray{
-//					peerSubnet,
-//				},
-//				VpnType: pulumi.String("static"),
-//				Psk:     pulumi.String("Test@123"),
-//				Ikepolicy: &cloudru.VpnConnectionIkepolicyArgs{
-//					AuthenticationAlgorithm: pulumi.String("sha2-256"),
-//					AuthenticationMethod:    pulumi.String("pre-share"),
-//					EncryptionAlgorithm:     pulumi.String("aes-128"),
-//					IkeVersion:              pulumi.String("v2"),
-//					LifetimeSeconds:         pulumi.Int(86400),
-//					Pfs:                     pulumi.String("group14"),
-//				},
-//				Ipsecpolicy: &cloudru.VpnConnectionIpsecpolicyArgs{
-//					AuthenticationAlgorithm: pulumi.String("sha2-256"),
-//					EncapsulationMode:       pulumi.String("tunnel"),
-//					EncryptionAlgorithm:     pulumi.String("aes-128"),
-//					LifetimeSeconds:         pulumi.Int(3600),
-//					Pfs:                     pulumi.String("group14"),
-//					TransformProtocol:       pulumi.String("esp"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The connection can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/vpnConnection:VpnConnection test <id>
-// ```
 type VpnConnection struct {
 	pulumi.CustomResourceState
 
@@ -130,56 +19,29 @@ type VpnConnection struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The customer gateway ID.
 	CustomerGatewayId pulumi.StringOutput `pulumi:"customerGatewayId"`
-	// Whether to enable NQA check. Defaults to **false**.
+	// Whether to enable NQA check.
 	EnableNqa pulumi.BoolOutput `pulumi:"enableNqa"`
 	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// The VPN gateway ID.
-	//
-	// Changing this parameter will create a new resource.
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// The VPN gateway IP ID.
-	//
-	// Changing this parameter will create a new resource.
-	GatewayIp pulumi.StringOutput `pulumi:"gatewayIp"`
-	// Specifies the mode of the VPN connection.
-	// The valid values are **master** and **slave**, defaults to **master**.
-	// This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-	// When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-	// the active connection, and **slave** indicates the standby connection.
-	// In **active-active** mode, this field must be set to **master** for the connection established
-	// using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-	// for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// <a name="Connection_CreateRequestIkePolicy"></a>
-	// The `ikepolicy` block supports:
-	HaRole pulumi.StringOutput `pulumi:"haRole"`
-	// The IKE policy configurations.
-	// The ikepolicy structure is documented below.
-	Ikepolicy VpnConnectionIkepolicyOutput `pulumi:"ikepolicy"`
-	// The IPsec policy configurations.
-	// The ipsecpolicy structure is documented below.
+	GatewayIp   pulumi.StringOutput            `pulumi:"gatewayIp"`
+	HaRole      pulumi.StringOutput            `pulumi:"haRole"`
+	Ikepolicy   VpnConnectionIkepolicyOutput   `pulumi:"ikepolicy"`
 	Ipsecpolicy VpnConnectionIpsecpolicyOutput `pulumi:"ipsecpolicy"`
 	// The name of the VPN connection.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The CIDR list of customer subnets. This parameter must be empty
-	// when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
-	// This parameter is mandatory in other scenarios.
+	// The customer subnets.
 	PeerSubnets pulumi.StringArrayOutput `pulumi:"peerSubnets"`
 	// The policy rules. Only works when vpnType is set to **policy**
-	// The policyRules structure is documented below.
 	PolicyRules VpnConnectionPolicyRuleArrayOutput `pulumi:"policyRules"`
 	// The pre-shared key.
-	Psk pulumi.StringOutput `pulumi:"psk"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Psk    pulumi.StringOutput `pulumi:"psk"`
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The status of the VPN connection.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the tags of the VPN connection.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	Status pulumi.StringOutput    `pulumi:"status"`
+	Tags   pulumi.StringMapOutput `pulumi:"tags"`
 	// The local tunnel address.
 	TunnelLocalAddress pulumi.StringOutput `pulumi:"tunnelLocalAddress"`
 	// The peer tunnel address.
@@ -187,8 +49,6 @@ type VpnConnection struct {
 	// The update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The connection type. The value can be **policy**, **static** or **bgp**.
-	//
-	// Changing this parameter will create a new resource.
 	VpnType pulumi.StringOutput `pulumi:"vpnType"`
 }
 
@@ -241,56 +101,29 @@ type vpnConnectionState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The customer gateway ID.
 	CustomerGatewayId *string `pulumi:"customerGatewayId"`
-	// Whether to enable NQA check. Defaults to **false**.
+	// Whether to enable NQA check.
 	EnableNqa *bool `pulumi:"enableNqa"`
 	// The enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The VPN gateway ID.
-	//
-	// Changing this parameter will create a new resource.
 	GatewayId *string `pulumi:"gatewayId"`
 	// The VPN gateway IP ID.
-	//
-	// Changing this parameter will create a new resource.
-	GatewayIp *string `pulumi:"gatewayIp"`
-	// Specifies the mode of the VPN connection.
-	// The valid values are **master** and **slave**, defaults to **master**.
-	// This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-	// When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-	// the active connection, and **slave** indicates the standby connection.
-	// In **active-active** mode, this field must be set to **master** for the connection established
-	// using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-	// for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// <a name="Connection_CreateRequestIkePolicy"></a>
-	// The `ikepolicy` block supports:
-	HaRole *string `pulumi:"haRole"`
-	// The IKE policy configurations.
-	// The ikepolicy structure is documented below.
-	Ikepolicy *VpnConnectionIkepolicy `pulumi:"ikepolicy"`
-	// The IPsec policy configurations.
-	// The ipsecpolicy structure is documented below.
+	GatewayIp   *string                   `pulumi:"gatewayIp"`
+	HaRole      *string                   `pulumi:"haRole"`
+	Ikepolicy   *VpnConnectionIkepolicy   `pulumi:"ikepolicy"`
 	Ipsecpolicy *VpnConnectionIpsecpolicy `pulumi:"ipsecpolicy"`
 	// The name of the VPN connection.
 	Name *string `pulumi:"name"`
-	// The CIDR list of customer subnets. This parameter must be empty
-	// when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
-	// This parameter is mandatory in other scenarios.
+	// The customer subnets.
 	PeerSubnets []string `pulumi:"peerSubnets"`
 	// The policy rules. Only works when vpnType is set to **policy**
-	// The policyRules structure is documented below.
 	PolicyRules []VpnConnectionPolicyRule `pulumi:"policyRules"`
 	// The pre-shared key.
-	Psk *string `pulumi:"psk"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Psk    *string `pulumi:"psk"`
 	Region *string `pulumi:"region"`
 	// The status of the VPN connection.
-	Status *string `pulumi:"status"`
-	// Specifies the tags of the VPN connection.
-	Tags map[string]string `pulumi:"tags"`
+	Status *string           `pulumi:"status"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The local tunnel address.
 	TunnelLocalAddress *string `pulumi:"tunnelLocalAddress"`
 	// The peer tunnel address.
@@ -298,8 +131,6 @@ type vpnConnectionState struct {
 	// The update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The connection type. The value can be **policy**, **static** or **bgp**.
-	//
-	// Changing this parameter will create a new resource.
 	VpnType *string `pulumi:"vpnType"`
 }
 
@@ -308,56 +139,29 @@ type VpnConnectionState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The customer gateway ID.
 	CustomerGatewayId pulumi.StringPtrInput
-	// Whether to enable NQA check. Defaults to **false**.
+	// Whether to enable NQA check.
 	EnableNqa pulumi.BoolPtrInput
 	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The VPN gateway ID.
-	//
-	// Changing this parameter will create a new resource.
 	GatewayId pulumi.StringPtrInput
 	// The VPN gateway IP ID.
-	//
-	// Changing this parameter will create a new resource.
-	GatewayIp pulumi.StringPtrInput
-	// Specifies the mode of the VPN connection.
-	// The valid values are **master** and **slave**, defaults to **master**.
-	// This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-	// When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-	// the active connection, and **slave** indicates the standby connection.
-	// In **active-active** mode, this field must be set to **master** for the connection established
-	// using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-	// for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// <a name="Connection_CreateRequestIkePolicy"></a>
-	// The `ikepolicy` block supports:
-	HaRole pulumi.StringPtrInput
-	// The IKE policy configurations.
-	// The ikepolicy structure is documented below.
-	Ikepolicy VpnConnectionIkepolicyPtrInput
-	// The IPsec policy configurations.
-	// The ipsecpolicy structure is documented below.
+	GatewayIp   pulumi.StringPtrInput
+	HaRole      pulumi.StringPtrInput
+	Ikepolicy   VpnConnectionIkepolicyPtrInput
 	Ipsecpolicy VpnConnectionIpsecpolicyPtrInput
 	// The name of the VPN connection.
 	Name pulumi.StringPtrInput
-	// The CIDR list of customer subnets. This parameter must be empty
-	// when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
-	// This parameter is mandatory in other scenarios.
+	// The customer subnets.
 	PeerSubnets pulumi.StringArrayInput
 	// The policy rules. Only works when vpnType is set to **policy**
-	// The policyRules structure is documented below.
 	PolicyRules VpnConnectionPolicyRuleArrayInput
 	// The pre-shared key.
-	Psk pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Psk    pulumi.StringPtrInput
 	Region pulumi.StringPtrInput
 	// The status of the VPN connection.
 	Status pulumi.StringPtrInput
-	// Specifies the tags of the VPN connection.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 	// The local tunnel address.
 	TunnelLocalAddress pulumi.StringPtrInput
 	// The peer tunnel address.
@@ -365,8 +169,6 @@ type VpnConnectionState struct {
 	// The update time.
 	UpdatedAt pulumi.StringPtrInput
 	// The connection type. The value can be **policy**, **static** or **bgp**.
-	//
-	// Changing this parameter will create a new resource.
 	VpnType pulumi.StringPtrInput
 }
 
@@ -377,61 +179,32 @@ func (VpnConnectionState) ElementType() reflect.Type {
 type vpnConnectionArgs struct {
 	// The customer gateway ID.
 	CustomerGatewayId string `pulumi:"customerGatewayId"`
-	// Whether to enable NQA check. Defaults to **false**.
+	// Whether to enable NQA check.
 	EnableNqa *bool `pulumi:"enableNqa"`
 	// The enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The VPN gateway ID.
-	//
-	// Changing this parameter will create a new resource.
 	GatewayId string `pulumi:"gatewayId"`
 	// The VPN gateway IP ID.
-	//
-	// Changing this parameter will create a new resource.
-	GatewayIp string `pulumi:"gatewayIp"`
-	// Specifies the mode of the VPN connection.
-	// The valid values are **master** and **slave**, defaults to **master**.
-	// This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-	// When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-	// the active connection, and **slave** indicates the standby connection.
-	// In **active-active** mode, this field must be set to **master** for the connection established
-	// using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-	// for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// <a name="Connection_CreateRequestIkePolicy"></a>
-	// The `ikepolicy` block supports:
-	HaRole *string `pulumi:"haRole"`
-	// The IKE policy configurations.
-	// The ikepolicy structure is documented below.
-	Ikepolicy *VpnConnectionIkepolicy `pulumi:"ikepolicy"`
-	// The IPsec policy configurations.
-	// The ipsecpolicy structure is documented below.
+	GatewayIp   string                    `pulumi:"gatewayIp"`
+	HaRole      *string                   `pulumi:"haRole"`
+	Ikepolicy   *VpnConnectionIkepolicy   `pulumi:"ikepolicy"`
 	Ipsecpolicy *VpnConnectionIpsecpolicy `pulumi:"ipsecpolicy"`
 	// The name of the VPN connection.
 	Name *string `pulumi:"name"`
-	// The CIDR list of customer subnets. This parameter must be empty
-	// when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
-	// This parameter is mandatory in other scenarios.
+	// The customer subnets.
 	PeerSubnets []string `pulumi:"peerSubnets"`
 	// The policy rules. Only works when vpnType is set to **policy**
-	// The policyRules structure is documented below.
 	PolicyRules []VpnConnectionPolicyRule `pulumi:"policyRules"`
 	// The pre-shared key.
-	Psk string `pulumi:"psk"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the tags of the VPN connection.
-	Tags map[string]string `pulumi:"tags"`
+	Psk    string            `pulumi:"psk"`
+	Region *string           `pulumi:"region"`
+	Tags   map[string]string `pulumi:"tags"`
 	// The local tunnel address.
 	TunnelLocalAddress *string `pulumi:"tunnelLocalAddress"`
 	// The peer tunnel address.
 	TunnelPeerAddress *string `pulumi:"tunnelPeerAddress"`
 	// The connection type. The value can be **policy**, **static** or **bgp**.
-	//
-	// Changing this parameter will create a new resource.
 	VpnType string `pulumi:"vpnType"`
 }
 
@@ -439,61 +212,32 @@ type vpnConnectionArgs struct {
 type VpnConnectionArgs struct {
 	// The customer gateway ID.
 	CustomerGatewayId pulumi.StringInput
-	// Whether to enable NQA check. Defaults to **false**.
+	// Whether to enable NQA check.
 	EnableNqa pulumi.BoolPtrInput
 	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The VPN gateway ID.
-	//
-	// Changing this parameter will create a new resource.
 	GatewayId pulumi.StringInput
 	// The VPN gateway IP ID.
-	//
-	// Changing this parameter will create a new resource.
-	GatewayIp pulumi.StringInput
-	// Specifies the mode of the VPN connection.
-	// The valid values are **master** and **slave**, defaults to **master**.
-	// This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-	// When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-	// the active connection, and **slave** indicates the standby connection.
-	// In **active-active** mode, this field must be set to **master** for the connection established
-	// using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-	// for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-	//
-	// Changing this parameter will create a new resource.
-	//
-	// <a name="Connection_CreateRequestIkePolicy"></a>
-	// The `ikepolicy` block supports:
-	HaRole pulumi.StringPtrInput
-	// The IKE policy configurations.
-	// The ikepolicy structure is documented below.
-	Ikepolicy VpnConnectionIkepolicyPtrInput
-	// The IPsec policy configurations.
-	// The ipsecpolicy structure is documented below.
+	GatewayIp   pulumi.StringInput
+	HaRole      pulumi.StringPtrInput
+	Ikepolicy   VpnConnectionIkepolicyPtrInput
 	Ipsecpolicy VpnConnectionIpsecpolicyPtrInput
 	// The name of the VPN connection.
 	Name pulumi.StringPtrInput
-	// The CIDR list of customer subnets. This parameter must be empty
-	// when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
-	// This parameter is mandatory in other scenarios.
+	// The customer subnets.
 	PeerSubnets pulumi.StringArrayInput
 	// The policy rules. Only works when vpnType is set to **policy**
-	// The policyRules structure is documented below.
 	PolicyRules VpnConnectionPolicyRuleArrayInput
 	// The pre-shared key.
-	Psk pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	Psk    pulumi.StringInput
 	Region pulumi.StringPtrInput
-	// Specifies the tags of the VPN connection.
-	Tags pulumi.StringMapInput
+	Tags   pulumi.StringMapInput
 	// The local tunnel address.
 	TunnelLocalAddress pulumi.StringPtrInput
 	// The peer tunnel address.
 	TunnelPeerAddress pulumi.StringPtrInput
 	// The connection type. The value can be **policy**, **static** or **bgp**.
-	//
-	// Changing this parameter will create a new resource.
 	VpnType pulumi.StringInput
 }
 
@@ -594,7 +338,7 @@ func (o VpnConnectionOutput) CustomerGatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.CustomerGatewayId }).(pulumi.StringOutput)
 }
 
-// Whether to enable NQA check. Defaults to **false**.
+// Whether to enable NQA check.
 func (o VpnConnectionOutput) EnableNqa() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.BoolOutput { return v.EnableNqa }).(pulumi.BoolOutput)
 }
@@ -605,44 +349,23 @@ func (o VpnConnectionOutput) EnterpriseProjectId() pulumi.StringOutput {
 }
 
 // The VPN gateway ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnConnectionOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
 }
 
 // The VPN gateway IP ID.
-//
-// Changing this parameter will create a new resource.
 func (o VpnConnectionOutput) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
-// Specifies the mode of the VPN connection.
-// The valid values are **master** and **slave**, defaults to **master**.
-// This parameter is optional when you create a connection for a VPN gateway in **active-active** mode.
-// When you create a connection for a VPN gateway in **active-standby** mode, **master** indicates
-// the active connection, and **slave** indicates the standby connection.
-// In **active-active** mode, this field must be set to **master** for the connection established
-// using the active EIP or active private IP address of the VPN gateway, and must be set to **slave**
-// for the connection established using active EIP 2 or active private IP address 2 of the VPN gateway.
-//
-// Changing this parameter will create a new resource.
-//
-// <a name="Connection_CreateRequestIkePolicy"></a>
-// The `ikepolicy` block supports:
 func (o VpnConnectionOutput) HaRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.HaRole }).(pulumi.StringOutput)
 }
 
-// The IKE policy configurations.
-// The ikepolicy structure is documented below.
 func (o VpnConnectionOutput) Ikepolicy() VpnConnectionIkepolicyOutput {
 	return o.ApplyT(func(v *VpnConnection) VpnConnectionIkepolicyOutput { return v.Ikepolicy }).(VpnConnectionIkepolicyOutput)
 }
 
-// The IPsec policy configurations.
-// The ipsecpolicy structure is documented below.
 func (o VpnConnectionOutput) Ipsecpolicy() VpnConnectionIpsecpolicyOutput {
 	return o.ApplyT(func(v *VpnConnection) VpnConnectionIpsecpolicyOutput { return v.Ipsecpolicy }).(VpnConnectionIpsecpolicyOutput)
 }
@@ -652,15 +375,12 @@ func (o VpnConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The CIDR list of customer subnets. This parameter must be empty
-// when the `attachmentType` of the VPN gateway is set to **er** and `vpnType` is set to **policy** or **bgp**.
-// This parameter is mandatory in other scenarios.
+// The customer subnets.
 func (o VpnConnectionOutput) PeerSubnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringArrayOutput { return v.PeerSubnets }).(pulumi.StringArrayOutput)
 }
 
 // The policy rules. Only works when vpnType is set to **policy**
-// The policyRules structure is documented below.
 func (o VpnConnectionOutput) PolicyRules() VpnConnectionPolicyRuleArrayOutput {
 	return o.ApplyT(func(v *VpnConnection) VpnConnectionPolicyRuleArrayOutput { return v.PolicyRules }).(VpnConnectionPolicyRuleArrayOutput)
 }
@@ -670,8 +390,6 @@ func (o VpnConnectionOutput) Psk() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.Psk }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o VpnConnectionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -681,7 +399,6 @@ func (o VpnConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the tags of the VPN connection.
 func (o VpnConnectionOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -702,8 +419,6 @@ func (o VpnConnectionOutput) UpdatedAt() pulumi.StringOutput {
 }
 
 // The connection type. The value can be **policy**, **static** or **bgp**.
-//
-// Changing this parameter will create a new resource.
 func (o VpnConnectionOutput) VpnType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.VpnType }).(pulumi.StringOutput)
 }

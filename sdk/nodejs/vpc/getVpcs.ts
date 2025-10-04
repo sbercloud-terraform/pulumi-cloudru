@@ -6,9 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of VPC.
- */
 export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -27,40 +24,12 @@ export function getVpcs(args?: GetVpcsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getVpcs.
  */
 export interface GetVpcsArgs {
-    /**
-     * Specifies the cidr block of the desired VPC.
-     */
     cidr?: string;
-    /**
-     * Specifies the enterprise project ID which the desired VPC belongs to.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the id of the desired VPC.
-     */
     id?: string;
-    /**
-     * Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-     * and can contain digits, letters, underscores (_) and hyphens (-).
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-     * will be used.
-     */
     region?: string;
-    /**
-     * Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-     */
     status?: string;
-    /**
-     * Specifies the included key/value pairs which associated with the desired VPC.
-     *
-     * > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-     * The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-     * tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-     * The values are in the OR relationship.
-     */
     tags?: {[key: string]: string};
 }
 
@@ -68,39 +37,15 @@ export interface GetVpcsArgs {
  * A collection of values returned by getVpcs.
  */
 export interface GetVpcsResult {
-    /**
-     * Indicates the cidr block of the VPC.
-     */
     readonly cidr?: string;
-    /**
-     * Indicates the the enterprise project ID of the VPC.
-     */
     readonly enterpriseProjectId?: string;
-    /**
-     * Indicates the ID of the VPC.
-     */
     readonly id: string;
-    /**
-     * Indicates the name of the VPC.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the current status of the VPC.
-     */
     readonly status?: string;
-    /**
-     * Indicates the key/value pairs which associated with the VPC.
-     */
     readonly tags?: {[key: string]: string};
-    /**
-     * Indicates a list of all VPCs found. Structure is documented below.
-     */
     readonly vpcs: outputs.Vpc.GetVpcsVpc[];
 }
-/**
- * Use this data source to get a list of VPC.
- */
 export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -119,39 +64,11 @@ export function getVpcsOutput(args?: GetVpcsOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getVpcs.
  */
 export interface GetVpcsOutputArgs {
-    /**
-     * Specifies the cidr block of the desired VPC.
-     */
     cidr?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID which the desired VPC belongs to.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the id of the desired VPC.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-     * and can contain digits, letters, underscores (_) and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-     * will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the included key/value pairs which associated with the desired VPC.
-     *
-     * > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-     * The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-     * tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-     * The values are in the OR relationship.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

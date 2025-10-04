@@ -6,25 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a Dedicated ELB Ip Group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const basic = new sbercloud.ElbIpgroup("basic", {
- *     name: "basic",
- *     description: "basic example",
- *     ipLists: [{
- *         ip: "192.168.10.10",
- *         description: "ECS01",
- *     }],
- * });
- * ```
- */
 export class ElbIpgroup extends pulumi.CustomResource {
     /**
      * Get an existing ElbIpgroup resource's state with the given name, ID, and optional extra
@@ -54,29 +35,11 @@ export class ElbIpgroup extends pulumi.CustomResource {
     }
 
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Human-readable description for the ip group.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The enterprise project id of the ip group. Changing this
-     * creates a new ip group.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Specifies an array of one or more ip addresses. The ipList object structure is
-     * documented below.
-     */
     declare public readonly ipLists: pulumi.Output<outputs.ElbIpgroupIpList[]>;
     declare public /*out*/ readonly listenerIds: pulumi.Output<string[]>;
-    /**
-     * Human-readable name for the ip group.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The region in which to create the ip group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new ip group.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -125,29 +88,11 @@ export class ElbIpgroup extends pulumi.CustomResource {
  */
 export interface ElbIpgroupState {
     createdAt?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the ip group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the ip group. Changing this
-     * creates a new ip group.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies an array of one or more ip addresses. The ipList object structure is
-     * documented below.
-     */
     ipLists?: pulumi.Input<pulumi.Input<inputs.ElbIpgroupIpList>[]>;
     listenerIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Human-readable name for the ip group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the ip group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new ip group.
-     */
     region?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
 }
@@ -156,27 +101,9 @@ export interface ElbIpgroupState {
  * The set of arguments for constructing a ElbIpgroup resource.
  */
 export interface ElbIpgroupArgs {
-    /**
-     * Human-readable description for the ip group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the ip group. Changing this
-     * creates a new ip group.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies an array of one or more ip addresses. The ipList object structure is
-     * documented below.
-     */
     ipLists: pulumi.Input<pulumi.Input<inputs.ElbIpgroupIpList>[]>;
-    /**
-     * Human-readable name for the ip group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the ip group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new ip group.
-     */
     region?: pulumi.Input<string>;
 }

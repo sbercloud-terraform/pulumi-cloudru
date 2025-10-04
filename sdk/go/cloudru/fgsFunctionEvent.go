@@ -12,34 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an event for testing specified function within SberCloud.
-//
-// ## Example Usage
-//
-// ## Import
-//
-// Function event can be imported using the `function_urn` and `name`, separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/fgsFunctionEvent:FgsFunctionEvent test <function_urn>/<name>
-// ```
 type FgsFunctionEvent struct {
 	pulumi.CustomResourceState
 
-	// Specifies the function event content.\
-	// The value is the base64 encoding of the JSON string.
+	// The function event content.
 	Content pulumi.StringOutput `pulumi:"content"`
-	// Specifies the URN of the function to which the event blongs.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to which the event blongs.
 	FunctionUrn pulumi.StringOutput `pulumi:"functionUrn"`
-	// Specifies the function event name.\
-	// The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
+	// The function event name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region where the function event is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function event is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The latest update (UTC) time of the function event, in RFC3339 format.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -81,36 +63,26 @@ func GetFgsFunctionEvent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FgsFunctionEvent resources.
 type fgsFunctionEventState struct {
-	// Specifies the function event content.\
-	// The value is the base64 encoding of the JSON string.
+	// The function event content.
 	Content *string `pulumi:"content"`
-	// Specifies the URN of the function to which the event blongs.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to which the event blongs.
 	FunctionUrn *string `pulumi:"functionUrn"`
-	// Specifies the function event name.\
-	// The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
+	// The function event name.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the function event is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function event is located.
 	Region *string `pulumi:"region"`
 	// The latest update (UTC) time of the function event, in RFC3339 format.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type FgsFunctionEventState struct {
-	// Specifies the function event content.\
-	// The value is the base64 encoding of the JSON string.
+	// The function event content.
 	Content pulumi.StringPtrInput
-	// Specifies the URN of the function to which the event blongs.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to which the event blongs.
 	FunctionUrn pulumi.StringPtrInput
-	// Specifies the function event name.\
-	// The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
+	// The function event name.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the function event is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function event is located.
 	Region pulumi.StringPtrInput
 	// The latest update (UTC) time of the function event, in RFC3339 format.
 	UpdatedAt pulumi.StringPtrInput
@@ -121,35 +93,25 @@ func (FgsFunctionEventState) ElementType() reflect.Type {
 }
 
 type fgsFunctionEventArgs struct {
-	// Specifies the function event content.\
-	// The value is the base64 encoding of the JSON string.
+	// The function event content.
 	Content string `pulumi:"content"`
-	// Specifies the URN of the function to which the event blongs.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to which the event blongs.
 	FunctionUrn string `pulumi:"functionUrn"`
-	// Specifies the function event name.\
-	// The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
+	// The function event name.
 	Name *string `pulumi:"name"`
-	// Specifies the region where the function event is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function event is located.
 	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a FgsFunctionEvent resource.
 type FgsFunctionEventArgs struct {
-	// Specifies the function event content.\
-	// The value is the base64 encoding of the JSON string.
+	// The function event content.
 	Content pulumi.StringInput
-	// Specifies the URN of the function to which the event blongs.\
-	// Changing this parameter will create a new resource.
+	// The URN of the function to which the event blongs.
 	FunctionUrn pulumi.StringInput
-	// Specifies the function event name.\
-	// The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_) and hyphens (-) are allowed.
+	// The function event name.
 	Name pulumi.StringPtrInput
-	// Specifies the region where the function event is located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the function event is located.
 	Region pulumi.StringPtrInput
 }
 
@@ -240,27 +202,22 @@ func (o FgsFunctionEventOutput) ToFgsFunctionEventOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the function event content.\
-// The value is the base64 encoding of the JSON string.
+// The function event content.
 func (o FgsFunctionEventOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsFunctionEvent) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
 }
 
-// Specifies the URN of the function to which the event blongs.\
-// Changing this parameter will create a new resource.
+// The URN of the function to which the event blongs.
 func (o FgsFunctionEventOutput) FunctionUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsFunctionEvent) pulumi.StringOutput { return v.FunctionUrn }).(pulumi.StringOutput)
 }
 
-// Specifies the function event name.\
-// The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-// Only letters, digits, underscores (_) and hyphens (-) are allowed.
+// The function event name.
 func (o FgsFunctionEventOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsFunctionEvent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the function event is located.\
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the function event is located.
 func (o FgsFunctionEventOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FgsFunctionEvent) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -18,10 +18,9 @@ type VolumeAttachment struct {
 	AttachedVolumeId *string `pulumi:"attachedVolumeId"`
 	Device           *string `pulumi:"device"`
 	HostName         *string `pulumi:"hostName"`
-	// Specifies a resource ID in UUID format.
-	Id         *string `pulumi:"id"`
-	InstanceId *string `pulumi:"instanceId"`
-	VolumeId   *string `pulumi:"volumeId"`
+	Id               *string `pulumi:"id"`
+	InstanceId       *string `pulumi:"instanceId"`
+	VolumeId         *string `pulumi:"volumeId"`
 }
 
 // VolumeAttachmentInput is an input type that accepts VolumeAttachmentArgs and VolumeAttachmentOutput values.
@@ -40,10 +39,9 @@ type VolumeAttachmentArgs struct {
 	AttachedVolumeId pulumi.StringPtrInput `pulumi:"attachedVolumeId"`
 	Device           pulumi.StringPtrInput `pulumi:"device"`
 	HostName         pulumi.StringPtrInput `pulumi:"hostName"`
-	// Specifies a resource ID in UUID format.
-	Id         pulumi.StringPtrInput `pulumi:"id"`
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	VolumeId   pulumi.StringPtrInput `pulumi:"volumeId"`
+	Id               pulumi.StringPtrInput `pulumi:"id"`
+	InstanceId       pulumi.StringPtrInput `pulumi:"instanceId"`
+	VolumeId         pulumi.StringPtrInput `pulumi:"volumeId"`
 }
 
 func (VolumeAttachmentArgs) ElementType() reflect.Type {
@@ -113,7 +111,6 @@ func (o VolumeAttachmentOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeAttachment) *string { return v.HostName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a resource ID in UUID format.
 func (o VolumeAttachmentOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeAttachment) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -147,8 +144,7 @@ func (o VolumeAttachmentArrayOutput) Index(i pulumi.IntInput) VolumeAttachmentOu
 }
 
 type VolumeIopsAttribute struct {
-	Frozened *bool `pulumi:"frozened"`
-	// Specifies a resource ID in UUID format.
+	Frozened *bool   `pulumi:"frozened"`
 	Id       *string `pulumi:"id"`
 	TotalVal *int    `pulumi:"totalVal"`
 }
@@ -165,8 +161,7 @@ type VolumeIopsAttributeInput interface {
 }
 
 type VolumeIopsAttributeArgs struct {
-	Frozened pulumi.BoolPtrInput `pulumi:"frozened"`
-	// Specifies a resource ID in UUID format.
+	Frozened pulumi.BoolPtrInput   `pulumi:"frozened"`
 	Id       pulumi.StringPtrInput `pulumi:"id"`
 	TotalVal pulumi.IntPtrInput    `pulumi:"totalVal"`
 }
@@ -226,7 +221,6 @@ func (o VolumeIopsAttributeOutput) Frozened() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeIopsAttribute) *bool { return v.Frozened }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies a resource ID in UUID format.
 func (o VolumeIopsAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeIopsAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -356,8 +350,7 @@ func (o VolumeLinkArrayOutput) Index(i pulumi.IntInput) VolumeLinkOutput {
 }
 
 type VolumeThroughputAttribute struct {
-	Frozened *bool `pulumi:"frozened"`
-	// Specifies a resource ID in UUID format.
+	Frozened *bool   `pulumi:"frozened"`
 	Id       *string `pulumi:"id"`
 	TotalVal *int    `pulumi:"totalVal"`
 }
@@ -374,8 +367,7 @@ type VolumeThroughputAttributeInput interface {
 }
 
 type VolumeThroughputAttributeArgs struct {
-	Frozened pulumi.BoolPtrInput `pulumi:"frozened"`
-	// Specifies a resource ID in UUID format.
+	Frozened pulumi.BoolPtrInput   `pulumi:"frozened"`
 	Id       pulumi.StringPtrInput `pulumi:"id"`
 	TotalVal pulumi.IntPtrInput    `pulumi:"totalVal"`
 }
@@ -435,7 +427,6 @@ func (o VolumeThroughputAttributeOutput) Frozened() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeThroughputAttribute) *bool { return v.Frozened }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies a resource ID in UUID format.
 func (o VolumeThroughputAttributeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeThroughputAttribute) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -465,62 +456,33 @@ func (o VolumeThroughputAttributeArrayOutput) Index(i pulumi.IntInput) VolumeThr
 }
 
 type GetVolumesVolume struct {
-	// The disk attachment information. Structure is documented below.
-	Attachments []GetVolumesVolumeAttachment `pulumi:"attachments"`
-	// Specifies the availability zone for the disks.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Whether the disk is bootable.
-	Bootable bool `pulumi:"bootable"`
-	// The time when the disk was created.
-	CreateAt             string `pulumi:"createAt"`
-	DedicatedStorageId   string `pulumi:"dedicatedStorageId"`
-	DedicatedStorageName string `pulumi:"dedicatedStorageName"`
-	// The disk description.
-	Description string `pulumi:"description"`
-	// Specifies the enterprise project ID for filtering.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The ID of the attached resource in UUID format.
-	Id             string                          `pulumi:"id"`
-	Iops           int                             `pulumi:"iops"`
-	IopsAttributes []GetVolumesVolumeIopsAttribute `pulumi:"iopsAttributes"`
-	Links          []GetVolumesVolumeLink          `pulumi:"links"`
-	Metadata       map[string]string               `pulumi:"metadata"`
-	// The disk name.
-	Name         string `pulumi:"name"`
-	SerialNumber string `pulumi:"serialNumber"`
-	// The service type, such as EVS, DSS or DESS.
-	ServiceType string `pulumi:"serviceType"`
-	// Specifies whether the disk is shareable.
-	Shareable bool `pulumi:"shareable"`
-	// The disk size, in GB.
-	Size       int    `pulumi:"size"`
-	SnapshotId string `pulumi:"snapshotId"`
-	// Specifies the disk status. The valid values are as following:
-	// + **FREEZED**
-	// + **BIND_ERROR**
-	// + **BINDING**
-	// + **PENDING_DELETE**
-	// + **PENDING_CREATE**
-	// + **NOTIFYING**
-	// + **NOTIFY_DELETE**
-	// + **PENDING_UPDATE**
-	// + **DOWN**
-	// + **ACTIVE**
-	// + **ELB**
-	// + **ERROR**
-	// + **VPN**
-	Status string `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired disk.
+	Attachments          []GetVolumesVolumeAttachment          `pulumi:"attachments"`
+	AvailabilityZone     string                                `pulumi:"availabilityZone"`
+	Bootable             bool                                  `pulumi:"bootable"`
+	CreateAt             string                                `pulumi:"createAt"`
+	DedicatedStorageId   string                                `pulumi:"dedicatedStorageId"`
+	DedicatedStorageName string                                `pulumi:"dedicatedStorageName"`
+	Description          string                                `pulumi:"description"`
+	EnterpriseProjectId  string                                `pulumi:"enterpriseProjectId"`
+	Id                   string                                `pulumi:"id"`
+	Iops                 int                                   `pulumi:"iops"`
+	IopsAttributes       []GetVolumesVolumeIopsAttribute       `pulumi:"iopsAttributes"`
+	Links                []GetVolumesVolumeLink                `pulumi:"links"`
+	Metadata             map[string]string                     `pulumi:"metadata"`
+	Name                 string                                `pulumi:"name"`
+	SerialNumber         string                                `pulumi:"serialNumber"`
+	ServiceType          string                                `pulumi:"serviceType"`
+	Shareable            bool                                  `pulumi:"shareable"`
+	Size                 int                                   `pulumi:"size"`
+	SnapshotId           string                                `pulumi:"snapshotId"`
+	Status               string                                `pulumi:"status"`
 	Tags                 map[string]string                     `pulumi:"tags"`
 	Throughput           int                                   `pulumi:"throughput"`
 	ThroughputAttributes []GetVolumesVolumeThroughputAttribute `pulumi:"throughputAttributes"`
-	// The time when the disk was updated.
-	// w
-	UpdateAt            string            `pulumi:"updateAt"`
-	VolumeImageMetadata map[string]string `pulumi:"volumeImageMetadata"`
-	VolumeType          string            `pulumi:"volumeType"`
-	// The unique identifier used when attaching the disk.
-	Wwn string `pulumi:"wwn"`
+	UpdateAt             string                                `pulumi:"updateAt"`
+	VolumeImageMetadata  map[string]string                     `pulumi:"volumeImageMetadata"`
+	VolumeType           string                                `pulumi:"volumeType"`
+	Wwn                  string                                `pulumi:"wwn"`
 }
 
 // GetVolumesVolumeInput is an input type that accepts GetVolumesVolumeArgs and GetVolumesVolumeOutput values.
@@ -535,62 +497,33 @@ type GetVolumesVolumeInput interface {
 }
 
 type GetVolumesVolumeArgs struct {
-	// The disk attachment information. Structure is documented below.
-	Attachments GetVolumesVolumeAttachmentArrayInput `pulumi:"attachments"`
-	// Specifies the availability zone for the disks.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Whether the disk is bootable.
-	Bootable pulumi.BoolInput `pulumi:"bootable"`
-	// The time when the disk was created.
-	CreateAt             pulumi.StringInput `pulumi:"createAt"`
-	DedicatedStorageId   pulumi.StringInput `pulumi:"dedicatedStorageId"`
-	DedicatedStorageName pulumi.StringInput `pulumi:"dedicatedStorageName"`
-	// The disk description.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the enterprise project ID for filtering.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The ID of the attached resource in UUID format.
-	Id             pulumi.StringInput                      `pulumi:"id"`
-	Iops           pulumi.IntInput                         `pulumi:"iops"`
-	IopsAttributes GetVolumesVolumeIopsAttributeArrayInput `pulumi:"iopsAttributes"`
-	Links          GetVolumesVolumeLinkArrayInput          `pulumi:"links"`
-	Metadata       pulumi.StringMapInput                   `pulumi:"metadata"`
-	// The disk name.
-	Name         pulumi.StringInput `pulumi:"name"`
-	SerialNumber pulumi.StringInput `pulumi:"serialNumber"`
-	// The service type, such as EVS, DSS or DESS.
-	ServiceType pulumi.StringInput `pulumi:"serviceType"`
-	// Specifies whether the disk is shareable.
-	Shareable pulumi.BoolInput `pulumi:"shareable"`
-	// The disk size, in GB.
-	Size       pulumi.IntInput    `pulumi:"size"`
-	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
-	// Specifies the disk status. The valid values are as following:
-	// + **FREEZED**
-	// + **BIND_ERROR**
-	// + **BINDING**
-	// + **PENDING_DELETE**
-	// + **PENDING_CREATE**
-	// + **NOTIFYING**
-	// + **NOTIFY_DELETE**
-	// + **PENDING_UPDATE**
-	// + **DOWN**
-	// + **ACTIVE**
-	// + **ELB**
-	// + **ERROR**
-	// + **VPN**
-	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired disk.
+	Attachments          GetVolumesVolumeAttachmentArrayInput          `pulumi:"attachments"`
+	AvailabilityZone     pulumi.StringInput                            `pulumi:"availabilityZone"`
+	Bootable             pulumi.BoolInput                              `pulumi:"bootable"`
+	CreateAt             pulumi.StringInput                            `pulumi:"createAt"`
+	DedicatedStorageId   pulumi.StringInput                            `pulumi:"dedicatedStorageId"`
+	DedicatedStorageName pulumi.StringInput                            `pulumi:"dedicatedStorageName"`
+	Description          pulumi.StringInput                            `pulumi:"description"`
+	EnterpriseProjectId  pulumi.StringInput                            `pulumi:"enterpriseProjectId"`
+	Id                   pulumi.StringInput                            `pulumi:"id"`
+	Iops                 pulumi.IntInput                               `pulumi:"iops"`
+	IopsAttributes       GetVolumesVolumeIopsAttributeArrayInput       `pulumi:"iopsAttributes"`
+	Links                GetVolumesVolumeLinkArrayInput                `pulumi:"links"`
+	Metadata             pulumi.StringMapInput                         `pulumi:"metadata"`
+	Name                 pulumi.StringInput                            `pulumi:"name"`
+	SerialNumber         pulumi.StringInput                            `pulumi:"serialNumber"`
+	ServiceType          pulumi.StringInput                            `pulumi:"serviceType"`
+	Shareable            pulumi.BoolInput                              `pulumi:"shareable"`
+	Size                 pulumi.IntInput                               `pulumi:"size"`
+	SnapshotId           pulumi.StringInput                            `pulumi:"snapshotId"`
+	Status               pulumi.StringInput                            `pulumi:"status"`
 	Tags                 pulumi.StringMapInput                         `pulumi:"tags"`
 	Throughput           pulumi.IntInput                               `pulumi:"throughput"`
 	ThroughputAttributes GetVolumesVolumeThroughputAttributeArrayInput `pulumi:"throughputAttributes"`
-	// The time when the disk was updated.
-	// w
-	UpdateAt            pulumi.StringInput    `pulumi:"updateAt"`
-	VolumeImageMetadata pulumi.StringMapInput `pulumi:"volumeImageMetadata"`
-	VolumeType          pulumi.StringInput    `pulumi:"volumeType"`
-	// The unique identifier used when attaching the disk.
-	Wwn pulumi.StringInput `pulumi:"wwn"`
+	UpdateAt             pulumi.StringInput                            `pulumi:"updateAt"`
+	VolumeImageMetadata  pulumi.StringMapInput                         `pulumi:"volumeImageMetadata"`
+	VolumeType           pulumi.StringInput                            `pulumi:"volumeType"`
+	Wwn                  pulumi.StringInput                            `pulumi:"wwn"`
 }
 
 func (GetVolumesVolumeArgs) ElementType() reflect.Type {
@@ -644,22 +577,18 @@ func (o GetVolumesVolumeOutput) ToGetVolumesVolumeOutputWithContext(ctx context.
 	return o
 }
 
-// The disk attachment information. Structure is documented below.
 func (o GetVolumesVolumeOutput) Attachments() GetVolumesVolumeAttachmentArrayOutput {
 	return o.ApplyT(func(v GetVolumesVolume) []GetVolumesVolumeAttachment { return v.Attachments }).(GetVolumesVolumeAttachmentArrayOutput)
 }
 
-// Specifies the availability zone for the disks.
 func (o GetVolumesVolumeOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Whether the disk is bootable.
 func (o GetVolumesVolumeOutput) Bootable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVolumesVolume) bool { return v.Bootable }).(pulumi.BoolOutput)
 }
 
-// The time when the disk was created.
 func (o GetVolumesVolumeOutput) CreateAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.CreateAt }).(pulumi.StringOutput)
 }
@@ -672,17 +601,14 @@ func (o GetVolumesVolumeOutput) DedicatedStorageName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.DedicatedStorageName }).(pulumi.StringOutput)
 }
 
-// The disk description.
 func (o GetVolumesVolumeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID for filtering.
 func (o GetVolumesVolumeOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The ID of the attached resource in UUID format.
 func (o GetVolumesVolumeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -703,7 +629,6 @@ func (o GetVolumesVolumeOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVolumesVolume) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The disk name.
 func (o GetVolumesVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -712,17 +637,14 @@ func (o GetVolumesVolumeOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.SerialNumber }).(pulumi.StringOutput)
 }
 
-// The service type, such as EVS, DSS or DESS.
 func (o GetVolumesVolumeOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.ServiceType }).(pulumi.StringOutput)
 }
 
-// Specifies whether the disk is shareable.
 func (o GetVolumesVolumeOutput) Shareable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVolumesVolume) bool { return v.Shareable }).(pulumi.BoolOutput)
 }
 
-// The disk size, in GB.
 func (o GetVolumesVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVolumesVolume) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -731,25 +653,10 @@ func (o GetVolumesVolumeOutput) SnapshotId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// Specifies the disk status. The valid values are as following:
-// + **FREEZED**
-// + **BIND_ERROR**
-// + **BINDING**
-// + **PENDING_DELETE**
-// + **PENDING_CREATE**
-// + **NOTIFYING**
-// + **NOTIFY_DELETE**
-// + **PENDING_UPDATE**
-// + **DOWN**
-// + **ACTIVE**
-// + **ELB**
-// + **ERROR**
-// + **VPN**
 func (o GetVolumesVolumeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the included key/value pairs which associated with the desired disk.
 func (o GetVolumesVolumeOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVolumesVolume) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -762,8 +669,6 @@ func (o GetVolumesVolumeOutput) ThroughputAttributes() GetVolumesVolumeThroughpu
 	return o.ApplyT(func(v GetVolumesVolume) []GetVolumesVolumeThroughputAttribute { return v.ThroughputAttributes }).(GetVolumesVolumeThroughputAttributeArrayOutput)
 }
 
-// The time when the disk was updated.
-// w
 func (o GetVolumesVolumeOutput) UpdateAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.UpdateAt }).(pulumi.StringOutput)
 }
@@ -776,7 +681,6 @@ func (o GetVolumesVolumeOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
-// The unique identifier used when attaching the disk.
 func (o GetVolumesVolumeOutput) Wwn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolume) string { return v.Wwn }).(pulumi.StringOutput)
 }
@@ -802,19 +706,14 @@ func (o GetVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetVolumesVolumeOu
 }
 
 type GetVolumesVolumeAttachment struct {
-	// The time when the disk was attached.
-	AttachedAt string `pulumi:"attachedAt"`
-	// The ID of the attachment information.
+	AttachedAt       string `pulumi:"attachedAt"`
 	AttachedMode     string `pulumi:"attachedMode"`
 	AttachedVolumeId string `pulumi:"attachedVolumeId"`
-	// The device name to which the disk is attached.
-	DeviceName string `pulumi:"deviceName"`
-	HostName   string `pulumi:"hostName"`
-	// The ID of the attached resource in UUID format.
-	Id string `pulumi:"id"`
-	// Specifies the server ID to which the disks are attached.
-	ServerId string `pulumi:"serverId"`
-	VolumeId string `pulumi:"volumeId"`
+	DeviceName       string `pulumi:"deviceName"`
+	HostName         string `pulumi:"hostName"`
+	Id               string `pulumi:"id"`
+	ServerId         string `pulumi:"serverId"`
+	VolumeId         string `pulumi:"volumeId"`
 }
 
 // GetVolumesVolumeAttachmentInput is an input type that accepts GetVolumesVolumeAttachmentArgs and GetVolumesVolumeAttachmentOutput values.
@@ -829,19 +728,14 @@ type GetVolumesVolumeAttachmentInput interface {
 }
 
 type GetVolumesVolumeAttachmentArgs struct {
-	// The time when the disk was attached.
-	AttachedAt pulumi.StringInput `pulumi:"attachedAt"`
-	// The ID of the attachment information.
+	AttachedAt       pulumi.StringInput `pulumi:"attachedAt"`
 	AttachedMode     pulumi.StringInput `pulumi:"attachedMode"`
 	AttachedVolumeId pulumi.StringInput `pulumi:"attachedVolumeId"`
-	// The device name to which the disk is attached.
-	DeviceName pulumi.StringInput `pulumi:"deviceName"`
-	HostName   pulumi.StringInput `pulumi:"hostName"`
-	// The ID of the attached resource in UUID format.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the server ID to which the disks are attached.
-	ServerId pulumi.StringInput `pulumi:"serverId"`
-	VolumeId pulumi.StringInput `pulumi:"volumeId"`
+	DeviceName       pulumi.StringInput `pulumi:"deviceName"`
+	HostName         pulumi.StringInput `pulumi:"hostName"`
+	Id               pulumi.StringInput `pulumi:"id"`
+	ServerId         pulumi.StringInput `pulumi:"serverId"`
+	VolumeId         pulumi.StringInput `pulumi:"volumeId"`
 }
 
 func (GetVolumesVolumeAttachmentArgs) ElementType() reflect.Type {
@@ -895,12 +789,10 @@ func (o GetVolumesVolumeAttachmentOutput) ToGetVolumesVolumeAttachmentOutputWith
 	return o
 }
 
-// The time when the disk was attached.
 func (o GetVolumesVolumeAttachmentOutput) AttachedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.AttachedAt }).(pulumi.StringOutput)
 }
 
-// The ID of the attachment information.
 func (o GetVolumesVolumeAttachmentOutput) AttachedMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.AttachedMode }).(pulumi.StringOutput)
 }
@@ -909,7 +801,6 @@ func (o GetVolumesVolumeAttachmentOutput) AttachedVolumeId() pulumi.StringOutput
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.AttachedVolumeId }).(pulumi.StringOutput)
 }
 
-// The device name to which the disk is attached.
 func (o GetVolumesVolumeAttachmentOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.DeviceName }).(pulumi.StringOutput)
 }
@@ -918,12 +809,10 @@ func (o GetVolumesVolumeAttachmentOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.HostName }).(pulumi.StringOutput)
 }
 
-// The ID of the attached resource in UUID format.
 func (o GetVolumesVolumeAttachmentOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the server ID to which the disks are attached.
 func (o GetVolumesVolumeAttachmentOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeAttachment) string { return v.ServerId }).(pulumi.StringOutput)
 }
@@ -953,8 +842,7 @@ func (o GetVolumesVolumeAttachmentArrayOutput) Index(i pulumi.IntInput) GetVolum
 }
 
 type GetVolumesVolumeIopsAttribute struct {
-	Frozened bool `pulumi:"frozened"`
-	// The ID of the attached resource in UUID format.
+	Frozened bool   `pulumi:"frozened"`
 	Id       string `pulumi:"id"`
 	TotalVal int    `pulumi:"totalVal"`
 }
@@ -971,8 +859,7 @@ type GetVolumesVolumeIopsAttributeInput interface {
 }
 
 type GetVolumesVolumeIopsAttributeArgs struct {
-	Frozened pulumi.BoolInput `pulumi:"frozened"`
-	// The ID of the attached resource in UUID format.
+	Frozened pulumi.BoolInput   `pulumi:"frozened"`
 	Id       pulumi.StringInput `pulumi:"id"`
 	TotalVal pulumi.IntInput    `pulumi:"totalVal"`
 }
@@ -1032,7 +919,6 @@ func (o GetVolumesVolumeIopsAttributeOutput) Frozened() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVolumesVolumeIopsAttribute) bool { return v.Frozened }).(pulumi.BoolOutput)
 }
 
-// The ID of the attached resource in UUID format.
 func (o GetVolumesVolumeIopsAttributeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeIopsAttribute) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1162,8 +1048,7 @@ func (o GetVolumesVolumeLinkArrayOutput) Index(i pulumi.IntInput) GetVolumesVolu
 }
 
 type GetVolumesVolumeThroughputAttribute struct {
-	Frozened bool `pulumi:"frozened"`
-	// The ID of the attached resource in UUID format.
+	Frozened bool   `pulumi:"frozened"`
 	Id       string `pulumi:"id"`
 	TotalVal int    `pulumi:"totalVal"`
 }
@@ -1180,8 +1065,7 @@ type GetVolumesVolumeThroughputAttributeInput interface {
 }
 
 type GetVolumesVolumeThroughputAttributeArgs struct {
-	Frozened pulumi.BoolInput `pulumi:"frozened"`
-	// The ID of the attached resource in UUID format.
+	Frozened pulumi.BoolInput   `pulumi:"frozened"`
 	Id       pulumi.StringInput `pulumi:"id"`
 	TotalVal pulumi.IntInput    `pulumi:"totalVal"`
 }
@@ -1241,7 +1125,6 @@ func (o GetVolumesVolumeThroughputAttributeOutput) Frozened() pulumi.BoolOutput 
 	return o.ApplyT(func(v GetVolumesVolumeThroughputAttribute) bool { return v.Frozened }).(pulumi.BoolOutput)
 }
 
-// The ID of the attached resource in UUID format.
 func (o GetVolumesVolumeThroughputAttributeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumesVolumeThroughputAttribute) string { return v.Id }).(pulumi.StringOutput)
 }

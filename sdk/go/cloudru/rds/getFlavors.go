@@ -11,35 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get available SberCloud rds flavors.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rds.GetFlavors(ctx, &rds.GetFlavorsArgs{
-//				DbType:       "PostgreSQL",
-//				DbVersion:    pulumi.StringRef("12"),
-//				InstanceMode: pulumi.StringRef("ha"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.InvokeOption) (*GetFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorsResult
@@ -52,51 +23,29 @@ func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsArgs struct {
-	// Specifies the availability zone which the RDS flavor belongs to.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	DbType string `pulumi:"dbType"`
-	// Specifies the database version. Available value:
-	//
-	// type | version
-	// ---- | ---
-	// MySQL| 5.6 <br>5.7 <br>8.0
-	// PostgreSQL | 9.5 <br> 9.6 <br>10 <br>11 <br>12 <br>13 <br>14
-	// SQLServer| 2012_SE <br>2014_SE <br>2016_SE <br>2017_SE <br>2012_EE <br>2014_EE <br>2016_EE <br>2017_EE <br>2017_WEB
-	DbVersion *string `pulumi:"dbVersion"`
-	// Specifies the performance specification, the valid values are as follows:
-	// + **normal**: General enhanced.
-	// + **normal2**: General enhanced type II.
-	GroupType *string `pulumi:"groupType"`
-	// The mode of instance. Value: *ha*(indicates primary/standby instance),
-	// *single*(indicates single instance) and *replica*(indicates read replicas).
-	InstanceMode *string `pulumi:"instanceMode"`
-	// Specifies the memory size(GB) in the RDS flavor.
-	Memory *int `pulumi:"memory"`
-	// The region in which to obtain the RDS flavors. If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the number of vCPUs in the RDS flavor.
-	Vcpus *int `pulumi:"vcpus"`
+	DbType           string  `pulumi:"dbType"`
+	DbVersion        *string `pulumi:"dbVersion"`
+	GroupType        *string `pulumi:"groupType"`
+	InstanceMode     *string `pulumi:"instanceMode"`
+	Memory           *int    `pulumi:"memory"`
+	Region           *string `pulumi:"region"`
+	Vcpus            *int    `pulumi:"vcpus"`
 }
 
 // A collection of values returned by getFlavors.
 type GetFlavorsResult struct {
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	DbType           string  `pulumi:"dbType"`
-	DbVersion        *string `pulumi:"dbVersion"`
-	// Indicates the flavors information. Structure is documented below.
-	Flavors []GetFlavorsFlavor `pulumi:"flavors"`
-	// The performance specification.
-	GroupType *string `pulumi:"groupType"`
+	AvailabilityZone *string            `pulumi:"availabilityZone"`
+	DbType           string             `pulumi:"dbType"`
+	DbVersion        *string            `pulumi:"dbVersion"`
+	Flavors          []GetFlavorsFlavor `pulumi:"flavors"`
+	GroupType        *string            `pulumi:"groupType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The mode of instance.
+	Id           string  `pulumi:"id"`
 	InstanceMode *string `pulumi:"instanceMode"`
-	// Indicates the memory size in GB.
-	Memory *int   `pulumi:"memory"`
-	Region string `pulumi:"region"`
-	// Indicates the CPU size.
-	Vcpus *int `pulumi:"vcpus"`
+	Memory       *int    `pulumi:"memory"`
+	Region       string  `pulumi:"region"`
+	Vcpus        *int    `pulumi:"vcpus"`
 }
 
 func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetFlavorsResultOutput {
@@ -110,31 +59,14 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsOutputArgs struct {
-	// Specifies the availability zone which the RDS flavor belongs to.
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Specifies the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	DbType pulumi.StringInput `pulumi:"dbType"`
-	// Specifies the database version. Available value:
-	//
-	// type | version
-	// ---- | ---
-	// MySQL| 5.6 <br>5.7 <br>8.0
-	// PostgreSQL | 9.5 <br> 9.6 <br>10 <br>11 <br>12 <br>13 <br>14
-	// SQLServer| 2012_SE <br>2014_SE <br>2016_SE <br>2017_SE <br>2012_EE <br>2014_EE <br>2016_EE <br>2017_EE <br>2017_WEB
-	DbVersion pulumi.StringPtrInput `pulumi:"dbVersion"`
-	// Specifies the performance specification, the valid values are as follows:
-	// + **normal**: General enhanced.
-	// + **normal2**: General enhanced type II.
-	GroupType pulumi.StringPtrInput `pulumi:"groupType"`
-	// The mode of instance. Value: *ha*(indicates primary/standby instance),
-	// *single*(indicates single instance) and *replica*(indicates read replicas).
-	InstanceMode pulumi.StringPtrInput `pulumi:"instanceMode"`
-	// Specifies the memory size(GB) in the RDS flavor.
-	Memory pulumi.IntPtrInput `pulumi:"memory"`
-	// The region in which to obtain the RDS flavors. If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the number of vCPUs in the RDS flavor.
-	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
+	DbType           pulumi.StringInput    `pulumi:"dbType"`
+	DbVersion        pulumi.StringPtrInput `pulumi:"dbVersion"`
+	GroupType        pulumi.StringPtrInput `pulumi:"groupType"`
+	InstanceMode     pulumi.StringPtrInput `pulumi:"instanceMode"`
+	Memory           pulumi.IntPtrInput    `pulumi:"memory"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+	Vcpus            pulumi.IntPtrInput    `pulumi:"vcpus"`
 }
 
 func (GetFlavorsOutputArgs) ElementType() reflect.Type {
@@ -168,12 +100,10 @@ func (o GetFlavorsResultOutput) DbVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.DbVersion }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the flavors information. Structure is documented below.
 func (o GetFlavorsResultOutput) Flavors() GetFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetFlavorsResult) []GetFlavorsFlavor { return v.Flavors }).(GetFlavorsFlavorArrayOutput)
 }
 
-// The performance specification.
 func (o GetFlavorsResultOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.GroupType }).(pulumi.StringPtrOutput)
 }
@@ -183,12 +113,10 @@ func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The mode of instance.
 func (o GetFlavorsResultOutput) InstanceMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.InstanceMode }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the memory size in GB.
 func (o GetFlavorsResultOutput) Memory() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *int { return v.Memory }).(pulumi.IntPtrOutput)
 }
@@ -197,7 +125,6 @@ func (o GetFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the CPU size.
 func (o GetFlavorsResultOutput) Vcpus() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }

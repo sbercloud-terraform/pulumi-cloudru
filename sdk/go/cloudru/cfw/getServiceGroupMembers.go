@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW service group members.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			groupId := cfg.RequireObject("groupId")
-//			_, err := cfw.GetServiceGroupMembers(ctx, &cfw.GetServiceGroupMembersArgs{
-//				GroupId: groupId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServiceGroupMembers(ctx *pulumi.Context, args *GetServiceGroupMembersArgs, opts ...pulumi.InvokeOption) (*GetServiceGroupMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceGroupMembersResult
@@ -53,51 +23,31 @@ func GetServiceGroupMembers(ctx *pulumi.Context, args *GetServiceGroupMembersArg
 
 // A collection of arguments for invoking getServiceGroupMembers.
 type GetServiceGroupMembersArgs struct {
-	// Specifies the destination port.
-	DestPort *string `pulumi:"destPort"`
-	// Specifies the firewall instance ID.
+	DestPort     *string `pulumi:"destPort"`
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the service group ID.
-	GroupId string `pulumi:"groupId"`
-	// Specifies the service group type.
-	// The value can be **0** (custom service group), **1** (predefined service group).
-	GroupType *string `pulumi:"groupType"`
-	// Specifies the service group member ID.
-	ItemId *string `pulumi:"itemId"`
-	// Specifies the key word.
-	KeyWord *string `pulumi:"keyWord"`
-	// Specifies the protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP.
-	Protocol *int `pulumi:"protocol"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the source port.
-	SourcePort *string `pulumi:"sourcePort"`
+	GroupId      string  `pulumi:"groupId"`
+	GroupType    *string `pulumi:"groupType"`
+	ItemId       *string `pulumi:"itemId"`
+	KeyWord      *string `pulumi:"keyWord"`
+	Protocol     *int    `pulumi:"protocol"`
+	Region       *string `pulumi:"region"`
+	SourcePort   *string `pulumi:"sourcePort"`
 }
 
 // A collection of values returned by getServiceGroupMembers.
 type GetServiceGroupMembersResult struct {
-	// The destination port.
 	DestPort     *string `pulumi:"destPort"`
 	FwInstanceId *string `pulumi:"fwInstanceId"`
 	GroupId      string  `pulumi:"groupId"`
 	GroupType    *string `pulumi:"groupType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The service group member ID.
-	ItemId  *string `pulumi:"itemId"`
-	KeyWord *string `pulumi:"keyWord"`
-	// The protocol type.
-	Protocol *int `pulumi:"protocol"`
-	// The service group member list.
-	Records []GetServiceGroupMembersRecord `pulumi:"records"`
-	Region  string                         `pulumi:"region"`
-	// The source port.
-	SourcePort *string `pulumi:"sourcePort"`
+	Id         string                         `pulumi:"id"`
+	ItemId     *string                        `pulumi:"itemId"`
+	KeyWord    *string                        `pulumi:"keyWord"`
+	Protocol   *int                           `pulumi:"protocol"`
+	Records    []GetServiceGroupMembersRecord `pulumi:"records"`
+	Region     string                         `pulumi:"region"`
+	SourcePort *string                        `pulumi:"sourcePort"`
 }
 
 func GetServiceGroupMembersOutput(ctx *pulumi.Context, args GetServiceGroupMembersOutputArgs, opts ...pulumi.InvokeOption) GetServiceGroupMembersResultOutput {
@@ -111,30 +61,15 @@ func GetServiceGroupMembersOutput(ctx *pulumi.Context, args GetServiceGroupMembe
 
 // A collection of arguments for invoking getServiceGroupMembers.
 type GetServiceGroupMembersOutputArgs struct {
-	// Specifies the destination port.
-	DestPort pulumi.StringPtrInput `pulumi:"destPort"`
-	// Specifies the firewall instance ID.
+	DestPort     pulumi.StringPtrInput `pulumi:"destPort"`
 	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the service group ID.
-	GroupId pulumi.StringInput `pulumi:"groupId"`
-	// Specifies the service group type.
-	// The value can be **0** (custom service group), **1** (predefined service group).
-	GroupType pulumi.StringPtrInput `pulumi:"groupType"`
-	// Specifies the service group member ID.
-	ItemId pulumi.StringPtrInput `pulumi:"itemId"`
-	// Specifies the key word.
-	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
-	// Specifies the protocol type.
-	// The options are as follows:
-	// + **6**: TCP;
-	// + **17**: UDP;
-	// + **1**: ICMP.
-	Protocol pulumi.IntPtrInput `pulumi:"protocol"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the source port.
-	SourcePort pulumi.StringPtrInput `pulumi:"sourcePort"`
+	GroupId      pulumi.StringInput    `pulumi:"groupId"`
+	GroupType    pulumi.StringPtrInput `pulumi:"groupType"`
+	ItemId       pulumi.StringPtrInput `pulumi:"itemId"`
+	KeyWord      pulumi.StringPtrInput `pulumi:"keyWord"`
+	Protocol     pulumi.IntPtrInput    `pulumi:"protocol"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	SourcePort   pulumi.StringPtrInput `pulumi:"sourcePort"`
 }
 
 func (GetServiceGroupMembersOutputArgs) ElementType() reflect.Type {
@@ -156,7 +91,6 @@ func (o GetServiceGroupMembersResultOutput) ToGetServiceGroupMembersResultOutput
 	return o
 }
 
-// The destination port.
 func (o GetServiceGroupMembersResultOutput) DestPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) *string { return v.DestPort }).(pulumi.StringPtrOutput)
 }
@@ -178,7 +112,6 @@ func (o GetServiceGroupMembersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The service group member ID.
 func (o GetServiceGroupMembersResultOutput) ItemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) *string { return v.ItemId }).(pulumi.StringPtrOutput)
 }
@@ -187,12 +120,10 @@ func (o GetServiceGroupMembersResultOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
 }
 
-// The protocol type.
 func (o GetServiceGroupMembersResultOutput) Protocol() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) *int { return v.Protocol }).(pulumi.IntPtrOutput)
 }
 
-// The service group member list.
 func (o GetServiceGroupMembersResultOutput) Records() GetServiceGroupMembersRecordArrayOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) []GetServiceGroupMembersRecord { return v.Records }).(GetServiceGroupMembersRecordArrayOutput)
 }
@@ -201,7 +132,6 @@ func (o GetServiceGroupMembersResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The source port.
 func (o GetServiceGroupMembersResultOutput) SourcePort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupMembersResult) *string { return v.SourcePort }).(pulumi.StringPtrOutput)
 }

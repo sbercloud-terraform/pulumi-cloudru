@@ -95,17 +95,11 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        Available partitions where the node is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="billingMode")
     def billing_mode(self) -> _builtins.int:
-        """
-        Node's billing mode: The value is 0 (on demand).
-        """
         return pulumi.get(self, "billing_mode")
 
     @_builtins.property
@@ -116,17 +110,11 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> Sequence['outputs.GetNodeDataVolumeResult']:
-        """
-        Represents the data disk to be created. Structure is documented below.
-        """
         return pulumi.get(self, "data_volumes")
 
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> _builtins.str:
-        """
-        The ID of ECS group to which the node belongs.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @_builtins.property
@@ -137,9 +125,6 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
-        """
-        The flavor ID to be used.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -158,9 +143,6 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> _builtins.str:
-        """
-        Key pair name when logging in to select the key pair mode.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
@@ -176,25 +158,16 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter
     def os(self) -> _builtins.str:
-        """
-        Operating System of the node.
-        """
         return pulumi.get(self, "os")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> _builtins.str:
-        """
-        Private IP of the node.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
-        """
-        Elastic IP parameters of the node.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
@@ -205,17 +178,11 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter(name="rootVolumes")
     def root_volumes(self) -> Sequence['outputs.GetNodeRootVolumeResult']:
-        """
-        It corresponds to the system disk related configuration. Structure is documented below.
-        """
         return pulumi.get(self, "root_volumes")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> _builtins.str:
-        """
-        The node's virtual machine ID in ECS.
-        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
@@ -226,17 +193,11 @@ class GetNodeResult:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        Tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -276,28 +237,7 @@ def get_node(cluster_id: Optional[_builtins.str] = None,
              status: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeResult:
     """
-    To get the specified node in a cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    node_name = config.require_object("nodeName")
-    node = sbercloud.Cce.get_node(cluster_id=cluster_id,
-        name=node_name)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of container cluster.
-    :param _builtins.str name: Specifies the name of the node.
-    :param _builtins.str node_id: Specifies the ID of the node.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE nodes.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the state of the node.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -337,28 +277,7 @@ def get_node_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeResult]:
     """
-    To get the specified node in a cluster.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    node_name = config.require_object("nodeName")
-    node = sbercloud.Cce.get_node(cluster_id=cluster_id,
-        name=node_name)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of container cluster.
-    :param _builtins.str name: Specifies the name of the node.
-    :param _builtins.str node_id: Specifies the ID of the node.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE nodes.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the state of the node.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

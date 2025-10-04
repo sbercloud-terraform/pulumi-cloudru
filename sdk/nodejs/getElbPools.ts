@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of ELB pools.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const poolName = config.requireObject<any>("poolName");
- * const test = sbercloud.getElbPools({
- *     name: poolName,
- * });
- * ```
- */
 export function getElbPools(args?: GetElbPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetElbPoolsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,61 +43,26 @@ export function getElbPools(args?: GetElbPoolsArgs, opts?: pulumi.InvokeOptions)
 export interface GetElbPoolsArgs {
     anyPortEnable?: string;
     connectionDrain?: string;
-    /**
-     * Specifies the description of the ELB pool.
-     */
     description?: string;
     enterpriseProjectId?: string;
-    /**
-     * Specifies the health monitor ID of the ELB pool.
-     */
     healthmonitorId?: string;
-    /**
-     * The IP version of the LB pool.
-     */
     ipVersion?: string;
-    /**
-     * Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-     * or SOURCE_IP.
-     */
     lbMethod?: string;
-    /**
-     * Specifies the listener ID of the ELB pool.
-     */
     listenerId?: string;
-    /**
-     * Specifies the loadbalancer ID of the ELB pool.
-     */
     loadbalancerId?: string;
     memberAddress?: string;
     memberDeletionProtectionEnable?: string;
     memberDeviceId?: string;
     memberInstanceId?: string;
-    /**
-     * Specifies the name of the ELB pool.
-     */
     name?: string;
     poolHealth?: string;
-    /**
-     * Specifies the ID of the ELB pool.
-     */
     poolId?: string;
     protectionStatus?: string;
-    /**
-     * Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-     */
     protocol?: string;
     publicBorderGroup?: string;
     quicCidLen?: number;
     quicCidOffset?: number;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * The type of persistence mode.
-     */
     type?: string;
     vpcId?: string;
 }
@@ -124,26 +73,14 @@ export interface GetElbPoolsArgs {
 export interface GetElbPoolsResult {
     readonly anyPortEnable?: string;
     readonly connectionDrain?: string;
-    /**
-     * The description of pool.
-     */
     readonly description?: string;
     readonly enterpriseProjectId?: string;
-    /**
-     * The health monitor ID of the LB pool.
-     */
     readonly healthmonitorId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The IP version of the LB pool.
-     */
     readonly ipVersion?: string;
-    /**
-     * The load balancing algorithm to distribute traffic to the pool's members.
-     */
     readonly lbMethod?: string;
     readonly listenerId?: string;
     readonly loadbalancerId?: string;
@@ -151,48 +88,19 @@ export interface GetElbPoolsResult {
     readonly memberDeletionProtectionEnable?: string;
     readonly memberDeviceId?: string;
     readonly memberInstanceId?: string;
-    /**
-     * The pool name.
-     */
     readonly name?: string;
     readonly poolHealth?: string;
     readonly poolId?: string;
-    /**
-     * Pool list. For details, see data structure of the pool field.
-     * The object structure is documented below.
-     */
     readonly pools: outputs.GetElbPoolsPool[];
     readonly protectionStatus?: string;
-    /**
-     * The protocol of pool.
-     */
     readonly protocol?: string;
     readonly publicBorderGroup?: string;
     readonly quicCidLen?: number;
     readonly quicCidOffset?: number;
     readonly region: string;
-    /**
-     * The type of persistence mode.
-     */
     readonly type?: string;
     readonly vpcId?: string;
 }
-/**
- * Use this data source to get the list of ELB pools.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const poolName = config.requireObject<any>("poolName");
- * const test = sbercloud.getElbPools({
- *     name: poolName,
- * });
- * ```
- */
 export function getElbPoolsOutput(args?: GetElbPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElbPoolsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -230,61 +138,26 @@ export function getElbPoolsOutput(args?: GetElbPoolsOutputArgs, opts?: pulumi.In
 export interface GetElbPoolsOutputArgs {
     anyPortEnable?: pulumi.Input<string>;
     connectionDrain?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the ELB pool.
-     */
     description?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the health monitor ID of the ELB pool.
-     */
     healthmonitorId?: pulumi.Input<string>;
-    /**
-     * The IP version of the LB pool.
-     */
     ipVersion?: pulumi.Input<string>;
-    /**
-     * Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-     * or SOURCE_IP.
-     */
     lbMethod?: pulumi.Input<string>;
-    /**
-     * Specifies the listener ID of the ELB pool.
-     */
     listenerId?: pulumi.Input<string>;
-    /**
-     * Specifies the loadbalancer ID of the ELB pool.
-     */
     loadbalancerId?: pulumi.Input<string>;
     memberAddress?: pulumi.Input<string>;
     memberDeletionProtectionEnable?: pulumi.Input<string>;
     memberDeviceId?: pulumi.Input<string>;
     memberInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the ELB pool.
-     */
     name?: pulumi.Input<string>;
     poolHealth?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the ELB pool.
-     */
     poolId?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-     */
     protocol?: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
     quicCidLen?: pulumi.Input<number>;
     quicCidOffset?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The type of persistence mode.
-     */
     type?: pulumi.Input<string>;
     vpcId?: pulumi.Input<string>;
 }

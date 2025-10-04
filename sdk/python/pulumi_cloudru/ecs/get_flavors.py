@@ -90,9 +90,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A list of flavor IDs.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -143,53 +140,7 @@ def get_flavors(availability_zone: Optional[_builtins.str] = None,
                 storage_type: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
-    Use this data source to get the ID of the available Compute Flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
-        performance_type="normal",
-        cpu_core_count=2,
-        memory_size=4)
-    # Create ECS instance with the first matched flavor
-    instance = sbercloud.ecs.Instance("instance", flavor_id=flavors.ids[0])
-    ```
-
-    ### Additional Examples
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
-        performance_type="normal",
-        cpu_core_count=2,
-        memory_size=4)
-    # Create ECS instance with the first matched flavor
-    instance = sbercloud.ecs.Instance("instance", flavor_id=flavors.ids[0])
-    ```
-
-    ## subcategory: "Elastic Cloud Server (ECS)"
-
-    ***
-
-    # sbercloud\\_compute\\_flavors
-
-    Use this data source to get the ID of the available Compute Flavors.
-
-
-    :param _builtins.str availability_zone: Specifies the AZ name.
-    :param _builtins.int cpu_core_count: Specifies the number of vCPUs in the ECS flavor.
-    :param _builtins.str generation: Specifies the generation of an ECS type.
-    :param _builtins.int memory_size: Specifies the memory size(GB) in the ECS flavor.
-    :param _builtins.str performance_type: Specifies the ECS flavor type.
-    :param _builtins.str region: The region in which to obtain the flavors. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -222,53 +173,7 @@ def get_flavors_output(availability_zone: Optional[pulumi.Input[Optional[_builti
                        storage_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
-    Use this data source to get the ID of the available Compute Flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
-        performance_type="normal",
-        cpu_core_count=2,
-        memory_size=4)
-    # Create ECS instance with the first matched flavor
-    instance = sbercloud.ecs.Instance("instance", flavor_id=flavors.ids[0])
-    ```
-
-    ### Additional Examples
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    flavors = sbercloud.Ecs.get_flavors(availability_zone="ru-moscow-1a",
-        performance_type="normal",
-        cpu_core_count=2,
-        memory_size=4)
-    # Create ECS instance with the first matched flavor
-    instance = sbercloud.ecs.Instance("instance", flavor_id=flavors.ids[0])
-    ```
-
-    ## subcategory: "Elastic Cloud Server (ECS)"
-
-    ***
-
-    # sbercloud\\_compute\\_flavors
-
-    Use this data source to get the ID of the available Compute Flavors.
-
-
-    :param _builtins.str availability_zone: Specifies the AZ name.
-    :param _builtins.int cpu_core_count: Specifies the number of vCPUs in the ECS flavor.
-    :param _builtins.str generation: Specifies the generation of an ECS type.
-    :param _builtins.int memory_size: Specifies the memory size(GB) in the ECS flavor.
-    :param _builtins.str performance_type: Specifies the ECS flavor type.
-    :param _builtins.str region: The region in which to obtain the flavors. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

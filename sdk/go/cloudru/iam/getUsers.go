@@ -11,9 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the IAM user list within SberCloud.
-//
-// > You *must* have IAM read privileges to use this data source.
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
@@ -26,21 +23,16 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
-	// Specifies the status of the IAM user, the default value is **true**.
-	Enabled *bool `pulumi:"enabled"`
-	// Specifies the IAM user name.
-	Name *string `pulumi:"name"`
+	Enabled *bool   `pulumi:"enabled"`
+	Name    *string `pulumi:"name"`
 }
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	// Indicates the whether the IAM user is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates the IAM user name.
-	Name *string `pulumi:"name"`
-	// The details of the queried IAM users. The structure is documented below.
+	Id    string         `pulumi:"id"`
+	Name  *string        `pulumi:"name"`
 	Users []GetUsersUser `pulumi:"users"`
 }
 
@@ -55,10 +47,8 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
-	// Specifies the status of the IAM user, the default value is **true**.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Specifies the IAM user name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Name    pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (GetUsersOutputArgs) ElementType() reflect.Type {
@@ -80,7 +70,6 @@ func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Indicates the whether the IAM user is enabled.
 func (o GetUsersResultOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -90,12 +79,10 @@ func (o GetUsersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the IAM user name.
 func (o GetUsersResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The details of the queried IAM users. The structure is documented below.
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

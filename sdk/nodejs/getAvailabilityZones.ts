@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## # sbercloud\_availability\_zones
- *
- * Use this data source to get a list of availability zones from Sbercloud
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const zones = sbercloud.getAvailabilityZones({});
- * ```
- */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -31,13 +17,7 @@ export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pul
  * A collection of arguments for invoking getAvailabilityZones.
  */
 export interface GetAvailabilityZonesArgs {
-    /**
-     * The region in which to obtain the available zones. If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * The `state` of the availability zones to match, default ("available").
-     */
     state?: string;
 }
 
@@ -49,27 +29,10 @@ export interface GetAvailabilityZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The names of the availability zones, ordered alphanumerically, that match the queried `state`
-     */
     readonly names: string[];
     readonly region: string;
     readonly state?: string;
 }
-/**
- * ## # sbercloud\_availability\_zones
- *
- * Use this data source to get a list of availability zones from Sbercloud
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const zones = sbercloud.getAvailabilityZones({});
- * ```
- */
 export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,12 +46,6 @@ export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs
  * A collection of arguments for invoking getAvailabilityZones.
  */
 export interface GetAvailabilityZonesOutputArgs {
-    /**
-     * The region in which to obtain the available zones. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The `state` of the availability zones to match, default ("available").
-     */
     state?: pulumi.Input<string>;
 }

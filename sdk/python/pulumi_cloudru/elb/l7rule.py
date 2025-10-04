@@ -29,16 +29,6 @@ class L7ruleArgs:
                  tenant_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a L7rule resource.
-        :param pulumi.Input[_builtins.str] compare_type: The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        :param pulumi.Input[_builtins.str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] type: The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-               L7 Rule.
-        :param pulumi.Input[_builtins.str] value: The value to use for the comparison. For example, the file type to compare.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Rule. The value can only be true (UP).
-        :param pulumi.Input[_builtins.str] key: The key to use for the comparison. For example, the name of the cookie to
-               evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Rule.
         """
         pulumi.set(__self__, "compare_type", compare_type)
         pulumi.set(__self__, "l7policy_id", l7policy_id)
@@ -59,9 +49,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter(name="compareType")
     def compare_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        """
         return pulumi.get(self, "compare_type")
 
     @compare_type.setter
@@ -71,9 +58,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter(name="l7policyId")
     def l7policy_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "l7policy_id")
 
     @l7policy_id.setter
@@ -83,10 +67,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-        L7 Rule.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -96,9 +76,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        The value to use for the comparison. For example, the file type to compare.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -108,9 +85,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The administrative state of the L7 Rule. The value can only be true (UP).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -120,10 +94,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The key to use for the comparison. For example, the name of the cookie to
-        evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -133,10 +103,6 @@ class L7ruleArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the L7 Rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -168,17 +134,6 @@ class _L7ruleState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering L7rule resources.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Rule. The value can only be true (UP).
-        :param pulumi.Input[_builtins.str] compare_type: The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        :param pulumi.Input[_builtins.str] key: The key to use for the comparison. For example, the name of the cookie to
-               evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] listener_id: The ID of the Listener owning this resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] type: The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-               L7 Rule.
-        :param pulumi.Input[_builtins.str] value: The value to use for the comparison. For example, the file type to compare.
         """
         if admin_state_up is not None:
             pulumi.set(__self__, "admin_state_up", admin_state_up)
@@ -205,9 +160,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The administrative state of the L7 Rule. The value can only be true (UP).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @admin_state_up.setter
@@ -217,9 +169,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter(name="compareType")
     def compare_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        """
         return pulumi.get(self, "compare_type")
 
     @compare_type.setter
@@ -229,10 +178,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The key to use for the comparison. For example, the name of the cookie to
-        evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -242,9 +187,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter(name="l7policyId")
     def l7policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "l7policy_id")
 
     @l7policy_id.setter
@@ -254,9 +196,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the Listener owning this resource.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -266,10 +205,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the L7 Rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -289,10 +224,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-        L7 Rule.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -302,9 +233,6 @@ class _L7ruleState:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The value to use for the comparison. For example, the file type to compare.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -328,61 +256,9 @@ class L7rule(pulumi.CustomResource):
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB L7 Rule resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        loadbalancer1 = sbercloud.elb.Loadbalancer("loadbalancer_1",
-            name="loadbalancer_1",
-            vip_subnet_id=subnet_id)
-        listener1 = sbercloud.elb.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = sbercloud.elb.Pool("pool_1",
-            name="pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = sbercloud.elb.L7policy("l7policy_1",
-            name="test",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        l7rule1 = sbercloud.elb.L7rule("l7rule_1",
-            l7policy_id=l7policy1.id,
-            type="PATH",
-            compare_type="EQUAL_TO",
-            value="/api")
-        ```
-
-        ## Import
-
-        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Elb/l7rule:L7rule l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-        ```
-
+        Create a L7rule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Rule. The value can only be true (UP).
-        :param pulumi.Input[_builtins.str] compare_type: The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        :param pulumi.Input[_builtins.str] key: The key to use for the comparison. For example, the name of the cookie to
-               evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] type: The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-               L7 Rule.
-        :param pulumi.Input[_builtins.str] value: The value to use for the comparison. For example, the file type to compare.
         """
         ...
     @overload
@@ -391,49 +267,7 @@ class L7rule(pulumi.CustomResource):
                  args: L7ruleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB L7 Rule resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        loadbalancer1 = sbercloud.elb.Loadbalancer("loadbalancer_1",
-            name="loadbalancer_1",
-            vip_subnet_id=subnet_id)
-        listener1 = sbercloud.elb.Listener("listener_1",
-            name="listener_1",
-            protocol="HTTP",
-            protocol_port=8080,
-            loadbalancer_id=loadbalancer1.id)
-        pool1 = sbercloud.elb.Pool("pool_1",
-            name="pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            loadbalancer_id=loadbalancer1.id)
-        l7policy1 = sbercloud.elb.L7policy("l7policy_1",
-            name="test",
-            action="REDIRECT_TO_POOL",
-            description="test l7 policy",
-            position=1,
-            listener_id=listener1.id,
-            redirect_pool_id=pool1.id)
-        l7rule1 = sbercloud.elb.L7rule("l7rule_1",
-            l7policy_id=l7policy1.id,
-            type="PATH",
-            compare_type="EQUAL_TO",
-            value="/api")
-        ```
-
-        ## Import
-
-        Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Elb/l7rule:L7rule l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
-        ```
-
+        Create a L7rule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param L7ruleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -509,17 +343,6 @@ class L7rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] admin_state_up: The administrative state of the L7 Rule. The value can only be true (UP).
-        :param pulumi.Input[_builtins.str] compare_type: The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        :param pulumi.Input[_builtins.str] key: The key to use for the comparison. For example, the name of the cookie to
-               evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] l7policy_id: The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] listener_id: The ID of the Listener owning this resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the L7 Rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new L7 Rule.
-        :param pulumi.Input[_builtins.str] type: The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-               L7 Rule.
-        :param pulumi.Input[_builtins.str] value: The value to use for the comparison. For example, the file type to compare.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -539,51 +362,31 @@ class L7rule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        The administrative state of the L7 Rule. The value can only be true (UP).
-        """
         return pulumi.get(self, "admin_state_up")
 
     @_builtins.property
     @pulumi.getter(name="compareType")
     def compare_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-        """
         return pulumi.get(self, "compare_type")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The key to use for the comparison. For example, the name of the cookie to
-        evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter(name="l7policyId")
     def l7policy_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "l7policy_id")
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the Listener owning this resource.
-        """
         return pulumi.get(self, "listener_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the L7 Rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new L7 Rule.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -595,17 +398,10 @@ class L7rule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-        L7 Rule.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Output[_builtins.str]:
-        """
-        The value to use for the comparison. For example, the file type to compare.
-        """
         return pulumi.get(self, "value")
 

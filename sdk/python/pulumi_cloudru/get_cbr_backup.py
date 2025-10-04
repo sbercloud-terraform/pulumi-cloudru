@@ -95,82 +95,51 @@ class GetCbrBackupResult:
     @_builtins.property
     @pulumi.getter(name="checkpointId")
     def checkpoint_id(self) -> _builtins.str:
-        """
-        The restore point ID of the sub-backup resource.
-        """
         return pulumi.get(self, "checkpoint_id")
 
     @_builtins.property
     @pulumi.getter
     def childrens(self) -> Sequence['outputs.GetCbrBackupChildrenResult']:
-        """
-        The backup list of the sub-backup resources.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "childrens")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The creation time of the sub-backup.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The sub-backup description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        The enterprise project to which the backup sub-backup resource belongs.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="expiredAt")
     def expired_at(self) -> _builtins.str:
-        """
-        The expiration time of the sub-backup.
-        """
         return pulumi.get(self, "expired_at")
 
     @_builtins.property
     @pulumi.getter(name="extendInfos")
     def extend_infos(self) -> Sequence['outputs.GetCbrBackupExtendInfoResult']:
-        """
-        The extended information.
-        """
         return pulumi.get(self, "extend_infos")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The sub-backup ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The sub-backup name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> _builtins.str:
-        """
-        The parent backup ID.
-        """
         return pulumi.get(self, "parent_id")
 
     @_builtins.property
@@ -181,81 +150,51 @@ class GetCbrBackupResult:
     @_builtins.property
     @pulumi.getter(name="replicationRecords")
     def replication_records(self) -> Sequence['outputs.GetCbrBackupReplicationRecordResult']:
-        """
-        The replication records.
-        """
         return pulumi.get(self, "replication_records")
 
     @_builtins.property
     @pulumi.getter(name="resourceAz")
     def resource_az(self) -> _builtins.str:
-        """
-        The availability zone where the backup sub-backup resource is located.
-        """
         return pulumi.get(self, "resource_az")
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
-        """
-        The sub-backup resource ID.
-        """
         return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> _builtins.str:
-        """
-        The sub-backup resource name.
-        """
         return pulumi.get(self, "resource_name")
 
     @_builtins.property
     @pulumi.getter(name="resourceSize")
     def resource_size(self) -> _builtins.int:
-        """
-        The sub-backup resource size, in GB.
-        """
         return pulumi.get(self, "resource_size")
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> _builtins.str:
-        """
-        The sub-backup resource type.
-        """
         return pulumi.get(self, "resource_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        The sub-backup status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The sub-backup type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The latest update time of the sub-backup.
-        """
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
-        """
-        The vault to which the backup resource belongs.
-        """
         return pulumi.get(self, "vault_id")
 
 
@@ -292,25 +231,7 @@ def get_cbr_backup(id: Optional[_builtins.str] = None,
                    region: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCbrBackupResult:
     """
-    Use this data source to query the backup detail using its ID within Sbercloud.
-
-    ## Example Usage
-
-    ### Using backup ID to query the backup detail
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    backup_id = config.require_object("backupId")
-    test = sbercloud.get_cbr_backup(id="backup_id")
-    ```
-
-
-    :param _builtins.str id: Specifies the backup ID.
-    :param _builtins.str region: Specifies the region in which to query the backup detail.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -344,25 +265,7 @@ def get_cbr_backup_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCbrBackupResult]:
     """
-    Use this data source to query the backup detail using its ID within Sbercloud.
-
-    ## Example Usage
-
-    ### Using backup ID to query the backup detail
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    backup_id = config.require_object("backupId")
-    test = sbercloud.get_cbr_backup(id="backup_id")
-    ```
-
-
-    :param _builtins.str id: Specifies the backup ID.
-    :param _builtins.str region: Specifies the region in which to query the backup detail.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['id'] = id

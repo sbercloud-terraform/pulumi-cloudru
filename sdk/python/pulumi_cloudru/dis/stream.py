@@ -36,31 +36,6 @@ class StreamArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Stream resource.
-        :param pulumi.Input[_builtins.int] partition_count: Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-               total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-               down again within the next one hour.
-        :param pulumi.Input[_builtins.str] stream_name: Name of the DIS stream to be created.
-        :param pulumi.Input[_builtins.int] auto_scale_max_partition_count: Maximum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] auto_scale_min_partition_count: Minimum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] compression_format: Data compression type. The value is one of snappy, gzip and zip.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] csv_delimiter: Field separator for CSV file. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] data_schema: User's JOSN, CSV format data schema, described with Avro schema. Changing
-               this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] data_type: Data type of the data putting into the stream. The value is one of `BLOB`,
-               `JSON` and `CSV`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dis stream, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DIS stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new DIS Stream resource.
-        :param pulumi.Input[_builtins.int] retention_period: The number of hours for which data from the stream will be retained in DIS.
-               Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] stream_type: Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-               bandwidth). Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the stream.
         """
         pulumi.set(__self__, "partition_count", partition_count)
         pulumi.set(__self__, "stream_name", stream_name)
@@ -90,11 +65,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="partitionCount")
     def partition_count(self) -> pulumi.Input[_builtins.int]:
-        """
-        Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-        total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-        down again within the next one hour.
-        """
         return pulumi.get(self, "partition_count")
 
     @partition_count.setter
@@ -104,9 +74,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the DIS stream to be created.
-        """
         return pulumi.get(self, "stream_name")
 
     @stream_name.setter
@@ -116,10 +83,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="autoScaleMaxPartitionCount")
     def auto_scale_max_partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum number of partition for automatic scaling.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_scale_max_partition_count")
 
     @auto_scale_max_partition_count.setter
@@ -129,10 +92,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="autoScaleMinPartitionCount")
     def auto_scale_min_partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Minimum number of partition for automatic scaling.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_scale_min_partition_count")
 
     @auto_scale_min_partition_count.setter
@@ -142,10 +101,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="compressionFormat")
     def compression_format(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Data compression type. The value is one of snappy, gzip and zip.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "compression_format")
 
     @compression_format.setter
@@ -155,10 +110,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="csvDelimiter")
     def csv_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Field separator for CSV file. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "csv_delimiter")
 
     @csv_delimiter.setter
@@ -168,10 +119,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="dataSchema")
     def data_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        User's JOSN, CSV format data schema, described with Avro schema. Changing
-        this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_schema")
 
     @data_schema.setter
@@ -181,10 +128,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Data type of the data putting into the stream. The value is one of `BLOB`,
-        `JSON` and `CSV`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -194,10 +137,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the dis stream, Value 0
-        indicates the default enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -207,10 +146,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DIS stream resource. If omitted, the
-        provider-level region will be used. Changing this creates a new DIS Stream resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -220,10 +155,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of hours for which data from the stream will be retained in DIS.
-        Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -233,10 +164,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter(name="streamType")
     def stream_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-        bandwidth). Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "stream_type")
 
     @stream_type.setter
@@ -246,9 +173,6 @@ class StreamArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the stream.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -280,37 +204,6 @@ class _StreamState:
                  writable_partition_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Stream resources.
-        :param pulumi.Input[_builtins.int] auto_scale_max_partition_count: Maximum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] auto_scale_min_partition_count: Minimum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] compression_format: Data compression type. The value is one of snappy, gzip and zip.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] created: Timestamp at which the DIS stream was created.
-        :param pulumi.Input[_builtins.str] csv_delimiter: Field separator for CSV file. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] data_schema: User's JOSN, CSV format data schema, described with Avro schema. Changing
-               this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] data_type: Data type of the data putting into the stream. The value is one of `BLOB`,
-               `JSON` and `CSV`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dis stream, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] partition_count: Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-               total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-               down again within the next one hour.
-        :param pulumi.Input[Sequence[pulumi.Input['StreamPartitionArgs']]] partitions: The information of stream partitions. Structure is documented below.
-        :param pulumi.Input[_builtins.int] readable_partition_count: Total number of readable partitions (including partitions in ACTIVE state only).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DIS stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new DIS Stream resource.
-        :param pulumi.Input[_builtins.int] retention_period: The number of hours for which data from the stream will be retained in DIS.
-               Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: The status of the partition.
-        :param pulumi.Input[_builtins.str] stream_id: Indicates a stream ID in UUID format.
-        :param pulumi.Input[_builtins.str] stream_name: Name of the DIS stream to be created.
-        :param pulumi.Input[_builtins.str] stream_type: Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-               bandwidth). Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the stream.
-        :param pulumi.Input[_builtins.int] writable_partition_count: Total number of writable partitions (including partitions in ACTIVE and DELETED states).
         """
         if auto_scale_max_partition_count is not None:
             pulumi.set(__self__, "auto_scale_max_partition_count", auto_scale_max_partition_count)
@@ -354,10 +247,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="autoScaleMaxPartitionCount")
     def auto_scale_max_partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Maximum number of partition for automatic scaling.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_scale_max_partition_count")
 
     @auto_scale_max_partition_count.setter
@@ -367,10 +256,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="autoScaleMinPartitionCount")
     def auto_scale_min_partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Minimum number of partition for automatic scaling.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_scale_min_partition_count")
 
     @auto_scale_min_partition_count.setter
@@ -380,10 +265,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="compressionFormat")
     def compression_format(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Data compression type. The value is one of snappy, gzip and zip.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "compression_format")
 
     @compression_format.setter
@@ -393,9 +274,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Timestamp at which the DIS stream was created.
-        """
         return pulumi.get(self, "created")
 
     @created.setter
@@ -405,10 +283,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="csvDelimiter")
     def csv_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Field separator for CSV file. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "csv_delimiter")
 
     @csv_delimiter.setter
@@ -418,10 +292,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="dataSchema")
     def data_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        User's JOSN, CSV format data schema, described with Avro schema. Changing
-        this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_schema")
 
     @data_schema.setter
@@ -431,10 +301,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Data type of the data putting into the stream. The value is one of `BLOB`,
-        `JSON` and `CSV`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_type")
 
     @data_type.setter
@@ -444,10 +310,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the dis stream, Value 0
-        indicates the default enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -457,11 +319,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="partitionCount")
     def partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-        total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-        down again within the next one hour.
-        """
         return pulumi.get(self, "partition_count")
 
     @partition_count.setter
@@ -471,9 +328,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamPartitionArgs']]]]:
-        """
-        The information of stream partitions. Structure is documented below.
-        """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
@@ -483,9 +337,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="readablePartitionCount")
     def readable_partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Total number of readable partitions (including partitions in ACTIVE state only).
-        """
         return pulumi.get(self, "readable_partition_count")
 
     @readable_partition_count.setter
@@ -495,10 +346,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DIS stream resource. If omitted, the
-        provider-level region will be used. Changing this creates a new DIS Stream resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -508,10 +355,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The number of hours for which data from the stream will be retained in DIS.
-        Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
@@ -521,9 +364,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the partition.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -533,9 +373,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="streamId")
     def stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates a stream ID in UUID format.
-        """
         return pulumi.get(self, "stream_id")
 
     @stream_id.setter
@@ -545,9 +382,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the DIS stream to be created.
-        """
         return pulumi.get(self, "stream_name")
 
     @stream_name.setter
@@ -557,10 +391,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="streamType")
     def stream_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-        bandwidth). Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "stream_type")
 
     @stream_type.setter
@@ -570,9 +400,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the stream.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -582,9 +409,6 @@ class _StreamState:
     @_builtins.property
     @pulumi.getter(name="writablePartitionCount")
     def writable_partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-        """
         return pulumi.get(self, "writable_partition_count")
 
     @writable_partition_count.setter
@@ -613,69 +437,9 @@ class Stream(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages DIS Stream resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a stream that type is BLOB
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        stream = sbercloud.dis.Stream("stream",
-            stream_name="terraform_test_dis_stream",
-            partition_count=1)
-        ```
-
-        ### Create a stream that type is JSON
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        stream = sbercloud.dis.Stream("stream",
-            stream_name="terraform_test_dis_stream",
-            partition_count=1,
-            data_type="JSON",
-            data_schema="{\\"type\\":\\"record\\",\\"name\\":\\"RecordName\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"string\\",\\"doc\\":\\"Type inferred from '\\\\\\"2017/10/11 11:11:11\\\\\\"'\\"},{\\"name\\":\\"info\\",\\"type\\":{\\"type\\":\\"array\\",\\"items\\":{\\"type\\":\\"record\\",\\"name\\":\\"info\\",\\"fields\\":[{\\"name\\":\\"date\\",\\"type\\":\\"string\\",\\"doc\\":\\"Type inferred from '\\\\\\"2018/10/11 11:11:11\\\\\\"'\\"}]}},\\"doc\\":\\"Type inferred from '[{\\\\\\"date\\\\\\":\\\\\\"2018/10/11 11:11:11\\\\\\"}]'\\"}]}")
-        ```
-
-        ## Import
-
-        Dis stream can be imported by `stream_name`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Dis/stream:Stream example _abc123
-        ```
-
+        Create a Stream resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_scale_max_partition_count: Maximum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] auto_scale_min_partition_count: Minimum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] compression_format: Data compression type. The value is one of snappy, gzip and zip.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] csv_delimiter: Field separator for CSV file. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] data_schema: User's JOSN, CSV format data schema, described with Avro schema. Changing
-               this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] data_type: Data type of the data putting into the stream. The value is one of `BLOB`,
-               `JSON` and `CSV`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dis stream, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] partition_count: Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-               total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-               down again within the next one hour.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DIS stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new DIS Stream resource.
-        :param pulumi.Input[_builtins.int] retention_period: The number of hours for which data from the stream will be retained in DIS.
-               Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] stream_name: Name of the DIS stream to be created.
-        :param pulumi.Input[_builtins.str] stream_type: Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-               bandwidth). Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the stream.
         """
         ...
     @overload
@@ -684,42 +448,7 @@ class Stream(pulumi.CustomResource):
                  args: StreamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DIS Stream resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create a stream that type is BLOB
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        stream = sbercloud.dis.Stream("stream",
-            stream_name="terraform_test_dis_stream",
-            partition_count=1)
-        ```
-
-        ### Create a stream that type is JSON
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        stream = sbercloud.dis.Stream("stream",
-            stream_name="terraform_test_dis_stream",
-            partition_count=1,
-            data_type="JSON",
-            data_schema="{\\"type\\":\\"record\\",\\"name\\":\\"RecordName\\",\\"fields\\":[{\\"name\\":\\"id\\",\\"type\\":\\"string\\",\\"doc\\":\\"Type inferred from '\\\\\\"2017/10/11 11:11:11\\\\\\"'\\"},{\\"name\\":\\"info\\",\\"type\\":{\\"type\\":\\"array\\",\\"items\\":{\\"type\\":\\"record\\",\\"name\\":\\"info\\",\\"fields\\":[{\\"name\\":\\"date\\",\\"type\\":\\"string\\",\\"doc\\":\\"Type inferred from '\\\\\\"2018/10/11 11:11:11\\\\\\"'\\"}]}},\\"doc\\":\\"Type inferred from '[{\\\\\\"date\\\\\\":\\\\\\"2018/10/11 11:11:11\\\\\\"}]'\\"}]}")
-        ```
-
-        ## Import
-
-        Dis stream can be imported by `stream_name`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Dis/stream:Stream example _abc123
-        ```
-
+        Create a Stream resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param StreamArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -816,37 +545,6 @@ class Stream(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] auto_scale_max_partition_count: Maximum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] auto_scale_min_partition_count: Minimum number of partition for automatic scaling.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] compression_format: Data compression type. The value is one of snappy, gzip and zip.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] created: Timestamp at which the DIS stream was created.
-        :param pulumi.Input[_builtins.str] csv_delimiter: Field separator for CSV file. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] data_schema: User's JOSN, CSV format data schema, described with Avro schema. Changing
-               this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] data_type: Data type of the data putting into the stream. The value is one of `BLOB`,
-               `JSON` and `CSV`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the dis stream, Value 0
-               indicates the default enterprise project. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] partition_count: Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-               total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-               down again within the next one hour.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StreamPartitionArgs', 'StreamPartitionArgsDict']]]] partitions: The information of stream partitions. Structure is documented below.
-        :param pulumi.Input[_builtins.int] readable_partition_count: Total number of readable partitions (including partitions in ACTIVE state only).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DIS stream resource. If omitted, the
-               provider-level region will be used. Changing this creates a new DIS Stream resource.
-        :param pulumi.Input[_builtins.int] retention_period: The number of hours for which data from the stream will be retained in DIS.
-               Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: The status of the partition.
-        :param pulumi.Input[_builtins.str] stream_id: Indicates a stream ID in UUID format.
-        :param pulumi.Input[_builtins.str] stream_name: Name of the DIS stream to be created.
-        :param pulumi.Input[_builtins.str] stream_type: Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-               bandwidth). Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the stream.
-        :param pulumi.Input[_builtins.int] writable_partition_count: Total number of writable partitions (including partitions in ACTIVE and DELETED states).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -876,164 +574,95 @@ class Stream(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoScaleMaxPartitionCount")
     def auto_scale_max_partition_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Maximum number of partition for automatic scaling.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_scale_max_partition_count")
 
     @_builtins.property
     @pulumi.getter(name="autoScaleMinPartitionCount")
     def auto_scale_min_partition_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Minimum number of partition for automatic scaling.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "auto_scale_min_partition_count")
 
     @_builtins.property
     @pulumi.getter(name="compressionFormat")
     def compression_format(self) -> pulumi.Output[_builtins.str]:
-        """
-        Data compression type. The value is one of snappy, gzip and zip.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "compression_format")
 
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.int]:
-        """
-        Timestamp at which the DIS stream was created.
-        """
         return pulumi.get(self, "created")
 
     @_builtins.property
     @pulumi.getter(name="csvDelimiter")
     def csv_delimiter(self) -> pulumi.Output[_builtins.str]:
-        """
-        Field separator for CSV file. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "csv_delimiter")
 
     @_builtins.property
     @pulumi.getter(name="dataSchema")
     def data_schema(self) -> pulumi.Output[_builtins.str]:
-        """
-        User's JOSN, CSV format data schema, described with Avro schema. Changing
-        this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_schema")
 
     @_builtins.property
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Data type of the data putting into the stream. The value is one of `BLOB`,
-        `JSON` and `CSV`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_type")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the dis stream, Value 0
-        indicates the default enterprise project. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="partitionCount")
     def partition_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Number of the expect partitions. NOTE: Each stream can be scaled up and down a
-        total of five times within one hour. After the stream is successfully scaled up or down, it cannot be scaled up or
-        down again within the next one hour.
-        """
         return pulumi.get(self, "partition_count")
 
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> pulumi.Output[Sequence['outputs.StreamPartition']]:
-        """
-        The information of stream partitions. Structure is documented below.
-        """
         return pulumi.get(self, "partitions")
 
     @_builtins.property
     @pulumi.getter(name="readablePartitionCount")
     def readable_partition_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Total number of readable partitions (including partitions in ACTIVE state only).
-        """
         return pulumi.get(self, "readable_partition_count")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DIS stream resource. If omitted, the
-        provider-level region will be used. Changing this creates a new DIS Stream resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        The number of hours for which data from the stream will be retained in DIS.
-        Value range: `24` to `72`. Unit: `hour`. Default:`24`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "retention_period")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the partition.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="streamId")
     def stream_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates a stream ID in UUID format.
-        """
         return pulumi.get(self, "stream_id")
 
     @_builtins.property
     @pulumi.getter(name="streamName")
     def stream_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Name of the DIS stream to be created.
-        """
         return pulumi.get(self, "stream_name")
 
     @_builtins.property
     @pulumi.getter(name="streamType")
     def stream_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Stream Type. The value is COMMON(means 1M bandwidth) or ADVANCED(means 5M
-        bandwidth). Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "stream_type")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the stream.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="writablePartitionCount")
     def writable_partition_count(self) -> pulumi.Output[_builtins.int]:
-        """
-        Total number of writable partitions (including partitions in ACTIVE and DELETED states).
-        """
         return pulumi.get(self, "writable_partition_count")
 

@@ -31,23 +31,8 @@ class AgencyArgs:
                  project_roles: Optional[pulumi.Input[Sequence[pulumi.Input['AgencyProjectRoleArgs']]]] = None):
         """
         The set of arguments for constructing a Agency resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_resources_roles: Specifies an array of one or more role names which stand for the permissions
-               to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-               and global services under your account.
-        :param pulumi.Input[_builtins.str] delegated_domain_name: Specifies the name of delegated user domain. This parameter
-               and `delegated_service_name` are alternative.
-        :param pulumi.Input[_builtins.str] delegated_service_name: Specifies the name of delegated cloud service. The value must start
-               with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the agency. The value is a string of
-               0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_roles: Specifies an array of one or more role names which stand for the permissionis to be
-               granted to agency on domain.
-        :param pulumi.Input[_builtins.str] duration: Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-               , defaults to *FOREVER*.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of agency. The name is a string of 1 to 64 characters.
-               Changing this will create a new agency.
-        :param pulumi.Input[Sequence[pulumi.Input['AgencyProjectRoleArgs']]] project_roles: Specifies an array of one or more roles and projects which are used to grant
-               permissions to agency on project. The structure is documented below.
+        :param pulumi.Input[_builtins.str] delegated_domain_name: schema: Required
+        :param pulumi.Input[_builtins.str] delegated_service_name: schema: Internal
         """
         if all_resources_roles is not None:
             pulumi.set(__self__, "all_resources_roles", all_resources_roles)
@@ -69,11 +54,6 @@ class AgencyArgs:
     @_builtins.property
     @pulumi.getter(name="allResourcesRoles")
     def all_resources_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more role names which stand for the permissions
-        to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-        and global services under your account.
-        """
         return pulumi.get(self, "all_resources_roles")
 
     @all_resources_roles.setter
@@ -84,8 +64,7 @@ class AgencyArgs:
     @pulumi.getter(name="delegatedDomainName")
     def delegated_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of delegated user domain. This parameter
-        and `delegated_service_name` are alternative.
+        schema: Required
         """
         return pulumi.get(self, "delegated_domain_name")
 
@@ -97,8 +76,7 @@ class AgencyArgs:
     @pulumi.getter(name="delegatedServiceName")
     def delegated_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of delegated cloud service. The value must start
-        with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
+        schema: Internal
         """
         return pulumi.get(self, "delegated_service_name")
 
@@ -109,10 +87,6 @@ class AgencyArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the agency. The value is a string of
-        0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -122,10 +96,6 @@ class AgencyArgs:
     @_builtins.property
     @pulumi.getter(name="domainRoles")
     def domain_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more role names which stand for the permissionis to be
-        granted to agency on domain.
-        """
         return pulumi.get(self, "domain_roles")
 
     @domain_roles.setter
@@ -135,10 +105,6 @@ class AgencyArgs:
     @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-        , defaults to *FOREVER*.
-        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -148,10 +114,6 @@ class AgencyArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of agency. The name is a string of 1 to 64 characters.
-        Changing this will create a new agency.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -161,10 +123,6 @@ class AgencyArgs:
     @_builtins.property
     @pulumi.getter(name="projectRoles")
     def project_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AgencyProjectRoleArgs']]]]:
-        """
-        Specifies an array of one or more roles and projects which are used to grant
-        permissions to agency on project. The structure is documented below.
-        """
         return pulumi.get(self, "project_roles")
 
     @project_roles.setter
@@ -187,25 +145,8 @@ class _AgencyState:
                  project_roles: Optional[pulumi.Input[Sequence[pulumi.Input['AgencyProjectRoleArgs']]]] = None):
         """
         Input properties used for looking up and filtering Agency resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_resources_roles: Specifies an array of one or more role names which stand for the permissions
-               to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-               and global services under your account.
-        :param pulumi.Input[_builtins.str] create_time: The time when the agency was created.
-        :param pulumi.Input[_builtins.str] delegated_domain_name: Specifies the name of delegated user domain. This parameter
-               and `delegated_service_name` are alternative.
-        :param pulumi.Input[_builtins.str] delegated_service_name: Specifies the name of delegated cloud service. The value must start
-               with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the agency. The value is a string of
-               0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_roles: Specifies an array of one or more role names which stand for the permissionis to be
-               granted to agency on domain.
-        :param pulumi.Input[_builtins.str] duration: Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-               , defaults to *FOREVER*.
-        :param pulumi.Input[_builtins.str] expire_time: The expiration time of agency.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of agency. The name is a string of 1 to 64 characters.
-               Changing this will create a new agency.
-        :param pulumi.Input[Sequence[pulumi.Input['AgencyProjectRoleArgs']]] project_roles: Specifies an array of one or more roles and projects which are used to grant
-               permissions to agency on project. The structure is documented below.
+        :param pulumi.Input[_builtins.str] delegated_domain_name: schema: Required
+        :param pulumi.Input[_builtins.str] delegated_service_name: schema: Internal
         """
         if all_resources_roles is not None:
             pulumi.set(__self__, "all_resources_roles", all_resources_roles)
@@ -231,11 +172,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter(name="allResourcesRoles")
     def all_resources_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more role names which stand for the permissions
-        to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-        and global services under your account.
-        """
         return pulumi.get(self, "all_resources_roles")
 
     @all_resources_roles.setter
@@ -245,9 +181,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The time when the agency was created.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -258,8 +191,7 @@ class _AgencyState:
     @pulumi.getter(name="delegatedDomainName")
     def delegated_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of delegated user domain. This parameter
-        and `delegated_service_name` are alternative.
+        schema: Required
         """
         return pulumi.get(self, "delegated_domain_name")
 
@@ -271,8 +203,7 @@ class _AgencyState:
     @pulumi.getter(name="delegatedServiceName")
     def delegated_service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of delegated cloud service. The value must start
-        with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
+        schema: Internal
         """
         return pulumi.get(self, "delegated_service_name")
 
@@ -283,10 +214,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the agency. The value is a string of
-        0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -296,10 +223,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter(name="domainRoles")
     def domain_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more role names which stand for the permissionis to be
-        granted to agency on domain.
-        """
         return pulumi.get(self, "domain_roles")
 
     @domain_roles.setter
@@ -309,10 +232,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-        , defaults to *FOREVER*.
-        """
         return pulumi.get(self, "duration")
 
     @duration.setter
@@ -322,9 +241,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The expiration time of agency.
-        """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
@@ -334,10 +250,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of agency. The name is a string of 1 to 64 characters.
-        Changing this will create a new agency.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -347,10 +259,6 @@ class _AgencyState:
     @_builtins.property
     @pulumi.getter(name="projectRoles")
     def project_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AgencyProjectRoleArgs']]]]:
-        """
-        Specifies an array of one or more roles and projects which are used to grant
-        permissions to agency on project. The structure is documented below.
-        """
         return pulumi.get(self, "project_roles")
 
     @project_roles.setter
@@ -374,71 +282,11 @@ class Agency(pulumi.CustomResource):
                  project_roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AgencyProjectRoleArgs', 'AgencyProjectRoleArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages an agency resource within SberCloud.
-
-        ## Example Usage
-
-        ### Delegate another SberCloud account to perform operations on your resources
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        agency = sbercloud.iam.Agency("agency",
-            name="test_agency",
-            description="test agency",
-            delegated_domain_name="***",
-            project_roles=[{
-                "project": "ru-moscow-1",
-                "roles": ["Tenant Administrator"],
-            }],
-            domain_roles=["VPC Administrator"])
-        ```
-
-        ### Delegate a cloud service to access your resources in other cloud services
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        agency = sbercloud.iam.Agency("agency",
-            name="test_agency",
-            description="test agency",
-            delegated_service_name="op_svc_evs",
-            project_roles=[{
-                "project": "ru-moscow-1",
-                "roles": ["SFS Administrator"],
-            }],
-            domain_roles=["KMS Administrator"])
-        ```
-
-        ## Import
-
-        Agencies can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/agency:Agency agency 0b97661f9900f23f4fc2c00971ea4dc0
-        ```
-
+        Create a Agency resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_resources_roles: Specifies an array of one or more role names which stand for the permissions
-               to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-               and global services under your account.
-        :param pulumi.Input[_builtins.str] delegated_domain_name: Specifies the name of delegated user domain. This parameter
-               and `delegated_service_name` are alternative.
-        :param pulumi.Input[_builtins.str] delegated_service_name: Specifies the name of delegated cloud service. The value must start
-               with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the agency. The value is a string of
-               0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_roles: Specifies an array of one or more role names which stand for the permissionis to be
-               granted to agency on domain.
-        :param pulumi.Input[_builtins.str] duration: Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-               , defaults to *FOREVER*.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of agency. The name is a string of 1 to 64 characters.
-               Changing this will create a new agency.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgencyProjectRoleArgs', 'AgencyProjectRoleArgsDict']]]] project_roles: Specifies an array of one or more roles and projects which are used to grant
-               permissions to agency on project. The structure is documented below.
+        :param pulumi.Input[_builtins.str] delegated_domain_name: schema: Required
+        :param pulumi.Input[_builtins.str] delegated_service_name: schema: Internal
         """
         ...
     @overload
@@ -447,52 +295,7 @@ class Agency(pulumi.CustomResource):
                  args: Optional[AgencyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an agency resource within SberCloud.
-
-        ## Example Usage
-
-        ### Delegate another SberCloud account to perform operations on your resources
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        agency = sbercloud.iam.Agency("agency",
-            name="test_agency",
-            description="test agency",
-            delegated_domain_name="***",
-            project_roles=[{
-                "project": "ru-moscow-1",
-                "roles": ["Tenant Administrator"],
-            }],
-            domain_roles=["VPC Administrator"])
-        ```
-
-        ### Delegate a cloud service to access your resources in other cloud services
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        agency = sbercloud.iam.Agency("agency",
-            name="test_agency",
-            description="test agency",
-            delegated_service_name="op_svc_evs",
-            project_roles=[{
-                "project": "ru-moscow-1",
-                "roles": ["SFS Administrator"],
-            }],
-            domain_roles=["KMS Administrator"])
-        ```
-
-        ## Import
-
-        Agencies can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/agency:Agency agency 0b97661f9900f23f4fc2c00971ea4dc0
-        ```
-
+        Create a Agency resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AgencyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -562,25 +365,8 @@ class Agency(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] all_resources_roles: Specifies an array of one or more role names which stand for the permissions
-               to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-               and global services under your account.
-        :param pulumi.Input[_builtins.str] create_time: The time when the agency was created.
-        :param pulumi.Input[_builtins.str] delegated_domain_name: Specifies the name of delegated user domain. This parameter
-               and `delegated_service_name` are alternative.
-        :param pulumi.Input[_builtins.str] delegated_service_name: Specifies the name of delegated cloud service. The value must start
-               with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the agency. The value is a string of
-               0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domain_roles: Specifies an array of one or more role names which stand for the permissionis to be
-               granted to agency on domain.
-        :param pulumi.Input[_builtins.str] duration: Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-               , defaults to *FOREVER*.
-        :param pulumi.Input[_builtins.str] expire_time: The expiration time of agency.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of agency. The name is a string of 1 to 64 characters.
-               Changing this will create a new agency.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AgencyProjectRoleArgs', 'AgencyProjectRoleArgsDict']]]] project_roles: Specifies an array of one or more roles and projects which are used to grant
-               permissions to agency on project. The structure is documented below.
+        :param pulumi.Input[_builtins.str] delegated_domain_name: schema: Required
+        :param pulumi.Input[_builtins.str] delegated_service_name: schema: Internal
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -601,27 +387,18 @@ class Agency(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="allResourcesRoles")
     def all_resources_roles(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies an array of one or more role names which stand for the permissions
-        to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-        and global services under your account.
-        """
         return pulumi.get(self, "all_resources_roles")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The time when the agency was created.
-        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter(name="delegatedDomainName")
     def delegated_domain_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the name of delegated user domain. This parameter
-        and `delegated_service_name` are alternative.
+        schema: Required
         """
         return pulumi.get(self, "delegated_domain_name")
 
@@ -629,61 +406,37 @@ class Agency(pulumi.CustomResource):
     @pulumi.getter(name="delegatedServiceName")
     def delegated_service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the name of delegated cloud service. The value must start
-        with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegated_domain_name` are alternative.
+        schema: Internal
         """
         return pulumi.get(self, "delegated_service_name")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the supplementary information about the agency. The value is a string of
-        0 to 255 characters, excluding these characters: '__@#$%^&*<>\\\\__'.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="domainRoles")
     def domain_roles(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies an array of one or more role names which stand for the permissionis to be
-        granted to agency on domain.
-        """
         return pulumi.get(self, "domain_roles")
 
     @_builtins.property
     @pulumi.getter
     def duration(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-        , defaults to *FOREVER*.
-        """
         return pulumi.get(self, "duration")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The expiration time of agency.
-        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of agency. The name is a string of 1 to 64 characters.
-        Changing this will create a new agency.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="projectRoles")
     def project_roles(self) -> pulumi.Output[Optional[Sequence['outputs.AgencyProjectRole']]]:
-        """
-        Specifies an array of one or more roles and projects which are used to grant
-        permissions to agency on project. The structure is documented below.
-        """
         return pulumi.get(self, "project_roles")
 

@@ -6,19 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CBR Policy resource within Sbercloud.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * Policies can be imported by their `id`. For example,
- *
- * ```sh
- * $ pulumi import sbercloud:Cbr/policy:Policy test 4d2c2939-774f-42ef-ab15-e5b126b11ace
- * ```
- */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -48,23 +35,19 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the scheduling rule for the CBR policy backup execution.
-     * The object structure is documented below.
+     * The scheduling rule for the CBR policy backup execution.
      */
     declare public readonly backupCycle: pulumi.Output<outputs.Cbr.PolicyBackupCycle>;
     /**
-     * Specifies the maximum number of retained backups. The value ranges from `2` to
-     * `99,999`. This parameter and `timePeriod` are alternative.
+     * The maximum number of retained backups.
      */
     declare public readonly backupQuantity: pulumi.Output<number | undefined>;
     /**
-     * Specifies the ID of the replication destination project, which is
-     * mandatory for cross-region replication. Required if `protectionType` is **replication**.
+     * The ID of the replication destination project.
      */
     declare public readonly destinationProjectId: pulumi.Output<string | undefined>;
     /**
-     * Specifies the name of the replication destination region, which is mandatory
-     * for cross-region replication. Required if `protectionType` is **replication**.
+     * The name of the replication destination region.
      */
     declare public readonly destinationRegion: pulumi.Output<string | undefined>;
     /**
@@ -72,47 +55,31 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly enableAcceleration: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies whether to enable the CBR policy. Default to **true**.
+     * Whether to enable the CBR policy.
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the long-term retention rules, which is an advanced options of
-     * the `backupQuantity`. The object structure is documented below.
-     *
-     * > The configuration of `longTermRetention` and `backupQuantity` will take effect together.
-     * When the number of retained backups exceeds the preset value (number of `backupQuantity`), the system automatically
-     * deletes the earliest backups. By default, the system automatically clears data every other day.
+     * The long-term retention rules.
      */
     declare public readonly longTermRetention: pulumi.Output<outputs.Cbr.PolicyLongTermRetention | undefined>;
     /**
-     * Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-     * characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
+     * The policy name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the region in which to create the CBR policy. If omitted, the
-     * provider-level region will be used. Changing this will create a new policy.
+     * The region where the policy is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the duration (in days) for retained backups. The value ranges from `2` to
-     * `99,999`.
-     *
-     * > **NOTE:** If this `backupQuantity` and `timePeriod` are both left blank, the backups will be retained permanently.
+     * The duration (in days) for retained backups.
      */
     declare public readonly timePeriod: pulumi.Output<number | undefined>;
     /**
-     * Specifies the UTC time zone, e.g.: `UTC+08:00`.
-     * Only available if `longTermRetention` is set.
-     *
-     * <a name="cbrPolicyBackupCycle"></a>
-     * The `backupCycle` block supports:
+     * The UTC time zone.
      */
     declare public readonly timeZone: pulumi.Output<string>;
     /**
-     * Specifies the protection type of the CBR policy.
-     * Valid values are **backup** and **replication**.
-     * Changing this will create a new policy.
+     * The protection type of the CBR policy.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -172,23 +139,19 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     /**
-     * Specifies the scheduling rule for the CBR policy backup execution.
-     * The object structure is documented below.
+     * The scheduling rule for the CBR policy backup execution.
      */
     backupCycle?: pulumi.Input<inputs.Cbr.PolicyBackupCycle>;
     /**
-     * Specifies the maximum number of retained backups. The value ranges from `2` to
-     * `99,999`. This parameter and `timePeriod` are alternative.
+     * The maximum number of retained backups.
      */
     backupQuantity?: pulumi.Input<number>;
     /**
-     * Specifies the ID of the replication destination project, which is
-     * mandatory for cross-region replication. Required if `protectionType` is **replication**.
+     * The ID of the replication destination project.
      */
     destinationProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the name of the replication destination region, which is mandatory
-     * for cross-region replication. Required if `protectionType` is **replication**.
+     * The name of the replication destination region.
      */
     destinationRegion?: pulumi.Input<string>;
     /**
@@ -196,47 +159,31 @@ export interface PolicyState {
      */
     enableAcceleration?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable the CBR policy. Default to **true**.
+     * Whether to enable the CBR policy.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Specifies the long-term retention rules, which is an advanced options of
-     * the `backupQuantity`. The object structure is documented below.
-     *
-     * > The configuration of `longTermRetention` and `backupQuantity` will take effect together.
-     * When the number of retained backups exceeds the preset value (number of `backupQuantity`), the system automatically
-     * deletes the earliest backups. By default, the system automatically clears data every other day.
+     * The long-term retention rules.
      */
     longTermRetention?: pulumi.Input<inputs.Cbr.PolicyLongTermRetention>;
     /**
-     * Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-     * characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
+     * The policy name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the CBR policy. If omitted, the
-     * provider-level region will be used. Changing this will create a new policy.
+     * The region where the policy is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the duration (in days) for retained backups. The value ranges from `2` to
-     * `99,999`.
-     *
-     * > **NOTE:** If this `backupQuantity` and `timePeriod` are both left blank, the backups will be retained permanently.
+     * The duration (in days) for retained backups.
      */
     timePeriod?: pulumi.Input<number>;
     /**
-     * Specifies the UTC time zone, e.g.: `UTC+08:00`.
-     * Only available if `longTermRetention` is set.
-     *
-     * <a name="cbrPolicyBackupCycle"></a>
-     * The `backupCycle` block supports:
+     * The UTC time zone.
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * Specifies the protection type of the CBR policy.
-     * Valid values are **backup** and **replication**.
-     * Changing this will create a new policy.
+     * The protection type of the CBR policy.
      */
     type?: pulumi.Input<string>;
 }
@@ -246,23 +193,19 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     /**
-     * Specifies the scheduling rule for the CBR policy backup execution.
-     * The object structure is documented below.
+     * The scheduling rule for the CBR policy backup execution.
      */
     backupCycle: pulumi.Input<inputs.Cbr.PolicyBackupCycle>;
     /**
-     * Specifies the maximum number of retained backups. The value ranges from `2` to
-     * `99,999`. This parameter and `timePeriod` are alternative.
+     * The maximum number of retained backups.
      */
     backupQuantity?: pulumi.Input<number>;
     /**
-     * Specifies the ID of the replication destination project, which is
-     * mandatory for cross-region replication. Required if `protectionType` is **replication**.
+     * The ID of the replication destination project.
      */
     destinationProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the name of the replication destination region, which is mandatory
-     * for cross-region replication. Required if `protectionType` is **replication**.
+     * The name of the replication destination region.
      */
     destinationRegion?: pulumi.Input<string>;
     /**
@@ -270,47 +213,31 @@ export interface PolicyArgs {
      */
     enableAcceleration?: pulumi.Input<boolean>;
     /**
-     * Specifies whether to enable the CBR policy. Default to **true**.
+     * Whether to enable the CBR policy.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Specifies the long-term retention rules, which is an advanced options of
-     * the `backupQuantity`. The object structure is documented below.
-     *
-     * > The configuration of `longTermRetention` and `backupQuantity` will take effect together.
-     * When the number of retained backups exceeds the preset value (number of `backupQuantity`), the system automatically
-     * deletes the earliest backups. By default, the system automatically clears data every other day.
+     * The long-term retention rules.
      */
     longTermRetention?: pulumi.Input<inputs.Cbr.PolicyLongTermRetention>;
     /**
-     * Specifies a unique name of the CBR policy. This parameter can contain a maximum of 64
-     * characters, which may consist of chinese characters, letters, digits, underscores(_) and hyphens (-).
+     * The policy name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the CBR policy. If omitted, the
-     * provider-level region will be used. Changing this will create a new policy.
+     * The region where the policy is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the duration (in days) for retained backups. The value ranges from `2` to
-     * `99,999`.
-     *
-     * > **NOTE:** If this `backupQuantity` and `timePeriod` are both left blank, the backups will be retained permanently.
+     * The duration (in days) for retained backups.
      */
     timePeriod?: pulumi.Input<number>;
     /**
-     * Specifies the UTC time zone, e.g.: `UTC+08:00`.
-     * Only available if `longTermRetention` is set.
-     *
-     * <a name="cbrPolicyBackupCycle"></a>
-     * The `backupCycle` block supports:
+     * The UTC time zone.
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * Specifies the protection type of the CBR policy.
-     * Valid values are **backup** and **replication**.
-     * Changing this will create a new policy.
+     * The protection type of the CBR policy.
      */
     type: pulumi.Input<string>;
 }

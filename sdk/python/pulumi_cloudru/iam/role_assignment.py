@@ -26,12 +26,6 @@ class RoleAssignmentArgs:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoleAssignment resource.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the group to assign the role to.
-        :param pulumi.Input[_builtins.str] role_id: Specifies the role to assign.
-        :param pulumi.Input[_builtins.str] domain_id: Specifies the domain to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project to assign the role
-               in.
         """
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "role_id", role_id)
@@ -45,9 +39,6 @@ class RoleAssignmentArgs:
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the group to assign the role to.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -57,9 +48,6 @@ class RoleAssignmentArgs:
     @_builtins.property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the role to assign.
-        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -69,10 +57,6 @@ class RoleAssignmentArgs:
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the domain to assign the role
-        in.
-        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -91,10 +75,6 @@ class RoleAssignmentArgs:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the project to assign the role
-        in.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -112,12 +92,6 @@ class _RoleAssignmentState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoleAssignment resources.
-        :param pulumi.Input[_builtins.str] domain_id: Specifies the domain to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the group to assign the role to.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] role_id: Specifies the role to assign.
         """
         if domain_id is not None:
             pulumi.set(__self__, "domain_id", domain_id)
@@ -133,10 +107,6 @@ class _RoleAssignmentState:
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the domain to assign the role
-        in.
-        """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
@@ -155,9 +125,6 @@ class _RoleAssignmentState:
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the group to assign the role to.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -167,10 +134,6 @@ class _RoleAssignmentState:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the project to assign the role
-        in.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -180,9 +143,6 @@ class _RoleAssignmentState:
     @_builtins.property
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the role to assign.
-        """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
@@ -203,50 +163,9 @@ class RoleAssignment(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Role assignment within group on SberCloud IAM Service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ### Assign Role On Project Level
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        role1 = sbercloud.Iam.get_role(name="rds_adm")
-        group1 = sbercloud.iam.Group("group_1", name="group_1")
-        role_assignment1 = sbercloud.iam.RoleAssignment("role_assignment_1",
-            role_id=role1.id,
-            group_id=group1.id,
-            project_id=project_id)
-        ```
-
-        ### Assign Role On Domain Level
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        role1 = sbercloud.Iam.get_role(name="secu_admin")
-        group1 = sbercloud.iam.Group("group_1", name="group_1")
-        role_assignment1 = sbercloud.iam.RoleAssignment("role_assignment_1",
-            role_id=role1.id,
-            group_id=group1.id,
-            domain_id=domain_id)
-        ```
-
+        Create a RoleAssignment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] domain_id: Specifies the domain to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the group to assign the role to.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] role_id: Specifies the role to assign.
         """
         ...
     @overload
@@ -255,42 +174,7 @@ class RoleAssignment(pulumi.CustomResource):
                  args: RoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Role assignment within group on SberCloud IAM Service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ### Assign Role On Project Level
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        role1 = sbercloud.Iam.get_role(name="rds_adm")
-        group1 = sbercloud.iam.Group("group_1", name="group_1")
-        role_assignment1 = sbercloud.iam.RoleAssignment("role_assignment_1",
-            role_id=role1.id,
-            group_id=group1.id,
-            project_id=project_id)
-        ```
-
-        ### Assign Role On Domain Level
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        role1 = sbercloud.Iam.get_role(name="secu_admin")
-        group1 = sbercloud.iam.Group("group_1", name="group_1")
-        role_assignment1 = sbercloud.iam.RoleAssignment("role_assignment_1",
-            role_id=role1.id,
-            group_id=group1.id,
-            domain_id=domain_id)
-        ```
-
+        Create a RoleAssignment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RoleAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -351,12 +235,6 @@ class RoleAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] domain_id: Specifies the domain to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] group_id: Specifies the group to assign the role to.
-        :param pulumi.Input[_builtins.str] project_id: Specifies the project to assign the role
-               in.
-        :param pulumi.Input[_builtins.str] role_id: Specifies the role to assign.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -372,10 +250,6 @@ class RoleAssignment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the domain to assign the role
-        in.
-        """
         return pulumi.get(self, "domain_id")
 
     @_builtins.property
@@ -386,25 +260,15 @@ class RoleAssignment(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the group to assign the role to.
-        """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the project to assign the role
-        in.
-        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the role to assign.
-        """
         return pulumi.get(self, "role_id")
 

@@ -67,9 +67,6 @@ class GetDmsRabbitmqFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Indicates the list of availability zones with available resources.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
@@ -85,10 +82,6 @@ class GetDmsRabbitmqFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetDmsRabbitmqFlavorsFlavorResult']:
-        """
-        Indicates the list of flavor details.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -107,25 +100,16 @@ class GetDmsRabbitmqFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> Optional[_builtins.str]:
-        """
-        Indicates the disk IO encoding.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The disk type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def versions(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the supported flavor versions.
-        """
         return pulumi.get(self, "versions")
 
 
@@ -156,55 +140,7 @@ def get_dms_rabbitmq_flavors(arch_type: Optional[_builtins.str] = None,
                              type: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRabbitmqFlavorsResult:
     """
-    Use this data source to get the list of RabbitMQ available flavor details within SberCloud.
-
-    ## Example Usage
-
-    ### Query the list of RabbitMQ flavors by cluster type
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_dms_rabbitmq_flavors(type="cluster")
-    ```
-
-    ### Query the list of RabbitMQ flavors by flavor ID
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_dms_rabbitmq_flavors(flavor_id="c6.2u4g.cluster")
-    ```
-
-    ### Query the list of RabbitMQ flavors by availability zone
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    az1 = config.require_object("az1")
-    az2 = config.require_object("az2")
-    test = sbercloud.get_dms_rabbitmq_flavors(availability_zones=[
-        az1,
-        az2,
-    ])
-    ```
-
-
-    :param _builtins.str arch_type: Specifies the type of CPU architecture, e.g. **X86**.
-    :param Sequence[_builtins.str] availability_zones: Specifies the list of availability zones with available resources.
-    :param _builtins.str charging_mode: Specifies the flavor billing mode.
-           The valid values are **prePaid** and **postPaid**.
-    :param _builtins.str flavor_id: Specifies the DMS flavor ID, e.g. **c6.2u4g.cluster**.
-    :param _builtins.str region: Specifies the region in which to obtain the dms RabbitMQ flavors.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str storage_spec_code: Specifies the disk IO encoding.
-           + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-           + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-    :param _builtins.str type: Specifies flavor type. The valid values are **single** and **cluster**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['archType'] = arch_type
@@ -237,55 +173,7 @@ def get_dms_rabbitmq_flavors_output(arch_type: Optional[pulumi.Input[Optional[_b
                                     type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRabbitmqFlavorsResult]:
     """
-    Use this data source to get the list of RabbitMQ available flavor details within SberCloud.
-
-    ## Example Usage
-
-    ### Query the list of RabbitMQ flavors by cluster type
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_dms_rabbitmq_flavors(type="cluster")
-    ```
-
-    ### Query the list of RabbitMQ flavors by flavor ID
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_dms_rabbitmq_flavors(flavor_id="c6.2u4g.cluster")
-    ```
-
-    ### Query the list of RabbitMQ flavors by availability zone
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    az1 = config.require_object("az1")
-    az2 = config.require_object("az2")
-    test = sbercloud.get_dms_rabbitmq_flavors(availability_zones=[
-        az1,
-        az2,
-    ])
-    ```
-
-
-    :param _builtins.str arch_type: Specifies the type of CPU architecture, e.g. **X86**.
-    :param Sequence[_builtins.str] availability_zones: Specifies the list of availability zones with available resources.
-    :param _builtins.str charging_mode: Specifies the flavor billing mode.
-           The valid values are **prePaid** and **postPaid**.
-    :param _builtins.str flavor_id: Specifies the DMS flavor ID, e.g. **c6.2u4g.cluster**.
-    :param _builtins.str region: Specifies the region in which to obtain the dms RabbitMQ flavors.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str storage_spec_code: Specifies the disk IO encoding.
-           + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-           + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-    :param _builtins.str type: Specifies flavor type. The valid values are **single** and **cluster**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['archType'] = arch_type

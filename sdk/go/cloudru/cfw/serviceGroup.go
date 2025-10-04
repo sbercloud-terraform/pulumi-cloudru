@@ -12,53 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW service group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := cfg.RequireObject("name")
-//			description := cfg.RequireObject("description")
-//			test, err := cfw.GetFirewalls(ctx, &cfw.GetFirewallsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cfw.NewServiceGroup(ctx, "test", &cfw.ServiceGroupArgs{
-//				ObjectId:    pulumi.String(test.Records[0].ProtectObjects[0].ObjectId),
-//				Name:        pulumi.Any(name),
-//				Description: pulumi.Any(description),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The service group can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/serviceGroup:ServiceGroup test 0ce123456a00f2591fabc00385ff1234
-// ```
 type ServiceGroup struct {
 	pulumi.CustomResourceState
 
@@ -67,12 +20,8 @@ type ServiceGroup struct {
 	// Specifies the service group name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewServiceGroup registers a new resource with the given unique name, arguments, and options.
@@ -113,12 +62,8 @@ type serviceGroupState struct {
 	// Specifies the service group name.
 	Name *string `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId *string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region   *string `pulumi:"region"`
 }
 
 type ServiceGroupState struct {
@@ -127,12 +72,8 @@ type ServiceGroupState struct {
 	// Specifies the service group name.
 	Name pulumi.StringPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (ServiceGroupState) ElementType() reflect.Type {
@@ -145,12 +86,8 @@ type serviceGroupArgs struct {
 	// Specifies the service group name.
 	Name *string `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	ObjectId string  `pulumi:"objectId"`
+	Region   *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a ServiceGroup resource.
@@ -160,12 +97,8 @@ type ServiceGroupArgs struct {
 	// Specifies the service group name.
 	Name pulumi.StringPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (ServiceGroupArgs) ElementType() reflect.Type {
@@ -266,14 +199,10 @@ func (o ServiceGroupOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies the protected object ID.
-//
-// Changing this parameter will create a new resource.
 func (o ServiceGroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroup) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o ServiceGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

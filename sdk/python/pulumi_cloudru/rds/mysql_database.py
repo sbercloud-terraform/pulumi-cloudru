@@ -26,18 +26,10 @@ class MysqlDatabaseArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MysqlDatabase resource.
-        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database, For example **utf8**,
-               **gbk**, **ascii**, etc. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value can contain `0` to `512` characters.
-               This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-               or **8.0.21.4**.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name contains `1` to `64`
-               characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-               ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-               support dollar signs ($). Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
         """
         pulumi.set(__self__, "character_set", character_set)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -52,8 +44,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter(name="characterSet")
     def character_set(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the character set used by the database, For example **utf8**,
-        **gbk**, **ascii**, etc. Changing this will create a new resource.
+        Specifies the character set used by the database.
         """
         return pulumi.get(self, "character_set")
 
@@ -65,7 +56,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the RDS instance ID. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -77,9 +68,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database description. The value can contain `0` to `512` characters.
-        This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-        or **8.0.21.4**.
+        Specifies the database description.
         """
         return pulumi.get(self, "description")
 
@@ -91,10 +80,7 @@ class MysqlDatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. The database name contains `1` to `64`
-        characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-        ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-        support dollar signs ($). Changing this will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -105,10 +91,6 @@ class MysqlDatabaseArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS database resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -126,18 +108,10 @@ class _MysqlDatabaseState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MysqlDatabase resources.
-        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database, For example **utf8**,
-               **gbk**, **ascii**, etc. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value can contain `0` to `512` characters.
-               This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-               or **8.0.21.4**.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name contains `1` to `64`
-               characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-               ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-               support dollar signs ($). Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
         """
         if character_set is not None:
             pulumi.set(__self__, "character_set", character_set)
@@ -154,8 +128,7 @@ class _MysqlDatabaseState:
     @pulumi.getter(name="characterSet")
     def character_set(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the character set used by the database, For example **utf8**,
-        **gbk**, **ascii**, etc. Changing this will create a new resource.
+        Specifies the character set used by the database.
         """
         return pulumi.get(self, "character_set")
 
@@ -167,9 +140,7 @@ class _MysqlDatabaseState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database description. The value can contain `0` to `512` characters.
-        This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-        or **8.0.21.4**.
+        Specifies the database description.
         """
         return pulumi.get(self, "description")
 
@@ -181,7 +152,7 @@ class _MysqlDatabaseState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the RDS instance ID. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -193,10 +164,7 @@ class _MysqlDatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the database name. The database name contains `1` to `64`
-        characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-        ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-        support dollar signs ($). Changing this will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
@@ -207,10 +175,6 @@ class _MysqlDatabaseState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the RDS database resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -231,47 +195,13 @@ class MysqlDatabase(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS Mysql database resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlDatabase("test",
-            instance_id=instance_id,
-            name="test",
-            character_set="utf8",
-            description="test database")
-        ```
-
-        ## Import
-
-        RDS database can be imported using the `instance id` and `name` separated by slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlDatabase:MysqlDatabase database_1 <instance_id>/<name>
-        ```
-
+        Create a MysqlDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database, For example **utf8**,
-               **gbk**, **ascii**, etc. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value can contain `0` to `512` characters.
-               This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-               or **8.0.21.4**.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name contains `1` to `64`
-               characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-               ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-               support dollar signs ($). Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
         """
         ...
     @overload
@@ -280,33 +210,7 @@ class MysqlDatabase(pulumi.CustomResource):
                  args: MysqlDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS Mysql database resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlDatabase("test",
-            instance_id=instance_id,
-            name="test",
-            character_set="utf8",
-            description="test database")
-        ```
-
-        ## Import
-
-        RDS database can be imported using the `instance id` and `name` separated by slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/mysqlDatabase:MysqlDatabase database_1 <instance_id>/<name>
-        ```
-
+        Create a MysqlDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MysqlDatabaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -367,18 +271,10 @@ class MysqlDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database, For example **utf8**,
-               **gbk**, **ascii**, etc. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the database description. The value can contain `0` to `512` characters.
-               This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-               or **8.0.21.4**.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the RDS instance ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the database name. The database name contains `1` to `64`
-               characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-               ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-               support dollar signs ($). Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the RDS database resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] character_set: Specifies the character set used by the database.
+        :param pulumi.Input[_builtins.str] description: Specifies the database description.
+        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS Mysql instance.
+        :param pulumi.Input[_builtins.str] name: Specifies the database name.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -395,8 +291,7 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter(name="characterSet")
     def character_set(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the character set used by the database, For example **utf8**,
-        **gbk**, **ascii**, etc. Changing this will create a new resource.
+        Specifies the character set used by the database.
         """
         return pulumi.get(self, "character_set")
 
@@ -404,9 +299,7 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the database description. The value can contain `0` to `512` characters.
-        This parameter takes effect only for DB instances whose kernel versions are at least **5.6.51.3**, **5.7.33.1**,
-        or **8.0.21.4**.
+        Specifies the database description.
         """
         return pulumi.get(self, "description")
 
@@ -414,7 +307,7 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the RDS instance ID. Changing this will create a new resource.
+        Specifies the ID of the RDS Mysql instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -422,19 +315,12 @@ class MysqlDatabase(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the database name. The database name contains `1` to `64`
-        characters. The name can only consist of lowercase letters, digits, hyphens (-), underscores (_) and dollar signs
-        ($). The total number of hyphens (-) and dollar signs ($) cannot exceed `10`. RDS for **MySQL 8.0** does not
-        support dollar signs ($). Changing this will create a new resource.
+        Specifies the database name.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the RDS database resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

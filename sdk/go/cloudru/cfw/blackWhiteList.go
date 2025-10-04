@@ -12,96 +12,26 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW black white list resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			listType := cfg.RequireObject("listType")
-//			direction := cfg.RequireObject("direction")
-//			addressType := cfg.RequireObject("addressType")
-//			address := cfg.RequireObject("address")
-//			protocol := cfg.RequireObject("protocol")
-//			port := cfg.RequireObject("port")
-//			test, err := cfw.GetFirewalls(ctx, &cfw.GetFirewallsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cfw.NewBlackWhiteList(ctx, "test", &cfw.BlackWhiteListArgs{
-//				ObjectId:    pulumi.String(test.Records[0].ProtectObjects[0].ObjectId),
-//				ListType:    pulumi.Any(listType),
-//				Direction:   pulumi.Any(direction),
-//				AddressType: pulumi.Any(addressType),
-//				Address:     pulumi.Any(address),
-//				Protocol:    pulumi.Any(protocol),
-//				Port:        pulumi.Any(port),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The black whitelist can be imported using `object_id`, `list_type`, `address`, separated by slashes, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/blackWhiteList:BlackWhiteList test <object_id>/<list_type>/<address>
-// ```
 type BlackWhiteList struct {
 	pulumi.CustomResourceState
 
 	// Specifies the address.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// Specifies the IP address type.
-	// The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
 	AddressType pulumi.IntOutput `pulumi:"addressType"`
-	// Specifies the description of the list.
+	// Specifies the description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the address direction.
-	// The options are `0` (source address) and `1` (destination address).
 	Direction pulumi.IntOutput `pulumi:"direction"`
 	// Specifies the list type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	//
-	// Changing this parameter will create a new resource.
 	ListType pulumi.IntOutput `pulumi:"listType"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// Specifies the destination port.
-	// Required and only available if protocol is **TCP** or **UDP**.
 	Port pulumi.StringOutput `pulumi:"port"`
-	// Specifies the protocol type. The value can be:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol;
-	Protocol pulumi.IntOutput `pulumi:"protocol"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	// Specifies the protocol type.
+	Protocol pulumi.IntOutput    `pulumi:"protocol"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewBlackWhiteList registers a new resource with the given unique name, arguments, and options.
@@ -155,70 +85,40 @@ type blackWhiteListState struct {
 	// Specifies the address.
 	Address *string `pulumi:"address"`
 	// Specifies the IP address type.
-	// The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
 	AddressType *int `pulumi:"addressType"`
-	// Specifies the description of the list.
+	// Specifies the description.
 	Description *string `pulumi:"description"`
 	// Specifies the address direction.
-	// The options are `0` (source address) and `1` (destination address).
 	Direction *int `pulumi:"direction"`
 	// Specifies the list type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	//
-	// Changing this parameter will create a new resource.
 	ListType *int `pulumi:"listType"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId *string `pulumi:"objectId"`
 	// Specifies the destination port.
-	// Required and only available if protocol is **TCP** or **UDP**.
 	Port *string `pulumi:"port"`
-	// Specifies the protocol type. The value can be:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol;
-	Protocol *int `pulumi:"protocol"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	// Specifies the protocol type.
+	Protocol *int    `pulumi:"protocol"`
+	Region   *string `pulumi:"region"`
 }
 
 type BlackWhiteListState struct {
 	// Specifies the address.
 	Address pulumi.StringPtrInput
 	// Specifies the IP address type.
-	// The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
 	AddressType pulumi.IntPtrInput
-	// Specifies the description of the list.
+	// Specifies the description.
 	Description pulumi.StringPtrInput
 	// Specifies the address direction.
-	// The options are `0` (source address) and `1` (destination address).
 	Direction pulumi.IntPtrInput
 	// Specifies the list type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	//
-	// Changing this parameter will create a new resource.
 	ListType pulumi.IntPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringPtrInput
 	// Specifies the destination port.
-	// Required and only available if protocol is **TCP** or **UDP**.
 	Port pulumi.StringPtrInput
-	// Specifies the protocol type. The value can be:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol;
+	// Specifies the protocol type.
 	Protocol pulumi.IntPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (BlackWhiteListState) ElementType() reflect.Type {
@@ -229,35 +129,20 @@ type blackWhiteListArgs struct {
 	// Specifies the address.
 	Address string `pulumi:"address"`
 	// Specifies the IP address type.
-	// The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
 	AddressType int `pulumi:"addressType"`
-	// Specifies the description of the list.
+	// Specifies the description.
 	Description *string `pulumi:"description"`
 	// Specifies the address direction.
-	// The options are `0` (source address) and `1` (destination address).
 	Direction int `pulumi:"direction"`
 	// Specifies the list type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	//
-	// Changing this parameter will create a new resource.
 	ListType int `pulumi:"listType"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId string `pulumi:"objectId"`
 	// Specifies the destination port.
-	// Required and only available if protocol is **TCP** or **UDP**.
 	Port *string `pulumi:"port"`
-	// Specifies the protocol type. The value can be:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol;
-	Protocol int `pulumi:"protocol"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	// Specifies the protocol type.
+	Protocol int     `pulumi:"protocol"`
+	Region   *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a BlackWhiteList resource.
@@ -265,35 +150,20 @@ type BlackWhiteListArgs struct {
 	// Specifies the address.
 	Address pulumi.StringInput
 	// Specifies the IP address type.
-	// The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
 	AddressType pulumi.IntInput
-	// Specifies the description of the list.
+	// Specifies the description.
 	Description pulumi.StringPtrInput
 	// Specifies the address direction.
-	// The options are `0` (source address) and `1` (destination address).
 	Direction pulumi.IntInput
 	// Specifies the list type.
-	// The options are `4` (blacklist) and `5` (whitelist).
-	//
-	// Changing this parameter will create a new resource.
 	ListType pulumi.IntInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringInput
 	// Specifies the destination port.
-	// Required and only available if protocol is **TCP** or **UDP**.
 	Port pulumi.StringPtrInput
-	// Specifies the protocol type. The value can be:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol;
+	// Specifies the protocol type.
 	Protocol pulumi.IntInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (BlackWhiteListArgs) ElementType() reflect.Type {
@@ -389,55 +259,40 @@ func (o BlackWhiteListOutput) Address() pulumi.StringOutput {
 }
 
 // Specifies the IP address type.
-// The options are `0` (ipv4), `1` (ipv6) and `2` (domain).
 func (o BlackWhiteListOutput) AddressType() pulumi.IntOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.IntOutput { return v.AddressType }).(pulumi.IntOutput)
 }
 
-// Specifies the description of the list.
+// Specifies the description.
 func (o BlackWhiteListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the address direction.
-// The options are `0` (source address) and `1` (destination address).
 func (o BlackWhiteListOutput) Direction() pulumi.IntOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.IntOutput { return v.Direction }).(pulumi.IntOutput)
 }
 
 // Specifies the list type.
-// The options are `4` (blacklist) and `5` (whitelist).
-//
-// Changing this parameter will create a new resource.
 func (o BlackWhiteListOutput) ListType() pulumi.IntOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.IntOutput { return v.ListType }).(pulumi.IntOutput)
 }
 
 // Specifies the protected object ID.
-//
-// Changing this parameter will create a new resource.
 func (o BlackWhiteListOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 // Specifies the destination port.
-// Required and only available if protocol is **TCP** or **UDP**.
 func (o BlackWhiteListOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol type. The value can be:
-// + **6**: indicates TCP;
-// + **17**: indicates UDP;
-// + **1**: indicates ICMP;
-// + **58**: indicates ICMPv6;
-// + **-1**: indicates any protocol;
+// Specifies the protocol type.
 func (o BlackWhiteListOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.IntOutput { return v.Protocol }).(pulumi.IntOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o BlackWhiteListOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlackWhiteList) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

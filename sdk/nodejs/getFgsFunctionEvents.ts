@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of function events within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const functionUrn = config.requireObject<any>("functionUrn");
- * const test = sbercloud.getFgsFunctionEvents({
- *     functionUrn: functionUrn,
- * });
- * ```
- */
 export function getFgsFunctionEvents(args: GetFgsFunctionEventsArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsFunctionEventsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents", {
@@ -34,14 +18,7 @@ export function getFgsFunctionEvents(args: GetFgsFunctionEventsArgs, opts?: pulu
  * A collection of arguments for invoking getFgsFunctionEvents.
  */
 export interface GetFgsFunctionEventsArgs {
-    /**
-     * Specifies the function URN to which the events belong.
-     */
     functionUrn: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -49,9 +26,6 @@ export interface GetFgsFunctionEventsArgs {
  * A collection of values returned by getFgsFunctionEvents.
  */
 export interface GetFgsFunctionEventsResult {
-    /**
-     * All events that match the filter parameters.
-     */
     readonly events: outputs.GetFgsFunctionEventsEvent[];
     readonly functionUrn: string;
     /**
@@ -60,22 +34,6 @@ export interface GetFgsFunctionEventsResult {
     readonly id: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of function events within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const functionUrn = config.requireObject<any>("functionUrn");
- * const test = sbercloud.getFgsFunctionEvents({
- *     functionUrn: functionUrn,
- * });
- * ```
- */
 export function getFgsFunctionEventsOutput(args: GetFgsFunctionEventsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsFunctionEventsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getFgsFunctionEvents:getFgsFunctionEvents", {
@@ -88,13 +46,6 @@ export function getFgsFunctionEventsOutput(args: GetFgsFunctionEventsOutputArgs,
  * A collection of arguments for invoking getFgsFunctionEvents.
  */
 export interface GetFgsFunctionEventsOutputArgs {
-    /**
-     * Specifies the function URN to which the events belong.
-     */
     functionUrn: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

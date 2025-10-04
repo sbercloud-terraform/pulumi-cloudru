@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of DMS rocketMQ consumer groups.
- */
 export function getDmsRocketmqConsumerGroups(args: GetDmsRocketmqConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups", {
@@ -25,30 +22,11 @@ export function getDmsRocketmqConsumerGroups(args: GetDmsRocketmqConsumerGroupsA
  * A collection of arguments for invoking getDmsRocketmqConsumerGroups.
  */
 export interface GetDmsRocketmqConsumerGroupsArgs {
-    /**
-     * Specifies whether to broadcast the consumer group. Defaults to **false**.
-     */
     broadcast?: boolean;
-    /**
-     * Specifies the consumer group is enabled or not. Defaults to **true**.
-     */
     enabled?: boolean;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: string;
-    /**
-     * Specifies the name of the consumer group.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: string;
-    /**
-     * Specifies the maximum number of retry times.
-     */
     retryMaxTimes?: number;
 }
 
@@ -56,37 +34,18 @@ export interface GetDmsRocketmqConsumerGroupsArgs {
  * A collection of values returned by getDmsRocketmqConsumerGroups.
  */
 export interface GetDmsRocketmqConsumerGroupsResult {
-    /**
-     * Indicates whether to broadcast the consumer group.
-     */
     readonly broadcast?: boolean;
-    /**
-     * Indicates the consumer group is enabled or not.
-     */
     readonly enabled?: boolean;
-    /**
-     * The list of consumer groups.
-     * The groups structure is documented below.
-     */
     readonly groups: outputs.GetDmsRocketmqConsumerGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Indicates the name of the consumer group.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the maximum number of retry times.
-     */
     readonly retryMaxTimes?: number;
 }
-/**
- * Use this data source to get the list of DMS rocketMQ consumer groups.
- */
 export function getDmsRocketmqConsumerGroupsOutput(args: GetDmsRocketmqConsumerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqConsumerGroups:getDmsRocketmqConsumerGroups", {
@@ -103,29 +62,10 @@ export function getDmsRocketmqConsumerGroupsOutput(args: GetDmsRocketmqConsumerG
  * A collection of arguments for invoking getDmsRocketmqConsumerGroups.
  */
 export interface GetDmsRocketmqConsumerGroupsOutputArgs {
-    /**
-     * Specifies whether to broadcast the consumer group. Defaults to **false**.
-     */
     broadcast?: pulumi.Input<boolean>;
-    /**
-     * Specifies the consumer group is enabled or not. Defaults to **true**.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the name of the consumer group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum number of retry times.
-     */
     retryMaxTimes?: pulumi.Input<number>;
 }

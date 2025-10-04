@@ -35,45 +35,6 @@ class SecgroupRuleInitArgs:
                  remote_ip_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecgroupRule resource.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of the rule, valid values are **ingress** or
-               **egress**. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] ethertype: Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID the rule should belong to. Changing
-               this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] action: Specifies the effective policy. The valid values are **allow** and **deny**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the networking security
-               group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] port_range_max: Specifies the higher part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.int] port_range_min: Specifies the lower part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.str] ports: Specifies the allowed port value range, which supports single port (80),
-               continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] priority: Specifies the priority number.
-               The valid value is range from **1** to **100**. The default value is **1**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-               **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-               This is required if you want to specify a port range. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group rule.
-        :param pulumi.Input[_builtins.str] remote_address_group_id: Specifies the remote address group ID.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] remote_group_id: Specifies the remote group ID. Changing this creates a new security
-               group rule.
-        :param pulumi.Input[_builtins.str] remote_ip_prefix: Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-               192.168.0.0/16). Changing this creates a new security group rule.
         """
         pulumi.set(__self__, "direction", direction)
         pulumi.set(__self__, "ethertype", ethertype)
@@ -104,10 +65,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def direction(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the direction of the rule, valid values are **ingress** or
-        **egress**. Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -117,10 +74,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def ethertype(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "ethertype")
 
     @ethertype.setter
@@ -130,10 +83,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the security group ID the rule should belong to. Changing
-        this creates a new security group rule.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -143,11 +92,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the effective policy. The valid values are **allow** and **deny**.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -157,11 +101,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the networking security
-        group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -171,11 +110,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter(name="portRangeMax")
     def port_range_max(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the higher part of the allowed port range, valid integer value
-        needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-        This parameter and `ports` are alternative.
-        """
         return pulumi.get(self, "port_range_max")
 
     @port_range_max.setter
@@ -185,11 +119,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter(name="portRangeMin")
     def port_range_min(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the lower part of the allowed port range, valid integer value
-        needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-        This parameter and `ports` are alternative.
-        """
         return pulumi.get(self, "port_range_min")
 
     @port_range_min.setter
@@ -199,11 +128,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the allowed port value range, which supports single port (80),
-        continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -213,12 +137,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the priority number.
-        The valid value is range from **1** to **100**. The default value is **1**.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -228,11 +146,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-        **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-        This is required if you want to specify a port range. Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -242,12 +155,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group rule.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -257,11 +164,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter(name="remoteAddressGroupId")
     def remote_address_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the remote address group ID.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "remote_address_group_id")
 
     @remote_address_group_id.setter
@@ -271,10 +173,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the remote group ID. Changing this creates a new security
-        group rule.
-        """
         return pulumi.get(self, "remote_group_id")
 
     @remote_group_id.setter
@@ -284,10 +182,6 @@ class SecgroupRuleInitArgs:
     @_builtins.property
     @pulumi.getter(name="remoteIpPrefix")
     def remote_ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-        192.168.0.0/16). Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "remote_ip_prefix")
 
     @remote_ip_prefix.setter
@@ -314,45 +208,6 @@ class _SecgroupRuleState:
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecgroupRule resources.
-        :param pulumi.Input[_builtins.str] action: Specifies the effective policy. The valid values are **allow** and **deny**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the networking security
-               group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of the rule, valid values are **ingress** or
-               **egress**. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] ethertype: Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] port_range_max: Specifies the higher part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.int] port_range_min: Specifies the lower part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.str] ports: Specifies the allowed port value range, which supports single port (80),
-               continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] priority: Specifies the priority number.
-               The valid value is range from **1** to **100**. The default value is **1**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-               **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-               This is required if you want to specify a port range. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group rule.
-        :param pulumi.Input[_builtins.str] remote_address_group_id: Specifies the remote address group ID.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] remote_group_id: Specifies the remote group ID. Changing this creates a new security
-               group rule.
-        :param pulumi.Input[_builtins.str] remote_ip_prefix: Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-               192.168.0.0/16). Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID the rule should belong to. Changing
-               this creates a new security group rule.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -386,11 +241,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the effective policy. The valid values are **allow** and **deny**.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -400,11 +250,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the networking security
-        group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -414,10 +259,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the direction of the rule, valid values are **ingress** or
-        **egress**. Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -427,10 +268,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def ethertype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "ethertype")
 
     @ethertype.setter
@@ -440,11 +277,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter(name="portRangeMax")
     def port_range_max(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the higher part of the allowed port range, valid integer value
-        needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-        This parameter and `ports` are alternative.
-        """
         return pulumi.get(self, "port_range_max")
 
     @port_range_max.setter
@@ -454,11 +286,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter(name="portRangeMin")
     def port_range_min(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the lower part of the allowed port range, valid integer value
-        needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-        This parameter and `ports` are alternative.
-        """
         return pulumi.get(self, "port_range_min")
 
     @port_range_min.setter
@@ -468,11 +295,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the allowed port value range, which supports single port (80),
-        continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -482,12 +304,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the priority number.
-        The valid value is range from **1** to **100**. The default value is **1**.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -497,11 +313,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-        **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-        This is required if you want to specify a port range. Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -511,12 +322,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group rule.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -526,11 +331,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter(name="remoteAddressGroupId")
     def remote_address_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the remote address group ID.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "remote_address_group_id")
 
     @remote_address_group_id.setter
@@ -540,10 +340,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the remote group ID. Changing this creates a new security
-        group rule.
-        """
         return pulumi.get(self, "remote_group_id")
 
     @remote_group_id.setter
@@ -553,10 +349,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter(name="remoteIpPrefix")
     def remote_ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-        192.168.0.0/16). Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "remote_ip_prefix")
 
     @remote_ip_prefix.setter
@@ -566,10 +358,6 @@ class _SecgroupRuleState:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the security group ID the rule should belong to. Changing
-        this creates a new security group rule.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -599,103 +387,9 @@ class SecgroupRule(pulumi.CustomResource):
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Security Group Rule resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create an ingress rule that opens TCP port 8080 with port range parameters
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        security_group_id = config.require_object("securityGroupId")
-        test = sbercloud.vpc.SecgroupRule("test",
-            security_group_id=security_group_id,
-            direction="ingress",
-            ethertype="IPv4",
-            protocol="tcp",
-            port_range_min=8080,
-            port_range_max=8080,
-            remote_ip_prefix="0.0.0.0/0")
-        ```
-
-        ### Create an ingress rule that enable the remote address group and open some TCP ports
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_name = config.require_object("groupName")
-        security_group_id = config.require_object("securityGroupId")
-        test = sbercloud.vpc.AddressGroup("test",
-            name=group_name,
-            addresses=[
-                "192.168.10.12",
-                "192.168.11.0-192.168.11.240",
-            ])
-        test_secgroup_rule = sbercloud.vpc.SecgroupRule("test",
-            security_group_id=security_group_id,
-            direction="ingress",
-            action="allow",
-            ethertype="IPv4",
-            ports="80,500,600-800",
-            protocol="tcp",
-            priority=5,
-            remote_address_group_id=test.id)
-        ```
-
-        ## Import
-
-        Security Group Rules can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/secgroupRule:SecgroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
-        ```
-
+        Create a SecgroupRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the effective policy. The valid values are **allow** and **deny**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the networking security
-               group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of the rule, valid values are **ingress** or
-               **egress**. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] ethertype: Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] port_range_max: Specifies the higher part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.int] port_range_min: Specifies the lower part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.str] ports: Specifies the allowed port value range, which supports single port (80),
-               continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] priority: Specifies the priority number.
-               The valid value is range from **1** to **100**. The default value is **1**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-               **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-               This is required if you want to specify a port range. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group rule.
-        :param pulumi.Input[_builtins.str] remote_address_group_id: Specifies the remote address group ID.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] remote_group_id: Specifies the remote group ID. Changing this creates a new security
-               group rule.
-        :param pulumi.Input[_builtins.str] remote_ip_prefix: Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-               192.168.0.0/16). Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID the rule should belong to. Changing
-               this creates a new security group rule.
         """
         ...
     @overload
@@ -704,62 +398,7 @@ class SecgroupRule(pulumi.CustomResource):
                  args: SecgroupRuleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Security Group Rule resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create an ingress rule that opens TCP port 8080 with port range parameters
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        security_group_id = config.require_object("securityGroupId")
-        test = sbercloud.vpc.SecgroupRule("test",
-            security_group_id=security_group_id,
-            direction="ingress",
-            ethertype="IPv4",
-            protocol="tcp",
-            port_range_min=8080,
-            port_range_max=8080,
-            remote_ip_prefix="0.0.0.0/0")
-        ```
-
-        ### Create an ingress rule that enable the remote address group and open some TCP ports
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_name = config.require_object("groupName")
-        security_group_id = config.require_object("securityGroupId")
-        test = sbercloud.vpc.AddressGroup("test",
-            name=group_name,
-            addresses=[
-                "192.168.10.12",
-                "192.168.11.0-192.168.11.240",
-            ])
-        test_secgroup_rule = sbercloud.vpc.SecgroupRule("test",
-            security_group_id=security_group_id,
-            direction="ingress",
-            action="allow",
-            ethertype="IPv4",
-            ports="80,500,600-800",
-            protocol="tcp",
-            priority=5,
-            remote_address_group_id=test.id)
-        ```
-
-        ## Import
-
-        Security Group Rules can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/secgroupRule:SecgroupRule secgroup_rule_1 aeb68ee3-6e9d-4256-955c-9584a6212745
-        ```
-
+        Create a SecgroupRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SecgroupRuleInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -849,45 +488,6 @@ class SecgroupRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the effective policy. The valid values are **allow** and **deny**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the networking security
-               group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] direction: Specifies the direction of the rule, valid values are **ingress** or
-               **egress**. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] ethertype: Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] port_range_max: Specifies the higher part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.int] port_range_min: Specifies the lower part of the allowed port range, valid integer value
-               needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-               This parameter and `ports` are alternative.
-        :param pulumi.Input[_builtins.str] ports: Specifies the allowed port value range, which supports single port (80),
-               continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.int] priority: Specifies the priority number.
-               The valid value is range from **1** to **100**. The default value is **1**.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-               **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-               This is required if you want to specify a port range. Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group rule.
-        :param pulumi.Input[_builtins.str] remote_address_group_id: Specifies the remote address group ID.
-               This parameter is not used with `port_range_min` and `port_range_max`.
-               Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] remote_group_id: Specifies the remote group ID. Changing this creates a new security
-               group rule.
-        :param pulumi.Input[_builtins.str] remote_ip_prefix: Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-               192.168.0.0/16). Changing this creates a new security group rule.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID the rule should belong to. Changing
-               this creates a new security group rule.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -912,137 +512,70 @@ class SecgroupRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the effective policy. The valid values are **allow** and **deny**.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the supplementary information about the networking security
-        group rule. This parameter can contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the direction of the rule, valid values are **ingress** or
-        **egress**. Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
     @pulumi.getter
     def ethertype(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the layer 3 protocol type, valid values are **IPv4** or **IPv6**.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "ethertype")
 
     @_builtins.property
     @pulumi.getter(name="portRangeMax")
     def port_range_max(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the higher part of the allowed port range, valid integer value
-        needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-        This parameter and `ports` are alternative.
-        """
         return pulumi.get(self, "port_range_max")
 
     @_builtins.property
     @pulumi.getter(name="portRangeMin")
     def port_range_min(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the lower part of the allowed port range, valid integer value
-        needs to be between `1` and `65,535`. Changing this creates a new security group rule.
-        This parameter and `ports` are alternative.
-        """
         return pulumi.get(self, "port_range_min")
 
     @_builtins.property
     @pulumi.getter
     def ports(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the allowed port value range, which supports single port (80),
-        continuous port (1-30) and discontinous port (22, 3389, 80) The valid port values is range form `1` to `65,535`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "ports")
 
     @_builtins.property
     @pulumi.getter
     def priority(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the priority number.
-        The valid value is range from **1** to **100**. The default value is **1**.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "priority")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the layer 4 protocol type, valid values are **tcp**, **udp**,
-        **icmp** and **icmpv6**. If omitted, the protocol means that all protocols are supported.
-        This is required if you want to specify a port range. Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group rule.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="remoteAddressGroupId")
     def remote_address_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the remote address group ID.
-        This parameter is not used with `port_range_min` and `port_range_max`.
-        Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "remote_address_group_id")
 
     @_builtins.property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the remote group ID. Changing this creates a new security
-        group rule.
-        """
         return pulumi.get(self, "remote_group_id")
 
     @_builtins.property
     @pulumi.getter(name="remoteIpPrefix")
     def remote_ip_prefix(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the remote CIDR, the value needs to be a valid CIDR (i.e.
-        192.168.0.0/16). Changing this creates a new security group rule.
-        """
         return pulumi.get(self, "remote_ip_prefix")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the security group ID the rule should belong to. Changing
-        this creates a new security group rule.
-        """
         return pulumi.get(self, "security_group_id")
 

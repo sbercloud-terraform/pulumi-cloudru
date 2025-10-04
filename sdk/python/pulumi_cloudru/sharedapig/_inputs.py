@@ -61,8 +61,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         type: pulumi.Input[_builtins.str]
         """
@@ -74,7 +73,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         system_param_type: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -91,11 +90,10 @@ class ApiBackendParamArgs:
                  system_param_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: Where the parameter is located.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The parameter name.
         :param pulumi.Input[_builtins.str] type: The parameter type.
         :param pulumi.Input[_builtins.str] value: The value of the parameter
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.str] description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -122,8 +120,7 @@ class ApiBackendParamArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -159,7 +156,7 @@ class ApiBackendParamArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -201,8 +198,7 @@ if not MYPY:
         """
         request_protocol: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the FunctionGraph function.
         """
         timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -210,7 +206,7 @@ if not MYPY:
         """
         version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the version of the API. A maximum of 16 characters are allowed.
+        The version of the FunctionGraph function.
         """
 elif False:
     ApiFuncGraphArgsDict: TypeAlias = Mapping[str, Any]
@@ -232,10 +228,9 @@ class ApiFuncGraphArgs:
         :param pulumi.Input[_builtins.str] function_alias_urn: The alias URN of the FunctionGraph function.
         :param pulumi.Input[_builtins.str] invocation_type: The invocation type.
         :param pulumi.Input[_builtins.str] network_type: The network architecture (framework) type of the FunctionGraph function.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The request protocol of the FunctionGraph function.
         :param pulumi.Input[_builtins.int] timeout: The timeout for API requests to backend service.
-        :param pulumi.Input[_builtins.str] version: Specifies the version of the API. A maximum of 16 characters are allowed.
+        :param pulumi.Input[_builtins.str] version: The version of the FunctionGraph function.
         """
         pulumi.set(__self__, "function_urn", function_urn)
         if authorizer_id is not None:
@@ -317,8 +312,7 @@ class ApiFuncGraphArgs:
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the FunctionGraph function.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -342,7 +336,7 @@ class ApiFuncGraphArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the version of the API. A maximum of 16 characters are allowed.
+        The version of the FunctionGraph function.
         """
         return pulumi.get(self, "version")
 
@@ -363,8 +357,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the backend policy.
         """
         authorizer_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -396,8 +389,7 @@ if not MYPY:
         """
         request_protocol: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the FunctionGraph function.
         """
         timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -405,7 +397,7 @@ if not MYPY:
         """
         version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the version of the API. A maximum of 16 characters are allowed.
+        The version of the FunctionGraph function.
         """
 elif False:
     ApiFuncGraphPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -429,8 +421,7 @@ class ApiFuncGraphPolicyArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ApiFuncGraphPolicyConditionArgs']]] conditions: The policy conditions.
         :param pulumi.Input[_builtins.str] function_urn: The URN of the FunctionGraph function.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The name of the backend policy.
         :param pulumi.Input[_builtins.str] authorizer_id: The ID of the backend custom authorization.
         :param pulumi.Input[Sequence[pulumi.Input['ApiFuncGraphPolicyBackendParamArgs']]] backend_params: The configaiton list of the backend parameters.
         :param pulumi.Input[_builtins.str] effective_mode: The effective mode of the backend policy.
@@ -438,10 +429,9 @@ class ApiFuncGraphPolicyArgs:
         :param pulumi.Input[_builtins.str] invocation_mode: The invocation mode of the FunctionGraph function.
         :param pulumi.Input[_builtins.str] invocation_type: The invocation mode of the FunctionGraph function.
         :param pulumi.Input[_builtins.str] network_type: The network (framework) type of the FunctionGraph function.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The request protocol of the FunctionGraph function.
         :param pulumi.Input[_builtins.int] timeout: The timeout for API requests to backend service.
-        :param pulumi.Input[_builtins.str] version: Specifies the version of the API. A maximum of 16 characters are allowed.
+        :param pulumi.Input[_builtins.str] version: The version of the FunctionGraph function.
         """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "function_urn", function_urn)
@@ -495,8 +485,7 @@ class ApiFuncGraphPolicyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the backend policy.
         """
         return pulumi.get(self, "name")
 
@@ -592,8 +581,7 @@ class ApiFuncGraphPolicyArgs:
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the FunctionGraph function.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -617,7 +605,7 @@ class ApiFuncGraphPolicyArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the version of the API. A maximum of 16 characters are allowed.
+        The version of the FunctionGraph function.
         """
         return pulumi.get(self, "version")
 
@@ -634,8 +622,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         type: pulumi.Input[_builtins.str]
         """
@@ -647,7 +634,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         system_param_type: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -664,11 +651,10 @@ class ApiFuncGraphPolicyBackendParamArgs:
                  system_param_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: Where the parameter is located.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The parameter name.
         :param pulumi.Input[_builtins.str] type: The parameter type.
         :param pulumi.Input[_builtins.str] value: The value of the parameter
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.str] description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -695,8 +681,7 @@ class ApiFuncGraphPolicyBackendParamArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -732,7 +717,7 @@ class ApiFuncGraphPolicyBackendParamArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -1021,8 +1006,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The backend policy name.
         """
         authorizer_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1059,8 +1043,7 @@ class ApiMockPolicyArgs:
                  status_code: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ApiMockPolicyConditionArgs']]] conditions: The policy conditions.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The backend policy name.
         :param pulumi.Input[_builtins.str] authorizer_id: The ID of the backend custom authorization.
         :param pulumi.Input[Sequence[pulumi.Input['ApiMockPolicyBackendParamArgs']]] backend_params: The configuration list of backend parameters.
         :param pulumi.Input[_builtins.str] effective_mode: The effective mode of the backend policy.
@@ -1096,8 +1079,7 @@ class ApiMockPolicyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The backend policy name.
         """
         return pulumi.get(self, "name")
 
@@ -1174,8 +1156,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         type: pulumi.Input[_builtins.str]
         """
@@ -1187,7 +1168,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         system_param_type: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -1204,11 +1185,10 @@ class ApiMockPolicyBackendParamArgs:
                  system_param_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: Where the parameter is located.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The parameter name.
         :param pulumi.Input[_builtins.str] type: The parameter type.
         :param pulumi.Input[_builtins.str] value: The value of the parameter
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.str] description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -1235,8 +1215,7 @@ class ApiMockPolicyBackendParamArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -1272,7 +1251,7 @@ class ApiMockPolicyBackendParamArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -1485,8 +1464,7 @@ if not MYPY:
     class ApiRequestParamArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the request parameter.
         """
         default: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1494,7 +1472,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The parameter description.
         """
         enumeration: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1556,10 +1534,9 @@ class ApiRequestParamArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  valid_enable: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The name of the request parameter.
         :param pulumi.Input[_builtins.str] default: The default value of the parameter.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.str] description: The parameter description.
         :param pulumi.Input[_builtins.str] enumeration: The enumerated value.
         :param pulumi.Input[_builtins.str] example: The parameter example.
         :param pulumi.Input[_builtins.str] location: Where this parameter is located.
@@ -1601,8 +1578,7 @@ class ApiRequestParamArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the request parameter.
         """
         return pulumi.get(self, "name")
 
@@ -1626,7 +1602,7 @@ class ApiRequestParamArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The parameter description.
         """
         return pulumi.get(self, "description")
 
@@ -1775,12 +1751,11 @@ if not MYPY:
         """
         request_method: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The backend request method of the API.
         """
         request_protocol: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The web protocol type of the API request.
         """
         retry_count: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -1819,9 +1794,8 @@ class ApiWebArgs:
         :param pulumi.Input[_builtins.str] authorizer_id: The ID of the backend custom authorization.
         :param pulumi.Input[_builtins.str] backend_address: The backend service address, which consists of a domain name or IP address, and a port number.
         :param pulumi.Input[_builtins.str] host_header: The proxy host header.
-        :param pulumi.Input[_builtins.str] request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_method: The backend request method of the API.
+        :param pulumi.Input[_builtins.str] request_protocol: The web protocol type of the API request.
         :param pulumi.Input[_builtins.int] retry_count: The number of retry attempts to request the backend service.
         :param pulumi.Input[_builtins.bool] ssl_enable: Whether to enable two-way authentication.
         :param pulumi.Input[_builtins.int] timeout: The timeout for API requests to backend service.
@@ -1899,7 +1873,7 @@ class ApiWebArgs:
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The backend request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -1911,8 +1885,7 @@ class ApiWebArgs:
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The web protocol type of the API request.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -1977,8 +1950,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the web policy.
         """
         path: pulumi.Input[_builtins.str]
         """
@@ -1986,7 +1958,7 @@ if not MYPY:
         """
         request_method: pulumi.Input[_builtins.str]
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The backend request method of the API.
         """
         authorizer_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2010,8 +1982,7 @@ if not MYPY:
         """
         request_protocol: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The backend request protocol.
         """
         retry_count: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -2046,17 +2017,15 @@ class ApiWebPolicyArgs:
                  vpc_channel_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ApiWebPolicyConditionArgs']]] conditions: The policy conditions.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The name of the web policy.
         :param pulumi.Input[_builtins.str] path: The backend request address.
-        :param pulumi.Input[_builtins.str] request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
+        :param pulumi.Input[_builtins.str] request_method: The backend request method of the API.
         :param pulumi.Input[_builtins.str] authorizer_id: The ID of the backend custom authorization.
         :param pulumi.Input[_builtins.str] backend_address: The backend service address
         :param pulumi.Input[Sequence[pulumi.Input['ApiWebPolicyBackendParamArgs']]] backend_params: The configuration list of the backend parameters.
         :param pulumi.Input[_builtins.str] effective_mode: The effective mode of the backend policy.
         :param pulumi.Input[_builtins.str] host_header: The proxy host header.
-        :param pulumi.Input[_builtins.str] request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param pulumi.Input[_builtins.str] request_protocol: The backend request protocol.
         :param pulumi.Input[_builtins.int] retry_count: The number of retry attempts to request the backend service.
         :param pulumi.Input[_builtins.int] timeout: The timeout for API requests to backend service.
         :param pulumi.Input[_builtins.str] vpc_channel_id: The VPC channel ID.
@@ -2100,8 +2069,7 @@ class ApiWebPolicyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the web policy.
         """
         return pulumi.get(self, "name")
 
@@ -2125,7 +2093,7 @@ class ApiWebPolicyArgs:
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The backend request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -2197,8 +2165,7 @@ class ApiWebPolicyArgs:
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The backend request protocol.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -2251,8 +2218,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         type: pulumi.Input[_builtins.str]
         """
@@ -2264,7 +2230,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         system_param_type: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
@@ -2281,11 +2247,10 @@ class ApiWebPolicyBackendParamArgs:
                  system_param_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] location: Where the parameter is located.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param pulumi.Input[_builtins.str] name: The parameter name.
         :param pulumi.Input[_builtins.str] type: The parameter type.
         :param pulumi.Input[_builtins.str] value: The value of the parameter
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param pulumi.Input[_builtins.str] description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -2312,8 +2277,7 @@ class ApiWebPolicyBackendParamArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -2349,7 +2313,7 @@ class ApiWebPolicyBackendParamArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -2566,7 +2530,7 @@ if not MYPY:
         """
         variables: pulumi.Input[Sequence[pulumi.Input['GroupEnvironmentVariableArgsDict']]]
         """
-        The array of one or more environment variables. Each `variable` block supports the following:
+        The array of one or more environment variables.
         """
 elif False:
     GroupEnvironmentArgsDict: TypeAlias = Mapping[str, Any]
@@ -2578,7 +2542,7 @@ class GroupEnvironmentArgs:
                  variables: pulumi.Input[Sequence[pulumi.Input['GroupEnvironmentVariableArgs']]]):
         """
         :param pulumi.Input[_builtins.str] environment_id: The ID of the environment to which the variables belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupEnvironmentVariableArgs']]] variables: The array of one or more environment variables. Each `variable` block supports the following:
+        :param pulumi.Input[Sequence[pulumi.Input['GroupEnvironmentVariableArgs']]] variables: The array of one or more environment variables.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "variables", variables)
@@ -2599,7 +2563,7 @@ class GroupEnvironmentArgs:
     @pulumi.getter
     def variables(self) -> pulumi.Input[Sequence[pulumi.Input['GroupEnvironmentVariableArgs']]]:
         """
-        The array of one or more environment variables. Each `variable` block supports the following:
+        The array of one or more environment variables.
         """
         return pulumi.get(self, "variables")
 
@@ -2624,8 +2588,7 @@ if not MYPY:
         """
         variable_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The ID of the variable that the group has.  
-        _Deprecated: Use `id` instead._
+        schema: Deprecated; The ID of the variable that the group has.
         """
 elif False:
     GroupEnvironmentVariableArgsDict: TypeAlias = Mapping[str, Any]
@@ -2641,8 +2604,7 @@ class GroupEnvironmentVariableArgs:
         :param pulumi.Input[_builtins.str] name: The variable name.
         :param pulumi.Input[_builtins.str] value: The variable value.
         :param pulumi.Input[_builtins.str] id: The ID of the variable that the group has.
-        :param pulumi.Input[_builtins.str] variable_id: The ID of the variable that the group has.  
-               _Deprecated: Use `id` instead._
+        :param pulumi.Input[_builtins.str] variable_id: schema: Deprecated; The ID of the variable that the group has.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -2695,8 +2657,7 @@ class GroupEnvironmentVariableArgs:
     @_utilities.deprecated("""Use 'id' instead""")
     def variable_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The ID of the variable that the group has.  
-        _Deprecated: Use `id` instead._
+        schema: Deprecated; The ID of the variable that the group has.
         """
         return pulumi.get(self, "variable_id")
 
@@ -2709,7 +2670,7 @@ if not MYPY:
     class GroupUrlDomainArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
-        The group name.
+        The associated domain name.
         """
         is_http_redirect_to_https: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -2729,7 +2690,7 @@ class GroupUrlDomainArgs:
                  is_http_redirect_to_https: Optional[pulumi.Input[_builtins.bool]] = None,
                  min_ssl_version: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: The group name.
+        :param pulumi.Input[_builtins.str] name: The associated domain name.
         :param pulumi.Input[_builtins.bool] is_http_redirect_to_https: Whether to enable redirection from HTTP to HTTPS.
         :param pulumi.Input[_builtins.str] min_ssl_version: The minimum SSL protocol version.
         """
@@ -2743,7 +2704,7 @@ class GroupUrlDomainArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The group name.
+        The associated domain name.
         """
         return pulumi.get(self, "name")
 

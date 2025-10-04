@@ -12,58 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPN connection health check resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			connectionId := cfg.RequireObject("connectionId")
-//			_, err := sbercloud.NewVpnConnectionHealthCheck(ctx, "test", &sbercloud.VpnConnectionHealthCheckArgs{
-//				ConnectionId: pulumi.Any(connectionId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The health check can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck test <id>
-// ```
 type VpnConnectionHealthCheck struct {
 	pulumi.CustomResourceState
 
 	// Specifies the ID of the VPN connection to monitor.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// The destination IP address of the VPN connection.
 	DestinationIp pulumi.StringOutput `pulumi:"destinationIp"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region        pulumi.StringOutput `pulumi:"region"`
 	// The source IP address of the VPN connection.
 	SourceIp pulumi.StringOutput `pulumi:"sourceIp"`
 	// The status of the connection health check.
@@ -104,14 +60,10 @@ func GetVpnConnectionHealthCheck(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VpnConnectionHealthCheck resources.
 type vpnConnectionHealthCheckState struct {
 	// Specifies the ID of the VPN connection to monitor.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectionId *string `pulumi:"connectionId"`
 	// The destination IP address of the VPN connection.
 	DestinationIp *string `pulumi:"destinationIp"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region        *string `pulumi:"region"`
 	// The source IP address of the VPN connection.
 	SourceIp *string `pulumi:"sourceIp"`
 	// The status of the connection health check.
@@ -120,14 +72,10 @@ type vpnConnectionHealthCheckState struct {
 
 type VpnConnectionHealthCheckState struct {
 	// Specifies the ID of the VPN connection to monitor.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectionId pulumi.StringPtrInput
 	// The destination IP address of the VPN connection.
 	DestinationIp pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 	// The source IP address of the VPN connection.
 	SourceIp pulumi.StringPtrInput
 	// The status of the connection health check.
@@ -140,23 +88,15 @@ func (VpnConnectionHealthCheckState) ElementType() reflect.Type {
 
 type vpnConnectionHealthCheckArgs struct {
 	// Specifies the ID of the VPN connection to monitor.
-	//
-	// Changing this parameter will create a new resource.
-	ConnectionId string `pulumi:"connectionId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	ConnectionId string  `pulumi:"connectionId"`
+	Region       *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a VpnConnectionHealthCheck resource.
 type VpnConnectionHealthCheckArgs struct {
 	// Specifies the ID of the VPN connection to monitor.
-	//
-	// Changing this parameter will create a new resource.
 	ConnectionId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 }
 
 func (VpnConnectionHealthCheckArgs) ElementType() reflect.Type {
@@ -247,8 +187,6 @@ func (o VpnConnectionHealthCheckOutput) ToVpnConnectionHealthCheckOutputWithCont
 }
 
 // Specifies the ID of the VPN connection to monitor.
-//
-// Changing this parameter will create a new resource.
 func (o VpnConnectionHealthCheckOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnectionHealthCheck) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
@@ -258,8 +196,6 @@ func (o VpnConnectionHealthCheckOutput) DestinationIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnectionHealthCheck) pulumi.StringOutput { return v.DestinationIp }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o VpnConnectionHealthCheckOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnectionHealthCheck) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

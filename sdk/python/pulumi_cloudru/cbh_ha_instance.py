@@ -44,83 +44,26 @@ class CbhHaInstanceArgs:
         """
         The set of arguments for constructing a CbhHaInstance resource.
         :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CBH HA instance.
-               The options are as follows:
-               + **postPaid**: pas-as-you-go.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server. When updating the flavor, it can only be
-               changed to a higher flavor.
-               
-               > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-               <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server.
         :param pulumi.Input[_builtins.str] master_availability_zone: Specifies the availability zone name of the master instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console. The value of the
-               field has the following restrictions:
-               + The value of the field must contain `8` to `32` characters.
-               + The value of the field must contain at least three of the following: letters, digits, and special characters
-               (!@$%^-_=+[{}]:,./?~#*).
-               + The value of the field cannot contain the username or the username spelled backwards.
+        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console.
         :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CBH HA instance.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               
-               This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CBH HA instance.
-               Valid values are *month* and *year*.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group. Multiple security group IDs are
-               separated by commas (,) without spaces.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group.
         :param pulumi.Input[_builtins.str] slave_availability_zone: Specifies the availability zone name of the slave instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
         :param pulumi.Input[_builtins.int] attach_disk_size: Specifies the size of the additional data disk for the CBH HA instance.
-               The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-               disk of the instance flavor and the additional disk cannot exceed **300TB**.
-               
-               > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-               <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
+        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the CBH HA instance belongs.
-               For enterprise users, if omitted, default enterprise project will be used.
         :param pulumi.Input[_builtins.str] floating_ip: Specifies the floating IP address of the CBH HA instance.
-               
-               > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-               a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-               <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-               `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-               `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-               private IP and slave private IP will remain, you need to manually delete them in the console.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled.
         :param pulumi.Input[_builtins.str] master_private_ip: Specifies the private IP address of the master instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-               characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance.
         :param pulumi.Input[_builtins.str] power_action: Specifies the power action after the CBH HA instance is created.
-               The valid values are as follows:
-               + **start**: Startup instance.
-               + **stop**: Shutdown instance.
-               + **soft-reboot**: Normal reboot, shut down virtual machine service.
-               + **hard-reboot**: Force reboot, reboot virtual machine.
-               
-               > The usage of `power_action` has some limitations:
-               <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-               <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-               is **ACTIVE**.
         :param pulumi.Input[_builtins.str] public_ip_id: Specifies the ID of the elastic IP.
         :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH HA instance.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] slave_private_ip: Specifies the private IP address of the slave instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBH HA instance.
         """
         pulumi.set(__self__, "charging_mode", charging_mode)
         pulumi.set(__self__, "flavor_id", flavor_id)
@@ -162,10 +105,6 @@ class CbhHaInstanceArgs:
     def charging_mode(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the charging mode of the CBH HA instance.
-        The options are as follows:
-        + **postPaid**: pas-as-you-go.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "charging_mode")
 
@@ -177,11 +116,7 @@ class CbhHaInstanceArgs:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the product ID of the CBH server. When updating the flavor, it can only be
-        changed to a higher flavor.
-
-        > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-        <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        Specifies the product ID of the CBH server.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -194,8 +129,6 @@ class CbhHaInstanceArgs:
     def master_availability_zone(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the availability zone name of the master instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "master_availability_zone")
 
@@ -207,12 +140,7 @@ class CbhHaInstanceArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the password for logging in to the management console. The value of the
-        field has the following restrictions:
-        + The value of the field must contain `8` to `32` characters.
-        + The value of the field must contain at least three of the following: letters, digits, and special characters
-        (!@$%^-_=+[{}]:,./?~#*).
-        + The value of the field cannot contain the username or the username spelled backwards.
+        Specifies the password for logging in to the management console.
         """
         return pulumi.get(self, "password")
 
@@ -225,11 +153,6 @@ class CbhHaInstanceArgs:
     def period(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the charging period of the CBH HA instance.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 3.
-
-        This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "period")
 
@@ -242,9 +165,6 @@ class CbhHaInstanceArgs:
     def period_unit(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the charging period unit of the CBH HA instance.
-        Valid values are *month* and *year*.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "period_unit")
 
@@ -256,8 +176,7 @@ class CbhHaInstanceArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the IDs of the security group. Multiple security group IDs are
-        separated by commas (,) without spaces.
+        Specifies the IDs of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -270,8 +189,6 @@ class CbhHaInstanceArgs:
     def slave_availability_zone(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the availability zone name of the slave instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "slave_availability_zone")
 
@@ -308,11 +225,6 @@ class CbhHaInstanceArgs:
     def attach_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the size of the additional data disk for the CBH HA instance.
-        The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-        disk of the instance flavor and the additional disk cannot exceed **300TB**.
-
-        > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-        <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
         """
         return pulumi.get(self, "attach_disk_size")
 
@@ -324,8 +236,7 @@ class CbhHaInstanceArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies whether auto-renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
+        Specifies whether auto renew is enabled.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -338,7 +249,6 @@ class CbhHaInstanceArgs:
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the enterprise project ID to which the CBH HA instance belongs.
-        For enterprise users, if omitted, default enterprise project will be used.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -351,13 +261,6 @@ class CbhHaInstanceArgs:
     def floating_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the floating IP address of the CBH HA instance.
-
-        > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-        a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-        <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-        `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-        `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-        private IP and slave private IP will remain, you need to manually delete them in the console.
         """
         return pulumi.get(self, "floating_ip")
 
@@ -369,9 +272,7 @@ class CbhHaInstanceArgs:
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the IPv6 network is enabled. Defaults to **false**.
-
-        Changing this parameter will create a new resource.
+        Specifies whether the IPv6 network is enabled.
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -395,10 +296,7 @@ class CbhHaInstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-        characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the CBH HA instance.
         """
         return pulumi.get(self, "name")
 
@@ -411,16 +309,6 @@ class CbhHaInstanceArgs:
     def power_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the power action after the CBH HA instance is created.
-        The valid values are as follows:
-        + **start**: Startup instance.
-        + **stop**: Shutdown instance.
-        + **soft-reboot**: Normal reboot, shut down virtual machine service.
-        + **hard-reboot**: Force reboot, reboot virtual machine.
-
-        > The usage of `power_action` has some limitations:
-        <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-        <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-        is **ACTIVE**.
         """
         return pulumi.get(self, "power_action")
 
@@ -445,7 +333,6 @@ class CbhHaInstanceArgs:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the region in which to create the CBH HA instance.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "region")
 
@@ -468,9 +355,6 @@ class CbhHaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the CBH HA instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -512,88 +396,30 @@ class _CbhHaInstanceState:
         """
         Input properties used for looking up and filtering CbhHaInstance resources.
         :param pulumi.Input[_builtins.int] attach_disk_size: Specifies the size of the additional data disk for the CBH HA instance.
-               The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-               disk of the instance flavor and the additional disk cannot exceed **300TB**.
-               
-               > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-               <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
+        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
         :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CBH HA instance.
-               The options are as follows:
-               + **postPaid**: pas-as-you-go.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.float] data_disk_size: The data disk size of the CBH HA instance. The unit is TB. It represents the sum of the
-               disks that come with the flavor and the disks that have already been expanded.
+        :param pulumi.Input[_builtins.float] data_disk_size: The data disk size of the CBH HA instance.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the CBH HA instance belongs.
-               For enterprise users, if omitted, default enterprise project will be used.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server. When updating the flavor, it can only be
-               changed to a higher flavor.
-               
-               > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-               <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server.
         :param pulumi.Input[_builtins.str] floating_ip: Specifies the floating IP address of the CBH HA instance.
-               
-               > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-               a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-               <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-               `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-               `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-               private IP and slave private IP will remain, you need to manually delete them in the console.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled.
         :param pulumi.Input[_builtins.str] master_availability_zone: Specifies the availability zone name of the master instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] master_id: The ID of the master instance.
         :param pulumi.Input[_builtins.str] master_private_ip: Specifies the private IP address of the master instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-               characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console. The value of the
-               field has the following restrictions:
-               + The value of the field must contain `8` to `32` characters.
-               + The value of the field must contain at least three of the following: letters, digits, and special characters
-               (!@$%^-_=+[{}]:,./?~#*).
-               + The value of the field cannot contain the username or the username spelled backwards.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance.
+        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console.
         :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CBH HA instance.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               
-               This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CBH HA instance.
-               Valid values are *month* and *year*.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] power_action: Specifies the power action after the CBH HA instance is created.
-               The valid values are as follows:
-               + **start**: Startup instance.
-               + **stop**: Shutdown instance.
-               + **soft-reboot**: Normal reboot, shut down virtual machine service.
-               + **hard-reboot**: Force reboot, reboot virtual machine.
-               
-               > The usage of `power_action` has some limitations:
-               <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-               <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-               is **ACTIVE**.
         :param pulumi.Input[_builtins.str] public_ip: The elastic IP address.
         :param pulumi.Input[_builtins.str] public_ip_id: Specifies the ID of the elastic IP.
         :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH HA instance.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group. Multiple security group IDs are
-               separated by commas (,) without spaces.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group.
         :param pulumi.Input[_builtins.str] slave_availability_zone: Specifies the availability zone name of the slave instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] slave_id: The ID of the slave instance.
         :param pulumi.Input[_builtins.str] slave_private_ip: Specifies the private IP address of the slave instance.
         :param pulumi.Input[_builtins.str] status: The status of the CBH HA instance.
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBH HA instance.
         :param pulumi.Input[_builtins.str] version: The current version of the CBH HA instance image.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
         """
@@ -659,11 +485,6 @@ class _CbhHaInstanceState:
     def attach_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the size of the additional data disk for the CBH HA instance.
-        The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-        disk of the instance flavor and the additional disk cannot exceed **300TB**.
-
-        > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-        <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
         """
         return pulumi.get(self, "attach_disk_size")
 
@@ -675,8 +496,7 @@ class _CbhHaInstanceState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies whether auto-renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
+        Specifies whether auto renew is enabled.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -689,10 +509,6 @@ class _CbhHaInstanceState:
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the charging mode of the CBH HA instance.
-        The options are as follows:
-        + **postPaid**: pas-as-you-go.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "charging_mode")
 
@@ -704,8 +520,7 @@ class _CbhHaInstanceState:
     @pulumi.getter(name="dataDiskSize")
     def data_disk_size(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
-        The data disk size of the CBH HA instance. The unit is TB. It represents the sum of the
-        disks that come with the flavor and the disks that have already been expanded.
+        The data disk size of the CBH HA instance.
         """
         return pulumi.get(self, "data_disk_size")
 
@@ -718,7 +533,6 @@ class _CbhHaInstanceState:
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the enterprise project ID to which the CBH HA instance belongs.
-        For enterprise users, if omitted, default enterprise project will be used.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -730,11 +544,7 @@ class _CbhHaInstanceState:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the product ID of the CBH server. When updating the flavor, it can only be
-        changed to a higher flavor.
-
-        > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-        <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        Specifies the product ID of the CBH server.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -747,13 +557,6 @@ class _CbhHaInstanceState:
     def floating_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the floating IP address of the CBH HA instance.
-
-        > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-        a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-        <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-        `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-        `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-        private IP and slave private IP will remain, you need to manually delete them in the console.
         """
         return pulumi.get(self, "floating_ip")
 
@@ -765,9 +568,7 @@ class _CbhHaInstanceState:
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the IPv6 network is enabled. Defaults to **false**.
-
-        Changing this parameter will create a new resource.
+        Specifies whether the IPv6 network is enabled.
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -780,8 +581,6 @@ class _CbhHaInstanceState:
     def master_availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the availability zone name of the master instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "master_availability_zone")
 
@@ -817,10 +616,7 @@ class _CbhHaInstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-        characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the CBH HA instance.
         """
         return pulumi.get(self, "name")
 
@@ -832,12 +628,7 @@ class _CbhHaInstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the password for logging in to the management console. The value of the
-        field has the following restrictions:
-        + The value of the field must contain `8` to `32` characters.
-        + The value of the field must contain at least three of the following: letters, digits, and special characters
-        (!@$%^-_=+[{}]:,./?~#*).
-        + The value of the field cannot contain the username or the username spelled backwards.
+        Specifies the password for logging in to the management console.
         """
         return pulumi.get(self, "password")
 
@@ -850,11 +641,6 @@ class _CbhHaInstanceState:
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the charging period of the CBH HA instance.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 3.
-
-        This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "period")
 
@@ -867,9 +653,6 @@ class _CbhHaInstanceState:
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the charging period unit of the CBH HA instance.
-        Valid values are *month* and *year*.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "period_unit")
 
@@ -882,16 +665,6 @@ class _CbhHaInstanceState:
     def power_action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the power action after the CBH HA instance is created.
-        The valid values are as follows:
-        + **start**: Startup instance.
-        + **stop**: Shutdown instance.
-        + **soft-reboot**: Normal reboot, shut down virtual machine service.
-        + **hard-reboot**: Force reboot, reboot virtual machine.
-
-        > The usage of `power_action` has some limitations:
-        <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-        <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-        is **ACTIVE**.
         """
         return pulumi.get(self, "power_action")
 
@@ -928,7 +701,6 @@ class _CbhHaInstanceState:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the region in which to create the CBH HA instance.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "region")
 
@@ -940,8 +712,7 @@ class _CbhHaInstanceState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the IDs of the security group. Multiple security group IDs are
-        separated by commas (,) without spaces.
+        Specifies the IDs of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -954,8 +725,6 @@ class _CbhHaInstanceState:
     def slave_availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the availability zone name of the slave instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "slave_availability_zone")
 
@@ -1014,9 +783,6 @@ class _CbhHaInstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the CBH HA instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1078,156 +844,29 @@ class CbhHaInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CBH HA instance resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        flavor_id = config.require_object("flavorId")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        security_group_id = config.require_object("securityGroupId")
-        master_availability_zone = config.require_object("masterAvailabilityZone")
-        slave_availability_zone = config.require_object("slaveAvailabilityZone")
-        password = config.require_object("password")
-        test = sbercloud.CbhHaInstance("test",
-            name=name,
-            flavor_id=flavor_id,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=security_group_id,
-            master_availability_zone=master_availability_zone,
-            slave_availability_zone=slave_availability_zone,
-            password=password,
-            charging_mode="prePaid",
-            period_unit="month",
-            period=1)
-        ```
-
-        ## Import
-
-        The CBH HA instance can be imported using the master instance ID and the slave instance ID, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/cbhHaInstance:CbhHaInstance test <master_id>/<slave_id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `charging_mode`, `period`, `period_unit`,
-
-        `auto_renew`, `password`, `ipv6_enable`, `attach_disk_size`, `power_action`.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated
-
-        to align with the instance. Also, you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_cbh_ha_instance" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              charging_mode, period, period_unit, auto_renew, password, ipv6_enable, attach_disk_size, power_action,
-            
-            ]
-
-          }
-
-        }
-
+        Create a CbhHaInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] attach_disk_size: Specifies the size of the additional data disk for the CBH HA instance.
-               The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-               disk of the instance flavor and the additional disk cannot exceed **300TB**.
-               
-               > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-               <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
+        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
         :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CBH HA instance.
-               The options are as follows:
-               + **postPaid**: pas-as-you-go.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the CBH HA instance belongs.
-               For enterprise users, if omitted, default enterprise project will be used.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server. When updating the flavor, it can only be
-               changed to a higher flavor.
-               
-               > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-               <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server.
         :param pulumi.Input[_builtins.str] floating_ip: Specifies the floating IP address of the CBH HA instance.
-               
-               > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-               a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-               <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-               `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-               `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-               private IP and slave private IP will remain, you need to manually delete them in the console.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled.
         :param pulumi.Input[_builtins.str] master_availability_zone: Specifies the availability zone name of the master instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] master_private_ip: Specifies the private IP address of the master instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-               characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console. The value of the
-               field has the following restrictions:
-               + The value of the field must contain `8` to `32` characters.
-               + The value of the field must contain at least three of the following: letters, digits, and special characters
-               (!@$%^-_=+[{}]:,./?~#*).
-               + The value of the field cannot contain the username or the username spelled backwards.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance.
+        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console.
         :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CBH HA instance.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               
-               This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CBH HA instance.
-               Valid values are *month* and *year*.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] power_action: Specifies the power action after the CBH HA instance is created.
-               The valid values are as follows:
-               + **start**: Startup instance.
-               + **stop**: Shutdown instance.
-               + **soft-reboot**: Normal reboot, shut down virtual machine service.
-               + **hard-reboot**: Force reboot, reboot virtual machine.
-               
-               > The usage of `power_action` has some limitations:
-               <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-               <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-               is **ACTIVE**.
         :param pulumi.Input[_builtins.str] public_ip_id: Specifies the ID of the elastic IP.
         :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH HA instance.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group. Multiple security group IDs are
-               separated by commas (,) without spaces.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group.
         :param pulumi.Input[_builtins.str] slave_availability_zone: Specifies the availability zone name of the slave instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] slave_private_ip: Specifies the private IP address of the slave instance.
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBH HA instance.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
         """
         ...
@@ -1237,77 +876,7 @@ class CbhHaInstance(pulumi.CustomResource):
                  args: CbhHaInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CBH HA instance resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        flavor_id = config.require_object("flavorId")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        security_group_id = config.require_object("securityGroupId")
-        master_availability_zone = config.require_object("masterAvailabilityZone")
-        slave_availability_zone = config.require_object("slaveAvailabilityZone")
-        password = config.require_object("password")
-        test = sbercloud.CbhHaInstance("test",
-            name=name,
-            flavor_id=flavor_id,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=security_group_id,
-            master_availability_zone=master_availability_zone,
-            slave_availability_zone=slave_availability_zone,
-            password=password,
-            charging_mode="prePaid",
-            period_unit="month",
-            period=1)
-        ```
-
-        ## Import
-
-        The CBH HA instance can be imported using the master instance ID and the slave instance ID, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/cbhHaInstance:CbhHaInstance test <master_id>/<slave_id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `charging_mode`, `period`, `period_unit`,
-
-        `auto_renew`, `password`, `ipv6_enable`, `attach_disk_size`, `power_action`.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated
-
-        to align with the instance. Also, you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_cbh_ha_instance" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              charging_mode, period, period_unit, auto_renew, password, ipv6_enable, attach_disk_size, power_action,
-            
-            ]
-
-          }
-
-        }
-
+        Create a CbhHaInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CbhHaInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1450,88 +1019,30 @@ class CbhHaInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] attach_disk_size: Specifies the size of the additional data disk for the CBH HA instance.
-               The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-               disk of the instance flavor and the additional disk cannot exceed **300TB**.
-               
-               > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-               <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto-renew is enabled.
-               Valid values are **true** and **false**. Defaults to **false**.
+        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
         :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CBH HA instance.
-               The options are as follows:
-               + **postPaid**: pas-as-you-go.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.float] data_disk_size: The data disk size of the CBH HA instance. The unit is TB. It represents the sum of the
-               disks that come with the flavor and the disks that have already been expanded.
+        :param pulumi.Input[_builtins.float] data_disk_size: The data disk size of the CBH HA instance.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the CBH HA instance belongs.
-               For enterprise users, if omitted, default enterprise project will be used.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server. When updating the flavor, it can only be
-               changed to a higher flavor.
-               
-               > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-               <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        :param pulumi.Input[_builtins.str] flavor_id: Specifies the product ID of the CBH server.
         :param pulumi.Input[_builtins.str] floating_ip: Specifies the floating IP address of the CBH HA instance.
-               
-               > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-               a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-               <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-               `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-               `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-               private IP and slave private IP will remain, you need to manually delete them in the console.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled. Defaults to **false**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 network is enabled.
         :param pulumi.Input[_builtins.str] master_availability_zone: Specifies the availability zone name of the master instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] master_id: The ID of the master instance.
         :param pulumi.Input[_builtins.str] master_private_ip: Specifies the private IP address of the master instance.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-               characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console. The value of the
-               field has the following restrictions:
-               + The value of the field must contain `8` to `32` characters.
-               + The value of the field must contain at least three of the following: letters, digits, and special characters
-               (!@$%^-_=+[{}]:,./?~#*).
-               + The value of the field cannot contain the username or the username spelled backwards.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the CBH HA instance.
+        :param pulumi.Input[_builtins.str] password: Specifies the password for logging in to the management console.
         :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CBH HA instance.
-               If `period_unit` is set to **month**, the value ranges from 1 to 9.
-               If `period_unit` is set to **year**, the value ranges from 1 to 3.
-               
-               This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CBH HA instance.
-               Valid values are *month* and *year*.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] power_action: Specifies the power action after the CBH HA instance is created.
-               The valid values are as follows:
-               + **start**: Startup instance.
-               + **stop**: Shutdown instance.
-               + **soft-reboot**: Normal reboot, shut down virtual machine service.
-               + **hard-reboot**: Force reboot, reboot virtual machine.
-               
-               > The usage of `power_action` has some limitations:
-               <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-               <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-               is **ACTIVE**.
         :param pulumi.Input[_builtins.str] public_ip: The elastic IP address.
         :param pulumi.Input[_builtins.str] public_ip_id: Specifies the ID of the elastic IP.
         :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CBH HA instance.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group. Multiple security group IDs are
-               separated by commas (,) without spaces.
+        :param pulumi.Input[_builtins.str] security_group_id: Specifies the IDs of the security group.
         :param pulumi.Input[_builtins.str] slave_availability_zone: Specifies the availability zone name of the slave instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] slave_id: The ID of the slave instance.
         :param pulumi.Input[_builtins.str] slave_private_ip: Specifies the private IP address of the slave instance.
         :param pulumi.Input[_builtins.str] status: The status of the CBH HA instance.
         :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of a subnet.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the CBH HA instance.
         :param pulumi.Input[_builtins.str] version: The current version of the CBH HA instance image.
         :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC.
         """
@@ -1574,11 +1085,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def attach_disk_size(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
         Specifies the size of the additional data disk for the CBH HA instance.
-        The unit is TB. It refers to the additional disk size added on top of the existing disk. And the sum of the built-in
-        disk of the instance flavor and the additional disk cannot exceed **300TB**.
-
-        > 1. Storage expansion is a high-risk operation, with a certain risk of failure.
-        <br/>2. Expansion failure may affect the usability of the instance. Please ensure to back up your data.
         """
         return pulumi.get(self, "attach_disk_size")
 
@@ -1586,8 +1092,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies whether auto-renew is enabled.
-        Valid values are **true** and **false**. Defaults to **false**.
+        Specifies whether auto renew is enabled.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -1596,10 +1101,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the charging mode of the CBH HA instance.
-        The options are as follows:
-        + **postPaid**: pas-as-you-go.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "charging_mode")
 
@@ -1607,8 +1108,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter(name="dataDiskSize")
     def data_disk_size(self) -> pulumi.Output[_builtins.float]:
         """
-        The data disk size of the CBH HA instance. The unit is TB. It represents the sum of the
-        disks that come with the flavor and the disks that have already been expanded.
+        The data disk size of the CBH HA instance.
         """
         return pulumi.get(self, "data_disk_size")
 
@@ -1617,7 +1117,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the enterprise project ID to which the CBH HA instance belongs.
-        For enterprise users, if omitted, default enterprise project will be used.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -1625,11 +1124,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the product ID of the CBH server. When updating the flavor, it can only be
-        changed to a higher flavor.
-
-        > 1. The flavor change is a high-risk operation, with a certain risk of failure.
-        <br/>2. Flavor change failing may impact the usability of the instance. Please be sure to back up your data.
+        Specifies the product ID of the CBH server.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -1638,13 +1133,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def floating_ip(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the floating IP address of the CBH HA instance.
-
-        > 1. For the parameters `master_private_ip`, `slave_private_ip`, and `floating_ip`, if none of them are specified,
-        a new IP address will be assigned to each. If one is specified, then the other two must also be specified.
-        <br>2. The CBH HA instance will automatically create two elastic network card based on `master_private_ip` and
-        `slave_private_ip`, they will be deleted as the CBH HA instance is deleted. But if the `master_private_ip` and
-        `slave_private_ip` parameters is updated, the elastic network card resources corresponding to the original master
-        private IP and slave private IP will remain, you need to manually delete them in the console.
         """
         return pulumi.get(self, "floating_ip")
 
@@ -1652,9 +1140,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether the IPv6 network is enabled. Defaults to **false**.
-
-        Changing this parameter will create a new resource.
+        Specifies whether the IPv6 network is enabled.
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -1663,8 +1149,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def master_availability_zone(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the availability zone name of the master instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "master_availability_zone")
 
@@ -1688,10 +1172,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the CBH HA instance. The field can contain `1` to `64`
-        characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-
-        Changing this parameter will create a new resource.
+        Specifies the name of the CBH HA instance.
         """
         return pulumi.get(self, "name")
 
@@ -1699,12 +1180,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the password for logging in to the management console. The value of the
-        field has the following restrictions:
-        + The value of the field must contain `8` to `32` characters.
-        + The value of the field must contain at least three of the following: letters, digits, and special characters
-        (!@$%^-_=+[{}]:,./?~#*).
-        + The value of the field cannot contain the username or the username spelled backwards.
+        Specifies the password for logging in to the management console.
         """
         return pulumi.get(self, "password")
 
@@ -1713,11 +1189,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def period(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the charging period of the CBH HA instance.
-        If `period_unit` is set to **month**, the value ranges from 1 to 9.
-        If `period_unit` is set to **year**, the value ranges from 1 to 3.
-
-        This parameter is required, but it has no effect, since sbercloud doesn't have pre-paid billing type
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "period")
 
@@ -1726,9 +1197,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def period_unit(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the charging period unit of the CBH HA instance.
-        Valid values are *month* and *year*.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1737,16 +1205,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def power_action(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Specifies the power action after the CBH HA instance is created.
-        The valid values are as follows:
-        + **start**: Startup instance.
-        + **stop**: Shutdown instance.
-        + **soft-reboot**: Normal reboot, shut down virtual machine service.
-        + **hard-reboot**: Force reboot, reboot virtual machine.
-
-        > The usage of `power_action` has some limitations:
-        <br/>1. The **start** operation can only be performed when the instance status is **SHUTOFF**.
-        <br/>2. The **stop**, **soft-reboot**, and **hard-reboot** operations can only be performed when the instance status
-        is **ACTIVE**.
         """
         return pulumi.get(self, "power_action")
 
@@ -1771,7 +1229,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def region(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the region in which to create the CBH HA instance.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "region")
 
@@ -1779,8 +1236,7 @@ class CbhHaInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the IDs of the security group. Multiple security group IDs are
-        separated by commas (,) without spaces.
+        Specifies the IDs of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1789,8 +1245,6 @@ class CbhHaInstance(pulumi.CustomResource):
     def slave_availability_zone(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the availability zone name of the slave instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "slave_availability_zone")
 
@@ -1829,9 +1283,6 @@ class CbhHaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the CBH HA instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property

@@ -32,21 +32,6 @@ class BucketObjectArgs:
                  storage_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketObject resource.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
-        :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
-        :param pulumi.Input[_builtins.str] acl: The ACL policy to apply. Defaults to `private`.
-        :param pulumi.Input[_builtins.str] content: The literal content being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-               All Valid MIME Types are valid for this input.
-        :param pulumi.Input[_builtins.str] etag: Specifies the unique identifier of the object content. It can be used to trigger updates.
-               The only meaningful value is `md5(file("path_to_file"))`.
-               
-               Either `source` or `content` must be provided to specify the bucket content.
-               These two arguments are mutually-exclusive.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the kms key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        :param pulumi.Input[_builtins.str] source: The path to the source file being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the object. Defaults to `STANDARD`.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "key", key)
@@ -72,9 +57,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the bucket to put the file in.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -84,9 +66,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the object once it is in the bucket.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -96,9 +75,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ACL policy to apply. Defaults to `private`.
-        """
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -108,9 +84,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The literal content being uploaded to the bucket.
-        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -120,10 +93,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-        All Valid MIME Types are valid for this input.
-        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -142,13 +111,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique identifier of the object content. It can be used to trigger updates.
-        The only meaningful value is `md5(file("path_to_file"))`.
-
-        Either `source` or `content` must be provided to specify the bucket content.
-        These two arguments are mutually-exclusive.
-        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -158,9 +120,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the kms key. If omitted, the default master key will be used.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -170,9 +129,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -182,9 +138,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The path to the source file being uploaded to the bucket.
-        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -194,9 +147,6 @@ class BucketObjectArgs:
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage class of the object. Defaults to `STANDARD`.
-        """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
@@ -222,23 +172,6 @@ class _BucketObjectState:
                  version_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketObject resources.
-        :param pulumi.Input[_builtins.str] acl: The ACL policy to apply. Defaults to `private`.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
-        :param pulumi.Input[_builtins.str] content: The literal content being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-               All Valid MIME Types are valid for this input.
-        :param pulumi.Input[_builtins.str] etag: Specifies the unique identifier of the object content. It can be used to trigger updates.
-               The only meaningful value is `md5(file("path_to_file"))`.
-               
-               Either `source` or `content` must be provided to specify the bucket content.
-               These two arguments are mutually-exclusive.
-        :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the kms key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        :param pulumi.Input[_builtins.int] size: the size of the object in bytes.
-        :param pulumi.Input[_builtins.str] source: The path to the source file being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the object. Defaults to `STANDARD`.
-        :param pulumi.Input[_builtins.str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -270,9 +203,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ACL policy to apply. Defaults to `private`.
-        """
         return pulumi.get(self, "acl")
 
     @acl.setter
@@ -282,9 +212,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the bucket to put the file in.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -294,9 +221,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The literal content being uploaded to the bucket.
-        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -306,10 +230,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-        All Valid MIME Types are valid for this input.
-        """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
@@ -328,13 +248,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique identifier of the object content. It can be used to trigger updates.
-        The only meaningful value is `md5(file("path_to_file"))`.
-
-        Either `source` or `content` must be provided to specify the bucket content.
-        These two arguments are mutually-exclusive.
-        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -344,9 +257,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the object once it is in the bucket.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -356,9 +266,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the kms key. If omitted, the default master key will be used.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -368,9 +275,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -380,9 +284,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        the size of the object in bytes.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -392,9 +293,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The path to the source file being uploaded to the bucket.
-        """
         return pulumi.get(self, "source")
 
     @source.setter
@@ -404,9 +302,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage class of the object. Defaults to `STANDARD`.
-        """
         return pulumi.get(self, "storage_class")
 
     @storage_class.setter
@@ -416,9 +311,6 @@ class _BucketObjectState:
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A unique version ID value for the object, if bucket versioning is enabled.
-        """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
@@ -445,89 +337,9 @@ class BucketObject(pulumi.CustomResource):
                  storage_class: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an OBS bucket object resource.
-
-        ## Example Usage
-
-        ### Uploading to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        object = sbercloud.obs.BucketObject("object",
-            bucket="your_bucket_name",
-            key="new_key_from_content",
-            content="some object content",
-            content_type="application/xml")
-        ```
-
-        ### Uploading a file to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        examplebucket = sbercloud.obs.Bucket("examplebucket",
-            bucket="examplebuckettftest",
-            acl="private")
-        object = sbercloud.obs.BucketObject("object",
-            bucket=examplebucket.bucket,
-            key="new_key_from_file",
-            source="index.html")
-        ```
-
-        ## Import
-
-        OBS bucket object can be imported using the bucket and key separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucketObject:BucketObject object bucket/key
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `encryption`, `source`, `acl` and
-
-        `kms_key_id`. It is generally recommended running `pulumi preview` after importing an object.
-
-        You can then decide if changes should be applied to the object, or the resource
-
-        definition should be updated to align with the object. Also you can ignore changes as below.
-
-        resource "sbercloud_obs_bucket_object" "object" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              encryption, source, acl, kms_key_id,
-            
-            ]
-
-          }
-
-        }
-
+        Create a BucketObject resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl: The ACL policy to apply. Defaults to `private`.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
-        :param pulumi.Input[_builtins.str] content: The literal content being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-               All Valid MIME Types are valid for this input.
-        :param pulumi.Input[_builtins.str] etag: Specifies the unique identifier of the object content. It can be used to trigger updates.
-               The only meaningful value is `md5(file("path_to_file"))`.
-               
-               Either `source` or `content` must be provided to specify the bucket content.
-               These two arguments are mutually-exclusive.
-        :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the kms key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        :param pulumi.Input[_builtins.str] source: The path to the source file being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the object. Defaults to `STANDARD`.
         """
         ...
     @overload
@@ -536,72 +348,7 @@ class BucketObject(pulumi.CustomResource):
                  args: BucketObjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an OBS bucket object resource.
-
-        ## Example Usage
-
-        ### Uploading to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        object = sbercloud.obs.BucketObject("object",
-            bucket="your_bucket_name",
-            key="new_key_from_content",
-            content="some object content",
-            content_type="application/xml")
-        ```
-
-        ### Uploading a file to a bucket
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        examplebucket = sbercloud.obs.Bucket("examplebucket",
-            bucket="examplebuckettftest",
-            acl="private")
-        object = sbercloud.obs.BucketObject("object",
-            bucket=examplebucket.bucket,
-            key="new_key_from_file",
-            source="index.html")
-        ```
-
-        ## Import
-
-        OBS bucket object can be imported using the bucket and key separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucketObject:BucketObject object bucket/key
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `encryption`, `source`, `acl` and
-
-        `kms_key_id`. It is generally recommended running `pulumi preview` after importing an object.
-
-        You can then decide if changes should be applied to the object, or the resource
-
-        definition should be updated to align with the object. Also you can ignore changes as below.
-
-        resource "sbercloud_obs_bucket_object" "object" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              encryption, source, acl, kms_key_id,
-            
-            ]
-
-          }
-
-        }
-
+        Create a BucketObject resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -684,23 +431,6 @@ class BucketObject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl: The ACL policy to apply. Defaults to `private`.
-        :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
-        :param pulumi.Input[_builtins.str] content: The literal content being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-               All Valid MIME Types are valid for this input.
-        :param pulumi.Input[_builtins.str] etag: Specifies the unique identifier of the object content. It can be used to trigger updates.
-               The only meaningful value is `md5(file("path_to_file"))`.
-               
-               Either `source` or `content` must be provided to specify the bucket content.
-               These two arguments are mutually-exclusive.
-        :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
-        :param pulumi.Input[_builtins.str] kms_key_id: The ID of the kms key. If omitted, the default master key will be used.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        :param pulumi.Input[_builtins.int] size: the size of the object in bytes.
-        :param pulumi.Input[_builtins.str] source: The path to the source file being uploaded to the bucket.
-        :param pulumi.Input[_builtins.str] storage_class: Specifies the storage class of the object. Defaults to `STANDARD`.
-        :param pulumi.Input[_builtins.str] version_id: A unique version ID value for the object, if bucket versioning is enabled.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -724,34 +454,21 @@ class BucketObject(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The ACL policy to apply. Defaults to `private`.
-        """
         return pulumi.get(self, "acl")
 
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the bucket to put the file in.
-        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The literal content being uploaded to the bucket.
-        """
         return pulumi.get(self, "content")
 
     @_builtins.property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-        All Valid MIME Types are valid for this input.
-        """
         return pulumi.get(self, "content_type")
 
     @_builtins.property
@@ -762,68 +479,40 @@ class BucketObject(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the unique identifier of the object content. It can be used to trigger updates.
-        The only meaningful value is `md5(file("path_to_file"))`.
-
-        Either `source` or `content` must be provided to specify the bucket content.
-        These two arguments are mutually-exclusive.
-        """
         return pulumi.get(self, "etag")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the object once it is in the bucket.
-        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The ID of the kms key. If omitted, the default master key will be used.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
-        """
-        the size of the object in bytes.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def source(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The path to the source file being uploaded to the bucket.
-        """
         return pulumi.get(self, "source")
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the storage class of the object. Defaults to `STANDARD`.
-        """
         return pulumi.get(self, "storage_class")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        A unique version ID value for the object, if bucket versioning is enabled.
-        """
         return pulumi.get(self, "version_id")
 

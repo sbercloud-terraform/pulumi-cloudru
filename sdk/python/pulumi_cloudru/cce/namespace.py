@@ -27,22 +27,6 @@ class NamespaceArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE namespace belongs.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies an unstructured key value map for external parameters.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the namespace.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-               and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-               Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] prefix: Specifies a prefix used by the server to generate a unique name.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-               hyphens (-), and must start and end with lowercase letters and digits.
-               Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the namespace resource.
-               If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if annotations is not None:
@@ -59,10 +43,6 @@ class NamespaceArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the cluster ID to which the CCE namespace belongs.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -72,10 +52,6 @@ class NamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an unstructured key value map for external parameters.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -85,10 +61,6 @@ class NamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the map of string keys and values for labels.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -98,12 +70,6 @@ class NamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique name of the namespace.
-        This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-        and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-        Exactly one of `name` or `prefix` must be provided.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -113,12 +79,6 @@ class NamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a prefix used by the server to generate a unique name.
-        This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-        hyphens (-), and must start and end with lowercase letters and digits.
-        Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -128,10 +88,6 @@ class NamespaceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the namespace resource.
-        If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -152,24 +108,6 @@ class _NamespaceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies an unstructured key value map for external parameters.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE namespace belongs.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] creation_timestamp: The server time when namespace was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the namespace.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-               and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-               Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] prefix: Specifies a prefix used by the server to generate a unique name.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-               hyphens (-), and must start and end with lowercase letters and digits.
-               Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the namespace resource.
-               If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] status: The current phase of the namespace.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -191,10 +129,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an unstructured key value map for external parameters.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -204,10 +138,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster ID to which the CCE namespace belongs.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -217,9 +147,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The server time when namespace was created.
-        """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
@@ -229,10 +156,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the map of string keys and values for labels.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -242,12 +165,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique name of the namespace.
-        This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-        and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-        Exactly one of `name` or `prefix` must be provided.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -257,12 +174,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a prefix used by the server to generate a unique name.
-        This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-        hyphens (-), and must start and end with lowercase letters and digits.
-        Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -272,10 +183,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the namespace resource.
-        If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -285,9 +192,6 @@ class _NamespaceState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The current phase of the namespace.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -309,49 +213,9 @@ class Namespace(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CCE namespace resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        test = sbercloud.cce.Namespace("test",
-            cluster_id=cluster_id,
-            name="test-namespace")
-        ```
-
-        ## Import
-
-        CCE namespace can be imported using the cluster ID and namespace name separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cce/namespace:Namespace test bb6923e4-b16e-11eb-b0cd-0255ac101da1/test-namespace
-        ```
-
+        Create a Namespace resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies an unstructured key value map for external parameters.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE namespace belongs.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the namespace.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-               and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-               Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] prefix: Specifies a prefix used by the server to generate a unique name.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-               hyphens (-), and must start and end with lowercase letters and digits.
-               Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the namespace resource.
-               If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
         """
         ...
     @overload
@@ -360,31 +224,7 @@ class Namespace(pulumi.CustomResource):
                  args: NamespaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CCE namespace resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        test = sbercloud.cce.Namespace("test",
-            cluster_id=cluster_id,
-            name="test-namespace")
-        ```
-
-        ## Import
-
-        CCE namespace can be imported using the cluster ID and namespace name separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cce/namespace:Namespace test bb6923e4-b16e-11eb-b0cd-0255ac101da1/test-namespace
-        ```
-
+        Create a Namespace resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NamespaceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -450,24 +290,6 @@ class Namespace(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies an unstructured key value map for external parameters.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE namespace belongs.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] creation_timestamp: The server time when namespace was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the namespace.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-               and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-               Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] prefix: Specifies a prefix used by the server to generate a unique name.
-               This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-               hyphens (-), and must start and end with lowercase letters and digits.
-               Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the namespace resource.
-               If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-        :param pulumi.Input[_builtins.str] status: The current phase of the namespace.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -486,74 +308,40 @@ class Namespace(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
-        """
-        Specifies an unstructured key value map for external parameters.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "annotations")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the cluster ID to which the CCE namespace belongs.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:
-        """
-        The server time when namespace was created.
-        """
         return pulumi.get(self, "creation_timestamp")
 
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
-        """
-        Specifies the map of string keys and values for labels.
-        Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the unique name of the namespace.
-        This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-),
-        and must start and end with lowercase letters and digits. Changing this will create a new namespace resource.
-        Exactly one of `name` or `prefix` must be provided.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies a prefix used by the server to generate a unique name.
-        This parameter can contain a maximum of 63 characters, which may consist of lowercase letters, digits and
-        hyphens (-), and must start and end with lowercase letters and digits.
-        Changing this will create a new namespace resource. Exactly one of `name` or `prefix` must be provided.
-        """
         return pulumi.get(self, "prefix")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the namespace resource.
-        If omitted, the provider-level region will be used. Changing this will create a new namespace resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The current phase of the namespace.
-        """
         return pulumi.get(self, "status")
 

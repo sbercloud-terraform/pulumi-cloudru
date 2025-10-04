@@ -60,9 +60,6 @@ if not MYPY:
         source_port: pulumi.Input[_builtins.str]
         """
         The source port.
-
-        <a name="CustomServiceGroups"></a>
-        The `custom_service_groups` block supports:
         """
 elif False:
     AclRuleCustomServiceArgsDict: TypeAlias = Mapping[str, Any]
@@ -77,9 +74,6 @@ class AclRuleCustomServiceArgs:
         :param pulumi.Input[_builtins.str] dest_port: The destination port.
         :param pulumi.Input[_builtins.int] protocol: The protocol type.
         :param pulumi.Input[_builtins.str] source_port: The source port.
-               
-               <a name="CustomServiceGroups"></a>
-               The `custom_service_groups` block supports:
         """
         pulumi.set(__self__, "dest_port", dest_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -114,9 +108,6 @@ class AclRuleCustomServiceArgs:
     def source_port(self) -> pulumi.Input[_builtins.str]:
         """
         The source port.
-
-        <a name="CustomServiceGroups"></a>
-        The `custom_service_groups` block supports:
         """
         return pulumi.get(self, "source_port")
 
@@ -129,14 +120,11 @@ if not MYPY:
     class AclRuleCustomServiceGroupsArgsDict(TypedDict):
         group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
-        The IDs of the predefined service groups.
+        The IDs of the service groups.
         """
         protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
         """
-        The protocols used in the predefined service groups.
-
-        <a name="SourceRegionList"></a>
-        The `source_region_list` block supports:
+        The protocols used in the service groups.
         """
 elif False:
     AclRuleCustomServiceGroupsArgsDict: TypeAlias = Mapping[str, Any]
@@ -147,11 +135,8 @@ class AclRuleCustomServiceGroupsArgs:
                  group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: The IDs of the predefined service groups.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protocols: The protocols used in the predefined service groups.
-               
-               <a name="SourceRegionList"></a>
-               The `source_region_list` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: The IDs of the service groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protocols: The protocols used in the service groups.
         """
         pulumi.set(__self__, "group_ids", group_ids)
         pulumi.set(__self__, "protocols", protocols)
@@ -160,7 +145,7 @@ class AclRuleCustomServiceGroupsArgs:
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The IDs of the predefined service groups.
+        The IDs of the service groups.
         """
         return pulumi.get(self, "group_ids")
 
@@ -172,10 +157,7 @@ class AclRuleCustomServiceGroupsArgs:
     @pulumi.getter
     def protocols(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
         """
-        The protocols used in the predefined service groups.
-
-        <a name="SourceRegionList"></a>
-        The `source_region_list` block supports:
+        The protocols used in the service groups.
         """
         return pulumi.get(self, "protocols")
 
@@ -278,14 +260,11 @@ if not MYPY:
     class AclRulePredefinedServiceGroupsArgsDict(TypedDict):
         group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
-        The IDs of the predefined service groups.
+        The IDs of the service groups.
         """
         protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]
         """
-        The protocols used in the predefined service groups.
-
-        <a name="SourceRegionList"></a>
-        The `source_region_list` block supports:
+        The protocols used in the service groups.
         """
 elif False:
     AclRulePredefinedServiceGroupsArgsDict: TypeAlias = Mapping[str, Any]
@@ -296,11 +275,8 @@ class AclRulePredefinedServiceGroupsArgs:
                  group_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  protocols: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: The IDs of the predefined service groups.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protocols: The protocols used in the predefined service groups.
-               
-               <a name="SourceRegionList"></a>
-               The `source_region_list` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_ids: The IDs of the service groups.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] protocols: The protocols used in the service groups.
         """
         pulumi.set(__self__, "group_ids", group_ids)
         pulumi.set(__self__, "protocols", protocols)
@@ -309,7 +285,7 @@ class AclRulePredefinedServiceGroupsArgs:
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The IDs of the predefined service groups.
+        The IDs of the service groups.
         """
         return pulumi.get(self, "group_ids")
 
@@ -321,10 +297,7 @@ class AclRulePredefinedServiceGroupsArgs:
     @pulumi.getter
     def protocols(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]:
         """
-        The protocols used in the predefined service groups.
-
-        <a name="SourceRegionList"></a>
-        The `source_region_list` block supports:
+        The protocols used in the service groups.
         """
         return pulumi.get(self, "protocols")
 
@@ -338,9 +311,6 @@ if not MYPY:
         bottom: NotRequired[pulumi.Input[_builtins.int]]
         """
         Whether to pin on bottom.
-        The options are as follows:
-        + **0**: no;
-        + **1**: yes;
         """
         dest_rule_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -349,12 +319,6 @@ if not MYPY:
         top: NotRequired[pulumi.Input[_builtins.int]]
         """
         Whether to pin on top.
-        The options are as follows:
-        + **0**: no;
-        + **1**: yes;
-
-        <a name="CustomServices"></a>
-        The `custom_services` block supports:
         """
 elif False:
     AclRuleSequenceArgsDict: TypeAlias = Mapping[str, Any]
@@ -367,17 +331,8 @@ class AclRuleSequenceArgs:
                  top: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] bottom: Whether to pin on bottom.
-               The options are as follows:
-               + **0**: no;
-               + **1**: yes;
         :param pulumi.Input[_builtins.str] dest_rule_id: The ID of the rule that the added rule will follow.
         :param pulumi.Input[_builtins.int] top: Whether to pin on top.
-               The options are as follows:
-               + **0**: no;
-               + **1**: yes;
-               
-               <a name="CustomServices"></a>
-               The `custom_services` block supports:
         """
         if bottom is not None:
             pulumi.set(__self__, "bottom", bottom)
@@ -391,9 +346,6 @@ class AclRuleSequenceArgs:
     def bottom(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Whether to pin on bottom.
-        The options are as follows:
-        + **0**: no;
-        + **1**: yes;
         """
         return pulumi.get(self, "bottom")
 
@@ -418,12 +370,6 @@ class AclRuleSequenceArgs:
     def top(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Whether to pin on top.
-        The options are as follows:
-        + **0**: no;
-        + **1**: yes;
-
-        <a name="CustomServices"></a>
-        The `custom_services` block supports:
         """
         return pulumi.get(self, "top")
 
@@ -526,19 +472,11 @@ if not MYPY:
     class AntiVirusScanProtocolConfigArgsDict(TypedDict):
         action: pulumi.Input[_builtins.int]
         """
-        The anti virus action. The valid value can be **0** (observe) or **1** (block).
+        The antivirus action.
         """
         protocol_type: pulumi.Input[_builtins.int]
         """
         The protocol type.
-        The valid values are as follows:
-        + **0**: HTTP;
-        + **1**: SMTP;
-        + **2**: POP3;
-        + **3**: IMAP4;
-        + **4**: FTP;
-        + **5**: SMB;
-        + **6**: Malicious Access Control;
         """
 elif False:
     AntiVirusScanProtocolConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -549,16 +487,8 @@ class AntiVirusScanProtocolConfigArgs:
                  action: pulumi.Input[_builtins.int],
                  protocol_type: pulumi.Input[_builtins.int]):
         """
-        :param pulumi.Input[_builtins.int] action: The anti virus action. The valid value can be **0** (observe) or **1** (block).
+        :param pulumi.Input[_builtins.int] action: The antivirus action.
         :param pulumi.Input[_builtins.int] protocol_type: The protocol type.
-               The valid values are as follows:
-               + **0**: HTTP;
-               + **1**: SMTP;
-               + **2**: POP3;
-               + **3**: IMAP4;
-               + **4**: FTP;
-               + **5**: SMB;
-               + **6**: Malicious Access Control;
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol_type", protocol_type)
@@ -567,7 +497,7 @@ class AntiVirusScanProtocolConfigArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.int]:
         """
-        The anti virus action. The valid value can be **0** (observe) or **1** (block).
+        The antivirus action.
         """
         return pulumi.get(self, "action")
 
@@ -580,14 +510,6 @@ class AntiVirusScanProtocolConfigArgs:
     def protocol_type(self) -> pulumi.Input[_builtins.int]:
         """
         The protocol type.
-        The valid values are as follows:
-        + **0**: HTTP;
-        + **1**: SMTP;
-        + **2**: POP3;
-        + **3**: IMAP4;
-        + **4**: FTP;
-        + **5**: SMB;
-        + **6**: Malicious Access Control;
         """
         return pulumi.get(self, "protocol_type")
 
@@ -600,17 +522,11 @@ if not MYPY:
     class CaptureTaskDestinationArgsDict(TypedDict):
         address: pulumi.Input[_builtins.str]
         """
-        Specifies the address.
+        The address.
         """
         address_type: pulumi.Input[_builtins.int]
         """
-        Specifies the address type.
-        The valid values are:
-        + **0**: indicates IPv4;
-        + **1**: indicates IPv6.
-
-        <a name="Service"></a>
-        The `service` block supports:
+        The address type.
         """
 elif False:
     CaptureTaskDestinationArgsDict: TypeAlias = Mapping[str, Any]
@@ -621,14 +537,8 @@ class CaptureTaskDestinationArgs:
                  address: pulumi.Input[_builtins.str],
                  address_type: pulumi.Input[_builtins.int]):
         """
-        :param pulumi.Input[_builtins.str] address: Specifies the address.
-        :param pulumi.Input[_builtins.int] address_type: Specifies the address type.
-               The valid values are:
-               + **0**: indicates IPv4;
-               + **1**: indicates IPv6.
-               
-               <a name="Service"></a>
-               The `service` block supports:
+        :param pulumi.Input[_builtins.str] address: The address.
+        :param pulumi.Input[_builtins.int] address_type: The address type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -637,7 +547,7 @@ class CaptureTaskDestinationArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the address.
+        The address.
         """
         return pulumi.get(self, "address")
 
@@ -649,13 +559,7 @@ class CaptureTaskDestinationArgs:
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the address type.
-        The valid values are:
-        + **0**: indicates IPv4;
-        + **1**: indicates IPv6.
-
-        <a name="Service"></a>
-        The `service` block supports:
+        The address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -668,21 +572,15 @@ if not MYPY:
     class CaptureTaskServiceArgsDict(TypedDict):
         protocol: pulumi.Input[_builtins.int]
         """
-        Specifies the protocol type.
-        The valid values are:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol.
+        The protocol type.
         """
         dest_port: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the destination port.
+        The destination port.
         """
         source_port: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the source port.
+        The source port.
         """
 elif False:
     CaptureTaskServiceArgsDict: TypeAlias = Mapping[str, Any]
@@ -694,15 +592,9 @@ class CaptureTaskServiceArgs:
                  dest_port: Optional[pulumi.Input[_builtins.str]] = None,
                  source_port: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
-               The valid values are:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol.
-        :param pulumi.Input[_builtins.str] dest_port: Specifies the destination port.
-        :param pulumi.Input[_builtins.str] source_port: Specifies the source port.
+        :param pulumi.Input[_builtins.int] protocol: The protocol type.
+        :param pulumi.Input[_builtins.str] dest_port: The destination port.
+        :param pulumi.Input[_builtins.str] source_port: The source port.
         """
         pulumi.set(__self__, "protocol", protocol)
         if dest_port is not None:
@@ -714,13 +606,7 @@ class CaptureTaskServiceArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the protocol type.
-        The valid values are:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol.
+        The protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -732,7 +618,7 @@ class CaptureTaskServiceArgs:
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the destination port.
+        The destination port.
         """
         return pulumi.get(self, "dest_port")
 
@@ -744,7 +630,7 @@ class CaptureTaskServiceArgs:
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the source port.
+        The source port.
         """
         return pulumi.get(self, "source_port")
 
@@ -757,17 +643,11 @@ if not MYPY:
     class CaptureTaskSourceArgsDict(TypedDict):
         address: pulumi.Input[_builtins.str]
         """
-        Specifies the address.
+        The address.
         """
         address_type: pulumi.Input[_builtins.int]
         """
-        Specifies the address type.
-        The valid values are:
-        + **0**: indicates IPv4;
-        + **1**: indicates IPv6.
-
-        <a name="Service"></a>
-        The `service` block supports:
+        The address type.
         """
 elif False:
     CaptureTaskSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -778,14 +658,8 @@ class CaptureTaskSourceArgs:
                  address: pulumi.Input[_builtins.str],
                  address_type: pulumi.Input[_builtins.int]):
         """
-        :param pulumi.Input[_builtins.str] address: Specifies the address.
-        :param pulumi.Input[_builtins.int] address_type: Specifies the address type.
-               The valid values are:
-               + **0**: indicates IPv4;
-               + **1**: indicates IPv6.
-               
-               <a name="Service"></a>
-               The `service` block supports:
+        :param pulumi.Input[_builtins.str] address: The address.
+        :param pulumi.Input[_builtins.int] address_type: The address type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -794,7 +668,7 @@ class CaptureTaskSourceArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the address.
+        The address.
         """
         return pulumi.get(self, "address")
 
@@ -806,13 +680,7 @@ class CaptureTaskSourceArgs:
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the address type.
-        The valid values are:
-        + **0**: indicates IPv4;
-        + **1**: indicates IPv6.
-
-        <a name="Service"></a>
-        The `service` block supports:
+        The address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -925,8 +793,6 @@ if not MYPY:
         public_ipv6: NotRequired[pulumi.Input[_builtins.str]]
         """
         The IPv6 address of the protected EIP.
-
-        > At least one of `public_ipv4` and `public_ipv6` must be set.
         """
 elif False:
     EipProtectionProtectedEipArgsDict: TypeAlias = Mapping[str, Any]
@@ -941,8 +807,6 @@ class EipProtectionProtectedEipArgs:
         :param pulumi.Input[_builtins.str] id: The ID of the protected EIP.
         :param pulumi.Input[_builtins.str] public_ipv4: The IPv4 address of the protected EIP.
         :param pulumi.Input[_builtins.str] public_ipv6: The IPv6 address of the protected EIP.
-               
-               > At least one of `public_ipv4` and `public_ipv6` must be set.
         """
         pulumi.set(__self__, "id", id)
         if public_ipv4 is not None:
@@ -979,8 +843,6 @@ class EipProtectionProtectedEipArgs:
     def public_ipv6(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The IPv6 address of the protected EIP.
-
-        > At least one of `public_ipv4` and `public_ipv6` must be set.
         """
         return pulumi.get(self, "public_ipv6")
 
@@ -994,71 +856,62 @@ if not MYPY:
         version: pulumi.Input[_builtins.str]
         """
         Specifies the version of the firewall.
-        When the charging_mode is **prePaid**: the value can be **Standard** and **Prefessional**.
-        When the charging_mode is **postPaid**: the value can be **Prefessional**.
-        Changing this parameter will create a new resource.
         """
         bandwidth: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The bandwidth of the firewall.
+        Specifies the bandwidth of the firewall.
         """
         default_bandwidth: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The default bandwidth of the firewall.
+        Specifies the default bandwidth of the firewall.
         """
         default_eip_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The default EIP number of the firewall.
+        Specifies the default EIP number of the firewall.
         """
         default_log_storage: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The default log storage of the firewall.
+        Specifies the default log storage of the firewall.
         """
         default_vpc_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The default VPC number of the firewall.
+        Specifies the default VPC number of the firewall.
         """
         eip_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The EIP number of the firewall.
+        Specifies the EIP number of the firewall.
         """
         extend_bandwidth: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the extend bandwidth of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         extend_eip_count: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the extend EIP number of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         extend_vpc_count: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the extend VPC number of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         log_storage: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The log storage of the firewall.
+        Specifies the log storage of the firewall.
         """
         total_rule_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The total rule count of the firewall.
+        Specifies the total rule count of the firewall.
         """
         used_rule_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The used rule count of the firewall.
+        Specifies the used rule count of the firewall.
         """
         vpc_bandwidth: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The VPC bandwidth of the firewall.
+        Specifies the VPC bandwidth of the firewall.
         """
         vpc_count: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The VPC number of the firewall.
+        Specifies the VPC number of the firewall.
         """
 elif False:
     FirewallFlavorArgsDict: TypeAlias = Mapping[str, Any]
@@ -1083,29 +936,20 @@ class FirewallFlavorArgs:
                  vpc_count: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] version: Specifies the version of the firewall.
-               When the charging_mode is **prePaid**: the value can be **Standard** and **Prefessional**.
-               When the charging_mode is **postPaid**: the value can be **Prefessional**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth: The bandwidth of the firewall.
-        :param pulumi.Input[_builtins.int] default_bandwidth: The default bandwidth of the firewall.
-        :param pulumi.Input[_builtins.int] default_eip_count: The default EIP number of the firewall.
-        :param pulumi.Input[_builtins.int] default_log_storage: The default log storage of the firewall.
-        :param pulumi.Input[_builtins.int] default_vpc_count: The default VPC number of the firewall.
-        :param pulumi.Input[_builtins.int] eip_count: The EIP number of the firewall.
+        :param pulumi.Input[_builtins.int] bandwidth: Specifies the bandwidth of the firewall.
+        :param pulumi.Input[_builtins.int] default_bandwidth: Specifies the default bandwidth of the firewall.
+        :param pulumi.Input[_builtins.int] default_eip_count: Specifies the default EIP number of the firewall.
+        :param pulumi.Input[_builtins.int] default_log_storage: Specifies the default log storage of the firewall.
+        :param pulumi.Input[_builtins.int] default_vpc_count: Specifies the default VPC number of the firewall.
+        :param pulumi.Input[_builtins.int] eip_count: Specifies the EIP number of the firewall.
         :param pulumi.Input[_builtins.int] extend_bandwidth: Specifies the extend bandwidth of the firewall.
-               Only works when the charging_mode is **prePaid**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] extend_eip_count: Specifies the extend EIP number of the firewall.
-               Only works when the charging_mode is **prePaid**.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] extend_vpc_count: Specifies the extend VPC number of the firewall.
-               Only works when the charging_mode is **prePaid**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] log_storage: The log storage of the firewall.
-        :param pulumi.Input[_builtins.int] total_rule_count: The total rule count of the firewall.
-        :param pulumi.Input[_builtins.int] used_rule_count: The used rule count of the firewall.
-        :param pulumi.Input[_builtins.int] vpc_bandwidth: The VPC bandwidth of the firewall.
-        :param pulumi.Input[_builtins.int] vpc_count: The VPC number of the firewall.
+        :param pulumi.Input[_builtins.int] log_storage: Specifies the log storage of the firewall.
+        :param pulumi.Input[_builtins.int] total_rule_count: Specifies the total rule count of the firewall.
+        :param pulumi.Input[_builtins.int] used_rule_count: Specifies the used rule count of the firewall.
+        :param pulumi.Input[_builtins.int] vpc_bandwidth: Specifies the VPC bandwidth of the firewall.
+        :param pulumi.Input[_builtins.int] vpc_count: Specifies the VPC number of the firewall.
         """
         pulumi.set(__self__, "version", version)
         if bandwidth is not None:
@@ -1142,9 +986,6 @@ class FirewallFlavorArgs:
     def version(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the version of the firewall.
-        When the charging_mode is **prePaid**: the value can be **Standard** and **Prefessional**.
-        When the charging_mode is **postPaid**: the value can be **Prefessional**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "version")
 
@@ -1156,7 +997,7 @@ class FirewallFlavorArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The bandwidth of the firewall.
+        Specifies the bandwidth of the firewall.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -1168,7 +1009,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="defaultBandwidth")
     def default_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The default bandwidth of the firewall.
+        Specifies the default bandwidth of the firewall.
         """
         return pulumi.get(self, "default_bandwidth")
 
@@ -1180,7 +1021,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="defaultEipCount")
     def default_eip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The default EIP number of the firewall.
+        Specifies the default EIP number of the firewall.
         """
         return pulumi.get(self, "default_eip_count")
 
@@ -1192,7 +1033,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="defaultLogStorage")
     def default_log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The default log storage of the firewall.
+        Specifies the default log storage of the firewall.
         """
         return pulumi.get(self, "default_log_storage")
 
@@ -1204,7 +1045,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="defaultVpcCount")
     def default_vpc_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The default VPC number of the firewall.
+        Specifies the default VPC number of the firewall.
         """
         return pulumi.get(self, "default_vpc_count")
 
@@ -1216,7 +1057,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="eipCount")
     def eip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The EIP number of the firewall.
+        Specifies the EIP number of the firewall.
         """
         return pulumi.get(self, "eip_count")
 
@@ -1229,8 +1070,6 @@ class FirewallFlavorArgs:
     def extend_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the extend bandwidth of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "extend_bandwidth")
 
@@ -1243,8 +1082,6 @@ class FirewallFlavorArgs:
     def extend_eip_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the extend EIP number of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "extend_eip_count")
 
@@ -1257,8 +1094,6 @@ class FirewallFlavorArgs:
     def extend_vpc_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the extend VPC number of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "extend_vpc_count")
 
@@ -1270,7 +1105,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="logStorage")
     def log_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The log storage of the firewall.
+        Specifies the log storage of the firewall.
         """
         return pulumi.get(self, "log_storage")
 
@@ -1282,7 +1117,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="totalRuleCount")
     def total_rule_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The total rule count of the firewall.
+        Specifies the total rule count of the firewall.
         """
         return pulumi.get(self, "total_rule_count")
 
@@ -1294,7 +1129,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="usedRuleCount")
     def used_rule_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The used rule count of the firewall.
+        Specifies the used rule count of the firewall.
         """
         return pulumi.get(self, "used_rule_count")
 
@@ -1306,7 +1141,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="vpcBandwidth")
     def vpc_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The VPC bandwidth of the firewall.
+        Specifies the VPC bandwidth of the firewall.
         """
         return pulumi.get(self, "vpc_bandwidth")
 
@@ -1318,7 +1153,7 @@ class FirewallFlavorArgs:
     @pulumi.getter(name="vpcCount")
     def vpc_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The VPC number of the firewall.
+        Specifies the VPC number of the firewall.
         """
         return pulumi.get(self, "vpc_count")
 
@@ -1331,16 +1166,15 @@ if not MYPY:
     class FirewallProtectObjectArgsDict(TypedDict):
         object_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The protected object ID.
+        Protected object ID
         """
         object_name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The protected object name.
+        Protected object name
         """
         type: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The object type.
-        The options are as follows: 0: north-south; 1: east-west.
+        Project type. The options are as follows: 0: north-south; 1: east-west.
         """
 elif False:
     FirewallProtectObjectArgsDict: TypeAlias = Mapping[str, Any]
@@ -1352,10 +1186,9 @@ class FirewallProtectObjectArgs:
                  object_name: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] object_id: The protected object ID.
-        :param pulumi.Input[_builtins.str] object_name: The protected object name.
-        :param pulumi.Input[_builtins.int] type: The object type.
-               The options are as follows: 0: north-south; 1: east-west.
+        :param pulumi.Input[_builtins.str] object_id: Protected object ID
+        :param pulumi.Input[_builtins.str] object_name: Protected object name
+        :param pulumi.Input[_builtins.int] type: Project type. The options are as follows: 0: north-south; 1: east-west.
         """
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
@@ -1368,7 +1201,7 @@ class FirewallProtectObjectArgs:
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The protected object ID.
+        Protected object ID
         """
         return pulumi.get(self, "object_id")
 
@@ -1380,7 +1213,7 @@ class FirewallProtectObjectArgs:
     @pulumi.getter(name="objectName")
     def object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The protected object name.
+        Protected object name
         """
         return pulumi.get(self, "object_name")
 
@@ -1392,8 +1225,7 @@ class FirewallProtectObjectArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The object type.
-        The options are as follows: 0: north-south; 1: east-west.
+        Project type. The options are as follows: 0: north-south; 1: east-west.
         """
         return pulumi.get(self, "type")
 

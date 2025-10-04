@@ -32,46 +32,6 @@ class KeypairArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Keypair resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of keypair.
-        :param pulumi.Input[_builtins.str] encryption_type: Specifies encryption mode. The options are as follows:
-               + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-               + **kms**: KMS encryption mode.
-               
-               > 1. Please configure this field to **default** if the KMS service is not available at the site.
-               <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only when creating a KPS keypair.
-               Importing an existing keypair will not obtain the private key information.
-               
-               Changing this parameter will create a new resource.
-               
-               ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the KMS key ID to encrypt private keys.
-        :param pulumi.Input[_builtins.str] kms_key_name: Specifies the KMS key name to encrypt private keys.
-               
-               > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-               `kms_key_name`.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. The name can contain a maximum of `64`
-               characters, including letters, digits, underscores (_) and hyphens (-).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the imported OpenSSH-formatted private key.
-               
-               > 1. Setting this field to empty during editing will clear the private key.
-               <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key.
-               It is required when import keypair. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] scope: Specifies the scope of keypair. The options are as follows:
-               + **account**: Tenant-level, available to all users under the same account.
-               + **user**: User-level, only available to user.
-               
-               Defaults to `user`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] user_id: Specifies the user ID to which the keypair belongs.
-               
-               > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -99,9 +59,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of keypair.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -111,14 +68,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies encryption mode. The options are as follows:
-        + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-        + **kms**: KMS encryption mode.
-
-        > 1. Please configure this field to **default** if the KMS service is not available at the site.
-        <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
@@ -128,15 +77,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="keyFile")
     def key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the path of the created private key.
-        The private key file (**.pem**) is created only when creating a KPS keypair.
-        Importing an existing keypair will not obtain the private key information.
-
-        Changing this parameter will create a new resource.
-
-        ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        """
         return pulumi.get(self, "key_file")
 
     @key_file.setter
@@ -146,9 +86,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the KMS key ID to encrypt private keys.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -158,13 +95,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the KMS key name to encrypt private keys.
-
-        > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-        <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-        `kms_key_name`.
-        """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
@@ -174,11 +104,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the keypair. The name can contain a maximum of `64`
-        characters, including letters, digits, underscores (_) and hyphens (-).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -188,12 +113,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted private key.
-
-        > 1. Setting this field to empty during editing will clear the private key.
-        <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -203,10 +122,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted public key.
-        It is required when import keypair. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -216,10 +131,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the keypair resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -229,13 +140,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the scope of keypair. The options are as follows:
-        + **account**: Tenant-level, available to all users under the same account.
-        + **user**: User-level, only available to user.
-
-        Defaults to `user`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -245,12 +149,6 @@ class KeypairArgs:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the user ID to which the keypair belongs.
-
-        > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-        <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -277,49 +175,6 @@ class _KeypairState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Keypair resources.
-        :param pulumi.Input[_builtins.str] created_at: The keypair creation time.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of keypair.
-        :param pulumi.Input[_builtins.str] encryption_type: Specifies encryption mode. The options are as follows:
-               + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-               + **kms**: KMS encryption mode.
-               
-               > 1. Please configure this field to **default** if the KMS service is not available at the site.
-               <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        :param pulumi.Input[_builtins.str] fingerprint: Fingerprint information about a keypair.
-        :param pulumi.Input[_builtins.bool] is_managed: Whether the private key is managed by sberCloud.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only when creating a KPS keypair.
-               Importing an existing keypair will not obtain the private key information.
-               
-               Changing this parameter will create a new resource.
-               
-               ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the KMS key ID to encrypt private keys.
-        :param pulumi.Input[_builtins.str] kms_key_name: Specifies the KMS key name to encrypt private keys.
-               
-               > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-               `kms_key_name`.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. The name can contain a maximum of `64`
-               characters, including letters, digits, underscores (_) and hyphens (-).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the imported OpenSSH-formatted private key.
-               
-               > 1. Setting this field to empty during editing will clear the private key.
-               <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key.
-               It is required when import keypair. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] scope: Specifies the scope of keypair. The options are as follows:
-               + **account**: Tenant-level, available to all users under the same account.
-               + **user**: User-level, only available to user.
-               
-               Defaults to `user`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] user_id: Specifies the user ID to which the keypair belongs.
-               
-               > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -353,9 +208,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The keypair creation time.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -365,9 +217,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of keypair.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -377,14 +226,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies encryption mode. The options are as follows:
-        + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-        + **kms**: KMS encryption mode.
-
-        > 1. Please configure this field to **default** if the KMS service is not available at the site.
-        <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        """
         return pulumi.get(self, "encryption_type")
 
     @encryption_type.setter
@@ -394,9 +235,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Fingerprint information about a keypair.
-        """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
@@ -406,9 +244,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="isManaged")
     def is_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the private key is managed by sberCloud.
-        """
         return pulumi.get(self, "is_managed")
 
     @is_managed.setter
@@ -418,15 +253,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="keyFile")
     def key_file(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the path of the created private key.
-        The private key file (**.pem**) is created only when creating a KPS keypair.
-        Importing an existing keypair will not obtain the private key information.
-
-        Changing this parameter will create a new resource.
-
-        ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        """
         return pulumi.get(self, "key_file")
 
     @key_file.setter
@@ -436,9 +262,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the KMS key ID to encrypt private keys.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -448,13 +271,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the KMS key name to encrypt private keys.
-
-        > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-        <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-        `kms_key_name`.
-        """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
@@ -464,11 +280,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the keypair. The name can contain a maximum of `64`
-        characters, including letters, digits, underscores (_) and hyphens (-).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -478,12 +289,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted private key.
-
-        > 1. Setting this field to empty during editing will clear the private key.
-        <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -493,10 +298,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted public key.
-        It is required when import keypair. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
@@ -506,10 +307,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the keypair resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -519,13 +316,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the scope of keypair. The options are as follows:
-        + **account**: Tenant-level, available to all users under the same account.
-        + **user**: User-level, only available to user.
-
-        Defaults to `user`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "scope")
 
     @scope.setter
@@ -535,12 +325,6 @@ class _KeypairState:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the user ID to which the keypair belongs.
-
-        > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-        <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -567,151 +351,9 @@ class Keypair(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a keypair resource within SberCloud.
-
-        By default, keypair use the SSH-2 (RSA, 2048) algorithm for encryption and decryption.
-
-        Keys imported support the following cryptographic algorithms:
-
-         * RSA-1024
-         * RSA-2048
-         * RSA-4096
-
-        ## Example Usage
-
-        ### Create a new KPS keypair
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kms_key_id = config.require_object("kmsKeyId")
-        kms_key_name = config.require_object("kmsKeyName")
-        key_file = config.require_object("keyFile")
-        test = sbercloud.dew.Keypair("test",
-            name="test-name",
-            scope="user",
-            encryption_type="kms",
-            kms_key_id=kms_key_id,
-            kms_key_name=kms_key_name,
-            description="test description",
-            key_file=key_file)
-        ```
-
-        ### Import an existing KPS keypair
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        public_key = config.require_object("publicKey")
-        private_key = config.require_object("privateKey")
-        test = sbercloud.dew.Keypair("test",
-            name="test-name",
-            scope="account",
-            encryption_type="default",
-            description="test description",
-            public_key=public_key,
-            private_key=private_key)
-        ```
-
-        ### Import an existing KPS keypair without private key
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        public_key = config.require_object("publicKey")
-        test = sbercloud.dew.Keypair("test",
-            name="test-name",
-            scope="account",
-            description="test description",
-            public_key=public_key)
-        ```
-
-        ## Import
-
-        Keypair can be imported using the `name`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dew/keypair:Keypair test <name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `encryption_type`, `kms_key_id`,
-
-        `kms_key_name`, `key_file` and `private_key`. It is generally recommended running `pulumi preview` after importing a keypair.
-
-        You can then decide if changes should be applied to the keypair, or the resource definition
-
-        should be updated to align with the keypair. Also, you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_kps_keypair" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              encryption_type, kms_key_id, kms_key_name, key_file, private_key
-            
-            ]
-
-          }
-
-        }
-
+        Create a Keypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of keypair.
-        :param pulumi.Input[_builtins.str] encryption_type: Specifies encryption mode. The options are as follows:
-               + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-               + **kms**: KMS encryption mode.
-               
-               > 1. Please configure this field to **default** if the KMS service is not available at the site.
-               <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only when creating a KPS keypair.
-               Importing an existing keypair will not obtain the private key information.
-               
-               Changing this parameter will create a new resource.
-               
-               ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the KMS key ID to encrypt private keys.
-        :param pulumi.Input[_builtins.str] kms_key_name: Specifies the KMS key name to encrypt private keys.
-               
-               > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-               `kms_key_name`.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. The name can contain a maximum of `64`
-               characters, including letters, digits, underscores (_) and hyphens (-).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the imported OpenSSH-formatted private key.
-               
-               > 1. Setting this field to empty during editing will clear the private key.
-               <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key.
-               It is required when import keypair. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] scope: Specifies the scope of keypair. The options are as follows:
-               + **account**: Tenant-level, available to all users under the same account.
-               + **user**: User-level, only available to user.
-               
-               Defaults to `user`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] user_id: Specifies the user ID to which the keypair belongs.
-               
-               > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
         """
         ...
     @overload
@@ -720,109 +362,7 @@ class Keypair(pulumi.CustomResource):
                  args: Optional[KeypairArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a keypair resource within SberCloud.
-
-        By default, keypair use the SSH-2 (RSA, 2048) algorithm for encryption and decryption.
-
-        Keys imported support the following cryptographic algorithms:
-
-         * RSA-1024
-         * RSA-2048
-         * RSA-4096
-
-        ## Example Usage
-
-        ### Create a new KPS keypair
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kms_key_id = config.require_object("kmsKeyId")
-        kms_key_name = config.require_object("kmsKeyName")
-        key_file = config.require_object("keyFile")
-        test = sbercloud.dew.Keypair("test",
-            name="test-name",
-            scope="user",
-            encryption_type="kms",
-            kms_key_id=kms_key_id,
-            kms_key_name=kms_key_name,
-            description="test description",
-            key_file=key_file)
-        ```
-
-        ### Import an existing KPS keypair
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        public_key = config.require_object("publicKey")
-        private_key = config.require_object("privateKey")
-        test = sbercloud.dew.Keypair("test",
-            name="test-name",
-            scope="account",
-            encryption_type="default",
-            description="test description",
-            public_key=public_key,
-            private_key=private_key)
-        ```
-
-        ### Import an existing KPS keypair without private key
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        public_key = config.require_object("publicKey")
-        test = sbercloud.dew.Keypair("test",
-            name="test-name",
-            scope="account",
-            description="test description",
-            public_key=public_key)
-        ```
-
-        ## Import
-
-        Keypair can be imported using the `name`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dew/keypair:Keypair test <name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `encryption_type`, `kms_key_id`,
-
-        `kms_key_name`, `key_file` and `private_key`. It is generally recommended running `pulumi preview` after importing a keypair.
-
-        You can then decide if changes should be applied to the keypair, or the resource definition
-
-        should be updated to align with the keypair. Also, you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_kps_keypair" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              encryption_type, kms_key_id, kms_key_name, key_file, private_key
-            
-            ]
-
-          }
-
-        }
-
+        Create a Keypair resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KeypairArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -905,49 +445,6 @@ class Keypair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: The keypair creation time.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of keypair.
-        :param pulumi.Input[_builtins.str] encryption_type: Specifies encryption mode. The options are as follows:
-               + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-               + **kms**: KMS encryption mode.
-               
-               > 1. Please configure this field to **default** if the KMS service is not available at the site.
-               <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        :param pulumi.Input[_builtins.str] fingerprint: Fingerprint information about a keypair.
-        :param pulumi.Input[_builtins.bool] is_managed: Whether the private key is managed by sberCloud.
-        :param pulumi.Input[_builtins.str] key_file: Specifies the path of the created private key.
-               The private key file (**.pem**) is created only when creating a KPS keypair.
-               Importing an existing keypair will not obtain the private key information.
-               
-               Changing this parameter will create a new resource.
-               
-               ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the KMS key ID to encrypt private keys.
-        :param pulumi.Input[_builtins.str] kms_key_name: Specifies the KMS key name to encrypt private keys.
-               
-               > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-               `kms_key_name`.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the keypair. The name can contain a maximum of `64`
-               characters, including letters, digits, underscores (_) and hyphens (-).
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_key: Specifies the imported OpenSSH-formatted private key.
-               
-               > 1. Setting this field to empty during editing will clear the private key.
-               <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        :param pulumi.Input[_builtins.str] public_key: Specifies the imported OpenSSH-formatted public key.
-               It is required when import keypair. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the keypair resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] scope: Specifies the scope of keypair. The options are as follows:
-               + **account**: Tenant-level, available to all users under the same account.
-               + **user**: User-level, only available to user.
-               
-               Defaults to `user`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] user_id: Specifies the user ID to which the keypair belongs.
-               
-               > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-               <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -972,141 +469,70 @@ class Keypair(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The keypair creation time.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of keypair.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="encryptionType")
     def encryption_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies encryption mode. The options are as follows:
-        + **default**: The default encryption mode. Applicable to sites where KMS is not deployed.
-        + **kms**: KMS encryption mode.
-
-        > 1. Please configure this field to **default** if the KMS service is not available at the site.
-        <br/>2. Due to API restrictions, `private_key` must be configured when editing this field.
-        """
         return pulumi.get(self, "encryption_type")
 
     @_builtins.property
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[_builtins.str]:
-        """
-        Fingerprint information about a keypair.
-        """
         return pulumi.get(self, "fingerprint")
 
     @_builtins.property
     @pulumi.getter(name="isManaged")
     def is_managed(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether the private key is managed by sberCloud.
-        """
         return pulumi.get(self, "is_managed")
 
     @_builtins.property
     @pulumi.getter(name="keyFile")
     def key_file(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the path of the created private key.
-        The private key file (**.pem**) is created only when creating a KPS keypair.
-        Importing an existing keypair will not obtain the private key information.
-
-        Changing this parameter will create a new resource.
-
-        ->**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-        """
         return pulumi.get(self, "key_file")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the KMS key ID to encrypt private keys.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the KMS key name to encrypt private keys.
-
-        > 1. At least one of `kms_key_id` or `kms_key_name` must be set when `encryption_type` is set to **kms**.
-        <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing `kms_key_id` or
-        `kms_key_name`.
-        """
         return pulumi.get(self, "kms_key_name")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique name for the keypair. The name can contain a maximum of `64`
-        characters, including letters, digits, underscores (_) and hyphens (-).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the imported OpenSSH-formatted private key.
-
-        > 1. Setting this field to empty during editing will clear the private key.
-        <br/>2. Due to API restrictions, `encryption_type` must be configured when configuring this field.
-        """
         return pulumi.get(self, "private_key")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the imported OpenSSH-formatted public key.
-        It is required when import keypair. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "public_key")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the keypair resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def scope(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the scope of keypair. The options are as follows:
-        + **account**: Tenant-level, available to all users under the same account.
-        + **user**: User-level, only available to user.
-
-        Defaults to `user`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "scope")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the user ID to which the keypair belongs.
-
-        > 1. If the `scope` set to **user**, this parameter value must be the ID of the user who creates the resource.
-        <br/>2. Due to API restrictions, `private_key` and `encryption_type` must be configured when editing this field.
-        """
         return pulumi.get(self, "user_id")
 

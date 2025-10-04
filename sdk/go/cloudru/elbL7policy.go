@@ -12,75 +12,26 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB L7 Policy resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			listenerId := cfg.RequireObject("listenerId")
-//			poolId := cfg.RequireObject("poolId")
-//			_, err := sbercloud.NewElbL7policy(ctx, "policy_1", &sbercloud.ElbL7policyArgs{
-//				Name:           pulumi.String("policy_1"),
-//				Description:    pulumi.String("test description"),
-//				ListenerId:     pulumi.Any(listenerId),
-//				RedirectPoolId: pulumi.Any(poolId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB policy can be imported using the policy ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbL7policy:ElbL7policy policy_1 5c20fdad-7288-11eb-b817-0255ac10158b
-// ```
 type ElbL7policy struct {
 	pulumi.CustomResourceState
 
-	Action    pulumi.StringPtrOutput `pulumi:"action"`
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
-	// Human-readable description for the L7 Policy.
-	Description         pulumi.StringPtrOutput               `pulumi:"description"`
-	EnterpriseProjectId pulumi.StringOutput                  `pulumi:"enterpriseProjectId"`
-	FixedResponseConfig ElbL7policyFixedResponseConfigOutput `pulumi:"fixedResponseConfig"`
-	// The Listener on which the L7 Policy will be associated with. Changing
-	// this creates a new L7 Policy.
-	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
-	// Human-readable name for the L7 Policy. Does not have to be unique.
-	Name               pulumi.StringOutput `pulumi:"name"`
-	Priority           pulumi.IntOutput    `pulumi:"priority"`
-	ProvisioningStatus pulumi.StringOutput `pulumi:"provisioningStatus"`
-	RedirectListenerId pulumi.StringOutput `pulumi:"redirectListenerId"`
-	// Requests matching this policy will be redirected to the pool with this ID.
+	Action                           pulumi.StringPtrOutput                            `pulumi:"action"`
+	CreatedAt                        pulumi.StringOutput                               `pulumi:"createdAt"`
+	Description                      pulumi.StringPtrOutput                            `pulumi:"description"`
+	EnterpriseProjectId              pulumi.StringOutput                               `pulumi:"enterpriseProjectId"`
+	FixedResponseConfig              ElbL7policyFixedResponseConfigOutput              `pulumi:"fixedResponseConfig"`
+	ListenerId                       pulumi.StringOutput                               `pulumi:"listenerId"`
+	Name                             pulumi.StringOutput                               `pulumi:"name"`
+	Priority                         pulumi.IntOutput                                  `pulumi:"priority"`
+	ProvisioningStatus               pulumi.StringOutput                               `pulumi:"provisioningStatus"`
+	RedirectListenerId               pulumi.StringOutput                               `pulumi:"redirectListenerId"`
 	RedirectPoolId                   pulumi.StringOutput                               `pulumi:"redirectPoolId"`
 	RedirectPoolsConfigs             ElbL7policyRedirectPoolsConfigArrayOutput         `pulumi:"redirectPoolsConfigs"`
 	RedirectPoolsExtendConfig        ElbL7policyRedirectPoolsExtendConfigOutput        `pulumi:"redirectPoolsExtendConfig"`
 	RedirectPoolsStickySessionConfig ElbL7policyRedirectPoolsStickySessionConfigOutput `pulumi:"redirectPoolsStickySessionConfig"`
 	RedirectUrlConfig                ElbL7policyRedirectUrlConfigOutput                `pulumi:"redirectUrlConfig"`
-	// The region in which to create the L7 Policy resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Policy.
-	Region    pulumi.StringOutput `pulumi:"region"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	Region                           pulumi.StringOutput                               `pulumi:"region"`
+	UpdatedAt                        pulumi.StringOutput                               `pulumi:"updatedAt"`
 }
 
 // NewElbL7policy registers a new resource with the given unique name, arguments, and options.
@@ -116,57 +67,43 @@ func GetElbL7policy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbL7policy resources.
 type elbL7policyState struct {
-	Action    *string `pulumi:"action"`
-	CreatedAt *string `pulumi:"createdAt"`
-	// Human-readable description for the L7 Policy.
-	Description         *string                         `pulumi:"description"`
-	EnterpriseProjectId *string                         `pulumi:"enterpriseProjectId"`
-	FixedResponseConfig *ElbL7policyFixedResponseConfig `pulumi:"fixedResponseConfig"`
-	// The Listener on which the L7 Policy will be associated with. Changing
-	// this creates a new L7 Policy.
-	ListenerId *string `pulumi:"listenerId"`
-	// Human-readable name for the L7 Policy. Does not have to be unique.
-	Name               *string `pulumi:"name"`
-	Priority           *int    `pulumi:"priority"`
-	ProvisioningStatus *string `pulumi:"provisioningStatus"`
-	RedirectListenerId *string `pulumi:"redirectListenerId"`
-	// Requests matching this policy will be redirected to the pool with this ID.
+	Action                           *string                                      `pulumi:"action"`
+	CreatedAt                        *string                                      `pulumi:"createdAt"`
+	Description                      *string                                      `pulumi:"description"`
+	EnterpriseProjectId              *string                                      `pulumi:"enterpriseProjectId"`
+	FixedResponseConfig              *ElbL7policyFixedResponseConfig              `pulumi:"fixedResponseConfig"`
+	ListenerId                       *string                                      `pulumi:"listenerId"`
+	Name                             *string                                      `pulumi:"name"`
+	Priority                         *int                                         `pulumi:"priority"`
+	ProvisioningStatus               *string                                      `pulumi:"provisioningStatus"`
+	RedirectListenerId               *string                                      `pulumi:"redirectListenerId"`
 	RedirectPoolId                   *string                                      `pulumi:"redirectPoolId"`
 	RedirectPoolsConfigs             []ElbL7policyRedirectPoolsConfig             `pulumi:"redirectPoolsConfigs"`
 	RedirectPoolsExtendConfig        *ElbL7policyRedirectPoolsExtendConfig        `pulumi:"redirectPoolsExtendConfig"`
 	RedirectPoolsStickySessionConfig *ElbL7policyRedirectPoolsStickySessionConfig `pulumi:"redirectPoolsStickySessionConfig"`
 	RedirectUrlConfig                *ElbL7policyRedirectUrlConfig                `pulumi:"redirectUrlConfig"`
-	// The region in which to create the L7 Policy resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Policy.
-	Region    *string `pulumi:"region"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	Region                           *string                                      `pulumi:"region"`
+	UpdatedAt                        *string                                      `pulumi:"updatedAt"`
 }
 
 type ElbL7policyState struct {
-	Action    pulumi.StringPtrInput
-	CreatedAt pulumi.StringPtrInput
-	// Human-readable description for the L7 Policy.
-	Description         pulumi.StringPtrInput
-	EnterpriseProjectId pulumi.StringPtrInput
-	FixedResponseConfig ElbL7policyFixedResponseConfigPtrInput
-	// The Listener on which the L7 Policy will be associated with. Changing
-	// this creates a new L7 Policy.
-	ListenerId pulumi.StringPtrInput
-	// Human-readable name for the L7 Policy. Does not have to be unique.
-	Name               pulumi.StringPtrInput
-	Priority           pulumi.IntPtrInput
-	ProvisioningStatus pulumi.StringPtrInput
-	RedirectListenerId pulumi.StringPtrInput
-	// Requests matching this policy will be redirected to the pool with this ID.
+	Action                           pulumi.StringPtrInput
+	CreatedAt                        pulumi.StringPtrInput
+	Description                      pulumi.StringPtrInput
+	EnterpriseProjectId              pulumi.StringPtrInput
+	FixedResponseConfig              ElbL7policyFixedResponseConfigPtrInput
+	ListenerId                       pulumi.StringPtrInput
+	Name                             pulumi.StringPtrInput
+	Priority                         pulumi.IntPtrInput
+	ProvisioningStatus               pulumi.StringPtrInput
+	RedirectListenerId               pulumi.StringPtrInput
 	RedirectPoolId                   pulumi.StringPtrInput
 	RedirectPoolsConfigs             ElbL7policyRedirectPoolsConfigArrayInput
 	RedirectPoolsExtendConfig        ElbL7policyRedirectPoolsExtendConfigPtrInput
 	RedirectPoolsStickySessionConfig ElbL7policyRedirectPoolsStickySessionConfigPtrInput
 	RedirectUrlConfig                ElbL7policyRedirectUrlConfigPtrInput
-	// The region in which to create the L7 Policy resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Policy.
-	Region    pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Region                           pulumi.StringPtrInput
+	UpdatedAt                        pulumi.StringPtrInput
 }
 
 func (ElbL7policyState) ElementType() reflect.Type {
@@ -174,50 +111,36 @@ func (ElbL7policyState) ElementType() reflect.Type {
 }
 
 type elbL7policyArgs struct {
-	Action *string `pulumi:"action"`
-	// Human-readable description for the L7 Policy.
-	Description         *string                         `pulumi:"description"`
-	FixedResponseConfig *ElbL7policyFixedResponseConfig `pulumi:"fixedResponseConfig"`
-	// The Listener on which the L7 Policy will be associated with. Changing
-	// this creates a new L7 Policy.
-	ListenerId string `pulumi:"listenerId"`
-	// Human-readable name for the L7 Policy. Does not have to be unique.
-	Name               *string `pulumi:"name"`
-	Priority           *int    `pulumi:"priority"`
-	RedirectListenerId *string `pulumi:"redirectListenerId"`
-	// Requests matching this policy will be redirected to the pool with this ID.
+	Action                           *string                                      `pulumi:"action"`
+	Description                      *string                                      `pulumi:"description"`
+	FixedResponseConfig              *ElbL7policyFixedResponseConfig              `pulumi:"fixedResponseConfig"`
+	ListenerId                       string                                       `pulumi:"listenerId"`
+	Name                             *string                                      `pulumi:"name"`
+	Priority                         *int                                         `pulumi:"priority"`
+	RedirectListenerId               *string                                      `pulumi:"redirectListenerId"`
 	RedirectPoolId                   *string                                      `pulumi:"redirectPoolId"`
 	RedirectPoolsConfigs             []ElbL7policyRedirectPoolsConfig             `pulumi:"redirectPoolsConfigs"`
 	RedirectPoolsExtendConfig        *ElbL7policyRedirectPoolsExtendConfig        `pulumi:"redirectPoolsExtendConfig"`
 	RedirectPoolsStickySessionConfig *ElbL7policyRedirectPoolsStickySessionConfig `pulumi:"redirectPoolsStickySessionConfig"`
 	RedirectUrlConfig                *ElbL7policyRedirectUrlConfig                `pulumi:"redirectUrlConfig"`
-	// The region in which to create the L7 Policy resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Policy.
-	Region *string `pulumi:"region"`
+	Region                           *string                                      `pulumi:"region"`
 }
 
 // The set of arguments for constructing a ElbL7policy resource.
 type ElbL7policyArgs struct {
-	Action pulumi.StringPtrInput
-	// Human-readable description for the L7 Policy.
-	Description         pulumi.StringPtrInput
-	FixedResponseConfig ElbL7policyFixedResponseConfigPtrInput
-	// The Listener on which the L7 Policy will be associated with. Changing
-	// this creates a new L7 Policy.
-	ListenerId pulumi.StringInput
-	// Human-readable name for the L7 Policy. Does not have to be unique.
-	Name               pulumi.StringPtrInput
-	Priority           pulumi.IntPtrInput
-	RedirectListenerId pulumi.StringPtrInput
-	// Requests matching this policy will be redirected to the pool with this ID.
+	Action                           pulumi.StringPtrInput
+	Description                      pulumi.StringPtrInput
+	FixedResponseConfig              ElbL7policyFixedResponseConfigPtrInput
+	ListenerId                       pulumi.StringInput
+	Name                             pulumi.StringPtrInput
+	Priority                         pulumi.IntPtrInput
+	RedirectListenerId               pulumi.StringPtrInput
 	RedirectPoolId                   pulumi.StringPtrInput
 	RedirectPoolsConfigs             ElbL7policyRedirectPoolsConfigArrayInput
 	RedirectPoolsExtendConfig        ElbL7policyRedirectPoolsExtendConfigPtrInput
 	RedirectPoolsStickySessionConfig ElbL7policyRedirectPoolsStickySessionConfigPtrInput
 	RedirectUrlConfig                ElbL7policyRedirectUrlConfigPtrInput
-	// The region in which to create the L7 Policy resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new L7 Policy.
-	Region pulumi.StringPtrInput
+	Region                           pulumi.StringPtrInput
 }
 
 func (ElbL7policyArgs) ElementType() reflect.Type {
@@ -315,7 +238,6 @@ func (o ElbL7policyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Human-readable description for the L7 Policy.
 func (o ElbL7policyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -328,13 +250,10 @@ func (o ElbL7policyOutput) FixedResponseConfig() ElbL7policyFixedResponseConfigO
 	return o.ApplyT(func(v *ElbL7policy) ElbL7policyFixedResponseConfigOutput { return v.FixedResponseConfig }).(ElbL7policyFixedResponseConfigOutput)
 }
 
-// The Listener on which the L7 Policy will be associated with. Changing
-// this creates a new L7 Policy.
 func (o ElbL7policyOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringOutput { return v.ListenerId }).(pulumi.StringOutput)
 }
 
-// Human-readable name for the L7 Policy. Does not have to be unique.
 func (o ElbL7policyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -351,7 +270,6 @@ func (o ElbL7policyOutput) RedirectListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringOutput { return v.RedirectListenerId }).(pulumi.StringOutput)
 }
 
-// Requests matching this policy will be redirected to the pool with this ID.
 func (o ElbL7policyOutput) RedirectPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringOutput { return v.RedirectPoolId }).(pulumi.StringOutput)
 }
@@ -374,8 +292,6 @@ func (o ElbL7policyOutput) RedirectUrlConfig() ElbL7policyRedirectUrlConfigOutpu
 	return o.ApplyT(func(v *ElbL7policy) ElbL7policyRedirectUrlConfigOutput { return v.RedirectUrlConfig }).(ElbL7policyRedirectUrlConfigOutput)
 }
 
-// The region in which to create the L7 Policy resource. If omitted, the
-// provider-level region will be used. Changing this creates a new L7 Policy.
 func (o ElbL7policyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbL7policy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

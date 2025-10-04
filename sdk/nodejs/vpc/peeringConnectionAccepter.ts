@@ -32,40 +32,14 @@ export class PeeringConnectionAccepter extends pulumi.CustomResource {
         return obj['__pulumiType'] === PeeringConnectionAccepter.__pulumiType;
     }
 
-    /**
-     * Whether or not to accept the peering request. Defaults to `false`.
-     */
     declare public readonly accept: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly description: pulumi.Output<string>;
-    /**
-     * The VPC peering connection name.
-     */
     declare public /*out*/ readonly name: pulumi.Output<string>;
-    /**
-     * The Tenant Id of the accepter tenant.
-     */
     declare public /*out*/ readonly peerTenantId: pulumi.Output<string>;
-    /**
-     * The VPC ID of the accepter tenant.
-     */
     declare public /*out*/ readonly peerVpcId: pulumi.Output<string>;
-    /**
-     * The region in which to create the vpc peering connection accepter. If omitted,
-     * the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The VPC peering connection status.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * The ID of requester VPC involved in a VPC peering connection.
-     */
     declare public /*out*/ readonly vpcId: pulumi.Output<string>;
-    /**
-     * The VPC Peering Connection ID to manage. Changing this
-     * creates a new VPC peering connection accepter.
-     */
     declare public readonly vpcPeeringConnectionId: pulumi.Output<string>;
 
     /**
@@ -114,40 +88,14 @@ export class PeeringConnectionAccepter extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PeeringConnectionAccepter resources.
  */
 export interface PeeringConnectionAccepterState {
-    /**
-     * Whether or not to accept the peering request. Defaults to `false`.
-     */
     accept?: pulumi.Input<boolean>;
     description?: pulumi.Input<string>;
-    /**
-     * The VPC peering connection name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The Tenant Id of the accepter tenant.
-     */
     peerTenantId?: pulumi.Input<string>;
-    /**
-     * The VPC ID of the accepter tenant.
-     */
     peerVpcId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the vpc peering connection accepter. If omitted,
-     * the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The VPC peering connection status.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * The ID of requester VPC involved in a VPC peering connection.
-     */
     vpcId?: pulumi.Input<string>;
-    /**
-     * The VPC Peering Connection ID to manage. Changing this
-     * creates a new VPC peering connection accepter.
-     */
     vpcPeeringConnectionId?: pulumi.Input<string>;
 }
 
@@ -155,18 +103,7 @@ export interface PeeringConnectionAccepterState {
  * The set of arguments for constructing a PeeringConnectionAccepter resource.
  */
 export interface PeeringConnectionAccepterArgs {
-    /**
-     * Whether or not to accept the peering request. Defaults to `false`.
-     */
     accept?: pulumi.Input<boolean>;
-    /**
-     * The region in which to create the vpc peering connection accepter. If omitted,
-     * the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The VPC Peering Connection ID to manage. Changing this
-     * creates a new VPC peering connection accepter.
-     */
     vpcPeeringConnectionId: pulumi.Input<string>;
 }

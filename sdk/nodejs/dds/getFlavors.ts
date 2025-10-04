@@ -6,21 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an available SberCloud dds flavor.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavor = sbercloud.Dds.getFlavors({
- *     engineName: "DDS-Community",
- *     vcpus: "8",
- * });
- * ```
- */
 export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Dds/getFlavors:getFlavors", {
@@ -36,25 +21,10 @@ export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsArgs {
-    /**
-     * Specifies the engine name of the dds, "DDS-Community" and "DDS-Enhanced" are supported.
-     */
     engineName: string;
-    /**
-     * Specifies the ram of the dds flavor in GB.
-     */
     memory?: string;
-    /**
-     * Specifies the region in which to obtain the V3 dds client. If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-     */
     type?: string;
-    /**
-     * Specifies the vcpus of the dds flavor.
-     */
     vcpus?: string;
 }
 
@@ -63,43 +33,16 @@ export interface GetFlavorsArgs {
  */
 export interface GetFlavorsResult {
     readonly engineName: string;
-    /**
-     * Indicates the flavors information. Structure is documented below.
-     */
     readonly flavors: outputs.Dds.GetFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * See 'memory' above.
-     */
     readonly memory?: string;
     readonly region: string;
-    /**
-     * See `type` above.
-     */
     readonly type?: string;
-    /**
-     * See `vcpus` above.
-     */
     readonly vcpus?: string;
 }
-/**
- * Use this data source to get the ID of an available SberCloud dds flavor.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavor = sbercloud.Dds.getFlavors({
- *     engineName: "DDS-Community",
- *     vcpus: "8",
- * });
- * ```
- */
 export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Dds/getFlavors:getFlavors", {
@@ -115,24 +58,9 @@ export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getFlavors.
  */
 export interface GetFlavorsOutputArgs {
-    /**
-     * Specifies the engine name of the dds, "DDS-Community" and "DDS-Enhanced" are supported.
-     */
     engineName: pulumi.Input<string>;
-    /**
-     * Specifies the ram of the dds flavor in GB.
-     */
     memory?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the V3 dds client. If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the type of the dds falvor. "mongos", "shard", "config", "replica" and "single" are supported.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies the vcpus of the dds flavor.
-     */
     vcpus?: pulumi.Input<string>;
 }

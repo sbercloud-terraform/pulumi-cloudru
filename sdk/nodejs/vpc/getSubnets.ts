@@ -6,54 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of VPC subnet.
- *
- * ## Example Usage
- *
- * An example filter by name and tag
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const subnet = sbercloud.Vpc.getSubnets({
- *     name: subnetName,
- *     tags: {
- *         foo: "bar,value",
- *     },
- * });
- * export const subnetVpcIds = subnet.then(subnet => subnet.subnets.map(__item => __item.vpcId));
- * ```
- *
- * ## **Attributes Reference**
- *
- * The following attributes are exported:
- *
- * * `id` - Indicates a data source ID.
- * * `subnets` - Indicates a list of all subnets found. Structure is documented below.
- *
- * The `subnets` block supports:
- *
- * * `id` - Indicates the ID of the subnet.
- * * `name` - Indicates the name of the subnet.
- * * `cidr` - Indicates the cidr block of the subnet.
- * * `status` - Indicates the current status of the subnet.
- * * `vpcId` - Indicates the Id of the VPC that the subnet belongs to.
- * * `gatewayIp` - Indicates the subnet gateway address of the subnet.
- * * `primaryDns` - Indicates the IP address of DNS server 1 on the subnet.
- * * `secondaryDns` - Indicates the IP address of DNS server 2 on the subnet.
- * * `availabilityZone` - Indicates the availability zone (AZ) to which the subnet belongs to.
- * * `subnetId` - Indicates the subnet (Native OpenStack API) ID.
- * * `dhcpEnable` - Indicates whether the DHCP is enabled.
- * * `dnsList` - Indicates The IP address list of DNS servers on the subnet.
- * * `ipv4SubnetId` - Indicates the ID of the IPv4 subnet (Native OpenStack API).
- * * `ipv6Enable` - Indicates whether the IPv6 is enabled.
- * * `ipv6SubnetId` - Indicates the ID of the IPv6 subnet (Native OpenStack API).
- * * `ipv6Cidr` - Indicates the IPv6 subnet CIDR block.
- * * `ipv6Gateway` - Indicates the IPv6 subnet gateway.
- * * `tags` - Indicates the key/value pairs which associated with the subnet.
- */
 export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -76,56 +28,16 @@ export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getSubnets.
  */
 export interface GetSubnetsArgs {
-    /**
-     * Specifies the availability zone (AZ) to which the desired subnet belongs to.
-     */
     availabilityZone?: string;
-    /**
-     * Specifies the network segment of desired subnet. The value must be in CIDR format.
-     */
     cidr?: string;
-    /**
-     * Specifies the subnet gateway address of desired subnet.
-     */
     gatewayIp?: string;
-    /**
-     * Specifies the id of the desired subnet.
-     */
     id?: string;
-    /**
-     * Specifies the name of the desired subnet.
-     */
     name?: string;
-    /**
-     * Specifies the IP address of DNS server 1 on the desired subnet.
-     */
     primaryDns?: string;
-    /**
-     * Specifies the region in which to obtain the subnet. If omitted, the provider-level
-     * region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the IP address of DNS server 2 on the desired subnet.
-     */
     secondaryDns?: string;
-    /**
-     * Specifies the current status of the desired subnet.
-     * the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-     */
     status?: string;
-    /**
-     * Specifies the included key/value pairs which associated with the desired subnet.
-     *
-     * > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-     * The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-     * tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-     * The values are in the OR relationship.
-     */
     tags?: {[key: string]: string};
-    /**
-     * Specifies the id of the VPC that the desired subnet belongs to.
-     */
     vpcId?: string;
 }
 
@@ -146,54 +58,6 @@ export interface GetSubnetsResult {
     readonly tags?: {[key: string]: string};
     readonly vpcId?: string;
 }
-/**
- * Use this data source to get a list of VPC subnet.
- *
- * ## Example Usage
- *
- * An example filter by name and tag
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const subnet = sbercloud.Vpc.getSubnets({
- *     name: subnetName,
- *     tags: {
- *         foo: "bar,value",
- *     },
- * });
- * export const subnetVpcIds = subnet.then(subnet => subnet.subnets.map(__item => __item.vpcId));
- * ```
- *
- * ## **Attributes Reference**
- *
- * The following attributes are exported:
- *
- * * `id` - Indicates a data source ID.
- * * `subnets` - Indicates a list of all subnets found. Structure is documented below.
- *
- * The `subnets` block supports:
- *
- * * `id` - Indicates the ID of the subnet.
- * * `name` - Indicates the name of the subnet.
- * * `cidr` - Indicates the cidr block of the subnet.
- * * `status` - Indicates the current status of the subnet.
- * * `vpcId` - Indicates the Id of the VPC that the subnet belongs to.
- * * `gatewayIp` - Indicates the subnet gateway address of the subnet.
- * * `primaryDns` - Indicates the IP address of DNS server 1 on the subnet.
- * * `secondaryDns` - Indicates the IP address of DNS server 2 on the subnet.
- * * `availabilityZone` - Indicates the availability zone (AZ) to which the subnet belongs to.
- * * `subnetId` - Indicates the subnet (Native OpenStack API) ID.
- * * `dhcpEnable` - Indicates whether the DHCP is enabled.
- * * `dnsList` - Indicates The IP address list of DNS servers on the subnet.
- * * `ipv4SubnetId` - Indicates the ID of the IPv4 subnet (Native OpenStack API).
- * * `ipv6Enable` - Indicates whether the IPv6 is enabled.
- * * `ipv6SubnetId` - Indicates the ID of the IPv6 subnet (Native OpenStack API).
- * * `ipv6Cidr` - Indicates the IPv6 subnet CIDR block.
- * * `ipv6Gateway` - Indicates the IPv6 subnet gateway.
- * * `tags` - Indicates the key/value pairs which associated with the subnet.
- */
 export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -216,55 +80,15 @@ export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getSubnets.
  */
 export interface GetSubnetsOutputArgs {
-    /**
-     * Specifies the availability zone (AZ) to which the desired subnet belongs to.
-     */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * Specifies the network segment of desired subnet. The value must be in CIDR format.
-     */
     cidr?: pulumi.Input<string>;
-    /**
-     * Specifies the subnet gateway address of desired subnet.
-     */
     gatewayIp?: pulumi.Input<string>;
-    /**
-     * Specifies the id of the desired subnet.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the desired subnet.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address of DNS server 1 on the desired subnet.
-     */
     primaryDns?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the subnet. If omitted, the provider-level
-     * region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address of DNS server 2 on the desired subnet.
-     */
     secondaryDns?: pulumi.Input<string>;
-    /**
-     * Specifies the current status of the desired subnet.
-     * the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the included key/value pairs which associated with the desired subnet.
-     *
-     * > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-     * The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-     * tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-     * The values are in the OR relationship.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the id of the VPC that the desired subnet belongs to.
-     */
     vpcId?: pulumi.Input<string>;
 }

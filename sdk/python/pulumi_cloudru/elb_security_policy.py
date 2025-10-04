@@ -30,29 +30,10 @@ class ElbSecurityPolicyArgs:
         """
         The set of arguments for constructing a ElbSecurityPolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: Specifies the cipher suite list of the security policy.
-               The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-               ciphers that matches the protocol. The following cipher suites are supported:
-               **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-               **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-               **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-               **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-               **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-               **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-               **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-               **TLS_AES_128_CCM_8_SHA256**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Specifies the TSL protocol list which the security policy select.
-               Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy.
-               The value can contain 0 to 255 characters.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise
-               router belongs.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy
+        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise router belongs.
         :param pulumi.Input[_builtins.str] name: Specifies the ELB security policy name.
-               The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-               and cannot exceed 255 characters.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "ciphers", ciphers)
         pulumi.set(__self__, "protocols", protocols)
@@ -70,16 +51,6 @@ class ElbSecurityPolicyArgs:
     def ciphers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         Specifies the cipher suite list of the security policy.
-        The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-        ciphers that matches the protocol. The following cipher suites are supported:
-        **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-        **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-        **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-        **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-        **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-        **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-        **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-        **TLS_AES_128_CCM_8_SHA256**.
         """
         return pulumi.get(self, "ciphers")
 
@@ -92,7 +63,6 @@ class ElbSecurityPolicyArgs:
     def protocols(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
         Specifies the TSL protocol list which the security policy select.
-        Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         """
         return pulumi.get(self, "protocols")
 
@@ -104,8 +74,7 @@ class ElbSecurityPolicyArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the ELB security policy.
-        The value can contain 0 to 255 characters.
+        Specifies the description of the ELB security policy
         """
         return pulumi.get(self, "description")
 
@@ -117,10 +86,7 @@ class ElbSecurityPolicyArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the enterprise project ID to which the Enterprise
-        router belongs.
-
-        Changing this parameter will create a new resource.
+        Specifies the enterprise project ID to which the Enterprise router belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -133,8 +99,6 @@ class ElbSecurityPolicyArgs:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ELB security policy name.
-        The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-        and cannot exceed 255 characters.
         """
         return pulumi.get(self, "name")
 
@@ -145,10 +109,6 @@ class ElbSecurityPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -171,31 +131,11 @@ class _ElbSecurityPolicyState:
         """
         Input properties used for looking up and filtering ElbSecurityPolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: Specifies the cipher suite list of the security policy.
-               The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-               ciphers that matches the protocol. The following cipher suites are supported:
-               **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-               **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-               **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-               **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-               **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-               **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-               **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-               **TLS_AES_128_CCM_8_SHA256**.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy.
-               The value can contain 0 to 255 characters.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise
-               router belongs.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy
+        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise router belongs.
         :param pulumi.Input[Sequence[pulumi.Input['ElbSecurityPolicyListenerArgs']]] listeners: The listener which the security policy associated with.
-               The ListenerRef structure is documented below.
         :param pulumi.Input[_builtins.str] name: Specifies the ELB security policy name.
-               The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-               and cannot exceed 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Specifies the TSL protocol list which the security policy select.
-               Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         if ciphers is not None:
             pulumi.set(__self__, "ciphers", ciphers)
@@ -221,16 +161,6 @@ class _ElbSecurityPolicyState:
     def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the cipher suite list of the security policy.
-        The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-        ciphers that matches the protocol. The following cipher suites are supported:
-        **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-        **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-        **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-        **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-        **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-        **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-        **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-        **TLS_AES_128_CCM_8_SHA256**.
         """
         return pulumi.get(self, "ciphers")
 
@@ -251,8 +181,7 @@ class _ElbSecurityPolicyState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the ELB security policy.
-        The value can contain 0 to 255 characters.
+        Specifies the description of the ELB security policy
         """
         return pulumi.get(self, "description")
 
@@ -264,10 +193,7 @@ class _ElbSecurityPolicyState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the enterprise project ID to which the Enterprise
-        router belongs.
-
-        Changing this parameter will create a new resource.
+        Specifies the enterprise project ID to which the Enterprise router belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -280,7 +206,6 @@ class _ElbSecurityPolicyState:
     def listeners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ElbSecurityPolicyListenerArgs']]]]:
         """
         The listener which the security policy associated with.
-        The ListenerRef structure is documented below.
         """
         return pulumi.get(self, "listeners")
 
@@ -293,8 +218,6 @@ class _ElbSecurityPolicyState:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ELB security policy name.
-        The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-        and cannot exceed 255 characters.
         """
         return pulumi.get(self, "name")
 
@@ -307,7 +230,6 @@ class _ElbSecurityPolicyState:
     def protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies the TSL protocol list which the security policy select.
-        Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         """
         return pulumi.get(self, "protocols")
 
@@ -318,10 +240,6 @@ class _ElbSecurityPolicyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -352,63 +270,14 @@ class ElbSecurityPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB security policy resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.ElbSecurityPolicy("test",
-            name="security_policy_test",
-            description="this is a security policy",
-            protocols=[
-                "TLSv1",
-                "TLSv1.1",
-                "TLSv1.2",
-                "TLSv1.3",
-            ],
-            ciphers=[
-                "ECDHE-RSA-AES256-GCM-SHA384",
-                "ECDHE-RSA-AES128-GCM-SHA256",
-            ])
-        ```
-
-        ## Import
-
-        The elb security policies can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a ElbSecurityPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: Specifies the cipher suite list of the security policy.
-               The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-               ciphers that matches the protocol. The following cipher suites are supported:
-               **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-               **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-               **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-               **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-               **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-               **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-               **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-               **TLS_AES_128_CCM_8_SHA256**.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy.
-               The value can contain 0 to 255 characters.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise
-               router belongs.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy
+        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise router belongs.
         :param pulumi.Input[_builtins.str] name: Specifies the ELB security policy name.
-               The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-               and cannot exceed 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Specifies the TSL protocol list which the security policy select.
-               Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -417,37 +286,7 @@ class ElbSecurityPolicy(pulumi.CustomResource):
                  args: ElbSecurityPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB security policy resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.ElbSecurityPolicy("test",
-            name="security_policy_test",
-            description="this is a security policy",
-            protocols=[
-                "TLSv1",
-                "TLSv1.1",
-                "TLSv1.2",
-                "TLSv1.3",
-            ],
-            ciphers=[
-                "ECDHE-RSA-AES256-GCM-SHA384",
-                "ECDHE-RSA-AES128-GCM-SHA256",
-            ])
-        ```
-
-        ## Import
-
-        The elb security policies can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbSecurityPolicy:ElbSecurityPolicy test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a ElbSecurityPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbSecurityPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -518,31 +357,11 @@ class ElbSecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ciphers: Specifies the cipher suite list of the security policy.
-               The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-               ciphers that matches the protocol. The following cipher suites are supported:
-               **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-               **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-               **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-               **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-               **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-               **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-               **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-               **TLS_AES_128_CCM_8_SHA256**.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy.
-               The value can contain 0 to 255 characters.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise
-               router belongs.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: Specifies the description of the ELB security policy
+        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the Enterprise router belongs.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ElbSecurityPolicyListenerArgs', 'ElbSecurityPolicyListenerArgsDict']]]] listeners: The listener which the security policy associated with.
-               The ListenerRef structure is documented below.
         :param pulumi.Input[_builtins.str] name: Specifies the ELB security policy name.
-               The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-               and cannot exceed 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] protocols: Specifies the TSL protocol list which the security policy select.
-               Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -564,16 +383,6 @@ class ElbSecurityPolicy(pulumi.CustomResource):
     def ciphers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Specifies the cipher suite list of the security policy.
-        The protocol and cipher suite must match. That is to say, there must be at least one cipher suite in
-        ciphers that matches the protocol. The following cipher suites are supported:
-        **ECDHE-RSA-AES256-GCM-SHA384**, **ECDHE-RSA-AES128-GCM-SHA256**, **ECDHE-ECDSA-AES256-GCM-SHA384**,
-        **ECDHE-ECDSA-AES128-GCM-SHA256**, **AES128-GCM-SHA256**, **AES256-GCM-SHA384**, **ECDHE-ECDSA-AES128-SHA256**,
-        **ECDHE-RSA-AES128-SHA256**, **AES128-SHA256**, **AES256-SHA256**, **ECDHE-ECDSA-AES256-SHA384**,
-        **ECDHE-RSA-AES256-SHA384**, **ECDHE-ECDSA-AES128-SHA**, **ECDHE-RSA-AES128-SHA**, **ECDHE-RSA-AES256-SHA**,
-        **ECDHE-ECDSA-AES256-SHA**, **AES128-SHA**, **AES256-SHA**, **CAMELLIA128-SHA**, **DES-CBC3-SHA**,
-        **CAMELLIA256-SHA**, **ECDHE-RSA-CHACHA20-POLY1305**, **ECDHE-ECDSA-CHACHA20-POLY1305**, **TLS_AES_128_GCM_SHA256**,
-        **TLS_AES_256_GCM_SHA384**, **TLS_CHACHA20_POLY1305_SHA256**, **TLS_AES_128_CCM_SHA256**,
-        **TLS_AES_128_CCM_8_SHA256**.
         """
         return pulumi.get(self, "ciphers")
 
@@ -586,8 +395,7 @@ class ElbSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the description of the ELB security policy.
-        The value can contain 0 to 255 characters.
+        Specifies the description of the ELB security policy
         """
         return pulumi.get(self, "description")
 
@@ -595,10 +403,7 @@ class ElbSecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the enterprise project ID to which the Enterprise
-        router belongs.
-
-        Changing this parameter will create a new resource.
+        Specifies the enterprise project ID to which the Enterprise router belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -607,7 +412,6 @@ class ElbSecurityPolicy(pulumi.CustomResource):
     def listeners(self) -> pulumi.Output[Sequence['outputs.ElbSecurityPolicyListener']]:
         """
         The listener which the security policy associated with.
-        The ListenerRef structure is documented below.
         """
         return pulumi.get(self, "listeners")
 
@@ -616,8 +420,6 @@ class ElbSecurityPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ELB security policy name.
-        The name contains only Chinese characters, letters, digits, underscores (_), and hyphens (-),
-        and cannot exceed 255 characters.
         """
         return pulumi.get(self, "name")
 
@@ -626,17 +428,12 @@ class ElbSecurityPolicy(pulumi.CustomResource):
     def protocols(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         Specifies the TSL protocol list which the security policy select.
-        Value options: **TLSv1**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
         """
         return pulumi.get(self, "protocols")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

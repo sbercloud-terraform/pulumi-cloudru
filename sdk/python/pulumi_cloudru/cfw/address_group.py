@@ -27,13 +27,9 @@ class AddressGroupArgs:
         """
         The set of arguments for constructing a AddressGroup resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] address_type: The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        :param pulumi.Input[_builtins.int] address_type: schema: Computed; Specifies the Address type.
         :param pulumi.Input[_builtins.str] description: Specifies the Address group description.
         :param pulumi.Input[_builtins.str] name: Specifies the IP address group name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "object_id", object_id)
         if address_type is not None:
@@ -50,8 +46,6 @@ class AddressGroupArgs:
     def object_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -63,7 +57,7 @@ class AddressGroupArgs:
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        schema: Computed; Specifies the Address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -98,10 +92,6 @@ class AddressGroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -119,14 +109,10 @@ class _AddressGroupState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressGroup resources.
-        :param pulumi.Input[_builtins.int] address_type: The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        :param pulumi.Input[_builtins.int] address_type: schema: Computed; Specifies the Address type.
         :param pulumi.Input[_builtins.str] description: Specifies the Address group description.
         :param pulumi.Input[_builtins.str] name: Specifies the IP address group name.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         if address_type is not None:
             pulumi.set(__self__, "address_type", address_type)
@@ -143,7 +129,7 @@ class _AddressGroupState:
     @pulumi.getter(name="addressType")
     def address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        schema: Computed; Specifies the Address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -180,8 +166,6 @@ class _AddressGroupState:
     def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -192,10 +176,6 @@ class _AddressGroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -216,45 +196,13 @@ class AddressGroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW IP address group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        test = sbercloud.Cfw.get_firewalls()
-        test_address_group = sbercloud.cfw.AddressGroup("test",
-            object_id=test.records[0].protect_objects[0].object_id,
-            name=name,
-            description=description)
-        ```
-
-        ## Import
-
-        The ipaddressgroup can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/addressGroup:AddressGroup test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a AddressGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] address_type: The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        :param pulumi.Input[_builtins.int] address_type: schema: Computed; Specifies the Address type.
         :param pulumi.Input[_builtins.str] description: Specifies the Address group description.
         :param pulumi.Input[_builtins.str] name: Specifies the IP address group name.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -263,35 +211,7 @@ class AddressGroup(pulumi.CustomResource):
                  args: AddressGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW IP address group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        test = sbercloud.Cfw.get_firewalls()
-        test_address_group = sbercloud.cfw.AddressGroup("test",
-            object_id=test.records[0].protect_objects[0].object_id,
-            name=name,
-            description=description)
-        ```
-
-        ## Import
-
-        The ipaddressgroup can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/addressGroup:AddressGroup test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a AddressGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AddressGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -350,14 +270,10 @@ class AddressGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] address_type: The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        :param pulumi.Input[_builtins.int] address_type: schema: Computed; Specifies the Address type.
         :param pulumi.Input[_builtins.str] description: Specifies the Address group description.
         :param pulumi.Input[_builtins.str] name: Specifies the IP address group name.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -374,7 +290,7 @@ class AddressGroup(pulumi.CustomResource):
     @pulumi.getter(name="addressType")
     def address_type(self) -> pulumi.Output[_builtins.int]:
         """
-        The address type. The value can be **0** (IPv4) or **1** (IPv6).
+        schema: Computed; Specifies the Address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -399,17 +315,11 @@ class AddressGroup(pulumi.CustomResource):
     def object_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

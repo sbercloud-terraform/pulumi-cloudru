@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of keypairs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const keypairName = config.requireObject<any>("keypairName");
- * const test = sbercloud.Dew.getKeypairs({
- *     name: keypairName,
- * });
- * ```
- */
 export function getKeypairs(args?: GetKeypairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeypairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,26 +22,10 @@ export function getKeypairs(args?: GetKeypairsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getKeypairs.
  */
 export interface GetKeypairsArgs {
-    /**
-     * Specifies the fingerprint of the keypair.
-     */
     fingerprint?: string;
-    /**
-     * Indicates whether the private key is managed by sberCloud.
-     */
     isManaged?: boolean;
-    /**
-     * Specifies the name of the keypair.
-     */
     name?: string;
-    /**
-     * Specifies the imported OpenSSH-formatted public key.
-     */
     publicKey?: string;
-    /**
-     * Specifies the region in which to obtain the keypairs. If omitted, the provider-level
-     * region will be used.
-     */
     region?: string;
 }
 
@@ -65,48 +33,17 @@ export interface GetKeypairsArgs {
  * A collection of values returned by getKeypairs.
  */
 export interface GetKeypairsResult {
-    /**
-     * Indicates the fingerprint information about a keypair.
-     */
     readonly fingerprint?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Indicates whether the private key is managed by sberCloud.
-     */
     readonly isManaged?: boolean;
-    /**
-     * The KPS keypairs list.
-     */
     readonly keypairs: outputs.Dew.GetKeypairsKeypair[];
-    /**
-     * Indicates the name of the keypair.
-     */
     readonly name?: string;
-    /**
-     * Indicates the imported OpenSSH-formatted public key.
-     */
     readonly publicKey?: string;
     readonly region?: string;
 }
-/**
- * Use this data source to get a list of keypairs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const keypairName = config.requireObject<any>("keypairName");
- * const test = sbercloud.Dew.getKeypairs({
- *     name: keypairName,
- * });
- * ```
- */
 export function getKeypairsOutput(args?: GetKeypairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeypairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -123,25 +60,9 @@ export function getKeypairsOutput(args?: GetKeypairsOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getKeypairs.
  */
 export interface GetKeypairsOutputArgs {
-    /**
-     * Specifies the fingerprint of the keypair.
-     */
     fingerprint?: pulumi.Input<string>;
-    /**
-     * Indicates whether the private key is managed by sberCloud.
-     */
     isManaged?: pulumi.Input<boolean>;
-    /**
-     * Specifies the name of the keypair.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the imported OpenSSH-formatted public key.
-     */
     publicKey?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the keypairs. If omitted, the provider-level
-     * region will be used.
-     */
     region?: pulumi.Input<string>;
 }

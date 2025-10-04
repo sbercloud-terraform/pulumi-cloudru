@@ -34,19 +34,6 @@ class KafkaTopicArgs:
                  sync_replication: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a KafkaTopic resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the topic belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] partitions: Specifies the partition number. The value ranges from 1 to 100.
-        :param pulumi.Input[_builtins.int] aging_time: Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic. The name starts with a letter, consists of 4 to
-               64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-               resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka topic resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] replicas: Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] sync_flushing: Whether or not to enable synchronous flushing.
-        :param pulumi.Input[_builtins.bool] sync_replication: Whether or not to enable synchronous replication.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "partitions", partitions)
@@ -72,10 +59,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the DMS kafka instance to which the topic belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -85,9 +68,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the partition number. The value ranges from 1 to 100.
-        """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
@@ -97,9 +77,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter(name="agingTime")
     def aging_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        """
         return pulumi.get(self, "aging_time")
 
     @aging_time.setter
@@ -127,11 +104,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the topic. The name starts with a letter, consists of 4 to
-        64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -150,10 +122,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka topic resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -163,10 +131,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
@@ -176,9 +140,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter(name="syncFlushing")
     def sync_flushing(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to enable synchronous flushing.
-        """
         return pulumi.get(self, "sync_flushing")
 
     @sync_flushing.setter
@@ -188,9 +149,6 @@ class KafkaTopicArgs:
     @_builtins.property
     @pulumi.getter(name="syncReplication")
     def sync_replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to enable synchronous replication.
-        """
         return pulumi.get(self, "sync_replication")
 
     @sync_replication.setter
@@ -217,19 +175,6 @@ class _KafkaTopicState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaTopic resources.
-        :param pulumi.Input[_builtins.int] aging_time: Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the topic belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic. The name starts with a letter, consists of 4 to
-               64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-               resource.
-        :param pulumi.Input[_builtins.int] partitions: Specifies the partition number. The value ranges from 1 to 100.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka topic resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] replicas: Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] sync_flushing: Whether or not to enable synchronous flushing.
-        :param pulumi.Input[_builtins.bool] sync_replication: Whether or not to enable synchronous replication.
         """
         if aging_time is not None:
             pulumi.set(__self__, "aging_time", aging_time)
@@ -263,9 +208,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter(name="agingTime")
     def aging_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        """
         return pulumi.get(self, "aging_time")
 
     @aging_time.setter
@@ -302,10 +244,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the DMS kafka instance to which the topic belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -315,11 +253,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the topic. The name starts with a letter, consists of 4 to
-        64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -338,9 +271,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the partition number. The value ranges from 1 to 100.
-        """
         return pulumi.get(self, "partitions")
 
     @partitions.setter
@@ -359,10 +289,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka topic resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -372,10 +298,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter
     def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
@@ -385,9 +307,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter(name="syncFlushing")
     def sync_flushing(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to enable synchronous flushing.
-        """
         return pulumi.get(self, "sync_flushing")
 
     @sync_flushing.setter
@@ -397,9 +316,6 @@ class _KafkaTopicState:
     @_builtins.property
     @pulumi.getter(name="syncReplication")
     def sync_replication(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to enable synchronous replication.
-        """
         return pulumi.get(self, "sync_replication")
 
     @sync_replication.setter
@@ -435,45 +351,9 @@ class KafkaTopic(pulumi.CustomResource):
                  sync_replication: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Manages a DMS kafka topic resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        topic = sbercloud.dms.KafkaTopic("topic",
-            instance_id=kafka_instance_id,
-            name="topic_1",
-            partitions=20)
-        ```
-
-        ## Import
-
-        DMS kafka topics can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaTopic:KafkaTopic topic c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-        ```
-
+        Create a KafkaTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] aging_time: Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the topic belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic. The name starts with a letter, consists of 4 to
-               64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-               resource.
-        :param pulumi.Input[_builtins.int] partitions: Specifies the partition number. The value ranges from 1 to 100.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka topic resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] replicas: Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] sync_flushing: Whether or not to enable synchronous flushing.
-        :param pulumi.Input[_builtins.bool] sync_replication: Whether or not to enable synchronous replication.
         """
         ...
     @overload
@@ -482,30 +362,7 @@ class KafkaTopic(pulumi.CustomResource):
                  args: KafkaTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS kafka topic resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        topic = sbercloud.dms.KafkaTopic("topic",
-            instance_id=kafka_instance_id,
-            name="topic_1",
-            partitions=20)
-        ```
-
-        ## Import
-
-        DMS kafka topics can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaTopic:KafkaTopic topic c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-        ```
-
+        Create a KafkaTopic resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaTopicArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -590,19 +447,6 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] aging_time: Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the topic belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the topic. The name starts with a letter, consists of 4 to
-               64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-               resource.
-        :param pulumi.Input[_builtins.int] partitions: Specifies the partition number. The value ranges from 1 to 100.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka topic resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] replicas: Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] sync_flushing: Whether or not to enable synchronous flushing.
-        :param pulumi.Input[_builtins.bool] sync_replication: Whether or not to enable synchronous replication.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -627,9 +471,6 @@ class KafkaTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="agingTime")
     def aging_time(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the aging time in hours. The value ranges from 1 to 168 and defaults to 72.
-        """
         return pulumi.get(self, "aging_time")
 
     @_builtins.property
@@ -650,20 +491,11 @@ class KafkaTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the DMS kafka instance to which the topic belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the topic. The name starts with a letter, consists of 4 to
-        64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -674,9 +506,6 @@ class KafkaTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def partitions(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the partition number. The value ranges from 1 to 100.
-        """
         return pulumi.get(self, "partitions")
 
     @_builtins.property
@@ -687,35 +516,21 @@ class KafkaTopic(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DMS kafka topic resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def replicas(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the replica number. The value ranges from 1 to 3 and defaults to 3.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "replicas")
 
     @_builtins.property
     @pulumi.getter(name="syncFlushing")
     def sync_flushing(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether or not to enable synchronous flushing.
-        """
         return pulumi.get(self, "sync_flushing")
 
     @_builtins.property
     @pulumi.getter(name="syncReplication")
     def sync_replication(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether or not to enable synchronous replication.
-        """
         return pulumi.get(self, "sync_replication")
 
     @_builtins.property

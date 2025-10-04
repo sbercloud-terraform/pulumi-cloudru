@@ -4,39 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the DNS resolution result of a domain name.
- *
- * ## Example Usage
- *
- * ### DNS resolution result of a domain name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cfw.getDomainNameParseIpList({
- *     domainName: "www.cloud.ru",
- * });
- * ```
- *
- * ### DNS resolution result of a domain name in a domain name group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const domainNameGroupId = config.requireObject<any>("domainNameGroupId");
- * const domainAddressId = config.requireObject<any>("domainAddressId");
- * const test = sbercloud.Cfw.getDomainNameParseIpList({
- *     fwInstanceId: fwInstanceId,
- *     groupId: domainNameGroupId,
- *     domainAddressId: domainAddressId,
- * });
- * ```
- */
 export function getDomainNameParseIpList(args?: GetDomainNameParseIpListArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainNameParseIpListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,35 +22,12 @@ export function getDomainNameParseIpList(args?: GetDomainNameParseIpListArgs, op
  * A collection of arguments for invoking getDomainNameParseIpList.
  */
 export interface GetDomainNameParseIpListArgs {
-    /**
-     * Specifies the address type.
-     * The valid value can be **0** (IPv4) or **1** (IPv6).
-     */
     addressType?: string;
-    /**
-     * Specifies the domain name ID in a domain name group.
-     */
     domainAddressId?: string;
-    /**
-     * Specifies the domain name.
-     */
     domainName?: string;
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId?: string;
-    /**
-     * Specifies the domain name group ID.
-     */
     groupId?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -92,9 +36,6 @@ export interface GetDomainNameParseIpListArgs {
  */
 export interface GetDomainNameParseIpListResult {
     readonly addressType?: string;
-    /**
-     * The IP address list for domain name resolution.
-     */
     readonly datas: string[];
     readonly domainAddressId?: string;
     readonly domainName?: string;
@@ -107,39 +48,6 @@ export interface GetDomainNameParseIpListResult {
     readonly id: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the DNS resolution result of a domain name.
- *
- * ## Example Usage
- *
- * ### DNS resolution result of a domain name
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cfw.getDomainNameParseIpList({
- *     domainName: "www.cloud.ru",
- * });
- * ```
- *
- * ### DNS resolution result of a domain name in a domain name group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const domainNameGroupId = config.requireObject<any>("domainNameGroupId");
- * const domainAddressId = config.requireObject<any>("domainAddressId");
- * const test = sbercloud.Cfw.getDomainNameParseIpList({
- *     fwInstanceId: fwInstanceId,
- *     groupId: domainNameGroupId,
- *     domainAddressId: domainAddressId,
- * });
- * ```
- */
 export function getDomainNameParseIpListOutput(args?: GetDomainNameParseIpListOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainNameParseIpListResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -158,34 +66,11 @@ export function getDomainNameParseIpListOutput(args?: GetDomainNameParseIpListOu
  * A collection of arguments for invoking getDomainNameParseIpList.
  */
 export interface GetDomainNameParseIpListOutputArgs {
-    /**
-     * Specifies the address type.
-     * The valid value can be **0** (IPv4) or **1** (IPv6).
-     */
     addressType?: pulumi.Input<string>;
-    /**
-     * Specifies the domain name ID in a domain name group.
-     */
     domainAddressId?: pulumi.Input<string>;
-    /**
-     * Specifies the domain name.
-     */
     domainName?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the domain name group ID.
-     */
     groupId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

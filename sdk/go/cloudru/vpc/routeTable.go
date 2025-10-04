@@ -12,134 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPC custom route table resource within SberCloud.
-//
-// > **NOTE:** To use a custom route table, you need to submit a service ticket to increase quota.
-//
-// ## Example Usage
-//
-// ### Basic Custom Route Table
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			vpcPeeringId := cfg.RequireObject("vpcPeeringId")
-//			_, err := vpc.NewRouteTable(ctx, "demo", &vpc.RouteTableArgs{
-//				Name:        pulumi.String("demo"),
-//				VpcId:       pulumi.Any(vpcId),
-//				Description: pulumi.String("a custom route table demo"),
-//				Routes: vpc.RouteTableRouteArray{
-//					&vpc.RouteTableRouteArgs{
-//						Destination: pulumi.String("172.16.0.0/16"),
-//						Type:        pulumi.String("peering"),
-//						Nexthop:     pulumi.Any(vpcPeeringId),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Associating Subnets with a Route Table
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			vpcPeeringId := cfg.RequireObject("vpcPeeringId")
-//			subnetIds, err := vpc.GetSubnetIds(ctx, &vpc.GetSubnetIdsArgs{
-//				VpcId: vpcId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewRouteTable(ctx, "demo", &vpc.RouteTableArgs{
-//				Name:    pulumi.String("demo"),
-//				VpcId:   pulumi.Any(vpcId),
-//				Subnets: interface{}(subnetIds.Ids),
-//				Routes: vpc.RouteTableRouteArray{
-//					&vpc.RouteTableRouteArgs{
-//						Destination: pulumi.String("172.16.0.0/16"),
-//						Type:        pulumi.String("peering"),
-//						Nexthop:     pulumi.Any(vpcPeeringId),
-//					},
-//					&vpc.RouteTableRouteArgs{
-//						Destination: pulumi.String("192.168.100.0/24"),
-//						Type:        pulumi.String("vip"),
-//						Nexthop:     pulumi.String("192.168.10.200"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// vpc route tables can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/routeTable:RouteTable demo e1b3208a-544b-42a7-84e6-5d70371dd982
-// ```
 type RouteTable struct {
 	pulumi.CustomResourceState
 
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the route table name. The value is a string of no more than
-	// 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the vpc route table.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the route object list. The route object
-	// is documented below.
-	//
-	// <a name="routeObject"></a>
-	// The `route` block supports:
-	Routes RouteTableRouteArrayOutput `pulumi:"routes"`
-	// Specifies an array of one or more subnets associating with the route table.
-	//
-	// > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-	// The default route table determines the inbound traffic.
-	Subnets pulumi.StringArrayOutput `pulumi:"subnets"`
-	// Specifies the VPC ID for which a route table is to be added.
-	// Changing this creates a new resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	Description pulumi.StringPtrOutput     `pulumi:"description"`
+	Name        pulumi.StringOutput        `pulumi:"name"`
+	Region      pulumi.StringOutput        `pulumi:"region"`
+	Routes      RouteTableRouteArrayOutput `pulumi:"routes"`
+	Subnets     pulumi.StringArrayOutput   `pulumi:"subnets"`
+	VpcId       pulumi.StringOutput        `pulumi:"vpcId"`
 }
 
 // NewRouteTable registers a new resource with the given unique name, arguments, and options.
@@ -175,55 +56,21 @@ func GetRouteTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouteTable resources.
 type routeTableState struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description *string `pulumi:"description"`
-	// Specifies the route table name. The value is a string of no more than
-	// 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name *string `pulumi:"name"`
-	// The region in which to create the vpc route table.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the route object list. The route object
-	// is documented below.
-	//
-	// <a name="routeObject"></a>
-	// The `route` block supports:
-	Routes []RouteTableRoute `pulumi:"routes"`
-	// Specifies an array of one or more subnets associating with the route table.
-	//
-	// > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-	// The default route table determines the inbound traffic.
-	Subnets []string `pulumi:"subnets"`
-	// Specifies the VPC ID for which a route table is to be added.
-	// Changing this creates a new resource.
-	VpcId *string `pulumi:"vpcId"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Region      *string           `pulumi:"region"`
+	Routes      []RouteTableRoute `pulumi:"routes"`
+	Subnets     []string          `pulumi:"subnets"`
+	VpcId       *string           `pulumi:"vpcId"`
 }
 
 type RouteTableState struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 	Description pulumi.StringPtrInput
-	// Specifies the route table name. The value is a string of no more than
-	// 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name pulumi.StringPtrInput
-	// The region in which to create the vpc route table.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the route object list. The route object
-	// is documented below.
-	//
-	// <a name="routeObject"></a>
-	// The `route` block supports:
-	Routes RouteTableRouteArrayInput
-	// Specifies an array of one or more subnets associating with the route table.
-	//
-	// > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-	// The default route table determines the inbound traffic.
-	Subnets pulumi.StringArrayInput
-	// Specifies the VPC ID for which a route table is to be added.
-	// Changing this creates a new resource.
-	VpcId pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	Routes      RouteTableRouteArrayInput
+	Subnets     pulumi.StringArrayInput
+	VpcId       pulumi.StringPtrInput
 }
 
 func (RouteTableState) ElementType() reflect.Type {
@@ -231,56 +78,22 @@ func (RouteTableState) ElementType() reflect.Type {
 }
 
 type routeTableArgs struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description *string `pulumi:"description"`
-	// Specifies the route table name. The value is a string of no more than
-	// 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name *string `pulumi:"name"`
-	// The region in which to create the vpc route table.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the route object list. The route object
-	// is documented below.
-	//
-	// <a name="routeObject"></a>
-	// The `route` block supports:
-	Routes []RouteTableRoute `pulumi:"routes"`
-	// Specifies an array of one or more subnets associating with the route table.
-	//
-	// > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-	// The default route table determines the inbound traffic.
-	Subnets []string `pulumi:"subnets"`
-	// Specifies the VPC ID for which a route table is to be added.
-	// Changing this creates a new resource.
-	VpcId string `pulumi:"vpcId"`
+	Description *string           `pulumi:"description"`
+	Name        *string           `pulumi:"name"`
+	Region      *string           `pulumi:"region"`
+	Routes      []RouteTableRoute `pulumi:"routes"`
+	Subnets     []string          `pulumi:"subnets"`
+	VpcId       string            `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a RouteTable resource.
 type RouteTableArgs struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 	Description pulumi.StringPtrInput
-	// Specifies the route table name. The value is a string of no more than
-	// 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-	Name pulumi.StringPtrInput
-	// The region in which to create the vpc route table.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the route object list. The route object
-	// is documented below.
-	//
-	// <a name="routeObject"></a>
-	// The `route` block supports:
-	Routes RouteTableRouteArrayInput
-	// Specifies an array of one or more subnets associating with the route table.
-	//
-	// > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-	// The default route table determines the inbound traffic.
-	Subnets pulumi.StringArrayInput
-	// Specifies the VPC ID for which a route table is to be added.
-	// Changing this creates a new resource.
-	VpcId pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	Routes      RouteTableRouteArrayInput
+	Subnets     pulumi.StringArrayInput
+	VpcId       pulumi.StringInput
 }
 
 func (RouteTableArgs) ElementType() reflect.Type {
@@ -370,43 +183,26 @@ func (o RouteTableOutput) ToRouteTableOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
-// Specifies the supplementary information about the route.
-// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 func (o RouteTableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the route table name. The value is a string of no more than
-// 64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
 func (o RouteTableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the vpc route table.
-// If omitted, the provider-level region will be used. Changing this creates a new resource.
 func (o RouteTableOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the route object list. The route object
-// is documented below.
-//
-// <a name="routeObject"></a>
-// The `route` block supports:
 func (o RouteTableOutput) Routes() RouteTableRouteArrayOutput {
 	return o.ApplyT(func(v *RouteTable) RouteTableRouteArrayOutput { return v.Routes }).(RouteTableRouteArrayOutput)
 }
 
-// Specifies an array of one or more subnets associating with the route table.
-//
-// > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-// The default route table determines the inbound traffic.
 func (o RouteTableOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringArrayOutput { return v.Subnets }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the VPC ID for which a route table is to be added.
-// Changing this creates a new resource.
 func (o RouteTableOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DMS kafka consumer group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const kafkaInstanceId = config.requireObject<any>("kafkaInstanceId");
- * const group1 = new sbercloud.DmsKafkaConsumerGroup("group1", {
- *     instanceId: kafkaInstanceId,
- *     name: "group1",
- *     description: "Group description",
- * });
- * ```
- *
- * ## Import
- *
- * DMS kafka consumer groups can be imported using the kafka instance ID and consumer group name separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dmsKafkaConsumerGroup:DmsKafkaConsumerGroup user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/group1
- * ```
- */
 export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
     /**
      * Get an existing DmsKafkaConsumerGroup resource's state with the given name, ID, and optional extra
@@ -65,7 +37,7 @@ export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly coordinatorId: pulumi.Output<number>;
     /**
-     * Indicates the create time.
+     * Indicates the created time of the consumer group.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
@@ -73,8 +45,7 @@ export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-     * Changing this creates a new resource.
+     * Specifies the ID of the Kafka instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
@@ -82,13 +53,9 @@ export class DmsKafkaConsumerGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lag: pulumi.Output<number>;
     /**
-     * Specifies the name of the consumer group. Changing this creates a new resource.
+     * Specifies the name of the consumer group.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The region in which to create the DMS kafka consumer group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the state of the consumer group.
@@ -144,7 +111,7 @@ export interface DmsKafkaConsumerGroupState {
      */
     coordinatorId?: pulumi.Input<number>;
     /**
-     * Indicates the create time.
+     * Indicates the created time of the consumer group.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -152,8 +119,7 @@ export interface DmsKafkaConsumerGroupState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-     * Changing this creates a new resource.
+     * Specifies the ID of the Kafka instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -161,13 +127,9 @@ export interface DmsKafkaConsumerGroupState {
      */
     lag?: pulumi.Input<number>;
     /**
-     * Specifies the name of the consumer group. Changing this creates a new resource.
+     * Specifies the name of the consumer group.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the DMS kafka consumer group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Indicates the state of the consumer group.
@@ -184,17 +146,12 @@ export interface DmsKafkaConsumerGroupArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the DMS kafka instance to which the consumer group belongs.
-     * Changing this creates a new resource.
+     * Specifies the ID of the Kafka instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the name of the consumer group. Changing this creates a new resource.
+     * Specifies the name of the consumer group.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to create the DMS kafka consumer group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

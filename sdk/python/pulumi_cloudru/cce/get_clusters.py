@@ -67,25 +67,16 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> Optional[_builtins.str]:
-        """
-        The type of the cluster. Possible values: **VirtualMachine**, **ARM64**.
-        """
         return pulumi.get(self, "cluster_type")
 
     @_builtins.property
     @pulumi.getter
     def clusters(self) -> Sequence['outputs.GetClustersClusterResult']:
-        """
-        Indicates a list of CCE clusters found. Structure is documented below.
-        """
         return pulumi.get(self, "clusters")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID of the CCE cluster.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -99,17 +90,11 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        Indicates a list of IDs of all CCE clusters found.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The user name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -120,17 +105,11 @@ class GetClustersResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The status of the cluster.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[_builtins.str]:
-        """
-        The vpc ID of the cluster.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -161,29 +140,7 @@ def get_clusters(cluster_id: Optional[_builtins.str] = None,
                  vpc_id: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClustersResult:
     """
-    Use this data source to get a list of CCE clusters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_name = config.require_object("clusterName")
-    clusters = sbercloud.Cce.get_clusters(name=cluster_name,
-        status="Available")
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of the cluster.
-    :param _builtins.str cluster_type: Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the cluster.
-    :param _builtins.str name: Specifies the name of the cluster.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE clusters. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the cluster.
-    :param _builtins.str vpc_id: Specifies the VPC ID to which the cluster belongs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -216,29 +173,7 @@ def get_clusters_output(cluster_id: Optional[pulumi.Input[Optional[_builtins.str
                         vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
-    Use this data source to get a list of CCE clusters.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_name = config.require_object("clusterName")
-    clusters = sbercloud.Cce.get_clusters(name=cluster_name,
-        status="Available")
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of the cluster.
-    :param _builtins.str cluster_type: Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the cluster.
-    :param _builtins.str name: Specifies the name of the cluster.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE clusters. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the cluster.
-    :param _builtins.str vpc_id: Specifies the VPC ID to which the cluster belongs.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

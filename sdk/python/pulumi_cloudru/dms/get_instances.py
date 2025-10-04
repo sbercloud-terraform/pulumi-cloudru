@@ -59,9 +59,6 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID to which the instance belongs.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -90,17 +87,11 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
-        """
-        The result of the query's list of kafka instances. The structure is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The instance name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -111,9 +102,6 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The instance status.
-        """
         return pulumi.get(self, "status")
 
 
@@ -143,44 +131,7 @@ def get_instances(enterprise_project_id: Optional[_builtins.str] = None,
                   status: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    Use this data source to query the available instances within sbercloud DMS service.
-
-    ## Example Usage
-
-    ### Query all instances with the keyword in the name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    keyword = config.require_object("keyword")
-    test = sbercloud.Dms.get_instances(name=keyword,
-        fuzzy_match=True)
-    ```
-
-    ### Query the instance with the specified name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_name = config.require_object("instanceName")
-    test = sbercloud.Dms.get_instances(name=instance_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID to which all instances of the list
-           belong.
-    :param _builtins.bool fuzzy_match: Specifies whether to match the instance name fuzzily, the default is a exact
-           match (`flase`).
-    :param _builtins.bool include_failure: Specifies whether the query results contain instances that failed to create.
-    :param _builtins.str instance_id: Specifies the kafka instance ID to match exactly.
-    :param _builtins.str name: Specifies the kafka instance name for data-source queries.
-    :param _builtins.str region: The region in which to query the kafka instance list.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the kafka instance status for data-source queries.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -212,44 +163,7 @@ def get_instances_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
                          status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    Use this data source to query the available instances within sbercloud DMS service.
-
-    ## Example Usage
-
-    ### Query all instances with the keyword in the name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    keyword = config.require_object("keyword")
-    test = sbercloud.Dms.get_instances(name=keyword,
-        fuzzy_match=True)
-    ```
-
-    ### Query the instance with the specified name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_name = config.require_object("instanceName")
-    test = sbercloud.Dms.get_instances(name=instance_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID to which all instances of the list
-           belong.
-    :param _builtins.bool fuzzy_match: Specifies whether to match the instance name fuzzily, the default is a exact
-           match (`flase`).
-    :param _builtins.bool include_failure: Specifies whether the query results contain instances that failed to create.
-    :param _builtins.str instance_id: Specifies the kafka instance ID to match exactly.
-    :param _builtins.str name: Specifies the kafka instance name for data-source queries.
-    :param _builtins.str region: The region in which to query the kafka instance list.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the kafka instance status for data-source queries.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

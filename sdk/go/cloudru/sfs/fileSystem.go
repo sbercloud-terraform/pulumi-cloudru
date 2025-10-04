@@ -12,165 +12,27 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides a Shared File System (SFS) resource.
-//
-// ## Example Usage
-//
-// ### basic example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			shareName := cfg.RequireObject("shareName")
-//			shareDescription := cfg.RequireObject("shareDescription")
-//			vpcId := cfg.RequireObject("vpcId")
-//			_, err := sfs.NewFileSystem(ctx, "share-file", &sfs.FileSystemArgs{
-//				Name:        pulumi.Any(shareName),
-//				Size:        pulumi.Int(100),
-//				ShareProto:  pulumi.String("NFS"),
-//				AccessLevel: pulumi.String("rw"),
-//				AccessTo:    pulumi.Any(vpcId),
-//				Description: pulumi.Any(shareDescription),
-//				Tags: pulumi.StringMap{
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### sfs with data encryption
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dew"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			shareName := cfg.RequireObject("shareName")
-//			shareDescription := cfg.RequireObject("shareDescription")
-//			vpcId := cfg.RequireObject("vpcId")
-//			mykey, err := dew.NewKey(ctx, "mykey", &dew.KeyArgs{
-//				KeyAlias:    pulumi.String("kms_sfs"),
-//				PendingDays: pulumi.String("7"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sfs.NewFileSystem(ctx, "share-file", &sfs.FileSystemArgs{
-//				Name:        pulumi.Any(shareName),
-//				Size:        pulumi.Int(100),
-//				ShareProto:  pulumi.String("NFS"),
-//				AccessLevel: pulumi.String("rw"),
-//				AccessTo:    pulumi.Any(vpcId),
-//				Description: pulumi.Any(shareDescription),
-//				Metadata: pulumi.StringMap{
-//					"#sfs_crypt_key_id":    mykey.ID(),
-//					"#sfs_crypt_domain_id": mykey.DomainId,
-//					"#sfs_crypt_alias":     mykey.KeyAlias,
-//				},
-//				Tags: pulumi.StringMap{
-//					"function": pulumi.String("encryption"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// SFS can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Sfs/fileSystem:FileSystem sbercloud_sfs_file_system 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
-// ```
-//
-// Please importing them by sbercloud_sfs_access_rule.
 type FileSystem struct {
 	pulumi.CustomResourceState
 
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
-	// The status of the share access rule.
-	AccessRuleStatus pulumi.StringOutput `pulumi:"accessRuleStatus"`
-	// All access rules of the shared file system. The object includes the following:
-	AccessRules FileSystemAccessRuleArrayOutput `pulumi:"accessRules"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo pulumi.StringPtrOutput `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringOutput `pulumi:"accessType"`
-	// The availability zone name. Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Describes the shared file system.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// The enterprise project id of the shared file system. Changing this creates a new resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// The address for accessing the shared file system.
-	ExportLocation pulumi.StringOutput `pulumi:"exportLocation"`
-	// The level of visibility for the shared file system.
-	IsPublic pulumi.BoolPtrOutput `pulumi:"isPublic"`
-	// Metadata key and value pairs as a dictionary of strings.
-	// The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-	// and the keys should be exist at the same time to enable the data encryption function.
-	// Changing this will create a new resource.
-	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The name of the shared file system.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The UUID of the share access rule.
-	ShareAccessId pulumi.StringOutput `pulumi:"shareAccessId"`
-	// The protocol for sharing file systems. The default value is NFS.
-	ShareProto pulumi.StringPtrOutput `pulumi:"shareProto"`
-	// The size (GB) of the shared file system.
-	Size pulumi.IntOutput `pulumi:"size"`
-	// The status of the share access rule.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// The key/value pairs to associate with the shared file system.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	AccessLevel         pulumi.StringOutput             `pulumi:"accessLevel"`
+	AccessRuleStatus    pulumi.StringOutput             `pulumi:"accessRuleStatus"`
+	AccessRules         FileSystemAccessRuleArrayOutput `pulumi:"accessRules"`
+	AccessTo            pulumi.StringPtrOutput          `pulumi:"accessTo"`
+	AccessType          pulumi.StringOutput             `pulumi:"accessType"`
+	AvailabilityZone    pulumi.StringOutput             `pulumi:"availabilityZone"`
+	Description         pulumi.StringOutput             `pulumi:"description"`
+	EnterpriseProjectId pulumi.StringOutput             `pulumi:"enterpriseProjectId"`
+	ExportLocation      pulumi.StringOutput             `pulumi:"exportLocation"`
+	IsPublic            pulumi.BoolPtrOutput            `pulumi:"isPublic"`
+	Metadata            pulumi.StringMapOutput          `pulumi:"metadata"`
+	Name                pulumi.StringOutput             `pulumi:"name"`
+	Region              pulumi.StringOutput             `pulumi:"region"`
+	ShareAccessId       pulumi.StringOutput             `pulumi:"shareAccessId"`
+	ShareProto          pulumi.StringPtrOutput          `pulumi:"shareProto"`
+	Size                pulumi.IntOutput                `pulumi:"size"`
+	Status              pulumi.StringOutput             `pulumi:"status"`
+	Tags                pulumi.StringMapOutput          `pulumi:"tags"`
 }
 
 // NewFileSystem registers a new resource with the given unique name, arguments, and options.
@@ -206,113 +68,45 @@ func GetFileSystem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FileSystem resources.
 type fileSystemState struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel *string `pulumi:"accessLevel"`
-	// The status of the share access rule.
-	AccessRuleStatus *string `pulumi:"accessRuleStatus"`
-	// All access rules of the shared file system. The object includes the following:
-	AccessRules []FileSystemAccessRule `pulumi:"accessRules"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo *string `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType *string `pulumi:"accessType"`
-	// The availability zone name. Changing this parameter will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Describes the shared file system.
-	Description *string `pulumi:"description"`
-	// The enterprise project id of the shared file system. Changing this creates a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The address for accessing the shared file system.
-	ExportLocation *string `pulumi:"exportLocation"`
-	// The level of visibility for the shared file system.
-	IsPublic *bool `pulumi:"isPublic"`
-	// Metadata key and value pairs as a dictionary of strings.
-	// The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-	// and the keys should be exist at the same time to enable the data encryption function.
-	// Changing this will create a new resource.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The name of the shared file system.
-	Name *string `pulumi:"name"`
-	// The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-	Region *string `pulumi:"region"`
-	// The UUID of the share access rule.
-	ShareAccessId *string `pulumi:"shareAccessId"`
-	// The protocol for sharing file systems. The default value is NFS.
-	ShareProto *string `pulumi:"shareProto"`
-	// The size (GB) of the shared file system.
-	Size *int `pulumi:"size"`
-	// The status of the share access rule.
-	Status *string `pulumi:"status"`
-	// The key/value pairs to associate with the shared file system.
-	Tags map[string]string `pulumi:"tags"`
+	AccessLevel         *string                `pulumi:"accessLevel"`
+	AccessRuleStatus    *string                `pulumi:"accessRuleStatus"`
+	AccessRules         []FileSystemAccessRule `pulumi:"accessRules"`
+	AccessTo            *string                `pulumi:"accessTo"`
+	AccessType          *string                `pulumi:"accessType"`
+	AvailabilityZone    *string                `pulumi:"availabilityZone"`
+	Description         *string                `pulumi:"description"`
+	EnterpriseProjectId *string                `pulumi:"enterpriseProjectId"`
+	ExportLocation      *string                `pulumi:"exportLocation"`
+	IsPublic            *bool                  `pulumi:"isPublic"`
+	Metadata            map[string]string      `pulumi:"metadata"`
+	Name                *string                `pulumi:"name"`
+	Region              *string                `pulumi:"region"`
+	ShareAccessId       *string                `pulumi:"shareAccessId"`
+	ShareProto          *string                `pulumi:"shareProto"`
+	Size                *int                   `pulumi:"size"`
+	Status              *string                `pulumi:"status"`
+	Tags                map[string]string      `pulumi:"tags"`
 }
 
 type FileSystemState struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel pulumi.StringPtrInput
-	// The status of the share access rule.
-	AccessRuleStatus pulumi.StringPtrInput
-	// All access rules of the shared file system. The object includes the following:
-	AccessRules FileSystemAccessRuleArrayInput
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo pulumi.StringPtrInput
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringPtrInput
-	// The availability zone name. Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	// Describes the shared file system.
-	Description pulumi.StringPtrInput
-	// The enterprise project id of the shared file system. Changing this creates a new resource.
+	AccessLevel         pulumi.StringPtrInput
+	AccessRuleStatus    pulumi.StringPtrInput
+	AccessRules         FileSystemAccessRuleArrayInput
+	AccessTo            pulumi.StringPtrInput
+	AccessType          pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// The address for accessing the shared file system.
-	ExportLocation pulumi.StringPtrInput
-	// The level of visibility for the shared file system.
-	IsPublic pulumi.BoolPtrInput
-	// Metadata key and value pairs as a dictionary of strings.
-	// The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-	// and the keys should be exist at the same time to enable the data encryption function.
-	// Changing this will create a new resource.
-	Metadata pulumi.StringMapInput
-	// The name of the shared file system.
-	Name pulumi.StringPtrInput
-	// The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-	Region pulumi.StringPtrInput
-	// The UUID of the share access rule.
-	ShareAccessId pulumi.StringPtrInput
-	// The protocol for sharing file systems. The default value is NFS.
-	ShareProto pulumi.StringPtrInput
-	// The size (GB) of the shared file system.
-	Size pulumi.IntPtrInput
-	// The status of the share access rule.
-	Status pulumi.StringPtrInput
-	// The key/value pairs to associate with the shared file system.
-	Tags pulumi.StringMapInput
+	ExportLocation      pulumi.StringPtrInput
+	IsPublic            pulumi.BoolPtrInput
+	Metadata            pulumi.StringMapInput
+	Name                pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	ShareAccessId       pulumi.StringPtrInput
+	ShareProto          pulumi.StringPtrInput
+	Size                pulumi.IntPtrInput
+	Status              pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (FileSystemState) ElementType() reflect.Type {
@@ -320,94 +114,36 @@ func (FileSystemState) ElementType() reflect.Type {
 }
 
 type fileSystemArgs struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel *string `pulumi:"accessLevel"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo *string `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType *string `pulumi:"accessType"`
-	// The availability zone name. Changing this parameter will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Describes the shared file system.
-	Description *string `pulumi:"description"`
-	// The enterprise project id of the shared file system. Changing this creates a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The level of visibility for the shared file system.
-	IsPublic *bool `pulumi:"isPublic"`
-	// Metadata key and value pairs as a dictionary of strings.
-	// The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-	// and the keys should be exist at the same time to enable the data encryption function.
-	// Changing this will create a new resource.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The name of the shared file system.
-	Name *string `pulumi:"name"`
-	// The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-	Region *string `pulumi:"region"`
-	// The protocol for sharing file systems. The default value is NFS.
-	ShareProto *string `pulumi:"shareProto"`
-	// The size (GB) of the shared file system.
-	Size int `pulumi:"size"`
-	// The key/value pairs to associate with the shared file system.
-	Tags map[string]string `pulumi:"tags"`
+	AccessLevel         *string           `pulumi:"accessLevel"`
+	AccessTo            *string           `pulumi:"accessTo"`
+	AccessType          *string           `pulumi:"accessType"`
+	AvailabilityZone    *string           `pulumi:"availabilityZone"`
+	Description         *string           `pulumi:"description"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	IsPublic            *bool             `pulumi:"isPublic"`
+	Metadata            map[string]string `pulumi:"metadata"`
+	Name                *string           `pulumi:"name"`
+	Region              *string           `pulumi:"region"`
+	ShareProto          *string           `pulumi:"shareProto"`
+	Size                int               `pulumi:"size"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a FileSystem resource.
 type FileSystemArgs struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel pulumi.StringPtrInput
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo pulumi.StringPtrInput
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringPtrInput
-	// The availability zone name. Changing this parameter will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	// Describes the shared file system.
-	Description pulumi.StringPtrInput
-	// The enterprise project id of the shared file system. Changing this creates a new resource.
+	AccessLevel         pulumi.StringPtrInput
+	AccessTo            pulumi.StringPtrInput
+	AccessType          pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// The level of visibility for the shared file system.
-	IsPublic pulumi.BoolPtrInput
-	// Metadata key and value pairs as a dictionary of strings.
-	// The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-	// and the keys should be exist at the same time to enable the data encryption function.
-	// Changing this will create a new resource.
-	Metadata pulumi.StringMapInput
-	// The name of the shared file system.
-	Name pulumi.StringPtrInput
-	// The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-	Region pulumi.StringPtrInput
-	// The protocol for sharing file systems. The default value is NFS.
-	ShareProto pulumi.StringPtrInput
-	// The size (GB) of the shared file system.
-	Size pulumi.IntInput
-	// The key/value pairs to associate with the shared file system.
-	Tags pulumi.StringMapInput
+	IsPublic            pulumi.BoolPtrInput
+	Metadata            pulumi.StringMapInput
+	Name                pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	ShareProto          pulumi.StringPtrInput
+	Size                pulumi.IntInput
+	Tags                pulumi.StringMapInput
 }
 
 func (FileSystemArgs) ElementType() reflect.Type {
@@ -497,108 +233,74 @@ func (o FileSystemOutput) ToFileSystemOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
-// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 func (o FileSystemOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
-// The status of the share access rule.
 func (o FileSystemOutput) AccessRuleStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.AccessRuleStatus }).(pulumi.StringOutput)
 }
 
-// All access rules of the shared file system. The object includes the following:
 func (o FileSystemOutput) AccessRules() FileSystemAccessRuleArrayOutput {
 	return o.ApplyT(func(v *FileSystem) FileSystemAccessRuleArrayOutput { return v.AccessRules }).(FileSystemAccessRuleArrayOutput)
 }
 
-// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-// Changing this will create a new access rule. The value varies according to the scenario:
-// - Set the VPC ID in VPC authorization scenarios.
-// - Set this parameter in IP address authorization scenario.
-//
-// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-//
-// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-//
-// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
 func (o FileSystemOutput) AccessTo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.AccessTo }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of the share access rule. The default value is *cert*.
-// Changing this will create a new access rule.
 func (o FileSystemOutput) AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.AccessType }).(pulumi.StringOutput)
 }
 
-// The availability zone name. Changing this parameter will create a new resource.
 func (o FileSystemOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Describes the shared file system.
 func (o FileSystemOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the shared file system. Changing this creates a new resource.
 func (o FileSystemOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The address for accessing the shared file system.
 func (o FileSystemOutput) ExportLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ExportLocation }).(pulumi.StringOutput)
 }
 
-// The level of visibility for the shared file system.
 func (o FileSystemOutput) IsPublic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.BoolPtrOutput { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
-// Metadata key and value pairs as a dictionary of strings.
-// The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-// and the keys should be exist at the same time to enable the data encryption function.
-// Changing this will create a new resource.
 func (o FileSystemOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The name of the shared file system.
 func (o FileSystemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
 func (o FileSystemOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The UUID of the share access rule.
 func (o FileSystemOutput) ShareAccessId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.ShareAccessId }).(pulumi.StringOutput)
 }
 
-// The protocol for sharing file systems. The default value is NFS.
 func (o FileSystemOutput) ShareProto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringPtrOutput { return v.ShareProto }).(pulumi.StringPtrOutput)
 }
 
-// The size (GB) of the shared file system.
 func (o FileSystemOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The status of the share access rule.
 func (o FileSystemOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The key/value pairs to associate with the shared file system.
 func (o FileSystemOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

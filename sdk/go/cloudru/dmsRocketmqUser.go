@@ -12,70 +12,10 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages DMS RocketMQ user resources within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.NewDmsRocketmqUser(ctx, "test", &sbercloud.DmsRocketmqUserArgs{
-//				InstanceId:         pulumi.Any(instanceId),
-//				AccessKey:          pulumi.String("user_test"),
-//				SecretKey:          pulumi.String("abcdefg"),
-//				WhiteRemoteAddress: pulumi.String("10.10.10.10"),
-//				Admin:              pulumi.Bool(false),
-//				DefaultTopicPerm:   pulumi.String("PUB"),
-//				DefaultGroupPerm:   pulumi.String("PUB"),
-//				TopicPerms: cloudru.DmsRocketmqUserTopicPermArray{
-//					&cloudru.DmsRocketmqUserTopicPermArgs{
-//						Name: pulumi.String("topic_name"),
-//						Perm: pulumi.String("PUB"),
-//					},
-//				},
-//				GroupPerms: cloudru.DmsRocketmqUserGroupPermArray{
-//					&cloudru.DmsRocketmqUserGroupPermArgs{
-//						Name: pulumi.String("group_name"),
-//						Perm: pulumi.String("PUB"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The rocketmq user can be imported using the rocketMQ `instance_id` and user `access_key` separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/dmsRocketmqUser:DmsRocketmqUser test <instance_id>/<access_key>
-// ```
 type DmsRocketmqUser struct {
 	pulumi.CustomResourceState
 
-	// Specifies the name of the user, which starts with a letter, consists of 7
-	// to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
+	// Specifies the access key of the user.
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// Specifies whether the user is an administrator.
 	Admin pulumi.BoolOutput `pulumi:"admin"`
@@ -86,29 +26,13 @@ type DmsRocketmqUser struct {
 	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 	DefaultTopicPerm pulumi.StringOutput `pulumi:"defaultTopicPerm"`
 	// Specifies the special consumer group permissions.
-	// The permission structure is documented below.
-	//
-	// <a name="DmsRocketMQUser_PermsRef"></a>
-	// The `topicPerms` and `groupPerms` block supports:
 	GroupPerms DmsRocketmqUserGroupPermArrayOutput `pulumi:"groupPerms"`
 	// Specifies the ID of the rocketMQ instance.
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the password of the user. Use 8 to 32 characters. Contain at
-	// least three of the following character types:
-	// + Uppercase letters.
-	// + Lowercase letters.
-	// + Digits.
-	// + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-	//   backwards.
-	//
-	// Changing this parameter will create a new resource.
+	Region     pulumi.StringOutput `pulumi:"region"`
+	// Specifies the secret key of the user.
 	SecretKey pulumi.StringOutput `pulumi:"secretKey"`
 	// Specifies the special topic permissions.
-	// The permission structure is documented below.
 	TopicPerms DmsRocketmqUserTopicPermArrayOutput `pulumi:"topicPerms"`
 	// Specifies the IP address whitelist.
 	WhiteRemoteAddress pulumi.StringOutput `pulumi:"whiteRemoteAddress"`
@@ -153,9 +77,7 @@ func GetDmsRocketmqUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DmsRocketmqUser resources.
 type dmsRocketmqUserState struct {
-	// Specifies the name of the user, which starts with a letter, consists of 7
-	// to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
+	// Specifies the access key of the user.
 	AccessKey *string `pulumi:"accessKey"`
 	// Specifies whether the user is an administrator.
 	Admin *bool `pulumi:"admin"`
@@ -166,38 +88,20 @@ type dmsRocketmqUserState struct {
 	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 	DefaultTopicPerm *string `pulumi:"defaultTopicPerm"`
 	// Specifies the special consumer group permissions.
-	// The permission structure is documented below.
-	//
-	// <a name="DmsRocketMQUser_PermsRef"></a>
-	// The `topicPerms` and `groupPerms` block supports:
 	GroupPerms []DmsRocketmqUserGroupPerm `pulumi:"groupPerms"`
 	// Specifies the ID of the rocketMQ instance.
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the password of the user. Use 8 to 32 characters. Contain at
-	// least three of the following character types:
-	// + Uppercase letters.
-	// + Lowercase letters.
-	// + Digits.
-	// + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-	//   backwards.
-	//
-	// Changing this parameter will create a new resource.
+	Region     *string `pulumi:"region"`
+	// Specifies the secret key of the user.
 	SecretKey *string `pulumi:"secretKey"`
 	// Specifies the special topic permissions.
-	// The permission structure is documented below.
 	TopicPerms []DmsRocketmqUserTopicPerm `pulumi:"topicPerms"`
 	// Specifies the IP address whitelist.
 	WhiteRemoteAddress *string `pulumi:"whiteRemoteAddress"`
 }
 
 type DmsRocketmqUserState struct {
-	// Specifies the name of the user, which starts with a letter, consists of 7
-	// to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
+	// Specifies the access key of the user.
 	AccessKey pulumi.StringPtrInput
 	// Specifies whether the user is an administrator.
 	Admin pulumi.BoolPtrInput
@@ -208,29 +112,13 @@ type DmsRocketmqUserState struct {
 	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 	DefaultTopicPerm pulumi.StringPtrInput
 	// Specifies the special consumer group permissions.
-	// The permission structure is documented below.
-	//
-	// <a name="DmsRocketMQUser_PermsRef"></a>
-	// The `topicPerms` and `groupPerms` block supports:
 	GroupPerms DmsRocketmqUserGroupPermArrayInput
 	// Specifies the ID of the rocketMQ instance.
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the password of the user. Use 8 to 32 characters. Contain at
-	// least three of the following character types:
-	// + Uppercase letters.
-	// + Lowercase letters.
-	// + Digits.
-	// + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-	//   backwards.
-	//
-	// Changing this parameter will create a new resource.
+	Region     pulumi.StringPtrInput
+	// Specifies the secret key of the user.
 	SecretKey pulumi.StringPtrInput
 	// Specifies the special topic permissions.
-	// The permission structure is documented below.
 	TopicPerms DmsRocketmqUserTopicPermArrayInput
 	// Specifies the IP address whitelist.
 	WhiteRemoteAddress pulumi.StringPtrInput
@@ -241,9 +129,7 @@ func (DmsRocketmqUserState) ElementType() reflect.Type {
 }
 
 type dmsRocketmqUserArgs struct {
-	// Specifies the name of the user, which starts with a letter, consists of 7
-	// to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
+	// Specifies the access key of the user.
 	AccessKey string `pulumi:"accessKey"`
 	// Specifies whether the user is an administrator.
 	Admin *bool `pulumi:"admin"`
@@ -254,29 +140,13 @@ type dmsRocketmqUserArgs struct {
 	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 	DefaultTopicPerm *string `pulumi:"defaultTopicPerm"`
 	// Specifies the special consumer group permissions.
-	// The permission structure is documented below.
-	//
-	// <a name="DmsRocketMQUser_PermsRef"></a>
-	// The `topicPerms` and `groupPerms` block supports:
 	GroupPerms []DmsRocketmqUserGroupPerm `pulumi:"groupPerms"`
 	// Specifies the ID of the rocketMQ instance.
-	// Changing this parameter will create a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the password of the user. Use 8 to 32 characters. Contain at
-	// least three of the following character types:
-	// + Uppercase letters.
-	// + Lowercase letters.
-	// + Digits.
-	// + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-	//   backwards.
-	//
-	// Changing this parameter will create a new resource.
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
+	// Specifies the secret key of the user.
 	SecretKey string `pulumi:"secretKey"`
 	// Specifies the special topic permissions.
-	// The permission structure is documented below.
 	TopicPerms []DmsRocketmqUserTopicPerm `pulumi:"topicPerms"`
 	// Specifies the IP address whitelist.
 	WhiteRemoteAddress *string `pulumi:"whiteRemoteAddress"`
@@ -284,9 +154,7 @@ type dmsRocketmqUserArgs struct {
 
 // The set of arguments for constructing a DmsRocketmqUser resource.
 type DmsRocketmqUserArgs struct {
-	// Specifies the name of the user, which starts with a letter, consists of 7
-	// to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
+	// Specifies the access key of the user.
 	AccessKey pulumi.StringInput
 	// Specifies whether the user is an administrator.
 	Admin pulumi.BoolPtrInput
@@ -297,29 +165,13 @@ type DmsRocketmqUserArgs struct {
 	// Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
 	DefaultTopicPerm pulumi.StringPtrInput
 	// Specifies the special consumer group permissions.
-	// The permission structure is documented below.
-	//
-	// <a name="DmsRocketMQUser_PermsRef"></a>
-	// The `topicPerms` and `groupPerms` block supports:
 	GroupPerms DmsRocketmqUserGroupPermArrayInput
 	// Specifies the ID of the rocketMQ instance.
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the password of the user. Use 8 to 32 characters. Contain at
-	// least three of the following character types:
-	// + Uppercase letters.
-	// + Lowercase letters.
-	// + Digits.
-	// + Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-	//   backwards.
-	//
-	// Changing this parameter will create a new resource.
+	Region     pulumi.StringPtrInput
+	// Specifies the secret key of the user.
 	SecretKey pulumi.StringInput
 	// Specifies the special topic permissions.
-	// The permission structure is documented below.
 	TopicPerms DmsRocketmqUserTopicPermArrayInput
 	// Specifies the IP address whitelist.
 	WhiteRemoteAddress pulumi.StringPtrInput
@@ -412,9 +264,7 @@ func (o DmsRocketmqUserOutput) ToDmsRocketmqUserOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies the name of the user, which starts with a letter, consists of 7
-// to 64 characters and can contain only letters, digits, hyphens (-), and underscores (_).
-// Changing this parameter will create a new resource.
+// Specifies the access key of the user.
 func (o DmsRocketmqUserOutput) AccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqUser) pulumi.StringOutput { return v.AccessKey }).(pulumi.StringOutput)
 }
@@ -437,41 +287,25 @@ func (o DmsRocketmqUserOutput) DefaultTopicPerm() pulumi.StringOutput {
 }
 
 // Specifies the special consumer group permissions.
-// The permission structure is documented below.
-//
-// <a name="DmsRocketMQUser_PermsRef"></a>
-// The `topicPerms` and `groupPerms` block supports:
 func (o DmsRocketmqUserOutput) GroupPerms() DmsRocketmqUserGroupPermArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqUser) DmsRocketmqUserGroupPermArrayOutput { return v.GroupPerms }).(DmsRocketmqUserGroupPermArrayOutput)
 }
 
 // Specifies the ID of the rocketMQ instance.
-// Changing this parameter will create a new resource.
 func (o DmsRocketmqUserOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqUser) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o DmsRocketmqUserOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqUser) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the password of the user. Use 8 to 32 characters. Contain at
-// least three of the following character types:
-//   - Uppercase letters.
-//   - Lowercase letters.
-//   - Digits.
-//   - Special characters \`~!@#$%^&*()-_=+\|[{}];:'"",<.>/?. Cannot be the `accessKey` or the `accessKey` spelled
-//     backwards.
-//
-// Changing this parameter will create a new resource.
+// Specifies the secret key of the user.
 func (o DmsRocketmqUserOutput) SecretKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqUser) pulumi.StringOutput { return v.SecretKey }).(pulumi.StringOutput)
 }
 
 // Specifies the special topic permissions.
-// The permission structure is documented below.
 func (o DmsRocketmqUserOutput) TopicPerms() DmsRocketmqUserTopicPermArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqUser) DmsRocketmqUserTopicPermArrayOutput { return v.TopicPerms }).(DmsRocketmqUserTopicPermArrayOutput)
 }

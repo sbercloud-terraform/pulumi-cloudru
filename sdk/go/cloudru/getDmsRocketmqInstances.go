@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of DMS RocketMQ instances.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetDmsRocketmqInstances(ctx, &cloudru.GetDmsRocketmqInstancesArgs{
-//				Name: pulumi.StringRef("rocketmq_name_test"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqInstances(ctx *pulumi.Context, args *GetDmsRocketmqInstancesArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqInstancesResult
@@ -50,34 +23,23 @@ func GetDmsRocketmqInstances(ctx *pulumi.Context, args *GetDmsRocketmqInstancesA
 
 // A collection of arguments for invoking getDmsRocketmqInstances.
 type GetDmsRocketmqInstancesArgs struct {
-	// Specifies whether to search for the instance that precisely matches a
-	// specified instance name. Value options: **true**, **false**. Defaults to **false**.
 	ExactMatchName *string `pulumi:"exactMatchName"`
-	// Specifies the ID of the RocketMQ instance.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the name of the DMS RocketMQ instance.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status of the DMS RocketMQ instance.
-	Status *string `pulumi:"status"`
+	InstanceId     *string `pulumi:"instanceId"`
+	Name           *string `pulumi:"name"`
+	Region         *string `pulumi:"region"`
+	Status         *string `pulumi:"status"`
 }
 
 // A collection of values returned by getDmsRocketmqInstances.
 type GetDmsRocketmqInstancesResult struct {
 	ExactMatchName *string `pulumi:"exactMatchName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId *string `pulumi:"instanceId"`
-	// Indicates the list of DMS RocketMQ instances.
-	// The Instance structure is documented below.
-	Instances []GetDmsRocketmqInstancesInstance `pulumi:"instances"`
-	// Indicates the name of the DMS RocketMQ instance.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// Indicates the status of the DMS RocketMQ instance.
-	Status *string `pulumi:"status"`
+	Id         string                            `pulumi:"id"`
+	InstanceId *string                           `pulumi:"instanceId"`
+	Instances  []GetDmsRocketmqInstancesInstance `pulumi:"instances"`
+	Name       *string                           `pulumi:"name"`
+	Region     string                            `pulumi:"region"`
+	Status     *string                           `pulumi:"status"`
 }
 
 func GetDmsRocketmqInstancesOutput(ctx *pulumi.Context, args GetDmsRocketmqInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqInstancesResultOutput {
@@ -91,18 +53,11 @@ func GetDmsRocketmqInstancesOutput(ctx *pulumi.Context, args GetDmsRocketmqInsta
 
 // A collection of arguments for invoking getDmsRocketmqInstances.
 type GetDmsRocketmqInstancesOutputArgs struct {
-	// Specifies whether to search for the instance that precisely matches a
-	// specified instance name. Value options: **true**, **false**. Defaults to **false**.
 	ExactMatchName pulumi.StringPtrInput `pulumi:"exactMatchName"`
-	// Specifies the ID of the RocketMQ instance.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the name of the DMS RocketMQ instance.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status of the DMS RocketMQ instance.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	InstanceId     pulumi.StringPtrInput `pulumi:"instanceId"`
+	Name           pulumi.StringPtrInput `pulumi:"name"`
+	Region         pulumi.StringPtrInput `pulumi:"region"`
+	Status         pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetDmsRocketmqInstancesOutputArgs) ElementType() reflect.Type {
@@ -137,13 +92,10 @@ func (o GetDmsRocketmqInstancesResultOutput) InstanceId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetDmsRocketmqInstancesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of DMS RocketMQ instances.
-// The Instance structure is documented below.
 func (o GetDmsRocketmqInstancesResultOutput) Instances() GetDmsRocketmqInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesResult) []GetDmsRocketmqInstancesInstance { return v.Instances }).(GetDmsRocketmqInstancesInstanceArrayOutput)
 }
 
-// Indicates the name of the DMS RocketMQ instance.
 func (o GetDmsRocketmqInstancesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -152,7 +104,6 @@ func (o GetDmsRocketmqInstancesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the status of the DMS RocketMQ instance.
 func (o GetDmsRocketmqInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

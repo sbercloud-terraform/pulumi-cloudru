@@ -14,14 +14,10 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type StreamPartition struct {
-	// Possible value range of the hash key used by each partition.
-	HashRange *string `pulumi:"hashRange"`
-	// The ID of the partition.
-	Id *string `pulumi:"id"`
-	// Sequence number range of each partition.
+	HashRange           *string `pulumi:"hashRange"`
+	Id                  *string `pulumi:"id"`
 	SequenceNumberRange *string `pulumi:"sequenceNumberRange"`
-	// The status of the partition.
-	Status *string `pulumi:"status"`
+	Status              *string `pulumi:"status"`
 }
 
 // StreamPartitionInput is an input type that accepts StreamPartitionArgs and StreamPartitionOutput values.
@@ -36,14 +32,10 @@ type StreamPartitionInput interface {
 }
 
 type StreamPartitionArgs struct {
-	// Possible value range of the hash key used by each partition.
-	HashRange pulumi.StringPtrInput `pulumi:"hashRange"`
-	// The ID of the partition.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Sequence number range of each partition.
+	HashRange           pulumi.StringPtrInput `pulumi:"hashRange"`
+	Id                  pulumi.StringPtrInput `pulumi:"id"`
 	SequenceNumberRange pulumi.StringPtrInput `pulumi:"sequenceNumberRange"`
-	// The status of the partition.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Status              pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (StreamPartitionArgs) ElementType() reflect.Type {
@@ -97,22 +89,18 @@ func (o StreamPartitionOutput) ToStreamPartitionOutputWithContext(ctx context.Co
 	return o
 }
 
-// Possible value range of the hash key used by each partition.
 func (o StreamPartitionOutput) HashRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamPartition) *string { return v.HashRange }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the partition.
 func (o StreamPartitionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamPartition) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Sequence number range of each partition.
 func (o StreamPartitionOutput) SequenceNumberRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamPartition) *string { return v.SequenceNumberRange }).(pulumi.StringPtrOutput)
 }
 
-// The status of the partition.
 func (o StreamPartitionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamPartition) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

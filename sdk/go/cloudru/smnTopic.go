@@ -11,72 +11,23 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a SMN Topic resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewSmnTopic(ctx, "topic_1", &sbercloud.SmnTopicArgs{
-//				Name:        pulumi.String("topic_1"),
-//				DisplayName: pulumi.String("The display name of topic_1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// SMN topic can be imported using the `id` (topic urn), e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/smnTopic:SmnTopic topic_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
-// ```
 type SmnTopic struct {
 	pulumi.CustomResourceState
 
 	// schema: Internal
-	AccessPolicy pulumi.StringPtrOutput `pulumi:"accessPolicy"`
-	// Time when the topic was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Topic display name, which is presented as the
-	// name of the email sender in an email message.
-	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Specifies the enterprise project id of the SMN Topic, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
-	Introduction        pulumi.StringPtrOutput `pulumi:"introduction"`
-	// The name of the topic to be created.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Message pushing policy.
-	// + **0**: indicates that the message sending fails and the message is cached in the queue.
-	// + **1**: indicates that the failed message is discarded.
-	PushPolicy pulumi.IntOutput `pulumi:"pushPolicy"`
-	// The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
+	AccessPolicy           pulumi.StringPtrOutput `pulumi:"accessPolicy"`
+	CreateTime             pulumi.StringOutput    `pulumi:"createTime"`
+	DisplayName            pulumi.StringPtrOutput `pulumi:"displayName"`
+	EnterpriseProjectId    pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	Introduction           pulumi.StringPtrOutput `pulumi:"introduction"`
+	Name                   pulumi.StringOutput    `pulumi:"name"`
+	PushPolicy             pulumi.IntOutput       `pulumi:"pushPolicy"`
 	Region                 pulumi.StringOutput    `pulumi:"region"`
 	ServicesPublishAllowed pulumi.StringPtrOutput `pulumi:"servicesPublishAllowed"`
-	// Specifies the tags of the SMN topic, key/value pair format.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource identifier of a topic, which is unique.
-	TopicUrn pulumi.StringOutput `pulumi:"topicUrn"`
-	// Time when the topic was updated.
-	UpdateTime          pulumi.StringOutput    `pulumi:"updateTime"`
-	UsersPublishAllowed pulumi.StringPtrOutput `pulumi:"usersPublishAllowed"`
+	Tags                   pulumi.StringMapOutput `pulumi:"tags"`
+	TopicUrn               pulumi.StringOutput    `pulumi:"topicUrn"`
+	UpdateTime             pulumi.StringOutput    `pulumi:"updateTime"`
+	UsersPublishAllowed    pulumi.StringPtrOutput `pulumi:"usersPublishAllowed"`
 }
 
 // NewSmnTopic registers a new resource with the given unique name, arguments, and options.
@@ -110,62 +61,36 @@ func GetSmnTopic(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SmnTopic resources.
 type smnTopicState struct {
 	// schema: Internal
-	AccessPolicy *string `pulumi:"accessPolicy"`
-	// Time when the topic was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Topic display name, which is presented as the
-	// name of the email sender in an email message.
-	DisplayName *string `pulumi:"displayName"`
-	// Specifies the enterprise project id of the SMN Topic, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	Introduction        *string `pulumi:"introduction"`
-	// The name of the topic to be created.
-	Name *string `pulumi:"name"`
-	// Message pushing policy.
-	// + **0**: indicates that the message sending fails and the message is cached in the queue.
-	// + **1**: indicates that the failed message is discarded.
-	PushPolicy *int `pulumi:"pushPolicy"`
-	// The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-	Region                 *string `pulumi:"region"`
-	ServicesPublishAllowed *string `pulumi:"servicesPublishAllowed"`
-	// Specifies the tags of the SMN topic, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
-	// Resource identifier of a topic, which is unique.
-	TopicUrn *string `pulumi:"topicUrn"`
-	// Time when the topic was updated.
-	UpdateTime          *string `pulumi:"updateTime"`
-	UsersPublishAllowed *string `pulumi:"usersPublishAllowed"`
+	AccessPolicy           *string           `pulumi:"accessPolicy"`
+	CreateTime             *string           `pulumi:"createTime"`
+	DisplayName            *string           `pulumi:"displayName"`
+	EnterpriseProjectId    *string           `pulumi:"enterpriseProjectId"`
+	Introduction           *string           `pulumi:"introduction"`
+	Name                   *string           `pulumi:"name"`
+	PushPolicy             *int              `pulumi:"pushPolicy"`
+	Region                 *string           `pulumi:"region"`
+	ServicesPublishAllowed *string           `pulumi:"servicesPublishAllowed"`
+	Tags                   map[string]string `pulumi:"tags"`
+	TopicUrn               *string           `pulumi:"topicUrn"`
+	UpdateTime             *string           `pulumi:"updateTime"`
+	UsersPublishAllowed    *string           `pulumi:"usersPublishAllowed"`
 }
 
 type SmnTopicState struct {
 	// schema: Internal
-	AccessPolicy pulumi.StringPtrInput
-	// Time when the topic was created.
-	CreateTime pulumi.StringPtrInput
-	// Topic display name, which is presented as the
-	// name of the email sender in an email message.
-	DisplayName pulumi.StringPtrInput
-	// Specifies the enterprise project id of the SMN Topic, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	Introduction        pulumi.StringPtrInput
-	// The name of the topic to be created.
-	Name pulumi.StringPtrInput
-	// Message pushing policy.
-	// + **0**: indicates that the message sending fails and the message is cached in the queue.
-	// + **1**: indicates that the failed message is discarded.
-	PushPolicy pulumi.IntPtrInput
-	// The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
+	AccessPolicy           pulumi.StringPtrInput
+	CreateTime             pulumi.StringPtrInput
+	DisplayName            pulumi.StringPtrInput
+	EnterpriseProjectId    pulumi.StringPtrInput
+	Introduction           pulumi.StringPtrInput
+	Name                   pulumi.StringPtrInput
+	PushPolicy             pulumi.IntPtrInput
 	Region                 pulumi.StringPtrInput
 	ServicesPublishAllowed pulumi.StringPtrInput
-	// Specifies the tags of the SMN topic, key/value pair format.
-	Tags pulumi.StringMapInput
-	// Resource identifier of a topic, which is unique.
-	TopicUrn pulumi.StringPtrInput
-	// Time when the topic was updated.
-	UpdateTime          pulumi.StringPtrInput
-	UsersPublishAllowed pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
+	TopicUrn               pulumi.StringPtrInput
+	UpdateTime             pulumi.StringPtrInput
+	UsersPublishAllowed    pulumi.StringPtrInput
 }
 
 func (SmnTopicState) ElementType() reflect.Type {
@@ -174,43 +99,29 @@ func (SmnTopicState) ElementType() reflect.Type {
 
 type smnTopicArgs struct {
 	// schema: Internal
-	AccessPolicy *string `pulumi:"accessPolicy"`
-	// Topic display name, which is presented as the
-	// name of the email sender in an email message.
-	DisplayName *string `pulumi:"displayName"`
-	// Specifies the enterprise project id of the SMN Topic, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	Introduction        *string `pulumi:"introduction"`
-	// The name of the topic to be created.
-	Name *string `pulumi:"name"`
-	// The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
-	Region                 *string `pulumi:"region"`
-	ServicesPublishAllowed *string `pulumi:"servicesPublishAllowed"`
-	// Specifies the tags of the SMN topic, key/value pair format.
-	Tags                map[string]string `pulumi:"tags"`
-	UsersPublishAllowed *string           `pulumi:"usersPublishAllowed"`
+	AccessPolicy           *string           `pulumi:"accessPolicy"`
+	DisplayName            *string           `pulumi:"displayName"`
+	EnterpriseProjectId    *string           `pulumi:"enterpriseProjectId"`
+	Introduction           *string           `pulumi:"introduction"`
+	Name                   *string           `pulumi:"name"`
+	Region                 *string           `pulumi:"region"`
+	ServicesPublishAllowed *string           `pulumi:"servicesPublishAllowed"`
+	Tags                   map[string]string `pulumi:"tags"`
+	UsersPublishAllowed    *string           `pulumi:"usersPublishAllowed"`
 }
 
 // The set of arguments for constructing a SmnTopic resource.
 type SmnTopicArgs struct {
 	// schema: Internal
-	AccessPolicy pulumi.StringPtrInput
-	// Topic display name, which is presented as the
-	// name of the email sender in an email message.
-	DisplayName pulumi.StringPtrInput
-	// Specifies the enterprise project id of the SMN Topic, Value 0
-	// indicates the default enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	Introduction        pulumi.StringPtrInput
-	// The name of the topic to be created.
-	Name pulumi.StringPtrInput
-	// The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
+	AccessPolicy           pulumi.StringPtrInput
+	DisplayName            pulumi.StringPtrInput
+	EnterpriseProjectId    pulumi.StringPtrInput
+	Introduction           pulumi.StringPtrInput
+	Name                   pulumi.StringPtrInput
 	Region                 pulumi.StringPtrInput
 	ServicesPublishAllowed pulumi.StringPtrInput
-	// Specifies the tags of the SMN topic, key/value pair format.
-	Tags                pulumi.StringMapInput
-	UsersPublishAllowed pulumi.StringPtrInput
+	Tags                   pulumi.StringMapInput
+	UsersPublishAllowed    pulumi.StringPtrInput
 }
 
 func (SmnTopicArgs) ElementType() reflect.Type {
@@ -305,19 +216,14 @@ func (o SmnTopicOutput) AccessPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringPtrOutput { return v.AccessPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Time when the topic was created.
 func (o SmnTopicOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Topic display name, which is presented as the
-// name of the email sender in an email message.
 func (o SmnTopicOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the enterprise project id of the SMN Topic, Value 0
-// indicates the default enterprise project. Changing this parameter will create a new resource.
 func (o SmnTopicOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -326,19 +232,14 @@ func (o SmnTopicOutput) Introduction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringPtrOutput { return v.Introduction }).(pulumi.StringPtrOutput)
 }
 
-// The name of the topic to be created.
 func (o SmnTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Message pushing policy.
-// + **0**: indicates that the message sending fails and the message is cached in the queue.
-// + **1**: indicates that the failed message is discarded.
 func (o SmnTopicOutput) PushPolicy() pulumi.IntOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.IntOutput { return v.PushPolicy }).(pulumi.IntOutput)
 }
 
-// The region in which to create the SMN topic resource. If omitted, the provider-level region will be used. Changing this creates a new SMN Topic resource.
 func (o SmnTopicOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -347,17 +248,14 @@ func (o SmnTopicOutput) ServicesPublishAllowed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringPtrOutput { return v.ServicesPublishAllowed }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tags of the SMN topic, key/value pair format.
 func (o SmnTopicOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource identifier of a topic, which is unique.
 func (o SmnTopicOutput) TopicUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringOutput { return v.TopicUrn }).(pulumi.StringOutput)
 }
 
-// Time when the topic was updated.
 func (o SmnTopicOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnTopic) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

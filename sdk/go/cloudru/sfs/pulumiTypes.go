@@ -14,29 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type FileSystemAccessRule struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel *string `pulumi:"accessLevel"`
-	// The UUID of the share access rule.
+	AccessLevel  *string `pulumi:"accessLevel"`
 	AccessRuleId *string `pulumi:"accessRuleId"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo *string `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType *string `pulumi:"accessType"`
-	// The status of the share access rule.
-	Status *string `pulumi:"status"`
+	AccessTo     *string `pulumi:"accessTo"`
+	AccessType   *string `pulumi:"accessType"`
+	Status       *string `pulumi:"status"`
 }
 
 // FileSystemAccessRuleInput is an input type that accepts FileSystemAccessRuleArgs and FileSystemAccessRuleOutput values.
@@ -51,29 +33,11 @@ type FileSystemAccessRuleInput interface {
 }
 
 type FileSystemAccessRuleArgs struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// The UUID of the share access rule.
+	AccessLevel  pulumi.StringPtrInput `pulumi:"accessLevel"`
 	AccessRuleId pulumi.StringPtrInput `pulumi:"accessRuleId"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	//
-	// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-	AccessTo pulumi.StringPtrInput `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringPtrInput `pulumi:"accessType"`
-	// The status of the share access rule.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	AccessTo     pulumi.StringPtrInput `pulumi:"accessTo"`
+	AccessType   pulumi.StringPtrInput `pulumi:"accessType"`
+	Status       pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (FileSystemAccessRuleArgs) ElementType() reflect.Type {
@@ -127,40 +91,22 @@ func (o FileSystemAccessRuleOutput) ToFileSystemAccessRuleOutputWithContext(ctx 
 	return o
 }
 
-// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 func (o FileSystemAccessRuleOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemAccessRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// The UUID of the share access rule.
 func (o FileSystemAccessRuleOutput) AccessRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemAccessRule) *string { return v.AccessRuleId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-// Changing this will create a new access rule. The value varies according to the scenario:
-// - Set the VPC ID in VPC authorization scenarios.
-// - Set this parameter in IP address authorization scenario.
-//
-// - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-//
-// - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-//
-// > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
 func (o FileSystemAccessRuleOutput) AccessTo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemAccessRule) *string { return v.AccessTo }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the type of the share access rule. The default value is *cert*.
-// Changing this will create a new access rule.
 func (o FileSystemAccessRuleOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemAccessRule) *string { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
-// The status of the share access rule.
 func (o FileSystemAccessRuleOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileSystemAccessRule) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -186,38 +132,21 @@ func (o FileSystemAccessRuleArrayOutput) Index(i pulumi.IntInput) FileSystemAcce
 }
 
 type GetTurbosTurbo struct {
-	// The availability zone where the SFS turbo file system is located.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// The available capacity of the SFS turbo file system, in GB.
-	AvailableCapacity string `pulumi:"availableCapacity"`
-	// The ID of a KMS key to encrypt the SFS turbo file system.
-	CryptKeyId string `pulumi:"cryptKeyId"`
-	// Whether the SFS turbo file system is enhanced.
-	Enhanced bool `pulumi:"enhanced"`
-	// The enterprise project ID of the SFS turbo file system.
+	AvailabilityZone    string `pulumi:"availabilityZone"`
+	AvailableCapacity   string `pulumi:"availableCapacity"`
+	CryptKeyId          string `pulumi:"cryptKeyId"`
+	Enhanced            bool   `pulumi:"enhanced"`
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The mount point of the SFS turbo file system.
-	ExportLocation string `pulumi:"exportLocation"`
-	// The resource ID of the SFS turbo file system.
-	Id string `pulumi:"id"`
-	// Specifies the name of the SFS turbo file system.
-	Name string `pulumi:"name"`
-	// The ID of the security group to which the SFS turbo belongs.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-	ShareProto string `pulumi:"shareProto"`
-	// Specifies the type of the SFS turbo file system.
-	// The valid values are **STANDARD** and **PERFORMANCE**.
-	ShareType string `pulumi:"shareType"`
-	// Specifies the capacity of the SFS turbo file system, in GB.
-	// The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-	Size int `pulumi:"size"`
-	// The **network ID** of the subnet to which the SFS turbo belongs.
-	SubnetId string `pulumi:"subnetId"`
-	// The version of the SFS turbo file system.
-	Version string `pulumi:"version"`
-	// The ID of the VPC to which the SFS turbo belongs.
-	VpcId string `pulumi:"vpcId"`
+	ExportLocation      string `pulumi:"exportLocation"`
+	Id                  string `pulumi:"id"`
+	Name                string `pulumi:"name"`
+	SecurityGroupId     string `pulumi:"securityGroupId"`
+	ShareProto          string `pulumi:"shareProto"`
+	ShareType           string `pulumi:"shareType"`
+	Size                int    `pulumi:"size"`
+	SubnetId            string `pulumi:"subnetId"`
+	Version             string `pulumi:"version"`
+	VpcId               string `pulumi:"vpcId"`
 }
 
 // GetTurbosTurboInput is an input type that accepts GetTurbosTurboArgs and GetTurbosTurboOutput values.
@@ -232,38 +161,21 @@ type GetTurbosTurboInput interface {
 }
 
 type GetTurbosTurboArgs struct {
-	// The availability zone where the SFS turbo file system is located.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// The available capacity of the SFS turbo file system, in GB.
-	AvailableCapacity pulumi.StringInput `pulumi:"availableCapacity"`
-	// The ID of a KMS key to encrypt the SFS turbo file system.
-	CryptKeyId pulumi.StringInput `pulumi:"cryptKeyId"`
-	// Whether the SFS turbo file system is enhanced.
-	Enhanced pulumi.BoolInput `pulumi:"enhanced"`
-	// The enterprise project ID of the SFS turbo file system.
+	AvailabilityZone    pulumi.StringInput `pulumi:"availabilityZone"`
+	AvailableCapacity   pulumi.StringInput `pulumi:"availableCapacity"`
+	CryptKeyId          pulumi.StringInput `pulumi:"cryptKeyId"`
+	Enhanced            pulumi.BoolInput   `pulumi:"enhanced"`
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The mount point of the SFS turbo file system.
-	ExportLocation pulumi.StringInput `pulumi:"exportLocation"`
-	// The resource ID of the SFS turbo file system.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the SFS turbo file system.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the security group to which the SFS turbo belongs.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-	ShareProto pulumi.StringInput `pulumi:"shareProto"`
-	// Specifies the type of the SFS turbo file system.
-	// The valid values are **STANDARD** and **PERFORMANCE**.
-	ShareType pulumi.StringInput `pulumi:"shareType"`
-	// Specifies the capacity of the SFS turbo file system, in GB.
-	// The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-	Size pulumi.IntInput `pulumi:"size"`
-	// The **network ID** of the subnet to which the SFS turbo belongs.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// The version of the SFS turbo file system.
-	Version pulumi.StringInput `pulumi:"version"`
-	// The ID of the VPC to which the SFS turbo belongs.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	ExportLocation      pulumi.StringInput `pulumi:"exportLocation"`
+	Id                  pulumi.StringInput `pulumi:"id"`
+	Name                pulumi.StringInput `pulumi:"name"`
+	SecurityGroupId     pulumi.StringInput `pulumi:"securityGroupId"`
+	ShareProto          pulumi.StringInput `pulumi:"shareProto"`
+	ShareType           pulumi.StringInput `pulumi:"shareType"`
+	Size                pulumi.IntInput    `pulumi:"size"`
+	SubnetId            pulumi.StringInput `pulumi:"subnetId"`
+	Version             pulumi.StringInput `pulumi:"version"`
+	VpcId               pulumi.StringInput `pulumi:"vpcId"`
 }
 
 func (GetTurbosTurboArgs) ElementType() reflect.Type {
@@ -317,79 +229,62 @@ func (o GetTurbosTurboOutput) ToGetTurbosTurboOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The availability zone where the SFS turbo file system is located.
 func (o GetTurbosTurboOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The available capacity of the SFS turbo file system, in GB.
 func (o GetTurbosTurboOutput) AvailableCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.AvailableCapacity }).(pulumi.StringOutput)
 }
 
-// The ID of a KMS key to encrypt the SFS turbo file system.
 func (o GetTurbosTurboOutput) CryptKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.CryptKeyId }).(pulumi.StringOutput)
 }
 
-// Whether the SFS turbo file system is enhanced.
 func (o GetTurbosTurboOutput) Enhanced() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) bool { return v.Enhanced }).(pulumi.BoolOutput)
 }
 
-// The enterprise project ID of the SFS turbo file system.
 func (o GetTurbosTurboOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The mount point of the SFS turbo file system.
 func (o GetTurbosTurboOutput) ExportLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.ExportLocation }).(pulumi.StringOutput)
 }
 
-// The resource ID of the SFS turbo file system.
 func (o GetTurbosTurboOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the SFS turbo file system.
 func (o GetTurbosTurboOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the security group to which the SFS turbo belongs.
 func (o GetTurbosTurboOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
 func (o GetTurbosTurboOutput) ShareProto() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.ShareProto }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the SFS turbo file system.
-// The valid values are **STANDARD** and **PERFORMANCE**.
 func (o GetTurbosTurboOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.ShareType }).(pulumi.StringOutput)
 }
 
-// Specifies the capacity of the SFS turbo file system, in GB.
-// The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
 func (o GetTurbosTurboOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The **network ID** of the subnet to which the SFS turbo belongs.
 func (o GetTurbosTurboOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// The version of the SFS turbo file system.
 func (o GetTurbosTurboOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC to which the SFS turbo belongs.
 func (o GetTurbosTurboOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosTurbo) string { return v.VpcId }).(pulumi.StringOutput)
 }

@@ -6,34 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages an ELB pool resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const pool1 = new sbercloud.ElbPool("pool_1", {
- *     protocol: "HTTP",
- *     lbMethod: "ROUND_ROBIN",
- *     listenerId: "{{ listener_id }}",
- *     persistence: {
- *         type: "HTTP_COOKIE",
- *         cookieName: "testCookie",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * ELB pool can be imported using the pool ID, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/elbPool:ElbPool pool_1 5c20fdad-7288-11eb-b817-0255ac10158b
- * ```
- */
 export class ElbPool extends pulumi.CustomResource {
     /**
      * Get an existing ElbPool resource's state with the given name, ID, and optional extra
@@ -67,58 +39,21 @@ export class ElbPool extends pulumi.CustomResource {
     declare public readonly connectionDrainTimeout: pulumi.Output<number>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly deletionProtectionEnable: pulumi.Output<boolean | undefined>;
-    /**
-     * Human-readable description for the pool.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly enableForceNew: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly enterpriseProjectId: pulumi.Output<string>;
     declare public readonly ipVersion: pulumi.Output<string>;
-    /**
-     * The load balancing algorithm to distribute traffic to the pool's members. Must be one
-     * of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-     */
     declare public readonly lbMethod: pulumi.Output<string>;
-    /**
-     * The Listener on which the members of the pool will be associated with.
-     * Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-     */
     declare public readonly listenerId: pulumi.Output<string>;
-    /**
-     * The load balancer on which to provision this pool. Changing this
-     * creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-     */
     declare public readonly loadbalancerId: pulumi.Output<string>;
     declare public readonly minimumHealthyMemberCount: pulumi.Output<number>;
     declare public /*out*/ readonly monitorId: pulumi.Output<string>;
-    /**
-     * Human-readable name for the pool.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Omit this field to prevent session persistence. Indicates whether
-     * connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-     */
     declare public readonly persistence: pulumi.Output<outputs.ElbPoolPersistence | undefined>;
     declare public readonly protectionReason: pulumi.Output<string | undefined>;
     declare public readonly protectionStatus: pulumi.Output<string>;
-    /**
-     * The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-     *
-     * + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-     * + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-     * + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-     * + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-     * + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-     *
-     * Changing this creates a new pool.
-     */
     declare public readonly protocol: pulumi.Output<string>;
     declare public readonly publicBorderGroup: pulumi.Output<string>;
-    /**
-     * The region in which to create the ELB pool resource. If omitted, the the
-     * provider-level region will be used. Changing this creates a new pool.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public readonly slowStartDuration: pulumi.Output<number>;
     declare public readonly slowStartEnabled: pulumi.Output<boolean>;
@@ -214,58 +149,21 @@ export interface ElbPoolState {
     connectionDrainTimeout?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
     deletionProtectionEnable?: pulumi.Input<boolean>;
-    /**
-     * Human-readable description for the pool.
-     */
     description?: pulumi.Input<string>;
     enableForceNew?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
     ipVersion?: pulumi.Input<string>;
-    /**
-     * The load balancing algorithm to distribute traffic to the pool's members. Must be one
-     * of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-     */
     lbMethod?: pulumi.Input<string>;
-    /**
-     * The Listener on which the members of the pool will be associated with.
-     * Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-     */
     listenerId?: pulumi.Input<string>;
-    /**
-     * The load balancer on which to provision this pool. Changing this
-     * creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-     */
     loadbalancerId?: pulumi.Input<string>;
     minimumHealthyMemberCount?: pulumi.Input<number>;
     monitorId?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the pool.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Omit this field to prevent session persistence. Indicates whether
-     * connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-     */
     persistence?: pulumi.Input<inputs.ElbPoolPersistence>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-     *
-     * + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-     * + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-     * + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-     * + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-     * + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-     *
-     * Changing this creates a new pool.
-     */
     protocol?: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
-    /**
-     * The region in which to create the ELB pool resource. If omitted, the the
-     * provider-level region will be used. Changing this creates a new pool.
-     */
     region?: pulumi.Input<string>;
     slowStartDuration?: pulumi.Input<number>;
     slowStartEnabled?: pulumi.Input<boolean>;
@@ -282,56 +180,19 @@ export interface ElbPoolArgs {
     connectionDrainEnabled?: pulumi.Input<boolean>;
     connectionDrainTimeout?: pulumi.Input<number>;
     deletionProtectionEnable?: pulumi.Input<boolean>;
-    /**
-     * Human-readable description for the pool.
-     */
     description?: pulumi.Input<string>;
     enableForceNew?: pulumi.Input<string>;
     ipVersion?: pulumi.Input<string>;
-    /**
-     * The load balancing algorithm to distribute traffic to the pool's members. Must be one
-     * of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-     */
     lbMethod: pulumi.Input<string>;
-    /**
-     * The Listener on which the members of the pool will be associated with.
-     * Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-     */
     listenerId?: pulumi.Input<string>;
-    /**
-     * The load balancer on which to provision this pool. Changing this
-     * creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-     */
     loadbalancerId?: pulumi.Input<string>;
     minimumHealthyMemberCount?: pulumi.Input<number>;
-    /**
-     * Human-readable name for the pool.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Omit this field to prevent session persistence. Indicates whether
-     * connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-     */
     persistence?: pulumi.Input<inputs.ElbPoolPersistence>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-     *
-     * + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-     * + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-     * + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-     * + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-     * + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-     *
-     * Changing this creates a new pool.
-     */
     protocol: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
-    /**
-     * The region in which to create the ELB pool resource. If omitted, the the
-     * provider-level region will be used. Changing this creates a new pool.
-     */
     region?: pulumi.Input<string>;
     slowStartDuration?: pulumi.Input<number>;
     slowStartEnabled?: pulumi.Input<boolean>;

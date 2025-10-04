@@ -26,16 +26,10 @@ class RouteTableArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouteTable resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the route table.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the route table.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the route table.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table belongs.
+        :param pulumi.Input[_builtins.str] description: The description of the ER route table.
+        :param pulumi.Input[_builtins.str] name: The name of the route table.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if description is not None:
@@ -51,8 +45,7 @@ class RouteTableArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the ER instance to which the route table belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the route table belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -64,8 +57,7 @@ class RouteTableArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the route table.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the ER route table.
         """
         return pulumi.get(self, "description")
 
@@ -77,9 +69,7 @@ class RouteTableArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the route table.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the route table.
         """
         return pulumi.get(self, "name")
 
@@ -91,8 +81,7 @@ class RouteTableArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the ER instance and route table are located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -103,9 +92,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the route table.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -129,19 +115,13 @@ class _RouteTableState:
         """
         Input properties used for looking up and filtering RouteTable resources.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the route table.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table belongs.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: The description of the ER route table.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table belongs.
         :param pulumi.Input[_builtins.bool] is_default_association: Whether this route table is the default association route table.
         :param pulumi.Input[_builtins.bool] is_default_propagation: Whether this route table is the default propagation route table.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the route table.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: The name of the route table.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
         :param pulumi.Input[_builtins.str] status: The current status of the route table.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the route table.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
         """
         if created_at is not None:
@@ -181,8 +161,7 @@ class _RouteTableState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the route table.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the ER route table.
         """
         return pulumi.get(self, "description")
 
@@ -194,8 +173,7 @@ class _RouteTableState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the ER instance to which the route table belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the route table belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -231,9 +209,7 @@ class _RouteTableState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the route table.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the route table.
         """
         return pulumi.get(self, "name")
 
@@ -245,8 +221,7 @@ class _RouteTableState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the ER instance and route table are located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -269,9 +244,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the route table.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -304,54 +276,13 @@ class RouteTable(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a route table resource under the ER instance within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        route_table_name = config.require_object("routeTableName")
-        test = sbercloud.er.RouteTable("test",
-            instance_id=instance_id,
-            name=route_table_name,
-            description="Route table created by terraform",
-            tags={
-                "foo": "bar",
-                "owner": "terraform",
-            })
-        ```
-
-        ## Import
-
-        Route tables can be imported using their `id` and the related `instance_id`, separated by slashes (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/routeTable:RouteTable test <instance_id>/<id>
-        ```
-
+        Create a RouteTable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the route table.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the route table.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the route table.
+        :param pulumi.Input[_builtins.str] description: The description of the ER route table.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table belongs.
+        :param pulumi.Input[_builtins.str] name: The name of the route table.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
         """
         ...
     @overload
@@ -360,42 +291,7 @@ class RouteTable(pulumi.CustomResource):
                  args: RouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a route table resource under the ER instance within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        route_table_name = config.require_object("routeTableName")
-        test = sbercloud.er.RouteTable("test",
-            instance_id=instance_id,
-            name=route_table_name,
-            description="Route table created by terraform",
-            tags={
-                "foo": "bar",
-                "owner": "terraform",
-            })
-        ```
-
-        ## Import
-
-        Route tables can be imported using their `id` and the related `instance_id`, separated by slashes (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/routeTable:RouteTable test <instance_id>/<id>
-        ```
-
+        Create a RouteTable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RouteTableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -465,19 +361,13 @@ class RouteTable(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the route table.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the route table belongs.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: The description of the ER route table.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the route table belongs.
         :param pulumi.Input[_builtins.bool] is_default_association: Whether this route table is the default association route table.
         :param pulumi.Input[_builtins.bool] is_default_propagation: Whether this route table is the default propagation route table.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the route table.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and route table are located.  
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: The name of the route table.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and route table are located.
         :param pulumi.Input[_builtins.str] status: The current status of the route table.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the route table.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -508,8 +398,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the route table.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the ER route table.
         """
         return pulumi.get(self, "description")
 
@@ -517,8 +406,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the ER instance to which the route table belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the route table belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -542,9 +430,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the route table.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the route table.
         """
         return pulumi.get(self, "name")
 
@@ -552,8 +438,7 @@ class RouteTable(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the ER instance and route table are located.  
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -568,9 +453,6 @@ class RouteTable(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the route table.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property

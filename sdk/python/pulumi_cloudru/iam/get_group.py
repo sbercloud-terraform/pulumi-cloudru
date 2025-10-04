@@ -47,41 +47,26 @@ class GetGroupResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Indicates the description of the IAM user.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> _builtins.str:
-        """
-        Indicates the domain the group belongs to.
-        """
         return pulumi.get(self, "domain_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the ID of the User.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Indicates the IAM user name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetGroupUserResult']:
-        """
-        Indicates the users the group contains. Structure is documented below.
-        """
         return pulumi.get(self, "users")
 
 
@@ -103,21 +88,7 @@ def get_group(description: Optional[_builtins.str] = None,
               name: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Use this data source to get details of the specified IAM user group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    group = sbercloud.Iam.get_group(name="my_group")
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the identity group.
-    :param _builtins.str id: Specifies the ID of the identity group.
-    :param _builtins.str name: Specifies the name of the identity group.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -137,21 +108,7 @@ def get_group_output(description: Optional[pulumi.Input[Optional[_builtins.str]]
                      name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupResult]:
     """
-    Use this data source to get details of the specified IAM user group.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    group = sbercloud.Iam.get_group(name="my_group")
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the identity group.
-    :param _builtins.str id: Specifies the ID of the identity group.
-    :param _builtins.str name: Specifies the name of the identity group.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

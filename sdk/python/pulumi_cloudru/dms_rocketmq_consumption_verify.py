@@ -29,19 +29,6 @@ class DmsRocketmqConsumptionVerifyArgs:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DmsRocketmqConsumptionVerify resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] client_id: Specifies the client ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if client_id is not None:
@@ -58,10 +45,6 @@ class DmsRocketmqConsumptionVerifyArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -71,10 +54,6 @@ class DmsRocketmqConsumptionVerifyArgs:
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the client ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -84,10 +63,6 @@ class DmsRocketmqConsumptionVerifyArgs:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the group name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -97,10 +72,6 @@ class DmsRocketmqConsumptionVerifyArgs:
     @_builtins.property
     @pulumi.getter(name="messageIdLists")
     def message_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the message ID list.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "message_id_lists")
 
     @message_id_lists.setter
@@ -110,11 +81,6 @@ class DmsRocketmqConsumptionVerifyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -124,10 +90,6 @@ class DmsRocketmqConsumptionVerifyArgs:
     @_builtins.property
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -147,21 +109,7 @@ class _DmsRocketmqConsumptionVerifyState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DmsRocketmqConsumptionVerify resources.
-        :param pulumi.Input[_builtins.str] client_id: Specifies the client ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqConsumptionVerifyResendResultArgs']]] resend_results: Indicates the verify results.
-               The resend_results structure is documented below.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
@@ -181,10 +129,6 @@ class _DmsRocketmqConsumptionVerifyState:
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the client ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -194,10 +138,6 @@ class _DmsRocketmqConsumptionVerifyState:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the group name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -207,10 +147,6 @@ class _DmsRocketmqConsumptionVerifyState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -220,10 +156,6 @@ class _DmsRocketmqConsumptionVerifyState:
     @_builtins.property
     @pulumi.getter(name="messageIdLists")
     def message_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the message ID list.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "message_id_lists")
 
     @message_id_lists.setter
@@ -233,11 +165,6 @@ class _DmsRocketmqConsumptionVerifyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -249,7 +176,6 @@ class _DmsRocketmqConsumptionVerifyState:
     def resend_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqConsumptionVerifyResendResultArgs']]]]:
         """
         Indicates the verify results.
-        The resend_results structure is documented below.
         """
         return pulumi.get(self, "resend_results")
 
@@ -260,10 +186,6 @@ class _DmsRocketmqConsumptionVerifyState:
     @_builtins.property
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -285,43 +207,9 @@ class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DMS RocketMQ consumption verify resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        group = config.require_object("group")
-        topic = config.require_object("topic")
-        client_id = config.require_object("clientId")
-        message_id_list = config.require_object("messageIdList")
-        test = sbercloud.DmsRocketmqConsumptionVerify("test",
-            instance_id=instance_id,
-            group=group,
-            topic=topic,
-            client_id=client_id,
-            message_id_lists=message_id_list)
-        ```
-
+        Create a DmsRocketmqConsumptionVerify resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] client_id: Specifies the client ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -330,28 +218,7 @@ class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
                  args: DmsRocketmqConsumptionVerifyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS RocketMQ consumption verify resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        group = config.require_object("group")
-        topic = config.require_object("topic")
-        client_id = config.require_object("clientId")
-        message_id_list = config.require_object("messageIdList")
-        test = sbercloud.DmsRocketmqConsumptionVerify("test",
-            instance_id=instance_id,
-            group=group,
-            topic=topic,
-            client_id=client_id,
-            message_id_lists=message_id_list)
-        ```
-
+        Create a DmsRocketmqConsumptionVerify resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqConsumptionVerifyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -415,21 +282,7 @@ class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] client_id: Specifies the client ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] message_id_lists: Specifies the message ID list.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqConsumptionVerifyResendResultArgs', 'DmsRocketmqConsumptionVerifyResendResultArgsDict']]]] resend_results: Indicates the verify results.
-               The resend_results structure is documented below.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -447,47 +300,26 @@ class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the client ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "client_id")
 
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the group name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="messageIdLists")
     def message_id_lists(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies the message ID list.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "message_id_lists")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -495,16 +327,11 @@ class DmsRocketmqConsumptionVerify(pulumi.CustomResource):
     def resend_results(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqConsumptionVerifyResendResult']]:
         """
         Indicates the verify results.
-        The resend_results structure is documented below.
         """
         return pulumi.get(self, "resend_results")
 
     @_builtins.property
     @pulumi.getter
     def topic(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 

@@ -28,81 +28,19 @@ MYPY = False
 if not MYPY:
     class JobDestinationDbArgsDict(TypedDict):
         engine_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         ip: pulumi.Input[_builtins.str]
-        """
-        Specifies the IP of database. Changing this parameter will create a new resource.
-        """
         password: pulumi.Input[_builtins.str]
-        """
-        Specifies the password of database.
-        Changing this parameter will create a new resource.
-        """
         port: pulumi.Input[_builtins.int]
-        """
-        Specifies the port of database. Changing this parameter will create a new resource.
-        """
         user: pulumi.Input[_builtins.str]
-        """
-        Specifies the user name of database.
-        Changing this parameter will create a new resource.
-        """
         instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the instance id of database when it is a RDS database.
-        Changing this parameter will create a new resource.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         ssl_cert_check_sum: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the checksum of SSL certificate content.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         ssl_cert_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the SSL certificate content, encrypted with base64.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         ssl_cert_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies SSL certificate name.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         ssl_cert_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies SSL certificate password. It is mandatory when
-        `ssl_enabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
-        """
         ssl_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable SSL connection.
-        Changing this parameter will create a new resource.
-        """
         subnet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies subnet ID of database when it is a RDS database.
-        It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-        """
 elif False:
     JobDestinationDbArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -123,42 +61,6 @@ class JobDestinationDbArgs:
                  ssl_cert_password: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the migration engine type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **mysql**:  MySQL migration, MySQL synchronization use.
-               + **mongodb**: Mongodb migration use.
-               + **cloudDataGuard-mysql**: Disaster recovery use.
-               + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-               + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-               + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-               + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-               + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        :param pulumi.Input[_builtins.str] ip: Specifies the IP of database. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of database.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] port: Specifies the port of database. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] user: Specifies the user name of database.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance id of database when it is a RDS database.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the job name. The name consists of 4 to 50 characters, starting with
-               a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_check_sum: Specifies the checksum of SSL certificate content.
-               It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_key: Specifies the SSL certificate content, encrypted with base64.
-               It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_name: Specifies SSL certificate name.
-               It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_password: Specifies SSL certificate password. It is mandatory when
-               `ssl_enabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] ssl_enabled: Specifies whether to enable SSL connection.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies subnet ID of database when it is a RDS database.
-               It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "engine_type", engine_type)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "password", password)
@@ -186,18 +88,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
@@ -207,9 +97,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter
     def ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the IP of database. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -219,10 +106,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the password of database.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -232,9 +115,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the port of database. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -244,10 +124,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter
     def user(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the user name of database.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -257,10 +133,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the instance id of database when it is a RDS database.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -270,10 +142,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -283,10 +151,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -296,10 +160,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertCheckSum")
     def ssl_cert_check_sum(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the checksum of SSL certificate content.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_check_sum")
 
     @ssl_cert_check_sum.setter
@@ -309,10 +169,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertKey")
     def ssl_cert_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the SSL certificate content, encrypted with base64.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_key")
 
     @ssl_cert_key.setter
@@ -322,10 +178,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertName")
     def ssl_cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies SSL certificate name.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_name")
 
     @ssl_cert_name.setter
@@ -335,10 +187,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertPassword")
     def ssl_cert_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies SSL certificate password. It is mandatory when
-        `ssl_enabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_password")
 
     @ssl_cert_password.setter
@@ -348,10 +196,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable SSL connection.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
@@ -361,10 +205,6 @@ class JobDestinationDbArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies subnet ID of database when it is a RDS database.
-        It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -375,21 +215,8 @@ class JobDestinationDbArgs:
 if not MYPY:
     class JobLimitSpeedArgsDict(TypedDict):
         end_time: pulumi.Input[_builtins.str]
-        """
-        Specifies the time to end speed limit, this time is UTC time. The input must
-        end at 59 minutes, the format is `hh:mm`, for example: 15:59. Changing this parameter will create a new resource.
-        """
         speed: pulumi.Input[_builtins.str]
-        """
-        Specifies the transmission speed, the value range is 1 to 9999, unit: `MB/s`.
-        Changing this parameter will create a new resource.
-        """
         start_time: pulumi.Input[_builtins.str]
-        """
-        Specifies the time to start speed limit, this time is UTC time. The start
-        time is the whole hour, if there is a minute, it will be ignored, the format is `hh:mm`, and the hour number
-        is two digits, for example: 01:00. Changing this parameter will create a new resource.
-        """
 elif False:
     JobLimitSpeedArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -399,15 +226,6 @@ class JobLimitSpeedArgs:
                  end_time: pulumi.Input[_builtins.str],
                  speed: pulumi.Input[_builtins.str],
                  start_time: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] end_time: Specifies the time to end speed limit, this time is UTC time. The input must
-               end at 59 minutes, the format is `hh:mm`, for example: 15:59. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] speed: Specifies the transmission speed, the value range is 1 to 9999, unit: `MB/s`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] start_time: Specifies the time to start speed limit, this time is UTC time. The start
-               time is the whole hour, if there is a minute, it will be ignored, the format is `hh:mm`, and the hour number
-               is two digits, for example: 01:00. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "speed", speed)
         pulumi.set(__self__, "start_time", start_time)
@@ -415,10 +233,6 @@ class JobLimitSpeedArgs:
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the time to end speed limit, this time is UTC time. The input must
-        end at 59 minutes, the format is `hh:mm`, for example: 15:59. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -428,10 +242,6 @@ class JobLimitSpeedArgs:
     @_builtins.property
     @pulumi.getter
     def speed(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the transmission speed, the value range is 1 to 9999, unit: `MB/s`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "speed")
 
     @speed.setter
@@ -441,11 +251,6 @@ class JobLimitSpeedArgs:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the time to start speed limit, this time is UTC time. The start
-        time is the whole hour, if there is a minute, it will be ignored, the format is `hh:mm`, and the hour number
-        is two digits, for example: 01:00. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -456,81 +261,19 @@ class JobLimitSpeedArgs:
 if not MYPY:
     class JobSourceDbArgsDict(TypedDict):
         engine_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         ip: pulumi.Input[_builtins.str]
-        """
-        Specifies the IP of database. Changing this parameter will create a new resource.
-        """
         password: pulumi.Input[_builtins.str]
-        """
-        Specifies the password of database.
-        Changing this parameter will create a new resource.
-        """
         port: pulumi.Input[_builtins.int]
-        """
-        Specifies the port of database. Changing this parameter will create a new resource.
-        """
         user: pulumi.Input[_builtins.str]
-        """
-        Specifies the user name of database.
-        Changing this parameter will create a new resource.
-        """
         instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the instance id of database when it is a RDS database.
-        Changing this parameter will create a new resource.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         ssl_cert_check_sum: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the checksum of SSL certificate content.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         ssl_cert_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the SSL certificate content, encrypted with base64.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         ssl_cert_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies SSL certificate name.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         ssl_cert_password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies SSL certificate password. It is mandatory when
-        `ssl_enabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
-        """
         ssl_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable SSL connection.
-        Changing this parameter will create a new resource.
-        """
         subnet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies subnet ID of database when it is a RDS database.
-        It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-        """
 elif False:
     JobSourceDbArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -551,42 +294,6 @@ class JobSourceDbArgs:
                  ssl_cert_password: Optional[pulumi.Input[_builtins.str]] = None,
                  ssl_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the migration engine type.
-               Changing this parameter will create a new resource. The options are as follows:
-               + **mysql**:  MySQL migration, MySQL synchronization use.
-               + **mongodb**: Mongodb migration use.
-               + **cloudDataGuard-mysql**: Disaster recovery use.
-               + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-               + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-               + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-               + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-               + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        :param pulumi.Input[_builtins.str] ip: Specifies the IP of database. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of database.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] port: Specifies the port of database. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] user: Specifies the user name of database.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance id of database when it is a RDS database.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the job name. The name consists of 4 to 50 characters, starting with
-               a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_check_sum: Specifies the checksum of SSL certificate content.
-               It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_key: Specifies the SSL certificate content, encrypted with base64.
-               It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_name: Specifies SSL certificate name.
-               It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ssl_cert_password: Specifies SSL certificate password. It is mandatory when
-               `ssl_enabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] ssl_enabled: Specifies whether to enable SSL connection.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies subnet ID of database when it is a RDS database.
-               It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "engine_type", engine_type)
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "password", password)
@@ -614,18 +321,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the migration engine type.
-        Changing this parameter will create a new resource. The options are as follows:
-        + **mysql**:  MySQL migration, MySQL synchronization use.
-        + **mongodb**: Mongodb migration use.
-        + **cloudDataGuard-mysql**: Disaster recovery use.
-        + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-        + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-        + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-        + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-        + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-        """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
@@ -635,9 +330,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter
     def ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the IP of database. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -647,10 +339,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the password of database.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -660,9 +348,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the port of database. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -672,10 +357,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter
     def user(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the user name of database.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "user")
 
     @user.setter
@@ -685,10 +366,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the instance id of database when it is a RDS database.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -698,10 +375,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the job name. The name consists of 4 to 50 characters, starting with
-        a letter. Only letters, digits, underscores (\\_) and hyphens (-) are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -711,10 +384,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -724,10 +393,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertCheckSum")
     def ssl_cert_check_sum(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the checksum of SSL certificate content.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_check_sum")
 
     @ssl_cert_check_sum.setter
@@ -737,10 +402,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertKey")
     def ssl_cert_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the SSL certificate content, encrypted with base64.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_key")
 
     @ssl_cert_key.setter
@@ -750,10 +411,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertName")
     def ssl_cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies SSL certificate name.
-        It is mandatory when `ssl_enabled` is `true`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_name")
 
     @ssl_cert_name.setter
@@ -763,10 +420,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslCertPassword")
     def ssl_cert_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies SSL certificate password. It is mandatory when
-        `ssl_enabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_cert_password")
 
     @ssl_cert_password.setter
@@ -776,10 +429,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
     def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable SSL connection.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
@@ -789,10 +438,6 @@ class JobSourceDbArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies subnet ID of database when it is a RDS database.
-        It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter

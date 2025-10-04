@@ -29,23 +29,6 @@ class RouteTableArgs:
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouteTable resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID for which a route table is to be added.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] name: Specifies the route table name. The value is a string of no more than
-               64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc route table.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]] routes: Specifies the route object list. The route object
-               is documented below.
-               
-               <a name="route_object"></a>
-               The `route` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: Specifies an array of one or more subnets associating with the route table.
-               
-               > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-               The default route table determines the inbound traffic.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if description is not None:
@@ -62,10 +45,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the VPC ID for which a route table is to be added.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -75,10 +54,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -88,10 +63,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the route table name. The value is a string of no more than
-        64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -101,10 +72,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the vpc route table.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -114,13 +81,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]]]:
-        """
-        Specifies the route object list. The route object
-        is documented below.
-
-        <a name="route_object"></a>
-        The `route` block supports:
-        """
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -130,12 +90,6 @@ class RouteTableArgs:
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more subnets associating with the route table.
-
-        > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-        The default route table determines the inbound traffic.
-        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -154,23 +108,6 @@ class _RouteTableState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteTable resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] name: Specifies the route table name. The value is a string of no more than
-               64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc route table.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]] routes: Specifies the route object list. The route object
-               is documented below.
-               
-               <a name="route_object"></a>
-               The `route` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: Specifies an array of one or more subnets associating with the route table.
-               
-               > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-               The default route table determines the inbound traffic.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID for which a route table is to be added.
-               Changing this creates a new resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -188,10 +125,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -201,10 +134,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the route table name. The value is a string of no more than
-        64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -214,10 +143,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the vpc route table.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -227,13 +152,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteTableRouteArgs']]]]:
-        """
-        Specifies the route object list. The route object
-        is documented below.
-
-        <a name="route_object"></a>
-        The `route` block supports:
-        """
         return pulumi.get(self, "routes")
 
     @routes.setter
@@ -243,12 +161,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more subnets associating with the route table.
-
-        > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-        The default route table determines the inbound traffic.
-        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -258,10 +170,6 @@ class _RouteTableState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the VPC ID for which a route table is to be added.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -283,88 +191,9 @@ class RouteTable(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPC custom route table resource within SberCloud.
-
-        > **NOTE:** To use a custom route table, you need to submit a service ticket to increase quota.
-
-        ## Example Usage
-
-        ### Basic Custom Route Table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        vpc_peering_id = config.require_object("vpcPeeringId")
-        demo = sbercloud.vpc.RouteTable("demo",
-            name="demo",
-            vpc_id=vpc_id,
-            description="a custom route table demo",
-            routes=[{
-                "destination": "172.16.0.0/16",
-                "type": "peering",
-                "nexthop": vpc_peering_id,
-            }])
-        ```
-
-        ### Associating Subnets with a Route Table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        vpc_peering_id = config.require_object("vpcPeeringId")
-        subnet_ids = sbercloud.Vpc.get_subnet_ids(vpc_id=vpc_id)
-        demo = sbercloud.vpc.RouteTable("demo",
-            name="demo",
-            vpc_id=vpc_id,
-            subnets=subnet_ids.ids,
-            routes=[
-                {
-                    "destination": "172.16.0.0/16",
-                    "type": "peering",
-                    "nexthop": vpc_peering_id,
-                },
-                {
-                    "destination": "192.168.100.0/24",
-                    "type": "vip",
-                    "nexthop": "192.168.10.200",
-                },
-            ])
-        ```
-
-        ## Import
-
-        vpc route tables can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/routeTable:RouteTable demo e1b3208a-544b-42a7-84e6-5d70371dd982
-        ```
-
+        Create a RouteTable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] name: Specifies the route table name. The value is a string of no more than
-               64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc route table.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict']]]] routes: Specifies the route object list. The route object
-               is documented below.
-               
-               <a name="route_object"></a>
-               The `route` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: Specifies an array of one or more subnets associating with the route table.
-               
-               > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-               The default route table determines the inbound traffic.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID for which a route table is to be added.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -373,69 +202,7 @@ class RouteTable(pulumi.CustomResource):
                  args: RouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPC custom route table resource within SberCloud.
-
-        > **NOTE:** To use a custom route table, you need to submit a service ticket to increase quota.
-
-        ## Example Usage
-
-        ### Basic Custom Route Table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        vpc_peering_id = config.require_object("vpcPeeringId")
-        demo = sbercloud.vpc.RouteTable("demo",
-            name="demo",
-            vpc_id=vpc_id,
-            description="a custom route table demo",
-            routes=[{
-                "destination": "172.16.0.0/16",
-                "type": "peering",
-                "nexthop": vpc_peering_id,
-            }])
-        ```
-
-        ### Associating Subnets with a Route Table
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        vpc_peering_id = config.require_object("vpcPeeringId")
-        subnet_ids = sbercloud.Vpc.get_subnet_ids(vpc_id=vpc_id)
-        demo = sbercloud.vpc.RouteTable("demo",
-            name="demo",
-            vpc_id=vpc_id,
-            subnets=subnet_ids.ids,
-            routes=[
-                {
-                    "destination": "172.16.0.0/16",
-                    "type": "peering",
-                    "nexthop": vpc_peering_id,
-                },
-                {
-                    "destination": "192.168.100.0/24",
-                    "type": "vip",
-                    "nexthop": "192.168.10.200",
-                },
-            ])
-        ```
-
-        ## Import
-
-        vpc route tables can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/routeTable:RouteTable demo e1b3208a-544b-42a7-84e6-5d70371dd982
-        ```
-
+        Create a RouteTable resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RouteTableArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -497,23 +264,6 @@ class RouteTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] name: Specifies the route table name. The value is a string of no more than
-               64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc route table.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RouteTableRouteArgs', 'RouteTableRouteArgsDict']]]] routes: Specifies the route object list. The route object
-               is documented below.
-               
-               <a name="route_object"></a>
-               The `route` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: Specifies an array of one or more subnets associating with the route table.
-               
-               > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-               The default route table determines the inbound traffic.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID for which a route table is to be added.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -530,59 +280,30 @@ class RouteTable(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the route table name. The value is a string of no more than
-        64 characters that can contain letters, digits, underscores (_), hyphens (-), and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the vpc route table.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def routes(self) -> pulumi.Output[Sequence['outputs.RouteTableRoute']]:
-        """
-        Specifies the route object list. The route object
-        is documented below.
-
-        <a name="route_object"></a>
-        The `route` block supports:
-        """
         return pulumi.get(self, "routes")
 
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies an array of one or more subnets associating with the route table.
-
-        > **NOTE:** The custom route table associated with a subnet affects only the outbound traffic.
-        The default route table determines the inbound traffic.
-        """
         return pulumi.get(self, "subnets")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the VPC ID for which a route table is to be added.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 

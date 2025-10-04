@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of keypairs.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dew"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			keypairName := cfg.RequireObject("keypairName")
-//			_, err := dew.GetKeypairs(ctx, &dew.GetKeypairsArgs{
-//				Name: pulumi.StringRef(keypairName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKeypairs(ctx *pulumi.Context, args *GetKeypairsArgs, opts ...pulumi.InvokeOption) (*GetKeypairsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeypairsResult
@@ -53,34 +23,23 @@ func GetKeypairs(ctx *pulumi.Context, args *GetKeypairsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getKeypairs.
 type GetKeypairsArgs struct {
-	// Specifies the fingerprint of the keypair.
 	Fingerprint *string `pulumi:"fingerprint"`
-	// Indicates whether the private key is managed by sberCloud.
-	IsManaged *bool `pulumi:"isManaged"`
-	// Specifies the name of the keypair.
-	Name *string `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key.
-	PublicKey *string `pulumi:"publicKey"`
-	// Specifies the region in which to obtain the keypairs. If omitted, the provider-level
-	// region will be used.
-	Region *string `pulumi:"region"`
+	IsManaged   *bool   `pulumi:"isManaged"`
+	Name        *string `pulumi:"name"`
+	PublicKey   *string `pulumi:"publicKey"`
+	Region      *string `pulumi:"region"`
 }
 
 // A collection of values returned by getKeypairs.
 type GetKeypairsResult struct {
-	// Indicates the fingerprint information about a keypair.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates whether the private key is managed by sberCloud.
-	IsManaged *bool `pulumi:"isManaged"`
-	// The KPS keypairs list.
-	Keypairs []GetKeypairsKeypair `pulumi:"keypairs"`
-	// Indicates the name of the keypair.
-	Name *string `pulumi:"name"`
-	// Indicates the imported OpenSSH-formatted public key.
-	PublicKey *string `pulumi:"publicKey"`
-	Region    *string `pulumi:"region"`
+	Id        string               `pulumi:"id"`
+	IsManaged *bool                `pulumi:"isManaged"`
+	Keypairs  []GetKeypairsKeypair `pulumi:"keypairs"`
+	Name      *string              `pulumi:"name"`
+	PublicKey *string              `pulumi:"publicKey"`
+	Region    *string              `pulumi:"region"`
 }
 
 func GetKeypairsOutput(ctx *pulumi.Context, args GetKeypairsOutputArgs, opts ...pulumi.InvokeOption) GetKeypairsResultOutput {
@@ -94,17 +53,11 @@ func GetKeypairsOutput(ctx *pulumi.Context, args GetKeypairsOutputArgs, opts ...
 
 // A collection of arguments for invoking getKeypairs.
 type GetKeypairsOutputArgs struct {
-	// Specifies the fingerprint of the keypair.
 	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
-	// Indicates whether the private key is managed by sberCloud.
-	IsManaged pulumi.BoolPtrInput `pulumi:"isManaged"`
-	// Specifies the name of the keypair.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key.
-	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
-	// Specifies the region in which to obtain the keypairs. If omitted, the provider-level
-	// region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	IsManaged   pulumi.BoolPtrInput   `pulumi:"isManaged"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	PublicKey   pulumi.StringPtrInput `pulumi:"publicKey"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetKeypairsOutputArgs) ElementType() reflect.Type {
@@ -126,7 +79,6 @@ func (o GetKeypairsResultOutput) ToGetKeypairsResultOutputWithContext(ctx contex
 	return o
 }
 
-// Indicates the fingerprint information about a keypair.
 func (o GetKeypairsResultOutput) Fingerprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeypairsResult) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
 }
@@ -136,22 +88,18 @@ func (o GetKeypairsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKeypairsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates whether the private key is managed by sberCloud.
 func (o GetKeypairsResultOutput) IsManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKeypairsResult) *bool { return v.IsManaged }).(pulumi.BoolPtrOutput)
 }
 
-// The KPS keypairs list.
 func (o GetKeypairsResultOutput) Keypairs() GetKeypairsKeypairArrayOutput {
 	return o.ApplyT(func(v GetKeypairsResult) []GetKeypairsKeypair { return v.Keypairs }).(GetKeypairsKeypairArrayOutput)
 }
 
-// Indicates the name of the keypair.
 func (o GetKeypairsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeypairsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the imported OpenSSH-formatted public key.
 func (o GetKeypairsResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKeypairsResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }

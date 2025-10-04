@@ -12,105 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS Mysql account resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			accountPassword := cfg.RequireObject("accountPassword")
-//			_, err := rds.NewMysqlAccount(ctx, "test", &rds.MysqlAccountArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.String("test"),
-//				Password:   pulumi.Any(accountPassword),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// RDS account can be imported using the `instance_id` and `name` separated by a slash, e.g.:
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/mysqlAccount:MysqlAccount account_1 <instance_id>/<name>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-//
-// running `pulumi preview` after importing the RDS Mysql account. You can then decide if changes should be applied to
-//
-// the RDS Mysql account, or the resource definition should be updated to align with the RDS Mysql account. Also you
-//
-// can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_rds_mysql_account" "account_1" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    password
-//
-//	  ]
-//
-//	}
-//
-// }
 type MysqlAccount struct {
 	pulumi.CustomResourceState
 
-	// Specifies remarks of the database account. The parameter must be 1 to 512
-	// characters long and is supported only for MySQL 8.0.25 and later versions.
+	// Specifies remarks of the DB account.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the IP addresses that are allowed to access your DB instance.
-	// + If the IP address is set to %, all IP addresses are allowed to access your instance.
-	// + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-	//   your instance.
-	// + Multiple IP addresses can be added.
-	//
-	// Changing this parameter will create a new resource.
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
-	// Specifies the rds instance id. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the username of the db account. Only lowercase letters, digits,
-	// hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-	// + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-	// + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+	// Specifies the username of the DB account.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the password of the db account. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-	// different from `name` or `name` spelled backwards.
+	// Specifies the password of the DB account.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The region in which to create the rds account resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewMysqlAccount registers a new resource with the given unique name, arguments, and options.
@@ -156,59 +71,31 @@ func GetMysqlAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MysqlAccount resources.
 type mysqlAccountState struct {
-	// Specifies remarks of the database account. The parameter must be 1 to 512
-	// characters long and is supported only for MySQL 8.0.25 and later versions.
+	// Specifies remarks of the DB account.
 	Description *string `pulumi:"description"`
 	// Specifies the IP addresses that are allowed to access your DB instance.
-	// + If the IP address is set to %, all IP addresses are allowed to access your instance.
-	// + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-	//   your instance.
-	// + Multiple IP addresses can be added.
-	//
-	// Changing this parameter will create a new resource.
 	Hosts []string `pulumi:"hosts"`
-	// Specifies the rds instance id. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the username of the db account. Only lowercase letters, digits,
-	// hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-	// + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-	// + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+	// Specifies the username of the DB account.
 	Name *string `pulumi:"name"`
-	// Specifies the password of the db account. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-	// different from `name` or `name` spelled backwards.
+	// Specifies the password of the DB account.
 	Password *string `pulumi:"password"`
-	// The region in which to create the rds account resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region   *string `pulumi:"region"`
 }
 
 type MysqlAccountState struct {
-	// Specifies remarks of the database account. The parameter must be 1 to 512
-	// characters long and is supported only for MySQL 8.0.25 and later versions.
+	// Specifies remarks of the DB account.
 	Description pulumi.StringPtrInput
 	// Specifies the IP addresses that are allowed to access your DB instance.
-	// + If the IP address is set to %, all IP addresses are allowed to access your instance.
-	// + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-	//   your instance.
-	// + Multiple IP addresses can be added.
-	//
-	// Changing this parameter will create a new resource.
 	Hosts pulumi.StringArrayInput
-	// Specifies the rds instance id. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the username of the db account. Only lowercase letters, digits,
-	// hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-	// + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-	// + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+	// Specifies the username of the DB account.
 	Name pulumi.StringPtrInput
-	// Specifies the password of the db account. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-	// different from `name` or `name` spelled backwards.
+	// Specifies the password of the DB account.
 	Password pulumi.StringPtrInput
-	// The region in which to create the rds account resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (MysqlAccountState) ElementType() reflect.Type {
@@ -216,60 +103,32 @@ func (MysqlAccountState) ElementType() reflect.Type {
 }
 
 type mysqlAccountArgs struct {
-	// Specifies remarks of the database account. The parameter must be 1 to 512
-	// characters long and is supported only for MySQL 8.0.25 and later versions.
+	// Specifies remarks of the DB account.
 	Description *string `pulumi:"description"`
 	// Specifies the IP addresses that are allowed to access your DB instance.
-	// + If the IP address is set to %, all IP addresses are allowed to access your instance.
-	// + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-	//   your instance.
-	// + Multiple IP addresses can be added.
-	//
-	// Changing this parameter will create a new resource.
 	Hosts []string `pulumi:"hosts"`
-	// Specifies the rds instance id. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the username of the db account. Only lowercase letters, digits,
-	// hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-	// + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-	// + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+	// Specifies the username of the DB account.
 	Name *string `pulumi:"name"`
-	// Specifies the password of the db account. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-	// different from `name` or `name` spelled backwards.
-	Password string `pulumi:"password"`
-	// The region in which to create the rds account resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	// Specifies the password of the DB account.
+	Password string  `pulumi:"password"`
+	Region   *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a MysqlAccount resource.
 type MysqlAccountArgs struct {
-	// Specifies remarks of the database account. The parameter must be 1 to 512
-	// characters long and is supported only for MySQL 8.0.25 and later versions.
+	// Specifies remarks of the DB account.
 	Description pulumi.StringPtrInput
 	// Specifies the IP addresses that are allowed to access your DB instance.
-	// + If the IP address is set to %, all IP addresses are allowed to access your instance.
-	// + If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-	//   your instance.
-	// + Multiple IP addresses can be added.
-	//
-	// Changing this parameter will create a new resource.
 	Hosts pulumi.StringArrayInput
-	// Specifies the rds instance id. Changing this will create a new resource.
+	// Specifies the ID of the RDS Mysql instance.
 	InstanceId pulumi.StringInput
-	// Specifies the username of the db account. Only lowercase letters, digits,
-	// hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-	// + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-	// + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+	// Specifies the username of the DB account.
 	Name pulumi.StringPtrInput
-	// Specifies the password of the db account. The parameter must be 8 to 32 characters
-	// long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-	// different from `name` or `name` spelled backwards.
+	// Specifies the password of the DB account.
 	Password pulumi.StringInput
-	// The region in which to create the rds account resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (MysqlAccountArgs) ElementType() reflect.Type {
@@ -359,45 +218,31 @@ func (o MysqlAccountOutput) ToMysqlAccountOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies remarks of the database account. The parameter must be 1 to 512
-// characters long and is supported only for MySQL 8.0.25 and later versions.
+// Specifies remarks of the DB account.
 func (o MysqlAccountOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MysqlAccount) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the IP addresses that are allowed to access your DB instance.
-//   - If the IP address is set to %, all IP addresses are allowed to access your instance.
-//   - If the IP address is set to 10.10.10.%, all IP addresses in the subnet 10.10.10.X are allowed to access
-//     your instance.
-//   - Multiple IP addresses can be added.
-//
-// Changing this parameter will create a new resource.
 func (o MysqlAccountOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MysqlAccount) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the rds instance id. Changing this will create a new resource.
+// Specifies the ID of the RDS Mysql instance.
 func (o MysqlAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the username of the db account. Only lowercase letters, digits,
-// hyphens (-), and underscores (_) are allowed. Changing this will create a new resource.
-// + If the database version is MySQL 5.6, the username consists of 1 to 16 characters.
-// + If the database version is MySQL 5.7 or 8.0, the username consists of 1 to 32 characters.
+// Specifies the username of the DB account.
 func (o MysqlAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the password of the db account. The parameter must be 8 to 32 characters
-// long and contain only letters(case-sensitive), digits, and special characters(~!@#$%^*-_=+?,()&). The value must be
-// different from `name` or `name` spelled backwards.
+// Specifies the password of the DB account.
 func (o MysqlAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlAccount) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// The region in which to create the rds account resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o MysqlAccountOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlAccount) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

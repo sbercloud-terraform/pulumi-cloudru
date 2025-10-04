@@ -54,12 +54,6 @@ if not MYPY:
         limits: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the operation restrictions.
-        - If operation is not SET, this parameter takes effect and the unit is Mbit/s.
-        - If operation is set to ADD, this parameter indicates the maximum bandwidth allowed.
-        - If operation is set to REDUCE, this parameter indicates the minimum bandwidth allowed.
-
-        <a name="ASBandWidthPolicy_ScheduledPolicy"></a>
-        The `scheduled_policy` block supports:
         """
         lower_bound: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -67,16 +61,11 @@ if not MYPY:
         """
         operation: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the operation to be performed. The default operation is ADD.
-        The options are as follows:
-        - **ADD**: indicates adding the bandwidth size.
-        - **REDUCE**: indicates reducing the bandwidth size.
-        - **SET**: indicates setting the bandwidth size to a specified value.
+        Specifies the operation to be performed.
         """
         size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the bandwidth (Mbit/s).
-        The value is an integer from 1 to 2000. The default value is 1.
+        Specifies the operation size.
         """
         upper_bound: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -95,20 +84,9 @@ class BandwidthPolicyIntervalAlarmActionArgs:
                  upper_bound: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] limits: Specifies the operation restrictions.
-               - If operation is not SET, this parameter takes effect and the unit is Mbit/s.
-               - If operation is set to ADD, this parameter indicates the maximum bandwidth allowed.
-               - If operation is set to REDUCE, this parameter indicates the minimum bandwidth allowed.
-               
-               <a name="ASBandWidthPolicy_ScheduledPolicy"></a>
-               The `scheduled_policy` block supports:
         :param pulumi.Input[_builtins.str] lower_bound: Specifies the lower limit of the value range.
-        :param pulumi.Input[_builtins.str] operation: Specifies the operation to be performed. The default operation is ADD.
-               The options are as follows:
-               - **ADD**: indicates adding the bandwidth size.
-               - **REDUCE**: indicates reducing the bandwidth size.
-               - **SET**: indicates setting the bandwidth size to a specified value.
-        :param pulumi.Input[_builtins.int] size: Specifies the bandwidth (Mbit/s).
-               The value is an integer from 1 to 2000. The default value is 1.
+        :param pulumi.Input[_builtins.str] operation: Specifies the operation to be performed.
+        :param pulumi.Input[_builtins.int] size: Specifies the operation size.
         :param pulumi.Input[_builtins.str] upper_bound: Specifies the upper limit of the value range.
         """
         if limits is not None:
@@ -127,12 +105,6 @@ class BandwidthPolicyIntervalAlarmActionArgs:
     def limits(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the operation restrictions.
-        - If operation is not SET, this parameter takes effect and the unit is Mbit/s.
-        - If operation is set to ADD, this parameter indicates the maximum bandwidth allowed.
-        - If operation is set to REDUCE, this parameter indicates the minimum bandwidth allowed.
-
-        <a name="ASBandWidthPolicy_ScheduledPolicy"></a>
-        The `scheduled_policy` block supports:
         """
         return pulumi.get(self, "limits")
 
@@ -156,11 +128,7 @@ class BandwidthPolicyIntervalAlarmActionArgs:
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the operation to be performed. The default operation is ADD.
-        The options are as follows:
-        - **ADD**: indicates adding the bandwidth size.
-        - **REDUCE**: indicates reducing the bandwidth size.
-        - **SET**: indicates setting the bandwidth size to a specified value.
+        Specifies the operation to be performed.
         """
         return pulumi.get(self, "operation")
 
@@ -172,8 +140,7 @@ class BandwidthPolicyIntervalAlarmActionArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the bandwidth (Mbit/s).
-        The value is an integer from 1 to 2000. The default value is 1.
+        Specifies the operation size.
         """
         return pulumi.get(self, "size")
 
@@ -271,25 +238,14 @@ if not MYPY:
         limits: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the operation restrictions.
-        - If operation is not SET, this parameter takes effect and the unit is Mbit/s.
-        - If operation is set to ADD, this parameter indicates the maximum bandwidth allowed.
-        - If operation is set to REDUCE, this parameter indicates the minimum bandwidth allowed.
-
-        <a name="ASBandWidthPolicy_ScheduledPolicy"></a>
-        The `scheduled_policy` block supports:
         """
         operation: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the operation to be performed. The default operation is ADD.
-        The options are as follows:
-        - **ADD**: indicates adding the bandwidth size.
-        - **REDUCE**: indicates reducing the bandwidth size.
-        - **SET**: indicates setting the bandwidth size to a specified value.
         """
         size: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the bandwidth (Mbit/s).
-        The value is an integer from 1 to 2000. The default value is 1.
         """
 elif False:
     BandwidthPolicyScalingPolicyActionArgsDict: TypeAlias = Mapping[str, Any]
@@ -302,19 +258,8 @@ class BandwidthPolicyScalingPolicyActionArgs:
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] limits: Specifies the operation restrictions.
-               - If operation is not SET, this parameter takes effect and the unit is Mbit/s.
-               - If operation is set to ADD, this parameter indicates the maximum bandwidth allowed.
-               - If operation is set to REDUCE, this parameter indicates the minimum bandwidth allowed.
-               
-               <a name="ASBandWidthPolicy_ScheduledPolicy"></a>
-               The `scheduled_policy` block supports:
         :param pulumi.Input[_builtins.str] operation: Specifies the operation to be performed. The default operation is ADD.
-               The options are as follows:
-               - **ADD**: indicates adding the bandwidth size.
-               - **REDUCE**: indicates reducing the bandwidth size.
-               - **SET**: indicates setting the bandwidth size to a specified value.
         :param pulumi.Input[_builtins.int] size: Specifies the bandwidth (Mbit/s).
-               The value is an integer from 1 to 2000. The default value is 1.
         """
         if limits is not None:
             pulumi.set(__self__, "limits", limits)
@@ -328,12 +273,6 @@ class BandwidthPolicyScalingPolicyActionArgs:
     def limits(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the operation restrictions.
-        - If operation is not SET, this parameter takes effect and the unit is Mbit/s.
-        - If operation is set to ADD, this parameter indicates the maximum bandwidth allowed.
-        - If operation is set to REDUCE, this parameter indicates the minimum bandwidth allowed.
-
-        <a name="ASBandWidthPolicy_ScheduledPolicy"></a>
-        The `scheduled_policy` block supports:
         """
         return pulumi.get(self, "limits")
 
@@ -346,10 +285,6 @@ class BandwidthPolicyScalingPolicyActionArgs:
     def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the operation to be performed. The default operation is ADD.
-        The options are as follows:
-        - **ADD**: indicates adding the bandwidth size.
-        - **REDUCE**: indicates reducing the bandwidth size.
-        - **SET**: indicates setting the bandwidth size to a specified value.
         """
         return pulumi.get(self, "operation")
 
@@ -362,7 +297,6 @@ class BandwidthPolicyScalingPolicyActionArgs:
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the bandwidth (Mbit/s).
-        The value is an integer from 1 to 2000. The default value is 1.
         """
         return pulumi.get(self, "size")
 
@@ -375,41 +309,23 @@ if not MYPY:
     class BandwidthPolicyScheduledPolicyArgsDict(TypedDict):
         launch_time: pulumi.Input[_builtins.str]
         """
-        Specifies the time when the scaling action is triggered.
-        The time format complies with UTC.
-        - If scaling_policy_type is set to SCHEDULED, the time format is YYYY-MM-DDThh:mmZ.
-        - If scaling_policy_type is set to RECURRENCE, the time format is hh:mm.
+        Specifies the time when the scaling action is triggered. The time format complies with UTC.
         """
         end_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the end time of the scaling action triggered periodically.
-        The time format complies with UTC. This parameter is mandatory when scaling_policy_type is set to RECURRENCE.
-        When the scaling action is triggered periodically, the end time cannot be earlier than the current and start time.
-        The time format is YYYY-MM-DDThh:mmZ.
         """
         recurrence_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the periodic triggering type.
-        This parameter is mandatory when scaling_policy_type is set to RECURRENCE. The options are as follows:
-        - **Daily**: indicates that the scaling action is triggered once a day.
-        - **Weekly**: indicates that the scaling action is triggered once a week.
-        - **Monthly**: indicates that the scaling action is triggered once a month.
         """
         recurrence_value: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the day when a periodic scaling action is triggered.
-        This parameter is mandatory when scaling_policy_type is set to RECURRENCE.
-        - If recurrence_type is set to Daily, the value is null, indicating that the scaling action is triggered once a day.
-        - If recurrence_type is set to Weekly, the value ranges from 1 (Sunday) to 7 (Saturday).
-        The digits refer to dates in each week and separated by a comma, such as 1,3,5.
-        - If recurrence_type is set to Monthly, the value ranges from 1 to 31.
-        The digits refer to the dates in each month and separated by a comma, such as 1,10,13,28.
         """
         start_time: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the start time of the scaling action triggered periodically.
-        The time format complies with UTC. The default value is the local time.
-        The time format is YYYY-MM-DDThh:mmZ.
         """
 elif False:
     BandwidthPolicyScheduledPolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -423,29 +339,11 @@ class BandwidthPolicyScheduledPolicyArgs:
                  recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] launch_time: Specifies the time when the scaling action is triggered.
-               The time format complies with UTC.
-               - If scaling_policy_type is set to SCHEDULED, the time format is YYYY-MM-DDThh:mmZ.
-               - If scaling_policy_type is set to RECURRENCE, the time format is hh:mm.
+        :param pulumi.Input[_builtins.str] launch_time: Specifies the time when the scaling action is triggered. The time format complies with UTC.
         :param pulumi.Input[_builtins.str] end_time: Specifies the end time of the scaling action triggered periodically.
-               The time format complies with UTC. This parameter is mandatory when scaling_policy_type is set to RECURRENCE.
-               When the scaling action is triggered periodically, the end time cannot be earlier than the current and start time.
-               The time format is YYYY-MM-DDThh:mmZ.
         :param pulumi.Input[_builtins.str] recurrence_type: Specifies the periodic triggering type.
-               This parameter is mandatory when scaling_policy_type is set to RECURRENCE. The options are as follows:
-               - **Daily**: indicates that the scaling action is triggered once a day.
-               - **Weekly**: indicates that the scaling action is triggered once a week.
-               - **Monthly**: indicates that the scaling action is triggered once a month.
         :param pulumi.Input[_builtins.str] recurrence_value: Specifies the day when a periodic scaling action is triggered.
-               This parameter is mandatory when scaling_policy_type is set to RECURRENCE.
-               - If recurrence_type is set to Daily, the value is null, indicating that the scaling action is triggered once a day.
-               - If recurrence_type is set to Weekly, the value ranges from 1 (Sunday) to 7 (Saturday).
-               The digits refer to dates in each week and separated by a comma, such as 1,3,5.
-               - If recurrence_type is set to Monthly, the value ranges from 1 to 31.
-               The digits refer to the dates in each month and separated by a comma, such as 1,10,13,28.
         :param pulumi.Input[_builtins.str] start_time: Specifies the start time of the scaling action triggered periodically.
-               The time format complies with UTC. The default value is the local time.
-               The time format is YYYY-MM-DDThh:mmZ.
         """
         pulumi.set(__self__, "launch_time", launch_time)
         if end_time is not None:
@@ -461,10 +359,7 @@ class BandwidthPolicyScheduledPolicyArgs:
     @pulumi.getter(name="launchTime")
     def launch_time(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the time when the scaling action is triggered.
-        The time format complies with UTC.
-        - If scaling_policy_type is set to SCHEDULED, the time format is YYYY-MM-DDThh:mmZ.
-        - If scaling_policy_type is set to RECURRENCE, the time format is hh:mm.
+        Specifies the time when the scaling action is triggered. The time format complies with UTC.
         """
         return pulumi.get(self, "launch_time")
 
@@ -477,9 +372,6 @@ class BandwidthPolicyScheduledPolicyArgs:
     def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the end time of the scaling action triggered periodically.
-        The time format complies with UTC. This parameter is mandatory when scaling_policy_type is set to RECURRENCE.
-        When the scaling action is triggered periodically, the end time cannot be earlier than the current and start time.
-        The time format is YYYY-MM-DDThh:mmZ.
         """
         return pulumi.get(self, "end_time")
 
@@ -492,10 +384,6 @@ class BandwidthPolicyScheduledPolicyArgs:
     def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the periodic triggering type.
-        This parameter is mandatory when scaling_policy_type is set to RECURRENCE. The options are as follows:
-        - **Daily**: indicates that the scaling action is triggered once a day.
-        - **Weekly**: indicates that the scaling action is triggered once a week.
-        - **Monthly**: indicates that the scaling action is triggered once a month.
         """
         return pulumi.get(self, "recurrence_type")
 
@@ -508,12 +396,6 @@ class BandwidthPolicyScheduledPolicyArgs:
     def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the day when a periodic scaling action is triggered.
-        This parameter is mandatory when scaling_policy_type is set to RECURRENCE.
-        - If recurrence_type is set to Daily, the value is null, indicating that the scaling action is triggered once a day.
-        - If recurrence_type is set to Weekly, the value ranges from 1 (Sunday) to 7 (Saturday).
-        The digits refer to dates in each week and separated by a comma, such as 1,3,5.
-        - If recurrence_type is set to Monthly, the value ranges from 1 to 31.
-        The digits refer to the dates in each month and separated by a comma, such as 1,10,13,28.
         """
         return pulumi.get(self, "recurrence_value")
 
@@ -526,8 +408,6 @@ class BandwidthPolicyScheduledPolicyArgs:
     def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the start time of the scaling action triggered periodically.
-        The time format complies with UTC. The default value is the local time.
-        The time format is YYYY-MM-DDThh:mmZ.
         """
         return pulumi.get(self, "start_time")
 
@@ -540,86 +420,24 @@ if not MYPY:
     class ConfigurationInstanceConfigArgsDict(TypedDict):
         admin_pass: NotRequired[pulumi.Input[_builtins.str]]
         charging_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a billing mode for an ECS.
-        The value can be `postPaid` and `spot`. The default value is `postPaid`.
-        Changing this will create a new resource.
-        """
         dedicated_host_id: NotRequired[pulumi.Input[_builtins.str]]
         disks: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigurationInstanceConfigDiskArgsDict']]]]
-        """
-        Specifies the disk group information. System disks are mandatory and
-        data disks are optional. The object structure is documented below.
-        Changing this will create a new resource.
-        """
         ecs_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ECS group ID. Changing this will create a new resource.
-        """
         flavor: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ECS flavor name. A maximum of 10 flavors can be selected.
-        Use a comma (,) to separate multiple flavor names. Changing this will create a new resource.
-        """
         flavor_priority_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the priority policy used when there are multiple flavors
-        and instances to be created using an AS configuration. The value can be `PICK_FIRST` and `COST_FIRST`.
-
-        + **PICK_FIRST** (default): When an ECS is added for capacity expansion, the target flavor is determined in the order
-        in the flavor list.
-        + **COST_FIRST**: When an ECS is added for capacity expansion, the target flavor is determined for minimal expenses.
-
-        Changing this will create a new resource.
-        """
         image: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ECS image ID. Changing this will create a new resource.
-        """
         instance_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ECS instance ID when using its specification
-        as the template to create AS configurations. In this case, `flavor`, `image`, and `disk` arguments do not take effect.
-        If this argument is not specified, `flavor`, `image`, and `disk` arguments are mandatory.
-        Changing this will create a new resource.
-        """
         key_fingerprint: NotRequired[pulumi.Input[_builtins.str]]
         key_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the name of the SSH key pair used to log in to the instance.
-        Changing this will create a new resource.
-        """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the key/value pairs to make available from within the instance.
-        Changing this will create a new resource.
-        """
         personalities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConfigurationInstanceConfigPersonalityArgsDict']]]]
-        """
-        Specifies the customize personality of an instance by defining one or
-        more files and their contents. The object structure is documented below.
-        Changing this will create a new resource.
-
-        <a name="instance_config_disk_object"></a>
-        The `disk` block supports:
-        """
         public_ip: NotRequired[pulumi.Input['ConfigurationInstanceConfigPublicIpArgsDict']]
-        """
-        Specifies the EIP of the ECS instance.
-        The object structure is documented below.
-        Changing this will create a new resource.
-        """
         security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        Specifies an array of one or more security group IDs.
-        Changing this will create a new resource.
+        schema: Required
         """
         tenancy: NotRequired[pulumi.Input[_builtins.str]]
         user_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the user data to provide when launching the instance.
-        The file content must be encoded with Base64. Changing this will create a new resource.
-        """
 elif False:
     ConfigurationInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -644,45 +462,7 @@ class ConfigurationInstanceConfigArgs:
                  tenancy: Optional[pulumi.Input[_builtins.str]] = None,
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies a billing mode for an ECS.
-               The value can be `postPaid` and `spot`. The default value is `postPaid`.
-               Changing this will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigurationInstanceConfigDiskArgs']]] disks: Specifies the disk group information. System disks are mandatory and
-               data disks are optional. The object structure is documented below.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: Specifies the ECS group ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the ECS flavor name. A maximum of 10 flavors can be selected.
-               Use a comma (,) to separate multiple flavor names. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_priority_policy: Specifies the priority policy used when there are multiple flavors
-               and instances to be created using an AS configuration. The value can be `PICK_FIRST` and `COST_FIRST`.
-               
-               + **PICK_FIRST** (default): When an ECS is added for capacity expansion, the target flavor is determined in the order
-               in the flavor list.
-               + **COST_FIRST**: When an ECS is added for capacity expansion, the target flavor is determined for minimal expenses.
-               
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] image: Specifies the ECS image ID. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ECS instance ID when using its specification
-               as the template to create AS configurations. In this case, `flavor`, `image`, and `disk` arguments do not take effect.
-               If this argument is not specified, `flavor`, `image`, and `disk` arguments are mandatory.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] key_name: Specifies the name of the SSH key pair used to log in to the instance.
-               Changing this will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Specifies the key/value pairs to make available from within the instance.
-               Changing this will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ConfigurationInstanceConfigPersonalityArgs']]] personalities: Specifies the customize personality of an instance by defining one or
-               more files and their contents. The object structure is documented below.
-               Changing this will create a new resource.
-               
-               <a name="instance_config_disk_object"></a>
-               The `disk` block supports:
-        :param pulumi.Input['ConfigurationInstanceConfigPublicIpArgs'] public_ip: Specifies the EIP of the ECS instance.
-               The object structure is documented below.
-               Changing this will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: Specifies an array of one or more security group IDs.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] user_data: Specifies the user data to provide when launching the instance.
-               The file content must be encoded with Base64. Changing this will create a new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: schema: Required
         """
         if admin_pass is not None:
             pulumi.set(__self__, "admin_pass", admin_pass)
@@ -731,11 +511,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a billing mode for an ECS.
-        The value can be `postPaid` and `spot`. The default value is `postPaid`.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -754,11 +529,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter
     def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationInstanceConfigDiskArgs']]]]:
-        """
-        Specifies the disk group information. System disks are mandatory and
-        data disks are optional. The object structure is documented below.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "disks")
 
     @disks.setter
@@ -768,9 +538,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ECS group ID. Changing this will create a new resource.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @ecs_group_id.setter
@@ -780,10 +547,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ECS flavor name. A maximum of 10 flavors can be selected.
-        Use a comma (,) to separate multiple flavor names. Changing this will create a new resource.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -793,16 +556,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="flavorPriorityPolicy")
     def flavor_priority_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the priority policy used when there are multiple flavors
-        and instances to be created using an AS configuration. The value can be `PICK_FIRST` and `COST_FIRST`.
-
-        + **PICK_FIRST** (default): When an ECS is added for capacity expansion, the target flavor is determined in the order
-        in the flavor list.
-        + **COST_FIRST**: When an ECS is added for capacity expansion, the target flavor is determined for minimal expenses.
-
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "flavor_priority_policy")
 
     @flavor_priority_policy.setter
@@ -812,9 +565,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ECS image ID. Changing this will create a new resource.
-        """
         return pulumi.get(self, "image")
 
     @image.setter
@@ -824,12 +574,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ECS instance ID when using its specification
-        as the template to create AS configurations. In this case, `flavor`, `image`, and `disk` arguments do not take effect.
-        If this argument is not specified, `flavor`, `image`, and `disk` arguments are mandatory.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -848,10 +592,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the SSH key pair used to log in to the instance.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
@@ -861,10 +601,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to make available from within the instance.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -874,14 +610,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter
     def personalities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConfigurationInstanceConfigPersonalityArgs']]]]:
-        """
-        Specifies the customize personality of an instance by defining one or
-        more files and their contents. The object structure is documented below.
-        Changing this will create a new resource.
-
-        <a name="instance_config_disk_object"></a>
-        The `disk` block supports:
-        """
         return pulumi.get(self, "personalities")
 
     @personalities.setter
@@ -891,11 +619,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input['ConfigurationInstanceConfigPublicIpArgs']]:
-        """
-        Specifies the EIP of the ECS instance.
-        The object structure is documented below.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -906,8 +629,7 @@ class ConfigurationInstanceConfigArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies an array of one or more security group IDs.
-        Changing this will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -927,10 +649,6 @@ class ConfigurationInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the user data to provide when launching the instance.
-        The file content must be encoded with Base64. Changing this will create a new resource.
-        """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
@@ -941,31 +659,12 @@ class ConfigurationInstanceConfigArgs:
 if not MYPY:
     class ConfigurationInstanceConfigDiskArgsDict(TypedDict):
         disk_type: pulumi.Input[_builtins.str]
-        """
-        Specifies whether the disk is a system disk or a data disk.
-        Option **DATA** indicates a data disk, option **SYS** indicates a system disk.
-        Changing this will create a new resource.
-        """
         size: pulumi.Input[_builtins.int]
         volume_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the disk type. Changing this will create a new resource.
-        Available options are:
-        + `SAS`: high I/O disk type.
-        + `SSD`: ultra-high I/O disk type.
-        + `GPSSD`: general purpose SSD disk type.
-        """
         data_disk_image_id: NotRequired[pulumi.Input[_builtins.str]]
         dedicated_storage_id: NotRequired[pulumi.Input[_builtins.str]]
         iops: NotRequired[pulumi.Input[_builtins.int]]
         kms_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the encryption KMS ID of the **DATA** disk.
-        Changing this will create a new resource.
-
-        <a name="instance_config_public_ip_object"></a>
-        The `public_ip` block supports:
-        """
         snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
         throughput: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
@@ -983,21 +682,6 @@ class ConfigurationInstanceConfigDiskArgs:
                  kms_id: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] disk_type: Specifies whether the disk is a system disk or a data disk.
-               Option **DATA** indicates a data disk, option **SYS** indicates a system disk.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] volume_type: Specifies the disk type. Changing this will create a new resource.
-               Available options are:
-               + `SAS`: high I/O disk type.
-               + `SSD`: ultra-high I/O disk type.
-               + `GPSSD`: general purpose SSD disk type.
-        :param pulumi.Input[_builtins.str] kms_id: Specifies the encryption KMS ID of the **DATA** disk.
-               Changing this will create a new resource.
-               
-               <a name="instance_config_public_ip_object"></a>
-               The `public_ip` block supports:
-        """
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volume_type", volume_type)
@@ -1017,11 +701,6 @@ class ConfigurationInstanceConfigDiskArgs:
     @_builtins.property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies whether the disk is a system disk or a data disk.
-        Option **DATA** indicates a data disk, option **SYS** indicates a system disk.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
@@ -1040,13 +719,6 @@ class ConfigurationInstanceConfigDiskArgs:
     @_builtins.property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the disk type. Changing this will create a new resource.
-        Available options are:
-        + `SAS`: high I/O disk type.
-        + `SSD`: ultra-high I/O disk type.
-        + `GPSSD`: general purpose SSD disk type.
-        """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
@@ -1083,13 +755,6 @@ class ConfigurationInstanceConfigDiskArgs:
     @_builtins.property
     @pulumi.getter(name="kmsId")
     def kms_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the encryption KMS ID of the **DATA** disk.
-        Changing this will create a new resource.
-
-        <a name="instance_config_public_ip_object"></a>
-        The `public_ip` block supports:
-        """
         return pulumi.get(self, "kms_id")
 
     @kms_id.setter
@@ -1118,14 +783,7 @@ class ConfigurationInstanceConfigDiskArgs:
 if not MYPY:
     class ConfigurationInstanceConfigPersonalityArgsDict(TypedDict):
         content: pulumi.Input[_builtins.str]
-        """
-        Specifies the content of the injected file, which must be encoded with base64.
-        Changing this creates a new resource.
-        """
         path: pulumi.Input[_builtins.str]
-        """
-        Specifies the path of the injected file. Changing this creates a new resource.
-        """
 elif False:
     ConfigurationInstanceConfigPersonalityArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1134,21 +792,12 @@ class ConfigurationInstanceConfigPersonalityArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] content: Specifies the content of the injected file, which must be encoded with base64.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] path: Specifies the path of the injected file. Changing this creates a new resource.
-        """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "path", path)
 
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the content of the injected file, which must be encoded with base64.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -1158,9 +807,6 @@ class ConfigurationInstanceConfigPersonalityArgs:
     @_builtins.property
     @pulumi.getter
     def path(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the path of the injected file. Changing this creates a new resource.
-        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -1171,10 +817,6 @@ class ConfigurationInstanceConfigPersonalityArgs:
 if not MYPY:
     class ConfigurationInstanceConfigPublicIpArgsDict(TypedDict):
         eip: pulumi.Input['ConfigurationInstanceConfigPublicIpEipArgsDict']
-        """
-        Specifies the EIP configuration that will be automatically assigned to the instance.
-        The object structure is documented below. Changing this will create a new resource.
-        """
 elif False:
     ConfigurationInstanceConfigPublicIpArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1182,19 +824,11 @@ elif False:
 class ConfigurationInstanceConfigPublicIpArgs:
     def __init__(__self__, *,
                  eip: pulumi.Input['ConfigurationInstanceConfigPublicIpEipArgs']):
-        """
-        :param pulumi.Input['ConfigurationInstanceConfigPublicIpEipArgs'] eip: Specifies the EIP configuration that will be automatically assigned to the instance.
-               The object structure is documented below. Changing this will create a new resource.
-        """
         pulumi.set(__self__, "eip", eip)
 
     @_builtins.property
     @pulumi.getter
     def eip(self) -> pulumi.Input['ConfigurationInstanceConfigPublicIpEipArgs']:
-        """
-        Specifies the EIP configuration that will be automatically assigned to the instance.
-        The object structure is documented below. Changing this will create a new resource.
-        """
         return pulumi.get(self, "eip")
 
     @eip.setter
@@ -1205,15 +839,7 @@ class ConfigurationInstanceConfigPublicIpArgs:
 if not MYPY:
     class ConfigurationInstanceConfigPublicIpEipArgsDict(TypedDict):
         bandwidth: pulumi.Input['ConfigurationInstanceConfigPublicIpEipBandwidthArgsDict']
-        """
-        Specifies the bandwidth information. The object structure is documented below.
-        Changing this will create a new resource.
-        """
         ip_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the EIP type. Possible values are **5_bgp** (dynamic BGP)
-        and **5_sbgp** (static BGP). Changing this will create a new resource.
-        """
 elif False:
     ConfigurationInstanceConfigPublicIpEipArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1222,22 +848,12 @@ class ConfigurationInstanceConfigPublicIpEipArgs:
     def __init__(__self__, *,
                  bandwidth: pulumi.Input['ConfigurationInstanceConfigPublicIpEipBandwidthArgs'],
                  ip_type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input['ConfigurationInstanceConfigPublicIpEipBandwidthArgs'] bandwidth: Specifies the bandwidth information. The object structure is documented below.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] ip_type: Specifies the EIP type. Possible values are **5_bgp** (dynamic BGP)
-               and **5_sbgp** (static BGP). Changing this will create a new resource.
-        """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "ip_type", ip_type)
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input['ConfigurationInstanceConfigPublicIpEipBandwidthArgs']:
-        """
-        Specifies the bandwidth information. The object structure is documented below.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
@@ -1247,10 +863,6 @@ class ConfigurationInstanceConfigPublicIpEipArgs:
     @_builtins.property
     @pulumi.getter(name="ipType")
     def ip_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the EIP type. Possible values are **5_bgp** (dynamic BGP)
-        and **5_sbgp** (static BGP). Changing this will create a new resource.
-        """
         return pulumi.get(self, "ip_type")
 
     @ip_type.setter
@@ -1261,28 +873,9 @@ class ConfigurationInstanceConfigPublicIpEipArgs:
 if not MYPY:
     class ConfigurationInstanceConfigPublicIpEipBandwidthArgsDict(TypedDict):
         share_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the bandwidth sharing type. The system only supports
-        **PER** (indicates exclusive bandwidth). Changing this will create a new resource.
-        """
         charging_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether the bandwidth is billed by traffic or by bandwidth
-        size. The value can be **traffic** or **bandwidth**. Changing this creates a new resource.
-        """
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource ID in UUID format.
-        """
         size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the bandwidth (Mbit/s). The value range for bandwidth billed by bandwidth
-        is 1 to 2000 and that for bandwidth billed by traffic is 1 to 300.
-        Changing this creates a new resource.
-
-        <a name="instance_config_personality_object"></a>
-        The `personality` block supports:
-        """
 elif False:
     ConfigurationInstanceConfigPublicIpEipBandwidthArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1293,19 +886,6 @@ class ConfigurationInstanceConfigPublicIpEipBandwidthArgs:
                  charging_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] share_type: Specifies the bandwidth sharing type. The system only supports
-               **PER** (indicates exclusive bandwidth). Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies whether the bandwidth is billed by traffic or by bandwidth
-               size. The value can be **traffic** or **bandwidth**. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] id: The resource ID in UUID format.
-        :param pulumi.Input[_builtins.int] size: Specifies the bandwidth (Mbit/s). The value range for bandwidth billed by bandwidth
-               is 1 to 2000 and that for bandwidth billed by traffic is 1 to 300.
-               Changing this creates a new resource.
-               
-               <a name="instance_config_personality_object"></a>
-               The `personality` block supports:
-        """
         pulumi.set(__self__, "share_type", share_type)
         if charging_mode is not None:
             pulumi.set(__self__, "charging_mode", charging_mode)
@@ -1317,10 +897,6 @@ class ConfigurationInstanceConfigPublicIpEipBandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the bandwidth sharing type. The system only supports
-        **PER** (indicates exclusive bandwidth). Changing this will create a new resource.
-        """
         return pulumi.get(self, "share_type")
 
     @share_type.setter
@@ -1330,10 +906,6 @@ class ConfigurationInstanceConfigPublicIpEipBandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether the bandwidth is billed by traffic or by bandwidth
-        size. The value can be **traffic** or **bandwidth**. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -1343,9 +915,6 @@ class ConfigurationInstanceConfigPublicIpEipBandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1355,14 +924,6 @@ class ConfigurationInstanceConfigPublicIpEipBandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the bandwidth (Mbit/s). The value range for bandwidth billed by bandwidth
-        is 1 to 2000 and that for bandwidth billed by traffic is 1 to 300.
-        Changing this creates a new resource.
-
-        <a name="instance_config_personality_object"></a>
-        The `personality` block supports:
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1373,22 +934,10 @@ class ConfigurationInstanceConfigPublicIpEipBandwidthArgs:
 if not MYPY:
     class GroupLbaasListenerArgsDict(TypedDict):
         pool_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the backend ECS group ID.
-        """
         protocol_port: pulumi.Input[_builtins.int]
-        """
-        Specifies the backend protocol, which is the port on which a backend ECS listens for
-        traffic. The number of the port ranges from 1 to 65535.
-        """
         listener_id: NotRequired[pulumi.Input[_builtins.str]]
         protocol_version: NotRequired[pulumi.Input[_builtins.str]]
         weight: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the weight, which determines the portion of requests a backend ECS processes
-        compared to other backend ECSs added to the same listener. The value of this parameter ranges from 0 to 100. The
-        default value is 1.
-        """
 elif False:
     GroupLbaasListenerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1400,14 +949,6 @@ class GroupLbaasListenerArgs:
                  listener_id: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol_version: Optional[pulumi.Input[_builtins.str]] = None,
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] pool_id: Specifies the backend ECS group ID.
-        :param pulumi.Input[_builtins.int] protocol_port: Specifies the backend protocol, which is the port on which a backend ECS listens for
-               traffic. The number of the port ranges from 1 to 65535.
-        :param pulumi.Input[_builtins.int] weight: Specifies the weight, which determines the portion of requests a backend ECS processes
-               compared to other backend ECSs added to the same listener. The value of this parameter ranges from 0 to 100. The
-               default value is 1.
-        """
         pulumi.set(__self__, "pool_id", pool_id)
         pulumi.set(__self__, "protocol_port", protocol_port)
         if listener_id is not None:
@@ -1420,9 +961,6 @@ class GroupLbaasListenerArgs:
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the backend ECS group ID.
-        """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
@@ -1432,10 +970,6 @@ class GroupLbaasListenerArgs:
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the backend protocol, which is the port on which a backend ECS listens for
-        traffic. The number of the port ranges from 1 to 65535.
-        """
         return pulumi.get(self, "protocol_port")
 
     @protocol_port.setter
@@ -1463,11 +997,6 @@ class GroupLbaasListenerArgs:
     @_builtins.property
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the weight, which determines the portion of requests a backend ECS processes
-        compared to other backend ECSs added to the same listener. The value of this parameter ranges from 0 to 100. The
-        default value is 1.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -1478,28 +1007,9 @@ class GroupLbaasListenerArgs:
 if not MYPY:
     class GroupNetworkArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
-        """
-        Specifies the ID of the security group.
-
-        <a name="group_lbaas_listener_object"></a>
-        The `lbaas_listeners` block supports:
-        """
         ipv6_bandwidth_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ID of the shared bandwidth of an IPv6 address.
-        """
         ipv6_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to support IPv6 addresses. The default value is `false`.
-        """
         source_dest_check: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether processesing only traffic that is destined specifically
-        for it. Defaults to true.
-
-        <a name="group_security_group_object"></a>
-        The `security_groups` block supports:
-        """
 elif False:
     GroupNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1510,19 +1020,6 @@ class GroupNetworkArgs:
                  ipv6_bandwidth_id: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv6_enable: Optional[pulumi.Input[_builtins.bool]] = None,
                  source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: Specifies the ID of the security group.
-               
-               <a name="group_lbaas_listener_object"></a>
-               The `lbaas_listeners` block supports:
-        :param pulumi.Input[_builtins.str] ipv6_bandwidth_id: Specifies the ID of the shared bandwidth of an IPv6 address.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether to support IPv6 addresses. The default value is `false`.
-        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether processesing only traffic that is destined specifically
-               for it. Defaults to true.
-               
-               <a name="group_security_group_object"></a>
-               The `security_groups` block supports:
-        """
         pulumi.set(__self__, "id", id)
         if ipv6_bandwidth_id is not None:
             pulumi.set(__self__, "ipv6_bandwidth_id", ipv6_bandwidth_id)
@@ -1534,12 +1031,6 @@ class GroupNetworkArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the security group.
-
-        <a name="group_lbaas_listener_object"></a>
-        The `lbaas_listeners` block supports:
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1549,9 +1040,6 @@ class GroupNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6BandwidthId")
     def ipv6_bandwidth_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the shared bandwidth of an IPv6 address.
-        """
         return pulumi.get(self, "ipv6_bandwidth_id")
 
     @ipv6_bandwidth_id.setter
@@ -1561,9 +1049,6 @@ class GroupNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to support IPv6 addresses. The default value is `false`.
-        """
         return pulumi.get(self, "ipv6_enable")
 
     @ipv6_enable.setter
@@ -1573,13 +1058,6 @@ class GroupNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether processesing only traffic that is destined specifically
-        for it. Defaults to true.
-
-        <a name="group_security_group_object"></a>
-        The `security_groups` block supports:
-        """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
@@ -1590,12 +1068,6 @@ class GroupNetworkArgs:
 if not MYPY:
     class GroupSecurityGroupArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
-        """
-        Specifies the ID of the security group.
-
-        <a name="group_lbaas_listener_object"></a>
-        The `lbaas_listeners` block supports:
-        """
 elif False:
     GroupSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1603,23 +1075,11 @@ elif False:
 class GroupSecurityGroupArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] id: Specifies the ID of the security group.
-               
-               <a name="group_lbaas_listener_object"></a>
-               The `lbaas_listeners` block supports:
-        """
         pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the security group.
-
-        <a name="group_lbaas_listener_object"></a>
-        The `lbaas_listeners` block supports:
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -1630,15 +1090,8 @@ class GroupSecurityGroupArgs:
 if not MYPY:
     class PolicyScalingPolicyActionArgsDict(TypedDict):
         instance_number: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of instances to be operated. The default number is 1.
-        """
         instance_percentage: NotRequired[pulumi.Input[_builtins.int]]
         operation: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the operation to be performed. The options include `ADD` (default), `REMOVE`,
-        and `SET`.
-        """
 elif False:
     PolicyScalingPolicyActionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1648,11 +1101,6 @@ class PolicyScalingPolicyActionArgs:
                  instance_number: Optional[pulumi.Input[_builtins.int]] = None,
                  instance_percentage: Optional[pulumi.Input[_builtins.int]] = None,
                  operation: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.int] instance_number: Specifies the number of instances to be operated. The default number is 1.
-        :param pulumi.Input[_builtins.str] operation: Specifies the operation to be performed. The options include `ADD` (default), `REMOVE`,
-               and `SET`.
-        """
         if instance_number is not None:
             pulumi.set(__self__, "instance_number", instance_number)
         if instance_percentage is not None:
@@ -1663,9 +1111,6 @@ class PolicyScalingPolicyActionArgs:
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
     def instance_number(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the number of instances to be operated. The default number is 1.
-        """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
@@ -1684,10 +1129,6 @@ class PolicyScalingPolicyActionArgs:
     @_builtins.property
     @pulumi.getter
     def operation(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the operation to be performed. The options include `ADD` (default), `REMOVE`,
-        and `SET`.
-        """
         return pulumi.get(self, "operation")
 
     @operation.setter
@@ -1698,36 +1139,10 @@ class PolicyScalingPolicyActionArgs:
 if not MYPY:
     class PolicyScheduledPolicyArgsDict(TypedDict):
         launch_time: pulumi.Input[_builtins.str]
-        """
-        Specifies the time when the scaling action is triggered.
-        + If `scaling_policy_type` is set to `SCHEDULED`, the time format is **YYYY-MM-DDThh:mmZ**.
-        + If `scaling_policy_type` is set to `RECURRENCE`, the time format is **hh:mm**.
-
-        > the `launch_time` of the `SCHEDULED` policy cannot be earlier than the current time.
-        """
         end_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the end time of the scaling action triggered periodically. The time format complies
-        with UTC. This argument is mandatory when `scaling_policy_type`
-        is set to `RECURRENCE`. The time format is YYYY-MM-DDThh:mmZ.
-
-        <a name="scaling_policy_action_object"></a>
-        The `scaling_policy_action` block supports:
-        """
         recurrence_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the periodic triggering type. This argument is mandatory when
-        `scaling_policy_type` is set to `RECURRENCE`. The options include `Daily`, `Weekly`, and `Monthly`.
-        """
         recurrence_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the frequency at which scaling actions are triggered.
-        """
         start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the start time of the scaling action triggered periodically. The time format
-        complies with UTC. The current time is used by default. The time format is YYYY-MM-DDThh:mmZ.
-        """
 elif False:
     PolicyScheduledPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1739,24 +1154,6 @@ class PolicyScheduledPolicyArgs:
                  recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
                  recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
                  start_time: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] launch_time: Specifies the time when the scaling action is triggered.
-               + If `scaling_policy_type` is set to `SCHEDULED`, the time format is **YYYY-MM-DDThh:mmZ**.
-               + If `scaling_policy_type` is set to `RECURRENCE`, the time format is **hh:mm**.
-               
-               > the `launch_time` of the `SCHEDULED` policy cannot be earlier than the current time.
-        :param pulumi.Input[_builtins.str] end_time: Specifies the end time of the scaling action triggered periodically. The time format complies
-               with UTC. This argument is mandatory when `scaling_policy_type`
-               is set to `RECURRENCE`. The time format is YYYY-MM-DDThh:mmZ.
-               
-               <a name="scaling_policy_action_object"></a>
-               The `scaling_policy_action` block supports:
-        :param pulumi.Input[_builtins.str] recurrence_type: Specifies the periodic triggering type. This argument is mandatory when
-               `scaling_policy_type` is set to `RECURRENCE`. The options include `Daily`, `Weekly`, and `Monthly`.
-        :param pulumi.Input[_builtins.str] recurrence_value: Specifies the frequency at which scaling actions are triggered.
-        :param pulumi.Input[_builtins.str] start_time: Specifies the start time of the scaling action triggered periodically. The time format
-               complies with UTC. The current time is used by default. The time format is YYYY-MM-DDThh:mmZ.
-        """
         pulumi.set(__self__, "launch_time", launch_time)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
@@ -1770,13 +1167,6 @@ class PolicyScheduledPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="launchTime")
     def launch_time(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the time when the scaling action is triggered.
-        + If `scaling_policy_type` is set to `SCHEDULED`, the time format is **YYYY-MM-DDThh:mmZ**.
-        + If `scaling_policy_type` is set to `RECURRENCE`, the time format is **hh:mm**.
-
-        > the `launch_time` of the `SCHEDULED` policy cannot be earlier than the current time.
-        """
         return pulumi.get(self, "launch_time")
 
     @launch_time.setter
@@ -1786,14 +1176,6 @@ class PolicyScheduledPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the end time of the scaling action triggered periodically. The time format complies
-        with UTC. This argument is mandatory when `scaling_policy_type`
-        is set to `RECURRENCE`. The time format is YYYY-MM-DDThh:mmZ.
-
-        <a name="scaling_policy_action_object"></a>
-        The `scaling_policy_action` block supports:
-        """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
@@ -1803,10 +1185,6 @@ class PolicyScheduledPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="recurrenceType")
     def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the periodic triggering type. This argument is mandatory when
-        `scaling_policy_type` is set to `RECURRENCE`. The options include `Daily`, `Weekly`, and `Monthly`.
-        """
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
@@ -1816,9 +1194,6 @@ class PolicyScheduledPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="recurrenceValue")
     def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the frequency at which scaling actions are triggered.
-        """
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
@@ -1828,10 +1203,6 @@ class PolicyScheduledPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the start time of the scaling action triggered periodically. The time format
-        complies with UTC. The current time is used by default. The time format is YYYY-MM-DDThh:mmZ.
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter

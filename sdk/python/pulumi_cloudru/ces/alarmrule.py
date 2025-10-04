@@ -36,28 +36,6 @@ class AlarmruleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarmrule resource.
-        :param pulumi.Input[_builtins.str] alarm_name: Specifies the name of an alarm rule. The value can be a string of 1 to 128
-               characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        :param pulumi.Input['AlarmruleConditionArgs'] condition: Specifies the alarm triggering condition. The structure is described below.
-        :param pulumi.Input['AlarmruleMetricArgs'] metric: Specifies the alarm metrics. The structure is described below. Changing this
-               creates a new resource.
-        :param pulumi.Input[_builtins.bool] alarm_action_enabled: Specifies whether to enable the action to be triggered by an alarm. The
-               default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmruleAlarmActionArgs']]] alarm_actions: Specifies the action triggered by an alarm. The structure is described
-               below.
-        :param pulumi.Input[_builtins.str] alarm_description: The value can be a string of 0 to 256 characters.
-        :param pulumi.Input[_builtins.bool] alarm_enabled: Specifies whether to enable the alarm. The default value is true.
-        :param pulumi.Input[_builtins.str] alarm_type: Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-               **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the alarm rule. Changing
-               this creates a new resource.
-               
-               > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-               and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmruleOkActionArgs']]] ok_actions: Specifies the action triggered by the clearing of an alarm. The structure is
-               described below.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the alarm rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "alarm_name", alarm_name)
         pulumi.set(__self__, "condition", condition)
@@ -89,10 +67,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="alarmName")
     def alarm_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of an alarm rule. The value can be a string of 1 to 128
-        characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        """
         return pulumi.get(self, "alarm_name")
 
     @alarm_name.setter
@@ -102,9 +76,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Input['AlarmruleConditionArgs']:
-        """
-        Specifies the alarm triggering condition. The structure is described below.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -114,10 +85,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter
     def metric(self) -> pulumi.Input['AlarmruleMetricArgs']:
-        """
-        Specifies the alarm metrics. The structure is described below. Changing this
-        creates a new resource.
-        """
         return pulumi.get(self, "metric")
 
     @metric.setter
@@ -127,10 +94,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="alarmActionEnabled")
     def alarm_action_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the action to be triggered by an alarm. The
-        default value is true.
-        """
         return pulumi.get(self, "alarm_action_enabled")
 
     @alarm_action_enabled.setter
@@ -140,10 +103,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="alarmActions")
     def alarm_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmruleAlarmActionArgs']]]]:
-        """
-        Specifies the action triggered by an alarm. The structure is described
-        below.
-        """
         return pulumi.get(self, "alarm_actions")
 
     @alarm_actions.setter
@@ -153,9 +112,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="alarmDescription")
     def alarm_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The value can be a string of 0 to 256 characters.
-        """
         return pulumi.get(self, "alarm_description")
 
     @alarm_description.setter
@@ -165,9 +121,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="alarmEnabled")
     def alarm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the alarm. The default value is true.
-        """
         return pulumi.get(self, "alarm_enabled")
 
     @alarm_enabled.setter
@@ -186,10 +139,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="alarmType")
     def alarm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-        **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        """
         return pulumi.get(self, "alarm_type")
 
     @alarm_type.setter
@@ -199,13 +148,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the alarm rule. Changing
-        this creates a new resource.
-
-        > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-        and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -225,10 +167,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter(name="okActions")
     def ok_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmruleOkActionArgs']]]]:
-        """
-        Specifies the action triggered by the clearing of an alarm. The structure is
-        described below.
-        """
         return pulumi.get(self, "ok_actions")
 
     @ok_actions.setter
@@ -238,10 +176,6 @@ class AlarmruleArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the alarm rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -269,33 +203,6 @@ class _AlarmruleState:
                  update_time: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Alarmrule resources.
-        :param pulumi.Input[_builtins.bool] alarm_action_enabled: Specifies whether to enable the action to be triggered by an alarm. The
-               default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmruleAlarmActionArgs']]] alarm_actions: Specifies the action triggered by an alarm. The structure is described
-               below.
-        :param pulumi.Input[_builtins.str] alarm_description: The value can be a string of 0 to 256 characters.
-        :param pulumi.Input[_builtins.bool] alarm_enabled: Specifies whether to enable the alarm. The default value is true.
-        :param pulumi.Input[_builtins.str] alarm_name: Specifies the name of an alarm rule. The value can be a string of 1 to 128
-               characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        :param pulumi.Input[_builtins.str] alarm_state: Indicates the alarm status. The value can be:
-               + ok: The alarm status is normal;
-               + alarm: An alarm is generated;
-               + insufficient_data: The required data is insufficient.
-        :param pulumi.Input[_builtins.str] alarm_type: Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-               **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        :param pulumi.Input['AlarmruleConditionArgs'] condition: Specifies the alarm triggering condition. The structure is described below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the alarm rule. Changing
-               this creates a new resource.
-               
-               > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-               and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        :param pulumi.Input['AlarmruleMetricArgs'] metric: Specifies the alarm metrics. The structure is described below. Changing this
-               creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AlarmruleOkActionArgs']]] ok_actions: Specifies the action triggered by the clearing of an alarm. The structure is
-               described below.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the alarm rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] update_time: Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
         """
         if alarm_action_enabled is not None:
             pulumi.set(__self__, "alarm_action_enabled", alarm_action_enabled)
@@ -334,10 +241,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmActionEnabled")
     def alarm_action_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the action to be triggered by an alarm. The
-        default value is true.
-        """
         return pulumi.get(self, "alarm_action_enabled")
 
     @alarm_action_enabled.setter
@@ -347,10 +250,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmActions")
     def alarm_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmruleAlarmActionArgs']]]]:
-        """
-        Specifies the action triggered by an alarm. The structure is described
-        below.
-        """
         return pulumi.get(self, "alarm_actions")
 
     @alarm_actions.setter
@@ -360,9 +259,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmDescription")
     def alarm_description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The value can be a string of 0 to 256 characters.
-        """
         return pulumi.get(self, "alarm_description")
 
     @alarm_description.setter
@@ -372,9 +268,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmEnabled")
     def alarm_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the alarm. The default value is true.
-        """
         return pulumi.get(self, "alarm_enabled")
 
     @alarm_enabled.setter
@@ -393,10 +286,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmName")
     def alarm_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of an alarm rule. The value can be a string of 1 to 128
-        characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        """
         return pulumi.get(self, "alarm_name")
 
     @alarm_name.setter
@@ -406,12 +295,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmState")
     def alarm_state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the alarm status. The value can be:
-        + ok: The alarm status is normal;
-        + alarm: An alarm is generated;
-        + insufficient_data: The required data is insufficient.
-        """
         return pulumi.get(self, "alarm_state")
 
     @alarm_state.setter
@@ -421,10 +304,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="alarmType")
     def alarm_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-        **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        """
         return pulumi.get(self, "alarm_type")
 
     @alarm_type.setter
@@ -434,9 +313,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['AlarmruleConditionArgs']]:
-        """
-        Specifies the alarm triggering condition. The structure is described below.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -446,13 +322,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the alarm rule. Changing
-        this creates a new resource.
-
-        > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-        and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -472,10 +341,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter
     def metric(self) -> Optional[pulumi.Input['AlarmruleMetricArgs']]:
-        """
-        Specifies the alarm metrics. The structure is described below. Changing this
-        creates a new resource.
-        """
         return pulumi.get(self, "metric")
 
     @metric.setter
@@ -485,10 +350,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="okActions")
     def ok_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmruleOkActionArgs']]]]:
-        """
-        Specifies the action triggered by the clearing of an alarm. The structure is
-        described below.
-        """
         return pulumi.get(self, "ok_actions")
 
     @ok_actions.setter
@@ -498,10 +359,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the alarm rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -511,9 +368,6 @@ class _AlarmruleState:
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -542,42 +396,9 @@ class Alarmrule(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Cloud Eye alarm rule resource within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        CES alarm rules can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ces/alarmrule:Alarmrule alarm_rule al1619578509719Ga0X1RGWv
-        ```
-
+        Create a Alarmrule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] alarm_action_enabled: Specifies whether to enable the action to be triggered by an alarm. The
-               default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmruleAlarmActionArgs', 'AlarmruleAlarmActionArgsDict']]]] alarm_actions: Specifies the action triggered by an alarm. The structure is described
-               below.
-        :param pulumi.Input[_builtins.str] alarm_description: The value can be a string of 0 to 256 characters.
-        :param pulumi.Input[_builtins.bool] alarm_enabled: Specifies whether to enable the alarm. The default value is true.
-        :param pulumi.Input[_builtins.str] alarm_name: Specifies the name of an alarm rule. The value can be a string of 1 to 128
-               characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        :param pulumi.Input[_builtins.str] alarm_type: Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-               **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        :param pulumi.Input[Union['AlarmruleConditionArgs', 'AlarmruleConditionArgsDict']] condition: Specifies the alarm triggering condition. The structure is described below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the alarm rule. Changing
-               this creates a new resource.
-               
-               > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-               and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        :param pulumi.Input[Union['AlarmruleMetricArgs', 'AlarmruleMetricArgsDict']] metric: Specifies the alarm metrics. The structure is described below. Changing this
-               creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmruleOkActionArgs', 'AlarmruleOkActionArgsDict']]]] ok_actions: Specifies the action triggered by the clearing of an alarm. The structure is
-               described below.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the alarm rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -586,18 +407,7 @@ class Alarmrule(pulumi.CustomResource):
                  args: AlarmruleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Cloud Eye alarm rule resource within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        CES alarm rules can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Ces/alarmrule:Alarmrule alarm_rule al1619578509719Ga0X1RGWv
-        ```
-
+        Create a Alarmrule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AlarmruleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -688,33 +498,6 @@ class Alarmrule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] alarm_action_enabled: Specifies whether to enable the action to be triggered by an alarm. The
-               default value is true.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmruleAlarmActionArgs', 'AlarmruleAlarmActionArgsDict']]]] alarm_actions: Specifies the action triggered by an alarm. The structure is described
-               below.
-        :param pulumi.Input[_builtins.str] alarm_description: The value can be a string of 0 to 256 characters.
-        :param pulumi.Input[_builtins.bool] alarm_enabled: Specifies whether to enable the alarm. The default value is true.
-        :param pulumi.Input[_builtins.str] alarm_name: Specifies the name of an alarm rule. The value can be a string of 1 to 128
-               characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        :param pulumi.Input[_builtins.str] alarm_state: Indicates the alarm status. The value can be:
-               + ok: The alarm status is normal;
-               + alarm: An alarm is generated;
-               + insufficient_data: The required data is insufficient.
-        :param pulumi.Input[_builtins.str] alarm_type: Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-               **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        :param pulumi.Input[Union['AlarmruleConditionArgs', 'AlarmruleConditionArgsDict']] condition: Specifies the alarm triggering condition. The structure is described below.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the alarm rule. Changing
-               this creates a new resource.
-               
-               > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-               and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        :param pulumi.Input[Union['AlarmruleMetricArgs', 'AlarmruleMetricArgsDict']] metric: Specifies the alarm metrics. The structure is described below. Changing this
-               creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmruleOkActionArgs', 'AlarmruleOkActionArgsDict']]]] ok_actions: Specifies the action triggered by the clearing of an alarm. The structure is
-               described below.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the alarm rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] update_time: Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -740,35 +523,21 @@ class Alarmrule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="alarmActionEnabled")
     def alarm_action_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable the action to be triggered by an alarm. The
-        default value is true.
-        """
         return pulumi.get(self, "alarm_action_enabled")
 
     @_builtins.property
     @pulumi.getter(name="alarmActions")
     def alarm_actions(self) -> pulumi.Output[Optional[Sequence['outputs.AlarmruleAlarmAction']]]:
-        """
-        Specifies the action triggered by an alarm. The structure is described
-        below.
-        """
         return pulumi.get(self, "alarm_actions")
 
     @_builtins.property
     @pulumi.getter(name="alarmDescription")
     def alarm_description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The value can be a string of 0 to 256 characters.
-        """
         return pulumi.get(self, "alarm_description")
 
     @_builtins.property
     @pulumi.getter(name="alarmEnabled")
     def alarm_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable the alarm. The default value is true.
-        """
         return pulumi.get(self, "alarm_enabled")
 
     @_builtins.property
@@ -779,50 +548,26 @@ class Alarmrule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="alarmName")
     def alarm_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of an alarm rule. The value can be a string of 1 to 128
-        characters that can consist of letters, digits, underscores (_), hyphens (-) and chinese characters.
-        """
         return pulumi.get(self, "alarm_name")
 
     @_builtins.property
     @pulumi.getter(name="alarmState")
     def alarm_state(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the alarm status. The value can be:
-        + ok: The alarm status is normal;
-        + alarm: An alarm is generated;
-        + insufficient_data: The required data is insufficient.
-        """
         return pulumi.get(self, "alarm_state")
 
     @_builtins.property
     @pulumi.getter(name="alarmType")
     def alarm_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the alarm type. The value can be **EVENT.SYS**, **EVENT.CUSTOM**,
-        **MULTI_INSTANCE** and **ALL_INSTANCE**. Defaults to **MULTI_INSTANCE**.
-        """
         return pulumi.get(self, "alarm_type")
 
     @_builtins.property
     @pulumi.getter
     def condition(self) -> pulumi.Output['outputs.AlarmruleCondition']:
-        """
-        Specifies the alarm triggering condition. The structure is described below.
-        """
         return pulumi.get(self, "condition")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the alarm rule. Changing
-        this creates a new resource.
-
-        > **Note** If alarm_action_enabled is set to true, either alarm_actions or ok_actions cannot be empty. If alarm_actions
-        and ok_actions coexist, their corresponding notification_list must be of the **same value**.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -834,35 +579,20 @@ class Alarmrule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def metric(self) -> pulumi.Output['outputs.AlarmruleMetric']:
-        """
-        Specifies the alarm metrics. The structure is described below. Changing this
-        creates a new resource.
-        """
         return pulumi.get(self, "metric")
 
     @_builtins.property
     @pulumi.getter(name="okActions")
     def ok_actions(self) -> pulumi.Output[Optional[Sequence['outputs.AlarmruleOkAction']]]:
-        """
-        Specifies the action triggered by the clearing of an alarm. The structure is
-        described below.
-        """
         return pulumi.get(self, "ok_actions")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the alarm rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.int]:
-        """
-        Indicates the time when the alarm status changed. The value is a UNIX timestamp and the unit is ms.
-        """
         return pulumi.get(self, "update_time")
 

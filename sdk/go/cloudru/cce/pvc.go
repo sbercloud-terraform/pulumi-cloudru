@@ -12,207 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CCE Persistent Volume Claim resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create PVC with EVS
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			namespace := cfg.RequireObject("namespace")
-//			pvcName := cfg.RequireObject("pvcName")
-//			_, err := cce.NewPvc(ctx, "test", &cce.PvcArgs{
-//				ClusterId: pulumi.Any(clusterId),
-//				Namespace: pulumi.Any(namespace),
-//				Name:      pulumi.Any(pvcName),
-//				Annotations: pulumi.StringMap{
-//					"everest.io/disk-volume-type": pulumi.String("SSD"),
-//				},
-//				StorageClassName: pulumi.String("csi-disk"),
-//				AccessModes: pulumi.StringArray{
-//					pulumi.String("ReadWriteOnce"),
-//				},
-//				Storage: pulumi.String("10Gi"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create PVC with OBS
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			namespace := cfg.RequireObject("namespace")
-//			pvcName := cfg.RequireObject("pvcName")
-//			_, err := cce.NewPvc(ctx, "test", &cce.PvcArgs{
-//				ClusterId: pulumi.Any(clusterId),
-//				Namespace: pulumi.Any(namespace),
-//				Name:      pulumi.Any(pvcName),
-//				Annotations: pulumi.StringMap{
-//					"everest.io/obs-volume-type": pulumi.String("STANDARD"),
-//					"csi.storage.k8s.io/fstype":  pulumi.String("obsfs"),
-//				},
-//				StorageClassName: pulumi.String("csi-obs"),
-//				AccessModes: pulumi.StringArray{
-//					pulumi.String("ReadWriteMany"),
-//				},
-//				Storage: pulumi.String("1Gi"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create PVC with SFS
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			namespace := cfg.RequireObject("namespace")
-//			pvcName := cfg.RequireObject("pvcName")
-//			_, err := cce.NewPvc(ctx, "test", &cce.PvcArgs{
-//				ClusterId:        pulumi.Any(clusterId),
-//				Namespace:        pulumi.Any(namespace),
-//				Name:             pulumi.Any(pvcName),
-//				StorageClassName: pulumi.String("csi-nas"),
-//				AccessModes: pulumi.StringArray{
-//					pulumi.String("ReadWriteMany"),
-//				},
-//				Storage: pulumi.String("10Gi"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// CCE PVC can be imported using the cluster ID, namespace and name separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Cce/pvc:Pvc test 5c20fdad-7288-11eb-b817-0255ac10158b/default/pvc_name
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `annotations`.
-//
-// It is generally recommended running `pulumi preview` after importing a PVC.
-//
-// # You can then decide if changes should be applied to the PVC, or the resource
-//
-// definition should be updated to align with the PVC. Also you can ignore changes as below.
-//
-// resource "sbercloud_cce_pvc" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    annotations,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Pvc struct {
 	pulumi.CustomResourceState
 
-	// Specifies the desired access modes the volume should have.
-	// The valid values are as follows:
-	// + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-	// + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-	// + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-	AccessModes pulumi.StringArrayOutput `pulumi:"accessModes"`
-	// Specifies the unstructured key value map for external parameters.
-	// Changing this will create a new PVC resource.
-	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Specifies the cluster ID to which the CCE PVC belongs.
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The server time when PVC was created.
-	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
-	// Specifies the map of string keys and values for labels.
-	// Changing this will create a new PVC resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Specifies the unique name of the PVC resource. This parameter can contain a
-	// maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-	// lowercase letters and digits. Changing this will create a new PVC resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the namespace to logically divide your containers into different
-	// group. Changing this will create a new PVC resource.
-	Namespace pulumi.StringOutput `pulumi:"namespace"`
-	// Specifies the region in which to create the PVC resource.
-	// If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The current phase of the PVC.
-	// + **Pending**: Not yet bound.
-	// + **Bound**: Already bound.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the minimum amount of storage resources required.
-	// Changing this creates a new PVC resource.
-	Storage pulumi.StringOutput `pulumi:"storage"`
-	// Specifies the type of the storage bound to the CCE PVC.
-	// The valid values are as follows:
-	// + **csi-disk**: EVS.
-	// + **csi-obs**: OBS.
-	// + **csi-nas**: SFS.
-	// + **csi-sfsturbo**: SFS-Turbo.
-	StorageClassName pulumi.StringOutput `pulumi:"storageClassName"`
+	AccessModes       pulumi.StringArrayOutput `pulumi:"accessModes"`
+	Annotations       pulumi.StringMapOutput   `pulumi:"annotations"`
+	ClusterId         pulumi.StringOutput      `pulumi:"clusterId"`
+	CreationTimestamp pulumi.StringOutput      `pulumi:"creationTimestamp"`
+	Labels            pulumi.StringMapOutput   `pulumi:"labels"`
+	Name              pulumi.StringOutput      `pulumi:"name"`
+	Namespace         pulumi.StringOutput      `pulumi:"namespace"`
+	Region            pulumi.StringOutput      `pulumi:"region"`
+	Status            pulumi.StringOutput      `pulumi:"status"`
+	Storage           pulumi.StringOutput      `pulumi:"storage"`
+	StorageClassName  pulumi.StringOutput      `pulumi:"storageClassName"`
 }
 
 // NewPvc registers a new resource with the given unique name, arguments, and options.
@@ -260,89 +73,31 @@ func GetPvc(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pvc resources.
 type pvcState struct {
-	// Specifies the desired access modes the volume should have.
-	// The valid values are as follows:
-	// + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-	// + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-	// + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-	AccessModes []string `pulumi:"accessModes"`
-	// Specifies the unstructured key value map for external parameters.
-	// Changing this will create a new PVC resource.
-	Annotations map[string]string `pulumi:"annotations"`
-	// Specifies the cluster ID to which the CCE PVC belongs.
-	ClusterId *string `pulumi:"clusterId"`
-	// The server time when PVC was created.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// Specifies the map of string keys and values for labels.
-	// Changing this will create a new PVC resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Specifies the unique name of the PVC resource. This parameter can contain a
-	// maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-	// lowercase letters and digits. Changing this will create a new PVC resource.
-	Name *string `pulumi:"name"`
-	// Specifies the namespace to logically divide your containers into different
-	// group. Changing this will create a new PVC resource.
-	Namespace *string `pulumi:"namespace"`
-	// Specifies the region in which to create the PVC resource.
-	// If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-	Region *string `pulumi:"region"`
-	// The current phase of the PVC.
-	// + **Pending**: Not yet bound.
-	// + **Bound**: Already bound.
-	Status *string `pulumi:"status"`
-	// Specifies the minimum amount of storage resources required.
-	// Changing this creates a new PVC resource.
-	Storage *string `pulumi:"storage"`
-	// Specifies the type of the storage bound to the CCE PVC.
-	// The valid values are as follows:
-	// + **csi-disk**: EVS.
-	// + **csi-obs**: OBS.
-	// + **csi-nas**: SFS.
-	// + **csi-sfsturbo**: SFS-Turbo.
-	StorageClassName *string `pulumi:"storageClassName"`
+	AccessModes       []string          `pulumi:"accessModes"`
+	Annotations       map[string]string `pulumi:"annotations"`
+	ClusterId         *string           `pulumi:"clusterId"`
+	CreationTimestamp *string           `pulumi:"creationTimestamp"`
+	Labels            map[string]string `pulumi:"labels"`
+	Name              *string           `pulumi:"name"`
+	Namespace         *string           `pulumi:"namespace"`
+	Region            *string           `pulumi:"region"`
+	Status            *string           `pulumi:"status"`
+	Storage           *string           `pulumi:"storage"`
+	StorageClassName  *string           `pulumi:"storageClassName"`
 }
 
 type PvcState struct {
-	// Specifies the desired access modes the volume should have.
-	// The valid values are as follows:
-	// + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-	// + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-	// + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-	AccessModes pulumi.StringArrayInput
-	// Specifies the unstructured key value map for external parameters.
-	// Changing this will create a new PVC resource.
-	Annotations pulumi.StringMapInput
-	// Specifies the cluster ID to which the CCE PVC belongs.
-	ClusterId pulumi.StringPtrInput
-	// The server time when PVC was created.
+	AccessModes       pulumi.StringArrayInput
+	Annotations       pulumi.StringMapInput
+	ClusterId         pulumi.StringPtrInput
 	CreationTimestamp pulumi.StringPtrInput
-	// Specifies the map of string keys and values for labels.
-	// Changing this will create a new PVC resource.
-	Labels pulumi.StringMapInput
-	// Specifies the unique name of the PVC resource. This parameter can contain a
-	// maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-	// lowercase letters and digits. Changing this will create a new PVC resource.
-	Name pulumi.StringPtrInput
-	// Specifies the namespace to logically divide your containers into different
-	// group. Changing this will create a new PVC resource.
-	Namespace pulumi.StringPtrInput
-	// Specifies the region in which to create the PVC resource.
-	// If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-	Region pulumi.StringPtrInput
-	// The current phase of the PVC.
-	// + **Pending**: Not yet bound.
-	// + **Bound**: Already bound.
-	Status pulumi.StringPtrInput
-	// Specifies the minimum amount of storage resources required.
-	// Changing this creates a new PVC resource.
-	Storage pulumi.StringPtrInput
-	// Specifies the type of the storage bound to the CCE PVC.
-	// The valid values are as follows:
-	// + **csi-disk**: EVS.
-	// + **csi-obs**: OBS.
-	// + **csi-nas**: SFS.
-	// + **csi-sfsturbo**: SFS-Turbo.
-	StorageClassName pulumi.StringPtrInput
+	Labels            pulumi.StringMapInput
+	Name              pulumi.StringPtrInput
+	Namespace         pulumi.StringPtrInput
+	Region            pulumi.StringPtrInput
+	Status            pulumi.StringPtrInput
+	Storage           pulumi.StringPtrInput
+	StorageClassName  pulumi.StringPtrInput
 }
 
 func (PvcState) ElementType() reflect.Type {
@@ -350,77 +105,27 @@ func (PvcState) ElementType() reflect.Type {
 }
 
 type pvcArgs struct {
-	// Specifies the desired access modes the volume should have.
-	// The valid values are as follows:
-	// + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-	// + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-	// + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-	AccessModes []string `pulumi:"accessModes"`
-	// Specifies the unstructured key value map for external parameters.
-	// Changing this will create a new PVC resource.
-	Annotations map[string]string `pulumi:"annotations"`
-	// Specifies the cluster ID to which the CCE PVC belongs.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the map of string keys and values for labels.
-	// Changing this will create a new PVC resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Specifies the unique name of the PVC resource. This parameter can contain a
-	// maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-	// lowercase letters and digits. Changing this will create a new PVC resource.
-	Name *string `pulumi:"name"`
-	// Specifies the namespace to logically divide your containers into different
-	// group. Changing this will create a new PVC resource.
-	Namespace string `pulumi:"namespace"`
-	// Specifies the region in which to create the PVC resource.
-	// If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-	Region *string `pulumi:"region"`
-	// Specifies the minimum amount of storage resources required.
-	// Changing this creates a new PVC resource.
-	Storage string `pulumi:"storage"`
-	// Specifies the type of the storage bound to the CCE PVC.
-	// The valid values are as follows:
-	// + **csi-disk**: EVS.
-	// + **csi-obs**: OBS.
-	// + **csi-nas**: SFS.
-	// + **csi-sfsturbo**: SFS-Turbo.
-	StorageClassName string `pulumi:"storageClassName"`
+	AccessModes      []string          `pulumi:"accessModes"`
+	Annotations      map[string]string `pulumi:"annotations"`
+	ClusterId        string            `pulumi:"clusterId"`
+	Labels           map[string]string `pulumi:"labels"`
+	Name             *string           `pulumi:"name"`
+	Namespace        string            `pulumi:"namespace"`
+	Region           *string           `pulumi:"region"`
+	Storage          string            `pulumi:"storage"`
+	StorageClassName string            `pulumi:"storageClassName"`
 }
 
 // The set of arguments for constructing a Pvc resource.
 type PvcArgs struct {
-	// Specifies the desired access modes the volume should have.
-	// The valid values are as follows:
-	// + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-	// + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-	// + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-	AccessModes pulumi.StringArrayInput
-	// Specifies the unstructured key value map for external parameters.
-	// Changing this will create a new PVC resource.
-	Annotations pulumi.StringMapInput
-	// Specifies the cluster ID to which the CCE PVC belongs.
-	ClusterId pulumi.StringInput
-	// Specifies the map of string keys and values for labels.
-	// Changing this will create a new PVC resource.
-	Labels pulumi.StringMapInput
-	// Specifies the unique name of the PVC resource. This parameter can contain a
-	// maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-	// lowercase letters and digits. Changing this will create a new PVC resource.
-	Name pulumi.StringPtrInput
-	// Specifies the namespace to logically divide your containers into different
-	// group. Changing this will create a new PVC resource.
-	Namespace pulumi.StringInput
-	// Specifies the region in which to create the PVC resource.
-	// If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-	Region pulumi.StringPtrInput
-	// Specifies the minimum amount of storage resources required.
-	// Changing this creates a new PVC resource.
-	Storage pulumi.StringInput
-	// Specifies the type of the storage bound to the CCE PVC.
-	// The valid values are as follows:
-	// + **csi-disk**: EVS.
-	// + **csi-obs**: OBS.
-	// + **csi-nas**: SFS.
-	// + **csi-sfsturbo**: SFS-Turbo.
+	AccessModes      pulumi.StringArrayInput
+	Annotations      pulumi.StringMapInput
+	ClusterId        pulumi.StringInput
+	Labels           pulumi.StringMapInput
+	Name             pulumi.StringPtrInput
+	Namespace        pulumi.StringInput
+	Region           pulumi.StringPtrInput
+	Storage          pulumi.StringInput
 	StorageClassName pulumi.StringInput
 }
 
@@ -511,75 +216,46 @@ func (o PvcOutput) ToPvcOutputWithContext(ctx context.Context) PvcOutput {
 	return o
 }
 
-// Specifies the desired access modes the volume should have.
-// The valid values are as follows:
-// + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-// + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-// + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
 func (o PvcOutput) AccessModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringArrayOutput { return v.AccessModes }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the unstructured key value map for external parameters.
-// Changing this will create a new PVC resource.
 func (o PvcOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Specifies the cluster ID to which the CCE PVC belongs.
 func (o PvcOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The server time when PVC was created.
 func (o PvcOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
-// Specifies the map of string keys and values for labels.
-// Changing this will create a new PVC resource.
 func (o PvcOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the unique name of the PVC resource. This parameter can contain a
-// maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-// lowercase letters and digits. Changing this will create a new PVC resource.
 func (o PvcOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the namespace to logically divide your containers into different
-// group. Changing this will create a new PVC resource.
 func (o PvcOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the PVC resource.
-// If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
 func (o PvcOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The current phase of the PVC.
-// + **Pending**: Not yet bound.
-// + **Bound**: Already bound.
 func (o PvcOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the minimum amount of storage resources required.
-// Changing this creates a new PVC resource.
 func (o PvcOutput) Storage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.Storage }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the storage bound to the CCE PVC.
-// The valid values are as follows:
-// + **csi-disk**: EVS.
-// + **csi-obs**: OBS.
-// + **csi-nas**: SFS.
-// + **csi-sfsturbo**: SFS-Turbo.
 func (o PvcOutput) StorageClassName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pvc) pulumi.StringOutput { return v.StorageClassName }).(pulumi.StringOutput)
 }

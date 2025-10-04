@@ -4,39 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to manage a VPC Peering Connection resource.
- *
- * > **NOTE:** For cross-tenant (requester's tenant differs from the accepter's tenant) VPC Peering Connections, use
- * the `sbercloud.Vpc.PeeringConnection` resource to manage the requester's side of the connection and use
- * the `sbercloud.Vpc.PeeringConnectionAccepter` resource to manage the accepter's side of the connection.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const peering = new sbercloud.vpc.PeeringConnection("peering", {
- *    name: peerConnName,
- *    vpcId: vpcId,
- *    peerVpcId: accepterVpcId,
- * });
- * ```
- *
- * ## Notes
- *
- * If you create a VPC peering connection with another VPC of your own, the connection is created without the need for you
- * to accept the connection.
- *
- * ## Import
- *
- * VPC Peering resources can be imported using the `vpc peering id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/peeringConnection:PeeringConnection test_connection 22b76469-08e3-4937-8c1d-7aad34892be1
- * ```
- */
 export class PeeringConnection extends pulumi.CustomResource {
     /**
      * Get an existing PeeringConnection resource's state with the given name, ID, and optional extra
@@ -66,35 +33,11 @@ export class PeeringConnection extends pulumi.CustomResource {
     }
 
     declare public readonly description: pulumi.Output<string>;
-    /**
-     * Specifies the name of the VPC peering connection. The value can contain 1 to 64
-     * characters.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specified the Tenant Id of the accepter tenant. Changing this creates
-     * a new VPC peering connection.
-     */
     declare public readonly peerTenantId: pulumi.Output<string>;
-    /**
-     * Specifies the VPC ID of the accepter tenant. Changing this creates a new
-     * VPC peering connection.
-     */
     declare public readonly peerVpcId: pulumi.Output<string>;
-    /**
-     * The region in which to create the VPC peering connection. If omitted, the
-     * provider-level region will be used. Changing this creates a new VPC peering connection resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
-     * ACTIVE.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-     * creates a new VPC peering connection.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -143,35 +86,11 @@ export class PeeringConnection extends pulumi.CustomResource {
  */
 export interface PeeringConnectionState {
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the VPC peering connection. The value can contain 1 to 64
-     * characters.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specified the Tenant Id of the accepter tenant. Changing this creates
-     * a new VPC peering connection.
-     */
     peerTenantId?: pulumi.Input<string>;
-    /**
-     * Specifies the VPC ID of the accepter tenant. Changing this creates a new
-     * VPC peering connection.
-     */
     peerVpcId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the VPC peering connection. If omitted, the
-     * provider-level region will be used. Changing this creates a new VPC peering connection resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The VPC peering connection status. The value can be PENDING_ACCEPTANCE, REJECTED, EXPIRED, DELETED, or
-     * ACTIVE.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-     * creates a new VPC peering connection.
-     */
     vpcId?: pulumi.Input<string>;
 }
 
@@ -180,29 +99,9 @@ export interface PeeringConnectionState {
  */
 export interface PeeringConnectionArgs {
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the VPC peering connection. The value can contain 1 to 64
-     * characters.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specified the Tenant Id of the accepter tenant. Changing this creates
-     * a new VPC peering connection.
-     */
     peerTenantId?: pulumi.Input<string>;
-    /**
-     * Specifies the VPC ID of the accepter tenant. Changing this creates a new
-     * VPC peering connection.
-     */
     peerVpcId: pulumi.Input<string>;
-    /**
-     * The region in which to create the VPC peering connection. If omitted, the
-     * provider-level region will be used. Changing this creates a new VPC peering connection resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a VPC involved in a VPC peering connection. Changing this
-     * creates a new VPC peering connection.
-     */
     vpcId: pulumi.Input<string>;
 }

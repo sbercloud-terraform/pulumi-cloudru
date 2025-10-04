@@ -4,45 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * > **DEPRECATED:**  This resource  has been deprecated.
- *
- * Manages a keypair resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a new keypair and export private key to current folder
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test_keypair = new sbercloud.ecs.Keypair("test-keypair", {
- *     name: "my-keypair",
- *     keyFile: "private_key.pem",
- * });
- * ```
- *
- * ### Import an exist keypair
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test_keypair = new sbercloud.ecs.Keypair("test-keypair", {
- *     name: "my-keypair",
- *     publicKey: "ssh-rsa AAAAB3NzaC1yc2EAAAlJq5Pu+eizhou7nFFDxXofr2ySF8k/yuA9OnJdVF9Fbf85Z59CWNZBvcAT... root@terra-dev",
- * });
- * ```
- *
- * ## Import
- *
- * Keypairs can be imported using the `name`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Ecs/keypair:Keypair my-keypair test-keypair
- * ```
- */
 export class Keypair extends pulumi.CustomResource {
     /**
      * Get an existing Keypair resource's state with the given name, ID, and optional extra
@@ -71,30 +32,9 @@ export class Keypair extends pulumi.CustomResource {
         return obj['__pulumiType'] === Keypair.__pulumiType;
     }
 
-    /**
-     * Specifies the path of the created private key.
-     * The private key file (**.pem**) is created only after the resource is created.
-     * By default, the private key file will be created in the same folder as the current script file.
-     * If you need to create it in another folder, please specify the path for `keyFile`.
-     * Changing this creates a new keypair.
-     *
-     * ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-     */
     declare public readonly keyFile: pulumi.Output<string>;
-    /**
-     * Specifies a unique name for the keypair. Changing this creates a new keypair.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the imported OpenSSH-formatted public key. Changing this creates
-     * a new keypair.
-     * This parameter and `keyFile` are alternative.
-     */
     declare public readonly publicKey: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the keypair resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new keypair.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -130,30 +70,9 @@ export class Keypair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Keypair resources.
  */
 export interface KeypairState {
-    /**
-     * Specifies the path of the created private key.
-     * The private key file (**.pem**) is created only after the resource is created.
-     * By default, the private key file will be created in the same folder as the current script file.
-     * If you need to create it in another folder, please specify the path for `keyFile`.
-     * Changing this creates a new keypair.
-     *
-     * ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-     */
     keyFile?: pulumi.Input<string>;
-    /**
-     * Specifies a unique name for the keypair. Changing this creates a new keypair.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the imported OpenSSH-formatted public key. Changing this creates
-     * a new keypair.
-     * This parameter and `keyFile` are alternative.
-     */
     publicKey?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the keypair resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new keypair.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -161,29 +80,8 @@ export interface KeypairState {
  * The set of arguments for constructing a Keypair resource.
  */
 export interface KeypairArgs {
-    /**
-     * Specifies the path of the created private key.
-     * The private key file (**.pem**) is created only after the resource is created.
-     * By default, the private key file will be created in the same folder as the current script file.
-     * If you need to create it in another folder, please specify the path for `keyFile`.
-     * Changing this creates a new keypair.
-     *
-     * ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-     */
     keyFile?: pulumi.Input<string>;
-    /**
-     * Specifies a unique name for the keypair. Changing this creates a new keypair.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the imported OpenSSH-formatted public key. Changing this creates
-     * a new keypair.
-     * This parameter and `keyFile` are alternative.
-     */
     publicKey?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the keypair resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new keypair.
-     */
     region?: pulumi.Input<string>;
 }

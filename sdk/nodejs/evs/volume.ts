@@ -6,48 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a volume resource within sbercloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const volume = new sbercloud.evs.Volume("volume", {
- *     name: "volume",
- *     description: "my volume",
- *     volumeType: "SSD",
- *     size: 20,
- *     availabilityZone: "ru-moscow-1a",
- * });
- * ```
- *
- * ### With KMS Encryption
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const volume = new sbercloud.evs.Volume("volume", {
- *     name: "volume",
- *     description: "my volume",
- *     volumeType: "SSD",
- *     size: 20,
- *     kmsId: kmsId,
- *     availabilityZone: "ru-moscow-1a",
- * });
- * ```
- *
- * ## Import
- *
- * Volumes can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Evs/volume:Volume volume_1 14a80bc7-c12c-4fe0-a38a-cb77eeac9bd6
- * ```
- */
 export class Volume extends pulumi.CustomResource {
     /**
      * Get an existing Volume resource's state with the given name, ID, and optional extra
@@ -78,121 +36,44 @@ export class Volume extends pulumi.CustomResource {
 
     declare public /*out*/ readonly allMetadata: pulumi.Output<{[key: string]: string}>;
     declare public /*out*/ readonly allVolumeImageMetadata: pulumi.Output<{[key: string]: string}>;
-    /**
-     * If a volume is attached to an instance, this attribute will
-     * display the Attachment ID, Instance ID, and the Device as the Instance
-     * sees it.
-     */
     declare public /*out*/ readonly attachments: pulumi.Output<outputs.Evs.VolumeAttachment[]>;
     /**
      * @deprecated Deprecated
      */
     declare public readonly autoPay: pulumi.Output<string | undefined>;
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
-    /**
-     * The availability zone for the volume.
-     * Changing this creates a new volume.
-     */
     declare public readonly availabilityZone: pulumi.Output<string>;
-    /**
-     * The backup ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     declare public readonly backupId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly bootable: pulumi.Output<string>;
-    /**
-     * Specifies the delete mode of snapshot. The default value is false. All snapshot
-     * associated with the disk will also be deleted when the parameter is set to true.
-     */
     declare public readonly cascade: pulumi.Output<boolean | undefined>;
     declare public readonly chargingMode: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly dedicatedStorageId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly dedicatedStorageName: pulumi.Output<string>;
-    /**
-     * Specifies the disk description. The value can contain a maximum of 255 bytes.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The device type of volume to create. Valid options are VBD and SCSI.
-     * Defaults to VBD. Changing this creates a new volume.
-     */
     declare public readonly deviceType: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the enterprise project id of the disk. Changing this
-     * creates a new disk.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * The image ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     declare public readonly imageId: pulumi.Output<string | undefined>;
     declare public readonly iops: pulumi.Output<number>;
     declare public /*out*/ readonly iopsAttributes: pulumi.Output<outputs.Evs.VolumeIopsAttribute[]>;
-    /**
-     * The Encryption KMS ID to create the volume.
-     * Changing this creates a new volume.
-     */
     declare public readonly kmsId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly links: pulumi.Output<outputs.Evs.VolumeLink[]>;
-    /**
-     * Default:false. Specifies the shared EVS disk information.
-     * Changing this creates a new volume.
-     */
     declare public readonly multiattach: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the disk name.
-     * If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-     * If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-     * by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-     * the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly period: pulumi.Output<number | undefined>;
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
-    /**
-     * The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly serialNumber: pulumi.Output<string>;
     declare public readonly serverId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly serviceType: pulumi.Output<string>;
-    /**
-     * Specifies the disk size, in GB. Its value can be as follows:
-     * - System disk: 1 GB to 1024 GB
-     * - Data disk: 10 GB to 32768 GB
-     * This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-     * This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-     * This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-     * the minimum disk capacity required by minDisk in the image attributes.
-     * This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-     * Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-     * and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-     */
     declare public readonly size: pulumi.Output<number>;
-    /**
-     * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     declare public readonly snapshotId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly throughput: pulumi.Output<number>;
     declare public /*out*/ readonly throughputAttributes: pulumi.Output<outputs.Evs.VolumeThroughputAttribute[]>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    /**
-     * Specifies the disk type.
-     * Currently, the value can be SSD, SAS, or SATA.
-     * - SSD: specifies the ultra-high I/O disk type.
-     * - SAS: specifies the high I/O disk type.
-     * - SATA: specifies the common I/O disk type.
-     * If the specified disk type is not available in the AZ, the disk will fail to create.
-     */
     declare public readonly volumeType: pulumi.Output<string>;
-    /**
-     * Specifies the unique identifier used for mounting the EVS disk.
-     */
     declare public /*out*/ readonly wwn: pulumi.Output<string>;
 
     /**
@@ -304,121 +185,44 @@ export class Volume extends pulumi.CustomResource {
 export interface VolumeState {
     allMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     allVolumeImageMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * If a volume is attached to an instance, this attribute will
-     * display the Attachment ID, Instance ID, and the Device as the Instance
-     * sees it.
-     */
     attachments?: pulumi.Input<pulumi.Input<inputs.Evs.VolumeAttachment>[]>;
     /**
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
     autoRenew?: pulumi.Input<string>;
-    /**
-     * The availability zone for the volume.
-     * Changing this creates a new volume.
-     */
     availabilityZone?: pulumi.Input<string>;
-    /**
-     * The backup ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     backupId?: pulumi.Input<string>;
     bootable?: pulumi.Input<string>;
-    /**
-     * Specifies the delete mode of snapshot. The default value is false. All snapshot
-     * associated with the disk will also be deleted when the parameter is set to true.
-     */
     cascade?: pulumi.Input<boolean>;
     chargingMode?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
     dedicatedStorageId?: pulumi.Input<string>;
     dedicatedStorageName?: pulumi.Input<string>;
-    /**
-     * Specifies the disk description. The value can contain a maximum of 255 bytes.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The device type of volume to create. Valid options are VBD and SCSI.
-     * Defaults to VBD. Changing this creates a new volume.
-     */
     deviceType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the disk. Changing this
-     * creates a new disk.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The image ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     imageId?: pulumi.Input<string>;
     iops?: pulumi.Input<number>;
     iopsAttributes?: pulumi.Input<pulumi.Input<inputs.Evs.VolumeIopsAttribute>[]>;
-    /**
-     * The Encryption KMS ID to create the volume.
-     * Changing this creates a new volume.
-     */
     kmsId?: pulumi.Input<string>;
     links?: pulumi.Input<pulumi.Input<inputs.Evs.VolumeLink>[]>;
-    /**
-     * Default:false. Specifies the shared EVS disk information.
-     * Changing this creates a new volume.
-     */
     multiattach?: pulumi.Input<boolean>;
-    /**
-     * Specifies the disk name.
-     * If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-     * If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-     * by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-     * the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
-    /**
-     * The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-     */
     region?: pulumi.Input<string>;
     serialNumber?: pulumi.Input<string>;
     serverId?: pulumi.Input<string>;
     serviceType?: pulumi.Input<string>;
-    /**
-     * Specifies the disk size, in GB. Its value can be as follows:
-     * - System disk: 1 GB to 1024 GB
-     * - Data disk: 10 GB to 32768 GB
-     * This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-     * This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-     * This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-     * the minimum disk capacity required by minDisk in the image attributes.
-     * This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-     * Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-     * and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-     */
     size?: pulumi.Input<number>;
-    /**
-     * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     snapshotId?: pulumi.Input<string>;
     status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     throughput?: pulumi.Input<number>;
     throughputAttributes?: pulumi.Input<pulumi.Input<inputs.Evs.VolumeThroughputAttribute>[]>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * Specifies the disk type.
-     * Currently, the value can be SSD, SAS, or SATA.
-     * - SSD: specifies the ultra-high I/O disk type.
-     * - SAS: specifies the high I/O disk type.
-     * - SATA: specifies the common I/O disk type.
-     * If the specified disk type is not available in the AZ, the disk will fail to create.
-     */
     volumeType?: pulumi.Input<string>;
-    /**
-     * Specifies the unique identifier used for mounting the EVS disk.
-     */
     wwn?: pulumi.Input<string>;
 }
 
@@ -431,95 +235,26 @@ export interface VolumeArgs {
      */
     autoPay?: pulumi.Input<string>;
     autoRenew?: pulumi.Input<string>;
-    /**
-     * The availability zone for the volume.
-     * Changing this creates a new volume.
-     */
     availabilityZone: pulumi.Input<string>;
-    /**
-     * The backup ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     backupId?: pulumi.Input<string>;
-    /**
-     * Specifies the delete mode of snapshot. The default value is false. All snapshot
-     * associated with the disk will also be deleted when the parameter is set to true.
-     */
     cascade?: pulumi.Input<boolean>;
     chargingMode?: pulumi.Input<string>;
     dedicatedStorageId?: pulumi.Input<string>;
-    /**
-     * Specifies the disk description. The value can contain a maximum of 255 bytes.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The device type of volume to create. Valid options are VBD and SCSI.
-     * Defaults to VBD. Changing this creates a new volume.
-     */
     deviceType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the disk. Changing this
-     * creates a new disk.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The image ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     imageId?: pulumi.Input<string>;
     iops?: pulumi.Input<number>;
-    /**
-     * The Encryption KMS ID to create the volume.
-     * Changing this creates a new volume.
-     */
     kmsId?: pulumi.Input<string>;
-    /**
-     * Default:false. Specifies the shared EVS disk information.
-     * Changing this creates a new volume.
-     */
     multiattach?: pulumi.Input<boolean>;
-    /**
-     * Specifies the disk name.
-     * If you create disks one by one, the name value is the disk name. The value can contain a maximum of 255 bytes.
-     * If you create multiple disks (the count value is greater than 1), the system automatically adds a hyphen followed
-     * by a four-digit incremental number, such as -0000, to the end of each disk name. For example,
-     * the disk names can be volume-0001 and volume-0002. The value can contain a maximum of 250 bytes.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
-    /**
-     * The region in which to create the EVS volume resource. If omitted, the provider-level region will be used. Changing this creates a new EVS resource.
-     */
     region?: pulumi.Input<string>;
     serverId?: pulumi.Input<string>;
-    /**
-     * Specifies the disk size, in GB. Its value can be as follows:
-     * - System disk: 1 GB to 1024 GB
-     * - Data disk: 10 GB to 32768 GB
-     * This parameter is mandatory when you create an empty disk. You can specify the parameter value as required within the value range.
-     * This parameter is mandatory when you create the disk from a snapshot. Ensure that the disk size is greater than or equal to the snapshot size.
-     * This parameter is mandatory when you create the disk from an image. Ensure that the disk size is greater than or equal to
-     * the minimum disk capacity required by minDisk in the image attributes.
-     * This parameter is optional when you create the disk from a backup. If this parameter is not specified, the disk size is equal to the backup size.
-     * Changing this parameter will update the disk. You can extend the disk by setting this parameter to a new value, which must be between current size
-     * and the max size(System disk: 1024 GB; Data disk: 32768 GB). Shrinking the disk is not supported.
-     */
     size?: pulumi.Input<number>;
-    /**
-     * The snapshot ID from which to create the volume.
-     * Changing this creates a new volume.
-     */
     snapshotId?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     throughput?: pulumi.Input<number>;
-    /**
-     * Specifies the disk type.
-     * Currently, the value can be SSD, SAS, or SATA.
-     * - SSD: specifies the ultra-high I/O disk type.
-     * - SAS: specifies the high I/O disk type.
-     * - SATA: specifies the common I/O disk type.
-     * If the specified disk type is not available in the AZ, the disk will fail to create.
-     */
     volumeType: pulumi.Input<string>;
 }

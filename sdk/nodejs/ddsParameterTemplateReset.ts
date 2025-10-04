@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DDS parameter template reset resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const configurationId = config.requireObject<any>("configurationId");
- * const test = new sbercloud.DdsParameterTemplateReset("test", {configurationId: configurationId});
- * ```
- */
 export class DdsParameterTemplateReset extends pulumi.CustomResource {
     /**
      * Get an existing DdsParameterTemplateReset resource's state with the given name, ID, and optional extra
@@ -48,14 +34,8 @@ export class DdsParameterTemplateReset extends pulumi.CustomResource {
 
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     declare public readonly configurationId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -92,14 +72,8 @@ export class DdsParameterTemplateReset extends pulumi.CustomResource {
 export interface DdsParameterTemplateResetState {
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     configurationId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -109,13 +83,7 @@ export interface DdsParameterTemplateResetState {
 export interface DdsParameterTemplateResetArgs {
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     configurationId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

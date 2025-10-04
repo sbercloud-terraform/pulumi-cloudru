@@ -27,17 +27,6 @@ class KafkaPermissionsArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaPermissions resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the permissions belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaPermissionsPolicyArgs']]] policies: Specifies the permissions policies. The object structure is
-               documented below.
-               
-               <a name="dms_kafka_policies"></a>
-               The `policies` block supports:
-        :param pulumi.Input[_builtins.str] topic_name: Specifies the name of the topic to which the permissions belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka permissions resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "policies", policies)
@@ -48,10 +37,6 @@ class KafkaPermissionsArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the DMS kafka instance to which the permissions belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -61,13 +46,6 @@ class KafkaPermissionsArgs:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> pulumi.Input[Sequence[pulumi.Input['KafkaPermissionsPolicyArgs']]]:
-        """
-        Specifies the permissions policies. The object structure is
-        documented below.
-
-        <a name="dms_kafka_policies"></a>
-        The `policies` block supports:
-        """
         return pulumi.get(self, "policies")
 
     @policies.setter
@@ -77,10 +55,6 @@ class KafkaPermissionsArgs:
     @_builtins.property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the topic to which the permissions belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
@@ -90,10 +64,6 @@ class KafkaPermissionsArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka permissions resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -110,17 +80,6 @@ class _KafkaPermissionsState:
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaPermissions resources.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the permissions belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaPermissionsPolicyArgs']]] policies: Specifies the permissions policies. The object structure is
-               documented below.
-               
-               <a name="dms_kafka_policies"></a>
-               The `policies` block supports:
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka permissions resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic_name: Specifies the name of the topic to which the permissions belongs.
-               Changing this creates a new resource.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -134,10 +93,6 @@ class _KafkaPermissionsState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the DMS kafka instance to which the permissions belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -147,13 +102,6 @@ class _KafkaPermissionsState:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaPermissionsPolicyArgs']]]]:
-        """
-        Specifies the permissions policies. The object structure is
-        documented below.
-
-        <a name="dms_kafka_policies"></a>
-        The `policies` block supports:
-        """
         return pulumi.get(self, "policies")
 
     @policies.setter
@@ -163,10 +111,6 @@ class _KafkaPermissionsState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka permissions resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -176,10 +120,6 @@ class _KafkaPermissionsState:
     @_builtins.property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the topic to which the permissions belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
@@ -199,57 +139,9 @@ class KafkaPermissions(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Use the resource to grant user permissions of a kafka topic within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        kafka_topic_name = config.require_object("kafkaTopicName")
-        user1 = config.require_object("user1")
-        user2 = config.require_object("user2")
-        test = sbercloud.dms.KafkaPermissions("test",
-            instance_id=kafka_instance_id,
-            topic_name=kafka_topic_name,
-            policies=[
-                {
-                    "user_name": user1,
-                    "access_policy": "all",
-                },
-                {
-                    "user_name": user2,
-                    "access_policy": "pub",
-                },
-            ])
-        ```
-
-        ## Import
-
-        DMS kafka permissions can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaPermissions:KafkaPermissions permissions c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-        ```
-
+        Create a KafkaPermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the permissions belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaPermissionsPolicyArgs', 'KafkaPermissionsPolicyArgsDict']]]] policies: Specifies the permissions policies. The object structure is
-               documented below.
-               
-               <a name="dms_kafka_policies"></a>
-               The `policies` block supports:
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka permissions resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic_name: Specifies the name of the topic to which the permissions belongs.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -258,44 +150,7 @@ class KafkaPermissions(pulumi.CustomResource):
                  args: KafkaPermissionsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use the resource to grant user permissions of a kafka topic within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        kafka_topic_name = config.require_object("kafkaTopicName")
-        user1 = config.require_object("user1")
-        user2 = config.require_object("user2")
-        test = sbercloud.dms.KafkaPermissions("test",
-            instance_id=kafka_instance_id,
-            topic_name=kafka_topic_name,
-            policies=[
-                {
-                    "user_name": user1,
-                    "access_policy": "all",
-                },
-                {
-                    "user_name": user2,
-                    "access_policy": "pub",
-                },
-            ])
-        ```
-
-        ## Import
-
-        DMS kafka permissions can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaPermissions:KafkaPermissions permissions c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-        ```
-
+        Create a KafkaPermissions resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaPermissionsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -355,17 +210,6 @@ class KafkaPermissions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the permissions belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaPermissionsPolicyArgs', 'KafkaPermissionsPolicyArgsDict']]]] policies: Specifies the permissions policies. The object structure is
-               documented below.
-               
-               <a name="dms_kafka_policies"></a>
-               The `policies` block supports:
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka permissions resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic_name: Specifies the name of the topic to which the permissions belongs.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -380,39 +224,20 @@ class KafkaPermissions(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the DMS kafka instance to which the permissions belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def policies(self) -> pulumi.Output[Sequence['outputs.KafkaPermissionsPolicy']]:
-        """
-        Specifies the permissions policies. The object structure is
-        documented below.
-
-        <a name="dms_kafka_policies"></a>
-        The `policies` block supports:
-        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DMS kafka permissions resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the topic to which the permissions belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic_name")
 

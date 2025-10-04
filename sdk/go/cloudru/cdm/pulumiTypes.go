@@ -14,22 +14,14 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ClusterInstance struct {
-	// Instance ID.
-	Id *string `pulumi:"id"`
-	// Management IP address.
-	ManageIp *string `pulumi:"manageIp"`
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Private IP.
+	Id        *string `pulumi:"id"`
+	ManageIp  *string `pulumi:"manageIp"`
+	Name      *string `pulumi:"name"`
 	PrivateIp *string `pulumi:"privateIp"`
-	// Public IP.
-	PublicIp *string `pulumi:"publicIp"`
-	// Instance role.
-	Role *string `pulumi:"role"`
-	// Traffic IP.
+	PublicIp  *string `pulumi:"publicIp"`
+	Role      *string `pulumi:"role"`
 	TrafficIp *string `pulumi:"trafficIp"`
-	// Instance type.
-	Type *string `pulumi:"type"`
+	Type      *string `pulumi:"type"`
 }
 
 // ClusterInstanceInput is an input type that accepts ClusterInstanceArgs and ClusterInstanceOutput values.
@@ -44,22 +36,14 @@ type ClusterInstanceInput interface {
 }
 
 type ClusterInstanceArgs struct {
-	// Instance ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Management IP address.
-	ManageIp pulumi.StringPtrInput `pulumi:"manageIp"`
-	// Specifies cluster name. Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Private IP.
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	ManageIp  pulumi.StringPtrInput `pulumi:"manageIp"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
-	// Public IP.
-	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// Instance role.
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Traffic IP.
+	PublicIp  pulumi.StringPtrInput `pulumi:"publicIp"`
+	Role      pulumi.StringPtrInput `pulumi:"role"`
 	TrafficIp pulumi.StringPtrInput `pulumi:"trafficIp"`
-	// Instance type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type      pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (ClusterInstanceArgs) ElementType() reflect.Type {
@@ -113,42 +97,34 @@ func (o ClusterInstanceOutput) ToClusterInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
-// Instance ID.
 func (o ClusterInstanceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Management IP address.
 func (o ClusterInstanceOutput) ManageIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.ManageIp }).(pulumi.StringPtrOutput)
 }
 
-// Specifies cluster name. Changing this parameter will create a new resource.
 func (o ClusterInstanceOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Private IP.
 func (o ClusterInstanceOutput) PrivateIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.PrivateIp }).(pulumi.StringPtrOutput)
 }
 
-// Public IP.
 func (o ClusterInstanceOutput) PublicIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.PublicIp }).(pulumi.StringPtrOutput)
 }
 
-// Instance role.
 func (o ClusterInstanceOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Traffic IP.
 func (o ClusterInstanceOutput) TrafficIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.TrafficIp }).(pulumi.StringPtrOutput)
 }
 
-// Instance type.
 func (o ClusterInstanceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterInstance) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

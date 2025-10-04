@@ -35,44 +35,15 @@ class DmsRocketmqMigrationTaskArgs:
         """
         The set of arguments for constructing a DmsRocketmqMigrationTask resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RocketMQ instance.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] overwrite: Specifies whether to overwrite configurations with the same name.
-               Value options:
-               + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-               + **false**: An error is reported when a topic or group already exists.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the exchange type. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_bindings"></a>
-               The `bindings` block supports:
+        :param pulumi.Input[_builtins.str] type: Specifies the migration task type.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskBindingArgs']]] bindings: Specifies the binding metadata.
-               The bindings structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-               
-               <a name="RocketMQ_migration_task_topic_configs"></a>
-               The `topic_configs` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskExchangeArgs']]] exchanges: Specifies the exchange metadata.
-               The exchanges structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the migration task.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskQueueArgs']]] queues: Specifies the queue metadata.
-               The queues structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskSubscriptionGroupArgs']]] subscription_groups: Specifies the consumer group metadata.
-               The subscription_groups structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskTopicConfigArgs']]] topic_configs: Specifies the topic metadata.
-               The topic_configs structure is documented below.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskVhostArgs']]] vhosts: Specifies the virtual hosts metadata.
-               The vhosts structure is documented below.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "overwrite", overwrite)
@@ -99,7 +70,6 @@ class DmsRocketmqMigrationTaskArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RocketMQ instance.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -112,10 +82,6 @@ class DmsRocketmqMigrationTaskArgs:
     def overwrite(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies whether to overwrite configurations with the same name.
-        Value options:
-        + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-        + **false**: An error is reported when a topic or group already exists.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "overwrite")
 
@@ -127,10 +93,7 @@ class DmsRocketmqMigrationTaskArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the exchange type. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_bindings"></a>
-        The `bindings` block supports:
+        Specifies the migration task type.
         """
         return pulumi.get(self, "type")
 
@@ -143,13 +106,6 @@ class DmsRocketmqMigrationTaskArgs:
     def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskBindingArgs']]]]:
         """
         Specifies the binding metadata.
-        The bindings structure is documented below.
-        Changing this creates a new resource.
-
-        > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-
-        <a name="RocketMQ_migration_task_topic_configs"></a>
-        The `topic_configs` block supports:
         """
         return pulumi.get(self, "bindings")
 
@@ -162,8 +118,6 @@ class DmsRocketmqMigrationTaskArgs:
     def exchanges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskExchangeArgs']]]]:
         """
         Specifies the exchange metadata.
-        The exchanges structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "exchanges")
 
@@ -175,7 +129,7 @@ class DmsRocketmqMigrationTaskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the name of the migration task.
         """
         return pulumi.get(self, "name")
 
@@ -188,8 +142,6 @@ class DmsRocketmqMigrationTaskArgs:
     def queues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskQueueArgs']]]]:
         """
         Specifies the queue metadata.
-        The queues structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "queues")
 
@@ -200,10 +152,6 @@ class DmsRocketmqMigrationTaskArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -215,10 +163,6 @@ class DmsRocketmqMigrationTaskArgs:
     def subscription_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskSubscriptionGroupArgs']]]]:
         """
         Specifies the consumer group metadata.
-        The subscription_groups structure is documented below.
-        Changing this creates a new resource.
-
-        > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         """
         return pulumi.get(self, "subscription_groups")
 
@@ -231,8 +175,6 @@ class DmsRocketmqMigrationTaskArgs:
     def topic_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskTopicConfigArgs']]]]:
         """
         Specifies the topic metadata.
-        The topic_configs structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_configs")
 
@@ -245,8 +187,6 @@ class DmsRocketmqMigrationTaskArgs:
     def vhosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskVhostArgs']]]]:
         """
         Specifies the virtual hosts metadata.
-        The vhosts structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "vhosts")
 
@@ -274,46 +214,17 @@ class _DmsRocketmqMigrationTaskState:
         """
         Input properties used for looking up and filtering DmsRocketmqMigrationTask resources.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskBindingArgs']]] bindings: Specifies the binding metadata.
-               The bindings structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-               
-               <a name="RocketMQ_migration_task_topic_configs"></a>
-               The `topic_configs` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskExchangeArgs']]] exchanges: Specifies the exchange metadata.
-               The exchanges structure is documented below.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RocketMQ instance.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the migration task.
         :param pulumi.Input[_builtins.str] overwrite: Specifies whether to overwrite configurations with the same name.
-               Value options:
-               + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-               + **false**: An error is reported when a topic or group already exists.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskQueueArgs']]] queues: Specifies the queue metadata.
-               The queues structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] start_date: Indicates the start time of the migration task.
-        :param pulumi.Input[_builtins.str] status: Indicates the status of the migration task. The value can be **finished** or **failed***.
+        :param pulumi.Input[_builtins.str] status: Indicates the status of the migration task.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskSubscriptionGroupArgs']]] subscription_groups: Specifies the consumer group metadata.
-               The subscription_groups structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskTopicConfigArgs']]] topic_configs: Specifies the topic metadata.
-               The topic_configs structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the exchange type. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_bindings"></a>
-               The `bindings` block supports:
+        :param pulumi.Input[_builtins.str] type: Specifies the migration task type.
         :param pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskVhostArgs']]] vhosts: Specifies the virtual hosts metadata.
-               The vhosts structure is documented below.
-               Changing this creates a new resource.
         """
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
@@ -347,13 +258,6 @@ class _DmsRocketmqMigrationTaskState:
     def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskBindingArgs']]]]:
         """
         Specifies the binding metadata.
-        The bindings structure is documented below.
-        Changing this creates a new resource.
-
-        > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-
-        <a name="RocketMQ_migration_task_topic_configs"></a>
-        The `topic_configs` block supports:
         """
         return pulumi.get(self, "bindings")
 
@@ -366,8 +270,6 @@ class _DmsRocketmqMigrationTaskState:
     def exchanges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskExchangeArgs']]]]:
         """
         Specifies the exchange metadata.
-        The exchanges structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "exchanges")
 
@@ -380,7 +282,6 @@ class _DmsRocketmqMigrationTaskState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RocketMQ instance.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -392,7 +293,7 @@ class _DmsRocketmqMigrationTaskState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the name of the migration task.
         """
         return pulumi.get(self, "name")
 
@@ -405,10 +306,6 @@ class _DmsRocketmqMigrationTaskState:
     def overwrite(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies whether to overwrite configurations with the same name.
-        Value options:
-        + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-        + **false**: An error is reported when a topic or group already exists.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "overwrite")
 
@@ -421,8 +318,6 @@ class _DmsRocketmqMigrationTaskState:
     def queues(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskQueueArgs']]]]:
         """
         Specifies the queue metadata.
-        The queues structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "queues")
 
@@ -433,10 +328,6 @@ class _DmsRocketmqMigrationTaskState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -459,7 +350,7 @@ class _DmsRocketmqMigrationTaskState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the status of the migration task. The value can be **finished** or **failed***.
+        Indicates the status of the migration task.
         """
         return pulumi.get(self, "status")
 
@@ -472,10 +363,6 @@ class _DmsRocketmqMigrationTaskState:
     def subscription_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskSubscriptionGroupArgs']]]]:
         """
         Specifies the consumer group metadata.
-        The subscription_groups structure is documented below.
-        Changing this creates a new resource.
-
-        > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         """
         return pulumi.get(self, "subscription_groups")
 
@@ -488,8 +375,6 @@ class _DmsRocketmqMigrationTaskState:
     def topic_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskTopicConfigArgs']]]]:
         """
         Specifies the topic metadata.
-        The topic_configs structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_configs")
 
@@ -501,10 +386,7 @@ class _DmsRocketmqMigrationTaskState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the exchange type. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_bindings"></a>
-        The `bindings` block supports:
+        Specifies the migration task type.
         """
         return pulumi.get(self, "type")
 
@@ -517,8 +399,6 @@ class _DmsRocketmqMigrationTaskState:
     def vhosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DmsRocketmqMigrationTaskVhostArgs']]]]:
         """
         Specifies the virtual hosts metadata.
-        The vhosts structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "vhosts")
 
@@ -546,168 +426,19 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
                  vhosts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskVhostArgs', 'DmsRocketmqMigrationTaskVhostArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages a DMS RocketMQ migration task resource within SberCloud.
-
-        ## Example Usage
-
-        ### RoecktMQ migration task from RocketMQ to RocketMQ
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        name = config.require_object("name")
-        topic_name = config.require_object("topicName")
-        group_name = config.require_object("groupName")
-        test = sbercloud.DmsRocketmqMigrationTask("test",
-            instance_id=instance_id,
-            overwrite="true",
-            name=name,
-            type="rocketmq",
-            topic_configs=[{
-                "order": False,
-                "perm": 6,
-                "read_queue_num": 16,
-                "topic_filter_type": "SINGLE_TAG",
-                "topic_name": topic_name,
-                "topic_sys_flag": 0,
-                "write_queue_num": 16,
-            }],
-            subscription_groups=[{
-                "consume_broadcast_enable": True,
-                "consume_enable": True,
-                "consume_from_min_enable": True,
-                "group_name": group_name,
-                "notify_consumerids_changed_enable": True,
-                "retry_max_times": 16,
-                "retry_queue_num": 1,
-                "which_broker_when_consume_slow": 1,
-            }])
-        ```
-
-        ### RoecktMQ migration task from RabbitMQ to RocketMQ
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        name = config.require_object("name")
-        vhost_name = config.require_object("vhostName")
-        queue_name = config.require_object("queueName")
-        exchange_name = config.require_object("exchangeName")
-        test = sbercloud.DmsRocketmqMigrationTask("test",
-            instance_id=instance_id,
-            overwrite="true",
-            name=name,
-            type="rabbitToRocket",
-            vhosts=[{
-                "name": vhost_name,
-            }],
-            queues=[{
-                "name": queue_name,
-                "vhost": vhost_name,
-                "durable": False,
-            }],
-            exchanges=[{
-                "name": exchange_name,
-                "vhost": vhost_name,
-                "type": "topic",
-                "durable": False,
-            }],
-            bindings=[{
-                "source": exchange_name,
-                "vhost": vhost_name,
-                "destination": queue_name,
-                "destination_type": "queue",
-                "routing_key": queue_name,
-            }])
-        ```
-
-        ## Import
-
-        The RocketMQ migration task can be imported using the RocketMQ instance ID and the RocketMQ migration task ID
-
-        separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask test <instance_id>/<id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attribute includes: `overwrite`.
-
-        It is generally recommended running `pulumi preview` after importing the task. You can then decide
-
-        if changes should be applied to the task, or the resource definition should be updated to align with the task.
-
-        Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_dms_rocketmq_migration_task" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              overwrite,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DmsRocketmqMigrationTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskBindingArgs', 'DmsRocketmqMigrationTaskBindingArgsDict']]]] bindings: Specifies the binding metadata.
-               The bindings structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-               
-               <a name="RocketMQ_migration_task_topic_configs"></a>
-               The `topic_configs` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskExchangeArgs', 'DmsRocketmqMigrationTaskExchangeArgsDict']]]] exchanges: Specifies the exchange metadata.
-               The exchanges structure is documented below.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RocketMQ instance.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the migration task.
         :param pulumi.Input[_builtins.str] overwrite: Specifies whether to overwrite configurations with the same name.
-               Value options:
-               + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-               + **false**: An error is reported when a topic or group already exists.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskQueueArgs', 'DmsRocketmqMigrationTaskQueueArgsDict']]]] queues: Specifies the queue metadata.
-               The queues structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskSubscriptionGroupArgs', 'DmsRocketmqMigrationTaskSubscriptionGroupArgsDict']]]] subscription_groups: Specifies the consumer group metadata.
-               The subscription_groups structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskTopicConfigArgs', 'DmsRocketmqMigrationTaskTopicConfigArgsDict']]]] topic_configs: Specifies the topic metadata.
-               The topic_configs structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the exchange type. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_bindings"></a>
-               The `bindings` block supports:
+        :param pulumi.Input[_builtins.str] type: Specifies the migration task type.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskVhostArgs', 'DmsRocketmqMigrationTaskVhostArgsDict']]]] vhosts: Specifies the virtual hosts metadata.
-               The vhosts structure is documented below.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -716,127 +447,7 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
                  args: DmsRocketmqMigrationTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS RocketMQ migration task resource within SberCloud.
-
-        ## Example Usage
-
-        ### RoecktMQ migration task from RocketMQ to RocketMQ
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        name = config.require_object("name")
-        topic_name = config.require_object("topicName")
-        group_name = config.require_object("groupName")
-        test = sbercloud.DmsRocketmqMigrationTask("test",
-            instance_id=instance_id,
-            overwrite="true",
-            name=name,
-            type="rocketmq",
-            topic_configs=[{
-                "order": False,
-                "perm": 6,
-                "read_queue_num": 16,
-                "topic_filter_type": "SINGLE_TAG",
-                "topic_name": topic_name,
-                "topic_sys_flag": 0,
-                "write_queue_num": 16,
-            }],
-            subscription_groups=[{
-                "consume_broadcast_enable": True,
-                "consume_enable": True,
-                "consume_from_min_enable": True,
-                "group_name": group_name,
-                "notify_consumerids_changed_enable": True,
-                "retry_max_times": 16,
-                "retry_queue_num": 1,
-                "which_broker_when_consume_slow": 1,
-            }])
-        ```
-
-        ### RoecktMQ migration task from RabbitMQ to RocketMQ
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        name = config.require_object("name")
-        vhost_name = config.require_object("vhostName")
-        queue_name = config.require_object("queueName")
-        exchange_name = config.require_object("exchangeName")
-        test = sbercloud.DmsRocketmqMigrationTask("test",
-            instance_id=instance_id,
-            overwrite="true",
-            name=name,
-            type="rabbitToRocket",
-            vhosts=[{
-                "name": vhost_name,
-            }],
-            queues=[{
-                "name": queue_name,
-                "vhost": vhost_name,
-                "durable": False,
-            }],
-            exchanges=[{
-                "name": exchange_name,
-                "vhost": vhost_name,
-                "type": "topic",
-                "durable": False,
-            }],
-            bindings=[{
-                "source": exchange_name,
-                "vhost": vhost_name,
-                "destination": queue_name,
-                "destination_type": "queue",
-                "routing_key": queue_name,
-            }])
-        ```
-
-        ## Import
-
-        The RocketMQ migration task can be imported using the RocketMQ instance ID and the RocketMQ migration task ID
-
-        separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask test <instance_id>/<id>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attribute includes: `overwrite`.
-
-        It is generally recommended running `pulumi preview` after importing the task. You can then decide
-
-        if changes should be applied to the task, or the resource definition should be updated to align with the task.
-
-        Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_dms_rocketmq_migration_task" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              overwrite,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DmsRocketmqMigrationTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqMigrationTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -922,46 +533,17 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskBindingArgs', 'DmsRocketmqMigrationTaskBindingArgsDict']]]] bindings: Specifies the binding metadata.
-               The bindings structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-               
-               <a name="RocketMQ_migration_task_topic_configs"></a>
-               The `topic_configs` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskExchangeArgs', 'DmsRocketmqMigrationTaskExchangeArgsDict']]]] exchanges: Specifies the exchange metadata.
-               The exchanges structure is documented below.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RocketMQ instance.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the name of the migration task.
         :param pulumi.Input[_builtins.str] overwrite: Specifies whether to overwrite configurations with the same name.
-               Value options:
-               + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-               + **false**: An error is reported when a topic or group already exists.
-               Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskQueueArgs', 'DmsRocketmqMigrationTaskQueueArgsDict']]]] queues: Specifies the queue metadata.
-               The queues structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] start_date: Indicates the start time of the migration task.
-        :param pulumi.Input[_builtins.str] status: Indicates the status of the migration task. The value can be **finished** or **failed***.
+        :param pulumi.Input[_builtins.str] status: Indicates the status of the migration task.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskSubscriptionGroupArgs', 'DmsRocketmqMigrationTaskSubscriptionGroupArgsDict']]]] subscription_groups: Specifies the consumer group metadata.
-               The subscription_groups structure is documented below.
-               Changing this creates a new resource.
-               
-               > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskTopicConfigArgs', 'DmsRocketmqMigrationTaskTopicConfigArgsDict']]]] topic_configs: Specifies the topic metadata.
-               The topic_configs structure is documented below.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the exchange type. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_bindings"></a>
-               The `bindings` block supports:
+        :param pulumi.Input[_builtins.str] type: Specifies the migration task type.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DmsRocketmqMigrationTaskVhostArgs', 'DmsRocketmqMigrationTaskVhostArgsDict']]]] vhosts: Specifies the virtual hosts metadata.
-               The vhosts structure is documented below.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -987,13 +569,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def bindings(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqMigrationTaskBinding']]:
         """
         Specifies the binding metadata.
-        The bindings structure is documented below.
-        Changing this creates a new resource.
-
-        > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-
-        <a name="RocketMQ_migration_task_topic_configs"></a>
-        The `topic_configs` block supports:
         """
         return pulumi.get(self, "bindings")
 
@@ -1002,8 +577,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def exchanges(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqMigrationTaskExchange']]:
         """
         Specifies the exchange metadata.
-        The exchanges structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "exchanges")
 
@@ -1012,7 +585,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RocketMQ instance.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -1020,7 +592,7 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the name of the migration task.
         """
         return pulumi.get(self, "name")
 
@@ -1029,10 +601,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def overwrite(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies whether to overwrite configurations with the same name.
-        Value options:
-        + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-        + **false**: An error is reported when a topic or group already exists.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "overwrite")
 
@@ -1041,18 +609,12 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def queues(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqMigrationTaskQueue']]:
         """
         Specifies the queue metadata.
-        The queues structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "queues")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -1067,7 +629,7 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the status of the migration task. The value can be **finished** or **failed***.
+        Indicates the status of the migration task.
         """
         return pulumi.get(self, "status")
 
@@ -1076,10 +638,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def subscription_groups(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqMigrationTaskSubscriptionGroup']]:
         """
         Specifies the consumer group metadata.
-        The subscription_groups structure is documented below.
-        Changing this creates a new resource.
-
-        > **NOTE:** Parameters `topic_configs` and `subscription_groups` are required when `type` is set to **rocketmq**.
         """
         return pulumi.get(self, "subscription_groups")
 
@@ -1088,8 +646,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def topic_configs(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqMigrationTaskTopicConfig']]:
         """
         Specifies the topic metadata.
-        The topic_configs structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_configs")
 
@@ -1097,10 +653,7 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the exchange type. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_bindings"></a>
-        The `bindings` block supports:
+        Specifies the migration task type.
         """
         return pulumi.get(self, "type")
 
@@ -1109,8 +662,6 @@ class DmsRocketmqMigrationTask(pulumi.CustomResource):
     def vhosts(self) -> pulumi.Output[Sequence['outputs.DmsRocketmqMigrationTaskVhost']]:
         """
         Specifies the virtual hosts metadata.
-        The vhosts structure is documented below.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "vhosts")
 

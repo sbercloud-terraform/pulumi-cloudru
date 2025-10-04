@@ -26,15 +26,6 @@ class ProjectArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the enterprise project.
-        :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable the enterprise project. Default to *true*.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the enterprise project.
-               This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        :param pulumi.Input[_builtins.bool] skip_disable_on_destroy: Specifies whether to skip disable the enterprise project on destroy.
-               Defaults to **false**.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the enterprise project.
-               The valid values are *poc* and *prod*, default to *prod*.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -50,9 +41,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the enterprise project.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -62,9 +50,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the enterprise project. Default to *true*.
-        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -74,11 +59,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the enterprise project.
-        This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-        The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -88,10 +68,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter(name="skipDisableOnDestroy")
     def skip_disable_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to skip disable the enterprise project on destroy.
-        Defaults to **false**.
-        """
         return pulumi.get(self, "skip_disable_on_destroy")
 
     @skip_disable_on_destroy.setter
@@ -101,10 +77,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the enterprise project.
-        The valid values are *poc* and *prod*, default to *prod*.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -125,20 +97,6 @@ class _ProjectState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
-        :param pulumi.Input[_builtins.str] created_at: Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the enterprise project.
-        :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable the enterprise project. Default to *true*.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the enterprise project.
-               This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        :param pulumi.Input[_builtins.bool] skip_disable_on_destroy: Specifies whether to skip disable the enterprise project on destroy.
-               Defaults to **false**.
-        :param pulumi.Input[_builtins.int] status: Indicates the status of an enterprise project.
-               + 1 indicates Enabled.
-               + 2 indicates Disabled.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the enterprise project.
-               The valid values are *poc* and *prod*, default to *prod*.
-        :param pulumi.Input[_builtins.str] updated_at: Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -160,9 +118,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -172,9 +127,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the enterprise project.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -184,9 +136,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the enterprise project. Default to *true*.
-        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -196,11 +145,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the enterprise project.
-        This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-        The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -210,10 +154,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="skipDisableOnDestroy")
     def skip_disable_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to skip disable the enterprise project on destroy.
-        Defaults to **false**.
-        """
         return pulumi.get(self, "skip_disable_on_destroy")
 
     @skip_disable_on_destroy.setter
@@ -223,11 +163,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the status of an enterprise project.
-        + 1 indicates Enabled.
-        + 2 indicates Disabled.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -237,10 +172,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the enterprise project.
-        The valid values are *poc* and *prod*, default to *prod*.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -250,9 +181,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -273,41 +201,9 @@ class Project(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Use this resource to manage an enterprise project within SberCloud.
-
-        > **NOTE:** Deleting enterprise projects is not support. If you destroy a resource of enterprise project,
-          the project is only disabled and removed from the state, but it remains in the cloud
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.eps.Project("test",
-            name="test",
-            description="example project")
-        ```
-
-        ## Import
-
-        Enterprise projects can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Eps/project:Project test 88f889c7-270e-4e77-8230-bf7db08d9b0e
-        ```
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the enterprise project.
-        :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable the enterprise project. Default to *true*.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the enterprise project.
-               This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        :param pulumi.Input[_builtins.bool] skip_disable_on_destroy: Specifies whether to skip disable the enterprise project on destroy.
-               Defaults to **false**.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the enterprise project.
-               The valid values are *poc* and *prod*, default to *prod*.
         """
         ...
     @overload
@@ -316,30 +212,7 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to manage an enterprise project within SberCloud.
-
-        > **NOTE:** Deleting enterprise projects is not support. If you destroy a resource of enterprise project,
-          the project is only disabled and removed from the state, but it remains in the cloud
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.eps.Project("test",
-            name="test",
-            description="example project")
-        ```
-
-        ## Import
-
-        Enterprise projects can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Eps/project:Project test 88f889c7-270e-4e77-8230-bf7db08d9b0e
-        ```
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -402,20 +275,6 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the enterprise project.
-        :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable the enterprise project. Default to *true*.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the enterprise project.
-               This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-               The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        :param pulumi.Input[_builtins.bool] skip_disable_on_destroy: Specifies whether to skip disable the enterprise project on destroy.
-               Defaults to **false**.
-        :param pulumi.Input[_builtins.int] status: Indicates the status of an enterprise project.
-               + 1 indicates Enabled.
-               + 2 indicates Disabled.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the enterprise project.
-               The valid values are *poc* and *prod*, default to *prod*.
-        :param pulumi.Input[_builtins.str] updated_at: Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -434,70 +293,40 @@ class Project(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the time (UTC) when the enterprise project was created. Example: 2018-05-18T06:49:06Z
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the enterprise project.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable the enterprise project. Default to *true*.
-        """
         return pulumi.get(self, "enable")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the enterprise project.
-        This parameter can contain 1 to 64 characters. Only letters, digits, underscores (_), and hyphens (-) are allowed.
-        The name must be unique in the domain and cannot include any form of the word "default" ("deFaulT", for instance).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="skipDisableOnDestroy")
     def skip_disable_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to skip disable the enterprise project on destroy.
-        Defaults to **false**.
-        """
         return pulumi.get(self, "skip_disable_on_destroy")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.int]:
-        """
-        Indicates the status of an enterprise project.
-        + 1 indicates Enabled.
-        + 2 indicates Disabled.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the type of the enterprise project.
-        The valid values are *poc* and *prod*, default to *prod*.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the time (UTC) when the enterprise project was modified. Example: 2018-05-28T02:21:36Z
-        """
         return pulumi.get(self, "updated_at")
 

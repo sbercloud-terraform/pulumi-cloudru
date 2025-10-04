@@ -11,45 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides details about a specific VPC route table.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			// get the default route table
-//			_, err := vpc.GetRouteTable(ctx, &vpc.GetRouteTableArgs{
-//				VpcId: vpcId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// get a custom route table
-//			_, err = vpc.GetRouteTable(ctx, &vpc.GetRouteTableArgs{
-//				VpcId: vpcId,
-//				Name:  pulumi.StringRef("demo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...pulumi.InvokeOption) (*LookupRouteTableResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteTableResult
@@ -62,31 +23,22 @@ func LookupRouteTable(ctx *pulumi.Context, args *LookupRouteTableArgs, opts ...p
 
 // A collection of arguments for invoking getRouteTable.
 type LookupRouteTableArgs struct {
-	// Specifies the ID of the route table.
-	Id *string `pulumi:"id"`
-	// Specifies the name of the route table.
-	Name *string `pulumi:"name"`
-	// The region in which to query the vpc route table.
-	// If omitted, the provider-level region will be used.
+	Id     *string `pulumi:"id"`
+	Name   *string `pulumi:"name"`
 	Region *string `pulumi:"region"`
-	// Specifies the VPC ID where the route table resides.
-	VpcId string `pulumi:"vpcId"`
+	VpcId  string  `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getRouteTable.
 type LookupRouteTableResult struct {
-	// (Bool) - Whether the route table is default or not.
-	Default bool `pulumi:"default"`
-	// (String) - The description about the route.
-	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
-	Name        string `pulumi:"name"`
-	Region      string `pulumi:"region"`
-	// (List) - The route object list. The route object is documented below.
-	Routes []GetRouteTableRoute `pulumi:"routes"`
-	// (List) - An array of one or more subnets associating with the route table.
-	Subnets []string `pulumi:"subnets"`
-	VpcId   string   `pulumi:"vpcId"`
+	Default     bool                 `pulumi:"default"`
+	Description string               `pulumi:"description"`
+	Id          string               `pulumi:"id"`
+	Name        string               `pulumi:"name"`
+	Region      string               `pulumi:"region"`
+	Routes      []GetRouteTableRoute `pulumi:"routes"`
+	Subnets     []string             `pulumi:"subnets"`
+	VpcId       string               `pulumi:"vpcId"`
 }
 
 func LookupRouteTableOutput(ctx *pulumi.Context, args LookupRouteTableOutputArgs, opts ...pulumi.InvokeOption) LookupRouteTableResultOutput {
@@ -100,15 +52,10 @@ func LookupRouteTableOutput(ctx *pulumi.Context, args LookupRouteTableOutputArgs
 
 // A collection of arguments for invoking getRouteTable.
 type LookupRouteTableOutputArgs struct {
-	// Specifies the ID of the route table.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the name of the route table.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The region in which to query the vpc route table.
-	// If omitted, the provider-level region will be used.
+	Id     pulumi.StringPtrInput `pulumi:"id"`
+	Name   pulumi.StringPtrInput `pulumi:"name"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the VPC ID where the route table resides.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	VpcId  pulumi.StringInput    `pulumi:"vpcId"`
 }
 
 func (LookupRouteTableOutputArgs) ElementType() reflect.Type {
@@ -130,12 +77,10 @@ func (o LookupRouteTableResultOutput) ToLookupRouteTableResultOutputWithContext(
 	return o
 }
 
-// (Bool) - Whether the route table is default or not.
 func (o LookupRouteTableResultOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
-// (String) - The description about the route.
 func (o LookupRouteTableResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -152,12 +97,10 @@ func (o LookupRouteTableResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// (List) - The route object list. The route object is documented below.
 func (o LookupRouteTableResultOutput) Routes() GetRouteTableRouteArrayOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) []GetRouteTableRoute { return v.Routes }).(GetRouteTableRouteArrayOutput)
 }
 
-// (List) - An array of one or more subnets associating with the route table.
 func (o LookupRouteTableResultOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRouteTableResult) []string { return v.Subnets }).(pulumi.StringArrayOutput)
 }

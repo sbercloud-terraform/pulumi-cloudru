@@ -11,63 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available SberCloud image.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ims"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ims.GetImage(ctx, &ims.GetImageArgs{
-//				Name:       pulumi.StringRef("Ubuntu 18.04 server 64bit"),
-//				Visibility: pulumi.StringRef("public"),
-//				MostRecent: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ims.GetImage(ctx, &ims.GetImageArgs{
-//				Architecture: pulumi.StringRef("x86"),
-//				OsVersion:    pulumi.StringRef("CentOS 7.4 64bit"),
-//				Visibility:   pulumi.StringRef("public"),
-//				MostRecent:   pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ims.GetImage(ctx, &ims.GetImageArgs{
-//				Architecture: pulumi.StringRef("x86"),
-//				NameRegex:    pulumi.StringRef("^CentOS 7.4"),
-//				Visibility:   pulumi.StringRef("public"),
-//				MostRecent:   pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ims.GetImage(ctx, &ims.GetImageArgs{
-//				Architecture: pulumi.StringRef("x86"),
-//				ImageType:    pulumi.StringRef("Ironic"),
-//				OsVersion:    pulumi.StringRef("CentOS 7.4 64bit"),
-//				Visibility:   pulumi.StringRef("public"),
-//				MostRecent:   pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.InvokeOption) (*LookupImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupImageResult
@@ -80,110 +23,72 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
-	// Specifies the image architecture type. The value can be **x86** and **arm**.
-	Architecture *string `pulumi:"architecture"`
-	// Specifies the enterprise project ID of the image.
+	Architecture        *string `pulumi:"architecture"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the ECS flavor ID used to filter out available images.
-	// You can specify only one flavor ID and only ECS flavor ID is valid, BMS flavor is not supported.
-	FlavorId *string `pulumi:"flavorId"`
-	ImageId  *string `pulumi:"imageId"`
-	// Specifies the environment where the image is used. For a BMS image, the value is **Ironic**.
-	ImageType    *string `pulumi:"imageType"`
-	IsWholeImage *bool   `pulumi:"isWholeImage"`
-	// If more than one result is returned, use the latest updated image.
-	MostRecent *bool `pulumi:"mostRecent"`
-	// The name of the image. Cannot be used simultaneously with `nameRegex`.
-	Name *string `pulumi:"name"`
-	// The regular expressian of the name of the image.
-	// Cannot be used simultaneously with `name`.
-	NameRegex *string `pulumi:"nameRegex"`
-	// Specifies the image OS type. The value can be **Windows**, **Ubuntu**,
-	// **RedHat**, **SUSE**, **CentOS**, **Debian**, **OpenSUSE**, **Oracle Linux**, **Fedora**, **Other**,
-	// **CoreOS**, or **EulerOS**.
-	Os *string `pulumi:"os"`
-	// Specifies the OS version. For example, *CentOS 7.4 64bit* or *Ubuntu 18.04 server 64bit*.
-	OsVersion *string `pulumi:"osVersion"`
-	// The owner (UUID) of the image.
-	Owner *string `pulumi:"owner"`
-	// The region in which to obtain the images. If omitted, the provider-level region will be
-	// used.
-	Region *string `pulumi:"region"`
-	// Deprecated: size_max is deprecated
-	SizeMax *int `pulumi:"sizeMax"`
-	// Deprecated: size_min is deprecated
-	SizeMin *int `pulumi:"sizeMin"`
-	// Order the results in either `asc` or `desc`.
-	SortDirection *string `pulumi:"sortDirection"`
-	// Sort images based on a certain key. Must be one of
-	// "name", "containerFormat", "diskFormat", "status", "id" or "size". Defaults to `name`.
-	SortKey *string `pulumi:"sortKey"`
-	// Search for images with a specific tag in "Key=Value" format.
-	Tag *string `pulumi:"tag"`
-	// The visibility of the image. Must be one of
-	// **public**, **private**, **market** or **shared**.
-	Visibility *string `pulumi:"visibility"`
-}
-
-// A collection of values returned by getImage.
-type LookupImageResult struct {
-	ActiveAt     string `pulumi:"activeAt"`
-	Architecture string `pulumi:"architecture"`
-	// The backup ID of the whole image in the CBR vault.
-	BackupId string `pulumi:"backupId"`
-	// The checksum of the data associated with the image.
-	Checksum string `pulumi:"checksum"`
-	// The format of the image's container.
-	ContainerFormat string `pulumi:"containerFormat"`
-	// The date when the image was created.
-	CreatedAt   string `pulumi:"createdAt"`
-	DataOrigin  string `pulumi:"dataOrigin"`
-	Description string `pulumi:"description"`
-	// The format of the image's disk.
-	DiskFormat          string `pulumi:"diskFormat"`
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// the trailing path after the glance endpoint that represent the location of the image or the path to retrieve
-	// it.
-	File     string  `pulumi:"file"`
-	FlavorId *string `pulumi:"flavorId"`
-	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	ImageId      string `pulumi:"imageId"`
-	ImageType    string `pulumi:"imageType"`
-	IsWholeImage *bool  `pulumi:"isWholeImage"`
-	MaxRamMb     int    `pulumi:"maxRamMb"`
-	// The metadata associated with the image. Image metadata allow for meaningfully define the image properties
-	// and tags.
-	Metadata map[string]string `pulumi:"metadata"`
-	// The minimum amount of disk space required to use the image.
-	MinDiskGb int `pulumi:"minDiskGb"`
-	// The minimum amount of ram required to use the image.
-	MinRamMb   int     `pulumi:"minRamMb"`
-	MostRecent *bool   `pulumi:"mostRecent"`
-	Name       string  `pulumi:"name"`
-	NameRegex  *string `pulumi:"nameRegex"`
-	Os         string  `pulumi:"os"`
-	OsVersion  string  `pulumi:"osVersion"`
-	Owner      string  `pulumi:"owner"`
-	// Whether or not the image is protected.
-	Protected bool   `pulumi:"protected"`
-	Region    string `pulumi:"region"`
-	// The path to the JSON-schema that represent the image or image.
-	Schema string `pulumi:"schema"`
-	// The size of the image (in bytes).
-	SizeBytes int `pulumi:"sizeBytes"`
+	FlavorId            *string `pulumi:"flavorId"`
+	ImageId             *string `pulumi:"imageId"`
+	ImageType           *string `pulumi:"imageType"`
+	IsWholeImage        *bool   `pulumi:"isWholeImage"`
+	MostRecent          *bool   `pulumi:"mostRecent"`
+	Name                *string `pulumi:"name"`
+	NameRegex           *string `pulumi:"nameRegex"`
+	Os                  *string `pulumi:"os"`
+	OsVersion           *string `pulumi:"osVersion"`
+	Owner               *string `pulumi:"owner"`
+	Region              *string `pulumi:"region"`
 	// Deprecated: size_max is deprecated
 	SizeMax *int `pulumi:"sizeMax"`
 	// Deprecated: size_min is deprecated
 	SizeMin       *int    `pulumi:"sizeMin"`
 	SortDirection *string `pulumi:"sortDirection"`
 	SortKey       *string `pulumi:"sortKey"`
-	// The status of the image.
-	Status string  `pulumi:"status"`
-	Tag    *string `pulumi:"tag"`
-	// The date when the image was last updated.
-	UpdatedAt  string `pulumi:"updatedAt"`
-	Visibility string `pulumi:"visibility"`
+	Tag           *string `pulumi:"tag"`
+	Visibility    *string `pulumi:"visibility"`
+}
+
+// A collection of values returned by getImage.
+type LookupImageResult struct {
+	ActiveAt            string  `pulumi:"activeAt"`
+	Architecture        string  `pulumi:"architecture"`
+	BackupId            string  `pulumi:"backupId"`
+	Checksum            string  `pulumi:"checksum"`
+	ContainerFormat     string  `pulumi:"containerFormat"`
+	CreatedAt           string  `pulumi:"createdAt"`
+	DataOrigin          string  `pulumi:"dataOrigin"`
+	Description         string  `pulumi:"description"`
+	DiskFormat          string  `pulumi:"diskFormat"`
+	EnterpriseProjectId string  `pulumi:"enterpriseProjectId"`
+	File                string  `pulumi:"file"`
+	FlavorId            *string `pulumi:"flavorId"`
+	// The provider-assigned unique ID for this managed resource.
+	Id           string            `pulumi:"id"`
+	ImageId      string            `pulumi:"imageId"`
+	ImageType    string            `pulumi:"imageType"`
+	IsWholeImage *bool             `pulumi:"isWholeImage"`
+	MaxRamMb     int               `pulumi:"maxRamMb"`
+	Metadata     map[string]string `pulumi:"metadata"`
+	MinDiskGb    int               `pulumi:"minDiskGb"`
+	MinRamMb     int               `pulumi:"minRamMb"`
+	MostRecent   *bool             `pulumi:"mostRecent"`
+	Name         string            `pulumi:"name"`
+	NameRegex    *string           `pulumi:"nameRegex"`
+	Os           string            `pulumi:"os"`
+	OsVersion    string            `pulumi:"osVersion"`
+	Owner        string            `pulumi:"owner"`
+	Protected    bool              `pulumi:"protected"`
+	Region       string            `pulumi:"region"`
+	Schema       string            `pulumi:"schema"`
+	SizeBytes    int               `pulumi:"sizeBytes"`
+	// Deprecated: size_max is deprecated
+	SizeMax *int `pulumi:"sizeMax"`
+	// Deprecated: size_min is deprecated
+	SizeMin       *int    `pulumi:"sizeMin"`
+	SortDirection *string `pulumi:"sortDirection"`
+	SortKey       *string `pulumi:"sortKey"`
+	Status        string  `pulumi:"status"`
+	Tag           *string `pulumi:"tag"`
+	UpdatedAt     string  `pulumi:"updatedAt"`
+	Visibility    string  `pulumi:"visibility"`
 }
 
 func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...pulumi.InvokeOption) LookupImageResultOutput {
@@ -197,49 +102,27 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 
 // A collection of arguments for invoking getImage.
 type LookupImageOutputArgs struct {
-	// Specifies the image architecture type. The value can be **x86** and **arm**.
-	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// Specifies the enterprise project ID of the image.
+	Architecture        pulumi.StringPtrInput `pulumi:"architecture"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the ECS flavor ID used to filter out available images.
-	// You can specify only one flavor ID and only ECS flavor ID is valid, BMS flavor is not supported.
-	FlavorId pulumi.StringPtrInput `pulumi:"flavorId"`
-	ImageId  pulumi.StringPtrInput `pulumi:"imageId"`
-	// Specifies the environment where the image is used. For a BMS image, the value is **Ironic**.
-	ImageType    pulumi.StringPtrInput `pulumi:"imageType"`
-	IsWholeImage pulumi.BoolPtrInput   `pulumi:"isWholeImage"`
-	// If more than one result is returned, use the latest updated image.
-	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
-	// The name of the image. Cannot be used simultaneously with `nameRegex`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The regular expressian of the name of the image.
-	// Cannot be used simultaneously with `name`.
-	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// Specifies the image OS type. The value can be **Windows**, **Ubuntu**,
-	// **RedHat**, **SUSE**, **CentOS**, **Debian**, **OpenSUSE**, **Oracle Linux**, **Fedora**, **Other**,
-	// **CoreOS**, or **EulerOS**.
-	Os pulumi.StringPtrInput `pulumi:"os"`
-	// Specifies the OS version. For example, *CentOS 7.4 64bit* or *Ubuntu 18.04 server 64bit*.
-	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
-	// The owner (UUID) of the image.
-	Owner pulumi.StringPtrInput `pulumi:"owner"`
-	// The region in which to obtain the images. If omitted, the provider-level region will be
-	// used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FlavorId            pulumi.StringPtrInput `pulumi:"flavorId"`
+	ImageId             pulumi.StringPtrInput `pulumi:"imageId"`
+	ImageType           pulumi.StringPtrInput `pulumi:"imageType"`
+	IsWholeImage        pulumi.BoolPtrInput   `pulumi:"isWholeImage"`
+	MostRecent          pulumi.BoolPtrInput   `pulumi:"mostRecent"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	NameRegex           pulumi.StringPtrInput `pulumi:"nameRegex"`
+	Os                  pulumi.StringPtrInput `pulumi:"os"`
+	OsVersion           pulumi.StringPtrInput `pulumi:"osVersion"`
+	Owner               pulumi.StringPtrInput `pulumi:"owner"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 	// Deprecated: size_max is deprecated
 	SizeMax pulumi.IntPtrInput `pulumi:"sizeMax"`
 	// Deprecated: size_min is deprecated
-	SizeMin pulumi.IntPtrInput `pulumi:"sizeMin"`
-	// Order the results in either `asc` or `desc`.
+	SizeMin       pulumi.IntPtrInput    `pulumi:"sizeMin"`
 	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
-	// Sort images based on a certain key. Must be one of
-	// "name", "containerFormat", "diskFormat", "status", "id" or "size". Defaults to `name`.
-	SortKey pulumi.StringPtrInput `pulumi:"sortKey"`
-	// Search for images with a specific tag in "Key=Value" format.
-	Tag pulumi.StringPtrInput `pulumi:"tag"`
-	// The visibility of the image. Must be one of
-	// **public**, **private**, **market** or **shared**.
-	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+	SortKey       pulumi.StringPtrInput `pulumi:"sortKey"`
+	Tag           pulumi.StringPtrInput `pulumi:"tag"`
+	Visibility    pulumi.StringPtrInput `pulumi:"visibility"`
 }
 
 func (LookupImageOutputArgs) ElementType() reflect.Type {
@@ -269,22 +152,18 @@ func (o LookupImageResultOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
-// The backup ID of the whole image in the CBR vault.
 func (o LookupImageResultOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.BackupId }).(pulumi.StringOutput)
 }
 
-// The checksum of the data associated with the image.
 func (o LookupImageResultOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
-// The format of the image's container.
 func (o LookupImageResultOutput) ContainerFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.ContainerFormat }).(pulumi.StringOutput)
 }
 
-// The date when the image was created.
 func (o LookupImageResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -297,7 +176,6 @@ func (o LookupImageResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The format of the image's disk.
 func (o LookupImageResultOutput) DiskFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.DiskFormat }).(pulumi.StringOutput)
 }
@@ -306,8 +184,6 @@ func (o LookupImageResultOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// the trailing path after the glance endpoint that represent the location of the image or the path to retrieve
-// it.
 func (o LookupImageResultOutput) File() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.File }).(pulumi.StringOutput)
 }
@@ -337,18 +213,14 @@ func (o LookupImageResultOutput) MaxRamMb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupImageResult) int { return v.MaxRamMb }).(pulumi.IntOutput)
 }
 
-// The metadata associated with the image. Image metadata allow for meaningfully define the image properties
-// and tags.
 func (o LookupImageResultOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupImageResult) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The minimum amount of disk space required to use the image.
 func (o LookupImageResultOutput) MinDiskGb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupImageResult) int { return v.MinDiskGb }).(pulumi.IntOutput)
 }
 
-// The minimum amount of ram required to use the image.
 func (o LookupImageResultOutput) MinRamMb() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupImageResult) int { return v.MinRamMb }).(pulumi.IntOutput)
 }
@@ -377,7 +249,6 @@ func (o LookupImageResultOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Whether or not the image is protected.
 func (o LookupImageResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageResult) bool { return v.Protected }).(pulumi.BoolOutput)
 }
@@ -386,12 +257,10 @@ func (o LookupImageResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The path to the JSON-schema that represent the image or image.
 func (o LookupImageResultOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Schema }).(pulumi.StringOutput)
 }
 
-// The size of the image (in bytes).
 func (o LookupImageResultOutput) SizeBytes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupImageResult) int { return v.SizeBytes }).(pulumi.IntOutput)
 }
@@ -414,7 +283,6 @@ func (o LookupImageResultOutput) SortKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImageResult) *string { return v.SortKey }).(pulumi.StringPtrOutput)
 }
 
-// The status of the image.
 func (o LookupImageResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -423,7 +291,6 @@ func (o LookupImageResultOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupImageResult) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
 
-// The date when the image was last updated.
 func (o LookupImageResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

@@ -44,9 +44,6 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
-        """
-        Indicates the whether the IAM user is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -60,17 +57,11 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the IAM user name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
-        """
-        The details of the queried IAM users. The structure is documented below.
-        """
         return pulumi.get(self, "users")
 
 
@@ -90,13 +81,7 @@ def get_users(enabled: Optional[_builtins.bool] = None,
               name: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Use this data source to query the IAM user list within SberCloud.
-
-    > You *must* have IAM read privileges to use this data source.
-
-
-    :param _builtins.bool enabled: Specifies the status of the IAM user, the default value is **true**.
-    :param _builtins.str name: Specifies the IAM user name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled
@@ -113,13 +98,7 @@ def get_users_output(enabled: Optional[pulumi.Input[Optional[_builtins.bool]]] =
                      name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
-    Use this data source to query the IAM user list within SberCloud.
-
-    > You *must* have IAM read privileges to use this data source.
-
-
-    :param _builtins.bool enabled: Specifies the status of the IAM user, the default value is **true**.
-    :param _builtins.str name: Specifies the IAM user name.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled

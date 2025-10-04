@@ -64,26 +64,16 @@ class GetVpnConnectionsResult:
     @_builtins.property
     @pulumi.getter
     def connections(self) -> Sequence['outputs.GetVpnConnectionsConnectionResult']:
-        """
-        All resource connection that match the filter parameters.
-        The connections structure is documented below.
-        """
         return pulumi.get(self, "connections")
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the gateway ID of the connection.
-        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> Optional[_builtins.str]:
-        """
-        Indicates the gateway IP of the connection.
-        """
         return pulumi.get(self, "gateway_ip")
 
     @_builtins.property
@@ -97,9 +87,6 @@ class GetVpnConnectionsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the connection.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -110,17 +97,11 @@ class GetVpnConnectionsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        Indicates the status of the connection.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vpnType")
     def vpn_type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the VPN type of the connection.
-        """
         return pulumi.get(self, "vpn_type")
 
 
@@ -150,36 +131,7 @@ def get_vpn_connections(connection_id: Optional[_builtins.str] = None,
                         vpn_type: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnConnectionsResult:
     """
-    Use this data source to get a list of VPN connections.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    status = config.require_object("status")
-    name = config.require_object("name")
-    vpn_type = config.require_object("vpnType")
-    gateway_id = config.require_object("gatewayId")
-    gateway_ip = config.require_object("gatewayIp")
-    services = sbercloud.get_vpn_connections(status=status,
-        name=name,
-        vpn_type=vpn_type,
-        gateway_id=gateway_id,
-        gateway_ip=gateway_ip)
-    ```
-
-
-    :param _builtins.str connection_id: Specifies the ID of the VPN connection.
-    :param _builtins.str gateway_id: Specifies the gateway ID of the VPN connection.
-    :param _builtins.str gateway_ip: Specifies the gateway IP of the VPN connection.
-    :param _builtins.str name: Specifies the name of the VPN connection.
-    :param _builtins.str region: Specifies the region in which to obtain the VPN customer gateways.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the VPN connection.
-    :param _builtins.str vpn_type: Specifies the VPN type of the VPN connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id
@@ -211,36 +163,7 @@ def get_vpn_connections_output(connection_id: Optional[pulumi.Input[Optional[_bu
                                vpn_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnConnectionsResult]:
     """
-    Use this data source to get a list of VPN connections.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    status = config.require_object("status")
-    name = config.require_object("name")
-    vpn_type = config.require_object("vpnType")
-    gateway_id = config.require_object("gatewayId")
-    gateway_ip = config.require_object("gatewayIp")
-    services = sbercloud.get_vpn_connections(status=status,
-        name=name,
-        vpn_type=vpn_type,
-        gateway_id=gateway_id,
-        gateway_ip=gateway_ip)
-    ```
-
-
-    :param _builtins.str connection_id: Specifies the ID of the VPN connection.
-    :param _builtins.str gateway_id: Specifies the gateway ID of the VPN connection.
-    :param _builtins.str gateway_ip: Specifies the gateway IP of the VPN connection.
-    :param _builtins.str name: Specifies the name of the VPN connection.
-    :param _builtins.str region: Specifies the region in which to obtain the VPN customer gateways.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str status: Specifies the status of the VPN connection.
-    :param _builtins.str vpn_type: Specifies the VPN type of the VPN connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['connectionId'] = connection_id

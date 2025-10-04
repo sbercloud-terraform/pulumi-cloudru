@@ -56,33 +56,21 @@ class GetVpcsResult:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> Optional[_builtins.str]:
-        """
-        Indicates the cidr block of the VPC.
-        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the the enterprise project ID of the VPC.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the ID of the VPC.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the VPC.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -93,25 +81,16 @@ class GetVpcsResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        Indicates the current status of the VPC.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Indicates the key/value pairs which associated with the VPC.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def vpcs(self) -> Sequence['outputs.GetVpcsVpcResult']:
-        """
-        Indicates a list of all VPCs found. Structure is documented below.
-        """
         return pulumi.get(self, "vpcs")
 
 
@@ -140,23 +119,7 @@ def get_vpcs(cidr: Optional[_builtins.str] = None,
              tags: Optional[Mapping[str, _builtins.str]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcsResult:
     """
-    Use this data source to get a list of VPC.
-
-
-    :param _builtins.str cidr: Specifies the cidr block of the desired VPC.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired VPC belongs to.
-    :param _builtins.str id: Specifies the id of the desired VPC.
-    :param _builtins.str name: Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-           and can contain digits, letters, underscores (_) and hyphens (-).
-    :param _builtins.str region: Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str status: Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired VPC.
-           
-           > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-           The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-           tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-           The values are in the OR relationship.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cidr'] = cidr
@@ -187,23 +150,7 @@ def get_vpcs_output(cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None
                     tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcsResult]:
     """
-    Use this data source to get a list of VPC.
-
-
-    :param _builtins.str cidr: Specifies the cidr block of the desired VPC.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID which the desired VPC belongs to.
-    :param _builtins.str id: Specifies the id of the desired VPC.
-    :param _builtins.str name: Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-           and can contain digits, letters, underscores (_) and hyphens (-).
-    :param _builtins.str region: Specifies the region in which to obtain the VPC. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str status: Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-    :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired VPC.
-           
-           > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-           The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-           tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-           The values are in the OR relationship.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['cidr'] = cidr

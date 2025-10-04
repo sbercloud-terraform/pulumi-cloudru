@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ELB whitelist resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const listener1 = new sbercloud.elb.Listener("listener_1", {
- *     name: "listener_1",
- *     protocol: "HTTP",
- *     protocolPort: 8080,
- *     loadbalancerId: loadbalancerId,
- * });
- * const whitelist1 = new sbercloud.elb.Whitelist("whitelist_1", {
- *     enableWhitelist: true,
- *     whitelist: "192.168.11.1,192.168.0.1/24,192.168.201.18/8",
- *     listenerId: listener1.id,
- * });
- * ```
- *
- * ## Import
- *
- * ELB whitelist can be imported using the whitelist ID, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Elb/whitelist:Whitelist whitelist_1 5c20fdad-7288-11eb-b817-0255ac10158b
- * ```
- */
 export class Whitelist extends pulumi.CustomResource {
     /**
      * Get an existing Whitelist resource's state with the given name, ID, and optional extra
@@ -62,28 +32,13 @@ export class Whitelist extends pulumi.CustomResource {
         return obj['__pulumiType'] === Whitelist.__pulumiType;
     }
 
-    /**
-     * Specify whether to enable access control.
-     */
     declare public readonly enableWhitelist: pulumi.Output<boolean | undefined>;
-    /**
-     * The Listener ID that the whitelist will be associated with. Changing this
-     * creates a new whitelist.
-     */
     declare public readonly listenerId: pulumi.Output<string>;
-    /**
-     * The region in which to create the ELB whitelist resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new whitelist.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     declare public readonly tenantId: pulumi.Output<string>;
-    /**
-     * Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-     * IP addresses.
-     */
     declare public readonly whitelist: pulumi.Output<string | undefined>;
 
     /**
@@ -124,28 +79,13 @@ export class Whitelist extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Whitelist resources.
  */
 export interface WhitelistState {
-    /**
-     * Specify whether to enable access control.
-     */
     enableWhitelist?: pulumi.Input<boolean>;
-    /**
-     * The Listener ID that the whitelist will be associated with. Changing this
-     * creates a new whitelist.
-     */
     listenerId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the ELB whitelist resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new whitelist.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-     * IP addresses.
-     */
     whitelist?: pulumi.Input<string>;
 }
 
@@ -153,27 +93,12 @@ export interface WhitelistState {
  * The set of arguments for constructing a Whitelist resource.
  */
 export interface WhitelistArgs {
-    /**
-     * Specify whether to enable access control.
-     */
     enableWhitelist?: pulumi.Input<boolean>;
-    /**
-     * The Listener ID that the whitelist will be associated with. Changing this
-     * creates a new whitelist.
-     */
     listenerId: pulumi.Input<string>;
-    /**
-     * The region in which to create the ELB whitelist resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new whitelist.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * Specifies the IP addresses in the whitelist. Use commas(,) to separate the multiple
-     * IP addresses.
-     */
     whitelist?: pulumi.Input<string>;
 }

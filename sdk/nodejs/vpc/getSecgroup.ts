@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an available SberCloud security group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const secgroup = sbercloud.Vpc.getSecgroup({
- *     name: "tf_test_secgroup",
- * });
- * ```
- */
 export function getSecgroup(args?: GetSecgroupArgs, opts?: pulumi.InvokeOptions): Promise<GetSecgroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,22 +21,9 @@ export function getSecgroup(args?: GetSecgroupArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getSecgroup.
  */
 export interface GetSecgroupArgs {
-    /**
-     * Specifies the enterprise project ID of the security group.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the name of the security group.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the security group. If omitted, the
-     * provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifiest he ID of the security group.
-     */
     secgroupId?: string;
 }
 
@@ -58,13 +31,7 @@ export interface GetSecgroupArgs {
  * A collection of values returned by getSecgroup.
  */
 export interface GetSecgroupResult {
-    /**
-     * The creation time, in UTC format.
-     */
     readonly createdAt: string;
-    /**
-     * The supplementary information about the security group rule.
-     */
     readonly description: string;
     readonly enterpriseProjectId?: string;
     /**
@@ -73,31 +40,10 @@ export interface GetSecgroupResult {
     readonly id: string;
     readonly name: string;
     readonly region: string;
-    /**
-     * The array of security group rules associating with the security group.
-     * The rule object is documented below.
-     */
     readonly rules: outputs.Vpc.GetSecgroupRule[];
     readonly secgroupId?: string;
-    /**
-     * The last update time, in UTC format.
-     */
     readonly updatedAt: string;
 }
-/**
- * Use this data source to get the ID of an available SberCloud security group.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const secgroup = sbercloud.Vpc.getSecgroup({
- *     name: "tf_test_secgroup",
- * });
- * ```
- */
 export function getSecgroupOutput(args?: GetSecgroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecgroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -113,21 +59,8 @@ export function getSecgroupOutput(args?: GetSecgroupOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getSecgroup.
  */
 export interface GetSecgroupOutputArgs {
-    /**
-     * Specifies the enterprise project ID of the security group.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the security group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the security group. If omitted, the
-     * provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifiest he ID of the security group.
-     */
     secgroupId?: pulumi.Input<string>;
 }

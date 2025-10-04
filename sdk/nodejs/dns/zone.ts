@@ -6,52 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a DNS zone in the SberCloud DNS Service.
- *
- * ## Example Usage
- *
- * ### Create a public DNS zone
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const myPublicZone = new sbercloud.dns.Zone("my_public_zone", {
- *     name: "example.com.",
- *     email: "jdoe@example.com",
- *     description: "An example zone",
- *     ttl: 3000,
- *     zoneType: "public",
- * });
- * ```
- *
- * ### Create a private DNS zone
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const myPrivateZone = new sbercloud.dns.Zone("my_private_zone", {
- *     name: "1.example.com.",
- *     email: "jdoe@example.com",
- *     description: "An example zone",
- *     ttl: 3000,
- *     zoneType: "private",
- *     routers: [{
- *         routerId: "2c1fe4bd-ebad-44ca-ae9d-e94e63847b75",
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * This resource can be imported by specifying the zone ID:
- *
- * ```sh
- * $ pulumi import sbercloud:Dns/zone:Zone zone_1 <zone_id>
- * ```
- */
 export class Zone extends pulumi.CustomResource {
     /**
      * Get an existing Zone resource's state with the given name, ID, and optional extra
@@ -81,7 +35,7 @@ export class Zone extends pulumi.CustomResource {
     }
 
     /**
-     * A description of the zone.
+     * The description of the zone.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -89,32 +43,22 @@ export class Zone extends pulumi.CustomResource {
      */
     declare public readonly email: pulumi.Output<string>;
     /**
-     * The enterprise project id of the zone. Changing this creates a
-     * new zone.
+     * The enterprise project ID of the zone.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
-     * An array of master DNS servers.
+     * The list of the masters of the DNS server.
      */
     declare public /*out*/ readonly masters: pulumi.Output<string[]>;
     /**
-     * The name of the zone. Note the `.` at the end of the name. Changing this creates
-     * a new DNS zone.
+     * The name of the zone.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * The recursive resolution proxy mode for subdomains of the private zone.
      */
     declare public readonly proxyPattern: pulumi.Output<string>;
-    /**
-     * The region in which to create the DNS zone. If omitted, the `region` argument
-     * of the provider will be used. Changing this creates a new DNS zone.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Router configuration block which is required if zoneType is private. The router
-     * structure is documented below.
-     */
     declare public readonly routers: pulumi.Output<outputs.Dns.ZoneRouter[] | undefined>;
     /**
      * The status of the zone.
@@ -129,8 +73,7 @@ export class Zone extends pulumi.CustomResource {
      */
     declare public readonly ttl: pulumi.Output<number | undefined>;
     /**
-     * The type of zone. Can either be `public` or `private`. Changing this
-     * creates a new DNS zone.
+     * The type of zone.
      */
     declare public readonly zoneType: pulumi.Output<string | undefined>;
 
@@ -184,7 +127,7 @@ export class Zone extends pulumi.CustomResource {
  */
 export interface ZoneState {
     /**
-     * A description of the zone.
+     * The description of the zone.
      */
     description?: pulumi.Input<string>;
     /**
@@ -192,32 +135,22 @@ export interface ZoneState {
      */
     email?: pulumi.Input<string>;
     /**
-     * The enterprise project id of the zone. Changing this creates a
-     * new zone.
+     * The enterprise project ID of the zone.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * An array of master DNS servers.
+     * The list of the masters of the DNS server.
      */
     masters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the zone. Note the `.` at the end of the name. Changing this creates
-     * a new DNS zone.
+     * The name of the zone.
      */
     name?: pulumi.Input<string>;
     /**
      * The recursive resolution proxy mode for subdomains of the private zone.
      */
     proxyPattern?: pulumi.Input<string>;
-    /**
-     * The region in which to create the DNS zone. If omitted, the `region` argument
-     * of the provider will be used. Changing this creates a new DNS zone.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Router configuration block which is required if zoneType is private. The router
-     * structure is documented below.
-     */
     routers?: pulumi.Input<pulumi.Input<inputs.Dns.ZoneRouter>[]>;
     /**
      * The status of the zone.
@@ -232,8 +165,7 @@ export interface ZoneState {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of zone. Can either be `public` or `private`. Changing this
-     * creates a new DNS zone.
+     * The type of zone.
      */
     zoneType?: pulumi.Input<string>;
 }
@@ -243,7 +175,7 @@ export interface ZoneState {
  */
 export interface ZoneArgs {
     /**
-     * A description of the zone.
+     * The description of the zone.
      */
     description?: pulumi.Input<string>;
     /**
@@ -251,28 +183,18 @@ export interface ZoneArgs {
      */
     email?: pulumi.Input<string>;
     /**
-     * The enterprise project id of the zone. Changing this creates a
-     * new zone.
+     * The enterprise project ID of the zone.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * The name of the zone. Note the `.` at the end of the name. Changing this creates
-     * a new DNS zone.
+     * The name of the zone.
      */
     name?: pulumi.Input<string>;
     /**
      * The recursive resolution proxy mode for subdomains of the private zone.
      */
     proxyPattern?: pulumi.Input<string>;
-    /**
-     * The region in which to create the DNS zone. If omitted, the `region` argument
-     * of the provider will be used. Changing this creates a new DNS zone.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Router configuration block which is required if zoneType is private. The router
-     * structure is documented below.
-     */
     routers?: pulumi.Input<pulumi.Input<inputs.Dns.ZoneRouter>[]>;
     /**
      * The status of the zone.
@@ -287,8 +209,7 @@ export interface ZoneArgs {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of zone. Can either be `public` or `private`. Changing this
-     * creates a new DNS zone.
+     * The type of zone.
      */
     zoneType?: pulumi.Input<string>;
 }

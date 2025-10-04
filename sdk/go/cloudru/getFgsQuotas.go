@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Using this data source to query the list of available resource quotas for FunctionGraph service within SberCloud.
 func GetFgsQuotas(ctx *pulumi.Context, args *GetFgsQuotasArgs, opts ...pulumi.InvokeOption) (*GetFgsQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsQuotasResult
@@ -24,16 +23,13 @@ func GetFgsQuotas(ctx *pulumi.Context, args *GetFgsQuotasArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getFgsQuotas.
 type GetFgsQuotasArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getFgsQuotas.
 type GetFgsQuotasResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// All quotas that match the filter parameters.
+	Id     string              `pulumi:"id"`
 	Quotas []GetFgsQuotasQuota `pulumi:"quotas"`
 	Region string              `pulumi:"region"`
 }
@@ -49,8 +45,6 @@ func GetFgsQuotasOutput(ctx *pulumi.Context, args GetFgsQuotasOutputArgs, opts .
 
 // A collection of arguments for invoking getFgsQuotas.
 type GetFgsQuotasOutputArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -78,7 +72,6 @@ func (o GetFgsQuotasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsQuotasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// All quotas that match the filter parameters.
 func (o GetFgsQuotasResultOutput) Quotas() GetFgsQuotasQuotaArrayOutput {
 	return o.ApplyT(func(v GetFgsQuotasResult) []GetFgsQuotasQuota { return v.Quotas }).(GetFgsQuotasQuotaArrayOutput)
 }

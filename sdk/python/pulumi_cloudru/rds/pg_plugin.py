@@ -25,14 +25,6 @@ class PgPluginArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PgPlugin resource.
-        :param pulumi.Input[_builtins.str] database_name: Specifies the database name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the PostgreSQL instance ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the plugin name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -44,10 +36,6 @@ class PgPluginArgs:
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the database name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
@@ -57,10 +45,6 @@ class PgPluginArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the PostgreSQL instance ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -70,10 +54,6 @@ class PgPluginArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the plugin name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -83,10 +63,6 @@ class PgPluginArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -106,17 +82,6 @@ class _PgPluginState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PgPlugin resources.
-        :param pulumi.Input[_builtins.str] database_name: Specifies the database name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: The plugin description.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the PostgreSQL instance ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the plugin name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] shared_preload_libraries: Dependent preloaded library.
-        :param pulumi.Input[_builtins.str] version: The plugin version.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -136,10 +101,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the database name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
@@ -149,9 +110,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The plugin description.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -161,10 +119,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the PostgreSQL instance ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -174,10 +128,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the plugin name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -187,10 +137,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -200,9 +146,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter(name="sharedPreloadLibraries")
     def shared_preload_libraries(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Dependent preloaded library.
-        """
         return pulumi.get(self, "shared_preload_libraries")
 
     @shared_preload_libraries.setter
@@ -212,9 +155,6 @@ class _PgPluginState:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The plugin version.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -234,43 +174,9 @@ class PgPlugin(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS for PostgreSQL plugin on the databases within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        database_name = config.require_object("databaseName")
-        test = sbercloud.rds.PgPlugin("test",
-            instance_id=instance_id,
-            database_name=database_name,
-            name="pgaudit")
-        ```
-
-        ## Import
-
-        The RDS for PostgreSQL plugin can be imported using the `instance_id`, `database_name` and `name` separated by slashs, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/pgPlugin:PgPlugin test <instance_id>/<database_name>/<name>
-        ```
-
+        Create a PgPlugin resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: Specifies the database name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the PostgreSQL instance ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the plugin name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -279,33 +185,7 @@ class PgPlugin(pulumi.CustomResource):
                  args: PgPluginArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS for PostgreSQL plugin on the databases within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        database_name = config.require_object("databaseName")
-        test = sbercloud.rds.PgPlugin("test",
-            instance_id=instance_id,
-            database_name=database_name,
-            name="pgaudit")
-        ```
-
-        ## Import
-
-        The RDS for PostgreSQL plugin can be imported using the `instance_id`, `database_name` and `name` separated by slashs, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/pgPlugin:PgPlugin test <instance_id>/<database_name>/<name>
-        ```
-
+        Create a PgPlugin resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PgPluginArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -369,17 +249,6 @@ class PgPlugin(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] database_name: Specifies the database name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: The plugin description.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the PostgreSQL instance ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the plugin name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] shared_preload_libraries: Dependent preloaded library.
-        :param pulumi.Input[_builtins.str] version: The plugin version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -397,60 +266,35 @@ class PgPlugin(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the database name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "database_name")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        The plugin description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the PostgreSQL instance ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the plugin name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="sharedPreloadLibraries")
     def shared_preload_libraries(self) -> pulumi.Output[_builtins.str]:
-        """
-        Dependent preloaded library.
-        """
         return pulumi.get(self, "shared_preload_libraries")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
-        """
-        The plugin version.
-        """
         return pulumi.get(self, "version")
 

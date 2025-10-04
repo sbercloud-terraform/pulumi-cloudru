@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to obtain all version information of the specified engine type of SberCloud RDS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Rds.getEngineVersions({
- *     type: "SQLServer",
- * });
- * ```
- */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,15 +19,7 @@ export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getEngineVersions.
  */
 export interface GetEngineVersionsArgs {
-    /**
-     * The region in which to obtain the RDS engine versions.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the RDS engine type.
-     * The valid values are **MySQL**, **PostgreSQL** and **SQLServer**, default to **MySQL**.
-     */
     type?: string;
 }
 
@@ -55,25 +33,8 @@ export interface GetEngineVersionsResult {
     readonly id: string;
     readonly region?: string;
     readonly type?: string;
-    /**
-     * List of RDS versions. Structure is documented below.
-     */
     readonly versions: outputs.Rds.GetEngineVersionsVersion[];
 }
-/**
- * Use this data source to obtain all version information of the specified engine type of SberCloud RDS.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Rds.getEngineVersions({
- *     type: "SQLServer",
- * });
- * ```
- */
 export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEngineVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,14 +48,6 @@ export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts
  * A collection of arguments for invoking getEngineVersions.
  */
 export interface GetEngineVersionsOutputArgs {
-    /**
-     * The region in which to obtain the RDS engine versions.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the RDS engine type.
-     * The valid values are **MySQL**, **PostgreSQL** and **SQLServer**, default to **MySQL**.
-     */
     type?: pulumi.Input<string>;
 }

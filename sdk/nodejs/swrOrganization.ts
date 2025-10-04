@@ -4,26 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a SWR organization resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = new sbercloud.SwrOrganization("test", {name: "terraform-test"});
- * ```
- *
- * ## Import
- *
- * Organizations can be imported using the `name`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/swrOrganization:SwrOrganization test org-name
- * ```
- */
 export class SwrOrganization extends pulumi.CustomResource {
     /**
      * Get an existing SwrOrganization resource's state with the given name, ID, and optional extra
@@ -52,27 +32,10 @@ export class SwrOrganization extends pulumi.CustomResource {
         return obj['__pulumiType'] === SwrOrganization.__pulumiType;
     }
 
-    /**
-     * The creator user name of the organization.
-     */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
-    /**
-     * The URL that can be used to log into the container registry.
-     */
     declare public /*out*/ readonly loginServer: pulumi.Output<string>;
-    /**
-     * Specifies the name of the organization. The organization name must be globally
-     * unique.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The permission of the organization, the value can be Manage, Write, and Read.
-     */
     declare public /*out*/ readonly permission: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -110,27 +73,10 @@ export class SwrOrganization extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SwrOrganization resources.
  */
 export interface SwrOrganizationState {
-    /**
-     * The creator user name of the organization.
-     */
     creator?: pulumi.Input<string>;
-    /**
-     * The URL that can be used to log into the container registry.
-     */
     loginServer?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the organization. The organization name must be globally
-     * unique.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The permission of the organization, the value can be Manage, Write, and Read.
-     */
     permission?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -138,14 +84,6 @@ export interface SwrOrganizationState {
  * The set of arguments for constructing a SwrOrganization resource.
  */
 export interface SwrOrganizationArgs {
-    /**
-     * Specifies the name of the organization. The organization name must be globally
-     * unique.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

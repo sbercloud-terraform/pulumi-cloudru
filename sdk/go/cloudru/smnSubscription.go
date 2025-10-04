@@ -12,93 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages SMN subscription resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			topic1, err := sbercloud.NewSmnTopic(ctx, "topic_1", &sbercloud.SmnTopicArgs{
-//				Name:        pulumi.String("topic_1"),
-//				DisplayName: pulumi.String("The display name of topic_1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewSmnSubscription(ctx, "subscription_1", &sbercloud.SmnSubscriptionArgs{
-//				TopicUrn: topic1.ID(),
-//				Endpoint: pulumi.String("mailtest@gmail.com"),
-//				Protocol: pulumi.String("email"),
-//				Remark:   pulumi.String("O&M"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sbercloud.NewSmnSubscription(ctx, "subscription_2", &sbercloud.SmnSubscriptionArgs{
-//				TopicUrn: topic1.ID(),
-//				Endpoint: pulumi.String("13600000000"),
-//				Protocol: pulumi.String("sms"),
-//				Remark:   pulumi.String("O&M"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// SMN subscription can be imported using the `id` (subscription urn), e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/smnSubscription:SmnSubscription subscription_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
-// ```
 type SmnSubscription struct {
 	pulumi.CustomResourceState
 
-	// Message endpoint.
-	// + **For an HTTP subscription**, the endpoint starts with `http://`.
-	// + **For an HTTPS subscription**, the endpoint starts with `https://`.
-	// + **For an email subscription**, the endpoint is an mail address.
-	// + **For an SMS message subscription**, the endpoint is a phone number,
-	//   the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-	// + **For a functiongraph subscription**, the endpoint is a workflow ID.
 	Endpoint  pulumi.StringOutput            `pulumi:"endpoint"`
 	Extension SmnSubscriptionExtensionOutput `pulumi:"extension"`
 	// The message filter policies of a subscriber.
-	FilterPolicies SmnSubscriptionFilterPolicyArrayOutput `pulumi:"filterPolicies"`
-	// Project ID of the topic creator.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Protocol of the message endpoint. Currently, email,
-	// sms, http, and https are supported.
-	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Remark information. The remarks must be a UTF-8-coded
-	// character string containing 128 bytes.
-	Remark pulumi.StringPtrOutput `pulumi:"remark"`
-	// Subscription status.
-	// + **0**: indicates that the subscription is not confirmed.
-	// + **1**: indicates that the subscription is confirmed.
-	// + **3**: indicates that the subscription is canceled.
-	Status pulumi.IntOutput `pulumi:"status"`
-	// Resource identifier of a subscription, which is unique.
-	SubscriptionUrn pulumi.StringOutput `pulumi:"subscriptionUrn"`
-	// Resource identifier of a topic, which is unique.
-	TopicUrn pulumi.StringOutput `pulumi:"topicUrn"`
+	FilterPolicies  SmnSubscriptionFilterPolicyArrayOutput `pulumi:"filterPolicies"`
+	Owner           pulumi.StringOutput                    `pulumi:"owner"`
+	Protocol        pulumi.StringOutput                    `pulumi:"protocol"`
+	Region          pulumi.StringOutput                    `pulumi:"region"`
+	Remark          pulumi.StringPtrOutput                 `pulumi:"remark"`
+	Status          pulumi.IntOutput                       `pulumi:"status"`
+	SubscriptionUrn pulumi.StringOutput                    `pulumi:"subscriptionUrn"`
+	TopicUrn        pulumi.StringOutput                    `pulumi:"topicUrn"`
 }
 
 // NewSmnSubscription registers a new resource with the given unique name, arguments, and options.
@@ -140,69 +67,31 @@ func GetSmnSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SmnSubscription resources.
 type smnSubscriptionState struct {
-	// Message endpoint.
-	// + **For an HTTP subscription**, the endpoint starts with `http://`.
-	// + **For an HTTPS subscription**, the endpoint starts with `https://`.
-	// + **For an email subscription**, the endpoint is an mail address.
-	// + **For an SMS message subscription**, the endpoint is a phone number,
-	//   the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-	// + **For a functiongraph subscription**, the endpoint is a workflow ID.
 	Endpoint  *string                   `pulumi:"endpoint"`
 	Extension *SmnSubscriptionExtension `pulumi:"extension"`
 	// The message filter policies of a subscriber.
-	FilterPolicies []SmnSubscriptionFilterPolicy `pulumi:"filterPolicies"`
-	// Project ID of the topic creator.
-	Owner *string `pulumi:"owner"`
-	// Protocol of the message endpoint. Currently, email,
-	// sms, http, and https are supported.
-	Protocol *string `pulumi:"protocol"`
-	// The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-	Region *string `pulumi:"region"`
-	// Remark information. The remarks must be a UTF-8-coded
-	// character string containing 128 bytes.
-	Remark *string `pulumi:"remark"`
-	// Subscription status.
-	// + **0**: indicates that the subscription is not confirmed.
-	// + **1**: indicates that the subscription is confirmed.
-	// + **3**: indicates that the subscription is canceled.
-	Status *int `pulumi:"status"`
-	// Resource identifier of a subscription, which is unique.
-	SubscriptionUrn *string `pulumi:"subscriptionUrn"`
-	// Resource identifier of a topic, which is unique.
-	TopicUrn *string `pulumi:"topicUrn"`
+	FilterPolicies  []SmnSubscriptionFilterPolicy `pulumi:"filterPolicies"`
+	Owner           *string                       `pulumi:"owner"`
+	Protocol        *string                       `pulumi:"protocol"`
+	Region          *string                       `pulumi:"region"`
+	Remark          *string                       `pulumi:"remark"`
+	Status          *int                          `pulumi:"status"`
+	SubscriptionUrn *string                       `pulumi:"subscriptionUrn"`
+	TopicUrn        *string                       `pulumi:"topicUrn"`
 }
 
 type SmnSubscriptionState struct {
-	// Message endpoint.
-	// + **For an HTTP subscription**, the endpoint starts with `http://`.
-	// + **For an HTTPS subscription**, the endpoint starts with `https://`.
-	// + **For an email subscription**, the endpoint is an mail address.
-	// + **For an SMS message subscription**, the endpoint is a phone number,
-	//   the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-	// + **For a functiongraph subscription**, the endpoint is a workflow ID.
 	Endpoint  pulumi.StringPtrInput
 	Extension SmnSubscriptionExtensionPtrInput
 	// The message filter policies of a subscriber.
-	FilterPolicies SmnSubscriptionFilterPolicyArrayInput
-	// Project ID of the topic creator.
-	Owner pulumi.StringPtrInput
-	// Protocol of the message endpoint. Currently, email,
-	// sms, http, and https are supported.
-	Protocol pulumi.StringPtrInput
-	// The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-	Region pulumi.StringPtrInput
-	// Remark information. The remarks must be a UTF-8-coded
-	// character string containing 128 bytes.
-	Remark pulumi.StringPtrInput
-	// Subscription status.
-	// + **0**: indicates that the subscription is not confirmed.
-	// + **1**: indicates that the subscription is confirmed.
-	// + **3**: indicates that the subscription is canceled.
-	Status pulumi.IntPtrInput
-	// Resource identifier of a subscription, which is unique.
+	FilterPolicies  SmnSubscriptionFilterPolicyArrayInput
+	Owner           pulumi.StringPtrInput
+	Protocol        pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
+	Remark          pulumi.StringPtrInput
+	Status          pulumi.IntPtrInput
 	SubscriptionUrn pulumi.StringPtrInput
-	// Resource identifier of a topic, which is unique.
-	TopicUrn pulumi.StringPtrInput
+	TopicUrn        pulumi.StringPtrInput
 }
 
 func (SmnSubscriptionState) ElementType() reflect.Type {
@@ -210,48 +99,22 @@ func (SmnSubscriptionState) ElementType() reflect.Type {
 }
 
 type smnSubscriptionArgs struct {
-	// Message endpoint.
-	// + **For an HTTP subscription**, the endpoint starts with `http://`.
-	// + **For an HTTPS subscription**, the endpoint starts with `https://`.
-	// + **For an email subscription**, the endpoint is an mail address.
-	// + **For an SMS message subscription**, the endpoint is a phone number,
-	//   the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-	// + **For a functiongraph subscription**, the endpoint is a workflow ID.
 	Endpoint  string                    `pulumi:"endpoint"`
 	Extension *SmnSubscriptionExtension `pulumi:"extension"`
-	// Protocol of the message endpoint. Currently, email,
-	// sms, http, and https are supported.
-	Protocol string `pulumi:"protocol"`
-	// The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-	Region *string `pulumi:"region"`
-	// Remark information. The remarks must be a UTF-8-coded
-	// character string containing 128 bytes.
-	Remark *string `pulumi:"remark"`
-	// Resource identifier of a topic, which is unique.
-	TopicUrn string `pulumi:"topicUrn"`
+	Protocol  string                    `pulumi:"protocol"`
+	Region    *string                   `pulumi:"region"`
+	Remark    *string                   `pulumi:"remark"`
+	TopicUrn  string                    `pulumi:"topicUrn"`
 }
 
 // The set of arguments for constructing a SmnSubscription resource.
 type SmnSubscriptionArgs struct {
-	// Message endpoint.
-	// + **For an HTTP subscription**, the endpoint starts with `http://`.
-	// + **For an HTTPS subscription**, the endpoint starts with `https://`.
-	// + **For an email subscription**, the endpoint is an mail address.
-	// + **For an SMS message subscription**, the endpoint is a phone number,
-	//   the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-	// + **For a functiongraph subscription**, the endpoint is a workflow ID.
 	Endpoint  pulumi.StringInput
 	Extension SmnSubscriptionExtensionPtrInput
-	// Protocol of the message endpoint. Currently, email,
-	// sms, http, and https are supported.
-	Protocol pulumi.StringInput
-	// The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-	Region pulumi.StringPtrInput
-	// Remark information. The remarks must be a UTF-8-coded
-	// character string containing 128 bytes.
-	Remark pulumi.StringPtrInput
-	// Resource identifier of a topic, which is unique.
-	TopicUrn pulumi.StringInput
+	Protocol  pulumi.StringInput
+	Region    pulumi.StringPtrInput
+	Remark    pulumi.StringPtrInput
+	TopicUrn  pulumi.StringInput
 }
 
 func (SmnSubscriptionArgs) ElementType() reflect.Type {
@@ -341,13 +204,6 @@ func (o SmnSubscriptionOutput) ToSmnSubscriptionOutputWithContext(ctx context.Co
 	return o
 }
 
-// Message endpoint.
-//   - **For an HTTP subscription**, the endpoint starts with `http://`.
-//   - **For an HTTPS subscription**, the endpoint starts with `https://`.
-//   - **For an email subscription**, the endpoint is an mail address.
-//   - **For an SMS message subscription**, the endpoint is a phone number,
-//     the format is \[+\]\[country code\]\[phone number\], e.g. +7905xxx0000.
-//   - **For a functiongraph subscription**, the endpoint is a workflow ID.
 func (o SmnSubscriptionOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
@@ -361,42 +217,30 @@ func (o SmnSubscriptionOutput) FilterPolicies() SmnSubscriptionFilterPolicyArray
 	return o.ApplyT(func(v *SmnSubscription) SmnSubscriptionFilterPolicyArrayOutput { return v.FilterPolicies }).(SmnSubscriptionFilterPolicyArrayOutput)
 }
 
-// Project ID of the topic creator.
 func (o SmnSubscriptionOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Protocol of the message endpoint. Currently, email,
-// sms, http, and https are supported.
 func (o SmnSubscriptionOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
 func (o SmnSubscriptionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Remark information. The remarks must be a UTF-8-coded
-// character string containing 128 bytes.
 func (o SmnSubscriptionOutput) Remark() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringPtrOutput { return v.Remark }).(pulumi.StringPtrOutput)
 }
 
-// Subscription status.
-// + **0**: indicates that the subscription is not confirmed.
-// + **1**: indicates that the subscription is confirmed.
-// + **3**: indicates that the subscription is canceled.
 func (o SmnSubscriptionOutput) Status() pulumi.IntOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.IntOutput { return v.Status }).(pulumi.IntOutput)
 }
 
-// Resource identifier of a subscription, which is unique.
 func (o SmnSubscriptionOutput) SubscriptionUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringOutput { return v.SubscriptionUrn }).(pulumi.StringOutput)
 }
 
-// Resource identifier of a topic, which is unique.
 func (o SmnSubscriptionOutput) TopicUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *SmnSubscription) pulumi.StringOutput { return v.TopicUrn }).(pulumi.StringOutput)
 }

@@ -56,9 +56,6 @@ class GetVpnCustomerGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def asn(self) -> Optional[_builtins.int]:
-        """
-        Indicates the asn of the customer gateway.
-        """
         return pulumi.get(self, "asn")
 
     @_builtins.property
@@ -69,10 +66,6 @@ class GetVpnCustomerGatewaysResult:
     @_builtins.property
     @pulumi.getter(name="customerGateways")
     def customer_gateways(self) -> Sequence['outputs.GetVpnCustomerGatewaysCustomerGatewayResult']:
-        """
-        All resource customer gateways that match the filter parameters.
-        The customer_gateways structure is documented below.
-        """
         return pulumi.get(self, "customer_gateways")
 
     @_builtins.property
@@ -86,17 +79,11 @@ class GetVpnCustomerGatewaysResult:
     @_builtins.property
     @pulumi.getter
     def ip(self) -> Optional[_builtins.str]:
-        """
-        Indicates the IP of the customer gateway.
-        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the name of the customer gateway.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -107,9 +94,6 @@ class GetVpnCustomerGatewaysResult:
     @_builtins.property
     @pulumi.getter(name="routeMode")
     def route_mode(self) -> Optional[_builtins.str]:
-        """
-        Indicates the route mode of the customer gateway.
-        """
         return pulumi.get(self, "route_mode")
 
 
@@ -137,34 +121,7 @@ def get_vpn_customer_gateways(asn: Optional[_builtins.int] = None,
                               route_mode: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpnCustomerGatewaysResult:
     """
-    Use this data source to get a list of VPN customer gateways.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    route_mode = config.require_object("routeMode")
-    name = config.require_object("name")
-    asn = config.require_object("asn")
-    ip = config.require_object("ip")
-    services = sbercloud.get_vpn_customer_gateways(route_mode=route_mode,
-        name=name,
-        asn=asn,
-        ip=ip)
-    ```
-
-
-    :param _builtins.int asn: Specifies the BGP ASN number of the customer gateway, only works when the route_mode is
-           **bgp**. The value ranges from **1** to **4294967295**.
-    :param _builtins.str customer_gateway_id: Specifies the customer gateway ID used as the query filter.
-    :param _builtins.str ip: Specifies the IP address of the customer gateway.
-    :param _builtins.str name: Specifies the customer gateway name.
-    :param _builtins.str region: Specifies the region in which to obtain the VPN customer gateways.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_mode: Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['asn'] = asn
@@ -193,34 +150,7 @@ def get_vpn_customer_gateways_output(asn: Optional[pulumi.Input[Optional[_builti
                                      route_mode: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpnCustomerGatewaysResult]:
     """
-    Use this data source to get a list of VPN customer gateways.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    route_mode = config.require_object("routeMode")
-    name = config.require_object("name")
-    asn = config.require_object("asn")
-    ip = config.require_object("ip")
-    services = sbercloud.get_vpn_customer_gateways(route_mode=route_mode,
-        name=name,
-        asn=asn,
-        ip=ip)
-    ```
-
-
-    :param _builtins.int asn: Specifies the BGP ASN number of the customer gateway, only works when the route_mode is
-           **bgp**. The value ranges from **1** to **4294967295**.
-    :param _builtins.str customer_gateway_id: Specifies the customer gateway ID used as the query filter.
-    :param _builtins.str ip: Specifies the IP address of the customer gateway.
-    :param _builtins.str name: Specifies the customer gateway name.
-    :param _builtins.str region: Specifies the region in which to obtain the VPN customer gateways.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_mode: Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['asn'] = asn

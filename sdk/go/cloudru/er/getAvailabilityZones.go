@@ -11,49 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query availability zones where ER instances can be created within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := er.GetAvailabilityZones(ctx, &er.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailabilityZonesResult
@@ -66,16 +23,13 @@ func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, o
 
 // A collection of arguments for invoking getAvailabilityZones.
 type GetAvailabilityZonesArgs struct {
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getAvailabilityZones.
 type GetAvailabilityZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The names of availability zone.
+	Id     string   `pulumi:"id"`
 	Names  []string `pulumi:"names"`
 	Region string   `pulumi:"region"`
 }
@@ -91,8 +45,6 @@ func GetAvailabilityZonesOutput(ctx *pulumi.Context, args GetAvailabilityZonesOu
 
 // A collection of arguments for invoking getAvailabilityZones.
 type GetAvailabilityZonesOutputArgs struct {
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -120,7 +72,6 @@ func (o GetAvailabilityZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailabilityZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The names of availability zone.
 func (o GetAvailabilityZonesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAvailabilityZonesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

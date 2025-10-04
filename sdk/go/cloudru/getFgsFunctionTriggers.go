@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of function triggers of FunctionGraph within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			functionUrn := cfg.RequireObject("functionUrn")
-//			_, err := sbercloud.GetFgsFunctionTriggers(ctx, &cloudru.GetFgsFunctionTriggersArgs{
-//				FunctionUrn: functionUrn,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFgsFunctionTriggers(ctx *pulumi.Context, args *GetFgsFunctionTriggersArgs, opts ...pulumi.InvokeOption) (*GetFgsFunctionTriggersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsFunctionTriggersResult
@@ -53,46 +23,13 @@ func GetFgsFunctionTriggers(ctx *pulumi.Context, args *GetFgsFunctionTriggersArg
 
 // A collection of arguments for invoking getFgsFunctionTriggers.
 type GetFgsFunctionTriggersArgs struct {
-	// Specifies end time of creation time of the function trigger.
-	// The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-	//
-	// > The `status`, `startTime` and `endTime` parameters does not take effect for some triggers, e.g. `SMN`.
-	EndTime *string `pulumi:"endTime"`
-	// Specifies the function URN to which the trigger belongs.
-	FunctionUrn string `pulumi:"functionUrn"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies start time of creation time of the function trigger.
-	// The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-	StartTime *string `pulumi:"startTime"`
-	// Specifies status of the function trigger.
-	// The valid values are as follows:
-	// + **ACTIVE**
-	// + **DISABLED**
-	Status *string `pulumi:"status"`
-	// Specifies the ID of the function trigger.
-	TriggerId *string `pulumi:"triggerId"`
-	// Specifies type of the function trigger.
-	// The valid values are as follows:
-	// + **TIMER**
-	// + **APIG**
-	// + **CTS**
-	// + **DDS**
-	// + **DMS**
-	// + **DIS**
-	// + **LTS**
-	// + **OBS**
-	// + **SMN**
-	// + **KAFKA**
-	// + **RABBITMQ**
-	// + **DEDICATEDGATEWAY**
-	// + **OPENSOURCEKAFKA**
-	// + **APIC**
-	// + **GAUSSMONGO**
-	// + **EVENTGRID**
-	// + **IOTDA**
-	Type *string `pulumi:"type"`
+	EndTime     *string `pulumi:"endTime"`
+	FunctionUrn string  `pulumi:"functionUrn"`
+	Region      *string `pulumi:"region"`
+	StartTime   *string `pulumi:"startTime"`
+	Status      *string `pulumi:"status"`
+	TriggerId   *string `pulumi:"triggerId"`
+	Type        *string `pulumi:"type"`
 }
 
 // A collection of values returned by getFgsFunctionTriggers.
@@ -100,17 +37,13 @@ type GetFgsFunctionTriggersResult struct {
 	EndTime     *string `pulumi:"endTime"`
 	FunctionUrn string  `pulumi:"functionUrn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
-	Region    string  `pulumi:"region"`
-	StartTime *string `pulumi:"startTime"`
-	// The current status of the function trigger.
-	Status    *string `pulumi:"status"`
-	TriggerId *string `pulumi:"triggerId"`
-	// All triggers that match the filter parameters.
-	// The triggers structure is documented below.
-	Triggers []GetFgsFunctionTriggersTrigger `pulumi:"triggers"`
-	// The type of the function trigger.
-	Type *string `pulumi:"type"`
+	Id        string                          `pulumi:"id"`
+	Region    string                          `pulumi:"region"`
+	StartTime *string                         `pulumi:"startTime"`
+	Status    *string                         `pulumi:"status"`
+	TriggerId *string                         `pulumi:"triggerId"`
+	Triggers  []GetFgsFunctionTriggersTrigger `pulumi:"triggers"`
+	Type      *string                         `pulumi:"type"`
 }
 
 func GetFgsFunctionTriggersOutput(ctx *pulumi.Context, args GetFgsFunctionTriggersOutputArgs, opts ...pulumi.InvokeOption) GetFgsFunctionTriggersResultOutput {
@@ -124,46 +57,13 @@ func GetFgsFunctionTriggersOutput(ctx *pulumi.Context, args GetFgsFunctionTrigge
 
 // A collection of arguments for invoking getFgsFunctionTriggers.
 type GetFgsFunctionTriggersOutputArgs struct {
-	// Specifies end time of creation time of the function trigger.
-	// The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-	//
-	// > The `status`, `startTime` and `endTime` parameters does not take effect for some triggers, e.g. `SMN`.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Specifies the function URN to which the trigger belongs.
-	FunctionUrn pulumi.StringInput `pulumi:"functionUrn"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies start time of creation time of the function trigger.
-	// The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies status of the function trigger.
-	// The valid values are as follows:
-	// + **ACTIVE**
-	// + **DISABLED**
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the ID of the function trigger.
-	TriggerId pulumi.StringPtrInput `pulumi:"triggerId"`
-	// Specifies type of the function trigger.
-	// The valid values are as follows:
-	// + **TIMER**
-	// + **APIG**
-	// + **CTS**
-	// + **DDS**
-	// + **DMS**
-	// + **DIS**
-	// + **LTS**
-	// + **OBS**
-	// + **SMN**
-	// + **KAFKA**
-	// + **RABBITMQ**
-	// + **DEDICATEDGATEWAY**
-	// + **OPENSOURCEKAFKA**
-	// + **APIC**
-	// + **GAUSSMONGO**
-	// + **EVENTGRID**
-	// + **IOTDA**
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	EndTime     pulumi.StringPtrInput `pulumi:"endTime"`
+	FunctionUrn pulumi.StringInput    `pulumi:"functionUrn"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
+	StartTime   pulumi.StringPtrInput `pulumi:"startTime"`
+	Status      pulumi.StringPtrInput `pulumi:"status"`
+	TriggerId   pulumi.StringPtrInput `pulumi:"triggerId"`
+	Type        pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetFgsFunctionTriggersOutputArgs) ElementType() reflect.Type {
@@ -206,7 +106,6 @@ func (o GetFgsFunctionTriggersResultOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersResult) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// The current status of the function trigger.
 func (o GetFgsFunctionTriggersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -215,13 +114,10 @@ func (o GetFgsFunctionTriggersResultOutput) TriggerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersResult) *string { return v.TriggerId }).(pulumi.StringPtrOutput)
 }
 
-// All triggers that match the filter parameters.
-// The triggers structure is documented below.
 func (o GetFgsFunctionTriggersResultOutput) Triggers() GetFgsFunctionTriggersTriggerArrayOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersResult) []GetFgsFunctionTriggersTrigger { return v.Triggers }).(GetFgsFunctionTriggersTriggerArrayOutput)
 }
 
-// The type of the function trigger.
 func (o GetFgsFunctionTriggersResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsFunctionTriggersResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW IPS rule mode change resource within SberCloud.
- *
- * > This resource is only a one-time action resource for operating the API.
- * Deleting this resource will not clear the corresponding request record,
- * but will only remove the resource information from the tfstate file.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const ipsIds = config.requireObject<any>("ipsIds");
- * const status = config.requireObject<any>("status");
- * const test = new sbercloud.cfw.IpsRuleModeChange("test", {
- *     objectId: objectId,
- *     ipsIds: ipsIds,
- *     status: status,
- * });
- * ```
- */
 export class IpsRuleModeChange extends pulumi.CustomResource {
     /**
      * Get an existing IpsRuleModeChange resource's state with the given name, ID, and optional extra
@@ -61,7 +37,7 @@ export class IpsRuleModeChange extends pulumi.CustomResource {
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string | undefined>;
     /**
-     * Specifies the IPS rule ID list.
+     * Specifies the IPS ID list.
      */
     declare public readonly ipsIds: pulumi.Output<string[] | undefined>;
     /**
@@ -69,13 +45,11 @@ export class IpsRuleModeChange extends pulumi.CustomResource {
      */
     declare public readonly objectId: pulumi.Output<string>;
     /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this will create new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the IPS rule status.
-     * The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
      */
     declare public readonly status: pulumi.Output<string>;
 
@@ -125,7 +99,7 @@ export interface IpsRuleModeChangeState {
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the IPS rule ID list.
+     * Specifies the IPS ID list.
      */
     ipsIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -133,13 +107,11 @@ export interface IpsRuleModeChangeState {
      */
     objectId?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this will create new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     region?: pulumi.Input<string>;
     /**
      * Specifies the IPS rule status.
-     * The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
      */
     status?: pulumi.Input<string>;
 }
@@ -153,7 +125,7 @@ export interface IpsRuleModeChangeArgs {
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies the IPS rule ID list.
+     * Specifies the IPS ID list.
      */
     ipsIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -161,13 +133,11 @@ export interface IpsRuleModeChangeArgs {
      */
     objectId: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this will create new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     region?: pulumi.Input<string>;
     /**
      * Specifies the IPS rule status.
-     * The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
      */
     status: pulumi.Input<string>;
 }

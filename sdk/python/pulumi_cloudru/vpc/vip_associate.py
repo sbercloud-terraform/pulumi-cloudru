@@ -24,10 +24,6 @@ class VipAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VipAssociate resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_ids: An array of one or more IDs of the ports to attach the vip to.
-        :param pulumi.Input[_builtins.str] vip_id: The ID of vip to attach the ports to.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vip associate resource. If omitted, the
-               provider-level region will be used.
         """
         pulumi.set(__self__, "port_ids", port_ids)
         pulumi.set(__self__, "vip_id", vip_id)
@@ -37,9 +33,6 @@ class VipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="portIds")
     def port_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        An array of one or more IDs of the ports to attach the vip to.
-        """
         return pulumi.get(self, "port_ids")
 
     @port_ids.setter
@@ -49,9 +42,6 @@ class VipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="vipId")
     def vip_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The ID of vip to attach the ports to.
-        """
         return pulumi.get(self, "vip_id")
 
     @vip_id.setter
@@ -61,10 +51,6 @@ class VipAssociateArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the vip associate resource. If omitted, the
-        provider-level region will be used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -83,13 +69,6 @@ class _VipAssociateState:
                  vip_subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VipAssociate resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: The IP addresses of ports to attach the vip to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_ids: An array of one or more IDs of the ports to attach the vip to.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vip associate resource. If omitted, the
-               provider-level region will be used.
-        :param pulumi.Input[_builtins.str] vip_id: The ID of vip to attach the ports to.
-        :param pulumi.Input[_builtins.str] vip_ip_address: The IP address in the subnet for this vip.
-        :param pulumi.Input[_builtins.str] vip_subnet_id: The ID of the subnet this vip connects to.
         """
         if ip_addresses is not None:
             pulumi.set(__self__, "ip_addresses", ip_addresses)
@@ -107,9 +86,6 @@ class _VipAssociateState:
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The IP addresses of ports to attach the vip to.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @ip_addresses.setter
@@ -119,9 +95,6 @@ class _VipAssociateState:
     @_builtins.property
     @pulumi.getter(name="portIds")
     def port_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        An array of one or more IDs of the ports to attach the vip to.
-        """
         return pulumi.get(self, "port_ids")
 
     @port_ids.setter
@@ -131,10 +104,6 @@ class _VipAssociateState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the vip associate resource. If omitted, the
-        provider-level region will be used.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -144,9 +113,6 @@ class _VipAssociateState:
     @_builtins.property
     @pulumi.getter(name="vipId")
     def vip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of vip to attach the ports to.
-        """
         return pulumi.get(self, "vip_id")
 
     @vip_id.setter
@@ -156,9 +122,6 @@ class _VipAssociateState:
     @_builtins.property
     @pulumi.getter(name="vipIpAddress")
     def vip_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address in the subnet for this vip.
-        """
         return pulumi.get(self, "vip_ip_address")
 
     @vip_ip_address.setter
@@ -168,9 +131,6 @@ class _VipAssociateState:
     @_builtins.property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the subnet this vip connects to.
-        """
         return pulumi.get(self, "vip_subnet_id")
 
     @vip_subnet_id.setter
@@ -189,39 +149,9 @@ class VipAssociate(pulumi.CustomResource):
                  vip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Using this resource, one or more NICs (to which the ECS instance belongs) can be bound to the VIP.
-
-        > A VIP can only have one resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vip_id = config.require_object("vipId")
-        port_ids = config.require_object("portIds")
-        vip_associated = sbercloud.vpc.VipAssociate("vip_associated",
-            vip_id=vip_id,
-            port_ids=port_ids)
-        ```
-
-        ## Import
-
-        Vip associate can be imported using the `vip_id` and port IDs separated by slashes (no limit on the number of
-        port IDs), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/vipAssociate:VipAssociate vip_associated vip_id/port1_id/port2_id
-        ```
-
+        Create a VipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_ids: An array of one or more IDs of the ports to attach the vip to.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vip associate resource. If omitted, the
-               provider-level region will be used.
-        :param pulumi.Input[_builtins.str] vip_id: The ID of vip to attach the ports to.
         """
         ...
     @overload
@@ -230,33 +160,7 @@ class VipAssociate(pulumi.CustomResource):
                  args: VipAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Using this resource, one or more NICs (to which the ECS instance belongs) can be bound to the VIP.
-
-        > A VIP can only have one resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        vip_id = config.require_object("vipId")
-        port_ids = config.require_object("portIds")
-        vip_associated = sbercloud.vpc.VipAssociate("vip_associated",
-            vip_id=vip_id,
-            port_ids=port_ids)
-        ```
-
-        ## Import
-
-        Vip associate can be imported using the `vip_id` and port IDs separated by slashes (no limit on the number of
-        port IDs), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/vipAssociate:VipAssociate vip_associated vip_id/port1_id/port2_id
-        ```
-
+        Create a VipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VipAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -317,13 +221,6 @@ class VipAssociate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_addresses: The IP addresses of ports to attach the vip to.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] port_ids: An array of one or more IDs of the ports to attach the vip to.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vip associate resource. If omitted, the
-               provider-level region will be used.
-        :param pulumi.Input[_builtins.str] vip_id: The ID of vip to attach the ports to.
-        :param pulumi.Input[_builtins.str] vip_ip_address: The IP address in the subnet for this vip.
-        :param pulumi.Input[_builtins.str] vip_subnet_id: The ID of the subnet this vip connects to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -340,49 +237,30 @@ class VipAssociate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        The IP addresses of ports to attach the vip to.
-        """
         return pulumi.get(self, "ip_addresses")
 
     @_builtins.property
     @pulumi.getter(name="portIds")
     def port_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        An array of one or more IDs of the ports to attach the vip to.
-        """
         return pulumi.get(self, "port_ids")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the vip associate resource. If omitted, the
-        provider-level region will be used.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="vipId")
     def vip_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of vip to attach the ports to.
-        """
         return pulumi.get(self, "vip_id")
 
     @_builtins.property
     @pulumi.getter(name="vipIpAddress")
     def vip_ip_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IP address in the subnet for this vip.
-        """
         return pulumi.get(self, "vip_ip_address")
 
     @_builtins.property
     @pulumi.getter(name="vipSubnetId")
     def vip_subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the subnet this vip connects to.
-        """
         return pulumi.get(self, "vip_subnet_id")
 

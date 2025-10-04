@@ -12,161 +12,26 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an ELB certificate resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.NewElbCertificate(ctx, "certificate_1", &sbercloud.ElbCertificateArgs{
-//				Name:        pulumi.String("certificate_1"),
-//				Description: pulumi.String("terraform test certificate"),
-//				Domain:      pulumi.String("www.elb.com"),
-//				PrivateKey: pulumi.String(`-----BEGIN RSA PRIVATE KEY-----
-//
-// MIIEowIBAAKCAQEAwZ5UJULAjWr7p6FVwGRQRjFN2s8tZ/6LC3X82fajpVsYqF1x
-// qEuUDndDXVD09E4u83MS6HO6a3bIVQDp6/klnYldiE6Vp8HH5BSKaCWKVg8lGWg1
-// UM9wZFnlryi14KgmpIFmcu9nA8yV/6MZAe6RSDmb3iyNBmiZ8aZhGw2pI1YwR+15
-// MVqFFGB+7ExkziROi7L8CFCyCezK2/oOOvQsH1dzQ8z1JXWdg8/9Zx7Ktvgwu5PQ
-// M3cJtSHX6iBPOkMU8Z8TugLlTqQXKZOEgwajwvQ5mf2DPkVgM08XAgaLJcLigwD5
-// 13koAdtJd5v+9irw+5LAuO3JclqwTvwy7u/YwwIDAQABAoIBACU9S5fjD9/jTMXA
-// DRs08A+gGgZUxLn0xk+NAPX3LyB1tfdkCaFB8BccLzO6h3KZuwQOBPv6jkdvEDbx
-// Nwyw3eA/9GJsIvKiHc0rejdvyPymaw9I8MA7NbXHaJrY7KpqDQyk6sx+aUTcy5jg
-// iMXLWdwXYHhJ/1HVOo603oZyiS6HZeYU089NDUcX+1SJi3e5Ke0gPVXEqCq1O11/
-// rh24bMxnwZo4PKBWdcMBN5Zf/4ij9vrZE+fFzW7vGBO48A5lvZxWU2U5t/OZQRtN
-// 1uLOHmMFa0FIF2aWbTVfwdUWAFsvAOkHj9VV8BXOUwKOUuEktdkfAlvrxmsFrO/H
-// yDeYYPkCgYEA/S55CBbR0sMXpSZ56uRn8JHApZJhgkgvYr+FqDlJq/e92nAzf01P
-// RoEBUajwrnf1ycevN/SDfbtWzq2XJGqhWdJmtpO16b7KBsC6BdRcH6dnOYh31jgA
-// vABMIP3wzI4zSVTyxRE8LDuboytF1mSCeV5tHYPQTZNwrplDnLQhywcCgYEAw8Yc
-// Uk/eiFr3hfH/ZohMfV5p82Qp7DNIGRzw8YtVG/3+vNXrAXW1VhugNhQY6L+zLtJC
-// aKn84ooup0m3YCg0hvINqJuvzfsuzQgtjTXyaE0cEwsjUusOmiuj09vVx/3U7siK
-// Hdjd2ICPCvQ6Q8tdi8jV320gMs05AtaBkZdsiWUCgYEAtLw4Kk4f+xTKDFsrLUNf
-// 75wcqhWVBiwBp7yQ7UX4EYsJPKZcHMRTk0EEcAbpyaJZE3I44vjp5ReXIHNLMfPs
-// uvI34J4Rfot0LN3n7cFrAi2+wpNo+MOBwrNzpRmijGP2uKKrq4JiMjFbKV/6utGF
-// Up7VxfwS904JYpqGaZctiIECgYA1A6nZtF0riY6ry/uAdXpZHL8ONNqRZtWoT0kD
-// 79otSVu5ISiRbaGcXsDExC52oKrSDAgFtbqQUiEOFg09UcXfoR6HwRkba2CiDwve
-// yHQLQI5Qrdxz8Mk0gIrNrSM4FAmcW9vi9z4kCbQyoC5C+4gqeUlJRpDIkQBWP2Y4
-// 2ct/bQKBgHv8qCsQTZphOxc31BJPa2xVhuv18cEU3XLUrVfUZ/1f43JhLp7gynS2
-// ep++LKUi9D0VGXY8bqvfJjbECoCeu85vl8NpCXwe/LoVoIn+7KaVIZMwqoGMfgNl
-// nEqm7HWkNxHhf8A6En/IjleuddS1sf9e/x+TJN1Xhnt9W6pe7Fk1
-// -----END RSA PRIVATE KEY-----
-// `),
-//
-//	Certificate: pulumi.String(`-----BEGIN CERTIFICATE-----
-//
-// MIIDpTCCAo2gAwIBAgIJAKdmmOBYnFvoMA0GCSqGSIb3DQEBCwUAMGkxCzAJBgNV
-// BAYTAnh4MQswCQYDVQQIDAJ4eDELMAkGA1UEBwwCeHgxCzAJBgNVBAoMAnh4MQsw
-// CQYDVQQLDAJ4eDELMAkGA1UEAwwCeHgxGTAXBgkqhkiG9w0BCQEWCnh4QDE2My5j
-// b20wHhcNMTcxMjA0MDM0MjQ5WhcNMjAxMjAzMDM0MjQ5WjBpMQswCQYDVQQGEwJ4
-// eDELMAkGA1UECAwCeHgxCzAJBgNVBAcMAnh4MQswCQYDVQQKDAJ4eDELMAkGA1UE
-// CwwCeHgxCzAJBgNVBAMMAnh4MRkwFwYJKoZIhvcNAQkBFgp4eEAxNjMuY29tMIIB
-// IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwZ5UJULAjWr7p6FVwGRQRjFN
-// 2s8tZ/6LC3X82fajpVsYqF1xqEuUDndDXVD09E4u83MS6HO6a3bIVQDp6/klnYld
-// iE6Vp8HH5BSKaCWKVg8lGWg1UM9wZFnlryi14KgmpIFmcu9nA8yV/6MZAe6RSDmb
-// 3iyNBmiZ8aZhGw2pI1YwR+15MVqFFGB+7ExkziROi7L8CFCyCezK2/oOOvQsH1dz
-// Q8z1JXWdg8/9Zx7Ktvgwu5PQM3cJtSHX6iBPOkMU8Z8TugLlTqQXKZOEgwajwvQ5
-// mf2DPkVgM08XAgaLJcLigwD513koAdtJd5v+9irw+5LAuO3JclqwTvwy7u/YwwID
-// AQABo1AwTjAdBgNVHQ4EFgQUo5A2tIu+bcUfvGTD7wmEkhXKFjcwHwYDVR0jBBgw
-// FoAUo5A2tIu+bcUfvGTD7wmEkhXKFjcwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0B
-// AQsFAAOCAQEAWJ2rS6Mvlqk3GfEpboezx2J3X7l1z8Sxoqg6ntwB+rezvK3mc9H0
-// 83qcVeUcoH+0A0lSHyFN4FvRQL6X1hEheHarYwJK4agb231vb5erasuGO463eYEG
-// r4SfTuOm7SyiV2xxbaBKrXJtpBp4WLL/s+LF+nklKjaOxkmxUX0sM4CTA7uFJypY
-// c8Tdr8lDDNqoUtMD8BrUCJi+7lmMXRcC3Qi3oZJW76ja+kZA5mKVFPd1ATih8TbA
-// i34R7EQDtFeiSvBdeKRsPp8c0KT8H1B4lXNkkCQs2WX5p4lm99+ZtLD4glw8x6Ic
-// i1YhgnQbn5E0hz55OLu5jvOkKQjPCW+8Kg==
-// -----END CERTIFICATE-----
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ELB certificate can be imported using the certificate ID, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:index/elbCertificate:ElbCertificate certificate_1 5c20fdad-7288-11eb-b817-0255ac10158b
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `enterprise_project_id`.
-//
-// It is generally recommended running `pulumi preview` after importing a certificate.
-//
-// # You can then decide if changes should be applied to the certificate, or the resource
-//
-// definition should be updated to align with the certificate. Also you can ignore changes as below.
-//
-// resource "sbercloud_elb_certificate" "certificate_1" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    enterprise_project_id,
-//
-//	  ]
-//
-//	}
-//
-// }
 type ElbCertificate struct {
 	pulumi.CustomResourceState
 
-	// The public encrypted key of the Certificate, PEM format.
-	Certificate pulumi.StringOutput `pulumi:"certificate"`
-	CommonName  pulumi.StringOutput `pulumi:"commonName"`
-	// Indicates the creation time.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Human-readable description for the Certificate.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The domain of the Certificate. The value contains a maximum of 100 characters. This
-	// parameter is valid only when `type` is set to "server".
-	Domain         pulumi.StringPtrOutput `pulumi:"domain"`
-	EncCertificate pulumi.StringPtrOutput `pulumi:"encCertificate"`
-	EncPrivateKey  pulumi.StringPtrOutput `pulumi:"encPrivateKey"`
-	// The enterprise project id of the certificate.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Indicates the expire time.
-	ExpireTime  pulumi.StringOutput `pulumi:"expireTime"`
-	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
-	// Human-readable name for the Certificate. Does not have to be unique.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The private encrypted key of the Certificate, PEM format. This parameter is valid
-	// and mandatory only when `type` is set to "server".
-	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// The region in which to create the ELB certificate resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new certificate.
+	Certificate             pulumi.StringOutput      `pulumi:"certificate"`
+	CommonName              pulumi.StringOutput      `pulumi:"commonName"`
+	CreateTime              pulumi.StringOutput      `pulumi:"createTime"`
+	Description             pulumi.StringPtrOutput   `pulumi:"description"`
+	Domain                  pulumi.StringPtrOutput   `pulumi:"domain"`
+	EncCertificate          pulumi.StringPtrOutput   `pulumi:"encCertificate"`
+	EncPrivateKey           pulumi.StringPtrOutput   `pulumi:"encPrivateKey"`
+	EnterpriseProjectId     pulumi.StringOutput      `pulumi:"enterpriseProjectId"`
+	ExpireTime              pulumi.StringOutput      `pulumi:"expireTime"`
+	Fingerprint             pulumi.StringOutput      `pulumi:"fingerprint"`
+	Name                    pulumi.StringOutput      `pulumi:"name"`
+	PrivateKey              pulumi.StringPtrOutput   `pulumi:"privateKey"`
 	Region                  pulumi.StringOutput      `pulumi:"region"`
 	ScmCertificateId        pulumi.StringOutput      `pulumi:"scmCertificateId"`
 	SubjectAlternativeNames pulumi.StringArrayOutput `pulumi:"subjectAlternativeNames"`
-	// Specifies the certificate type. The default value is "server". The value can be
-	// one of the following:
-	// + server: indicates the server certificate.
-	// + client: indicates the CA certificate.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Indicates the update time.
-	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	Type                    pulumi.StringOutput      `pulumi:"type"`
+	UpdateTime              pulumi.StringOutput      `pulumi:"updateTime"`
 }
 
 // NewElbCertificate registers a new resource with the given unique name, arguments, and options.
@@ -202,77 +67,43 @@ func GetElbCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElbCertificate resources.
 type elbCertificateState struct {
-	// The public encrypted key of the Certificate, PEM format.
-	Certificate *string `pulumi:"certificate"`
-	CommonName  *string `pulumi:"commonName"`
-	// Indicates the creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Human-readable description for the Certificate.
-	Description *string `pulumi:"description"`
-	// The domain of the Certificate. The value contains a maximum of 100 characters. This
-	// parameter is valid only when `type` is set to "server".
-	Domain         *string `pulumi:"domain"`
-	EncCertificate *string `pulumi:"encCertificate"`
-	EncPrivateKey  *string `pulumi:"encPrivateKey"`
-	// The enterprise project id of the certificate.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Indicates the expire time.
-	ExpireTime  *string `pulumi:"expireTime"`
-	Fingerprint *string `pulumi:"fingerprint"`
-	// Human-readable name for the Certificate. Does not have to be unique.
-	Name *string `pulumi:"name"`
-	// The private encrypted key of the Certificate, PEM format. This parameter is valid
-	// and mandatory only when `type` is set to "server".
-	PrivateKey *string `pulumi:"privateKey"`
-	// The region in which to create the ELB certificate resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new certificate.
+	Certificate             *string  `pulumi:"certificate"`
+	CommonName              *string  `pulumi:"commonName"`
+	CreateTime              *string  `pulumi:"createTime"`
+	Description             *string  `pulumi:"description"`
+	Domain                  *string  `pulumi:"domain"`
+	EncCertificate          *string  `pulumi:"encCertificate"`
+	EncPrivateKey           *string  `pulumi:"encPrivateKey"`
+	EnterpriseProjectId     *string  `pulumi:"enterpriseProjectId"`
+	ExpireTime              *string  `pulumi:"expireTime"`
+	Fingerprint             *string  `pulumi:"fingerprint"`
+	Name                    *string  `pulumi:"name"`
+	PrivateKey              *string  `pulumi:"privateKey"`
 	Region                  *string  `pulumi:"region"`
 	ScmCertificateId        *string  `pulumi:"scmCertificateId"`
 	SubjectAlternativeNames []string `pulumi:"subjectAlternativeNames"`
-	// Specifies the certificate type. The default value is "server". The value can be
-	// one of the following:
-	// + server: indicates the server certificate.
-	// + client: indicates the CA certificate.
-	Type *string `pulumi:"type"`
-	// Indicates the update time.
-	UpdateTime *string `pulumi:"updateTime"`
+	Type                    *string  `pulumi:"type"`
+	UpdateTime              *string  `pulumi:"updateTime"`
 }
 
 type ElbCertificateState struct {
-	// The public encrypted key of the Certificate, PEM format.
-	Certificate pulumi.StringPtrInput
-	CommonName  pulumi.StringPtrInput
-	// Indicates the creation time.
-	CreateTime pulumi.StringPtrInput
-	// Human-readable description for the Certificate.
-	Description pulumi.StringPtrInput
-	// The domain of the Certificate. The value contains a maximum of 100 characters. This
-	// parameter is valid only when `type` is set to "server".
-	Domain         pulumi.StringPtrInput
-	EncCertificate pulumi.StringPtrInput
-	EncPrivateKey  pulumi.StringPtrInput
-	// The enterprise project id of the certificate.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Indicates the expire time.
-	ExpireTime  pulumi.StringPtrInput
-	Fingerprint pulumi.StringPtrInput
-	// Human-readable name for the Certificate. Does not have to be unique.
-	Name pulumi.StringPtrInput
-	// The private encrypted key of the Certificate, PEM format. This parameter is valid
-	// and mandatory only when `type` is set to "server".
-	PrivateKey pulumi.StringPtrInput
-	// The region in which to create the ELB certificate resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new certificate.
+	Certificate             pulumi.StringPtrInput
+	CommonName              pulumi.StringPtrInput
+	CreateTime              pulumi.StringPtrInput
+	Description             pulumi.StringPtrInput
+	Domain                  pulumi.StringPtrInput
+	EncCertificate          pulumi.StringPtrInput
+	EncPrivateKey           pulumi.StringPtrInput
+	EnterpriseProjectId     pulumi.StringPtrInput
+	ExpireTime              pulumi.StringPtrInput
+	Fingerprint             pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	PrivateKey              pulumi.StringPtrInput
 	Region                  pulumi.StringPtrInput
 	ScmCertificateId        pulumi.StringPtrInput
 	SubjectAlternativeNames pulumi.StringArrayInput
-	// Specifies the certificate type. The default value is "server". The value can be
-	// one of the following:
-	// + server: indicates the server certificate.
-	// + client: indicates the CA certificate.
-	Type pulumi.StringPtrInput
-	// Indicates the update time.
-	UpdateTime pulumi.StringPtrInput
+	Type                    pulumi.StringPtrInput
+	UpdateTime              pulumi.StringPtrInput
 }
 
 func (ElbCertificateState) ElementType() reflect.Type {
@@ -280,60 +111,32 @@ func (ElbCertificateState) ElementType() reflect.Type {
 }
 
 type elbCertificateArgs struct {
-	// The public encrypted key of the Certificate, PEM format.
-	Certificate string `pulumi:"certificate"`
-	// Human-readable description for the Certificate.
-	Description *string `pulumi:"description"`
-	// The domain of the Certificate. The value contains a maximum of 100 characters. This
-	// parameter is valid only when `type` is set to "server".
-	Domain         *string `pulumi:"domain"`
-	EncCertificate *string `pulumi:"encCertificate"`
-	EncPrivateKey  *string `pulumi:"encPrivateKey"`
-	// The enterprise project id of the certificate.
+	Certificate         string  `pulumi:"certificate"`
+	Description         *string `pulumi:"description"`
+	Domain              *string `pulumi:"domain"`
+	EncCertificate      *string `pulumi:"encCertificate"`
+	EncPrivateKey       *string `pulumi:"encPrivateKey"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Human-readable name for the Certificate. Does not have to be unique.
-	Name *string `pulumi:"name"`
-	// The private encrypted key of the Certificate, PEM format. This parameter is valid
-	// and mandatory only when `type` is set to "server".
-	PrivateKey *string `pulumi:"privateKey"`
-	// The region in which to create the ELB certificate resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new certificate.
-	Region           *string `pulumi:"region"`
-	ScmCertificateId *string `pulumi:"scmCertificateId"`
-	// Specifies the certificate type. The default value is "server". The value can be
-	// one of the following:
-	// + server: indicates the server certificate.
-	// + client: indicates the CA certificate.
-	Type *string `pulumi:"type"`
+	Name                *string `pulumi:"name"`
+	PrivateKey          *string `pulumi:"privateKey"`
+	Region              *string `pulumi:"region"`
+	ScmCertificateId    *string `pulumi:"scmCertificateId"`
+	Type                *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a ElbCertificate resource.
 type ElbCertificateArgs struct {
-	// The public encrypted key of the Certificate, PEM format.
-	Certificate pulumi.StringInput
-	// Human-readable description for the Certificate.
-	Description pulumi.StringPtrInput
-	// The domain of the Certificate. The value contains a maximum of 100 characters. This
-	// parameter is valid only when `type` is set to "server".
-	Domain         pulumi.StringPtrInput
-	EncCertificate pulumi.StringPtrInput
-	EncPrivateKey  pulumi.StringPtrInput
-	// The enterprise project id of the certificate.
+	Certificate         pulumi.StringInput
+	Description         pulumi.StringPtrInput
+	Domain              pulumi.StringPtrInput
+	EncCertificate      pulumi.StringPtrInput
+	EncPrivateKey       pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Human-readable name for the Certificate. Does not have to be unique.
-	Name pulumi.StringPtrInput
-	// The private encrypted key of the Certificate, PEM format. This parameter is valid
-	// and mandatory only when `type` is set to "server".
-	PrivateKey pulumi.StringPtrInput
-	// The region in which to create the ELB certificate resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new certificate.
-	Region           pulumi.StringPtrInput
-	ScmCertificateId pulumi.StringPtrInput
-	// Specifies the certificate type. The default value is "server". The value can be
-	// one of the following:
-	// + server: indicates the server certificate.
-	// + client: indicates the CA certificate.
-	Type pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	PrivateKey          pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	ScmCertificateId    pulumi.StringPtrInput
+	Type                pulumi.StringPtrInput
 }
 
 func (ElbCertificateArgs) ElementType() reflect.Type {
@@ -423,7 +226,6 @@ func (o ElbCertificateOutput) ToElbCertificateOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The public encrypted key of the Certificate, PEM format.
 func (o ElbCertificateOutput) Certificate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
 }
@@ -432,18 +234,14 @@ func (o ElbCertificateOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// Indicates the creation time.
 func (o ElbCertificateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Human-readable description for the Certificate.
 func (o ElbCertificateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The domain of the Certificate. The value contains a maximum of 100 characters. This
-// parameter is valid only when `type` is set to "server".
 func (o ElbCertificateOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
 }
@@ -456,12 +254,10 @@ func (o ElbCertificateOutput) EncPrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringPtrOutput { return v.EncPrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The enterprise project id of the certificate.
 func (o ElbCertificateOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Indicates the expire time.
 func (o ElbCertificateOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -470,19 +266,14 @@ func (o ElbCertificateOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// Human-readable name for the Certificate. Does not have to be unique.
 func (o ElbCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private encrypted key of the Certificate, PEM format. This parameter is valid
-// and mandatory only when `type` is set to "server".
 func (o ElbCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// The region in which to create the ELB certificate resource. If omitted, the
-// provider-level region will be used. Changing this creates a new certificate.
 func (o ElbCertificateOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -495,15 +286,10 @@ func (o ElbCertificateOutput) SubjectAlternativeNames() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringArrayOutput { return v.SubjectAlternativeNames }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the certificate type. The default value is "server". The value can be
-// one of the following:
-// + server: indicates the server certificate.
-// + client: indicates the CA certificate.
 func (o ElbCertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the update time.
 func (o ElbCertificateOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElbCertificate) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

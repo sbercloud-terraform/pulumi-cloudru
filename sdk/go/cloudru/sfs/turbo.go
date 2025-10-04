@@ -12,274 +12,35 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides a Shared File System (SFS) Turbo resource.
-//
-// ## Example Usage
-//
-// ### Create a STANDARD Shared File System (SFS) Turbo
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			testAz := cfg.RequireObject("testAz")
-//			_, err := sfs.NewTurbo(ctx, "test", &sfs.TurboArgs{
-//				Name:             pulumi.String("sfs-turbo-1"),
-//				Size:             pulumi.Int(500),
-//				ShareProto:       pulumi.String("NFS"),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				SecurityGroupId:  pulumi.Any(secgroupId),
-//				AvailabilityZone: pulumi.Any(testAz),
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create an HPC Shared File System (SFS) Turbo
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			testAz := cfg.RequireObject("testAz")
-//			_, err := sfs.NewTurbo(ctx, "test", &sfs.TurboArgs{
-//				Name:             pulumi.String("sfs-turbo-1"),
-//				Size:             pulumi.Int(3686),
-//				ShareProto:       pulumi.String("NFS"),
-//				ShareType:        pulumi.String("HPC"),
-//				HpcBandwidth:     pulumi.String("40M"),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				SecurityGroupId:  pulumi.Any(secgroupId),
-//				AvailabilityZone: pulumi.Any(testAz),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create an HPC CACHE Shared File System (SFS) Turbo
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			testAz := cfg.RequireObject("testAz")
-//			_, err := sfs.NewTurbo(ctx, "test", &sfs.TurboArgs{
-//				Name:              pulumi.String("sfs-turbo-1"),
-//				Size:              pulumi.Int(4096),
-//				ShareProto:        pulumi.String("NFS"),
-//				ShareType:         pulumi.String("HPC_CACHE"),
-//				HpcCacheBandwidth: pulumi.String("2G"),
-//				VpcId:             pulumi.Any(vpcId),
-//				SubnetId:          pulumi.Any(subnetId),
-//				SecurityGroupId:   pulumi.Any(secgroupId),
-//				AvailabilityZone:  pulumi.Any(testAz),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// SFS Turbo can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Sfs/turbo:Turbo sbercloud_sfs_turbo 1e3d5306-24c9-4316-9185-70e9787d71ab
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to payment attributes missing from
-//
-// the API response.
-//
-// The missing attributes include: `charging_mode`, `period_unit`, `period`, `auto_renew`.
-//
-// It is generally recommended running `pulumi preview` after importing an instance.
-//
-// You can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_sfs_turbo" "test" {
-//
-//	...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    charging_mode, period_unit, period, auto_renew,
-//
-//	  ]
-//
-//	}
-//
-// }
 type Turbo struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether auto renew is enabled.\
-	// The valid values are **true** and **false**.
-	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	// Specifies the availability zone where the file system is located.
-	// Changing this will create a new resource.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// The available capacity of the SFS Turbo file system in the unit of GB.
-	AvailableCapacity pulumi.StringOutput `pulumi:"availableCapacity"`
-	// Specifies the backup ID.
-	//
-	// > This parameter is mandatory when a file system is created from a backup.
-	BackupId pulumi.StringOutput `pulumi:"backupId"`
-	// Specifies the charging mode of the SFS Turbo.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
-	// Specifies the ID of a KMS key to encrypt the file system. Changing this
-	// will create a new resource.
-	CryptKeyId pulumi.StringPtrOutput `pulumi:"cryptKeyId"`
-	// Specifies the VM flavor used for creating a dedicated file system.
-	DedicatedFlavor pulumi.StringPtrOutput `pulumi:"dedicatedFlavor"`
-	// Specifies the ID of the dedicated distributed storage used
-	// when creating a dedicated file system.
-	DedicatedStorageId pulumi.StringPtrOutput `pulumi:"dedicatedStorageId"`
-	// Specifies whether the file system is enhanced or not. Changing this will
-	// create a new resource.
-	//
-	// This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
-	Enhanced pulumi.BoolOutput `pulumi:"enhanced"`
-	// The enterprise project id of the file system. Changing this
-	// will create a new resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// The mount point of the SFS Turbo file system.
-	ExportLocation pulumi.StringOutput `pulumi:"exportLocation"`
-	// Specifies the HPC bandwidth. Changing this will create a new resource.
-	// This parameter is valid and required when `shareType` is set to **HPC**.
-	// Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
-	HpcBandwidth pulumi.StringOutput `pulumi:"hpcBandwidth"`
-	// Specifies the HPC cache bandwidth(GB/s).
-	// This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
-	// Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
-	HpcCacheBandwidth pulumi.StringOutput `pulumi:"hpcCacheBandwidth"`
-	// Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
-	// characters and must start with a letter.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the charging period of the SFS Turbo.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Specifies the charging period unit of the SFS Turbo.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The region in which to create the SFS Turbo resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new SFS Turbo resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the security group ID.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Specifies the protocol for sharing file systems. The valid value is NFS.
-	// Changing this will create a new resource.
-	ShareProto pulumi.StringPtrOutput `pulumi:"shareProto"`
-	// Specifies the file system type. Changing this will create a new resource.
-	// Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
-	// Defaults to **STANDARD**.
-	//
-	// > The share type **HPC_CACHE** only support in postpaid charging mode.
-	ShareType pulumi.StringPtrOutput `pulumi:"shareType"`
-	// Specifies the capacity of a sharing file system, in GB.
-	// + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
-	// `10,240` to `327,680` for an enhanced file system.
-	//
-	// + If `shareType` is set to **HPC**, the value ranges from `3,686` to `1,048,576` when `hpcBandwidth` is set to
-	// **20M**, and ranges from `1,228` to `1,048,576` when `hpcBandwidth` is set to **40M**, **125M**, **250M**, **500M**
-	// or **1000M**. The capacity must be a multiple of 1.2TiB, which needs to be rounded down after converting to GiB.
-	// Such as 3.6TiB->3686GiB, 4.8TiB->4915GiB, 8.4TiB->8601GiB.
-	//
-	// + If `shareType` is set to **HPC_CACHE**, the value ranges from `4,096` to `1,048,576`, and the step size is `1,024`.
-	// The minimum capacity(GB) should be equal to `2,048` multiplying the HPC cache bandwidth size(GB/s).
-	// Such as the minimum capacity is `4,096` when `hpcCacheBandwidth` is set to **2G**, the minimum capacity is `8,192`
-	// when `hpcCacheBandwidth` is set to **4G**, the minimum capacity is `16,384` when `hpcCacheBandwidth` is set to
-	// **8G**.
-	//
-	// > The file system capacity can only be expanded, not reduced.
-	Size pulumi.IntOutput `pulumi:"size"`
-	// The status of the SFS Turbo file system.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the network ID of the subnet. Changing this will create a new
-	// resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the SFS Turbo.
-	//
-	// > **NOTE:**
-	// SFS Turbo will create two private IP addresses and one virtual IP address under the subnet you specified. To ensure
-	// normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
-	// security group you specified.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The version ID of the SFS Turbo file system.
-	Version pulumi.StringOutput `pulumi:"version"`
-	// Specifies the VPC ID. Changing this will create a new resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	AutoRenew           pulumi.StringPtrOutput `pulumi:"autoRenew"`
+	AvailabilityZone    pulumi.StringOutput    `pulumi:"availabilityZone"`
+	AvailableCapacity   pulumi.StringOutput    `pulumi:"availableCapacity"`
+	BackupId            pulumi.StringOutput    `pulumi:"backupId"`
+	ChargingMode        pulumi.StringOutput    `pulumi:"chargingMode"`
+	CryptKeyId          pulumi.StringPtrOutput `pulumi:"cryptKeyId"`
+	DedicatedFlavor     pulumi.StringPtrOutput `pulumi:"dedicatedFlavor"`
+	DedicatedStorageId  pulumi.StringPtrOutput `pulumi:"dedicatedStorageId"`
+	Enhanced            pulumi.BoolOutput      `pulumi:"enhanced"`
+	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	ExportLocation      pulumi.StringOutput    `pulumi:"exportLocation"`
+	HpcBandwidth        pulumi.StringOutput    `pulumi:"hpcBandwidth"`
+	HpcCacheBandwidth   pulumi.StringOutput    `pulumi:"hpcCacheBandwidth"`
+	Name                pulumi.StringOutput    `pulumi:"name"`
+	Period              pulumi.IntPtrOutput    `pulumi:"period"`
+	PeriodUnit          pulumi.StringPtrOutput `pulumi:"periodUnit"`
+	Region              pulumi.StringOutput    `pulumi:"region"`
+	SecurityGroupId     pulumi.StringOutput    `pulumi:"securityGroupId"`
+	ShareProto          pulumi.StringPtrOutput `pulumi:"shareProto"`
+	ShareType           pulumi.StringPtrOutput `pulumi:"shareType"`
+	Size                pulumi.IntOutput       `pulumi:"size"`
+	Status              pulumi.StringOutput    `pulumi:"status"`
+	SubnetId            pulumi.StringOutput    `pulumi:"subnetId"`
+	Tags                pulumi.StringMapOutput `pulumi:"tags"`
+	Version             pulumi.StringOutput    `pulumi:"version"`
+	VpcId               pulumi.StringOutput    `pulumi:"vpcId"`
 }
 
 // NewTurbo registers a new resource with the given unique name, arguments, and options.
@@ -327,213 +88,61 @@ func GetTurbo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Turbo resources.
 type turboState struct {
-	// Specifies whether auto renew is enabled.\
-	// The valid values are **true** and **false**.
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the availability zone where the file system is located.
-	// Changing this will create a new resource.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The available capacity of the SFS Turbo file system in the unit of GB.
-	AvailableCapacity *string `pulumi:"availableCapacity"`
-	// Specifies the backup ID.
-	//
-	// > This parameter is mandatory when a file system is created from a backup.
-	BackupId *string `pulumi:"backupId"`
-	// Specifies the charging mode of the SFS Turbo.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the ID of a KMS key to encrypt the file system. Changing this
-	// will create a new resource.
-	CryptKeyId *string `pulumi:"cryptKeyId"`
-	// Specifies the VM flavor used for creating a dedicated file system.
-	DedicatedFlavor *string `pulumi:"dedicatedFlavor"`
-	// Specifies the ID of the dedicated distributed storage used
-	// when creating a dedicated file system.
-	DedicatedStorageId *string `pulumi:"dedicatedStorageId"`
-	// Specifies whether the file system is enhanced or not. Changing this will
-	// create a new resource.
-	//
-	// This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
-	Enhanced *bool `pulumi:"enhanced"`
-	// The enterprise project id of the file system. Changing this
-	// will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The mount point of the SFS Turbo file system.
-	ExportLocation *string `pulumi:"exportLocation"`
-	// Specifies the HPC bandwidth. Changing this will create a new resource.
-	// This parameter is valid and required when `shareType` is set to **HPC**.
-	// Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
-	HpcBandwidth *string `pulumi:"hpcBandwidth"`
-	// Specifies the HPC cache bandwidth(GB/s).
-	// This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
-	// Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
-	HpcCacheBandwidth *string `pulumi:"hpcCacheBandwidth"`
-	// Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
-	// characters and must start with a letter.
-	Name *string `pulumi:"name"`
-	// Specifies the charging period of the SFS Turbo.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the SFS Turbo.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// The region in which to create the SFS Turbo resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new SFS Turbo resource.
-	Region *string `pulumi:"region"`
-	// Specifies the security group ID.
-	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Specifies the protocol for sharing file systems. The valid value is NFS.
-	// Changing this will create a new resource.
-	ShareProto *string `pulumi:"shareProto"`
-	// Specifies the file system type. Changing this will create a new resource.
-	// Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
-	// Defaults to **STANDARD**.
-	//
-	// > The share type **HPC_CACHE** only support in postpaid charging mode.
-	ShareType *string `pulumi:"shareType"`
-	// Specifies the capacity of a sharing file system, in GB.
-	// + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
-	// `10,240` to `327,680` for an enhanced file system.
-	//
-	// + If `shareType` is set to **HPC**, the value ranges from `3,686` to `1,048,576` when `hpcBandwidth` is set to
-	// **20M**, and ranges from `1,228` to `1,048,576` when `hpcBandwidth` is set to **40M**, **125M**, **250M**, **500M**
-	// or **1000M**. The capacity must be a multiple of 1.2TiB, which needs to be rounded down after converting to GiB.
-	// Such as 3.6TiB->3686GiB, 4.8TiB->4915GiB, 8.4TiB->8601GiB.
-	//
-	// + If `shareType` is set to **HPC_CACHE**, the value ranges from `4,096` to `1,048,576`, and the step size is `1,024`.
-	// The minimum capacity(GB) should be equal to `2,048` multiplying the HPC cache bandwidth size(GB/s).
-	// Such as the minimum capacity is `4,096` when `hpcCacheBandwidth` is set to **2G**, the minimum capacity is `8,192`
-	// when `hpcCacheBandwidth` is set to **4G**, the minimum capacity is `16,384` when `hpcCacheBandwidth` is set to
-	// **8G**.
-	//
-	// > The file system capacity can only be expanded, not reduced.
-	Size *int `pulumi:"size"`
-	// The status of the SFS Turbo file system.
-	Status *string `pulumi:"status"`
-	// Specifies the network ID of the subnet. Changing this will create a new
-	// resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the SFS Turbo.
-	//
-	// > **NOTE:**
-	// SFS Turbo will create two private IP addresses and one virtual IP address under the subnet you specified. To ensure
-	// normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
-	// security group you specified.
-	Tags map[string]string `pulumi:"tags"`
-	// The version ID of the SFS Turbo file system.
-	Version *string `pulumi:"version"`
-	// Specifies the VPC ID. Changing this will create a new resource.
-	VpcId *string `pulumi:"vpcId"`
+	AutoRenew           *string           `pulumi:"autoRenew"`
+	AvailabilityZone    *string           `pulumi:"availabilityZone"`
+	AvailableCapacity   *string           `pulumi:"availableCapacity"`
+	BackupId            *string           `pulumi:"backupId"`
+	ChargingMode        *string           `pulumi:"chargingMode"`
+	CryptKeyId          *string           `pulumi:"cryptKeyId"`
+	DedicatedFlavor     *string           `pulumi:"dedicatedFlavor"`
+	DedicatedStorageId  *string           `pulumi:"dedicatedStorageId"`
+	Enhanced            *bool             `pulumi:"enhanced"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	ExportLocation      *string           `pulumi:"exportLocation"`
+	HpcBandwidth        *string           `pulumi:"hpcBandwidth"`
+	HpcCacheBandwidth   *string           `pulumi:"hpcCacheBandwidth"`
+	Name                *string           `pulumi:"name"`
+	Period              *int              `pulumi:"period"`
+	PeriodUnit          *string           `pulumi:"periodUnit"`
+	Region              *string           `pulumi:"region"`
+	SecurityGroupId     *string           `pulumi:"securityGroupId"`
+	ShareProto          *string           `pulumi:"shareProto"`
+	ShareType           *string           `pulumi:"shareType"`
+	Size                *int              `pulumi:"size"`
+	Status              *string           `pulumi:"status"`
+	SubnetId            *string           `pulumi:"subnetId"`
+	Tags                map[string]string `pulumi:"tags"`
+	Version             *string           `pulumi:"version"`
+	VpcId               *string           `pulumi:"vpcId"`
 }
 
 type TurboState struct {
-	// Specifies whether auto renew is enabled.\
-	// The valid values are **true** and **false**.
-	AutoRenew pulumi.StringPtrInput
-	// Specifies the availability zone where the file system is located.
-	// Changing this will create a new resource.
-	AvailabilityZone pulumi.StringPtrInput
-	// The available capacity of the SFS Turbo file system in the unit of GB.
-	AvailableCapacity pulumi.StringPtrInput
-	// Specifies the backup ID.
-	//
-	// > This parameter is mandatory when a file system is created from a backup.
-	BackupId pulumi.StringPtrInput
-	// Specifies the charging mode of the SFS Turbo.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the ID of a KMS key to encrypt the file system. Changing this
-	// will create a new resource.
-	CryptKeyId pulumi.StringPtrInput
-	// Specifies the VM flavor used for creating a dedicated file system.
-	DedicatedFlavor pulumi.StringPtrInput
-	// Specifies the ID of the dedicated distributed storage used
-	// when creating a dedicated file system.
-	DedicatedStorageId pulumi.StringPtrInput
-	// Specifies whether the file system is enhanced or not. Changing this will
-	// create a new resource.
-	//
-	// This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
-	Enhanced pulumi.BoolPtrInput
-	// The enterprise project id of the file system. Changing this
-	// will create a new resource.
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringPtrInput
+	AvailableCapacity   pulumi.StringPtrInput
+	BackupId            pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	CryptKeyId          pulumi.StringPtrInput
+	DedicatedFlavor     pulumi.StringPtrInput
+	DedicatedStorageId  pulumi.StringPtrInput
+	Enhanced            pulumi.BoolPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// The mount point of the SFS Turbo file system.
-	ExportLocation pulumi.StringPtrInput
-	// Specifies the HPC bandwidth. Changing this will create a new resource.
-	// This parameter is valid and required when `shareType` is set to **HPC**.
-	// Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
-	HpcBandwidth pulumi.StringPtrInput
-	// Specifies the HPC cache bandwidth(GB/s).
-	// This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
-	// Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
-	HpcCacheBandwidth pulumi.StringPtrInput
-	// Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
-	// characters and must start with a letter.
-	Name pulumi.StringPtrInput
-	// Specifies the charging period of the SFS Turbo.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the SFS Turbo.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit pulumi.StringPtrInput
-	// The region in which to create the SFS Turbo resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new SFS Turbo resource.
-	Region pulumi.StringPtrInput
-	// Specifies the security group ID.
-	SecurityGroupId pulumi.StringPtrInput
-	// Specifies the protocol for sharing file systems. The valid value is NFS.
-	// Changing this will create a new resource.
-	ShareProto pulumi.StringPtrInput
-	// Specifies the file system type. Changing this will create a new resource.
-	// Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
-	// Defaults to **STANDARD**.
-	//
-	// > The share type **HPC_CACHE** only support in postpaid charging mode.
-	ShareType pulumi.StringPtrInput
-	// Specifies the capacity of a sharing file system, in GB.
-	// + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
-	// `10,240` to `327,680` for an enhanced file system.
-	//
-	// + If `shareType` is set to **HPC**, the value ranges from `3,686` to `1,048,576` when `hpcBandwidth` is set to
-	// **20M**, and ranges from `1,228` to `1,048,576` when `hpcBandwidth` is set to **40M**, **125M**, **250M**, **500M**
-	// or **1000M**. The capacity must be a multiple of 1.2TiB, which needs to be rounded down after converting to GiB.
-	// Such as 3.6TiB->3686GiB, 4.8TiB->4915GiB, 8.4TiB->8601GiB.
-	//
-	// + If `shareType` is set to **HPC_CACHE**, the value ranges from `4,096` to `1,048,576`, and the step size is `1,024`.
-	// The minimum capacity(GB) should be equal to `2,048` multiplying the HPC cache bandwidth size(GB/s).
-	// Such as the minimum capacity is `4,096` when `hpcCacheBandwidth` is set to **2G**, the minimum capacity is `8,192`
-	// when `hpcCacheBandwidth` is set to **4G**, the minimum capacity is `16,384` when `hpcCacheBandwidth` is set to
-	// **8G**.
-	//
-	// > The file system capacity can only be expanded, not reduced.
-	Size pulumi.IntPtrInput
-	// The status of the SFS Turbo file system.
-	Status pulumi.StringPtrInput
-	// Specifies the network ID of the subnet. Changing this will create a new
-	// resource.
-	SubnetId pulumi.StringPtrInput
-	// Specifies the key/value pairs to associate with the SFS Turbo.
-	//
-	// > **NOTE:**
-	// SFS Turbo will create two private IP addresses and one virtual IP address under the subnet you specified. To ensure
-	// normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
-	// security group you specified.
-	Tags pulumi.StringMapInput
-	// The version ID of the SFS Turbo file system.
-	Version pulumi.StringPtrInput
-	// Specifies the VPC ID. Changing this will create a new resource.
-	VpcId pulumi.StringPtrInput
+	ExportLocation      pulumi.StringPtrInput
+	HpcBandwidth        pulumi.StringPtrInput
+	HpcCacheBandwidth   pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	SecurityGroupId     pulumi.StringPtrInput
+	ShareProto          pulumi.StringPtrInput
+	ShareType           pulumi.StringPtrInput
+	Size                pulumi.IntPtrInput
+	Status              pulumi.StringPtrInput
+	SubnetId            pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
+	Version             pulumi.StringPtrInput
+	VpcId               pulumi.StringPtrInput
 }
 
 func (TurboState) ElementType() reflect.Type {
@@ -541,198 +150,54 @@ func (TurboState) ElementType() reflect.Type {
 }
 
 type turboArgs struct {
-	// Specifies whether auto renew is enabled.\
-	// The valid values are **true** and **false**.
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the availability zone where the file system is located.
-	// Changing this will create a new resource.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Specifies the backup ID.
-	//
-	// > This parameter is mandatory when a file system is created from a backup.
-	BackupId *string `pulumi:"backupId"`
-	// Specifies the charging mode of the SFS Turbo.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the ID of a KMS key to encrypt the file system. Changing this
-	// will create a new resource.
-	CryptKeyId *string `pulumi:"cryptKeyId"`
-	// Specifies the VM flavor used for creating a dedicated file system.
-	DedicatedFlavor *string `pulumi:"dedicatedFlavor"`
-	// Specifies the ID of the dedicated distributed storage used
-	// when creating a dedicated file system.
-	DedicatedStorageId *string `pulumi:"dedicatedStorageId"`
-	// Specifies whether the file system is enhanced or not. Changing this will
-	// create a new resource.
-	//
-	// This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
-	Enhanced *bool `pulumi:"enhanced"`
-	// The enterprise project id of the file system. Changing this
-	// will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the HPC bandwidth. Changing this will create a new resource.
-	// This parameter is valid and required when `shareType` is set to **HPC**.
-	// Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
-	HpcBandwidth *string `pulumi:"hpcBandwidth"`
-	// Specifies the HPC cache bandwidth(GB/s).
-	// This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
-	// Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
-	HpcCacheBandwidth *string `pulumi:"hpcCacheBandwidth"`
-	// Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
-	// characters and must start with a letter.
-	Name *string `pulumi:"name"`
-	// Specifies the charging period of the SFS Turbo.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the SFS Turbo.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// The region in which to create the SFS Turbo resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new SFS Turbo resource.
-	Region *string `pulumi:"region"`
-	// Specifies the security group ID.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Specifies the protocol for sharing file systems. The valid value is NFS.
-	// Changing this will create a new resource.
-	ShareProto *string `pulumi:"shareProto"`
-	// Specifies the file system type. Changing this will create a new resource.
-	// Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
-	// Defaults to **STANDARD**.
-	//
-	// > The share type **HPC_CACHE** only support in postpaid charging mode.
-	ShareType *string `pulumi:"shareType"`
-	// Specifies the capacity of a sharing file system, in GB.
-	// + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
-	// `10,240` to `327,680` for an enhanced file system.
-	//
-	// + If `shareType` is set to **HPC**, the value ranges from `3,686` to `1,048,576` when `hpcBandwidth` is set to
-	// **20M**, and ranges from `1,228` to `1,048,576` when `hpcBandwidth` is set to **40M**, **125M**, **250M**, **500M**
-	// or **1000M**. The capacity must be a multiple of 1.2TiB, which needs to be rounded down after converting to GiB.
-	// Such as 3.6TiB->3686GiB, 4.8TiB->4915GiB, 8.4TiB->8601GiB.
-	//
-	// + If `shareType` is set to **HPC_CACHE**, the value ranges from `4,096` to `1,048,576`, and the step size is `1,024`.
-	// The minimum capacity(GB) should be equal to `2,048` multiplying the HPC cache bandwidth size(GB/s).
-	// Such as the minimum capacity is `4,096` when `hpcCacheBandwidth` is set to **2G**, the minimum capacity is `8,192`
-	// when `hpcCacheBandwidth` is set to **4G**, the minimum capacity is `16,384` when `hpcCacheBandwidth` is set to
-	// **8G**.
-	//
-	// > The file system capacity can only be expanded, not reduced.
-	Size int `pulumi:"size"`
-	// Specifies the network ID of the subnet. Changing this will create a new
-	// resource.
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the key/value pairs to associate with the SFS Turbo.
-	//
-	// > **NOTE:**
-	// SFS Turbo will create two private IP addresses and one virtual IP address under the subnet you specified. To ensure
-	// normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
-	// security group you specified.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the VPC ID. Changing this will create a new resource.
-	VpcId string `pulumi:"vpcId"`
+	AutoRenew           *string           `pulumi:"autoRenew"`
+	AvailabilityZone    string            `pulumi:"availabilityZone"`
+	BackupId            *string           `pulumi:"backupId"`
+	ChargingMode        *string           `pulumi:"chargingMode"`
+	CryptKeyId          *string           `pulumi:"cryptKeyId"`
+	DedicatedFlavor     *string           `pulumi:"dedicatedFlavor"`
+	DedicatedStorageId  *string           `pulumi:"dedicatedStorageId"`
+	Enhanced            *bool             `pulumi:"enhanced"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	HpcBandwidth        *string           `pulumi:"hpcBandwidth"`
+	HpcCacheBandwidth   *string           `pulumi:"hpcCacheBandwidth"`
+	Name                *string           `pulumi:"name"`
+	Period              *int              `pulumi:"period"`
+	PeriodUnit          *string           `pulumi:"periodUnit"`
+	Region              *string           `pulumi:"region"`
+	SecurityGroupId     string            `pulumi:"securityGroupId"`
+	ShareProto          *string           `pulumi:"shareProto"`
+	ShareType           *string           `pulumi:"shareType"`
+	Size                int               `pulumi:"size"`
+	SubnetId            string            `pulumi:"subnetId"`
+	Tags                map[string]string `pulumi:"tags"`
+	VpcId               string            `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Turbo resource.
 type TurboArgs struct {
-	// Specifies whether auto renew is enabled.\
-	// The valid values are **true** and **false**.
-	AutoRenew pulumi.StringPtrInput
-	// Specifies the availability zone where the file system is located.
-	// Changing this will create a new resource.
-	AvailabilityZone pulumi.StringInput
-	// Specifies the backup ID.
-	//
-	// > This parameter is mandatory when a file system is created from a backup.
-	BackupId pulumi.StringPtrInput
-	// Specifies the charging mode of the SFS Turbo.
-	// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-	// Changing this parameter will create a new cluster resource.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the ID of a KMS key to encrypt the file system. Changing this
-	// will create a new resource.
-	CryptKeyId pulumi.StringPtrInput
-	// Specifies the VM flavor used for creating a dedicated file system.
-	DedicatedFlavor pulumi.StringPtrInput
-	// Specifies the ID of the dedicated distributed storage used
-	// when creating a dedicated file system.
-	DedicatedStorageId pulumi.StringPtrInput
-	// Specifies whether the file system is enhanced or not. Changing this will
-	// create a new resource.
-	//
-	// This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
-	Enhanced pulumi.BoolPtrInput
-	// The enterprise project id of the file system. Changing this
-	// will create a new resource.
+	AutoRenew           pulumi.StringPtrInput
+	AvailabilityZone    pulumi.StringInput
+	BackupId            pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	CryptKeyId          pulumi.StringPtrInput
+	DedicatedFlavor     pulumi.StringPtrInput
+	DedicatedStorageId  pulumi.StringPtrInput
+	Enhanced            pulumi.BoolPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the HPC bandwidth. Changing this will create a new resource.
-	// This parameter is valid and required when `shareType` is set to **HPC**.
-	// Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
-	HpcBandwidth pulumi.StringPtrInput
-	// Specifies the HPC cache bandwidth(GB/s).
-	// This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
-	// Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
-	HpcCacheBandwidth pulumi.StringPtrInput
-	// Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
-	// characters and must start with a letter.
-	Name pulumi.StringPtrInput
-	// Specifies the charging period of the SFS Turbo.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
-	// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the SFS Turbo.
-	// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-	// Changing this parameter will create a new cluster resource.
-	PeriodUnit pulumi.StringPtrInput
-	// The region in which to create the SFS Turbo resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new SFS Turbo resource.
-	Region pulumi.StringPtrInput
-	// Specifies the security group ID.
-	SecurityGroupId pulumi.StringInput
-	// Specifies the protocol for sharing file systems. The valid value is NFS.
-	// Changing this will create a new resource.
-	ShareProto pulumi.StringPtrInput
-	// Specifies the file system type. Changing this will create a new resource.
-	// Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
-	// Defaults to **STANDARD**.
-	//
-	// > The share type **HPC_CACHE** only support in postpaid charging mode.
-	ShareType pulumi.StringPtrInput
-	// Specifies the capacity of a sharing file system, in GB.
-	// + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
-	// `10,240` to `327,680` for an enhanced file system.
-	//
-	// + If `shareType` is set to **HPC**, the value ranges from `3,686` to `1,048,576` when `hpcBandwidth` is set to
-	// **20M**, and ranges from `1,228` to `1,048,576` when `hpcBandwidth` is set to **40M**, **125M**, **250M**, **500M**
-	// or **1000M**. The capacity must be a multiple of 1.2TiB, which needs to be rounded down after converting to GiB.
-	// Such as 3.6TiB->3686GiB, 4.8TiB->4915GiB, 8.4TiB->8601GiB.
-	//
-	// + If `shareType` is set to **HPC_CACHE**, the value ranges from `4,096` to `1,048,576`, and the step size is `1,024`.
-	// The minimum capacity(GB) should be equal to `2,048` multiplying the HPC cache bandwidth size(GB/s).
-	// Such as the minimum capacity is `4,096` when `hpcCacheBandwidth` is set to **2G**, the minimum capacity is `8,192`
-	// when `hpcCacheBandwidth` is set to **4G**, the minimum capacity is `16,384` when `hpcCacheBandwidth` is set to
-	// **8G**.
-	//
-	// > The file system capacity can only be expanded, not reduced.
-	Size pulumi.IntInput
-	// Specifies the network ID of the subnet. Changing this will create a new
-	// resource.
-	SubnetId pulumi.StringInput
-	// Specifies the key/value pairs to associate with the SFS Turbo.
-	//
-	// > **NOTE:**
-	// SFS Turbo will create two private IP addresses and one virtual IP address under the subnet you specified. To ensure
-	// normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
-	// security group you specified.
-	Tags pulumi.StringMapInput
-	// Specifies the VPC ID. Changing this will create a new resource.
-	VpcId pulumi.StringInput
+	HpcBandwidth        pulumi.StringPtrInput
+	HpcCacheBandwidth   pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	SecurityGroupId     pulumi.StringInput
+	ShareProto          pulumi.StringPtrInput
+	ShareType           pulumi.StringPtrInput
+	Size                pulumi.IntInput
+	SubnetId            pulumi.StringInput
+	Tags                pulumi.StringMapInput
+	VpcId               pulumi.StringInput
 }
 
 func (TurboArgs) ElementType() reflect.Type {
@@ -822,182 +287,106 @@ func (o TurboOutput) ToTurboOutputWithContext(ctx context.Context) TurboOutput {
 	return o
 }
 
-// Specifies whether auto renew is enabled.\
-// The valid values are **true** and **false**.
 func (o TurboOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the availability zone where the file system is located.
-// Changing this will create a new resource.
 func (o TurboOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The available capacity of the SFS Turbo file system in the unit of GB.
 func (o TurboOutput) AvailableCapacity() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.AvailableCapacity }).(pulumi.StringOutput)
 }
 
-// Specifies the backup ID.
-//
-// > This parameter is mandatory when a file system is created from a backup.
 func (o TurboOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.BackupId }).(pulumi.StringOutput)
 }
 
-// Specifies the charging mode of the SFS Turbo.
-// Valid values are **prePaid** and **postPaid**, defaults to **postPaid**.
-// Changing this parameter will create a new cluster resource.
 func (o TurboOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of a KMS key to encrypt the file system. Changing this
-// will create a new resource.
 func (o TurboOutput) CryptKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.CryptKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the VM flavor used for creating a dedicated file system.
 func (o TurboOutput) DedicatedFlavor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.DedicatedFlavor }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the ID of the dedicated distributed storage used
-// when creating a dedicated file system.
 func (o TurboOutput) DedicatedStorageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.DedicatedStorageId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the file system is enhanced or not. Changing this will
-// create a new resource.
-//
-// This parameter is valid only when `shareType` is set to **STANDARD** or **PERFORMANCE**.
 func (o TurboOutput) Enhanced() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.BoolOutput { return v.Enhanced }).(pulumi.BoolOutput)
 }
 
-// The enterprise project id of the file system. Changing this
-// will create a new resource.
 func (o TurboOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The mount point of the SFS Turbo file system.
 func (o TurboOutput) ExportLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.ExportLocation }).(pulumi.StringOutput)
 }
 
-// Specifies the HPC bandwidth. Changing this will create a new resource.
-// This parameter is valid and required when `shareType` is set to **HPC**.
-// Valid values are: **20M**, **40M**, **125M**, **250M**, **500M** and **1000M**.
 func (o TurboOutput) HpcBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.HpcBandwidth }).(pulumi.StringOutput)
 }
 
-// Specifies the HPC cache bandwidth(GB/s).
-// This parameter is valid and required when `shareType` is set to **HPC_CACHE**.
-// Valid values are: **2G**, **4G**, **8G**, **16G**, **24G**, **32G** and **48G**.
 func (o TurboOutput) HpcCacheBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.HpcCacheBandwidth }).(pulumi.StringOutput)
 }
 
-// Specifies the name of an SFS Turbo file system. The value contains `4` to `64`
-// characters and must start with a letter.
 func (o TurboOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the charging period of the SFS Turbo.
-// If `periodUnit` is set to **month**, the value ranges from `1` to `11`.
-// If `periodUnit` is set to **year**, the value ranges from `1` to `3`.
-// This parameter is mandatory if `chargingMode` is set to **prePaid**.
-// Changing this parameter will create a new cluster resource.
 func (o TurboOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the charging period unit of the SFS Turbo.
-// Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-// Changing this parameter will create a new cluster resource.
 func (o TurboOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The region in which to create the SFS Turbo resource. If omitted, the
-// provider-level region will be used. Changing this creates a new SFS Turbo resource.
 func (o TurboOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the security group ID.
 func (o TurboOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol for sharing file systems. The valid value is NFS.
-// Changing this will create a new resource.
 func (o TurboOutput) ShareProto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.ShareProto }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the file system type. Changing this will create a new resource.
-// Valid values are **STANDARD**, **PERFORMANCE**, **HPC** and **HPC_CACHE**.
-// Defaults to **STANDARD**.
-//
-// > The share type **HPC_CACHE** only support in postpaid charging mode.
 func (o TurboOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringPtrOutput { return v.ShareType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the capacity of a sharing file system, in GB.
-// + If `shareType` is set to **STANDARD** or **PERFORMANCE**, the value ranges from `500` to `32,768`, and ranges from
-// `10,240` to `327,680` for an enhanced file system.
-//
-// + If `shareType` is set to **HPC**, the value ranges from `3,686` to `1,048,576` when `hpcBandwidth` is set to
-// **20M**, and ranges from `1,228` to `1,048,576` when `hpcBandwidth` is set to **40M**, **125M**, **250M**, **500M**
-// or **1000M**. The capacity must be a multiple of 1.2TiB, which needs to be rounded down after converting to GiB.
-// Such as 3.6TiB->3686GiB, 4.8TiB->4915GiB, 8.4TiB->8601GiB.
-//
-// + If `shareType` is set to **HPC_CACHE**, the value ranges from `4,096` to `1,048,576`, and the step size is `1,024`.
-// The minimum capacity(GB) should be equal to `2,048` multiplying the HPC cache bandwidth size(GB/s).
-// Such as the minimum capacity is `4,096` when `hpcCacheBandwidth` is set to **2G**, the minimum capacity is `8,192`
-// when `hpcCacheBandwidth` is set to **4G**, the minimum capacity is `16,384` when `hpcCacheBandwidth` is set to
-// **8G**.
-//
-// > The file system capacity can only be expanded, not reduced.
 func (o TurboOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The status of the SFS Turbo file system.
 func (o TurboOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the network ID of the subnet. Changing this will create a new
-// resource.
 func (o TurboOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the key/value pairs to associate with the SFS Turbo.
-//
-// > **NOTE:**
-// SFS Turbo will create two private IP addresses and one virtual IP address under the subnet you specified. To ensure
-// normal use, SFS Turbo will enable the inbound rules for ports *111*, *445*, *2049*, *2051*, *2052*, and *20048* in the
-// security group you specified.
 func (o TurboOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The version ID of the SFS Turbo file system.
 func (o TurboOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC ID. Changing this will create a new resource.
 func (o TurboOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Turbo) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

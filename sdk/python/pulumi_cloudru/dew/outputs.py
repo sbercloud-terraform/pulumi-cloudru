@@ -26,13 +26,6 @@ class GetKeypairsKeypairResult(dict):
                  name: _builtins.str,
                  public_key: _builtins.str,
                  scope: _builtins.str):
-        """
-        :param _builtins.str fingerprint: Specifies the fingerprint of the keypair.
-        :param _builtins.bool is_managed: Indicates whether the private key is managed by sberCloud.
-        :param _builtins.str name: Specifies the name of the keypair.
-        :param _builtins.str public_key: Specifies the imported OpenSSH-formatted public key.
-        :param _builtins.str scope: Indicates the scope of keypair. The value can be **account**or **user**.
-        """
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "is_managed", is_managed)
         pulumi.set(__self__, "name", name)
@@ -42,41 +35,26 @@ class GetKeypairsKeypairResult(dict):
     @_builtins.property
     @pulumi.getter
     def fingerprint(self) -> _builtins.str:
-        """
-        Specifies the fingerprint of the keypair.
-        """
         return pulumi.get(self, "fingerprint")
 
     @_builtins.property
     @pulumi.getter(name="isManaged")
     def is_managed(self) -> _builtins.bool:
-        """
-        Indicates whether the private key is managed by sberCloud.
-        """
         return pulumi.get(self, "is_managed")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the keypair.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> _builtins.str:
-        """
-        Specifies the imported OpenSSH-formatted public key.
-        """
         return pulumi.get(self, "public_key")
 
     @_builtins.property
     @pulumi.getter
     def scope(self) -> _builtins.str:
-        """
-        Indicates the scope of keypair. The value can be **account**or **user**.
-        """
         return pulumi.get(self, "scope")
 
 

@@ -50,9 +50,6 @@ class GetDmsKafkaUsersResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Indicates the description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -71,9 +68,6 @@ class GetDmsKafkaUsersResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the username.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -84,9 +78,6 @@ class GetDmsKafkaUsersResult:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetDmsKafkaUsersUserResult']:
-        """
-        Indicates the user list.
-        """
         return pulumi.get(self, "users")
 
 
@@ -110,25 +101,7 @@ def get_dms_kafka_users(description: Optional[_builtins.str] = None,
                         region: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsKafkaUsersResult:
     """
-    Use this data source to get the list of Kafka instance users.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_kafka_users(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str description: Specifies the user description.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str name: Specifies the user name.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -151,25 +124,7 @@ def get_dms_kafka_users_output(description: Optional[pulumi.Input[Optional[_buil
                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsKafkaUsersResult]:
     """
-    Use this data source to get the list of Kafka instance users.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_kafka_users(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str description: Specifies the user description.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str name: Specifies the user name.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

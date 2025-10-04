@@ -62,9 +62,6 @@ class GetVpcRouteResult:
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> _builtins.str:
-        """
-        The next hop of the route. If the route type is peering, it will provide VPC peering connection ID.
-        """
         return pulumi.get(self, "nexthop")
 
     @_builtins.property
@@ -111,27 +108,7 @@ def get_vpc_route(destination: Optional[_builtins.str] = None,
                   vpc_id: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcRouteResult:
     """
-    !> **WARNING:** It has been deprecated, use `Vpc.RouteTable` to get the route details.
-
-    Provides details about a specific VPC route.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    vpc_route = sbercloud.get_vpc_route(vpc_id=vpc_id)
-    ```
-
-
-    :param _builtins.str destination: The route destination address (CIDR).
-    :param _builtins.str id: The id of the specific route to retrieve.
-    :param _builtins.str region: The region in which to obtain the vpc route. If omitted, the provider-level region will
-           be used.
-    :param _builtins.str tenant_id: Only the administrator can specify the tenant ID of other tenants.
-    :param _builtins.str type: Route type for filtering.
-    :param _builtins.str vpc_id: The id of the VPC that the desired route belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destination'] = destination
@@ -159,27 +136,7 @@ def get_vpc_route_output(destination: Optional[pulumi.Input[Optional[_builtins.s
                          vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcRouteResult]:
     """
-    !> **WARNING:** It has been deprecated, use `Vpc.RouteTable` to get the route details.
-
-    Provides details about a specific VPC route.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    vpc_route = sbercloud.get_vpc_route(vpc_id=vpc_id)
-    ```
-
-
-    :param _builtins.str destination: The route destination address (CIDR).
-    :param _builtins.str id: The id of the specific route to retrieve.
-    :param _builtins.str region: The region in which to obtain the vpc route. If omitted, the provider-level region will
-           be used.
-    :param _builtins.str tenant_id: Only the administrator can specify the tenant ID of other tenants.
-    :param _builtins.str type: Route type for filtering.
-    :param _builtins.str vpc_id: The id of the VPC that the desired route belongs to.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['destination'] = destination

@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get a list of CCE nodes.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const nodeName = config.requireObject<any>("nodeName");
- * const node = sbercloud.Cce.getNodes({
- *     clusterId: clusterId,
- *     name: nodeName,
- * });
- * ```
- */
 export function getNodes(args: GetNodesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cce/getNodes:getNodes", {
@@ -40,27 +22,11 @@ export function getNodes(args: GetNodesArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getNodes.
  */
 export interface GetNodesArgs {
-    /**
-     * Specifies the ID of CCE cluster.
-     */
     clusterId: string;
     ignoreDetails?: string;
-    /**
-     * Specifies the of the node.
-     */
     name?: string;
-    /**
-     * Specifies the ID of the node.
-     */
     nodeId?: string;
-    /**
-     * Specifies the region in which to obtain the CCE nodes. If omitted, the provider-level
-     * region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the status of the node.
-     */
     status?: string;
 }
 
@@ -73,44 +39,14 @@ export interface GetNodesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Indicates a list of IDs of all CCE nodes found.
-     */
     readonly ids: string[];
     readonly ignoreDetails?: string;
-    /**
-     * The name of the node.
-     */
     readonly name?: string;
     readonly nodeId?: string;
-    /**
-     * Indicates a list of CCE nodes found. Structure is documented below.
-     */
     readonly nodes: outputs.Cce.GetNodesNode[];
     readonly region: string;
-    /**
-     * The state of the node.
-     */
     readonly status?: string;
 }
-/**
- * Use this data source to get a list of CCE nodes.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const nodeName = config.requireObject<any>("nodeName");
- * const node = sbercloud.Cce.getNodes({
- *     clusterId: clusterId,
- *     name: nodeName,
- * });
- * ```
- */
 export function getNodesOutput(args: GetNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cce/getNodes:getNodes", {
@@ -127,26 +63,10 @@ export function getNodesOutput(args: GetNodesOutputArgs, opts?: pulumi.InvokeOut
  * A collection of arguments for invoking getNodes.
  */
 export interface GetNodesOutputArgs {
-    /**
-     * Specifies the ID of CCE cluster.
-     */
     clusterId: pulumi.Input<string>;
     ignoreDetails?: pulumi.Input<string>;
-    /**
-     * Specifies the of the node.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the node.
-     */
     nodeId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the CCE nodes. If omitted, the provider-level
-     * region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the node.
-     */
     status?: pulumi.Input<string>;
 }

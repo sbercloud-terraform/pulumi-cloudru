@@ -29,28 +29,11 @@ class DdsParameterTemplateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DdsParameterTemplate resource.
-        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template. Valid value:
-               + **mongos**: the mongos node type.
-               + **shard**: the shard node type.
-               + **config**: the config node type.
-               + **replica**: the replica node type.
-               + **single**: the single node type.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template.
         :param pulumi.Input[_builtins.str] node_version: Specifies the database version.
-               The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the parameter template description.
-               The description must consist of a maximum of 256 characters and cannot contain the carriage
-               return character or the following special characters: >!<"&'=.
         :param pulumi.Input[_builtins.str] name: Specifies the parameter template name.
-               The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "node_type", node_type)
         pulumi.set(__self__, "node_version", node_version)
@@ -67,14 +50,7 @@ class DdsParameterTemplateArgs:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the node type of parameter template. Valid value:
-        + **mongos**: the mongos node type.
-        + **shard**: the shard node type.
-        + **config**: the config node type.
-        + **replica**: the replica node type.
-        + **single**: the single node type.
-
-        Changing this parameter will create a new resource.
+        Specifies the node type of parameter template.
         """
         return pulumi.get(self, "node_type")
 
@@ -87,9 +63,6 @@ class DdsParameterTemplateArgs:
     def node_version(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the database version.
-        The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "node_version")
 
@@ -102,8 +75,6 @@ class DdsParameterTemplateArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template description.
-        The description must consist of a maximum of 256 characters and cannot contain the carriage
-        return character or the following special characters: >!<"&'=.
         """
         return pulumi.get(self, "description")
 
@@ -116,8 +87,6 @@ class DdsParameterTemplateArgs:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template name.
-        The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
         """
         return pulumi.get(self, "name")
 
@@ -130,7 +99,6 @@ class DdsParameterTemplateArgs:
     def parameter_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies the mapping between parameter names and parameter values.
-        You can customize parameter values based on the parameters in the default parameter template.
         """
         return pulumi.get(self, "parameter_values")
 
@@ -141,10 +109,6 @@ class DdsParameterTemplateArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -166,32 +130,12 @@ class _DdsParameterTemplateState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DdsParameterTemplate resources.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the parameter template.
         :param pulumi.Input[_builtins.str] description: Specifies the parameter template description.
-               The description must consist of a maximum of 256 characters and cannot contain the carriage
-               return character or the following special characters: >!<"&'=.
         :param pulumi.Input[_builtins.str] name: Specifies the parameter template name.
-               The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template. Valid value:
-               + **mongos**: the mongos node type.
-               + **shard**: the shard node type.
-               + **config**: the config node type.
-               + **replica**: the replica node type.
-               + **single**: the single node type.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template.
         :param pulumi.Input[_builtins.str] node_version: Specifies the database version.
-               The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
         :param pulumi.Input[Sequence[pulumi.Input['DdsParameterTemplateParameterArgs']]] parameters: Indicates the parameters defined by users based on the default parameter templates.
-               The Parameter structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the parameter template.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -215,9 +159,6 @@ class _DdsParameterTemplateState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The create time of the parameter template.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -229,8 +170,6 @@ class _DdsParameterTemplateState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template description.
-        The description must consist of a maximum of 256 characters and cannot contain the carriage
-        return character or the following special characters: >!<"&'=.
         """
         return pulumi.get(self, "description")
 
@@ -243,8 +182,6 @@ class _DdsParameterTemplateState:
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template name.
-        The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
         """
         return pulumi.get(self, "name")
 
@@ -256,14 +193,7 @@ class _DdsParameterTemplateState:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the node type of parameter template. Valid value:
-        + **mongos**: the mongos node type.
-        + **shard**: the shard node type.
-        + **config**: the config node type.
-        + **replica**: the replica node type.
-        + **single**: the single node type.
-
-        Changing this parameter will create a new resource.
+        Specifies the node type of parameter template.
         """
         return pulumi.get(self, "node_type")
 
@@ -276,9 +206,6 @@ class _DdsParameterTemplateState:
     def node_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the database version.
-        The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "node_version")
 
@@ -291,7 +218,6 @@ class _DdsParameterTemplateState:
     def parameter_values(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Specifies the mapping between parameter names and parameter values.
-        You can customize parameter values based on the parameters in the default parameter template.
         """
         return pulumi.get(self, "parameter_values")
 
@@ -304,7 +230,6 @@ class _DdsParameterTemplateState:
     def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DdsParameterTemplateParameterArgs']]]]:
         """
         Indicates the parameters defined by users based on the default parameter templates.
-        The Parameter structure is documented below.
         """
         return pulumi.get(self, "parameters")
 
@@ -315,10 +240,6 @@ class _DdsParameterTemplateState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -328,9 +249,6 @@ class _DdsParameterTemplateState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The update time of the parameter template.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -352,60 +270,14 @@ class DdsParameterTemplate(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DDS parameter template resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        parameter_values = config.require_object("parameterValues")
-        node_type = config.require_object("nodeType")
-        node_version = config.require_object("nodeVersion")
-        test = sbercloud.DdsParameterTemplate("test",
-            name=name,
-            parameter_values=parameter_values,
-            node_type=node_type,
-            node_version=node_version)
-        ```
-
-        ## Import
-
-        The DDS parameter template can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/ddsParameterTemplate:DdsParameterTemplate test <tempalate_id>
-        ```
-
+        Create a DdsParameterTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Specifies the parameter template description.
-               The description must consist of a maximum of 256 characters and cannot contain the carriage
-               return character or the following special characters: >!<"&'=.
         :param pulumi.Input[_builtins.str] name: Specifies the parameter template name.
-               The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template. Valid value:
-               + **mongos**: the mongos node type.
-               + **shard**: the shard node type.
-               + **config**: the config node type.
-               + **replica**: the replica node type.
-               + **single**: the single node type.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template.
         :param pulumi.Input[_builtins.str] node_version: Specifies the database version.
-               The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -414,36 +286,7 @@ class DdsParameterTemplate(pulumi.CustomResource):
                  args: DdsParameterTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DDS parameter template resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        parameter_values = config.require_object("parameterValues")
-        node_type = config.require_object("nodeType")
-        node_version = config.require_object("nodeVersion")
-        test = sbercloud.DdsParameterTemplate("test",
-            name=name,
-            parameter_values=parameter_values,
-            node_type=node_type,
-            node_version=node_version)
-        ```
-
-        ## Import
-
-        The DDS parameter template can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/ddsParameterTemplate:DdsParameterTemplate test <tempalate_id>
-        ```
-
+        Create a DdsParameterTemplate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DdsParameterTemplateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -513,32 +356,12 @@ class DdsParameterTemplate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the parameter template.
         :param pulumi.Input[_builtins.str] description: Specifies the parameter template description.
-               The description must consist of a maximum of 256 characters and cannot contain the carriage
-               return character or the following special characters: >!<"&'=.
         :param pulumi.Input[_builtins.str] name: Specifies the parameter template name.
-               The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template. Valid value:
-               + **mongos**: the mongos node type.
-               + **shard**: the shard node type.
-               + **config**: the config node type.
-               + **replica**: the replica node type.
-               + **single**: the single node type.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] node_type: Specifies the node type of parameter template.
         :param pulumi.Input[_builtins.str] node_version: Specifies the database version.
-               The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameter_values: Specifies the mapping between parameter names and parameter values.
-               You can customize parameter values based on the parameters in the default parameter template.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DdsParameterTemplateParameterArgs', 'DdsParameterTemplateParameterArgsDict']]]] parameters: Indicates the parameters defined by users based on the default parameter templates.
-               The Parameter structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the parameter template.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,9 +381,6 @@ class DdsParameterTemplate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The create time of the parameter template.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
@@ -568,8 +388,6 @@ class DdsParameterTemplate(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Specifies the parameter template description.
-        The description must consist of a maximum of 256 characters and cannot contain the carriage
-        return character or the following special characters: >!<"&'=.
         """
         return pulumi.get(self, "description")
 
@@ -578,8 +396,6 @@ class DdsParameterTemplate(pulumi.CustomResource):
     def name(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the parameter template name.
-        The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
         """
         return pulumi.get(self, "name")
 
@@ -587,14 +403,7 @@ class DdsParameterTemplate(pulumi.CustomResource):
     @pulumi.getter(name="nodeType")
     def node_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the node type of parameter template. Valid value:
-        + **mongos**: the mongos node type.
-        + **shard**: the shard node type.
-        + **config**: the config node type.
-        + **replica**: the replica node type.
-        + **single**: the single node type.
-
-        Changing this parameter will create a new resource.
+        Specifies the node type of parameter template.
         """
         return pulumi.get(self, "node_type")
 
@@ -603,9 +412,6 @@ class DdsParameterTemplate(pulumi.CustomResource):
     def node_version(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the database version.
-        The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "node_version")
 
@@ -614,7 +420,6 @@ class DdsParameterTemplate(pulumi.CustomResource):
     def parameter_values(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Specifies the mapping between parameter names and parameter values.
-        You can customize parameter values based on the parameters in the default parameter template.
         """
         return pulumi.get(self, "parameter_values")
 
@@ -623,24 +428,16 @@ class DdsParameterTemplate(pulumi.CustomResource):
     def parameters(self) -> pulumi.Output[Sequence['outputs.DdsParameterTemplateParameter']]:
         """
         Indicates the parameters defined by users based on the default parameter templates.
-        The Parameter structure is documented below.
         """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The update time of the parameter template.
-        """
         return pulumi.get(self, "updated_at")
 

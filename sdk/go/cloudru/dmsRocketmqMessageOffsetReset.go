@@ -12,64 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DMS RocketMQ message offset reset resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			group := cfg.RequireObject("group")
-//			topic := cfg.RequireObject("topic")
-//			_, err := sbercloud.NewDmsRocketmqMessageOffsetReset(ctx, "test", &sbercloud.DmsRocketmqMessageOffsetResetArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Group:      pulumi.Any(group),
-//				Topic:      pulumi.Any(topic),
-//				Timestamp:  pulumi.String("0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DmsRocketmqMessageOffsetReset struct {
 	pulumi.CustomResourceState
 
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group pulumi.StringOutput `pulumi:"group"`
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
+	Group      pulumi.StringOutput `pulumi:"group"`
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the timestamp.
-	// + If it is specified as **0**, reset to earliset.
-	// + If it is specified as **-1**, reset to latest.
-	// + If it is specified as a timestamp in milliseconds, reset to specific time.
-	//
-	// Changing this creates a new resource.
-	Timestamp pulumi.StringOutput `pulumi:"timestamp"`
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringOutput `pulumi:"topic"`
+	Region     pulumi.StringOutput `pulumi:"region"`
+	Timestamp  pulumi.StringOutput `pulumi:"timestamp"`
+	Topic      pulumi.StringOutput `pulumi:"topic"`
 }
 
 // NewDmsRocketmqMessageOffsetReset registers a new resource with the given unique name, arguments, and options.
@@ -114,49 +64,19 @@ func GetDmsRocketmqMessageOffsetReset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DmsRocketmqMessageOffsetReset resources.
 type dmsRocketmqMessageOffsetResetState struct {
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group *string `pulumi:"group"`
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
+	Group      *string `pulumi:"group"`
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the timestamp.
-	// + If it is specified as **0**, reset to earliset.
-	// + If it is specified as **-1**, reset to latest.
-	// + If it is specified as a timestamp in milliseconds, reset to specific time.
-	//
-	// Changing this creates a new resource.
-	Timestamp *string `pulumi:"timestamp"`
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic *string `pulumi:"topic"`
+	Region     *string `pulumi:"region"`
+	Timestamp  *string `pulumi:"timestamp"`
+	Topic      *string `pulumi:"topic"`
 }
 
 type DmsRocketmqMessageOffsetResetState struct {
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group pulumi.StringPtrInput
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
+	Group      pulumi.StringPtrInput
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the timestamp.
-	// + If it is specified as **0**, reset to earliset.
-	// + If it is specified as **-1**, reset to latest.
-	// + If it is specified as a timestamp in milliseconds, reset to specific time.
-	//
-	// Changing this creates a new resource.
-	Timestamp pulumi.StringPtrInput
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
+	Timestamp  pulumi.StringPtrInput
+	Topic      pulumi.StringPtrInput
 }
 
 func (DmsRocketmqMessageOffsetResetState) ElementType() reflect.Type {
@@ -164,50 +84,20 @@ func (DmsRocketmqMessageOffsetResetState) ElementType() reflect.Type {
 }
 
 type dmsRocketmqMessageOffsetResetArgs struct {
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group string `pulumi:"group"`
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the timestamp.
-	// + If it is specified as **0**, reset to earliset.
-	// + If it is specified as **-1**, reset to latest.
-	// + If it is specified as a timestamp in milliseconds, reset to specific time.
-	//
-	// Changing this creates a new resource.
-	Timestamp string `pulumi:"timestamp"`
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic string `pulumi:"topic"`
+	Group      string  `pulumi:"group"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
+	Timestamp  string  `pulumi:"timestamp"`
+	Topic      string  `pulumi:"topic"`
 }
 
 // The set of arguments for constructing a DmsRocketmqMessageOffsetReset resource.
 type DmsRocketmqMessageOffsetResetArgs struct {
-	// Specifies the group name.
-	// Changing this creates a new resource.
-	Group pulumi.StringInput
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
+	Group      pulumi.StringInput
 	InstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the timestamp.
-	// + If it is specified as **0**, reset to earliset.
-	// + If it is specified as **-1**, reset to latest.
-	// + If it is specified as a timestamp in milliseconds, reset to specific time.
-	//
-	// Changing this creates a new resource.
-	Timestamp pulumi.StringInput
-	// Specifies the topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringInput
+	Region     pulumi.StringPtrInput
+	Timestamp  pulumi.StringInput
+	Topic      pulumi.StringInput
 }
 
 func (DmsRocketmqMessageOffsetResetArgs) ElementType() reflect.Type {
@@ -297,37 +187,22 @@ func (o DmsRocketmqMessageOffsetResetOutput) ToDmsRocketmqMessageOffsetResetOutp
 	return o
 }
 
-// Specifies the group name.
-// Changing this creates a new resource.
 func (o DmsRocketmqMessageOffsetResetOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqMessageOffsetReset) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
-// Specifies the instance ID.
-// Changing this creates a new resource.
 func (o DmsRocketmqMessageOffsetResetOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqMessageOffsetReset) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DmsRocketmqMessageOffsetResetOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqMessageOffsetReset) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the timestamp.
-// + If it is specified as **0**, reset to earliset.
-// + If it is specified as **-1**, reset to latest.
-// + If it is specified as a timestamp in milliseconds, reset to specific time.
-//
-// Changing this creates a new resource.
 func (o DmsRocketmqMessageOffsetResetOutput) Timestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqMessageOffsetReset) pulumi.StringOutput { return v.Timestamp }).(pulumi.StringOutput)
 }
 
-// Specifies the topic name.
-// Changing this creates a new resource.
 func (o DmsRocketmqMessageOffsetResetOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqMessageOffsetReset) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

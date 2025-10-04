@@ -82,25 +82,16 @@ class GetListenersResult:
     @_builtins.property
     @pulumi.getter(name="defaultPoolId")
     def default_pool_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the default pool with which the ELB listener is associated.
-        """
         return pulumi.get(self, "default_pool_id")
 
     @_builtins.property
     @pulumi.getter(name="defaultTlsContainerRef")
     def default_tls_container_ref(self) -> Optional[_builtins.str]:
-        """
-        The ID of the server certificate used by the listener.
-        """
         return pulumi.get(self, "default_tls_container_ref")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The description of the ELB listener.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -111,9 +102,6 @@ class GetListenersResult:
     @_builtins.property
     @pulumi.getter(name="http2Enable")
     def http2_enable(self) -> Optional[_builtins.str]:
-        """
-        Whether the ELB listener uses HTTP/2.
-        """
         return pulumi.get(self, "http2_enable")
 
     @_builtins.property
@@ -132,10 +120,6 @@ class GetListenersResult:
     @_builtins.property
     @pulumi.getter
     def listeners(self) -> Sequence['outputs.GetListenersListenerResult']:
-        """
-        Listener list.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "listeners")
 
     @_builtins.property
@@ -146,25 +130,16 @@ class GetListenersResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The listener name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.str]:
-        """
-        The listener protocol.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter(name="protocolPort")
     def protocol_port(self) -> Optional[_builtins.str]:
-        """
-        The front-end listening port of the listener.
-        """
         return pulumi.get(self, "protocol_port")
 
     @_builtins.property
@@ -216,31 +191,7 @@ def get_listeners(client_ca_tls_container_ref: Optional[_builtins.str] = None,
                   tls_ciphers_policy: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetListenersResult:
     """
-    Use this data source to query the list of ELB listeners.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    protocol = config.require_object("protocol")
-    test = sbercloud.Elb.get_listeners(protocol=protocol)
-    ```
-
-
-    :param _builtins.str default_pool_id: The ID of the default pool with which the ELB listener is associated.
-    :param _builtins.str default_tls_container_ref: The ID of the server certificate used by the listener.
-    :param _builtins.str description: The description of the ELB listener.
-    :param _builtins.str http2_enable: Whether the ELB listener uses HTTP/2.
-    :param _builtins.str name: The listener name.
-    :param _builtins.str protocol: The listener protocol.  
-           The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-    :param _builtins.str protocol_port: The front-end listening port of the listener.  
-           The valid value is range from `1` to `65535`.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clientCaTlsContainerRef'] = client_ca_tls_container_ref
@@ -290,31 +241,7 @@ def get_listeners_output(client_ca_tls_container_ref: Optional[pulumi.Input[Opti
                          tls_ciphers_policy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListenersResult]:
     """
-    Use this data source to query the list of ELB listeners.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    protocol = config.require_object("protocol")
-    test = sbercloud.Elb.get_listeners(protocol=protocol)
-    ```
-
-
-    :param _builtins.str default_pool_id: The ID of the default pool with which the ELB listener is associated.
-    :param _builtins.str default_tls_container_ref: The ID of the server certificate used by the listener.
-    :param _builtins.str description: The description of the ELB listener.
-    :param _builtins.str http2_enable: Whether the ELB listener uses HTTP/2.
-    :param _builtins.str name: The listener name.
-    :param _builtins.str protocol: The listener protocol.  
-           The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-    :param _builtins.str protocol_port: The front-end listening port of the listener.  
-           The valid value is range from `1` to `65535`.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clientCaTlsContainerRef'] = client_ca_tls_container_ref

@@ -162,17 +162,9 @@ func (o ListenerInsertHeadersPtrOutput) XForwardedHost() pulumi.StringPtrOutput 
 }
 
 type PoolPersistence struct {
-	// The name of the cookie if persistence mode is set appropriately. Required
-	// if `type = APP_COOKIE`.
 	CookieName *string `pulumi:"cookieName"`
-	// Specifies the sticky session timeout duration in minutes. This parameter is
-	// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-	// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-	// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-	Timeout *int `pulumi:"timeout"`
-	// The type of persistence mode. The current specification supports SOURCE_IP,
-	// HTTP_COOKIE, and APP_COOKIE.
-	Type string `pulumi:"type"`
+	Timeout    *int    `pulumi:"timeout"`
+	Type       string  `pulumi:"type"`
 }
 
 // PoolPersistenceInput is an input type that accepts PoolPersistenceArgs and PoolPersistenceOutput values.
@@ -187,17 +179,9 @@ type PoolPersistenceInput interface {
 }
 
 type PoolPersistenceArgs struct {
-	// The name of the cookie if persistence mode is set appropriately. Required
-	// if `type = APP_COOKIE`.
 	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
-	// Specifies the sticky session timeout duration in minutes. This parameter is
-	// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-	// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-	// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
-	// The type of persistence mode. The current specification supports SOURCE_IP,
-	// HTTP_COOKIE, and APP_COOKIE.
-	Type pulumi.StringInput `pulumi:"type"`
+	Timeout    pulumi.IntPtrInput    `pulumi:"timeout"`
+	Type       pulumi.StringInput    `pulumi:"type"`
 }
 
 func (PoolPersistenceArgs) ElementType() reflect.Type {
@@ -251,22 +235,14 @@ func (o PoolPersistenceOutput) ToPoolPersistenceOutputWithContext(ctx context.Co
 	return o
 }
 
-// The name of the cookie if persistence mode is set appropriately. Required
-// if `type = APP_COOKIE`.
 func (o PoolPersistenceOutput) CookieName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the sticky session timeout duration in minutes. This parameter is
-// invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-// + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-// + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
 func (o PoolPersistenceOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PoolPersistence) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-// The type of persistence mode. The current specification supports SOURCE_IP,
-// HTTP_COOKIE, and APP_COOKIE.
 func (o PoolPersistenceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PoolPersistence) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -292,39 +268,25 @@ func (o PoolPersistenceArrayOutput) Index(i pulumi.IntInput) PoolPersistenceOutp
 }
 
 type GetListenersListener struct {
-	ClientCaTlsContainerRef string `pulumi:"clientCaTlsContainerRef"`
-	// The maximum number of connections allowed for the listener.
-	ConnectionLimit int    `pulumi:"connectionLimit"`
-	CreatedAt       string `pulumi:"createdAt"`
-	// The ID of the default pool with which the ELB listener is associated.
-	DefaultPoolId string `pulumi:"defaultPoolId"`
-	// The ID of the server certificate used by the listener.
-	DefaultTlsContainerRef string `pulumi:"defaultTlsContainerRef"`
-	// The description of the ELB listener.
-	Description string `pulumi:"description"`
-	// Whether the ELB listener uses HTTP/2.
-	Http2Enable bool `pulumi:"http2Enable"`
-	// The ELB loadbalancer ID.
-	Id            string                             `pulumi:"id"`
-	InsertHeaders []GetListenersListenerInsertHeader `pulumi:"insertHeaders"`
-	// Listener list.
-	// The object structure is documented below.
-	Loadbalancers []GetListenersListenerLoadbalancer `pulumi:"loadbalancers"`
-	// The listener name.
-	Name             string `pulumi:"name"`
-	ProtectionReason string `pulumi:"protectionReason"`
-	ProtectionStatus string `pulumi:"protectionStatus"`
-	// The listener protocol.\
-	// The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-	Protocol string `pulumi:"protocol"`
-	// The front-end listening port of the listener.\
-	// The valid value is range from `1` to `65535`.
-	ProtocolPort int `pulumi:"protocolPort"`
-	// List of the SNI certificate (server certificates with a domain name) IDs used by the listener.
-	SniContainerRefs []string          `pulumi:"sniContainerRefs"`
-	Tags             map[string]string `pulumi:"tags"`
-	TlsCiphersPolicy string            `pulumi:"tlsCiphersPolicy"`
-	UpdatedAt        string            `pulumi:"updatedAt"`
+	ClientCaTlsContainerRef string                             `pulumi:"clientCaTlsContainerRef"`
+	ConnectionLimit         int                                `pulumi:"connectionLimit"`
+	CreatedAt               string                             `pulumi:"createdAt"`
+	DefaultPoolId           string                             `pulumi:"defaultPoolId"`
+	DefaultTlsContainerRef  string                             `pulumi:"defaultTlsContainerRef"`
+	Description             string                             `pulumi:"description"`
+	Http2Enable             bool                               `pulumi:"http2Enable"`
+	Id                      string                             `pulumi:"id"`
+	InsertHeaders           []GetListenersListenerInsertHeader `pulumi:"insertHeaders"`
+	Loadbalancers           []GetListenersListenerLoadbalancer `pulumi:"loadbalancers"`
+	Name                    string                             `pulumi:"name"`
+	ProtectionReason        string                             `pulumi:"protectionReason"`
+	ProtectionStatus        string                             `pulumi:"protectionStatus"`
+	Protocol                string                             `pulumi:"protocol"`
+	ProtocolPort            int                                `pulumi:"protocolPort"`
+	SniContainerRefs        []string                           `pulumi:"sniContainerRefs"`
+	Tags                    map[string]string                  `pulumi:"tags"`
+	TlsCiphersPolicy        string                             `pulumi:"tlsCiphersPolicy"`
+	UpdatedAt               string                             `pulumi:"updatedAt"`
 }
 
 // GetListenersListenerInput is an input type that accepts GetListenersListenerArgs and GetListenersListenerOutput values.
@@ -339,39 +301,25 @@ type GetListenersListenerInput interface {
 }
 
 type GetListenersListenerArgs struct {
-	ClientCaTlsContainerRef pulumi.StringInput `pulumi:"clientCaTlsContainerRef"`
-	// The maximum number of connections allowed for the listener.
-	ConnectionLimit pulumi.IntInput    `pulumi:"connectionLimit"`
-	CreatedAt       pulumi.StringInput `pulumi:"createdAt"`
-	// The ID of the default pool with which the ELB listener is associated.
-	DefaultPoolId pulumi.StringInput `pulumi:"defaultPoolId"`
-	// The ID of the server certificate used by the listener.
-	DefaultTlsContainerRef pulumi.StringInput `pulumi:"defaultTlsContainerRef"`
-	// The description of the ELB listener.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Whether the ELB listener uses HTTP/2.
-	Http2Enable pulumi.BoolInput `pulumi:"http2Enable"`
-	// The ELB loadbalancer ID.
-	Id            pulumi.StringInput                         `pulumi:"id"`
-	InsertHeaders GetListenersListenerInsertHeaderArrayInput `pulumi:"insertHeaders"`
-	// Listener list.
-	// The object structure is documented below.
-	Loadbalancers GetListenersListenerLoadbalancerArrayInput `pulumi:"loadbalancers"`
-	// The listener name.
-	Name             pulumi.StringInput `pulumi:"name"`
-	ProtectionReason pulumi.StringInput `pulumi:"protectionReason"`
-	ProtectionStatus pulumi.StringInput `pulumi:"protectionStatus"`
-	// The listener protocol.\
-	// The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The front-end listening port of the listener.\
-	// The valid value is range from `1` to `65535`.
-	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
-	// List of the SNI certificate (server certificates with a domain name) IDs used by the listener.
-	SniContainerRefs pulumi.StringArrayInput `pulumi:"sniContainerRefs"`
-	Tags             pulumi.StringMapInput   `pulumi:"tags"`
-	TlsCiphersPolicy pulumi.StringInput      `pulumi:"tlsCiphersPolicy"`
-	UpdatedAt        pulumi.StringInput      `pulumi:"updatedAt"`
+	ClientCaTlsContainerRef pulumi.StringInput                         `pulumi:"clientCaTlsContainerRef"`
+	ConnectionLimit         pulumi.IntInput                            `pulumi:"connectionLimit"`
+	CreatedAt               pulumi.StringInput                         `pulumi:"createdAt"`
+	DefaultPoolId           pulumi.StringInput                         `pulumi:"defaultPoolId"`
+	DefaultTlsContainerRef  pulumi.StringInput                         `pulumi:"defaultTlsContainerRef"`
+	Description             pulumi.StringInput                         `pulumi:"description"`
+	Http2Enable             pulumi.BoolInput                           `pulumi:"http2Enable"`
+	Id                      pulumi.StringInput                         `pulumi:"id"`
+	InsertHeaders           GetListenersListenerInsertHeaderArrayInput `pulumi:"insertHeaders"`
+	Loadbalancers           GetListenersListenerLoadbalancerArrayInput `pulumi:"loadbalancers"`
+	Name                    pulumi.StringInput                         `pulumi:"name"`
+	ProtectionReason        pulumi.StringInput                         `pulumi:"protectionReason"`
+	ProtectionStatus        pulumi.StringInput                         `pulumi:"protectionStatus"`
+	Protocol                pulumi.StringInput                         `pulumi:"protocol"`
+	ProtocolPort            pulumi.IntInput                            `pulumi:"protocolPort"`
+	SniContainerRefs        pulumi.StringArrayInput                    `pulumi:"sniContainerRefs"`
+	Tags                    pulumi.StringMapInput                      `pulumi:"tags"`
+	TlsCiphersPolicy        pulumi.StringInput                         `pulumi:"tlsCiphersPolicy"`
+	UpdatedAt               pulumi.StringInput                         `pulumi:"updatedAt"`
 }
 
 func (GetListenersListenerArgs) ElementType() reflect.Type {
@@ -429,7 +377,6 @@ func (o GetListenersListenerOutput) ClientCaTlsContainerRef() pulumi.StringOutpu
 	return o.ApplyT(func(v GetListenersListener) string { return v.ClientCaTlsContainerRef }).(pulumi.StringOutput)
 }
 
-// The maximum number of connections allowed for the listener.
 func (o GetListenersListenerOutput) ConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListener) int { return v.ConnectionLimit }).(pulumi.IntOutput)
 }
@@ -438,27 +385,22 @@ func (o GetListenersListenerOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The ID of the default pool with which the ELB listener is associated.
 func (o GetListenersListenerOutput) DefaultPoolId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.DefaultPoolId }).(pulumi.StringOutput)
 }
 
-// The ID of the server certificate used by the listener.
 func (o GetListenersListenerOutput) DefaultTlsContainerRef() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.DefaultTlsContainerRef }).(pulumi.StringOutput)
 }
 
-// The description of the ELB listener.
 func (o GetListenersListenerOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether the ELB listener uses HTTP/2.
 func (o GetListenersListenerOutput) Http2Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListener) bool { return v.Http2Enable }).(pulumi.BoolOutput)
 }
 
-// The ELB loadbalancer ID.
 func (o GetListenersListenerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -467,13 +409,10 @@ func (o GetListenersListenerOutput) InsertHeaders() GetListenersListenerInsertHe
 	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerInsertHeader { return v.InsertHeaders }).(GetListenersListenerInsertHeaderArrayOutput)
 }
 
-// Listener list.
-// The object structure is documented below.
 func (o GetListenersListenerOutput) Loadbalancers() GetListenersListenerLoadbalancerArrayOutput {
 	return o.ApplyT(func(v GetListenersListener) []GetListenersListenerLoadbalancer { return v.Loadbalancers }).(GetListenersListenerLoadbalancerArrayOutput)
 }
 
-// The listener name.
 func (o GetListenersListenerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -486,19 +425,14 @@ func (o GetListenersListenerOutput) ProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.ProtectionStatus }).(pulumi.StringOutput)
 }
 
-// The listener protocol.\
-// The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
 func (o GetListenersListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The front-end listening port of the listener.\
-// The valid value is range from `1` to `65535`.
 func (o GetListenersListenerOutput) ProtocolPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListener) int { return v.ProtocolPort }).(pulumi.IntOutput)
 }
 
-// List of the SNI certificate (server certificates with a domain name) IDs used by the listener.
 func (o GetListenersListenerOutput) SniContainerRefs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetListenersListener) []string { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
 }
@@ -636,7 +570,7 @@ func (o GetListenersListenerInsertHeaderArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetListenersListenerLoadbalancer struct {
-	// The ELB loadbalancer ID.
+	// The loadbalancer ID.
 	Id string `pulumi:"id"`
 }
 
@@ -652,7 +586,7 @@ type GetListenersListenerLoadbalancerInput interface {
 }
 
 type GetListenersListenerLoadbalancerArgs struct {
-	// The ELB loadbalancer ID.
+	// The loadbalancer ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -707,7 +641,7 @@ func (o GetListenersListenerLoadbalancerOutput) ToGetListenersListenerLoadbalanc
 	return o
 }
 
-// The ELB loadbalancer ID.
+// The loadbalancer ID.
 func (o GetListenersListenerLoadbalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -733,30 +667,18 @@ func (o GetListenersListenerLoadbalancerArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetPoolsPool struct {
-	// Specifies the description of the ELB pool.
-	Description string `pulumi:"description"`
-	// Specifies the health monitor ID of the ELB pool.
-	HealthmonitorId string `pulumi:"healthmonitorId"`
-	// The listener, loadbalancer or member ID.
-	Id string `pulumi:"id"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
-	LbMethod string `pulumi:"lbMethod"`
-	// The listener list. The object structure is documented below.
-	Listeners []GetPoolsPoolListener `pulumi:"listeners"`
-	// The loadbalancer list. The object structure is documented below.
-	Loadbalancers []GetPoolsPoolLoadbalancer `pulumi:"loadbalancers"`
-	// The member list. The object structure is documented below.
-	Members []GetPoolsPoolMember `pulumi:"members"`
-	// Specifies the name of the ELB pool.
-	Name string `pulumi:"name"`
-	// Indicates whether connections in the same session will be processed by the same pool member or not.
-	// The object structure is documented below.
-	Persistences     []GetPoolsPoolPersistence `pulumi:"persistences"`
-	ProtectionReason string                    `pulumi:"protectionReason"`
-	ProtectionStatus string                    `pulumi:"protectionStatus"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-	Protocol string `pulumi:"protocol"`
+	Description      string                     `pulumi:"description"`
+	HealthmonitorId  string                     `pulumi:"healthmonitorId"`
+	Id               string                     `pulumi:"id"`
+	LbMethod         string                     `pulumi:"lbMethod"`
+	Listeners        []GetPoolsPoolListener     `pulumi:"listeners"`
+	Loadbalancers    []GetPoolsPoolLoadbalancer `pulumi:"loadbalancers"`
+	Members          []GetPoolsPoolMember       `pulumi:"members"`
+	Name             string                     `pulumi:"name"`
+	Persistences     []GetPoolsPoolPersistence  `pulumi:"persistences"`
+	ProtectionReason string                     `pulumi:"protectionReason"`
+	ProtectionStatus string                     `pulumi:"protectionStatus"`
+	Protocol         string                     `pulumi:"protocol"`
 }
 
 // GetPoolsPoolInput is an input type that accepts GetPoolsPoolArgs and GetPoolsPoolOutput values.
@@ -771,30 +693,18 @@ type GetPoolsPoolInput interface {
 }
 
 type GetPoolsPoolArgs struct {
-	// Specifies the description of the ELB pool.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the health monitor ID of the ELB pool.
-	HealthmonitorId pulumi.StringInput `pulumi:"healthmonitorId"`
-	// The listener, loadbalancer or member ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
-	LbMethod pulumi.StringInput `pulumi:"lbMethod"`
-	// The listener list. The object structure is documented below.
-	Listeners GetPoolsPoolListenerArrayInput `pulumi:"listeners"`
-	// The loadbalancer list. The object structure is documented below.
-	Loadbalancers GetPoolsPoolLoadbalancerArrayInput `pulumi:"loadbalancers"`
-	// The member list. The object structure is documented below.
-	Members GetPoolsPoolMemberArrayInput `pulumi:"members"`
-	// Specifies the name of the ELB pool.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates whether connections in the same session will be processed by the same pool member or not.
-	// The object structure is documented below.
-	Persistences     GetPoolsPoolPersistenceArrayInput `pulumi:"persistences"`
-	ProtectionReason pulumi.StringInput                `pulumi:"protectionReason"`
-	ProtectionStatus pulumi.StringInput                `pulumi:"protectionStatus"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
+	Description      pulumi.StringInput                 `pulumi:"description"`
+	HealthmonitorId  pulumi.StringInput                 `pulumi:"healthmonitorId"`
+	Id               pulumi.StringInput                 `pulumi:"id"`
+	LbMethod         pulumi.StringInput                 `pulumi:"lbMethod"`
+	Listeners        GetPoolsPoolListenerArrayInput     `pulumi:"listeners"`
+	Loadbalancers    GetPoolsPoolLoadbalancerArrayInput `pulumi:"loadbalancers"`
+	Members          GetPoolsPoolMemberArrayInput       `pulumi:"members"`
+	Name             pulumi.StringInput                 `pulumi:"name"`
+	Persistences     GetPoolsPoolPersistenceArrayInput  `pulumi:"persistences"`
+	ProtectionReason pulumi.StringInput                 `pulumi:"protectionReason"`
+	ProtectionStatus pulumi.StringInput                 `pulumi:"protectionStatus"`
+	Protocol         pulumi.StringInput                 `pulumi:"protocol"`
 }
 
 func (GetPoolsPoolArgs) ElementType() reflect.Type {
@@ -848,49 +758,38 @@ func (o GetPoolsPoolOutput) ToGetPoolsPoolOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies the description of the ELB pool.
 func (o GetPoolsPoolOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the health monitor ID of the ELB pool.
 func (o GetPoolsPoolOutput) HealthmonitorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.HealthmonitorId }).(pulumi.StringOutput)
 }
 
-// The listener, loadbalancer or member ID.
 func (o GetPoolsPoolOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-// or SOURCE_IP.
 func (o GetPoolsPoolOutput) LbMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.LbMethod }).(pulumi.StringOutput)
 }
 
-// The listener list. The object structure is documented below.
 func (o GetPoolsPoolOutput) Listeners() GetPoolsPoolListenerArrayOutput {
 	return o.ApplyT(func(v GetPoolsPool) []GetPoolsPoolListener { return v.Listeners }).(GetPoolsPoolListenerArrayOutput)
 }
 
-// The loadbalancer list. The object structure is documented below.
 func (o GetPoolsPoolOutput) Loadbalancers() GetPoolsPoolLoadbalancerArrayOutput {
 	return o.ApplyT(func(v GetPoolsPool) []GetPoolsPoolLoadbalancer { return v.Loadbalancers }).(GetPoolsPoolLoadbalancerArrayOutput)
 }
 
-// The member list. The object structure is documented below.
 func (o GetPoolsPoolOutput) Members() GetPoolsPoolMemberArrayOutput {
 	return o.ApplyT(func(v GetPoolsPool) []GetPoolsPoolMember { return v.Members }).(GetPoolsPoolMemberArrayOutput)
 }
 
-// Specifies the name of the ELB pool.
 func (o GetPoolsPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates whether connections in the same session will be processed by the same pool member or not.
-// The object structure is documented below.
 func (o GetPoolsPoolOutput) Persistences() GetPoolsPoolPersistenceArrayOutput {
 	return o.ApplyT(func(v GetPoolsPool) []GetPoolsPoolPersistence { return v.Persistences }).(GetPoolsPoolPersistenceArrayOutput)
 }
@@ -903,7 +802,6 @@ func (o GetPoolsPoolOutput) ProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.ProtectionStatus }).(pulumi.StringOutput)
 }
 
-// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
 func (o GetPoolsPoolOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPool) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -929,7 +827,6 @@ func (o GetPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetPoolsPoolOutput {
 }
 
 type GetPoolsPoolListener struct {
-	// The listener, loadbalancer or member ID.
 	Id string `pulumi:"id"`
 }
 
@@ -945,7 +842,6 @@ type GetPoolsPoolListenerInput interface {
 }
 
 type GetPoolsPoolListenerArgs struct {
-	// The listener, loadbalancer or member ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1000,7 +896,6 @@ func (o GetPoolsPoolListenerOutput) ToGetPoolsPoolListenerOutputWithContext(ctx 
 	return o
 }
 
-// The listener, loadbalancer or member ID.
 func (o GetPoolsPoolListenerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPoolListener) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1026,7 +921,6 @@ func (o GetPoolsPoolListenerArrayOutput) Index(i pulumi.IntInput) GetPoolsPoolLi
 }
 
 type GetPoolsPoolLoadbalancer struct {
-	// The listener, loadbalancer or member ID.
 	Id string `pulumi:"id"`
 }
 
@@ -1042,7 +936,6 @@ type GetPoolsPoolLoadbalancerInput interface {
 }
 
 type GetPoolsPoolLoadbalancerArgs struct {
-	// The listener, loadbalancer or member ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1097,7 +990,6 @@ func (o GetPoolsPoolLoadbalancerOutput) ToGetPoolsPoolLoadbalancerOutputWithCont
 	return o
 }
 
-// The listener, loadbalancer or member ID.
 func (o GetPoolsPoolLoadbalancerOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPoolLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1123,7 +1015,6 @@ func (o GetPoolsPoolLoadbalancerArrayOutput) Index(i pulumi.IntInput) GetPoolsPo
 }
 
 type GetPoolsPoolMember struct {
-	// The listener, loadbalancer or member ID.
 	Id string `pulumi:"id"`
 }
 
@@ -1139,7 +1030,6 @@ type GetPoolsPoolMemberInput interface {
 }
 
 type GetPoolsPoolMemberArgs struct {
-	// The listener, loadbalancer or member ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -1194,7 +1084,6 @@ func (o GetPoolsPoolMemberOutput) ToGetPoolsPoolMemberOutputWithContext(ctx cont
 	return o
 }
 
-// The listener, loadbalancer or member ID.
 func (o GetPoolsPoolMemberOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPoolMember) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1220,11 +1109,9 @@ func (o GetPoolsPoolMemberArrayOutput) Index(i pulumi.IntInput) GetPoolsPoolMemb
 }
 
 type GetPoolsPoolPersistence struct {
-	// The name of the cookie if persistence mode is set appropriately.
 	CookieName string `pulumi:"cookieName"`
 	Timeout    int    `pulumi:"timeout"`
-	// The type of persistence mode.
-	Type string `pulumi:"type"`
+	Type       string `pulumi:"type"`
 }
 
 // GetPoolsPoolPersistenceInput is an input type that accepts GetPoolsPoolPersistenceArgs and GetPoolsPoolPersistenceOutput values.
@@ -1239,11 +1126,9 @@ type GetPoolsPoolPersistenceInput interface {
 }
 
 type GetPoolsPoolPersistenceArgs struct {
-	// The name of the cookie if persistence mode is set appropriately.
 	CookieName pulumi.StringInput `pulumi:"cookieName"`
 	Timeout    pulumi.IntInput    `pulumi:"timeout"`
-	// The type of persistence mode.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type       pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetPoolsPoolPersistenceArgs) ElementType() reflect.Type {
@@ -1297,7 +1182,6 @@ func (o GetPoolsPoolPersistenceOutput) ToGetPoolsPoolPersistenceOutputWithContex
 	return o
 }
 
-// The name of the cookie if persistence mode is set appropriately.
 func (o GetPoolsPoolPersistenceOutput) CookieName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPoolPersistence) string { return v.CookieName }).(pulumi.StringOutput)
 }
@@ -1306,7 +1190,6 @@ func (o GetPoolsPoolPersistenceOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPoolsPoolPersistence) int { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// The type of persistence mode.
 func (o GetPoolsPoolPersistenceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsPoolPersistence) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -4,38 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW service group member resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupId = config.requireObject<any>("groupId");
- * const protocol = config.requireObject<any>("protocol");
- * const sourcePort = config.requireObject<any>("sourcePort");
- * const destPort = config.requireObject<any>("destPort");
- * const test = new sbercloud.cfw.ServiceGroupMember("test", {
- *     groupId: groupId,
- *     protocol: protocol,
- *     sourcePort: sourcePort,
- *     destPort: destPort,
- * });
- * ```
- *
- * ## Import
- *
- * The service group member can be imported using service group ID and member ID, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/serviceGroupMember:ServiceGroupMember test <group_id>/<member_id>
- * ```
- */
 export class ServiceGroupMember extends pulumi.CustomResource {
     /**
      * Get an existing ServiceGroupMember resource's state with the given name, ID, and optional extra
@@ -66,20 +34,14 @@ export class ServiceGroupMember extends pulumi.CustomResource {
 
     /**
      * Specifies the service group member description.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies the destination port.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly destPort: pulumi.Output<string>;
     /**
      * Specifies the ID of the service group.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
     /**
@@ -88,25 +50,11 @@ export class ServiceGroupMember extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protocol type.
-     * The valid values are:
-     * + **6**: indicates TCP;
-     * + **17**: indicates UDP;
-     * + **1**: indicates ICMP;
-     * + **58**: indicates ICMPv6;
-     * + **-1**: indicates any protocol.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly protocol: pulumi.Output<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the source port.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly sourcePort: pulumi.Output<string>;
 
@@ -163,20 +111,14 @@ export class ServiceGroupMember extends pulumi.CustomResource {
 export interface ServiceGroupMemberState {
     /**
      * Specifies the service group member description.
-     *
-     * Changing this parameter will create a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the destination port.
-     *
-     * Changing this parameter will create a new resource.
      */
     destPort?: pulumi.Input<string>;
     /**
      * Specifies the ID of the service group.
-     *
-     * Changing this parameter will create a new resource.
      */
     groupId?: pulumi.Input<string>;
     /**
@@ -185,25 +127,11 @@ export interface ServiceGroupMemberState {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protocol type.
-     * The valid values are:
-     * + **6**: indicates TCP;
-     * + **17**: indicates UDP;
-     * + **1**: indicates ICMP;
-     * + **58**: indicates ICMPv6;
-     * + **-1**: indicates any protocol.
-     *
-     * Changing this parameter will create a new resource.
      */
     protocol?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the source port.
-     *
-     * Changing this parameter will create a new resource.
      */
     sourcePort?: pulumi.Input<string>;
 }
@@ -214,20 +142,14 @@ export interface ServiceGroupMemberState {
 export interface ServiceGroupMemberArgs {
     /**
      * Specifies the service group member description.
-     *
-     * Changing this parameter will create a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the destination port.
-     *
-     * Changing this parameter will create a new resource.
      */
     destPort: pulumi.Input<string>;
     /**
      * Specifies the ID of the service group.
-     *
-     * Changing this parameter will create a new resource.
      */
     groupId: pulumi.Input<string>;
     /**
@@ -236,25 +158,11 @@ export interface ServiceGroupMemberArgs {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protocol type.
-     * The valid values are:
-     * + **6**: indicates TCP;
-     * + **17**: indicates UDP;
-     * + **1**: indicates ICMP;
-     * + **58**: indicates ICMPv6;
-     * + **-1**: indicates any protocol.
-     *
-     * Changing this parameter will create a new resource.
      */
     protocol: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the source port.
-     *
-     * Changing this parameter will create a new resource.
      */
     sourcePort: pulumi.Input<string>;
 }

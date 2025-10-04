@@ -4,34 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW IP address group member resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const groupId = config.requireObject<any>("groupId");
- * const address = config.requireObject<any>("address");
- * const test = new sbercloud.cfw.AddressGroupMember("test", {
- *     groupId: groupId,
- *     address: address,
- * });
- * ```
- *
- * ## Import
- *
- * The CFW IP address group member can be imported using `group_id`, `id`, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/addressGroupMember:AddressGroupMember test <group_id>/<id>
- * ```
- */
 export class AddressGroupMember extends pulumi.CustomResource {
     /**
      * Get an existing AddressGroupMember resource's state with the given name, ID, and optional extra
@@ -62,37 +34,24 @@ export class AddressGroupMember extends pulumi.CustomResource {
 
     /**
      * Specifies the IP address.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly address: pulumi.Output<string>;
     /**
      * Specifies the address type.
-     * The value can be **0** (IPv4) or **1** (IPv6).
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly addressType: pulumi.Output<number>;
     /**
      * Specifies address description.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
      * Specifies the ID of the IP address group.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly groupId: pulumi.Output<string>;
     /**
      * schema: Deprecated; Specifies the address name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -140,37 +99,24 @@ export class AddressGroupMember extends pulumi.CustomResource {
 export interface AddressGroupMemberState {
     /**
      * Specifies the IP address.
-     *
-     * Changing this parameter will create a new resource.
      */
     address?: pulumi.Input<string>;
     /**
      * Specifies the address type.
-     * The value can be **0** (IPv4) or **1** (IPv6).
-     *
-     * Changing this parameter will create a new resource.
      */
     addressType?: pulumi.Input<number>;
     /**
      * Specifies address description.
-     *
-     * Changing this parameter will create a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the IP address group.
-     *
-     * Changing this parameter will create a new resource.
      */
     groupId?: pulumi.Input<string>;
     /**
      * schema: Deprecated; Specifies the address name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -180,36 +126,23 @@ export interface AddressGroupMemberState {
 export interface AddressGroupMemberArgs {
     /**
      * Specifies the IP address.
-     *
-     * Changing this parameter will create a new resource.
      */
     address: pulumi.Input<string>;
     /**
      * Specifies the address type.
-     * The value can be **0** (IPv4) or **1** (IPv6).
-     *
-     * Changing this parameter will create a new resource.
      */
     addressType?: pulumi.Input<number>;
     /**
      * Specifies address description.
-     *
-     * Changing this parameter will create a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the IP address group.
-     *
-     * Changing this parameter will create a new resource.
      */
     groupId: pulumi.Input<string>;
     /**
      * schema: Deprecated; Specifies the address name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

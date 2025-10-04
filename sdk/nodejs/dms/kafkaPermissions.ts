@@ -6,46 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use the resource to grant user permissions of a kafka topic within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const kafkaInstanceId = config.requireObject<any>("kafkaInstanceId");
- * const kafkaTopicName = config.requireObject<any>("kafkaTopicName");
- * const user1 = config.requireObject<any>("user1");
- * const user2 = config.requireObject<any>("user2");
- * const test = new sbercloud.dms.KafkaPermissions("test", {
- *     instanceId: kafkaInstanceId,
- *     topicName: kafkaTopicName,
- *     policies: [
- *         {
- *             userName: user1,
- *             accessPolicy: "all",
- *         },
- *         {
- *             userName: user2,
- *             accessPolicy: "pub",
- *         },
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * DMS kafka permissions can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Dms/kafkaPermissions:KafkaPermissions permissions c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
- * ```
- */
 export class KafkaPermissions extends pulumi.CustomResource {
     /**
      * Get an existing KafkaPermissions resource's state with the given name, ID, and optional extra
@@ -74,28 +34,9 @@ export class KafkaPermissions extends pulumi.CustomResource {
         return obj['__pulumiType'] === KafkaPermissions.__pulumiType;
     }
 
-    /**
-     * Specifies the ID of the DMS kafka instance to which the permissions belongs.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the permissions policies. The object structure is
-     * documented below.
-     *
-     * <a name="dmsKafkaPolicies"></a>
-     * The `policies` block supports:
-     */
     declare public readonly policies: pulumi.Output<outputs.Dms.KafkaPermissionsPolicy[]>;
-    /**
-     * The region in which to create the DMS kafka permissions resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the name of the topic to which the permissions belongs.
-     * Changing this creates a new resource.
-     */
     declare public readonly topicName: pulumi.Output<string>;
 
     /**
@@ -140,28 +81,9 @@ export class KafkaPermissions extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KafkaPermissions resources.
  */
 export interface KafkaPermissionsState {
-    /**
-     * Specifies the ID of the DMS kafka instance to which the permissions belongs.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the permissions policies. The object structure is
-     * documented below.
-     *
-     * <a name="dmsKafkaPolicies"></a>
-     * The `policies` block supports:
-     */
     policies?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaPermissionsPolicy>[]>;
-    /**
-     * The region in which to create the DMS kafka permissions resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the topic to which the permissions belongs.
-     * Changing this creates a new resource.
-     */
     topicName?: pulumi.Input<string>;
 }
 
@@ -169,27 +91,8 @@ export interface KafkaPermissionsState {
  * The set of arguments for constructing a KafkaPermissions resource.
  */
 export interface KafkaPermissionsArgs {
-    /**
-     * Specifies the ID of the DMS kafka instance to which the permissions belongs.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the permissions policies. The object structure is
-     * documented below.
-     *
-     * <a name="dmsKafkaPolicies"></a>
-     * The `policies` block supports:
-     */
     policies: pulumi.Input<pulumi.Input<inputs.Dms.KafkaPermissionsPolicy>[]>;
-    /**
-     * The region in which to create the DMS kafka permissions resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the topic to which the permissions belongs.
-     * Changing this creates a new resource.
-     */
     topicName: pulumi.Input<string>;
 }

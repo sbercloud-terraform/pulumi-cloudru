@@ -11,69 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of dependency package versions within SberCloud.
-//
-// ## Example Usage
-//
-// ### Query all versions under a specified dependency package
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			dependencyId := cfg.RequireObject("dependencyId")
-//			_, err := sbercloud.GetFgsDependencyVersions(ctx, &cloudru.GetFgsDependencyVersionsArgs{
-//				DependencyId: dependencyId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Query a specified dependency package version
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			dependencyId := cfg.RequireObject("dependencyId")
-//			versionName := cfg.RequireObject("versionName")
-//			_, err := sbercloud.GetFgsDependencyVersions(ctx, &cloudru.GetFgsDependencyVersionsArgs{
-//				DependencyId: dependencyId,
-//				Version:      pulumi.IntRef(versionName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFgsDependencyVersions(ctx *pulumi.Context, args *GetFgsDependencyVersionsArgs, opts ...pulumi.InvokeOption) (*GetFgsDependencyVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFgsDependencyVersionsResult
@@ -86,53 +23,23 @@ func GetFgsDependencyVersions(ctx *pulumi.Context, args *GetFgsDependencyVersion
 
 // A collection of arguments for invoking getFgsDependencyVersions.
 type GetFgsDependencyVersionsArgs struct {
-	// Specifies the ID of the dependency package to which the versions belong.
-	DependencyId string `pulumi:"dependencyId"`
-	// Specifies the region where the dependency package and the versions are located.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the runtime of the dependency package version.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	Runtime *string `pulumi:"runtime"`
-	// Specifies the version of the dependency package.
-	Version *int `pulumi:"version"`
-	// Specifies the ID of the dependency package version.
-	VersionId *string `pulumi:"versionId"`
+	DependencyId string  `pulumi:"dependencyId"`
+	Region       *string `pulumi:"region"`
+	Runtime      *string `pulumi:"runtime"`
+	Version      *int    `pulumi:"version"`
+	VersionId    *string `pulumi:"versionId"`
 }
 
 // A collection of values returned by getFgsDependencyVersions.
 type GetFgsDependencyVersionsResult struct {
-	// The ID of the dependency package corresponding to the version.
 	DependencyId string `pulumi:"dependencyId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The runtime of the dependency package version.
-	Runtime *string `pulumi:"runtime"`
-	// The dependency package version.
-	Version   *int    `pulumi:"version"`
-	VersionId *string `pulumi:"versionId"`
-	// All dependency package versions that match the filter parameters.\
-	// The versions structure is documented below.
-	Versions []GetFgsDependencyVersionsVersion `pulumi:"versions"`
+	Id        string                            `pulumi:"id"`
+	Region    string                            `pulumi:"region"`
+	Runtime   *string                           `pulumi:"runtime"`
+	Version   *int                              `pulumi:"version"`
+	VersionId *string                           `pulumi:"versionId"`
+	Versions  []GetFgsDependencyVersionsVersion `pulumi:"versions"`
 }
 
 func GetFgsDependencyVersionsOutput(ctx *pulumi.Context, args GetFgsDependencyVersionsOutputArgs, opts ...pulumi.InvokeOption) GetFgsDependencyVersionsResultOutput {
@@ -146,36 +53,11 @@ func GetFgsDependencyVersionsOutput(ctx *pulumi.Context, args GetFgsDependencyVe
 
 // A collection of arguments for invoking getFgsDependencyVersions.
 type GetFgsDependencyVersionsOutputArgs struct {
-	// Specifies the ID of the dependency package to which the versions belong.
-	DependencyId pulumi.StringInput `pulumi:"dependencyId"`
-	// Specifies the region where the dependency package and the versions are located.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the runtime of the dependency package version.\
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **Custom**
-	// + **PHP 7.3**
-	// + **http**
-	Runtime pulumi.StringPtrInput `pulumi:"runtime"`
-	// Specifies the version of the dependency package.
-	Version pulumi.IntPtrInput `pulumi:"version"`
-	// Specifies the ID of the dependency package version.
-	VersionId pulumi.StringPtrInput `pulumi:"versionId"`
+	DependencyId pulumi.StringInput    `pulumi:"dependencyId"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	Runtime      pulumi.StringPtrInput `pulumi:"runtime"`
+	Version      pulumi.IntPtrInput    `pulumi:"version"`
+	VersionId    pulumi.StringPtrInput `pulumi:"versionId"`
 }
 
 func (GetFgsDependencyVersionsOutputArgs) ElementType() reflect.Type {
@@ -197,7 +79,6 @@ func (o GetFgsDependencyVersionsResultOutput) ToGetFgsDependencyVersionsResultOu
 	return o
 }
 
-// The ID of the dependency package corresponding to the version.
 func (o GetFgsDependencyVersionsResultOutput) DependencyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsResult) string { return v.DependencyId }).(pulumi.StringOutput)
 }
@@ -211,12 +92,10 @@ func (o GetFgsDependencyVersionsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The runtime of the dependency package version.
 func (o GetFgsDependencyVersionsResultOutput) Runtime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsResult) *string { return v.Runtime }).(pulumi.StringPtrOutput)
 }
 
-// The dependency package version.
 func (o GetFgsDependencyVersionsResultOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsResult) *int { return v.Version }).(pulumi.IntPtrOutput)
 }
@@ -225,8 +104,6 @@ func (o GetFgsDependencyVersionsResultOutput) VersionId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GetFgsDependencyVersionsResult) *string { return v.VersionId }).(pulumi.StringPtrOutput)
 }
 
-// All dependency package versions that match the filter parameters.\
-// The versions structure is documented below.
 func (o GetFgsDependencyVersionsResultOutput) Versions() GetFgsDependencyVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetFgsDependencyVersionsResult) []GetFgsDependencyVersionsVersion { return v.Versions }).(GetFgsDependencyVersionsVersionArrayOutput)
 }

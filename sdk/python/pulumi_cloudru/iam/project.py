@@ -24,9 +24,6 @@ class ProjectArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the project.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the project. it must start with an existing *region* and be less
-               than or equal to 64 characters. Example: ru-moscow-1_project1.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -38,9 +35,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the project.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -50,10 +44,6 @@ class ProjectArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the project. it must start with an existing *region* and be less
-        than or equal to 64 characters. Example: ru-moscow-1_project1.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -80,11 +70,6 @@ class _ProjectState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the project.
-        :param pulumi.Input[_builtins.bool] enabled: Enabling status of this project.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the project. it must start with an existing *region* and be less
-               than or equal to 64 characters. Example: ru-moscow-1_project1.
-        :param pulumi.Input[_builtins.str] parent_id: The parent of this project.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -100,9 +85,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the project.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -112,9 +94,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enabling status of this project.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -124,10 +103,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the project. it must start with an existing *region* and be less
-        than or equal to 64 characters. Example: ru-moscow-1_project1.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -137,9 +112,6 @@ class _ProjectState:
     @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The parent of this project.
-        """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
@@ -167,36 +139,9 @@ class Project(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Project resource within SberCloud Identity And Access Management service.
-
-        > You *must* have security admin privileges in your SberCloud cloud to use this resource.
-
-        !>  Deleting projects is not supported. The project is only removed from the state, but it remains in the cloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        project1 = sbercloud.iam.Project("project_1",
-            name="ru-moscow-1_project1",
-            description="This is a test project")
-        ```
-
-        ## Import
-
-        Projects can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the project.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the project. it must start with an existing *region* and be less
-               than or equal to 64 characters. Example: ru-moscow-1_project1.
         """
         ...
     @overload
@@ -205,31 +150,7 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Project resource within SberCloud Identity And Access Management service.
-
-        > You *must* have security admin privileges in your SberCloud cloud to use this resource.
-
-        !>  Deleting projects is not supported. The project is only removed from the state, but it remains in the cloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        project1 = sbercloud.iam.Project("project_1",
-            name="ru-moscow-1_project1",
-            description="This is a test project")
-        ```
-
-        ## Import
-
-        Projects can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/project:Project project_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
+        Create a Project resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -284,11 +205,6 @@ class Project(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the project.
-        :param pulumi.Input[_builtins.bool] enabled: Enabling status of this project.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the project. it must start with an existing *region* and be less
-               than or equal to 64 characters. Example: ru-moscow-1_project1.
-        :param pulumi.Input[_builtins.str] parent_id: The parent of this project.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -304,34 +220,21 @@ class Project(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the project.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Enabling status of this project.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the project. it must start with an existing *region* and be less
-        than or equal to 64 characters. Example: ru-moscow-1_project1.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The parent of this project.
-        """
         return pulumi.get(self, "parent_id")
 
     @_builtins.property

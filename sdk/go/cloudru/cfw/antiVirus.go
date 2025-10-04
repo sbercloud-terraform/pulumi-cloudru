@@ -12,71 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW anti virus resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			objectId := cfg.RequireObject("objectId")
-//			_, err := cfw.NewAntiVirus(ctx, "test", &cfw.AntiVirusArgs{
-//				ObjectId: pulumi.Any(objectId),
-//				ScanProtocolConfigs: cfw.AntiVirusScanProtocolConfigArray{
-//					&cfw.AntiVirusScanProtocolConfigArgs{
-//						ProtocolType: pulumi.Int(3),
-//						Action:       pulumi.Int(1),
-//					},
-//					&cfw.AntiVirusScanProtocolConfigArgs{
-//						ProtocolType: pulumi.Int(2),
-//						Action:       pulumi.Int(1),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The anti virus can be imported using `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/antiVirus:AntiVirus test <id>
-// ```
 type AntiVirus struct {
 	pulumi.CustomResourceState
 
 	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
 	// Specifies the protected object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// The region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies the scan protocol configurations.
-	// The scanProtocolConfigs structure is documented below.
-	//
-	// <a name="ScanProtocolConfigs"></a>
-	// The `scanProtocolConfigs` block supports:
 	ScanProtocolConfigs AntiVirusScanProtocolConfigArrayOutput `pulumi:"scanProtocolConfigs"`
 }
 
@@ -119,15 +63,9 @@ type antiVirusState struct {
 	EnableForceNew *string `pulumi:"enableForceNew"`
 	// Specifies the protected object ID.
 	ObjectId *string `pulumi:"objectId"`
-	// The region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 	// Specifies the scan protocol configurations.
-	// The scanProtocolConfigs structure is documented below.
-	//
-	// <a name="ScanProtocolConfigs"></a>
-	// The `scanProtocolConfigs` block supports:
 	ScanProtocolConfigs []AntiVirusScanProtocolConfig `pulumi:"scanProtocolConfigs"`
 }
 
@@ -135,15 +73,9 @@ type AntiVirusState struct {
 	EnableForceNew pulumi.StringPtrInput
 	// Specifies the protected object ID.
 	ObjectId pulumi.StringPtrInput
-	// The region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput
 	// Specifies the scan protocol configurations.
-	// The scanProtocolConfigs structure is documented below.
-	//
-	// <a name="ScanProtocolConfigs"></a>
-	// The `scanProtocolConfigs` block supports:
 	ScanProtocolConfigs AntiVirusScanProtocolConfigArrayInput
 }
 
@@ -155,15 +87,9 @@ type antiVirusArgs struct {
 	EnableForceNew *string `pulumi:"enableForceNew"`
 	// Specifies the protected object ID.
 	ObjectId string `pulumi:"objectId"`
-	// The region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 	// Specifies the scan protocol configurations.
-	// The scanProtocolConfigs structure is documented below.
-	//
-	// <a name="ScanProtocolConfigs"></a>
-	// The `scanProtocolConfigs` block supports:
 	ScanProtocolConfigs []AntiVirusScanProtocolConfig `pulumi:"scanProtocolConfigs"`
 }
 
@@ -172,15 +98,9 @@ type AntiVirusArgs struct {
 	EnableForceNew pulumi.StringPtrInput
 	// Specifies the protected object ID.
 	ObjectId pulumi.StringInput
-	// The region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput
 	// Specifies the scan protocol configurations.
-	// The scanProtocolConfigs structure is documented below.
-	//
-	// <a name="ScanProtocolConfigs"></a>
-	// The `scanProtocolConfigs` block supports:
 	ScanProtocolConfigs AntiVirusScanProtocolConfigArrayInput
 }
 
@@ -280,18 +200,12 @@ func (o AntiVirusOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AntiVirus) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
+// The region in which to create the resource. If omitted, the provider-level region will be used.
 func (o AntiVirusOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AntiVirus) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the scan protocol configurations.
-// The scanProtocolConfigs structure is documented below.
-//
-// <a name="ScanProtocolConfigs"></a>
-// The `scanProtocolConfigs` block supports:
 func (o AntiVirusOutput) ScanProtocolConfigs() AntiVirusScanProtocolConfigArrayOutput {
 	return o.ApplyT(func(v *AntiVirus) AntiVirusScanProtocolConfigArrayOutput { return v.ScanProtocolConfigs }).(AntiVirusScanProtocolConfigArrayOutput)
 }

@@ -12,141 +12,30 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages DLI Queue resource within SberCloud
-//
-// ## Example Usage
-//
-// ### Create a queue
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dli"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dli.NewQueue(ctx, "queue", &dli.QueueArgs{
-//				Name:    pulumi.String("terraform_dli_queue_test"),
-//				CuCount: pulumi.Int(16),
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a queue with CIDR Block
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dli"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dli.NewQueue(ctx, "queue", &dli.QueueArgs{
-//				Name:         pulumi.String("terraform_dli_queue_test"),
-//				CuCount:      pulumi.Int(16),
-//				ResourceMode: pulumi.Int(1),
-//				VpcCidr:      pulumi.String("172.16.0.0/14"),
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DLI queue can be imported by  `id`. For example,
-//
-// ```sh
-// $ pulumi import sbercloud:Dli/queue:Queue example abc123
-// ```
 type Queue struct {
 	pulumi.CustomResourceState
 
-	// Time when a queue is created.
-	CreateTime pulumi.IntOutput `pulumi:"createTime"`
-	// Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-	// `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
-	CuCount pulumi.IntOutput `pulumi:"cuCount"`
-	// Description of a queue. Changing this parameter will create a new
-	// resource.
+	CreateTime  pulumi.IntOutput    `pulumi:"createTime"`
+	CuCount     pulumi.IntOutput    `pulumi:"cuCount"`
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The name of the elastic resource pool to which the queue belongs.
-	ElasticResourcePoolName pulumi.StringOutput `pulumi:"elasticResourcePoolName"`
-	// Enterprise project ID. The value 0 indicates the default
-	// enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Indicates the queue feature. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + basic: basic type (default value)
-	// + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
-	Feature pulumi.StringPtrOutput `pulumi:"feature"`
+	ElasticResourcePoolName pulumi.StringOutput    `pulumi:"elasticResourcePoolName"`
+	EnterpriseProjectId     pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	Feature                 pulumi.StringPtrOutput `pulumi:"feature"`
 	// Deprecated: management_subnet_cidr is Deprecated
 	ManagementSubnetCidr pulumi.StringPtrOutput `pulumi:"managementSubnetCidr"`
-	// Name of a queue. Name of a newly created resource queue. The name can contain
-	// only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
-	// range: 1 to 128 characters. Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// CPU architecture of queue compute resources. Changing this parameter will
-	// create a new resource. The options are as follows:
-	// + x8664 : default value
-	// + aarch64
-	Platform pulumi.StringPtrOutput `pulumi:"platform"`
-	// Indicates the queue type. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + sql
-	// + general
-	//
-	// The default value is `sql`.
-	QueueType pulumi.StringPtrOutput `pulumi:"queueType"`
-	// Specifies the region in which to create the dli queue resource. If omitted,
-	// the provider-level region will be used. Changing this will create a new VPC channel resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Queue resource mode. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + 0: indicates the shared resource mode.
-	// + 1: indicates the exclusive resource mode.
+	Name                 pulumi.StringOutput    `pulumi:"name"`
+	Platform             pulumi.StringPtrOutput `pulumi:"platform"`
+	QueueType            pulumi.StringPtrOutput `pulumi:"queueType"`
+	Region               pulumi.StringOutput    `pulumi:"region"`
+	// The queue resource mode.
 	ResourceMode    pulumi.IntOutput              `pulumi:"resourceMode"`
 	ScalingPolicies QueueScalingPolicyArrayOutput `pulumi:"scalingPolicies"`
 	SparkDriver     QueueSparkDriverPtrOutput     `pulumi:"sparkDriver"`
 	// Deprecated: subnet_cidr is Deprecated
 	SubnetCidr pulumi.StringPtrOutput `pulumi:"subnetCidr"`
-	// Label of a queue. Changing this parameter will create a new resource.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-	// cannot be the same as that of the data source.
-	// The CIDR blocks supported by different CU specifications:
-	//
-	// + When `cuCount` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-	//   192.168.0.0~192.168.0.0/16~24.
-	// + When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+	Tags       pulumi.StringMapOutput `pulumi:"tags"`
+	// The CIDR block of the queue.
 	VpcCidr pulumi.StringOutput `pulumi:"vpcCidr"`
 }
 
@@ -183,124 +72,52 @@ func GetQueue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Queue resources.
 type queueState struct {
-	// Time when a queue is created.
-	CreateTime *int `pulumi:"createTime"`
-	// Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-	// `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
-	CuCount *int `pulumi:"cuCount"`
-	// Description of a queue. Changing this parameter will create a new
-	// resource.
+	CreateTime  *int    `pulumi:"createTime"`
+	CuCount     *int    `pulumi:"cuCount"`
 	Description *string `pulumi:"description"`
 	// The name of the elastic resource pool to which the queue belongs.
 	ElasticResourcePoolName *string `pulumi:"elasticResourcePoolName"`
-	// Enterprise project ID. The value 0 indicates the default
-	// enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Indicates the queue feature. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + basic: basic type (default value)
-	// + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
-	Feature *string `pulumi:"feature"`
+	EnterpriseProjectId     *string `pulumi:"enterpriseProjectId"`
+	Feature                 *string `pulumi:"feature"`
 	// Deprecated: management_subnet_cidr is Deprecated
 	ManagementSubnetCidr *string `pulumi:"managementSubnetCidr"`
-	// Name of a queue. Name of a newly created resource queue. The name can contain
-	// only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
-	// range: 1 to 128 characters. Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// CPU architecture of queue compute resources. Changing this parameter will
-	// create a new resource. The options are as follows:
-	// + x8664 : default value
-	// + aarch64
-	Platform *string `pulumi:"platform"`
-	// Indicates the queue type. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + sql
-	// + general
-	//
-	// The default value is `sql`.
-	QueueType *string `pulumi:"queueType"`
-	// Specifies the region in which to create the dli queue resource. If omitted,
-	// the provider-level region will be used. Changing this will create a new VPC channel resource.
-	Region *string `pulumi:"region"`
-	// Queue resource mode. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + 0: indicates the shared resource mode.
-	// + 1: indicates the exclusive resource mode.
+	Name                 *string `pulumi:"name"`
+	Platform             *string `pulumi:"platform"`
+	QueueType            *string `pulumi:"queueType"`
+	Region               *string `pulumi:"region"`
+	// The queue resource mode.
 	ResourceMode    *int                 `pulumi:"resourceMode"`
 	ScalingPolicies []QueueScalingPolicy `pulumi:"scalingPolicies"`
 	SparkDriver     *QueueSparkDriver    `pulumi:"sparkDriver"`
 	// Deprecated: subnet_cidr is Deprecated
-	SubnetCidr *string `pulumi:"subnetCidr"`
-	// Label of a queue. Changing this parameter will create a new resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-	// cannot be the same as that of the data source.
-	// The CIDR blocks supported by different CU specifications:
-	//
-	// + When `cuCount` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-	//   192.168.0.0~192.168.0.0/16~24.
-	// + When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+	SubnetCidr *string           `pulumi:"subnetCidr"`
+	Tags       map[string]string `pulumi:"tags"`
+	// The CIDR block of the queue.
 	VpcCidr *string `pulumi:"vpcCidr"`
 }
 
 type QueueState struct {
-	// Time when a queue is created.
-	CreateTime pulumi.IntPtrInput
-	// Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-	// `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
-	CuCount pulumi.IntPtrInput
-	// Description of a queue. Changing this parameter will create a new
-	// resource.
+	CreateTime  pulumi.IntPtrInput
+	CuCount     pulumi.IntPtrInput
 	Description pulumi.StringPtrInput
 	// The name of the elastic resource pool to which the queue belongs.
 	ElasticResourcePoolName pulumi.StringPtrInput
-	// Enterprise project ID. The value 0 indicates the default
-	// enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Indicates the queue feature. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + basic: basic type (default value)
-	// + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
-	Feature pulumi.StringPtrInput
+	EnterpriseProjectId     pulumi.StringPtrInput
+	Feature                 pulumi.StringPtrInput
 	// Deprecated: management_subnet_cidr is Deprecated
 	ManagementSubnetCidr pulumi.StringPtrInput
-	// Name of a queue. Name of a newly created resource queue. The name can contain
-	// only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
-	// range: 1 to 128 characters. Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// CPU architecture of queue compute resources. Changing this parameter will
-	// create a new resource. The options are as follows:
-	// + x8664 : default value
-	// + aarch64
-	Platform pulumi.StringPtrInput
-	// Indicates the queue type. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + sql
-	// + general
-	//
-	// The default value is `sql`.
-	QueueType pulumi.StringPtrInput
-	// Specifies the region in which to create the dli queue resource. If omitted,
-	// the provider-level region will be used. Changing this will create a new VPC channel resource.
-	Region pulumi.StringPtrInput
-	// Queue resource mode. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + 0: indicates the shared resource mode.
-	// + 1: indicates the exclusive resource mode.
+	Name                 pulumi.StringPtrInput
+	Platform             pulumi.StringPtrInput
+	QueueType            pulumi.StringPtrInput
+	Region               pulumi.StringPtrInput
+	// The queue resource mode.
 	ResourceMode    pulumi.IntPtrInput
 	ScalingPolicies QueueScalingPolicyArrayInput
 	SparkDriver     QueueSparkDriverPtrInput
 	// Deprecated: subnet_cidr is Deprecated
 	SubnetCidr pulumi.StringPtrInput
-	// Label of a queue. Changing this parameter will create a new resource.
-	Tags pulumi.StringMapInput
-	// The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-	// cannot be the same as that of the data source.
-	// The CIDR blocks supported by different CU specifications:
-	//
-	// + When `cuCount` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-	//   192.168.0.0~192.168.0.0/16~24.
-	// + When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+	Tags       pulumi.StringMapInput
+	// The CIDR block of the queue.
 	VpcCidr pulumi.StringPtrInput
 }
 
@@ -309,121 +126,51 @@ func (QueueState) ElementType() reflect.Type {
 }
 
 type queueArgs struct {
-	// Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-	// `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
-	CuCount int `pulumi:"cuCount"`
-	// Description of a queue. Changing this parameter will create a new
-	// resource.
+	CuCount     int     `pulumi:"cuCount"`
 	Description *string `pulumi:"description"`
 	// The name of the elastic resource pool to which the queue belongs.
 	ElasticResourcePoolName *string `pulumi:"elasticResourcePoolName"`
-	// Enterprise project ID. The value 0 indicates the default
-	// enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Indicates the queue feature. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + basic: basic type (default value)
-	// + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
-	Feature *string `pulumi:"feature"`
+	EnterpriseProjectId     *string `pulumi:"enterpriseProjectId"`
+	Feature                 *string `pulumi:"feature"`
 	// Deprecated: management_subnet_cidr is Deprecated
 	ManagementSubnetCidr *string `pulumi:"managementSubnetCidr"`
-	// Name of a queue. Name of a newly created resource queue. The name can contain
-	// only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
-	// range: 1 to 128 characters. Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// CPU architecture of queue compute resources. Changing this parameter will
-	// create a new resource. The options are as follows:
-	// + x8664 : default value
-	// + aarch64
-	Platform *string `pulumi:"platform"`
-	// Indicates the queue type. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + sql
-	// + general
-	//
-	// The default value is `sql`.
-	QueueType *string `pulumi:"queueType"`
-	// Specifies the region in which to create the dli queue resource. If omitted,
-	// the provider-level region will be used. Changing this will create a new VPC channel resource.
-	Region *string `pulumi:"region"`
-	// Queue resource mode. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + 0: indicates the shared resource mode.
-	// + 1: indicates the exclusive resource mode.
+	Name                 *string `pulumi:"name"`
+	Platform             *string `pulumi:"platform"`
+	QueueType            *string `pulumi:"queueType"`
+	Region               *string `pulumi:"region"`
+	// The queue resource mode.
 	ResourceMode    *int                 `pulumi:"resourceMode"`
 	ScalingPolicies []QueueScalingPolicy `pulumi:"scalingPolicies"`
 	SparkDriver     *QueueSparkDriver    `pulumi:"sparkDriver"`
 	// Deprecated: subnet_cidr is Deprecated
-	SubnetCidr *string `pulumi:"subnetCidr"`
-	// Label of a queue. Changing this parameter will create a new resource.
-	Tags map[string]string `pulumi:"tags"`
-	// The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-	// cannot be the same as that of the data source.
-	// The CIDR blocks supported by different CU specifications:
-	//
-	// + When `cuCount` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-	//   192.168.0.0~192.168.0.0/16~24.
-	// + When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+	SubnetCidr *string           `pulumi:"subnetCidr"`
+	Tags       map[string]string `pulumi:"tags"`
+	// The CIDR block of the queue.
 	VpcCidr *string `pulumi:"vpcCidr"`
 }
 
 // The set of arguments for constructing a Queue resource.
 type QueueArgs struct {
-	// Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-	// `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
-	CuCount pulumi.IntInput
-	// Description of a queue. Changing this parameter will create a new
-	// resource.
+	CuCount     pulumi.IntInput
 	Description pulumi.StringPtrInput
 	// The name of the elastic resource pool to which the queue belongs.
 	ElasticResourcePoolName pulumi.StringPtrInput
-	// Enterprise project ID. The value 0 indicates the default
-	// enterprise project. Changing this parameter will create a new resource.
-	EnterpriseProjectId pulumi.StringPtrInput
-	// Indicates the queue feature. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + basic: basic type (default value)
-	// + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
-	Feature pulumi.StringPtrInput
+	EnterpriseProjectId     pulumi.StringPtrInput
+	Feature                 pulumi.StringPtrInput
 	// Deprecated: management_subnet_cidr is Deprecated
 	ManagementSubnetCidr pulumi.StringPtrInput
-	// Name of a queue. Name of a newly created resource queue. The name can contain
-	// only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
-	// range: 1 to 128 characters. Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// CPU architecture of queue compute resources. Changing this parameter will
-	// create a new resource. The options are as follows:
-	// + x8664 : default value
-	// + aarch64
-	Platform pulumi.StringPtrInput
-	// Indicates the queue type. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + sql
-	// + general
-	//
-	// The default value is `sql`.
-	QueueType pulumi.StringPtrInput
-	// Specifies the region in which to create the dli queue resource. If omitted,
-	// the provider-level region will be used. Changing this will create a new VPC channel resource.
-	Region pulumi.StringPtrInput
-	// Queue resource mode. Changing this parameter will create a new
-	// resource. The options are as follows:
-	// + 0: indicates the shared resource mode.
-	// + 1: indicates the exclusive resource mode.
+	Name                 pulumi.StringPtrInput
+	Platform             pulumi.StringPtrInput
+	QueueType            pulumi.StringPtrInput
+	Region               pulumi.StringPtrInput
+	// The queue resource mode.
 	ResourceMode    pulumi.IntPtrInput
 	ScalingPolicies QueueScalingPolicyArrayInput
 	SparkDriver     QueueSparkDriverPtrInput
 	// Deprecated: subnet_cidr is Deprecated
 	SubnetCidr pulumi.StringPtrInput
-	// Label of a queue. Changing this parameter will create a new resource.
-	Tags pulumi.StringMapInput
-	// The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-	// cannot be the same as that of the data source.
-	// The CIDR blocks supported by different CU specifications:
-	//
-	// + When `cuCount` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-	//   192.168.0.0~192.168.0.0/16~24.
-	// + When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+	Tags       pulumi.StringMapInput
+	// The CIDR block of the queue.
 	VpcCidr pulumi.StringPtrInput
 }
 
@@ -514,19 +261,14 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 	return o
 }
 
-// Time when a queue is created.
 func (o QueueOutput) CreateTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Queue) pulumi.IntOutput { return v.CreateTime }).(pulumi.IntOutput)
 }
 
-// Minimum number of CUs that are bound to a queue. Initial value can be `16`,
-// `64`, or `256`. When scaleOut or scale_in, the number must be a multiple of 16
 func (o QueueOutput) CuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Queue) pulumi.IntOutput { return v.CuCount }).(pulumi.IntOutput)
 }
 
-// Description of a queue. Changing this parameter will create a new
-// resource.
 func (o QueueOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -536,16 +278,10 @@ func (o QueueOutput) ElasticResourcePoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.ElasticResourcePoolName }).(pulumi.StringOutput)
 }
 
-// Enterprise project ID. The value 0 indicates the default
-// enterprise project. Changing this parameter will create a new resource.
 func (o QueueOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Indicates the queue feature. Changing this parameter will create a new
-// resource. The options are as follows:
-// + basic: basic type (default value)
-// + ai: AI-enhanced (Only the SQL x8664 dedicated queue supports this option.)
 func (o QueueOutput) Feature() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.Feature }).(pulumi.StringPtrOutput)
 }
@@ -555,41 +291,23 @@ func (o QueueOutput) ManagementSubnetCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.ManagementSubnetCidr }).(pulumi.StringPtrOutput)
 }
 
-// Name of a queue. Name of a newly created resource queue. The name can contain
-// only digits, letters, and underscores (\_), but cannot contain only digits or start with an underscore (_). Length
-// range: 1 to 128 characters. Changing this parameter will create a new resource.
 func (o QueueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// CPU architecture of queue compute resources. Changing this parameter will
-// create a new resource. The options are as follows:
-// + x8664 : default value
-// + aarch64
 func (o QueueOutput) Platform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.Platform }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the queue type. Changing this parameter will create a new
-// resource. The options are as follows:
-// + sql
-// + general
-//
-// The default value is `sql`.
 func (o QueueOutput) QueueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.QueueType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the region in which to create the dli queue resource. If omitted,
-// the provider-level region will be used. Changing this will create a new VPC channel resource.
 func (o QueueOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Queue resource mode. Changing this parameter will create a new
-// resource. The options are as follows:
-// + 0: indicates the shared resource mode.
-// + 1: indicates the exclusive resource mode.
+// The queue resource mode.
 func (o QueueOutput) ResourceMode() pulumi.IntOutput {
 	return o.ApplyT(func(v *Queue) pulumi.IntOutput { return v.ResourceMode }).(pulumi.IntOutput)
 }
@@ -607,18 +325,11 @@ func (o QueueOutput) SubnetCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.SubnetCidr }).(pulumi.StringPtrOutput)
 }
 
-// Label of a queue. Changing this parameter will create a new resource.
 func (o QueueOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The CIDR block of a queue. If use DLI enhanced datasource connections, the CIDR block
-// cannot be the same as that of the data source.
-// The CIDR blocks supported by different CU specifications:
-//
-//   - When `cuCount` is `16` or `64`: 10.0.0.0~10.255.0.0/8~24, 172.16.0.0~172.31.0.0/12~24,
-//     192.168.0.0~192.168.0.0/16~24.
-//   - When `cuCount` is `256`: 10.0.0.0~10.255.0.0/8~22, 172.16.0.0~172.31.0.0/12~22, 192.168.0.0~192.168.0.0/16~22.
+// The CIDR block of the queue.
 func (o QueueOutput) VpcCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.VpcCidr }).(pulumi.StringOutput)
 }

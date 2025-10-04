@@ -50,26 +50,6 @@ class FileSystemAccessRule(dict):
                  access_to: Optional[_builtins.str] = None,
                  access_type: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param _builtins.str access_rule_id: The UUID of the share access rule.
-        :param _builtins.str access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-               
-               > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        :param _builtins.str access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param _builtins.str status: The status of the share access rule.
-        """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
         if access_rule_id is not None:
@@ -84,54 +64,26 @@ class FileSystemAccessRule(dict):
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[_builtins.str]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="accessRuleId")
     def access_rule_id(self) -> Optional[_builtins.str]:
-        """
-        The UUID of the share access rule.
-        """
         return pulumi.get(self, "access_rule_id")
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> Optional[_builtins.str]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-
-        > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        """
         return pulumi.get(self, "access_to")
 
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "status")
 
 
@@ -153,25 +105,6 @@ class GetTurbosTurboResult(dict):
                  subnet_id: _builtins.str,
                  version: _builtins.str,
                  vpc_id: _builtins.str):
-        """
-        :param _builtins.str availability_zone: The availability zone where the SFS turbo file system is located.
-        :param _builtins.str available_capacity: The available capacity of the SFS turbo file system, in GB.
-        :param _builtins.str crypt_key_id: The ID of a KMS key to encrypt the SFS turbo file system.
-        :param _builtins.bool enhanced: Whether the SFS turbo file system is enhanced.
-        :param _builtins.str enterprise_project_id: The enterprise project ID of the SFS turbo file system.
-        :param _builtins.str export_location: The mount point of the SFS turbo file system.
-        :param _builtins.str id: The resource ID of the SFS turbo file system.
-        :param _builtins.str name: Specifies the name of the SFS turbo file system.
-        :param _builtins.str security_group_id: The ID of the security group to which the SFS turbo belongs.
-        :param _builtins.str share_proto: Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-        :param _builtins.str share_type: Specifies the type of the SFS turbo file system.
-               The valid values are **STANDARD** and **PERFORMANCE**.
-        :param _builtins.int size: Specifies the capacity of the SFS turbo file system, in GB.
-               The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-        :param _builtins.str subnet_id: The **network ID** of the subnet to which the SFS turbo belongs.
-        :param _builtins.str version: The version of the SFS turbo file system.
-        :param _builtins.str vpc_id: The ID of the VPC to which the SFS turbo belongs.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "available_capacity", available_capacity)
         pulumi.set(__self__, "crypt_key_id", crypt_key_id)
@@ -191,123 +124,76 @@ class GetTurbosTurboResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The availability zone where the SFS turbo file system is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="availableCapacity")
     def available_capacity(self) -> _builtins.str:
-        """
-        The available capacity of the SFS turbo file system, in GB.
-        """
         return pulumi.get(self, "available_capacity")
 
     @_builtins.property
     @pulumi.getter(name="cryptKeyId")
     def crypt_key_id(self) -> _builtins.str:
-        """
-        The ID of a KMS key to encrypt the SFS turbo file system.
-        """
         return pulumi.get(self, "crypt_key_id")
 
     @_builtins.property
     @pulumi.getter
     def enhanced(self) -> _builtins.bool:
-        """
-        Whether the SFS turbo file system is enhanced.
-        """
         return pulumi.get(self, "enhanced")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        The enterprise project ID of the SFS turbo file system.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="exportLocation")
     def export_location(self) -> _builtins.str:
-        """
-        The mount point of the SFS turbo file system.
-        """
         return pulumi.get(self, "export_location")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The resource ID of the SFS turbo file system.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the SFS turbo file system.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
-        """
-        The ID of the security group to which the SFS turbo belongs.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> _builtins.str:
-        """
-        Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-        """
         return pulumi.get(self, "share_proto")
 
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> _builtins.str:
-        """
-        Specifies the type of the SFS turbo file system.
-        The valid values are **STANDARD** and **PERFORMANCE**.
-        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the capacity of the SFS turbo file system, in GB.
-        The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        The **network ID** of the subnet to which the SFS turbo belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
-        """
-        The version of the SFS turbo file system.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
-        """
-        The ID of the VPC to which the SFS turbo belongs.
-        """
         return pulumi.get(self, "vpc_id")
 
 

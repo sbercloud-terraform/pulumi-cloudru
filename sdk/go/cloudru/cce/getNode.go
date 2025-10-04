@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// To get the specified node in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			nodeName := cfg.RequireObject("nodeName")
-//			_, err := cce.GetNode(ctx, &cce.GetNodeArgs{
-//				ClusterId: clusterId,
-//				Name:      pulumi.StringRef(nodeName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupNode(ctx *pulumi.Context, args *LookupNodeArgs, opts ...pulumi.InvokeOption) (*LookupNodeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNodeResult
@@ -55,56 +23,37 @@ func LookupNode(ctx *pulumi.Context, args *LookupNodeArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getNode.
 type LookupNodeArgs struct {
-	// Specifies the ID of container cluster.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the name of the node.
-	Name *string `pulumi:"name"`
-	// Specifies the ID of the node.
-	NodeId *string `pulumi:"nodeId"`
-	// Specifies the region in which to obtain the CCE nodes.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the state of the node.
-	Status *string `pulumi:"status"`
+	ClusterId string  `pulumi:"clusterId"`
+	Name      *string `pulumi:"name"`
+	NodeId    *string `pulumi:"nodeId"`
+	Region    *string `pulumi:"region"`
+	Status    *string `pulumi:"status"`
 }
 
 // A collection of values returned by getNode.
 type LookupNodeResult struct {
-	// Available partitions where the node is located.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Node's billing mode: The value is 0 (on demand).
-	BillingMode int    `pulumi:"billingMode"`
-	ClusterId   string `pulumi:"clusterId"`
-	// Represents the data disk to be created. Structure is documented below.
-	DataVolumes []GetNodeDataVolume `pulumi:"dataVolumes"`
-	// The ID of ECS group to which the node belongs.
-	EcsGroupId          string `pulumi:"ecsGroupId"`
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The flavor ID to be used.
-	FlavorId        string                  `pulumi:"flavorId"`
-	HostnameConfigs []GetNodeHostnameConfig `pulumi:"hostnameConfigs"`
+	AvailabilityZone    string                  `pulumi:"availabilityZone"`
+	BillingMode         int                     `pulumi:"billingMode"`
+	ClusterId           string                  `pulumi:"clusterId"`
+	DataVolumes         []GetNodeDataVolume     `pulumi:"dataVolumes"`
+	EcsGroupId          string                  `pulumi:"ecsGroupId"`
+	EnterpriseProjectId string                  `pulumi:"enterpriseProjectId"`
+	FlavorId            string                  `pulumi:"flavorId"`
+	HostnameConfigs     []GetNodeHostnameConfig `pulumi:"hostnameConfigs"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Key pair name when logging in to select the key pair mode.
-	KeyPair string `pulumi:"keyPair"`
-	Name    string `pulumi:"name"`
-	NodeId  string `pulumi:"nodeId"`
-	// Operating System of the node.
-	Os string `pulumi:"os"`
-	// Private IP of the node.
-	PrivateIp string `pulumi:"privateIp"`
-	// Elastic IP parameters of the node.
-	PublicIp string `pulumi:"publicIp"`
-	Region   string `pulumi:"region"`
-	// It corresponds to the system disk related configuration. Structure is documented below.
+	Id          string              `pulumi:"id"`
+	KeyPair     string              `pulumi:"keyPair"`
+	Name        string              `pulumi:"name"`
+	NodeId      string              `pulumi:"nodeId"`
+	Os          string              `pulumi:"os"`
+	PrivateIp   string              `pulumi:"privateIp"`
+	PublicIp    string              `pulumi:"publicIp"`
+	Region      string              `pulumi:"region"`
 	RootVolumes []GetNodeRootVolume `pulumi:"rootVolumes"`
-	// The node's virtual machine ID in ECS.
-	ServerId string `pulumi:"serverId"`
-	Status   string `pulumi:"status"`
-	// The ID of the subnet to which the NIC belongs.
-	SubnetId string `pulumi:"subnetId"`
-	// Tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
+	ServerId    string              `pulumi:"serverId"`
+	Status      string              `pulumi:"status"`
+	SubnetId    string              `pulumi:"subnetId"`
+	Tags        map[string]string   `pulumi:"tags"`
 }
 
 func LookupNodeOutput(ctx *pulumi.Context, args LookupNodeOutputArgs, opts ...pulumi.InvokeOption) LookupNodeResultOutput {
@@ -118,17 +67,11 @@ func LookupNodeOutput(ctx *pulumi.Context, args LookupNodeOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getNode.
 type LookupNodeOutputArgs struct {
-	// Specifies the ID of container cluster.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// Specifies the name of the node.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the ID of the node.
-	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// Specifies the region in which to obtain the CCE nodes.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the state of the node.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	ClusterId pulumi.StringInput    `pulumi:"clusterId"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	NodeId    pulumi.StringPtrInput `pulumi:"nodeId"`
+	Region    pulumi.StringPtrInput `pulumi:"region"`
+	Status    pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (LookupNodeOutputArgs) ElementType() reflect.Type {
@@ -150,12 +93,10 @@ func (o LookupNodeResultOutput) ToLookupNodeResultOutputWithContext(ctx context.
 	return o
 }
 
-// Available partitions where the node is located.
 func (o LookupNodeResultOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Node's billing mode: The value is 0 (on demand).
 func (o LookupNodeResultOutput) BillingMode() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeResult) int { return v.BillingMode }).(pulumi.IntOutput)
 }
@@ -164,12 +105,10 @@ func (o LookupNodeResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Represents the data disk to be created. Structure is documented below.
 func (o LookupNodeResultOutput) DataVolumes() GetNodeDataVolumeArrayOutput {
 	return o.ApplyT(func(v LookupNodeResult) []GetNodeDataVolume { return v.DataVolumes }).(GetNodeDataVolumeArrayOutput)
 }
 
-// The ID of ECS group to which the node belongs.
 func (o LookupNodeResultOutput) EcsGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.EcsGroupId }).(pulumi.StringOutput)
 }
@@ -178,7 +117,6 @@ func (o LookupNodeResultOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The flavor ID to be used.
 func (o LookupNodeResultOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -192,7 +130,6 @@ func (o LookupNodeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Key pair name when logging in to select the key pair mode.
 func (o LookupNodeResultOutput) KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.KeyPair }).(pulumi.StringOutput)
 }
@@ -205,17 +142,14 @@ func (o LookupNodeResultOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-// Operating System of the node.
 func (o LookupNodeResultOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.Os }).(pulumi.StringOutput)
 }
 
-// Private IP of the node.
 func (o LookupNodeResultOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// Elastic IP parameters of the node.
 func (o LookupNodeResultOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.PublicIp }).(pulumi.StringOutput)
 }
@@ -224,12 +158,10 @@ func (o LookupNodeResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// It corresponds to the system disk related configuration. Structure is documented below.
 func (o LookupNodeResultOutput) RootVolumes() GetNodeRootVolumeArrayOutput {
 	return o.ApplyT(func(v LookupNodeResult) []GetNodeRootVolume { return v.RootVolumes }).(GetNodeRootVolumeArrayOutput)
 }
 
-// The node's virtual machine ID in ECS.
 func (o LookupNodeResultOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.ServerId }).(pulumi.StringOutput)
 }
@@ -238,12 +170,10 @@ func (o LookupNodeResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the subnet to which the NIC belongs.
 func (o LookupNodeResultOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeResult) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Tags of a VM node, key/value pair format.
 func (o LookupNodeResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNodeResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

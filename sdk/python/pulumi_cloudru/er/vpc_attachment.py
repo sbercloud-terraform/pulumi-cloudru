@@ -29,30 +29,13 @@ class VpcAttachmentArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VpcAttachment resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the VPC attachment
-               belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Specifies whether to automatically configure routes for the VPC
-               which pointing to the ER instance.
-               The destination CIDRs of the routes are fixed as follows:
-               + **10.0.0.0/8**
-               + **172.16.0.0/12**
-               + **192.168.0.0/16**
-               
-               The default value is false. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC attachment.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC attachment.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and the VPC attachment are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC attachment.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the VPC subnet to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Whether to automatically configure routes for the VPC which pointing to the ER instance.
+        :param pulumi.Input[_builtins.str] description: The description of the VPC attachment.
+        :param pulumi.Input[_builtins.str] name: The name of the VPC attachment.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and the VPC attachment are located.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -72,9 +55,7 @@ class VpcAttachmentArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the ER instance to which the VPC attachment
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the VPC attachment belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -86,8 +67,7 @@ class VpcAttachmentArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the VPC subnet to which the VPC attachment belongs.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -99,8 +79,7 @@ class VpcAttachmentArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the VPC to which the VPC attachment belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the VPC to which the VPC attachment belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -112,14 +91,7 @@ class VpcAttachmentArgs:
     @pulumi.getter(name="autoCreateVpcRoutes")
     def auto_create_vpc_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to automatically configure routes for the VPC
-        which pointing to the ER instance.
-        The destination CIDRs of the routes are fixed as follows:
-        + **10.0.0.0/8**
-        + **172.16.0.0/12**
-        + **192.168.0.0/16**
-
-        The default value is false. Changing this parameter will create a new resource.
+        Whether to automatically configure routes for the VPC which pointing to the ER instance.
         """
         return pulumi.get(self, "auto_create_vpc_routes")
 
@@ -131,8 +103,7 @@ class VpcAttachmentArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the VPC attachment.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the VPC attachment.
         """
         return pulumi.get(self, "description")
 
@@ -144,9 +115,7 @@ class VpcAttachmentArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the VPC attachment.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the VPC attachment.
         """
         return pulumi.get(self, "name")
 
@@ -158,9 +127,7 @@ class VpcAttachmentArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the ER instance and the VPC attachment are
-        located.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and the VPC attachment are located.
         """
         return pulumi.get(self, "region")
 
@@ -171,9 +138,6 @@ class VpcAttachmentArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the VPC attachment.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -197,33 +161,16 @@ class _VpcAttachmentState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcAttachment resources.
-        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Specifies whether to automatically configure routes for the VPC
-               which pointing to the ER instance.
-               The destination CIDRs of the routes are fixed as follows:
-               + **10.0.0.0/8**
-               + **172.16.0.0/12**
-               + **192.168.0.0/16**
-               
-               The default value is false. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Whether to automatically configure routes for the VPC which pointing to the ER instance.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC attachment.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the VPC attachment
-               belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC attachment.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and the VPC attachment are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: The description of the VPC attachment.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.str] name: The name of the VPC attachment.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and the VPC attachment are located.
         :param pulumi.Input[_builtins.str] status: The current status of the VPC attachment.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC attachment.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the VPC subnet to which the VPC attachment belongs.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPC attachment belongs.
         """
         if auto_create_vpc_routes is not None:
             pulumi.set(__self__, "auto_create_vpc_routes", auto_create_vpc_routes)
@@ -252,14 +199,7 @@ class _VpcAttachmentState:
     @pulumi.getter(name="autoCreateVpcRoutes")
     def auto_create_vpc_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to automatically configure routes for the VPC
-        which pointing to the ER instance.
-        The destination CIDRs of the routes are fixed as follows:
-        + **10.0.0.0/8**
-        + **172.16.0.0/12**
-        + **192.168.0.0/16**
-
-        The default value is false. Changing this parameter will create a new resource.
+        Whether to automatically configure routes for the VPC which pointing to the ER instance.
         """
         return pulumi.get(self, "auto_create_vpc_routes")
 
@@ -283,8 +223,7 @@ class _VpcAttachmentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the VPC attachment.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the VPC attachment.
         """
         return pulumi.get(self, "description")
 
@@ -296,9 +235,7 @@ class _VpcAttachmentState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the ER instance to which the VPC attachment
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the VPC attachment belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -310,9 +247,7 @@ class _VpcAttachmentState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the VPC attachment.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the VPC attachment.
         """
         return pulumi.get(self, "name")
 
@@ -324,9 +259,7 @@ class _VpcAttachmentState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the ER instance and the VPC attachment are
-        located.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and the VPC attachment are located.
         """
         return pulumi.get(self, "region")
 
@@ -350,8 +283,7 @@ class _VpcAttachmentState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the VPC subnet to which the VPC attachment belongs.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -362,9 +294,6 @@ class _VpcAttachmentState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the VPC attachment.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -387,8 +316,7 @@ class _VpcAttachmentState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the VPC to which the VPC attachment belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the VPC to which the VPC attachment belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -413,73 +341,16 @@ class VpcAttachment(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPC attachment resource under the ER instance within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        attachment_name = config.require_object("attachmentName")
-        test = sbercloud.er.VpcAttachment("test",
-            instance_id=instance_id,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            name=attachment_name,
-            description="VPC attachment created by terraform",
-            auto_create_vpc_routes=True,
-            tags={
-                "foo": "bar",
-                "owner": "terraform",
-            })
-        ```
-
-        ## Import
-
-        VPC attachments can be imported using their `id` and the related `instance_id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/vpcAttachment:VpcAttachment test <instance_id>/<id>
-        ```
-
+        Create a VpcAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Specifies whether to automatically configure routes for the VPC
-               which pointing to the ER instance.
-               The destination CIDRs of the routes are fixed as follows:
-               + **10.0.0.0/8**
-               + **172.16.0.0/12**
-               + **192.168.0.0/16**
-               
-               The default value is false. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC attachment.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the VPC attachment
-               belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC attachment.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and the VPC attachment are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC attachment.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Whether to automatically configure routes for the VPC which pointing to the ER instance.
+        :param pulumi.Input[_builtins.str] description: The description of the VPC attachment.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.str] name: The name of the VPC attachment.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and the VPC attachment are located.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the VPC subnet to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPC attachment belongs.
         """
         ...
     @overload
@@ -488,47 +359,7 @@ class VpcAttachment(pulumi.CustomResource):
                  args: VpcAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPC attachment resource under the ER instance within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        attachment_name = config.require_object("attachmentName")
-        test = sbercloud.er.VpcAttachment("test",
-            instance_id=instance_id,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            name=attachment_name,
-            description="VPC attachment created by terraform",
-            auto_create_vpc_routes=True,
-            tags={
-                "foo": "bar",
-                "owner": "terraform",
-            })
-        ```
-
-        ## Import
-
-        VPC attachments can be imported using their `id` and the related `instance_id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/vpcAttachment:VpcAttachment test <instance_id>/<id>
-        ```
-
+        Create a VpcAttachment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpcAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -606,33 +437,16 @@ class VpcAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Specifies whether to automatically configure routes for the VPC
-               which pointing to the ER instance.
-               The destination CIDRs of the routes are fixed as follows:
-               + **10.0.0.0/8**
-               + **172.16.0.0/12**
-               + **192.168.0.0/16**
-               
-               The default value is false. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.bool] auto_create_vpc_routes: Whether to automatically configure routes for the VPC which pointing to the ER instance.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the VPC attachment.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the VPC attachment
-               belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the VPC attachment.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the ER instance and the VPC attachment are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: The description of the VPC attachment.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance to which the VPC attachment belongs.
+        :param pulumi.Input[_builtins.str] name: The name of the VPC attachment.
+        :param pulumi.Input[_builtins.str] region: The region where the ER instance and the VPC attachment are located.
         :param pulumi.Input[_builtins.str] status: The current status of the VPC attachment.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the VPC attachment.
+        :param pulumi.Input[_builtins.str] subnet_id: The ID of the VPC subnet to which the VPC attachment belongs.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the VPC attachment belongs.  
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPC attachment belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -655,14 +469,7 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="autoCreateVpcRoutes")
     def auto_create_vpc_routes(self) -> pulumi.Output[_builtins.bool]:
         """
-        Specifies whether to automatically configure routes for the VPC
-        which pointing to the ER instance.
-        The destination CIDRs of the routes are fixed as follows:
-        + **10.0.0.0/8**
-        + **172.16.0.0/12**
-        + **192.168.0.0/16**
-
-        The default value is false. Changing this parameter will create a new resource.
+        Whether to automatically configure routes for the VPC which pointing to the ER instance.
         """
         return pulumi.get(self, "auto_create_vpc_routes")
 
@@ -678,8 +485,7 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the description of the VPC attachment.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the VPC attachment.
         """
         return pulumi.get(self, "description")
 
@@ -687,9 +493,7 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the ER instance to which the VPC attachment
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the ER instance to which the VPC attachment belongs.
         """
         return pulumi.get(self, "instance_id")
 
@@ -697,9 +501,7 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the name of the VPC attachment.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The name of the VPC attachment.
         """
         return pulumi.get(self, "name")
 
@@ -707,9 +509,7 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the ER instance and the VPC attachment are
-        located.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the ER instance and the VPC attachment are located.
         """
         return pulumi.get(self, "region")
 
@@ -725,17 +525,13 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the VPC subnet to which the VPC attachment belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the VPC subnet to which the VPC attachment belongs.
         """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the VPC attachment.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -750,8 +546,7 @@ class VpcAttachment(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the VPC to which the VPC attachment belongs.  
-        Changing this parameter will create a new resource.
+        The ID of the VPC to which the VPC attachment belongs.
         """
         return pulumi.get(self, "vpc_id")
 

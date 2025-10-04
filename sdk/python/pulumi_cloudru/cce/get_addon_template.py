@@ -64,9 +64,6 @@ class GetAddonTemplateResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The description of the add-on.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -90,17 +87,11 @@ class GetAddonTemplateResult:
     @_builtins.property
     @pulumi.getter
     def spec(self) -> _builtins.str:
-        """
-        The detail configuration of the add-on template.
-        """
         return pulumi.get(self, "spec")
 
     @_builtins.property
     @pulumi.getter
     def stable(self) -> _builtins.bool:
-        """
-        Whether the add-on template is a stable version.
-        """
         return pulumi.get(self, "stable")
 
     @_builtins.property
@@ -137,29 +128,7 @@ def get_addon_template(cluster_id: Optional[_builtins.str] = None,
                        version: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddonTemplateResult:
     """
-    Use this data source to get available SberCloud CCE add-on template.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    addon_name = config.require_object("addonName")
-    addon_version = config.require_object("addonVersion")
-    test = sbercloud.Cce.get_addon_template(cluster_id=cluster_id,
-        name=addon_name,
-        version=addon_version)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of container cluster.
-    :param _builtins.str name: Specifies the add-on name.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE add-ons. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str version: Specifies the add-on version.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id
@@ -185,29 +154,7 @@ def get_addon_template_output(cluster_id: Optional[pulumi.Input[_builtins.str]] 
                               version: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddonTemplateResult]:
     """
-    Use this data source to get available SberCloud CCE add-on template.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    cluster_id = config.require_object("clusterId")
-    addon_name = config.require_object("addonName")
-    addon_version = config.require_object("addonVersion")
-    test = sbercloud.Cce.get_addon_template(cluster_id=cluster_id,
-        name=addon_name,
-        version=addon_version)
-    ```
-
-
-    :param _builtins.str cluster_id: Specifies the ID of container cluster.
-    :param _builtins.str name: Specifies the add-on name.
-    :param _builtins.str region: Specifies the region in which to obtain the CCE add-ons. If omitted, the provider-level
-           region will be used.
-    :param _builtins.str version: Specifies the add-on version.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['clusterId'] = cluster_id

@@ -42,14 +42,7 @@ MYPY = False
 if not MYPY:
     class AclIpCidrArgsDict(TypedDict):
         cidr: pulumi.Input[_builtins.str]
-        """
-        Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-        """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a description about an IPv4 CIDR block. This parameter can contain a
-        maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-        """
 elif False:
     AclIpCidrArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -58,11 +51,6 @@ class AclIpCidrArgs:
     def __init__(__self__, *,
                  cidr: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] cidr: Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-        :param pulumi.Input[_builtins.str] description: Specifies a description about an IPv4 CIDR block. This parameter can contain a
-               maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-        """
         pulumi.set(__self__, "cidr", cidr)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -70,9 +58,6 @@ class AclIpCidrArgs:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -82,10 +67,6 @@ class AclIpCidrArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a description about an IPv4 CIDR block. This parameter can contain a
-        maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -96,16 +77,7 @@ class AclIpCidrArgs:
 if not MYPY:
     class AclIpRangeArgsDict(TypedDict):
         range: pulumi.Input[_builtins.str]
-        """
-        Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-        """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a description about an IP address range. This parameter can contain a
-        maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-
-        ->**NOTE:** Up to 200 `ip_cidrs` and `ip_ranges` can be created in total for each access method.
-        """
 elif False:
     AclIpRangeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -114,13 +86,6 @@ class AclIpRangeArgs:
     def __init__(__self__, *,
                  range: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] range: Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-        :param pulumi.Input[_builtins.str] description: Specifies a description about an IP address range. This parameter can contain a
-               maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-               
-               ->**NOTE:** Up to 200 `ip_cidrs` and `ip_ranges` can be created in total for each access method.
-        """
         pulumi.set(__self__, "range", range)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -128,9 +93,6 @@ class AclIpRangeArgs:
     @_builtins.property
     @pulumi.getter
     def range(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-        """
         return pulumi.get(self, "range")
 
     @range.setter
@@ -140,12 +102,6 @@ class AclIpRangeArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a description about an IP address range. This parameter can contain a
-        maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-
-        ->**NOTE:** Up to 200 `ip_cidrs` and `ip_ranges` can be created in total for each access method.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -156,18 +112,7 @@ class AclIpRangeArgs:
 if not MYPY:
     class AgencyProjectRoleArgsDict(TypedDict):
         project: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of project.
-        """
         roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies an array of role names.
-
-        > **NOTE**
-        - At least one of `project_role` and `domain_roles` must be specified when creating an agency.
-        - We can get all **System-Defined Roles** form
-        [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-        """
 elif False:
     AgencyProjectRoleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -176,24 +121,12 @@ class AgencyProjectRoleArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[_builtins.str],
                  roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        """
-        :param pulumi.Input[_builtins.str] project: Specifies the name of project.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Specifies an array of role names.
-               
-               > **NOTE**
-               - At least one of `project_role` and `domain_roles` must be specified when creating an agency.
-               - We can get all **System-Defined Roles** form
-               [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-        """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "roles", roles)
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of project.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -203,14 +136,6 @@ class AgencyProjectRoleArgs:
     @_builtins.property
     @pulumi.getter
     def roles(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies an array of role names.
-
-        > **NOTE**
-        - At least one of `project_role` and `domain_roles` must be specified when creating an agency.
-        - We can get all **System-Defined Roles** form
-        [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-        """
         return pulumi.get(self, "roles")
 
     @roles.setter
@@ -221,50 +146,13 @@ class AgencyProjectRoleArgs:
 if not MYPY:
     class ProviderAccessConfigArgsDict(TypedDict):
         access_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the access type of the identity provider.
-        Available options are:
-        """
         client_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the ID of a client registered with the OpenID Connect identity provider.
-        """
         provider_url: pulumi.Input[_builtins.str]
-        """
-        Specifies the URL of the identity provider.
-        This field corresponds to the iss field in the ID token.
-        """
         signing_key: pulumi.Input[_builtins.str]
-        """
-        Public key used to sign the ID token of the OpenID Connect identity provider.
-        This field is required only if the protocol is set to *oidc*.
-        """
         authorization_endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the authorization endpoint of the OpenID Connect identity
-        provider. This field is required only if the access type is set to `program_console`.
-        """
         response_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Response mode.
-        Valid values is *form_post* and *fragment*, default value is *form_post*.
-        This field is required only if the access type is set to `program_console`.
-        """
         response_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Response type. Valid values is *id_token*, default value is *id_token*.
-        This field is required only if the access type is set to `program_console`.
-        """
         scopes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the scopes of authorization requests. It is an array of one or more scopes.
-        Valid values are *openid*, *email*, *profile* and other values defined by you.
-        This field is required only if the access type is set to `program_console`.
-
-        > **NOTE:** 1. *openid* must be specified for this field.
-        <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-        <br/>Example: openid email host.
-        """
 elif False:
     ProviderAccessConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -279,29 +167,6 @@ class ProviderAccessConfigArgs:
                  response_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  response_type: Optional[pulumi.Input[_builtins.str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] access_type: Specifies the access type of the identity provider.
-               Available options are:
-        :param pulumi.Input[_builtins.str] client_id: Specifies the ID of a client registered with the OpenID Connect identity provider.
-        :param pulumi.Input[_builtins.str] provider_url: Specifies the URL of the identity provider.
-               This field corresponds to the iss field in the ID token.
-        :param pulumi.Input[_builtins.str] signing_key: Public key used to sign the ID token of the OpenID Connect identity provider.
-               This field is required only if the protocol is set to *oidc*.
-        :param pulumi.Input[_builtins.str] authorization_endpoint: Specifies the authorization endpoint of the OpenID Connect identity
-               provider. This field is required only if the access type is set to `program_console`.
-        :param pulumi.Input[_builtins.str] response_mode: Response mode.
-               Valid values is *form_post* and *fragment*, default value is *form_post*.
-               This field is required only if the access type is set to `program_console`.
-        :param pulumi.Input[_builtins.str] response_type: Response type. Valid values is *id_token*, default value is *id_token*.
-               This field is required only if the access type is set to `program_console`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] scopes: Specifies the scopes of authorization requests. It is an array of one or more scopes.
-               Valid values are *openid*, *email*, *profile* and other values defined by you.
-               This field is required only if the access type is set to `program_console`.
-               
-               > **NOTE:** 1. *openid* must be specified for this field.
-               <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-               <br/>Example: openid email host.
-        """
         pulumi.set(__self__, "access_type", access_type)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "provider_url", provider_url)
@@ -318,10 +183,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the access type of the identity provider.
-        Available options are:
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -331,9 +192,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of a client registered with the OpenID Connect identity provider.
-        """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
@@ -343,10 +201,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="providerUrl")
     def provider_url(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the URL of the identity provider.
-        This field corresponds to the iss field in the ID token.
-        """
         return pulumi.get(self, "provider_url")
 
     @provider_url.setter
@@ -356,10 +210,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="signingKey")
     def signing_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        Public key used to sign the ID token of the OpenID Connect identity provider.
-        This field is required only if the protocol is set to *oidc*.
-        """
         return pulumi.get(self, "signing_key")
 
     @signing_key.setter
@@ -369,10 +219,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="authorizationEndpoint")
     def authorization_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the authorization endpoint of the OpenID Connect identity
-        provider. This field is required only if the access type is set to `program_console`.
-        """
         return pulumi.get(self, "authorization_endpoint")
 
     @authorization_endpoint.setter
@@ -382,11 +228,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="responseMode")
     def response_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Response mode.
-        Valid values is *form_post* and *fragment*, default value is *form_post*.
-        This field is required only if the access type is set to `program_console`.
-        """
         return pulumi.get(self, "response_mode")
 
     @response_mode.setter
@@ -396,10 +237,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter(name="responseType")
     def response_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Response type. Valid values is *id_token*, default value is *id_token*.
-        This field is required only if the access type is set to `program_console`.
-        """
         return pulumi.get(self, "response_type")
 
     @response_type.setter
@@ -409,15 +246,6 @@ class ProviderAccessConfigArgs:
     @_builtins.property
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the scopes of authorization requests. It is an array of one or more scopes.
-        Valid values are *openid*, *email*, *profile* and other values defined by you.
-        This field is required only if the access type is set to `program_console`.
-
-        > **NOTE:** 1. *openid* must be specified for this field.
-        <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-        <br/>Example: openid email host.
-        """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
@@ -428,17 +256,7 @@ class ProviderAccessConfigArgs:
 if not MYPY:
     class ProviderConversionConversionRuleArgsDict(TypedDict):
         locals: pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleLocalArgsDict']]]
-        """
-        Specifies the federated user information on the cloud platform.
-        """
         remotes: pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleRemoteArgsDict']]]
-        """
-        Specifies Federated user information in the IDP system.
-
-        > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-        attributes and operators.
-        If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
-        """
 elif False:
     ProviderConversionConversionRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -447,23 +265,12 @@ class ProviderConversionConversionRuleArgs:
     def __init__(__self__, *,
                  locals: pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleLocalArgs']]],
                  remotes: pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleRemoteArgs']]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleLocalArgs']]] locals: Specifies the federated user information on the cloud platform.
-        :param pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleRemoteArgs']]] remotes: Specifies Federated user information in the IDP system.
-               
-               > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-               attributes and operators.
-               If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
-        """
         pulumi.set(__self__, "locals", locals)
         pulumi.set(__self__, "remotes", remotes)
 
     @_builtins.property
     @pulumi.getter
     def locals(self) -> pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleLocalArgs']]]:
-        """
-        Specifies the federated user information on the cloud platform.
-        """
         return pulumi.get(self, "locals")
 
     @locals.setter
@@ -473,13 +280,6 @@ class ProviderConversionConversionRuleArgs:
     @_builtins.property
     @pulumi.getter
     def remotes(self) -> pulumi.Input[Sequence[pulumi.Input['ProviderConversionConversionRuleRemoteArgs']]]:
-        """
-        Specifies Federated user information in the IDP system.
-
-        > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-        attributes and operators.
-        If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
-        """
         return pulumi.get(self, "remotes")
 
     @remotes.setter
@@ -490,13 +290,7 @@ class ProviderConversionConversionRuleArgs:
 if not MYPY:
     class ProviderConversionConversionRuleLocalArgsDict(TypedDict):
         group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the user group to which the federated user belongs on the cloud platform.
-        """
         username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the name of a federated user on the cloud platform.
-        """
 elif False:
     ProviderConversionConversionRuleLocalArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -505,10 +299,6 @@ class ProviderConversionConversionRuleLocalArgs:
     def __init__(__self__, *,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] group: Specifies the user group to which the federated user belongs on the cloud platform.
-        :param pulumi.Input[_builtins.str] username: Specifies the name of a federated user on the cloud platform.
-        """
         if group is not None:
             pulumi.set(__self__, "group", group)
         if username is not None:
@@ -517,9 +307,6 @@ class ProviderConversionConversionRuleLocalArgs:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the user group to which the federated user belongs on the cloud platform.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -529,9 +316,6 @@ class ProviderConversionConversionRuleLocalArgs:
     @_builtins.property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of a federated user on the cloud platform.
-        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -542,18 +326,8 @@ class ProviderConversionConversionRuleLocalArgs:
 if not MYPY:
     class ProviderConversionConversionRuleRemoteArgsDict(TypedDict):
         attribute: pulumi.Input[_builtins.str]
-        """
-        Specifies the attribute in the IDP assertion.
-        """
         condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the condition of conversion rule.
-        Available options are:
-        """
         values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the rule is matched only if the specified strings appear in the attribute type.
-        """
 elif False:
     ProviderConversionConversionRuleRemoteArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -563,12 +337,6 @@ class ProviderConversionConversionRuleRemoteArgs:
                  attribute: pulumi.Input[_builtins.str],
                  condition: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] attribute: Specifies the attribute in the IDP assertion.
-        :param pulumi.Input[_builtins.str] condition: Specifies the condition of conversion rule.
-               Available options are:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: Specifies the rule is matched only if the specified strings appear in the attribute type.
-        """
         pulumi.set(__self__, "attribute", attribute)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -578,9 +346,6 @@ class ProviderConversionConversionRuleRemoteArgs:
     @_builtins.property
     @pulumi.getter
     def attribute(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the attribute in the IDP assertion.
-        """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
@@ -590,10 +355,6 @@ class ProviderConversionConversionRuleRemoteArgs:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the condition of conversion rule.
-        Available options are:
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -603,9 +364,6 @@ class ProviderConversionConversionRuleRemoteArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the rule is matched only if the specified strings appear in the attribute type.
-        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -616,13 +374,7 @@ class ProviderConversionConversionRuleRemoteArgs:
 if not MYPY:
     class ProviderConversionRuleArgsDict(TypedDict):
         locals: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleLocalArgsDict']]]]
-        """
-        The federated user information on the cloud platform.
-        """
         remotes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleRemoteArgsDict']]]]
-        """
-        The description of the identity provider.
-        """
 elif False:
     ProviderConversionRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -631,10 +383,6 @@ class ProviderConversionRuleArgs:
     def __init__(__self__, *,
                  locals: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleLocalArgs']]]] = None,
                  remotes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleRemoteArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleLocalArgs']]] locals: The federated user information on the cloud platform.
-        :param pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleRemoteArgs']]] remotes: The description of the identity provider.
-        """
         if locals is not None:
             pulumi.set(__self__, "locals", locals)
         if remotes is not None:
@@ -643,9 +391,6 @@ class ProviderConversionRuleArgs:
     @_builtins.property
     @pulumi.getter
     def locals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleLocalArgs']]]]:
-        """
-        The federated user information on the cloud platform.
-        """
         return pulumi.get(self, "locals")
 
     @locals.setter
@@ -655,9 +400,6 @@ class ProviderConversionRuleArgs:
     @_builtins.property
     @pulumi.getter
     def remotes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderConversionRuleRemoteArgs']]]]:
-        """
-        The description of the identity provider.
-        """
         return pulumi.get(self, "remotes")
 
     @remotes.setter
@@ -668,13 +410,7 @@ class ProviderConversionRuleArgs:
 if not MYPY:
     class ProviderConversionRuleLocalArgsDict(TypedDict):
         group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The user group to which the federated user belongs on the cloud platform.
-        """
         username: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of a federated user on the cloud platform.
-        """
 elif False:
     ProviderConversionRuleLocalArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -683,10 +419,6 @@ class ProviderConversionRuleLocalArgs:
     def __init__(__self__, *,
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] group: The user group to which the federated user belongs on the cloud platform.
-        :param pulumi.Input[_builtins.str] username: The name of a federated user on the cloud platform.
-        """
         if group is not None:
             pulumi.set(__self__, "group", group)
         if username is not None:
@@ -695,9 +427,6 @@ class ProviderConversionRuleLocalArgs:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The user group to which the federated user belongs on the cloud platform.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -707,9 +436,6 @@ class ProviderConversionRuleLocalArgs:
     @_builtins.property
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of a federated user on the cloud platform.
-        """
         return pulumi.get(self, "username")
 
     @username.setter
@@ -720,17 +446,8 @@ class ProviderConversionRuleLocalArgs:
 if not MYPY:
     class ProviderConversionRuleRemoteArgsDict(TypedDict):
         attribute: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The attribute in the IDP assertion.
-        """
         condition: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The condition of conversion rule.
-        """
         values: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The rule is matched only if the specified strings appear in the attribute type.
-        """
 elif False:
     ProviderConversionRuleRemoteArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -740,11 +457,6 @@ class ProviderConversionRuleRemoteArgs:
                  attribute: Optional[pulumi.Input[_builtins.str]] = None,
                  condition: Optional[pulumi.Input[_builtins.str]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
-        """
-        :param pulumi.Input[_builtins.str] attribute: The attribute in the IDP assertion.
-        :param pulumi.Input[_builtins.str] condition: The condition of conversion rule.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The rule is matched only if the specified strings appear in the attribute type.
-        """
         if attribute is not None:
             pulumi.set(__self__, "attribute", attribute)
         if condition is not None:
@@ -755,9 +467,6 @@ class ProviderConversionRuleRemoteArgs:
     @_builtins.property
     @pulumi.getter
     def attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The attribute in the IDP assertion.
-        """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
@@ -767,9 +476,6 @@ class ProviderConversionRuleRemoteArgs:
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The condition of conversion rule.
-        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -779,9 +485,6 @@ class ProviderConversionRuleRemoteArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        The rule is matched only if the specified strings appear in the attribute type.
-        """
         return pulumi.get(self, "values")
 
     @values.setter

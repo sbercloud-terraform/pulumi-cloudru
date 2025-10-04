@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to query the list of ELB listeners.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const protocol = config.requireObject<any>("protocol");
- * const test = sbercloud.Elb.getListeners({
- *     protocol: protocol,
- * });
- * ```
- */
 export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOptions): Promise<GetListenersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -47,43 +31,16 @@ export function getListeners(args?: GetListenersArgs, opts?: pulumi.InvokeOption
  */
 export interface GetListenersArgs {
     clientCaTlsContainerRef?: string;
-    /**
-     * The ID of the default pool with which the ELB listener is associated.
-     */
     defaultPoolId?: string;
-    /**
-     * The ID of the server certificate used by the listener.
-     */
     defaultTlsContainerRef?: string;
-    /**
-     * The description of the ELB listener.
-     */
     description?: string;
     enterpriseProjectId?: string;
-    /**
-     * Whether the ELB listener uses HTTP/2.
-     */
     http2Enable?: string;
     listenerId?: string;
     loadbalancerId?: string;
-    /**
-     * The listener name.
-     */
     name?: string;
-    /**
-     * The listener protocol.  
-     * The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-     */
     protocol?: string;
-    /**
-     * The front-end listening port of the listener.  
-     * The valid value is range from `1` to `65535`.
-     */
     protocolPort?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
     tlsCiphersPolicy?: string;
 }
@@ -93,65 +50,24 @@ export interface GetListenersArgs {
  */
 export interface GetListenersResult {
     readonly clientCaTlsContainerRef?: string;
-    /**
-     * The ID of the default pool with which the ELB listener is associated.
-     */
     readonly defaultPoolId?: string;
-    /**
-     * The ID of the server certificate used by the listener.
-     */
     readonly defaultTlsContainerRef?: string;
-    /**
-     * The description of the ELB listener.
-     */
     readonly description?: string;
     readonly enterpriseProjectId?: string;
-    /**
-     * Whether the ELB listener uses HTTP/2.
-     */
     readonly http2Enable?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly listenerId?: string;
-    /**
-     * Listener list.
-     * The object structure is documented below.
-     */
     readonly listeners: outputs.Elb.GetListenersListener[];
     readonly loadbalancerId?: string;
-    /**
-     * The listener name.
-     */
     readonly name?: string;
-    /**
-     * The listener protocol.
-     */
     readonly protocol?: string;
-    /**
-     * The front-end listening port of the listener.
-     */
     readonly protocolPort?: string;
     readonly region: string;
     readonly tlsCiphersPolicy?: string;
 }
-/**
- * Use this data source to query the list of ELB listeners.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const protocol = config.requireObject<any>("protocol");
- * const test = sbercloud.Elb.getListeners({
- *     protocol: protocol,
- * });
- * ```
- */
 export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListenersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -177,43 +93,16 @@ export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.
  */
 export interface GetListenersOutputArgs {
     clientCaTlsContainerRef?: pulumi.Input<string>;
-    /**
-     * The ID of the default pool with which the ELB listener is associated.
-     */
     defaultPoolId?: pulumi.Input<string>;
-    /**
-     * The ID of the server certificate used by the listener.
-     */
     defaultTlsContainerRef?: pulumi.Input<string>;
-    /**
-     * The description of the ELB listener.
-     */
     description?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Whether the ELB listener uses HTTP/2.
-     */
     http2Enable?: pulumi.Input<string>;
     listenerId?: pulumi.Input<string>;
     loadbalancerId?: pulumi.Input<string>;
-    /**
-     * The listener name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The listener protocol.  
-     * The valid values are **TCP**, **UDP**, **HTTP** and **TERMINATED_HTTPS**.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The front-end listening port of the listener.  
-     * The valid value is range from `1` to `65535`.
-     */
     protocolPort?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
     tlsCiphersPolicy?: pulumi.Input<string>;
 }

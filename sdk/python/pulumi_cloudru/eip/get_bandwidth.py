@@ -62,17 +62,11 @@ class GetBandwidthResult:
     @_builtins.property
     @pulumi.getter(name="bandwidthType")
     def bandwidth_type(self) -> _builtins.str:
-        """
-        Indicates the bandwidth type.
-        """
         return pulumi.get(self, "bandwidth_type")
 
     @_builtins.property
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> _builtins.str:
-        """
-        Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-        """
         return pulumi.get(self, "charge_mode")
 
     @_builtins.property
@@ -96,9 +90,6 @@ class GetBandwidthResult:
     @_builtins.property
     @pulumi.getter
     def publicips(self) -> Sequence['outputs.GetBandwidthPublicipResult']:
-        """
-        An array of EIPs that use the bandwidth. The object includes the following:
-        """
         return pulumi.get(self, "publicips")
 
     @_builtins.property
@@ -109,9 +100,6 @@ class GetBandwidthResult:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> _builtins.str:
-        """
-        Indicates whether the bandwidth is shared or dedicated.
-        """
         return pulumi.get(self, "share_type")
 
     @_builtins.property
@@ -122,9 +110,6 @@ class GetBandwidthResult:
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Indicates the bandwidth status.
-        """
         return pulumi.get(self, "status")
 
 
@@ -152,25 +137,7 @@ def get_bandwidth(enterprise_project_id: Optional[_builtins.str] = None,
                   size: Optional[_builtins.int] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBandwidthResult:
     """
-    Provides details about a specific bandwidth.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    bandwidth_name = config.require_object("bandwidthName")
-    bandwidth1 = sbercloud.Eip.get_bandwidth(name=bandwidth_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: The enterprise project id of the Shared Bandwidth to retrieve.
-    :param _builtins.str name: The name of the Shared Bandwidth to retrieve.
-    :param _builtins.str region: The region in which to obtain the bandwidth. If omitted, the provider-level region will
-           be used.
-    :param _builtins.int size: The size of the Shared Bandwidth to retrieve. The value ranges from 5 to 2000 G.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -197,25 +164,7 @@ def get_bandwidth_output(enterprise_project_id: Optional[pulumi.Input[Optional[_
                          size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBandwidthResult]:
     """
-    Provides details about a specific bandwidth.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    bandwidth_name = config.require_object("bandwidthName")
-    bandwidth1 = sbercloud.Eip.get_bandwidth(name=bandwidth_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: The enterprise project id of the Shared Bandwidth to retrieve.
-    :param _builtins.str name: The name of the Shared Bandwidth to retrieve.
-    :param _builtins.str region: The region in which to obtain the bandwidth. If omitted, the provider-level region will
-           be used.
-    :param _builtins.int size: The size of the Shared Bandwidth to retrieve. The value ranges from 5 to 2000 G.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

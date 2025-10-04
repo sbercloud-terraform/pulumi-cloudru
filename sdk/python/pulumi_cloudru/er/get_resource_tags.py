@@ -69,9 +69,6 @@ class GetResourceTagsResult:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The tags of a specified resource.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -93,39 +90,7 @@ def get_resource_tags(region: Optional[_builtins.str] = None,
                       resource_type: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetResourceTagsResult:
     """
-    Use this data source to query the tag list of a specifies resource within SberCloud.
-
-    ## Example Usage
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Er.get_resource_tags(resource_type="instance",
-        resource_id=instance_id)
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource tags.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_id: Specifies the resource ID to which the tags belong that to be queried.
-    :param _builtins.str resource_type: Specifies the resource type to which the tags belong that to be queried.  
-           The valid values are as follows:
-           + **instance**: enterprise router instance.
-           + **route-table**: route table.
-           + **vpc-attachment**: VPC connection.
-           + **vgw-attachment**: virtual gateway connection.
-           + **peering-attachment**: peering connection.
-           + **vpn-attachment**: VPN gateway connection.
-           + **ecn-attachment**: enterprise network connection.
-           + **cfw-attachment**: cloud firewall connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -145,39 +110,7 @@ def get_resource_tags_output(region: Optional[pulumi.Input[Optional[_builtins.st
                              resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceTagsResult]:
     """
-    Use this data source to query the tag list of a specifies resource within SberCloud.
-
-    ## Example Usage
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Er.get_resource_tags(resource_type="instance",
-        resource_id=instance_id)
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource tags.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str resource_id: Specifies the resource ID to which the tags belong that to be queried.
-    :param _builtins.str resource_type: Specifies the resource type to which the tags belong that to be queried.  
-           The valid values are as follows:
-           + **instance**: enterprise router instance.
-           + **route-table**: route table.
-           + **vpc-attachment**: VPC connection.
-           + **vgw-attachment**: virtual gateway connection.
-           + **peering-attachment**: peering connection.
-           + **vpn-attachment**: VPN gateway connection.
-           + **ecn-attachment**: enterprise network connection.
-           + **cfw-attachment**: cloud firewall connection.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

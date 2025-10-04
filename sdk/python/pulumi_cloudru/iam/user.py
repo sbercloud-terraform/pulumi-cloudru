@@ -33,24 +33,6 @@ class UserArgs:
                  pwd_reset: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a User resource.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the access type of the user. Available values are:
-               + default: support both programmatic and management console access.
-               + programmatic: only support programmatic access.
-               + console: only support management console access.
-        :param pulumi.Input[_builtins.str] country_code: Specifies the country code. The country code of the Chinese mainland is 0086. This
-               parameter must be used together with `phone`.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] email: Specifies the email address with a maximum of 255 characters.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-               contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-               digit.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for the user with 6 to 32 characters. It must contain at least
-               two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        :param pulumi.Input[_builtins.str] phone: Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-               together with `country_code`.
-        :param pulumi.Input[_builtins.bool] pwd_reset: Specifies whether or not the password should be reset. By default, the password is asked
-               to reset at the first login.
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
@@ -80,12 +62,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access type of the user. Available values are:
-        + default: support both programmatic and management console access.
-        + programmatic: only support programmatic access.
-        + console: only support management console access.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -95,10 +71,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the country code. The country code of the Chinese mainland is 0086. This
-        parameter must be used together with `phone`.
-        """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
@@ -108,9 +80,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the user.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -120,9 +89,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the email address with a maximum of 255 characters.
-        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -132,9 +98,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -171,11 +134,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-        contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-        digit.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -185,10 +143,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password for the user with 6 to 32 characters. It must contain at least
-        two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -198,10 +152,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-        together with `country_code`.
-        """
         return pulumi.get(self, "phone")
 
     @phone.setter
@@ -211,10 +161,6 @@ class UserArgs:
     @_builtins.property
     @pulumi.getter(name="pwdReset")
     def pwd_reset(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether or not the password should be reset. By default, the password is asked
-        to reset at the first login.
-        """
         return pulumi.get(self, "pwd_reset")
 
     @pwd_reset.setter
@@ -242,27 +188,6 @@ class _UserState:
                  pwd_reset: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering User resources.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the access type of the user. Available values are:
-               + default: support both programmatic and management console access.
-               + programmatic: only support programmatic access.
-               + console: only support management console access.
-        :param pulumi.Input[_builtins.str] country_code: Specifies the country code. The country code of the Chinese mainland is 0086. This
-               parameter must be used together with `phone`.
-        :param pulumi.Input[_builtins.str] create_time: The time when the IAM user was created.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] email: Specifies the email address with a maximum of 255 characters.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        :param pulumi.Input[_builtins.str] last_login: The tiem when the IAM user last login.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-               contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-               digit.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for the user with 6 to 32 characters. It must contain at least
-               two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        :param pulumi.Input[_builtins.str] password_strength: Indicates the password strength.
-        :param pulumi.Input[_builtins.str] phone: Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-               together with `country_code`.
-        :param pulumi.Input[_builtins.bool] pwd_reset: Specifies whether or not the password should be reset. By default, the password is asked
-               to reset at the first login.
         """
         if access_type is not None:
             pulumi.set(__self__, "access_type", access_type)
@@ -298,12 +223,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access type of the user. Available values are:
-        + default: support both programmatic and management console access.
-        + programmatic: only support programmatic access.
-        + console: only support management console access.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -313,10 +232,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the country code. The country code of the Chinese mainland is 0086. This
-        parameter must be used together with `phone`.
-        """
         return pulumi.get(self, "country_code")
 
     @country_code.setter
@@ -326,9 +241,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The time when the IAM user was created.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -338,9 +250,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the user.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -350,9 +259,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the email address with a maximum of 255 characters.
-        """
         return pulumi.get(self, "email")
 
     @email.setter
@@ -362,9 +268,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -392,9 +295,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="lastLogin")
     def last_login(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The tiem when the IAM user last login.
-        """
         return pulumi.get(self, "last_login")
 
     @last_login.setter
@@ -413,11 +313,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-        contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-        digit.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -427,10 +322,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password for the user with 6 to 32 characters. It must contain at least
-        two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -440,9 +331,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="passwordStrength")
     def password_strength(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the password strength.
-        """
         return pulumi.get(self, "password_strength")
 
     @password_strength.setter
@@ -452,10 +340,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-        together with `country_code`.
-        """
         return pulumi.get(self, "phone")
 
     @phone.setter
@@ -465,10 +349,6 @@ class _UserState:
     @_builtins.property
     @pulumi.getter(name="pwdReset")
     def pwd_reset(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether or not the password should be reset. By default, the password is asked
-        to reset at the first login.
-        """
         return pulumi.get(self, "pwd_reset")
 
     @pwd_reset.setter
@@ -496,68 +376,9 @@ class User(pulumi.CustomResource):
                  pwd_reset: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Manages a User resource within SberCloud IAM service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        user1 = sbercloud.iam.User("user_1",
-            name="user_1",
-            description="A user",
-            password="password123!")
-        ```
-
-        ## Import
-
-        Users can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
-        But due to the security reason, `password` can not be imported, you can ignore it as below.
-
-        resource "sbercloud_identity_user" "user_1" {
-
-          ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              "password",
-            
-            ]
-
-          }
-
-        }
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the access type of the user. Available values are:
-               + default: support both programmatic and management console access.
-               + programmatic: only support programmatic access.
-               + console: only support management console access.
-        :param pulumi.Input[_builtins.str] country_code: Specifies the country code. The country code of the Chinese mainland is 0086. This
-               parameter must be used together with `phone`.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] email: Specifies the email address with a maximum of 255 characters.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-               contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-               digit.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for the user with 6 to 32 characters. It must contain at least
-               two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        :param pulumi.Input[_builtins.str] phone: Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-               together with `country_code`.
-        :param pulumi.Input[_builtins.bool] pwd_reset: Specifies whether or not the password should be reset. By default, the password is asked
-               to reset at the first login.
         """
         ...
     @overload
@@ -566,48 +387,7 @@ class User(pulumi.CustomResource):
                  args: Optional[UserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a User resource within SberCloud IAM service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        user1 = sbercloud.iam.User("user_1",
-            name="user_1",
-            description="A user",
-            password="password123!")
-        ```
-
-        ## Import
-
-        Users can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Iam/user:User user_1 89c60255-9bd6-460c-822a-e2b959ede9d2
-        ```
-
-        But due to the security reason, `password` can not be imported, you can ignore it as below.
-
-        resource "sbercloud_identity_user" "user_1" {
-
-          ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              "password",
-            
-            ]
-
-          }
-
-        }
-
+        Create a User resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -693,27 +473,6 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the access type of the user. Available values are:
-               + default: support both programmatic and management console access.
-               + programmatic: only support programmatic access.
-               + console: only support management console access.
-        :param pulumi.Input[_builtins.str] country_code: Specifies the country code. The country code of the Chinese mainland is 0086. This
-               parameter must be used together with `phone`.
-        :param pulumi.Input[_builtins.str] create_time: The time when the IAM user was created.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] email: Specifies the email address with a maximum of 255 characters.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        :param pulumi.Input[_builtins.str] last_login: The tiem when the IAM user last login.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-               contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-               digit.
-        :param pulumi.Input[_builtins.str] password: Specifies the password for the user with 6 to 32 characters. It must contain at least
-               two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        :param pulumi.Input[_builtins.str] password_strength: Indicates the password strength.
-        :param pulumi.Input[_builtins.str] phone: Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-               together with `country_code`.
-        :param pulumi.Input[_builtins.bool] pwd_reset: Specifies whether or not the password should be reset. By default, the password is asked
-               to reset at the first login.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -739,53 +498,31 @@ class User(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the access type of the user. Available values are:
-        + default: support both programmatic and management console access.
-        + programmatic: only support programmatic access.
-        + console: only support management console access.
-        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the country code. The country code of the Chinese mainland is 0086. This
-        parameter must be used together with `phone`.
-        """
         return pulumi.get(self, "country_code")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The time when the IAM user was created.
-        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the user.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the email address with a maximum of 255 characters.
-        """
         return pulumi.get(self, "email")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the user is enabled or disabled. Valid values are `true` and `false`.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -801,9 +538,6 @@ class User(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="lastLogin")
     def last_login(self) -> pulumi.Output[_builtins.str]:
-        """
-        The tiem when the IAM user last login.
-        """
         return pulumi.get(self, "last_login")
 
     @_builtins.property
@@ -814,45 +548,25 @@ class User(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the user. The user name consists of 5 to 32 characters. It can
-        contain only uppercase letters, lowercase letters, digits, spaces, and special characters (-_) and cannot start with a
-        digit.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the password for the user with 6 to 32 characters. It must contain at least
-        two of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter(name="passwordStrength")
     def password_strength(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the password strength.
-        """
         return pulumi.get(self, "password_strength")
 
     @_builtins.property
     @pulumi.getter
     def phone(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the mobile number with a maximum of 32 digits. This parameter must be used
-        together with `country_code`.
-        """
         return pulumi.get(self, "phone")
 
     @_builtins.property
     @pulumi.getter(name="pwdReset")
     def pwd_reset(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether or not the password should be reset. By default, the password is asked
-        to reset at the first login.
-        """
         return pulumi.get(self, "pwd_reset")
 

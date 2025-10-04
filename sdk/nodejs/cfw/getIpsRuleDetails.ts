@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW IPS rule details.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getIpsRuleDetails({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getIpsRuleDetails(args: GetIpsRuleDetailsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsRuleDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails", {
@@ -34,14 +18,7 @@ export function getIpsRuleDetails(args: GetIpsRuleDetailsArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getIpsRuleDetails.
  */
 export interface GetIpsRuleDetailsArgs {
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -49,9 +26,6 @@ export interface GetIpsRuleDetailsArgs {
  * A collection of values returned by getIpsRuleDetails.
  */
 export interface GetIpsRuleDetailsResult {
-    /**
-     * The IPS information.
-     */
     readonly datas: outputs.Cfw.GetIpsRuleDetailsData[];
     readonly fwInstanceId: string;
     /**
@@ -60,22 +34,6 @@ export interface GetIpsRuleDetailsResult {
     readonly id: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of CFW IPS rule details.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const test = sbercloud.Cfw.getIpsRuleDetails({
- *     fwInstanceId: fwInstanceId,
- * });
- * ```
- */
 export function getIpsRuleDetailsOutput(args: GetIpsRuleDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpsRuleDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getIpsRuleDetails:getIpsRuleDetails", {
@@ -88,13 +46,6 @@ export function getIpsRuleDetailsOutput(args: GetIpsRuleDetailsOutputArgs, opts?
  * A collection of arguments for invoking getIpsRuleDetails.
  */
 export interface GetIpsRuleDetailsOutputArgs {
-    /**
-     * Specifies the firewall ID.
-     */
     fwInstanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

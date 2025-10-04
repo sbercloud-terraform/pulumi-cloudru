@@ -6,108 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CBR Vault resource within Sbercloud.
- *
- * ## Example Usage
- *
- * ### Create a disk type vault
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vaultName = config.requireObject<any>("vaultName");
- * const evsVolumeId = config.requireObject<any>("evsVolumeId");
- * const test = new sbercloud.cbr.Vault("test", {
- *     name: vaultName,
- *     type: "disk",
- *     protectionType: "backup",
- *     size: 50,
- *     autoExpand: true,
- *     resources: [{
- *         includes: [evsVolumeId],
- *     }],
- *     tags: {
- *         foo: "bar",
- *     },
- * });
- * ```
- *
- * ### Create an SFS turbo type vault
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vaultName = config.requireObject<any>("vaultName");
- * const sfsTurboId = config.requireObject<any>("sfsTurboId");
- * const test = new sbercloud.cbr.Vault("test", {
- *     name: vaultName,
- *     type: "turbo",
- *     protectionType: "backup",
- *     size: 1000,
- *     resources: [{
- *         includes: [sfsTurboId],
- *     }],
- *     tags: {
- *         foo: "bar",
- *     },
- * });
- * ```
- *
- * ### Create an SFS turbo type vault with replicate protection type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vaultName = config.requireObject<any>("vaultName");
- * const test = new sbercloud.cbr.Vault("test", {
- *     name: vaultName,
- *     type: "turbo",
- *     protectionType: "replication",
- *     size: 1000,
- * });
- * ```
- *
- * ## Import
- *
- * Vaults can be imported by their `id`. For example,
- *
- * ```sh
- * $ pulumi import sbercloud:Cbr/vault:Vault test 01c33779-7c83-4182-8b6b-24a671fcedf8
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `period_unit`, `period`, `auto_renew`.
- *
- * It is generally recommended running `pulumi preview` after importing a vault.
- *
- * You can then decide if changes should be applied to the vault, or the resource definition should be updated to align
- *
- * with the vault. Also you can ignore changes as below.
- *
- * resource "sbercloud_cbr_vault" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       period_unit, period, auto_renew,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class Vault extends pulumi.CustomResource {
     /**
      * Get an existing Vault resource's state with the given name, ID, and optional extra
@@ -137,68 +35,45 @@ export class Vault extends pulumi.CustomResource {
     }
 
     /**
-     * The allocated capacity of the vault, in GB.
+     * The allocated capacity, in GB.
      */
     declare public /*out*/ readonly allocated: pulumi.Output<number>;
     /**
-     * Specifies whether automatic association is enabled. Defaults to **false**.
+     * Whether automatic association is supported.
      */
     declare public readonly autoBind: pulumi.Output<boolean>;
     /**
-     * Specifies to enable auto capacity expansion for the backup protection type vault.
-     * Defaults to **false**.
-     *
-     * > You cannot configure `autoExpand` if the vault is **prePaid** mode.
+     * Whether to enable auto capacity expansion for the vault.
      */
     declare public readonly autoExpand: pulumi.Output<boolean>;
     /**
      * @deprecated Deprecated
      */
     declare public readonly autoPay: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether auto renew is enabled.
-     * Valid values are **true** and **false**. Defaults to **false**.
-     *
-     * <a name="cbrVaultResources"></a>
-     * The `resources` block supports:
-     */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
      * The backup name prefix.
      */
     declare public readonly backupNamePrefix: pulumi.Output<string>;
     /**
-     * Specifies the tags to filter resources for automatic association with **auto_bind**.
+     * The rules for automatic association.
      */
     declare public readonly bindRules: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the charging mode of the vault.
-     * The valid values are as follows:
-     * + **prePaid**: the yearly/monthly billing mode.
-     * + **postPaid**: the pay-per-use billing mode.
-     *
-     * Changing this will create a new vault.
-     */
     declare public readonly chargingMode: pulumi.Output<string>;
     /**
      * The cloud type of the vault.
      */
     declare public readonly cloudType: pulumi.Output<string>;
     /**
-     * Specifies the backup specifications.
-     *
-     * Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-     * Changing this will create a new vault.
+     * The consistent level (specification) of the vault.
      */
     declare public readonly consistentLevel: pulumi.Output<string | undefined>;
     /**
-     * Specifies a unique ID in UUID format of enterprise project.
-     * Changing this will create a new vault.
+     * The enterprise project ID to which the vault belongs.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     /**
-     * Specifies whether multiple availability zones are used for backing up.
-     * Defaults to **false**.
+     * Whether multiple availability zones are used for backing up.
      */
     declare public readonly isMultiAz: pulumi.Output<boolean>;
     /**
@@ -206,53 +81,33 @@ export class Vault extends pulumi.CustomResource {
      */
     declare public readonly locked: pulumi.Output<boolean>;
     /**
-     * Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-     * characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+     * The name of the vault.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the charging period of the vault.
-     * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-     * If `periodUnit` is set to **year**, the value ranges from 1 to 5.
-     * This parameter is mandatory if `chargingMode` is set to **prePaid**.
-     * Changing this will create a new vault.
-     */
     declare public readonly period: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the charging period unit of the vault.
-     * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-     * Changing this will create a new vault.
-     */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     /**
      * The policy details to associate with the CBR vault.
      */
     declare public readonly policies: pulumi.Output<outputs.Cbr.VaultPolicy[]>;
     /**
-     * Specifies a policy to associate with the CBR vault.
-     * `policyId` cannot be used with the vault of replicate protection type.
+     * schema:Deprecated; Using parameter 'policy' instead.
      */
     declare public readonly policyId: pulumi.Output<string | undefined>;
     /**
-     * Specifies the protection type of the CBR vault.
-     * The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-     * Changing this will create a new vault.
+     * The protection type of the vault.
      */
     declare public readonly protectionType: pulumi.Output<string>;
     /**
-     * Specifies the region in which to create the CBR vault. If omitted, the
-     * provider-level region will be used. Changing this will create a new vault.
+     * The region where the vault is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies an array of one or more resources to attach to the CBR vault.
-     * The object structure is documented below.
+     * The array of one or more resources to attach to the CBR vault.
      */
     declare public readonly resources: pulumi.Output<outputs.Cbr.VaultResource[]>;
     /**
-     * Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-     *
-     * > You cannot update `size` if the vault is **prePaid** mode.
+     * The capacity of the vault, in GB.
      */
     declare public readonly size: pulumi.Output<number>;
     /**
@@ -267,16 +122,9 @@ export class Vault extends pulumi.CustomResource {
      * The name of the bucket for the vault.
      */
     declare public /*out*/ readonly storage: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the CBR vault.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Specifies the object type of the CBR vault.
-     * Changing this will create a new vault. Vaild values are as follows:
-     * + **server** (Cloud Servers)
-     * + **disk** (EVS Disks)
-     * + **turbo** (SFS Turbo file systems)
+     * The type of the vault.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -375,68 +223,45 @@ export class Vault extends pulumi.CustomResource {
  */
 export interface VaultState {
     /**
-     * The allocated capacity of the vault, in GB.
+     * The allocated capacity, in GB.
      */
     allocated?: pulumi.Input<number>;
     /**
-     * Specifies whether automatic association is enabled. Defaults to **false**.
+     * Whether automatic association is supported.
      */
     autoBind?: pulumi.Input<boolean>;
     /**
-     * Specifies to enable auto capacity expansion for the backup protection type vault.
-     * Defaults to **false**.
-     *
-     * > You cannot configure `autoExpand` if the vault is **prePaid** mode.
+     * Whether to enable auto capacity expansion for the vault.
      */
     autoExpand?: pulumi.Input<boolean>;
     /**
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled.
-     * Valid values are **true** and **false**. Defaults to **false**.
-     *
-     * <a name="cbrVaultResources"></a>
-     * The `resources` block supports:
-     */
     autoRenew?: pulumi.Input<string>;
     /**
      * The backup name prefix.
      */
     backupNamePrefix?: pulumi.Input<string>;
     /**
-     * Specifies the tags to filter resources for automatic association with **auto_bind**.
+     * The rules for automatic association.
      */
     bindRules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the charging mode of the vault.
-     * The valid values are as follows:
-     * + **prePaid**: the yearly/monthly billing mode.
-     * + **postPaid**: the pay-per-use billing mode.
-     *
-     * Changing this will create a new vault.
-     */
     chargingMode?: pulumi.Input<string>;
     /**
      * The cloud type of the vault.
      */
     cloudType?: pulumi.Input<string>;
     /**
-     * Specifies the backup specifications.
-     *
-     * Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-     * Changing this will create a new vault.
+     * The consistent level (specification) of the vault.
      */
     consistentLevel?: pulumi.Input<string>;
     /**
-     * Specifies a unique ID in UUID format of enterprise project.
-     * Changing this will create a new vault.
+     * The enterprise project ID to which the vault belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies whether multiple availability zones are used for backing up.
-     * Defaults to **false**.
+     * Whether multiple availability zones are used for backing up.
      */
     isMultiAz?: pulumi.Input<boolean>;
     /**
@@ -444,53 +269,33 @@ export interface VaultState {
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-     * characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+     * The name of the vault.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the vault.
-     * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-     * If `periodUnit` is set to **year**, the value ranges from 1 to 5.
-     * This parameter is mandatory if `chargingMode` is set to **prePaid**.
-     * Changing this will create a new vault.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period unit of the vault.
-     * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-     * Changing this will create a new vault.
-     */
     periodUnit?: pulumi.Input<string>;
     /**
      * The policy details to associate with the CBR vault.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.Cbr.VaultPolicy>[]>;
     /**
-     * Specifies a policy to associate with the CBR vault.
-     * `policyId` cannot be used with the vault of replicate protection type.
+     * schema:Deprecated; Using parameter 'policy' instead.
      */
     policyId?: pulumi.Input<string>;
     /**
-     * Specifies the protection type of the CBR vault.
-     * The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-     * Changing this will create a new vault.
+     * The protection type of the vault.
      */
     protectionType?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the CBR vault. If omitted, the
-     * provider-level region will be used. Changing this will create a new vault.
+     * The region where the vault is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies an array of one or more resources to attach to the CBR vault.
-     * The object structure is documented below.
+     * The array of one or more resources to attach to the CBR vault.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.Cbr.VaultResource>[]>;
     /**
-     * Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-     *
-     * > You cannot update `size` if the vault is **prePaid** mode.
+     * The capacity of the vault, in GB.
      */
     size?: pulumi.Input<number>;
     /**
@@ -505,16 +310,9 @@ export interface VaultState {
      * The name of the bucket for the vault.
      */
     storage?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the CBR vault.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the object type of the CBR vault.
-     * Changing this will create a new vault. Vaild values are as follows:
-     * + **server** (Cloud Servers)
-     * + **disk** (EVS Disks)
-     * + **turbo** (SFS Turbo file systems)
+     * The type of the vault.
      */
     type?: pulumi.Input<string>;
     /**
@@ -528,64 +326,41 @@ export interface VaultState {
  */
 export interface VaultArgs {
     /**
-     * Specifies whether automatic association is enabled. Defaults to **false**.
+     * Whether automatic association is supported.
      */
     autoBind?: pulumi.Input<boolean>;
     /**
-     * Specifies to enable auto capacity expansion for the backup protection type vault.
-     * Defaults to **false**.
-     *
-     * > You cannot configure `autoExpand` if the vault is **prePaid** mode.
+     * Whether to enable auto capacity expansion for the vault.
      */
     autoExpand?: pulumi.Input<boolean>;
     /**
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled.
-     * Valid values are **true** and **false**. Defaults to **false**.
-     *
-     * <a name="cbrVaultResources"></a>
-     * The `resources` block supports:
-     */
     autoRenew?: pulumi.Input<string>;
     /**
      * The backup name prefix.
      */
     backupNamePrefix?: pulumi.Input<string>;
     /**
-     * Specifies the tags to filter resources for automatic association with **auto_bind**.
+     * The rules for automatic association.
      */
     bindRules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the charging mode of the vault.
-     * The valid values are as follows:
-     * + **prePaid**: the yearly/monthly billing mode.
-     * + **postPaid**: the pay-per-use billing mode.
-     *
-     * Changing this will create a new vault.
-     */
     chargingMode?: pulumi.Input<string>;
     /**
      * The cloud type of the vault.
      */
     cloudType?: pulumi.Input<string>;
     /**
-     * Specifies the backup specifications.
-     *
-     * Only **server** type vaults support application consistent and defaults to **crash_consistent**.
-     * Changing this will create a new vault.
+     * The consistent level (specification) of the vault.
      */
     consistentLevel?: pulumi.Input<string>;
     /**
-     * Specifies a unique ID in UUID format of enterprise project.
-     * Changing this will create a new vault.
+     * The enterprise project ID to which the vault belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
     /**
-     * Specifies whether multiple availability zones are used for backing up.
-     * Defaults to **false**.
+     * Whether multiple availability zones are used for backing up.
      */
     isMultiAz?: pulumi.Input<boolean>;
     /**
@@ -593,65 +368,38 @@ export interface VaultArgs {
      */
     locked?: pulumi.Input<boolean>;
     /**
-     * Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-     * characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+     * The name of the vault.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the vault.
-     * If `periodUnit` is set to **month**, the value ranges from 1 to 9.
-     * If `periodUnit` is set to **year**, the value ranges from 1 to 5.
-     * This parameter is mandatory if `chargingMode` is set to **prePaid**.
-     * Changing this will create a new vault.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period unit of the vault.
-     * Valid values are **month** and **year**. This parameter is mandatory if `chargingMode` is set to **prePaid**.
-     * Changing this will create a new vault.
-     */
     periodUnit?: pulumi.Input<string>;
     /**
      * The policy details to associate with the CBR vault.
      */
     policies?: pulumi.Input<pulumi.Input<inputs.Cbr.VaultPolicy>[]>;
     /**
-     * Specifies a policy to associate with the CBR vault.
-     * `policyId` cannot be used with the vault of replicate protection type.
+     * schema:Deprecated; Using parameter 'policy' instead.
      */
     policyId?: pulumi.Input<string>;
     /**
-     * Specifies the protection type of the CBR vault.
-     * The valid values are **backup** and **replication**. Vaults of type **disk** don't support **replication**.
-     * Changing this will create a new vault.
+     * The protection type of the vault.
      */
     protectionType: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the CBR vault. If omitted, the
-     * provider-level region will be used. Changing this will create a new vault.
+     * The region where the vault is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies an array of one or more resources to attach to the CBR vault.
-     * The object structure is documented below.
+     * The array of one or more resources to attach to the CBR vault.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.Cbr.VaultResource>[]>;
     /**
-     * Specifies the vault capacity, in GB. The valid value range is `1` to `10,485,760`.
-     *
-     * > You cannot update `size` if the vault is **prePaid** mode.
+     * The capacity of the vault, in GB.
      */
     size: pulumi.Input<number>;
-    /**
-     * Specifies the key/value pairs to associate with the CBR vault.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Specifies the object type of the CBR vault.
-     * Changing this will create a new vault. Vaild values are as follows:
-     * + **server** (Cloud Servers)
-     * + **disk** (EVS Disks)
-     * + **turbo** (SFS Turbo file systems)
+     * The type of the vault.
      */
     type: pulumi.Input<string>;
 }

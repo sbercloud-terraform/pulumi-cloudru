@@ -11,90 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the route tables under the ER instance within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ### Querying specified route tables under ER instance using name
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			routeTableName := cfg.RequireObject("routeTableName")
-//			_, err := er.GetRouteTables(ctx, &er.GetRouteTablesArgs{
-//				InstanceId: instanceId,
-//				Name:       pulumi.StringRef(routeTableName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Querying specified route tables under ER instance using tags
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := er.GetRouteTables(ctx, &er.GetRouteTablesArgs{
-//				InstanceId: instanceId,
-//				Tags: map[string]interface{}{
-//					"foo": "bar",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRouteTables(ctx *pulumi.Context, args *GetRouteTablesArgs, opts ...pulumi.InvokeOption) (*GetRouteTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRouteTablesResult
@@ -107,34 +23,23 @@ func GetRouteTables(ctx *pulumi.Context, args *GetRouteTablesArgs, opts ...pulum
 
 // A collection of arguments for invoking getRouteTables.
 type GetRouteTablesArgs struct {
-	// Specifies the ID of the ER instance to which the route tables belongs.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the name used to filter the route tables.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
-	Name *string `pulumi:"name"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the route table ID used to query specified route table.
-	RouteTableId *string `pulumi:"routeTableId"`
-	// Specifies the key/value pairs used to filter the route tables.
-	Tags map[string]string `pulumi:"tags"`
+	InstanceId   string            `pulumi:"instanceId"`
+	Name         *string           `pulumi:"name"`
+	Region       *string           `pulumi:"region"`
+	RouteTableId *string           `pulumi:"routeTableId"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getRouteTables.
 type GetRouteTablesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// The name of the route table.
-	Name         *string `pulumi:"name"`
-	Region       string  `pulumi:"region"`
-	RouteTableId *string `pulumi:"routeTableId"`
-	// All route tables that match the filter parameters.\
-	// The object structure is documented below.
-	RouteTables []GetRouteTablesRouteTable `pulumi:"routeTables"`
-	Tags        map[string]string          `pulumi:"tags"`
+	Id           string                     `pulumi:"id"`
+	InstanceId   string                     `pulumi:"instanceId"`
+	Name         *string                    `pulumi:"name"`
+	Region       string                     `pulumi:"region"`
+	RouteTableId *string                    `pulumi:"routeTableId"`
+	RouteTables  []GetRouteTablesRouteTable `pulumi:"routeTables"`
+	Tags         map[string]string          `pulumi:"tags"`
 }
 
 func GetRouteTablesOutput(ctx *pulumi.Context, args GetRouteTablesOutputArgs, opts ...pulumi.InvokeOption) GetRouteTablesResultOutput {
@@ -148,19 +53,11 @@ func GetRouteTablesOutput(ctx *pulumi.Context, args GetRouteTablesOutputArgs, op
 
 // A collection of arguments for invoking getRouteTables.
 type GetRouteTablesOutputArgs struct {
-	// Specifies the ID of the ER instance to which the route tables belongs.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the name used to filter the route tables.\
-	// The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-	// hyphens (-) and dots (.) allowed.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the route table ID used to query specified route table.
+	InstanceId   pulumi.StringInput    `pulumi:"instanceId"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 	RouteTableId pulumi.StringPtrInput `pulumi:"routeTableId"`
-	// Specifies the key/value pairs used to filter the route tables.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Tags         pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetRouteTablesOutputArgs) ElementType() reflect.Type {
@@ -191,7 +88,6 @@ func (o GetRouteTablesResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The name of the route table.
 func (o GetRouteTablesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -204,8 +100,6 @@ func (o GetRouteTablesResultOutput) RouteTableId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) *string { return v.RouteTableId }).(pulumi.StringPtrOutput)
 }
 
-// All route tables that match the filter parameters.\
-// The object structure is documented below.
 func (o GetRouteTablesResultOutput) RouteTables() GetRouteTablesRouteTableArrayOutput {
 	return o.ApplyT(func(v GetRouteTablesResult) []GetRouteTablesRouteTable { return v.RouteTables }).(GetRouteTablesRouteTableArrayOutput)
 }

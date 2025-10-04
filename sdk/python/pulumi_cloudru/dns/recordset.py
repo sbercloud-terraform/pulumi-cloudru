@@ -29,19 +29,6 @@ class RecordsetArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Recordset resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] records: Specifies an array of DNS records. The value rules vary depending on the record set type.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the record set.
-               Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the record set.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the record set.
-               The name suffixed with a zone name, which is a complete host name ended with a dot.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DNS recordset.
-        :param pulumi.Input[_builtins.int] ttl: Specifies the time to live (TTL) of the record set (in seconds).
-               The value range is 1–2147483647. The default value is 300.
         """
         pulumi.set(__self__, "records", records)
         pulumi.set(__self__, "type", type)
@@ -60,9 +47,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def records(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies an array of DNS records. The value rules vary depending on the record set type.
-        """
         return pulumi.get(self, "records")
 
     @records.setter
@@ -72,10 +56,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the type of the record set.
-        Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -85,10 +65,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the zone ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -98,9 +74,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the record set.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -110,10 +83,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the record set.
-        The name suffixed with a zone name, which is a complete host name ended with a dot.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -123,10 +92,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -136,9 +101,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the DNS recordset.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -148,10 +110,6 @@ class RecordsetArgs:
     @_builtins.property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the time to live (TTL) of the record set (in seconds).
-        The value range is 1–2147483647. The default value is 300.
-        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -172,19 +130,6 @@ class _RecordsetState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Recordset resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the record set.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the record set.
-               The name suffixed with a zone name, which is a complete host name ended with a dot.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] records: Specifies an array of DNS records. The value rules vary depending on the record set type.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DNS recordset.
-        :param pulumi.Input[_builtins.int] ttl: Specifies the time to live (TTL) of the record set (in seconds).
-               The value range is 1–2147483647. The default value is 300.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the record set.
-               Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone ID.
-               Changing this parameter will create a new resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -206,9 +151,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the record set.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -218,10 +160,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the record set.
-        The name suffixed with a zone name, which is a complete host name ended with a dot.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -231,9 +169,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of DNS records. The value rules vary depending on the record set type.
-        """
         return pulumi.get(self, "records")
 
     @records.setter
@@ -243,10 +178,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -256,9 +187,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the DNS recordset.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -268,10 +196,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the time to live (TTL) of the record set (in seconds).
-        The value range is 1–2147483647. The default value is 300.
-        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -281,10 +205,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the record set.
-        Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -294,10 +214,6 @@ class _RecordsetState:
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the zone ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -321,77 +237,9 @@ class Recordset(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DNS record set resource within SberCloud.
-
-        ## Example Usage
-
-        ### Record Set with Public Zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        example_zone = sbercloud.dns.Zone("example_zone",
-            name="example.com.",
-            email="email2@example.com",
-            description="a public zone",
-            ttl=6000,
-            zone_type="public")
-        test = sbercloud.dns.Recordset("test",
-            zone_id=example_zone.id,
-            name="rs.example.com.",
-            description="An example record set",
-            ttl=3000,
-            type="A",
-            records=["10.0.0.1"])
-        ```
-
-        ### Record Set with Private Zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        example_zone = sbercloud.dns.Zone("example_zone",
-            name="example.com.",
-            email="email2@example.com",
-            description="a private zone",
-            ttl=6000,
-            zone_type="private")
-        test = sbercloud.dns.Recordset("test",
-            zone_id=example_zone.id,
-            name="rs.example.com.",
-            description="An example record set",
-            ttl=3000,
-            type="A",
-            records=["10.0.0.1"])
-        ```
-
-        ## Import
-
-        The DNS recordset can be imported using `zone_id`, `recordset_id`, separated by slashes, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dns/recordset:Recordset test <zone_id>/<recordset_id>
-        ```
-
+        Create a Recordset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the record set.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the record set.
-               The name suffixed with a zone name, which is a complete host name ended with a dot.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] records: Specifies an array of DNS records. The value rules vary depending on the record set type.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DNS recordset.
-        :param pulumi.Input[_builtins.int] ttl: Specifies the time to live (TTL) of the record set (in seconds).
-               The value range is 1–2147483647. The default value is 300.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the record set.
-               Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone ID.
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -400,62 +248,7 @@ class Recordset(pulumi.CustomResource):
                  args: RecordsetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DNS record set resource within SberCloud.
-
-        ## Example Usage
-
-        ### Record Set with Public Zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        example_zone = sbercloud.dns.Zone("example_zone",
-            name="example.com.",
-            email="email2@example.com",
-            description="a public zone",
-            ttl=6000,
-            zone_type="public")
-        test = sbercloud.dns.Recordset("test",
-            zone_id=example_zone.id,
-            name="rs.example.com.",
-            description="An example record set",
-            ttl=3000,
-            type="A",
-            records=["10.0.0.1"])
-        ```
-
-        ### Record Set with Private Zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        example_zone = sbercloud.dns.Zone("example_zone",
-            name="example.com.",
-            email="email2@example.com",
-            description="a private zone",
-            ttl=6000,
-            zone_type="private")
-        test = sbercloud.dns.Recordset("test",
-            zone_id=example_zone.id,
-            name="rs.example.com.",
-            description="An example record set",
-            ttl=3000,
-            type="A",
-            records=["10.0.0.1"])
-        ```
-
-        ## Import
-
-        The DNS recordset can be imported using `zone_id`, `recordset_id`, separated by slashes, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dns/recordset:Recordset test <zone_id>/<recordset_id>
-        ```
-
+        Create a Recordset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param RecordsetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -527,19 +320,6 @@ class Recordset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the record set.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the record set.
-               The name suffixed with a zone name, which is a complete host name ended with a dot.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] records: Specifies an array of DNS records. The value rules vary depending on the record set type.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the DNS recordset.
-        :param pulumi.Input[_builtins.int] ttl: Specifies the time to live (TTL) of the record set (in seconds).
-               The value range is 1–2147483647. The default value is 300.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the record set.
-               Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        :param pulumi.Input[_builtins.str] zone_id: Specifies the zone ID.
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,69 +338,40 @@ class Recordset(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the record set.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the record set.
-        The name suffixed with a zone name, which is a complete host name ended with a dot.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def records(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies an array of DNS records. The value rules vary depending on the record set type.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the DNS recordset.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the time to live (TTL) of the record set (in seconds).
-        The value range is 1–2147483647. The default value is 300.
-        """
         return pulumi.get(self, "ttl")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the type of the record set.
-        Value options: **A**, **AAAA**, **MX**, **CNAME**, **TXT**, **NS**, **SRV**, **CAA**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the zone ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "zone_id")
 

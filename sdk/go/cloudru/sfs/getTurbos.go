@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of the available SFS turbos.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			sfsTurboName := cfg.RequireObject("sfsTurboName")
-//			_, err := sfs.GetTurbos(ctx, &sfs.GetTurbosArgs{
-//				Name: pulumi.StringRef(sfsTurboName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTurbos(ctx *pulumi.Context, args *GetTurbosArgs, opts ...pulumi.InvokeOption) (*GetTurbosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTurbosResult
@@ -53,40 +23,25 @@ func GetTurbos(ctx *pulumi.Context, args *GetTurbosArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getTurbos.
 type GetTurbosArgs struct {
-	// The enterprise project ID of the SFS turbo file system.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the SFS turbo file system.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the SFS turbo file systems.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-	ShareProto *string `pulumi:"shareProto"`
-	// Specifies the type of the SFS turbo file system.
-	// The valid values are **STANDARD** and **PERFORMANCE**.
-	ShareType *string `pulumi:"shareType"`
-	// Specifies the capacity of the SFS turbo file system, in GB.
-	// The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-	Size *int `pulumi:"size"`
+	Name                *string `pulumi:"name"`
+	Region              *string `pulumi:"region"`
+	ShareProto          *string `pulumi:"shareProto"`
+	ShareType           *string `pulumi:"shareType"`
+	Size                *int    `pulumi:"size"`
 }
 
 // A collection of values returned by getTurbos.
 type GetTurbosResult struct {
-	// The enterprise project ID of the SFS turbo file system.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The name of the SFS turbo file system.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The protocol of the SFS turbo file system.
-	ShareProto *string `pulumi:"shareProto"`
-	// The type of the SFS turbo file system.
-	ShareType *string `pulumi:"shareType"`
-	// The capacity of the SFS turbo file system.
-	Size *int `pulumi:"size"`
-	// The list of the SFS turbo file systems. The object structure is documented below.
-	Turbos []GetTurbosTurbo `pulumi:"turbos"`
+	Id         string           `pulumi:"id"`
+	Name       *string          `pulumi:"name"`
+	Region     *string          `pulumi:"region"`
+	ShareProto *string          `pulumi:"shareProto"`
+	ShareType  *string          `pulumi:"shareType"`
+	Size       *int             `pulumi:"size"`
+	Turbos     []GetTurbosTurbo `pulumi:"turbos"`
 }
 
 func GetTurbosOutput(ctx *pulumi.Context, args GetTurbosOutputArgs, opts ...pulumi.InvokeOption) GetTurbosResultOutput {
@@ -100,21 +55,12 @@ func GetTurbosOutput(ctx *pulumi.Context, args GetTurbosOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getTurbos.
 type GetTurbosOutputArgs struct {
-	// The enterprise project ID of the SFS turbo file system.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the SFS turbo file system.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the SFS turbo file systems.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the protocol of the SFS turbo file system. The valid value is **NFS**.
-	ShareProto pulumi.StringPtrInput `pulumi:"shareProto"`
-	// Specifies the type of the SFS turbo file system.
-	// The valid values are **STANDARD** and **PERFORMANCE**.
-	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
-	// Specifies the capacity of the SFS turbo file system, in GB.
-	// The value ranges from `500` to `32,768`, and must be large than `10,240` for an enhanced file system.
-	Size pulumi.IntPtrInput `pulumi:"size"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	ShareProto          pulumi.StringPtrInput `pulumi:"shareProto"`
+	ShareType           pulumi.StringPtrInput `pulumi:"shareType"`
+	Size                pulumi.IntPtrInput    `pulumi:"size"`
 }
 
 func (GetTurbosOutputArgs) ElementType() reflect.Type {
@@ -136,7 +82,6 @@ func (o GetTurbosResultOutput) ToGetTurbosResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// The enterprise project ID of the SFS turbo file system.
 func (o GetTurbosResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTurbosResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -146,7 +91,6 @@ func (o GetTurbosResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTurbosResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the SFS turbo file system.
 func (o GetTurbosResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTurbosResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -155,22 +99,18 @@ func (o GetTurbosResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTurbosResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the SFS turbo file system.
 func (o GetTurbosResultOutput) ShareProto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTurbosResult) *string { return v.ShareProto }).(pulumi.StringPtrOutput)
 }
 
-// The type of the SFS turbo file system.
 func (o GetTurbosResultOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetTurbosResult) *string { return v.ShareType }).(pulumi.StringPtrOutput)
 }
 
-// The capacity of the SFS turbo file system.
 func (o GetTurbosResultOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetTurbosResult) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// The list of the SFS turbo file systems. The object structure is documented below.
 func (o GetTurbosResultOutput) Turbos() GetTurbosTurboArrayOutput {
 	return o.ApplyT(func(v GetTurbosResult) []GetTurbosTurbo { return v.Turbos }).(GetTurbosTurboArrayOutput)
 }

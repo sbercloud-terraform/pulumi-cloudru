@@ -6,40 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a VPC resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcName = config.get("vpcName") || "sbercloud_vpc";
- * const vpcCidr = config.get("vpcCidr") || "192.168.0.0/16";
- * const vpc = new sbercloud.vpc.Vpc("vpc", {
- *     name: vpcName,
- *     cidr: vpcCidr,
- * });
- * const vpcWithTags = new sbercloud.vpc.Vpc("vpc_with_tags", {
- *     name: vpcName,
- *     cidr: vpcCidr,
- *     tags: {
- *         foo: "bar",
- *         key: "value",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * VPCs can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/vpc:Vpc vpc_v1 7117d38e-4c8f-4624-a505-bd96b97d024c
- * ```
- */
 export class Vpc extends pulumi.CustomResource {
     /**
      * Get an existing Vpc resource's state with the given name, ID, and optional extra
@@ -69,31 +35,11 @@ export class Vpc extends pulumi.CustomResource {
     }
 
     declare public readonly blockServiceEndpointStates: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-     * 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-     */
     declare public readonly cidr: pulumi.Output<string>;
-    /**
-     * Specifies supplementary information about the VPC. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly enhancedLocalRoute: pulumi.Output<string>;
-    /**
-     * Specifies the enterprise project id of the VPC. Changing this
-     * creates a new VPC resource.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-     * of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the VPC. If omitted, the
-     * provider-level region will be used. Changing this creates a new VPC resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * @deprecated use huaweicloudVpcRouteTable data source to get all routes
@@ -104,13 +50,7 @@ export class Vpc extends pulumi.CustomResource {
      */
     declare public readonly secondaryCidr: pulumi.Output<string | undefined>;
     declare public readonly secondaryCidrs: pulumi.Output<string[]>;
-    /**
-     * The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the VPC.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
@@ -166,31 +106,11 @@ export class Vpc extends pulumi.CustomResource {
  */
 export interface VpcState {
     blockServiceEndpointStates?: pulumi.Input<string>;
-    /**
-     * Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-     * 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-     */
     cidr?: pulumi.Input<string>;
-    /**
-     * Specifies supplementary information about the VPC. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
     enhancedLocalRoute?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the VPC. Changing this
-     * creates a new VPC resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-     * of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the VPC. If omitted, the
-     * provider-level region will be used. Changing this creates a new VPC resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated use huaweicloudVpcRouteTable data source to get all routes
@@ -201,13 +121,7 @@ export interface VpcState {
      */
     secondaryCidr?: pulumi.Input<string>;
     secondaryCidrs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The current status of the VPC. Possible values are as follows: CREATING, OK or ERROR.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the VPC.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -216,39 +130,16 @@ export interface VpcState {
  */
 export interface VpcArgs {
     blockServiceEndpointStates?: pulumi.Input<string>;
-    /**
-     * Specifies the range of available subnets in the VPC. The value ranges from 10.0.0.0/8 to
-     * 10.255.255.0/24, 172.16.0.0/12 to 172.31.255.0/24, or 192.168.0.0/16 to 192.168.255.0/24.
-     */
     cidr: pulumi.Input<string>;
-    /**
-     * Specifies supplementary information about the VPC. The value is a string of
-     * no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
     enhancedLocalRoute?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the VPC. Changing this
-     * creates a new VPC resource.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the VPC. The name must be unique for a tenant. The value is a string
-     * of no more than 64 characters and can contain digits, letters, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the VPC. If omitted, the
-     * provider-level region will be used. Changing this creates a new VPC resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * schema: Deprecated; use secondaryCidrs instead
      */
     secondaryCidr?: pulumi.Input<string>;
     secondaryCidrs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the key/value pairs to associate with the VPC.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

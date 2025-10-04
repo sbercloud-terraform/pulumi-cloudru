@@ -32,25 +32,6 @@ class AclRuleArgs:
                  source_port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclRule resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-               *deny*.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-               *udp* and *icmp*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description for the network ACL rule.
-        :param pulumi.Input[_builtins.str] destination_ip_address: Specifies the destination IP address to which the traffic is allowed.
-               The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] destination_port: Specifies the destination port number or port number range. The value ranges
-               from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        :param pulumi.Input[_builtins.bool] enabled: Enabled status for the network ACL rule. Defaults to true.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either 4 (default) or 6. This parameter is available after
-               the IPv6 function is enabled.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the network ACL rule.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network ACL rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network ACL rule resource.
-        :param pulumi.Input[_builtins.str] source_ip_address: Specifies the source IP address that the traffic is allowed from. The default
-               value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] source_port: Specifies the source port number or port number range. The value ranges from 1 to
-               65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol", protocol)
@@ -76,10 +57,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-        *deny*.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -89,10 +66,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-        *udp* and *icmp*.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -102,9 +75,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description for the network ACL rule.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -114,10 +84,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the destination IP address to which the traffic is allowed.
-        The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        """
         return pulumi.get(self, "destination_ip_address")
 
     @destination_ip_address.setter
@@ -127,10 +93,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the destination port number or port number range. The value ranges
-        from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        """
         return pulumi.get(self, "destination_port")
 
     @destination_port.setter
@@ -140,9 +102,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enabled status for the network ACL rule. Defaults to true.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -152,10 +111,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the IP version, either 4 (default) or 6. This parameter is available after
-        the IPv6 function is enabled.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -165,9 +120,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the network ACL rule.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -177,10 +129,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the network ACL rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new network ACL rule resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -190,10 +138,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the source IP address that the traffic is allowed from. The default
-        value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        """
         return pulumi.get(self, "source_ip_address")
 
     @source_ip_address.setter
@@ -203,10 +147,6 @@ class AclRuleArgs:
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the source port number or port number range. The value ranges from 1 to
-        65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        """
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -230,25 +170,6 @@ class _AclRuleState:
                  source_port: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclRule resources.
-        :param pulumi.Input[_builtins.str] action: Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-               *deny*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description for the network ACL rule.
-        :param pulumi.Input[_builtins.str] destination_ip_address: Specifies the destination IP address to which the traffic is allowed.
-               The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] destination_port: Specifies the destination port number or port number range. The value ranges
-               from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        :param pulumi.Input[_builtins.bool] enabled: Enabled status for the network ACL rule. Defaults to true.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either 4 (default) or 6. This parameter is available after
-               the IPv6 function is enabled.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the network ACL rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-               *udp* and *icmp*.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network ACL rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network ACL rule resource.
-        :param pulumi.Input[_builtins.str] source_ip_address: Specifies the source IP address that the traffic is allowed from. The default
-               value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] source_port: Specifies the source port number or port number range. The value ranges from 1 to
-               65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -276,10 +197,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-        *deny*.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -289,9 +206,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description for the network ACL rule.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -301,10 +215,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the destination IP address to which the traffic is allowed.
-        The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        """
         return pulumi.get(self, "destination_ip_address")
 
     @destination_ip_address.setter
@@ -314,10 +224,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the destination port number or port number range. The value ranges
-        from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        """
         return pulumi.get(self, "destination_port")
 
     @destination_port.setter
@@ -327,9 +233,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enabled status for the network ACL rule. Defaults to true.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -339,10 +242,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the IP version, either 4 (default) or 6. This parameter is available after
-        the IPv6 function is enabled.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -352,9 +251,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a unique name for the network ACL rule.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -364,10 +260,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-        *udp* and *icmp*.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -377,10 +269,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the network ACL rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new network ACL rule resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -390,10 +278,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the source IP address that the traffic is allowed from. The default
-        value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        """
         return pulumi.get(self, "source_ip_address")
 
     @source_ip_address.setter
@@ -403,10 +287,6 @@ class _AclRuleState:
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the source port number or port number range. The value ranges from 1 to
-        65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        """
         return pulumi.get(self, "source_port")
 
     @source_port.setter
@@ -433,66 +313,9 @@ class AclRule(pulumi.CustomResource):
                  source_port: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a network ACL rule resource within SberCloud.
-
-        ## Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        rule1 = sbercloud.networkacl.AclRule("rule_1",
-            name="rule_1",
-            protocol="udp",
-            action="deny",
-            source_ip_address="1.2.3.4",
-            source_port="444",
-            destination_ip_address="4.3.2.0/24",
-            destination_port="555")
-        ```
-
-        ## Create a network acl rule with range port
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        rule2 = sbercloud.networkacl.AclRule("rule_2",
-            protocol="tcp",
-            ip_version=4,
-            action="allow",
-            destination_port="1:100")
-        ```
-
-        ## Import
-
-        network ACL rules can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:NetworkAcl/aclRule:AclRule rule_1 89a84b28-4cc2-4859-9885-c67e802a46a3
-        ```
-
+        Create a AclRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-               *deny*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description for the network ACL rule.
-        :param pulumi.Input[_builtins.str] destination_ip_address: Specifies the destination IP address to which the traffic is allowed.
-               The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] destination_port: Specifies the destination port number or port number range. The value ranges
-               from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        :param pulumi.Input[_builtins.bool] enabled: Enabled status for the network ACL rule. Defaults to true.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either 4 (default) or 6. This parameter is available after
-               the IPv6 function is enabled.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the network ACL rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-               *udp* and *icmp*.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network ACL rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network ACL rule resource.
-        :param pulumi.Input[_builtins.str] source_ip_address: Specifies the source IP address that the traffic is allowed from. The default
-               value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] source_port: Specifies the source port number or port number range. The value ranges from 1 to
-               65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
         """
         ...
     @overload
@@ -501,45 +324,7 @@ class AclRule(pulumi.CustomResource):
                  args: AclRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a network ACL rule resource within SberCloud.
-
-        ## Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        rule1 = sbercloud.networkacl.AclRule("rule_1",
-            name="rule_1",
-            protocol="udp",
-            action="deny",
-            source_ip_address="1.2.3.4",
-            source_port="444",
-            destination_ip_address="4.3.2.0/24",
-            destination_port="555")
-        ```
-
-        ## Create a network acl rule with range port
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        rule2 = sbercloud.networkacl.AclRule("rule_2",
-            protocol="tcp",
-            ip_version=4,
-            action="allow",
-            destination_port="1:100")
-        ```
-
-        ## Import
-
-        network ACL rules can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:NetworkAcl/aclRule:AclRule rule_1 89a84b28-4cc2-4859-9885-c67e802a46a3
-        ```
-
+        Create a AclRule resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AclRuleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -618,25 +403,6 @@ class AclRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-               *deny*.
-        :param pulumi.Input[_builtins.str] description: Specifies the description for the network ACL rule.
-        :param pulumi.Input[_builtins.str] destination_ip_address: Specifies the destination IP address to which the traffic is allowed.
-               The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] destination_port: Specifies the destination port number or port number range. The value ranges
-               from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        :param pulumi.Input[_builtins.bool] enabled: Enabled status for the network ACL rule. Defaults to true.
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either 4 (default) or 6. This parameter is available after
-               the IPv6 function is enabled.
-        :param pulumi.Input[_builtins.str] name: Specifies a unique name for the network ACL rule.
-        :param pulumi.Input[_builtins.str] protocol: Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-               *udp* and *icmp*.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network ACL rule resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network ACL rule resource.
-        :param pulumi.Input[_builtins.str] source_ip_address: Specifies the source IP address that the traffic is allowed from. The default
-               value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        :param pulumi.Input[_builtins.str] source_port: Specifies the source port number or port number range. The value ranges from 1 to
-               65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -658,96 +424,55 @@ class AclRule(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the action in the network ACL rule. Currently, the value can be *allow* or
-        *deny*.
-        """
         return pulumi.get(self, "action")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description for the network ACL rule.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="destinationIpAddress")
     def destination_ip_address(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the destination IP address to which the traffic is allowed.
-        The default value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        """
         return pulumi.get(self, "destination_ip_address")
 
     @_builtins.property
     @pulumi.getter(name="destinationPort")
     def destination_port(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the destination port number or port number range. The value ranges
-        from 1 to 65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        """
         return pulumi.get(self, "destination_port")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Enabled status for the network ACL rule. Defaults to true.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the IP version, either 4 (default) or 6. This parameter is available after
-        the IPv6 function is enabled.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies a unique name for the network ACL rule.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the protocol supported by the network ACL rule. Valid values are: *tcp*,
-        *udp* and *icmp*.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the network ACL rule resource. If omitted, the
-        provider-level region will be used. Changing this creates a new network ACL rule resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="sourceIpAddress")
     def source_ip_address(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the source IP address that the traffic is allowed from. The default
-        value is *0.0.0.0/0*. For example: xxx.xxx.xxx.xxx (IP address), xxx.xxx.xxx.0/24 (CIDR block).
-        """
         return pulumi.get(self, "source_ip_address")
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the source port number or port number range. The value ranges from 1 to
-        65535. For a port number range, enter two port numbers connected by a colon(:). For example, 1:100.
-        """
         return pulumi.get(self, "source_port")
 

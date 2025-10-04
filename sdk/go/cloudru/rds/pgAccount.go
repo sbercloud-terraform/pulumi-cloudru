@@ -12,105 +12,22 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS PostgreSQL account resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			accountPassword := cfg.RequireObject("accountPassword")
-//			_, err := rds.NewPgAccount(ctx, "test", &rds.PgAccountArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.String("test_account_name"),
-//				Password:   pulumi.Any(accountPassword),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS PostgreSQL account can be imported using the `instance_id` and `name` separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/pgAccount:PgAccount test <instance_id>/<name>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-//
-// running `pulumi preview` after importing the RDS PostgreSQL account. You can then decide if changes should be applied to
-//
-// the RDS PostgreSQL account, or the resource definition should be updated to align with the RDS PostgreSQL account. Also
-//
-// you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_rds_pg_account" "account_1" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    password
-//
-//	  ]
-//
-//	}
-//
-// }
 type PgAccount struct {
 	pulumi.CustomResourceState
 
-	// Indicates the permission attributes of a user.
-	// The attributes structure is documented below.
+	// Indicates the permission attributes of the account.
 	Attributes PgAccountAttributeArrayOutput `pulumi:"attributes"`
-	// Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+	// Specifies the remarks of the DB account.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// schema: Deprecated
 	Memberofs pulumi.StringArrayOutput `pulumi:"memberofs"`
-	// Specifies the username of the DB account. The username contains 1 to 63
-	// characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-	// from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-	// and **rdsDdm**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the password of the DB account. The value must be 8 to 32 characters long
-	// and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+	// Specifies the password of the DB account.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewPgAccount registers a new resource with the given unique name, arguments, and options.
@@ -156,59 +73,35 @@ func GetPgAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PgAccount resources.
 type pgAccountState struct {
-	// Indicates the permission attributes of a user.
-	// The attributes structure is documented below.
+	// Indicates the permission attributes of the account.
 	Attributes []PgAccountAttribute `pulumi:"attributes"`
-	// Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+	// Specifies the remarks of the DB account.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
 	// schema: Deprecated
 	Memberofs []string `pulumi:"memberofs"`
-	// Specifies the username of the DB account. The username contains 1 to 63
-	// characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-	// from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-	// and **rdsDdm**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name *string `pulumi:"name"`
-	// Specifies the password of the DB account. The value must be 8 to 32 characters long
-	// and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+	// Specifies the password of the DB account.
 	Password *string `pulumi:"password"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Region   *string `pulumi:"region"`
 }
 
 type PgAccountState struct {
-	// Indicates the permission attributes of a user.
-	// The attributes structure is documented below.
+	// Indicates the permission attributes of the account.
 	Attributes PgAccountAttributeArrayInput
-	// Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+	// Specifies the remarks of the DB account.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
 	// schema: Deprecated
 	Memberofs pulumi.StringArrayInput
-	// Specifies the username of the DB account. The username contains 1 to 63
-	// characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-	// from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-	// and **rdsDdm**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name pulumi.StringPtrInput
-	// Specifies the password of the DB account. The value must be 8 to 32 characters long
-	// and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+	// Specifies the password of the DB account.
 	Password pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (PgAccountState) ElementType() reflect.Type {
@@ -216,54 +109,32 @@ func (PgAccountState) ElementType() reflect.Type {
 }
 
 type pgAccountArgs struct {
-	// Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+	// Specifies the remarks of the DB account.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId string `pulumi:"instanceId"`
 	// schema: Deprecated
 	Memberofs []string `pulumi:"memberofs"`
-	// Specifies the username of the DB account. The username contains 1 to 63
-	// characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-	// from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-	// and **rdsDdm**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name *string `pulumi:"name"`
-	// Specifies the password of the DB account. The value must be 8 to 32 characters long
-	// and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
-	Password string `pulumi:"password"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	// Specifies the password of the DB account.
+	Password string  `pulumi:"password"`
+	Region   *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a PgAccount resource.
 type PgAccountArgs struct {
-	// Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+	// Specifies the remarks of the DB account.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the RDS PostgreSQL instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
 	// schema: Deprecated
 	Memberofs pulumi.StringArrayInput
-	// Specifies the username of the DB account. The username contains 1 to 63
-	// characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-	// from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-	// and **rdsDdm**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name pulumi.StringPtrInput
-	// Specifies the password of the DB account. The value must be 8 to 32 characters long
-	// and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+	// Specifies the password of the DB account.
 	Password pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (PgAccountArgs) ElementType() reflect.Type {
@@ -353,20 +224,17 @@ func (o PgAccountOutput) ToPgAccountOutputWithContext(ctx context.Context) PgAcc
 	return o
 }
 
-// Indicates the permission attributes of a user.
-// The attributes structure is documented below.
+// Indicates the permission attributes of the account.
 func (o PgAccountOutput) Attributes() PgAccountAttributeArrayOutput {
 	return o.ApplyT(func(v *PgAccount) PgAccountAttributeArrayOutput { return v.Attributes }).(PgAccountAttributeArrayOutput)
 }
 
-// Specifies the remarks of the DB account. The parameter must be 1 to 512 characters.
+// Specifies the remarks of the DB account.
 func (o PgAccountOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgAccount) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the ID of the RDS PostgreSQL instance.
-//
-// Changing this parameter will create a new resource.
 func (o PgAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -376,25 +244,16 @@ func (o PgAccountOutput) Memberofs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PgAccount) pulumi.StringArrayOutput { return v.Memberofs }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the username of the DB account. The username contains 1 to 63
-// characters, including letters, digits, and underscores (_). It cannot start with pg or a digit and must be different
-// from system usernames. System users include **rdsAdmin**, **rdsMetric**, **rdsBackup**, **rdsRepl**, **rdsProxy**,
-// and **rdsDdm**.
-//
-// Changing this parameter will create a new resource.
+// Specifies the username of the DB account.
 func (o PgAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the password of the DB account. The value must be 8 to 32 characters long
-// and contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-// characters (~!@#%^*-_=+?,). The value cannot contain the username or the username spelled backwards.
+// Specifies the password of the DB account.
 func (o PgAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgAccount) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o PgAccountOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgAccount) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

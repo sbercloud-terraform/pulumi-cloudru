@@ -32,23 +32,6 @@ class NotificationArgs:
                  smn_topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Notification resource.
-        :param pulumi.Input[_builtins.str] operation_type: Specifies the operation type, possible options include **complete** and
-               **customized**.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether notification is enabled, defaults to true.
-               
-               <a name="notification_operations_object"></a>
-               The `operations` block supports:
-        :param pulumi.Input[_builtins.str] name: Specifies the notification name. The value contains a maximum of 64 characters,
-               and only letters, digits, underscores(_), and Chinese characters are allowed.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationOperationUserArgs']]] operation_users: Specifies an array of users. Notifications will be sent when specified users
-               perform specified operations. All users are selected by default.
-               The object structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationOperationArgs']]] operations: Specifies an array of operations that will trigger notifications.
-               For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS notification resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] smn_topic: Specifies the URN of a topic.
         """
         pulumi.set(__self__, "operation_type", operation_type)
         if agency_name is not None:
@@ -71,10 +54,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter(name="operationType")
     def operation_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the operation type, possible options include **complete** and
-        **customized**.
-        """
         return pulumi.get(self, "operation_type")
 
     @operation_type.setter
@@ -93,12 +72,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether notification is enabled, defaults to true.
-
-        <a name="notification_operations_object"></a>
-        The `operations` block supports:
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -117,10 +90,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the notification name. The value contains a maximum of 64 characters,
-        and only letters, digits, underscores(_), and Chinese characters are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -130,11 +99,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter(name="operationUsers")
     def operation_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationOperationUserArgs']]]]:
-        """
-        Specifies an array of users. Notifications will be sent when specified users
-        perform specified operations. All users are selected by default.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "operation_users")
 
     @operation_users.setter
@@ -144,11 +108,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter
     def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationOperationArgs']]]]:
-        """
-        Specifies an array of operations that will trigger notifications.
-        For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-        The object structure is documented below.
-        """
         return pulumi.get(self, "operations")
 
     @operations.setter
@@ -158,10 +117,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to manage the CTS notification resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -171,9 +126,6 @@ class NotificationArgs:
     @_builtins.property
     @pulumi.getter(name="smnTopic")
     def smn_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the URN of a topic.
-        """
         return pulumi.get(self, "smn_topic")
 
     @smn_topic.setter
@@ -198,25 +150,6 @@ class _NotificationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Notification resources.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether notification is enabled, defaults to true.
-               
-               <a name="notification_operations_object"></a>
-               The `operations` block supports:
-        :param pulumi.Input[_builtins.str] name: Specifies the notification name. The value contains a maximum of 64 characters,
-               and only letters, digits, underscores(_), and Chinese characters are allowed.
-        :param pulumi.Input[_builtins.str] notification_id: The notification ID in UUID format.
-        :param pulumi.Input[_builtins.str] operation_type: Specifies the operation type, possible options include **complete** and
-               **customized**.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationOperationUserArgs']]] operation_users: Specifies an array of users. Notifications will be sent when specified users
-               perform specified operations. All users are selected by default.
-               The object structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationOperationArgs']]] operations: Specifies an array of operations that will trigger notifications.
-               For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS notification resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] smn_topic: Specifies the URN of a topic.
-        :param pulumi.Input[_builtins.str] status: The notification status, the value can be **enabled** or **disabled**.
         """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
@@ -264,12 +197,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether notification is enabled, defaults to true.
-
-        <a name="notification_operations_object"></a>
-        The `operations` block supports:
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -288,10 +215,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the notification name. The value contains a maximum of 64 characters,
-        and only letters, digits, underscores(_), and Chinese characters are allowed.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -301,9 +224,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter(name="notificationId")
     def notification_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The notification ID in UUID format.
-        """
         return pulumi.get(self, "notification_id")
 
     @notification_id.setter
@@ -313,10 +233,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter(name="operationType")
     def operation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the operation type, possible options include **complete** and
-        **customized**.
-        """
         return pulumi.get(self, "operation_type")
 
     @operation_type.setter
@@ -326,11 +242,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter(name="operationUsers")
     def operation_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationOperationUserArgs']]]]:
-        """
-        Specifies an array of users. Notifications will be sent when specified users
-        perform specified operations. All users are selected by default.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "operation_users")
 
     @operation_users.setter
@@ -340,11 +251,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter
     def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationOperationArgs']]]]:
-        """
-        Specifies an array of operations that will trigger notifications.
-        For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-        The object structure is documented below.
-        """
         return pulumi.get(self, "operations")
 
     @operations.setter
@@ -354,10 +260,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to manage the CTS notification resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -367,9 +269,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter(name="smnTopic")
     def smn_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the URN of a topic.
-        """
         return pulumi.get(self, "smn_topic")
 
     @smn_topic.setter
@@ -379,9 +278,6 @@ class _NotificationState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The notification status, the value can be **enabled** or **disabled**.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -406,73 +302,9 @@ class Notification(pulumi.CustomResource):
                  smn_topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages CTS key event notification resource within SberCloud.
-
-        ## Example Usage
-
-        ### Complete Notification
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        topic_urn = config.require_object("topicUrn")
-        notify = sbercloud.cts.Notification("notify",
-            name="keyOperate_test",
-            operation_type="complete",
-            smn_topic=topic_urn)
-        ```
-
-        ### Customized Notification
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        topic_urn = config.require_object("topicUrn")
-        notify = sbercloud.cts.Notification("notify",
-            name="keyOperate_test",
-            operation_type="customized",
-            smn_topic=topic_urn,
-            operations=[{
-                "service": "ECS",
-                "resource": "ecs",
-                "trace_names": [
-                    "createServer",
-                    "deleteServer",
-                ],
-            }])
-        ```
-
-        ## Import
-
-        CTS notifications can be imported using `name`, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cts/notification:Notification tracker your_notification
-        ```
-
+        Create a Notification resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether notification is enabled, defaults to true.
-               
-               <a name="notification_operations_object"></a>
-               The `operations` block supports:
-        :param pulumi.Input[_builtins.str] name: Specifies the notification name. The value contains a maximum of 64 characters,
-               and only letters, digits, underscores(_), and Chinese characters are allowed.
-        :param pulumi.Input[_builtins.str] operation_type: Specifies the operation type, possible options include **complete** and
-               **customized**.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationOperationUserArgs', 'NotificationOperationUserArgsDict']]]] operation_users: Specifies an array of users. Notifications will be sent when specified users
-               perform specified operations. All users are selected by default.
-               The object structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationOperationArgs', 'NotificationOperationArgsDict']]]] operations: Specifies an array of operations that will trigger notifications.
-               For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS notification resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] smn_topic: Specifies the URN of a topic.
         """
         ...
     @overload
@@ -481,54 +313,7 @@ class Notification(pulumi.CustomResource):
                  args: NotificationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages CTS key event notification resource within SberCloud.
-
-        ## Example Usage
-
-        ### Complete Notification
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        topic_urn = config.require_object("topicUrn")
-        notify = sbercloud.cts.Notification("notify",
-            name="keyOperate_test",
-            operation_type="complete",
-            smn_topic=topic_urn)
-        ```
-
-        ### Customized Notification
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        topic_urn = config.require_object("topicUrn")
-        notify = sbercloud.cts.Notification("notify",
-            name="keyOperate_test",
-            operation_type="customized",
-            smn_topic=topic_urn,
-            operations=[{
-                "service": "ECS",
-                "resource": "ecs",
-                "trace_names": [
-                    "createServer",
-                    "deleteServer",
-                ],
-            }])
-        ```
-
-        ## Import
-
-        CTS notifications can be imported using `name`, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cts/notification:Notification tracker your_notification
-        ```
-
+        Create a Notification resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NotificationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -605,25 +390,6 @@ class Notification(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether notification is enabled, defaults to true.
-               
-               <a name="notification_operations_object"></a>
-               The `operations` block supports:
-        :param pulumi.Input[_builtins.str] name: Specifies the notification name. The value contains a maximum of 64 characters,
-               and only letters, digits, underscores(_), and Chinese characters are allowed.
-        :param pulumi.Input[_builtins.str] notification_id: The notification ID in UUID format.
-        :param pulumi.Input[_builtins.str] operation_type: Specifies the operation type, possible options include **complete** and
-               **customized**.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationOperationUserArgs', 'NotificationOperationUserArgsDict']]]] operation_users: Specifies an array of users. Notifications will be sent when specified users
-               perform specified operations. All users are selected by default.
-               The object structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NotificationOperationArgs', 'NotificationOperationArgsDict']]]] operations: Specifies an array of operations that will trigger notifications.
-               For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to manage the CTS notification resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] smn_topic: Specifies the URN of a topic.
-        :param pulumi.Input[_builtins.str] status: The notification status, the value can be **enabled** or **disabled**.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -656,12 +422,6 @@ class Notification(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether notification is enabled, defaults to true.
-
-        <a name="notification_operations_object"></a>
-        The `operations` block supports:
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -672,71 +432,40 @@ class Notification(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the notification name. The value contains a maximum of 64 characters,
-        and only letters, digits, underscores(_), and Chinese characters are allowed.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="notificationId")
     def notification_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The notification ID in UUID format.
-        """
         return pulumi.get(self, "notification_id")
 
     @_builtins.property
     @pulumi.getter(name="operationType")
     def operation_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the operation type, possible options include **complete** and
-        **customized**.
-        """
         return pulumi.get(self, "operation_type")
 
     @_builtins.property
     @pulumi.getter(name="operationUsers")
     def operation_users(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationOperationUser']]]:
-        """
-        Specifies an array of users. Notifications will be sent when specified users
-        perform specified operations. All users are selected by default.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "operation_users")
 
     @_builtins.property
     @pulumi.getter
     def operations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationOperation']]]:
-        """
-        Specifies an array of operations that will trigger notifications.
-        For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-        The object structure is documented below.
-        """
         return pulumi.get(self, "operations")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to manage the CTS notification resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="smnTopic")
     def smn_topic(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the URN of a topic.
-        """
         return pulumi.get(self, "smn_topic")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The notification status, the value can be **enabled** or **disabled**.
-        """
         return pulumi.get(self, "status")
 

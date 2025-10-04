@@ -12,94 +12,27 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW domain name group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			objectId := cfg.RequireObject("objectId")
-//			name := cfg.RequireObject("name")
-//			_, err := cfw.NewDomainNameGroup(ctx, "test", &cfw.DomainNameGroupArgs{
-//				FwInstanceId: pulumi.Any(fwInstanceId),
-//				ObjectId:     pulumi.Any(objectId),
-//				Name:         pulumi.Any(name),
-//				Type:         pulumi.Int(0),
-//				Description:  pulumi.String("created by terraform"),
-//				DomainNames: cfw.DomainNameGroupDomainNameArray{
-//					&cfw.DomainNameGroupDomainNameArgs{
-//						DomainName:  pulumi.String("www.cfw-test.com"),
-//						Description: pulumi.String("test domain"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The domainnamegroup can be imported using the `fw_instance_id`, `object_id` and `id`, separated by slashes, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/domainNameGroup:DomainNameGroup test <fw_instance_id>/<object_id>/<id>
-// ```
 type DomainNameGroup struct {
 	pulumi.CustomResourceState
 
 	// The config status of the domain name group.
 	ConfigStatus pulumi.IntOutput `pulumi:"configStatus"`
-	// Specifies the description.
+	// Specifies the description of the domain name group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the list of domain names.
-	// The domainNames structure is documented below.
-	//
-	// <a name="DomainNameGroup_DomainNames"></a>
-	// The `domainNames` block supports:
 	DomainNames DomainNameGroupDomainNameArrayOutput `pulumi:"domainNames"`
 	// Specifies the firewall instance ID.
-	//
-	// Changing this parameter will create a new resource.
 	FwInstanceId pulumi.StringOutput `pulumi:"fwInstanceId"`
-	// The exception message of the domain name group.
+	// The message of the domain name group.
 	Message pulumi.StringOutput `pulumi:"message"`
 	// Specifies the name of the domain name group.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The reference count of the domain name group.
-	RefCount pulumi.IntOutput `pulumi:"refCount"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	RefCount pulumi.IntOutput    `pulumi:"refCount"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 	// Specifies the type of the domain name group.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type;
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.IntOutput `pulumi:"type"`
 }
 
@@ -144,74 +77,44 @@ func GetDomainNameGroup(ctx *pulumi.Context,
 type domainNameGroupState struct {
 	// The config status of the domain name group.
 	ConfigStatus *int `pulumi:"configStatus"`
-	// Specifies the description.
+	// Specifies the description of the domain name group.
 	Description *string `pulumi:"description"`
 	// Specifies the list of domain names.
-	// The domainNames structure is documented below.
-	//
-	// <a name="DomainNameGroup_DomainNames"></a>
-	// The `domainNames` block supports:
 	DomainNames []DomainNameGroupDomainName `pulumi:"domainNames"`
 	// Specifies the firewall instance ID.
-	//
-	// Changing this parameter will create a new resource.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// The exception message of the domain name group.
+	// The message of the domain name group.
 	Message *string `pulumi:"message"`
 	// Specifies the name of the domain name group.
 	Name *string `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId *string `pulumi:"objectId"`
 	// The reference count of the domain name group.
-	RefCount *int `pulumi:"refCount"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	RefCount *int    `pulumi:"refCount"`
+	Region   *string `pulumi:"region"`
 	// Specifies the type of the domain name group.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type;
-	//
-	// Changing this parameter will create a new resource.
 	Type *int `pulumi:"type"`
 }
 
 type DomainNameGroupState struct {
 	// The config status of the domain name group.
 	ConfigStatus pulumi.IntPtrInput
-	// Specifies the description.
+	// Specifies the description of the domain name group.
 	Description pulumi.StringPtrInput
 	// Specifies the list of domain names.
-	// The domainNames structure is documented below.
-	//
-	// <a name="DomainNameGroup_DomainNames"></a>
-	// The `domainNames` block supports:
 	DomainNames DomainNameGroupDomainNameArrayInput
 	// Specifies the firewall instance ID.
-	//
-	// Changing this parameter will create a new resource.
 	FwInstanceId pulumi.StringPtrInput
-	// The exception message of the domain name group.
+	// The message of the domain name group.
 	Message pulumi.StringPtrInput
 	// Specifies the name of the domain name group.
 	Name pulumi.StringPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringPtrInput
 	// The reference count of the domain name group.
 	RefCount pulumi.IntPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 	// Specifies the type of the domain name group.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type;
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.IntPtrInput
 }
 
@@ -220,65 +123,35 @@ func (DomainNameGroupState) ElementType() reflect.Type {
 }
 
 type domainNameGroupArgs struct {
-	// Specifies the description.
+	// Specifies the description of the domain name group.
 	Description *string `pulumi:"description"`
 	// Specifies the list of domain names.
-	// The domainNames structure is documented below.
-	//
-	// <a name="DomainNameGroup_DomainNames"></a>
-	// The `domainNames` block supports:
 	DomainNames []DomainNameGroupDomainName `pulumi:"domainNames"`
 	// Specifies the firewall instance ID.
-	//
-	// Changing this parameter will create a new resource.
 	FwInstanceId string `pulumi:"fwInstanceId"`
 	// Specifies the name of the domain name group.
 	Name *string `pulumi:"name"`
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	ObjectId string  `pulumi:"objectId"`
+	Region   *string `pulumi:"region"`
 	// Specifies the type of the domain name group.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type;
-	//
-	// Changing this parameter will create a new resource.
 	Type int `pulumi:"type"`
 }
 
 // The set of arguments for constructing a DomainNameGroup resource.
 type DomainNameGroupArgs struct {
-	// Specifies the description.
+	// Specifies the description of the domain name group.
 	Description pulumi.StringPtrInput
 	// Specifies the list of domain names.
-	// The domainNames structure is documented below.
-	//
-	// <a name="DomainNameGroup_DomainNames"></a>
-	// The `domainNames` block supports:
 	DomainNames DomainNameGroupDomainNameArrayInput
 	// Specifies the firewall instance ID.
-	//
-	// Changing this parameter will create a new resource.
 	FwInstanceId pulumi.StringInput
 	// Specifies the name of the domain name group.
 	Name pulumi.StringPtrInput
 	// Specifies the protected object ID.
-	//
-	// Changing this parameter will create a new resource.
 	ObjectId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 	// Specifies the type of the domain name group.
-	// The value can be:
-	// + **0**: means application type;
-	// + **1**: means network type;
-	//
-	// Changing this parameter will create a new resource.
 	Type pulumi.IntInput
 }
 
@@ -374,28 +247,22 @@ func (o DomainNameGroupOutput) ConfigStatus() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.IntOutput { return v.ConfigStatus }).(pulumi.IntOutput)
 }
 
-// Specifies the description.
+// Specifies the description of the domain name group.
 func (o DomainNameGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the list of domain names.
-// The domainNames structure is documented below.
-//
-// <a name="DomainNameGroup_DomainNames"></a>
-// The `domainNames` block supports:
 func (o DomainNameGroupOutput) DomainNames() DomainNameGroupDomainNameArrayOutput {
 	return o.ApplyT(func(v *DomainNameGroup) DomainNameGroupDomainNameArrayOutput { return v.DomainNames }).(DomainNameGroupDomainNameArrayOutput)
 }
 
 // Specifies the firewall instance ID.
-//
-// Changing this parameter will create a new resource.
 func (o DomainNameGroupOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.StringOutput { return v.FwInstanceId }).(pulumi.StringOutput)
 }
 
-// The exception message of the domain name group.
+// The message of the domain name group.
 func (o DomainNameGroupOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
@@ -406,8 +273,6 @@ func (o DomainNameGroupOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies the protected object ID.
-//
-// Changing this parameter will create a new resource.
 func (o DomainNameGroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
@@ -417,18 +282,11 @@ func (o DomainNameGroupOutput) RefCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.IntOutput { return v.RefCount }).(pulumi.IntOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o DomainNameGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the type of the domain name group.
-// The value can be:
-// + **0**: means application type;
-// + **1**: means network type;
-//
-// Changing this parameter will create a new resource.
 func (o DomainNameGroupOutput) Type() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainNameGroup) pulumi.IntOutput { return v.Type }).(pulumi.IntOutput)
 }

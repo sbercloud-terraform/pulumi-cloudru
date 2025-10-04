@@ -63,11 +63,10 @@ class ApiBackendParam(dict):
                  system_param_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str location: Where the parameter is located.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The parameter name.
         :param _builtins.str type: The parameter type.
         :param _builtins.str value: The value of the parameter
-        :param _builtins.str description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param _builtins.str description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -90,8 +89,7 @@ class ApiBackendParam(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -115,7 +113,7 @@ class ApiBackendParam(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -169,10 +167,9 @@ class ApiFuncGraph(dict):
         :param _builtins.str function_alias_urn: The alias URN of the FunctionGraph function.
         :param _builtins.str invocation_type: The invocation type.
         :param _builtins.str network_type: The network architecture (framework) type of the FunctionGraph function.
-        :param _builtins.str request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param _builtins.str request_protocol: The request protocol of the FunctionGraph function.
         :param _builtins.int timeout: The timeout for API requests to backend service.
-        :param _builtins.str version: Specifies the version of the API. A maximum of 16 characters are allowed.
+        :param _builtins.str version: The version of the FunctionGraph function.
         """
         pulumi.set(__self__, "function_urn", function_urn)
         if authorizer_id is not None:
@@ -234,8 +231,7 @@ class ApiFuncGraph(dict):
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[_builtins.str]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the FunctionGraph function.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -251,7 +247,7 @@ class ApiFuncGraph(dict):
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
         """
-        Specifies the version of the API. A maximum of 16 characters are allowed.
+        The version of the FunctionGraph function.
         """
         return pulumi.get(self, "version")
 
@@ -308,8 +304,7 @@ class ApiFuncGraphPolicy(dict):
         """
         :param Sequence['ApiFuncGraphPolicyConditionArgs'] conditions: The policy conditions.
         :param _builtins.str function_urn: The URN of the FunctionGraph function.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The name of the backend policy.
         :param _builtins.str authorizer_id: The ID of the backend custom authorization.
         :param Sequence['ApiFuncGraphPolicyBackendParamArgs'] backend_params: The configaiton list of the backend parameters.
         :param _builtins.str effective_mode: The effective mode of the backend policy.
@@ -317,10 +312,9 @@ class ApiFuncGraphPolicy(dict):
         :param _builtins.str invocation_mode: The invocation mode of the FunctionGraph function.
         :param _builtins.str invocation_type: The invocation mode of the FunctionGraph function.
         :param _builtins.str network_type: The network (framework) type of the FunctionGraph function.
-        :param _builtins.str request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param _builtins.str request_protocol: The request protocol of the FunctionGraph function.
         :param _builtins.int timeout: The timeout for API requests to backend service.
-        :param _builtins.str version: Specifies the version of the API. A maximum of 16 characters are allowed.
+        :param _builtins.str version: The version of the FunctionGraph function.
         """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "function_urn", function_urn)
@@ -366,8 +360,7 @@ class ApiFuncGraphPolicy(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the backend policy.
         """
         return pulumi.get(self, "name")
 
@@ -431,8 +424,7 @@ class ApiFuncGraphPolicy(dict):
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[_builtins.str]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The request protocol of the FunctionGraph function.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -448,7 +440,7 @@ class ApiFuncGraphPolicy(dict):
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
         """
-        Specifies the version of the API. A maximum of 16 characters are allowed.
+        The version of the FunctionGraph function.
         """
         return pulumi.get(self, "version")
 
@@ -481,11 +473,10 @@ class ApiFuncGraphPolicyBackendParam(dict):
                  system_param_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str location: Where the parameter is located.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The parameter name.
         :param _builtins.str type: The parameter type.
         :param _builtins.str value: The value of the parameter
-        :param _builtins.str description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param _builtins.str description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -508,8 +499,7 @@ class ApiFuncGraphPolicyBackendParam(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -533,7 +523,7 @@ class ApiFuncGraphPolicyBackendParam(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -781,8 +771,7 @@ class ApiMockPolicy(dict):
                  status_code: Optional[_builtins.int] = None):
         """
         :param Sequence['ApiMockPolicyConditionArgs'] conditions: The policy conditions.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The backend policy name.
         :param _builtins.str authorizer_id: The ID of the backend custom authorization.
         :param Sequence['ApiMockPolicyBackendParamArgs'] backend_params: The configuration list of backend parameters.
         :param _builtins.str effective_mode: The effective mode of the backend policy.
@@ -814,8 +803,7 @@ class ApiMockPolicy(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The backend policy name.
         """
         return pulumi.get(self, "name")
 
@@ -888,11 +876,10 @@ class ApiMockPolicyBackendParam(dict):
                  system_param_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str location: Where the parameter is located.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The parameter name.
         :param _builtins.str type: The parameter type.
         :param _builtins.str value: The value of the parameter
-        :param _builtins.str description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param _builtins.str description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -915,8 +902,7 @@ class ApiMockPolicyBackendParam(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -940,7 +926,7 @@ class ApiMockPolicyBackendParam(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -1125,10 +1111,9 @@ class ApiRequestParam(dict):
                  type: Optional[_builtins.str] = None,
                  valid_enable: Optional[_builtins.int] = None):
         """
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The name of the request parameter.
         :param _builtins.str default: The default value of the parameter.
-        :param _builtins.str description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param _builtins.str description: The parameter description.
         :param _builtins.str enumeration: The enumerated value.
         :param _builtins.str example: The parameter example.
         :param _builtins.str location: Where this parameter is located.
@@ -1170,8 +1155,7 @@ class ApiRequestParam(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the request parameter.
         """
         return pulumi.get(self, "name")
 
@@ -1187,7 +1171,7 @@ class ApiRequestParam(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The parameter description.
         """
         return pulumi.get(self, "description")
 
@@ -1321,9 +1305,8 @@ class ApiWeb(dict):
         :param _builtins.str authorizer_id: The ID of the backend custom authorization.
         :param _builtins.str backend_address: The backend service address, which consists of a domain name or IP address, and a port number.
         :param _builtins.str host_header: The proxy host header.
-        :param _builtins.str request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
-        :param _builtins.str request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param _builtins.str request_method: The backend request method of the API.
+        :param _builtins.str request_protocol: The web protocol type of the API request.
         :param _builtins.int retry_count: The number of retry attempts to request the backend service.
         :param _builtins.bool ssl_enable: Whether to enable two-way authentication.
         :param _builtins.int timeout: The timeout for API requests to backend service.
@@ -1385,7 +1368,7 @@ class ApiWeb(dict):
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> Optional[_builtins.str]:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The backend request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -1393,8 +1376,7 @@ class ApiWeb(dict):
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[_builtins.str]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The web protocol type of the API request.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -1482,17 +1464,15 @@ class ApiWebPolicy(dict):
                  vpc_channel_id: Optional[_builtins.str] = None):
         """
         :param Sequence['ApiWebPolicyConditionArgs'] conditions: The policy conditions.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The name of the web policy.
         :param _builtins.str path: The backend request address.
-        :param _builtins.str request_method: Specifies the request method, including 'GET','POST','PUT' and etc..
+        :param _builtins.str request_method: The backend request method of the API.
         :param _builtins.str authorizer_id: The ID of the backend custom authorization.
         :param _builtins.str backend_address: The backend service address
         :param Sequence['ApiWebPolicyBackendParamArgs'] backend_params: The configuration list of the backend parameters.
         :param _builtins.str effective_mode: The effective mode of the backend policy.
         :param _builtins.str host_header: The proxy host header.
-        :param _builtins.str request_protocol: Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-               which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        :param _builtins.str request_protocol: The backend request protocol.
         :param _builtins.int retry_count: The number of retry attempts to request the backend service.
         :param _builtins.int timeout: The timeout for API requests to backend service.
         :param _builtins.str vpc_channel_id: The VPC channel ID.
@@ -1532,8 +1512,7 @@ class ApiWebPolicy(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The name of the web policy.
         """
         return pulumi.get(self, "name")
 
@@ -1549,7 +1528,7 @@ class ApiWebPolicy(dict):
     @pulumi.getter(name="requestMethod")
     def request_method(self) -> _builtins.str:
         """
-        Specifies the request method, including 'GET','POST','PUT' and etc..
+        The backend request method of the API.
         """
         return pulumi.get(self, "request_method")
 
@@ -1597,8 +1576,7 @@ class ApiWebPolicy(dict):
     @pulumi.getter(name="requestProtocol")
     def request_protocol(self) -> Optional[_builtins.str]:
         """
-        Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-        which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+        The backend request protocol.
         """
         return pulumi.get(self, "request_protocol")
 
@@ -1655,11 +1633,10 @@ class ApiWebPolicyBackendParam(dict):
                  system_param_type: Optional[_builtins.str] = None):
         """
         :param _builtins.str location: Where the parameter is located.
-        :param _builtins.str name: Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-               letter. Only letters, digits, and underscores (_) are allowed.
+        :param _builtins.str name: The parameter name.
         :param _builtins.str type: The parameter type.
         :param _builtins.str value: The value of the parameter
-        :param _builtins.str description: Specifies the description of the API. The description cannot exceed 255 characters.
+        :param _builtins.str description: The description of the parameter.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -1682,8 +1659,7 @@ class ApiWebPolicyBackendParam(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-        letter. Only letters, digits, and underscores (_) are allowed.
+        The parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -1707,7 +1683,7 @@ class ApiWebPolicyBackendParam(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of the API. The description cannot exceed 255 characters.
+        The description of the parameter.
         """
         return pulumi.get(self, "description")
 
@@ -1882,7 +1858,7 @@ class GroupEnvironment(dict):
                  variables: Sequence['outputs.GroupEnvironmentVariable']):
         """
         :param _builtins.str environment_id: The ID of the environment to which the variables belongs.
-        :param Sequence['GroupEnvironmentVariableArgs'] variables: The array of one or more environment variables. Each `variable` block supports the following:
+        :param Sequence['GroupEnvironmentVariableArgs'] variables: The array of one or more environment variables.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "variables", variables)
@@ -1899,7 +1875,7 @@ class GroupEnvironment(dict):
     @pulumi.getter
     def variables(self) -> Sequence['outputs.GroupEnvironmentVariable']:
         """
-        The array of one or more environment variables. Each `variable` block supports the following:
+        The array of one or more environment variables.
         """
         return pulumi.get(self, "variables")
 
@@ -1932,8 +1908,7 @@ class GroupEnvironmentVariable(dict):
         :param _builtins.str name: The variable name.
         :param _builtins.str value: The variable value.
         :param _builtins.str id: The ID of the variable that the group has.
-        :param _builtins.str variable_id: The ID of the variable that the group has.  
-               _Deprecated: Use `id` instead._
+        :param _builtins.str variable_id: schema: Deprecated; The ID of the variable that the group has.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -1971,8 +1946,7 @@ class GroupEnvironmentVariable(dict):
     @_utilities.deprecated("""Use 'id' instead""")
     def variable_id(self) -> Optional[_builtins.str]:
         """
-        The ID of the variable that the group has.  
-        _Deprecated: Use `id` instead._
+        schema: Deprecated; The ID of the variable that the group has.
         """
         return pulumi.get(self, "variable_id")
 
@@ -2003,7 +1977,7 @@ class GroupUrlDomain(dict):
                  is_http_redirect_to_https: Optional[_builtins.bool] = None,
                  min_ssl_version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: The group name.
+        :param _builtins.str name: The associated domain name.
         :param _builtins.bool is_http_redirect_to_https: Whether to enable redirection from HTTP to HTTPS.
         :param _builtins.str min_ssl_version: The minimum SSL protocol version.
         """
@@ -2017,7 +1991,7 @@ class GroupUrlDomain(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The group name.
+        The associated domain name.
         """
         return pulumi.get(self, "name")
 

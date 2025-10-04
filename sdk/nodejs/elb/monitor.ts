@@ -4,66 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ELB monitor resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### TCP Health Check
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const monitorTcp = new sbercloud.elb.Monitor("monitor_tcp", {
- *     poolId: poolId,
- *     type: "TCP",
- *     delay: 5,
- *     timeout: 3,
- *     maxRetries: 3,
- * });
- * ```
- *
- * ### UDP Health Check
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const monitorUdp = new sbercloud.elb.Monitor("monitor_udp", {
- *     poolId: poolId,
- *     type: "UDP_CONNECT",
- *     delay: 5,
- *     timeout: 3,
- *     maxRetries: 3,
- * });
- * ```
- *
- * ### HTTP Health Check
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const monitorHttp = new sbercloud.elb.Monitor("monitor_http", {
- *     poolId: poolId,
- *     type: "HTTP",
- *     delay: 5,
- *     timeout: 3,
- *     maxRetries: 3,
- *     urlPath: "/test",
- *     expectedCodes: "200-202",
- * });
- * ```
- *
- * ## Import
- *
- * ELB monitor can be imported using the monitor ID, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Elb/monitor:Monitor monitor_1 5c20fdad-7288-11eb-b817-0255ac10158b
- * ```
- */
 export class Monitor extends pulumi.CustomResource {
     /**
      * Get an existing Monitor resource's state with the given name, ID, and optional extra
@@ -93,74 +33,24 @@ export class Monitor extends pulumi.CustomResource {
     }
 
     /**
-     * The administrative state of the monitor.
-     *
      * @deprecated tenant_id is deprecated
      */
     declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the maximum time between health checks in the unit of second. The value ranges
-     * from 1 to 50.
-     */
     declare public readonly delay: pulumi.Output<number>;
     declare public readonly domainName: pulumi.Output<string>;
-    /**
-     * Specifies the expected HTTP status code. Required for HTTP type.
-     * You can either specify a single status like "200", or a range like "200-202".
-     */
     declare public readonly expectedCodes: pulumi.Output<string>;
-    /**
-     * Specifies the HTTP request method. Required for HTTP type.
-     * The default value is *GET*.
-     */
     declare public readonly httpMethod: pulumi.Output<string>;
-    /**
-     * Specifies the maximum number of consecutive health checks after which the backend
-     * servers are declared *healthy*. The value ranges from 1 to 10.
-     *
-     * > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-     * servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-     * by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-     */
     declare public readonly maxRetries: pulumi.Output<number>;
-    /**
-     * Specifies the health check name. The value contains a maximum of 255 characters.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the id of the pool that this monitor will be assigned to. Changing
-     * this creates a new monitor.
-     */
     declare public readonly poolId: pulumi.Output<string>;
-    /**
-     * Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-     * the port of the backend server will be used as the health check port.
-     */
     declare public readonly port: pulumi.Output<number | undefined>;
-    /**
-     * The region in which to create the ELB monitor resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new monitor.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     declare public readonly tenantId: pulumi.Output<string>;
-    /**
-     * Specifies the health check timeout duration in the unit of second.
-     * The value ranges from 1 to 50 and must be less than the `delay` value.
-     */
     declare public readonly timeout: pulumi.Output<number>;
-    /**
-     * Specifies the monitor protocol.
-     * The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-     * If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-     */
     declare public readonly type: pulumi.Output<string>;
-    /**
-     * Specifies the HTTP request path for the health check. Required for HTTP type.
-     * The value starts with a slash (/) and contains a maximum of 255 characters.
-     */
     declare public readonly urlPath: pulumi.Output<string>;
 
     /**
@@ -232,74 +122,24 @@ export class Monitor extends pulumi.CustomResource {
  */
 export interface MonitorState {
     /**
-     * The administrative state of the monitor.
-     *
      * @deprecated tenant_id is deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
-    /**
-     * Specifies the maximum time between health checks in the unit of second. The value ranges
-     * from 1 to 50.
-     */
     delay?: pulumi.Input<number>;
     domainName?: pulumi.Input<string>;
-    /**
-     * Specifies the expected HTTP status code. Required for HTTP type.
-     * You can either specify a single status like "200", or a range like "200-202".
-     */
     expectedCodes?: pulumi.Input<string>;
-    /**
-     * Specifies the HTTP request method. Required for HTTP type.
-     * The default value is *GET*.
-     */
     httpMethod?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum number of consecutive health checks after which the backend
-     * servers are declared *healthy*. The value ranges from 1 to 10.
-     *
-     * > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-     * servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-     * by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-     */
     maxRetries?: pulumi.Input<number>;
-    /**
-     * Specifies the health check name. The value contains a maximum of 255 characters.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the id of the pool that this monitor will be assigned to. Changing
-     * this creates a new monitor.
-     */
     poolId?: pulumi.Input<string>;
-    /**
-     * Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-     * the port of the backend server will be used as the health check port.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * The region in which to create the ELB monitor resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new monitor.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * Specifies the health check timeout duration in the unit of second.
-     * The value ranges from 1 to 50 and must be less than the `delay` value.
-     */
     timeout?: pulumi.Input<number>;
-    /**
-     * Specifies the monitor protocol.
-     * The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-     * If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies the HTTP request path for the health check. Required for HTTP type.
-     * The value starts with a slash (/) and contains a maximum of 255 characters.
-     */
     urlPath?: pulumi.Input<string>;
 }
 
@@ -308,73 +148,23 @@ export interface MonitorState {
  */
 export interface MonitorArgs {
     /**
-     * The administrative state of the monitor.
-     *
      * @deprecated tenant_id is deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
-    /**
-     * Specifies the maximum time between health checks in the unit of second. The value ranges
-     * from 1 to 50.
-     */
     delay: pulumi.Input<number>;
     domainName?: pulumi.Input<string>;
-    /**
-     * Specifies the expected HTTP status code. Required for HTTP type.
-     * You can either specify a single status like "200", or a range like "200-202".
-     */
     expectedCodes?: pulumi.Input<string>;
-    /**
-     * Specifies the HTTP request method. Required for HTTP type.
-     * The default value is *GET*.
-     */
     httpMethod?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum number of consecutive health checks after which the backend
-     * servers are declared *healthy*. The value ranges from 1 to 10.
-     *
-     * > Backend servers can be declared *unhealthy* after **three** consecutive health checks that detect these backend
-     * servers are unhealthy, regardless of the value set for `maxRetries`. The health check time window is determined
-     * by [Health Check Time Window](https://support.sbercloud.com/intl/en-us/usermanual-elb/elb_ug_hc_0001.html#section4).
-     */
     maxRetries: pulumi.Input<number>;
-    /**
-     * Specifies the health check name. The value contains a maximum of 255 characters.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the id of the pool that this monitor will be assigned to. Changing
-     * this creates a new monitor.
-     */
     poolId: pulumi.Input<string>;
-    /**
-     * Specifies the health check port. The port number ranges from 1 to 65535. If not specified,
-     * the port of the backend server will be used as the health check port.
-     */
     port?: pulumi.Input<number>;
-    /**
-     * The region in which to create the ELB monitor resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new monitor.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * Specifies the health check timeout duration in the unit of second.
-     * The value ranges from 1 to 50 and must be less than the `delay` value.
-     */
     timeout: pulumi.Input<number>;
-    /**
-     * Specifies the monitor protocol.
-     * The value can be *TCP*, *UDP_CONNECT*, or *HTTP*.
-     * If the listener protocol is UDP, the monitor protocol must be *UDP_CONNECT*. Changing this creates a new monitor.
-     */
     type: pulumi.Input<string>;
-    /**
-     * Specifies the HTTP request path for the health check. Required for HTTP type.
-     * The value starts with a slash (/) and contains a maximum of 255 characters.
-     */
     urlPath?: pulumi.Input<string>;
 }

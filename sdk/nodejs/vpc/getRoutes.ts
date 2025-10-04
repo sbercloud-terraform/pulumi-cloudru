@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of VPC routes.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Vpc.getRoutes({
- *     type: "peering",
- * });
- * ```
- */
 export function getRoutes(args?: GetRoutesArgs, opts?: pulumi.InvokeOptions): Promise<GetRoutesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,22 +21,9 @@ export function getRoutes(args?: GetRoutesArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getRoutes.
  */
 export interface GetRoutesArgs {
-    /**
-     * Specifies the route destination.
-     */
     destination?: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the route type.
-     */
     type?: string;
-    /**
-     * Specifies the ID of the VPC to which the route belongs.
-     */
     vpcId?: string;
 }
 
@@ -58,42 +31,16 @@ export interface GetRoutesArgs {
  * A collection of values returned by getRoutes.
  */
 export interface GetRoutesResult {
-    /**
-     * The route destination.
-     */
     readonly destination?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The list of routes.
-     */
     readonly routes: outputs.Vpc.GetRoutesRoute[];
-    /**
-     * The route type.
-     */
     readonly type?: string;
-    /**
-     * The ID of the VPC to which the route belongs.
-     */
     readonly vpcId?: string;
 }
-/**
- * Use this data source to get the list of VPC routes.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Vpc.getRoutes({
- *     type: "peering",
- * });
- * ```
- */
 export function getRoutesOutput(args?: GetRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRoutesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -109,21 +56,8 @@ export function getRoutesOutput(args?: GetRoutesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getRoutes.
  */
 export interface GetRoutesOutputArgs {
-    /**
-     * Specifies the route destination.
-     */
     destination?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the route type.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the VPC to which the route belongs.
-     */
     vpcId?: pulumi.Input<string>;
 }

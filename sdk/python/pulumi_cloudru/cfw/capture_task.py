@@ -33,24 +33,14 @@ class CaptureTaskArgs:
                  stop_capture: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a CaptureTask resource.
-        :param pulumi.Input['CaptureTaskDestinationArgs'] destination: Specifies the destination configuration.
-               The destination structure is documented below.
-        :param pulumi.Input[_builtins.int] duration: Specifies the capture task duration.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall instance.
-        :param pulumi.Input[_builtins.int] max_packets: Specifies the maximum number of packets captured.
-               The Maximum value is `1,000,000`.
-        :param pulumi.Input['CaptureTaskServiceArgs'] service: Specifies the service configuration.
-               The service structure is documented below.
-        :param pulumi.Input['CaptureTaskSourceArgs'] source: Specifies the source configuration.
-               The source structure is documented below.
-        :param pulumi.Input[_builtins.str] name: Specifies the capture task name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] stop_capture: Specifies whether to stop the capture task.
-               
-               <a name="Address"></a>
-               The `destination` or `source` block supports:
+        :param pulumi.Input['CaptureTaskDestinationArgs'] destination: The destination configuration.
+        :param pulumi.Input[_builtins.int] duration: The capture task duration.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall instance.
+        :param pulumi.Input[_builtins.int] max_packets: The maximum number of packets captured.
+        :param pulumi.Input['CaptureTaskServiceArgs'] service: The service configuration.
+        :param pulumi.Input['CaptureTaskSourceArgs'] source: The source configuration.
+        :param pulumi.Input[_builtins.str] name: The capture task name.
+        :param pulumi.Input[_builtins.bool] stop_capture: Whether to stop the capture.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "duration", duration)
@@ -71,8 +61,7 @@ class CaptureTaskArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input['CaptureTaskDestinationArgs']:
         """
-        Specifies the destination configuration.
-        The destination structure is documented below.
+        The destination configuration.
         """
         return pulumi.get(self, "destination")
 
@@ -84,7 +73,7 @@ class CaptureTaskArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the capture task duration.
+        The capture task duration.
         """
         return pulumi.get(self, "duration")
 
@@ -96,7 +85,7 @@ class CaptureTaskArgs:
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the firewall instance.
+        The ID of the firewall instance.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -108,8 +97,7 @@ class CaptureTaskArgs:
     @pulumi.getter(name="maxPackets")
     def max_packets(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the maximum number of packets captured.
-        The Maximum value is `1,000,000`.
+        The maximum number of packets captured.
         """
         return pulumi.get(self, "max_packets")
 
@@ -121,8 +109,7 @@ class CaptureTaskArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input['CaptureTaskServiceArgs']:
         """
-        Specifies the service configuration.
-        The service structure is documented below.
+        The service configuration.
         """
         return pulumi.get(self, "service")
 
@@ -134,8 +121,7 @@ class CaptureTaskArgs:
     @pulumi.getter
     def source(self) -> pulumi.Input['CaptureTaskSourceArgs']:
         """
-        Specifies the source configuration.
-        The source structure is documented below.
+        The source configuration.
         """
         return pulumi.get(self, "source")
 
@@ -156,7 +142,7 @@ class CaptureTaskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the capture task name.
+        The capture task name.
         """
         return pulumi.get(self, "name")
 
@@ -167,11 +153,6 @@ class CaptureTaskArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -182,10 +163,7 @@ class CaptureTaskArgs:
     @pulumi.getter(name="stopCapture")
     def stop_capture(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to stop the capture task.
-
-        <a name="Address"></a>
-        The `destination` or `source` block supports:
+        Whether to stop the capture.
         """
         return pulumi.get(self, "stop_capture")
 
@@ -214,25 +192,15 @@ class _CaptureTaskState:
         """
         Input properties used for looking up and filtering CaptureTask resources.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the capture task.
-        :param pulumi.Input['CaptureTaskDestinationArgs'] destination: Specifies the destination configuration.
-               The destination structure is documented below.
-        :param pulumi.Input[_builtins.int] duration: Specifies the capture task duration.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall instance.
-        :param pulumi.Input[_builtins.int] max_packets: Specifies the maximum number of packets captured.
-               The Maximum value is `1,000,000`.
-        :param pulumi.Input[_builtins.str] name: Specifies the capture task name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input['CaptureTaskServiceArgs'] service: Specifies the service configuration.
-               The service structure is documented below.
-        :param pulumi.Input['CaptureTaskSourceArgs'] source: Specifies the source configuration.
-               The source structure is documented below.
+        :param pulumi.Input['CaptureTaskDestinationArgs'] destination: The destination configuration.
+        :param pulumi.Input[_builtins.int] duration: The capture task duration.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall instance.
+        :param pulumi.Input[_builtins.int] max_packets: The maximum number of packets captured.
+        :param pulumi.Input[_builtins.str] name: The capture task name.
+        :param pulumi.Input['CaptureTaskServiceArgs'] service: The service configuration.
+        :param pulumi.Input['CaptureTaskSourceArgs'] source: The source configuration.
         :param pulumi.Input[_builtins.int] status: The status of the capture task.
-        :param pulumi.Input[_builtins.bool] stop_capture: Specifies whether to stop the capture task.
-               
-               <a name="Address"></a>
-               The `destination` or `source` block supports:
+        :param pulumi.Input[_builtins.bool] stop_capture: Whether to stop the capture.
         :param pulumi.Input[_builtins.str] task_id: The ID of the capture task.
         :param pulumi.Input[_builtins.str] updated_at: The update time of the capture task.
         """
@@ -281,8 +249,7 @@ class _CaptureTaskState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input['CaptureTaskDestinationArgs']]:
         """
-        Specifies the destination configuration.
-        The destination structure is documented below.
+        The destination configuration.
         """
         return pulumi.get(self, "destination")
 
@@ -294,7 +261,7 @@ class _CaptureTaskState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the capture task duration.
+        The capture task duration.
         """
         return pulumi.get(self, "duration")
 
@@ -315,7 +282,7 @@ class _CaptureTaskState:
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the firewall instance.
+        The ID of the firewall instance.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -327,8 +294,7 @@ class _CaptureTaskState:
     @pulumi.getter(name="maxPackets")
     def max_packets(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of packets captured.
-        The Maximum value is `1,000,000`.
+        The maximum number of packets captured.
         """
         return pulumi.get(self, "max_packets")
 
@@ -340,7 +306,7 @@ class _CaptureTaskState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the capture task name.
+        The capture task name.
         """
         return pulumi.get(self, "name")
 
@@ -351,11 +317,6 @@ class _CaptureTaskState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -366,8 +327,7 @@ class _CaptureTaskState:
     @pulumi.getter
     def service(self) -> Optional[pulumi.Input['CaptureTaskServiceArgs']]:
         """
-        Specifies the service configuration.
-        The service structure is documented below.
+        The service configuration.
         """
         return pulumi.get(self, "service")
 
@@ -379,8 +339,7 @@ class _CaptureTaskState:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input['CaptureTaskSourceArgs']]:
         """
-        Specifies the source configuration.
-        The source structure is documented below.
+        The source configuration.
         """
         return pulumi.get(self, "source")
 
@@ -404,10 +363,7 @@ class _CaptureTaskState:
     @pulumi.getter(name="stopCapture")
     def stop_capture(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to stop the capture task.
-
-        <a name="Address"></a>
-        The `destination` or `source` block supports:
+        Whether to stop the capture.
         """
         return pulumi.get(self, "stop_capture")
 
@@ -458,99 +414,17 @@ class CaptureTask(pulumi.CustomResource):
                  stop_capture: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Manages a CFW capture task resource within SberCloud.
-
-        > **NOTE:** For the Cloud Firewall service, you can only initiate up to 20 packet capture tasks per day.
-        Beyond this limit, no additional packet capture tasks can be initiated. Furthermore, only one packet capture task can be
-        in progress at any given time.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        name = config.require_object("name")
-        duration = config.require_object("duration")
-        max_packets = config.require_object("maxPackets")
-        test = sbercloud.cfw.CaptureTask("test",
-            fw_instance_id=fw_instance_id,
-            name=name,
-            duration=duration,
-            max_packets=max_packets,
-            destination={
-                "address": "1.1.1.1",
-                "address_type": 0,
-            },
-            source={
-                "address": "2.2.2.2",
-                "address_type": 0,
-            },
-            service={
-                "protocol": -1,
-            })
-        ```
-
-        ## Import
-
-        The capture task can be imported using `fw_instance_id`, `name`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/captureTask:CaptureTask test <fw_instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes is `stop_capture`. It is generally recommended running `pulumi preview` after importing the resource.
-
-        You can then decide if changes should be applied to the capture task, or the resource definition should be updated to
-
-        align with the capture task. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_cfw_capture_task" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              stop_capture,
-            
-            ]
-
-          }
-
-        }
-
+        Create a CaptureTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CaptureTaskDestinationArgs', 'CaptureTaskDestinationArgsDict']] destination: Specifies the destination configuration.
-               The destination structure is documented below.
-        :param pulumi.Input[_builtins.int] duration: Specifies the capture task duration.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall instance.
-        :param pulumi.Input[_builtins.int] max_packets: Specifies the maximum number of packets captured.
-               The Maximum value is `1,000,000`.
-        :param pulumi.Input[_builtins.str] name: Specifies the capture task name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[Union['CaptureTaskServiceArgs', 'CaptureTaskServiceArgsDict']] service: Specifies the service configuration.
-               The service structure is documented below.
-        :param pulumi.Input[Union['CaptureTaskSourceArgs', 'CaptureTaskSourceArgsDict']] source: Specifies the source configuration.
-               The source structure is documented below.
-        :param pulumi.Input[_builtins.bool] stop_capture: Specifies whether to stop the capture task.
-               
-               <a name="Address"></a>
-               The `destination` or `source` block supports:
+        :param pulumi.Input[Union['CaptureTaskDestinationArgs', 'CaptureTaskDestinationArgsDict']] destination: The destination configuration.
+        :param pulumi.Input[_builtins.int] duration: The capture task duration.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall instance.
+        :param pulumi.Input[_builtins.int] max_packets: The maximum number of packets captured.
+        :param pulumi.Input[_builtins.str] name: The capture task name.
+        :param pulumi.Input[Union['CaptureTaskServiceArgs', 'CaptureTaskServiceArgsDict']] service: The service configuration.
+        :param pulumi.Input[Union['CaptureTaskSourceArgs', 'CaptureTaskSourceArgsDict']] source: The source configuration.
+        :param pulumi.Input[_builtins.bool] stop_capture: Whether to stop the capture.
         """
         ...
     @overload
@@ -559,79 +433,7 @@ class CaptureTask(pulumi.CustomResource):
                  args: CaptureTaskArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW capture task resource within SberCloud.
-
-        > **NOTE:** For the Cloud Firewall service, you can only initiate up to 20 packet capture tasks per day.
-        Beyond this limit, no additional packet capture tasks can be initiated. Furthermore, only one packet capture task can be
-        in progress at any given time.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        name = config.require_object("name")
-        duration = config.require_object("duration")
-        max_packets = config.require_object("maxPackets")
-        test = sbercloud.cfw.CaptureTask("test",
-            fw_instance_id=fw_instance_id,
-            name=name,
-            duration=duration,
-            max_packets=max_packets,
-            destination={
-                "address": "1.1.1.1",
-                "address_type": 0,
-            },
-            source={
-                "address": "2.2.2.2",
-                "address_type": 0,
-            },
-            service={
-                "protocol": -1,
-            })
-        ```
-
-        ## Import
-
-        The capture task can be imported using `fw_instance_id`, `name`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/captureTask:CaptureTask test <fw_instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes is `stop_capture`. It is generally recommended running `pulumi preview` after importing the resource.
-
-        You can then decide if changes should be applied to the capture task, or the resource definition should be updated to
-
-        align with the capture task. Also you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_cfw_capture_task" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              stop_capture,
-            
-            ]
-
-          }
-
-        }
-
+        Create a CaptureTask resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param CaptureTaskArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -724,25 +526,15 @@ class CaptureTask(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the capture task.
-        :param pulumi.Input[Union['CaptureTaskDestinationArgs', 'CaptureTaskDestinationArgsDict']] destination: Specifies the destination configuration.
-               The destination structure is documented below.
-        :param pulumi.Input[_builtins.int] duration: Specifies the capture task duration.
-        :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the ID of the firewall instance.
-        :param pulumi.Input[_builtins.int] max_packets: Specifies the maximum number of packets captured.
-               The Maximum value is `1,000,000`.
-        :param pulumi.Input[_builtins.str] name: Specifies the capture task name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[Union['CaptureTaskServiceArgs', 'CaptureTaskServiceArgsDict']] service: Specifies the service configuration.
-               The service structure is documented below.
-        :param pulumi.Input[Union['CaptureTaskSourceArgs', 'CaptureTaskSourceArgsDict']] source: Specifies the source configuration.
-               The source structure is documented below.
+        :param pulumi.Input[Union['CaptureTaskDestinationArgs', 'CaptureTaskDestinationArgsDict']] destination: The destination configuration.
+        :param pulumi.Input[_builtins.int] duration: The capture task duration.
+        :param pulumi.Input[_builtins.str] fw_instance_id: The ID of the firewall instance.
+        :param pulumi.Input[_builtins.int] max_packets: The maximum number of packets captured.
+        :param pulumi.Input[_builtins.str] name: The capture task name.
+        :param pulumi.Input[Union['CaptureTaskServiceArgs', 'CaptureTaskServiceArgsDict']] service: The service configuration.
+        :param pulumi.Input[Union['CaptureTaskSourceArgs', 'CaptureTaskSourceArgsDict']] source: The source configuration.
         :param pulumi.Input[_builtins.int] status: The status of the capture task.
-        :param pulumi.Input[_builtins.bool] stop_capture: Specifies whether to stop the capture task.
-               
-               <a name="Address"></a>
-               The `destination` or `source` block supports:
+        :param pulumi.Input[_builtins.bool] stop_capture: Whether to stop the capture.
         :param pulumi.Input[_builtins.str] task_id: The ID of the capture task.
         :param pulumi.Input[_builtins.str] updated_at: The update time of the capture task.
         """
@@ -778,8 +570,7 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output['outputs.CaptureTaskDestination']:
         """
-        Specifies the destination configuration.
-        The destination structure is documented below.
+        The destination configuration.
         """
         return pulumi.get(self, "destination")
 
@@ -787,7 +578,7 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the capture task duration.
+        The capture task duration.
         """
         return pulumi.get(self, "duration")
 
@@ -800,7 +591,7 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the firewall instance.
+        The ID of the firewall instance.
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -808,8 +599,7 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter(name="maxPackets")
     def max_packets(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the maximum number of packets captured.
-        The Maximum value is `1,000,000`.
+        The maximum number of packets captured.
         """
         return pulumi.get(self, "max_packets")
 
@@ -817,26 +607,20 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the capture task name.
+        The capture task name.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def service(self) -> pulumi.Output['outputs.CaptureTaskService']:
         """
-        Specifies the service configuration.
-        The service structure is documented below.
+        The service configuration.
         """
         return pulumi.get(self, "service")
 
@@ -844,8 +628,7 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter
     def source(self) -> pulumi.Output['outputs.CaptureTaskSource']:
         """
-        Specifies the source configuration.
-        The source structure is documented below.
+        The source configuration.
         """
         return pulumi.get(self, "source")
 
@@ -861,10 +644,7 @@ class CaptureTask(pulumi.CustomResource):
     @pulumi.getter(name="stopCapture")
     def stop_capture(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to stop the capture task.
-
-        <a name="Address"></a>
-        The `destination` or `source` block supports:
+        Whether to stop the capture.
         """
         return pulumi.get(self, "stop_capture")
 

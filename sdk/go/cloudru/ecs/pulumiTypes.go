@@ -14,21 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceBandwidth struct {
-	// Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-	// Changing this creates a new instance.
 	ChargeMode  *string           `pulumi:"chargeMode"`
 	ExtendParam map[string]string `pulumi:"extendParam"`
-	// Specifies the **shared** bandwidth id. This parameter is mandatory when
-	// `shareType` is set to **WHOLE**. Changing this creates a new instance.
-	Id *string `pulumi:"id"`
-	// Specifies the bandwidth sharing type. Changing this creates a new instance.
-	// Possible values are as follows:
-	// + **PER**: Dedicated bandwidth
-	// + **WHOLE**: Shared bandwidth
-	ShareType string `pulumi:"shareType"`
-	// Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-	// This parameter is mandatory when `shareType` is set to **PER**. Changing this creates a new instance.
-	Size *int `pulumi:"size"`
+	Id          *string           `pulumi:"id"`
+	ShareType   string            `pulumi:"shareType"`
+	Size        *int              `pulumi:"size"`
 }
 
 // InstanceBandwidthInput is an input type that accepts InstanceBandwidthArgs and InstanceBandwidthOutput values.
@@ -43,21 +33,11 @@ type InstanceBandwidthInput interface {
 }
 
 type InstanceBandwidthArgs struct {
-	// Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-	// Changing this creates a new instance.
 	ChargeMode  pulumi.StringPtrInput `pulumi:"chargeMode"`
 	ExtendParam pulumi.StringMapInput `pulumi:"extendParam"`
-	// Specifies the **shared** bandwidth id. This parameter is mandatory when
-	// `shareType` is set to **WHOLE**. Changing this creates a new instance.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the bandwidth sharing type. Changing this creates a new instance.
-	// Possible values are as follows:
-	// + **PER**: Dedicated bandwidth
-	// + **WHOLE**: Shared bandwidth
-	ShareType pulumi.StringInput `pulumi:"shareType"`
-	// Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-	// This parameter is mandatory when `shareType` is set to **PER**. Changing this creates a new instance.
-	Size pulumi.IntPtrInput `pulumi:"size"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	ShareType   pulumi.StringInput    `pulumi:"shareType"`
+	Size        pulumi.IntPtrInput    `pulumi:"size"`
 }
 
 func (InstanceBandwidthArgs) ElementType() reflect.Type {
@@ -137,8 +117,6 @@ func (o InstanceBandwidthOutput) ToInstanceBandwidthPtrOutputWithContext(ctx con
 	}).(InstanceBandwidthPtrOutput)
 }
 
-// Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-// Changing this creates a new instance.
 func (o InstanceBandwidthOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidth) *string { return v.ChargeMode }).(pulumi.StringPtrOutput)
 }
@@ -147,22 +125,14 @@ func (o InstanceBandwidthOutput) ExtendParam() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceBandwidth) map[string]string { return v.ExtendParam }).(pulumi.StringMapOutput)
 }
 
-// Specifies the **shared** bandwidth id. This parameter is mandatory when
-// `shareType` is set to **WHOLE**. Changing this creates a new instance.
 func (o InstanceBandwidthOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidth) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the bandwidth sharing type. Changing this creates a new instance.
-// Possible values are as follows:
-// + **PER**: Dedicated bandwidth
-// + **WHOLE**: Shared bandwidth
 func (o InstanceBandwidthOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceBandwidth) string { return v.ShareType }).(pulumi.StringOutput)
 }
 
-// Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-// This parameter is mandatory when `shareType` is set to **PER**. Changing this creates a new instance.
 func (o InstanceBandwidthOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidth) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -191,8 +161,6 @@ func (o InstanceBandwidthPtrOutput) Elem() InstanceBandwidthOutput {
 	}).(InstanceBandwidthOutput)
 }
 
-// Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-// Changing this creates a new instance.
 func (o InstanceBandwidthPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBandwidth) *string {
 		if v == nil {
@@ -211,8 +179,6 @@ func (o InstanceBandwidthPtrOutput) ExtendParam() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the **shared** bandwidth id. This parameter is mandatory when
-// `shareType` is set to **WHOLE**. Changing this creates a new instance.
 func (o InstanceBandwidthPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBandwidth) *string {
 		if v == nil {
@@ -222,10 +188,6 @@ func (o InstanceBandwidthPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the bandwidth sharing type. Changing this creates a new instance.
-// Possible values are as follows:
-// + **PER**: Dedicated bandwidth
-// + **WHOLE**: Shared bandwidth
 func (o InstanceBandwidthPtrOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBandwidth) *string {
 		if v == nil {
@@ -235,8 +197,6 @@ func (o InstanceBandwidthPtrOutput) ShareType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-// This parameter is mandatory when `shareType` is set to **PER**. Changing this creates a new instance.
 func (o InstanceBandwidthPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceBandwidth) *int {
 		if v == nil {
@@ -247,20 +207,13 @@ func (o InstanceBandwidthPtrOutput) Size() pulumi.IntPtrOutput {
 }
 
 type InstanceDataDisk struct {
-	DssPoolId *string `pulumi:"dssPoolId"`
-	Iops      *int    `pulumi:"iops"`
-	// Specifies the ID of a KMS key. This is used to encrypt the disk.
-	// Changing this creates a new instance.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-	// Changing this creates a new instance.
-	Size int `pulumi:"size"`
-	// Specifies the snapshot id. Changing this creates a new instance.
+	DssPoolId  *string `pulumi:"dssPoolId"`
+	Iops       *int    `pulumi:"iops"`
+	KmsKeyId   *string `pulumi:"kmsKeyId"`
+	Size       int     `pulumi:"size"`
 	SnapshotId *string `pulumi:"snapshotId"`
 	Throughput *int    `pulumi:"throughput"`
-	// Specifies the ECS data disk type, which must be one of available disk types,
-	// contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-	Type string `pulumi:"type"`
+	Type       string  `pulumi:"type"`
 }
 
 // InstanceDataDiskInput is an input type that accepts InstanceDataDiskArgs and InstanceDataDiskOutput values.
@@ -275,20 +228,13 @@ type InstanceDataDiskInput interface {
 }
 
 type InstanceDataDiskArgs struct {
-	DssPoolId pulumi.StringPtrInput `pulumi:"dssPoolId"`
-	Iops      pulumi.IntPtrInput    `pulumi:"iops"`
-	// Specifies the ID of a KMS key. This is used to encrypt the disk.
-	// Changing this creates a new instance.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-	// Changing this creates a new instance.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the snapshot id. Changing this creates a new instance.
+	DssPoolId  pulumi.StringPtrInput `pulumi:"dssPoolId"`
+	Iops       pulumi.IntPtrInput    `pulumi:"iops"`
+	KmsKeyId   pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+	Size       pulumi.IntInput       `pulumi:"size"`
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 	Throughput pulumi.IntPtrInput    `pulumi:"throughput"`
-	// Specifies the ECS data disk type, which must be one of available disk types,
-	// contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type       pulumi.StringInput    `pulumi:"type"`
 }
 
 func (InstanceDataDiskArgs) ElementType() reflect.Type {
@@ -350,19 +296,14 @@ func (o InstanceDataDiskOutput) Iops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *int { return v.Iops }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ID of a KMS key. This is used to encrypt the disk.
-// Changing this creates a new instance.
 func (o InstanceDataDiskOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-// Changing this creates a new instance.
 func (o InstanceDataDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceDataDisk) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the snapshot id. Changing this creates a new instance.
 func (o InstanceDataDiskOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }
@@ -371,8 +312,6 @@ func (o InstanceDataDiskOutput) Throughput() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *int { return v.Throughput }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ECS data disk type, which must be one of available disk types,
-// contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
 func (o InstanceDataDiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDataDisk) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -398,27 +337,16 @@ func (o InstanceDataDiskArrayOutput) Index(i pulumi.IntInput) InstanceDataDiskOu
 }
 
 type InstanceNetwork struct {
-	// Specifies if this network should be used for provisioning access.
-	// Accepts true or false. Defaults to false.
-	AccessNetwork *bool `pulumi:"accessNetwork"`
-	// Specifies a fixed IPv4 address to be used on this network.
-	// Changing this creates a new instance.
-	FixedIpV4 *string `pulumi:"fixedIpV4"`
-	// The Fixed IPv6 address of the instance on that network.
-	FixedIpV6 *string `pulumi:"fixedIpV6"`
-	// Specifies whether the IPv6 function is enabled for the nic.
-	// Defaults to false. Changing this creates a new instance.
-	Ipv6Enable *bool `pulumi:"ipv6Enable"`
-	// The MAC address of the NIC on that network.
-	Mac *string `pulumi:"mac"`
-	// The port ID corresponding to the IP address on that network.
-	Port *string `pulumi:"port"`
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
-	// Specifies the network UUID to attach to the instance.
-	// Changing this creates a new instance.
+	AccessNetwork *bool   `pulumi:"accessNetwork"`
+	FixedIpV4     *string `pulumi:"fixedIpV4"`
+	// schema: Computed
+	FixedIpV6  *string `pulumi:"fixedIpV6"`
+	Ipv6Enable *bool   `pulumi:"ipv6Enable"`
+	Mac        *string `pulumi:"mac"`
+	// schema: Computed
+	Port            *string `pulumi:"port"`
+	SourceDestCheck *bool   `pulumi:"sourceDestCheck"`
+	// schema: Required
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -434,27 +362,16 @@ type InstanceNetworkInput interface {
 }
 
 type InstanceNetworkArgs struct {
-	// Specifies if this network should be used for provisioning access.
-	// Accepts true or false. Defaults to false.
-	AccessNetwork pulumi.BoolPtrInput `pulumi:"accessNetwork"`
-	// Specifies a fixed IPv4 address to be used on this network.
-	// Changing this creates a new instance.
-	FixedIpV4 pulumi.StringPtrInput `pulumi:"fixedIpV4"`
-	// The Fixed IPv6 address of the instance on that network.
-	FixedIpV6 pulumi.StringPtrInput `pulumi:"fixedIpV6"`
-	// Specifies whether the IPv6 function is enabled for the nic.
-	// Defaults to false. Changing this creates a new instance.
-	Ipv6Enable pulumi.BoolPtrInput `pulumi:"ipv6Enable"`
-	// The MAC address of the NIC on that network.
-	Mac pulumi.StringPtrInput `pulumi:"mac"`
-	// The port ID corresponding to the IP address on that network.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck pulumi.BoolPtrInput `pulumi:"sourceDestCheck"`
-	// Specifies the network UUID to attach to the instance.
-	// Changing this creates a new instance.
+	AccessNetwork pulumi.BoolPtrInput   `pulumi:"accessNetwork"`
+	FixedIpV4     pulumi.StringPtrInput `pulumi:"fixedIpV4"`
+	// schema: Computed
+	FixedIpV6  pulumi.StringPtrInput `pulumi:"fixedIpV6"`
+	Ipv6Enable pulumi.BoolPtrInput   `pulumi:"ipv6Enable"`
+	Mac        pulumi.StringPtrInput `pulumi:"mac"`
+	// schema: Computed
+	Port            pulumi.StringPtrInput `pulumi:"port"`
+	SourceDestCheck pulumi.BoolPtrInput   `pulumi:"sourceDestCheck"`
+	// schema: Required
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -509,48 +426,37 @@ func (o InstanceNetworkOutput) ToInstanceNetworkOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies if this network should be used for provisioning access.
-// Accepts true or false. Defaults to false.
 func (o InstanceNetworkOutput) AccessNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *bool { return v.AccessNetwork }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies a fixed IPv4 address to be used on this network.
-// Changing this creates a new instance.
 func (o InstanceNetworkOutput) FixedIpV4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV4 }).(pulumi.StringPtrOutput)
 }
 
-// The Fixed IPv6 address of the instance on that network.
+// schema: Computed
 func (o InstanceNetworkOutput) FixedIpV6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.FixedIpV6 }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the IPv6 function is enabled for the nic.
-// Defaults to false. Changing this creates a new instance.
 func (o InstanceNetworkOutput) Ipv6Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *bool { return v.Ipv6Enable }).(pulumi.BoolPtrOutput)
 }
 
-// The MAC address of the NIC on that network.
 func (o InstanceNetworkOutput) Mac() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.Mac }).(pulumi.StringPtrOutput)
 }
 
-// The port ID corresponding to the IP address on that network.
+// schema: Computed
 func (o InstanceNetworkOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the ECS processes only traffic that is destined specifically
-// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-// virtual IP address bound to it.
 func (o InstanceNetworkOutput) SourceDestCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *bool { return v.SourceDestCheck }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the network UUID to attach to the instance.
-// Changing this creates a new instance.
+// schema: Required
 func (o InstanceNetworkOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetwork) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -576,18 +482,11 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 }
 
 type InstanceSchedulerHint struct {
-	// Specifies the ID of DeH.
-	// This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
 	DehId *string `pulumi:"dehId"`
 	// schema: Internal
 	FaultDomain *string `pulumi:"faultDomain"`
-	// Specifies a UUID of a Server Group.
-	// The instance will be placed into that group. Changing this creates a new instance.
-	Group *string `pulumi:"group"`
-	// Specifies the tenancy specifies whether the ECS is to be created on a
-	// Dedicated Host
-	// (DeH) or in a shared pool. Changing this creates a new instance.
-	Tenancy *string `pulumi:"tenancy"`
+	Group       *string `pulumi:"group"`
+	Tenancy     *string `pulumi:"tenancy"`
 }
 
 // InstanceSchedulerHintInput is an input type that accepts InstanceSchedulerHintArgs and InstanceSchedulerHintOutput values.
@@ -602,18 +501,11 @@ type InstanceSchedulerHintInput interface {
 }
 
 type InstanceSchedulerHintArgs struct {
-	// Specifies the ID of DeH.
-	// This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
 	DehId pulumi.StringPtrInput `pulumi:"dehId"`
 	// schema: Internal
 	FaultDomain pulumi.StringPtrInput `pulumi:"faultDomain"`
-	// Specifies a UUID of a Server Group.
-	// The instance will be placed into that group. Changing this creates a new instance.
-	Group pulumi.StringPtrInput `pulumi:"group"`
-	// Specifies the tenancy specifies whether the ECS is to be created on a
-	// Dedicated Host
-	// (DeH) or in a shared pool. Changing this creates a new instance.
-	Tenancy pulumi.StringPtrInput `pulumi:"tenancy"`
+	Group       pulumi.StringPtrInput `pulumi:"group"`
+	Tenancy     pulumi.StringPtrInput `pulumi:"tenancy"`
 }
 
 func (InstanceSchedulerHintArgs) ElementType() reflect.Type {
@@ -667,8 +559,6 @@ func (o InstanceSchedulerHintOutput) ToInstanceSchedulerHintOutputWithContext(ct
 	return o
 }
 
-// Specifies the ID of DeH.
-// This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
 func (o InstanceSchedulerHintOutput) DehId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.DehId }).(pulumi.StringPtrOutput)
 }
@@ -678,15 +568,10 @@ func (o InstanceSchedulerHintOutput) FaultDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.FaultDomain }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a UUID of a Server Group.
-// The instance will be placed into that group. Changing this creates a new instance.
 func (o InstanceSchedulerHintOutput) Group() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.Group }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tenancy specifies whether the ECS is to be created on a
-// Dedicated Host
-// (DeH) or in a shared pool. Changing this creates a new instance.
 func (o InstanceSchedulerHintOutput) Tenancy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceSchedulerHint) *string { return v.Tenancy }).(pulumi.StringPtrOutput)
 }
@@ -712,19 +597,12 @@ func (o InstanceSchedulerHintArrayOutput) Index(i pulumi.IntInput) InstanceSched
 }
 
 type InstanceVolumeAttached struct {
-	// The volume boot index on that attachment.
-	BootIndex *int `pulumi:"bootIndex"`
-	// Specifies the ID of a KMS key. This is used to encrypt the disk.
-	// Changing this creates a new instance.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The volume pci address on that attachment.
+	BootIndex  *int    `pulumi:"bootIndex"`
+	KmsKeyId   *string `pulumi:"kmsKeyId"`
 	PciAddress *string `pulumi:"pciAddress"`
-	// The volume size on that attachment.
-	Size *int `pulumi:"size"`
-	// The volume type on that attachment.
-	Type *string `pulumi:"type"`
-	// The volume ID on that attachment.
-	VolumeId *string `pulumi:"volumeId"`
+	Size       *int    `pulumi:"size"`
+	Type       *string `pulumi:"type"`
+	VolumeId   *string `pulumi:"volumeId"`
 }
 
 // InstanceVolumeAttachedInput is an input type that accepts InstanceVolumeAttachedArgs and InstanceVolumeAttachedOutput values.
@@ -739,19 +617,12 @@ type InstanceVolumeAttachedInput interface {
 }
 
 type InstanceVolumeAttachedArgs struct {
-	// The volume boot index on that attachment.
-	BootIndex pulumi.IntPtrInput `pulumi:"bootIndex"`
-	// Specifies the ID of a KMS key. This is used to encrypt the disk.
-	// Changing this creates a new instance.
-	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
-	// The volume pci address on that attachment.
+	BootIndex  pulumi.IntPtrInput    `pulumi:"bootIndex"`
+	KmsKeyId   pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	PciAddress pulumi.StringPtrInput `pulumi:"pciAddress"`
-	// The volume size on that attachment.
-	Size pulumi.IntPtrInput `pulumi:"size"`
-	// The volume type on that attachment.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The volume ID on that attachment.
-	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+	Size       pulumi.IntPtrInput    `pulumi:"size"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
+	VolumeId   pulumi.StringPtrInput `pulumi:"volumeId"`
 }
 
 func (InstanceVolumeAttachedArgs) ElementType() reflect.Type {
@@ -805,33 +676,26 @@ func (o InstanceVolumeAttachedOutput) ToInstanceVolumeAttachedOutputWithContext(
 	return o
 }
 
-// The volume boot index on that attachment.
 func (o InstanceVolumeAttachedOutput) BootIndex() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceVolumeAttached) *int { return v.BootIndex }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the ID of a KMS key. This is used to encrypt the disk.
-// Changing this creates a new instance.
 func (o InstanceVolumeAttachedOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceVolumeAttached) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The volume pci address on that attachment.
 func (o InstanceVolumeAttachedOutput) PciAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceVolumeAttached) *string { return v.PciAddress }).(pulumi.StringPtrOutput)
 }
 
-// The volume size on that attachment.
 func (o InstanceVolumeAttachedOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceVolumeAttached) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
 
-// The volume type on that attachment.
 func (o InstanceVolumeAttachedOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceVolumeAttached) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The volume ID on that attachment.
 func (o InstanceVolumeAttachedOutput) VolumeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceVolumeAttached) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
 }
@@ -857,15 +721,10 @@ func (o InstanceVolumeAttachedArrayOutput) Index(i pulumi.IntInput) InstanceVolu
 }
 
 type GetFlavorsFlavor struct {
-	// Specifies the number of vCPUs in the ECS flavor.
-	CpuCoreCount int `pulumi:"cpuCoreCount"`
-	// Specifies the generation of an ECS type.
-	Generation string `pulumi:"generation"`
-	// Specifies a data source ID in UUID format.
-	Id string `pulumi:"id"`
-	// Specifies the memory size(GB) in the ECS flavor.
-	MemorySize int `pulumi:"memorySize"`
-	// Specifies the ECS flavor type.
+	CpuCoreCount    int    `pulumi:"cpuCoreCount"`
+	Generation      string `pulumi:"generation"`
+	Id              string `pulumi:"id"`
+	MemorySize      int    `pulumi:"memorySize"`
 	PerformanceType string `pulumi:"performanceType"`
 	StorageType     string `pulumi:"storageType"`
 }
@@ -882,15 +741,10 @@ type GetFlavorsFlavorInput interface {
 }
 
 type GetFlavorsFlavorArgs struct {
-	// Specifies the number of vCPUs in the ECS flavor.
-	CpuCoreCount pulumi.IntInput `pulumi:"cpuCoreCount"`
-	// Specifies the generation of an ECS type.
-	Generation pulumi.StringInput `pulumi:"generation"`
-	// Specifies a data source ID in UUID format.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the memory size(GB) in the ECS flavor.
-	MemorySize pulumi.IntInput `pulumi:"memorySize"`
-	// Specifies the ECS flavor type.
+	CpuCoreCount    pulumi.IntInput    `pulumi:"cpuCoreCount"`
+	Generation      pulumi.StringInput `pulumi:"generation"`
+	Id              pulumi.StringInput `pulumi:"id"`
+	MemorySize      pulumi.IntInput    `pulumi:"memorySize"`
 	PerformanceType pulumi.StringInput `pulumi:"performanceType"`
 	StorageType     pulumi.StringInput `pulumi:"storageType"`
 }
@@ -946,27 +800,22 @@ func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the number of vCPUs in the ECS flavor.
 func (o GetFlavorsFlavorOutput) CpuCoreCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.CpuCoreCount }).(pulumi.IntOutput)
 }
 
-// Specifies the generation of an ECS type.
 func (o GetFlavorsFlavorOutput) Generation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Generation }).(pulumi.StringOutput)
 }
 
-// Specifies a data source ID in UUID format.
 func (o GetFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the memory size(GB) in the ECS flavor.
 func (o GetFlavorsFlavorOutput) MemorySize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.MemorySize }).(pulumi.IntOutput)
 }
 
-// Specifies the ECS flavor type.
 func (o GetFlavorsFlavorOutput) PerformanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.PerformanceType }).(pulumi.StringOutput)
 }
@@ -996,16 +845,11 @@ func (o GetFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetFlavorsFlavorOu
 }
 
 type GetInstanceNetwork struct {
-	// Specifies the IPv4 addresses of the ECS.
 	FixedIpV4 string `pulumi:"fixedIpV4"`
-	// The Fixed IPv6 address of the instance on that network.
 	FixedIpV6 string `pulumi:"fixedIpV6"`
-	// The MAC address of the NIC on that network.
-	Mac string `pulumi:"mac"`
-	// The port ID corresponding to the IP address on that network.
-	Port string `pulumi:"port"`
-	// The network UUID to attach to the server.
-	Uuid string `pulumi:"uuid"`
+	Mac       string `pulumi:"mac"`
+	Port      string `pulumi:"port"`
+	Uuid      string `pulumi:"uuid"`
 }
 
 // GetInstanceNetworkInput is an input type that accepts GetInstanceNetworkArgs and GetInstanceNetworkOutput values.
@@ -1020,16 +864,11 @@ type GetInstanceNetworkInput interface {
 }
 
 type GetInstanceNetworkArgs struct {
-	// Specifies the IPv4 addresses of the ECS.
 	FixedIpV4 pulumi.StringInput `pulumi:"fixedIpV4"`
-	// The Fixed IPv6 address of the instance on that network.
 	FixedIpV6 pulumi.StringInput `pulumi:"fixedIpV6"`
-	// The MAC address of the NIC on that network.
-	Mac pulumi.StringInput `pulumi:"mac"`
-	// The port ID corresponding to the IP address on that network.
-	Port pulumi.StringInput `pulumi:"port"`
-	// The network UUID to attach to the server.
-	Uuid pulumi.StringInput `pulumi:"uuid"`
+	Mac       pulumi.StringInput `pulumi:"mac"`
+	Port      pulumi.StringInput `pulumi:"port"`
+	Uuid      pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetInstanceNetworkArgs) ElementType() reflect.Type {
@@ -1083,27 +922,22 @@ func (o GetInstanceNetworkOutput) ToGetInstanceNetworkOutputWithContext(ctx cont
 	return o
 }
 
-// Specifies the IPv4 addresses of the ECS.
 func (o GetInstanceNetworkOutput) FixedIpV4() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.FixedIpV4 }).(pulumi.StringOutput)
 }
 
-// The Fixed IPv6 address of the instance on that network.
 func (o GetInstanceNetworkOutput) FixedIpV6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.FixedIpV6 }).(pulumi.StringOutput)
 }
 
-// The MAC address of the NIC on that network.
 func (o GetInstanceNetworkOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// The port ID corresponding to the IP address on that network.
 func (o GetInstanceNetworkOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// The network UUID to attach to the server.
 func (o GetInstanceNetworkOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -1129,7 +963,6 @@ func (o GetInstanceNetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceNetwo
 }
 
 type GetInstanceSchedulerHint struct {
-	// The UUID of a Server Group where the instance will be placed into.
 	Group string `pulumi:"group"`
 }
 
@@ -1145,7 +978,6 @@ type GetInstanceSchedulerHintInput interface {
 }
 
 type GetInstanceSchedulerHintArgs struct {
-	// The UUID of a Server Group where the instance will be placed into.
 	Group pulumi.StringInput `pulumi:"group"`
 }
 
@@ -1200,7 +1032,6 @@ func (o GetInstanceSchedulerHintOutput) ToGetInstanceSchedulerHintOutputWithCont
 	return o
 }
 
-// The UUID of a Server Group where the instance will be placed into.
 func (o GetInstanceSchedulerHintOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceSchedulerHint) string { return v.Group }).(pulumi.StringOutput)
 }
@@ -1226,18 +1057,12 @@ func (o GetInstanceSchedulerHintArrayOutput) Index(i pulumi.IntInput) GetInstanc
 }
 
 type GetInstanceVolumeAttached struct {
-	// The volume boot index on that attachment.
-	BootIndex int `pulumi:"bootIndex"`
-	// Whether the volume is the system disk.
-	IsSysVolume bool `pulumi:"isSysVolume"`
-	// The volume pci address on that attachment.
-	PciAddress string `pulumi:"pciAddress"`
-	// The volume size on that attachment.
-	Size int `pulumi:"size"`
-	// The volume type on that attachment.
-	Type string `pulumi:"type"`
-	// The volume id on that attachment.
-	VolumeId string `pulumi:"volumeId"`
+	BootIndex   int    `pulumi:"bootIndex"`
+	IsSysVolume bool   `pulumi:"isSysVolume"`
+	PciAddress  string `pulumi:"pciAddress"`
+	Size        int    `pulumi:"size"`
+	Type        string `pulumi:"type"`
+	VolumeId    string `pulumi:"volumeId"`
 }
 
 // GetInstanceVolumeAttachedInput is an input type that accepts GetInstanceVolumeAttachedArgs and GetInstanceVolumeAttachedOutput values.
@@ -1252,18 +1077,12 @@ type GetInstanceVolumeAttachedInput interface {
 }
 
 type GetInstanceVolumeAttachedArgs struct {
-	// The volume boot index on that attachment.
-	BootIndex pulumi.IntInput `pulumi:"bootIndex"`
-	// Whether the volume is the system disk.
-	IsSysVolume pulumi.BoolInput `pulumi:"isSysVolume"`
-	// The volume pci address on that attachment.
-	PciAddress pulumi.StringInput `pulumi:"pciAddress"`
-	// The volume size on that attachment.
-	Size pulumi.IntInput `pulumi:"size"`
-	// The volume type on that attachment.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The volume id on that attachment.
-	VolumeId pulumi.StringInput `pulumi:"volumeId"`
+	BootIndex   pulumi.IntInput    `pulumi:"bootIndex"`
+	IsSysVolume pulumi.BoolInput   `pulumi:"isSysVolume"`
+	PciAddress  pulumi.StringInput `pulumi:"pciAddress"`
+	Size        pulumi.IntInput    `pulumi:"size"`
+	Type        pulumi.StringInput `pulumi:"type"`
+	VolumeId    pulumi.StringInput `pulumi:"volumeId"`
 }
 
 func (GetInstanceVolumeAttachedArgs) ElementType() reflect.Type {
@@ -1317,32 +1136,26 @@ func (o GetInstanceVolumeAttachedOutput) ToGetInstanceVolumeAttachedOutputWithCo
 	return o
 }
 
-// The volume boot index on that attachment.
 func (o GetInstanceVolumeAttachedOutput) BootIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceVolumeAttached) int { return v.BootIndex }).(pulumi.IntOutput)
 }
 
-// Whether the volume is the system disk.
 func (o GetInstanceVolumeAttachedOutput) IsSysVolume() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceVolumeAttached) bool { return v.IsSysVolume }).(pulumi.BoolOutput)
 }
 
-// The volume pci address on that attachment.
 func (o GetInstanceVolumeAttachedOutput) PciAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVolumeAttached) string { return v.PciAddress }).(pulumi.StringOutput)
 }
 
-// The volume size on that attachment.
 func (o GetInstanceVolumeAttachedOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceVolumeAttached) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The volume type on that attachment.
 func (o GetInstanceVolumeAttachedOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVolumeAttached) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The volume id on that attachment.
 func (o GetInstanceVolumeAttachedOutput) VolumeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceVolumeAttached) string { return v.VolumeId }).(pulumi.StringOutput)
 }
@@ -1368,49 +1181,26 @@ func (o GetInstanceVolumeAttachedArrayOutput) Index(i pulumi.IntInput) GetInstan
 }
 
 type GetInstancesInstance struct {
-	// Specifies the availability zone where the instance is located.
-	// Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	ChargingMode     string `pulumi:"chargingMode"`
-	// Specifies the enterprise project ID.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	ExpiredTime         string `pulumi:"expiredTime"`
-	// Specifies the flavor ID.
-	FlavorId string `pulumi:"flavorId"`
-	// Specifies the flavor name of the instance.
-	FlavorName string `pulumi:"flavorName"`
-	// The instance ID in UUID format.
-	Id string `pulumi:"id"`
-	// Specifies the image ID of the instance.
-	ImageId string `pulumi:"imageId"`
-	// The image name of the instance.
-	ImageName string `pulumi:"imageName"`
-	// Specifies the key pair that is used to authenticate the instance.
-	KeyPair string `pulumi:"keyPair"`
-	// Specifies the instance name, which can be queried with a regular expression.
-	// The instance name supports fuzzy matching query too.
-	Name     string                        `pulumi:"name"`
-	Networks []GetInstancesInstanceNetwork `pulumi:"networks"`
-	// The EIP address that is associted to the instance.
-	PublicIp string `pulumi:"publicIp"`
-	// The scheduler with hints on how the instance should be launched.
-	// The object structure is documented below.
-	SchedulerHints []GetInstancesInstanceSchedulerHint `pulumi:"schedulerHints"`
-	// An array of one or more security group IDs to associate with the instance.
-	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Specifies the status of the instance. The valid values are as follows:
-	// + **ACTIVE**: The instance is running properly.
-	// + **SHUTOFF**: The instance has been properly stopped.
-	// + **ERROR**: An error has occurred on the instance.
-	Status string `pulumi:"status"`
-	// The system disk voume ID.
-	SystemDiskId string `pulumi:"systemDiskId"`
-	// The key/value pairs to associate with the instance.
-	Tags map[string]string `pulumi:"tags"`
-	// The user data (information after encoding) configured during instance creation.
-	UserData string `pulumi:"userData"`
-	// An array of one or more disks to attach to the instance. The object structure is documented below.
-	VolumeAttacheds []GetInstancesInstanceVolumeAttached `pulumi:"volumeAttacheds"`
+	AvailabilityZone    string                               `pulumi:"availabilityZone"`
+	ChargingMode        string                               `pulumi:"chargingMode"`
+	EnterpriseProjectId string                               `pulumi:"enterpriseProjectId"`
+	ExpiredTime         string                               `pulumi:"expiredTime"`
+	FlavorId            string                               `pulumi:"flavorId"`
+	FlavorName          string                               `pulumi:"flavorName"`
+	Id                  string                               `pulumi:"id"`
+	ImageId             string                               `pulumi:"imageId"`
+	ImageName           string                               `pulumi:"imageName"`
+	KeyPair             string                               `pulumi:"keyPair"`
+	Name                string                               `pulumi:"name"`
+	Networks            []GetInstancesInstanceNetwork        `pulumi:"networks"`
+	PublicIp            string                               `pulumi:"publicIp"`
+	SchedulerHints      []GetInstancesInstanceSchedulerHint  `pulumi:"schedulerHints"`
+	SecurityGroupIds    []string                             `pulumi:"securityGroupIds"`
+	Status              string                               `pulumi:"status"`
+	SystemDiskId        string                               `pulumi:"systemDiskId"`
+	Tags                map[string]string                    `pulumi:"tags"`
+	UserData            string                               `pulumi:"userData"`
+	VolumeAttacheds     []GetInstancesInstanceVolumeAttached `pulumi:"volumeAttacheds"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -1425,49 +1215,26 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// Specifies the availability zone where the instance is located.
-	// Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	ChargingMode     pulumi.StringInput `pulumi:"chargingMode"`
-	// Specifies the enterprise project ID.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	ExpiredTime         pulumi.StringInput `pulumi:"expiredTime"`
-	// Specifies the flavor ID.
-	FlavorId pulumi.StringInput `pulumi:"flavorId"`
-	// Specifies the flavor name of the instance.
-	FlavorName pulumi.StringInput `pulumi:"flavorName"`
-	// The instance ID in UUID format.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the image ID of the instance.
-	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// The image name of the instance.
-	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Specifies the key pair that is used to authenticate the instance.
-	KeyPair pulumi.StringInput `pulumi:"keyPair"`
-	// Specifies the instance name, which can be queried with a regular expression.
-	// The instance name supports fuzzy matching query too.
-	Name     pulumi.StringInput                    `pulumi:"name"`
-	Networks GetInstancesInstanceNetworkArrayInput `pulumi:"networks"`
-	// The EIP address that is associted to the instance.
-	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The scheduler with hints on how the instance should be launched.
-	// The object structure is documented below.
-	SchedulerHints GetInstancesInstanceSchedulerHintArrayInput `pulumi:"schedulerHints"`
-	// An array of one or more security group IDs to associate with the instance.
-	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// Specifies the status of the instance. The valid values are as follows:
-	// + **ACTIVE**: The instance is running properly.
-	// + **SHUTOFF**: The instance has been properly stopped.
-	// + **ERROR**: An error has occurred on the instance.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The system disk voume ID.
-	SystemDiskId pulumi.StringInput `pulumi:"systemDiskId"`
-	// The key/value pairs to associate with the instance.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The user data (information after encoding) configured during instance creation.
-	UserData pulumi.StringInput `pulumi:"userData"`
-	// An array of one or more disks to attach to the instance. The object structure is documented below.
-	VolumeAttacheds GetInstancesInstanceVolumeAttachedArrayInput `pulumi:"volumeAttacheds"`
+	AvailabilityZone    pulumi.StringInput                           `pulumi:"availabilityZone"`
+	ChargingMode        pulumi.StringInput                           `pulumi:"chargingMode"`
+	EnterpriseProjectId pulumi.StringInput                           `pulumi:"enterpriseProjectId"`
+	ExpiredTime         pulumi.StringInput                           `pulumi:"expiredTime"`
+	FlavorId            pulumi.StringInput                           `pulumi:"flavorId"`
+	FlavorName          pulumi.StringInput                           `pulumi:"flavorName"`
+	Id                  pulumi.StringInput                           `pulumi:"id"`
+	ImageId             pulumi.StringInput                           `pulumi:"imageId"`
+	ImageName           pulumi.StringInput                           `pulumi:"imageName"`
+	KeyPair             pulumi.StringInput                           `pulumi:"keyPair"`
+	Name                pulumi.StringInput                           `pulumi:"name"`
+	Networks            GetInstancesInstanceNetworkArrayInput        `pulumi:"networks"`
+	PublicIp            pulumi.StringInput                           `pulumi:"publicIp"`
+	SchedulerHints      GetInstancesInstanceSchedulerHintArrayInput  `pulumi:"schedulerHints"`
+	SecurityGroupIds    pulumi.StringArrayInput                      `pulumi:"securityGroupIds"`
+	Status              pulumi.StringInput                           `pulumi:"status"`
+	SystemDiskId        pulumi.StringInput                           `pulumi:"systemDiskId"`
+	Tags                pulumi.StringMapInput                        `pulumi:"tags"`
+	UserData            pulumi.StringInput                           `pulumi:"userData"`
+	VolumeAttacheds     GetInstancesInstanceVolumeAttachedArrayInput `pulumi:"volumeAttacheds"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -1521,8 +1288,6 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// Specifies the availability zone where the instance is located.
-// Please following [reference](https://support.hc.sbercloud.ru/endpoint/index.html) for this argument.
 func (o GetInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -1531,7 +1296,6 @@ func (o GetInstancesInstanceOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID.
 func (o GetInstancesInstanceOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -1540,38 +1304,30 @@ func (o GetInstancesInstanceOutput) ExpiredTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
-// Specifies the flavor ID.
 func (o GetInstancesInstanceOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
-// Specifies the flavor name of the instance.
 func (o GetInstancesInstanceOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.FlavorName }).(pulumi.StringOutput)
 }
 
-// The instance ID in UUID format.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the image ID of the instance.
 func (o GetInstancesInstanceOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// The image name of the instance.
 func (o GetInstancesInstanceOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// Specifies the key pair that is used to authenticate the instance.
 func (o GetInstancesInstanceOutput) KeyPair() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.KeyPair }).(pulumi.StringOutput)
 }
 
-// Specifies the instance name, which can be queried with a regular expression.
-// The instance name supports fuzzy matching query too.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1580,46 +1336,34 @@ func (o GetInstancesInstanceOutput) Networks() GetInstancesInstanceNetworkArrayO
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceNetwork { return v.Networks }).(GetInstancesInstanceNetworkArrayOutput)
 }
 
-// The EIP address that is associted to the instance.
 func (o GetInstancesInstanceOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The scheduler with hints on how the instance should be launched.
-// The object structure is documented below.
 func (o GetInstancesInstanceOutput) SchedulerHints() GetInstancesInstanceSchedulerHintArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceSchedulerHint { return v.SchedulerHints }).(GetInstancesInstanceSchedulerHintArrayOutput)
 }
 
-// An array of one or more security group IDs to associate with the instance.
 func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the status of the instance. The valid values are as follows:
-// + **ACTIVE**: The instance is running properly.
-// + **SHUTOFF**: The instance has been properly stopped.
-// + **ERROR**: An error has occurred on the instance.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The system disk voume ID.
 func (o GetInstancesInstanceOutput) SystemDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SystemDiskId }).(pulumi.StringOutput)
 }
 
-// The key/value pairs to associate with the instance.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The user data (information after encoding) configured during instance creation.
 func (o GetInstancesInstanceOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserData }).(pulumi.StringOutput)
 }
 
-// An array of one or more disks to attach to the instance. The object structure is documented below.
 func (o GetInstancesInstanceOutput) VolumeAttacheds() GetInstancesInstanceVolumeAttachedArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceVolumeAttached { return v.VolumeAttacheds }).(GetInstancesInstanceVolumeAttachedArrayOutput)
 }
@@ -1645,16 +1389,11 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceNetwork struct {
-	// The fixed IPv4 address of the instance on this network.
 	FixedIpV4 string `pulumi:"fixedIpV4"`
-	// The Fixed IPv6 address of the instance on that network.
 	FixedIpV6 string `pulumi:"fixedIpV6"`
-	// The MAC address of the NIC on that network.
-	Mac string `pulumi:"mac"`
-	// The port ID corresponding to the IP address on that network.
-	Port string `pulumi:"port"`
-	// The network ID to attach to the server.
-	Uuid string `pulumi:"uuid"`
+	Mac       string `pulumi:"mac"`
+	Port      string `pulumi:"port"`
+	Uuid      string `pulumi:"uuid"`
 }
 
 // GetInstancesInstanceNetworkInput is an input type that accepts GetInstancesInstanceNetworkArgs and GetInstancesInstanceNetworkOutput values.
@@ -1669,16 +1408,11 @@ type GetInstancesInstanceNetworkInput interface {
 }
 
 type GetInstancesInstanceNetworkArgs struct {
-	// The fixed IPv4 address of the instance on this network.
 	FixedIpV4 pulumi.StringInput `pulumi:"fixedIpV4"`
-	// The Fixed IPv6 address of the instance on that network.
 	FixedIpV6 pulumi.StringInput `pulumi:"fixedIpV6"`
-	// The MAC address of the NIC on that network.
-	Mac pulumi.StringInput `pulumi:"mac"`
-	// The port ID corresponding to the IP address on that network.
-	Port pulumi.StringInput `pulumi:"port"`
-	// The network ID to attach to the server.
-	Uuid pulumi.StringInput `pulumi:"uuid"`
+	Mac       pulumi.StringInput `pulumi:"mac"`
+	Port      pulumi.StringInput `pulumi:"port"`
+	Uuid      pulumi.StringInput `pulumi:"uuid"`
 }
 
 func (GetInstancesInstanceNetworkArgs) ElementType() reflect.Type {
@@ -1732,27 +1466,22 @@ func (o GetInstancesInstanceNetworkOutput) ToGetInstancesInstanceNetworkOutputWi
 	return o
 }
 
-// The fixed IPv4 address of the instance on this network.
 func (o GetInstancesInstanceNetworkOutput) FixedIpV4() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNetwork) string { return v.FixedIpV4 }).(pulumi.StringOutput)
 }
 
-// The Fixed IPv6 address of the instance on that network.
 func (o GetInstancesInstanceNetworkOutput) FixedIpV6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNetwork) string { return v.FixedIpV6 }).(pulumi.StringOutput)
 }
 
-// The MAC address of the NIC on that network.
 func (o GetInstancesInstanceNetworkOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNetwork) string { return v.Mac }).(pulumi.StringOutput)
 }
 
-// The port ID corresponding to the IP address on that network.
 func (o GetInstancesInstanceNetworkOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNetwork) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// The network ID to attach to the server.
 func (o GetInstancesInstanceNetworkOutput) Uuid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNetwork) string { return v.Uuid }).(pulumi.StringOutput)
 }
@@ -1778,7 +1507,6 @@ func (o GetInstancesInstanceNetworkArrayOutput) Index(i pulumi.IntInput) GetInst
 }
 
 type GetInstancesInstanceSchedulerHint struct {
-	// The UUID of a server group where the instance will be placed into.
 	Group string `pulumi:"group"`
 }
 
@@ -1794,7 +1522,6 @@ type GetInstancesInstanceSchedulerHintInput interface {
 }
 
 type GetInstancesInstanceSchedulerHintArgs struct {
-	// The UUID of a server group where the instance will be placed into.
 	Group pulumi.StringInput `pulumi:"group"`
 }
 
@@ -1849,7 +1576,6 @@ func (o GetInstancesInstanceSchedulerHintOutput) ToGetInstancesInstanceScheduler
 	return o
 }
 
-// The UUID of a server group where the instance will be placed into.
 func (o GetInstancesInstanceSchedulerHintOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceSchedulerHint) string { return v.Group }).(pulumi.StringOutput)
 }
@@ -1875,17 +1601,12 @@ func (o GetInstancesInstanceSchedulerHintArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetInstancesInstanceVolumeAttached struct {
-	BootIndex int `pulumi:"bootIndex"`
-	// Whether the volume is the system disk.
-	IsSysVolume bool `pulumi:"isSysVolume"`
-	// The volume pci address on that attachment.
-	PciAddress string `pulumi:"pciAddress"`
-	// The volume size on that attachment.
-	Size int `pulumi:"size"`
-	// The volume type on that attachment.
-	Type string `pulumi:"type"`
-	// The volume id on that attachment.
-	VolumeId string `pulumi:"volumeId"`
+	BootIndex   int    `pulumi:"bootIndex"`
+	IsSysVolume bool   `pulumi:"isSysVolume"`
+	PciAddress  string `pulumi:"pciAddress"`
+	Size        int    `pulumi:"size"`
+	Type        string `pulumi:"type"`
+	VolumeId    string `pulumi:"volumeId"`
 }
 
 // GetInstancesInstanceVolumeAttachedInput is an input type that accepts GetInstancesInstanceVolumeAttachedArgs and GetInstancesInstanceVolumeAttachedOutput values.
@@ -1900,17 +1621,12 @@ type GetInstancesInstanceVolumeAttachedInput interface {
 }
 
 type GetInstancesInstanceVolumeAttachedArgs struct {
-	BootIndex pulumi.IntInput `pulumi:"bootIndex"`
-	// Whether the volume is the system disk.
-	IsSysVolume pulumi.BoolInput `pulumi:"isSysVolume"`
-	// The volume pci address on that attachment.
-	PciAddress pulumi.StringInput `pulumi:"pciAddress"`
-	// The volume size on that attachment.
-	Size pulumi.IntInput `pulumi:"size"`
-	// The volume type on that attachment.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The volume id on that attachment.
-	VolumeId pulumi.StringInput `pulumi:"volumeId"`
+	BootIndex   pulumi.IntInput    `pulumi:"bootIndex"`
+	IsSysVolume pulumi.BoolInput   `pulumi:"isSysVolume"`
+	PciAddress  pulumi.StringInput `pulumi:"pciAddress"`
+	Size        pulumi.IntInput    `pulumi:"size"`
+	Type        pulumi.StringInput `pulumi:"type"`
+	VolumeId    pulumi.StringInput `pulumi:"volumeId"`
 }
 
 func (GetInstancesInstanceVolumeAttachedArgs) ElementType() reflect.Type {
@@ -1968,27 +1684,22 @@ func (o GetInstancesInstanceVolumeAttachedOutput) BootIndex() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolumeAttached) int { return v.BootIndex }).(pulumi.IntOutput)
 }
 
-// Whether the volume is the system disk.
 func (o GetInstancesInstanceVolumeAttachedOutput) IsSysVolume() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolumeAttached) bool { return v.IsSysVolume }).(pulumi.BoolOutput)
 }
 
-// The volume pci address on that attachment.
 func (o GetInstancesInstanceVolumeAttachedOutput) PciAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolumeAttached) string { return v.PciAddress }).(pulumi.StringOutput)
 }
 
-// The volume size on that attachment.
 func (o GetInstancesInstanceVolumeAttachedOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolumeAttached) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// The volume type on that attachment.
 func (o GetInstancesInstanceVolumeAttachedOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolumeAttached) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The volume id on that attachment.
 func (o GetInstancesInstanceVolumeAttachedOutput) VolumeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolumeAttached) string { return v.VolumeId }).(pulumi.StringOutput)
 }
@@ -2014,13 +1725,9 @@ func (o GetInstancesInstanceVolumeAttachedArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetServergroupsServergroup struct {
-	// The server group ID in UUID format.
-	Id string `pulumi:"id"`
-	// An array of one or more instance ID attached to the server group.
-	Members []string `pulumi:"members"`
-	// Specifies the server group name.
-	Name string `pulumi:"name"`
-	// The set of policies for the server group.
+	Id       string   `pulumi:"id"`
+	Members  []string `pulumi:"members"`
+	Name     string   `pulumi:"name"`
 	Policies []string `pulumi:"policies"`
 }
 
@@ -2036,13 +1743,9 @@ type GetServergroupsServergroupInput interface {
 }
 
 type GetServergroupsServergroupArgs struct {
-	// The server group ID in UUID format.
-	Id pulumi.StringInput `pulumi:"id"`
-	// An array of one or more instance ID attached to the server group.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Specifies the server group name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The set of policies for the server group.
+	Id       pulumi.StringInput      `pulumi:"id"`
+	Members  pulumi.StringArrayInput `pulumi:"members"`
+	Name     pulumi.StringInput      `pulumi:"name"`
 	Policies pulumi.StringArrayInput `pulumi:"policies"`
 }
 
@@ -2097,22 +1800,18 @@ func (o GetServergroupsServergroupOutput) ToGetServergroupsServergroupOutputWith
 	return o
 }
 
-// The server group ID in UUID format.
 func (o GetServergroupsServergroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServergroupsServergroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// An array of one or more instance ID attached to the server group.
 func (o GetServergroupsServergroupOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServergroupsServergroup) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the server group name.
 func (o GetServergroupsServergroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServergroupsServergroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The set of policies for the server group.
 func (o GetServergroupsServergroupOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServergroupsServergroup) []string { return v.Policies }).(pulumi.StringArrayOutput)
 }

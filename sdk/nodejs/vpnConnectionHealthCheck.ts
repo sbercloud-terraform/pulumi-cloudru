@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a VPN connection health check resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const connectionId = config.requireObject<any>("connectionId");
- * const test = new sbercloud.VpnConnectionHealthCheck("test", {connectionId: connectionId});
- * ```
- *
- * ## Import
- *
- * The health check can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/vpnConnectionHealthCheck:VpnConnectionHealthCheck test <id>
- * ```
- */
 export class VpnConnectionHealthCheck extends pulumi.CustomResource {
     /**
      * Get an existing VpnConnectionHealthCheck resource's state with the given name, ID, and optional extra
@@ -58,18 +34,12 @@ export class VpnConnectionHealthCheck extends pulumi.CustomResource {
 
     /**
      * Specifies the ID of the VPN connection to monitor.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly connectionId: pulumi.Output<string>;
     /**
      * The destination IP address of the VPN connection.
      */
     declare public /*out*/ readonly destinationIp: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * The source IP address of the VPN connection.
@@ -120,18 +90,12 @@ export class VpnConnectionHealthCheck extends pulumi.CustomResource {
 export interface VpnConnectionHealthCheckState {
     /**
      * Specifies the ID of the VPN connection to monitor.
-     *
-     * Changing this parameter will create a new resource.
      */
     connectionId?: pulumi.Input<string>;
     /**
      * The destination IP address of the VPN connection.
      */
     destinationIp?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * The source IP address of the VPN connection.
@@ -149,13 +113,7 @@ export interface VpnConnectionHealthCheckState {
 export interface VpnConnectionHealthCheckArgs {
     /**
      * Specifies the ID of the VPN connection to monitor.
-     *
-     * Changing this parameter will create a new resource.
      */
     connectionId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

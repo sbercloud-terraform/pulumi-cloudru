@@ -12,121 +12,48 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Add a node from an existing ecs server to a CCE cluster.
-//
-// ## Basic Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cce.NewNodeAttach(ctx, "test", &cce.NodeAttachArgs{
-//				ClusterId: pulumi.Any(clusterId),
-//				ServerId:  pulumi.Any(serverId),
-//				KeyPair:   pulumi.Any(keypairName),
-//				Os:        pulumi.String("CentOS 7.6"),
-//				Tags: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//					"key": pulumi.String("value"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type NodeAttach struct {
 	pulumi.CustomResourceState
 
-	// The name of the available partition (AZ).
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	ChargingMode     pulumi.StringOutput `pulumi:"chargingMode"`
-	// Specifies the ID of the cluster. Changing this parameter will create a new
-	// resource.
-	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The data disks related configuration.
-	DataVolumes NodeAttachDataVolumeArrayOutput `pulumi:"dataVolumes"`
-	// Specifies the available disk space of a single docker container on the
-	// node in device mapper mode. Changing this parameter will create a new resource.
-	DockerBaseSize pulumi.IntPtrOutput `pulumi:"dockerBaseSize"`
-	// The Ecs group ID.
+	AvailabilityZone    pulumi.StringOutput               `pulumi:"availabilityZone"`
+	ChargingMode        pulumi.StringOutput               `pulumi:"chargingMode"`
+	ClusterId           pulumi.StringOutput               `pulumi:"clusterId"`
+	DataVolumes         NodeAttachDataVolumeArrayOutput   `pulumi:"dataVolumes"`
+	DockerBaseSize      pulumi.IntPtrOutput               `pulumi:"dockerBaseSize"`
 	EcsGroupId          pulumi.StringOutput               `pulumi:"ecsGroupId"`
 	EnterpriseProjectId pulumi.StringOutput               `pulumi:"enterpriseProjectId"`
 	ExtensionNics       NodeAttachExtensionNicArrayOutput `pulumi:"extensionNics"`
-	// The flavor ID of the CCE node.
-	FlavorId       pulumi.StringOutput            `pulumi:"flavorId"`
-	HostnameConfig NodeAttachHostnameConfigOutput `pulumi:"hostnameConfig"`
+	FlavorId            pulumi.StringOutput               `pulumi:"flavorId"`
+	HostnameConfig      NodeAttachHostnameConfigOutput    `pulumi:"hostnameConfig"`
 	// schema: Internal
 	ImageId               pulumi.StringPtrOutput   `pulumi:"imageId"`
 	InitializedConditions pulumi.StringArrayOutput `pulumi:"initializedConditions"`
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will reset the node.
-	KeyPair pulumi.StringPtrOutput `pulumi:"keyPair"`
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	// Changing this parameter will create a new resource.
-	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Specifies the docker data disk configurations. The following is an
-	// example:
-	LvmConfig pulumi.StringPtrOutput `pulumi:"lvmConfig"`
-	// Specifies the the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods pulumi.IntPtrOutput `pulumi:"maxPods"`
-	// Specifies the Node Name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	KeyPair               pulumi.StringPtrOutput   `pulumi:"keyPair"`
+	Labels                pulumi.StringMapOutput   `pulumi:"labels"`
+	LvmConfig             pulumi.StringPtrOutput   `pulumi:"lvmConfig"`
+	MaxPods               pulumi.IntPtrOutput      `pulumi:"maxPods"`
+	Name                  pulumi.StringOutput      `pulumi:"name"`
 	// schema: Internal
 	NicMultiQueue pulumi.StringPtrOutput `pulumi:"nicMultiQueue"`
 	// schema: Internal
-	NicThreshold pulumi.StringPtrOutput `pulumi:"nicThreshold"`
-	// Specifies the operating System of the node. Changing this parameter will reset the node.
-	// + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-	Os pulumi.StringOutput `pulumi:"os"`
-	// Specifies the root password when logging in to select the password mode.
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will reset the node.
-	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Specifies the script required after installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall pulumi.StringPtrOutput `pulumi:"postinstall"`
-	// Specifies the script required before installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Preinstall pulumi.StringPtrOutput `pulumi:"preinstall"`
-	// Private IP of the CCE node.
-	PrivateIp  pulumi.StringOutput    `pulumi:"privateIp"`
-	PrivateKey pulumi.StringPtrOutput `pulumi:"privateKey"`
-	// Public IP of the CCE node.
-	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// The region in which to create the CCE node attach resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node attach resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The system disk related configuration.
-	RootVolumes NodeAttachRootVolumeArrayOutput `pulumi:"rootVolumes"`
-	// The runtime of the CCE node.
-	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// Specifies the ecs server ID. Changing this parameter will create a new
-	// resource.
-	ServerId pulumi.StringOutput `pulumi:"serverId"`
-	// Node status information.
-	Status  pulumi.StringOutput        `pulumi:"status"`
-	Storage NodeAttachStoragePtrOutput `pulumi:"storage"`
-	// The ID of the subnet to which the NIC belongs.
-	SubnetId           pulumi.StringOutput    `pulumi:"subnetId"`
-	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// Changing this parameter will create a new resource. Each taint contains the following parameters:
-	Taints NodeAttachTaintArrayOutput `pulumi:"taints"`
+	NicThreshold       pulumi.StringPtrOutput          `pulumi:"nicThreshold"`
+	Os                 pulumi.StringOutput             `pulumi:"os"`
+	Password           pulumi.StringPtrOutput          `pulumi:"password"`
+	Postinstall        pulumi.StringPtrOutput          `pulumi:"postinstall"`
+	Preinstall         pulumi.StringPtrOutput          `pulumi:"preinstall"`
+	PrivateIp          pulumi.StringOutput             `pulumi:"privateIp"`
+	PrivateKey         pulumi.StringPtrOutput          `pulumi:"privateKey"`
+	PublicIp           pulumi.StringOutput             `pulumi:"publicIp"`
+	Region             pulumi.StringOutput             `pulumi:"region"`
+	RootVolumes        NodeAttachRootVolumeArrayOutput `pulumi:"rootVolumes"`
+	Runtime            pulumi.StringOutput             `pulumi:"runtime"`
+	ServerId           pulumi.StringOutput             `pulumi:"serverId"`
+	Status             pulumi.StringOutput             `pulumi:"status"`
+	Storage            NodeAttachStoragePtrOutput      `pulumi:"storage"`
+	SubnetId           pulumi.StringOutput             `pulumi:"subnetId"`
+	SystemDiskKmsKeyId pulumi.StringPtrOutput          `pulumi:"systemDiskKmsKeyId"`
+	Tags               pulumi.StringMapOutput          `pulumi:"tags"`
+	Taints             NodeAttachTaintArrayOutput      `pulumi:"taints"`
 }
 
 // NewNodeAttach registers a new resource with the given unique name, arguments, and options.
@@ -179,165 +106,87 @@ func GetNodeAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeAttach resources.
 type nodeAttachState struct {
-	// The name of the available partition (AZ).
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	ChargingMode     *string `pulumi:"chargingMode"`
-	// Specifies the ID of the cluster. Changing this parameter will create a new
-	// resource.
-	ClusterId *string `pulumi:"clusterId"`
-	// The data disks related configuration.
-	DataVolumes []NodeAttachDataVolume `pulumi:"dataVolumes"`
-	// Specifies the available disk space of a single docker container on the
-	// node in device mapper mode. Changing this parameter will create a new resource.
-	DockerBaseSize *int `pulumi:"dockerBaseSize"`
-	// The Ecs group ID.
-	EcsGroupId          *string                  `pulumi:"ecsGroupId"`
-	EnterpriseProjectId *string                  `pulumi:"enterpriseProjectId"`
-	ExtensionNics       []NodeAttachExtensionNic `pulumi:"extensionNics"`
-	// The flavor ID of the CCE node.
-	FlavorId       *string                   `pulumi:"flavorId"`
-	HostnameConfig *NodeAttachHostnameConfig `pulumi:"hostnameConfig"`
+	AvailabilityZone    *string                   `pulumi:"availabilityZone"`
+	ChargingMode        *string                   `pulumi:"chargingMode"`
+	ClusterId           *string                   `pulumi:"clusterId"`
+	DataVolumes         []NodeAttachDataVolume    `pulumi:"dataVolumes"`
+	DockerBaseSize      *int                      `pulumi:"dockerBaseSize"`
+	EcsGroupId          *string                   `pulumi:"ecsGroupId"`
+	EnterpriseProjectId *string                   `pulumi:"enterpriseProjectId"`
+	ExtensionNics       []NodeAttachExtensionNic  `pulumi:"extensionNics"`
+	FlavorId            *string                   `pulumi:"flavorId"`
+	HostnameConfig      *NodeAttachHostnameConfig `pulumi:"hostnameConfig"`
 	// schema: Internal
-	ImageId               *string  `pulumi:"imageId"`
-	InitializedConditions []string `pulumi:"initializedConditions"`
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will reset the node.
-	KeyPair *string `pulumi:"keyPair"`
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	// Changing this parameter will create a new resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Specifies the docker data disk configurations. The following is an
-	// example:
-	LvmConfig *string `pulumi:"lvmConfig"`
-	// Specifies the the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods *int `pulumi:"maxPods"`
-	// Specifies the Node Name.
-	Name *string `pulumi:"name"`
+	ImageId               *string           `pulumi:"imageId"`
+	InitializedConditions []string          `pulumi:"initializedConditions"`
+	KeyPair               *string           `pulumi:"keyPair"`
+	Labels                map[string]string `pulumi:"labels"`
+	LvmConfig             *string           `pulumi:"lvmConfig"`
+	MaxPods               *int              `pulumi:"maxPods"`
+	Name                  *string           `pulumi:"name"`
 	// schema: Internal
 	NicMultiQueue *string `pulumi:"nicMultiQueue"`
 	// schema: Internal
-	NicThreshold *string `pulumi:"nicThreshold"`
-	// Specifies the operating System of the node. Changing this parameter will reset the node.
-	// + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-	Os *string `pulumi:"os"`
-	// Specifies the root password when logging in to select the password mode.
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will reset the node.
-	Password *string `pulumi:"password"`
-	// Specifies the script required after installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall *string `pulumi:"postinstall"`
-	// Specifies the script required before installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Preinstall *string `pulumi:"preinstall"`
-	// Private IP of the CCE node.
-	PrivateIp  *string `pulumi:"privateIp"`
-	PrivateKey *string `pulumi:"privateKey"`
-	// Public IP of the CCE node.
-	PublicIp *string `pulumi:"publicIp"`
-	// The region in which to create the CCE node attach resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node attach resource.
-	Region *string `pulumi:"region"`
-	// The system disk related configuration.
-	RootVolumes []NodeAttachRootVolume `pulumi:"rootVolumes"`
-	// The runtime of the CCE node.
-	Runtime *string `pulumi:"runtime"`
-	// Specifies the ecs server ID. Changing this parameter will create a new
-	// resource.
-	ServerId *string `pulumi:"serverId"`
-	// Node status information.
-	Status  *string            `pulumi:"status"`
-	Storage *NodeAttachStorage `pulumi:"storage"`
-	// The ID of the subnet to which the NIC belongs.
-	SubnetId           *string `pulumi:"subnetId"`
-	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// Changing this parameter will create a new resource. Each taint contains the following parameters:
-	Taints []NodeAttachTaint `pulumi:"taints"`
+	NicThreshold       *string                `pulumi:"nicThreshold"`
+	Os                 *string                `pulumi:"os"`
+	Password           *string                `pulumi:"password"`
+	Postinstall        *string                `pulumi:"postinstall"`
+	Preinstall         *string                `pulumi:"preinstall"`
+	PrivateIp          *string                `pulumi:"privateIp"`
+	PrivateKey         *string                `pulumi:"privateKey"`
+	PublicIp           *string                `pulumi:"publicIp"`
+	Region             *string                `pulumi:"region"`
+	RootVolumes        []NodeAttachRootVolume `pulumi:"rootVolumes"`
+	Runtime            *string                `pulumi:"runtime"`
+	ServerId           *string                `pulumi:"serverId"`
+	Status             *string                `pulumi:"status"`
+	Storage            *NodeAttachStorage     `pulumi:"storage"`
+	SubnetId           *string                `pulumi:"subnetId"`
+	SystemDiskKmsKeyId *string                `pulumi:"systemDiskKmsKeyId"`
+	Tags               map[string]string      `pulumi:"tags"`
+	Taints             []NodeAttachTaint      `pulumi:"taints"`
 }
 
 type NodeAttachState struct {
-	// The name of the available partition (AZ).
-	AvailabilityZone pulumi.StringPtrInput
-	ChargingMode     pulumi.StringPtrInput
-	// Specifies the ID of the cluster. Changing this parameter will create a new
-	// resource.
-	ClusterId pulumi.StringPtrInput
-	// The data disks related configuration.
-	DataVolumes NodeAttachDataVolumeArrayInput
-	// Specifies the available disk space of a single docker container on the
-	// node in device mapper mode. Changing this parameter will create a new resource.
-	DockerBaseSize pulumi.IntPtrInput
-	// The Ecs group ID.
+	AvailabilityZone    pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	ClusterId           pulumi.StringPtrInput
+	DataVolumes         NodeAttachDataVolumeArrayInput
+	DockerBaseSize      pulumi.IntPtrInput
 	EcsGroupId          pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
 	ExtensionNics       NodeAttachExtensionNicArrayInput
-	// The flavor ID of the CCE node.
-	FlavorId       pulumi.StringPtrInput
-	HostnameConfig NodeAttachHostnameConfigPtrInput
+	FlavorId            pulumi.StringPtrInput
+	HostnameConfig      NodeAttachHostnameConfigPtrInput
 	// schema: Internal
 	ImageId               pulumi.StringPtrInput
 	InitializedConditions pulumi.StringArrayInput
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will reset the node.
-	KeyPair pulumi.StringPtrInput
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	// Changing this parameter will create a new resource.
-	Labels pulumi.StringMapInput
-	// Specifies the docker data disk configurations. The following is an
-	// example:
-	LvmConfig pulumi.StringPtrInput
-	// Specifies the the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods pulumi.IntPtrInput
-	// Specifies the Node Name.
-	Name pulumi.StringPtrInput
+	KeyPair               pulumi.StringPtrInput
+	Labels                pulumi.StringMapInput
+	LvmConfig             pulumi.StringPtrInput
+	MaxPods               pulumi.IntPtrInput
+	Name                  pulumi.StringPtrInput
 	// schema: Internal
 	NicMultiQueue pulumi.StringPtrInput
 	// schema: Internal
-	NicThreshold pulumi.StringPtrInput
-	// Specifies the operating System of the node. Changing this parameter will reset the node.
-	// + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-	Os pulumi.StringPtrInput
-	// Specifies the root password when logging in to select the password mode.
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will reset the node.
-	Password pulumi.StringPtrInput
-	// Specifies the script required after installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall pulumi.StringPtrInput
-	// Specifies the script required before installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Preinstall pulumi.StringPtrInput
-	// Private IP of the CCE node.
-	PrivateIp  pulumi.StringPtrInput
-	PrivateKey pulumi.StringPtrInput
-	// Public IP of the CCE node.
-	PublicIp pulumi.StringPtrInput
-	// The region in which to create the CCE node attach resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node attach resource.
-	Region pulumi.StringPtrInput
-	// The system disk related configuration.
-	RootVolumes NodeAttachRootVolumeArrayInput
-	// The runtime of the CCE node.
-	Runtime pulumi.StringPtrInput
-	// Specifies the ecs server ID. Changing this parameter will create a new
-	// resource.
-	ServerId pulumi.StringPtrInput
-	// Node status information.
-	Status  pulumi.StringPtrInput
-	Storage NodeAttachStoragePtrInput
-	// The ID of the subnet to which the NIC belongs.
+	NicThreshold       pulumi.StringPtrInput
+	Os                 pulumi.StringPtrInput
+	Password           pulumi.StringPtrInput
+	Postinstall        pulumi.StringPtrInput
+	Preinstall         pulumi.StringPtrInput
+	PrivateIp          pulumi.StringPtrInput
+	PrivateKey         pulumi.StringPtrInput
+	PublicIp           pulumi.StringPtrInput
+	Region             pulumi.StringPtrInput
+	RootVolumes        NodeAttachRootVolumeArrayInput
+	Runtime            pulumi.StringPtrInput
+	ServerId           pulumi.StringPtrInput
+	Status             pulumi.StringPtrInput
+	Storage            NodeAttachStoragePtrInput
 	SubnetId           pulumi.StringPtrInput
 	SystemDiskKmsKeyId pulumi.StringPtrInput
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapInput
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// Changing this parameter will create a new resource. Each taint contains the following parameters:
-	Taints NodeAttachTaintArrayInput
+	Tags               pulumi.StringMapInput
+	Taints             NodeAttachTaintArrayInput
 }
 
 func (NodeAttachState) ElementType() reflect.Type {
@@ -345,124 +194,64 @@ func (NodeAttachState) ElementType() reflect.Type {
 }
 
 type nodeAttachArgs struct {
-	// Specifies the ID of the cluster. Changing this parameter will create a new
-	// resource.
-	ClusterId string `pulumi:"clusterId"`
-	// Specifies the available disk space of a single docker container on the
-	// node in device mapper mode. Changing this parameter will create a new resource.
+	ClusterId      string                    `pulumi:"clusterId"`
 	DockerBaseSize *int                      `pulumi:"dockerBaseSize"`
 	HostnameConfig *NodeAttachHostnameConfig `pulumi:"hostnameConfig"`
 	// schema: Internal
-	ImageId               *string  `pulumi:"imageId"`
-	InitializedConditions []string `pulumi:"initializedConditions"`
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will reset the node.
-	KeyPair *string `pulumi:"keyPair"`
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	// Changing this parameter will create a new resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Specifies the docker data disk configurations. The following is an
-	// example:
-	LvmConfig *string `pulumi:"lvmConfig"`
-	// Specifies the the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods *int `pulumi:"maxPods"`
-	// Specifies the Node Name.
-	Name *string `pulumi:"name"`
+	ImageId               *string           `pulumi:"imageId"`
+	InitializedConditions []string          `pulumi:"initializedConditions"`
+	KeyPair               *string           `pulumi:"keyPair"`
+	Labels                map[string]string `pulumi:"labels"`
+	LvmConfig             *string           `pulumi:"lvmConfig"`
+	MaxPods               *int              `pulumi:"maxPods"`
+	Name                  *string           `pulumi:"name"`
 	// schema: Internal
 	NicMultiQueue *string `pulumi:"nicMultiQueue"`
 	// schema: Internal
-	NicThreshold *string `pulumi:"nicThreshold"`
-	// Specifies the operating System of the node. Changing this parameter will reset the node.
-	// + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-	Os string `pulumi:"os"`
-	// Specifies the root password when logging in to select the password mode.
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will reset the node.
-	Password *string `pulumi:"password"`
-	// Specifies the script required after installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall *string `pulumi:"postinstall"`
-	// Specifies the script required before installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Preinstall *string `pulumi:"preinstall"`
-	PrivateKey *string `pulumi:"privateKey"`
-	// The region in which to create the CCE node attach resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node attach resource.
-	Region *string `pulumi:"region"`
-	// The runtime of the CCE node.
-	Runtime *string `pulumi:"runtime"`
-	// Specifies the ecs server ID. Changing this parameter will create a new
-	// resource.
+	NicThreshold       *string            `pulumi:"nicThreshold"`
+	Os                 string             `pulumi:"os"`
+	Password           *string            `pulumi:"password"`
+	Postinstall        *string            `pulumi:"postinstall"`
+	Preinstall         *string            `pulumi:"preinstall"`
+	PrivateKey         *string            `pulumi:"privateKey"`
+	Region             *string            `pulumi:"region"`
+	Runtime            *string            `pulumi:"runtime"`
 	ServerId           string             `pulumi:"serverId"`
 	Storage            *NodeAttachStorage `pulumi:"storage"`
 	SystemDiskKmsKeyId *string            `pulumi:"systemDiskKmsKeyId"`
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// Changing this parameter will create a new resource. Each taint contains the following parameters:
-	Taints []NodeAttachTaint `pulumi:"taints"`
+	Tags               map[string]string  `pulumi:"tags"`
+	Taints             []NodeAttachTaint  `pulumi:"taints"`
 }
 
 // The set of arguments for constructing a NodeAttach resource.
 type NodeAttachArgs struct {
-	// Specifies the ID of the cluster. Changing this parameter will create a new
-	// resource.
-	ClusterId pulumi.StringInput
-	// Specifies the available disk space of a single docker container on the
-	// node in device mapper mode. Changing this parameter will create a new resource.
+	ClusterId      pulumi.StringInput
 	DockerBaseSize pulumi.IntPtrInput
 	HostnameConfig NodeAttachHostnameConfigPtrInput
 	// schema: Internal
 	ImageId               pulumi.StringPtrInput
 	InitializedConditions pulumi.StringArrayInput
-	// Specifies the key pair name when logging in to select the key pair mode.
-	// This parameter and `password` are alternative. Changing this parameter will reset the node.
-	KeyPair pulumi.StringPtrInput
-	// Specifies the tags of a Kubernetes node, key/value pair format.
-	// Changing this parameter will create a new resource.
-	Labels pulumi.StringMapInput
-	// Specifies the docker data disk configurations. The following is an
-	// example:
-	LvmConfig pulumi.StringPtrInput
-	// Specifies the the maximum number of instances a node is allowed to create.
-	// Changing this parameter will create a new resource.
-	MaxPods pulumi.IntPtrInput
-	// Specifies the Node Name.
-	Name pulumi.StringPtrInput
+	KeyPair               pulumi.StringPtrInput
+	Labels                pulumi.StringMapInput
+	LvmConfig             pulumi.StringPtrInput
+	MaxPods               pulumi.IntPtrInput
+	Name                  pulumi.StringPtrInput
 	// schema: Internal
 	NicMultiQueue pulumi.StringPtrInput
 	// schema: Internal
-	NicThreshold pulumi.StringPtrInput
-	// Specifies the operating System of the node. Changing this parameter will reset the node.
-	// + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-	Os pulumi.StringInput
-	// Specifies the root password when logging in to select the password mode.
-	// This parameter can be plain or salted and is alternative to `keyPair`.
-	// Changing this parameter will reset the node.
-	Password pulumi.StringPtrInput
-	// Specifies the script required after installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Postinstall pulumi.StringPtrInput
-	// Specifies the script required before installation. The input value can be
-	// a Base64 encoded string or not. Changing this parameter will create a new resource.
-	Preinstall pulumi.StringPtrInput
-	PrivateKey pulumi.StringPtrInput
-	// The region in which to create the CCE node attach resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new CCE node attach resource.
-	Region pulumi.StringPtrInput
-	// The runtime of the CCE node.
-	Runtime pulumi.StringPtrInput
-	// Specifies the ecs server ID. Changing this parameter will create a new
-	// resource.
+	NicThreshold       pulumi.StringPtrInput
+	Os                 pulumi.StringInput
+	Password           pulumi.StringPtrInput
+	Postinstall        pulumi.StringPtrInput
+	Preinstall         pulumi.StringPtrInput
+	PrivateKey         pulumi.StringPtrInput
+	Region             pulumi.StringPtrInput
+	Runtime            pulumi.StringPtrInput
 	ServerId           pulumi.StringInput
 	Storage            NodeAttachStoragePtrInput
 	SystemDiskKmsKeyId pulumi.StringPtrInput
-	// Specifies the tags of a VM node, key/value pair format.
-	Tags pulumi.StringMapInput
-	// Specifies the taints configuration of the nodes to set anti-affinity.
-	// Changing this parameter will create a new resource. Each taint contains the following parameters:
-	Taints NodeAttachTaintArrayInput
+	Tags               pulumi.StringMapInput
+	Taints             NodeAttachTaintArrayInput
 }
 
 func (NodeAttachArgs) ElementType() reflect.Type {
@@ -552,7 +341,6 @@ func (o NodeAttachOutput) ToNodeAttachOutputWithContext(ctx context.Context) Nod
 	return o
 }
 
-// The name of the available partition (AZ).
 func (o NodeAttachOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
@@ -561,24 +349,18 @@ func (o NodeAttachOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the cluster. Changing this parameter will create a new
-// resource.
 func (o NodeAttachOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The data disks related configuration.
 func (o NodeAttachOutput) DataVolumes() NodeAttachDataVolumeArrayOutput {
 	return o.ApplyT(func(v *NodeAttach) NodeAttachDataVolumeArrayOutput { return v.DataVolumes }).(NodeAttachDataVolumeArrayOutput)
 }
 
-// Specifies the available disk space of a single docker container on the
-// node in device mapper mode. Changing this parameter will create a new resource.
 func (o NodeAttachOutput) DockerBaseSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.IntPtrOutput { return v.DockerBaseSize }).(pulumi.IntPtrOutput)
 }
 
-// The Ecs group ID.
 func (o NodeAttachOutput) EcsGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.EcsGroupId }).(pulumi.StringOutput)
 }
@@ -591,7 +373,6 @@ func (o NodeAttachOutput) ExtensionNics() NodeAttachExtensionNicArrayOutput {
 	return o.ApplyT(func(v *NodeAttach) NodeAttachExtensionNicArrayOutput { return v.ExtensionNics }).(NodeAttachExtensionNicArrayOutput)
 }
 
-// The flavor ID of the CCE node.
 func (o NodeAttachOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -609,31 +390,22 @@ func (o NodeAttachOutput) InitializedConditions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringArrayOutput { return v.InitializedConditions }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the key pair name when logging in to select the key pair mode.
-// This parameter and `password` are alternative. Changing this parameter will reset the node.
 func (o NodeAttachOutput) KeyPair() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.KeyPair }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tags of a Kubernetes node, key/value pair format.
-// Changing this parameter will create a new resource.
 func (o NodeAttachOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Specifies the docker data disk configurations. The following is an
-// example:
 func (o NodeAttachOutput) LvmConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.LvmConfig }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the the maximum number of instances a node is allowed to create.
-// Changing this parameter will create a new resource.
 func (o NodeAttachOutput) MaxPods() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.IntPtrOutput { return v.MaxPods }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the Node Name.
 func (o NodeAttachOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -648,32 +420,22 @@ func (o NodeAttachOutput) NicThreshold() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.NicThreshold }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the operating System of the node. Changing this parameter will reset the node.
-// + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
 func (o NodeAttachOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
 }
 
-// Specifies the root password when logging in to select the password mode.
-// This parameter can be plain or salted and is alternative to `keyPair`.
-// Changing this parameter will reset the node.
 func (o NodeAttachOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script required after installation. The input value can be
-// a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodeAttachOutput) Postinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.Postinstall }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the script required before installation. The input value can be
-// a Base64 encoded string or not. Changing this parameter will create a new resource.
 func (o NodeAttachOutput) Preinstall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.Preinstall }).(pulumi.StringPtrOutput)
 }
 
-// Private IP of the CCE node.
 func (o NodeAttachOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
 }
@@ -682,34 +444,26 @@ func (o NodeAttachOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// Public IP of the CCE node.
 func (o NodeAttachOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The region in which to create the CCE node attach resource. If omitted, the
-// provider-level region will be used. Changing this creates a new CCE node attach resource.
 func (o NodeAttachOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The system disk related configuration.
 func (o NodeAttachOutput) RootVolumes() NodeAttachRootVolumeArrayOutput {
 	return o.ApplyT(func(v *NodeAttach) NodeAttachRootVolumeArrayOutput { return v.RootVolumes }).(NodeAttachRootVolumeArrayOutput)
 }
 
-// The runtime of the CCE node.
 func (o NodeAttachOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// Specifies the ecs server ID. Changing this parameter will create a new
-// resource.
 func (o NodeAttachOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.ServerId }).(pulumi.StringOutput)
 }
 
-// Node status information.
 func (o NodeAttachOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -718,7 +472,6 @@ func (o NodeAttachOutput) Storage() NodeAttachStoragePtrOutput {
 	return o.ApplyT(func(v *NodeAttach) NodeAttachStoragePtrOutput { return v.Storage }).(NodeAttachStoragePtrOutput)
 }
 
-// The ID of the subnet to which the NIC belongs.
 func (o NodeAttachOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
@@ -727,13 +480,10 @@ func (o NodeAttachOutput) SystemDiskKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringPtrOutput { return v.SystemDiskKmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the tags of a VM node, key/value pair format.
 func (o NodeAttachOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodeAttach) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the taints configuration of the nodes to set anti-affinity.
-// Changing this parameter will create a new resource. Each taint contains the following parameters:
 func (o NodeAttachOutput) Taints() NodeAttachTaintArrayOutput {
 	return o.ApplyT(func(v *NodeAttach) NodeAttachTaintArrayOutput { return v.Taints }).(NodeAttachTaintArrayOutput)
 }

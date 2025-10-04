@@ -28,11 +28,9 @@ class IpsRuleModeChangeArgs:
         The set of arguments for constructing a IpsRuleModeChange resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
         :param pulumi.Input[_builtins.str] status: Specifies the IPS rule status.
-               The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS rule ID list.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS ID list.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "status", status)
@@ -60,7 +58,6 @@ class IpsRuleModeChangeArgs:
     def status(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the IPS rule status.
-        The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         """
         return pulumi.get(self, "status")
 
@@ -84,7 +81,7 @@ class IpsRuleModeChangeArgs:
     @pulumi.getter(name="ipsIds")
     def ips_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the IPS rule ID list.
+        Specifies the IPS ID list.
         """
         return pulumi.get(self, "ips_ids")
 
@@ -96,8 +93,7 @@ class IpsRuleModeChangeArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this will create new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -117,12 +113,10 @@ class _IpsRuleModeChangeState:
         """
         Input properties used for looking up and filtering IpsRuleModeChange resources.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS rule ID list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS ID list.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[_builtins.str] status: Specifies the IPS rule status.
-               The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         """
         if enterprise_project_id is not None:
             pulumi.set(__self__, "enterprise_project_id", enterprise_project_id)
@@ -151,7 +145,7 @@ class _IpsRuleModeChangeState:
     @pulumi.getter(name="ipsIds")
     def ips_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the IPS rule ID list.
+        Specifies the IPS ID list.
         """
         return pulumi.get(self, "ips_ids")
 
@@ -175,8 +169,7 @@ class _IpsRuleModeChangeState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this will create new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -189,7 +182,6 @@ class _IpsRuleModeChangeState:
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the IPS rule status.
-        The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         """
         return pulumi.get(self, "status")
 
@@ -211,37 +203,14 @@ class IpsRuleModeChange(pulumi.CustomResource):
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW IPS rule mode change resource within SberCloud.
-
-        > This resource is only a one-time action resource for operating the API.
-        Deleting this resource will not clear the corresponding request record,
-        but will only remove the resource information from the tfstate file.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        object_id = config.require_object("objectId")
-        ips_ids = config.require_object("ipsIds")
-        status = config.require_object("status")
-        test = sbercloud.cfw.IpsRuleModeChange("test",
-            object_id=object_id,
-            ips_ids=ips_ids,
-            status=status)
-        ```
-
+        Create a IpsRuleModeChange resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS rule ID list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS ID list.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[_builtins.str] status: Specifies the IPS rule status.
-               The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         """
         ...
     @overload
@@ -250,28 +219,7 @@ class IpsRuleModeChange(pulumi.CustomResource):
                  args: IpsRuleModeChangeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW IPS rule mode change resource within SberCloud.
-
-        > This resource is only a one-time action resource for operating the API.
-        Deleting this resource will not clear the corresponding request record,
-        but will only remove the resource information from the tfstate file.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        object_id = config.require_object("objectId")
-        ips_ids = config.require_object("ipsIds")
-        status = config.require_object("status")
-        test = sbercloud.cfw.IpsRuleModeChange("test",
-            object_id=object_id,
-            ips_ids=ips_ids,
-            status=status)
-        ```
-
+        Create a IpsRuleModeChange resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param IpsRuleModeChangeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,12 +281,10 @@ class IpsRuleModeChange(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS rule ID list.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ips_ids: Specifies the IPS ID list.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[_builtins.str] status: Specifies the IPS rule status.
-               The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -363,7 +309,7 @@ class IpsRuleModeChange(pulumi.CustomResource):
     @pulumi.getter(name="ipsIds")
     def ips_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        Specifies the IPS rule ID list.
+        Specifies the IPS ID list.
         """
         return pulumi.get(self, "ips_ids")
 
@@ -379,8 +325,7 @@ class IpsRuleModeChange(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this will create new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -389,7 +334,6 @@ class IpsRuleModeChange(pulumi.CustomResource):
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the IPS rule status.
-        The valid value can be **OBSERVE**, **ENABLE**, **CLOSE**, **DEFAULT** or **ALL_DEFAULT**.
         """
         return pulumi.get(self, "status")
 

@@ -11,37 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of CCE clusters.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterName := cfg.RequireObject("clusterName")
-//			_, err := cce.GetClusters(ctx, &cce.GetClustersArgs{
-//				Name:   pulumi.StringRef(clusterName),
-//				Status: pulumi.StringRef("Available"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
@@ -54,43 +23,28 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
-	// Specifies the ID of the cluster.
-	ClusterId *string `pulumi:"clusterId"`
-	// Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-	ClusterType *string `pulumi:"clusterType"`
-	// Specifies the enterprise project ID of the cluster.
+	ClusterId           *string `pulumi:"clusterId"`
+	ClusterType         *string `pulumi:"clusterType"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the cluster.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the CCE clusters. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status of the cluster.
-	Status *string `pulumi:"status"`
-	// Specifies the VPC ID to which the cluster belongs.
-	VpcId *string `pulumi:"vpcId"`
+	Name                *string `pulumi:"name"`
+	Region              *string `pulumi:"region"`
+	Status              *string `pulumi:"status"`
+	VpcId               *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getClusters.
 type GetClustersResult struct {
-	ClusterId *string `pulumi:"clusterId"`
-	// The type of the cluster. Possible values: **VirtualMachine**, **ARM64**.
-	ClusterType *string `pulumi:"clusterType"`
-	// Indicates a list of CCE clusters found. Structure is documented below.
-	Clusters []GetClustersCluster `pulumi:"clusters"`
-	// The enterprise project ID of the CCE cluster.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	ClusterId           *string              `pulumi:"clusterId"`
+	ClusterType         *string              `pulumi:"clusterType"`
+	Clusters            []GetClustersCluster `pulumi:"clusters"`
+	EnterpriseProjectId *string              `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates a list of IDs of all CCE clusters found.
-	Ids []string `pulumi:"ids"`
-	// The user name.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// The status of the cluster.
-	Status *string `pulumi:"status"`
-	// The vpc ID of the cluster.
-	VpcId *string `pulumi:"vpcId"`
+	Id     string   `pulumi:"id"`
+	Ids    []string `pulumi:"ids"`
+	Name   *string  `pulumi:"name"`
+	Region string   `pulumi:"region"`
+	Status *string  `pulumi:"status"`
+	VpcId  *string  `pulumi:"vpcId"`
 }
 
 func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...pulumi.InvokeOption) GetClustersResultOutput {
@@ -104,21 +58,13 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 
 // A collection of arguments for invoking getClusters.
 type GetClustersOutputArgs struct {
-	// Specifies the ID of the cluster.
-	ClusterId pulumi.StringPtrInput `pulumi:"clusterId"`
-	// Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-	ClusterType pulumi.StringPtrInput `pulumi:"clusterType"`
-	// Specifies the enterprise project ID of the cluster.
+	ClusterId           pulumi.StringPtrInput `pulumi:"clusterId"`
+	ClusterType         pulumi.StringPtrInput `pulumi:"clusterType"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the cluster.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the CCE clusters. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status of the cluster.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the VPC ID to which the cluster belongs.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Status              pulumi.StringPtrInput `pulumi:"status"`
+	VpcId               pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetClustersOutputArgs) ElementType() reflect.Type {
@@ -144,17 +90,14 @@ func (o GetClustersResultOutput) ClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the cluster. Possible values: **VirtualMachine**, **ARM64**.
 func (o GetClustersResultOutput) ClusterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.ClusterType }).(pulumi.StringPtrOutput)
 }
 
-// Indicates a list of CCE clusters found. Structure is documented below.
 func (o GetClustersResultOutput) Clusters() GetClustersClusterArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []GetClustersCluster { return v.Clusters }).(GetClustersClusterArrayOutput)
 }
 
-// The enterprise project ID of the CCE cluster.
 func (o GetClustersResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -164,12 +107,10 @@ func (o GetClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates a list of IDs of all CCE clusters found.
 func (o GetClustersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClustersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// The user name.
 func (o GetClustersResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -178,12 +119,10 @@ func (o GetClustersResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The status of the cluster.
 func (o GetClustersResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The vpc ID of the cluster.
 func (o GetClustersResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetClustersResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

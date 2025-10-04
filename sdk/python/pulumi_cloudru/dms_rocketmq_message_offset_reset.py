@@ -26,21 +26,6 @@ class DmsRocketmqMessageOffsetResetArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DmsRocketmqMessageOffsetReset resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] timestamp: Specifies the timestamp.
-               + If it is specified as **0**, reset to earliset.
-               + If it is specified as **-1**, reset to latest.
-               + If it is specified as a timestamp in milliseconds, reset to specific time.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -52,10 +37,6 @@ class DmsRocketmqMessageOffsetResetArgs:
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the group name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -65,10 +46,6 @@ class DmsRocketmqMessageOffsetResetArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -78,14 +55,6 @@ class DmsRocketmqMessageOffsetResetArgs:
     @_builtins.property
     @pulumi.getter
     def timestamp(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the timestamp.
-        + If it is specified as **0**, reset to earliset.
-        + If it is specified as **-1**, reset to latest.
-        + If it is specified as a timestamp in milliseconds, reset to specific time.
-
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "timestamp")
 
     @timestamp.setter
@@ -95,10 +64,6 @@ class DmsRocketmqMessageOffsetResetArgs:
     @_builtins.property
     @pulumi.getter
     def topic(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -108,11 +73,6 @@ class DmsRocketmqMessageOffsetResetArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -130,21 +90,6 @@ class _DmsRocketmqMessageOffsetResetState:
                  topic: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DmsRocketmqMessageOffsetReset resources.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] timestamp: Specifies the timestamp.
-               + If it is specified as **0**, reset to earliset.
-               + If it is specified as **-1**, reset to latest.
-               + If it is specified as a timestamp in milliseconds, reset to specific time.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         if group is not None:
             pulumi.set(__self__, "group", group)
@@ -160,10 +105,6 @@ class _DmsRocketmqMessageOffsetResetState:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the group name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -173,10 +114,6 @@ class _DmsRocketmqMessageOffsetResetState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -186,11 +123,6 @@ class _DmsRocketmqMessageOffsetResetState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -200,14 +132,6 @@ class _DmsRocketmqMessageOffsetResetState:
     @_builtins.property
     @pulumi.getter
     def timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the timestamp.
-        + If it is specified as **0**, reset to earliset.
-        + If it is specified as **-1**, reset to latest.
-        + If it is specified as a timestamp in milliseconds, reset to specific time.
-
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "timestamp")
 
     @timestamp.setter
@@ -217,10 +141,6 @@ class _DmsRocketmqMessageOffsetResetState:
     @_builtins.property
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 
     @topic.setter
@@ -241,42 +161,9 @@ class DmsRocketmqMessageOffsetReset(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DMS RocketMQ message offset reset resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        group = config.require_object("group")
-        topic = config.require_object("topic")
-        test = sbercloud.DmsRocketmqMessageOffsetReset("test",
-            instance_id=instance_id,
-            group=group,
-            topic=topic,
-            timestamp="0")
-        ```
-
+        Create a DmsRocketmqMessageOffsetReset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] timestamp: Specifies the timestamp.
-               + If it is specified as **0**, reset to earliset.
-               + If it is specified as **-1**, reset to latest.
-               + If it is specified as a timestamp in milliseconds, reset to specific time.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -285,25 +172,7 @@ class DmsRocketmqMessageOffsetReset(pulumi.CustomResource):
                  args: DmsRocketmqMessageOffsetResetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS RocketMQ message offset reset resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        group = config.require_object("group")
-        topic = config.require_object("topic")
-        test = sbercloud.DmsRocketmqMessageOffsetReset("test",
-            instance_id=instance_id,
-            group=group,
-            topic=topic,
-            timestamp="0")
-        ```
-
+        Create a DmsRocketmqMessageOffsetReset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DmsRocketmqMessageOffsetResetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -368,21 +237,6 @@ class DmsRocketmqMessageOffsetReset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group: Specifies the group name.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the instance ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] timestamp: Specifies the timestamp.
-               + If it is specified as **0**, reset to earliset.
-               + If it is specified as **-1**, reset to latest.
-               + If it is specified as a timestamp in milliseconds, reset to specific time.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] topic: Specifies the topic name.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,50 +252,25 @@ class DmsRocketmqMessageOffsetReset(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the group name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the instance ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def timestamp(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the timestamp.
-        + If it is specified as **0**, reset to earliset.
-        + If it is specified as **-1**, reset to latest.
-        + If it is specified as a timestamp in milliseconds, reset to specific time.
-
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "timestamp")
 
     @_builtins.property
     @pulumi.getter
     def topic(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the topic name.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "topic")
 

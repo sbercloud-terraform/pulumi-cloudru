@@ -6,20 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to list all available RDS instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const _this = sbercloud.Rds.getInstances({
- *     name: "rds-instance",
- * });
- * ```
- */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,34 +24,12 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesArgs {
-    /**
-     * Specifies the type of the database. Valid values are: MySQL, PostgreSQL, and SQLServer.
-     */
     datastoreType?: string;
-    /**
-     * Specifies the enterprise project id.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the name of the instance.
-     */
     name?: string;
-    /**
-     * The region in which to obtain the instances. If omitted, the provider-level region will
-     * be used.
-     */
     region?: string;
-    /**
-     * Specifies the network ID of a subnet.
-     */
     subnetId?: string;
-    /**
-     * Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-     */
     type?: string;
-    /**
-     * Specifies the VPC ID.
-     */
     vpcId?: string;
 }
 
@@ -74,53 +38,18 @@ export interface GetInstancesArgs {
  */
 export interface GetInstancesResult {
     readonly datastoreType?: string;
-    /**
-     * Indicates the enterprise project id.
-     */
     readonly enterpriseProjectId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * An array of available instances.
-     */
     readonly instances: outputs.Rds.GetInstancesInstance[];
-    /**
-     * Indicates the node name.
-     */
     readonly name?: string;
-    /**
-     * The region of the instance.
-     */
     readonly region: string;
-    /**
-     * Indicates the network ID of a subnet.
-     */
     readonly subnetId?: string;
-    /**
-     * Indicates the volume type.
-     */
     readonly type?: string;
-    /**
-     * Indicates the VPC ID.
-     */
     readonly vpcId?: string;
 }
-/**
- * Use this data source to list all available RDS instances.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const _this = sbercloud.Rds.getInstances({
- *     name: "rds-instance",
- * });
- * ```
- */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -139,33 +68,11 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
-    /**
-     * Specifies the type of the database. Valid values are: MySQL, PostgreSQL, and SQLServer.
-     */
     datastoreType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the instance.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the instances. If omitted, the provider-level region will
-     * be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the network ID of a subnet.
-     */
     subnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies the VPC ID.
-     */
     vpcId?: pulumi.Input<string>;
 }

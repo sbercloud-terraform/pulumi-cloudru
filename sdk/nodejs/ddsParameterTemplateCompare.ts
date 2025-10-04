@@ -6,24 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DDS parameter template compare resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const sourceConfigurationId = config.requireObject<any>("sourceConfigurationId");
- * const targetConfigurationId = config.requireObject<any>("targetConfigurationId");
- * const test = new sbercloud.DdsParameterTemplateCompare("test", {
- *     sourceConfigurationId: sourceConfigurationId,
- *     targetConfigurationId: targetConfigurationId,
- * });
- * ```
- */
 export class DdsParameterTemplateCompare extends pulumi.CustomResource {
     /**
      * Get an existing DdsParameterTemplateCompare resource's state with the given name, ID, and optional extra
@@ -52,25 +34,9 @@ export class DdsParameterTemplateCompare extends pulumi.CustomResource {
         return obj['__pulumiType'] === DdsParameterTemplateCompare.__pulumiType;
     }
 
-    /**
-     * Indicates the differences between parameters.
-     * The differences structure is documented below.
-     */
     declare public /*out*/ readonly differences: pulumi.Output<outputs.DdsParameterTemplateCompareDifference[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the source parameter template to be
-     * compared. Changing this parameter will create a new resource.
-     */
     declare public readonly sourceConfigurationId: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the destination parameter template to be
-     * compared. Changing this parameter will create a new resource.
-     */
     declare public readonly targetConfigurationId: pulumi.Output<string>;
 
     /**
@@ -112,25 +78,9 @@ export class DdsParameterTemplateCompare extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DdsParameterTemplateCompare resources.
  */
 export interface DdsParameterTemplateCompareState {
-    /**
-     * Indicates the differences between parameters.
-     * The differences structure is documented below.
-     */
     differences?: pulumi.Input<pulumi.Input<inputs.DdsParameterTemplateCompareDifference>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the source parameter template to be
-     * compared. Changing this parameter will create a new resource.
-     */
     sourceConfigurationId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the destination parameter template to be
-     * compared. Changing this parameter will create a new resource.
-     */
     targetConfigurationId?: pulumi.Input<string>;
 }
 
@@ -138,19 +88,7 @@ export interface DdsParameterTemplateCompareState {
  * The set of arguments for constructing a DdsParameterTemplateCompare resource.
  */
 export interface DdsParameterTemplateCompareArgs {
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the source parameter template to be
-     * compared. Changing this parameter will create a new resource.
-     */
     sourceConfigurationId: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the destination parameter template to be
-     * compared. Changing this parameter will create a new resource.
-     */
     targetConfigurationId: pulumi.Input<string>;
 }

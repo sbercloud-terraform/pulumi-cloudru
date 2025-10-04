@@ -4,44 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a network ACL resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const subnet = sbercloud.Vpc.getSubnet({
- *     name: "subnet-default",
- * });
- * const rule1 = new sbercloud.networkacl.AclRule("rule_1", {
- *     name: "my-rule-1",
- *     description: "drop TELNET traffic",
- *     action: "deny",
- *     protocol: "tcp",
- *     destinationPort: "23",
- *     enabled: true,
- * });
- * const rule2 = new sbercloud.networkacl.AclRule("rule_2", {
- *     name: "my-rule-2",
- *     description: "drop NTP traffic",
- *     action: "deny",
- *     protocol: "udp",
- *     destinationPort: "123",
- *     enabled: false,
- * });
- * const fwAcl = new sbercloud.networkacl.Acl("fw_acl", {
- *     name: "my-fw-acl",
- *     subnets: [subnet.then(subnet => subnet.id)],
- *     inboundRules: [
- *         rule1.id,
- *         rule2.id,
- *     ],
- * });
- * ```
- */
 export class Acl extends pulumi.CustomResource {
     /**
      * Get an existing Acl resource's state with the given name, ID, and optional extra
@@ -70,48 +32,15 @@ export class Acl extends pulumi.CustomResource {
         return obj['__pulumiType'] === Acl.__pulumiType;
     }
 
-    /**
-     * Specifies the supplementary information about the network ACL. This parameter can
-     * contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the ingress firewall policy for the network ACL.
-     */
     declare public /*out*/ readonly inboundPolicyId: pulumi.Output<string>;
-    /**
-     * A list of the IDs of ingress rules associated with the network ACL.
-     */
     declare public readonly inboundRules: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-     * which may consist of letters, digits, underscores (_), and hyphens (-).
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The ID of the egress firewall policy for the network ACL.
-     */
     declare public /*out*/ readonly outboundPolicyId: pulumi.Output<string>;
-    /**
-     * A list of the IDs of egress rules associated with the network ACL.
-     */
     declare public readonly outboundRules: pulumi.Output<string[] | undefined>;
-    /**
-     * A list of the port IDs of the subnet gateway.
-     */
     declare public /*out*/ readonly ports: pulumi.Output<string[]>;
-    /**
-     * The region in which to create the network acl resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new network acl resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The status of the network ACL.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * A list of the IDs of networks associated with the network ACL.
-     */
     declare public readonly subnets: pulumi.Output<string[] | undefined>;
 
     /**
@@ -159,48 +88,15 @@ export class Acl extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Acl resources.
  */
 export interface AclState {
-    /**
-     * Specifies the supplementary information about the network ACL. This parameter can
-     * contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The ID of the ingress firewall policy for the network ACL.
-     */
     inboundPolicyId?: pulumi.Input<string>;
-    /**
-     * A list of the IDs of ingress rules associated with the network ACL.
-     */
     inboundRules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-     * which may consist of letters, digits, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the egress firewall policy for the network ACL.
-     */
     outboundPolicyId?: pulumi.Input<string>;
-    /**
-     * A list of the IDs of egress rules associated with the network ACL.
-     */
     outboundRules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of the port IDs of the subnet gateway.
-     */
     ports?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the network acl resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new network acl resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The status of the network ACL.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * A list of the IDs of networks associated with the network ACL.
-     */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -208,31 +104,10 @@ export interface AclState {
  * The set of arguments for constructing a Acl resource.
  */
 export interface AclArgs {
-    /**
-     * Specifies the supplementary information about the network ACL. This parameter can
-     * contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
-    /**
-     * A list of the IDs of ingress rules associated with the network ACL.
-     */
     inboundRules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-     * which may consist of letters, digits, underscores (_), and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * A list of the IDs of egress rules associated with the network ACL.
-     */
     outboundRules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the network acl resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new network acl resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * A list of the IDs of networks associated with the network ACL.
-     */
     subnets?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -12,90 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a propagation resource under the route table for ER service within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			routeTableId := cfg.RequireObject("routeTableId")
-//			attachmentId := cfg.RequireObject("attachmentId")
-//			_, err := er.NewPropagation(ctx, "test", &er.PropagationArgs{
-//				InstanceId:   pulumi.Any(instanceId),
-//				RouteTableId: pulumi.Any(routeTableId),
-//				AttachmentId: pulumi.Any(attachmentId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Propagations can be imported using their `id` and the related `instance_id` and `route_table_id`, separated by
-//
-// slashes (/), e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Er/propagation:Propagation test <instance_id>/<route_table_id>/<id>
-// ```
 type Propagation struct {
 	pulumi.CustomResourceState
 
-	// Specifies the ID of the attachment corresponding to the propagation.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the propagation.
 	AttachmentId pulumi.StringOutput `pulumi:"attachmentId"`
 	// The type of the attachment corresponding to the propagation.
 	AttachmentType pulumi.StringOutput `pulumi:"attachmentType"`
 	// The creation time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the ID of the route table to which the propagation
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the propagation belongs.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The current status of the propagation.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -142,23 +72,17 @@ func GetPropagation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Propagation resources.
 type propagationState struct {
-	// Specifies the ID of the attachment corresponding to the propagation.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the propagation.
 	AttachmentId *string `pulumi:"attachmentId"`
 	// The type of the attachment corresponding to the propagation.
 	AttachmentType *string `pulumi:"attachmentType"`
 	// The creation time.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the route table to which the propagation
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the propagation belongs.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The current status of the propagation.
 	Status *string `pulumi:"status"`
@@ -167,23 +91,17 @@ type propagationState struct {
 }
 
 type PropagationState struct {
-	// Specifies the ID of the attachment corresponding to the propagation.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the propagation.
 	AttachmentId pulumi.StringPtrInput
 	// The type of the attachment corresponding to the propagation.
 	AttachmentType pulumi.StringPtrInput
 	// The creation time.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the route table to which the propagation
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the propagation belongs.
 	RouteTableId pulumi.StringPtrInput
 	// The current status of the propagation.
 	Status pulumi.StringPtrInput
@@ -196,37 +114,25 @@ func (PropagationState) ElementType() reflect.Type {
 }
 
 type propagationArgs struct {
-	// Specifies the ID of the attachment corresponding to the propagation.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the propagation.
 	AttachmentId string `pulumi:"attachmentId"`
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the route table to which the propagation
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the propagation belongs.
 	RouteTableId string `pulumi:"routeTableId"`
 }
 
 // The set of arguments for constructing a Propagation resource.
 type PropagationArgs struct {
-	// Specifies the ID of the attachment corresponding to the propagation.\
-	// Changing this parameter will create a new resource.
+	// The ID of the attachment corresponding to the propagation.
 	AttachmentId pulumi.StringInput
-	// Specifies the ID of the ER instance to which the route table and the
-	// attachment belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the ER instance to which the route table and the attachment belongs.
 	InstanceId pulumi.StringInput
-	// Specifies the region where the ER instance and route table are located.\
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the ER instance and route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the route table to which the propagation
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the propagation belongs.
 	RouteTableId pulumi.StringInput
 }
 
@@ -317,8 +223,7 @@ func (o PropagationOutput) ToPropagationOutputWithContext(ctx context.Context) P
 	return o
 }
 
-// Specifies the ID of the attachment corresponding to the propagation.\
-// Changing this parameter will create a new resource.
+// The ID of the attachment corresponding to the propagation.
 func (o PropagationOutput) AttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Propagation) pulumi.StringOutput { return v.AttachmentId }).(pulumi.StringOutput)
 }
@@ -333,22 +238,17 @@ func (o PropagationOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Propagation) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the ER instance to which the route table and the
-// attachment belongs.
-// Changing this parameter will create a new resource.
+// The ID of the ER instance to which the route table and the attachment belongs.
 func (o PropagationOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Propagation) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region where the ER instance and route table are located.\
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the ER instance and route table are located.
 func (o PropagationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Propagation) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the route table to which the propagation
-// belongs.
-// Changing this parameter will create a new resource.
+// The ID of the route table to which the propagation belongs.
 func (o PropagationOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Propagation) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }

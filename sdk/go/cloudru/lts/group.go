@@ -12,59 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a log group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### create a log group
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/lts"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := lts.NewGroup(ctx, "log_group1", &lts.GroupArgs{
-//				GroupName: pulumi.String("log_group1"),
-//				TtlInDays: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Log group can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Lts/group:Group group_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-// ```
 type Group struct {
 	pulumi.CustomResourceState
 
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The enterprise project ID to which the log group belongs.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the log group name. Changing this parameter will create a new
-	// resource.
-	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// The region in which to create the log group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log group resource.
-	Region pulumi.StringOutput    `pulumi:"region"`
-	Tags   pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the log expiration time(days), value range: 1-30.
-	TtlInDays pulumi.IntOutput `pulumi:"ttlInDays"`
+	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	GroupName           pulumi.StringOutput    `pulumi:"groupName"`
+	Region              pulumi.StringOutput    `pulumi:"region"`
+	Tags                pulumi.StringMapOutput `pulumi:"tags"`
+	TtlInDays           pulumi.IntOutput       `pulumi:"ttlInDays"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -105,31 +62,21 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// The enterprise project ID to which the log group belongs.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the log group name. Changing this parameter will create a new
-	// resource.
-	GroupName *string `pulumi:"groupName"`
-	// The region in which to create the log group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log group resource.
-	Region *string           `pulumi:"region"`
-	Tags   map[string]string `pulumi:"tags"`
-	// Specifies the log expiration time(days), value range: 1-30.
-	TtlInDays *int `pulumi:"ttlInDays"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	GroupName           *string           `pulumi:"groupName"`
+	Region              *string           `pulumi:"region"`
+	Tags                map[string]string `pulumi:"tags"`
+	TtlInDays           *int              `pulumi:"ttlInDays"`
 }
 
 type GroupState struct {
 	CreatedAt pulumi.StringPtrInput
 	// The enterprise project ID to which the log group belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the log group name. Changing this parameter will create a new
-	// resource.
-	GroupName pulumi.StringPtrInput
-	// The region in which to create the log group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log group resource.
-	Region pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
-	// Specifies the log expiration time(days), value range: 1-30.
-	TtlInDays pulumi.IntPtrInput
+	GroupName           pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
+	TtlInDays           pulumi.IntPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -138,31 +85,21 @@ func (GroupState) ElementType() reflect.Type {
 
 type groupArgs struct {
 	// The enterprise project ID to which the log group belongs.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the log group name. Changing this parameter will create a new
-	// resource.
-	GroupName string `pulumi:"groupName"`
-	// The region in which to create the log group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log group resource.
-	Region *string           `pulumi:"region"`
-	Tags   map[string]string `pulumi:"tags"`
-	// Specifies the log expiration time(days), value range: 1-30.
-	TtlInDays int `pulumi:"ttlInDays"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	GroupName           string            `pulumi:"groupName"`
+	Region              *string           `pulumi:"region"`
+	Tags                map[string]string `pulumi:"tags"`
+	TtlInDays           int               `pulumi:"ttlInDays"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
 	// The enterprise project ID to which the log group belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the log group name. Changing this parameter will create a new
-	// resource.
-	GroupName pulumi.StringInput
-	// The region in which to create the log group resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new log group resource.
-	Region pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
-	// Specifies the log expiration time(days), value range: 1-30.
-	TtlInDays pulumi.IntInput
+	GroupName           pulumi.StringInput
+	Region              pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
+	TtlInDays           pulumi.IntInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -261,14 +198,10 @@ func (o GroupOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the log group name. Changing this parameter will create a new
-// resource.
 func (o GroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The region in which to create the log group resource. If omitted, the
-// provider-level region will be used. Changing this creates a new log group resource.
 func (o GroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -277,7 +210,6 @@ func (o GroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the log expiration time(days), value range: 1-30.
 func (o GroupOutput) TtlInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Group) pulumi.IntOutput { return v.TtlInDays }).(pulumi.IntOutput)
 }

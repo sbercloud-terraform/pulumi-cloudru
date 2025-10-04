@@ -24,10 +24,6 @@ class DdsParameterTemplateResetArgs:
         """
         The set of arguments for constructing a DdsParameterTemplateReset resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "configuration_id", configuration_id)
         if region is not None:
@@ -38,7 +34,6 @@ class DdsParameterTemplateResetArgs:
     def configuration_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -49,11 +44,6 @@ class DdsParameterTemplateResetArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -69,10 +59,6 @@ class _DdsParameterTemplateResetState:
         """
         Input properties used for looking up and filtering DdsParameterTemplateReset resources.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         if configuration_id is not None:
             pulumi.set(__self__, "configuration_id", configuration_id)
@@ -84,7 +70,6 @@ class _DdsParameterTemplateResetState:
     def configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
@@ -95,11 +80,6 @@ class _DdsParameterTemplateResetState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -117,26 +97,10 @@ class DdsParameterTemplateReset(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DDS parameter template reset resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        configuration_id = config.require_object("configurationId")
-        test = sbercloud.DdsParameterTemplateReset("test", configuration_id=configuration_id)
-        ```
-
+        Create a DdsParameterTemplateReset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -145,19 +109,7 @@ class DdsParameterTemplateReset(pulumi.CustomResource):
                  args: DdsParameterTemplateResetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DDS parameter template reset resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        configuration_id = config.require_object("configurationId")
-        test = sbercloud.DdsParameterTemplateReset("test", configuration_id=configuration_id)
-        ```
-
+        Create a DdsParameterTemplateReset resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DdsParameterTemplateResetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -208,10 +160,6 @@ class DdsParameterTemplateReset(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] configuration_id: Specifies the parameter template ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -226,17 +174,11 @@ class DdsParameterTemplateReset(pulumi.CustomResource):
     def configuration_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the parameter template ID.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "configuration_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

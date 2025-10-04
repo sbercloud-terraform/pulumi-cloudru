@@ -12,68 +12,10 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a User Group Membership resource within SberCloud IAM service.
-//
-// Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			group1, err := iam.NewGroup(ctx, "group_1", &iam.GroupArgs{
-//				Name:        pulumi.String("group1"),
-//				Description: pulumi.String("This is a test group"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			user1, err := iam.NewUser(ctx, "user_1", &iam.UserArgs{
-//				Name:     pulumi.String("user1"),
-//				Enabled:  pulumi.Bool(true),
-//				Password: pulumi.String("password12345!"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			user2, err := iam.NewUser(ctx, "user_2", &iam.UserArgs{
-//				Name:     pulumi.String("user2"),
-//				Enabled:  pulumi.Bool(true),
-//				Password: pulumi.String("password12345!"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = iam.NewGroupMembership(ctx, "membership_1", &iam.GroupMembershipArgs{
-//				Group: group1.ID(),
-//				Users: pulumi.StringArray{
-//					user1.ID(),
-//					user2.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type GroupMembership struct {
 	pulumi.CustomResourceState
 
-	// The group ID of this membership.
-	Group pulumi.StringOutput `pulumi:"group"`
-	// A List of user IDs to associate to the group.
+	Group pulumi.StringOutput      `pulumi:"group"`
 	Users pulumi.StringArrayOutput `pulumi:"users"`
 }
 
@@ -113,16 +55,12 @@ func GetGroupMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMembership resources.
 type groupMembershipState struct {
-	// The group ID of this membership.
-	Group *string `pulumi:"group"`
-	// A List of user IDs to associate to the group.
+	Group *string  `pulumi:"group"`
 	Users []string `pulumi:"users"`
 }
 
 type GroupMembershipState struct {
-	// The group ID of this membership.
 	Group pulumi.StringPtrInput
-	// A List of user IDs to associate to the group.
 	Users pulumi.StringArrayInput
 }
 
@@ -131,17 +69,13 @@ func (GroupMembershipState) ElementType() reflect.Type {
 }
 
 type groupMembershipArgs struct {
-	// The group ID of this membership.
-	Group string `pulumi:"group"`
-	// A List of user IDs to associate to the group.
+	Group string   `pulumi:"group"`
 	Users []string `pulumi:"users"`
 }
 
 // The set of arguments for constructing a GroupMembership resource.
 type GroupMembershipArgs struct {
-	// The group ID of this membership.
 	Group pulumi.StringInput
-	// A List of user IDs to associate to the group.
 	Users pulumi.StringArrayInput
 }
 
@@ -232,12 +166,10 @@ func (o GroupMembershipOutput) ToGroupMembershipOutputWithContext(ctx context.Co
 	return o
 }
 
-// The group ID of this membership.
 func (o GroupMembershipOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
-// A List of user IDs to associate to the group.
 func (o GroupMembershipOutput) Users() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringArrayOutput { return v.Users }).(pulumi.StringArrayOutput)
 }

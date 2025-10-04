@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DMS RocketMQ message offset reset resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const group = config.requireObject<any>("group");
- * const topic = config.requireObject<any>("topic");
- * const test = new sbercloud.DmsRocketmqMessageOffsetReset("test", {
- *     instanceId: instanceId,
- *     group: group,
- *     topic: topic,
- *     timestamp: "0",
- * });
- * ```
- */
 export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
     /**
      * Get an existing DmsRocketmqMessageOffsetReset resource's state with the given name, ID, and optional extra
@@ -53,35 +32,10 @@ export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
         return obj['__pulumiType'] === DmsRocketmqMessageOffsetReset.__pulumiType;
     }
 
-    /**
-     * Specifies the group name.
-     * Changing this creates a new resource.
-     */
     declare public readonly group: pulumi.Output<string>;
-    /**
-     * Specifies the instance ID.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the timestamp.
-     * + If it is specified as **0**, reset to earliset.
-     * + If it is specified as **-1**, reset to latest.
-     * + If it is specified as a timestamp in milliseconds, reset to specific time.
-     *
-     * Changing this creates a new resource.
-     */
     declare public readonly timestamp: pulumi.Output<string>;
-    /**
-     * Specifies the topic name.
-     * Changing this creates a new resource.
-     */
     declare public readonly topic: pulumi.Output<string>;
 
     /**
@@ -131,35 +85,10 @@ export class DmsRocketmqMessageOffsetReset extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DmsRocketmqMessageOffsetReset resources.
  */
 export interface DmsRocketmqMessageOffsetResetState {
-    /**
-     * Specifies the group name.
-     * Changing this creates a new resource.
-     */
     group?: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the timestamp.
-     * + If it is specified as **0**, reset to earliset.
-     * + If it is specified as **-1**, reset to latest.
-     * + If it is specified as a timestamp in milliseconds, reset to specific time.
-     *
-     * Changing this creates a new resource.
-     */
     timestamp?: pulumi.Input<string>;
-    /**
-     * Specifies the topic name.
-     * Changing this creates a new resource.
-     */
     topic?: pulumi.Input<string>;
 }
 
@@ -167,34 +96,9 @@ export interface DmsRocketmqMessageOffsetResetState {
  * The set of arguments for constructing a DmsRocketmqMessageOffsetReset resource.
  */
 export interface DmsRocketmqMessageOffsetResetArgs {
-    /**
-     * Specifies the group name.
-     * Changing this creates a new resource.
-     */
     group: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the timestamp.
-     * + If it is specified as **0**, reset to earliset.
-     * + If it is specified as **-1**, reset to latest.
-     * + If it is specified as a timestamp in milliseconds, reset to specific time.
-     *
-     * Changing this creates a new resource.
-     */
     timestamp: pulumi.Input<string>;
-    /**
-     * Specifies the topic name.
-     * Changing this creates a new resource.
-     */
     topic: pulumi.Input<string>;
 }

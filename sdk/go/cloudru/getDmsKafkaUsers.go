@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of Kafka instance users.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.GetDmsKafkaUsers(ctx, &cloudru.GetDmsKafkaUsersArgs{
-//				InstanceId: instanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsKafkaUsers(ctx *pulumi.Context, args *GetDmsKafkaUsersArgs, opts ...pulumi.InvokeOption) (*GetDmsKafkaUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsKafkaUsersResult
@@ -53,29 +23,21 @@ func GetDmsKafkaUsers(ctx *pulumi.Context, args *GetDmsKafkaUsersArgs, opts ...p
 
 // A collection of arguments for invoking getDmsKafkaUsers.
 type GetDmsKafkaUsersArgs struct {
-	// Specifies the user description.
 	Description *string `pulumi:"description"`
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the user name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	InstanceId  string  `pulumi:"instanceId"`
+	Name        *string `pulumi:"name"`
+	Region      *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDmsKafkaUsers.
 type GetDmsKafkaUsersResult struct {
-	// Indicates the description.
 	Description *string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Indicates the username.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	// Indicates the user list.
-	Users []GetDmsKafkaUsersUser `pulumi:"users"`
+	Id         string                 `pulumi:"id"`
+	InstanceId string                 `pulumi:"instanceId"`
+	Name       *string                `pulumi:"name"`
+	Region     string                 `pulumi:"region"`
+	Users      []GetDmsKafkaUsersUser `pulumi:"users"`
 }
 
 func GetDmsKafkaUsersOutput(ctx *pulumi.Context, args GetDmsKafkaUsersOutputArgs, opts ...pulumi.InvokeOption) GetDmsKafkaUsersResultOutput {
@@ -89,15 +51,10 @@ func GetDmsKafkaUsersOutput(ctx *pulumi.Context, args GetDmsKafkaUsersOutputArgs
 
 // A collection of arguments for invoking getDmsKafkaUsers.
 type GetDmsKafkaUsersOutputArgs struct {
-	// Specifies the user description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the user name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	InstanceId  pulumi.StringInput    `pulumi:"instanceId"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDmsKafkaUsersOutputArgs) ElementType() reflect.Type {
@@ -119,7 +76,6 @@ func (o GetDmsKafkaUsersResultOutput) ToGetDmsKafkaUsersResultOutputWithContext(
 	return o
 }
 
-// Indicates the description.
 func (o GetDmsKafkaUsersResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -133,7 +89,6 @@ func (o GetDmsKafkaUsersResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the username.
 func (o GetDmsKafkaUsersResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -142,7 +97,6 @@ func (o GetDmsKafkaUsersResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the user list.
 func (o GetDmsKafkaUsersResultOutput) Users() GetDmsKafkaUsersUserArrayOutput {
 	return o.ApplyT(func(v GetDmsKafkaUsersResult) []GetDmsKafkaUsersUser { return v.Users }).(GetDmsKafkaUsersUserArrayOutput)
 }

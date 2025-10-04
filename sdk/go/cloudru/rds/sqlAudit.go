@@ -12,68 +12,18 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS SQL audit resource within SberCloud.
-//
-// > **NOTE:** Only MySQL and PostgreSQL engines are supported.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewSqlAudit(ctx, "test", &rds.SqlAuditArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				KeepDays:   pulumi.Int(5),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS SQL audit can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/sqlAudit:SqlAudit test <id>
-// ```
 type SqlAudit struct {
 	pulumi.CustomResourceState
 
-	// Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-	// **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-	// **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-	// It is not supported for PostgreSQL.
+	// Specifies the list of audit types.
 	AuditTypes pulumi.StringArrayOutput `pulumi:"auditTypes"`
 	// Specifies the ID of the RDS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-	KeepDays pulumi.IntOutput `pulumi:"keepDays"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies whether the historical audit logs will be reserved for some time
-	// when SQL audit is disabled. It is valid only when SQL audit is disabled.
+	// Specifies the number of days for storing audit logs.
+	KeepDays pulumi.IntOutput    `pulumi:"keepDays"`
+	Region   pulumi.StringOutput `pulumi:"region"`
+	// Specifies whether the historical audit logs will be reserved for some time when SQL
+	// audit is disabled.
 	ReserveAuditlogs pulumi.BoolPtrOutput `pulumi:"reserveAuditlogs"`
 }
 
@@ -113,42 +63,28 @@ func GetSqlAudit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SqlAudit resources.
 type sqlAuditState struct {
-	// Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-	// **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-	// **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-	// It is not supported for PostgreSQL.
+	// Specifies the list of audit types.
 	AuditTypes []string `pulumi:"auditTypes"`
 	// Specifies the ID of the RDS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-	KeepDays *int `pulumi:"keepDays"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies whether the historical audit logs will be reserved for some time
-	// when SQL audit is disabled. It is valid only when SQL audit is disabled.
+	// Specifies the number of days for storing audit logs.
+	KeepDays *int    `pulumi:"keepDays"`
+	Region   *string `pulumi:"region"`
+	// Specifies whether the historical audit logs will be reserved for some time when SQL
+	// audit is disabled.
 	ReserveAuditlogs *bool `pulumi:"reserveAuditlogs"`
 }
 
 type SqlAuditState struct {
-	// Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-	// **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-	// **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-	// It is not supported for PostgreSQL.
+	// Specifies the list of audit types.
 	AuditTypes pulumi.StringArrayInput
 	// Specifies the ID of the RDS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+	// Specifies the number of days for storing audit logs.
 	KeepDays pulumi.IntPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies whether the historical audit logs will be reserved for some time
-	// when SQL audit is disabled. It is valid only when SQL audit is disabled.
+	Region   pulumi.StringPtrInput
+	// Specifies whether the historical audit logs will be reserved for some time when SQL
+	// audit is disabled.
 	ReserveAuditlogs pulumi.BoolPtrInput
 }
 
@@ -157,43 +93,29 @@ func (SqlAuditState) ElementType() reflect.Type {
 }
 
 type sqlAuditArgs struct {
-	// Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-	// **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-	// **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-	// It is not supported for PostgreSQL.
+	// Specifies the list of audit types.
 	AuditTypes []string `pulumi:"auditTypes"`
 	// Specifies the ID of the RDS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-	KeepDays int `pulumi:"keepDays"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies whether the historical audit logs will be reserved for some time
-	// when SQL audit is disabled. It is valid only when SQL audit is disabled.
+	// Specifies the number of days for storing audit logs.
+	KeepDays int     `pulumi:"keepDays"`
+	Region   *string `pulumi:"region"`
+	// Specifies whether the historical audit logs will be reserved for some time when SQL
+	// audit is disabled.
 	ReserveAuditlogs *bool `pulumi:"reserveAuditlogs"`
 }
 
 // The set of arguments for constructing a SqlAudit resource.
 type SqlAuditArgs struct {
-	// Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-	// **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-	// **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-	// It is not supported for PostgreSQL.
+	// Specifies the list of audit types.
 	AuditTypes pulumi.StringArrayInput
 	// Specifies the ID of the RDS instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+	// Specifies the number of days for storing audit logs.
 	KeepDays pulumi.IntInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies whether the historical audit logs will be reserved for some time
-	// when SQL audit is disabled. It is valid only when SQL audit is disabled.
+	Region   pulumi.StringPtrInput
+	// Specifies whether the historical audit logs will be reserved for some time when SQL
+	// audit is disabled.
 	ReserveAuditlogs pulumi.BoolPtrInput
 }
 
@@ -284,34 +206,27 @@ func (o SqlAuditOutput) ToSqlAuditOutputWithContext(ctx context.Context) SqlAudi
 	return o
 }
 
-// Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-// **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-// **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-// It is not supported for PostgreSQL.
+// Specifies the list of audit types.
 func (o SqlAuditOutput) AuditTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlAudit) pulumi.StringArrayOutput { return v.AuditTypes }).(pulumi.StringArrayOutput)
 }
 
 // Specifies the ID of the RDS instance.
-//
-// Changing this parameter will create a new resource.
 func (o SqlAuditOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlAudit) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+// Specifies the number of days for storing audit logs.
 func (o SqlAuditOutput) KeepDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *SqlAudit) pulumi.IntOutput { return v.KeepDays }).(pulumi.IntOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o SqlAuditOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlAudit) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies whether the historical audit logs will be reserved for some time
-// when SQL audit is disabled. It is valid only when SQL audit is disabled.
+// Specifies whether the historical audit logs will be reserved for some time when SQL
+// audit is disabled.
 func (o SqlAuditOutput) ReserveAuditlogs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlAudit) pulumi.BoolPtrOutput { return v.ReserveAuditlogs }).(pulumi.BoolPtrOutput)
 }

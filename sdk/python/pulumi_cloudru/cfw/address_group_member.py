@@ -28,21 +28,10 @@ class AddressGroupMemberArgs:
         """
         The set of arguments for constructing a AddressGroupMember resource.
         :param pulumi.Input[_builtins.str] address: Specifies the IP address.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the IP address group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] address_type: Specifies the address type.
-               The value can be **0** (IPv4) or **1** (IPv6).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies address description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: schema: Deprecated; Specifies the address name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "group_id", group_id)
@@ -60,8 +49,6 @@ class AddressGroupMemberArgs:
     def address(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the IP address.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "address")
 
@@ -74,8 +61,6 @@ class AddressGroupMemberArgs:
     def group_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the IP address group.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -88,9 +73,6 @@ class AddressGroupMemberArgs:
     def address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the address type.
-        The value can be **0** (IPv4) or **1** (IPv6).
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "address_type")
 
@@ -103,8 +85,6 @@ class AddressGroupMemberArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies address description.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -127,10 +107,6 @@ class AddressGroupMemberArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -150,21 +126,10 @@ class _AddressGroupMemberState:
         """
         Input properties used for looking up and filtering AddressGroupMember resources.
         :param pulumi.Input[_builtins.str] address: Specifies the IP address.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] address_type: Specifies the address type.
-               The value can be **0** (IPv4) or **1** (IPv6).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies address description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the IP address group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: schema: Deprecated; Specifies the address name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -184,8 +149,6 @@ class _AddressGroupMemberState:
     def address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the IP address.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "address")
 
@@ -198,9 +161,6 @@ class _AddressGroupMemberState:
     def address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the address type.
-        The value can be **0** (IPv4) or **1** (IPv6).
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "address_type")
 
@@ -213,8 +173,6 @@ class _AddressGroupMemberState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies address description.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -227,8 +185,6 @@ class _AddressGroupMemberState:
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the IP address group.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -251,10 +207,6 @@ class _AddressGroupMemberState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -276,50 +228,14 @@ class AddressGroupMember(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW IP address group member resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_id = config.require_object("groupId")
-        address = config.require_object("address")
-        test = sbercloud.cfw.AddressGroupMember("test",
-            group_id=group_id,
-            address=address)
-        ```
-
-        ## Import
-
-        The CFW IP address group member can be imported using `group_id`, `id`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/addressGroupMember:AddressGroupMember test <group_id>/<id>
-        ```
-
+        Create a AddressGroupMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: Specifies the IP address.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] address_type: Specifies the address type.
-               The value can be **0** (IPv4) or **1** (IPv6).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies address description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the IP address group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: schema: Deprecated; Specifies the address name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -328,32 +244,7 @@ class AddressGroupMember(pulumi.CustomResource):
                  args: AddressGroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW IP address group member resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_id = config.require_object("groupId")
-        address = config.require_object("address")
-        test = sbercloud.cfw.AddressGroupMember("test",
-            group_id=group_id,
-            address=address)
-        ```
-
-        ## Import
-
-        The CFW IP address group member can be imported using `group_id`, `id`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/addressGroupMember:AddressGroupMember test <group_id>/<id>
-        ```
-
+        Create a AddressGroupMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AddressGroupMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,21 +309,10 @@ class AddressGroupMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: Specifies the IP address.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] address_type: Specifies the address type.
-               The value can be **0** (IPv4) or **1** (IPv6).
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies address description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the IP address group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: schema: Deprecated; Specifies the address name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -451,8 +331,6 @@ class AddressGroupMember(pulumi.CustomResource):
     def address(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the IP address.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "address")
 
@@ -461,9 +339,6 @@ class AddressGroupMember(pulumi.CustomResource):
     def address_type(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the address type.
-        The value can be **0** (IPv4) or **1** (IPv6).
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "address_type")
 
@@ -472,8 +347,6 @@ class AddressGroupMember(pulumi.CustomResource):
     def description(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies address description.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -482,8 +355,6 @@ class AddressGroupMember(pulumi.CustomResource):
     def group_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the IP address group.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -498,9 +369,5 @@ class AddressGroupMember(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

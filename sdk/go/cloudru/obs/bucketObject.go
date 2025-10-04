@@ -12,140 +12,22 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides an OBS bucket object resource.
-//
-// ## Example Usage
-//
-// ### Uploading to a bucket
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/obs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := obs.NewBucketObject(ctx, "object", &obs.BucketObjectArgs{
-//				Bucket:      pulumi.String("your_bucket_name"),
-//				Key:         pulumi.String("new_key_from_content"),
-//				Content:     pulumi.String("some object content"),
-//				ContentType: pulumi.String("application/xml"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Uploading a file to a bucket
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/obs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			examplebucket, err := obs.NewBucket(ctx, "examplebucket", &obs.BucketArgs{
-//				Bucket: pulumi.String("examplebuckettftest"),
-//				Acl:    pulumi.String("private"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = obs.NewBucketObject(ctx, "object", &obs.BucketObjectArgs{
-//				Bucket: examplebucket.Bucket,
-//				Key:    pulumi.String("new_key_from_file"),
-//				Source: pulumi.String("index.html"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// OBS bucket object can be imported using the bucket and key separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Obs/bucketObject:BucketObject object bucket/key
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `encryption`, `source`, `acl` and
-//
-// `kms_key_id`. It is generally recommended running `pulumi preview` after importing an object.
-//
-// # You can then decide if changes should be applied to the object, or the resource
-//
-// definition should be updated to align with the object. Also you can ignore changes as below.
-//
-// resource "sbercloud_obs_bucket_object" "object" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    encryption, source, acl, kms_key_id,
-//
-//	  ]
-//
-//	}
-//
-// }
 type BucketObject struct {
 	pulumi.CustomResourceState
 
-	// The ACL policy to apply. Defaults to `private`.
-	Acl pulumi.StringPtrOutput `pulumi:"acl"`
-	// The name of the bucket to put the file in.
-	Bucket pulumi.StringOutput `pulumi:"bucket"`
-	// The literal content being uploaded to the bucket.
-	Content pulumi.StringPtrOutput `pulumi:"content"`
-	// A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-	// All Valid MIME Types are valid for this input.
-	ContentType pulumi.StringOutput  `pulumi:"contentType"`
-	Encryption  pulumi.BoolPtrOutput `pulumi:"encryption"`
-	// Specifies the unique identifier of the object content. It can be used to trigger updates.
-	// The only meaningful value is `md5(file("pathToFile"))`.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The name of the object once it is in the bucket.
-	Key pulumi.StringOutput `pulumi:"key"`
-	// The ID of the kms key. If omitted, the default master key will be used.
-	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// the size of the object in bytes.
-	Size pulumi.IntOutput `pulumi:"size"`
-	// The path to the source file being uploaded to the bucket.
-	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// Specifies the storage class of the object. Defaults to `STANDARD`.
-	StorageClass pulumi.StringOutput `pulumi:"storageClass"`
-	// A unique version ID value for the object, if bucket versioning is enabled.
-	VersionId pulumi.StringOutput `pulumi:"versionId"`
+	Acl          pulumi.StringPtrOutput `pulumi:"acl"`
+	Bucket       pulumi.StringOutput    `pulumi:"bucket"`
+	Content      pulumi.StringPtrOutput `pulumi:"content"`
+	ContentType  pulumi.StringOutput    `pulumi:"contentType"`
+	Encryption   pulumi.BoolPtrOutput   `pulumi:"encryption"`
+	Etag         pulumi.StringOutput    `pulumi:"etag"`
+	Key          pulumi.StringOutput    `pulumi:"key"`
+	KmsKeyId     pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
+	Region       pulumi.StringOutput    `pulumi:"region"`
+	Size         pulumi.IntOutput       `pulumi:"size"`
+	Source       pulumi.StringPtrOutput `pulumi:"source"`
+	StorageClass pulumi.StringOutput    `pulumi:"storageClass"`
+	VersionId    pulumi.StringOutput    `pulumi:"versionId"`
 }
 
 // NewBucketObject registers a new resource with the given unique name, arguments, and options.
@@ -184,69 +66,35 @@ func GetBucketObject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BucketObject resources.
 type bucketObjectState struct {
-	// The ACL policy to apply. Defaults to `private`.
-	Acl *string `pulumi:"acl"`
-	// The name of the bucket to put the file in.
-	Bucket *string `pulumi:"bucket"`
-	// The literal content being uploaded to the bucket.
-	Content *string `pulumi:"content"`
-	// A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-	// All Valid MIME Types are valid for this input.
-	ContentType *string `pulumi:"contentType"`
-	Encryption  *bool   `pulumi:"encryption"`
-	// Specifies the unique identifier of the object content. It can be used to trigger updates.
-	// The only meaningful value is `md5(file("pathToFile"))`.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
-	Etag *string `pulumi:"etag"`
-	// The name of the object once it is in the bucket.
-	Key *string `pulumi:"key"`
-	// The ID of the kms key. If omitted, the default master key will be used.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-	Region *string `pulumi:"region"`
-	// the size of the object in bytes.
-	Size *int `pulumi:"size"`
-	// The path to the source file being uploaded to the bucket.
-	Source *string `pulumi:"source"`
-	// Specifies the storage class of the object. Defaults to `STANDARD`.
+	Acl          *string `pulumi:"acl"`
+	Bucket       *string `pulumi:"bucket"`
+	Content      *string `pulumi:"content"`
+	ContentType  *string `pulumi:"contentType"`
+	Encryption   *bool   `pulumi:"encryption"`
+	Etag         *string `pulumi:"etag"`
+	Key          *string `pulumi:"key"`
+	KmsKeyId     *string `pulumi:"kmsKeyId"`
+	Region       *string `pulumi:"region"`
+	Size         *int    `pulumi:"size"`
+	Source       *string `pulumi:"source"`
 	StorageClass *string `pulumi:"storageClass"`
-	// A unique version ID value for the object, if bucket versioning is enabled.
-	VersionId *string `pulumi:"versionId"`
+	VersionId    *string `pulumi:"versionId"`
 }
 
 type BucketObjectState struct {
-	// The ACL policy to apply. Defaults to `private`.
-	Acl pulumi.StringPtrInput
-	// The name of the bucket to put the file in.
-	Bucket pulumi.StringPtrInput
-	// The literal content being uploaded to the bucket.
-	Content pulumi.StringPtrInput
-	// A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-	// All Valid MIME Types are valid for this input.
-	ContentType pulumi.StringPtrInput
-	Encryption  pulumi.BoolPtrInput
-	// Specifies the unique identifier of the object content. It can be used to trigger updates.
-	// The only meaningful value is `md5(file("pathToFile"))`.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
-	Etag pulumi.StringPtrInput
-	// The name of the object once it is in the bucket.
-	Key pulumi.StringPtrInput
-	// The ID of the kms key. If omitted, the default master key will be used.
-	KmsKeyId pulumi.StringPtrInput
-	// The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-	Region pulumi.StringPtrInput
-	// the size of the object in bytes.
-	Size pulumi.IntPtrInput
-	// The path to the source file being uploaded to the bucket.
-	Source pulumi.StringPtrInput
-	// Specifies the storage class of the object. Defaults to `STANDARD`.
+	Acl          pulumi.StringPtrInput
+	Bucket       pulumi.StringPtrInput
+	Content      pulumi.StringPtrInput
+	ContentType  pulumi.StringPtrInput
+	Encryption   pulumi.BoolPtrInput
+	Etag         pulumi.StringPtrInput
+	Key          pulumi.StringPtrInput
+	KmsKeyId     pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
+	Size         pulumi.IntPtrInput
+	Source       pulumi.StringPtrInput
 	StorageClass pulumi.StringPtrInput
-	// A unique version ID value for the object, if bucket versioning is enabled.
-	VersionId pulumi.StringPtrInput
+	VersionId    pulumi.StringPtrInput
 }
 
 func (BucketObjectState) ElementType() reflect.Type {
@@ -254,61 +102,31 @@ func (BucketObjectState) ElementType() reflect.Type {
 }
 
 type bucketObjectArgs struct {
-	// The ACL policy to apply. Defaults to `private`.
-	Acl *string `pulumi:"acl"`
-	// The name of the bucket to put the file in.
-	Bucket string `pulumi:"bucket"`
-	// The literal content being uploaded to the bucket.
-	Content *string `pulumi:"content"`
-	// A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-	// All Valid MIME Types are valid for this input.
-	ContentType *string `pulumi:"contentType"`
-	Encryption  *bool   `pulumi:"encryption"`
-	// Specifies the unique identifier of the object content. It can be used to trigger updates.
-	// The only meaningful value is `md5(file("pathToFile"))`.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
-	Etag *string `pulumi:"etag"`
-	// The name of the object once it is in the bucket.
-	Key string `pulumi:"key"`
-	// The ID of the kms key. If omitted, the default master key will be used.
-	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-	Region *string `pulumi:"region"`
-	// The path to the source file being uploaded to the bucket.
-	Source *string `pulumi:"source"`
-	// Specifies the storage class of the object. Defaults to `STANDARD`.
+	Acl          *string `pulumi:"acl"`
+	Bucket       string  `pulumi:"bucket"`
+	Content      *string `pulumi:"content"`
+	ContentType  *string `pulumi:"contentType"`
+	Encryption   *bool   `pulumi:"encryption"`
+	Etag         *string `pulumi:"etag"`
+	Key          string  `pulumi:"key"`
+	KmsKeyId     *string `pulumi:"kmsKeyId"`
+	Region       *string `pulumi:"region"`
+	Source       *string `pulumi:"source"`
 	StorageClass *string `pulumi:"storageClass"`
 }
 
 // The set of arguments for constructing a BucketObject resource.
 type BucketObjectArgs struct {
-	// The ACL policy to apply. Defaults to `private`.
-	Acl pulumi.StringPtrInput
-	// The name of the bucket to put the file in.
-	Bucket pulumi.StringInput
-	// The literal content being uploaded to the bucket.
-	Content pulumi.StringPtrInput
-	// A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-	// All Valid MIME Types are valid for this input.
-	ContentType pulumi.StringPtrInput
-	Encryption  pulumi.BoolPtrInput
-	// Specifies the unique identifier of the object content. It can be used to trigger updates.
-	// The only meaningful value is `md5(file("pathToFile"))`.
-	//
-	// Either `source` or `content` must be provided to specify the bucket content.
-	// These two arguments are mutually-exclusive.
-	Etag pulumi.StringPtrInput
-	// The name of the object once it is in the bucket.
-	Key pulumi.StringInput
-	// The ID of the kms key. If omitted, the default master key will be used.
-	KmsKeyId pulumi.StringPtrInput
-	// The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
-	Region pulumi.StringPtrInput
-	// The path to the source file being uploaded to the bucket.
-	Source pulumi.StringPtrInput
-	// Specifies the storage class of the object. Defaults to `STANDARD`.
+	Acl          pulumi.StringPtrInput
+	Bucket       pulumi.StringInput
+	Content      pulumi.StringPtrInput
+	ContentType  pulumi.StringPtrInput
+	Encryption   pulumi.BoolPtrInput
+	Etag         pulumi.StringPtrInput
+	Key          pulumi.StringInput
+	KmsKeyId     pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
+	Source       pulumi.StringPtrInput
 	StorageClass pulumi.StringPtrInput
 }
 
@@ -399,23 +217,18 @@ func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The ACL policy to apply. Defaults to `private`.
 func (o BucketObjectOutput) Acl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Acl }).(pulumi.StringPtrOutput)
 }
 
-// The name of the bucket to put the file in.
 func (o BucketObjectOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// The literal content being uploaded to the bucket.
 func (o BucketObjectOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// A standard MIME type describing the format of the object data, e.g. application/octet-stream.
-// All Valid MIME Types are valid for this input.
 func (o BucketObjectOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
@@ -424,46 +237,34 @@ func (o BucketObjectOutput) Encryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.BoolPtrOutput { return v.Encryption }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the unique identifier of the object content. It can be used to trigger updates.
-// The only meaningful value is `md5(file("pathToFile"))`.
-//
-// Either `source` or `content` must be provided to specify the bucket content.
-// These two arguments are mutually-exclusive.
 func (o BucketObjectOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The name of the object once it is in the bucket.
 func (o BucketObjectOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
 }
 
-// The ID of the kms key. If omitted, the default master key will be used.
 func (o BucketObjectOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The region in which to create the OBS bucket object resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket object resource.
 func (o BucketObjectOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// the size of the object in bytes.
 func (o BucketObjectOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The path to the source file being uploaded to the bucket.
 func (o BucketObjectOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the storage class of the object. Defaults to `STANDARD`.
 func (o BucketObjectOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.StorageClass }).(pulumi.StringOutput)
 }
 
-// A unique version ID value for the object, if bucket versioning is enabled.
 func (o BucketObjectOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }

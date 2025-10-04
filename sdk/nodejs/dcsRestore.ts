@@ -6,69 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DCS instance within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a single mode Redis instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const projectId = config.requireObject<any>("projectId");
- * const instanceId = config.requireObject<any>("instanceId");
- * const backupId = config.requireObject<any>("backupId");
- * const test = new sbercloud.DcsRestore("test", {
- *     projectId: projectId,
- *     instanceId: instanceId,
- *     backupId: backupId,
- *     remark: "restore instance",
- * });
- * ```
- *
- * ## Import
- *
- * DCS instance can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dcsRestore:DcsRestore instance_1 80e373f9-872e-4046-aae9-ccd9ddc55511
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason.
- *
- * The missing attributes include: `password`, `auto_renew`, `period`, `period_unit`, `rename_commands`,
- *
- * `internal_version`, `save_days`, `backup_type`, `begin_at`, `period_type`, `backup_at`.
- *
- * It is generally recommended running `pulumi preview` after importing an instance.
- *
- * You can then decide if changes should be applied to the instance, or the resource definition should be updated to
- *
- * align with the instance. Also you can ignore changes as below.
- *
- * resource "sbercloud_dcs_instance" "instance_1" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       password, rename_commands,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class DcsRestore extends pulumi.CustomResource {
     /**
      * Get an existing DcsRestore resource's state with the given name, ID, and optional extra
@@ -97,25 +34,10 @@ export class DcsRestore extends pulumi.CustomResource {
         return obj['__pulumiType'] === DcsRestore.__pulumiType;
     }
 
-    /**
-     * ID of the backup record.
-     */
     declare public readonly backupId: pulumi.Output<string>;
-    /**
-     * A dcsInstance ID in UUID format.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * The enterprise project id of the dcs instance. Changing this creates a new instance.
-     */
     declare public readonly projectId: pulumi.Output<string>;
-    /**
-     * Description of DCS instance restoration.
-     */
     declare public readonly remark: pulumi.Output<string | undefined>;
-    /**
-     * Array of the restoration records.
-     */
     declare public /*out*/ readonly restoreRecords: pulumi.Output<outputs.DcsRestoreRestoreRecord[]>;
 
     /**
@@ -162,25 +84,10 @@ export class DcsRestore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DcsRestore resources.
  */
 export interface DcsRestoreState {
-    /**
-     * ID of the backup record.
-     */
     backupId?: pulumi.Input<string>;
-    /**
-     * A dcsInstance ID in UUID format.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the dcs instance. Changing this creates a new instance.
-     */
     projectId?: pulumi.Input<string>;
-    /**
-     * Description of DCS instance restoration.
-     */
     remark?: pulumi.Input<string>;
-    /**
-     * Array of the restoration records.
-     */
     restoreRecords?: pulumi.Input<pulumi.Input<inputs.DcsRestoreRestoreRecord>[]>;
 }
 
@@ -188,20 +95,8 @@ export interface DcsRestoreState {
  * The set of arguments for constructing a DcsRestore resource.
  */
 export interface DcsRestoreArgs {
-    /**
-     * ID of the backup record.
-     */
     backupId: pulumi.Input<string>;
-    /**
-     * A dcsInstance ID in UUID format.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the dcs instance. Changing this creates a new instance.
-     */
     projectId: pulumi.Input<string>;
-    /**
-     * Description of DCS instance restoration.
-     */
     remark?: pulumi.Input<string>;
 }

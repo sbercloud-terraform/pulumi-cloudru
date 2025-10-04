@@ -82,50 +82,6 @@ class ClusterAnalysisCoreNodes(dict):
                  host_ips: Optional[Sequence[_builtins.str]] = None,
                  period: Optional[_builtins.int] = None,
                  period_unit: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int data_volume_count: Specifies the data disk number of the nodes. The number configuration
-               of each node are as follows:
-               + master_nodes: 1.
-               + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str flavor: Specifies the instance specifications for each nodes in node group.
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.int node_number: Specifies the number of nodes for the node group.
-               
-               > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-               less than the number of nodes originally created.
-        :param _builtins.int root_volume_size: Specifies the system disk size of the nodes. Changing this will create
-               a new MapReduce cluster resource.
-        :param _builtins.str root_volume_type: Specifies the system disk flavor of the nodes. Changing this will
-               create a new MapReduce cluster resource.
-        :param Sequence[_builtins.str] assigned_roles: Specifies the roles deployed in a node group.This argument is mandatory
-               when the cluster type is CUSTOM. Each character string represents a role expression.
-               
-               **Role expression definition:**
-               
-               + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-               + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-               for example: `DataNode:1,2`. The subscript starts from 1.
-               + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-               role_name[instance_count], for example: `EsNode[9]`.
-               
-               > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-               store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        :param _builtins.int data_volume_size: Specifies the data disk size of the nodes,in GB. The value range is 10
-               to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-               cluster resource.
-        :param _builtins.str data_volume_type: Specifies the data disk flavor of the nodes.
-               Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-               The following disk types are supported:
-               + `SATA`: common I/O disk
-               + `SAS`: high I/O disk
-               + `SSD`: ultra-high I/O disk
-        :param Sequence[_builtins.str] host_ips: The host list of this nodes group in the cluster.
-        """
         pulumi.set(__self__, "data_volume_count", data_volume_count)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "node_number", node_number)
@@ -151,75 +107,31 @@ class ClusterAnalysisCoreNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeCount")
     def data_volume_count(self) -> _builtins.int:
-        """
-        Specifies the data disk number of the nodes. The number configuration
-        of each node are as follows:
-        + master_nodes: 1.
-        + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "data_volume_count")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Specifies the instance specifications for each nodes in node group.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="nodeNumber")
     def node_number(self) -> _builtins.int:
-        """
-        Specifies the number of nodes for the node group.
-
-        > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-        less than the number of nodes originally created.
-        """
         return pulumi.get(self, "node_number")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> _builtins.int:
-        """
-        Specifies the system disk size of the nodes. Changing this will create
-        a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> _builtins.str:
-        """
-        Specifies the system disk flavor of the nodes. Changing this will
-        create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="assignedRoles")
     def assigned_roles(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the roles deployed in a node group.This argument is mandatory
-        when the cluster type is CUSTOM. Each character string represents a role expression.
-
-        **Role expression definition:**
-
-        + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-        + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-        for example: `DataNode:1,2`. The subscript starts from 1.
-        + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-        role_name[instance_count], for example: `EsNode[9]`.
-
-        > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-        store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        """
         return pulumi.get(self, "assigned_roles")
 
     @_builtins.property
@@ -235,32 +147,16 @@ class ClusterAnalysisCoreNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeSize")
     def data_volume_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the data disk size of the nodes,in GB. The value range is 10
-        to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-        cluster resource.
-        """
         return pulumi.get(self, "data_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeType")
     def data_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data disk flavor of the nodes.
-        Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-        The following disk types are supported:
-        + `SATA`: common I/O disk
-        + `SAS`: high I/O disk
-        + `SSD`: ultra-high I/O disk
-        """
         return pulumi.get(self, "data_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="hostIps")
     def host_ips(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The host list of this nodes group in the cluster.
-        """
         return pulumi.get(self, "host_ips")
 
     @_builtins.property
@@ -317,50 +213,6 @@ class ClusterAnalysisTaskNodes(dict):
                  data_volume_size: Optional[_builtins.int] = None,
                  data_volume_type: Optional[_builtins.str] = None,
                  host_ips: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.int data_volume_count: Specifies the data disk number of the nodes. The number configuration
-               of each node are as follows:
-               + master_nodes: 1.
-               + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str flavor: Specifies the instance specifications for each nodes in node group.
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.int node_number: Specifies the number of nodes for the node group.
-               
-               > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-               less than the number of nodes originally created.
-        :param _builtins.int root_volume_size: Specifies the system disk size of the nodes. Changing this will create
-               a new MapReduce cluster resource.
-        :param _builtins.str root_volume_type: Specifies the system disk flavor of the nodes. Changing this will
-               create a new MapReduce cluster resource.
-        :param Sequence[_builtins.str] assigned_roles: Specifies the roles deployed in a node group.This argument is mandatory
-               when the cluster type is CUSTOM. Each character string represents a role expression.
-               
-               **Role expression definition:**
-               
-               + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-               + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-               for example: `DataNode:1,2`. The subscript starts from 1.
-               + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-               role_name[instance_count], for example: `EsNode[9]`.
-               
-               > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-               store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        :param _builtins.int data_volume_size: Specifies the data disk size of the nodes,in GB. The value range is 10
-               to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-               cluster resource.
-        :param _builtins.str data_volume_type: Specifies the data disk flavor of the nodes.
-               Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-               The following disk types are supported:
-               + `SATA`: common I/O disk
-               + `SAS`: high I/O disk
-               + `SSD`: ultra-high I/O disk
-        :param Sequence[_builtins.str] host_ips: The host list of this nodes group in the cluster.
-        """
         pulumi.set(__self__, "data_volume_count", data_volume_count)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "node_number", node_number)
@@ -378,106 +230,46 @@ class ClusterAnalysisTaskNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeCount")
     def data_volume_count(self) -> _builtins.int:
-        """
-        Specifies the data disk number of the nodes. The number configuration
-        of each node are as follows:
-        + master_nodes: 1.
-        + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "data_volume_count")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Specifies the instance specifications for each nodes in node group.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="nodeNumber")
     def node_number(self) -> _builtins.int:
-        """
-        Specifies the number of nodes for the node group.
-
-        > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-        less than the number of nodes originally created.
-        """
         return pulumi.get(self, "node_number")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> _builtins.int:
-        """
-        Specifies the system disk size of the nodes. Changing this will create
-        a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> _builtins.str:
-        """
-        Specifies the system disk flavor of the nodes. Changing this will
-        create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="assignedRoles")
     def assigned_roles(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the roles deployed in a node group.This argument is mandatory
-        when the cluster type is CUSTOM. Each character string represents a role expression.
-
-        **Role expression definition:**
-
-        + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-        + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-        for example: `DataNode:1,2`. The subscript starts from 1.
-        + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-        role_name[instance_count], for example: `EsNode[9]`.
-
-        > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-        store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        """
         return pulumi.get(self, "assigned_roles")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeSize")
     def data_volume_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the data disk size of the nodes,in GB. The value range is 10
-        to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-        cluster resource.
-        """
         return pulumi.get(self, "data_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeType")
     def data_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data disk flavor of the nodes.
-        Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-        The following disk types are supported:
-        + `SATA`: common I/O disk
-        + `SAS`: high I/O disk
-        + `SSD`: ultra-high I/O disk
-        """
         return pulumi.get(self, "data_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="hostIps")
     def host_ips(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The host list of this nodes group in the cluster.
-        """
         return pulumi.get(self, "host_ips")
 
 
@@ -521,9 +313,7 @@ class ClusterBootstrapScript(dict):
                  state: Optional[_builtins.str] = None):
         """
         :param _builtins.str fail_action: The action after the bootstrap action script fails to be executed.
-        :param _builtins.str name: Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce cluster resource.
+        :param _builtins.str name: Name of a bootstrap action script.
         :param Sequence[_builtins.str] nodes: Name of the node group where the bootstrap action script is executed.
         :param _builtins.str uri: Path of a bootstrap action script. Set this parameter to an OBS bucket path or a local VM path.
         :param _builtins.bool active_master: Whether the bootstrap action script runs only on active master nodes.
@@ -562,9 +352,7 @@ class ClusterBootstrapScript(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce cluster resource.
+        Name of a bootstrap action script.
         """
         return pulumi.get(self, "name")
 
@@ -638,11 +426,6 @@ class ClusterComponentConfig(dict):
     def __init__(__self__, *,
                  configs: Sequence['outputs.ClusterComponentConfigConfig'],
                  name: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce cluster resource.
-        """
         pulumi.set(__self__, "configs", configs)
         pulumi.set(__self__, "name", name)
 
@@ -654,11 +437,6 @@ class ClusterComponentConfig(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the MapReduce cluster. The name can contain 2 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce cluster resource.
-        """
         return pulumi.get(self, "name")
 
 
@@ -761,53 +539,6 @@ class ClusterCustomNode(dict):
                  host_ips: Optional[Sequence[_builtins.str]] = None,
                  period: Optional[_builtins.int] = None,
                  period_unit: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int data_volume_count: Specifies the data disk number of the nodes. The number configuration
-               of each node are as follows:
-               + master_nodes: 1.
-               + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str flavor: Specifies the instance specifications for each nodes in node group.
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str group_name: Specifies the name of nodes for the node group.
-               
-               > **NOTE:** Only the custom_nodes has this argument
-        :param _builtins.int node_number: Specifies the number of nodes for the node group.
-               
-               > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-               less than the number of nodes originally created.
-        :param _builtins.int root_volume_size: Specifies the system disk size of the nodes. Changing this will create
-               a new MapReduce cluster resource.
-        :param _builtins.str root_volume_type: Specifies the system disk flavor of the nodes. Changing this will
-               create a new MapReduce cluster resource.
-        :param Sequence[_builtins.str] assigned_roles: Specifies the roles deployed in a node group.This argument is mandatory
-               when the cluster type is CUSTOM. Each character string represents a role expression.
-               
-               **Role expression definition:**
-               
-               + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-               + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-               for example: `DataNode:1,2`. The subscript starts from 1.
-               + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-               role_name[instance_count], for example: `EsNode[9]`.
-               
-               > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-               store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        :param _builtins.int data_volume_size: Specifies the data disk size of the nodes,in GB. The value range is 10
-               to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-               cluster resource.
-        :param _builtins.str data_volume_type: Specifies the data disk flavor of the nodes.
-               Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-               The following disk types are supported:
-               + `SATA`: common I/O disk
-               + `SAS`: high I/O disk
-               + `SSD`: ultra-high I/O disk
-        :param Sequence[_builtins.str] host_ips: The host list of this nodes group in the cluster.
-        """
         pulumi.set(__self__, "data_volume_count", data_volume_count)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "group_name", group_name)
@@ -834,85 +565,36 @@ class ClusterCustomNode(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeCount")
     def data_volume_count(self) -> _builtins.int:
-        """
-        Specifies the data disk number of the nodes. The number configuration
-        of each node are as follows:
-        + master_nodes: 1.
-        + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "data_volume_count")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Specifies the instance specifications for each nodes in node group.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> _builtins.str:
-        """
-        Specifies the name of nodes for the node group.
-
-        > **NOTE:** Only the custom_nodes has this argument
-        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter(name="nodeNumber")
     def node_number(self) -> _builtins.int:
-        """
-        Specifies the number of nodes for the node group.
-
-        > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-        less than the number of nodes originally created.
-        """
         return pulumi.get(self, "node_number")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> _builtins.int:
-        """
-        Specifies the system disk size of the nodes. Changing this will create
-        a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> _builtins.str:
-        """
-        Specifies the system disk flavor of the nodes. Changing this will
-        create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="assignedRoles")
     def assigned_roles(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the roles deployed in a node group.This argument is mandatory
-        when the cluster type is CUSTOM. Each character string represents a role expression.
-
-        **Role expression definition:**
-
-        + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-        + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-        for example: `DataNode:1,2`. The subscript starts from 1.
-        + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-        role_name[instance_count], for example: `EsNode[9]`.
-
-        > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-        store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        """
         return pulumi.get(self, "assigned_roles")
 
     @_builtins.property
@@ -928,32 +610,16 @@ class ClusterCustomNode(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeSize")
     def data_volume_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the data disk size of the nodes,in GB. The value range is 10
-        to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-        cluster resource.
-        """
         return pulumi.get(self, "data_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeType")
     def data_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data disk flavor of the nodes.
-        Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-        The following disk types are supported:
-        + `SATA`: common I/O disk
-        + `SAS`: high I/O disk
-        + `SSD`: ultra-high I/O disk
-        """
         return pulumi.get(self, "data_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="hostIps")
     def host_ips(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The host list of this nodes group in the cluster.
-        """
         return pulumi.get(self, "host_ips")
 
     @_builtins.property
@@ -1077,50 +743,6 @@ class ClusterMasterNodes(dict):
                  host_ips: Optional[Sequence[_builtins.str]] = None,
                  period: Optional[_builtins.int] = None,
                  period_unit: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int data_volume_count: Specifies the data disk number of the nodes. The number configuration
-               of each node are as follows:
-               + master_nodes: 1.
-               + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str flavor: Specifies the instance specifications for each nodes in node group.
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.int node_number: Specifies the number of nodes for the node group.
-               
-               > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-               less than the number of nodes originally created.
-        :param _builtins.int root_volume_size: Specifies the system disk size of the nodes. Changing this will create
-               a new MapReduce cluster resource.
-        :param _builtins.str root_volume_type: Specifies the system disk flavor of the nodes. Changing this will
-               create a new MapReduce cluster resource.
-        :param Sequence[_builtins.str] assigned_roles: Specifies the roles deployed in a node group.This argument is mandatory
-               when the cluster type is CUSTOM. Each character string represents a role expression.
-               
-               **Role expression definition:**
-               
-               + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-               + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-               for example: `DataNode:1,2`. The subscript starts from 1.
-               + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-               role_name[instance_count], for example: `EsNode[9]`.
-               
-               > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-               store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        :param _builtins.int data_volume_size: Specifies the data disk size of the nodes,in GB. The value range is 10
-               to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-               cluster resource.
-        :param _builtins.str data_volume_type: Specifies the data disk flavor of the nodes.
-               Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-               The following disk types are supported:
-               + `SATA`: common I/O disk
-               + `SAS`: high I/O disk
-               + `SSD`: ultra-high I/O disk
-        :param Sequence[_builtins.str] host_ips: The host list of this nodes group in the cluster.
-        """
         pulumi.set(__self__, "data_volume_count", data_volume_count)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "node_number", node_number)
@@ -1146,75 +768,31 @@ class ClusterMasterNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeCount")
     def data_volume_count(self) -> _builtins.int:
-        """
-        Specifies the data disk number of the nodes. The number configuration
-        of each node are as follows:
-        + master_nodes: 1.
-        + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "data_volume_count")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Specifies the instance specifications for each nodes in node group.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="nodeNumber")
     def node_number(self) -> _builtins.int:
-        """
-        Specifies the number of nodes for the node group.
-
-        > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-        less than the number of nodes originally created.
-        """
         return pulumi.get(self, "node_number")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> _builtins.int:
-        """
-        Specifies the system disk size of the nodes. Changing this will create
-        a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> _builtins.str:
-        """
-        Specifies the system disk flavor of the nodes. Changing this will
-        create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="assignedRoles")
     def assigned_roles(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the roles deployed in a node group.This argument is mandatory
-        when the cluster type is CUSTOM. Each character string represents a role expression.
-
-        **Role expression definition:**
-
-        + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-        + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-        for example: `DataNode:1,2`. The subscript starts from 1.
-        + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-        role_name[instance_count], for example: `EsNode[9]`.
-
-        > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-        store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        """
         return pulumi.get(self, "assigned_roles")
 
     @_builtins.property
@@ -1230,32 +808,16 @@ class ClusterMasterNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeSize")
     def data_volume_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the data disk size of the nodes,in GB. The value range is 10
-        to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-        cluster resource.
-        """
         return pulumi.get(self, "data_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeType")
     def data_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data disk flavor of the nodes.
-        Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-        The following disk types are supported:
-        + `SATA`: common I/O disk
-        + `SAS`: high I/O disk
-        + `SSD`: ultra-high I/O disk
-        """
         return pulumi.get(self, "data_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="hostIps")
     def host_ips(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The host list of this nodes group in the cluster.
-        """
         return pulumi.get(self, "host_ips")
 
     @_builtins.property
@@ -1370,50 +932,6 @@ class ClusterStreamingCoreNodes(dict):
                  host_ips: Optional[Sequence[_builtins.str]] = None,
                  period: Optional[_builtins.int] = None,
                  period_unit: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int data_volume_count: Specifies the data disk number of the nodes. The number configuration
-               of each node are as follows:
-               + master_nodes: 1.
-               + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str flavor: Specifies the instance specifications for each nodes in node group.
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.int node_number: Specifies the number of nodes for the node group.
-               
-               > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-               less than the number of nodes originally created.
-        :param _builtins.int root_volume_size: Specifies the system disk size of the nodes. Changing this will create
-               a new MapReduce cluster resource.
-        :param _builtins.str root_volume_type: Specifies the system disk flavor of the nodes. Changing this will
-               create a new MapReduce cluster resource.
-        :param Sequence[_builtins.str] assigned_roles: Specifies the roles deployed in a node group.This argument is mandatory
-               when the cluster type is CUSTOM. Each character string represents a role expression.
-               
-               **Role expression definition:**
-               
-               + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-               + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-               for example: `DataNode:1,2`. The subscript starts from 1.
-               + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-               role_name[instance_count], for example: `EsNode[9]`.
-               
-               > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-               store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        :param _builtins.int data_volume_size: Specifies the data disk size of the nodes,in GB. The value range is 10
-               to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-               cluster resource.
-        :param _builtins.str data_volume_type: Specifies the data disk flavor of the nodes.
-               Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-               The following disk types are supported:
-               + `SATA`: common I/O disk
-               + `SAS`: high I/O disk
-               + `SSD`: ultra-high I/O disk
-        :param Sequence[_builtins.str] host_ips: The host list of this nodes group in the cluster.
-        """
         pulumi.set(__self__, "data_volume_count", data_volume_count)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "node_number", node_number)
@@ -1439,75 +957,31 @@ class ClusterStreamingCoreNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeCount")
     def data_volume_count(self) -> _builtins.int:
-        """
-        Specifies the data disk number of the nodes. The number configuration
-        of each node are as follows:
-        + master_nodes: 1.
-        + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "data_volume_count")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Specifies the instance specifications for each nodes in node group.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="nodeNumber")
     def node_number(self) -> _builtins.int:
-        """
-        Specifies the number of nodes for the node group.
-
-        > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-        less than the number of nodes originally created.
-        """
         return pulumi.get(self, "node_number")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> _builtins.int:
-        """
-        Specifies the system disk size of the nodes. Changing this will create
-        a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> _builtins.str:
-        """
-        Specifies the system disk flavor of the nodes. Changing this will
-        create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="assignedRoles")
     def assigned_roles(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the roles deployed in a node group.This argument is mandatory
-        when the cluster type is CUSTOM. Each character string represents a role expression.
-
-        **Role expression definition:**
-
-        + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-        + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-        for example: `DataNode:1,2`. The subscript starts from 1.
-        + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-        role_name[instance_count], for example: `EsNode[9]`.
-
-        > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-        store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        """
         return pulumi.get(self, "assigned_roles")
 
     @_builtins.property
@@ -1523,32 +997,16 @@ class ClusterStreamingCoreNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeSize")
     def data_volume_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the data disk size of the nodes,in GB. The value range is 10
-        to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-        cluster resource.
-        """
         return pulumi.get(self, "data_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeType")
     def data_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data disk flavor of the nodes.
-        Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-        The following disk types are supported:
-        + `SATA`: common I/O disk
-        + `SAS`: high I/O disk
-        + `SSD`: ultra-high I/O disk
-        """
         return pulumi.get(self, "data_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="hostIps")
     def host_ips(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The host list of this nodes group in the cluster.
-        """
         return pulumi.get(self, "host_ips")
 
     @_builtins.property
@@ -1605,50 +1063,6 @@ class ClusterStreamingTaskNodes(dict):
                  data_volume_size: Optional[_builtins.int] = None,
                  data_volume_type: Optional[_builtins.str] = None,
                  host_ips: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.int data_volume_count: Specifies the data disk number of the nodes. The number configuration
-               of each node are as follows:
-               + master_nodes: 1.
-               + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-               + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-               
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.str flavor: Specifies the instance specifications for each nodes in node group.
-               Changing this will create a new MapReduce cluster resource.
-        :param _builtins.int node_number: Specifies the number of nodes for the node group.
-               
-               > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-               less than the number of nodes originally created.
-        :param _builtins.int root_volume_size: Specifies the system disk size of the nodes. Changing this will create
-               a new MapReduce cluster resource.
-        :param _builtins.str root_volume_type: Specifies the system disk flavor of the nodes. Changing this will
-               create a new MapReduce cluster resource.
-        :param Sequence[_builtins.str] assigned_roles: Specifies the roles deployed in a node group.This argument is mandatory
-               when the cluster type is CUSTOM. Each character string represents a role expression.
-               
-               **Role expression definition:**
-               
-               + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-               + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-               for example: `DataNode:1,2`. The subscript starts from 1.
-               + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-               role_name[instance_count], for example: `EsNode[9]`.
-               
-               > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-               store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        :param _builtins.int data_volume_size: Specifies the data disk size of the nodes,in GB. The value range is 10
-               to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-               cluster resource.
-        :param _builtins.str data_volume_type: Specifies the data disk flavor of the nodes.
-               Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-               The following disk types are supported:
-               + `SATA`: common I/O disk
-               + `SAS`: high I/O disk
-               + `SSD`: ultra-high I/O disk
-        :param Sequence[_builtins.str] host_ips: The host list of this nodes group in the cluster.
-        """
         pulumi.set(__self__, "data_volume_count", data_volume_count)
         pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "node_number", node_number)
@@ -1666,106 +1080,46 @@ class ClusterStreamingTaskNodes(dict):
     @_builtins.property
     @pulumi.getter(name="dataVolumeCount")
     def data_volume_count(self) -> _builtins.int:
-        """
-        Specifies the data disk number of the nodes. The number configuration
-        of each node are as follows:
-        + master_nodes: 1.
-        + analysis_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_core_nodes: minimum is one and the maximum is subject to the configuration of the corresponding flavor.
-        + analysis_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-        + streaming_task_nodes: minimum is zero and the maximum is subject to the configuration of the corresponding flavor.
-
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "data_volume_count")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Specifies the instance specifications for each nodes in node group.
-        Changing this will create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="nodeNumber")
     def node_number(self) -> _builtins.int:
-        """
-        Specifies the number of nodes for the node group.
-
-        > **NOTE:** Only the core group and task group updations are allowed. The number of nodes after scaling cannot be
-        less than the number of nodes originally created.
-        """
         return pulumi.get(self, "node_number")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeSize")
     def root_volume_size(self) -> _builtins.int:
-        """
-        Specifies the system disk size of the nodes. Changing this will create
-        a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumeType")
     def root_volume_type(self) -> _builtins.str:
-        """
-        Specifies the system disk flavor of the nodes. Changing this will
-        create a new MapReduce cluster resource.
-        """
         return pulumi.get(self, "root_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="assignedRoles")
     def assigned_roles(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the roles deployed in a node group.This argument is mandatory
-        when the cluster type is CUSTOM. Each character string represents a role expression.
-
-        **Role expression definition:**
-
-        + If the role is deployed on all nodes in the node group, set this parameter to role_name, for example: `DataNode`.
-        + If the role is deployed on a specified subscript node in the node group: role_name:index1,index2..., indexN,
-        for example: `DataNode:1,2`. The subscript starts from 1.
-        + Some roles support multi-instance deployment (that is, multiple instances of the same role are deployed on a node):
-        role_name[instance_count], for example: `EsNode[9]`.
-
-        > `DBService` is a basic component of a cluster. Components such as Hive, Hue, Oozie, Loader, and Redis, and Loader
-        store their metadata in DBService, and provide the metadata backup and restoration functions by using DBService.
-        """
         return pulumi.get(self, "assigned_roles")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeSize")
     def data_volume_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the data disk size of the nodes,in GB. The value range is 10
-        to 32768. Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce
-        cluster resource.
-        """
         return pulumi.get(self, "data_volume_size")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumeType")
     def data_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the data disk flavor of the nodes.
-        Required if `data_volume_count` is greater than zero. Changing this will create a new MapReduce cluster resource.
-        The following disk types are supported:
-        + `SATA`: common I/O disk
-        + `SAS`: high I/O disk
-        + `SSD`: ultra-high I/O disk
-        """
         return pulumi.get(self, "data_volume_type")
 
     @_builtins.property
     @pulumi.getter(name="hostIps")
     def host_ips(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The host list of this nodes group in the cluster.
-        """
         return pulumi.get(self, "host_ips")
 
 

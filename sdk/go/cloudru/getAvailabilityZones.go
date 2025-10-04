@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// ## # sbercloud\_availability\_zones
-//
-// # Use this data source to get a list of availability zones from Sbercloud
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetAvailabilityZones(ctx, &cloudru.GetAvailabilityZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, opts ...pulumi.InvokeOption) (*GetAvailabilityZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAvailabilityZonesResult
@@ -50,17 +23,14 @@ func GetAvailabilityZones(ctx *pulumi.Context, args *GetAvailabilityZonesArgs, o
 
 // A collection of arguments for invoking getAvailabilityZones.
 type GetAvailabilityZonesArgs struct {
-	// The region in which to obtain the available zones. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
-	// The `state` of the availability zones to match, default ("available").
-	State *string `pulumi:"state"`
+	State  *string `pulumi:"state"`
 }
 
 // A collection of values returned by getAvailabilityZones.
 type GetAvailabilityZonesResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The names of the availability zones, ordered alphanumerically, that match the queried `state`
+	Id     string   `pulumi:"id"`
 	Names  []string `pulumi:"names"`
 	Region string   `pulumi:"region"`
 	State  *string  `pulumi:"state"`
@@ -77,10 +47,8 @@ func GetAvailabilityZonesOutput(ctx *pulumi.Context, args GetAvailabilityZonesOu
 
 // A collection of arguments for invoking getAvailabilityZones.
 type GetAvailabilityZonesOutputArgs struct {
-	// The region in which to obtain the available zones. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// The `state` of the availability zones to match, default ("available").
-	State pulumi.StringPtrInput `pulumi:"state"`
+	State  pulumi.StringPtrInput `pulumi:"state"`
 }
 
 func (GetAvailabilityZonesOutputArgs) ElementType() reflect.Type {
@@ -107,7 +75,6 @@ func (o GetAvailabilityZonesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAvailabilityZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The names of the availability zones, ordered alphanumerically, that match the queried `state`
 func (o GetAvailabilityZonesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAvailabilityZonesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }

@@ -36,35 +36,6 @@ class FileSystemArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
-        :param pulumi.Input[_builtins.int] size: The size (GB) of the shared file system.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-               
-               > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone name. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Describes the shared file system.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the shared file system. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] is_public: The level of visibility for the shared file system.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key and value pairs as a dictionary of strings.
-               The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-               and the keys should be exist at the same time to enable the data encryption function.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the shared file system.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        :param pulumi.Input[_builtins.str] share_proto: The protocol for sharing file systems. The default value is NFS.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the shared file system.
         """
         pulumi.set(__self__, "size", size)
         if access_level is not None:
@@ -95,9 +66,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        The size (GB) of the shared file system.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -107,10 +75,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -120,20 +84,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-
-        > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        """
         return pulumi.get(self, "access_to")
 
     @access_to.setter
@@ -143,10 +93,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -156,9 +102,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The availability zone name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -168,9 +111,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Describes the shared file system.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -180,9 +120,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the shared file system. Changing this creates a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -192,9 +129,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The level of visibility for the shared file system.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -204,12 +138,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Metadata key and value pairs as a dictionary of strings.
-        The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-        and the keys should be exist at the same time to enable the data encryption function.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -219,9 +147,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the shared file system.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -231,9 +156,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -243,9 +165,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The protocol for sharing file systems. The default value is NFS.
-        """
         return pulumi.get(self, "share_proto")
 
     @share_proto.setter
@@ -255,9 +174,6 @@ class FileSystemArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the shared file system.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -288,40 +204,6 @@ class _FileSystemState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_rule_status: The status of the share access rule.
-        :param pulumi.Input[Sequence[pulumi.Input['FileSystemAccessRuleArgs']]] access_rules: All access rules of the shared file system. The object includes the following:
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-               
-               > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone name. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Describes the shared file system.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the shared file system. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] export_location: The address for accessing the shared file system.
-        :param pulumi.Input[_builtins.bool] is_public: The level of visibility for the shared file system.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key and value pairs as a dictionary of strings.
-               The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-               and the keys should be exist at the same time to enable the data encryption function.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the shared file system.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        :param pulumi.Input[_builtins.str] share_access_id: The UUID of the share access rule.
-        :param pulumi.Input[_builtins.str] share_proto: The protocol for sharing file systems. The default value is NFS.
-        :param pulumi.Input[_builtins.int] size: The size (GB) of the shared file system.
-        :param pulumi.Input[_builtins.str] status: The status of the share access rule.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the shared file system.
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
@@ -363,10 +245,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
@@ -376,9 +254,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="accessRuleStatus")
     def access_rule_status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "access_rule_status")
 
     @access_rule_status.setter
@@ -388,9 +263,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="accessRules")
     def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FileSystemAccessRuleArgs']]]]:
-        """
-        All access rules of the shared file system. The object includes the following:
-        """
         return pulumi.get(self, "access_rules")
 
     @access_rules.setter
@@ -400,20 +272,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-
-        > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        """
         return pulumi.get(self, "access_to")
 
     @access_to.setter
@@ -423,10 +281,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @access_type.setter
@@ -436,9 +290,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The availability zone name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -448,9 +299,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Describes the shared file system.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -460,9 +308,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the shared file system. Changing this creates a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -472,9 +317,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="exportLocation")
     def export_location(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The address for accessing the shared file system.
-        """
         return pulumi.get(self, "export_location")
 
     @export_location.setter
@@ -484,9 +326,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        The level of visibility for the shared file system.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -496,12 +335,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Metadata key and value pairs as a dictionary of strings.
-        The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-        and the keys should be exist at the same time to enable the data encryption function.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -511,9 +344,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the shared file system.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -523,9 +353,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -535,9 +362,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="shareAccessId")
     def share_access_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The UUID of the share access rule.
-        """
         return pulumi.get(self, "share_access_id")
 
     @share_access_id.setter
@@ -547,9 +371,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The protocol for sharing file systems. The default value is NFS.
-        """
         return pulumi.get(self, "share_proto")
 
     @share_proto.setter
@@ -559,9 +380,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The size (GB) of the shared file system.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -571,9 +389,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -583,9 +398,6 @@ class _FileSystemState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the shared file system.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -614,103 +426,9 @@ class FileSystem(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Provides a Shared File System (SFS) resource.
-
-        ## Example Usage
-
-        ### basic example
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        share_name = config.require_object("shareName")
-        share_description = config.require_object("shareDescription")
-        vpc_id = config.require_object("vpcId")
-        share_file = sbercloud.sfs.FileSystem("share-file",
-            name=share_name,
-            size=100,
-            share_proto="NFS",
-            access_level="rw",
-            access_to=vpc_id,
-            description=share_description,
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### sfs with data encryption
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        share_name = config.require_object("shareName")
-        share_description = config.require_object("shareDescription")
-        vpc_id = config.require_object("vpcId")
-        mykey = sbercloud.dew.Key("mykey",
-            key_alias="kms_sfs",
-            pending_days="7")
-        share_file = sbercloud.sfs.FileSystem("share-file",
-            name=share_name,
-            size=100,
-            share_proto="NFS",
-            access_level="rw",
-            access_to=vpc_id,
-            description=share_description,
-            metadata={
-                "#sfs_crypt_key_id": mykey.id,
-                "#sfs_crypt_domain_id": mykey.domain_id,
-                "#sfs_crypt_alias": mykey.key_alias,
-            },
-            tags={
-                "function": "encryption",
-            })
-        ```
-
-        ## Import
-
-        SFS can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Sfs/fileSystem:FileSystem sbercloud_sfs_file_system 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
-        ```
-
-        Please importing them by sbercloud_sfs_access_rule.
-
+        Create a FileSystem resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-               
-               > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone name. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Describes the shared file system.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the shared file system. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] is_public: The level of visibility for the shared file system.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key and value pairs as a dictionary of strings.
-               The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-               and the keys should be exist at the same time to enable the data encryption function.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the shared file system.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        :param pulumi.Input[_builtins.str] share_proto: The protocol for sharing file systems. The default value is NFS.
-        :param pulumi.Input[_builtins.int] size: The size (GB) of the shared file system.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the shared file system.
         """
         ...
     @overload
@@ -719,72 +437,7 @@ class FileSystem(pulumi.CustomResource):
                  args: FileSystemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Shared File System (SFS) resource.
-
-        ## Example Usage
-
-        ### basic example
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        share_name = config.require_object("shareName")
-        share_description = config.require_object("shareDescription")
-        vpc_id = config.require_object("vpcId")
-        share_file = sbercloud.sfs.FileSystem("share-file",
-            name=share_name,
-            size=100,
-            share_proto="NFS",
-            access_level="rw",
-            access_to=vpc_id,
-            description=share_description,
-            tags={
-                "key": "value",
-            })
-        ```
-
-        ### sfs with data encryption
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        share_name = config.require_object("shareName")
-        share_description = config.require_object("shareDescription")
-        vpc_id = config.require_object("vpcId")
-        mykey = sbercloud.dew.Key("mykey",
-            key_alias="kms_sfs",
-            pending_days="7")
-        share_file = sbercloud.sfs.FileSystem("share-file",
-            name=share_name,
-            size=100,
-            share_proto="NFS",
-            access_level="rw",
-            access_to=vpc_id,
-            description=share_description,
-            metadata={
-                "#sfs_crypt_key_id": mykey.id,
-                "#sfs_crypt_domain_id": mykey.domain_id,
-                "#sfs_crypt_alias": mykey.key_alias,
-            },
-            tags={
-                "function": "encryption",
-            })
-        ```
-
-        ## Import
-
-        SFS can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Sfs/fileSystem:FileSystem sbercloud_sfs_file_system 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
-        ```
-
-        Please importing them by sbercloud_sfs_access_rule.
-
+        Create a FileSystem resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FileSystemArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -877,40 +530,6 @@ class FileSystem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_level: Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-               and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] access_rule_status: The status of the share access rule.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FileSystemAccessRuleArgs', 'FileSystemAccessRuleArgsDict']]]] access_rules: All access rules of the shared file system. The object includes the following:
-        :param pulumi.Input[_builtins.str] access_to: Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-               Changing this will create a new access rule. The value varies according to the scenario:
-               - Set the VPC ID in VPC authorization scenarios.
-               - Set this parameter in IP address authorization scenario.
-               
-               - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-               
-               - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-               For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-               
-               > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        :param pulumi.Input[_builtins.str] access_type: Specifies the type of the share access rule. The default value is *cert*.
-               Changing this will create a new access rule.
-        :param pulumi.Input[_builtins.str] availability_zone: The availability zone name. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] description: Describes the shared file system.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the shared file system. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] export_location: The address for accessing the shared file system.
-        :param pulumi.Input[_builtins.bool] is_public: The level of visibility for the shared file system.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Metadata key and value pairs as a dictionary of strings.
-               The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-               and the keys should be exist at the same time to enable the data encryption function.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] name: The name of the shared file system.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        :param pulumi.Input[_builtins.str] share_access_id: The UUID of the share access rule.
-        :param pulumi.Input[_builtins.str] share_proto: The protocol for sharing file systems. The default value is NFS.
-        :param pulumi.Input[_builtins.int] size: The size (GB) of the shared file system.
-        :param pulumi.Input[_builtins.str] status: The status of the share access rule.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the shared file system.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -939,160 +558,90 @@ class FileSystem(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-        and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="accessRuleStatus")
     def access_rule_status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "access_rule_status")
 
     @_builtins.property
     @pulumi.getter(name="accessRules")
     def access_rules(self) -> pulumi.Output[Sequence['outputs.FileSystemAccessRule']]:
-        """
-        All access rules of the shared file system. The object includes the following:
-        """
         return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
     def access_to(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-        Changing this will create a new access rule. The value varies according to the scenario:
-        - Set the VPC ID in VPC authorization scenarios.
-        - Set this parameter in IP address authorization scenario.
-
-        - For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-
-        - For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-        For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-
-        > **NOTE:** If you want to create more access rules, please using sbercloud_sfs_access_rule.
-        """
         return pulumi.get(self, "access_to")
 
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the type of the share access rule. The default value is *cert*.
-        Changing this will create a new access rule.
-        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        The availability zone name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
-        """
-        Describes the shared file system.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the shared file system. Changing this creates a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="exportLocation")
     def export_location(self) -> pulumi.Output[_builtins.str]:
-        """
-        The address for accessing the shared file system.
-        """
         return pulumi.get(self, "export_location")
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        The level of visibility for the shared file system.
-        """
         return pulumi.get(self, "is_public")
 
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Metadata key and value pairs as a dictionary of strings.
-        The supported metadata keys are "#sfs_crypt_key_id", "#sfs_crypt_domain_id" and "#sfs_crypt_alias",
-        and the keys should be exist at the same time to enable the data encryption function.
-        Changing this will create a new resource.
-        """
         return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The name of the shared file system.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the sfs resource. If omitted, the provider-level region will be used. Changing this creates a new sfs resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="shareAccessId")
     def share_access_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The UUID of the share access rule.
-        """
         return pulumi.get(self, "share_access_id")
 
     @_builtins.property
     @pulumi.getter(name="shareProto")
     def share_proto(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The protocol for sharing file systems. The default value is NFS.
-        """
         return pulumi.get(self, "share_proto")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
-        """
-        The size (GB) of the shared file system.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the share access rule.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the shared file system.
-        """
         return pulumi.get(self, "tags")
 

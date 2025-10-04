@@ -6,27 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of CBH instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const test = sbercloud.getCbhInstances({
- *     name: "test_name",
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- *     securityGroupId: securityGroupId,
- * });
- * ```
- */
 export function getCbhInstances(args?: GetCbhInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetCbhInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -45,34 +24,12 @@ export function getCbhInstances(args?: GetCbhInstancesArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getCbhInstances.
  */
 export interface GetCbhInstancesArgs {
-    /**
-     * Specifies the specification of the instance.
-     */
     flavorId?: string;
-    /**
-     * Specifies the instance name.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the ID of a security group.
-     */
     securityGroupId?: string;
-    /**
-     * Specifies the ID of a subnet.
-     */
     subnetId?: string;
-    /**
-     * Specifies the current version of the instance image.
-     */
     version?: string;
-    /**
-     * Specifies the ID of a VPC.
-     */
     vpcId?: string;
 }
 
@@ -80,62 +37,19 @@ export interface GetCbhInstancesArgs {
  * A collection of values returned by getCbhInstances.
  */
 export interface GetCbhInstancesResult {
-    /**
-     * Indicates the specification of the instance.
-     */
     readonly flavorId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Indicates the list of CBH instance.
-     * The instances structure is documented below.
-     */
     readonly instances: outputs.GetCbhInstancesInstance[];
-    /**
-     * Indicates the instance name.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the ID of a security group.
-     */
     readonly securityGroupId?: string;
-    /**
-     * Indicates the ID of a subnet.
-     */
     readonly subnetId?: string;
-    /**
-     * Indicates the current version of the instance image.
-     */
     readonly version?: string;
-    /**
-     * Indicates the ID of a VPC.
-     */
     readonly vpcId?: string;
 }
-/**
- * Use this data source to get the list of CBH instance.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const test = sbercloud.getCbhInstances({
- *     name: "test_name",
- *     vpcId: vpcId,
- *     subnetId: subnetId,
- *     securityGroupId: securityGroupId,
- * });
- * ```
- */
 export function getCbhInstancesOutput(args?: GetCbhInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCbhInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -154,33 +68,11 @@ export function getCbhInstancesOutput(args?: GetCbhInstancesOutputArgs, opts?: p
  * A collection of arguments for invoking getCbhInstances.
  */
 export interface GetCbhInstancesOutputArgs {
-    /**
-     * Specifies the specification of the instance.
-     */
     flavorId?: pulumi.Input<string>;
-    /**
-     * Specifies the instance name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a security group.
-     */
     securityGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a subnet.
-     */
     subnetId?: pulumi.Input<string>;
-    /**
-     * Specifies the current version of the instance image.
-     */
     version?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a VPC.
-     */
     vpcId?: pulumi.Input<string>;
 }

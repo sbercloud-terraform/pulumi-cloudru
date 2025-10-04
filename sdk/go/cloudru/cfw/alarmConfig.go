@@ -12,94 +12,25 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW alarm configuration resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			alarmType := cfg.RequireObject("alarmType")
-//			alarmTimePeriod := cfg.RequireObject("alarmTimePeriod")
-//			severity := cfg.RequireObject("severity")
-//			frequencyCount := cfg.RequireObject("frequencyCount")
-//			frequencyTime := cfg.RequireObject("frequencyTime")
-//			topicUrn := cfg.RequireObject("topicUrn")
-//			_, err := cfw.NewAlarmConfig(ctx, "test", &cfw.AlarmConfigArgs{
-//				FwInstanceId:    pulumi.Any(fwInstanceId),
-//				AlarmType:       pulumi.Any(alarmType),
-//				AlarmTimePeriod: pulumi.Any(alarmTimePeriod),
-//				FrequencyCount:  pulumi.Any(frequencyCount),
-//				FrequencyTime:   pulumi.Any(frequencyTime),
-//				Severity:        pulumi.Any(severity),
-//				TopicUrn:        pulumi.Any(topicUrn),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The alarm configuration can be imported using `fw_instance_id`, `alarm_type`, separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/alarmConfig:AlarmConfig test <fw_instance_id>/<alarm_type>
-// ```
 type AlarmConfig struct {
 	pulumi.CustomResourceState
 
 	// Specifies the alarm period.
-	// The valid values are as follows:
-	// + **0**: 8:00 to 22:00;
-	// + **1**: all day;
 	AlarmTimePeriod pulumi.IntOutput `pulumi:"alarmTimePeriod"`
 	// Specifies the alarm type.
-	// The valid values are as follows.
-	// + **0**: attack;
-	// + **1**: traffic threshold crossing;
-	// + **2**: EIP unprotected;
-	// + **3**: threat intelligence;
 	AlarmType      pulumi.IntOutput       `pulumi:"alarmType"`
 	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
 	// Specifies the alarm triggering frequency.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
 	FrequencyCount pulumi.IntOutput `pulumi:"frequencyCount"`
 	// Specifies the alarm frequency time range.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
 	FrequencyTime pulumi.IntOutput `pulumi:"frequencyTime"`
 	// Specifies the firewall ID.
 	FwInstanceId pulumi.StringOutput `pulumi:"fwInstanceId"`
-	// The language.
+	// The alarm language.
 	Language pulumi.StringOutput `pulumi:"language"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Specifies the alarm severity.
-	// + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-	//   **MEDIUM**, and **LOW**, separated by commas.
-	// + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-	// + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// Specifies the alarm URN.
 	TopicUrn pulumi.StringOutput `pulumi:"topicUrn"`
@@ -159,38 +90,21 @@ func GetAlarmConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AlarmConfig resources.
 type alarmConfigState struct {
 	// Specifies the alarm period.
-	// The valid values are as follows:
-	// + **0**: 8:00 to 22:00;
-	// + **1**: all day;
 	AlarmTimePeriod *int `pulumi:"alarmTimePeriod"`
 	// Specifies the alarm type.
-	// The valid values are as follows.
-	// + **0**: attack;
-	// + **1**: traffic threshold crossing;
-	// + **2**: EIP unprotected;
-	// + **3**: threat intelligence;
 	AlarmType      *int    `pulumi:"alarmType"`
 	EnableForceNew *string `pulumi:"enableForceNew"`
 	// Specifies the alarm triggering frequency.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
 	FrequencyCount *int `pulumi:"frequencyCount"`
 	// Specifies the alarm frequency time range.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
 	FrequencyTime *int `pulumi:"frequencyTime"`
 	// Specifies the firewall ID.
 	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// The language.
+	// The alarm language.
 	Language *string `pulumi:"language"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 	// Specifies the alarm severity.
-	// + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-	//   **MEDIUM**, and **LOW**, separated by commas.
-	// + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-	// + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
 	Severity *string `pulumi:"severity"`
 	// Specifies the alarm URN.
 	TopicUrn *string `pulumi:"topicUrn"`
@@ -200,38 +114,21 @@ type alarmConfigState struct {
 
 type AlarmConfigState struct {
 	// Specifies the alarm period.
-	// The valid values are as follows:
-	// + **0**: 8:00 to 22:00;
-	// + **1**: all day;
 	AlarmTimePeriod pulumi.IntPtrInput
 	// Specifies the alarm type.
-	// The valid values are as follows.
-	// + **0**: attack;
-	// + **1**: traffic threshold crossing;
-	// + **2**: EIP unprotected;
-	// + **3**: threat intelligence;
 	AlarmType      pulumi.IntPtrInput
 	EnableForceNew pulumi.StringPtrInput
 	// Specifies the alarm triggering frequency.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
 	FrequencyCount pulumi.IntPtrInput
 	// Specifies the alarm frequency time range.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
 	FrequencyTime pulumi.IntPtrInput
 	// Specifies the firewall ID.
 	FwInstanceId pulumi.StringPtrInput
-	// The language.
+	// The alarm language.
 	Language pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput
 	// Specifies the alarm severity.
-	// + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-	//   **MEDIUM**, and **LOW**, separated by commas.
-	// + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-	// + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
 	Severity pulumi.StringPtrInput
 	// Specifies the alarm URN.
 	TopicUrn pulumi.StringPtrInput
@@ -245,36 +142,19 @@ func (AlarmConfigState) ElementType() reflect.Type {
 
 type alarmConfigArgs struct {
 	// Specifies the alarm period.
-	// The valid values are as follows:
-	// + **0**: 8:00 to 22:00;
-	// + **1**: all day;
 	AlarmTimePeriod int `pulumi:"alarmTimePeriod"`
 	// Specifies the alarm type.
-	// The valid values are as follows.
-	// + **0**: attack;
-	// + **1**: traffic threshold crossing;
-	// + **2**: EIP unprotected;
-	// + **3**: threat intelligence;
 	AlarmType      int     `pulumi:"alarmType"`
 	EnableForceNew *string `pulumi:"enableForceNew"`
 	// Specifies the alarm triggering frequency.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
 	FrequencyCount int `pulumi:"frequencyCount"`
 	// Specifies the alarm frequency time range.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
 	FrequencyTime int `pulumi:"frequencyTime"`
 	// Specifies the firewall ID.
 	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 	// Specifies the alarm severity.
-	// + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-	//   **MEDIUM**, and **LOW**, separated by commas.
-	// + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-	// + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
 	Severity string `pulumi:"severity"`
 	// Specifies the alarm URN.
 	TopicUrn string `pulumi:"topicUrn"`
@@ -283,36 +163,19 @@ type alarmConfigArgs struct {
 // The set of arguments for constructing a AlarmConfig resource.
 type AlarmConfigArgs struct {
 	// Specifies the alarm period.
-	// The valid values are as follows:
-	// + **0**: 8:00 to 22:00;
-	// + **1**: all day;
 	AlarmTimePeriod pulumi.IntInput
 	// Specifies the alarm type.
-	// The valid values are as follows.
-	// + **0**: attack;
-	// + **1**: traffic threshold crossing;
-	// + **2**: EIP unprotected;
-	// + **3**: threat intelligence;
 	AlarmType      pulumi.IntInput
 	EnableForceNew pulumi.StringPtrInput
 	// Specifies the alarm triggering frequency.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
 	FrequencyCount pulumi.IntInput
 	// Specifies the alarm frequency time range.
-	// + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-	// + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
 	FrequencyTime pulumi.IntInput
 	// Specifies the firewall ID.
 	FwInstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this will create new resource.
+	// The region in which to create the resource. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput
 	// Specifies the alarm severity.
-	// + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-	//   **MEDIUM**, and **LOW**, separated by commas.
-	// + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-	// + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
 	Severity pulumi.StringInput
 	// Specifies the alarm URN.
 	TopicUrn pulumi.StringInput
@@ -406,19 +269,11 @@ func (o AlarmConfigOutput) ToAlarmConfigOutputWithContext(ctx context.Context) A
 }
 
 // Specifies the alarm period.
-// The valid values are as follows:
-// + **0**: 8:00 to 22:00;
-// + **1**: all day;
 func (o AlarmConfigOutput) AlarmTimePeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.IntOutput { return v.AlarmTimePeriod }).(pulumi.IntOutput)
 }
 
 // Specifies the alarm type.
-// The valid values are as follows.
-// + **0**: attack;
-// + **1**: traffic threshold crossing;
-// + **2**: EIP unprotected;
-// + **3**: threat intelligence;
 func (o AlarmConfigOutput) AlarmType() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.IntOutput { return v.AlarmType }).(pulumi.IntOutput)
 }
@@ -428,15 +283,11 @@ func (o AlarmConfigOutput) EnableForceNew() pulumi.StringPtrOutput {
 }
 
 // Specifies the alarm triggering frequency.
-// + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-// + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
 func (o AlarmConfigOutput) FrequencyCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.IntOutput { return v.FrequencyCount }).(pulumi.IntOutput)
 }
 
 // Specifies the alarm frequency time range.
-// + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-// + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
 func (o AlarmConfigOutput) FrequencyTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.IntOutput { return v.FrequencyTime }).(pulumi.IntOutput)
 }
@@ -446,22 +297,17 @@ func (o AlarmConfigOutput) FwInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.StringOutput { return v.FwInstanceId }).(pulumi.StringOutput)
 }
 
-// The language.
+// The alarm language.
 func (o AlarmConfigOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.StringOutput { return v.Language }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this will create new resource.
+// The region in which to create the resource. If omitted, the provider-level region will be used.
 func (o AlarmConfigOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the alarm severity.
-//   - If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-//     **MEDIUM**, and **LOW**, separated by commas.
-//   - If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-//   - If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
 func (o AlarmConfigOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlarmConfig) pulumi.StringOutput { return v.Severity }).(pulumi.StringOutput)
 }

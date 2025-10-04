@@ -12,290 +12,57 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages CSS cluster resource within SberCloud
-//
-// ## Example Usage
-//
-// ### create a cluster
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/css"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			_, err := css.NewCluster(ctx, "cluster", &css.ClusterArgs{
-//				Name:          pulumi.String("terraform_test_cluster"),
-//				EngineVersion: pulumi.String("7.10.2"),
-//				EssNodeConfig: &css.ClusterEssNodeConfigArgs{
-//					Flavor:         pulumi.String("ess.spec-4u8g"),
-//					InstanceNumber: pulumi.Int(1),
-//					Volume: &css.ClusterEssNodeConfigVolumeArgs{
-//						VolumeType: pulumi.String("HIGH"),
-//						Size:       pulumi.Int(40),
-//					},
-//				},
-//				AvailabilityZone: pulumi.Any(availabilityZone),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				SecurityGroupId:  pulumi.Any(secgroupId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### create a cluster with ess-data node and master node
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/css"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			_, err := css.NewCluster(ctx, "cluster", &css.ClusterArgs{
-//				Name:          pulumi.String("terraform_test_cluster"),
-//				EngineVersion: pulumi.String("7.10.2"),
-//				EssNodeConfig: &css.ClusterEssNodeConfigArgs{
-//					Flavor:         pulumi.String("ess.spec-4u8g"),
-//					InstanceNumber: pulumi.Int(1),
-//					Volume: &css.ClusterEssNodeConfigVolumeArgs{
-//						VolumeType: pulumi.String("HIGH"),
-//						Size:       pulumi.Int(40),
-//					},
-//				},
-//				MasterNodeConfig: &css.ClusterMasterNodeConfigArgs{
-//					Flavor:         pulumi.String("ess.spec-4u8g"),
-//					InstanceNumber: pulumi.Int(3),
-//					Volume: &css.ClusterMasterNodeConfigVolumeArgs{
-//						VolumeType: pulumi.String("HIGH"),
-//						Size:       pulumi.Int(40),
-//					},
-//				},
-//				AvailabilityZone: pulumi.Any(availabilityZone),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				SecurityGroupId:  pulumi.Any(secgroupId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### create a cluster with ess-data node and cold node use local disk
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/css"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			availabilityZone := cfg.RequireObject("availabilityZone")
-//			vpcId := cfg.RequireObject("vpcId")
-//			subnetId := cfg.RequireObject("subnetId")
-//			secgroupId := cfg.RequireObject("secgroupId")
-//			_, err := css.NewCluster(ctx, "cluster", &css.ClusterArgs{
-//				Name:          pulumi.String("terraform_test_cluster"),
-//				EngineVersion: pulumi.String("7.10.2"),
-//				EssNodeConfig: &css.ClusterEssNodeConfigArgs{
-//					Flavor:         pulumi.String("ess.spec-ds.xlarge.8"),
-//					InstanceNumber: pulumi.Int(1),
-//				},
-//				ColdNodeConfig: &css.ClusterColdNodeConfigArgs{
-//					Flavor:         pulumi.String("ess.spec-ds.2xlarge.8"),
-//					InstanceNumber: pulumi.Int(2),
-//				},
-//				AvailabilityZone: pulumi.Any(availabilityZone),
-//				VpcId:            pulumi.Any(vpcId),
-//				SubnetId:         pulumi.Any(subnetId),
-//				SecurityGroupId:  pulumi.Any(secgroupId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The CSS cluster can be imported by `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Css/cluster:Cluster test <id>
-// ```
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether auto renew is enabled.
-	// The valid values are **true** and **false**, defaults to **false**.
-	//
-	// <a name="Css_ess_node_config"></a>
-	// The `essNodeConfig` and `coldNodeConfig` block supports:
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Whether the snapshot function is enabled.
-	BackupAvailable pulumi.BoolOutput `pulumi:"backupAvailable"`
-	// Specifies the advanced backup policy. Structure is documented below.
-	BackupStrategy ClusterBackupStrategyPtrOutput `pulumi:"backupStrategy"`
-	// The resource ID of bandwidth.
-	BandwidthResourceId pulumi.StringOutput `pulumi:"bandwidthResourceId"`
-	// Specifies the charging mode of the cluster.
-	// Valid value is **postPaid**, defaults to **postPaid**.
-	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
-	// Specifies the config of client node.
-	// The clientNodeConfig structure is documented below.
-	ClientNodeConfig ClusterClientNodeConfigPtrOutput `pulumi:"clientNodeConfig"`
-	// Specifies the config of cold data node.
-	// The coldNodeConfig structure is documented below.
-	ColdNodeConfig ClusterColdNodeConfigPtrOutput `pulumi:"coldNodeConfig"`
+	// schema: Required
+	AvailabilityZone    pulumi.StringOutput              `pulumi:"availabilityZone"`
+	BackupAvailable     pulumi.BoolOutput                `pulumi:"backupAvailable"`
+	BackupStrategy      ClusterBackupStrategyPtrOutput   `pulumi:"backupStrategy"`
+	BandwidthResourceId pulumi.StringOutput              `pulumi:"bandwidthResourceId"`
+	ChargingMode        pulumi.StringOutput              `pulumi:"chargingMode"`
+	ClientNodeConfig    ClusterClientNodeConfigPtrOutput `pulumi:"clientNodeConfig"`
+	ColdNodeConfig      ClusterColdNodeConfigPtrOutput   `pulumi:"coldNodeConfig"`
 	// schema: Deprecated; use createdAt instead
-	Created pulumi.StringOutput `pulumi:"created"`
-	// Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Whether disks are encrypted.
-	DiskEncrypted  pulumi.BoolOutput      `pulumi:"diskEncrypted"`
-	EnableForceNew pulumi.StringPtrOutput `pulumi:"enableForceNew"`
-	// The IP address and port number.
-	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
-	// Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-	// Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-	EngineType pulumi.StringPtrOutput `pulumi:"engineType"`
-	// Specifies the engine version.
-	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
-	// Specifies the enterprise project id of the css cluster, The value **0**
-	// indicates the default enterprise project.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the config of data node.
-	// The essNodeConfig structure is documented below.
+	Created             pulumi.StringOutput    `pulumi:"created"`
+	CreatedAt           pulumi.StringOutput    `pulumi:"createdAt"`
+	DiskEncrypted       pulumi.BoolOutput      `pulumi:"diskEncrypted"`
+	EnableForceNew      pulumi.StringPtrOutput `pulumi:"enableForceNew"`
+	Endpoint            pulumi.StringOutput    `pulumi:"endpoint"`
+	EngineType          pulumi.StringPtrOutput `pulumi:"engineType"`
+	EngineVersion       pulumi.StringOutput    `pulumi:"engineVersion"`
+	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	// schema: Required
 	EssNodeConfig ClusterEssNodeConfigOutput `pulumi:"essNodeConfig"`
 	// Deprecated: please use ess_node_config.instance_number instead
-	ExpectNodeNum pulumi.IntOutput `pulumi:"expectNodeNum"`
-	// Specifies whether to enable HTTPS. Defaults to **false**.
-	// When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
-	// Changing this parameter will create a new resource.
-	HttpsEnabled pulumi.BoolOutput `pulumi:"httpsEnabled"`
-	// Whether a cluster is billed on the yearly/monthly mode.
-	IsPeriod pulumi.BoolOutput `pulumi:"isPeriod"`
-	// Specifies Kibana public network access information.
-	// This parameter is valid only when securityMode is set to **true**.
-	// The kibanaPublicAccess structure is documented below.
+	ExpectNodeNum      pulumi.IntOutput                   `pulumi:"expectNodeNum"`
+	HttpsEnabled       pulumi.BoolOutput                  `pulumi:"httpsEnabled"`
+	IsPeriod           pulumi.BoolOutput                  `pulumi:"isPeriod"`
 	KibanaPublicAccess ClusterKibanaPublicAccessPtrOutput `pulumi:"kibanaPublicAccess"`
-	// Specifies the config of master node.
-	// The masterNodeConfig structure is documented below.
-	MasterNodeConfig ClusterMasterNodeConfigPtrOutput `pulumi:"masterNodeConfig"`
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
+	MasterNodeConfig   ClusterMasterNodeConfigPtrOutput   `pulumi:"masterNodeConfig"`
+	Name               pulumi.StringOutput                `pulumi:"name"`
 	// Deprecated: please use essNodeConfig instead
-	NodeConfig ClusterNodeConfigOutput `pulumi:"nodeConfig"`
-	// List of node objects.
-	// The nodes structure is documented below.
-	Nodes ClusterNodeArrayOutput `pulumi:"nodes"`
-	// Specifies the password of the cluster administrator in security mode.
-	// This parameter is mandatory only when `securityMode` is set to true.
-	// The administrator password must meet the following requirements:
-	// + The password can contain 8 to 32 characters.
-	// + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-	//   and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
-	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `9`.
-	//
-	// > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
-	// from **postPaid** to **prePaid** billing mode.
-	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Specifies the charging period unit of the instance.
-	// Valid values are **month** and **year**.
-	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// Specifies the public network access information.
-	// The publicAccess structure is documented below.
+	NodeConfig   ClusterNodeConfigOutput      `pulumi:"nodeConfig"`
+	Nodes        ClusterNodeArrayOutput       `pulumi:"nodes"`
+	Password     pulumi.StringPtrOutput       `pulumi:"password"`
+	Period       pulumi.IntPtrOutput          `pulumi:"period"`
+	PeriodUnit   pulumi.StringPtrOutput       `pulumi:"periodUnit"`
 	PublicAccess ClusterPublicAccessPtrOutput `pulumi:"publicAccess"`
-	// Specifies the region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the security group ID.
-	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Specifies whether to enable authentication.
-	// The value can be **true** or **false**. Authentication is disabled by default.
-	// + **true:** Authentication is enabled for the cluster.
-	// + **false:** Authentication is disabled for the cluster.
-	//
-	// > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-	// The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-	// After the cluster is restarted, the authentication mode for invoking the cluster changes.
-	// You need to adjust the authentication mode accordingly.
-	SecurityMode pulumi.BoolPtrOutput `pulumi:"securityMode"`
-	// Instance status.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
-	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
-	// The key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// Specifies the VPC endpoint service information.
-	// The vpcepEndpoint structure is documented below.
-	VpcepEndpoint ClusterVpcepEndpointPtrOutput `pulumi:"vpcepEndpoint"`
-	// The VPC endpoint service ID.
-	VpcepEndpointId pulumi.StringOutput `pulumi:"vpcepEndpointId"`
-	// The private IP address of VPC endpoint service.
-	VpcepIp pulumi.StringOutput `pulumi:"vpcepIp"`
+	Region       pulumi.StringOutput          `pulumi:"region"`
+	// schema: Required
+	SecurityGroupId pulumi.StringOutput  `pulumi:"securityGroupId"`
+	SecurityMode    pulumi.BoolPtrOutput `pulumi:"securityMode"`
+	Status          pulumi.StringOutput  `pulumi:"status"`
+	// schema: Required
+	SubnetId  pulumi.StringOutput    `pulumi:"subnetId"`
+	Tags      pulumi.StringMapOutput `pulumi:"tags"`
+	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	// schema: Required
+	VpcId           pulumi.StringOutput           `pulumi:"vpcId"`
+	VpcepEndpoint   ClusterVpcepEndpointPtrOutput `pulumi:"vpcepEndpoint"`
+	VpcepEndpointId pulumi.StringOutput           `pulumi:"vpcepEndpointId"`
+	VpcepIp         pulumi.StringOutput           `pulumi:"vpcepIp"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -338,259 +105,105 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Specifies whether auto renew is enabled.
-	// The valid values are **true** and **false**, defaults to **false**.
-	//
-	// <a name="Css_ess_node_config"></a>
-	// The `essNodeConfig` and `coldNodeConfig` block supports:
 	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Whether the snapshot function is enabled.
-	BackupAvailable *bool `pulumi:"backupAvailable"`
-	// Specifies the advanced backup policy. Structure is documented below.
-	BackupStrategy *ClusterBackupStrategy `pulumi:"backupStrategy"`
-	// The resource ID of bandwidth.
-	BandwidthResourceId *string `pulumi:"bandwidthResourceId"`
-	// Specifies the charging mode of the cluster.
-	// Valid value is **postPaid**, defaults to **postPaid**.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the config of client node.
-	// The clientNodeConfig structure is documented below.
-	ClientNodeConfig *ClusterClientNodeConfig `pulumi:"clientNodeConfig"`
-	// Specifies the config of cold data node.
-	// The coldNodeConfig structure is documented below.
-	ColdNodeConfig *ClusterColdNodeConfig `pulumi:"coldNodeConfig"`
+	// schema: Required
+	AvailabilityZone    *string                  `pulumi:"availabilityZone"`
+	BackupAvailable     *bool                    `pulumi:"backupAvailable"`
+	BackupStrategy      *ClusterBackupStrategy   `pulumi:"backupStrategy"`
+	BandwidthResourceId *string                  `pulumi:"bandwidthResourceId"`
+	ChargingMode        *string                  `pulumi:"chargingMode"`
+	ClientNodeConfig    *ClusterClientNodeConfig `pulumi:"clientNodeConfig"`
+	ColdNodeConfig      *ClusterColdNodeConfig   `pulumi:"coldNodeConfig"`
 	// schema: Deprecated; use createdAt instead
-	Created *string `pulumi:"created"`
-	// Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Whether disks are encrypted.
-	DiskEncrypted  *bool   `pulumi:"diskEncrypted"`
-	EnableForceNew *string `pulumi:"enableForceNew"`
-	// The IP address and port number.
-	Endpoint *string `pulumi:"endpoint"`
-	// Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-	// Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-	EngineType *string `pulumi:"engineType"`
-	// Specifies the engine version.
-	EngineVersion *string `pulumi:"engineVersion"`
-	// Specifies the enterprise project id of the css cluster, The value **0**
-	// indicates the default enterprise project.
+	Created             *string `pulumi:"created"`
+	CreatedAt           *string `pulumi:"createdAt"`
+	DiskEncrypted       *bool   `pulumi:"diskEncrypted"`
+	EnableForceNew      *string `pulumi:"enableForceNew"`
+	Endpoint            *string `pulumi:"endpoint"`
+	EngineType          *string `pulumi:"engineType"`
+	EngineVersion       *string `pulumi:"engineVersion"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the config of data node.
-	// The essNodeConfig structure is documented below.
+	// schema: Required
 	EssNodeConfig *ClusterEssNodeConfig `pulumi:"essNodeConfig"`
 	// Deprecated: please use ess_node_config.instance_number instead
-	ExpectNodeNum *int `pulumi:"expectNodeNum"`
-	// Specifies whether to enable HTTPS. Defaults to **false**.
-	// When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
-	// Changing this parameter will create a new resource.
-	HttpsEnabled *bool `pulumi:"httpsEnabled"`
-	// Whether a cluster is billed on the yearly/monthly mode.
-	IsPeriod *bool `pulumi:"isPeriod"`
-	// Specifies Kibana public network access information.
-	// This parameter is valid only when securityMode is set to **true**.
-	// The kibanaPublicAccess structure is documented below.
+	ExpectNodeNum      *int                       `pulumi:"expectNodeNum"`
+	HttpsEnabled       *bool                      `pulumi:"httpsEnabled"`
+	IsPeriod           *bool                      `pulumi:"isPeriod"`
 	KibanaPublicAccess *ClusterKibanaPublicAccess `pulumi:"kibanaPublicAccess"`
-	// Specifies the config of master node.
-	// The masterNodeConfig structure is documented below.
-	MasterNodeConfig *ClusterMasterNodeConfig `pulumi:"masterNodeConfig"`
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
+	MasterNodeConfig   *ClusterMasterNodeConfig   `pulumi:"masterNodeConfig"`
+	Name               *string                    `pulumi:"name"`
 	// Deprecated: please use essNodeConfig instead
-	NodeConfig *ClusterNodeConfig `pulumi:"nodeConfig"`
-	// List of node objects.
-	// The nodes structure is documented below.
-	Nodes []ClusterNode `pulumi:"nodes"`
-	// Specifies the password of the cluster administrator in security mode.
-	// This parameter is mandatory only when `securityMode` is set to true.
-	// The administrator password must meet the following requirements:
-	// + The password can contain 8 to 32 characters.
-	// + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-	//   and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
-	Password *string `pulumi:"password"`
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `9`.
-	//
-	// > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
-	// from **postPaid** to **prePaid** billing mode.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the instance.
-	// Valid values are **month** and **year**.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the public network access information.
-	// The publicAccess structure is documented below.
+	NodeConfig   *ClusterNodeConfig   `pulumi:"nodeConfig"`
+	Nodes        []ClusterNode        `pulumi:"nodes"`
+	Password     *string              `pulumi:"password"`
+	Period       *int                 `pulumi:"period"`
+	PeriodUnit   *string              `pulumi:"periodUnit"`
 	PublicAccess *ClusterPublicAccess `pulumi:"publicAccess"`
-	// Specifies the region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region *string `pulumi:"region"`
-	// Specifies the security group ID.
+	Region       *string              `pulumi:"region"`
+	// schema: Required
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Specifies whether to enable authentication.
-	// The value can be **true** or **false**. Authentication is disabled by default.
-	// + **true:** Authentication is enabled for the cluster.
-	// + **false:** Authentication is disabled for the cluster.
-	//
-	// > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-	// The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-	// After the cluster is restarted, the authentication mode for invoking the cluster changes.
-	// You need to adjust the authentication mode accordingly.
-	SecurityMode *bool `pulumi:"securityMode"`
-	// Instance status.
-	Status *string `pulumi:"status"`
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// The key/value pairs to associate with the cluster.
-	Tags map[string]string `pulumi:"tags"`
-	// Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId *string `pulumi:"vpcId"`
-	// Specifies the VPC endpoint service information.
-	// The vpcepEndpoint structure is documented below.
-	VpcepEndpoint *ClusterVpcepEndpoint `pulumi:"vpcepEndpoint"`
-	// The VPC endpoint service ID.
-	VpcepEndpointId *string `pulumi:"vpcepEndpointId"`
-	// The private IP address of VPC endpoint service.
-	VpcepIp *string `pulumi:"vpcepIp"`
+	SecurityMode    *bool   `pulumi:"securityMode"`
+	Status          *string `pulumi:"status"`
+	// schema: Required
+	SubnetId  *string           `pulumi:"subnetId"`
+	Tags      map[string]string `pulumi:"tags"`
+	UpdatedAt *string           `pulumi:"updatedAt"`
+	// schema: Required
+	VpcId           *string               `pulumi:"vpcId"`
+	VpcepEndpoint   *ClusterVpcepEndpoint `pulumi:"vpcepEndpoint"`
+	VpcepEndpointId *string               `pulumi:"vpcepEndpointId"`
+	VpcepIp         *string               `pulumi:"vpcepIp"`
 }
 
 type ClusterState struct {
-	// Specifies whether auto renew is enabled.
-	// The valid values are **true** and **false**, defaults to **false**.
-	//
-	// <a name="Css_ess_node_config"></a>
-	// The `essNodeConfig` and `coldNodeConfig` block supports:
 	AutoRenew pulumi.StringPtrInput
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone pulumi.StringPtrInput
-	// Whether the snapshot function is enabled.
-	BackupAvailable pulumi.BoolPtrInput
-	// Specifies the advanced backup policy. Structure is documented below.
-	BackupStrategy ClusterBackupStrategyPtrInput
-	// The resource ID of bandwidth.
+	// schema: Required
+	AvailabilityZone    pulumi.StringPtrInput
+	BackupAvailable     pulumi.BoolPtrInput
+	BackupStrategy      ClusterBackupStrategyPtrInput
 	BandwidthResourceId pulumi.StringPtrInput
-	// Specifies the charging mode of the cluster.
-	// Valid value is **postPaid**, defaults to **postPaid**.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the config of client node.
-	// The clientNodeConfig structure is documented below.
-	ClientNodeConfig ClusterClientNodeConfigPtrInput
-	// Specifies the config of cold data node.
-	// The coldNodeConfig structure is documented below.
-	ColdNodeConfig ClusterColdNodeConfigPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	ClientNodeConfig    ClusterClientNodeConfigPtrInput
+	ColdNodeConfig      ClusterColdNodeConfigPtrInput
 	// schema: Deprecated; use createdAt instead
-	Created pulumi.StringPtrInput
-	// Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-	CreatedAt pulumi.StringPtrInput
-	// Whether disks are encrypted.
-	DiskEncrypted  pulumi.BoolPtrInput
-	EnableForceNew pulumi.StringPtrInput
-	// The IP address and port number.
-	Endpoint pulumi.StringPtrInput
-	// Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-	// Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-	EngineType pulumi.StringPtrInput
-	// Specifies the engine version.
-	EngineVersion pulumi.StringPtrInput
-	// Specifies the enterprise project id of the css cluster, The value **0**
-	// indicates the default enterprise project.
+	Created             pulumi.StringPtrInput
+	CreatedAt           pulumi.StringPtrInput
+	DiskEncrypted       pulumi.BoolPtrInput
+	EnableForceNew      pulumi.StringPtrInput
+	Endpoint            pulumi.StringPtrInput
+	EngineType          pulumi.StringPtrInput
+	EngineVersion       pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the config of data node.
-	// The essNodeConfig structure is documented below.
+	// schema: Required
 	EssNodeConfig ClusterEssNodeConfigPtrInput
 	// Deprecated: please use ess_node_config.instance_number instead
-	ExpectNodeNum pulumi.IntPtrInput
-	// Specifies whether to enable HTTPS. Defaults to **false**.
-	// When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
-	// Changing this parameter will create a new resource.
-	HttpsEnabled pulumi.BoolPtrInput
-	// Whether a cluster is billed on the yearly/monthly mode.
-	IsPeriod pulumi.BoolPtrInput
-	// Specifies Kibana public network access information.
-	// This parameter is valid only when securityMode is set to **true**.
-	// The kibanaPublicAccess structure is documented below.
+	ExpectNodeNum      pulumi.IntPtrInput
+	HttpsEnabled       pulumi.BoolPtrInput
+	IsPeriod           pulumi.BoolPtrInput
 	KibanaPublicAccess ClusterKibanaPublicAccessPtrInput
-	// Specifies the config of master node.
-	// The masterNodeConfig structure is documented below.
-	MasterNodeConfig ClusterMasterNodeConfigPtrInput
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
+	MasterNodeConfig   ClusterMasterNodeConfigPtrInput
+	Name               pulumi.StringPtrInput
 	// Deprecated: please use essNodeConfig instead
-	NodeConfig ClusterNodeConfigPtrInput
-	// List of node objects.
-	// The nodes structure is documented below.
-	Nodes ClusterNodeArrayInput
-	// Specifies the password of the cluster administrator in security mode.
-	// This parameter is mandatory only when `securityMode` is set to true.
-	// The administrator password must meet the following requirements:
-	// + The password can contain 8 to 32 characters.
-	// + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-	//   and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
-	Password pulumi.StringPtrInput
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `9`.
-	//
-	// > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
-	// from **postPaid** to **prePaid** billing mode.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the instance.
-	// Valid values are **month** and **year**.
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the public network access information.
-	// The publicAccess structure is documented below.
+	NodeConfig   ClusterNodeConfigPtrInput
+	Nodes        ClusterNodeArrayInput
+	Password     pulumi.StringPtrInput
+	Period       pulumi.IntPtrInput
+	PeriodUnit   pulumi.StringPtrInput
 	PublicAccess ClusterPublicAccessPtrInput
-	// Specifies the region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region pulumi.StringPtrInput
-	// Specifies the security group ID.
+	Region       pulumi.StringPtrInput
+	// schema: Required
 	SecurityGroupId pulumi.StringPtrInput
-	// Specifies whether to enable authentication.
-	// The value can be **true** or **false**. Authentication is disabled by default.
-	// + **true:** Authentication is enabled for the cluster.
-	// + **false:** Authentication is disabled for the cluster.
-	//
-	// > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-	// The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-	// After the cluster is restarted, the authentication mode for invoking the cluster changes.
-	// You need to adjust the authentication mode accordingly.
-	SecurityMode pulumi.BoolPtrInput
-	// Instance status.
-	Status pulumi.StringPtrInput
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
-	SubnetId pulumi.StringPtrInput
-	// The key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapInput
-	// Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
+	SecurityMode    pulumi.BoolPtrInput
+	Status          pulumi.StringPtrInput
+	// schema: Required
+	SubnetId  pulumi.StringPtrInput
+	Tags      pulumi.StringMapInput
 	UpdatedAt pulumi.StringPtrInput
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId pulumi.StringPtrInput
-	// Specifies the VPC endpoint service information.
-	// The vpcepEndpoint structure is documented below.
-	VpcepEndpoint ClusterVpcepEndpointPtrInput
-	// The VPC endpoint service ID.
+	// schema: Required
+	VpcId           pulumi.StringPtrInput
+	VpcepEndpoint   ClusterVpcepEndpointPtrInput
 	VpcepEndpointId pulumi.StringPtrInput
-	// The private IP address of VPC endpoint service.
-	VpcepIp pulumi.StringPtrInput
+	VpcepIp         pulumi.StringPtrInput
 }
 
 func (ClusterState) ElementType() reflect.Type {
@@ -598,209 +211,79 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Specifies whether auto renew is enabled.
-	// The valid values are **true** and **false**, defaults to **false**.
-	//
-	// <a name="Css_ess_node_config"></a>
-	// The `essNodeConfig` and `coldNodeConfig` block supports:
 	AutoRenew *string `pulumi:"autoRenew"`
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the advanced backup policy. Structure is documented below.
-	BackupStrategy *ClusterBackupStrategy `pulumi:"backupStrategy"`
-	// Specifies the charging mode of the cluster.
-	// Valid value is **postPaid**, defaults to **postPaid**.
-	ChargingMode *string `pulumi:"chargingMode"`
-	// Specifies the config of client node.
-	// The clientNodeConfig structure is documented below.
-	ClientNodeConfig *ClusterClientNodeConfig `pulumi:"clientNodeConfig"`
-	// Specifies the config of cold data node.
-	// The coldNodeConfig structure is documented below.
-	ColdNodeConfig *ClusterColdNodeConfig `pulumi:"coldNodeConfig"`
-	EnableForceNew *string                `pulumi:"enableForceNew"`
-	// Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-	// Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-	EngineType *string `pulumi:"engineType"`
-	// Specifies the engine version.
-	EngineVersion string `pulumi:"engineVersion"`
-	// Specifies the enterprise project id of the css cluster, The value **0**
-	// indicates the default enterprise project.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the config of data node.
-	// The essNodeConfig structure is documented below.
+	// schema: Required
+	AvailabilityZone    *string                  `pulumi:"availabilityZone"`
+	BackupStrategy      *ClusterBackupStrategy   `pulumi:"backupStrategy"`
+	ChargingMode        *string                  `pulumi:"chargingMode"`
+	ClientNodeConfig    *ClusterClientNodeConfig `pulumi:"clientNodeConfig"`
+	ColdNodeConfig      *ClusterColdNodeConfig   `pulumi:"coldNodeConfig"`
+	EnableForceNew      *string                  `pulumi:"enableForceNew"`
+	EngineType          *string                  `pulumi:"engineType"`
+	EngineVersion       string                   `pulumi:"engineVersion"`
+	EnterpriseProjectId *string                  `pulumi:"enterpriseProjectId"`
+	// schema: Required
 	EssNodeConfig *ClusterEssNodeConfig `pulumi:"essNodeConfig"`
 	// Deprecated: please use ess_node_config.instance_number instead
-	ExpectNodeNum *int `pulumi:"expectNodeNum"`
-	// Specifies whether to enable HTTPS. Defaults to **false**.
-	// When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
-	// Changing this parameter will create a new resource.
-	HttpsEnabled *bool `pulumi:"httpsEnabled"`
-	// Specifies Kibana public network access information.
-	// This parameter is valid only when securityMode is set to **true**.
-	// The kibanaPublicAccess structure is documented below.
+	ExpectNodeNum      *int                       `pulumi:"expectNodeNum"`
+	HttpsEnabled       *bool                      `pulumi:"httpsEnabled"`
 	KibanaPublicAccess *ClusterKibanaPublicAccess `pulumi:"kibanaPublicAccess"`
-	// Specifies the config of master node.
-	// The masterNodeConfig structure is documented below.
-	MasterNodeConfig *ClusterMasterNodeConfig `pulumi:"masterNodeConfig"`
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
+	MasterNodeConfig   *ClusterMasterNodeConfig   `pulumi:"masterNodeConfig"`
+	Name               *string                    `pulumi:"name"`
 	// Deprecated: please use essNodeConfig instead
-	NodeConfig *ClusterNodeConfig `pulumi:"nodeConfig"`
-	// Specifies the password of the cluster administrator in security mode.
-	// This parameter is mandatory only when `securityMode` is set to true.
-	// The administrator password must meet the following requirements:
-	// + The password can contain 8 to 32 characters.
-	// + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-	//   and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
-	Password *string `pulumi:"password"`
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `9`.
-	//
-	// > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
-	// from **postPaid** to **prePaid** billing mode.
-	Period *int `pulumi:"period"`
-	// Specifies the charging period unit of the instance.
-	// Valid values are **month** and **year**.
-	PeriodUnit *string `pulumi:"periodUnit"`
-	// Specifies the public network access information.
-	// The publicAccess structure is documented below.
+	NodeConfig   *ClusterNodeConfig   `pulumi:"nodeConfig"`
+	Password     *string              `pulumi:"password"`
+	Period       *int                 `pulumi:"period"`
+	PeriodUnit   *string              `pulumi:"periodUnit"`
 	PublicAccess *ClusterPublicAccess `pulumi:"publicAccess"`
-	// Specifies the region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region *string `pulumi:"region"`
-	// Specifies the security group ID.
+	Region       *string              `pulumi:"region"`
+	// schema: Required
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Specifies whether to enable authentication.
-	// The value can be **true** or **false**. Authentication is disabled by default.
-	// + **true:** Authentication is enabled for the cluster.
-	// + **false:** Authentication is disabled for the cluster.
-	//
-	// > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-	// The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-	// After the cluster is restarted, the authentication mode for invoking the cluster changes.
-	// You need to adjust the authentication mode accordingly.
-	SecurityMode *bool `pulumi:"securityMode"`
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// The key/value pairs to associate with the cluster.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId *string `pulumi:"vpcId"`
-	// Specifies the VPC endpoint service information.
-	// The vpcepEndpoint structure is documented below.
+	SecurityMode    *bool   `pulumi:"securityMode"`
+	// schema: Required
+	SubnetId *string           `pulumi:"subnetId"`
+	Tags     map[string]string `pulumi:"tags"`
+	// schema: Required
+	VpcId         *string               `pulumi:"vpcId"`
 	VpcepEndpoint *ClusterVpcepEndpoint `pulumi:"vpcepEndpoint"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Specifies whether auto renew is enabled.
-	// The valid values are **true** and **false**, defaults to **false**.
-	//
-	// <a name="Css_ess_node_config"></a>
-	// The `essNodeConfig` and `coldNodeConfig` block supports:
 	AutoRenew pulumi.StringPtrInput
-	// Specifies the availability zone name.
-	// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-	// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-	// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-	// between node quantity in any two AZs is **1** at most.
-	AvailabilityZone pulumi.StringPtrInput
-	// Specifies the advanced backup policy. Structure is documented below.
-	BackupStrategy ClusterBackupStrategyPtrInput
-	// Specifies the charging mode of the cluster.
-	// Valid value is **postPaid**, defaults to **postPaid**.
-	ChargingMode pulumi.StringPtrInput
-	// Specifies the config of client node.
-	// The clientNodeConfig structure is documented below.
-	ClientNodeConfig ClusterClientNodeConfigPtrInput
-	// Specifies the config of cold data node.
-	// The coldNodeConfig structure is documented below.
-	ColdNodeConfig ClusterColdNodeConfigPtrInput
-	EnableForceNew pulumi.StringPtrInput
-	// Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-	// Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-	EngineType pulumi.StringPtrInput
-	// Specifies the engine version.
-	EngineVersion pulumi.StringInput
-	// Specifies the enterprise project id of the css cluster, The value **0**
-	// indicates the default enterprise project.
+	// schema: Required
+	AvailabilityZone    pulumi.StringPtrInput
+	BackupStrategy      ClusterBackupStrategyPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	ClientNodeConfig    ClusterClientNodeConfigPtrInput
+	ColdNodeConfig      ClusterColdNodeConfigPtrInput
+	EnableForceNew      pulumi.StringPtrInput
+	EngineType          pulumi.StringPtrInput
+	EngineVersion       pulumi.StringInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the config of data node.
-	// The essNodeConfig structure is documented below.
+	// schema: Required
 	EssNodeConfig ClusterEssNodeConfigPtrInput
 	// Deprecated: please use ess_node_config.instance_number instead
-	ExpectNodeNum pulumi.IntPtrInput
-	// Specifies whether to enable HTTPS. Defaults to **false**.
-	// When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
-	// Changing this parameter will create a new resource.
-	HttpsEnabled pulumi.BoolPtrInput
-	// Specifies Kibana public network access information.
-	// This parameter is valid only when securityMode is set to **true**.
-	// The kibanaPublicAccess structure is documented below.
+	ExpectNodeNum      pulumi.IntPtrInput
+	HttpsEnabled       pulumi.BoolPtrInput
 	KibanaPublicAccess ClusterKibanaPublicAccessPtrInput
-	// Specifies the config of master node.
-	// The masterNodeConfig structure is documented below.
-	MasterNodeConfig ClusterMasterNodeConfigPtrInput
-	// Specifies the cluster name. It contains `4` to `32` characters.
-	// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
+	MasterNodeConfig   ClusterMasterNodeConfigPtrInput
+	Name               pulumi.StringPtrInput
 	// Deprecated: please use essNodeConfig instead
-	NodeConfig ClusterNodeConfigPtrInput
-	// Specifies the password of the cluster administrator in security mode.
-	// This parameter is mandatory only when `securityMode` is set to true.
-	// The administrator password must meet the following requirements:
-	// + The password can contain 8 to 32 characters.
-	// + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-	//   and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
-	Password pulumi.StringPtrInput
-	// Specifies the charging period of the instance.
-	// If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
-	// If `periodUnit` is set to **year**, the value ranges from `1` to `9`.
-	//
-	// > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
-	// from **postPaid** to **prePaid** billing mode.
-	Period pulumi.IntPtrInput
-	// Specifies the charging period unit of the instance.
-	// Valid values are **month** and **year**.
-	PeriodUnit pulumi.StringPtrInput
-	// Specifies the public network access information.
-	// The publicAccess structure is documented below.
+	NodeConfig   ClusterNodeConfigPtrInput
+	Password     pulumi.StringPtrInput
+	Period       pulumi.IntPtrInput
+	PeriodUnit   pulumi.StringPtrInput
 	PublicAccess ClusterPublicAccessPtrInput
-	// Specifies the region in which to create the cluster resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new cluster resource.
-	Region pulumi.StringPtrInput
-	// Specifies the security group ID.
+	Region       pulumi.StringPtrInput
+	// schema: Required
 	SecurityGroupId pulumi.StringPtrInput
-	// Specifies whether to enable authentication.
-	// The value can be **true** or **false**. Authentication is disabled by default.
-	// + **true:** Authentication is enabled for the cluster.
-	// + **false:** Authentication is disabled for the cluster.
-	//
-	// > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-	// The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-	// After the cluster is restarted, the authentication mode for invoking the cluster changes.
-	// You need to adjust the authentication mode accordingly.
-	SecurityMode pulumi.BoolPtrInput
-	// Specifies the Subnet ID.
-	// Changing this parameter will create a new resource.
+	SecurityMode    pulumi.BoolPtrInput
+	// schema: Required
 	SubnetId pulumi.StringPtrInput
-	// The key/value pairs to associate with the cluster.
-	Tags pulumi.StringMapInput
-	// Specifies the VPC ID.
-	// Changing this parameter will create a new resource.
-	VpcId pulumi.StringPtrInput
-	// Specifies the VPC endpoint service information.
-	// The vpcepEndpoint structure is documented below.
+	Tags     pulumi.StringMapInput
+	// schema: Required
+	VpcId         pulumi.StringPtrInput
 	VpcepEndpoint ClusterVpcepEndpointPtrInput
 }
 
@@ -891,53 +374,35 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// Specifies whether auto renew is enabled.
-// The valid values are **true** and **false**, defaults to **false**.
-//
-// <a name="Css_ess_node_config"></a>
-// The `essNodeConfig` and `coldNodeConfig` block supports:
 func (o ClusterOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the availability zone name.
-// Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-// than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-// distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-// between node quantity in any two AZs is **1** at most.
+// schema: Required
 func (o ClusterOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Whether the snapshot function is enabled.
 func (o ClusterOutput) BackupAvailable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.BackupAvailable }).(pulumi.BoolOutput)
 }
 
-// Specifies the advanced backup policy. Structure is documented below.
 func (o ClusterOutput) BackupStrategy() ClusterBackupStrategyPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBackupStrategyPtrOutput { return v.BackupStrategy }).(ClusterBackupStrategyPtrOutput)
 }
 
-// The resource ID of bandwidth.
 func (o ClusterOutput) BandwidthResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.BandwidthResourceId }).(pulumi.StringOutput)
 }
 
-// Specifies the charging mode of the cluster.
-// Valid value is **postPaid**, defaults to **postPaid**.
 func (o ClusterOutput) ChargingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ChargingMode }).(pulumi.StringOutput)
 }
 
-// Specifies the config of client node.
-// The clientNodeConfig structure is documented below.
 func (o ClusterOutput) ClientNodeConfig() ClusterClientNodeConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClientNodeConfigPtrOutput { return v.ClientNodeConfig }).(ClusterClientNodeConfigPtrOutput)
 }
 
-// Specifies the config of cold data node.
-// The coldNodeConfig structure is documented below.
 func (o ClusterOutput) ColdNodeConfig() ClusterColdNodeConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterColdNodeConfigPtrOutput { return v.ColdNodeConfig }).(ClusterColdNodeConfigPtrOutput)
 }
@@ -947,12 +412,10 @@ func (o ClusterOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
 func (o ClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Whether disks are encrypted.
 func (o ClusterOutput) DiskEncrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.DiskEncrypted }).(pulumi.BoolOutput)
 }
@@ -961,30 +424,23 @@ func (o ClusterOutput) EnableForceNew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.EnableForceNew }).(pulumi.StringPtrOutput)
 }
 
-// The IP address and port number.
 func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-// Defaults to **elasticsearch**. Changing this parameter will create a new resource.
 func (o ClusterOutput) EngineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.EngineType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the engine version.
 func (o ClusterOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project id of the css cluster, The value **0**
-// indicates the default enterprise project.
 func (o ClusterOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the config of data node.
-// The essNodeConfig structure is documented below.
+// schema: Required
 func (o ClusterOutput) EssNodeConfig() ClusterEssNodeConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEssNodeConfigOutput { return v.EssNodeConfig }).(ClusterEssNodeConfigOutput)
 }
@@ -994,34 +450,22 @@ func (o ClusterOutput) ExpectNodeNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ExpectNodeNum }).(pulumi.IntOutput)
 }
 
-// Specifies whether to enable HTTPS. Defaults to **false**.
-// When `httpsEnabled` is set to **true**, the `securityMode` needs to be set to **true**.
-// Changing this parameter will create a new resource.
 func (o ClusterOutput) HttpsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.HttpsEnabled }).(pulumi.BoolOutput)
 }
 
-// Whether a cluster is billed on the yearly/monthly mode.
 func (o ClusterOutput) IsPeriod() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.IsPeriod }).(pulumi.BoolOutput)
 }
 
-// Specifies Kibana public network access information.
-// This parameter is valid only when securityMode is set to **true**.
-// The kibanaPublicAccess structure is documented below.
 func (o ClusterOutput) KibanaPublicAccess() ClusterKibanaPublicAccessPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterKibanaPublicAccessPtrOutput { return v.KibanaPublicAccess }).(ClusterKibanaPublicAccessPtrOutput)
 }
 
-// Specifies the config of master node.
-// The masterNodeConfig structure is documented below.
 func (o ClusterOutput) MasterNodeConfig() ClusterMasterNodeConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMasterNodeConfigPtrOutput { return v.MasterNodeConfig }).(ClusterMasterNodeConfigPtrOutput)
 }
 
-// Specifies the cluster name. It contains `4` to `32` characters.
-// Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-// Changing this parameter will create a new resource.
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1031,107 +475,69 @@ func (o ClusterOutput) NodeConfig() ClusterNodeConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeConfigOutput { return v.NodeConfig }).(ClusterNodeConfigOutput)
 }
 
-// List of node objects.
-// The nodes structure is documented below.
 func (o ClusterOutput) Nodes() ClusterNodeArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterNodeArrayOutput { return v.Nodes }).(ClusterNodeArrayOutput)
 }
 
-// Specifies the password of the cluster administrator in security mode.
-// This parameter is mandatory only when `securityMode` is set to true.
-// The administrator password must meet the following requirements:
-//   - The password can contain 8 to 32 characters.
-//   - The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-//     and special characters (~!@#$%^&*()-_=+\\|[{}];:,<.>/?).
 func (o ClusterOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the charging period of the instance.
-// If `periodUnit` is set to **month**, the value ranges from `1` to `9`.
-// If `periodUnit` is set to **year**, the value ranges from `1` to `9`.
-//
-// > **NOTE:** `chargingMode`, `periodUnit`, `period` can only be updated when changing
-// from **postPaid** to **prePaid** billing mode.
 func (o ClusterOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the charging period unit of the instance.
-// Valid values are **month** and **year**.
 func (o ClusterOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the public network access information.
-// The publicAccess structure is documented below.
 func (o ClusterOutput) PublicAccess() ClusterPublicAccessPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPublicAccessPtrOutput { return v.PublicAccess }).(ClusterPublicAccessPtrOutput)
 }
 
-// Specifies the region in which to create the cluster resource. If omitted, the
-// provider-level region will be used. Changing this creates a new cluster resource.
 func (o ClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the security group ID.
+// schema: Required
 func (o ClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable authentication.
-// The value can be **true** or **false**. Authentication is disabled by default.
-// + **true:** Authentication is enabled for the cluster.
-// + **false:** Authentication is disabled for the cluster.
-//
-// > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-// The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-// After the cluster is restarted, the authentication mode for invoking the cluster changes.
-// You need to adjust the authentication mode accordingly.
 func (o ClusterOutput) SecurityMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.SecurityMode }).(pulumi.BoolPtrOutput)
 }
 
-// Instance status.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the Subnet ID.
-// Changing this parameter will create a new resource.
+// schema: Required
 func (o ClusterOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// The key/value pairs to associate with the cluster.
 func (o ClusterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
 func (o ClusterOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC ID.
-// Changing this parameter will create a new resource.
+// schema: Required
 func (o ClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC endpoint service information.
-// The vpcepEndpoint structure is documented below.
 func (o ClusterOutput) VpcepEndpoint() ClusterVpcepEndpointPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterVpcepEndpointPtrOutput { return v.VpcepEndpoint }).(ClusterVpcepEndpointPtrOutput)
 }
 
-// The VPC endpoint service ID.
 func (o ClusterOutput) VpcepEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcepEndpointId }).(pulumi.StringOutput)
 }
 
-// The private IP address of VPC endpoint service.
 func (o ClusterOutput) VpcepIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.VpcepIp }).(pulumi.StringOutput)
 }

@@ -26,15 +26,6 @@ class KafkaUserArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KafkaUser resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the user belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the user. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-               The value must be different from name.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka user resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "password", password)
@@ -48,10 +39,6 @@ class KafkaUserArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the DMS kafka instance to which the user belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -61,11 +48,6 @@ class KafkaUserArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the password of the user. The parameter must be 8 to 32 characters
-        long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-        The value must be different from name.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -75,9 +57,6 @@ class KafkaUserArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the user.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -87,9 +66,6 @@ class KafkaUserArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the user. Changing this creates a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -99,10 +75,6 @@ class KafkaUserArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka user resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -123,18 +95,6 @@ class _KafkaUserState:
                  role: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaUser resources.
-        :param pulumi.Input[_builtins.str] created_at: Indicates the create time.
-        :param pulumi.Input[_builtins.bool] default_app: Indicates whether the application is the default application.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the user belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the user. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-               The value must be different from name.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka user resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] role: Indicates the user role.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -156,9 +116,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the create time.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -168,9 +125,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter(name="defaultApp")
     def default_app(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether the application is the default application.
-        """
         return pulumi.get(self, "default_app")
 
     @default_app.setter
@@ -180,9 +134,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the user.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -192,10 +143,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the DMS kafka instance to which the user belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -205,9 +152,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the user. Changing this creates a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -217,11 +161,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password of the user. The parameter must be 8 to 32 characters
-        long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-        The value must be different from name.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -231,10 +170,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS kafka user resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -244,9 +179,6 @@ class _KafkaUserState:
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the user role.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -267,45 +199,9 @@ class KafkaUser(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DMS kafka user resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        user_password = config.require_object("userPassword")
-        user = sbercloud.dms.KafkaUser("user",
-            instance_id=kafka_instance_id,
-            name="user_1",
-            password=user_password,
-            description="test_description")
-        ```
-
-        ## Import
-
-        DMS kafka users can be imported using the kafka instance ID and user name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaUser:KafkaUser user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/user_1
-        ```
-
+        Create a KafkaUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the user belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the user. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-               The value must be different from name.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka user resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -314,34 +210,7 @@ class KafkaUser(pulumi.CustomResource):
                  args: KafkaUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DMS kafka user resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        kafka_instance_id = config.require_object("kafkaInstanceId")
-        user_password = config.require_object("userPassword")
-        user = sbercloud.dms.KafkaUser("user",
-            instance_id=kafka_instance_id,
-            name="user_1",
-            password=user_password,
-            description="test_description")
-        ```
-
-        ## Import
-
-        DMS kafka users can be imported using the kafka instance ID and user name separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaUser:KafkaUser user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/user_1
-        ```
-
+        Create a KafkaUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -410,18 +279,6 @@ class KafkaUser(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: Indicates the create time.
-        :param pulumi.Input[_builtins.bool] default_app: Indicates whether the application is the default application.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the user.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DMS kafka instance to which the user belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the user. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the user. The parameter must be 8 to 32 characters
-               long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-               The value must be different from name.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS kafka user resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] role: Indicates the user role.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -440,68 +297,40 @@ class KafkaUser(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the create time.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="defaultApp")
     def default_app(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Indicates whether the application is the default application.
-        """
         return pulumi.get(self, "default_app")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the user.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the DMS kafka instance to which the user belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the user. Changing this creates a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the password of the user. The parameter must be 8 to 32 characters
-        long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-        The value must be different from name.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DMS kafka user resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the user role.
-        """
         return pulumi.get(self, "role")
 

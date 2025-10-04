@@ -4,21 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages an event for testing specified function within SberCloud.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * Function event can be imported using the `function_urn` and `name`, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/fgsFunctionEvent:FgsFunctionEvent test <function_urn>/<name>
- * ```
- */
 export class FgsFunctionEvent extends pulumi.CustomResource {
     /**
      * Get an existing FgsFunctionEvent resource's state with the given name, ID, and optional extra
@@ -48,24 +33,19 @@ export class FgsFunctionEvent extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the function event content.  
-     * The value is the base64 encoding of the JSON string.
+     * The function event content.
      */
     declare public readonly content: pulumi.Output<string>;
     /**
-     * Specifies the URN of the function to which the event blongs.  
-     * Changing this parameter will create a new resource.
+     * The URN of the function to which the event blongs.
      */
     declare public readonly functionUrn: pulumi.Output<string>;
     /**
-     * Specifies the function event name.  
-     * The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_) and hyphens (-) are allowed.
+     * The function event name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the region where the function event is located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the function event is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -115,24 +95,19 @@ export class FgsFunctionEvent extends pulumi.CustomResource {
  */
 export interface FgsFunctionEventState {
     /**
-     * Specifies the function event content.  
-     * The value is the base64 encoding of the JSON string.
+     * The function event content.
      */
     content?: pulumi.Input<string>;
     /**
-     * Specifies the URN of the function to which the event blongs.  
-     * Changing this parameter will create a new resource.
+     * The URN of the function to which the event blongs.
      */
     functionUrn?: pulumi.Input<string>;
     /**
-     * Specifies the function event name.  
-     * The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_) and hyphens (-) are allowed.
+     * The function event name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region where the function event is located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the function event is located.
      */
     region?: pulumi.Input<string>;
     /**
@@ -146,24 +121,19 @@ export interface FgsFunctionEventState {
  */
 export interface FgsFunctionEventArgs {
     /**
-     * Specifies the function event content.  
-     * The value is the base64 encoding of the JSON string.
+     * The function event content.
      */
     content: pulumi.Input<string>;
     /**
-     * Specifies the URN of the function to which the event blongs.  
-     * Changing this parameter will create a new resource.
+     * The URN of the function to which the event blongs.
      */
     functionUrn: pulumi.Input<string>;
     /**
-     * Specifies the function event name.  
-     * The name can contain a maximum of `25` characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_) and hyphens (-) are allowed.
+     * The function event name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region where the function event is located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the function event is located.
      */
     region?: pulumi.Input<string>;
 }

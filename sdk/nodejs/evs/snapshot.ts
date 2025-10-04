@@ -4,53 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides an EVS snapshot resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const myvolume = new sbercloud.evs.Volume("myvolume", {
- *     name: "volume",
- *     description: "my volume",
- *     volumeType: "SSD",
- *     size: 20,
- *     availabilityZone: "ru-moscow-1a",
- *     tags: {
- *         foo: "bar",
- *         key: "value",
- *     },
- * });
- * const snapshot1 = new sbercloud.evs.Snapshot("snapshot_1", {
- *     name: "snapshot-001",
- *     description: "Daily backup",
- *     volumeId: myvolume.id,
- * });
- * ```
- *
- * The following arguments are supported:
- *
- * * `region` - (Optional, String, ForceNew) The region in which to create the evs snapshot resource. If omitted, the provider-level region will be used. Changing this creates a new EVS snapshot resource.
- *
- * * `volumeId` - (Required, String, ForceNew) The id of the snapshot's source disk. Changing the parameter creates a new snapshot.
- *
- * * `name` - (Required, String) The name of the snapshot. The value can contain a maximum of 255 bytes.
- *
- * * `description` - (Optional, String) The description of the snapshot. The value can contain a maximum of 255 bytes.
- *
- * * `force` - (Optional, Bool) Specifies the flag for forcibly creating a snapshot. Default to false.
- *
- * In addition to all arguments above, the following attributes are exported:
- *
- * * `id` - The id of the snapshot.
- *
- * * `status` - The status of the snapshot.
- *
- * * `size` - The size of the snapshot in GB.
- *
- * EVS snapshot can be imported using the `snapshot id`, e.g.
- */
 export class Snapshot extends pulumi.CustomResource {
     /**
      * Get an existing Snapshot resource's state with the given name, ID, and optional extra

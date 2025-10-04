@@ -6,27 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Add a node from an existing ecs server to a CCE cluster.
- *
- * ## Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = new sbercloud.cce.NodeAttach("test", {
- *     clusterId: clusterId,
- *     serverId: serverId,
- *     keyPair: keypairName,
- *     os: "CentOS 7.6",
- *     tags: {
- *         foo: "bar",
- *         key: "value",
- *     },
- * });
- * ```
- */
 export class NodeAttach extends pulumi.CustomResource {
     /**
      * Get an existing NodeAttach resource's state with the given name, ID, and optional extra
@@ -55,34 +34,14 @@ export class NodeAttach extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeAttach.__pulumiType;
     }
 
-    /**
-     * The name of the available partition (AZ).
-     */
     declare public /*out*/ readonly availabilityZone: pulumi.Output<string>;
     declare public /*out*/ readonly chargingMode: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the cluster. Changing this parameter will create a new
-     * resource.
-     */
     declare public readonly clusterId: pulumi.Output<string>;
-    /**
-     * The data disks related configuration.
-     */
     declare public /*out*/ readonly dataVolumes: pulumi.Output<outputs.Cce.NodeAttachDataVolume[]>;
-    /**
-     * Specifies the available disk space of a single docker container on the
-     * node in device mapper mode. Changing this parameter will create a new resource.
-     */
     declare public readonly dockerBaseSize: pulumi.Output<number | undefined>;
-    /**
-     * The Ecs group ID.
-     */
     declare public /*out*/ readonly ecsGroupId: pulumi.Output<string>;
     declare public /*out*/ readonly enterpriseProjectId: pulumi.Output<string>;
     declare public /*out*/ readonly extensionNics: pulumi.Output<outputs.Cce.NodeAttachExtensionNic[]>;
-    /**
-     * The flavor ID of the CCE node.
-     */
     declare public /*out*/ readonly flavorId: pulumi.Output<string>;
     declare public readonly hostnameConfig: pulumi.Output<outputs.Cce.NodeAttachHostnameConfig>;
     /**
@@ -90,29 +49,10 @@ export class NodeAttach extends pulumi.CustomResource {
      */
     declare public readonly imageId: pulumi.Output<string | undefined>;
     declare public readonly initializedConditions: pulumi.Output<string[]>;
-    /**
-     * Specifies the key pair name when logging in to select the key pair mode.
-     * This parameter and `password` are alternative. Changing this parameter will reset the node.
-     */
     declare public readonly keyPair: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the tags of a Kubernetes node, key/value pair format.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the docker data disk configurations. The following is an
-     * example:
-     */
     declare public readonly lvmConfig: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the the maximum number of instances a node is allowed to create.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly maxPods: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the Node Name.
-     */
     declare public readonly name: pulumi.Output<string>;
     /**
      * schema: Internal
@@ -122,72 +62,22 @@ export class NodeAttach extends pulumi.CustomResource {
      * schema: Internal
      */
     declare public readonly nicThreshold: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the operating System of the node. Changing this parameter will reset the node.
-     * + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-     */
     declare public readonly os: pulumi.Output<string>;
-    /**
-     * Specifies the root password when logging in to select the password mode.
-     * This parameter can be plain or salted and is alternative to `keyPair`.
-     * Changing this parameter will reset the node.
-     */
     declare public readonly password: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the script required after installation. The input value can be
-     * a Base64 encoded string or not. Changing this parameter will create a new resource.
-     */
     declare public readonly postinstall: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the script required before installation. The input value can be
-     * a Base64 encoded string or not. Changing this parameter will create a new resource.
-     */
     declare public readonly preinstall: pulumi.Output<string | undefined>;
-    /**
-     * Private IP of the CCE node.
-     */
     declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     declare public readonly privateKey: pulumi.Output<string | undefined>;
-    /**
-     * Public IP of the CCE node.
-     */
     declare public /*out*/ readonly publicIp: pulumi.Output<string>;
-    /**
-     * The region in which to create the CCE node attach resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new CCE node attach resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The system disk related configuration.
-     */
     declare public /*out*/ readonly rootVolumes: pulumi.Output<outputs.Cce.NodeAttachRootVolume[]>;
-    /**
-     * The runtime of the CCE node.
-     */
     declare public readonly runtime: pulumi.Output<string>;
-    /**
-     * Specifies the ecs server ID. Changing this parameter will create a new
-     * resource.
-     */
     declare public readonly serverId: pulumi.Output<string>;
-    /**
-     * Node status information.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public readonly storage: pulumi.Output<outputs.Cce.NodeAttachStorage | undefined>;
-    /**
-     * The ID of the subnet to which the NIC belongs.
-     */
     declare public /*out*/ readonly subnetId: pulumi.Output<string>;
     declare public readonly systemDiskKmsKeyId: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the tags of a VM node, key/value pair format.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the taints configuration of the nodes to set anti-affinity.
-     * Changing this parameter will create a new resource. Each taint contains the following parameters:
-     */
     declare public readonly taints: pulumi.Output<outputs.Cce.NodeAttachTaint[] | undefined>;
 
     /**
@@ -298,34 +188,14 @@ export class NodeAttach extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeAttach resources.
  */
 export interface NodeAttachState {
-    /**
-     * The name of the available partition (AZ).
-     */
     availabilityZone?: pulumi.Input<string>;
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the cluster. Changing this parameter will create a new
-     * resource.
-     */
     clusterId?: pulumi.Input<string>;
-    /**
-     * The data disks related configuration.
-     */
     dataVolumes?: pulumi.Input<pulumi.Input<inputs.Cce.NodeAttachDataVolume>[]>;
-    /**
-     * Specifies the available disk space of a single docker container on the
-     * node in device mapper mode. Changing this parameter will create a new resource.
-     */
     dockerBaseSize?: pulumi.Input<number>;
-    /**
-     * The Ecs group ID.
-     */
     ecsGroupId?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
     extensionNics?: pulumi.Input<pulumi.Input<inputs.Cce.NodeAttachExtensionNic>[]>;
-    /**
-     * The flavor ID of the CCE node.
-     */
     flavorId?: pulumi.Input<string>;
     hostnameConfig?: pulumi.Input<inputs.Cce.NodeAttachHostnameConfig>;
     /**
@@ -333,29 +203,10 @@ export interface NodeAttachState {
      */
     imageId?: pulumi.Input<string>;
     initializedConditions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the key pair name when logging in to select the key pair mode.
-     * This parameter and `password` are alternative. Changing this parameter will reset the node.
-     */
     keyPair?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of a Kubernetes node, key/value pair format.
-     * Changing this parameter will create a new resource.
-     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the docker data disk configurations. The following is an
-     * example:
-     */
     lvmConfig?: pulumi.Input<string>;
-    /**
-     * Specifies the the maximum number of instances a node is allowed to create.
-     * Changing this parameter will create a new resource.
-     */
     maxPods?: pulumi.Input<number>;
-    /**
-     * Specifies the Node Name.
-     */
     name?: pulumi.Input<string>;
     /**
      * schema: Internal
@@ -365,72 +216,22 @@ export interface NodeAttachState {
      * schema: Internal
      */
     nicThreshold?: pulumi.Input<string>;
-    /**
-     * Specifies the operating System of the node. Changing this parameter will reset the node.
-     * + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-     */
     os?: pulumi.Input<string>;
-    /**
-     * Specifies the root password when logging in to select the password mode.
-     * This parameter can be plain or salted and is alternative to `keyPair`.
-     * Changing this parameter will reset the node.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the script required after installation. The input value can be
-     * a Base64 encoded string or not. Changing this parameter will create a new resource.
-     */
     postinstall?: pulumi.Input<string>;
-    /**
-     * Specifies the script required before installation. The input value can be
-     * a Base64 encoded string or not. Changing this parameter will create a new resource.
-     */
     preinstall?: pulumi.Input<string>;
-    /**
-     * Private IP of the CCE node.
-     */
     privateIp?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
-    /**
-     * Public IP of the CCE node.
-     */
     publicIp?: pulumi.Input<string>;
-    /**
-     * The region in which to create the CCE node attach resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new CCE node attach resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The system disk related configuration.
-     */
     rootVolumes?: pulumi.Input<pulumi.Input<inputs.Cce.NodeAttachRootVolume>[]>;
-    /**
-     * The runtime of the CCE node.
-     */
     runtime?: pulumi.Input<string>;
-    /**
-     * Specifies the ecs server ID. Changing this parameter will create a new
-     * resource.
-     */
     serverId?: pulumi.Input<string>;
-    /**
-     * Node status information.
-     */
     status?: pulumi.Input<string>;
     storage?: pulumi.Input<inputs.Cce.NodeAttachStorage>;
-    /**
-     * The ID of the subnet to which the NIC belongs.
-     */
     subnetId?: pulumi.Input<string>;
     systemDiskKmsKeyId?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of a VM node, key/value pair format.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the taints configuration of the nodes to set anti-affinity.
-     * Changing this parameter will create a new resource. Each taint contains the following parameters:
-     */
     taints?: pulumi.Input<pulumi.Input<inputs.Cce.NodeAttachTaint>[]>;
 }
 
@@ -438,15 +239,7 @@ export interface NodeAttachState {
  * The set of arguments for constructing a NodeAttach resource.
  */
 export interface NodeAttachArgs {
-    /**
-     * Specifies the ID of the cluster. Changing this parameter will create a new
-     * resource.
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * Specifies the available disk space of a single docker container on the
-     * node in device mapper mode. Changing this parameter will create a new resource.
-     */
     dockerBaseSize?: pulumi.Input<number>;
     hostnameConfig?: pulumi.Input<inputs.Cce.NodeAttachHostnameConfig>;
     /**
@@ -454,29 +247,10 @@ export interface NodeAttachArgs {
      */
     imageId?: pulumi.Input<string>;
     initializedConditions?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the key pair name when logging in to select the key pair mode.
-     * This parameter and `password` are alternative. Changing this parameter will reset the node.
-     */
     keyPair?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of a Kubernetes node, key/value pair format.
-     * Changing this parameter will create a new resource.
-     */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the docker data disk configurations. The following is an
-     * example:
-     */
     lvmConfig?: pulumi.Input<string>;
-    /**
-     * Specifies the the maximum number of instances a node is allowed to create.
-     * Changing this parameter will create a new resource.
-     */
     maxPods?: pulumi.Input<number>;
-    /**
-     * Specifies the Node Name.
-     */
     name?: pulumi.Input<string>;
     /**
      * schema: Internal
@@ -486,51 +260,16 @@ export interface NodeAttachArgs {
      * schema: Internal
      */
     nicThreshold?: pulumi.Input<string>;
-    /**
-     * Specifies the operating System of the node. Changing this parameter will reset the node.
-     * + For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-     */
     os: pulumi.Input<string>;
-    /**
-     * Specifies the root password when logging in to select the password mode.
-     * This parameter can be plain or salted and is alternative to `keyPair`.
-     * Changing this parameter will reset the node.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the script required after installation. The input value can be
-     * a Base64 encoded string or not. Changing this parameter will create a new resource.
-     */
     postinstall?: pulumi.Input<string>;
-    /**
-     * Specifies the script required before installation. The input value can be
-     * a Base64 encoded string or not. Changing this parameter will create a new resource.
-     */
     preinstall?: pulumi.Input<string>;
     privateKey?: pulumi.Input<string>;
-    /**
-     * The region in which to create the CCE node attach resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new CCE node attach resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The runtime of the CCE node.
-     */
     runtime?: pulumi.Input<string>;
-    /**
-     * Specifies the ecs server ID. Changing this parameter will create a new
-     * resource.
-     */
     serverId: pulumi.Input<string>;
     storage?: pulumi.Input<inputs.Cce.NodeAttachStorage>;
     systemDiskKmsKeyId?: pulumi.Input<string>;
-    /**
-     * Specifies the tags of a VM node, key/value pair format.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the taints configuration of the nodes to set anti-affinity.
-     * Changing this parameter will create a new resource. Each taint contains the following parameters:
-     */
     taints?: pulumi.Input<pulumi.Input<inputs.Cce.NodeAttachTaint>[]>;
 }

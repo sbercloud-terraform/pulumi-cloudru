@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to query availability zones where ER instances can be created within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const all = sbercloud.Er.getAvailabilityZones({});
- * ```
- */
 export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,10 +16,6 @@ export function getAvailabilityZones(args?: GetAvailabilityZonesArgs, opts?: pul
  * A collection of arguments for invoking getAvailabilityZones.
  */
 export interface GetAvailabilityZonesArgs {
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -48,29 +27,9 @@ export interface GetAvailabilityZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The names of availability zone.
-     */
     readonly names: string[];
     readonly region: string;
 }
-/**
- * Use this data source to query availability zones where ER instances can be created within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const all = sbercloud.Er.getAvailabilityZones({});
- * ```
- */
 export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAvailabilityZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -83,9 +42,5 @@ export function getAvailabilityZonesOutput(args?: GetAvailabilityZonesOutputArgs
  * A collection of arguments for invoking getAvailabilityZones.
  */
 export interface GetAvailabilityZonesOutputArgs {
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

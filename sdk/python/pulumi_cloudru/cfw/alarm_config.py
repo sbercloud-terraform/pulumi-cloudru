@@ -31,30 +31,13 @@ class AlarmConfigArgs:
         """
         The set of arguments for constructing a AlarmConfig resource.
         :param pulumi.Input[_builtins.int] alarm_time_period: Specifies the alarm period.
-               The valid values are as follows:
-               + **0**: 8:00 to 22:00;
-               + **1**: all day;
         :param pulumi.Input[_builtins.int] alarm_type: Specifies the alarm type.
-               The valid values are as follows.
-               + **0**: attack;
-               + **1**: traffic threshold crossing;
-               + **2**: EIP unprotected;
-               + **3**: threat intelligence;
         :param pulumi.Input[_builtins.int] frequency_count: Specifies the alarm triggering frequency.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         :param pulumi.Input[_builtins.int] frequency_time: Specifies the alarm frequency time range.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall ID.
         :param pulumi.Input[_builtins.str] severity: Specifies the alarm severity.
-               + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-               **MEDIUM**, and **LOW**, separated by commas.
-               + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-               + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         :param pulumi.Input[_builtins.str] topic_urn: Specifies the alarm URN.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         pulumi.set(__self__, "alarm_time_period", alarm_time_period)
         pulumi.set(__self__, "alarm_type", alarm_type)
@@ -73,9 +56,6 @@ class AlarmConfigArgs:
     def alarm_time_period(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the alarm period.
-        The valid values are as follows:
-        + **0**: 8:00 to 22:00;
-        + **1**: all day;
         """
         return pulumi.get(self, "alarm_time_period")
 
@@ -88,11 +68,6 @@ class AlarmConfigArgs:
     def alarm_type(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the alarm type.
-        The valid values are as follows.
-        + **0**: attack;
-        + **1**: traffic threshold crossing;
-        + **2**: EIP unprotected;
-        + **3**: threat intelligence;
         """
         return pulumi.get(self, "alarm_type")
 
@@ -105,8 +80,6 @@ class AlarmConfigArgs:
     def frequency_count(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the alarm triggering frequency.
-        + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-        + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         """
         return pulumi.get(self, "frequency_count")
 
@@ -119,8 +92,6 @@ class AlarmConfigArgs:
     def frequency_time(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the alarm frequency time range.
-        + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-        + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         """
         return pulumi.get(self, "frequency_time")
 
@@ -145,10 +116,6 @@ class AlarmConfigArgs:
     def severity(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the alarm severity.
-        + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-        **MEDIUM**, and **LOW**, separated by commas.
-        + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-        + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         """
         return pulumi.get(self, "severity")
 
@@ -181,8 +148,7 @@ class AlarmConfigArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this will create new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -208,30 +174,13 @@ class _AlarmConfigState:
         """
         Input properties used for looking up and filtering AlarmConfig resources.
         :param pulumi.Input[_builtins.int] alarm_time_period: Specifies the alarm period.
-               The valid values are as follows:
-               + **0**: 8:00 to 22:00;
-               + **1**: all day;
         :param pulumi.Input[_builtins.int] alarm_type: Specifies the alarm type.
-               The valid values are as follows.
-               + **0**: attack;
-               + **1**: traffic threshold crossing;
-               + **2**: EIP unprotected;
-               + **3**: threat intelligence;
         :param pulumi.Input[_builtins.int] frequency_count: Specifies the alarm triggering frequency.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         :param pulumi.Input[_builtins.int] frequency_time: Specifies the alarm frequency time range.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall ID.
-        :param pulumi.Input[_builtins.str] language: The language.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] language: The alarm language.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[_builtins.str] severity: Specifies the alarm severity.
-               + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-               **MEDIUM**, and **LOW**, separated by commas.
-               + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-               + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         :param pulumi.Input[_builtins.str] topic_urn: Specifies the alarm URN.
         :param pulumi.Input[_builtins.str] username: The username.
         """
@@ -263,9 +212,6 @@ class _AlarmConfigState:
     def alarm_time_period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the alarm period.
-        The valid values are as follows:
-        + **0**: 8:00 to 22:00;
-        + **1**: all day;
         """
         return pulumi.get(self, "alarm_time_period")
 
@@ -278,11 +224,6 @@ class _AlarmConfigState:
     def alarm_type(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the alarm type.
-        The valid values are as follows.
-        + **0**: attack;
-        + **1**: traffic threshold crossing;
-        + **2**: EIP unprotected;
-        + **3**: threat intelligence;
         """
         return pulumi.get(self, "alarm_type")
 
@@ -304,8 +245,6 @@ class _AlarmConfigState:
     def frequency_count(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the alarm triggering frequency.
-        + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-        + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         """
         return pulumi.get(self, "frequency_count")
 
@@ -318,8 +257,6 @@ class _AlarmConfigState:
     def frequency_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the alarm frequency time range.
-        + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-        + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         """
         return pulumi.get(self, "frequency_time")
 
@@ -343,7 +280,7 @@ class _AlarmConfigState:
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The language.
+        The alarm language.
         """
         return pulumi.get(self, "language")
 
@@ -355,8 +292,7 @@ class _AlarmConfigState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this will create new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -369,10 +305,6 @@ class _AlarmConfigState:
     def severity(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the alarm severity.
-        + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-        **MEDIUM**, and **LOW**, separated by commas.
-        + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-        + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         """
         return pulumi.get(self, "severity")
 
@@ -422,68 +354,16 @@ class AlarmConfig(pulumi.CustomResource):
                  topic_urn: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW alarm configuration resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        alarm_type = config.require_object("alarmType")
-        alarm_time_period = config.require_object("alarmTimePeriod")
-        severity = config.require_object("severity")
-        frequency_count = config.require_object("frequencyCount")
-        frequency_time = config.require_object("frequencyTime")
-        topic_urn = config.require_object("topicUrn")
-        test = sbercloud.cfw.AlarmConfig("test",
-            fw_instance_id=fw_instance_id,
-            alarm_type=alarm_type,
-            alarm_time_period=alarm_time_period,
-            frequency_count=frequency_count,
-            frequency_time=frequency_time,
-            severity=severity,
-            topic_urn=topic_urn)
-        ```
-
-        ## Import
-
-        The alarm configuration can be imported using `fw_instance_id`, `alarm_type`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/alarmConfig:AlarmConfig test <fw_instance_id>/<alarm_type>
-        ```
-
+        Create a AlarmConfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] alarm_time_period: Specifies the alarm period.
-               The valid values are as follows:
-               + **0**: 8:00 to 22:00;
-               + **1**: all day;
         :param pulumi.Input[_builtins.int] alarm_type: Specifies the alarm type.
-               The valid values are as follows.
-               + **0**: attack;
-               + **1**: traffic threshold crossing;
-               + **2**: EIP unprotected;
-               + **3**: threat intelligence;
         :param pulumi.Input[_builtins.int] frequency_count: Specifies the alarm triggering frequency.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         :param pulumi.Input[_builtins.int] frequency_time: Specifies the alarm frequency time range.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall ID.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[_builtins.str] severity: Specifies the alarm severity.
-               + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-               **MEDIUM**, and **LOW**, separated by commas.
-               + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-               + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         :param pulumi.Input[_builtins.str] topic_urn: Specifies the alarm URN.
         """
         ...
@@ -493,42 +373,7 @@ class AlarmConfig(pulumi.CustomResource):
                  args: AlarmConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW alarm configuration resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        fw_instance_id = config.require_object("fwInstanceId")
-        alarm_type = config.require_object("alarmType")
-        alarm_time_period = config.require_object("alarmTimePeriod")
-        severity = config.require_object("severity")
-        frequency_count = config.require_object("frequencyCount")
-        frequency_time = config.require_object("frequencyTime")
-        topic_urn = config.require_object("topicUrn")
-        test = sbercloud.cfw.AlarmConfig("test",
-            fw_instance_id=fw_instance_id,
-            alarm_type=alarm_type,
-            alarm_time_period=alarm_time_period,
-            frequency_count=frequency_count,
-            frequency_time=frequency_time,
-            severity=severity,
-            topic_urn=topic_urn)
-        ```
-
-        ## Import
-
-        The alarm configuration can be imported using `fw_instance_id`, `alarm_type`, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/alarmConfig:AlarmConfig test <fw_instance_id>/<alarm_type>
-        ```
-
+        Create a AlarmConfig resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AlarmConfigArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -616,30 +461,13 @@ class AlarmConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] alarm_time_period: Specifies the alarm period.
-               The valid values are as follows:
-               + **0**: 8:00 to 22:00;
-               + **1**: all day;
         :param pulumi.Input[_builtins.int] alarm_type: Specifies the alarm type.
-               The valid values are as follows.
-               + **0**: attack;
-               + **1**: traffic threshold crossing;
-               + **2**: EIP unprotected;
-               + **3**: threat intelligence;
         :param pulumi.Input[_builtins.int] frequency_count: Specifies the alarm triggering frequency.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         :param pulumi.Input[_builtins.int] frequency_time: Specifies the alarm frequency time range.
-               + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-               + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         :param pulumi.Input[_builtins.str] fw_instance_id: Specifies the firewall ID.
-        :param pulumi.Input[_builtins.str] language: The language.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this will create new resource.
+        :param pulumi.Input[_builtins.str] language: The alarm language.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[_builtins.str] severity: Specifies the alarm severity.
-               + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-               **MEDIUM**, and **LOW**, separated by commas.
-               + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-               + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         :param pulumi.Input[_builtins.str] topic_urn: Specifies the alarm URN.
         :param pulumi.Input[_builtins.str] username: The username.
         """
@@ -665,9 +493,6 @@ class AlarmConfig(pulumi.CustomResource):
     def alarm_time_period(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the alarm period.
-        The valid values are as follows:
-        + **0**: 8:00 to 22:00;
-        + **1**: all day;
         """
         return pulumi.get(self, "alarm_time_period")
 
@@ -676,11 +501,6 @@ class AlarmConfig(pulumi.CustomResource):
     def alarm_type(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the alarm type.
-        The valid values are as follows.
-        + **0**: attack;
-        + **1**: traffic threshold crossing;
-        + **2**: EIP unprotected;
-        + **3**: threat intelligence;
         """
         return pulumi.get(self, "alarm_type")
 
@@ -694,8 +514,6 @@ class AlarmConfig(pulumi.CustomResource):
     def frequency_count(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the alarm triggering frequency.
-        + If `alarm_type` is **0** or **3**, the value of `frequency_count` must be between **1** and **2000**.
-        + If `alarm_type` is **1** or **2**, the value of `frequency_count` should be **1**.
         """
         return pulumi.get(self, "frequency_count")
 
@@ -704,8 +522,6 @@ class AlarmConfig(pulumi.CustomResource):
     def frequency_time(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the alarm frequency time range.
-        + If `alarm_type` is **0** or **3**, the value of `frequency_time` must be between **1** and **60**.
-        + If `alarm_type` is **1** or **2**, the value of `frequency_time` should be **1**.
         """
         return pulumi.get(self, "frequency_time")
 
@@ -721,7 +537,7 @@ class AlarmConfig(pulumi.CustomResource):
     @pulumi.getter
     def language(self) -> pulumi.Output[_builtins.str]:
         """
-        The language.
+        The alarm language.
         """
         return pulumi.get(self, "language")
 
@@ -729,8 +545,7 @@ class AlarmConfig(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this will create new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -739,10 +554,6 @@ class AlarmConfig(pulumi.CustomResource):
     def severity(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the alarm severity.
-        + If `alarm_type` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-        **MEDIUM**, and **LOW**, separated by commas.
-        + If `alarm_type` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-        + If `alarm_type` is **2**, the value of `severity` must be **3** (EIP).
         """
         return pulumi.get(self, "severity")
 

@@ -12,77 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages DLI package resource within SberCloud
-//
-// ## Example Usage
-//
-// ### Upload the specified python script as a resource package
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dli"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			groupName := cfg.RequireObject("groupName")
-//			accessDomainName := cfg.RequireObject("accessDomainName")
-//			_, err := dli.NewPackage(ctx, "queue", &dli.PackageArgs{
-//				GroupName:  pulumi.Any(groupName),
-//				ObjectPath: pulumi.Sprintf("https://%v/dli/packages/object_file.py", accessDomainName),
-//				Type:       pulumi.String("pyFile"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Package struct {
 	pulumi.CustomResourceState
 
-	// Time when a queue is created.
-	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the group name which the package belongs to.
-	// Changing this parameter will delete the current package and upload a new package.
-	GroupName pulumi.StringPtrOutput `pulumi:"groupName"`
-	// Specifies whether to upload resource packages in asynchronous mode.
-	// The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-	IsAsync pulumi.BoolOutput `pulumi:"isAsync"`
-	// The package name.
-	ObjectName pulumi.StringOutput `pulumi:"objectName"`
-	// Specifies the OBS storage path where the package is located.
-	// Changing this parameter will delete the current package and upload a new package.
-	ObjectPath pulumi.StringOutput `pulumi:"objectPath"`
-	// Specifies the name of the package owner. The owner must be IAM user.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Specifies the region in which to upload packages.
-	// If omitted, the provider-level region will be used.
-	// Changing this parameter will delete the current package and upload a new package.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Status of a package group to be uploaded.
-	Status pulumi.StringOutput    `pulumi:"status"`
-	Tags   pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the package type.
-	// + **jar**: `.jar` or jar related files.
-	// + **pyFile**: `.py` or python related files.
-	// + **file**: Other user files.
-	//
-	// Changing this parameter will delete the current package and upload a new package.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// The last time when the package configuration update has complated.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	CreatedAt  pulumi.StringOutput    `pulumi:"createdAt"`
+	GroupName  pulumi.StringPtrOutput `pulumi:"groupName"`
+	IsAsync    pulumi.BoolOutput      `pulumi:"isAsync"`
+	ObjectName pulumi.StringOutput    `pulumi:"objectName"`
+	ObjectPath pulumi.StringOutput    `pulumi:"objectPath"`
+	Owner      pulumi.StringOutput    `pulumi:"owner"`
+	Region     pulumi.StringOutput    `pulumi:"region"`
+	Status     pulumi.StringOutput    `pulumi:"status"`
+	Tags       pulumi.StringMapOutput `pulumi:"tags"`
+	Type       pulumi.StringOutput    `pulumi:"type"`
+	UpdatedAt  pulumi.StringOutput    `pulumi:"updatedAt"`
 }
 
 // NewPackage registers a new resource with the given unique name, arguments, and options.
@@ -121,71 +64,31 @@ func GetPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Package resources.
 type packageState struct {
-	// Time when a queue is created.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the group name which the package belongs to.
-	// Changing this parameter will delete the current package and upload a new package.
-	GroupName *string `pulumi:"groupName"`
-	// Specifies whether to upload resource packages in asynchronous mode.
-	// The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-	IsAsync *bool `pulumi:"isAsync"`
-	// The package name.
-	ObjectName *string `pulumi:"objectName"`
-	// Specifies the OBS storage path where the package is located.
-	// Changing this parameter will delete the current package and upload a new package.
-	ObjectPath *string `pulumi:"objectPath"`
-	// Specifies the name of the package owner. The owner must be IAM user.
-	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to upload packages.
-	// If omitted, the provider-level region will be used.
-	// Changing this parameter will delete the current package and upload a new package.
-	Region *string `pulumi:"region"`
-	// Status of a package group to be uploaded.
-	Status *string           `pulumi:"status"`
-	Tags   map[string]string `pulumi:"tags"`
-	// Specifies the package type.
-	// + **jar**: `.jar` or jar related files.
-	// + **pyFile**: `.py` or python related files.
-	// + **file**: Other user files.
-	//
-	// Changing this parameter will delete the current package and upload a new package.
-	Type *string `pulumi:"type"`
-	// The last time when the package configuration update has complated.
-	UpdatedAt *string `pulumi:"updatedAt"`
+	CreatedAt  *string           `pulumi:"createdAt"`
+	GroupName  *string           `pulumi:"groupName"`
+	IsAsync    *bool             `pulumi:"isAsync"`
+	ObjectName *string           `pulumi:"objectName"`
+	ObjectPath *string           `pulumi:"objectPath"`
+	Owner      *string           `pulumi:"owner"`
+	Region     *string           `pulumi:"region"`
+	Status     *string           `pulumi:"status"`
+	Tags       map[string]string `pulumi:"tags"`
+	Type       *string           `pulumi:"type"`
+	UpdatedAt  *string           `pulumi:"updatedAt"`
 }
 
 type PackageState struct {
-	// Time when a queue is created.
-	CreatedAt pulumi.StringPtrInput
-	// Specifies the group name which the package belongs to.
-	// Changing this parameter will delete the current package and upload a new package.
-	GroupName pulumi.StringPtrInput
-	// Specifies whether to upload resource packages in asynchronous mode.
-	// The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-	IsAsync pulumi.BoolPtrInput
-	// The package name.
+	CreatedAt  pulumi.StringPtrInput
+	GroupName  pulumi.StringPtrInput
+	IsAsync    pulumi.BoolPtrInput
 	ObjectName pulumi.StringPtrInput
-	// Specifies the OBS storage path where the package is located.
-	// Changing this parameter will delete the current package and upload a new package.
 	ObjectPath pulumi.StringPtrInput
-	// Specifies the name of the package owner. The owner must be IAM user.
-	Owner pulumi.StringPtrInput
-	// Specifies the region in which to upload packages.
-	// If omitted, the provider-level region will be used.
-	// Changing this parameter will delete the current package and upload a new package.
-	Region pulumi.StringPtrInput
-	// Status of a package group to be uploaded.
-	Status pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
-	// Specifies the package type.
-	// + **jar**: `.jar` or jar related files.
-	// + **pyFile**: `.py` or python related files.
-	// + **file**: Other user files.
-	//
-	// Changing this parameter will delete the current package and upload a new package.
-	Type pulumi.StringPtrInput
-	// The last time when the package configuration update has complated.
-	UpdatedAt pulumi.StringPtrInput
+	Owner      pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
+	Status     pulumi.StringPtrInput
+	Tags       pulumi.StringMapInput
+	Type       pulumi.StringPtrInput
+	UpdatedAt  pulumi.StringPtrInput
 }
 
 func (PackageState) ElementType() reflect.Type {
@@ -193,56 +96,24 @@ func (PackageState) ElementType() reflect.Type {
 }
 
 type packageArgs struct {
-	// Specifies the group name which the package belongs to.
-	// Changing this parameter will delete the current package and upload a new package.
-	GroupName *string `pulumi:"groupName"`
-	// Specifies whether to upload resource packages in asynchronous mode.
-	// The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-	IsAsync *bool `pulumi:"isAsync"`
-	// Specifies the OBS storage path where the package is located.
-	// Changing this parameter will delete the current package and upload a new package.
-	ObjectPath string `pulumi:"objectPath"`
-	// Specifies the name of the package owner. The owner must be IAM user.
-	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to upload packages.
-	// If omitted, the provider-level region will be used.
-	// Changing this parameter will delete the current package and upload a new package.
-	Region *string           `pulumi:"region"`
-	Tags   map[string]string `pulumi:"tags"`
-	// Specifies the package type.
-	// + **jar**: `.jar` or jar related files.
-	// + **pyFile**: `.py` or python related files.
-	// + **file**: Other user files.
-	//
-	// Changing this parameter will delete the current package and upload a new package.
-	Type string `pulumi:"type"`
+	GroupName  *string           `pulumi:"groupName"`
+	IsAsync    *bool             `pulumi:"isAsync"`
+	ObjectPath string            `pulumi:"objectPath"`
+	Owner      *string           `pulumi:"owner"`
+	Region     *string           `pulumi:"region"`
+	Tags       map[string]string `pulumi:"tags"`
+	Type       string            `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Package resource.
 type PackageArgs struct {
-	// Specifies the group name which the package belongs to.
-	// Changing this parameter will delete the current package and upload a new package.
-	GroupName pulumi.StringPtrInput
-	// Specifies whether to upload resource packages in asynchronous mode.
-	// The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-	IsAsync pulumi.BoolPtrInput
-	// Specifies the OBS storage path where the package is located.
-	// Changing this parameter will delete the current package and upload a new package.
+	GroupName  pulumi.StringPtrInput
+	IsAsync    pulumi.BoolPtrInput
 	ObjectPath pulumi.StringInput
-	// Specifies the name of the package owner. The owner must be IAM user.
-	Owner pulumi.StringPtrInput
-	// Specifies the region in which to upload packages.
-	// If omitted, the provider-level region will be used.
-	// Changing this parameter will delete the current package and upload a new package.
-	Region pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
-	// Specifies the package type.
-	// + **jar**: `.jar` or jar related files.
-	// + **pyFile**: `.py` or python related files.
-	// + **file**: Other user files.
-	//
-	// Changing this parameter will delete the current package and upload a new package.
-	Type pulumi.StringInput
+	Owner      pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
+	Tags       pulumi.StringMapInput
+	Type       pulumi.StringInput
 }
 
 func (PackageArgs) ElementType() reflect.Type {
@@ -332,47 +203,34 @@ func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOu
 	return o
 }
 
-// Time when a queue is created.
 func (o PackageOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the group name which the package belongs to.
-// Changing this parameter will delete the current package and upload a new package.
 func (o PackageOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringPtrOutput { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to upload resource packages in asynchronous mode.
-// The default value is **false**. Changing this parameter will delete the current package and upload a new package.
 func (o PackageOutput) IsAsync() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Package) pulumi.BoolOutput { return v.IsAsync }).(pulumi.BoolOutput)
 }
 
-// The package name.
 func (o PackageOutput) ObjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.ObjectName }).(pulumi.StringOutput)
 }
 
-// Specifies the OBS storage path where the package is located.
-// Changing this parameter will delete the current package and upload a new package.
 func (o PackageOutput) ObjectPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.ObjectPath }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the package owner. The owner must be IAM user.
 func (o PackageOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to upload packages.
-// If omitted, the provider-level region will be used.
-// Changing this parameter will delete the current package and upload a new package.
 func (o PackageOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Status of a package group to be uploaded.
 func (o PackageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -381,17 +239,10 @@ func (o PackageOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the package type.
-// + **jar**: `.jar` or jar related files.
-// + **pyFile**: `.py` or python related files.
-// + **file**: Other user files.
-//
-// Changing this parameter will delete the current package and upload a new package.
 func (o PackageOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The last time when the package configuration update has complated.
 func (o PackageOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Package) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

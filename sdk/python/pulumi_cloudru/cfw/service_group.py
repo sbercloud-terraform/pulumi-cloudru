@@ -26,12 +26,8 @@ class ServiceGroupArgs:
         """
         The set of arguments for constructing a ServiceGroup resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the service group description.
         :param pulumi.Input[_builtins.str] name: Specifies the service group name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "object_id", object_id)
         if description is not None:
@@ -46,8 +42,6 @@ class ServiceGroupArgs:
     def object_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -82,10 +76,6 @@ class ServiceGroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -105,10 +95,6 @@ class _ServiceGroupState:
         :param pulumi.Input[_builtins.str] description: Specifies the service group description.
         :param pulumi.Input[_builtins.str] name: Specifies the service group name.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -148,8 +134,6 @@ class _ServiceGroupState:
     def object_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
@@ -160,10 +144,6 @@ class _ServiceGroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -183,44 +163,12 @@ class ServiceGroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW service group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        test = sbercloud.Cfw.get_firewalls()
-        test_service_group = sbercloud.cfw.ServiceGroup("test",
-            object_id=test.records[0].protect_objects[0].object_id,
-            name=name,
-            description=description)
-        ```
-
-        ## Import
-
-        The service group can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/serviceGroup:ServiceGroup test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a ServiceGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Specifies the service group description.
         :param pulumi.Input[_builtins.str] name: Specifies the service group name.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -229,35 +177,7 @@ class ServiceGroup(pulumi.CustomResource):
                  args: ServiceGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW service group resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        description = config.require_object("description")
-        test = sbercloud.Cfw.get_firewalls()
-        test_service_group = sbercloud.cfw.ServiceGroup("test",
-            object_id=test.records[0].protect_objects[0].object_id,
-            name=name,
-            description=description)
-        ```
-
-        ## Import
-
-        The service group can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/serviceGroup:ServiceGroup test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a ServiceGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServiceGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -316,10 +236,6 @@ class ServiceGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: Specifies the service group description.
         :param pulumi.Input[_builtins.str] name: Specifies the service group name.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -352,17 +268,11 @@ class ServiceGroup(pulumi.CustomResource):
     def object_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the protected object ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "object_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 

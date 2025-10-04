@@ -12,15 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides an API gateway API resource.
-//
-// ## Import
-//
-// API can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:SharedApig/api:Api api "774438a28a574ac8a496325d1bf51807"
-// ```
 type Api struct {
 	pulumi.CustomResourceState
 
@@ -32,9 +23,9 @@ type Api struct {
 	BodyDescription pulumi.StringPtrOutput `pulumi:"bodyDescription"`
 	// The content type of the request body.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// Specifies whether CORS is supported or not.
+	// Whether CORS is supported.
 	Cors pulumi.BoolPtrOutput `pulumi:"cors"`
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The API description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The example response for a failure request.
 	FailureResponse pulumi.StringPtrOutput `pulumi:"failureResponse"`
@@ -42,7 +33,7 @@ type Api struct {
 	FuncGraph ApiFuncGraphOutput `pulumi:"funcGraph"`
 	// The policy backends of the FunctionGraph function.
 	FuncGraphPolicies ApiFuncGraphPolicyArrayOutput `pulumi:"funcGraphPolicies"`
-	// Specifies the ID of the API group. Changing this creates a new resource.
+	// The ID of the API group to which the API belongs.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The ID of the instance to which the API belongs.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -54,22 +45,19 @@ type Api struct {
 	Mock ApiMockOutput `pulumi:"mock"`
 	// The mock policy backends.
 	MockPolicies ApiMockPolicyArrayOutput `pulumi:"mockPolicies"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The API name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The region in which to create the API resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new API resource.
+	// The region where the API is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The registered time of the API.
 	RegisteredAt pulumi.StringOutput `pulumi:"registeredAt"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The request method of the API.
 	RequestMethod pulumi.StringOutput `pulumi:"requestMethod"`
 	// The configurations of the front-end parameters.
 	RequestParams ApiRequestParamArrayOutput `pulumi:"requestParams"`
 	// The request address.
 	RequestPath pulumi.StringOutput `pulumi:"requestPath"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the API request.
 	RequestProtocol pulumi.StringOutput `pulumi:"requestProtocol"`
 	// The ID of the custom response that API used.
 	ResponseId pulumi.StringPtrOutput `pulumi:"responseId"`
@@ -79,7 +67,7 @@ type Api struct {
 	SimpleAuthentication pulumi.BoolOutput `pulumi:"simpleAuthentication"`
 	// The example response for a successful request.
 	SuccessResponse pulumi.StringPtrOutput `pulumi:"successResponse"`
-	// the tags of API in format of string list.
+	// The list of tags configuration.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The API type.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -147,9 +135,9 @@ type apiState struct {
 	BodyDescription *string `pulumi:"bodyDescription"`
 	// The content type of the request body.
 	ContentType *string `pulumi:"contentType"`
-	// Specifies whether CORS is supported or not.
+	// Whether CORS is supported.
 	Cors *bool `pulumi:"cors"`
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The API description.
 	Description *string `pulumi:"description"`
 	// The example response for a failure request.
 	FailureResponse *string `pulumi:"failureResponse"`
@@ -157,7 +145,7 @@ type apiState struct {
 	FuncGraph *ApiFuncGraph `pulumi:"funcGraph"`
 	// The policy backends of the FunctionGraph function.
 	FuncGraphPolicies []ApiFuncGraphPolicy `pulumi:"funcGraphPolicies"`
-	// Specifies the ID of the API group. Changing this creates a new resource.
+	// The ID of the API group to which the API belongs.
 	GroupId *string `pulumi:"groupId"`
 	// The ID of the instance to which the API belongs.
 	InstanceId *string `pulumi:"instanceId"`
@@ -169,22 +157,19 @@ type apiState struct {
 	Mock *ApiMock `pulumi:"mock"`
 	// The mock policy backends.
 	MockPolicies []ApiMockPolicy `pulumi:"mockPolicies"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The API name.
 	Name *string `pulumi:"name"`
-	// The region in which to create the API resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new API resource.
+	// The region where the API is located.
 	Region *string `pulumi:"region"`
 	// The registered time of the API.
 	RegisteredAt *string `pulumi:"registeredAt"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The request method of the API.
 	RequestMethod *string `pulumi:"requestMethod"`
 	// The configurations of the front-end parameters.
 	RequestParams []ApiRequestParam `pulumi:"requestParams"`
 	// The request address.
 	RequestPath *string `pulumi:"requestPath"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the API request.
 	RequestProtocol *string `pulumi:"requestProtocol"`
 	// The ID of the custom response that API used.
 	ResponseId *string `pulumi:"responseId"`
@@ -194,7 +179,7 @@ type apiState struct {
 	SimpleAuthentication *bool `pulumi:"simpleAuthentication"`
 	// The example response for a successful request.
 	SuccessResponse *string `pulumi:"successResponse"`
-	// the tags of API in format of string list.
+	// The list of tags configuration.
 	Tags []string `pulumi:"tags"`
 	// The API type.
 	Type *string `pulumi:"type"`
@@ -215,9 +200,9 @@ type ApiState struct {
 	BodyDescription pulumi.StringPtrInput
 	// The content type of the request body.
 	ContentType pulumi.StringPtrInput
-	// Specifies whether CORS is supported or not.
+	// Whether CORS is supported.
 	Cors pulumi.BoolPtrInput
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The API description.
 	Description pulumi.StringPtrInput
 	// The example response for a failure request.
 	FailureResponse pulumi.StringPtrInput
@@ -225,7 +210,7 @@ type ApiState struct {
 	FuncGraph ApiFuncGraphPtrInput
 	// The policy backends of the FunctionGraph function.
 	FuncGraphPolicies ApiFuncGraphPolicyArrayInput
-	// Specifies the ID of the API group. Changing this creates a new resource.
+	// The ID of the API group to which the API belongs.
 	GroupId pulumi.StringPtrInput
 	// The ID of the instance to which the API belongs.
 	InstanceId pulumi.StringPtrInput
@@ -237,22 +222,19 @@ type ApiState struct {
 	Mock ApiMockPtrInput
 	// The mock policy backends.
 	MockPolicies ApiMockPolicyArrayInput
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The API name.
 	Name pulumi.StringPtrInput
-	// The region in which to create the API resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new API resource.
+	// The region where the API is located.
 	Region pulumi.StringPtrInput
 	// The registered time of the API.
 	RegisteredAt pulumi.StringPtrInput
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The request method of the API.
 	RequestMethod pulumi.StringPtrInput
 	// The configurations of the front-end parameters.
 	RequestParams ApiRequestParamArrayInput
 	// The request address.
 	RequestPath pulumi.StringPtrInput
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the API request.
 	RequestProtocol pulumi.StringPtrInput
 	// The ID of the custom response that API used.
 	ResponseId pulumi.StringPtrInput
@@ -262,7 +244,7 @@ type ApiState struct {
 	SimpleAuthentication pulumi.BoolPtrInput
 	// The example response for a successful request.
 	SuccessResponse pulumi.StringPtrInput
-	// the tags of API in format of string list.
+	// The list of tags configuration.
 	Tags pulumi.StringArrayInput
 	// The API type.
 	Type pulumi.StringPtrInput
@@ -287,9 +269,9 @@ type apiArgs struct {
 	BodyDescription *string `pulumi:"bodyDescription"`
 	// The content type of the request body.
 	ContentType *string `pulumi:"contentType"`
-	// Specifies whether CORS is supported or not.
+	// Whether CORS is supported.
 	Cors *bool `pulumi:"cors"`
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The API description.
 	Description *string `pulumi:"description"`
 	// The example response for a failure request.
 	FailureResponse *string `pulumi:"failureResponse"`
@@ -297,7 +279,7 @@ type apiArgs struct {
 	FuncGraph *ApiFuncGraph `pulumi:"funcGraph"`
 	// The policy backends of the FunctionGraph function.
 	FuncGraphPolicies []ApiFuncGraphPolicy `pulumi:"funcGraphPolicies"`
-	// Specifies the ID of the API group. Changing this creates a new resource.
+	// The ID of the API group to which the API belongs.
 	GroupId string `pulumi:"groupId"`
 	// The ID of the instance to which the API belongs.
 	InstanceId string `pulumi:"instanceId"`
@@ -309,20 +291,17 @@ type apiArgs struct {
 	Mock *ApiMock `pulumi:"mock"`
 	// The mock policy backends.
 	MockPolicies []ApiMockPolicy `pulumi:"mockPolicies"`
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The API name.
 	Name *string `pulumi:"name"`
-	// The region in which to create the API resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new API resource.
+	// The region where the API is located.
 	Region *string `pulumi:"region"`
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The request method of the API.
 	RequestMethod string `pulumi:"requestMethod"`
 	// The configurations of the front-end parameters.
 	RequestParams []ApiRequestParam `pulumi:"requestParams"`
 	// The request address.
 	RequestPath string `pulumi:"requestPath"`
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the API request.
 	RequestProtocol string `pulumi:"requestProtocol"`
 	// The ID of the custom response that API used.
 	ResponseId *string `pulumi:"responseId"`
@@ -332,7 +311,7 @@ type apiArgs struct {
 	SimpleAuthentication *bool `pulumi:"simpleAuthentication"`
 	// The example response for a successful request.
 	SuccessResponse *string `pulumi:"successResponse"`
-	// the tags of API in format of string list.
+	// The list of tags configuration.
 	Tags []string `pulumi:"tags"`
 	// The API type.
 	Type string `pulumi:"type"`
@@ -352,9 +331,9 @@ type ApiArgs struct {
 	BodyDescription pulumi.StringPtrInput
 	// The content type of the request body.
 	ContentType pulumi.StringPtrInput
-	// Specifies whether CORS is supported or not.
+	// Whether CORS is supported.
 	Cors pulumi.BoolPtrInput
-	// Specifies the description of the API. The description cannot exceed 255 characters.
+	// The API description.
 	Description pulumi.StringPtrInput
 	// The example response for a failure request.
 	FailureResponse pulumi.StringPtrInput
@@ -362,7 +341,7 @@ type ApiArgs struct {
 	FuncGraph ApiFuncGraphPtrInput
 	// The policy backends of the FunctionGraph function.
 	FuncGraphPolicies ApiFuncGraphPolicyArrayInput
-	// Specifies the ID of the API group. Changing this creates a new resource.
+	// The ID of the API group to which the API belongs.
 	GroupId pulumi.StringInput
 	// The ID of the instance to which the API belongs.
 	InstanceId pulumi.StringInput
@@ -374,20 +353,17 @@ type ApiArgs struct {
 	Mock ApiMockPtrInput
 	// The mock policy backends.
 	MockPolicies ApiMockPolicyArrayInput
-	// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-	// letter. Only letters, digits, and underscores (_) are allowed.
+	// The API name.
 	Name pulumi.StringPtrInput
-	// The region in which to create the API resource. If omitted, the provider-level
-	// region will be used. Changing this creates a new API resource.
+	// The region where the API is located.
 	Region pulumi.StringPtrInput
-	// Specifies the request method, including 'GET','POST','PUT' and etc..
+	// The request method of the API.
 	RequestMethod pulumi.StringInput
 	// The configurations of the front-end parameters.
 	RequestParams ApiRequestParamArrayInput
 	// The request address.
 	RequestPath pulumi.StringInput
-	// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-	// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+	// The request protocol of the API request.
 	RequestProtocol pulumi.StringInput
 	// The ID of the custom response that API used.
 	ResponseId pulumi.StringPtrInput
@@ -397,7 +373,7 @@ type ApiArgs struct {
 	SimpleAuthentication pulumi.BoolPtrInput
 	// The example response for a successful request.
 	SuccessResponse pulumi.StringPtrInput
-	// the tags of API in format of string list.
+	// The list of tags configuration.
 	Tags pulumi.StringArrayInput
 	// The API type.
 	Type pulumi.StringInput
@@ -514,12 +490,12 @@ func (o ApiOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
 
-// Specifies whether CORS is supported or not.
+// Whether CORS is supported.
 func (o ApiOutput) Cors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Api) pulumi.BoolPtrOutput { return v.Cors }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the description of the API. The description cannot exceed 255 characters.
+// The API description.
 func (o ApiOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -539,7 +515,7 @@ func (o ApiOutput) FuncGraphPolicies() ApiFuncGraphPolicyArrayOutput {
 	return o.ApplyT(func(v *Api) ApiFuncGraphPolicyArrayOutput { return v.FuncGraphPolicies }).(ApiFuncGraphPolicyArrayOutput)
 }
 
-// Specifies the ID of the API group. Changing this creates a new resource.
+// The ID of the API group to which the API belongs.
 func (o ApiOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
@@ -569,14 +545,12 @@ func (o ApiOutput) MockPolicies() ApiMockPolicyArrayOutput {
 	return o.ApplyT(func(v *Api) ApiMockPolicyArrayOutput { return v.MockPolicies }).(ApiMockPolicyArrayOutput)
 }
 
-// Specifies the name of the API. An API name consists of 3–64 characters, starting with a
-// letter. Only letters, digits, and underscores (_) are allowed.
+// The API name.
 func (o ApiOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The region in which to create the API resource. If omitted, the provider-level
-// region will be used. Changing this creates a new API resource.
+// The region where the API is located.
 func (o ApiOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -586,7 +560,7 @@ func (o ApiOutput) RegisteredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.RegisteredAt }).(pulumi.StringOutput)
 }
 
-// Specifies the request method, including 'GET','POST','PUT' and etc..
+// The request method of the API.
 func (o ApiOutput) RequestMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.RequestMethod }).(pulumi.StringOutput)
 }
@@ -601,8 +575,7 @@ func (o ApiOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.RequestPath }).(pulumi.StringOutput)
 }
 
-// Specifies the request protocol. The value can be 'HTTP', 'HTTPS', and 'BOTH'
-// which means the API can be accessed through both 'HTTP' and 'HTTPS'. Defaults to 'HTTPS'.
+// The request protocol of the API request.
 func (o ApiOutput) RequestProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.RequestProtocol }).(pulumi.StringOutput)
 }
@@ -627,7 +600,7 @@ func (o ApiOutput) SuccessResponse() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.SuccessResponse }).(pulumi.StringPtrOutput)
 }
 
-// the tags of API in format of string list.
+// The list of tags configuration.
 func (o ApiOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

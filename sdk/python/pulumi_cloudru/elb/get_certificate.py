@@ -52,25 +52,16 @@ class GetCertificateResult:
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Human-readable description for the Certificate.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def domain(self) -> _builtins.str:
-        """
-        The domain of the Certificate. This parameter is valid only when `type` is "server".
-        """
         return pulumi.get(self, "domain")
 
     @_builtins.property
     @pulumi.getter
     def expiration(self) -> _builtins.str:
-        """
-        Indicates the time when the certificate expires.
-        """
         return pulumi.get(self, "expiration")
 
     @_builtins.property
@@ -117,28 +108,7 @@ def get_certificate(name: Optional[_builtins.str] = None,
                     type: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Use this data source to get the certificates in SberCloud Elastic Load Balance (ELB).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    certificate_name = config.require_object("certificateName")
-    test = sbercloud.Elb.get_certificate(name=certificate_name,
-        type="server")
-    ```
-
-
-    :param _builtins.str name: The name of certificate. The value is case sensitive and does not supports fuzzy matching.
-           
-           > **NOTE:** The certificate name is not unique. Only returns the last created one when matched multiple certificates.
-    :param _builtins.str region: The region in which to obtain the ELB certificate. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str type: Specifies the certificate type. The default value is `server`. The value can be one of the
-           following:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -160,28 +130,7 @@ def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
-    Use this data source to get the certificates in SberCloud Elastic Load Balance (ELB).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    certificate_name = config.require_object("certificateName")
-    test = sbercloud.Elb.get_certificate(name=certificate_name,
-        type="server")
-    ```
-
-
-    :param _builtins.str name: The name of certificate. The value is case sensitive and does not supports fuzzy matching.
-           
-           > **NOTE:** The certificate name is not unique. Only returns the last created one when matched multiple certificates.
-    :param _builtins.str region: The region in which to obtain the ELB certificate. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str type: Specifies the certificate type. The default value is `server`. The value can be one of the
-           following:
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name

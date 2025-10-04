@@ -51,9 +51,6 @@ class GetSubnetIdsResult:
     @_builtins.property
     @pulumi.getter
     def ids(self) -> Sequence[_builtins.str]:
-        """
-        A set of all the subnet ids found. This data source will fail if none are found.
-        """
         return pulumi.get(self, "ids")
 
     @_builtins.property
@@ -83,25 +80,7 @@ def get_subnet_ids(region: Optional[_builtins.str] = None,
                    vpc_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetIdsResult:
     """
-    This resource can be useful for getting back a list of subnet ids for a vpc.
-
-    ## Example Usage
-
-    The following example shows outputing all cidr blocks for every subnet id in a vpc.
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    subnet_ids = sbercloud.Vpc.get_subnet_ids(vpc_id=vpc_id)
-    subnet = [sbercloud.Vpc.get_subnet(id=subnet_ids.ids[__index]) for __index in len(subnet_ids.ids).apply(lambda length: range(length))]
-    pulumi.export("subnetCidrBlocks", subnet.apply(lambda subnet: [f"{s.name}: {s.id}: {s.cidr}" for s in subnet]))
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the subnet ids. If omitted, the provider-level region will
-           be used.
-    :param _builtins.str vpc_id: Specifies the VPC ID used as the query filter.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -118,25 +97,7 @@ def get_subnet_ids_output(region: Optional[pulumi.Input[Optional[_builtins.str]]
                           vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetIdsResult]:
     """
-    This resource can be useful for getting back a list of subnet ids for a vpc.
-
-    ## Example Usage
-
-    The following example shows outputing all cidr blocks for every subnet id in a vpc.
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    subnet_ids = sbercloud.Vpc.get_subnet_ids(vpc_id=vpc_id)
-    subnet = [sbercloud.Vpc.get_subnet(id=subnet_ids.ids[__index]) for __index in len(subnet_ids.ids).apply(lambda length: range(length))]
-    pulumi.export("subnetCidrBlocks", subnet.apply(lambda subnet: [f"{s.name}: {s.id}: {s.cidr}" for s in subnet]))
-    ```
-
-
-    :param _builtins.str region: The region in which to obtain the subnet ids. If omitted, the provider-level region will
-           be used.
-    :param _builtins.str vpc_id: Specifies the VPC ID used as the query filter.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

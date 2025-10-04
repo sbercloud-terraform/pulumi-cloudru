@@ -31,23 +31,15 @@ if not MYPY:
     class PolicyBackupCycleArgsDict(TypedDict):
         execution_times: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         """
-        Specifies the backup time. Automated backups will be triggered at the backup
-        time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-        cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-
-        <a name="cbr_policy_long_term_retention"></a>
-        The `long_term_retention` block supports:
+        The execution time of the policy.
         """
         days: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-        WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-        configuration.
+        The weekly backup time.
         """
         interval: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-        parameter and `days` are alternative.
+        The number of days between each backup.
         """
 elif False:
     PolicyBackupCycleArgsDict: TypeAlias = Mapping[str, Any]
@@ -59,17 +51,9 @@ class PolicyBackupCycleArgs:
                  days: Optional[pulumi.Input[_builtins.str]] = None,
                  interval: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] execution_times: Specifies the backup time. Automated backups will be triggered at the backup
-               time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-               cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-               
-               <a name="cbr_policy_long_term_retention"></a>
-               The `long_term_retention` block supports:
-        :param pulumi.Input[_builtins.str] days: Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-               WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-               configuration.
-        :param pulumi.Input[_builtins.int] interval: Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-               parameter and `days` are alternative.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] execution_times: The execution time of the policy.
+        :param pulumi.Input[_builtins.str] days: The weekly backup time.
+        :param pulumi.Input[_builtins.int] interval: The number of days between each backup.
         """
         pulumi.set(__self__, "execution_times", execution_times)
         if days is not None:
@@ -81,12 +65,7 @@ class PolicyBackupCycleArgs:
     @pulumi.getter(name="executionTimes")
     def execution_times(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Specifies the backup time. Automated backups will be triggered at the backup
-        time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-        cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-
-        <a name="cbr_policy_long_term_retention"></a>
-        The `long_term_retention` block supports:
+        The execution time of the policy.
         """
         return pulumi.get(self, "execution_times")
 
@@ -98,9 +77,7 @@ class PolicyBackupCycleArgs:
     @pulumi.getter
     def days(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-        WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-        configuration.
+        The weekly backup time.
         """
         return pulumi.get(self, "days")
 
@@ -112,8 +89,7 @@ class PolicyBackupCycleArgs:
     @pulumi.getter
     def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-        parameter and `days` are alternative.
+        The number of days between each backup.
         """
         return pulumi.get(self, "interval")
 
@@ -126,7 +102,7 @@ if not MYPY:
     class PolicyLongTermRetentionArgsDict(TypedDict):
         daily: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the latest backup of each day is saved in the long term.
+        The latest backup of each day is saved in the long term.
         """
         full_backup_interval: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -134,18 +110,15 @@ if not MYPY:
         """
         monthly: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the latest backup of each month is saved in the long term.
+        The latest backup of each month is saved in the long term.
         """
         weekly: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the latest backup of each week is saved in the long term.
+        The latest backup of each week is saved in the long term.
         """
         yearly: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the latest backup of each year is saved in the long term.
-
-        > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-        manually deleted on the web console.
+        The latest backup of each year is saved in the long term.
         """
 elif False:
     PolicyLongTermRetentionArgsDict: TypeAlias = Mapping[str, Any]
@@ -159,14 +132,11 @@ class PolicyLongTermRetentionArgs:
                  weekly: Optional[pulumi.Input[_builtins.int]] = None,
                  yearly: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] daily: Specifies the latest backup of each day is saved in the long term.
+        :param pulumi.Input[_builtins.int] daily: The latest backup of each day is saved in the long term.
         :param pulumi.Input[_builtins.int] full_backup_interval: How often (after how many incremental backups) a full backup is performed.
-        :param pulumi.Input[_builtins.int] monthly: Specifies the latest backup of each month is saved in the long term.
-        :param pulumi.Input[_builtins.int] weekly: Specifies the latest backup of each week is saved in the long term.
-        :param pulumi.Input[_builtins.int] yearly: Specifies the latest backup of each year is saved in the long term.
-               
-               > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-               manually deleted on the web console.
+        :param pulumi.Input[_builtins.int] monthly: The latest backup of each month is saved in the long term.
+        :param pulumi.Input[_builtins.int] weekly: The latest backup of each week is saved in the long term.
+        :param pulumi.Input[_builtins.int] yearly: The latest backup of each year is saved in the long term.
         """
         if daily is not None:
             pulumi.set(__self__, "daily", daily)
@@ -183,7 +153,7 @@ class PolicyLongTermRetentionArgs:
     @pulumi.getter
     def daily(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the latest backup of each day is saved in the long term.
+        The latest backup of each day is saved in the long term.
         """
         return pulumi.get(self, "daily")
 
@@ -207,7 +177,7 @@ class PolicyLongTermRetentionArgs:
     @pulumi.getter
     def monthly(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the latest backup of each month is saved in the long term.
+        The latest backup of each month is saved in the long term.
         """
         return pulumi.get(self, "monthly")
 
@@ -219,7 +189,7 @@ class PolicyLongTermRetentionArgs:
     @pulumi.getter
     def weekly(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the latest backup of each week is saved in the long term.
+        The latest backup of each week is saved in the long term.
         """
         return pulumi.get(self, "weekly")
 
@@ -231,10 +201,7 @@ class PolicyLongTermRetentionArgs:
     @pulumi.getter
     def yearly(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the latest backup of each year is saved in the long term.
-
-        > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-        manually deleted on the web console.
+        The latest backup of each year is saved in the long term.
         """
         return pulumi.get(self, "yearly")
 
@@ -247,7 +214,7 @@ if not MYPY:
     class VaultPolicyArgsDict(TypedDict):
         id: pulumi.Input[_builtins.str]
         """
-        A resource ID in UUID format.
+        The policy ID.
         """
         destination_vault_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -262,7 +229,7 @@ class VaultPolicyArgs:
                  id: pulumi.Input[_builtins.str],
                  destination_vault_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] id: A resource ID in UUID format.
+        :param pulumi.Input[_builtins.str] id: The policy ID.
         :param pulumi.Input[_builtins.str] destination_vault_id: The ID of destination vault to which the replication policy will associated.
         """
         pulumi.set(__self__, "id", id)
@@ -273,7 +240,7 @@ class VaultPolicyArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.str]:
         """
-        A resource ID in UUID format.
+        The policy ID.
         """
         return pulumi.get(self, "id")
 
@@ -298,17 +265,15 @@ if not MYPY:
     class VaultResourceArgsDict(TypedDict):
         excludes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        Specifies the array of disk IDs which will be excluded in the backup.
-        Only **server** vault support this parameter.
+        The array of disk IDs which will be excluded in the backup.
         """
         includes: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        Specifies the array of disk or SFS file system IDs which will be included in the backup.
-        Only **disk** and **turbo** vault support this parameter.
+        The array of disk or SFS file systems which will be included in the backup.
         """
         server_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the ID of the ECS instance to be backed up.
+        The ID of the ECS instance to be backed up.
         """
 elif False:
     VaultResourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -320,11 +285,9 @@ class VaultResourceArgs:
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: Specifies the array of disk IDs which will be excluded in the backup.
-               Only **server** vault support this parameter.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includes: Specifies the array of disk or SFS file system IDs which will be included in the backup.
-               Only **disk** and **turbo** vault support this parameter.
-        :param pulumi.Input[_builtins.str] server_id: Specifies the ID of the ECS instance to be backed up.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: The array of disk IDs which will be excluded in the backup.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] includes: The array of disk or SFS file systems which will be included in the backup.
+        :param pulumi.Input[_builtins.str] server_id: The ID of the ECS instance to be backed up.
         """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
@@ -337,8 +300,7 @@ class VaultResourceArgs:
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the array of disk IDs which will be excluded in the backup.
-        Only **server** vault support this parameter.
+        The array of disk IDs which will be excluded in the backup.
         """
         return pulumi.get(self, "excludes")
 
@@ -350,8 +312,7 @@ class VaultResourceArgs:
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the array of disk or SFS file system IDs which will be included in the backup.
-        Only **disk** and **turbo** vault support this parameter.
+        The array of disk or SFS file systems which will be included in the backup.
         """
         return pulumi.get(self, "includes")
 
@@ -363,7 +324,7 @@ class VaultResourceArgs:
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the ECS instance to be backed up.
+        The ID of the ECS instance to be backed up.
         """
         return pulumi.get(self, "server_id")
 

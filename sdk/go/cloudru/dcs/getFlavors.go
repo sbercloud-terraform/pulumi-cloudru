@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of available DCS flavors.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dcs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dcs.GetFlavors(ctx, &dcs.GetFlavorsArgs{
-//				Capacity: pulumi.Float64Ref(4),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.InvokeOption) (*GetFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlavorsResult
@@ -50,49 +23,25 @@ func GetFlavors(ctx *pulumi.Context, args *GetFlavorsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsArgs struct {
-	// The mode of a cache engine. The valid values are as follows:
-	CacheMode *string `pulumi:"cacheMode"`
-	// The total memory of the cache, in GB.
-	// + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-	//   `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-	//   `1024`.
-	// + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-	// + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	Capacity *float64 `pulumi:"capacity"`
-	// The CPU architecture of cache instance.
-	// Valid values *x86_64* and *aarch64*.
-	CpuArchitecture *string `pulumi:"cpuArchitecture"`
-	// The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-	// Default value is *Redis*.
-	Engine *string `pulumi:"engine"`
-	// The version of a cache engine.
-	// It is mandatory when the engine is *Redis*, the value can be `3.0`, `4.0`, or `5.0`.
-	EngineVersion *string `pulumi:"engineVersion"`
-	// The flavor name of the cache instance.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the DCS flavors.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	CacheMode       *string  `pulumi:"cacheMode"`
+	Capacity        *float64 `pulumi:"capacity"`
+	CpuArchitecture *string  `pulumi:"cpuArchitecture"`
+	Engine          *string  `pulumi:"engine"`
+	EngineVersion   *string  `pulumi:"engineVersion"`
+	Name            *string  `pulumi:"name"`
+	Region          *string  `pulumi:"region"`
 }
 
 // A collection of values returned by getFlavors.
 type GetFlavorsResult struct {
-	// The mode of a cache instance.
-	CacheMode *string `pulumi:"cacheMode"`
-	// The total memory of the cache, in GB.
-	Capacity *float64 `pulumi:"capacity"`
-	// The CPU architecture of cache instance. Value is *x86_64* or *aarch64*.
-	CpuArchitecture *string `pulumi:"cpuArchitecture"`
-	// The engine of the cache instance. Value is *redis* or *memcached*.
-	Engine        *string `pulumi:"engine"`
-	EngineVersion *string `pulumi:"engineVersion"`
-	// A list of DCS flavors.
-	Flavors []GetFlavorsFlavor `pulumi:"flavors"`
+	CacheMode       *string            `pulumi:"cacheMode"`
+	Capacity        *float64           `pulumi:"capacity"`
+	CpuArchitecture *string            `pulumi:"cpuArchitecture"`
+	Engine          *string            `pulumi:"engine"`
+	EngineVersion   *string            `pulumi:"engineVersion"`
+	Flavors         []GetFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The flavor name of the cache instance.
+	Id     string  `pulumi:"id"`
 	Name   *string `pulumi:"name"`
 	Region string  `pulumi:"region"`
 }
@@ -108,31 +57,13 @@ func GetFlavorsOutput(ctx *pulumi.Context, args GetFlavorsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFlavors.
 type GetFlavorsOutputArgs struct {
-	// The mode of a cache engine. The valid values are as follows:
-	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
-	// The total memory of the cache, in GB.
-	// + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-	//   `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-	//   `1024`.
-	// + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-	// + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	Capacity pulumi.Float64PtrInput `pulumi:"capacity"`
-	// The CPU architecture of cache instance.
-	// Valid values *x86_64* and *aarch64*.
-	CpuArchitecture pulumi.StringPtrInput `pulumi:"cpuArchitecture"`
-	// The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-	// Default value is *Redis*.
-	Engine pulumi.StringPtrInput `pulumi:"engine"`
-	// The version of a cache engine.
-	// It is mandatory when the engine is *Redis*, the value can be `3.0`, `4.0`, or `5.0`.
-	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
-	// The flavor name of the cache instance.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the DCS flavors.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	CacheMode       pulumi.StringPtrInput  `pulumi:"cacheMode"`
+	Capacity        pulumi.Float64PtrInput `pulumi:"capacity"`
+	CpuArchitecture pulumi.StringPtrInput  `pulumi:"cpuArchitecture"`
+	Engine          pulumi.StringPtrInput  `pulumi:"engine"`
+	EngineVersion   pulumi.StringPtrInput  `pulumi:"engineVersion"`
+	Name            pulumi.StringPtrInput  `pulumi:"name"`
+	Region          pulumi.StringPtrInput  `pulumi:"region"`
 }
 
 func (GetFlavorsOutputArgs) ElementType() reflect.Type {
@@ -154,22 +85,18 @@ func (o GetFlavorsResultOutput) ToGetFlavorsResultOutputWithContext(ctx context.
 	return o
 }
 
-// The mode of a cache instance.
 func (o GetFlavorsResultOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
 
-// The total memory of the cache, in GB.
 func (o GetFlavorsResultOutput) Capacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *float64 { return v.Capacity }).(pulumi.Float64PtrOutput)
 }
 
-// The CPU architecture of cache instance. Value is *x86_64* or *aarch64*.
 func (o GetFlavorsResultOutput) CpuArchitecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.CpuArchitecture }).(pulumi.StringPtrOutput)
 }
 
-// The engine of the cache instance. Value is *redis* or *memcached*.
 func (o GetFlavorsResultOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
@@ -178,7 +105,6 @@ func (o GetFlavorsResultOutput) EngineVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.EngineVersion }).(pulumi.StringPtrOutput)
 }
 
-// A list of DCS flavors.
 func (o GetFlavorsResultOutput) Flavors() GetFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetFlavorsResult) []GetFlavorsFlavor { return v.Flavors }).(GetFlavorsFlavorArrayOutput)
 }
@@ -188,7 +114,6 @@ func (o GetFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The flavor name of the cache instance.
 func (o GetFlavorsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlavorsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

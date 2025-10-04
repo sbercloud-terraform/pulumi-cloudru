@@ -6,11 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages spark job resource of DLI within SberCloud
- *
- * ## Example Usage
- */
 export class SparkJob extends pulumi.CustomResource {
     /**
      * Get an existing SparkJob resource's state with the given name, ID, and optional extra
@@ -39,156 +34,28 @@ export class SparkJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === SparkJob.__pulumiType;
     }
 
-    /**
-     * Specifies the name of the package that is of the JAR or python file type and
-     * has been uploaded to the DLI resource management system.
-     * The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly appName: pulumi.Output<string>;
-    /**
-     * Specifies the input parameters of the main class.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly appParameters: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the configuration items of the DLI spark.
-     * Please following the document of Spark [configurations](https://spark.apache.org/docs/latest/configuration.html) for
-     * this argument. If you want to enable the `access metadata` of DLI spark in SberCloud, please set
-     * `spark.dli.metaAccess.enable` to `true`. Changing this parameter will submit a new spark job.
-     */
     declare public readonly configurations: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Time of the DLI spark job submit.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies a list of package resource objects.
-     * The object structure is documented below.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly dependentPackages: pulumi.Output<outputs.Dli.SparkJobDependentPackage[] | undefined>;
-    /**
-     * Specifies the number of CPU cores of the Spark application driver.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly driverCores: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the driver memory of the spark application.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly driverMemory: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the number of CPU cores of each executor in the Spark
-     * application. The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly executorCores: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the executor memory of the spark application.
-     * application. The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     *
-     * ->**NOTE:** The unit must be provided, such as **GB** or **MB**.
-     */
     declare public readonly executorMemory: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the number of executors in a spark application.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly executors: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the feature name for the Spark Job.
-     * Required for Spark 3. Known values: `basic`, `ai`, `custom`.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly feature: pulumi.Output<string | undefined>;
-    /**
-     * Specifies a list of the other dependencies name which has been uploaded to the
-     * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<dependent files>`.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly files: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies a list of the jar package name which has been uploaded to the DLI
-     * resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly jars: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the main class of the spark job.
-     * Required if the `appName` is the JAR type.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly mainClass: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the maximum retry times.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly maxRetries: pulumi.Output<number | undefined>;
-    /**
-     * Specifies a list of modules that depend on system resources.
-     * The dependent modules and corresponding services are as follows.
-     * Changing this parameter will submit a new spark job.
-     * + **sys.datasource.hbase**: CloudTable/MRS HBase
-     * + **sys.datasource.opentsdb**: CloudTable/MRS OpenTSDB
-     * + **sys.datasource.rds**: RDS MySQL
-     * + **sys.datasource.css**: CSS
-     */
     declare public readonly modules: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the spark job name.
-     * The value contains a maximum of 128 characters.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The owner of the spark job.
-     */
     declare public /*out*/ readonly owner: pulumi.Output<string>;
-    /**
-     * Specifies a list of the python file name which has been uploaded to the
-     * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<python file name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly pythonFiles: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the DLI queue name.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly queueName: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to submit a spark job.
-     * If omitted, the provider-level region will be used.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Version of Spark to use.
-     * Changing this parameter will submit a new spark job.
-     */
     declare public readonly sparkVersion: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the compute resource type for spark application.
-     * The available types and related specifications are as follows, default to minimum configuration (type **A**).
-     * Changing this parameter will submit a new spark job.
-     *
-     * | type | resource | driver cores | excutor cores | driver memory | executor memory | num executor |
-     * | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-     * | A | 8 vCPUs, 32-GB memory | 2 | 1 | 7G | 4G | 6 |
-     * | B | 16 vCPUs, 64-GB memory | 2 | 2 | 7G | 8G | 7 |
-     * | C | 32 vCPUs, 128-GB memory | 4 | 2 | 12G | 8G | 14 |
-     */
     declare public readonly specification: pulumi.Output<string | undefined>;
 
     /**
@@ -268,156 +135,28 @@ export class SparkJob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SparkJob resources.
  */
 export interface SparkJobState {
-    /**
-     * Specifies the name of the package that is of the JAR or python file type and
-     * has been uploaded to the DLI resource management system.
-     * The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     appName?: pulumi.Input<string>;
-    /**
-     * Specifies the input parameters of the main class.
-     * Changing this parameter will submit a new spark job.
-     */
     appParameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the configuration items of the DLI spark.
-     * Please following the document of Spark [configurations](https://spark.apache.org/docs/latest/configuration.html) for
-     * this argument. If you want to enable the `access metadata` of DLI spark in SberCloud, please set
-     * `spark.dli.metaAccess.enable` to `true`. Changing this parameter will submit a new spark job.
-     */
     configurations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Time of the DLI spark job submit.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies a list of package resource objects.
-     * The object structure is documented below.
-     * Changing this parameter will submit a new spark job.
-     */
     dependentPackages?: pulumi.Input<pulumi.Input<inputs.Dli.SparkJobDependentPackage>[]>;
-    /**
-     * Specifies the number of CPU cores of the Spark application driver.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     driverCores?: pulumi.Input<number>;
-    /**
-     * Specifies the driver memory of the spark application.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     driverMemory?: pulumi.Input<string>;
-    /**
-     * Specifies the number of CPU cores of each executor in the Spark
-     * application. The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     executorCores?: pulumi.Input<number>;
-    /**
-     * Specifies the executor memory of the spark application.
-     * application. The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     *
-     * ->**NOTE:** The unit must be provided, such as **GB** or **MB**.
-     */
     executorMemory?: pulumi.Input<string>;
-    /**
-     * Specifies the number of executors in a spark application.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     executors?: pulumi.Input<number>;
-    /**
-     * Specifies the feature name for the Spark Job.
-     * Required for Spark 3. Known values: `basic`, `ai`, `custom`.
-     * Changing this parameter will submit a new spark job.
-     */
     feature?: pulumi.Input<string>;
-    /**
-     * Specifies a list of the other dependencies name which has been uploaded to the
-     * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<dependent files>`.
-     * Changing this parameter will submit a new spark job.
-     */
     files?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies a list of the jar package name which has been uploaded to the DLI
-     * resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     jars?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the main class of the spark job.
-     * Required if the `appName` is the JAR type.
-     * Changing this parameter will submit a new spark job.
-     */
     mainClass?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum retry times.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     maxRetries?: pulumi.Input<number>;
-    /**
-     * Specifies a list of modules that depend on system resources.
-     * The dependent modules and corresponding services are as follows.
-     * Changing this parameter will submit a new spark job.
-     * + **sys.datasource.hbase**: CloudTable/MRS HBase
-     * + **sys.datasource.opentsdb**: CloudTable/MRS OpenTSDB
-     * + **sys.datasource.rds**: RDS MySQL
-     * + **sys.datasource.css**: CSS
-     */
     modules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the spark job name.
-     * The value contains a maximum of 128 characters.
-     * Changing this parameter will submit a new spark job.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The owner of the spark job.
-     */
     owner?: pulumi.Input<string>;
-    /**
-     * Specifies a list of the python file name which has been uploaded to the
-     * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<python file name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     pythonFiles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the DLI queue name.
-     * Changing this parameter will submit a new spark job.
-     */
     queueName?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to submit a spark job.
-     * If omitted, the provider-level region will be used.
-     * Changing this parameter will submit a new spark job.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Version of Spark to use.
-     * Changing this parameter will submit a new spark job.
-     */
     sparkVersion?: pulumi.Input<string>;
-    /**
-     * Specifies the compute resource type for spark application.
-     * The available types and related specifications are as follows, default to minimum configuration (type **A**).
-     * Changing this parameter will submit a new spark job.
-     *
-     * | type | resource | driver cores | excutor cores | driver memory | executor memory | num executor |
-     * | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-     * | A | 8 vCPUs, 32-GB memory | 2 | 1 | 7G | 4G | 6 |
-     * | B | 16 vCPUs, 64-GB memory | 2 | 2 | 7G | 8G | 7 |
-     * | C | 32 vCPUs, 128-GB memory | 4 | 2 | 12G | 8G | 14 |
-     */
     specification?: pulumi.Input<string>;
 }
 
@@ -425,147 +164,25 @@ export interface SparkJobState {
  * The set of arguments for constructing a SparkJob resource.
  */
 export interface SparkJobArgs {
-    /**
-     * Specifies the name of the package that is of the JAR or python file type and
-     * has been uploaded to the DLI resource management system.
-     * The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     appName: pulumi.Input<string>;
-    /**
-     * Specifies the input parameters of the main class.
-     * Changing this parameter will submit a new spark job.
-     */
     appParameters?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the configuration items of the DLI spark.
-     * Please following the document of Spark [configurations](https://spark.apache.org/docs/latest/configuration.html) for
-     * this argument. If you want to enable the `access metadata` of DLI spark in SberCloud, please set
-     * `spark.dli.metaAccess.enable` to `true`. Changing this parameter will submit a new spark job.
-     */
     configurations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies a list of package resource objects.
-     * The object structure is documented below.
-     * Changing this parameter will submit a new spark job.
-     */
     dependentPackages?: pulumi.Input<pulumi.Input<inputs.Dli.SparkJobDependentPackage>[]>;
-    /**
-     * Specifies the number of CPU cores of the Spark application driver.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     driverCores?: pulumi.Input<number>;
-    /**
-     * Specifies the driver memory of the spark application.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     driverMemory?: pulumi.Input<string>;
-    /**
-     * Specifies the number of CPU cores of each executor in the Spark
-     * application. The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     executorCores?: pulumi.Input<number>;
-    /**
-     * Specifies the executor memory of the spark application.
-     * application. The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     *
-     * ->**NOTE:** The unit must be provided, such as **GB** or **MB**.
-     */
     executorMemory?: pulumi.Input<string>;
-    /**
-     * Specifies the number of executors in a spark application.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     executors?: pulumi.Input<number>;
-    /**
-     * Specifies the feature name for the Spark Job.
-     * Required for Spark 3. Known values: `basic`, `ai`, `custom`.
-     * Changing this parameter will submit a new spark job.
-     */
     feature?: pulumi.Input<string>;
-    /**
-     * Specifies a list of the other dependencies name which has been uploaded to the
-     * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<dependent files>`.
-     * Changing this parameter will submit a new spark job.
-     */
     files?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies a list of the jar package name which has been uploaded to the DLI
-     * resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<package name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     jars?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the main class of the spark job.
-     * Required if the `appName` is the JAR type.
-     * Changing this parameter will submit a new spark job.
-     */
     mainClass?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum retry times.
-     * The default value of this value corresponds to the configuration of the selected `specification`.
-     * If you set this value instead of the default value, `specification` will be invalid.
-     * Changing this parameter will submit a new spark job.
-     */
     maxRetries?: pulumi.Input<number>;
-    /**
-     * Specifies a list of modules that depend on system resources.
-     * The dependent modules and corresponding services are as follows.
-     * Changing this parameter will submit a new spark job.
-     * + **sys.datasource.hbase**: CloudTable/MRS HBase
-     * + **sys.datasource.opentsdb**: CloudTable/MRS OpenTSDB
-     * + **sys.datasource.rds**: RDS MySQL
-     * + **sys.datasource.css**: CSS
-     */
     modules?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the spark job name.
-     * The value contains a maximum of 128 characters.
-     * Changing this parameter will submit a new spark job.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies a list of the python file name which has been uploaded to the
-     * DLI resource management system. The OBS paths are allowed, for example, `obs://<bucket name>/<python file name>`.
-     * Changing this parameter will submit a new spark job.
-     */
     pythonFiles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the DLI queue name.
-     * Changing this parameter will submit a new spark job.
-     */
     queueName: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to submit a spark job.
-     * If omitted, the provider-level region will be used.
-     * Changing this parameter will submit a new spark job.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Version of Spark to use.
-     * Changing this parameter will submit a new spark job.
-     */
     sparkVersion?: pulumi.Input<string>;
-    /**
-     * Specifies the compute resource type for spark application.
-     * The available types and related specifications are as follows, default to minimum configuration (type **A**).
-     * Changing this parameter will submit a new spark job.
-     *
-     * | type | resource | driver cores | excutor cores | driver memory | executor memory | num executor |
-     * | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
-     * | A | 8 vCPUs, 32-GB memory | 2 | 1 | 7G | 4G | 6 |
-     * | B | 16 vCPUs, 64-GB memory | 2 | 2 | 7G | 8G | 7 |
-     * | C | 32 vCPUs, 128-GB memory | 4 | 2 | 12G | 8G | 14 |
-     */
     specification?: pulumi.Input<string>;
 }

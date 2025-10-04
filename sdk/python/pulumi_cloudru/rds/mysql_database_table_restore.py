@@ -30,29 +30,10 @@ class MysqlDatabaseTableRestoreArgs:
         """
         The set of arguments for constructing a MysqlDatabaseTableRestore resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of RDS MySQL instance.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point. A timestamp in milliseconds is used.
-               
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point.
         :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreDatabaseArgs']]] databases: Specifies the databases that will be restored.
-               The databases structure is documented below.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.bool] is_fast_restore: Specifies whether to use fast restoration.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds instance resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableArgs']]] restore_tables: Specifies the tables that will be restored.
-               The restore_tables structure is documented below.
-               
-               Changing this creates a new resource.
-               
-               > Exactly one of `databases` and `restore_tables` must be set.
-               
-               <a name="databases_struct"></a>
-               The `databases` block supports:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "restore_time", restore_time)
@@ -70,8 +51,6 @@ class MysqlDatabaseTableRestoreArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of RDS MySQL instance.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -83,9 +62,7 @@ class MysqlDatabaseTableRestoreArgs:
     @pulumi.getter(name="restoreTime")
     def restore_time(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the restoration time point. A timestamp in milliseconds is used.
-
-        Changing this creates a new resource.
+        Specifies the restoration time point.
         """
         return pulumi.get(self, "restore_time")
 
@@ -98,9 +75,6 @@ class MysqlDatabaseTableRestoreArgs:
     def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreDatabaseArgs']]]]:
         """
         Specifies the databases that will be restored.
-        The databases structure is documented below.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "databases")
 
@@ -113,8 +87,6 @@ class MysqlDatabaseTableRestoreArgs:
     def is_fast_restore(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to use fast restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "is_fast_restore")
 
@@ -125,10 +97,6 @@ class MysqlDatabaseTableRestoreArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the rds instance resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -140,14 +108,6 @@ class MysqlDatabaseTableRestoreArgs:
     def restore_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableArgs']]]]:
         """
         Specifies the tables that will be restored.
-        The restore_tables structure is documented below.
-
-        Changing this creates a new resource.
-
-        > Exactly one of `databases` and `restore_tables` must be set.
-
-        <a name="databases_struct"></a>
-        The `databases` block supports:
         """
         return pulumi.get(self, "restore_tables")
 
@@ -168,29 +128,10 @@ class _MysqlDatabaseTableRestoreState:
         """
         Input properties used for looking up and filtering MysqlDatabaseTableRestore resources.
         :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreDatabaseArgs']]] databases: Specifies the databases that will be restored.
-               The databases structure is documented below.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of RDS MySQL instance.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.bool] is_fast_restore: Specifies whether to use fast restoration.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds instance resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableArgs']]] restore_tables: Specifies the tables that will be restored.
-               The restore_tables structure is documented below.
-               
-               Changing this creates a new resource.
-               
-               > Exactly one of `databases` and `restore_tables` must be set.
-               
-               <a name="databases_struct"></a>
-               The `databases` block supports:
-        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point. A timestamp in milliseconds is used.
-               
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point.
         """
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
@@ -210,9 +151,6 @@ class _MysqlDatabaseTableRestoreState:
     def databases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreDatabaseArgs']]]]:
         """
         Specifies the databases that will be restored.
-        The databases structure is documented below.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "databases")
 
@@ -225,8 +163,6 @@ class _MysqlDatabaseTableRestoreState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of RDS MySQL instance.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -239,8 +175,6 @@ class _MysqlDatabaseTableRestoreState:
     def is_fast_restore(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to use fast restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "is_fast_restore")
 
@@ -251,10 +185,6 @@ class _MysqlDatabaseTableRestoreState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the rds instance resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -266,14 +196,6 @@ class _MysqlDatabaseTableRestoreState:
     def restore_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MysqlDatabaseTableRestoreRestoreTableArgs']]]]:
         """
         Specifies the tables that will be restored.
-        The restore_tables structure is documented below.
-
-        Changing this creates a new resource.
-
-        > Exactly one of `databases` and `restore_tables` must be set.
-
-        <a name="databases_struct"></a>
-        The `databases` block supports:
         """
         return pulumi.get(self, "restore_tables")
 
@@ -285,9 +207,7 @@ class _MysqlDatabaseTableRestoreState:
     @pulumi.getter(name="restoreTime")
     def restore_time(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the restoration time point. A timestamp in milliseconds is used.
-
-        Changing this creates a new resource.
+        Specifies the restoration time point.
         """
         return pulumi.get(self, "restore_time")
 
@@ -310,73 +230,14 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
                  restore_time: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Manages an RDS instance MySQL database table restore resource within SberCloud.
-
-        ## Example Usage
-
-        ### MySQL databases restore
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlDatabaseTableRestore("test",
-            restore_time=1673852043000,
-            instance_id=instance_id,
-            databases=[{
-                "old_name": "test111",
-                "new_name": "test111_update",
-            }])
-        ```
-
-        ### MySQL tables restore
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlDatabaseTableRestore("test",
-            restore_time=1673852043000,
-            instance_id=instance_id,
-            restore_tables=[{
-                "database": "test111",
-                "tables": [{
-                    "old_name": "table111",
-                    "new_name": "table111_update",
-                }],
-            }])
-        ```
-
+        Create a MysqlDatabaseTableRestore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabaseTableRestoreDatabaseArgs', 'MysqlDatabaseTableRestoreDatabaseArgsDict']]]] databases: Specifies the databases that will be restored.
-               The databases structure is documented below.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of RDS MySQL instance.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.bool] is_fast_restore: Specifies whether to use fast restoration.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds instance resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabaseTableRestoreRestoreTableArgs', 'MysqlDatabaseTableRestoreRestoreTableArgsDict']]]] restore_tables: Specifies the tables that will be restored.
-               The restore_tables structure is documented below.
-               
-               Changing this creates a new resource.
-               
-               > Exactly one of `databases` and `restore_tables` must be set.
-               
-               <a name="databases_struct"></a>
-               The `databases` block supports:
-        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point. A timestamp in milliseconds is used.
-               
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point.
         """
         ...
     @overload
@@ -385,47 +246,7 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
                  args: MysqlDatabaseTableRestoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an RDS instance MySQL database table restore resource within SberCloud.
-
-        ## Example Usage
-
-        ### MySQL databases restore
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlDatabaseTableRestore("test",
-            restore_time=1673852043000,
-            instance_id=instance_id,
-            databases=[{
-                "old_name": "test111",
-                "new_name": "test111_update",
-            }])
-        ```
-
-        ### MySQL tables restore
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.MysqlDatabaseTableRestore("test",
-            restore_time=1673852043000,
-            instance_id=instance_id,
-            restore_tables=[{
-                "database": "test111",
-                "tables": [{
-                    "old_name": "table111",
-                    "new_name": "table111_update",
-                }],
-            }])
-        ```
-
+        Create a MysqlDatabaseTableRestore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param MysqlDatabaseTableRestoreArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -490,29 +311,10 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabaseTableRestoreDatabaseArgs', 'MysqlDatabaseTableRestoreDatabaseArgsDict']]]] databases: Specifies the databases that will be restored.
-               The databases structure is documented below.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of RDS MySQL instance.
-               
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.bool] is_fast_restore: Specifies whether to use fast restoration.
-               
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the rds instance resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['MysqlDatabaseTableRestoreRestoreTableArgs', 'MysqlDatabaseTableRestoreRestoreTableArgsDict']]]] restore_tables: Specifies the tables that will be restored.
-               The restore_tables structure is documented below.
-               
-               Changing this creates a new resource.
-               
-               > Exactly one of `databases` and `restore_tables` must be set.
-               
-               <a name="databases_struct"></a>
-               The `databases` block supports:
-        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point. A timestamp in milliseconds is used.
-               
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] restore_time: Specifies the restoration time point.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -531,9 +333,6 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
     def databases(self) -> pulumi.Output[Optional[Sequence['outputs.MysqlDatabaseTableRestoreDatabase']]]:
         """
         Specifies the databases that will be restored.
-        The databases structure is documented below.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "databases")
 
@@ -542,8 +341,6 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of RDS MySQL instance.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -552,18 +349,12 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
     def is_fast_restore(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         Specifies whether to use fast restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "is_fast_restore")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the rds instance resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -571,14 +362,6 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
     def restore_tables(self) -> pulumi.Output[Optional[Sequence['outputs.MysqlDatabaseTableRestoreRestoreTable']]]:
         """
         Specifies the tables that will be restored.
-        The restore_tables structure is documented below.
-
-        Changing this creates a new resource.
-
-        > Exactly one of `databases` and `restore_tables` must be set.
-
-        <a name="databases_struct"></a>
-        The `databases` block supports:
         """
         return pulumi.get(self, "restore_tables")
 
@@ -586,9 +369,7 @@ class MysqlDatabaseTableRestore(pulumi.CustomResource):
     @pulumi.getter(name="restoreTime")
     def restore_time(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the restoration time point. A timestamp in milliseconds is used.
-
-        Changing this creates a new resource.
+        Specifies the restoration time point.
         """
         return pulumi.get(self, "restore_time")
 

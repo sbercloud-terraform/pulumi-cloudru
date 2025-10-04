@@ -4,62 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS SQLServer account resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.rds.SqlserverAccount("test", {
- *     instanceId: instanceId,
- *     name: "test_account_name",
- *     password: "Test@12345678",
- * });
- * ```
- *
- * ## Import
- *
- * The RDS sqlserver account can be imported using the `instance_id` and `name` separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/sqlserverAccount:SqlserverAccount test <instance_id>/<name>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
- *
- * running `pulumi preview` after importing a RDS SQLServer account. You can then decide if changes should be applied to
- *
- * the RDS SQLServer account, or the resource definition should be updated to align with the RDS SQLServer account. Also
- *
- * you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_rds_sqlserver_account" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       password,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class SqlserverAccount extends pulumi.CustomResource {
     /**
      * Get an existing SqlserverAccount resource's state with the given name, ID, and optional extra
@@ -90,33 +34,19 @@ export class SqlserverAccount extends pulumi.CustomResource {
 
     /**
      * Specifies the ID of the RDS SQLServer instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the username of the DB account. The username consists of 1 to 128
-     * characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-     * and **rdsmirror**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the username of the DB account.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the password of the DB account. It consists of 8 to 128 characters and
-     * contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-     * characters.
+     * Specifies the password of the DB account.
      */
     declare public readonly password: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Indicates the DB user status. Its value can be any of the following:
-     * + **unavailable**: The database user is unavailable.
-     * + **available**: The database user is available.
+     * Indicates the DB user status.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
 
@@ -165,33 +95,19 @@ export class SqlserverAccount extends pulumi.CustomResource {
 export interface SqlserverAccountState {
     /**
      * Specifies the ID of the RDS SQLServer instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the username of the DB account. The username consists of 1 to 128
-     * characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-     * and **rdsmirror**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the username of the DB account.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password of the DB account. It consists of 8 to 128 characters and
-     * contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-     * characters.
+     * Specifies the password of the DB account.
      */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Indicates the DB user status. Its value can be any of the following:
-     * + **unavailable**: The database user is unavailable.
-     * + **available**: The database user is available.
+     * Indicates the DB user status.
      */
     state?: pulumi.Input<string>;
 }
@@ -202,27 +118,15 @@ export interface SqlserverAccountState {
 export interface SqlserverAccountArgs {
     /**
      * Specifies the ID of the RDS SQLServer instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the username of the DB account. The username consists of 1 to 128
-     * characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-     * and **rdsmirror**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the username of the DB account.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the password of the DB account. It consists of 8 to 128 characters and
-     * contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-     * characters.
+     * Specifies the password of the DB account.
      */
     password: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

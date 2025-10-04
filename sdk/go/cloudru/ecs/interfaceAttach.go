@@ -12,142 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Attaches a Network Interface to an Instance.
-//
-// ## Example Usage
-//
-// ### Attach a port (under the specified network) to the ECS instance and generate a random IP address
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			networkId := cfg.RequireObject("networkId")
-//			_, err := ecs.NewInterfaceAttach(ctx, "test", &ecs.InterfaceAttachArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				NetworkId:  pulumi.Any(networkId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Attach a custom port to the ECS instance
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			securityGroupId := cfg.RequireObject("securityGroupId")
-//			mynet, err := vpc.GetSubnet(ctx, &vpc.GetSubnetArgs{
-//				Name: pulumi.StringRef("subnet-default"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myport, err := vpc.GetPort(ctx, &vpc.GetPortArgs{
-//				NetworkId: pulumi.StringRef(mynet.Id),
-//				FixedIp:   pulumi.StringRef("192.168.0.100"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			myinstance, err := ecs.NewInstance(ctx, "myinstance", &ecs.InstanceArgs{
-//				Name:     pulumi.String("instance"),
-//				ImageId:  pulumi.String("ad091b52-742f-469e-8f3c-fd81cadf0743"),
-//				FlavorId: pulumi.String("s6.small.1"),
-//				KeyPair:  pulumi.String("my_key_pair_name"),
-//				SecurityGroupIds: pulumi.StringArray{
-//					securityGroupId,
-//				},
-//				AvailabilityZone: pulumi.String("cn-north-4a"),
-//				Networks: ecs.InstanceNetworkArray{
-//					&ecs.InstanceNetworkArgs{
-//						Uuid: pulumi.String("55534eaa-533a-419d-9b40-ec427ea7195a"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewInterfaceAttach(ctx, "attached", &ecs.InterfaceAttachArgs{
-//				InstanceId: myinstance.ID(),
-//				PortId:     pulumi.String(myport.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Interface Attachments can be imported using the Instance ID and Port ID separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Ecs/interfaceAttach:InterfaceAttach ai_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
-// ```
 type InterfaceAttach struct {
 	pulumi.CustomResourceState
 
-	// An IP address to assosciate with the port.
-	//
-	// ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-	// the supplied network.
-	FixedIp   pulumi.StringOutput `pulumi:"fixedIp"`
-	FixedIpv6 pulumi.StringOutput `pulumi:"fixedIpv6"`
-	// The ID of the Instance to attach the Port or Network to.
-	InstanceId      pulumi.StringOutput    `pulumi:"instanceId"`
-	Ipv6BandwidthId pulumi.StringPtrOutput `pulumi:"ipv6BandwidthId"`
-	Ipv6Enable      pulumi.BoolOutput      `pulumi:"ipv6Enable"`
-	// The MAC address of the NIC.
-	Mac pulumi.StringOutput `pulumi:"mac"`
-	// The ID of the Network to attach to an Instance. A port will be created
-	// automatically.
-	// This option and `portId` are mutually exclusive.
-	NetworkId pulumi.StringOutput `pulumi:"networkId"`
-	// The ID of the Port to attach to an Instance.
-	// This option and `networkId` are mutually exclusive.
-	PortId pulumi.StringOutput `pulumi:"portId"`
-	// The region in which to create the network interface attache resource. If
-	// omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the list of security group IDs bound to the specified port.\
-	// Defaults to the default security group.
+	FixedIp          pulumi.StringOutput      `pulumi:"fixedIp"`
+	FixedIpv6        pulumi.StringOutput      `pulumi:"fixedIpv6"`
+	InstanceId       pulumi.StringOutput      `pulumi:"instanceId"`
+	Ipv6BandwidthId  pulumi.StringPtrOutput   `pulumi:"ipv6BandwidthId"`
+	Ipv6Enable       pulumi.BoolOutput        `pulumi:"ipv6Enable"`
+	Mac              pulumi.StringOutput      `pulumi:"mac"`
+	NetworkId        pulumi.StringOutput      `pulumi:"networkId"`
+	PortId           pulumi.StringOutput      `pulumi:"portId"`
+	Region           pulumi.StringOutput      `pulumi:"region"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck pulumi.BoolPtrOutput `pulumi:"sourceDestCheck"`
+	SourceDestCheck  pulumi.BoolPtrOutput     `pulumi:"sourceDestCheck"`
 }
 
 // NewInterfaceAttach registers a new resource with the given unique name, arguments, and options.
@@ -183,67 +61,31 @@ func GetInterfaceAttach(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InterfaceAttach resources.
 type interfaceAttachState struct {
-	// An IP address to assosciate with the port.
-	//
-	// ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-	// the supplied network.
-	FixedIp   *string `pulumi:"fixedIp"`
-	FixedIpv6 *string `pulumi:"fixedIpv6"`
-	// The ID of the Instance to attach the Port or Network to.
-	InstanceId      *string `pulumi:"instanceId"`
-	Ipv6BandwidthId *string `pulumi:"ipv6BandwidthId"`
-	Ipv6Enable      *bool   `pulumi:"ipv6Enable"`
-	// The MAC address of the NIC.
-	Mac *string `pulumi:"mac"`
-	// The ID of the Network to attach to an Instance. A port will be created
-	// automatically.
-	// This option and `portId` are mutually exclusive.
-	NetworkId *string `pulumi:"networkId"`
-	// The ID of the Port to attach to an Instance.
-	// This option and `networkId` are mutually exclusive.
-	PortId *string `pulumi:"portId"`
-	// The region in which to create the network interface attache resource. If
-	// omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-	Region *string `pulumi:"region"`
-	// Specifies the list of security group IDs bound to the specified port.\
-	// Defaults to the default security group.
+	FixedIp          *string  `pulumi:"fixedIp"`
+	FixedIpv6        *string  `pulumi:"fixedIpv6"`
+	InstanceId       *string  `pulumi:"instanceId"`
+	Ipv6BandwidthId  *string  `pulumi:"ipv6BandwidthId"`
+	Ipv6Enable       *bool    `pulumi:"ipv6Enable"`
+	Mac              *string  `pulumi:"mac"`
+	NetworkId        *string  `pulumi:"networkId"`
+	PortId           *string  `pulumi:"portId"`
+	Region           *string  `pulumi:"region"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
+	SourceDestCheck  *bool    `pulumi:"sourceDestCheck"`
 }
 
 type InterfaceAttachState struct {
-	// An IP address to assosciate with the port.
-	//
-	// ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-	// the supplied network.
-	FixedIp   pulumi.StringPtrInput
-	FixedIpv6 pulumi.StringPtrInput
-	// The ID of the Instance to attach the Port or Network to.
-	InstanceId      pulumi.StringPtrInput
-	Ipv6BandwidthId pulumi.StringPtrInput
-	Ipv6Enable      pulumi.BoolPtrInput
-	// The MAC address of the NIC.
-	Mac pulumi.StringPtrInput
-	// The ID of the Network to attach to an Instance. A port will be created
-	// automatically.
-	// This option and `portId` are mutually exclusive.
-	NetworkId pulumi.StringPtrInput
-	// The ID of the Port to attach to an Instance.
-	// This option and `networkId` are mutually exclusive.
-	PortId pulumi.StringPtrInput
-	// The region in which to create the network interface attache resource. If
-	// omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-	Region pulumi.StringPtrInput
-	// Specifies the list of security group IDs bound to the specified port.\
-	// Defaults to the default security group.
+	FixedIp          pulumi.StringPtrInput
+	FixedIpv6        pulumi.StringPtrInput
+	InstanceId       pulumi.StringPtrInput
+	Ipv6BandwidthId  pulumi.StringPtrInput
+	Ipv6Enable       pulumi.BoolPtrInput
+	Mac              pulumi.StringPtrInput
+	NetworkId        pulumi.StringPtrInput
+	PortId           pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck pulumi.BoolPtrInput
+	SourceDestCheck  pulumi.BoolPtrInput
 }
 
 func (InterfaceAttachState) ElementType() reflect.Type {
@@ -251,62 +93,28 @@ func (InterfaceAttachState) ElementType() reflect.Type {
 }
 
 type interfaceAttachArgs struct {
-	// An IP address to assosciate with the port.
-	//
-	// ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-	// the supplied network.
-	FixedIp *string `pulumi:"fixedIp"`
-	// The ID of the Instance to attach the Port or Network to.
-	InstanceId      string  `pulumi:"instanceId"`
-	Ipv6BandwidthId *string `pulumi:"ipv6BandwidthId"`
-	Ipv6Enable      *bool   `pulumi:"ipv6Enable"`
-	// The ID of the Network to attach to an Instance. A port will be created
-	// automatically.
-	// This option and `portId` are mutually exclusive.
-	NetworkId *string `pulumi:"networkId"`
-	// The ID of the Port to attach to an Instance.
-	// This option and `networkId` are mutually exclusive.
-	PortId *string `pulumi:"portId"`
-	// The region in which to create the network interface attache resource. If
-	// omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-	Region *string `pulumi:"region"`
-	// Specifies the list of security group IDs bound to the specified port.\
-	// Defaults to the default security group.
+	FixedIp          *string  `pulumi:"fixedIp"`
+	InstanceId       string   `pulumi:"instanceId"`
+	Ipv6BandwidthId  *string  `pulumi:"ipv6BandwidthId"`
+	Ipv6Enable       *bool    `pulumi:"ipv6Enable"`
+	NetworkId        *string  `pulumi:"networkId"`
+	PortId           *string  `pulumi:"portId"`
+	Region           *string  `pulumi:"region"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck *bool `pulumi:"sourceDestCheck"`
+	SourceDestCheck  *bool    `pulumi:"sourceDestCheck"`
 }
 
 // The set of arguments for constructing a InterfaceAttach resource.
 type InterfaceAttachArgs struct {
-	// An IP address to assosciate with the port.
-	//
-	// ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-	// the supplied network.
-	FixedIp pulumi.StringPtrInput
-	// The ID of the Instance to attach the Port or Network to.
-	InstanceId      pulumi.StringInput
-	Ipv6BandwidthId pulumi.StringPtrInput
-	Ipv6Enable      pulumi.BoolPtrInput
-	// The ID of the Network to attach to an Instance. A port will be created
-	// automatically.
-	// This option and `portId` are mutually exclusive.
-	NetworkId pulumi.StringPtrInput
-	// The ID of the Port to attach to an Instance.
-	// This option and `networkId` are mutually exclusive.
-	PortId pulumi.StringPtrInput
-	// The region in which to create the network interface attache resource. If
-	// omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
-	Region pulumi.StringPtrInput
-	// Specifies the list of security group IDs bound to the specified port.\
-	// Defaults to the default security group.
+	FixedIp          pulumi.StringPtrInput
+	InstanceId       pulumi.StringInput
+	Ipv6BandwidthId  pulumi.StringPtrInput
+	Ipv6Enable       pulumi.BoolPtrInput
+	NetworkId        pulumi.StringPtrInput
+	PortId           pulumi.StringPtrInput
+	Region           pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
-	// Specifies whether the ECS processes only traffic that is destined specifically
-	// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-	// virtual IP address bound to it.
-	SourceDestCheck pulumi.BoolPtrInput
+	SourceDestCheck  pulumi.BoolPtrInput
 }
 
 func (InterfaceAttachArgs) ElementType() reflect.Type {
@@ -396,10 +204,6 @@ func (o InterfaceAttachOutput) ToInterfaceAttachOutputWithContext(ctx context.Co
 	return o
 }
 
-// An IP address to assosciate with the port.
-//
-// ->This option cannot be used with port_id. You must specify a network_id. The IP address must lie in a range on
-// the supplied network.
 func (o InterfaceAttachOutput) FixedIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.FixedIp }).(pulumi.StringOutput)
 }
@@ -408,7 +212,6 @@ func (o InterfaceAttachOutput) FixedIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.FixedIpv6 }).(pulumi.StringOutput)
 }
 
-// The ID of the Instance to attach the Port or Network to.
 func (o InterfaceAttachOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -421,39 +224,26 @@ func (o InterfaceAttachOutput) Ipv6Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.BoolOutput { return v.Ipv6Enable }).(pulumi.BoolOutput)
 }
 
-// The MAC address of the NIC.
 func (o InterfaceAttachOutput) Mac() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.Mac }).(pulumi.StringOutput)
 }
 
-// The ID of the Network to attach to an Instance. A port will be created
-// automatically.
-// This option and `portId` are mutually exclusive.
 func (o InterfaceAttachOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// The ID of the Port to attach to an Instance.
-// This option and `networkId` are mutually exclusive.
 func (o InterfaceAttachOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.PortId }).(pulumi.StringOutput)
 }
 
-// The region in which to create the network interface attache resource. If
-// omitted, the provider-level region will be used. Changing this creates a new network interface attache resource.
 func (o InterfaceAttachOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the list of security group IDs bound to the specified port.\
-// Defaults to the default security group.
 func (o InterfaceAttachOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies whether the ECS processes only traffic that is destined specifically
-// for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-// virtual IP address bound to it.
 func (o InterfaceAttachOutput) SourceDestCheck() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InterfaceAttach) pulumi.BoolPtrOutput { return v.SourceDestCheck }).(pulumi.BoolPtrOutput)
 }

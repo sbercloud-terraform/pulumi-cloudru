@@ -11,66 +11,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages DLI SQL database resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create a database
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dli"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			databaseName := cfg.RequireObject("databaseName")
-//			_, err := dli.NewDatabase(ctx, "test", &dli.DatabaseArgs{
-//				Name: pulumi.Any(databaseName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DLI SQL databases can be imported by their `name`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Dli/database:Database test terraform_test
-// ```
 type Database struct {
 	pulumi.CustomResourceState
 
-	// Specifies the description of a queue.
-	// Changing this parameter will create a new database resource.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the enterprise project ID.
-	// The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// Specifies the database name. The name consists of 1 to 128 characters, starting
-	// with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-	// Changing this parameter will create a new database resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the name of the SQL database owner.
-	// The owner must be IAM user.
-	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Specifies the region in which to create the DLI database resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-	Region pulumi.StringOutput    `pulumi:"region"`
-	Tags   pulumi.StringMapOutput `pulumi:"tags"`
+	Description         pulumi.StringPtrOutput `pulumi:"description"`
+	EnterpriseProjectId pulumi.StringOutput    `pulumi:"enterpriseProjectId"`
+	Name                pulumi.StringOutput    `pulumi:"name"`
+	Owner               pulumi.StringOutput    `pulumi:"owner"`
+	Region              pulumi.StringOutput    `pulumi:"region"`
+	Tags                pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -103,43 +52,21 @@ func GetDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Database resources.
 type databaseState struct {
-	// Specifies the description of a queue.
-	// Changing this parameter will create a new database resource.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project ID.
-	// The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the database name. The name consists of 1 to 128 characters, starting
-	// with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-	// Changing this parameter will create a new database resource.
-	Name *string `pulumi:"name"`
-	// Specifies the name of the SQL database owner.
-	// The owner must be IAM user.
-	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to create the DLI database resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-	Region *string           `pulumi:"region"`
-	Tags   map[string]string `pulumi:"tags"`
+	Description         *string           `pulumi:"description"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	Name                *string           `pulumi:"name"`
+	Owner               *string           `pulumi:"owner"`
+	Region              *string           `pulumi:"region"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 type DatabaseState struct {
-	// Specifies the description of a queue.
-	// Changing this parameter will create a new database resource.
-	Description pulumi.StringPtrInput
-	// Specifies the enterprise project ID.
-	// The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the database name. The name consists of 1 to 128 characters, starting
-	// with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-	// Changing this parameter will create a new database resource.
-	Name pulumi.StringPtrInput
-	// Specifies the name of the SQL database owner.
-	// The owner must be IAM user.
-	Owner pulumi.StringPtrInput
-	// Specifies the region in which to create the DLI database resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-	Region pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
+	Name                pulumi.StringPtrInput
+	Owner               pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (DatabaseState) ElementType() reflect.Type {
@@ -147,44 +74,22 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// Specifies the description of a queue.
-	// Changing this parameter will create a new database resource.
-	Description *string `pulumi:"description"`
-	// Specifies the enterprise project ID.
-	// The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the database name. The name consists of 1 to 128 characters, starting
-	// with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-	// Changing this parameter will create a new database resource.
-	Name *string `pulumi:"name"`
-	// Specifies the name of the SQL database owner.
-	// The owner must be IAM user.
-	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to create the DLI database resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-	Region *string           `pulumi:"region"`
-	Tags   map[string]string `pulumi:"tags"`
+	Description         *string           `pulumi:"description"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	Name                *string           `pulumi:"name"`
+	Owner               *string           `pulumi:"owner"`
+	Region              *string           `pulumi:"region"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// Specifies the description of a queue.
-	// Changing this parameter will create a new database resource.
-	Description pulumi.StringPtrInput
-	// Specifies the enterprise project ID.
-	// The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
+	Description         pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// Specifies the database name. The name consists of 1 to 128 characters, starting
-	// with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-	// Changing this parameter will create a new database resource.
-	Name pulumi.StringPtrInput
-	// Specifies the name of the SQL database owner.
-	// The owner must be IAM user.
-	Owner pulumi.StringPtrInput
-	// Specifies the region in which to create the DLI database resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
-	Region pulumi.StringPtrInput
-	Tags   pulumi.StringMapInput
+	Name                pulumi.StringPtrInput
+	Owner               pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	Tags                pulumi.StringMapInput
 }
 
 func (DatabaseArgs) ElementType() reflect.Type {
@@ -274,33 +179,22 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
-// Specifies the description of a queue.
-// Changing this parameter will create a new database resource.
 func (o DatabaseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the enterprise project ID.
-// The value 0 indicates the default enterprise project. Changing this parameter will create a new database resource.
 func (o DatabaseOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the database name. The name consists of 1 to 128 characters, starting
-// with a letter or digit. Only letters, digits and underscores (_) are allowed and the name cannot be all digits.
-// Changing this parameter will create a new database resource.
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the SQL database owner.
-// The owner must be IAM user.
 func (o DatabaseOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the DLI database resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new database resource.
 func (o DatabaseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

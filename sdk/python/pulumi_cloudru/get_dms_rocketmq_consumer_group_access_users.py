@@ -65,9 +65,6 @@ class GetDmsRocketmqConsumerGroupAccessUsersResult:
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetDmsRocketmqConsumerGroupAccessUsersPolicyResult']:
-        """
-        Indicates the user list.
-        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
@@ -94,26 +91,7 @@ def get_dms_rocketmq_consumer_group_access_users(group: Optional[_builtins.str] 
                                                  region: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqConsumerGroupAccessUsersResult:
     """
-    Use this data source to get the list of RocketMQ consumer group access users.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    group = config.require_object("group")
-    test = sbercloud.get_dms_rocketmq_consumer_group_access_users(instance_id=instance_id,
-        group=group)
-    ```
-
-
-    :param _builtins.str group: Specifies the consumer group.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['group'] = group
@@ -133,26 +111,7 @@ def get_dms_rocketmq_consumer_group_access_users_output(group: Optional[pulumi.I
                                                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqConsumerGroupAccessUsersResult]:
     """
-    Use this data source to get the list of RocketMQ consumer group access users.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    group = config.require_object("group")
-    test = sbercloud.get_dms_rocketmq_consumer_group_access_users(instance_id=instance_id,
-        group=group)
-    ```
-
-
-    :param _builtins.str group: Specifies the consumer group.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['group'] = group

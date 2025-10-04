@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ instance's migration tasks.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.GetDmsRocketmqMigrationTasks(ctx, &cloudru.GetDmsRocketmqMigrationTasksArgs{
-//				InstanceId: instanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqMigrationTasks(ctx *pulumi.Context, args *GetDmsRocketmqMigrationTasksArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqMigrationTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqMigrationTasksResult
@@ -53,33 +23,23 @@ func GetDmsRocketmqMigrationTasks(ctx *pulumi.Context, args *GetDmsRocketmqMigra
 
 // A collection of arguments for invoking getDmsRocketmqMigrationTasks.
 type GetDmsRocketmqMigrationTasksArgs struct {
-	// Specifies the RocketMQ instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the RocketMQ migration task name.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the RocketMQ migration task ID.
-	TaskId *string `pulumi:"taskId"`
-	// Specifies the RocketMQ migration task type.
-	// Valid values are **rocketmq** and **rabbitToRocket**.
-	Type *string `pulumi:"type"`
+	InstanceId string  `pulumi:"instanceId"`
+	Name       *string `pulumi:"name"`
+	Region     *string `pulumi:"region"`
+	TaskId     *string `pulumi:"taskId"`
+	Type       *string `pulumi:"type"`
 }
 
 // A collection of values returned by getDmsRocketmqMigrationTasks.
 type GetDmsRocketmqMigrationTasksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Indicates the name of a metadata migration task.
-	Name   *string `pulumi:"name"`
-	Region string  `pulumi:"region"`
-	TaskId *string `pulumi:"taskId"`
-	// Indicates the list of metadata migration tasks.
-	Tasks []GetDmsRocketmqMigrationTasksTask `pulumi:"tasks"`
-	// Indicates the metadata migration task type.
-	Type *string `pulumi:"type"`
+	Id         string                             `pulumi:"id"`
+	InstanceId string                             `pulumi:"instanceId"`
+	Name       *string                            `pulumi:"name"`
+	Region     string                             `pulumi:"region"`
+	TaskId     *string                            `pulumi:"taskId"`
+	Tasks      []GetDmsRocketmqMigrationTasksTask `pulumi:"tasks"`
+	Type       *string                            `pulumi:"type"`
 }
 
 func GetDmsRocketmqMigrationTasksOutput(ctx *pulumi.Context, args GetDmsRocketmqMigrationTasksOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqMigrationTasksResultOutput {
@@ -93,18 +53,11 @@ func GetDmsRocketmqMigrationTasksOutput(ctx *pulumi.Context, args GetDmsRocketmq
 
 // A collection of arguments for invoking getDmsRocketmqMigrationTasks.
 type GetDmsRocketmqMigrationTasksOutputArgs struct {
-	// Specifies the RocketMQ instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the RocketMQ migration task name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the RocketMQ migration task ID.
-	TaskId pulumi.StringPtrInput `pulumi:"taskId"`
-	// Specifies the RocketMQ migration task type.
-	// Valid values are **rocketmq** and **rabbitToRocket**.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Name       pulumi.StringPtrInput `pulumi:"name"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
+	TaskId     pulumi.StringPtrInput `pulumi:"taskId"`
+	Type       pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetDmsRocketmqMigrationTasksOutputArgs) ElementType() reflect.Type {
@@ -135,7 +88,6 @@ func (o GetDmsRocketmqMigrationTasksResultOutput) InstanceId() pulumi.StringOutp
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the name of a metadata migration task.
 func (o GetDmsRocketmqMigrationTasksResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -148,12 +100,10 @@ func (o GetDmsRocketmqMigrationTasksResultOutput) TaskId() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksResult) *string { return v.TaskId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the list of metadata migration tasks.
 func (o GetDmsRocketmqMigrationTasksResultOutput) Tasks() GetDmsRocketmqMigrationTasksTaskArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksResult) []GetDmsRocketmqMigrationTasksTask { return v.Tasks }).(GetDmsRocketmqMigrationTasksTaskArrayOutput)
 }
 
-// Indicates the metadata migration task type.
 func (o GetDmsRocketmqMigrationTasksResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqMigrationTasksResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }

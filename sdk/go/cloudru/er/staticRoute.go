@@ -12,123 +12,20 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a static route under the ER route table within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ### Create a static route and cross the VPC
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			routeTableId := cfg.RequireObject("routeTableId")
-//			destinationVpcCidr := cfg.RequireObject("destinationVpcCidr")
-//			sourceVpcAttachmentId := cfg.RequireObject("sourceVpcAttachmentId")
-//			_, err := er.NewStaticRoute(ctx, "test", &er.StaticRouteArgs{
-//				RouteTableId: pulumi.Any(routeTableId),
-//				Destination:  pulumi.Any(destinationVpcCidr),
-//				AttachmentId: pulumi.Any(sourceVpcAttachmentId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Create a black hole route
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			routeTableId := cfg.RequireObject("routeTableId")
-//			destinationVpcCidr := cfg.RequireObject("destinationVpcCidr")
-//			_, err := er.NewStaticRoute(ctx, "test", &er.StaticRouteArgs{
-//				RouteTableId: pulumi.Any(routeTableId),
-//				Destination:  pulumi.Any(destinationVpcCidr),
-//				IsBlackhole:  pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Static routes can be imported using the related `route_table_id` and their `id`, separated by a slash (/), e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Er/staticRoute:StaticRoute test <route_table_id>/<id>
-// ```
 type StaticRoute struct {
 	pulumi.CustomResourceState
 
-	// Specifies the ID of the corresponding attachment.
+	// The ID of the corresponding attachment.
 	AttachmentId pulumi.StringPtrOutput `pulumi:"attachmentId"`
 	// The creation time of the static route.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Specifies the destination of the static route.\
-	// Changing this parameter will create a new resource.
+	// The destination of the static route.
 	Destination pulumi.StringOutput `pulumi:"destination"`
-	// Specifies whether route is the black hole route, defaults to `false`.
-	// + If the value is empty or `false`, the parameter `attachmentId` is required.
-	// + If the value is `true`, the parameter `attachmentId` must be empty.
+	// Whether route is the black hole route.
 	IsBlackhole pulumi.BoolPtrOutput `pulumi:"isBlackhole"`
-	// Specifies the region where the static route and related route table are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the static route and related route table are located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the ID of the route table to which the static route
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the static route belongs.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The current status of the static route.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -174,24 +71,17 @@ func GetStaticRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering StaticRoute resources.
 type staticRouteState struct {
-	// Specifies the ID of the corresponding attachment.
+	// The ID of the corresponding attachment.
 	AttachmentId *string `pulumi:"attachmentId"`
 	// The creation time of the static route.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Specifies the destination of the static route.\
-	// Changing this parameter will create a new resource.
+	// The destination of the static route.
 	Destination *string `pulumi:"destination"`
-	// Specifies whether route is the black hole route, defaults to `false`.
-	// + If the value is empty or `false`, the parameter `attachmentId` is required.
-	// + If the value is `true`, the parameter `attachmentId` must be empty.
+	// Whether route is the black hole route.
 	IsBlackhole *bool `pulumi:"isBlackhole"`
-	// Specifies the region where the static route and related route table are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the static route and related route table are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the route table to which the static route
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the static route belongs.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The current status of the static route.
 	Status *string `pulumi:"status"`
@@ -202,24 +92,17 @@ type staticRouteState struct {
 }
 
 type StaticRouteState struct {
-	// Specifies the ID of the corresponding attachment.
+	// The ID of the corresponding attachment.
 	AttachmentId pulumi.StringPtrInput
 	// The creation time of the static route.
 	CreatedAt pulumi.StringPtrInput
-	// Specifies the destination of the static route.\
-	// Changing this parameter will create a new resource.
+	// The destination of the static route.
 	Destination pulumi.StringPtrInput
-	// Specifies whether route is the black hole route, defaults to `false`.
-	// + If the value is empty or `false`, the parameter `attachmentId` is required.
-	// + If the value is `true`, the parameter `attachmentId` must be empty.
+	// Whether route is the black hole route.
 	IsBlackhole pulumi.BoolPtrInput
-	// Specifies the region where the static route and related route table are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the static route and related route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the route table to which the static route
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the static route belongs.
 	RouteTableId pulumi.StringPtrInput
 	// The current status of the static route.
 	Status pulumi.StringPtrInput
@@ -234,43 +117,29 @@ func (StaticRouteState) ElementType() reflect.Type {
 }
 
 type staticRouteArgs struct {
-	// Specifies the ID of the corresponding attachment.
+	// The ID of the corresponding attachment.
 	AttachmentId *string `pulumi:"attachmentId"`
-	// Specifies the destination of the static route.\
-	// Changing this parameter will create a new resource.
+	// The destination of the static route.
 	Destination string `pulumi:"destination"`
-	// Specifies whether route is the black hole route, defaults to `false`.
-	// + If the value is empty or `false`, the parameter `attachmentId` is required.
-	// + If the value is `true`, the parameter `attachmentId` must be empty.
+	// Whether route is the black hole route.
 	IsBlackhole *bool `pulumi:"isBlackhole"`
-	// Specifies the region where the static route and related route table are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the static route and related route table are located.
 	Region *string `pulumi:"region"`
-	// Specifies the ID of the route table to which the static route
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the static route belongs.
 	RouteTableId string `pulumi:"routeTableId"`
 }
 
 // The set of arguments for constructing a StaticRoute resource.
 type StaticRouteArgs struct {
-	// Specifies the ID of the corresponding attachment.
+	// The ID of the corresponding attachment.
 	AttachmentId pulumi.StringPtrInput
-	// Specifies the destination of the static route.\
-	// Changing this parameter will create a new resource.
+	// The destination of the static route.
 	Destination pulumi.StringInput
-	// Specifies whether route is the black hole route, defaults to `false`.
-	// + If the value is empty or `false`, the parameter `attachmentId` is required.
-	// + If the value is `true`, the parameter `attachmentId` must be empty.
+	// Whether route is the black hole route.
 	IsBlackhole pulumi.BoolPtrInput
-	// Specifies the region where the static route and related route table are
-	// located.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+	// The region where the static route and related route table are located.
 	Region pulumi.StringPtrInput
-	// Specifies the ID of the route table to which the static route
-	// belongs.
-	// Changing this parameter will create a new resource.
+	// The ID of the route table to which the static route belongs.
 	RouteTableId pulumi.StringInput
 }
 
@@ -361,7 +230,7 @@ func (o StaticRouteOutput) ToStaticRouteOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// Specifies the ID of the corresponding attachment.
+// The ID of the corresponding attachment.
 func (o StaticRouteOutput) AttachmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.AttachmentId }).(pulumi.StringPtrOutput)
 }
@@ -371,29 +240,22 @@ func (o StaticRouteOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the destination of the static route.\
-// Changing this parameter will create a new resource.
+// The destination of the static route.
 func (o StaticRouteOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Specifies whether route is the black hole route, defaults to `false`.
-// + If the value is empty or `false`, the parameter `attachmentId` is required.
-// + If the value is `true`, the parameter `attachmentId` must be empty.
+// Whether route is the black hole route.
 func (o StaticRouteOutput) IsBlackhole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.BoolPtrOutput { return v.IsBlackhole }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the region where the static route and related route table are
-// located.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+// The region where the static route and related route table are located.
 func (o StaticRouteOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the route table to which the static route
-// belongs.
-// Changing this parameter will create a new resource.
+// The ID of the route table to which the static route belongs.
 func (o StaticRouteOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }

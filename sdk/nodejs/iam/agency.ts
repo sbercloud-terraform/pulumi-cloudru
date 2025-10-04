@@ -6,55 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an agency resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Delegate another SberCloud account to perform operations on your resources
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const agency = new sbercloud.iam.Agency("agency", {
- *     name: "test_agency",
- *     description: "test agency",
- *     delegatedDomainName: "***",
- *     projectRoles: [{
- *         project: "ru-moscow-1",
- *         roles: ["Tenant Administrator"],
- *     }],
- *     domainRoles: ["VPC Administrator"],
- * });
- * ```
- *
- * ### Delegate a cloud service to access your resources in other cloud services
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const agency = new sbercloud.iam.Agency("agency", {
- *     name: "test_agency",
- *     description: "test agency",
- *     delegatedServiceName: "op_svc_evs",
- *     projectRoles: [{
- *         project: "ru-moscow-1",
- *         roles: ["SFS Administrator"],
- *     }],
- *     domainRoles: ["KMS Administrator"],
- * });
- * ```
- *
- * ## Import
- *
- * Agencies can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Iam/agency:Agency agency 0b97661f9900f23f4fc2c00971ea4dc0
- * ```
- */
 export class Agency extends pulumi.CustomResource {
     /**
      * Get an existing Agency resource's state with the given name, ID, and optional extra
@@ -83,54 +34,21 @@ export class Agency extends pulumi.CustomResource {
         return obj['__pulumiType'] === Agency.__pulumiType;
     }
 
-    /**
-     * Specifies an array of one or more role names which stand for the permissions
-     * to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-     * and global services under your account.
-     */
     declare public readonly allResourcesRoles: pulumi.Output<string[] | undefined>;
-    /**
-     * The time when the agency was created.
-     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Specifies the name of delegated user domain. This parameter
-     * and `delegatedServiceName` are alternative.
+     * schema: Required
      */
     declare public readonly delegatedDomainName: pulumi.Output<string | undefined>;
     /**
-     * Specifies the name of delegated cloud service. The value must start
-     * with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegatedDomainName` are alternative.
+     * schema: Internal
      */
     declare public readonly delegatedServiceName: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the supplementary information about the agency. The value is a string of
-     * 0 to 255 characters, excluding these characters: '__@#$%^&*<>\\__'.
-     */
     declare public readonly description: pulumi.Output<string>;
-    /**
-     * Specifies an array of one or more role names which stand for the permissionis to be
-     * granted to agency on domain.
-     */
     declare public readonly domainRoles: pulumi.Output<string[] | undefined>;
-    /**
-     * Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-     * , defaults to *FOREVER*.
-     */
     declare public readonly duration: pulumi.Output<string | undefined>;
-    /**
-     * The expiration time of agency.
-     */
     declare public /*out*/ readonly expireTime: pulumi.Output<string>;
-    /**
-     * Specifies the name of agency. The name is a string of 1 to 64 characters.
-     * Changing this will create a new agency.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies an array of one or more roles and projects which are used to grant
-     * permissions to agency on project. The structure is documented below.
-     */
     declare public readonly projectRoles: pulumi.Output<outputs.Iam.AgencyProjectRole[] | undefined>;
 
     /**
@@ -178,54 +96,21 @@ export class Agency extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Agency resources.
  */
 export interface AgencyState {
-    /**
-     * Specifies an array of one or more role names which stand for the permissions
-     * to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-     * and global services under your account.
-     */
     allResourcesRoles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The time when the agency was created.
-     */
     createTime?: pulumi.Input<string>;
     /**
-     * Specifies the name of delegated user domain. This parameter
-     * and `delegatedServiceName` are alternative.
+     * schema: Required
      */
     delegatedDomainName?: pulumi.Input<string>;
     /**
-     * Specifies the name of delegated cloud service. The value must start
-     * with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegatedDomainName` are alternative.
+     * schema: Internal
      */
     delegatedServiceName?: pulumi.Input<string>;
-    /**
-     * Specifies the supplementary information about the agency. The value is a string of
-     * 0 to 255 characters, excluding these characters: '__@#$%^&*<>\\__'.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies an array of one or more role names which stand for the permissionis to be
-     * granted to agency on domain.
-     */
     domainRoles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-     * , defaults to *FOREVER*.
-     */
     duration?: pulumi.Input<string>;
-    /**
-     * The expiration time of agency.
-     */
     expireTime?: pulumi.Input<string>;
-    /**
-     * Specifies the name of agency. The name is a string of 1 to 64 characters.
-     * Changing this will create a new agency.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies an array of one or more roles and projects which are used to grant
-     * permissions to agency on project. The structure is documented below.
-     */
     projectRoles?: pulumi.Input<pulumi.Input<inputs.Iam.AgencyProjectRole>[]>;
 }
 
@@ -233,45 +118,18 @@ export interface AgencyState {
  * The set of arguments for constructing a Agency resource.
  */
 export interface AgencyArgs {
-    /**
-     * Specifies an array of one or more role names which stand for the permissions
-     * to be granted to agency on all resources, including those in enterprise projects, region-specific projects,
-     * and global services under your account.
-     */
     allResourcesRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specifies the name of delegated user domain. This parameter
-     * and `delegatedServiceName` are alternative.
+     * schema: Required
      */
     delegatedDomainName?: pulumi.Input<string>;
     /**
-     * Specifies the name of delegated cloud service. The value must start
-     * with *op_svc_*, for example, *op_svc_obs*. This parameter and `delegatedDomainName` are alternative.
+     * schema: Internal
      */
     delegatedServiceName?: pulumi.Input<string>;
-    /**
-     * Specifies the supplementary information about the agency. The value is a string of
-     * 0 to 255 characters, excluding these characters: '__@#$%^&*<>\\__'.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies an array of one or more role names which stand for the permissionis to be
-     * granted to agency on domain.
-     */
     domainRoles?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the validity period of an agency. The valid value are *ONEDAY* and *FOREVER*
-     * , defaults to *FOREVER*.
-     */
     duration?: pulumi.Input<string>;
-    /**
-     * Specifies the name of agency. The name is a string of 1 to 64 characters.
-     * Changing this will create a new agency.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies an array of one or more roles and projects which are used to grant
-     * permissions to agency on project. The structure is documented below.
-     */
     projectRoles?: pulumi.Input<pulumi.Input<inputs.Iam.AgencyProjectRole>[]>;
 }

@@ -12,72 +12,25 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Shared Bandwidth resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.NewBandwidth(ctx, "bandwidth_1", &vpc.BandwidthArgs{
-//				Name: pulumi.String("bandwidth_1"),
-//				Size: pulumi.Int(5),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Shared Bandwidths can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/bandwidth:Bandwidth bandwidth_1 7117d38e-4c8f-4624-a505-bd96b97d024c
-// ```
 type Bandwidth struct {
 	pulumi.CustomResourceState
 
-	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
-	// Indicates the bandwidth type.
-	BandwidthType pulumi.StringOutput `pulumi:"bandwidthType"`
-	// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-	ChargeMode   pulumi.StringOutput `pulumi:"chargeMode"`
-	ChargingMode pulumi.StringOutput `pulumi:"chargingMode"`
-	CreatedAt    pulumi.StringOutput `pulumi:"createdAt"`
-	// The enterprise project id of the Shared Bandwidth. Changing
-	// this creates a new bandwidth.
-	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
-	// The name of the Shared Bandwidth.
-	Name              pulumi.StringOutput    `pulumi:"name"`
-	Period            pulumi.IntPtrOutput    `pulumi:"period"`
-	PeriodUnit        pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	PublicBorderGroup pulumi.StringOutput    `pulumi:"publicBorderGroup"`
-	// An array of EIPs that use the bandwidth. The object includes the following:
-	Publicips BandwidthPublicipArrayOutput `pulumi:"publicips"`
-	// The region in which to create the Shared Bandwidth. If omitted, the
-	// provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates whether the bandwidth is shared or dedicated.
-	ShareType pulumi.StringOutput `pulumi:"shareType"`
-	// The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-	Size pulumi.IntOutput `pulumi:"size"`
-	// Indicates the bandwidth status.
-	Status    pulumi.StringOutput `pulumi:"status"`
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	AutoRenew           pulumi.StringPtrOutput       `pulumi:"autoRenew"`
+	BandwidthType       pulumi.StringOutput          `pulumi:"bandwidthType"`
+	ChargeMode          pulumi.StringOutput          `pulumi:"chargeMode"`
+	ChargingMode        pulumi.StringOutput          `pulumi:"chargingMode"`
+	CreatedAt           pulumi.StringOutput          `pulumi:"createdAt"`
+	EnterpriseProjectId pulumi.StringOutput          `pulumi:"enterpriseProjectId"`
+	Name                pulumi.StringOutput          `pulumi:"name"`
+	Period              pulumi.IntPtrOutput          `pulumi:"period"`
+	PeriodUnit          pulumi.StringPtrOutput       `pulumi:"periodUnit"`
+	PublicBorderGroup   pulumi.StringOutput          `pulumi:"publicBorderGroup"`
+	Publicips           BandwidthPublicipArrayOutput `pulumi:"publicips"`
+	Region              pulumi.StringOutput          `pulumi:"region"`
+	ShareType           pulumi.StringOutput          `pulumi:"shareType"`
+	Size                pulumi.IntOutput             `pulumi:"size"`
+	Status              pulumi.StringOutput          `pulumi:"status"`
+	UpdatedAt           pulumi.StringOutput          `pulumi:"updatedAt"`
 }
 
 // NewBandwidth registers a new resource with the given unique name, arguments, and options.
@@ -113,63 +66,41 @@ func GetBandwidth(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Bandwidth resources.
 type bandwidthState struct {
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Indicates the bandwidth type.
-	BandwidthType *string `pulumi:"bandwidthType"`
-	// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-	ChargeMode   *string `pulumi:"chargeMode"`
-	ChargingMode *string `pulumi:"chargingMode"`
-	CreatedAt    *string `pulumi:"createdAt"`
-	// The enterprise project id of the Shared Bandwidth. Changing
-	// this creates a new bandwidth.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The name of the Shared Bandwidth.
-	Name              *string `pulumi:"name"`
-	Period            *int    `pulumi:"period"`
-	PeriodUnit        *string `pulumi:"periodUnit"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	// An array of EIPs that use the bandwidth. The object includes the following:
-	Publicips []BandwidthPublicip `pulumi:"publicips"`
-	// The region in which to create the Shared Bandwidth. If omitted, the
-	// provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-	Region *string `pulumi:"region"`
-	// Indicates whether the bandwidth is shared or dedicated.
-	ShareType *string `pulumi:"shareType"`
-	// The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-	Size *int `pulumi:"size"`
-	// Indicates the bandwidth status.
-	Status    *string `pulumi:"status"`
-	UpdatedAt *string `pulumi:"updatedAt"`
+	AutoRenew           *string             `pulumi:"autoRenew"`
+	BandwidthType       *string             `pulumi:"bandwidthType"`
+	ChargeMode          *string             `pulumi:"chargeMode"`
+	ChargingMode        *string             `pulumi:"chargingMode"`
+	CreatedAt           *string             `pulumi:"createdAt"`
+	EnterpriseProjectId *string             `pulumi:"enterpriseProjectId"`
+	Name                *string             `pulumi:"name"`
+	Period              *int                `pulumi:"period"`
+	PeriodUnit          *string             `pulumi:"periodUnit"`
+	PublicBorderGroup   *string             `pulumi:"publicBorderGroup"`
+	Publicips           []BandwidthPublicip `pulumi:"publicips"`
+	Region              *string             `pulumi:"region"`
+	ShareType           *string             `pulumi:"shareType"`
+	Size                *int                `pulumi:"size"`
+	Status              *string             `pulumi:"status"`
+	UpdatedAt           *string             `pulumi:"updatedAt"`
 }
 
 type BandwidthState struct {
-	AutoRenew pulumi.StringPtrInput
-	// Indicates the bandwidth type.
-	BandwidthType pulumi.StringPtrInput
-	// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-	ChargeMode   pulumi.StringPtrInput
-	ChargingMode pulumi.StringPtrInput
-	CreatedAt    pulumi.StringPtrInput
-	// The enterprise project id of the Shared Bandwidth. Changing
-	// this creates a new bandwidth.
+	AutoRenew           pulumi.StringPtrInput
+	BandwidthType       pulumi.StringPtrInput
+	ChargeMode          pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
+	CreatedAt           pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// The name of the Shared Bandwidth.
-	Name              pulumi.StringPtrInput
-	Period            pulumi.IntPtrInput
-	PeriodUnit        pulumi.StringPtrInput
-	PublicBorderGroup pulumi.StringPtrInput
-	// An array of EIPs that use the bandwidth. The object includes the following:
-	Publicips BandwidthPublicipArrayInput
-	// The region in which to create the Shared Bandwidth. If omitted, the
-	// provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-	Region pulumi.StringPtrInput
-	// Indicates whether the bandwidth is shared or dedicated.
-	ShareType pulumi.StringPtrInput
-	// The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-	Size pulumi.IntPtrInput
-	// Indicates the bandwidth status.
-	Status    pulumi.StringPtrInput
-	UpdatedAt pulumi.StringPtrInput
+	Name                pulumi.StringPtrInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	PublicBorderGroup   pulumi.StringPtrInput
+	Publicips           BandwidthPublicipArrayInput
+	Region              pulumi.StringPtrInput
+	ShareType           pulumi.StringPtrInput
+	Size                pulumi.IntPtrInput
+	Status              pulumi.StringPtrInput
+	UpdatedAt           pulumi.StringPtrInput
 }
 
 func (BandwidthState) ElementType() reflect.Type {
@@ -177,48 +108,32 @@ func (BandwidthState) ElementType() reflect.Type {
 }
 
 type bandwidthArgs struct {
-	AutoRenew *string `pulumi:"autoRenew"`
-	// Indicates the bandwidth type.
-	BandwidthType *string `pulumi:"bandwidthType"`
-	// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-	ChargeMode   *string `pulumi:"chargeMode"`
-	ChargingMode *string `pulumi:"chargingMode"`
-	// The enterprise project id of the Shared Bandwidth. Changing
-	// this creates a new bandwidth.
+	AutoRenew           *string `pulumi:"autoRenew"`
+	BandwidthType       *string `pulumi:"bandwidthType"`
+	ChargeMode          *string `pulumi:"chargeMode"`
+	ChargingMode        *string `pulumi:"chargingMode"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The name of the Shared Bandwidth.
-	Name              *string `pulumi:"name"`
-	Period            *int    `pulumi:"period"`
-	PeriodUnit        *string `pulumi:"periodUnit"`
-	PublicBorderGroup *string `pulumi:"publicBorderGroup"`
-	// The region in which to create the Shared Bandwidth. If omitted, the
-	// provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-	Region *string `pulumi:"region"`
-	// The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-	Size int `pulumi:"size"`
+	Name                *string `pulumi:"name"`
+	Period              *int    `pulumi:"period"`
+	PeriodUnit          *string `pulumi:"periodUnit"`
+	PublicBorderGroup   *string `pulumi:"publicBorderGroup"`
+	Region              *string `pulumi:"region"`
+	Size                int     `pulumi:"size"`
 }
 
 // The set of arguments for constructing a Bandwidth resource.
 type BandwidthArgs struct {
-	AutoRenew pulumi.StringPtrInput
-	// Indicates the bandwidth type.
-	BandwidthType pulumi.StringPtrInput
-	// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-	ChargeMode   pulumi.StringPtrInput
-	ChargingMode pulumi.StringPtrInput
-	// The enterprise project id of the Shared Bandwidth. Changing
-	// this creates a new bandwidth.
+	AutoRenew           pulumi.StringPtrInput
+	BandwidthType       pulumi.StringPtrInput
+	ChargeMode          pulumi.StringPtrInput
+	ChargingMode        pulumi.StringPtrInput
 	EnterpriseProjectId pulumi.StringPtrInput
-	// The name of the Shared Bandwidth.
-	Name              pulumi.StringPtrInput
-	Period            pulumi.IntPtrInput
-	PeriodUnit        pulumi.StringPtrInput
-	PublicBorderGroup pulumi.StringPtrInput
-	// The region in which to create the Shared Bandwidth. If omitted, the
-	// provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
-	Region pulumi.StringPtrInput
-	// The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
-	Size pulumi.IntInput
+	Name                pulumi.StringPtrInput
+	Period              pulumi.IntPtrInput
+	PeriodUnit          pulumi.StringPtrInput
+	PublicBorderGroup   pulumi.StringPtrInput
+	Region              pulumi.StringPtrInput
+	Size                pulumi.IntInput
 }
 
 func (BandwidthArgs) ElementType() reflect.Type {
@@ -312,12 +227,10 @@ func (o BandwidthOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the bandwidth type.
 func (o BandwidthOutput) BandwidthType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.BandwidthType }).(pulumi.StringOutput)
 }
 
-// Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
 func (o BandwidthOutput) ChargeMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.ChargeMode }).(pulumi.StringOutput)
 }
@@ -330,13 +243,10 @@ func (o BandwidthOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The enterprise project id of the Shared Bandwidth. Changing
-// this creates a new bandwidth.
 func (o BandwidthOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The name of the Shared Bandwidth.
 func (o BandwidthOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -353,28 +263,22 @@ func (o BandwidthOutput) PublicBorderGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.PublicBorderGroup }).(pulumi.StringOutput)
 }
 
-// An array of EIPs that use the bandwidth. The object includes the following:
 func (o BandwidthOutput) Publicips() BandwidthPublicipArrayOutput {
 	return o.ApplyT(func(v *Bandwidth) BandwidthPublicipArrayOutput { return v.Publicips }).(BandwidthPublicipArrayOutput)
 }
 
-// The region in which to create the Shared Bandwidth. If omitted, the
-// provider-level region will be used. Changing this creates a new Shared Bandwidth resource.
 func (o BandwidthOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates whether the bandwidth is shared or dedicated.
 func (o BandwidthOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.ShareType }).(pulumi.StringOutput)
 }
 
-// The size of the Shared Bandwidth. The value ranges from 5 to 2000 G.
 func (o BandwidthOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Indicates the bandwidth status.
 func (o BandwidthOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bandwidth) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

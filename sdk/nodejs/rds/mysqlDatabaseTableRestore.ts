@@ -6,50 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an RDS instance MySQL database table restore resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### MySQL databases restore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.rds.MysqlDatabaseTableRestore("test", {
- *     restoreTime: 1673852043000,
- *     instanceId: instanceId,
- *     databases: [{
- *         oldName: "test111",
- *         newName: "test111_update",
- *     }],
- * });
- * ```
- *
- * ### MySQL tables restore
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.rds.MysqlDatabaseTableRestore("test", {
- *     restoreTime: 1673852043000,
- *     instanceId: instanceId,
- *     restoreTables: [{
- *         database: "test111",
- *         tables: [{
- *             oldName: "table111",
- *             newName: "table111_update",
- *         }],
- *     }],
- * });
- * ```
- */
 export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
     /**
      * Get an existing MysqlDatabaseTableRestore resource's state with the given name, ID, and optional extra
@@ -80,44 +36,23 @@ export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
 
     /**
      * Specifies the databases that will be restored.
-     * The databases structure is documented below.
-     *
-     * Changing this creates a new resource.
      */
     declare public readonly databases: pulumi.Output<outputs.Rds.MysqlDatabaseTableRestoreDatabase[] | undefined>;
     /**
      * Specifies the ID of RDS MySQL instance.
-     *
-     * Changing this creates a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies whether to use fast restoration.
-     *
-     * Changing this creates a new resource.
      */
     declare public readonly isFastRestore: pulumi.Output<boolean | undefined>;
-    /**
-     * The region in which to create the rds instance resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the tables that will be restored.
-     * The restoreTables structure is documented below.
-     *
-     * Changing this creates a new resource.
-     *
-     * > Exactly one of `databases` and `restoreTables` must be set.
-     *
-     * <a name="databasesStruct"></a>
-     * The `databases` block supports:
      */
     declare public readonly restoreTables: pulumi.Output<outputs.Rds.MysqlDatabaseTableRestoreRestoreTable[] | undefined>;
     /**
-     * Specifies the restoration time point. A timestamp in milliseconds is used.
-     *
-     * Changing this creates a new resource.
+     * Specifies the restoration time point.
      */
     declare public readonly restoreTime: pulumi.Output<number>;
 
@@ -166,44 +101,23 @@ export class MysqlDatabaseTableRestore extends pulumi.CustomResource {
 export interface MysqlDatabaseTableRestoreState {
     /**
      * Specifies the databases that will be restored.
-     * The databases structure is documented below.
-     *
-     * Changing this creates a new resource.
      */
     databases?: pulumi.Input<pulumi.Input<inputs.Rds.MysqlDatabaseTableRestoreDatabase>[]>;
     /**
      * Specifies the ID of RDS MySQL instance.
-     *
-     * Changing this creates a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
      * Specifies whether to use fast restoration.
-     *
-     * Changing this creates a new resource.
      */
     isFastRestore?: pulumi.Input<boolean>;
-    /**
-     * The region in which to create the rds instance resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the tables that will be restored.
-     * The restoreTables structure is documented below.
-     *
-     * Changing this creates a new resource.
-     *
-     * > Exactly one of `databases` and `restoreTables` must be set.
-     *
-     * <a name="databasesStruct"></a>
-     * The `databases` block supports:
      */
     restoreTables?: pulumi.Input<pulumi.Input<inputs.Rds.MysqlDatabaseTableRestoreRestoreTable>[]>;
     /**
-     * Specifies the restoration time point. A timestamp in milliseconds is used.
-     *
-     * Changing this creates a new resource.
+     * Specifies the restoration time point.
      */
     restoreTime?: pulumi.Input<number>;
 }
@@ -214,44 +128,23 @@ export interface MysqlDatabaseTableRestoreState {
 export interface MysqlDatabaseTableRestoreArgs {
     /**
      * Specifies the databases that will be restored.
-     * The databases structure is documented below.
-     *
-     * Changing this creates a new resource.
      */
     databases?: pulumi.Input<pulumi.Input<inputs.Rds.MysqlDatabaseTableRestoreDatabase>[]>;
     /**
      * Specifies the ID of RDS MySQL instance.
-     *
-     * Changing this creates a new resource.
      */
     instanceId: pulumi.Input<string>;
     /**
      * Specifies whether to use fast restoration.
-     *
-     * Changing this creates a new resource.
      */
     isFastRestore?: pulumi.Input<boolean>;
-    /**
-     * The region in which to create the rds instance resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the tables that will be restored.
-     * The restoreTables structure is documented below.
-     *
-     * Changing this creates a new resource.
-     *
-     * > Exactly one of `databases` and `restoreTables` must be set.
-     *
-     * <a name="databasesStruct"></a>
-     * The `databases` block supports:
      */
     restoreTables?: pulumi.Input<pulumi.Input<inputs.Rds.MysqlDatabaseTableRestoreRestoreTable>[]>;
     /**
-     * Specifies the restoration time point. A timestamp in milliseconds is used.
-     *
-     * Changing this creates a new resource.
+     * Specifies the restoration time point.
      */
     restoreTime: pulumi.Input<number>;
 }

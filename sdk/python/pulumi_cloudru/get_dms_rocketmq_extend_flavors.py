@@ -69,9 +69,6 @@ class GetDmsRocketmqExtendFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetDmsRocketmqExtendFlavorsFlavorResult']:
-        """
-        Indicates the list of flavor details.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -95,25 +92,16 @@ class GetDmsRocketmqExtendFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> Optional[_builtins.str]:
-        """
-        Indicates the disk IO encoding.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the disk type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def versions(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the supported flavor versions.
-        """
         return pulumi.get(self, "versions")
 
 
@@ -142,27 +130,7 @@ def get_dms_rocketmq_extend_flavors(arch_type: Optional[_builtins.str] = None,
                                     type: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqExtendFlavorsResult:
     """
-    Use this data source to get the list of RocketMQ extend available flavor details within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_rocketmq_extend_flavors(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str arch_type: Specifies the type of CPU architecture, e.g. **X86**.
-    :param _builtins.str charging_mode: Specifies the flavor billing mode. The valid values are **prePaid** and **postPaid**.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str storage_spec_code: Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
-    :param _builtins.str type: Specifies the flavor type.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['archType'] = arch_type
@@ -192,27 +160,7 @@ def get_dms_rocketmq_extend_flavors_output(arch_type: Optional[pulumi.Input[Opti
                                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqExtendFlavorsResult]:
     """
-    Use this data source to get the list of RocketMQ extend available flavor details within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.get_dms_rocketmq_extend_flavors(instance_id=instance_id)
-    ```
-
-
-    :param _builtins.str arch_type: Specifies the type of CPU architecture, e.g. **X86**.
-    :param _builtins.str charging_mode: Specifies the flavor billing mode. The valid values are **prePaid** and **postPaid**.
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str storage_spec_code: Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
-    :param _builtins.str type: Specifies the flavor type.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['archType'] = arch_type

@@ -4,17 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a network VIP resource within SberCloud VPC.
- *
- * ## Import
- *
- * Network VIPs can be imported using their `id`, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/vip:Vip test ce595799-da26-4015-8db5-7733c6db292e
- * ```
- */
 export class Vip extends pulumi.CustomResource {
     /**
      * Get an existing Vip resource's state with the given name, ID, and optional extra
@@ -43,41 +32,13 @@ export class Vip extends pulumi.CustomResource {
         return obj['__pulumiType'] === Vip.__pulumiType;
     }
 
-    /**
-     * The device owner of the VIP.
-     */
     declare public /*out*/ readonly deviceOwner: pulumi.Output<string>;
-    /**
-     * Specifies the IP address desired in the subnet for this VIP.
-     * Changing this will create a new VIP resource.
-     */
     declare public readonly ipAddress: pulumi.Output<string>;
-    /**
-     * Specifies the IP version, either `4` (default) or `6`.
-     * Changing this will create a new VIP resource.
-     */
     declare public readonly ipVersion: pulumi.Output<number>;
-    /**
-     * The MAC address of the VIP.
-     */
     declare public /*out*/ readonly macAddress: pulumi.Output<string>;
-    /**
-     * Specifies a unique name for the VIP.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the network ID of the VPC subnet to which the VIP belongs.
-     * Changing this will create a new VIP resource.
-     */
     declare public readonly networkId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the VIP.
-     * If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The VIP status.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * @deprecated use ipVersion instead
@@ -130,41 +91,13 @@ export class Vip extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Vip resources.
  */
 export interface VipState {
-    /**
-     * The device owner of the VIP.
-     */
     deviceOwner?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address desired in the subnet for this VIP.
-     * Changing this will create a new VIP resource.
-     */
     ipAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the IP version, either `4` (default) or `6`.
-     * Changing this will create a new VIP resource.
-     */
     ipVersion?: pulumi.Input<number>;
-    /**
-     * The MAC address of the VIP.
-     */
     macAddress?: pulumi.Input<string>;
-    /**
-     * Specifies a unique name for the VIP.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the network ID of the VPC subnet to which the VIP belongs.
-     * Changing this will create a new VIP resource.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the VIP.
-     * If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The VIP status.
-     */
     status?: pulumi.Input<string>;
     /**
      * @deprecated use ipVersion instead
@@ -176,29 +109,10 @@ export interface VipState {
  * The set of arguments for constructing a Vip resource.
  */
 export interface VipArgs {
-    /**
-     * Specifies the IP address desired in the subnet for this VIP.
-     * Changing this will create a new VIP resource.
-     */
     ipAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the IP version, either `4` (default) or `6`.
-     * Changing this will create a new VIP resource.
-     */
     ipVersion?: pulumi.Input<number>;
-    /**
-     * Specifies a unique name for the VIP.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the network ID of the VPC subnet to which the VIP belongs.
-     * Changing this will create a new VIP resource.
-     */
     networkId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the VIP.
-     * If omitted, the provider-level region will be used. Changing this will create a new VIP resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated use ipVersion instead

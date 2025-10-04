@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a SWR repository resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const organizationName = config.requireObject<any>("organizationName");
- * const test = new sbercloud.SwrRepository("test", {
- *     organization: organizationName,
- *     name: "%s",
- *     description: "Test repository",
- *     category: "linux",
- * });
- * ```
- *
- * ## Import
- *
- * Repository can be imported using the organization name and repository name separated by a slash, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:index/swrRepository:SwrRepository test org-name/repo-name
- * ```
- */
 export class SwrRepository extends pulumi.CustomResource {
     /**
      * Get an existing SwrRepository resource's state with the given name, ID, and optional extra
@@ -59,52 +32,16 @@ export class SwrRepository extends pulumi.CustomResource {
         return obj['__pulumiType'] === SwrRepository.__pulumiType;
     }
 
-    /**
-     * Specifies the category of the repository.
-     * The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-     */
     declare public readonly category: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the description of the repository.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Intra-cluster image address for docker pull.
-     */
     declare public /*out*/ readonly internalPath: pulumi.Output<string>;
-    /**
-     * Specifies whether the repository is public. Default is false.
-     */
     declare public readonly isPublic: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the name of the repository. Changing this creates a new resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Number of image tags in a repository.
-     */
     declare public /*out*/ readonly numImages: pulumi.Output<number>;
-    /**
-     * Specifies the name of the organization (namespace) the repository belongs.
-     * Changing this creates a new resource.
-     */
     declare public readonly organization: pulumi.Output<string>;
-    /**
-     * Image address for docker pull.
-     */
     declare public /*out*/ readonly path: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Numeric ID of the repository
-     */
     declare public /*out*/ readonly repositoryId: pulumi.Output<number>;
-    /**
-     * Repository size.
-     */
     declare public /*out*/ readonly size: pulumi.Output<number>;
 
     /**
@@ -157,52 +94,16 @@ export class SwrRepository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SwrRepository resources.
  */
 export interface SwrRepositoryState {
-    /**
-     * Specifies the category of the repository.
-     * The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-     */
     category?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the repository.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Intra-cluster image address for docker pull.
-     */
     internalPath?: pulumi.Input<string>;
-    /**
-     * Specifies whether the repository is public. Default is false.
-     */
     isPublic?: pulumi.Input<boolean>;
-    /**
-     * Specifies the name of the repository. Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Number of image tags in a repository.
-     */
     numImages?: pulumi.Input<number>;
-    /**
-     * Specifies the name of the organization (namespace) the repository belongs.
-     * Changing this creates a new resource.
-     */
     organization?: pulumi.Input<string>;
-    /**
-     * Image address for docker pull.
-     */
     path?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Numeric ID of the repository
-     */
     repositoryId?: pulumi.Input<number>;
-    /**
-     * Repository size.
-     */
     size?: pulumi.Input<number>;
 }
 
@@ -210,31 +111,10 @@ export interface SwrRepositoryState {
  * The set of arguments for constructing a SwrRepository resource.
  */
 export interface SwrRepositoryArgs {
-    /**
-     * Specifies the category of the repository.
-     * The value can be `appServer`, `linux`, `frameworkApp`, `database`, `lang`, `other`, `windows`, `arm`.
-     */
     category?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the repository.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether the repository is public. Default is false.
-     */
     isPublic?: pulumi.Input<boolean>;
-    /**
-     * Specifies the name of the repository. Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the organization (namespace) the repository belongs.
-     * Changing this creates a new resource.
-     */
     organization: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

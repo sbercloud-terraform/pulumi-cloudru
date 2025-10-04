@@ -6,38 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DDS parameter template resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const parameterValues = config.requireObject<any>("parameterValues");
- * const nodeType = config.requireObject<any>("nodeType");
- * const nodeVersion = config.requireObject<any>("nodeVersion");
- * const test = new sbercloud.DdsParameterTemplate("test", {
- *     name: name,
- *     parameterValues: parameterValues,
- *     nodeType: nodeType,
- *     nodeVersion: nodeVersion,
- * });
- * ```
- *
- * ## Import
- *
- * The DDS parameter template can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/ddsParameterTemplate:DdsParameterTemplate test <tempalate_id>
- * ```
- */
 export class DdsParameterTemplate extends pulumi.CustomResource {
     /**
      * Get an existing DdsParameterTemplate resource's state with the given name, ID, and optional extra
@@ -66,58 +34,32 @@ export class DdsParameterTemplate extends pulumi.CustomResource {
         return obj['__pulumiType'] === DdsParameterTemplate.__pulumiType;
     }
 
-    /**
-     * The create time of the parameter template.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the parameter template description.
-     * The description must consist of a maximum of 256 characters and cannot contain the carriage
-     * return character or the following special characters: >!<"&'=.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the parameter template name.
-     * The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-     * underscores (_), and periods (.).
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the node type of parameter template. Valid value:
-     * + **mongos**: the mongos node type.
-     * + **shard**: the shard node type.
-     * + **config**: the config node type.
-     * + **replica**: the replica node type.
-     * + **single**: the single node type.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the node type of parameter template.
      */
     declare public readonly nodeType: pulumi.Output<string>;
     /**
      * Specifies the database version.
-     * The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly nodeVersion: pulumi.Output<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
-     * You can customize parameter values based on the parameters in the default parameter template.
      */
     declare public readonly parameterValues: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the parameters defined by users based on the default parameter templates.
-     * The Parameter structure is documented below.
      */
     declare public /*out*/ readonly parameters: pulumi.Output<outputs.DdsParameterTemplateParameter[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The update time of the parameter template.
-     */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
@@ -169,58 +111,32 @@ export class DdsParameterTemplate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DdsParameterTemplate resources.
  */
 export interface DdsParameterTemplateState {
-    /**
-     * The create time of the parameter template.
-     */
     createdAt?: pulumi.Input<string>;
     /**
      * Specifies the parameter template description.
-     * The description must consist of a maximum of 256 characters and cannot contain the carriage
-     * return character or the following special characters: >!<"&'=.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the parameter template name.
-     * The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-     * underscores (_), and periods (.).
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the node type of parameter template. Valid value:
-     * + **mongos**: the mongos node type.
-     * + **shard**: the shard node type.
-     * + **config**: the config node type.
-     * + **replica**: the replica node type.
-     * + **single**: the single node type.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the node type of parameter template.
      */
     nodeType?: pulumi.Input<string>;
     /**
      * Specifies the database version.
-     * The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-     *
-     * Changing this parameter will create a new resource.
      */
     nodeVersion?: pulumi.Input<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
-     * You can customize parameter values based on the parameters in the default parameter template.
      */
     parameterValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Indicates the parameters defined by users based on the default parameter templates.
-     * The Parameter structure is documented below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.DdsParameterTemplateParameter>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The update time of the parameter template.
-     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -230,42 +146,23 @@ export interface DdsParameterTemplateState {
 export interface DdsParameterTemplateArgs {
     /**
      * Specifies the parameter template description.
-     * The description must consist of a maximum of 256 characters and cannot contain the carriage
-     * return character or the following special characters: >!<"&'=.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the parameter template name.
-     * The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-     * underscores (_), and periods (.).
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the node type of parameter template. Valid value:
-     * + **mongos**: the mongos node type.
-     * + **shard**: the shard node type.
-     * + **config**: the config node type.
-     * + **replica**: the replica node type.
-     * + **single**: the single node type.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the node type of parameter template.
      */
     nodeType: pulumi.Input<string>;
     /**
      * Specifies the database version.
-     * The value can be **4.4**, **4.2**, **4.0**, **3.4** or **3.2**.
-     *
-     * Changing this parameter will create a new resource.
      */
     nodeVersion: pulumi.Input<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
-     * You can customize parameter values based on the parameters in the default parameter template.
      */
     parameterValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

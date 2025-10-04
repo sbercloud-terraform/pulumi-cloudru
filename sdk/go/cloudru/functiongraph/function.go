@@ -12,128 +12,30 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a Function resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### With base64 func code
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/functiongraph"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := functiongraph.NewFunction(ctx, "f_1", &functiongraph.FunctionArgs{
-//				Name:        pulumi.String("func_1"),
-//				App:         pulumi.String("default"),
-//				Agency:      pulumi.String("test"),
-//				Description: pulumi.String("fuction test"),
-//				Handler:     pulumi.String("test.handler"),
-//				MemorySize:  pulumi.Int(128),
-//				Timeout:     pulumi.Int(3),
-//				Runtime:     pulumi.String("Python2.7"),
-//				CodeType:    pulumi.String("inline"),
-//				FuncCode:    pulumi.String("aW1wb3J0IGpzb24KZGVmIGhhbmRsZXIgKGV2ZW50LCBjb250ZXh0KToKICAgIG91dHB1dCA9ICdIZWxsbyBtZXNzYWdlOiAnICsganNvbi5kdW1wcyhldmVudCkKICAgIHJldHVybiBvdXRwdXQ="),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### With text code
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/functiongraph"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := functiongraph.NewFunction(ctx, "f_1", &functiongraph.FunctionArgs{
-//				Name:        pulumi.String("func_1"),
-//				App:         pulumi.String("default"),
-//				Agency:      pulumi.String("test"),
-//				Description: pulumi.String("fuction test"),
-//				Handler:     pulumi.String("test.handler"),
-//				MemorySize:  pulumi.Int(128),
-//				Timeout:     pulumi.Int(3),
-//				Runtime:     pulumi.String("Python2.7"),
-//				CodeType:    pulumi.String("inline"),
-//				FuncCode: pulumi.String(`# -*- coding:utf-8 -*-
-//
-// import json
-// def handler (event, context):
-//
-//	return {
-//	    "statusCode": 200,
-//	    "isBase64Encoded": False,
-//	    "body": json.dumps(event),
-//	    "headers": {
-//	        "Content-Type": "application/json"
-//	    }
-//	}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Functions can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:FunctionGraph/function:Function my-func 7117d38e-4c8f-4624-a505-bd96b97d024c
-// ```
 type Function struct {
 	pulumi.CustomResourceState
 
-	// Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+	// The agency configuration of the function.
 	Agency pulumi.StringPtrOutput `pulumi:"agency"`
-	// Specifies the group to which the function belongs.
+	// The group to which the function belongs.
 	App pulumi.StringPtrOutput `pulumi:"app"`
-	// Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+	// The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
 	AppAgency pulumi.StringOutput `pulumi:"appAgency"`
 	// The KMS key ID for encrypting the function code.
 	CodeEncryptKmsKeyId pulumi.StringPtrOutput `pulumi:"codeEncryptKmsKeyId"`
-	// Specifies the name of a function file, This field is mandatory only when coeType is
-	// set to jar or zip.
+	// The name of the function file.
 	CodeFilename pulumi.StringOutput `pulumi:"codeFilename"`
-	// Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-	// jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+	// The code type of the function.
 	CodeType pulumi.StringOutput `pulumi:"codeType"`
-	// Specifies the code url. This parameter is mandatory when codeType is set to obs.
+	// The URL where the function code is stored in OBS.
 	CodeUrl pulumi.StringPtrOutput `pulumi:"codeUrl"`
 	// The number of concurrent requests of the function.
 	ConcurrencyNum pulumi.IntOutput `pulumi:"concurrencyNum"`
 	// The custom image configuration of the function.
 	CustomImage FunctionCustomImageOutput `pulumi:"customImage"`
-	// Specifies the dependencies of the function.
+	// The ID list of the dependencies.
 	DependLists pulumi.StringArrayOutput `pulumi:"dependLists"`
-	// Specifies the description of the function.
+	// The description of the function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The private DNS configuration of the function network.
 	DnsList pulumi.StringOutput `pulumi:"dnsList"`
@@ -147,15 +49,13 @@ type Function struct {
 	EnableLtsLog pulumi.BoolPtrOutput `pulumi:"enableLtsLog"`
 	// The key/value information defined to be encrypted for the function.
 	EncryptedUserData pulumi.StringPtrOutput `pulumi:"encryptedUserData"`
-	// Specifies the enterprise project id of the function.
-	// Changing this creates a new function.
+	// The ID of the enterprise project to which the function belongs.
 	EnterpriseProjectId pulumi.StringOutput `pulumi:"enterpriseProjectId"`
 	// The size of the function ephemeral storage.
 	EphemeralStorage pulumi.IntOutput `pulumi:"ephemeralStorage"`
-	// Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-	// and the code can be encoded using Base64 or just with the text code.
+	// The function code.
 	FuncCode pulumi.StringPtrOutput `pulumi:"funcCode"`
-	// Specifies the file system list. The `funcMounts` object structure is documented below.
+	// The list of function mount configuration.
 	FuncMounts FunctionFuncMountArrayOutput `pulumi:"funcMounts"`
 	// The description of the function.
 	FunctiongraphVersion pulumi.StringOutput `pulumi:"functiongraphVersion"`
@@ -163,13 +63,13 @@ type Function struct {
 	GpuMemory pulumi.IntPtrOutput `pulumi:"gpuMemory"`
 	// The GPU type of the function.
 	GpuType pulumi.StringPtrOutput `pulumi:"gpuType"`
-	// Specifies the entry point of the function.
+	// The entry point of the function.
 	Handler pulumi.StringOutput `pulumi:"handler"`
 	// The heartbeat handler of the function.
 	HeartbeatHandler pulumi.StringPtrOutput `pulumi:"heartbeatHandler"`
-	// Specifies the initializer of the function.
+	// The initializer of the function.
 	InitializerHandler pulumi.StringOutput `pulumi:"initializerHandler"`
-	// Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+	// The maximum duration the function can be initialized.
 	InitializerTimeout pulumi.IntOutput `pulumi:"initializerTimeout"`
 	// Whether the function is a stateful function.
 	IsStatefulFunction pulumi.BoolPtrOutput `pulumi:"isStatefulFunction"`
@@ -188,17 +88,17 @@ type Function struct {
 	LtsCustomTagOrigin pulumi.StringMapOutput `pulumi:"ltsCustomTagOrigin"`
 	// The maximum number of instances of the function.
 	MaxInstanceNum pulumi.StringOutput `pulumi:"maxInstanceNum"`
-	// Specifies the memory size(MB) allocated to the function.
+	// The memory size allocated to the function, in MByte (MB).
 	MemorySize pulumi.IntOutput `pulumi:"memorySize"`
-	// Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user group ID.
 	MountUserGroupId pulumi.IntOutput `pulumi:"mountUserGroupId"`
-	// Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user ID.
 	MountUserId pulumi.IntOutput `pulumi:"mountUserId"`
-	// Specifies the name of the function.
+	// The name of the function.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network configuration of the function.
 	NetworkController FunctionNetworkControllerPtrOutput `pulumi:"networkController"`
-	// Specifies the ID of subnet.
+	// The network ID of subnet.
 	NetworkId pulumi.StringPtrOutput `pulumi:"networkId"`
 	// Deprecated: use app instead
 	Package pulumi.StringPtrOutput `pulumi:"package"`
@@ -209,8 +109,7 @@ type Function struct {
 	PreStopHandler pulumi.StringPtrOutput `pulumi:"preStopHandler"`
 	// The maximum duration that the function can be initialized.
 	PreStopTimeout pulumi.IntPtrOutput `pulumi:"preStopTimeout"`
-	// Specifies the region in which to create the Function resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+	// The region where the function is located.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The reserved instance policies of the function.
 	ReservedInstances FunctionReservedInstanceArrayOutput `pulumi:"reservedInstances"`
@@ -218,23 +117,23 @@ type Function struct {
 	RestoreHookHandler pulumi.StringPtrOutput `pulumi:"restoreHookHandler"`
 	// The timeout of the function restore hook.
 	RestoreHookTimeout pulumi.IntPtrOutput `pulumi:"restoreHookTimeout"`
-	// Specifies the environment for executing the function.
+	// The environment for executing the function.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// The key/value pairs to associate with the function.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Specifies the timeout interval of the function, ranges from 3s to 900s.
+	// The timeout interval of the function, in seconds.
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
-	// Uniform Resource Name
+	// The URN (Uniform Resource Name) of the function.
 	Urn pulumi.StringOutput `pulumi:"urn"`
 	// The key/value information defined for the function.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The KMS key ID for encrypting the user data.
 	UserDataEncryptKmsKeyId pulumi.StringPtrOutput `pulumi:"userDataEncryptKmsKeyId"`
-	// The version of the function
+	// The version of the function.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The versions management of the function.
 	Versions FunctionVersionArrayOutput `pulumi:"versions"`
-	// Specifies the ID of VPC.
+	// The ID of the VPC to which the function belongs.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// Deprecated: use agency instead
 	Xrole pulumi.StringPtrOutput `pulumi:"xrole"`
@@ -286,29 +185,27 @@ func GetFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Function resources.
 type functionState struct {
-	// Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+	// The agency configuration of the function.
 	Agency *string `pulumi:"agency"`
-	// Specifies the group to which the function belongs.
+	// The group to which the function belongs.
 	App *string `pulumi:"app"`
-	// Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+	// The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
 	AppAgency *string `pulumi:"appAgency"`
 	// The KMS key ID for encrypting the function code.
 	CodeEncryptKmsKeyId *string `pulumi:"codeEncryptKmsKeyId"`
-	// Specifies the name of a function file, This field is mandatory only when coeType is
-	// set to jar or zip.
+	// The name of the function file.
 	CodeFilename *string `pulumi:"codeFilename"`
-	// Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-	// jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+	// The code type of the function.
 	CodeType *string `pulumi:"codeType"`
-	// Specifies the code url. This parameter is mandatory when codeType is set to obs.
+	// The URL where the function code is stored in OBS.
 	CodeUrl *string `pulumi:"codeUrl"`
 	// The number of concurrent requests of the function.
 	ConcurrencyNum *int `pulumi:"concurrencyNum"`
 	// The custom image configuration of the function.
 	CustomImage *FunctionCustomImage `pulumi:"customImage"`
-	// Specifies the dependencies of the function.
+	// The ID list of the dependencies.
 	DependLists []string `pulumi:"dependLists"`
-	// Specifies the description of the function.
+	// The description of the function.
 	Description *string `pulumi:"description"`
 	// The private DNS configuration of the function network.
 	DnsList *string `pulumi:"dnsList"`
@@ -322,15 +219,13 @@ type functionState struct {
 	EnableLtsLog *bool `pulumi:"enableLtsLog"`
 	// The key/value information defined to be encrypted for the function.
 	EncryptedUserData *string `pulumi:"encryptedUserData"`
-	// Specifies the enterprise project id of the function.
-	// Changing this creates a new function.
+	// The ID of the enterprise project to which the function belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The size of the function ephemeral storage.
 	EphemeralStorage *int `pulumi:"ephemeralStorage"`
-	// Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-	// and the code can be encoded using Base64 or just with the text code.
+	// The function code.
 	FuncCode *string `pulumi:"funcCode"`
-	// Specifies the file system list. The `funcMounts` object structure is documented below.
+	// The list of function mount configuration.
 	FuncMounts []FunctionFuncMount `pulumi:"funcMounts"`
 	// The description of the function.
 	FunctiongraphVersion *string `pulumi:"functiongraphVersion"`
@@ -338,13 +233,13 @@ type functionState struct {
 	GpuMemory *int `pulumi:"gpuMemory"`
 	// The GPU type of the function.
 	GpuType *string `pulumi:"gpuType"`
-	// Specifies the entry point of the function.
+	// The entry point of the function.
 	Handler *string `pulumi:"handler"`
 	// The heartbeat handler of the function.
 	HeartbeatHandler *string `pulumi:"heartbeatHandler"`
-	// Specifies the initializer of the function.
+	// The initializer of the function.
 	InitializerHandler *string `pulumi:"initializerHandler"`
-	// Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+	// The maximum duration the function can be initialized.
 	InitializerTimeout *int `pulumi:"initializerTimeout"`
 	// Whether the function is a stateful function.
 	IsStatefulFunction *bool `pulumi:"isStatefulFunction"`
@@ -363,17 +258,17 @@ type functionState struct {
 	LtsCustomTagOrigin map[string]string `pulumi:"ltsCustomTagOrigin"`
 	// The maximum number of instances of the function.
 	MaxInstanceNum *string `pulumi:"maxInstanceNum"`
-	// Specifies the memory size(MB) allocated to the function.
+	// The memory size allocated to the function, in MByte (MB).
 	MemorySize *int `pulumi:"memorySize"`
-	// Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user group ID.
 	MountUserGroupId *int `pulumi:"mountUserGroupId"`
-	// Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user ID.
 	MountUserId *int `pulumi:"mountUserId"`
-	// Specifies the name of the function.
+	// The name of the function.
 	Name *string `pulumi:"name"`
 	// The network configuration of the function.
 	NetworkController *FunctionNetworkController `pulumi:"networkController"`
-	// Specifies the ID of subnet.
+	// The network ID of subnet.
 	NetworkId *string `pulumi:"networkId"`
 	// Deprecated: use app instead
 	Package *string `pulumi:"package"`
@@ -384,8 +279,7 @@ type functionState struct {
 	PreStopHandler *string `pulumi:"preStopHandler"`
 	// The maximum duration that the function can be initialized.
 	PreStopTimeout *int `pulumi:"preStopTimeout"`
-	// Specifies the region in which to create the Function resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+	// The region where the function is located.
 	Region *string `pulumi:"region"`
 	// The reserved instance policies of the function.
 	ReservedInstances []FunctionReservedInstance `pulumi:"reservedInstances"`
@@ -393,52 +287,50 @@ type functionState struct {
 	RestoreHookHandler *string `pulumi:"restoreHookHandler"`
 	// The timeout of the function restore hook.
 	RestoreHookTimeout *int `pulumi:"restoreHookTimeout"`
-	// Specifies the environment for executing the function.
+	// The environment for executing the function.
 	Runtime *string `pulumi:"runtime"`
 	// The key/value pairs to associate with the function.
 	Tags map[string]string `pulumi:"tags"`
-	// Specifies the timeout interval of the function, ranges from 3s to 900s.
+	// The timeout interval of the function, in seconds.
 	Timeout *int `pulumi:"timeout"`
-	// Uniform Resource Name
+	// The URN (Uniform Resource Name) of the function.
 	Urn *string `pulumi:"urn"`
 	// The key/value information defined for the function.
 	UserData *string `pulumi:"userData"`
 	// The KMS key ID for encrypting the user data.
 	UserDataEncryptKmsKeyId *string `pulumi:"userDataEncryptKmsKeyId"`
-	// The version of the function
+	// The version of the function.
 	Version *string `pulumi:"version"`
 	// The versions management of the function.
 	Versions []FunctionVersion `pulumi:"versions"`
-	// Specifies the ID of VPC.
+	// The ID of the VPC to which the function belongs.
 	VpcId *string `pulumi:"vpcId"`
 	// Deprecated: use agency instead
 	Xrole *string `pulumi:"xrole"`
 }
 
 type FunctionState struct {
-	// Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+	// The agency configuration of the function.
 	Agency pulumi.StringPtrInput
-	// Specifies the group to which the function belongs.
+	// The group to which the function belongs.
 	App pulumi.StringPtrInput
-	// Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+	// The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
 	AppAgency pulumi.StringPtrInput
 	// The KMS key ID for encrypting the function code.
 	CodeEncryptKmsKeyId pulumi.StringPtrInput
-	// Specifies the name of a function file, This field is mandatory only when coeType is
-	// set to jar or zip.
+	// The name of the function file.
 	CodeFilename pulumi.StringPtrInput
-	// Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-	// jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+	// The code type of the function.
 	CodeType pulumi.StringPtrInput
-	// Specifies the code url. This parameter is mandatory when codeType is set to obs.
+	// The URL where the function code is stored in OBS.
 	CodeUrl pulumi.StringPtrInput
 	// The number of concurrent requests of the function.
 	ConcurrencyNum pulumi.IntPtrInput
 	// The custom image configuration of the function.
 	CustomImage FunctionCustomImagePtrInput
-	// Specifies the dependencies of the function.
+	// The ID list of the dependencies.
 	DependLists pulumi.StringArrayInput
-	// Specifies the description of the function.
+	// The description of the function.
 	Description pulumi.StringPtrInput
 	// The private DNS configuration of the function network.
 	DnsList pulumi.StringPtrInput
@@ -452,15 +344,13 @@ type FunctionState struct {
 	EnableLtsLog pulumi.BoolPtrInput
 	// The key/value information defined to be encrypted for the function.
 	EncryptedUserData pulumi.StringPtrInput
-	// Specifies the enterprise project id of the function.
-	// Changing this creates a new function.
+	// The ID of the enterprise project to which the function belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The size of the function ephemeral storage.
 	EphemeralStorage pulumi.IntPtrInput
-	// Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-	// and the code can be encoded using Base64 or just with the text code.
+	// The function code.
 	FuncCode pulumi.StringPtrInput
-	// Specifies the file system list. The `funcMounts` object structure is documented below.
+	// The list of function mount configuration.
 	FuncMounts FunctionFuncMountArrayInput
 	// The description of the function.
 	FunctiongraphVersion pulumi.StringPtrInput
@@ -468,13 +358,13 @@ type FunctionState struct {
 	GpuMemory pulumi.IntPtrInput
 	// The GPU type of the function.
 	GpuType pulumi.StringPtrInput
-	// Specifies the entry point of the function.
+	// The entry point of the function.
 	Handler pulumi.StringPtrInput
 	// The heartbeat handler of the function.
 	HeartbeatHandler pulumi.StringPtrInput
-	// Specifies the initializer of the function.
+	// The initializer of the function.
 	InitializerHandler pulumi.StringPtrInput
-	// Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+	// The maximum duration the function can be initialized.
 	InitializerTimeout pulumi.IntPtrInput
 	// Whether the function is a stateful function.
 	IsStatefulFunction pulumi.BoolPtrInput
@@ -493,17 +383,17 @@ type FunctionState struct {
 	LtsCustomTagOrigin pulumi.StringMapInput
 	// The maximum number of instances of the function.
 	MaxInstanceNum pulumi.StringPtrInput
-	// Specifies the memory size(MB) allocated to the function.
+	// The memory size allocated to the function, in MByte (MB).
 	MemorySize pulumi.IntPtrInput
-	// Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user group ID.
 	MountUserGroupId pulumi.IntPtrInput
-	// Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user ID.
 	MountUserId pulumi.IntPtrInput
-	// Specifies the name of the function.
+	// The name of the function.
 	Name pulumi.StringPtrInput
 	// The network configuration of the function.
 	NetworkController FunctionNetworkControllerPtrInput
-	// Specifies the ID of subnet.
+	// The network ID of subnet.
 	NetworkId pulumi.StringPtrInput
 	// Deprecated: use app instead
 	Package pulumi.StringPtrInput
@@ -514,8 +404,7 @@ type FunctionState struct {
 	PreStopHandler pulumi.StringPtrInput
 	// The maximum duration that the function can be initialized.
 	PreStopTimeout pulumi.IntPtrInput
-	// Specifies the region in which to create the Function resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+	// The region where the function is located.
 	Region pulumi.StringPtrInput
 	// The reserved instance policies of the function.
 	ReservedInstances FunctionReservedInstanceArrayInput
@@ -523,23 +412,23 @@ type FunctionState struct {
 	RestoreHookHandler pulumi.StringPtrInput
 	// The timeout of the function restore hook.
 	RestoreHookTimeout pulumi.IntPtrInput
-	// Specifies the environment for executing the function.
+	// The environment for executing the function.
 	Runtime pulumi.StringPtrInput
 	// The key/value pairs to associate with the function.
 	Tags pulumi.StringMapInput
-	// Specifies the timeout interval of the function, ranges from 3s to 900s.
+	// The timeout interval of the function, in seconds.
 	Timeout pulumi.IntPtrInput
-	// Uniform Resource Name
+	// The URN (Uniform Resource Name) of the function.
 	Urn pulumi.StringPtrInput
 	// The key/value information defined for the function.
 	UserData pulumi.StringPtrInput
 	// The KMS key ID for encrypting the user data.
 	UserDataEncryptKmsKeyId pulumi.StringPtrInput
-	// The version of the function
+	// The version of the function.
 	Version pulumi.StringPtrInput
 	// The versions management of the function.
 	Versions FunctionVersionArrayInput
-	// Specifies the ID of VPC.
+	// The ID of the VPC to which the function belongs.
 	VpcId pulumi.StringPtrInput
 	// Deprecated: use agency instead
 	Xrole pulumi.StringPtrInput
@@ -550,29 +439,27 @@ func (FunctionState) ElementType() reflect.Type {
 }
 
 type functionArgs struct {
-	// Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+	// The agency configuration of the function.
 	Agency *string `pulumi:"agency"`
-	// Specifies the group to which the function belongs.
+	// The group to which the function belongs.
 	App *string `pulumi:"app"`
-	// Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+	// The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
 	AppAgency *string `pulumi:"appAgency"`
 	// The KMS key ID for encrypting the function code.
 	CodeEncryptKmsKeyId *string `pulumi:"codeEncryptKmsKeyId"`
-	// Specifies the name of a function file, This field is mandatory only when coeType is
-	// set to jar or zip.
+	// The name of the function file.
 	CodeFilename *string `pulumi:"codeFilename"`
-	// Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-	// jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+	// The code type of the function.
 	CodeType *string `pulumi:"codeType"`
-	// Specifies the code url. This parameter is mandatory when codeType is set to obs.
+	// The URL where the function code is stored in OBS.
 	CodeUrl *string `pulumi:"codeUrl"`
 	// The number of concurrent requests of the function.
 	ConcurrencyNum *int `pulumi:"concurrencyNum"`
 	// The custom image configuration of the function.
 	CustomImage *FunctionCustomImage `pulumi:"customImage"`
-	// Specifies the dependencies of the function.
+	// The ID list of the dependencies.
 	DependLists []string `pulumi:"dependLists"`
-	// Specifies the description of the function.
+	// The description of the function.
 	Description *string `pulumi:"description"`
 	// The private DNS configuration of the function network.
 	DnsList *string `pulumi:"dnsList"`
@@ -586,15 +473,13 @@ type functionArgs struct {
 	EnableLtsLog *bool `pulumi:"enableLtsLog"`
 	// The key/value information defined to be encrypted for the function.
 	EncryptedUserData *string `pulumi:"encryptedUserData"`
-	// Specifies the enterprise project id of the function.
-	// Changing this creates a new function.
+	// The ID of the enterprise project to which the function belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The size of the function ephemeral storage.
 	EphemeralStorage *int `pulumi:"ephemeralStorage"`
-	// Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-	// and the code can be encoded using Base64 or just with the text code.
+	// The function code.
 	FuncCode *string `pulumi:"funcCode"`
-	// Specifies the file system list. The `funcMounts` object structure is documented below.
+	// The list of function mount configuration.
 	FuncMounts []FunctionFuncMount `pulumi:"funcMounts"`
 	// The description of the function.
 	FunctiongraphVersion *string `pulumi:"functiongraphVersion"`
@@ -602,13 +487,13 @@ type functionArgs struct {
 	GpuMemory *int `pulumi:"gpuMemory"`
 	// The GPU type of the function.
 	GpuType *string `pulumi:"gpuType"`
-	// Specifies the entry point of the function.
+	// The entry point of the function.
 	Handler *string `pulumi:"handler"`
 	// The heartbeat handler of the function.
 	HeartbeatHandler *string `pulumi:"heartbeatHandler"`
-	// Specifies the initializer of the function.
+	// The initializer of the function.
 	InitializerHandler *string `pulumi:"initializerHandler"`
-	// Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+	// The maximum duration the function can be initialized.
 	InitializerTimeout *int `pulumi:"initializerTimeout"`
 	// Whether the function is a stateful function.
 	IsStatefulFunction *bool `pulumi:"isStatefulFunction"`
@@ -624,17 +509,17 @@ type functionArgs struct {
 	LtsCustomTag map[string]string `pulumi:"ltsCustomTag"`
 	// The maximum number of instances of the function.
 	MaxInstanceNum *string `pulumi:"maxInstanceNum"`
-	// Specifies the memory size(MB) allocated to the function.
+	// The memory size allocated to the function, in MByte (MB).
 	MemorySize int `pulumi:"memorySize"`
-	// Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user group ID.
 	MountUserGroupId *int `pulumi:"mountUserGroupId"`
-	// Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user ID.
 	MountUserId *int `pulumi:"mountUserId"`
-	// Specifies the name of the function.
+	// The name of the function.
 	Name *string `pulumi:"name"`
 	// The network configuration of the function.
 	NetworkController *FunctionNetworkController `pulumi:"networkController"`
-	// Specifies the ID of subnet.
+	// The network ID of subnet.
 	NetworkId *string `pulumi:"networkId"`
 	// Deprecated: use app instead
 	Package *string `pulumi:"package"`
@@ -645,8 +530,7 @@ type functionArgs struct {
 	PreStopHandler *string `pulumi:"preStopHandler"`
 	// The maximum duration that the function can be initialized.
 	PreStopTimeout *int `pulumi:"preStopTimeout"`
-	// Specifies the region in which to create the Function resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+	// The region where the function is located.
 	Region *string `pulumi:"region"`
 	// The reserved instance policies of the function.
 	ReservedInstances []FunctionReservedInstance `pulumi:"reservedInstances"`
@@ -654,11 +538,11 @@ type functionArgs struct {
 	RestoreHookHandler *string `pulumi:"restoreHookHandler"`
 	// The timeout of the function restore hook.
 	RestoreHookTimeout *int `pulumi:"restoreHookTimeout"`
-	// Specifies the environment for executing the function.
+	// The environment for executing the function.
 	Runtime string `pulumi:"runtime"`
 	// The key/value pairs to associate with the function.
 	Tags map[string]string `pulumi:"tags"`
-	// Specifies the timeout interval of the function, ranges from 3s to 900s.
+	// The timeout interval of the function, in seconds.
 	Timeout int `pulumi:"timeout"`
 	// The key/value information defined for the function.
 	UserData *string `pulumi:"userData"`
@@ -666,7 +550,7 @@ type functionArgs struct {
 	UserDataEncryptKmsKeyId *string `pulumi:"userDataEncryptKmsKeyId"`
 	// The versions management of the function.
 	Versions []FunctionVersion `pulumi:"versions"`
-	// Specifies the ID of VPC.
+	// The ID of the VPC to which the function belongs.
 	VpcId *string `pulumi:"vpcId"`
 	// Deprecated: use agency instead
 	Xrole *string `pulumi:"xrole"`
@@ -674,29 +558,27 @@ type functionArgs struct {
 
 // The set of arguments for constructing a Function resource.
 type FunctionArgs struct {
-	// Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+	// The agency configuration of the function.
 	Agency pulumi.StringPtrInput
-	// Specifies the group to which the function belongs.
+	// The group to which the function belongs.
 	App pulumi.StringPtrInput
-	// Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+	// The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
 	AppAgency pulumi.StringPtrInput
 	// The KMS key ID for encrypting the function code.
 	CodeEncryptKmsKeyId pulumi.StringPtrInput
-	// Specifies the name of a function file, This field is mandatory only when coeType is
-	// set to jar or zip.
+	// The name of the function file.
 	CodeFilename pulumi.StringPtrInput
-	// Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-	// jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+	// The code type of the function.
 	CodeType pulumi.StringPtrInput
-	// Specifies the code url. This parameter is mandatory when codeType is set to obs.
+	// The URL where the function code is stored in OBS.
 	CodeUrl pulumi.StringPtrInput
 	// The number of concurrent requests of the function.
 	ConcurrencyNum pulumi.IntPtrInput
 	// The custom image configuration of the function.
 	CustomImage FunctionCustomImagePtrInput
-	// Specifies the dependencies of the function.
+	// The ID list of the dependencies.
 	DependLists pulumi.StringArrayInput
-	// Specifies the description of the function.
+	// The description of the function.
 	Description pulumi.StringPtrInput
 	// The private DNS configuration of the function network.
 	DnsList pulumi.StringPtrInput
@@ -710,15 +592,13 @@ type FunctionArgs struct {
 	EnableLtsLog pulumi.BoolPtrInput
 	// The key/value information defined to be encrypted for the function.
 	EncryptedUserData pulumi.StringPtrInput
-	// Specifies the enterprise project id of the function.
-	// Changing this creates a new function.
+	// The ID of the enterprise project to which the function belongs.
 	EnterpriseProjectId pulumi.StringPtrInput
 	// The size of the function ephemeral storage.
 	EphemeralStorage pulumi.IntPtrInput
-	// Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-	// and the code can be encoded using Base64 or just with the text code.
+	// The function code.
 	FuncCode pulumi.StringPtrInput
-	// Specifies the file system list. The `funcMounts` object structure is documented below.
+	// The list of function mount configuration.
 	FuncMounts FunctionFuncMountArrayInput
 	// The description of the function.
 	FunctiongraphVersion pulumi.StringPtrInput
@@ -726,13 +606,13 @@ type FunctionArgs struct {
 	GpuMemory pulumi.IntPtrInput
 	// The GPU type of the function.
 	GpuType pulumi.StringPtrInput
-	// Specifies the entry point of the function.
+	// The entry point of the function.
 	Handler pulumi.StringPtrInput
 	// The heartbeat handler of the function.
 	HeartbeatHandler pulumi.StringPtrInput
-	// Specifies the initializer of the function.
+	// The initializer of the function.
 	InitializerHandler pulumi.StringPtrInput
-	// Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+	// The maximum duration the function can be initialized.
 	InitializerTimeout pulumi.IntPtrInput
 	// Whether the function is a stateful function.
 	IsStatefulFunction pulumi.BoolPtrInput
@@ -748,17 +628,17 @@ type FunctionArgs struct {
 	LtsCustomTag pulumi.StringMapInput
 	// The maximum number of instances of the function.
 	MaxInstanceNum pulumi.StringPtrInput
-	// Specifies the memory size(MB) allocated to the function.
+	// The memory size allocated to the function, in MByte (MB).
 	MemorySize pulumi.IntInput
-	// Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user group ID.
 	MountUserGroupId pulumi.IntPtrInput
-	// Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+	// The mount user ID.
 	MountUserId pulumi.IntPtrInput
-	// Specifies the name of the function.
+	// The name of the function.
 	Name pulumi.StringPtrInput
 	// The network configuration of the function.
 	NetworkController FunctionNetworkControllerPtrInput
-	// Specifies the ID of subnet.
+	// The network ID of subnet.
 	NetworkId pulumi.StringPtrInput
 	// Deprecated: use app instead
 	Package pulumi.StringPtrInput
@@ -769,8 +649,7 @@ type FunctionArgs struct {
 	PreStopHandler pulumi.StringPtrInput
 	// The maximum duration that the function can be initialized.
 	PreStopTimeout pulumi.IntPtrInput
-	// Specifies the region in which to create the Function resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+	// The region where the function is located.
 	Region pulumi.StringPtrInput
 	// The reserved instance policies of the function.
 	ReservedInstances FunctionReservedInstanceArrayInput
@@ -778,11 +657,11 @@ type FunctionArgs struct {
 	RestoreHookHandler pulumi.StringPtrInput
 	// The timeout of the function restore hook.
 	RestoreHookTimeout pulumi.IntPtrInput
-	// Specifies the environment for executing the function.
+	// The environment for executing the function.
 	Runtime pulumi.StringInput
 	// The key/value pairs to associate with the function.
 	Tags pulumi.StringMapInput
-	// Specifies the timeout interval of the function, ranges from 3s to 900s.
+	// The timeout interval of the function, in seconds.
 	Timeout pulumi.IntInput
 	// The key/value information defined for the function.
 	UserData pulumi.StringPtrInput
@@ -790,7 +669,7 @@ type FunctionArgs struct {
 	UserDataEncryptKmsKeyId pulumi.StringPtrInput
 	// The versions management of the function.
 	Versions FunctionVersionArrayInput
-	// Specifies the ID of VPC.
+	// The ID of the VPC to which the function belongs.
 	VpcId pulumi.StringPtrInput
 	// Deprecated: use agency instead
 	Xrole pulumi.StringPtrInput
@@ -883,17 +762,17 @@ func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) Functio
 	return o
 }
 
-// Specifies the agency. This parameter is mandatory if the function needs to access other cloud services.
+// The agency configuration of the function.
 func (o FunctionOutput) Agency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Agency }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the group to which the function belongs.
+// The group to which the function belongs.
 func (o FunctionOutput) App() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.App }).(pulumi.StringPtrOutput)
 }
 
-// Specifies An execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
+// The execution agency enables you to obtain a token or an AK/SK for accessing other cloud services.
 func (o FunctionOutput) AppAgency() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.AppAgency }).(pulumi.StringOutput)
 }
@@ -903,19 +782,17 @@ func (o FunctionOutput) CodeEncryptKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.CodeEncryptKmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the name of a function file, This field is mandatory only when coeType is
-// set to jar or zip.
+// The name of the function file.
 func (o FunctionOutput) CodeFilename() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.CodeFilename }).(pulumi.StringOutput)
 }
 
-// Specifies the function code type, which can be inline: inline code, zip: ZIP file,
-// jar: JAR file or java functions, obs: function code stored in an OBS bucket.
+// The code type of the function.
 func (o FunctionOutput) CodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.CodeType }).(pulumi.StringOutput)
 }
 
-// Specifies the code url. This parameter is mandatory when codeType is set to obs.
+// The URL where the function code is stored in OBS.
 func (o FunctionOutput) CodeUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.CodeUrl }).(pulumi.StringPtrOutput)
 }
@@ -930,12 +807,12 @@ func (o FunctionOutput) CustomImage() FunctionCustomImageOutput {
 	return o.ApplyT(func(v *Function) FunctionCustomImageOutput { return v.CustomImage }).(FunctionCustomImageOutput)
 }
 
-// Specifies the dependencies of the function.
+// The ID list of the dependencies.
 func (o FunctionOutput) DependLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringArrayOutput { return v.DependLists }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the description of the function.
+// The description of the function.
 func (o FunctionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -970,8 +847,7 @@ func (o FunctionOutput) EncryptedUserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.EncryptedUserData }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the enterprise project id of the function.
-// Changing this creates a new function.
+// The ID of the enterprise project to which the function belongs.
 func (o FunctionOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -981,13 +857,12 @@ func (o FunctionOutput) EphemeralStorage() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.EphemeralStorage }).(pulumi.IntOutput)
 }
 
-// Specifies the function code. When codeType is set to inline, zip, or jar, this parameter is mandatory,
-// and the code can be encoded using Base64 or just with the text code.
+// The function code.
 func (o FunctionOutput) FuncCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.FuncCode }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the file system list. The `funcMounts` object structure is documented below.
+// The list of function mount configuration.
 func (o FunctionOutput) FuncMounts() FunctionFuncMountArrayOutput {
 	return o.ApplyT(func(v *Function) FunctionFuncMountArrayOutput { return v.FuncMounts }).(FunctionFuncMountArrayOutput)
 }
@@ -1007,7 +882,7 @@ func (o FunctionOutput) GpuType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.GpuType }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the entry point of the function.
+// The entry point of the function.
 func (o FunctionOutput) Handler() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Handler }).(pulumi.StringOutput)
 }
@@ -1017,12 +892,12 @@ func (o FunctionOutput) HeartbeatHandler() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.HeartbeatHandler }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the initializer of the function.
+// The initializer of the function.
 func (o FunctionOutput) InitializerHandler() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.InitializerHandler }).(pulumi.StringOutput)
 }
 
-// Specifies the maximum duration the function can be initialized. Value range: 1s to 300s.
+// The maximum duration the function can be initialized.
 func (o FunctionOutput) InitializerTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.InitializerTimeout }).(pulumi.IntOutput)
 }
@@ -1069,22 +944,22 @@ func (o FunctionOutput) MaxInstanceNum() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.MaxInstanceNum }).(pulumi.StringOutput)
 }
 
-// Specifies the memory size(MB) allocated to the function.
+// The memory size allocated to the function, in MByte (MB).
 func (o FunctionOutput) MemorySize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.MemorySize }).(pulumi.IntOutput)
 }
 
-// Specifies the user group ID, a non-0 integer from –1 to 65534. Default to -1.
+// The mount user group ID.
 func (o FunctionOutput) MountUserGroupId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.MountUserGroupId }).(pulumi.IntOutput)
 }
 
-// Specifies the user ID, a non-0 integer from –1 to 65534. Default to -1.
+// The mount user ID.
 func (o FunctionOutput) MountUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.MountUserId }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the function.
+// The name of the function.
 func (o FunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -1094,7 +969,7 @@ func (o FunctionOutput) NetworkController() FunctionNetworkControllerPtrOutput {
 	return o.ApplyT(func(v *Function) FunctionNetworkControllerPtrOutput { return v.NetworkController }).(FunctionNetworkControllerPtrOutput)
 }
 
-// Specifies the ID of subnet.
+// The network ID of subnet.
 func (o FunctionOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
@@ -1120,8 +995,7 @@ func (o FunctionOutput) PreStopTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.PreStopTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the region in which to create the Function resource.
-// If omitted, the provider-level region will be used. Changing this creates a new Function resource.
+// The region where the function is located.
 func (o FunctionOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -1141,7 +1015,7 @@ func (o FunctionOutput) RestoreHookTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntPtrOutput { return v.RestoreHookTimeout }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the environment for executing the function.
+// The environment for executing the function.
 func (o FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
@@ -1151,12 +1025,12 @@ func (o FunctionOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the timeout interval of the function, ranges from 3s to 900s.
+// The timeout interval of the function, in seconds.
 func (o FunctionOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *Function) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Uniform Resource Name
+// The URN (Uniform Resource Name) of the function.
 func (o FunctionOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
 }
@@ -1171,7 +1045,7 @@ func (o FunctionOutput) UserDataEncryptKmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.UserDataEncryptKmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The version of the function
+// The version of the function.
 func (o FunctionOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
@@ -1181,7 +1055,7 @@ func (o FunctionOutput) Versions() FunctionVersionArrayOutput {
 	return o.ApplyT(func(v *Function) FunctionVersionArrayOutput { return v.Versions }).(FunctionVersionArrayOutput)
 }
 
-// Specifies the ID of VPC.
+// The ID of the VPC to which the function belongs.
 func (o FunctionOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }

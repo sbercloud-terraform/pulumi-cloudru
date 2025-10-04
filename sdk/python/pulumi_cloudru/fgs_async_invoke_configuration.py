@@ -30,24 +30,14 @@ class FgsAsyncInvokeConfigurationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FgsAsyncInvokeConfiguration resource.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the asynchronous invocation belongs.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: Specifies the maximum validity period of a message.  
-               The valid value is range from `1` to `86,400`.
-        :param pulumi.Input[_builtins.int] max_async_retry_attempts: Specifies the maximum number of retry attempts to be made if
-               asynchronous invocation fails.
-               The valid value is range from `0` to `3`.
-        :param pulumi.Input[_builtins.bool] enable_async_status_log: Specifies whether to enable asynchronous invocation status persistence.
-               
-               <a name="functiongraph_destination_config"></a>
-               The `on_success` and the `on_failure` blocks support:
-        :param pulumi.Input['FgsAsyncInvokeConfigurationOnFailureArgs'] on_failure: Specifies the target to be invoked when a function fails to be executed due to a
-               system error or an internal error.
-               The object structure is documented below.
-        :param pulumi.Input['FgsAsyncInvokeConfigurationOnSuccessArgs'] on_success: Specifies the target to be invoked when a function is successfully executed.  
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to configure the asynchronous invocation.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the asynchronous invocation belongs.
+        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: The maximum validity period of a message.
+        :param pulumi.Input[_builtins.int] max_async_retry_attempts: The maximum number of retry attempts to be made if asynchronous invocation fails.
+        :param pulumi.Input[_builtins.bool] enable_async_status_log: Whether to enable asynchronous invocation status persistence.
+        :param pulumi.Input['FgsAsyncInvokeConfigurationOnFailureArgs'] on_failure: The target to be invoked when a function fails to be executed due to a system error or an
+               internal error.
+        :param pulumi.Input['FgsAsyncInvokeConfigurationOnSuccessArgs'] on_success: The target to be invoked when a function is successfully executed.
+        :param pulumi.Input[_builtins.str] region: The region in which to configure the asynchronous invocation.
         """
         pulumi.set(__self__, "function_urn", function_urn)
         pulumi.set(__self__, "max_async_event_age_in_seconds", max_async_event_age_in_seconds)
@@ -65,8 +55,7 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the function URN to which the asynchronous invocation belongs.
-        Changing this will create a new resource.
+        The function URN to which the asynchronous invocation belongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -78,8 +67,7 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")
     def max_async_event_age_in_seconds(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the maximum validity period of a message.  
-        The valid value is range from `1` to `86,400`.
+        The maximum validity period of a message.
         """
         return pulumi.get(self, "max_async_event_age_in_seconds")
 
@@ -91,9 +79,7 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter(name="maxAsyncRetryAttempts")
     def max_async_retry_attempts(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the maximum number of retry attempts to be made if
-        asynchronous invocation fails.
-        The valid value is range from `0` to `3`.
+        The maximum number of retry attempts to be made if asynchronous invocation fails.
         """
         return pulumi.get(self, "max_async_retry_attempts")
 
@@ -105,10 +91,7 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter(name="enableAsyncStatusLog")
     def enable_async_status_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable asynchronous invocation status persistence.
-
-        <a name="functiongraph_destination_config"></a>
-        The `on_success` and the `on_failure` blocks support:
+        Whether to enable asynchronous invocation status persistence.
         """
         return pulumi.get(self, "enable_async_status_log")
 
@@ -120,9 +103,8 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional[pulumi.Input['FgsAsyncInvokeConfigurationOnFailureArgs']]:
         """
-        Specifies the target to be invoked when a function fails to be executed due to a
-        system error or an internal error.
-        The object structure is documented below.
+        The target to be invoked when a function fails to be executed due to a system error or an
+        internal error.
         """
         return pulumi.get(self, "on_failure")
 
@@ -134,8 +116,7 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter(name="onSuccess")
     def on_success(self) -> Optional[pulumi.Input['FgsAsyncInvokeConfigurationOnSuccessArgs']]:
         """
-        Specifies the target to be invoked when a function is successfully executed.  
-        The object structure is documented below.
+        The target to be invoked when a function is successfully executed.
         """
         return pulumi.get(self, "on_success")
 
@@ -147,8 +128,7 @@ class FgsAsyncInvokeConfigurationArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to configure the asynchronous invocation.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region in which to configure the asynchronous invocation.
         """
         return pulumi.get(self, "region")
 
@@ -171,26 +151,16 @@ class _FgsAsyncInvokeConfigurationState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FgsAsyncInvokeConfiguration resources.
-        :param pulumi.Input[_builtins.str] created_at: The creation time of the asynchronous invocation, in RFC3339 format.
-        :param pulumi.Input[_builtins.bool] enable_async_status_log: Specifies whether to enable asynchronous invocation status persistence.
-               
-               <a name="functiongraph_destination_config"></a>
-               The `on_success` and the `on_failure` blocks support:
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the asynchronous invocation belongs.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: Specifies the maximum validity period of a message.  
-               The valid value is range from `1` to `86,400`.
-        :param pulumi.Input[_builtins.int] max_async_retry_attempts: Specifies the maximum number of retry attempts to be made if
-               asynchronous invocation fails.
-               The valid value is range from `0` to `3`.
-        :param pulumi.Input['FgsAsyncInvokeConfigurationOnFailureArgs'] on_failure: Specifies the target to be invoked when a function fails to be executed due to a
-               system error or an internal error.
-               The object structure is documented below.
-        :param pulumi.Input['FgsAsyncInvokeConfigurationOnSuccessArgs'] on_success: Specifies the target to be invoked when a function is successfully executed.  
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to configure the asynchronous invocation.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] updated_at: The latest update time of the asynchronous invocation, in RFC3339 format.
+        :param pulumi.Input[_builtins.str] created_at: The creation time of the asynchronous invocation.
+        :param pulumi.Input[_builtins.bool] enable_async_status_log: Whether to enable asynchronous invocation status persistence.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the asynchronous invocation belongs.
+        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: The maximum validity period of a message.
+        :param pulumi.Input[_builtins.int] max_async_retry_attempts: The maximum number of retry attempts to be made if asynchronous invocation fails.
+        :param pulumi.Input['FgsAsyncInvokeConfigurationOnFailureArgs'] on_failure: The target to be invoked when a function fails to be executed due to a system error or an
+               internal error.
+        :param pulumi.Input['FgsAsyncInvokeConfigurationOnSuccessArgs'] on_success: The target to be invoked when a function is successfully executed.
+        :param pulumi.Input[_builtins.str] region: The region in which to configure the asynchronous invocation.
+        :param pulumi.Input[_builtins.str] updated_at: The latest update time of the asynchronous invocation.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -215,7 +185,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation time of the asynchronous invocation, in RFC3339 format.
+        The creation time of the asynchronous invocation.
         """
         return pulumi.get(self, "created_at")
 
@@ -227,10 +197,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="enableAsyncStatusLog")
     def enable_async_status_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable asynchronous invocation status persistence.
-
-        <a name="functiongraph_destination_config"></a>
-        The `on_success` and the `on_failure` blocks support:
+        Whether to enable asynchronous invocation status persistence.
         """
         return pulumi.get(self, "enable_async_status_log")
 
@@ -242,8 +209,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function URN to which the asynchronous invocation belongs.
-        Changing this will create a new resource.
+        The function URN to which the asynchronous invocation belongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -255,8 +221,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")
     def max_async_event_age_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum validity period of a message.  
-        The valid value is range from `1` to `86,400`.
+        The maximum validity period of a message.
         """
         return pulumi.get(self, "max_async_event_age_in_seconds")
 
@@ -268,9 +233,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="maxAsyncRetryAttempts")
     def max_async_retry_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of retry attempts to be made if
-        asynchronous invocation fails.
-        The valid value is range from `0` to `3`.
+        The maximum number of retry attempts to be made if asynchronous invocation fails.
         """
         return pulumi.get(self, "max_async_retry_attempts")
 
@@ -282,9 +245,8 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional[pulumi.Input['FgsAsyncInvokeConfigurationOnFailureArgs']]:
         """
-        Specifies the target to be invoked when a function fails to be executed due to a
-        system error or an internal error.
-        The object structure is documented below.
+        The target to be invoked when a function fails to be executed due to a system error or an
+        internal error.
         """
         return pulumi.get(self, "on_failure")
 
@@ -296,8 +258,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="onSuccess")
     def on_success(self) -> Optional[pulumi.Input['FgsAsyncInvokeConfigurationOnSuccessArgs']]:
         """
-        Specifies the target to be invoked when a function is successfully executed.  
-        The object structure is documented below.
+        The target to be invoked when a function is successfully executed.
         """
         return pulumi.get(self, "on_success")
 
@@ -309,8 +270,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region in which to configure the asynchronous invocation.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region in which to configure the asynchronous invocation.
         """
         return pulumi.get(self, "region")
 
@@ -322,7 +282,7 @@ class _FgsAsyncInvokeConfigurationState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The latest update time of the asynchronous invocation, in RFC3339 format.
+        The latest update time of the asynchronous invocation.
         """
         return pulumi.get(self, "updated_at")
 
@@ -346,72 +306,17 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Using this resource to manage the configuration of the asynchronous invocation within HuaweiCloud.
-
-        > A function only supports configuring one resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        function_urn = config.require_object("functionUrn")
-        bucket_name = config.require_object("bucketName")
-        topic_urn = config.require_object("topicUrn")
-        test = sbercloud.FgsAsyncInvokeConfiguration("test",
-            function_urn=function_urn,
-            max_async_event_age_in_seconds=3500,
-            max_async_retry_attempts=2,
-            enable_async_status_log=True,
-            on_success={
-                "destination": "OBS",
-                "param": json.dumps({
-                    "bucket": bucket_name,
-                    "prefix": "/success",
-                    "expires": 5,
-                }),
-            },
-            on_failure={
-                "destination": "SMN",
-                "param": json.dumps({
-                    "topic_urn": topic_urn,
-                }),
-            })
-        ```
-
-        ## Import
-
-        The configurations can be imported using their related `function_urn`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration test <function_urn>
-        ```
-
+        Create a FgsAsyncInvokeConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] enable_async_status_log: Specifies whether to enable asynchronous invocation status persistence.
-               
-               <a name="functiongraph_destination_config"></a>
-               The `on_success` and the `on_failure` blocks support:
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the asynchronous invocation belongs.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: Specifies the maximum validity period of a message.  
-               The valid value is range from `1` to `86,400`.
-        :param pulumi.Input[_builtins.int] max_async_retry_attempts: Specifies the maximum number of retry attempts to be made if
-               asynchronous invocation fails.
-               The valid value is range from `0` to `3`.
-        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnFailureArgs', 'FgsAsyncInvokeConfigurationOnFailureArgsDict']] on_failure: Specifies the target to be invoked when a function fails to be executed due to a
-               system error or an internal error.
-               The object structure is documented below.
-        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnSuccessArgs', 'FgsAsyncInvokeConfigurationOnSuccessArgsDict']] on_success: Specifies the target to be invoked when a function is successfully executed.  
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to configure the asynchronous invocation.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
+        :param pulumi.Input[_builtins.bool] enable_async_status_log: Whether to enable asynchronous invocation status persistence.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the asynchronous invocation belongs.
+        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: The maximum validity period of a message.
+        :param pulumi.Input[_builtins.int] max_async_retry_attempts: The maximum number of retry attempts to be made if asynchronous invocation fails.
+        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnFailureArgs', 'FgsAsyncInvokeConfigurationOnFailureArgsDict']] on_failure: The target to be invoked when a function fails to be executed due to a system error or an
+               internal error.
+        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnSuccessArgs', 'FgsAsyncInvokeConfigurationOnSuccessArgsDict']] on_success: The target to be invoked when a function is successfully executed.
+        :param pulumi.Input[_builtins.str] region: The region in which to configure the asynchronous invocation.
         """
         ...
     @overload
@@ -420,52 +325,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
                  args: FgsAsyncInvokeConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Using this resource to manage the configuration of the asynchronous invocation within HuaweiCloud.
-
-        > A function only supports configuring one resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        function_urn = config.require_object("functionUrn")
-        bucket_name = config.require_object("bucketName")
-        topic_urn = config.require_object("topicUrn")
-        test = sbercloud.FgsAsyncInvokeConfiguration("test",
-            function_urn=function_urn,
-            max_async_event_age_in_seconds=3500,
-            max_async_retry_attempts=2,
-            enable_async_status_log=True,
-            on_success={
-                "destination": "OBS",
-                "param": json.dumps({
-                    "bucket": bucket_name,
-                    "prefix": "/success",
-                    "expires": 5,
-                }),
-            },
-            on_failure={
-                "destination": "SMN",
-                "param": json.dumps({
-                    "topic_urn": topic_urn,
-                }),
-            })
-        ```
-
-        ## Import
-
-        The configurations can be imported using their related `function_urn`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsAsyncInvokeConfiguration:FgsAsyncInvokeConfiguration test <function_urn>
-        ```
-
+        Create a FgsAsyncInvokeConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FgsAsyncInvokeConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -538,26 +398,16 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: The creation time of the asynchronous invocation, in RFC3339 format.
-        :param pulumi.Input[_builtins.bool] enable_async_status_log: Specifies whether to enable asynchronous invocation status persistence.
-               
-               <a name="functiongraph_destination_config"></a>
-               The `on_success` and the `on_failure` blocks support:
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the asynchronous invocation belongs.
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: Specifies the maximum validity period of a message.  
-               The valid value is range from `1` to `86,400`.
-        :param pulumi.Input[_builtins.int] max_async_retry_attempts: Specifies the maximum number of retry attempts to be made if
-               asynchronous invocation fails.
-               The valid value is range from `0` to `3`.
-        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnFailureArgs', 'FgsAsyncInvokeConfigurationOnFailureArgsDict']] on_failure: Specifies the target to be invoked when a function fails to be executed due to a
-               system error or an internal error.
-               The object structure is documented below.
-        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnSuccessArgs', 'FgsAsyncInvokeConfigurationOnSuccessArgsDict']] on_success: Specifies the target to be invoked when a function is successfully executed.  
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to configure the asynchronous invocation.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] updated_at: The latest update time of the asynchronous invocation, in RFC3339 format.
+        :param pulumi.Input[_builtins.str] created_at: The creation time of the asynchronous invocation.
+        :param pulumi.Input[_builtins.bool] enable_async_status_log: Whether to enable asynchronous invocation status persistence.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the asynchronous invocation belongs.
+        :param pulumi.Input[_builtins.int] max_async_event_age_in_seconds: The maximum validity period of a message.
+        :param pulumi.Input[_builtins.int] max_async_retry_attempts: The maximum number of retry attempts to be made if asynchronous invocation fails.
+        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnFailureArgs', 'FgsAsyncInvokeConfigurationOnFailureArgsDict']] on_failure: The target to be invoked when a function fails to be executed due to a system error or an
+               internal error.
+        :param pulumi.Input[Union['FgsAsyncInvokeConfigurationOnSuccessArgs', 'FgsAsyncInvokeConfigurationOnSuccessArgsDict']] on_success: The target to be invoked when a function is successfully executed.
+        :param pulumi.Input[_builtins.str] region: The region in which to configure the asynchronous invocation.
+        :param pulumi.Input[_builtins.str] updated_at: The latest update time of the asynchronous invocation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -578,7 +428,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation time of the asynchronous invocation, in RFC3339 format.
+        The creation time of the asynchronous invocation.
         """
         return pulumi.get(self, "created_at")
 
@@ -586,10 +436,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="enableAsyncStatusLog")
     def enable_async_status_log(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether to enable asynchronous invocation status persistence.
-
-        <a name="functiongraph_destination_config"></a>
-        The `on_success` and the `on_failure` blocks support:
+        Whether to enable asynchronous invocation status persistence.
         """
         return pulumi.get(self, "enable_async_status_log")
 
@@ -597,8 +444,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the function URN to which the asynchronous invocation belongs.
-        Changing this will create a new resource.
+        The function URN to which the asynchronous invocation belongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -606,8 +452,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")
     def max_async_event_age_in_seconds(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the maximum validity period of a message.  
-        The valid value is range from `1` to `86,400`.
+        The maximum validity period of a message.
         """
         return pulumi.get(self, "max_async_event_age_in_seconds")
 
@@ -615,9 +460,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="maxAsyncRetryAttempts")
     def max_async_retry_attempts(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the maximum number of retry attempts to be made if
-        asynchronous invocation fails.
-        The valid value is range from `0` to `3`.
+        The maximum number of retry attempts to be made if asynchronous invocation fails.
         """
         return pulumi.get(self, "max_async_retry_attempts")
 
@@ -625,9 +468,8 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> pulumi.Output[Optional['outputs.FgsAsyncInvokeConfigurationOnFailure']]:
         """
-        Specifies the target to be invoked when a function fails to be executed due to a
-        system error or an internal error.
-        The object structure is documented below.
+        The target to be invoked when a function fails to be executed due to a system error or an
+        internal error.
         """
         return pulumi.get(self, "on_failure")
 
@@ -635,8 +477,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="onSuccess")
     def on_success(self) -> pulumi.Output[Optional['outputs.FgsAsyncInvokeConfigurationOnSuccess']]:
         """
-        Specifies the target to be invoked when a function is successfully executed.  
-        The object structure is documented below.
+        The target to be invoked when a function is successfully executed.
         """
         return pulumi.get(self, "on_success")
 
@@ -644,8 +485,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region in which to configure the asynchronous invocation.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region in which to configure the asynchronous invocation.
         """
         return pulumi.get(self, "region")
 
@@ -653,7 +493,7 @@ class FgsAsyncInvokeConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The latest update time of the asynchronous invocation, in RFC3339 format.
+        The latest update time of the asynchronous invocation.
         """
         return pulumi.get(self, "updated_at")
 

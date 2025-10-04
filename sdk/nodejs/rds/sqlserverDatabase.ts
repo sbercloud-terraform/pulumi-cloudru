@@ -4,33 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages RDS SQLServer database resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = new sbercloud.rds.SqlserverDatabase("test", {
- *     instanceId: instanceId,
- *     name: "test",
- * });
- * ```
- *
- * ## Import
- *
- * The RDS sqlserver database can be imported using the `instance_id` and `name` separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/sqlserverDatabase:SqlserverDatabase test <instance_id>/<name>
- * ```
- */
 export class SqlserverDatabase extends pulumi.CustomResource {
     /**
      * Get an existing SqlserverDatabase resource's state with the given name, ID, and optional extra
@@ -65,30 +38,15 @@ export class SqlserverDatabase extends pulumi.CustomResource {
     declare public /*out*/ readonly characterSet: pulumi.Output<string>;
     /**
      * Specifies the ID of the RDS SQLServer instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the database name. The database name can contain 1 to 64 characters,
-     * and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-     * SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-     * **tempdb**, **resource**, and **rdsadmin**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the database name.
      */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Indicates the database status. Its value can be any of the following:
-     * + **Creating**: The database is being created.
-     * + **Running**: The database is running.
-     * + **Deleting**: The database is being deleted.
-     * + **Not Exists**: The database does not exist.
+     * Indicates the database status.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
 
@@ -136,30 +94,15 @@ export interface SqlserverDatabaseState {
     characterSet?: pulumi.Input<string>;
     /**
      * Specifies the ID of the RDS SQLServer instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the database name. The database name can contain 1 to 64 characters,
-     * and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-     * SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-     * **tempdb**, **resource**, and **rdsadmin**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the database name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * Indicates the database status. Its value can be any of the following:
-     * + **Creating**: The database is being created.
-     * + **Running**: The database is running.
-     * + **Deleting**: The database is being deleted.
-     * + **Not Exists**: The database does not exist.
+     * Indicates the database status.
      */
     state?: pulumi.Input<string>;
 }
@@ -170,22 +113,11 @@ export interface SqlserverDatabaseState {
 export interface SqlserverDatabaseArgs {
     /**
      * Specifies the ID of the RDS SQLServer instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the database name. The database name can contain 1 to 64 characters,
-     * and can include letters, digits, hyphens (-), underscores (_), and periods (.). It cannot start or end with an RDS for
-     * SQL Server system database name. RDS for SQL Server system databases include **master**, **msdb**, **model**,
-     * **tempdb**, **resource**, and **rdsadmin**.
-     *
-     * Changing this parameter will create a new resource.
+     * Specifies the database name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

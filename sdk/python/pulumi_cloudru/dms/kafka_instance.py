@@ -64,134 +64,8 @@ class KafkaInstanceArgs:
                  vpc_client_plain: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a KafkaInstance resource.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the Kafka engine,
-               such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of a subnet. Changing this creates a new instance
-               resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification. Value range:
-               + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 600MB: dms.physical.storage.ultra
-               + When bandwidth is 1200MB: dms.physical.storage.ultra
-               
-               If the instance is created with `product_id`, the valid values are as follows:
-               + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-               The corresponding bandwidths are **100MB** and **300MB**.
-               + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-               The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-               
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] access_user: Specifies the username of SASL_SSL user. A username consists of 4
-               to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-               
-               <a name="dms_cross_vpc_accesses"></a>
-               The `cross_vpc_accesses` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The names of the AZ where the Kafka instances reside.
-               The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-               
-               > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-               Deploy to more availability zones, the better the reliability and SLA coverage.
-               
-               > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaInstanceCrossVpcAccessArgs']]] cross_vpc_accesses: Specifies the cross-VPC access information.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS Kafka instance. It is a character string
-               containing not more than 1,024 characters.
-        :param pulumi.Input[_builtins.bool] dumping: Specifies whether to enable message dumping.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.bool] enable_auto_topic: Specifies whether to enable automatic topic creation. If automatic
-               topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-               produced to or consumed from a topic that does not exist.
-               The default value is false.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the Kafka instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-               
-               > It is recommended to use `flavor_id` if the region supports it.\\
-               One of:
-               * c6.2u4g.cluster
-               * c6.4u8g.cluster
-               * c6.8u16g.cluster
-               * c6.12u24g.cluster
-               * c6.16u32g.cluster \\
-               Or use data source sbercloud_dms_kafka_flavors
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
-        :param pulumi.Input[_builtins.str] maintain_begin: Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-               blank. In this case, the system automatically allocates the default start time 02:00.
-        :param pulumi.Input[_builtins.str] maintain_end: Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-               02:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-               `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        :param pulumi.Input[_builtins.str] manager_password: Specifies the password for logging in to the Kafka Manager. The
-               password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-               the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-               =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-               
-               > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        :param pulumi.Input[_builtins.str] manager_user: Specifies the username for logging in to the Kafka Manager. The username
-               consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-               creates a new instance resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-               consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        :param pulumi.Input[_builtins.str] password: Specifies the password of SASL_SSL user. A password must meet the
-               following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-               types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-               Changing this creates a new instance resource.
-               
-               > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-               > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] product_id: Specifies a product ID, which includes bandwidth, partition, broker and default
-               storage capacity.
-               
-               > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-               broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-               manually modify the value of `storage_space` after changing the `product_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_ip_ids: Specifies the IDs of the elastic IP address (EIP)
-               bound to the DMS Kafka instance. Changing this creates a new instance resource.
-               + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-               + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-               
-               | Bandwidth | Total number of public IPs |
-               | ---- | ---- |
-               | 100MB | 3 |
-               | 300MB | 3 |
-               | 600MB | 4 |
-               | 1,200MB | 8 |
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS Kafka instances. If omitted, the
-               provider-level region will be used. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] retention_policy: Specifies the action to be taken when the memory usage reaches the disk
-               capacity threshold. The valid values are as follows:
-               + **time_base**: Automatically delete the earliest messages.
-               + **produce_reject**: Stop producing new messages.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Indicates whether the Kafka SASL_SSL is enabled.
-        :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, the unit is GB.
-               + When bandwidth is 100MB: 600–90000 GB
-               + When bandwidth is 300MB: 1200–90000 GB
-               + When bandwidth is 600MB: 2400–90000 GB
-               + When bandwidth is 1200MB: 4800–90000 GB
-               
-               Changing this creates a new instance resource.
-               
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DMS Kafka instance.
         """
         pulumi.set(__self__, "engine_version", engine_version)
         pulumi.set(__self__, "network_id", network_id)
@@ -286,10 +160,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the version of the Kafka engine,
-        such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
@@ -299,10 +169,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of a subnet. Changing this creates a new instance
-        resource.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -312,9 +178,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of a security group.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -324,21 +187,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the storage I/O specification. Value range:
-        + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-        + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-        + When bandwidth is 600MB: dms.physical.storage.ultra
-        + When bandwidth is 1200MB: dms.physical.storage.ultra
-
-        If the instance is created with `product_id`, the valid values are as follows:
-        + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-        The corresponding bandwidths are **100MB** and **300MB**.
-        + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-        The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @storage_spec_code.setter
@@ -348,9 +196,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of a VPC. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -360,10 +205,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="accessUser")
     def access_user(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the username of SASL_SSL user. A username consists of 4
-        to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "access_user")
 
     @access_user.setter
@@ -382,12 +223,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "false".
-
-        <a name="dms_cross_vpc_accesses"></a>
-        The `cross_vpc_accesses` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -398,13 +233,7 @@ class KafkaInstanceArgs:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The names of the AZ where the Kafka instances reside.
-        The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-
-        > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-        Deploy to more availability zones, the better the reliability and SLA coverage.
-
-        > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
+        schema: Required
         """
         return pulumi.get(self, "availability_zones")
 
@@ -435,10 +264,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the broker numbers.
-        It is required when creating an instance with `flavor_id`.
-        """
         return pulumi.get(self, "broker_num")
 
     @broker_num.setter
@@ -448,10 +273,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the instance. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -461,10 +282,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="crossVpcAccesses")
     def cross_vpc_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaInstanceCrossVpcAccessArgs']]]]:
-        """
-        Specifies the cross-VPC access information.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "cross_vpc_accesses")
 
     @cross_vpc_accesses.setter
@@ -474,10 +291,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the DMS Kafka instance. It is a character string
-        containing not more than 1,024 characters.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -487,10 +300,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def dumping(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable message dumping.
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "dumping")
 
     @dumping.setter
@@ -500,13 +309,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="enableAutoTopic")
     def enable_auto_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable automatic topic creation. If automatic
-        topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-        produced to or consumed from a topic that does not exist.
-        The default value is false.
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "enable_auto_topic")
 
     @enable_auto_topic.setter
@@ -525,9 +327,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project ID of the Kafka instance.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -537,18 +336,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-
-        > It is recommended to use `flavor_id` if the region supports it.\\
-        One of:
-        * c6.2u4g.cluster
-        * c6.4u8g.cluster
-        * c6.8u16g.cluster
-        * c6.12u24g.cluster
-        * c6.16u32g.cluster \\
-        Or use data source sbercloud_dms_kafka_flavors
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -579,13 +366,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="maintainBegin")
     def maintain_begin(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-        start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-        window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-        and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-        blank. In this case, the system automatically allocates the default start time 02:00.
-        """
         return pulumi.get(self, "maintain_begin")
 
     @maintain_begin.setter
@@ -595,14 +375,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="maintainEnd")
     def maintain_end(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-        start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-        window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-        02:00. Parameters `maintain_begin`
-        and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-        `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        """
         return pulumi.get(self, "maintain_end")
 
     @maintain_end.setter
@@ -613,14 +385,6 @@ class KafkaInstanceArgs:
     @pulumi.getter(name="managerPassword")
     @_utilities.deprecated("""Deprecated""")
     def manager_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password for logging in to the Kafka Manager. The
-        password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-        the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-        =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-
-        > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        """
         return pulumi.get(self, "manager_password")
 
     @manager_password.setter
@@ -631,11 +395,6 @@ class KafkaInstanceArgs:
     @pulumi.getter(name="managerUser")
     @_utilities.deprecated("""Deprecated""")
     def manager_user(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the username for logging in to the Kafka Manager. The username
-        consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-        creates a new instance resource.
-        """
         return pulumi.get(self, "manager_user")
 
     @manager_user.setter
@@ -645,10 +404,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-        consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -676,15 +431,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password of SASL_SSL user. A password must meet the
-        following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-        types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-        Changing this creates a new instance resource.
-
-        > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-        > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -694,11 +440,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -708,11 +449,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -722,14 +458,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a product ID, which includes bandwidth, partition, broker and default
-        storage capacity.
-
-        > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-        broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-        manually modify the value of `storage_space` after changing the `product_id`.
-        """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
@@ -739,19 +467,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="publicIpIds")
     def public_ip_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the IDs of the elastic IP address (EIP)
-        bound to the DMS Kafka instance. Changing this creates a new instance resource.
-        + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-        + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-
-        | Bandwidth | Total number of public IPs |
-        | ---- | ---- |
-        | 100MB | 3 |
-        | 300MB | 3 |
-        | 600MB | 4 |
-        | 1,200MB | 8 |
-        """
         return pulumi.get(self, "public_ip_ids")
 
     @public_ip_ids.setter
@@ -761,10 +476,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS Kafka instances. If omitted, the
-        provider-level region will be used. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -774,12 +485,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the action to be taken when the memory usage reaches the disk
-        capacity threshold. The valid values are as follows:
-        + **time_base**: Automatically delete the earliest messages.
-        + **produce_reject**: Stop producing new messages.
-        """
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
@@ -798,9 +503,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether the Kafka SASL_SSL is enabled.
-        """
         return pulumi.get(self, "ssl_enable")
 
     @ssl_enable.setter
@@ -810,17 +512,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="storageSpace")
     def storage_space(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the message storage capacity, the unit is GB.
-        + When bandwidth is 100MB: 600–90000 GB
-        + When bandwidth is 300MB: 1200–90000 GB
-        + When bandwidth is 600MB: 2400–90000 GB
-        + When bandwidth is 1200MB: 4800–90000 GB
-
-        Changing this creates a new instance resource.
-
-        It is required when creating an instance with `flavor_id`.
-        """
         return pulumi.get(self, "storage_space")
 
     @storage_space.setter
@@ -830,9 +521,6 @@ class KafkaInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the DMS Kafka instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -924,146 +612,8 @@ class _KafkaInstanceState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KafkaInstance resources.
-        :param pulumi.Input[_builtins.str] access_user: Specifies the username of SASL_SSL user. A username consists of 4
-               to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-               
-               <a name="dms_cross_vpc_accesses"></a>
-               The `cross_vpc_accesses` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The names of the AZ where the Kafka instances reside.
-               The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-               
-               > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-               Deploy to more availability zones, the better the reliability and SLA coverage.
-               
-               > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] connect_address: Indicates the IP address of the DMS Kafka instance.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaInstanceCrossVpcAccessArgs']]] cross_vpc_accesses: Specifies the cross-VPC access information.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS Kafka instance. It is a character string
-               containing not more than 1,024 characters.
-        :param pulumi.Input[_builtins.bool] dumping: Specifies whether to enable message dumping.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.bool] enable_auto_topic: Specifies whether to enable automatic topic creation. If automatic
-               topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-               produced to or consumed from a topic that does not exist.
-               The default value is false.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.bool] enable_public_ip: Indicates whether public access to the DMS Kafka instance is enabled.
-        :param pulumi.Input[_builtins.str] engine: Indicates the message engine.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the Kafka engine,
-               such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the Kafka instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-               
-               > It is recommended to use `flavor_id` if the region supports it.\\
-               One of:
-               * c6.2u4g.cluster
-               * c6.4u8g.cluster
-               * c6.8u16g.cluster
-               * c6.12u24g.cluster
-               * c6.16u32g.cluster \\
-               Or use data source sbercloud_dms_kafka_flavors
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
-        :param pulumi.Input[_builtins.str] maintain_begin: Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-               blank. In this case, the system automatically allocates the default start time 02:00.
-        :param pulumi.Input[_builtins.str] maintain_end: Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-               02:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-               `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        :param pulumi.Input[_builtins.str] management_connect_address: Indicates the Kafka Manager connection address of a Kafka instance.
-        :param pulumi.Input[_builtins.str] manager_password: Specifies the password for logging in to the Kafka Manager. The
-               password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-               the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-               =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-               
-               > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        :param pulumi.Input[_builtins.str] manager_user: Specifies the username for logging in to the Kafka Manager. The username
-               consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-               creates a new instance resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-               consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of a subnet. Changing this creates a new instance
-               resource.
-        :param pulumi.Input[_builtins.int] partition_num: Indicates the number of partitions in Kafka instance.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of SASL_SSL user. A password must meet the
-               following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-               types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-               Changing this creates a new instance resource.
-               
-               > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-               > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] port: The port number.
-        :param pulumi.Input[_builtins.str] product_id: Specifies a product ID, which includes bandwidth, partition, broker and default
-               storage capacity.
-               
-               > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-               broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-               manually modify the value of `storage_space` after changing the `product_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_ip_ids: Specifies the IDs of the elastic IP address (EIP)
-               bound to the DMS Kafka instance. Changing this creates a new instance resource.
-               + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-               + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-               
-               | Bandwidth | Total number of public IPs |
-               | ---- | ---- |
-               | 100MB | 3 |
-               | 300MB | 3 |
-               | 600MB | 4 |
-               | 1,200MB | 8 |
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS Kafka instances. If omitted, the
-               provider-level region will be used. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] resource_spec_code: Indicates a resource specifications identifier.
-        :param pulumi.Input[_builtins.str] retention_policy: Specifies the action to be taken when the memory usage reaches the disk
-               capacity threshold. The valid values are as follows:
-               + **time_base**: Automatically delete the earliest messages.
-               + **produce_reject**: Stop producing new messages.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Indicates whether the Kafka SASL_SSL is enabled.
-        :param pulumi.Input[_builtins.str] status: Indicates the status of the DMS Kafka instance.
-        :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, the unit is GB.
-               + When bandwidth is 100MB: 600–90000 GB
-               + When bandwidth is 300MB: 1200–90000 GB
-               + When bandwidth is 600MB: 2400–90000 GB
-               + When bandwidth is 1200MB: 4800–90000 GB
-               
-               Changing this creates a new instance resource.
-               
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification. Value range:
-               + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 600MB: dms.physical.storage.ultra
-               + When bandwidth is 1200MB: dms.physical.storage.ultra
-               
-               If the instance is created with `product_id`, the valid values are as follows:
-               + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-               The corresponding bandwidths are **100MB** and **300MB**.
-               + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-               The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-               
-               Changing this creates a new instance resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DMS Kafka instance.
-        :param pulumi.Input[_builtins.str] type: Indicates the DMS Kafka instance type.
-        :param pulumi.Input[_builtins.int] used_storage_space: Indicates the used message storage space. Unit: GB
-        :param pulumi.Input[_builtins.str] user_id: Indicates the ID of the user who created the DMS Kafka instance
-        :param pulumi.Input[_builtins.str] user_name: Indicates the name of the user who created the DMS Kafka instance
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC. Changing this creates a new instance resource.
         """
         if access_user is not None:
             pulumi.set(__self__, "access_user", access_user)
@@ -1227,10 +777,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="accessUser")
     def access_user(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the username of SASL_SSL user. A username consists of 4
-        to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "access_user")
 
     @access_user.setter
@@ -1249,12 +795,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "false".
-
-        <a name="dms_cross_vpc_accesses"></a>
-        The `cross_vpc_accesses` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -1265,13 +805,7 @@ class _KafkaInstanceState:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The names of the AZ where the Kafka instances reside.
-        The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-
-        > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-        Deploy to more availability zones, the better the reliability and SLA coverage.
-
-        > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
+        schema: Required
         """
         return pulumi.get(self, "availability_zones")
 
@@ -1302,10 +836,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the broker numbers.
-        It is required when creating an instance with `flavor_id`.
-        """
         return pulumi.get(self, "broker_num")
 
     @broker_num.setter
@@ -1324,10 +854,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the instance. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -1337,9 +863,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="connectAddress")
     def connect_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the IP address of the DMS Kafka instance.
-        """
         return pulumi.get(self, "connect_address")
 
     @connect_address.setter
@@ -1376,10 +899,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="crossVpcAccesses")
     def cross_vpc_accesses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaInstanceCrossVpcAccessArgs']]]]:
-        """
-        Specifies the cross-VPC access information.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "cross_vpc_accesses")
 
     @cross_vpc_accesses.setter
@@ -1389,10 +908,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the DMS Kafka instance. It is a character string
-        containing not more than 1,024 characters.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1402,10 +917,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def dumping(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable message dumping.
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "dumping")
 
     @dumping.setter
@@ -1415,13 +926,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="enableAutoTopic")
     def enable_auto_topic(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable automatic topic creation. If automatic
-        topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-        produced to or consumed from a topic that does not exist.
-        The default value is false.
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "enable_auto_topic")
 
     @enable_auto_topic.setter
@@ -1431,9 +935,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="enablePublicIp")
     def enable_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether public access to the DMS Kafka instance is enabled.
-        """
         return pulumi.get(self, "enable_public_ip")
 
     @enable_public_ip.setter
@@ -1452,9 +953,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the message engine.
-        """
         return pulumi.get(self, "engine")
 
     @engine.setter
@@ -1464,10 +962,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the version of the Kafka engine,
-        such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
@@ -1477,9 +971,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project ID of the Kafka instance.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -1498,18 +989,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-
-        > It is recommended to use `flavor_id` if the region supports it.\\
-        One of:
-        * c6.2u4g.cluster
-        * c6.4u8g.cluster
-        * c6.8u16g.cluster
-        * c6.12u24g.cluster
-        * c6.16u32g.cluster \\
-        Or use data source sbercloud_dms_kafka_flavors
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -1558,13 +1037,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="maintainBegin")
     def maintain_begin(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-        start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-        window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-        and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-        blank. In this case, the system automatically allocates the default start time 02:00.
-        """
         return pulumi.get(self, "maintain_begin")
 
     @maintain_begin.setter
@@ -1574,14 +1046,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="maintainEnd")
     def maintain_end(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-        start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-        window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-        02:00. Parameters `maintain_begin`
-        and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-        `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        """
         return pulumi.get(self, "maintain_end")
 
     @maintain_end.setter
@@ -1592,9 +1056,6 @@ class _KafkaInstanceState:
     @pulumi.getter(name="managementConnectAddress")
     @_utilities.deprecated("""Deprecated""")
     def management_connect_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the Kafka Manager connection address of a Kafka instance.
-        """
         return pulumi.get(self, "management_connect_address")
 
     @management_connect_address.setter
@@ -1605,14 +1066,6 @@ class _KafkaInstanceState:
     @pulumi.getter(name="managerPassword")
     @_utilities.deprecated("""Deprecated""")
     def manager_password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password for logging in to the Kafka Manager. The
-        password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-        the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-        =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-
-        > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        """
         return pulumi.get(self, "manager_password")
 
     @manager_password.setter
@@ -1623,11 +1076,6 @@ class _KafkaInstanceState:
     @pulumi.getter(name="managerUser")
     @_utilities.deprecated("""Deprecated""")
     def manager_user(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the username for logging in to the Kafka Manager. The username
-        consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-        creates a new instance resource.
-        """
         return pulumi.get(self, "manager_user")
 
     @manager_user.setter
@@ -1656,10 +1104,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-        consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1669,10 +1113,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a subnet. Changing this creates a new instance
-        resource.
-        """
         return pulumi.get(self, "network_id")
 
     @network_id.setter
@@ -1709,9 +1149,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the number of partitions in Kafka instance.
-        """
         return pulumi.get(self, "partition_num")
 
     @partition_num.setter
@@ -1721,15 +1158,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password of SASL_SSL user. A password must meet the
-        following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-        types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-        Changing this creates a new instance resource.
-
-        > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-        > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -1739,11 +1167,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1753,11 +1176,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -1776,9 +1194,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1797,14 +1212,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a product ID, which includes bandwidth, partition, broker and default
-        storage capacity.
-
-        > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-        broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-        manually modify the value of `storage_space` after changing the `product_id`.
-        """
         return pulumi.get(self, "product_id")
 
     @product_id.setter
@@ -1832,19 +1239,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="publicIpIds")
     def public_ip_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the IDs of the elastic IP address (EIP)
-        bound to the DMS Kafka instance. Changing this creates a new instance resource.
-        + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-        + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-
-        | Bandwidth | Total number of public IPs |
-        | ---- | ---- |
-        | 100MB | 3 |
-        | 300MB | 3 |
-        | 600MB | 4 |
-        | 1,200MB | 8 |
-        """
         return pulumi.get(self, "public_ip_ids")
 
     @public_ip_ids.setter
@@ -1854,10 +1248,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DMS Kafka instances. If omitted, the
-        provider-level region will be used. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1867,9 +1257,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="resourceSpecCode")
     def resource_spec_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates a resource specifications identifier.
-        """
         return pulumi.get(self, "resource_spec_code")
 
     @resource_spec_code.setter
@@ -1879,12 +1266,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the action to be taken when the memory usage reaches the disk
-        capacity threshold. The valid values are as follows:
-        + **time_base**: Automatically delete the earliest messages.
-        + **produce_reject**: Stop producing new messages.
-        """
         return pulumi.get(self, "retention_policy")
 
     @retention_policy.setter
@@ -1894,9 +1275,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a security group.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -1915,9 +1293,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether the Kafka SASL_SSL is enabled.
-        """
         return pulumi.get(self, "ssl_enable")
 
     @ssl_enable.setter
@@ -1936,9 +1311,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the status of the DMS Kafka instance.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1957,17 +1329,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="storageSpace")
     def storage_space(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the message storage capacity, the unit is GB.
-        + When bandwidth is 100MB: 600–90000 GB
-        + When bandwidth is 300MB: 1200–90000 GB
-        + When bandwidth is 600MB: 2400–90000 GB
-        + When bandwidth is 1200MB: 4800–90000 GB
-
-        Changing this creates a new instance resource.
-
-        It is required when creating an instance with `flavor_id`.
-        """
         return pulumi.get(self, "storage_space")
 
     @storage_space.setter
@@ -1977,21 +1338,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage I/O specification. Value range:
-        + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-        + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-        + When bandwidth is 600MB: dms.physical.storage.ultra
-        + When bandwidth is 1200MB: dms.physical.storage.ultra
-
-        If the instance is created with `product_id`, the valid values are as follows:
-        + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-        The corresponding bandwidths are **100MB** and **300MB**.
-        + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-        The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @storage_spec_code.setter
@@ -2010,9 +1356,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the DMS Kafka instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -2022,9 +1365,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the DMS Kafka instance type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -2034,9 +1374,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="usedStorageSpace")
     def used_storage_space(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Indicates the used message storage space. Unit: GB
-        """
         return pulumi.get(self, "used_storage_space")
 
     @used_storage_space.setter
@@ -2046,9 +1383,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the ID of the user who created the DMS Kafka instance
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -2058,9 +1392,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the name of the user who created the DMS Kafka instance
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -2079,9 +1410,6 @@ class _KafkaInstanceState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a VPC. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -2138,224 +1466,11 @@ class KafkaInstance(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manage DMS Kafka instance resources within SberCloud.
-
-        ## Example Usage
-
-        ### Create a Kafka instance using flavor ID
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        security_group_id = config.require_object("securityGroupId")
-        availability_zones = config.get_object("availabilityZones")
-        if availability_zones is None:
-            availability_zones = [
-                "your_availability_zones_a",
-                "your_availability_zones_b",
-                "your_availability_zones_c",
-            ]
-        flavor_id = config.get("flavorId")
-        if flavor_id is None:
-            flavor_id = "your_flavor_id, such: c6.2u4g.cluster"
-        storage_spec_code = config.get("storageSpecCode")
-        if storage_spec_code is None:
-            storage_spec_code = "your_storage_spec_code, such: dms.physical.storage.ultra.v2"
-        test = sbercloud.Dms.get_flavors(type="cluster",
-            flavor_id=flavor_id,
-            availability_zones=availability_zones,
-            storage_spec_code=storage_spec_code)
-        test_kafka_instance = sbercloud.dms.KafkaInstance("test",
-            name="kafka_test",
-            vpc_id=vpc_id,
-            network_id=subnet_id,
-            security_group_id=security_group_id,
-            flavor_id=flavor_id,
-            storage_spec_code=storage_spec_code,
-            availability_zones=availability_zones,
-            engine_version="2.7",
-            storage_space=600,
-            broker_num=3,
-            access_user="user",
-            password="Kafka_%^&_Test",
-            manager_user="kafka_manager",
-            manager_password="Kafka_Test^&*(",
-            opts = pulumi.ResourceOptions(depends_on=[test]))
-        ```
-
-        > **Why depend on "data.sbercloud_dms_kafka_flavors.test", it is not used?**
-        The specified `flavor_id` and `storage_spec_code` are not valid in all regions.
-        Before creating kafka, verify their validity through datasource to avoid creation errors.
-
-        ## Import
-
-        DMS Kafka instance can be imported using the instance id, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaInstance:KafkaInstance  sbercloud_dms_kafka_instance.instance_1 8d3c7938-dc47-4937-a30f-c80de381c5e3
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `password`, `manager_password` and `public_ip_ids`. It is generally recommended running `pulumi preview` after importing
-
-        a DMS Kafka instance. You can then decide if changes should be applied to the instance, or the resource definition
-
-        should be updated to align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_dms_kafka_instance" "instance_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password, manager_password,
-            
-            ]
-
-          }
-
-        }
-
+        Create a KafkaInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_user: Specifies the username of SASL_SSL user. A username consists of 4
-               to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-               
-               <a name="dms_cross_vpc_accesses"></a>
-               The `cross_vpc_accesses` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The names of the AZ where the Kafka instances reside.
-               The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-               
-               > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-               Deploy to more availability zones, the better the reliability and SLA coverage.
-               
-               > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaInstanceCrossVpcAccessArgs', 'KafkaInstanceCrossVpcAccessArgsDict']]]] cross_vpc_accesses: Specifies the cross-VPC access information.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS Kafka instance. It is a character string
-               containing not more than 1,024 characters.
-        :param pulumi.Input[_builtins.bool] dumping: Specifies whether to enable message dumping.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.bool] enable_auto_topic: Specifies whether to enable automatic topic creation. If automatic
-               topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-               produced to or consumed from a topic that does not exist.
-               The default value is false.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the Kafka engine,
-               such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the Kafka instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-               
-               > It is recommended to use `flavor_id` if the region supports it.\\
-               One of:
-               * c6.2u4g.cluster
-               * c6.4u8g.cluster
-               * c6.8u16g.cluster
-               * c6.12u24g.cluster
-               * c6.16u32g.cluster \\
-               Or use data source sbercloud_dms_kafka_flavors
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
-        :param pulumi.Input[_builtins.str] maintain_begin: Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-               blank. In this case, the system automatically allocates the default start time 02:00.
-        :param pulumi.Input[_builtins.str] maintain_end: Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-               02:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-               `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        :param pulumi.Input[_builtins.str] manager_password: Specifies the password for logging in to the Kafka Manager. The
-               password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-               the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-               =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-               
-               > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        :param pulumi.Input[_builtins.str] manager_user: Specifies the username for logging in to the Kafka Manager. The username
-               consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-               creates a new instance resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-               consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of a subnet. Changing this creates a new instance
-               resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of SASL_SSL user. A password must meet the
-               following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-               types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-               Changing this creates a new instance resource.
-               
-               > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-               > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] product_id: Specifies a product ID, which includes bandwidth, partition, broker and default
-               storage capacity.
-               
-               > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-               broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-               manually modify the value of `storage_space` after changing the `product_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_ip_ids: Specifies the IDs of the elastic IP address (EIP)
-               bound to the DMS Kafka instance. Changing this creates a new instance resource.
-               + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-               + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-               
-               | Bandwidth | Total number of public IPs |
-               | ---- | ---- |
-               | 100MB | 3 |
-               | 300MB | 3 |
-               | 600MB | 4 |
-               | 1,200MB | 8 |
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS Kafka instances. If omitted, the
-               provider-level region will be used. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] retention_policy: Specifies the action to be taken when the memory usage reaches the disk
-               capacity threshold. The valid values are as follows:
-               + **time_base**: Automatically delete the earliest messages.
-               + **produce_reject**: Stop producing new messages.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Indicates whether the Kafka SASL_SSL is enabled.
-        :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, the unit is GB.
-               + When bandwidth is 100MB: 600–90000 GB
-               + When bandwidth is 300MB: 1200–90000 GB
-               + When bandwidth is 600MB: 2400–90000 GB
-               + When bandwidth is 1200MB: 4800–90000 GB
-               
-               Changing this creates a new instance resource.
-               
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification. Value range:
-               + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 600MB: dms.physical.storage.ultra
-               + When bandwidth is 1200MB: dms.physical.storage.ultra
-               
-               If the instance is created with `product_id`, the valid values are as follows:
-               + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-               The corresponding bandwidths are **100MB** and **300MB**.
-               + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-               The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-               
-               Changing this creates a new instance resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DMS Kafka instance.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC. Changing this creates a new instance resource.
         """
         ...
     @overload
@@ -2364,94 +1479,7 @@ class KafkaInstance(pulumi.CustomResource):
                  args: KafkaInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage DMS Kafka instance resources within SberCloud.
-
-        ## Example Usage
-
-        ### Create a Kafka instance using flavor ID
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        security_group_id = config.require_object("securityGroupId")
-        availability_zones = config.get_object("availabilityZones")
-        if availability_zones is None:
-            availability_zones = [
-                "your_availability_zones_a",
-                "your_availability_zones_b",
-                "your_availability_zones_c",
-            ]
-        flavor_id = config.get("flavorId")
-        if flavor_id is None:
-            flavor_id = "your_flavor_id, such: c6.2u4g.cluster"
-        storage_spec_code = config.get("storageSpecCode")
-        if storage_spec_code is None:
-            storage_spec_code = "your_storage_spec_code, such: dms.physical.storage.ultra.v2"
-        test = sbercloud.Dms.get_flavors(type="cluster",
-            flavor_id=flavor_id,
-            availability_zones=availability_zones,
-            storage_spec_code=storage_spec_code)
-        test_kafka_instance = sbercloud.dms.KafkaInstance("test",
-            name="kafka_test",
-            vpc_id=vpc_id,
-            network_id=subnet_id,
-            security_group_id=security_group_id,
-            flavor_id=flavor_id,
-            storage_spec_code=storage_spec_code,
-            availability_zones=availability_zones,
-            engine_version="2.7",
-            storage_space=600,
-            broker_num=3,
-            access_user="user",
-            password="Kafka_%^&_Test",
-            manager_user="kafka_manager",
-            manager_password="Kafka_Test^&*(",
-            opts = pulumi.ResourceOptions(depends_on=[test]))
-        ```
-
-        > **Why depend on "data.sbercloud_dms_kafka_flavors.test", it is not used?**
-        The specified `flavor_id` and `storage_spec_code` are not valid in all regions.
-        Before creating kafka, verify their validity through datasource to avoid creation errors.
-
-        ## Import
-
-        DMS Kafka instance can be imported using the instance id, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Dms/kafkaInstance:KafkaInstance  sbercloud_dms_kafka_instance.instance_1 8d3c7938-dc47-4937-a30f-c80de381c5e3
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `password`, `manager_password` and `public_ip_ids`. It is generally recommended running `pulumi preview` after importing
-
-        a DMS Kafka instance. You can then decide if changes should be applied to the instance, or the resource definition
-
-        should be updated to align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_dms_kafka_instance" "instance_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password, manager_password,
-            
-            ]
-
-          }
-
-        }
-
+        Create a KafkaInstance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param KafkaInstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2686,146 +1714,8 @@ class KafkaInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_user: Specifies the username of SASL_SSL user. A username consists of 4
-               to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "false".
-               
-               <a name="dms_cross_vpc_accesses"></a>
-               The `cross_vpc_accesses` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The names of the AZ where the Kafka instances reside.
-               The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-               
-               > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-               Deploy to more availability zones, the better the reliability and SLA coverage.
-               
-               > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
-        :param pulumi.Input[_builtins.int] broker_num: Specifies the broker numbers.
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the instance. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] connect_address: Indicates the IP address of the DMS Kafka instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['KafkaInstanceCrossVpcAccessArgs', 'KafkaInstanceCrossVpcAccessArgsDict']]]] cross_vpc_accesses: Specifies the cross-VPC access information.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the DMS Kafka instance. It is a character string
-               containing not more than 1,024 characters.
-        :param pulumi.Input[_builtins.bool] dumping: Specifies whether to enable message dumping.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.bool] enable_auto_topic: Specifies whether to enable automatic topic creation. If automatic
-               topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-               produced to or consumed from a topic that does not exist.
-               The default value is false.
-               Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.bool] enable_public_ip: Indicates whether public access to the DMS Kafka instance is enabled.
-        :param pulumi.Input[_builtins.str] engine: Indicates the message engine.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the version of the Kafka engine,
-               such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID of the Kafka instance.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-               
-               > It is recommended to use `flavor_id` if the region supports it.\\
-               One of:
-               * c6.2u4g.cluster
-               * c6.4u8g.cluster
-               * c6.8u16g.cluster
-               * c6.12u24g.cluster
-               * c6.16u32g.cluster \\
-               Or use data source sbercloud_dms_kafka_flavors
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: schema: Required
         :param pulumi.Input[_builtins.str] kms_encrypted_password: schema: Internal
-        :param pulumi.Input[_builtins.str] maintain_begin: Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-               blank. In this case, the system automatically allocates the default start time 02:00.
-        :param pulumi.Input[_builtins.str] maintain_end: Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-               start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-               window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-               02:00. Parameters `maintain_begin`
-               and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-               `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        :param pulumi.Input[_builtins.str] management_connect_address: Indicates the Kafka Manager connection address of a Kafka instance.
-        :param pulumi.Input[_builtins.str] manager_password: Specifies the password for logging in to the Kafka Manager. The
-               password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-               the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-               =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-               
-               > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        :param pulumi.Input[_builtins.str] manager_user: Specifies the username for logging in to the Kafka Manager. The username
-               consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-               creates a new instance resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-               consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        :param pulumi.Input[_builtins.str] network_id: Specifies the ID of a subnet. Changing this creates a new instance
-               resource.
-        :param pulumi.Input[_builtins.int] partition_num: Indicates the number of partitions in Kafka instance.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of SASL_SSL user. A password must meet the
-               following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-               types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-               Changing this creates a new instance resource.
-               
-               > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-               > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] port: The port number.
-        :param pulumi.Input[_builtins.str] product_id: Specifies a product ID, which includes bandwidth, partition, broker and default
-               storage capacity.
-               
-               > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-               broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-               manually modify the value of `storage_space` after changing the `product_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] public_ip_ids: Specifies the IDs of the elastic IP address (EIP)
-               bound to the DMS Kafka instance. Changing this creates a new instance resource.
-               + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-               + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-               
-               | Bandwidth | Total number of public IPs |
-               | ---- | ---- |
-               | 100MB | 3 |
-               | 300MB | 3 |
-               | 600MB | 4 |
-               | 1,200MB | 8 |
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DMS Kafka instances. If omitted, the
-               provider-level region will be used. Changing this creates a new instance resource.
-        :param pulumi.Input[_builtins.str] resource_spec_code: Indicates a resource specifications identifier.
-        :param pulumi.Input[_builtins.str] retention_policy: Specifies the action to be taken when the memory usage reaches the disk
-               capacity threshold. The valid values are as follows:
-               + **time_base**: Automatically delete the earliest messages.
-               + **produce_reject**: Stop producing new messages.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the ID of a security group.
-        :param pulumi.Input[_builtins.bool] ssl_enable: Indicates whether the Kafka SASL_SSL is enabled.
-        :param pulumi.Input[_builtins.str] status: Indicates the status of the DMS Kafka instance.
-        :param pulumi.Input[_builtins.int] storage_space: Specifies the message storage capacity, the unit is GB.
-               + When bandwidth is 100MB: 600–90000 GB
-               + When bandwidth is 300MB: 1200–90000 GB
-               + When bandwidth is 600MB: 2400–90000 GB
-               + When bandwidth is 1200MB: 4800–90000 GB
-               
-               Changing this creates a new instance resource.
-               
-               It is required when creating an instance with `flavor_id`.
-        :param pulumi.Input[_builtins.str] storage_spec_code: Specifies the storage I/O specification. Value range:
-               + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-               + When bandwidth is 600MB: dms.physical.storage.ultra
-               + When bandwidth is 1200MB: dms.physical.storage.ultra
-               
-               If the instance is created with `product_id`, the valid values are as follows:
-               + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-               The corresponding bandwidths are **100MB** and **300MB**.
-               + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-               The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-               
-               Changing this creates a new instance resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the DMS Kafka instance.
-        :param pulumi.Input[_builtins.str] type: Indicates the DMS Kafka instance type.
-        :param pulumi.Input[_builtins.int] used_storage_space: Indicates the used message storage space. Unit: GB
-        :param pulumi.Input[_builtins.str] user_id: Indicates the ID of the user who created the DMS Kafka instance
-        :param pulumi.Input[_builtins.str] user_name: Indicates the name of the user who created the DMS Kafka instance
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of a VPC. Changing this creates a new instance resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2906,10 +1796,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessUser")
     def access_user(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the username of SASL_SSL user. A username consists of 4
-        to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "access_user")
 
     @_builtins.property
@@ -2920,25 +1806,13 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "false".
-
-        <a name="dms_cross_vpc_accesses"></a>
-        The `cross_vpc_accesses` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The names of the AZ where the Kafka instances reside.
-        The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-
-        > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-        Deploy to more availability zones, the better the reliability and SLA coverage.
-
-        > The parameter behavior of `availability_zones` has been changed from `list` to `set`.
+        schema: Required
         """
         return pulumi.get(self, "availability_zones")
 
@@ -2957,10 +1831,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the broker numbers.
-        It is required when creating an instance with `flavor_id`.
-        """
         return pulumi.get(self, "broker_num")
 
     @_builtins.property
@@ -2971,18 +1841,11 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the charging mode of the instance. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @_builtins.property
     @pulumi.getter(name="connectAddress")
     def connect_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the IP address of the DMS Kafka instance.
-        """
         return pulumi.get(self, "connect_address")
 
     @_builtins.property
@@ -3003,48 +1866,26 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="crossVpcAccesses")
     def cross_vpc_accesses(self) -> pulumi.Output[Sequence['outputs.KafkaInstanceCrossVpcAccess']]:
-        """
-        Specifies the cross-VPC access information.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "cross_vpc_accesses")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the DMS Kafka instance. It is a character string
-        containing not more than 1,024 characters.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def dumping(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to enable message dumping.
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "dumping")
 
     @_builtins.property
     @pulumi.getter(name="enableAutoTopic")
     def enable_auto_topic(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to enable automatic topic creation. If automatic
-        topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-        produced to or consumed from a topic that does not exist.
-        The default value is false.
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "enable_auto_topic")
 
     @_builtins.property
     @pulumi.getter(name="enablePublicIp")
     def enable_public_ip(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Indicates whether public access to the DMS Kafka instance is enabled.
-        """
         return pulumi.get(self, "enable_public_ip")
 
     @_builtins.property
@@ -3055,26 +1896,16 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def engine(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the message engine.
-        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the version of the Kafka engine,
-        such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "engine_version")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project ID of the Kafka instance.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -3085,18 +1916,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the Kafka `flavor ID`. This parameter and `product_id` are alternative.
-
-        > It is recommended to use `flavor_id` if the region supports it.\\
-        One of:
-        * c6.2u4g.cluster
-        * c6.4u8g.cluster
-        * c6.8u16g.cluster
-        * c6.12u24g.cluster
-        * c6.16u32g.cluster \\
-        Or use data source sbercloud_dms_kafka_flavors
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -3125,60 +1944,29 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="maintainBegin")
     def maintain_begin(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-        start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-        window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintain_begin`
-        and `maintain_end` must be set in pairs. If parameter `maintain_begin` is left blank, parameter `maintain_end` is also
-        blank. In this case, the system automatically allocates the default start time 02:00.
-        """
         return pulumi.get(self, "maintain_begin")
 
     @_builtins.property
     @pulumi.getter(name="maintainEnd")
     def maintain_end(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-        start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-        window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-        02:00. Parameters `maintain_begin`
-        and `maintain_end` must be set in pairs. If parameter `maintain_end` is left blank, parameter
-        `maintain_begin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-        """
         return pulumi.get(self, "maintain_end")
 
     @_builtins.property
     @pulumi.getter(name="managementConnectAddress")
     @_utilities.deprecated("""Deprecated""")
     def management_connect_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the Kafka Manager connection address of a Kafka instance.
-        """
         return pulumi.get(self, "management_connect_address")
 
     @_builtins.property
     @pulumi.getter(name="managerPassword")
     @_utilities.deprecated("""Deprecated""")
     def manager_password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the password for logging in to the Kafka Manager. The
-        password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-        the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-        =+\\\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-
-        > **NOTE:** `manager_user` and `manager_password` are deprecated and will be deleted in future releases
-        """
         return pulumi.get(self, "manager_password")
 
     @_builtins.property
     @pulumi.getter(name="managerUser")
     @_utilities.deprecated("""Deprecated""")
     def manager_user(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the username for logging in to the Kafka Manager. The username
-        consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-        creates a new instance resource.
-        """
         return pulumi.get(self, "manager_user")
 
     @_builtins.property
@@ -3195,19 +1983,11 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-        consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of a subnet. Changing this creates a new instance
-        resource.
-        """
         return pulumi.get(self, "network_id")
 
     @_builtins.property
@@ -3228,43 +2008,21 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> pulumi.Output[_builtins.int]:
-        """
-        Indicates the number of partitions in Kafka instance.
-        """
         return pulumi.get(self, "partition_num")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the password of SASL_SSL user. A password must meet the
-        following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-        types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\\\|[{}]:'",<.>/?).
-        Changing this creates a new instance resource.
-
-        > **NOTE:** `access_user` and `password` parameters are mandatory when ssl_enable is set to true. These parameters are invalid when ssl_enable is set to false. \\
-        > **NOTE:** If `access_user` and `password` are specified, set `ssl_enable = true`, to enable SASL_SSL for a Kafka instance.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period of the instance. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
@@ -3275,9 +2033,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Output[_builtins.int]:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
@@ -3288,14 +2043,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies a product ID, which includes bandwidth, partition, broker and default
-        storage capacity.
-
-        > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-        broker changes may cause storage capacity changes. So, if you specify the value of `storage_space`, you need to
-        manually modify the value of `storage_space` after changing the `product_id`.
-        """
         return pulumi.get(self, "product_id")
 
     @_builtins.property
@@ -3311,55 +2058,26 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="publicIpIds")
     def public_ip_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies the IDs of the elastic IP address (EIP)
-        bound to the DMS Kafka instance. Changing this creates a new instance resource.
-        + If the instance is created with `flavor_id`, the total number of public IPs is equal to `broker_num`.
-        + If the instance is created with `product_id`, the total number of public IPs must provide as follows:
-
-        | Bandwidth | Total number of public IPs |
-        | ---- | ---- |
-        | 100MB | 3 |
-        | 300MB | 3 |
-        | 600MB | 4 |
-        | 1,200MB | 8 |
-        """
         return pulumi.get(self, "public_ip_ids")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DMS Kafka instances. If omitted, the
-        provider-level region will be used. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="resourceSpecCode")
     def resource_spec_code(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates a resource specifications identifier.
-        """
         return pulumi.get(self, "resource_spec_code")
 
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the action to be taken when the memory usage reaches the disk
-        capacity threshold. The valid values are as follows:
-        + **time_base**: Automatically delete the earliest messages.
-        + **produce_reject**: Stop producing new messages.
-        """
         return pulumi.get(self, "retention_policy")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of a security group.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
@@ -3370,9 +2088,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Indicates whether the Kafka SASL_SSL is enabled.
-        """
         return pulumi.get(self, "ssl_enable")
 
     @_builtins.property
@@ -3383,9 +2098,6 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the status of the DMS Kafka instance.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -3396,37 +2108,11 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="storageSpace")
     def storage_space(self) -> pulumi.Output[_builtins.int]:
-        """
-        Specifies the message storage capacity, the unit is GB.
-        + When bandwidth is 100MB: 600–90000 GB
-        + When bandwidth is 300MB: 1200–90000 GB
-        + When bandwidth is 600MB: 2400–90000 GB
-        + When bandwidth is 1200MB: 4800–90000 GB
-
-        Changing this creates a new instance resource.
-
-        It is required when creating an instance with `flavor_id`.
-        """
         return pulumi.get(self, "storage_space")
 
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the storage I/O specification. Value range:
-        + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-        + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-        + When bandwidth is 600MB: dms.physical.storage.ultra
-        + When bandwidth is 1200MB: dms.physical.storage.ultra
-
-        If the instance is created with `product_id`, the valid values are as follows:
-        + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-        The corresponding bandwidths are **100MB** and **300MB**.
-        + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-        The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-
-        Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @_builtins.property
@@ -3437,41 +2123,26 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the DMS Kafka instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the DMS Kafka instance type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="usedStorageSpace")
     def used_storage_space(self) -> pulumi.Output[_builtins.int]:
-        """
-        Indicates the used message storage space. Unit: GB
-        """
         return pulumi.get(self, "used_storage_space")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the ID of the user who created the DMS Kafka instance
-        """
         return pulumi.get(self, "user_id")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the name of the user who created the DMS Kafka instance
-        """
         return pulumi.get(self, "user_name")
 
     @_builtins.property
@@ -3482,8 +2153,5 @@ class KafkaInstance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of a VPC. Changing this creates a new instance resource.
-        """
         return pulumi.get(self, "vpc_id")
 

@@ -26,17 +26,8 @@ class DcsBackupArgs:
         """
         The set of arguments for constructing a DcsBackup resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] backup_format: Specifies the format of the DCS instance backup.
-               Value options: **aof**, **rdb**. Default to rdb.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the description of DCS instance backup.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if backup_format is not None:
@@ -51,8 +42,6 @@ class DcsBackupArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the DCS instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -65,9 +54,6 @@ class DcsBackupArgs:
     def backup_format(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the format of the DCS instance backup.
-        Value options: **aof**, **rdb**. Default to rdb.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "backup_format")
 
@@ -80,8 +66,6 @@ class DcsBackupArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the description of DCS instance backup.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -92,10 +76,6 @@ class DcsBackupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -121,35 +101,16 @@ class _DcsBackupState:
         """
         Input properties used for looking up and filtering DcsBackup resources.
         :param pulumi.Input[_builtins.str] backup_format: Specifies the format of the DCS instance backup.
-               Value options: **aof**, **rdb**. Default to rdb.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] backup_id: Indicates the ID of the DCS instance backup.
-        :param pulumi.Input[_builtins.str] begin_time: Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-               The value is in UTC format.
+        :param pulumi.Input[_builtins.str] begin_time: Indicates the time when the backup task is created.
         :param pulumi.Input[_builtins.str] description: Specifies the description of DCS instance backup.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] end_time: Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-               The value is in UTC format.
+        :param pulumi.Input[_builtins.str] end_time: Indicates the time at which DCS instance backup is completed.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] is_support_restore: Indicates whether restoration is supported. Value Options: **TRUE**, **FALSE**.
         :param pulumi.Input[_builtins.str] name: Indicates the backup name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] size: Indicates the size of the backup file (byte).
-        :param pulumi.Input[_builtins.str] status: Indicates the backup status. Valid value:
-               + **waiting**: The task is waiting to begin.
-               + **backuping**: DCS instance backup is in progress.
-               + **succeed**: DCS instance backup succeeded.
-               + **failed**: DCS instance backup failed.
-               + **expired**: The backup file has expired.
-               + **deleted**: The backup file has been deleted manually.
-        :param pulumi.Input[_builtins.str] type: Indicates the backup type. Valid value:
-               + **manual**: indicates manual backup.
-               + **auto**: indicates automatic backup.
+        :param pulumi.Input[_builtins.str] status: Indicates the backup status.
+        :param pulumi.Input[_builtins.str] type: Indicates the backup type.
         """
         if backup_format is not None:
             pulumi.set(__self__, "backup_format", backup_format)
@@ -181,9 +142,6 @@ class _DcsBackupState:
     def backup_format(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the format of the DCS instance backup.
-        Value options: **aof**, **rdb**. Default to rdb.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "backup_format")
 
@@ -207,8 +165,7 @@ class _DcsBackupState:
     @pulumi.getter(name="beginTime")
     def begin_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-        The value is in UTC format.
+        Indicates the time when the backup task is created.
         """
         return pulumi.get(self, "begin_time")
 
@@ -221,8 +178,6 @@ class _DcsBackupState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the description of DCS instance backup.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -234,8 +189,7 @@ class _DcsBackupState:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-        The value is in UTC format.
+        Indicates the time at which DCS instance backup is completed.
         """
         return pulumi.get(self, "end_time")
 
@@ -248,8 +202,6 @@ class _DcsBackupState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the DCS instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -284,10 +236,6 @@ class _DcsBackupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -310,13 +258,7 @@ class _DcsBackupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the backup status. Valid value:
-        + **waiting**: The task is waiting to begin.
-        + **backuping**: DCS instance backup is in progress.
-        + **succeed**: DCS instance backup succeeded.
-        + **failed**: DCS instance backup failed.
-        + **expired**: The backup file has expired.
-        + **deleted**: The backup file has been deleted manually.
+        Indicates the backup status.
         """
         return pulumi.get(self, "status")
 
@@ -328,9 +270,7 @@ class _DcsBackupState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the backup type. Valid value:
-        + **manual**: indicates manual backup.
-        + **auto**: indicates automatic backup.
+        Indicates the backup type.
         """
         return pulumi.get(self, "type")
 
@@ -351,43 +291,12 @@ class DcsBackup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DCS backup resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        dcs_instance_id = config.require_object("dcsInstanceId")
-        test = sbercloud.DcsBackup("test", instance_id=dcs_instance_id)
-        ```
-
-        ## Import
-
-        The DCS backup can be imported using the DCS instance ID and backup ID separated by a slash, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dcsBackup:DcsBackup test <instance_id>/<backup_id>
-        ```
-
+        Create a DcsBackup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_format: Specifies the format of the DCS instance backup.
-               Value options: **aof**, **rdb**. Default to rdb.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the description of DCS instance backup.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -396,29 +305,7 @@ class DcsBackup(pulumi.CustomResource):
                  args: DcsBackupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DCS backup resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        dcs_instance_id = config.require_object("dcsInstanceId")
-        test = sbercloud.DcsBackup("test", instance_id=dcs_instance_id)
-        ```
-
-        ## Import
-
-        The DCS backup can be imported using the DCS instance ID and backup ID separated by a slash, e.g.:
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dcsBackup:DcsBackup test <instance_id>/<backup_id>
-        ```
-
+        Create a DcsBackup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DcsBackupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,35 +378,16 @@ class DcsBackup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_format: Specifies the format of the DCS instance backup.
-               Value options: **aof**, **rdb**. Default to rdb.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] backup_id: Indicates the ID of the DCS instance backup.
-        :param pulumi.Input[_builtins.str] begin_time: Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-               The value is in UTC format.
+        :param pulumi.Input[_builtins.str] begin_time: Indicates the time when the backup task is created.
         :param pulumi.Input[_builtins.str] description: Specifies the description of DCS instance backup.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] end_time: Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-               The value is in UTC format.
+        :param pulumi.Input[_builtins.str] end_time: Indicates the time at which DCS instance backup is completed.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the DCS instance.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] is_support_restore: Indicates whether restoration is supported. Value Options: **TRUE**, **FALSE**.
         :param pulumi.Input[_builtins.str] name: Indicates the backup name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] size: Indicates the size of the backup file (byte).
-        :param pulumi.Input[_builtins.str] status: Indicates the backup status. Valid value:
-               + **waiting**: The task is waiting to begin.
-               + **backuping**: DCS instance backup is in progress.
-               + **succeed**: DCS instance backup succeeded.
-               + **failed**: DCS instance backup failed.
-               + **expired**: The backup file has expired.
-               + **deleted**: The backup file has been deleted manually.
-        :param pulumi.Input[_builtins.str] type: Indicates the backup type. Valid value:
-               + **manual**: indicates manual backup.
-               + **auto**: indicates automatic backup.
+        :param pulumi.Input[_builtins.str] status: Indicates the backup status.
+        :param pulumi.Input[_builtins.str] type: Indicates the backup type.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -544,9 +412,6 @@ class DcsBackup(pulumi.CustomResource):
     def backup_format(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the format of the DCS instance backup.
-        Value options: **aof**, **rdb**. Default to rdb.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "backup_format")
 
@@ -562,8 +427,7 @@ class DcsBackup(pulumi.CustomResource):
     @pulumi.getter(name="beginTime")
     def begin_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-        The value is in UTC format.
+        Indicates the time when the backup task is created.
         """
         return pulumi.get(self, "begin_time")
 
@@ -572,8 +436,6 @@ class DcsBackup(pulumi.CustomResource):
     def description(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the description of DCS instance backup.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -581,8 +443,7 @@ class DcsBackup(pulumi.CustomResource):
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-        The value is in UTC format.
+        Indicates the time at which DCS instance backup is completed.
         """
         return pulumi.get(self, "end_time")
 
@@ -591,8 +452,6 @@ class DcsBackup(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the DCS instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -615,10 +474,6 @@ class DcsBackup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -633,13 +488,7 @@ class DcsBackup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the backup status. Valid value:
-        + **waiting**: The task is waiting to begin.
-        + **backuping**: DCS instance backup is in progress.
-        + **succeed**: DCS instance backup succeeded.
-        + **failed**: DCS instance backup failed.
-        + **expired**: The backup file has expired.
-        + **deleted**: The backup file has been deleted manually.
+        Indicates the backup status.
         """
         return pulumi.get(self, "status")
 
@@ -647,9 +496,7 @@ class DcsBackup(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the backup type. Valid value:
-        + **manual**: indicates manual backup.
-        + **auto**: indicates automatic backup.
+        Indicates the backup type.
         """
         return pulumi.get(self, "type")
 

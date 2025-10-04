@@ -14,14 +14,10 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type GetBandwidthPublicip struct {
-	// The ID of the EIP or IPv6 port that uses the bandwidth.
-	Id string `pulumi:"id"`
-	// The IPv4 or IPv6 address.
+	Id        string `pulumi:"id"`
 	IpAddress string `pulumi:"ipAddress"`
-	// The IP version, either 4 or 6.
-	IpVersion int `pulumi:"ipVersion"`
-	// The EIP type.
-	Type string `pulumi:"type"`
+	IpVersion int    `pulumi:"ipVersion"`
+	Type      string `pulumi:"type"`
 }
 
 // GetBandwidthPublicipInput is an input type that accepts GetBandwidthPublicipArgs and GetBandwidthPublicipOutput values.
@@ -36,14 +32,10 @@ type GetBandwidthPublicipInput interface {
 }
 
 type GetBandwidthPublicipArgs struct {
-	// The ID of the EIP or IPv6 port that uses the bandwidth.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The IPv4 or IPv6 address.
+	Id        pulumi.StringInput `pulumi:"id"`
 	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// The IP version, either 4 or 6.
-	IpVersion pulumi.IntInput `pulumi:"ipVersion"`
-	// The EIP type.
-	Type pulumi.StringInput `pulumi:"type"`
+	IpVersion pulumi.IntInput    `pulumi:"ipVersion"`
+	Type      pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetBandwidthPublicipArgs) ElementType() reflect.Type {
@@ -97,22 +89,18 @@ func (o GetBandwidthPublicipOutput) ToGetBandwidthPublicipOutputWithContext(ctx 
 	return o
 }
 
-// The ID of the EIP or IPv6 port that uses the bandwidth.
 func (o GetBandwidthPublicipOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPublicip) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IPv4 or IPv6 address.
 func (o GetBandwidthPublicipOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPublicip) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// The IP version, either 4 or 6.
 func (o GetBandwidthPublicipOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBandwidthPublicip) int { return v.IpVersion }).(pulumi.IntOutput)
 }
 
-// The EIP type.
 func (o GetBandwidthPublicipOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBandwidthPublicip) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -138,42 +126,22 @@ func (o GetBandwidthPublicipArrayOutput) Index(i pulumi.IntInput) GetBandwidthPu
 }
 
 type GetEipsEip struct {
-	// The bandwidth id of the EIP.
-	BandwidthId string `pulumi:"bandwidthId"`
-	// The bandwidth name of the EIP.
-	BandwidthName string `pulumi:"bandwidthName"`
-	// The bandwidth share type of the EIP.
-	BandwidthShareType string `pulumi:"bandwidthShareType"`
-	// The bandwidth size of the EIP.
-	BandwidthSize int    `pulumi:"bandwidthSize"`
-	CreatedAt     string `pulumi:"createdAt"`
-	// Specifies the enterprise project ID which the desired EIP belongs to.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// The ID of the EIP.
-	Id string `pulumi:"id"`
-	// Specifies ip version of the desired EIP. The options are:
-	IpVersion int `pulumi:"ipVersion"`
-	// The name of the EIP.
-	Name string `pulumi:"name"`
-	// The port id bound to the EIP.
-	PortId string `pulumi:"portId"`
-	// The private ip address of the EIP.
-	PrivateIp string `pulumi:"privateIp"`
-	// The public ip address of the EIP.
-	PublicIp string `pulumi:"publicIp"`
-	// The public ipv6 address of the EIP.
-	PublicIpv6 string `pulumi:"publicIpv6"`
-	// The status of the EIP.
-	Status string `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired EIP.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags map[string]string `pulumi:"tags"`
-	// The type of the EIP.
-	Type string `pulumi:"type"`
+	BandwidthId         string            `pulumi:"bandwidthId"`
+	BandwidthName       string            `pulumi:"bandwidthName"`
+	BandwidthShareType  string            `pulumi:"bandwidthShareType"`
+	BandwidthSize       int               `pulumi:"bandwidthSize"`
+	CreatedAt           string            `pulumi:"createdAt"`
+	EnterpriseProjectId string            `pulumi:"enterpriseProjectId"`
+	Id                  string            `pulumi:"id"`
+	IpVersion           int               `pulumi:"ipVersion"`
+	Name                string            `pulumi:"name"`
+	PortId              string            `pulumi:"portId"`
+	PrivateIp           string            `pulumi:"privateIp"`
+	PublicIp            string            `pulumi:"publicIp"`
+	PublicIpv6          string            `pulumi:"publicIpv6"`
+	Status              string            `pulumi:"status"`
+	Tags                map[string]string `pulumi:"tags"`
+	Type                string            `pulumi:"type"`
 }
 
 // GetEipsEipInput is an input type that accepts GetEipsEipArgs and GetEipsEipOutput values.
@@ -188,42 +156,22 @@ type GetEipsEipInput interface {
 }
 
 type GetEipsEipArgs struct {
-	// The bandwidth id of the EIP.
-	BandwidthId pulumi.StringInput `pulumi:"bandwidthId"`
-	// The bandwidth name of the EIP.
-	BandwidthName pulumi.StringInput `pulumi:"bandwidthName"`
-	// The bandwidth share type of the EIP.
-	BandwidthShareType pulumi.StringInput `pulumi:"bandwidthShareType"`
-	// The bandwidth size of the EIP.
-	BandwidthSize pulumi.IntInput    `pulumi:"bandwidthSize"`
-	CreatedAt     pulumi.StringInput `pulumi:"createdAt"`
-	// Specifies the enterprise project ID which the desired EIP belongs to.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// The ID of the EIP.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies ip version of the desired EIP. The options are:
-	IpVersion pulumi.IntInput `pulumi:"ipVersion"`
-	// The name of the EIP.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The port id bound to the EIP.
-	PortId pulumi.StringInput `pulumi:"portId"`
-	// The private ip address of the EIP.
-	PrivateIp pulumi.StringInput `pulumi:"privateIp"`
-	// The public ip address of the EIP.
-	PublicIp pulumi.StringInput `pulumi:"publicIp"`
-	// The public ipv6 address of the EIP.
-	PublicIpv6 pulumi.StringInput `pulumi:"publicIpv6"`
-	// The status of the EIP.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired EIP.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The type of the EIP.
-	Type pulumi.StringInput `pulumi:"type"`
+	BandwidthId         pulumi.StringInput    `pulumi:"bandwidthId"`
+	BandwidthName       pulumi.StringInput    `pulumi:"bandwidthName"`
+	BandwidthShareType  pulumi.StringInput    `pulumi:"bandwidthShareType"`
+	BandwidthSize       pulumi.IntInput       `pulumi:"bandwidthSize"`
+	CreatedAt           pulumi.StringInput    `pulumi:"createdAt"`
+	EnterpriseProjectId pulumi.StringInput    `pulumi:"enterpriseProjectId"`
+	Id                  pulumi.StringInput    `pulumi:"id"`
+	IpVersion           pulumi.IntInput       `pulumi:"ipVersion"`
+	Name                pulumi.StringInput    `pulumi:"name"`
+	PortId              pulumi.StringInput    `pulumi:"portId"`
+	PrivateIp           pulumi.StringInput    `pulumi:"privateIp"`
+	PublicIp            pulumi.StringInput    `pulumi:"publicIp"`
+	PublicIpv6          pulumi.StringInput    `pulumi:"publicIpv6"`
+	Status              pulumi.StringInput    `pulumi:"status"`
+	Tags                pulumi.StringMapInput `pulumi:"tags"`
+	Type                pulumi.StringInput    `pulumi:"type"`
 }
 
 func (GetEipsEipArgs) ElementType() reflect.Type {
@@ -277,22 +225,18 @@ func (o GetEipsEipOutput) ToGetEipsEipOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// The bandwidth id of the EIP.
 func (o GetEipsEipOutput) BandwidthId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.BandwidthId }).(pulumi.StringOutput)
 }
 
-// The bandwidth name of the EIP.
 func (o GetEipsEipOutput) BandwidthName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.BandwidthName }).(pulumi.StringOutput)
 }
 
-// The bandwidth share type of the EIP.
 func (o GetEipsEipOutput) BandwidthShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.BandwidthShareType }).(pulumi.StringOutput)
 }
 
-// The bandwidth size of the EIP.
 func (o GetEipsEipOutput) BandwidthSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEipsEip) int { return v.BandwidthSize }).(pulumi.IntOutput)
 }
@@ -301,62 +245,46 @@ func (o GetEipsEipOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID which the desired EIP belongs to.
 func (o GetEipsEipOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// The ID of the EIP.
 func (o GetEipsEipOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies ip version of the desired EIP. The options are:
 func (o GetEipsEipOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEipsEip) int { return v.IpVersion }).(pulumi.IntOutput)
 }
 
-// The name of the EIP.
 func (o GetEipsEipOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The port id bound to the EIP.
 func (o GetEipsEipOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.PortId }).(pulumi.StringOutput)
 }
 
-// The private ip address of the EIP.
 func (o GetEipsEipOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
-// The public ip address of the EIP.
 func (o GetEipsEipOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// The public ipv6 address of the EIP.
 func (o GetEipsEipOutput) PublicIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.PublicIpv6 }).(pulumi.StringOutput)
 }
 
-// The status of the EIP.
 func (o GetEipsEipOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the included key/value pairs which associated with the desired EIP.
-//
-// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-// The values are in the OR relationship.
 func (o GetEipsEipOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEipsEip) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the EIP.
 func (o GetEipsEipOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipsEip) string { return v.Type }).(pulumi.StringOutput)
 }

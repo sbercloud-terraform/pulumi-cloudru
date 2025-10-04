@@ -4,59 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a static route under the ER route table within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ### Create a static route and cross the VPC
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const routeTableId = config.requireObject<any>("routeTableId");
- * const destinationVpcCidr = config.requireObject<any>("destinationVpcCidr");
- * const sourceVpcAttachmentId = config.requireObject<any>("sourceVpcAttachmentId");
- * const test = new sbercloud.er.StaticRoute("test", {
- *     routeTableId: routeTableId,
- *     destination: destinationVpcCidr,
- *     attachmentId: sourceVpcAttachmentId,
- * });
- * ```
- *
- * ### Create a black hole route
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const routeTableId = config.requireObject<any>("routeTableId");
- * const destinationVpcCidr = config.requireObject<any>("destinationVpcCidr");
- * const test = new sbercloud.er.StaticRoute("test", {
- *     routeTableId: routeTableId,
- *     destination: destinationVpcCidr,
- *     isBlackhole: true,
- * });
- * ```
- *
- * ## Import
- *
- * Static routes can be imported using the related `route_table_id` and their `id`, separated by a slash (/), e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Er/staticRoute:StaticRoute test <route_table_id>/<id>
- * ```
- */
 export class StaticRoute extends pulumi.CustomResource {
     /**
      * Get an existing StaticRoute resource's state with the given name, ID, and optional extra
@@ -86,7 +33,7 @@ export class StaticRoute extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the ID of the corresponding attachment.
+     * The ID of the corresponding attachment.
      */
     declare public readonly attachmentId: pulumi.Output<string | undefined>;
     /**
@@ -94,26 +41,19 @@ export class StaticRoute extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies the destination of the static route.  
-     * Changing this parameter will create a new resource.
+     * The destination of the static route.
      */
     declare public readonly destination: pulumi.Output<string>;
     /**
-     * Specifies whether route is the black hole route, defaults to `false`.  
-     * + If the value is empty or `false`, the parameter `attachmentId` is required.
-     * + If the value is `true`, the parameter `attachmentId` must be empty.
+     * Whether route is the black hole route.
      */
     declare public readonly isBlackhole: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies the region where the static route and related route table are
-     * located.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the static route and related route table are located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Specifies the ID of the route table to which the static route
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the route table to which the static route belongs.
      */
     declare public readonly routeTableId: pulumi.Output<string>;
     /**
@@ -179,7 +119,7 @@ export class StaticRoute extends pulumi.CustomResource {
  */
 export interface StaticRouteState {
     /**
-     * Specifies the ID of the corresponding attachment.
+     * The ID of the corresponding attachment.
      */
     attachmentId?: pulumi.Input<string>;
     /**
@@ -187,26 +127,19 @@ export interface StaticRouteState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies the destination of the static route.  
-     * Changing this parameter will create a new resource.
+     * The destination of the static route.
      */
     destination?: pulumi.Input<string>;
     /**
-     * Specifies whether route is the black hole route, defaults to `false`.  
-     * + If the value is empty or `false`, the parameter `attachmentId` is required.
-     * + If the value is `true`, the parameter `attachmentId` must be empty.
+     * Whether route is the black hole route.
      */
     isBlackhole?: pulumi.Input<boolean>;
     /**
-     * Specifies the region where the static route and related route table are
-     * located.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the static route and related route table are located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the route table to which the static route
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the route table to which the static route belongs.
      */
     routeTableId?: pulumi.Input<string>;
     /**
@@ -228,30 +161,23 @@ export interface StaticRouteState {
  */
 export interface StaticRouteArgs {
     /**
-     * Specifies the ID of the corresponding attachment.
+     * The ID of the corresponding attachment.
      */
     attachmentId?: pulumi.Input<string>;
     /**
-     * Specifies the destination of the static route.  
-     * Changing this parameter will create a new resource.
+     * The destination of the static route.
      */
     destination: pulumi.Input<string>;
     /**
-     * Specifies whether route is the black hole route, defaults to `false`.  
-     * + If the value is empty or `false`, the parameter `attachmentId` is required.
-     * + If the value is `true`, the parameter `attachmentId` must be empty.
+     * Whether route is the black hole route.
      */
     isBlackhole?: pulumi.Input<boolean>;
     /**
-     * Specifies the region where the static route and related route table are
-     * located.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the static route and related route table are located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the route table to which the static route
-     * belongs.
-     * Changing this parameter will create a new resource.
+     * The ID of the route table to which the static route belongs.
      */
     routeTableId: pulumi.Input<string>;
 }

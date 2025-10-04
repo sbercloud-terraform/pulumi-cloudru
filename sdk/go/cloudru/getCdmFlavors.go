@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get available SberCloud cdm flavors.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetCdmFlavors(ctx, &cloudru.GetCdmFlavorsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetCdmFlavors(ctx *pulumi.Context, args *GetCdmFlavorsArgs, opts ...pulumi.InvokeOption) (*GetCdmFlavorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCdmFlavorsResult
@@ -48,19 +23,15 @@ func GetCdmFlavors(ctx *pulumi.Context, args *GetCdmFlavorsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getCdmFlavors.
 type GetCdmFlavorsArgs struct {
-	// The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getCdmFlavors.
 type GetCdmFlavorsResult struct {
-	// Indicates the flavors information. Structure is documented below.
 	Flavors []GetCdmFlavorsFlavor `pulumi:"flavors"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
-	Region string `pulumi:"region"`
-	// The version of the flavor.
+	Id      string `pulumi:"id"`
+	Region  string `pulumi:"region"`
 	Version string `pulumi:"version"`
 }
 
@@ -75,7 +46,6 @@ func GetCdmFlavorsOutput(ctx *pulumi.Context, args GetCdmFlavorsOutputArgs, opts
 
 // A collection of arguments for invoking getCdmFlavors.
 type GetCdmFlavorsOutputArgs struct {
-	// The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -98,7 +68,6 @@ func (o GetCdmFlavorsResultOutput) ToGetCdmFlavorsResultOutputWithContext(ctx co
 	return o
 }
 
-// Indicates the flavors information. Structure is documented below.
 func (o GetCdmFlavorsResultOutput) Flavors() GetCdmFlavorsFlavorArrayOutput {
 	return o.ApplyT(func(v GetCdmFlavorsResult) []GetCdmFlavorsFlavor { return v.Flavors }).(GetCdmFlavorsFlavorArrayOutput)
 }
@@ -108,12 +77,10 @@ func (o GetCdmFlavorsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The region in which to obtain the CDM flavors. If omitted, the provider-level region will be used.
 func (o GetCdmFlavorsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The version of the flavor.
 func (o GetCdmFlavorsResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdmFlavorsResult) string { return v.Version }).(pulumi.StringOutput)
 }

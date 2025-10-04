@@ -11,32 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get info of special SberCloud obs object.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/obs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := obs.GetBucketObject(ctx, &obs.GetBucketObjectArgs{
-//				Bucket: "my-test-bucket",
-//				Key:    "new-key",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupBucketObject(ctx *pulumi.Context, args *LookupBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupBucketObjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBucketObjectResult
@@ -49,39 +23,24 @@ func LookupBucketObject(ctx *pulumi.Context, args *LookupBucketObjectArgs, opts 
 
 // A collection of arguments for invoking getBucketObject.
 type LookupBucketObjectArgs struct {
-	// The name of the bucket to put the file in.
-	Bucket string `pulumi:"bucket"`
-	// The name of the object once it is in the bucket.
-	Key string `pulumi:"key"`
-	// The region in which to obtain the OBS object. If omitted, the provider-level region will
-	// be used.
+	Bucket string  `pulumi:"bucket"`
+	Key    string  `pulumi:"key"`
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getBucketObject.
 type LookupBucketObjectResult struct {
-	// The content of an object which is available only for objects which have a human-readable Content-Type
-	// (text/* and application/json) and smaller than **64KB**. This is to prevent printing unsafe characters and
-	// potentially downloading large amount of data.
-	Body   string `pulumi:"body"`
-	Bucket string `pulumi:"bucket"`
-	// a standard MIME type describing the format of the object data, e.g. application/octet-stream.
-	// All Valid MIME Types are valid for this input.
+	Body        string `pulumi:"body"`
+	Bucket      string `pulumi:"bucket"`
 	ContentType string `pulumi:"contentType"`
-	// the ETag generated for the object (an MD5 sum of the object content). When the object is encrypted on the
-	// server side, the ETag value is not the MD5 value of the object, but the unique identifier calculated through the
-	// server-side encryption.
-	Etag string `pulumi:"etag"`
+	Etag        string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Key    string `pulumi:"key"`
-	Region string `pulumi:"region"`
-	// the size of the object in bytes.
-	Size int `pulumi:"size"`
-	// specifies the storage class of the object.
+	Id           string `pulumi:"id"`
+	Key          string `pulumi:"key"`
+	Region       string `pulumi:"region"`
+	Size         int    `pulumi:"size"`
 	StorageClass string `pulumi:"storageClass"`
-	// a unique version ID value for the object, if bucket versioning is enabled.
-	VersionId string `pulumi:"versionId"`
+	VersionId    string `pulumi:"versionId"`
 }
 
 func LookupBucketObjectOutput(ctx *pulumi.Context, args LookupBucketObjectOutputArgs, opts ...pulumi.InvokeOption) LookupBucketObjectResultOutput {
@@ -95,12 +54,8 @@ func LookupBucketObjectOutput(ctx *pulumi.Context, args LookupBucketObjectOutput
 
 // A collection of arguments for invoking getBucketObject.
 type LookupBucketObjectOutputArgs struct {
-	// The name of the bucket to put the file in.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// The name of the object once it is in the bucket.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The region in which to obtain the OBS object. If omitted, the provider-level region will
-	// be used.
+	Bucket pulumi.StringInput    `pulumi:"bucket"`
+	Key    pulumi.StringInput    `pulumi:"key"`
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -123,9 +78,6 @@ func (o LookupBucketObjectResultOutput) ToLookupBucketObjectResultOutputWithCont
 	return o
 }
 
-// The content of an object which is available only for objects which have a human-readable Content-Type
-// (text/* and application/json) and smaller than **64KB**. This is to prevent printing unsafe characters and
-// potentially downloading large amount of data.
 func (o LookupBucketObjectResultOutput) Body() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Body }).(pulumi.StringOutput)
 }
@@ -134,15 +86,10 @@ func (o LookupBucketObjectResultOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// a standard MIME type describing the format of the object data, e.g. application/octet-stream.
-// All Valid MIME Types are valid for this input.
 func (o LookupBucketObjectResultOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
-// the ETag generated for the object (an MD5 sum of the object content). When the object is encrypted on the
-// server side, the ETag value is not the MD5 value of the object, but the unique identifier calculated through the
-// server-side encryption.
 func (o LookupBucketObjectResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Etag }).(pulumi.StringOutput)
 }
@@ -160,17 +107,14 @@ func (o LookupBucketObjectResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// the size of the object in bytes.
 func (o LookupBucketObjectResultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// specifies the storage class of the object.
 func (o LookupBucketObjectResultOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.StorageClass }).(pulumi.StringOutput)
 }
 
-// a unique version ID value for the object, if bucket versioning is enabled.
 func (o LookupBucketObjectResultOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBucketObjectResult) string { return v.VersionId }).(pulumi.StringOutput)
 }

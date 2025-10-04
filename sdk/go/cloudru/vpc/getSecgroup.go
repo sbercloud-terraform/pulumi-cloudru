@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the ID of an available SberCloud security group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.GetSecgroup(ctx, &vpc.GetSecgroupArgs{
-//				Name: pulumi.StringRef("tf_test_secgroup"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupSecgroup(ctx *pulumi.Context, args *LookupSecgroupArgs, opts ...pulumi.InvokeOption) (*LookupSecgroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecgroupResult
@@ -50,34 +23,24 @@ func LookupSecgroup(ctx *pulumi.Context, args *LookupSecgroupArgs, opts ...pulum
 
 // A collection of arguments for invoking getSecgroup.
 type LookupSecgroupArgs struct {
-	// Specifies the enterprise project ID of the security group.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the security group.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to obtain the security group. If omitted, the
-	// provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifiest he ID of the security group.
-	SecgroupId *string `pulumi:"secgroupId"`
+	Name                *string `pulumi:"name"`
+	Region              *string `pulumi:"region"`
+	SecgroupId          *string `pulumi:"secgroupId"`
 }
 
 // A collection of values returned by getSecgroup.
 type LookupSecgroupResult struct {
-	// The creation time, in UTC format.
-	CreatedAt string `pulumi:"createdAt"`
-	// The supplementary information about the security group rule.
+	CreatedAt           string  `pulumi:"createdAt"`
 	Description         string  `pulumi:"description"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Name   string `pulumi:"name"`
-	Region string `pulumi:"region"`
-	// The array of security group rules associating with the security group.
-	// The rule object is documented below.
+	Id         string                `pulumi:"id"`
+	Name       string                `pulumi:"name"`
+	Region     string                `pulumi:"region"`
 	Rules      []GetSecgroupRuleType `pulumi:"rules"`
 	SecgroupId *string               `pulumi:"secgroupId"`
-	// The last update time, in UTC format.
-	UpdatedAt string `pulumi:"updatedAt"`
+	UpdatedAt  string                `pulumi:"updatedAt"`
 }
 
 func LookupSecgroupOutput(ctx *pulumi.Context, args LookupSecgroupOutputArgs, opts ...pulumi.InvokeOption) LookupSecgroupResultOutput {
@@ -91,15 +54,10 @@ func LookupSecgroupOutput(ctx *pulumi.Context, args LookupSecgroupOutputArgs, op
 
 // A collection of arguments for invoking getSecgroup.
 type LookupSecgroupOutputArgs struct {
-	// Specifies the enterprise project ID of the security group.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the name of the security group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the region in which to obtain the security group. If omitted, the
-	// provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifiest he ID of the security group.
-	SecgroupId pulumi.StringPtrInput `pulumi:"secgroupId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	SecgroupId          pulumi.StringPtrInput `pulumi:"secgroupId"`
 }
 
 func (LookupSecgroupOutputArgs) ElementType() reflect.Type {
@@ -121,12 +79,10 @@ func (o LookupSecgroupResultOutput) ToLookupSecgroupResultOutputWithContext(ctx 
 	return o
 }
 
-// The creation time, in UTC format.
 func (o LookupSecgroupResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecgroupResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The supplementary information about the security group rule.
 func (o LookupSecgroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecgroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -148,8 +104,6 @@ func (o LookupSecgroupResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecgroupResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The array of security group rules associating with the security group.
-// The rule object is documented below.
 func (o LookupSecgroupResultOutput) Rules() GetSecgroupRuleTypeArrayOutput {
 	return o.ApplyT(func(v LookupSecgroupResult) []GetSecgroupRuleType { return v.Rules }).(GetSecgroupRuleTypeArrayOutput)
 }
@@ -158,7 +112,6 @@ func (o LookupSecgroupResultOutput) SecgroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecgroupResult) *string { return v.SecgroupId }).(pulumi.StringPtrOutput)
 }
 
-// The last update time, in UTC format.
 func (o LookupSecgroupResultOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecgroupResult) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }

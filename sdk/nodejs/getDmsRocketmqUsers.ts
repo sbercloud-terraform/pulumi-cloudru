@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of DMS rocketMQ users.
- */
 export function getDmsRocketmqUsers(args: GetDmsRocketmqUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers", {
@@ -26,36 +23,12 @@ export function getDmsRocketmqUsers(args: GetDmsRocketmqUsersArgs, opts?: pulumi
  * A collection of arguments for invoking getDmsRocketmqUsers.
  */
 export interface GetDmsRocketmqUsersArgs {
-    /**
-     * Specifies the user name.
-     */
     accessKey?: string;
-    /**
-     * Specifies whether the user is an administrator.
-     */
     admin?: boolean;
-    /**
-     * Specifies the default consumer group permissions.
-     * Value options: **SUB**, **DENY**.
-     */
     defaultGroupPerm?: string;
-    /**
-     * Specifies the default topic permissions.
-     * Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-     */
     defaultTopicPerm?: string;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the IP address whitelist.
-     */
     whiteRemoteAddress?: string;
 }
 
@@ -63,23 +36,9 @@ export interface GetDmsRocketmqUsersArgs {
  * A collection of values returned by getDmsRocketmqUsers.
  */
 export interface GetDmsRocketmqUsersResult {
-    /**
-     * Indicates the name of the user.
-     */
     readonly accessKey?: string;
-    /**
-     * Indicates whether the user is an administrator.
-     */
     readonly admin?: boolean;
-    /**
-     * Indicates the default consumer group permissions.
-     * Value options: **SUB**, **DENY**.
-     */
     readonly defaultGroupPerm?: string;
-    /**
-     * Indicates the default topic permissions.
-     * Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-     */
     readonly defaultTopicPerm?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -87,19 +46,9 @@ export interface GetDmsRocketmqUsersResult {
     readonly id: string;
     readonly instanceId: string;
     readonly region: string;
-    /**
-     * The list of users.
-     * The users structure is documented below.
-     */
     readonly users: outputs.GetDmsRocketmqUsersUser[];
-    /**
-     * Indicates the IP address whitelist.
-     */
     readonly whiteRemoteAddress?: string;
 }
-/**
- * Use this data source to get the list of DMS rocketMQ users.
- */
 export function getDmsRocketmqUsersOutput(args: GetDmsRocketmqUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqUsers:getDmsRocketmqUsers", {
@@ -117,35 +66,11 @@ export function getDmsRocketmqUsersOutput(args: GetDmsRocketmqUsersOutputArgs, o
  * A collection of arguments for invoking getDmsRocketmqUsers.
  */
 export interface GetDmsRocketmqUsersOutputArgs {
-    /**
-     * Specifies the user name.
-     */
     accessKey?: pulumi.Input<string>;
-    /**
-     * Specifies whether the user is an administrator.
-     */
     admin?: pulumi.Input<boolean>;
-    /**
-     * Specifies the default consumer group permissions.
-     * Value options: **SUB**, **DENY**.
-     */
     defaultGroupPerm?: pulumi.Input<string>;
-    /**
-     * Specifies the default topic permissions.
-     * Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-     */
     defaultTopicPerm?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the IP address whitelist.
-     */
     whiteRemoteAddress?: pulumi.Input<string>;
 }

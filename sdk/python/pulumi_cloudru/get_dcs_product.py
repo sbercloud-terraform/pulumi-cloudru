@@ -52,10 +52,6 @@ class GetDcsProductResult:
     @_builtins.property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> _builtins.str:
-        """
-        The mode of a cache engine. The value is one of *single*, *ha*, *cluster*,
-        *proxy* and *ha_rw_split*.
-        """
         return pulumi.get(self, "cache_mode")
 
     @_builtins.property
@@ -66,17 +62,11 @@ class GetDcsProductResult:
     @_builtins.property
     @pulumi.getter
     def engine(self) -> _builtins.str:
-        """
-        The cache engine. The value is *redis* or *memcached*.
-        """
         return pulumi.get(self, "engine")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> _builtins.str:
-        """
-        The supported versions of a cache engine.
-        """
         return pulumi.get(self, "engine_version")
 
     @_builtins.property
@@ -117,26 +107,7 @@ def get_dcs_product(region: Optional[_builtins.str] = None,
                     spec_code: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDcsProductResult:
     """
-    Use this data source to get the ID of an available DCS product.
-
-    !> **WARNING:** It has been deprecated. This data source is used for the `product_id` of the
-    `Dcs.Instance` resource. Now `product_id` has been deprecated and this data source is no longer used.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    product1 = sbercloud.get_dcs_product(spec_code="dcs.single_node")
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to obtain the dcs products.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str spec_code: Specifies the DCS instance specification code. For details, see
-           [Querying Service Specifications](https://support.hc.sbercloud.ru/api/dcs/dcs-api-0312040.html).
-           + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -156,26 +127,7 @@ def get_dcs_product_output(region: Optional[pulumi.Input[Optional[_builtins.str]
                            spec_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDcsProductResult]:
     """
-    Use this data source to get the ID of an available DCS product.
-
-    !> **WARNING:** It has been deprecated. This data source is used for the `product_id` of the
-    `Dcs.Instance` resource. Now `product_id` has been deprecated and this data source is no longer used.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    product1 = sbercloud.get_dcs_product(spec_code="dcs.single_node")
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to obtain the dcs products.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str spec_code: Specifies the DCS instance specification code. For details, see
-           [Querying Service Specifications](https://support.hc.sbercloud.ru/api/dcs/dcs-api-0312040.html).
-           + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

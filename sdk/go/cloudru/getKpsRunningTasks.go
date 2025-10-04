@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of running tasks.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetKpsRunningTasks(ctx, &cloudru.GetKpsRunningTasksArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetKpsRunningTasks(ctx *pulumi.Context, args *GetKpsRunningTasksArgs, opts ...pulumi.InvokeOption) (*GetKpsRunningTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKpsRunningTasksResult
@@ -48,18 +23,15 @@ func GetKpsRunningTasks(ctx *pulumi.Context, args *GetKpsRunningTasksArgs, opts 
 
 // A collection of arguments for invoking getKpsRunningTasks.
 type GetKpsRunningTasksArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getKpsRunningTasks.
 type GetKpsRunningTasksResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The list of the running tasks.
-	Tasks []GetKpsRunningTasksTask `pulumi:"tasks"`
+	Id     string                   `pulumi:"id"`
+	Region string                   `pulumi:"region"`
+	Tasks  []GetKpsRunningTasksTask `pulumi:"tasks"`
 }
 
 func GetKpsRunningTasksOutput(ctx *pulumi.Context, args GetKpsRunningTasksOutputArgs, opts ...pulumi.InvokeOption) GetKpsRunningTasksResultOutput {
@@ -73,8 +45,6 @@ func GetKpsRunningTasksOutput(ctx *pulumi.Context, args GetKpsRunningTasksOutput
 
 // A collection of arguments for invoking getKpsRunningTasks.
 type GetKpsRunningTasksOutputArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -106,7 +76,6 @@ func (o GetKpsRunningTasksResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKpsRunningTasksResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The list of the running tasks.
 func (o GetKpsRunningTasksResultOutput) Tasks() GetKpsRunningTasksTaskArrayOutput {
 	return o.ApplyT(func(v GetKpsRunningTasksResult) []GetKpsRunningTasksTask { return v.Tasks }).(GetKpsRunningTasksTaskArrayOutput)
 }

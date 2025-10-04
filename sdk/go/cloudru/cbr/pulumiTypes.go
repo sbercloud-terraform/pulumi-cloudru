@@ -14,19 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type PolicyBackupCycle struct {
-	// Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-	// WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-	// configuration.
+	// The weekly backup time.
 	Days *string `pulumi:"days"`
-	// Specifies the backup time. Automated backups will be triggered at the backup
-	// time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-	// cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-	//
-	// <a name="cbrPolicyLongTermRetention"></a>
-	// The `longTermRetention` block supports:
+	// The execution time of the policy.
 	ExecutionTimes []string `pulumi:"executionTimes"`
-	// Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-	// parameter and `days` are alternative.
+	// The number of days between each backup.
 	Interval *int `pulumi:"interval"`
 }
 
@@ -42,19 +34,11 @@ type PolicyBackupCycleInput interface {
 }
 
 type PolicyBackupCycleArgs struct {
-	// Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-	// WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-	// configuration.
+	// The weekly backup time.
 	Days pulumi.StringPtrInput `pulumi:"days"`
-	// Specifies the backup time. Automated backups will be triggered at the backup
-	// time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-	// cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-	//
-	// <a name="cbrPolicyLongTermRetention"></a>
-	// The `longTermRetention` block supports:
+	// The execution time of the policy.
 	ExecutionTimes pulumi.StringArrayInput `pulumi:"executionTimes"`
-	// Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-	// parameter and `days` are alternative.
+	// The number of days between each backup.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
 }
 
@@ -135,25 +119,17 @@ func (o PolicyBackupCycleOutput) ToPolicyBackupCyclePtrOutputWithContext(ctx con
 	}).(PolicyBackupCyclePtrOutput)
 }
 
-// Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-// WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-// configuration.
+// The weekly backup time.
 func (o PolicyBackupCycleOutput) Days() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyBackupCycle) *string { return v.Days }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the backup time. Automated backups will be triggered at the backup
-// time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-// cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-//
-// <a name="cbrPolicyLongTermRetention"></a>
-// The `longTermRetention` block supports:
+// The execution time of the policy.
 func (o PolicyBackupCycleOutput) ExecutionTimes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PolicyBackupCycle) []string { return v.ExecutionTimes }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-// parameter and `days` are alternative.
+// The number of days between each backup.
 func (o PolicyBackupCycleOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyBackupCycle) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
@@ -182,9 +158,7 @@ func (o PolicyBackupCyclePtrOutput) Elem() PolicyBackupCycleOutput {
 	}).(PolicyBackupCycleOutput)
 }
 
-// Specifies the weekly backup day of backup schedule. It supports seven days a week (MO, TU,
-// WE, TH, FR, SA, SU) and this parameter is separated by a comma (,) without spaces, between date and date during the
-// configuration.
+// The weekly backup time.
 func (o PolicyBackupCyclePtrOutput) Days() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyBackupCycle) *string {
 		if v == nil {
@@ -194,12 +168,7 @@ func (o PolicyBackupCyclePtrOutput) Days() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the backup time. Automated backups will be triggered at the backup
-// time. The current time is in the UTC format (HH:MM). The minutes in the list must be set to **00** and the hours
-// cannot be repeated. In the replication policy, you are advised to set one time point for one day.
-//
-// <a name="cbrPolicyLongTermRetention"></a>
-// The `longTermRetention` block supports:
+// The execution time of the policy.
 func (o PolicyBackupCyclePtrOutput) ExecutionTimes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyBackupCycle) []string {
 		if v == nil {
@@ -209,8 +178,7 @@ func (o PolicyBackupCyclePtrOutput) ExecutionTimes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the interval (in days) of backup schedule. The value range is `1` to `30`. This
-// parameter and `days` are alternative.
+// The number of days between each backup.
 func (o PolicyBackupCyclePtrOutput) Interval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PolicyBackupCycle) *int {
 		if v == nil {
@@ -221,18 +189,15 @@ func (o PolicyBackupCyclePtrOutput) Interval() pulumi.IntPtrOutput {
 }
 
 type PolicyLongTermRetention struct {
-	// Specifies the latest backup of each day is saved in the long term.
+	// The latest backup of each day is saved in the long term.
 	Daily *int `pulumi:"daily"`
 	// How often (after how many incremental backups) a full backup is performed.
 	FullBackupInterval *int `pulumi:"fullBackupInterval"`
-	// Specifies the latest backup of each month is saved in the long term.
+	// The latest backup of each month is saved in the long term.
 	Monthly *int `pulumi:"monthly"`
-	// Specifies the latest backup of each week is saved in the long term.
+	// The latest backup of each week is saved in the long term.
 	Weekly *int `pulumi:"weekly"`
-	// Specifies the latest backup of each year is saved in the long term.
-	//
-	// > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-	// manually deleted on the web console.
+	// The latest backup of each year is saved in the long term.
 	Yearly *int `pulumi:"yearly"`
 }
 
@@ -248,18 +213,15 @@ type PolicyLongTermRetentionInput interface {
 }
 
 type PolicyLongTermRetentionArgs struct {
-	// Specifies the latest backup of each day is saved in the long term.
+	// The latest backup of each day is saved in the long term.
 	Daily pulumi.IntPtrInput `pulumi:"daily"`
 	// How often (after how many incremental backups) a full backup is performed.
 	FullBackupInterval pulumi.IntPtrInput `pulumi:"fullBackupInterval"`
-	// Specifies the latest backup of each month is saved in the long term.
+	// The latest backup of each month is saved in the long term.
 	Monthly pulumi.IntPtrInput `pulumi:"monthly"`
-	// Specifies the latest backup of each week is saved in the long term.
+	// The latest backup of each week is saved in the long term.
 	Weekly pulumi.IntPtrInput `pulumi:"weekly"`
-	// Specifies the latest backup of each year is saved in the long term.
-	//
-	// > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-	// manually deleted on the web console.
+	// The latest backup of each year is saved in the long term.
 	Yearly pulumi.IntPtrInput `pulumi:"yearly"`
 }
 
@@ -340,7 +302,7 @@ func (o PolicyLongTermRetentionOutput) ToPolicyLongTermRetentionPtrOutputWithCon
 	}).(PolicyLongTermRetentionPtrOutput)
 }
 
-// Specifies the latest backup of each day is saved in the long term.
+// The latest backup of each day is saved in the long term.
 func (o PolicyLongTermRetentionOutput) Daily() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyLongTermRetention) *int { return v.Daily }).(pulumi.IntPtrOutput)
 }
@@ -350,20 +312,17 @@ func (o PolicyLongTermRetentionOutput) FullBackupInterval() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v PolicyLongTermRetention) *int { return v.FullBackupInterval }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the latest backup of each month is saved in the long term.
+// The latest backup of each month is saved in the long term.
 func (o PolicyLongTermRetentionOutput) Monthly() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyLongTermRetention) *int { return v.Monthly }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the latest backup of each week is saved in the long term.
+// The latest backup of each week is saved in the long term.
 func (o PolicyLongTermRetentionOutput) Weekly() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyLongTermRetention) *int { return v.Weekly }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the latest backup of each year is saved in the long term.
-//
-// > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-// manually deleted on the web console.
+// The latest backup of each year is saved in the long term.
 func (o PolicyLongTermRetentionOutput) Yearly() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PolicyLongTermRetention) *int { return v.Yearly }).(pulumi.IntPtrOutput)
 }
@@ -392,7 +351,7 @@ func (o PolicyLongTermRetentionPtrOutput) Elem() PolicyLongTermRetentionOutput {
 	}).(PolicyLongTermRetentionOutput)
 }
 
-// Specifies the latest backup of each day is saved in the long term.
+// The latest backup of each day is saved in the long term.
 func (o PolicyLongTermRetentionPtrOutput) Daily() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PolicyLongTermRetention) *int {
 		if v == nil {
@@ -412,7 +371,7 @@ func (o PolicyLongTermRetentionPtrOutput) FullBackupInterval() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the latest backup of each month is saved in the long term.
+// The latest backup of each month is saved in the long term.
 func (o PolicyLongTermRetentionPtrOutput) Monthly() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PolicyLongTermRetention) *int {
 		if v == nil {
@@ -422,7 +381,7 @@ func (o PolicyLongTermRetentionPtrOutput) Monthly() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the latest backup of each week is saved in the long term.
+// The latest backup of each week is saved in the long term.
 func (o PolicyLongTermRetentionPtrOutput) Weekly() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PolicyLongTermRetention) *int {
 		if v == nil {
@@ -432,10 +391,7 @@ func (o PolicyLongTermRetentionPtrOutput) Weekly() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the latest backup of each year is saved in the long term.
-//
-// > A maximum of 10 backups are retained for failed periodic backup tasks. They are retained for one month and can be
-// manually deleted on the web console.
+// The latest backup of each year is saved in the long term.
 func (o PolicyLongTermRetentionPtrOutput) Yearly() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *PolicyLongTermRetention) *int {
 		if v == nil {
@@ -448,7 +404,7 @@ func (o PolicyLongTermRetentionPtrOutput) Yearly() pulumi.IntPtrOutput {
 type VaultPolicy struct {
 	// The ID of destination vault to which the replication policy will associated.
 	DestinationVaultId *string `pulumi:"destinationVaultId"`
-	// A resource ID in UUID format.
+	// The policy ID.
 	Id string `pulumi:"id"`
 }
 
@@ -466,7 +422,7 @@ type VaultPolicyInput interface {
 type VaultPolicyArgs struct {
 	// The ID of destination vault to which the replication policy will associated.
 	DestinationVaultId pulumi.StringPtrInput `pulumi:"destinationVaultId"`
-	// A resource ID in UUID format.
+	// The policy ID.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -526,7 +482,7 @@ func (o VaultPolicyOutput) DestinationVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultPolicy) *string { return v.DestinationVaultId }).(pulumi.StringPtrOutput)
 }
 
-// A resource ID in UUID format.
+// The policy ID.
 func (o VaultPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VaultPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -552,13 +508,11 @@ func (o VaultPolicyArrayOutput) Index(i pulumi.IntInput) VaultPolicyOutput {
 }
 
 type VaultResource struct {
-	// Specifies the array of disk IDs which will be excluded in the backup.
-	// Only **server** vault support this parameter.
+	// The array of disk IDs which will be excluded in the backup.
 	Excludes []string `pulumi:"excludes"`
-	// Specifies the array of disk or SFS file system IDs which will be included in the backup.
-	// Only **disk** and **turbo** vault support this parameter.
+	// The array of disk or SFS file systems which will be included in the backup.
 	Includes []string `pulumi:"includes"`
-	// Specifies the ID of the ECS instance to be backed up.
+	// The ID of the ECS instance to be backed up.
 	ServerId *string `pulumi:"serverId"`
 }
 
@@ -574,13 +528,11 @@ type VaultResourceInput interface {
 }
 
 type VaultResourceArgs struct {
-	// Specifies the array of disk IDs which will be excluded in the backup.
-	// Only **server** vault support this parameter.
+	// The array of disk IDs which will be excluded in the backup.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// Specifies the array of disk or SFS file system IDs which will be included in the backup.
-	// Only **disk** and **turbo** vault support this parameter.
+	// The array of disk or SFS file systems which will be included in the backup.
 	Includes pulumi.StringArrayInput `pulumi:"includes"`
-	// Specifies the ID of the ECS instance to be backed up.
+	// The ID of the ECS instance to be backed up.
 	ServerId pulumi.StringPtrInput `pulumi:"serverId"`
 }
 
@@ -635,19 +587,17 @@ func (o VaultResourceOutput) ToVaultResourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Specifies the array of disk IDs which will be excluded in the backup.
-// Only **server** vault support this parameter.
+// The array of disk IDs which will be excluded in the backup.
 func (o VaultResourceOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VaultResource) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the array of disk or SFS file system IDs which will be included in the backup.
-// Only **disk** and **turbo** vault support this parameter.
+// The array of disk or SFS file systems which will be included in the backup.
 func (o VaultResourceOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VaultResource) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the ID of the ECS instance to be backed up.
+// The ID of the ECS instance to be backed up.
 func (o VaultResourceOutput) ServerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VaultResource) *string { return v.ServerId }).(pulumi.StringPtrOutput)
 }
@@ -677,45 +627,35 @@ type GetVaultsVault struct {
 	Allocated float64 `pulumi:"allocated"`
 	// Whether automatic association is supported.
 	AutoBind bool `pulumi:"autoBind"`
-	// Specifies whether to enable automatic expansion of the backup protection
-	// type vault. Default to **false**.
+	// Whether to enable automatic expansion of the backup protection type vault.
 	AutoExpandEnabled bool `pulumi:"autoExpandEnabled"`
 	// The rules for automatic association.
 	BindRules map[string]string `pulumi:"bindRules"`
-	// Specifies the backup specifications.
-	// The value is crashConsistent by default (crash consistent backup).
-	//
-	// Only server type vaults support application consistent.
+	// The consistent level (specification) of the vault.
 	ConsistentLevel string `pulumi:"consistentLevel"`
-	// Specifies a unique ID in UUID format of enterprise project.
+	// The enterprise project ID.
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
 	// The vault ID in UUID format.
 	Id string `pulumi:"id"`
-	// Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-	// characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+	// The vault name.
 	Name string `pulumi:"name"`
-	// Specifies a policy to associate with the CBR vault.
+	// The ID of the policy associated with the vault.
 	PolicyId string `pulumi:"policyId"`
-	// Specifies the protection type of the CBR vault.
-	// The valid value is **backup**.
+	// The protection type of the vault.
 	ProtectionType string `pulumi:"protectionType"`
-	// An array of one or more resources to attach to the CBR vault.
-	// The object structure is documented below.
+	// The array of one or more resources to attach to the vault.
 	Resources []GetVaultsVaultResource `pulumi:"resources"`
-	// Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
+	// The vault capacity, in GB.
 	Size int `pulumi:"size"`
 	// The specification code.
 	SpecCode string `pulumi:"specCode"`
-	// Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
+	// The vault status.
 	Status string `pulumi:"status"`
 	// The name of the bucket for the vault.
 	Storage string `pulumi:"storage"`
 	// The key/value pairs to associate with the vault.
 	Tags map[string]string `pulumi:"tags"`
-	// Specifies the object type of the CBR vault. The vaild values are as follows:
-	// + **server** (Cloud Servers)
-	// + **disk** (EVS Disks)
-	// + **turbo** (SFS Turbo file systems)
+	// The object type of the vault.
 	Type string `pulumi:"type"`
 	// The used capacity, in GB.
 	Used float64 `pulumi:"used"`
@@ -737,45 +677,35 @@ type GetVaultsVaultArgs struct {
 	Allocated pulumi.Float64Input `pulumi:"allocated"`
 	// Whether automatic association is supported.
 	AutoBind pulumi.BoolInput `pulumi:"autoBind"`
-	// Specifies whether to enable automatic expansion of the backup protection
-	// type vault. Default to **false**.
+	// Whether to enable automatic expansion of the backup protection type vault.
 	AutoExpandEnabled pulumi.BoolInput `pulumi:"autoExpandEnabled"`
 	// The rules for automatic association.
 	BindRules pulumi.StringMapInput `pulumi:"bindRules"`
-	// Specifies the backup specifications.
-	// The value is crashConsistent by default (crash consistent backup).
-	//
-	// Only server type vaults support application consistent.
+	// The consistent level (specification) of the vault.
 	ConsistentLevel pulumi.StringInput `pulumi:"consistentLevel"`
-	// Specifies a unique ID in UUID format of enterprise project.
+	// The enterprise project ID.
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
 	// The vault ID in UUID format.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-	// characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+	// The vault name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies a policy to associate with the CBR vault.
+	// The ID of the policy associated with the vault.
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
-	// Specifies the protection type of the CBR vault.
-	// The valid value is **backup**.
+	// The protection type of the vault.
 	ProtectionType pulumi.StringInput `pulumi:"protectionType"`
-	// An array of one or more resources to attach to the CBR vault.
-	// The object structure is documented below.
+	// The array of one or more resources to attach to the vault.
 	Resources GetVaultsVaultResourceArrayInput `pulumi:"resources"`
-	// Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
+	// The vault capacity, in GB.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The specification code.
 	SpecCode pulumi.StringInput `pulumi:"specCode"`
-	// Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
+	// The vault status.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The name of the bucket for the vault.
 	Storage pulumi.StringInput `pulumi:"storage"`
 	// The key/value pairs to associate with the vault.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the object type of the CBR vault. The vaild values are as follows:
-	// + **server** (Cloud Servers)
-	// + **disk** (EVS Disks)
-	// + **turbo** (SFS Turbo file systems)
+	// The object type of the vault.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The used capacity, in GB.
 	Used pulumi.Float64Input `pulumi:"used"`
@@ -842,8 +772,7 @@ func (o GetVaultsVaultOutput) AutoBind() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVaultsVault) bool { return v.AutoBind }).(pulumi.BoolOutput)
 }
 
-// Specifies whether to enable automatic expansion of the backup protection
-// type vault. Default to **false**.
+// Whether to enable automatic expansion of the backup protection type vault.
 func (o GetVaultsVaultOutput) AutoExpandEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVaultsVault) bool { return v.AutoExpandEnabled }).(pulumi.BoolOutput)
 }
@@ -853,15 +782,12 @@ func (o GetVaultsVaultOutput) BindRules() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVaultsVault) map[string]string { return v.BindRules }).(pulumi.StringMapOutput)
 }
 
-// Specifies the backup specifications.
-// The value is crashConsistent by default (crash consistent backup).
-//
-// Only server type vaults support application consistent.
+// The consistent level (specification) of the vault.
 func (o GetVaultsVaultOutput) ConsistentLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.ConsistentLevel }).(pulumi.StringOutput)
 }
 
-// Specifies a unique ID in UUID format of enterprise project.
+// The enterprise project ID.
 func (o GetVaultsVaultOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
@@ -871,30 +797,27 @@ func (o GetVaultsVaultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-// characters, which may consist of letters, digits, underscores(_) and hyphens (-).
+// The vault name.
 func (o GetVaultsVaultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies a policy to associate with the CBR vault.
+// The ID of the policy associated with the vault.
 func (o GetVaultsVaultOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.PolicyId }).(pulumi.StringOutput)
 }
 
-// Specifies the protection type of the CBR vault.
-// The valid value is **backup**.
+// The protection type of the vault.
 func (o GetVaultsVaultOutput) ProtectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.ProtectionType }).(pulumi.StringOutput)
 }
 
-// An array of one or more resources to attach to the CBR vault.
-// The object structure is documented below.
+// The array of one or more resources to attach to the vault.
 func (o GetVaultsVaultOutput) Resources() GetVaultsVaultResourceArrayOutput {
 	return o.ApplyT(func(v GetVaultsVault) []GetVaultsVaultResource { return v.Resources }).(GetVaultsVaultResourceArrayOutput)
 }
 
-// Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
+// The vault capacity, in GB.
 func (o GetVaultsVaultOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVaultsVault) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -904,7 +827,7 @@ func (o GetVaultsVaultOutput) SpecCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.SpecCode }).(pulumi.StringOutput)
 }
 
-// Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
+// The vault status.
 func (o GetVaultsVaultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -919,10 +842,7 @@ func (o GetVaultsVaultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVaultsVault) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the object type of the CBR vault. The vaild values are as follows:
-// + **server** (Cloud Servers)
-// + **disk** (EVS Disks)
-// + **turbo** (SFS Turbo file systems)
+// The object type of the vault.
 func (o GetVaultsVaultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -955,7 +875,7 @@ func (o GetVaultsVaultArrayOutput) Index(i pulumi.IntInput) GetVaultsVaultOutput
 type GetVaultsVaultResource struct {
 	// The array of disk IDs which will be excluded in the backup.
 	Excludes []string `pulumi:"excludes"`
-	// An array of disk or SFS file system IDs which will be included in the backup.
+	// The array of disk or SFS file system IDs which will be included in the backup.
 	Includes []string `pulumi:"includes"`
 	// The ID of the ECS instance to be backed up.
 	ServerId string `pulumi:"serverId"`
@@ -975,7 +895,7 @@ type GetVaultsVaultResourceInput interface {
 type GetVaultsVaultResourceArgs struct {
 	// The array of disk IDs which will be excluded in the backup.
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
-	// An array of disk or SFS file system IDs which will be included in the backup.
+	// The array of disk or SFS file system IDs which will be included in the backup.
 	Includes pulumi.StringArrayInput `pulumi:"includes"`
 	// The ID of the ECS instance to be backed up.
 	ServerId pulumi.StringInput `pulumi:"serverId"`
@@ -1037,7 +957,7 @@ func (o GetVaultsVaultResourceOutput) Excludes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVaultsVaultResource) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
-// An array of disk or SFS file system IDs which will be included in the backup.
+// The array of disk or SFS file system IDs which will be included in the backup.
 func (o GetVaultsVaultResourceOutput) Includes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVaultsVaultResource) []string { return v.Includes }).(pulumi.StringArrayOutput)
 }

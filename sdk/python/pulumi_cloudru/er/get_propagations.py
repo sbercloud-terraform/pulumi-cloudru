@@ -56,17 +56,11 @@ class GetPropagationsResult:
     @_builtins.property
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> Optional[_builtins.str]:
-        """
-        The attachment ID corresponding to the propagation.
-        """
         return pulumi.get(self, "attachment_id")
 
     @_builtins.property
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> Optional[_builtins.str]:
-        """
-        The attachment type corresponding to the propagation.
-        """
         return pulumi.get(self, "attachment_type")
 
     @_builtins.property
@@ -80,18 +74,11 @@ class GetPropagationsResult:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
-        """
-        The ER instance ID to which the propagation belongs.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def propagations(self) -> Sequence['outputs.GetPropagationsPropagationResult']:
-        """
-        All propagations that match the filter parameters.
-        The propagations structure is documented below.
-        """
         return pulumi.get(self, "propagations")
 
     @_builtins.property
@@ -102,17 +89,11 @@ class GetPropagationsResult:
     @_builtins.property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> _builtins.str:
-        """
-        The route table ID of corresponding to the propagation.
-        """
         return pulumi.get(self, "route_table_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The current status of the propagation.
-        """
         return pulumi.get(self, "status")
 
 
@@ -140,47 +121,7 @@ def get_propagations(attachment_id: Optional[_builtins.str] = None,
                      status: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPropagationsResult:
     """
-    Use this data source to get the list of propagations.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    route_table_id = config.require_object("routeTableId")
-    attachment_id = config.require_object("attachmentId")
-    test = sbercloud.Er.get_propagations(instance_id=instance_id,
-        route_table_id=route_table_id,
-        attachment_id=attachment_id)
-    ```
-
-
-    :param _builtins.str attachment_id: Specifies the attachment ID to which the propagation belongs.
-    :param _builtins.str attachment_type: Specifies the attachment type of corresponding to the propagation.  
-           The valid values are as follows:
-           + **vpc**: Virtual private cloud.
-           + **vpn**: VPN gateway.
-           + **vgw**: Virtual gateway of cloud private line.
-           + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-           peering connection.
-           + **enc**: Enterprise connect network in EC.
-           + **cfw**: VPC border firewall.
-    :param _builtins.str instance_id: Specifies the ER instance ID to which the propagation belongs.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: Specifies the route table ID to which the propagation belongs.
-    :param _builtins.str status: Specifies the status of the propagation. Default value is `available`.
-           The valid values are as follows:
-           + **available**
-           + **failed**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentId'] = attachment_id
@@ -209,47 +150,7 @@ def get_propagations_output(attachment_id: Optional[pulumi.Input[Optional[_built
                             status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPropagationsResult]:
     """
-    Use this data source to get the list of propagations.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    route_table_id = config.require_object("routeTableId")
-    attachment_id = config.require_object("attachmentId")
-    test = sbercloud.Er.get_propagations(instance_id=instance_id,
-        route_table_id=route_table_id,
-        attachment_id=attachment_id)
-    ```
-
-
-    :param _builtins.str attachment_id: Specifies the attachment ID to which the propagation belongs.
-    :param _builtins.str attachment_type: Specifies the attachment type of corresponding to the propagation.  
-           The valid values are as follows:
-           + **vpc**: Virtual private cloud.
-           + **vpn**: VPN gateway.
-           + **vgw**: Virtual gateway of cloud private line.
-           + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-           peering connection.
-           + **enc**: Enterprise connect network in EC.
-           + **cfw**: VPC border firewall.
-    :param _builtins.str instance_id: Specifies the ER instance ID to which the propagation belongs.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: Specifies the route table ID to which the propagation belongs.
-    :param _builtins.str status: Specifies the status of the propagation. Default value is `available`.
-           The valid values are as follows:
-           + **available**
-           + **failed**
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['attachmentId'] = attachment_id

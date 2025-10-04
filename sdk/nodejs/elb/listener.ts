@@ -6,30 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ELB listener resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const listener1 = new sbercloud.elb.Listener("listener_1", {
- *     protocol: "HTTP",
- *     protocolPort: 8080,
- *     loadbalancerId: "d9415786-5f1a-428b-b35f-2f1523e146d2",
- * });
- * ```
- *
- * ## Import
- *
- * ELB listener can be imported using the listener ID, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Elb/listener:Listener listener_1 5c20fdad-7288-11eb-b817-0255ac10158b
- * ```
- */
 export class Listener extends pulumi.CustomResource {
     /**
      * Get an existing Listener resource's state with the given name, ID, and optional extra
@@ -59,76 +35,28 @@ export class Listener extends pulumi.CustomResource {
     }
 
     /**
-     * The administrative state of the listener. A valid value is true (UP) or false (
-     * DOWN).
-     *
      * @deprecated admin_state_up is deprecated
      */
     declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
     declare public readonly clientCaTlsContainerRef: pulumi.Output<string>;
     /**
-     * The maximum number of connections allowed for the listener. The value ranges from
-     * -1 to 2,147,483,647. This parameter is reserved and has been not used. Only the administrator can specify the maximum
-     * number of connections.
-     *
      * @deprecated connection_limit is deprecated
      */
     declare public readonly connectionLimit: pulumi.Output<number>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * The ID of the default pool with which the listener is associated.
-     * Changing this creates a new listener.
-     */
     declare public readonly defaultPoolId: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the server certificate used by the listener. This
-     * parameter is mandatory when protocol is set to *TERMINATED_HTTPS*.
-     */
     declare public readonly defaultTlsContainerRef: pulumi.Output<string>;
-    /**
-     * Human-readable description for the listener.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-     * only when the protocol is set to *TERMINATED_HTTPS*.
-     */
     declare public readonly http2Enable: pulumi.Output<boolean | undefined>;
     declare public readonly insertHeaders: pulumi.Output<outputs.Elb.ListenerInsertHeaders>;
-    /**
-     * The load balancer on which to provision this listener. Changing this
-     * creates a new listener.
-     */
     declare public readonly loadbalancerId: pulumi.Output<string>;
-    /**
-     * Human-readable name for the listener. Does not have to be unique.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public readonly protectionReason: pulumi.Output<string | undefined>;
     declare public readonly protectionStatus: pulumi.Output<string>;
-    /**
-     * The protocol can either be TCP, UDP, HTTP or TERMINATED_HTTPS. Changing this
-     * creates a new listener.
-     */
     declare public readonly protocol: pulumi.Output<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new listener.
-     */
     declare public readonly protocolPort: pulumi.Output<number>;
-    /**
-     * The region in which to create the listener resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new listener.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Lists the IDs of SNI certificates (server certificates with a domain name)
-     * used by the listener. This parameter is valid when protocol is set to *TERMINATED_HTTPS*.
-     */
     declare public readonly sniContainerRefs: pulumi.Output<string[]>;
-    /**
-     * The key/value pairs to associate with the listener.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * @deprecated tenant_id is deprecated
@@ -214,76 +142,28 @@ export class Listener extends pulumi.CustomResource {
  */
 export interface ListenerState {
     /**
-     * The administrative state of the listener. A valid value is true (UP) or false (
-     * DOWN).
-     *
      * @deprecated admin_state_up is deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
     clientCaTlsContainerRef?: pulumi.Input<string>;
     /**
-     * The maximum number of connections allowed for the listener. The value ranges from
-     * -1 to 2,147,483,647. This parameter is reserved and has been not used. Only the administrator can specify the maximum
-     * number of connections.
-     *
      * @deprecated connection_limit is deprecated
      */
     connectionLimit?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * The ID of the default pool with which the listener is associated.
-     * Changing this creates a new listener.
-     */
     defaultPoolId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the server certificate used by the listener. This
-     * parameter is mandatory when protocol is set to *TERMINATED_HTTPS*.
-     */
     defaultTlsContainerRef?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the listener.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-     * only when the protocol is set to *TERMINATED_HTTPS*.
-     */
     http2Enable?: pulumi.Input<boolean>;
     insertHeaders?: pulumi.Input<inputs.Elb.ListenerInsertHeaders>;
-    /**
-     * The load balancer on which to provision this listener. Changing this
-     * creates a new listener.
-     */
     loadbalancerId?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the listener. Does not have to be unique.
-     */
     name?: pulumi.Input<string>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * The protocol can either be TCP, UDP, HTTP or TERMINATED_HTTPS. Changing this
-     * creates a new listener.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new listener.
-     */
     protocolPort?: pulumi.Input<number>;
-    /**
-     * The region in which to create the listener resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new listener.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Lists the IDs of SNI certificates (server certificates with a domain name)
-     * used by the listener. This parameter is valid when protocol is set to *TERMINATED_HTTPS*.
-     */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The key/value pairs to associate with the listener.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated tenant_id is deprecated
@@ -298,75 +178,27 @@ export interface ListenerState {
  */
 export interface ListenerArgs {
     /**
-     * The administrative state of the listener. A valid value is true (UP) or false (
-     * DOWN).
-     *
      * @deprecated admin_state_up is deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
     clientCaTlsContainerRef?: pulumi.Input<string>;
     /**
-     * The maximum number of connections allowed for the listener. The value ranges from
-     * -1 to 2,147,483,647. This parameter is reserved and has been not used. Only the administrator can specify the maximum
-     * number of connections.
-     *
      * @deprecated connection_limit is deprecated
      */
     connectionLimit?: pulumi.Input<number>;
-    /**
-     * The ID of the default pool with which the listener is associated.
-     * Changing this creates a new listener.
-     */
     defaultPoolId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the server certificate used by the listener. This
-     * parameter is mandatory when protocol is set to *TERMINATED_HTTPS*.
-     */
     defaultTlsContainerRef?: pulumi.Input<string>;
-    /**
-     * Human-readable description for the listener.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to use HTTP/2. The default value is false. This parameter is valid
-     * only when the protocol is set to *TERMINATED_HTTPS*.
-     */
     http2Enable?: pulumi.Input<boolean>;
     insertHeaders?: pulumi.Input<inputs.Elb.ListenerInsertHeaders>;
-    /**
-     * The load balancer on which to provision this listener. Changing this
-     * creates a new listener.
-     */
     loadbalancerId: pulumi.Input<string>;
-    /**
-     * Human-readable name for the listener. Does not have to be unique.
-     */
     name?: pulumi.Input<string>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * The protocol can either be TCP, UDP, HTTP or TERMINATED_HTTPS. Changing this
-     * creates a new listener.
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * The port on which to listen for client traffic. Changing this creates a
-     * new listener.
-     */
     protocolPort: pulumi.Input<number>;
-    /**
-     * The region in which to create the listener resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new listener.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Lists the IDs of SNI certificates (server certificates with a domain name)
-     * used by the listener. This parameter is valid when protocol is set to *TERMINATED_HTTPS*.
-     */
     sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The key/value pairs to associate with the listener.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * @deprecated tenant_id is deprecated

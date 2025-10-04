@@ -11,93 +11,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// > **DEPRECATED:**  This resource  has been deprecated.
-//
-// Manages a keypair resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Create a new keypair and export private key to current folder
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewKeypair(ctx, "test-keypair", &ecs.KeypairArgs{
-//				Name:    pulumi.String("my-keypair"),
-//				KeyFile: pulumi.String("private_key.pem"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Import an exist keypair
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewKeypair(ctx, "test-keypair", &ecs.KeypairArgs{
-//				Name:      pulumi.String("my-keypair"),
-//				PublicKey: pulumi.String("ssh-rsa AAAAB3NzaC1yc2EAAAlJq5Pu+eizhou7nFFDxXofr2ySF8k/yuA9OnJdVF9Fbf85Z59CWNZBvcAT... root@terra-dev"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Keypairs can be imported using the `name`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Ecs/keypair:Keypair my-keypair test-keypair
-// ```
 type Keypair struct {
 	pulumi.CustomResourceState
 
-	// Specifies the path of the created private key.
-	// The private key file (**.pem**) is created only after the resource is created.
-	// By default, the private key file will be created in the same folder as the current script file.
-	// If you need to create it in another folder, please specify the path for `keyFile`.
-	// Changing this creates a new keypair.
-	//
-	// ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-	KeyFile pulumi.StringOutput `pulumi:"keyFile"`
-	// Specifies a unique name for the keypair. Changing this creates a new keypair.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key. Changing this creates
-	// a new keypair.
-	// This parameter and `keyFile` are alternative.
+	KeyFile   pulumi.StringOutput `pulumi:"keyFile"`
+	Name      pulumi.StringOutput `pulumi:"name"`
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
-	// Specifies the region in which to create the keypair resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new keypair.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region    pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewKeypair registers a new resource with the given unique name, arguments, and options.
@@ -130,43 +50,17 @@ func GetKeypair(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Keypair resources.
 type keypairState struct {
-	// Specifies the path of the created private key.
-	// The private key file (**.pem**) is created only after the resource is created.
-	// By default, the private key file will be created in the same folder as the current script file.
-	// If you need to create it in another folder, please specify the path for `keyFile`.
-	// Changing this creates a new keypair.
-	//
-	// ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-	KeyFile *string `pulumi:"keyFile"`
-	// Specifies a unique name for the keypair. Changing this creates a new keypair.
-	Name *string `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key. Changing this creates
-	// a new keypair.
-	// This parameter and `keyFile` are alternative.
+	KeyFile   *string `pulumi:"keyFile"`
+	Name      *string `pulumi:"name"`
 	PublicKey *string `pulumi:"publicKey"`
-	// Specifies the region in which to create the keypair resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new keypair.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
 }
 
 type KeypairState struct {
-	// Specifies the path of the created private key.
-	// The private key file (**.pem**) is created only after the resource is created.
-	// By default, the private key file will be created in the same folder as the current script file.
-	// If you need to create it in another folder, please specify the path for `keyFile`.
-	// Changing this creates a new keypair.
-	//
-	// ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-	KeyFile pulumi.StringPtrInput
-	// Specifies a unique name for the keypair. Changing this creates a new keypair.
-	Name pulumi.StringPtrInput
-	// Specifies the imported OpenSSH-formatted public key. Changing this creates
-	// a new keypair.
-	// This parameter and `keyFile` are alternative.
+	KeyFile   pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 	PublicKey pulumi.StringPtrInput
-	// Specifies the region in which to create the keypair resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new keypair.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 }
 
 func (KeypairState) ElementType() reflect.Type {
@@ -174,44 +68,18 @@ func (KeypairState) ElementType() reflect.Type {
 }
 
 type keypairArgs struct {
-	// Specifies the path of the created private key.
-	// The private key file (**.pem**) is created only after the resource is created.
-	// By default, the private key file will be created in the same folder as the current script file.
-	// If you need to create it in another folder, please specify the path for `keyFile`.
-	// Changing this creates a new keypair.
-	//
-	// ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-	KeyFile *string `pulumi:"keyFile"`
-	// Specifies a unique name for the keypair. Changing this creates a new keypair.
-	Name *string `pulumi:"name"`
-	// Specifies the imported OpenSSH-formatted public key. Changing this creates
-	// a new keypair.
-	// This parameter and `keyFile` are alternative.
+	KeyFile   *string `pulumi:"keyFile"`
+	Name      *string `pulumi:"name"`
 	PublicKey *string `pulumi:"publicKey"`
-	// Specifies the region in which to create the keypair resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new keypair.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Keypair resource.
 type KeypairArgs struct {
-	// Specifies the path of the created private key.
-	// The private key file (**.pem**) is created only after the resource is created.
-	// By default, the private key file will be created in the same folder as the current script file.
-	// If you need to create it in another folder, please specify the path for `keyFile`.
-	// Changing this creates a new keypair.
-	//
-	// ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
-	KeyFile pulumi.StringPtrInput
-	// Specifies a unique name for the keypair. Changing this creates a new keypair.
-	Name pulumi.StringPtrInput
-	// Specifies the imported OpenSSH-formatted public key. Changing this creates
-	// a new keypair.
-	// This parameter and `keyFile` are alternative.
+	KeyFile   pulumi.StringPtrInput
+	Name      pulumi.StringPtrInput
 	PublicKey pulumi.StringPtrInput
-	// Specifies the region in which to create the keypair resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new keypair.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
 }
 
 func (KeypairArgs) ElementType() reflect.Type {
@@ -301,31 +169,18 @@ func (o KeypairOutput) ToKeypairOutputWithContext(ctx context.Context) KeypairOu
 	return o
 }
 
-// Specifies the path of the created private key.
-// The private key file (**.pem**) is created only after the resource is created.
-// By default, the private key file will be created in the same folder as the current script file.
-// If you need to create it in another folder, please specify the path for `keyFile`.
-// Changing this creates a new keypair.
-//
-// ~>**NOTE:** If the private key file already exists, it will be overwritten after a new keypair is created.
 func (o KeypairOutput) KeyFile() pulumi.StringOutput {
 	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.KeyFile }).(pulumi.StringOutput)
 }
 
-// Specifies a unique name for the keypair. Changing this creates a new keypair.
 func (o KeypairOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the imported OpenSSH-formatted public key. Changing this creates
-// a new keypair.
-// This parameter and `keyFile` are alternative.
 func (o KeypairOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the keypair resource. If omitted, the
-// provider-level region will be used. Changing this creates a new keypair.
 func (o KeypairOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Keypair) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

@@ -24,11 +24,6 @@ class PeeringConnectionAccepterArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PeeringConnectionAccepter resource.
-        :param pulumi.Input[_builtins.str] vpc_peering_connection_id: The VPC Peering Connection ID to manage. Changing this
-               creates a new VPC peering connection accepter.
-        :param pulumi.Input[_builtins.bool] accept: Whether or not to accept the peering request. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc peering connection accepter. If omitted,
-               the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
         """
         pulumi.set(__self__, "vpc_peering_connection_id", vpc_peering_connection_id)
         if accept is not None:
@@ -39,10 +34,6 @@ class PeeringConnectionAccepterArgs:
     @_builtins.property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The VPC Peering Connection ID to manage. Changing this
-        creates a new VPC peering connection accepter.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 
     @vpc_peering_connection_id.setter
@@ -52,9 +43,6 @@ class PeeringConnectionAccepterArgs:
     @_builtins.property
     @pulumi.getter
     def accept(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to accept the peering request. Defaults to `false`.
-        """
         return pulumi.get(self, "accept")
 
     @accept.setter
@@ -64,10 +52,6 @@ class PeeringConnectionAccepterArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the vpc peering connection accepter. If omitted,
-        the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -89,16 +73,6 @@ class _PeeringConnectionAccepterState:
                  vpc_peering_connection_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeeringConnectionAccepter resources.
-        :param pulumi.Input[_builtins.bool] accept: Whether or not to accept the peering request. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] name: The VPC peering connection name.
-        :param pulumi.Input[_builtins.str] peer_tenant_id: The Tenant Id of the accepter tenant.
-        :param pulumi.Input[_builtins.str] peer_vpc_id: The VPC ID of the accepter tenant.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc peering connection accepter. If omitted,
-               the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-        :param pulumi.Input[_builtins.str] status: The VPC peering connection status.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of requester VPC involved in a VPC peering connection.
-        :param pulumi.Input[_builtins.str] vpc_peering_connection_id: The VPC Peering Connection ID to manage. Changing this
-               creates a new VPC peering connection accepter.
         """
         if accept is not None:
             pulumi.set(__self__, "accept", accept)
@@ -122,9 +96,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter
     def accept(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to accept the peering request. Defaults to `false`.
-        """
         return pulumi.get(self, "accept")
 
     @accept.setter
@@ -143,9 +114,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The VPC peering connection name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -155,9 +123,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter(name="peerTenantId")
     def peer_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Tenant Id of the accepter tenant.
-        """
         return pulumi.get(self, "peer_tenant_id")
 
     @peer_tenant_id.setter
@@ -167,9 +132,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter(name="peerVpcId")
     def peer_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The VPC ID of the accepter tenant.
-        """
         return pulumi.get(self, "peer_vpc_id")
 
     @peer_vpc_id.setter
@@ -179,10 +141,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the vpc peering connection accepter. If omitted,
-        the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -192,9 +150,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The VPC peering connection status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -204,9 +159,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of requester VPC involved in a VPC peering connection.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -216,10 +168,6 @@ class _PeeringConnectionAccepterState:
     @_builtins.property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The VPC Peering Connection ID to manage. Changing this
-        creates a new VPC peering connection accepter.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 
     @vpc_peering_connection_id.setter
@@ -241,11 +189,6 @@ class PeeringConnectionAccepter(pulumi.CustomResource):
         Create a PeeringConnectionAccepter resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] accept: Whether or not to accept the peering request. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc peering connection accepter. If omitted,
-               the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-        :param pulumi.Input[_builtins.str] vpc_peering_connection_id: The VPC Peering Connection ID to manage. Changing this
-               creates a new VPC peering connection accepter.
         """
         ...
     @overload
@@ -319,16 +262,6 @@ class PeeringConnectionAccepter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] accept: Whether or not to accept the peering request. Defaults to `false`.
-        :param pulumi.Input[_builtins.str] name: The VPC peering connection name.
-        :param pulumi.Input[_builtins.str] peer_tenant_id: The Tenant Id of the accepter tenant.
-        :param pulumi.Input[_builtins.str] peer_vpc_id: The VPC ID of the accepter tenant.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the vpc peering connection accepter. If omitted,
-               the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-        :param pulumi.Input[_builtins.str] status: The VPC peering connection status.
-        :param pulumi.Input[_builtins.str] vpc_id: The ID of requester VPC involved in a VPC peering connection.
-        :param pulumi.Input[_builtins.str] vpc_peering_connection_id: The VPC Peering Connection ID to manage. Changing this
-               creates a new VPC peering connection accepter.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -348,9 +281,6 @@ class PeeringConnectionAccepter(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def accept(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether or not to accept the peering request. Defaults to `false`.
-        """
         return pulumi.get(self, "accept")
 
     @_builtins.property
@@ -361,58 +291,35 @@ class PeeringConnectionAccepter(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The VPC peering connection name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="peerTenantId")
     def peer_tenant_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The Tenant Id of the accepter tenant.
-        """
         return pulumi.get(self, "peer_tenant_id")
 
     @_builtins.property
     @pulumi.getter(name="peerVpcId")
     def peer_vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The VPC ID of the accepter tenant.
-        """
         return pulumi.get(self, "peer_vpc_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the vpc peering connection accepter. If omitted,
-        the provider-level region will be used. Changing this creates a new VPC peering connection accepter resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The VPC peering connection status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of requester VPC involved in a VPC peering connection.
-        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcPeeringConnectionId")
     def vpc_peering_connection_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The VPC Peering Connection ID to manage. Changing this
-        creates a new VPC peering connection accepter.
-        """
         return pulumi.get(self, "vpc_peering_connection_id")
 

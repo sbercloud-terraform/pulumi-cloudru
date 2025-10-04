@@ -114,14 +114,10 @@ func (o AddressGroupIpExtraSetArrayOutput) Index(i pulumi.IntInput) AddressGroup
 }
 
 type BandwidthPublicip struct {
-	// The ID of the EIP or IPv6 port that uses the bandwidth.
-	Id *string `pulumi:"id"`
-	// The IPv4 or IPv6 address.
+	Id        *string `pulumi:"id"`
 	IpAddress *string `pulumi:"ipAddress"`
-	// The IP version, either 4 or 6.
-	IpVersion *int `pulumi:"ipVersion"`
-	// The EIP type.
-	Type *string `pulumi:"type"`
+	IpVersion *int    `pulumi:"ipVersion"`
+	Type      *string `pulumi:"type"`
 }
 
 // BandwidthPublicipInput is an input type that accepts BandwidthPublicipArgs and BandwidthPublicipOutput values.
@@ -136,14 +132,10 @@ type BandwidthPublicipInput interface {
 }
 
 type BandwidthPublicipArgs struct {
-	// The ID of the EIP or IPv6 port that uses the bandwidth.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The IPv4 or IPv6 address.
+	Id        pulumi.StringPtrInput `pulumi:"id"`
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
-	// The IP version, either 4 or 6.
-	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
-	// The EIP type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	IpVersion pulumi.IntPtrInput    `pulumi:"ipVersion"`
+	Type      pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (BandwidthPublicipArgs) ElementType() reflect.Type {
@@ -197,22 +189,18 @@ func (o BandwidthPublicipOutput) ToBandwidthPublicipOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the EIP or IPv6 port that uses the bandwidth.
 func (o BandwidthPublicipOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BandwidthPublicip) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The IPv4 or IPv6 address.
 func (o BandwidthPublicipOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BandwidthPublicip) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
-// The IP version, either 4 or 6.
 func (o BandwidthPublicipOutput) IpVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BandwidthPublicip) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
 }
 
-// The EIP type.
 func (o BandwidthPublicipOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BandwidthPublicip) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -238,22 +226,15 @@ func (o BandwidthPublicipArrayOutput) Index(i pulumi.IntInput) BandwidthPublicip
 }
 
 type EipBandwidth struct {
-	// Specifies whether the bandwidth is billed by traffic or by bandwidth
-	// size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+	// Whether the bandwidth is billed by traffic or by bandwidth size.
 	ChargeMode *string `pulumi:"chargeMode"`
-	// The shared bandwidth id. This parameter is mandatory when
-	// `shareType` is set to *WHOLE*. Changing this creates a new eip.
+	// The shared bandwidth ID.
 	Id *string `pulumi:"id"`
-	// The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-	// underscores (_), and hyphens (-). This parameter is mandatory when `shareType` is set to *PER*.
+	// The dedicated bandwidth name.
 	Name *string `pulumi:"name"`
-	// Whether the bandwidth is dedicated or shared. Changing this creates a new
-	// eip. Possible values are as follows:
-	// + *PER*: Dedicated bandwidth
-	// + *WHOLE*: Shared bandwidth
+	// Whether the bandwidth is dedicated or shared.
 	ShareType string `pulumi:"shareType"`
-	// The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-	// when `shareType` is set to *PER*.
+	// The dedicated bandwidth size.
 	Size *int `pulumi:"size"`
 }
 
@@ -269,22 +250,15 @@ type EipBandwidthInput interface {
 }
 
 type EipBandwidthArgs struct {
-	// Specifies whether the bandwidth is billed by traffic or by bandwidth
-	// size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+	// Whether the bandwidth is billed by traffic or by bandwidth size.
 	ChargeMode pulumi.StringPtrInput `pulumi:"chargeMode"`
-	// The shared bandwidth id. This parameter is mandatory when
-	// `shareType` is set to *WHOLE*. Changing this creates a new eip.
+	// The shared bandwidth ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-	// underscores (_), and hyphens (-). This parameter is mandatory when `shareType` is set to *PER*.
+	// The dedicated bandwidth name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Whether the bandwidth is dedicated or shared. Changing this creates a new
-	// eip. Possible values are as follows:
-	// + *PER*: Dedicated bandwidth
-	// + *WHOLE*: Shared bandwidth
+	// Whether the bandwidth is dedicated or shared.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
-	// The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-	// when `shareType` is set to *PER*.
+	// The dedicated bandwidth size.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -365,34 +339,27 @@ func (o EipBandwidthOutput) ToEipBandwidthPtrOutputWithContext(ctx context.Conte
 	}).(EipBandwidthPtrOutput)
 }
 
-// Specifies whether the bandwidth is billed by traffic or by bandwidth
-// size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+// Whether the bandwidth is billed by traffic or by bandwidth size.
 func (o EipBandwidthOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipBandwidth) *string { return v.ChargeMode }).(pulumi.StringPtrOutput)
 }
 
-// The shared bandwidth id. This parameter is mandatory when
-// `shareType` is set to *WHOLE*. Changing this creates a new eip.
+// The shared bandwidth ID.
 func (o EipBandwidthOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipBandwidth) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-// underscores (_), and hyphens (-). This parameter is mandatory when `shareType` is set to *PER*.
+// The dedicated bandwidth name.
 func (o EipBandwidthOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipBandwidth) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Whether the bandwidth is dedicated or shared. Changing this creates a new
-// eip. Possible values are as follows:
-// + *PER*: Dedicated bandwidth
-// + *WHOLE*: Shared bandwidth
+// Whether the bandwidth is dedicated or shared.
 func (o EipBandwidthOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v EipBandwidth) string { return v.ShareType }).(pulumi.StringOutput)
 }
 
-// The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-// when `shareType` is set to *PER*.
+// The dedicated bandwidth size.
 func (o EipBandwidthOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EipBandwidth) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -421,8 +388,7 @@ func (o EipBandwidthPtrOutput) Elem() EipBandwidthOutput {
 	}).(EipBandwidthOutput)
 }
 
-// Specifies whether the bandwidth is billed by traffic or by bandwidth
-// size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+// Whether the bandwidth is billed by traffic or by bandwidth size.
 func (o EipBandwidthPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipBandwidth) *string {
 		if v == nil {
@@ -432,8 +398,7 @@ func (o EipBandwidthPtrOutput) ChargeMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The shared bandwidth id. This parameter is mandatory when
-// `shareType` is set to *WHOLE*. Changing this creates a new eip.
+// The shared bandwidth ID.
 func (o EipBandwidthPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipBandwidth) *string {
 		if v == nil {
@@ -443,8 +408,7 @@ func (o EipBandwidthPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-// underscores (_), and hyphens (-). This parameter is mandatory when `shareType` is set to *PER*.
+// The dedicated bandwidth name.
 func (o EipBandwidthPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipBandwidth) *string {
 		if v == nil {
@@ -454,10 +418,7 @@ func (o EipBandwidthPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether the bandwidth is dedicated or shared. Changing this creates a new
-// eip. Possible values are as follows:
-// + *PER*: Dedicated bandwidth
-// + *WHOLE*: Shared bandwidth
+// Whether the bandwidth is dedicated or shared.
 func (o EipBandwidthPtrOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipBandwidth) *string {
 		if v == nil {
@@ -467,8 +428,7 @@ func (o EipBandwidthPtrOutput) ShareType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-// when `shareType` is set to *PER*.
+// The dedicated bandwidth size.
 func (o EipBandwidthPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EipBandwidth) *int {
 		if v == nil {
@@ -479,15 +439,13 @@ func (o EipBandwidthPtrOutput) Size() pulumi.IntPtrOutput {
 }
 
 type EipPublicip struct {
-	// The value must be a valid IP address in the available IP address segment.
-	// Changing this creates a new eip.
+	// The EIP address to be assigned.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The IP version.
 	IpVersion *int `pulumi:"ipVersion"`
-	// The port id which this eip will associate with. If the value is "" or this not
-	// specified, the eip will be in unbind state.
+	// schema: Deprecated
 	PortId *string `pulumi:"portId"`
-	// The type of the eip. Changing this creates a new eip.
+	// The EIP type.
 	Type *string `pulumi:"type"`
 }
 
@@ -503,15 +461,13 @@ type EipPublicipInput interface {
 }
 
 type EipPublicipArgs struct {
-	// The value must be a valid IP address in the available IP address segment.
-	// Changing this creates a new eip.
+	// The EIP address to be assigned.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The IP version.
 	IpVersion pulumi.IntPtrInput `pulumi:"ipVersion"`
-	// The port id which this eip will associate with. If the value is "" or this not
-	// specified, the eip will be in unbind state.
+	// schema: Deprecated
 	PortId pulumi.StringPtrInput `pulumi:"portId"`
-	// The type of the eip. Changing this creates a new eip.
+	// The EIP type.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -592,8 +548,7 @@ func (o EipPublicipOutput) ToEipPublicipPtrOutputWithContext(ctx context.Context
 	}).(EipPublicipPtrOutput)
 }
 
-// The value must be a valid IP address in the available IP address segment.
-// Changing this creates a new eip.
+// The EIP address to be assigned.
 func (o EipPublicipOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipPublicip) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
@@ -603,13 +558,12 @@ func (o EipPublicipOutput) IpVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EipPublicip) *int { return v.IpVersion }).(pulumi.IntPtrOutput)
 }
 
-// The port id which this eip will associate with. If the value is "" or this not
-// specified, the eip will be in unbind state.
+// schema: Deprecated
 func (o EipPublicipOutput) PortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipPublicip) *string { return v.PortId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the eip. Changing this creates a new eip.
+// The EIP type.
 func (o EipPublicipOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EipPublicip) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -638,8 +592,7 @@ func (o EipPublicipPtrOutput) Elem() EipPublicipOutput {
 	}).(EipPublicipOutput)
 }
 
-// The value must be a valid IP address in the available IP address segment.
-// Changing this creates a new eip.
+// The EIP address to be assigned.
 func (o EipPublicipPtrOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipPublicip) *string {
 		if v == nil {
@@ -659,8 +612,7 @@ func (o EipPublicipPtrOutput) IpVersion() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The port id which this eip will associate with. If the value is "" or this not
-// specified, the eip will be in unbind state.
+// schema: Deprecated
 func (o EipPublicipPtrOutput) PortId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipPublicip) *string {
 		if v == nil {
@@ -670,7 +622,7 @@ func (o EipPublicipPtrOutput) PortId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of the eip. Changing this creates a new eip.
+// The EIP type.
 func (o EipPublicipPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipPublicip) *string {
 		if v == nil {
@@ -681,26 +633,10 @@ func (o EipPublicipPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type RouteTableRoute struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 	Description *string `pulumi:"description"`
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-	// with any subnet in the VPC.
-	Destination string `pulumi:"destination"`
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop string `pulumi:"nexthop"`
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type string `pulumi:"type"`
+	Destination string  `pulumi:"destination"`
+	Nexthop     string  `pulumi:"nexthop"`
+	Type        string  `pulumi:"type"`
 }
 
 // RouteTableRouteInput is an input type that accepts RouteTableRouteArgs and RouteTableRouteOutput values.
@@ -715,26 +651,10 @@ type RouteTableRouteInput interface {
 }
 
 type RouteTableRouteArgs struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-	// with any subnet in the VPC.
-	Destination pulumi.StringInput `pulumi:"destination"`
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop pulumi.StringInput `pulumi:"nexthop"`
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type pulumi.StringInput `pulumi:"type"`
+	Destination pulumi.StringInput    `pulumi:"destination"`
+	Nexthop     pulumi.StringInput    `pulumi:"nexthop"`
+	Type        pulumi.StringInput    `pulumi:"type"`
 }
 
 func (RouteTableRouteArgs) ElementType() reflect.Type {
@@ -788,34 +708,18 @@ func (o RouteTableRouteOutput) ToRouteTableRouteOutputWithContext(ctx context.Co
 	return o
 }
 
-// Specifies the supplementary information about the route.
-// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 func (o RouteTableRouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RouteTableRoute) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the destination address in the CIDR notation format,
-// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-// with any subnet in the VPC.
 func (o RouteTableRouteOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteTableRoute) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Specifies the next hop.
-// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-// + If the route type is **vip**, the value is a virtual IP address.
-// + If the route type is **nat**, the value is a VPN gateway ID.
-// + If the route type is **peering**, the value is a VPC peering connection ID.
-// + If the route type is **vpn**, the value is a VPN gateway ID.
-// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-// + If the route type is **cc**, the value is a Cloud Connection ID.
 func (o RouteTableRouteOutput) Nexthop() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteTableRoute) string { return v.Nexthop }).(pulumi.StringOutput)
 }
 
-// Specifies the route type. Currently, the value can be:
-// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
 func (o RouteTableRouteOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RouteTableRoute) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -841,32 +745,21 @@ func (o RouteTableRouteArrayOutput) Index(i pulumi.IntInput) RouteTableRouteOutp
 }
 
 type SecgroupRuleType struct {
-	// The effective policy.
-	Action *string `pulumi:"action"`
-	// Description of the security group.
+	Action      *string `pulumi:"action"`
 	Description *string `pulumi:"description"`
-	// The direction of the rule. The value can be *egress* or *ingress*.
-	Direction *string `pulumi:"direction"`
-	// The IP protocol version. The value can be *IPv4* or *IPv6*.
-	Ethertype *string `pulumi:"ethertype"`
-	// The security group rule ID.
-	Id *string `pulumi:"id"`
+	Direction   *string `pulumi:"direction"`
+	Ethertype   *string `pulumi:"ethertype"`
+	Id          *string `pulumi:"id"`
 	// schema: Deprecated
 	PortRangeMax *int `pulumi:"portRangeMax"`
 	// schema: Deprecated
-	PortRangeMin *int `pulumi:"portRangeMin"`
-	// The port value range.
-	Ports *string `pulumi:"ports"`
-	// The priority number.
-	Priority *int `pulumi:"priority"`
-	// The protocol type.
-	Protocol *string `pulumi:"protocol"`
-	// The ID of the remote address group.
+	PortRangeMin         *int    `pulumi:"portRangeMin"`
+	Ports                *string `pulumi:"ports"`
+	Priority             *int    `pulumi:"priority"`
+	Protocol             *string `pulumi:"protocol"`
 	RemoteAddressGroupId *string `pulumi:"remoteAddressGroupId"`
-	// The ID of the peer security group.
-	RemoteGroupId *string `pulumi:"remoteGroupId"`
-	// The remote IP address. The value can be in the CIDR format or IP addresses.
-	RemoteIpPrefix *string `pulumi:"remoteIpPrefix"`
+	RemoteGroupId        *string `pulumi:"remoteGroupId"`
+	RemoteIpPrefix       *string `pulumi:"remoteIpPrefix"`
 }
 
 // SecgroupRuleTypeInput is an input type that accepts SecgroupRuleTypeArgs and SecgroupRuleTypeOutput values.
@@ -881,32 +774,21 @@ type SecgroupRuleTypeInput interface {
 }
 
 type SecgroupRuleTypeArgs struct {
-	// The effective policy.
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Description of the security group.
+	Action      pulumi.StringPtrInput `pulumi:"action"`
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The direction of the rule. The value can be *egress* or *ingress*.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// The IP protocol version. The value can be *IPv4* or *IPv6*.
-	Ethertype pulumi.StringPtrInput `pulumi:"ethertype"`
-	// The security group rule ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Direction   pulumi.StringPtrInput `pulumi:"direction"`
+	Ethertype   pulumi.StringPtrInput `pulumi:"ethertype"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
 	// schema: Deprecated
 	PortRangeMax pulumi.IntPtrInput `pulumi:"portRangeMax"`
 	// schema: Deprecated
-	PortRangeMin pulumi.IntPtrInput `pulumi:"portRangeMin"`
-	// The port value range.
-	Ports pulumi.StringPtrInput `pulumi:"ports"`
-	// The priority number.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// The protocol type.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The ID of the remote address group.
+	PortRangeMin         pulumi.IntPtrInput    `pulumi:"portRangeMin"`
+	Ports                pulumi.StringPtrInput `pulumi:"ports"`
+	Priority             pulumi.IntPtrInput    `pulumi:"priority"`
+	Protocol             pulumi.StringPtrInput `pulumi:"protocol"`
 	RemoteAddressGroupId pulumi.StringPtrInput `pulumi:"remoteAddressGroupId"`
-	// The ID of the peer security group.
-	RemoteGroupId pulumi.StringPtrInput `pulumi:"remoteGroupId"`
-	// The remote IP address. The value can be in the CIDR format or IP addresses.
-	RemoteIpPrefix pulumi.StringPtrInput `pulumi:"remoteIpPrefix"`
+	RemoteGroupId        pulumi.StringPtrInput `pulumi:"remoteGroupId"`
+	RemoteIpPrefix       pulumi.StringPtrInput `pulumi:"remoteIpPrefix"`
 }
 
 func (SecgroupRuleTypeArgs) ElementType() reflect.Type {
@@ -960,27 +842,22 @@ func (o SecgroupRuleTypeOutput) ToSecgroupRuleTypeOutputWithContext(ctx context.
 	return o
 }
 
-// The effective policy.
 func (o SecgroupRuleTypeOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// Description of the security group.
 func (o SecgroupRuleTypeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction of the rule. The value can be *egress* or *ingress*.
 func (o SecgroupRuleTypeOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// The IP protocol version. The value can be *IPv4* or *IPv6*.
 func (o SecgroupRuleTypeOutput) Ethertype() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Ethertype }).(pulumi.StringPtrOutput)
 }
 
-// The security group rule ID.
 func (o SecgroupRuleTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -995,32 +872,26 @@ func (o SecgroupRuleTypeOutput) PortRangeMin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *int { return v.PortRangeMin }).(pulumi.IntPtrOutput)
 }
 
-// The port value range.
 func (o SecgroupRuleTypeOutput) Ports() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Ports }).(pulumi.StringPtrOutput)
 }
 
-// The priority number.
 func (o SecgroupRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The protocol type.
 func (o SecgroupRuleTypeOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the remote address group.
 func (o SecgroupRuleTypeOutput) RemoteAddressGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.RemoteAddressGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the peer security group.
 func (o SecgroupRuleTypeOutput) RemoteGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.RemoteGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The remote IP address. The value can be in the CIDR format or IP addresses.
 func (o SecgroupRuleTypeOutput) RemoteIpPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecgroupRuleType) *string { return v.RemoteIpPrefix }).(pulumi.StringPtrOutput)
 }
@@ -1147,12 +1018,10 @@ func (o VpcRouteArrayOutput) Index(i pulumi.IntInput) VpcRouteOutput {
 
 type GetAddressGroupsAddressGroup struct {
 	// IP address sets in an IP address group.
-	// Value range: a single IP address, IP address range, or CIDR block.
 	Addresses []string `pulumi:"addresses"`
 	// Time when the IP address group is created.
 	CreatedAt string `pulumi:"createdAt"`
-	// Provides supplementary information about an IP address group,
-	// which can be used to filter the IP address group.
+	// The supplementary information about the IP address group.
 	Description string `pulumi:"description"`
 	// Enterprise project ID.
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
@@ -1160,20 +1029,13 @@ type GetAddressGroupsAddressGroup struct {
 	Id string `pulumi:"id"`
 	// IP addresses and their remarks in an IP address group.
 	IpExtraSets []GetAddressGroupsAddressGroupIpExtraSet `pulumi:"ipExtraSets"`
-	// Version of IP addresses in an IP address group,
-	// which can be used to filter the IP address group.
+	// Whether it is an IPv4 or IPv6 address group.
 	IpVersion int `pulumi:"ipVersion"`
 	// Maximum number of entries in an address group,
-	// which limits the number of addresses that can be contained in an address group.
 	MaxCapacity int `pulumi:"maxCapacity"`
-	// Name of an IP address group, which can be used to filter the IP address group.
+	// IP address group name.
 	Name string `pulumi:"name"`
 	// The status of IP address group.
-	// Valid values are:
-	// + `NORMAL`: normal status.
-	// + `UPDATING`: updating.
-	// + `UPDATE_FAILED`: update failed.
-	//   When the status of IP address group is `UPDATING`, the IP address group cannot be updated again.
 	Status string `pulumi:"status"`
 	// The status details of IP address group.
 	StatusMessage string `pulumi:"statusMessage"`
@@ -1194,12 +1056,10 @@ type GetAddressGroupsAddressGroupInput interface {
 
 type GetAddressGroupsAddressGroupArgs struct {
 	// IP address sets in an IP address group.
-	// Value range: a single IP address, IP address range, or CIDR block.
 	Addresses pulumi.StringArrayInput `pulumi:"addresses"`
 	// Time when the IP address group is created.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Provides supplementary information about an IP address group,
-	// which can be used to filter the IP address group.
+	// The supplementary information about the IP address group.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Enterprise project ID.
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
@@ -1207,20 +1067,13 @@ type GetAddressGroupsAddressGroupArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// IP addresses and their remarks in an IP address group.
 	IpExtraSets GetAddressGroupsAddressGroupIpExtraSetArrayInput `pulumi:"ipExtraSets"`
-	// Version of IP addresses in an IP address group,
-	// which can be used to filter the IP address group.
+	// Whether it is an IPv4 or IPv6 address group.
 	IpVersion pulumi.IntInput `pulumi:"ipVersion"`
 	// Maximum number of entries in an address group,
-	// which limits the number of addresses that can be contained in an address group.
 	MaxCapacity pulumi.IntInput `pulumi:"maxCapacity"`
-	// Name of an IP address group, which can be used to filter the IP address group.
+	// IP address group name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The status of IP address group.
-	// Valid values are:
-	// + `NORMAL`: normal status.
-	// + `UPDATING`: updating.
-	// + `UPDATE_FAILED`: update failed.
-	//   When the status of IP address group is `UPDATING`, the IP address group cannot be updated again.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The status details of IP address group.
 	StatusMessage pulumi.StringInput `pulumi:"statusMessage"`
@@ -1280,7 +1133,6 @@ func (o GetAddressGroupsAddressGroupOutput) ToGetAddressGroupsAddressGroupOutput
 }
 
 // IP address sets in an IP address group.
-// Value range: a single IP address, IP address range, or CIDR block.
 func (o GetAddressGroupsAddressGroupOutput) Addresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) []string { return v.Addresses }).(pulumi.StringArrayOutput)
 }
@@ -1290,8 +1142,7 @@ func (o GetAddressGroupsAddressGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Provides supplementary information about an IP address group,
-// which can be used to filter the IP address group.
+// The supplementary information about the IP address group.
 func (o GetAddressGroupsAddressGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -1311,29 +1162,22 @@ func (o GetAddressGroupsAddressGroupOutput) IpExtraSets() GetAddressGroupsAddres
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) []GetAddressGroupsAddressGroupIpExtraSet { return v.IpExtraSets }).(GetAddressGroupsAddressGroupIpExtraSetArrayOutput)
 }
 
-// Version of IP addresses in an IP address group,
-// which can be used to filter the IP address group.
+// Whether it is an IPv4 or IPv6 address group.
 func (o GetAddressGroupsAddressGroupOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) int { return v.IpVersion }).(pulumi.IntOutput)
 }
 
 // Maximum number of entries in an address group,
-// which limits the number of addresses that can be contained in an address group.
 func (o GetAddressGroupsAddressGroupOutput) MaxCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) int { return v.MaxCapacity }).(pulumi.IntOutput)
 }
 
-// Name of an IP address group, which can be used to filter the IP address group.
+// IP address group name.
 func (o GetAddressGroupsAddressGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The status of IP address group.
-// Valid values are:
-//   - `NORMAL`: normal status.
-//   - `UPDATING`: updating.
-//   - `UPDATE_FAILED`: update failed.
-//     When the status of IP address group is `UPDATING`, the IP address group cannot be updated again.
 func (o GetAddressGroupsAddressGroupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressGroupsAddressGroup) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1475,14 +1319,10 @@ func (o GetAddressGroupsAddressGroupIpExtraSetArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetRouteTableRoute struct {
-	// (String) - The description about the route.
 	Description string `pulumi:"description"`
-	// (String) - The destination address in the CIDR notation format
 	Destination string `pulumi:"destination"`
-	// (String) - The next hop.
-	Nexthop string `pulumi:"nexthop"`
-	// (String) - The route type.
-	Type string `pulumi:"type"`
+	Nexthop     string `pulumi:"nexthop"`
+	Type        string `pulumi:"type"`
 }
 
 // GetRouteTableRouteInput is an input type that accepts GetRouteTableRouteArgs and GetRouteTableRouteOutput values.
@@ -1497,14 +1337,10 @@ type GetRouteTableRouteInput interface {
 }
 
 type GetRouteTableRouteArgs struct {
-	// (String) - The description about the route.
 	Description pulumi.StringInput `pulumi:"description"`
-	// (String) - The destination address in the CIDR notation format
 	Destination pulumi.StringInput `pulumi:"destination"`
-	// (String) - The next hop.
-	Nexthop pulumi.StringInput `pulumi:"nexthop"`
-	// (String) - The route type.
-	Type pulumi.StringInput `pulumi:"type"`
+	Nexthop     pulumi.StringInput `pulumi:"nexthop"`
+	Type        pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetRouteTableRouteArgs) ElementType() reflect.Type {
@@ -1558,22 +1394,18 @@ func (o GetRouteTableRouteOutput) ToGetRouteTableRouteOutputWithContext(ctx cont
 	return o
 }
 
-// (String) - The description about the route.
 func (o GetRouteTableRouteOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableRoute) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (String) - The destination address in the CIDR notation format
 func (o GetRouteTableRouteOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableRoute) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// (String) - The next hop.
 func (o GetRouteTableRouteOutput) Nexthop() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableRoute) string { return v.Nexthop }).(pulumi.StringOutput)
 }
 
-// (String) - The route type.
 func (o GetRouteTableRouteOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouteTableRoute) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1599,15 +1431,15 @@ func (o GetRouteTableRouteArrayOutput) Index(i pulumi.IntInput) GetRouteTableRou
 }
 
 type GetRoutesRoute struct {
-	// Specifies the route destination.
+	// The route destination.
 	Destination string `pulumi:"destination"`
 	// The route ID.
 	Id string `pulumi:"id"`
 	// The next hop of the route.
 	Nexthop string `pulumi:"nexthop"`
-	// Specifies the route type.
+	// The route type.
 	Type string `pulumi:"type"`
-	// Specifies the ID of the VPC to which the route belongs.
+	// The ID of the VPC to which the route belongs.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -1623,15 +1455,15 @@ type GetRoutesRouteInput interface {
 }
 
 type GetRoutesRouteArgs struct {
-	// Specifies the route destination.
+	// The route destination.
 	Destination pulumi.StringInput `pulumi:"destination"`
 	// The route ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The next hop of the route.
 	Nexthop pulumi.StringInput `pulumi:"nexthop"`
-	// Specifies the route type.
+	// The route type.
 	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies the ID of the VPC to which the route belongs.
+	// The ID of the VPC to which the route belongs.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -1686,7 +1518,7 @@ func (o GetRoutesRouteOutput) ToGetRoutesRouteOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Specifies the route destination.
+// The route destination.
 func (o GetRoutesRouteOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutesRoute) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -1701,12 +1533,12 @@ func (o GetRoutesRouteOutput) Nexthop() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutesRoute) string { return v.Nexthop }).(pulumi.StringOutput)
 }
 
-// Specifies the route type.
+// The route type.
 func (o GetRoutesRouteOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutesRoute) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the ID of the VPC to which the route belongs.
+// The ID of the VPC to which the route belongs.
 func (o GetRoutesRouteOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutesRoute) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -1732,32 +1564,21 @@ func (o GetRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetRoutesRouteOutput
 }
 
 type GetSecgroupRuleType struct {
-	// The effective policy.
-	Action string `pulumi:"action"`
-	// The supplementary information about the security group rule.
+	Action      string `pulumi:"action"`
 	Description string `pulumi:"description"`
-	// The direction of the rule. The value can be *egress* or *ingress*.
-	Direction string `pulumi:"direction"`
-	// The IP protocol version. The value can be *IPv4* or *IPv6*.
-	Ethertype string `pulumi:"ethertype"`
-	// The security group rule ID.
-	Id string `pulumi:"id"`
+	Direction   string `pulumi:"direction"`
+	Ethertype   string `pulumi:"ethertype"`
+	Id          string `pulumi:"id"`
 	// schema: Deprecated
 	PortRangeMax int `pulumi:"portRangeMax"`
 	// schema: Deprecated
-	PortRangeMin int `pulumi:"portRangeMin"`
-	// The port value range.
-	Ports string `pulumi:"ports"`
-	// The priority number.
-	Priority int `pulumi:"priority"`
-	// The protocol type.
-	Protocol string `pulumi:"protocol"`
-	// The ID of the remote address group.
+	PortRangeMin         int    `pulumi:"portRangeMin"`
+	Ports                string `pulumi:"ports"`
+	Priority             int    `pulumi:"priority"`
+	Protocol             string `pulumi:"protocol"`
 	RemoteAddressGroupId string `pulumi:"remoteAddressGroupId"`
-	// The ID of the peer security group.
-	RemoteGroupId string `pulumi:"remoteGroupId"`
-	// The remote IP address. The value can be in the CIDR format or IP addresses.
-	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+	RemoteGroupId        string `pulumi:"remoteGroupId"`
+	RemoteIpPrefix       string `pulumi:"remoteIpPrefix"`
 }
 
 // GetSecgroupRuleTypeInput is an input type that accepts GetSecgroupRuleTypeArgs and GetSecgroupRuleTypeOutput values.
@@ -1772,32 +1593,21 @@ type GetSecgroupRuleTypeInput interface {
 }
 
 type GetSecgroupRuleTypeArgs struct {
-	// The effective policy.
-	Action pulumi.StringInput `pulumi:"action"`
-	// The supplementary information about the security group rule.
+	Action      pulumi.StringInput `pulumi:"action"`
 	Description pulumi.StringInput `pulumi:"description"`
-	// The direction of the rule. The value can be *egress* or *ingress*.
-	Direction pulumi.StringInput `pulumi:"direction"`
-	// The IP protocol version. The value can be *IPv4* or *IPv6*.
-	Ethertype pulumi.StringInput `pulumi:"ethertype"`
-	// The security group rule ID.
-	Id pulumi.StringInput `pulumi:"id"`
+	Direction   pulumi.StringInput `pulumi:"direction"`
+	Ethertype   pulumi.StringInput `pulumi:"ethertype"`
+	Id          pulumi.StringInput `pulumi:"id"`
 	// schema: Deprecated
 	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
 	// schema: Deprecated
-	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
-	// The port value range.
-	Ports pulumi.StringInput `pulumi:"ports"`
-	// The priority number.
-	Priority pulumi.IntInput `pulumi:"priority"`
-	// The protocol type.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The ID of the remote address group.
+	PortRangeMin         pulumi.IntInput    `pulumi:"portRangeMin"`
+	Ports                pulumi.StringInput `pulumi:"ports"`
+	Priority             pulumi.IntInput    `pulumi:"priority"`
+	Protocol             pulumi.StringInput `pulumi:"protocol"`
 	RemoteAddressGroupId pulumi.StringInput `pulumi:"remoteAddressGroupId"`
-	// The ID of the peer security group.
-	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
-	// The remote IP address. The value can be in the CIDR format or IP addresses.
-	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+	RemoteGroupId        pulumi.StringInput `pulumi:"remoteGroupId"`
+	RemoteIpPrefix       pulumi.StringInput `pulumi:"remoteIpPrefix"`
 }
 
 func (GetSecgroupRuleTypeArgs) ElementType() reflect.Type {
@@ -1851,27 +1661,22 @@ func (o GetSecgroupRuleTypeOutput) ToGetSecgroupRuleTypeOutputWithContext(ctx co
 	return o
 }
 
-// The effective policy.
 func (o GetSecgroupRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// The supplementary information about the security group rule.
 func (o GetSecgroupRuleTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The direction of the rule. The value can be *egress* or *ingress*.
 func (o GetSecgroupRuleTypeOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// The IP protocol version. The value can be *IPv4* or *IPv6*.
 func (o GetSecgroupRuleTypeOutput) Ethertype() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Ethertype }).(pulumi.StringOutput)
 }
 
-// The security group rule ID.
 func (o GetSecgroupRuleTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -1886,32 +1691,26 @@ func (o GetSecgroupRuleTypeOutput) PortRangeMin() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) int { return v.PortRangeMin }).(pulumi.IntOutput)
 }
 
-// The port value range.
 func (o GetSecgroupRuleTypeOutput) Ports() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Ports }).(pulumi.StringOutput)
 }
 
-// The priority number.
 func (o GetSecgroupRuleTypeOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The protocol type.
 func (o GetSecgroupRuleTypeOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The ID of the remote address group.
 func (o GetSecgroupRuleTypeOutput) RemoteAddressGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.RemoteAddressGroupId }).(pulumi.StringOutput)
 }
 
-// The ID of the peer security group.
 func (o GetSecgroupRuleTypeOutput) RemoteGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.RemoteGroupId }).(pulumi.StringOutput)
 }
 
-// The remote IP address. The value can be in the CIDR format or IP addresses.
 func (o GetSecgroupRuleTypeOutput) RemoteIpPrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupRuleType) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
 }
@@ -1937,19 +1736,12 @@ func (o GetSecgroupRuleTypeArrayOutput) Index(i pulumi.IntInput) GetSecgroupRule
 }
 
 type GetSecgroupsSecurityGroup struct {
-	// The creation time, in UTC format.
-	CreatedAt string `pulumi:"createdAt"`
-	// Specifies the description of the security group. The security groups can be
-	// filtered by keywords in the description.
-	Description string `pulumi:"description"`
-	// Specifies the enterprise project ID of the security group.
+	CreatedAt           string `pulumi:"createdAt"`
+	Description         string `pulumi:"description"`
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// Specifies the id of the desired security group.
-	Id string `pulumi:"id"`
-	// Specifies the name of the security group.
-	Name string `pulumi:"name"`
-	// The last update time, in UTC format.
-	UpdatedAt string `pulumi:"updatedAt"`
+	Id                  string `pulumi:"id"`
+	Name                string `pulumi:"name"`
+	UpdatedAt           string `pulumi:"updatedAt"`
 }
 
 // GetSecgroupsSecurityGroupInput is an input type that accepts GetSecgroupsSecurityGroupArgs and GetSecgroupsSecurityGroupOutput values.
@@ -1964,19 +1756,12 @@ type GetSecgroupsSecurityGroupInput interface {
 }
 
 type GetSecgroupsSecurityGroupArgs struct {
-	// The creation time, in UTC format.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Specifies the description of the security group. The security groups can be
-	// filtered by keywords in the description.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the enterprise project ID of the security group.
+	CreatedAt           pulumi.StringInput `pulumi:"createdAt"`
+	Description         pulumi.StringInput `pulumi:"description"`
 	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// Specifies the id of the desired security group.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the security group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The last update time, in UTC format.
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	Id                  pulumi.StringInput `pulumi:"id"`
+	Name                pulumi.StringInput `pulumi:"name"`
+	UpdatedAt           pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetSecgroupsSecurityGroupArgs) ElementType() reflect.Type {
@@ -2030,33 +1815,26 @@ func (o GetSecgroupsSecurityGroupOutput) ToGetSecgroupsSecurityGroupOutputWithCo
 	return o
 }
 
-// The creation time, in UTC format.
 func (o GetSecgroupsSecurityGroupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsSecurityGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Specifies the description of the security group. The security groups can be
-// filtered by keywords in the description.
 func (o GetSecgroupsSecurityGroupOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsSecurityGroup) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID of the security group.
 func (o GetSecgroupsSecurityGroupOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsSecurityGroup) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the id of the desired security group.
 func (o GetSecgroupsSecurityGroupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsSecurityGroup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the security group.
 func (o GetSecgroupsSecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The last update time, in UTC format.
 func (o GetSecgroupsSecurityGroupOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecgroupsSecurityGroup) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -2082,42 +1860,26 @@ func (o GetSecgroupsSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetSecgro
 }
 
 type GetSubnetsSubnet struct {
-	// Specifies the availability zone (AZ) to which the desired subnet belongs to.
-	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Specifies the network segment of desired subnet. The value must be in CIDR format.
-	Cidr        string   `pulumi:"cidr"`
-	Description string   `pulumi:"description"`
-	DhcpEnable  bool     `pulumi:"dhcpEnable"`
-	DnsLists    []string `pulumi:"dnsLists"`
-	// Specifies the subnet gateway address of desired subnet.
-	GatewayIp string `pulumi:"gatewayIp"`
-	// Specifies the id of the desired subnet.
-	Id           string `pulumi:"id"`
-	Ipv4SubnetId string `pulumi:"ipv4SubnetId"`
-	Ipv6Cidr     string `pulumi:"ipv6Cidr"`
-	Ipv6Enable   bool   `pulumi:"ipv6Enable"`
-	Ipv6Gateway  string `pulumi:"ipv6Gateway"`
-	Ipv6SubnetId string `pulumi:"ipv6SubnetId"`
-	// Specifies the name of the desired subnet.
-	Name string `pulumi:"name"`
-	// Specifies the IP address of DNS server 1 on the desired subnet.
-	PrimaryDns string `pulumi:"primaryDns"`
-	// Specifies the IP address of DNS server 2 on the desired subnet.
-	SecondaryDns string `pulumi:"secondaryDns"`
-	// Specifies the current status of the desired subnet.
-	// the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-	Status string `pulumi:"status"`
+	AvailabilityZone string   `pulumi:"availabilityZone"`
+	Cidr             string   `pulumi:"cidr"`
+	Description      string   `pulumi:"description"`
+	DhcpEnable       bool     `pulumi:"dhcpEnable"`
+	DnsLists         []string `pulumi:"dnsLists"`
+	GatewayIp        string   `pulumi:"gatewayIp"`
+	Id               string   `pulumi:"id"`
+	Ipv4SubnetId     string   `pulumi:"ipv4SubnetId"`
+	Ipv6Cidr         string   `pulumi:"ipv6Cidr"`
+	Ipv6Enable       bool     `pulumi:"ipv6Enable"`
+	Ipv6Gateway      string   `pulumi:"ipv6Gateway"`
+	Ipv6SubnetId     string   `pulumi:"ipv6SubnetId"`
+	Name             string   `pulumi:"name"`
+	PrimaryDns       string   `pulumi:"primaryDns"`
+	SecondaryDns     string   `pulumi:"secondaryDns"`
+	Status           string   `pulumi:"status"`
 	// schema: Deprecated
-	SubnetId string `pulumi:"subnetId"`
-	// Specifies the included key/value pairs which associated with the desired subnet.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the id of the VPC that the desired subnet belongs to.
-	VpcId string `pulumi:"vpcId"`
+	SubnetId string            `pulumi:"subnetId"`
+	Tags     map[string]string `pulumi:"tags"`
+	VpcId    string            `pulumi:"vpcId"`
 }
 
 // GetSubnetsSubnetInput is an input type that accepts GetSubnetsSubnetArgs and GetSubnetsSubnetOutput values.
@@ -2132,42 +1894,26 @@ type GetSubnetsSubnetInput interface {
 }
 
 type GetSubnetsSubnetArgs struct {
-	// Specifies the availability zone (AZ) to which the desired subnet belongs to.
-	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Specifies the network segment of desired subnet. The value must be in CIDR format.
-	Cidr        pulumi.StringInput      `pulumi:"cidr"`
-	Description pulumi.StringInput      `pulumi:"description"`
-	DhcpEnable  pulumi.BoolInput        `pulumi:"dhcpEnable"`
-	DnsLists    pulumi.StringArrayInput `pulumi:"dnsLists"`
-	// Specifies the subnet gateway address of desired subnet.
-	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
-	// Specifies the id of the desired subnet.
-	Id           pulumi.StringInput `pulumi:"id"`
-	Ipv4SubnetId pulumi.StringInput `pulumi:"ipv4SubnetId"`
-	Ipv6Cidr     pulumi.StringInput `pulumi:"ipv6Cidr"`
-	Ipv6Enable   pulumi.BoolInput   `pulumi:"ipv6Enable"`
-	Ipv6Gateway  pulumi.StringInput `pulumi:"ipv6Gateway"`
-	Ipv6SubnetId pulumi.StringInput `pulumi:"ipv6SubnetId"`
-	// Specifies the name of the desired subnet.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the IP address of DNS server 1 on the desired subnet.
-	PrimaryDns pulumi.StringInput `pulumi:"primaryDns"`
-	// Specifies the IP address of DNS server 2 on the desired subnet.
-	SecondaryDns pulumi.StringInput `pulumi:"secondaryDns"`
-	// Specifies the current status of the desired subnet.
-	// the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-	Status pulumi.StringInput `pulumi:"status"`
+	AvailabilityZone pulumi.StringInput      `pulumi:"availabilityZone"`
+	Cidr             pulumi.StringInput      `pulumi:"cidr"`
+	Description      pulumi.StringInput      `pulumi:"description"`
+	DhcpEnable       pulumi.BoolInput        `pulumi:"dhcpEnable"`
+	DnsLists         pulumi.StringArrayInput `pulumi:"dnsLists"`
+	GatewayIp        pulumi.StringInput      `pulumi:"gatewayIp"`
+	Id               pulumi.StringInput      `pulumi:"id"`
+	Ipv4SubnetId     pulumi.StringInput      `pulumi:"ipv4SubnetId"`
+	Ipv6Cidr         pulumi.StringInput      `pulumi:"ipv6Cidr"`
+	Ipv6Enable       pulumi.BoolInput        `pulumi:"ipv6Enable"`
+	Ipv6Gateway      pulumi.StringInput      `pulumi:"ipv6Gateway"`
+	Ipv6SubnetId     pulumi.StringInput      `pulumi:"ipv6SubnetId"`
+	Name             pulumi.StringInput      `pulumi:"name"`
+	PrimaryDns       pulumi.StringInput      `pulumi:"primaryDns"`
+	SecondaryDns     pulumi.StringInput      `pulumi:"secondaryDns"`
+	Status           pulumi.StringInput      `pulumi:"status"`
 	// schema: Deprecated
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Specifies the included key/value pairs which associated with the desired subnet.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the id of the VPC that the desired subnet belongs to.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	SubnetId pulumi.StringInput    `pulumi:"subnetId"`
+	Tags     pulumi.StringMapInput `pulumi:"tags"`
+	VpcId    pulumi.StringInput    `pulumi:"vpcId"`
 }
 
 func (GetSubnetsSubnetArgs) ElementType() reflect.Type {
@@ -2221,12 +1967,10 @@ func (o GetSubnetsSubnetOutput) ToGetSubnetsSubnetOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the availability zone (AZ) to which the desired subnet belongs to.
 func (o GetSubnetsSubnetOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Specifies the network segment of desired subnet. The value must be in CIDR format.
 func (o GetSubnetsSubnetOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Cidr }).(pulumi.StringOutput)
 }
@@ -2243,12 +1987,10 @@ func (o GetSubnetsSubnetOutput) DnsLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) []string { return v.DnsLists }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the subnet gateway address of desired subnet.
 func (o GetSubnetsSubnetOutput) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.GatewayIp }).(pulumi.StringOutput)
 }
 
-// Specifies the id of the desired subnet.
 func (o GetSubnetsSubnetOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2273,23 +2015,18 @@ func (o GetSubnetsSubnetOutput) Ipv6SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Ipv6SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the desired subnet.
 func (o GetSubnetsSubnetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the IP address of DNS server 1 on the desired subnet.
 func (o GetSubnetsSubnetOutput) PrimaryDns() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.PrimaryDns }).(pulumi.StringOutput)
 }
 
-// Specifies the IP address of DNS server 2 on the desired subnet.
 func (o GetSubnetsSubnetOutput) SecondaryDns() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.SecondaryDns }).(pulumi.StringOutput)
 }
 
-// Specifies the current status of the desired subnet.
-// the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
 func (o GetSubnetsSubnetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2299,17 +2036,10 @@ func (o GetSubnetsSubnetOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Specifies the included key/value pairs which associated with the desired subnet.
-//
-// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-// The values are in the OR relationship.
 func (o GetSubnetsSubnetOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Specifies the id of the VPC that the desired subnet belongs to.
 func (o GetSubnetsSubnetOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -2435,27 +2165,14 @@ func (o GetVpcRouteArrayOutput) Index(i pulumi.IntInput) GetVpcRouteOutput {
 }
 
 type GetVpcsVpc struct {
-	// Specifies the cidr block of the desired VPC.
-	Cidr string `pulumi:"cidr"`
-	// Indicates the description of the VPC.
-	Description string `pulumi:"description"`
-	// Specifies the enterprise project ID which the desired VPC belongs to.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// Specifies the id of the desired VPC.
-	Id string `pulumi:"id"`
-	// Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-	// and can contain digits, letters, underscores (_) and hyphens (-).
-	Name           string   `pulumi:"name"`
-	SecondaryCidrs []string `pulumi:"secondaryCidrs"`
-	// Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-	Status string `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired VPC.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags map[string]string `pulumi:"tags"`
+	Cidr                string            `pulumi:"cidr"`
+	Description         string            `pulumi:"description"`
+	EnterpriseProjectId string            `pulumi:"enterpriseProjectId"`
+	Id                  string            `pulumi:"id"`
+	Name                string            `pulumi:"name"`
+	SecondaryCidrs      []string          `pulumi:"secondaryCidrs"`
+	Status              string            `pulumi:"status"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // GetVpcsVpcInput is an input type that accepts GetVpcsVpcArgs and GetVpcsVpcOutput values.
@@ -2470,27 +2187,14 @@ type GetVpcsVpcInput interface {
 }
 
 type GetVpcsVpcArgs struct {
-	// Specifies the cidr block of the desired VPC.
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Indicates the description of the VPC.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Specifies the enterprise project ID which the desired VPC belongs to.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// Specifies the id of the desired VPC.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-	// and can contain digits, letters, underscores (_) and hyphens (-).
-	Name           pulumi.StringInput      `pulumi:"name"`
-	SecondaryCidrs pulumi.StringArrayInput `pulumi:"secondaryCidrs"`
-	// Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired VPC.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	Cidr                pulumi.StringInput      `pulumi:"cidr"`
+	Description         pulumi.StringInput      `pulumi:"description"`
+	EnterpriseProjectId pulumi.StringInput      `pulumi:"enterpriseProjectId"`
+	Id                  pulumi.StringInput      `pulumi:"id"`
+	Name                pulumi.StringInput      `pulumi:"name"`
+	SecondaryCidrs      pulumi.StringArrayInput `pulumi:"secondaryCidrs"`
+	Status              pulumi.StringInput      `pulumi:"status"`
+	Tags                pulumi.StringMapInput   `pulumi:"tags"`
 }
 
 func (GetVpcsVpcArgs) ElementType() reflect.Type {
@@ -2544,28 +2248,22 @@ func (o GetVpcsVpcOutput) ToGetVpcsVpcOutputWithContext(ctx context.Context) Get
 	return o
 }
 
-// Specifies the cidr block of the desired VPC.
 func (o GetVpcsVpcOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// Indicates the description of the VPC.
 func (o GetVpcsVpcOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the enterprise project ID which the desired VPC belongs to.
 func (o GetVpcsVpcOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the id of the desired VPC.
 func (o GetVpcsVpcOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the desired VPC. The value is a string of no more than 64 characters
-// and can contain digits, letters, underscores (_) and hyphens (-).
 func (o GetVpcsVpcOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2574,17 +2272,10 @@ func (o GetVpcsVpcOutput) SecondaryCidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpcsVpc) []string { return v.SecondaryCidrs }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the current status of the desired VPC. The value can be CREATING, OK or ERROR.
 func (o GetVpcsVpcOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the included key/value pairs which associated with the desired VPC.
-//
-// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-// The values are in the OR relationship.
 func (o GetVpcsVpcOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetVpcsVpc) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

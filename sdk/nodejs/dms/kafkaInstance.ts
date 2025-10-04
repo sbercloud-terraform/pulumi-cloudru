@@ -6,92 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manage DMS Kafka instance resources within SberCloud.
- *
- * ## Example Usage
- *
- * ### Create a Kafka instance using flavor ID
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const subnetId = config.requireObject<any>("subnetId");
- * const securityGroupId = config.requireObject<any>("securityGroupId");
- * const availabilityZones = config.getObject<any>("availabilityZones") || [
- *     "your_availability_zones_a",
- *     "your_availability_zones_b",
- *     "your_availability_zones_c",
- * ];
- * const flavorId = config.get("flavorId") || "your_flavor_id, such: c6.2u4g.cluster";
- * const storageSpecCode = config.get("storageSpecCode") || "your_storage_spec_code, such: dms.physical.storage.ultra.v2";
- * const test = sbercloud.Dms.getFlavors({
- *     type: "cluster",
- *     flavorId: flavorId,
- *     availabilityZones: availabilityZones,
- *     storageSpecCode: storageSpecCode,
- * });
- * const testKafkaInstance = new sbercloud.dms.KafkaInstance("test", {
- *     name: "kafka_test",
- *     vpcId: vpcId,
- *     networkId: subnetId,
- *     securityGroupId: securityGroupId,
- *     flavorId: flavorId,
- *     storageSpecCode: storageSpecCode,
- *     availabilityZones: availabilityZones,
- *     engineVersion: "2.7",
- *     storageSpace: 600,
- *     brokerNum: 3,
- *     accessUser: "user",
- *     password: "Kafka_%^&_Test",
- *     managerUser: "kafka_manager",
- *     managerPassword: "Kafka_Test^&*(",
- * }, {
- *     dependsOn: [test],
- * });
- * ```
- *
- * > **Why depend on "data.sbercloud_dms_kafka_flavors.test", it is not used?**
- * The specified `flavorId` and `storageSpecCode` are not valid in all regions.
- * Before creating kafka, verify their validity through datasource to avoid creation errors.
- *
- * ## Import
- *
- * DMS Kafka instance can be imported using the instance id, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Dms/kafkaInstance:KafkaInstance  sbercloud_dms_kafka_instance.instance_1 8d3c7938-dc47-4937-a30f-c80de381c5e3
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include:
- *
- * `password`, `manager_password` and `public_ip_ids`. It is generally recommended running `pulumi preview` after importing
- *
- * a DMS Kafka instance. You can then decide if changes should be applied to the instance, or the resource definition
- *
- * should be updated to align with the instance. Also you can ignore changes as below.
- *
- * resource "sbercloud_dms_kafka_instance" "instance_1" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       password, manager_password,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class KafkaInstance extends pulumi.CustomResource {
     /**
      * Get an existing KafkaInstance resource's state with the given name, ID, and optional extra
@@ -120,27 +34,11 @@ export class KafkaInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === KafkaInstance.__pulumiType;
     }
 
-    /**
-     * Specifies the username of SASL_SSL user. A username consists of 4
-     * to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-     */
     declare public readonly accessUser: pulumi.Output<string | undefined>;
     declare public readonly archType: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "false".
-     *
-     * <a name="dmsCrossVpcAccesses"></a>
-     * The `crossVpcAccesses` block supports:
-     */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
     /**
-     * The names of the AZ where the Kafka instances reside.
-     * The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-     *
-     * > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-     * Deploy to more availability zones, the better the reliability and SLA coverage.
-     *
-     * > The parameter behavior of `availabilityZones` has been changed from `list` to `set`.
+     * schema: Required
      */
     declare public readonly availabilityZones: pulumi.Output<string[]>;
     /**
@@ -151,78 +49,23 @@ export class KafkaInstance extends pulumi.CustomResource {
      * @deprecated The bandwidth has been deprecated. If you need to change the bandwidth, please update the product_id.
      */
     declare public readonly bandwidth: pulumi.Output<string>;
-    /**
-     * Specifies the broker numbers.
-     * It is required when creating an instance with `flavorId`.
-     */
     declare public readonly brokerNum: pulumi.Output<number>;
     declare public /*out*/ readonly certReplaced: pulumi.Output<boolean>;
-    /**
-     * Specifies the charging mode of the instance. Valid values are *prePaid*
-     * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-     */
     declare public readonly chargingMode: pulumi.Output<string>;
-    /**
-     * Indicates the IP address of the DMS Kafka instance.
-     */
     declare public /*out*/ readonly connectAddress: pulumi.Output<string>;
     declare public /*out*/ readonly connectorId: pulumi.Output<string>;
     declare public /*out*/ readonly connectorNodeNum: pulumi.Output<number>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies the cross-VPC access information.
-     * The object structure is documented below.
-     */
     declare public readonly crossVpcAccesses: pulumi.Output<outputs.Dms.KafkaInstanceCrossVpcAccess[]>;
-    /**
-     * Specifies the description of the DMS Kafka instance. It is a character string
-     * containing not more than 1,024 characters.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable message dumping.
-     * Changing this creates a new instance resource.
-     */
     declare public readonly dumping: pulumi.Output<boolean>;
-    /**
-     * Specifies whether to enable automatic topic creation. If automatic
-     * topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-     * produced to or consumed from a topic that does not exist.
-     * The default value is false.
-     * Changing this creates a new instance resource.
-     */
     declare public readonly enableAutoTopic: pulumi.Output<boolean>;
-    /**
-     * Indicates whether public access to the DMS Kafka instance is enabled.
-     */
     declare public /*out*/ readonly enablePublicIp: pulumi.Output<boolean>;
     declare public readonly enabledMechanisms: pulumi.Output<string[] | undefined>;
-    /**
-     * Indicates the message engine.
-     */
     declare public /*out*/ readonly engine: pulumi.Output<string>;
-    /**
-     * Specifies the version of the Kafka engine,
-     * such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-     */
     declare public readonly engineVersion: pulumi.Output<string>;
-    /**
-     * Specifies the enterprise project ID of the Kafka instance.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public /*out*/ readonly extendTimes: pulumi.Output<number>;
-    /**
-     * Specifies the Kafka `flavor ID`. This parameter and `productId` are alternative.
-     *
-     * > It is recommended to use `flavorId` if the region supports it.\
-     * One of:
-     * * c6.2u4g.cluster
-     * * c6.4u8g.cluster
-     * * c6.8u16g.cluster
-     * * c6.12u24g.cluster
-     * * c6.16u32g.cluster \
-     * Or use data source sbercloud_dms_kafka_flavors
-     */
     declare public readonly flavorId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly ipv6ConnectAddresses: pulumi.Output<string[]>;
     declare public readonly ipv6Enable: pulumi.Output<boolean>;
@@ -231,45 +74,17 @@ export class KafkaInstance extends pulumi.CustomResource {
      * schema: Internal
      */
     declare public readonly kmsEncryptedPassword: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-     * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-     * window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintainBegin`
-     * and `maintainEnd` must be set in pairs. If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also
-     * blank. In this case, the system automatically allocates the default start time 02:00.
-     */
     declare public readonly maintainBegin: pulumi.Output<string>;
-    /**
-     * Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-     * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-     * window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-     * 02:00. Parameters `maintainBegin`
-     * and `maintainEnd` must be set in pairs. If parameter `maintainEnd` is left blank, parameter
-     * `maintainBegin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-     */
     declare public readonly maintainEnd: pulumi.Output<string>;
     /**
-     * Indicates the Kafka Manager connection address of a Kafka instance.
-     *
      * @deprecated Deprecated
      */
     declare public /*out*/ readonly managementConnectAddress: pulumi.Output<string>;
     /**
-     * Specifies the password for logging in to the Kafka Manager. The
-     * password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-     * the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-     * =+\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-     *
-     * > **NOTE:** `managerUser` and `managerPassword` are deprecated and will be deleted in future releases
-     *
      * @deprecated Deprecated
      */
     declare public readonly managerPassword: pulumi.Output<string | undefined>;
     /**
-     * Specifies the username for logging in to the Kafka Manager. The username
-     * consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-     * creates a new instance resource.
-     *
      * @deprecated Deprecated
      */
     declare public readonly managerUser: pulumi.Output<string | undefined>;
@@ -278,160 +93,40 @@ export class KafkaInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly manegementConnectAddress: pulumi.Output<string>;
     declare public /*out*/ readonly messageQueryInstEnable: pulumi.Output<boolean>;
-    /**
-     * Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-     * consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the ID of a subnet. Changing this creates a new instance
-     * resource.
-     */
     declare public readonly networkId: pulumi.Output<string>;
     declare public readonly newTenantIps: pulumi.Output<string[] | undefined>;
     declare public /*out*/ readonly nodeNum: pulumi.Output<number>;
     declare public readonly parameters: pulumi.Output<outputs.Dms.KafkaInstanceParameter[]>;
-    /**
-     * Indicates the number of partitions in Kafka instance.
-     */
     declare public /*out*/ readonly partitionNum: pulumi.Output<number>;
-    /**
-     * Specifies the password of SASL_SSL user. A password must meet the
-     * following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-     * types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\|[{}]:'",<.>/?).
-     * Changing this creates a new instance resource.
-     *
-     * > **NOTE:** `accessUser` and `password` parameters are mandatory when sslEnable is set to true. These parameters are invalid when sslEnable is set to false. \
-     * > **NOTE:** If `accessUser` and `password` are specified, set `sslEnable = true`, to enable SASL_SSL for a Kafka instance.
-     */
     declare public readonly password: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the charging period of the instance. If `periodUnit` is set to *month*
-     * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter is
-     * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
-     */
     declare public readonly period: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new resource.
-     */
     declare public readonly periodUnit: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly podConnectAddress: pulumi.Output<string>;
-    /**
-     * The port number.
-     */
     declare public /*out*/ readonly port: pulumi.Output<number>;
     declare public /*out*/ readonly portProtocols: pulumi.Output<outputs.Dms.KafkaInstancePortProtocol[]>;
-    /**
-     * Specifies a product ID, which includes bandwidth, partition, broker and default
-     * storage capacity.
-     *
-     * > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-     * broker changes may cause storage capacity changes. So, if you specify the value of `storageSpace`, you need to
-     * manually modify the value of `storageSpace` after changing the `productId`.
-     */
     declare public readonly productId: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly publicBandwidth: pulumi.Output<number>;
     declare public /*out*/ readonly publicIpAddresses: pulumi.Output<string[]>;
-    /**
-     * Specifies the IDs of the elastic IP address (EIP)
-     * bound to the DMS Kafka instance. Changing this creates a new instance resource.
-     * + If the instance is created with `flavorId`, the total number of public IPs is equal to `brokerNum`.
-     * + If the instance is created with `productId`, the total number of public IPs must provide as follows:
-     *
-     * | Bandwidth | Total number of public IPs |
-     * | ---- | ---- |
-     * | 100MB | 3 |
-     * | 300MB | 3 |
-     * | 600MB | 4 |
-     * | 1,200MB | 8 |
-     */
     declare public readonly publicIpIds: pulumi.Output<string[] | undefined>;
-    /**
-     * The region in which to create the DMS Kafka instances. If omitted, the
-     * provider-level region will be used. Changing this creates a new instance resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Indicates a resource specifications identifier.
-     */
     declare public /*out*/ readonly resourceSpecCode: pulumi.Output<string>;
-    /**
-     * Specifies the action to be taken when the memory usage reaches the disk
-     * capacity threshold. The valid values are as follows:
-     * + **time_base**: Automatically delete the earliest messages.
-     * + **produce_reject**: Stop producing new messages.
-     */
     declare public readonly retentionPolicy: pulumi.Output<string>;
-    /**
-     * Specifies the ID of a security group.
-     */
     declare public readonly securityGroupId: pulumi.Output<string>;
     declare public readonly securityProtocol: pulumi.Output<string | undefined>;
-    /**
-     * Indicates whether the Kafka SASL_SSL is enabled.
-     */
     declare public readonly sslEnable: pulumi.Output<boolean>;
     declare public /*out*/ readonly sslTwoWayEnable: pulumi.Output<boolean>;
-    /**
-     * Indicates the status of the DMS Kafka instance.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly storageResourceId: pulumi.Output<string>;
-    /**
-     * Specifies the message storage capacity, the unit is GB.
-     * + When bandwidth is 100MB: 600–90000 GB
-     * + When bandwidth is 300MB: 1200–90000 GB
-     * + When bandwidth is 600MB: 2400–90000 GB
-     * + When bandwidth is 1200MB: 4800–90000 GB
-     *
-     * Changing this creates a new instance resource.
-     *
-     * It is required when creating an instance with `flavorId`.
-     */
     declare public readonly storageSpace: pulumi.Output<number>;
-    /**
-     * Specifies the storage I/O specification. Value range:
-     * + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-     * + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-     * + When bandwidth is 600MB: dms.physical.storage.ultra
-     * + When bandwidth is 1200MB: dms.physical.storage.ultra
-     *
-     * If the instance is created with `productId`, the valid values are as follows:
-     * + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-     * The corresponding bandwidths are **100MB** and **300MB**.
-     * + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-     * The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-     *
-     * Changing this creates a new instance resource.
-     */
     declare public readonly storageSpecCode: pulumi.Output<string>;
     declare public /*out*/ readonly storageType: pulumi.Output<string>;
-    /**
-     * The key/value pairs to associate with the DMS Kafka instance.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Indicates the DMS Kafka instance type.
-     */
     declare public /*out*/ readonly type: pulumi.Output<string>;
-    /**
-     * Indicates the used message storage space. Unit: GB
-     */
     declare public /*out*/ readonly usedStorageSpace: pulumi.Output<number>;
-    /**
-     * Indicates the ID of the user who created the DMS Kafka instance
-     */
     declare public /*out*/ readonly userId: pulumi.Output<string>;
-    /**
-     * Indicates the name of the user who created the DMS Kafka instance
-     */
     declare public /*out*/ readonly userName: pulumi.Output<string>;
     declare public readonly vpcClientPlain: pulumi.Output<boolean>;
-    /**
-     * Specifies the ID of a VPC. Changing this creates a new instance resource.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
 
     /**
@@ -616,27 +311,11 @@ export class KafkaInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KafkaInstance resources.
  */
 export interface KafkaInstanceState {
-    /**
-     * Specifies the username of SASL_SSL user. A username consists of 4
-     * to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-     */
     accessUser?: pulumi.Input<string>;
     archType?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "false".
-     *
-     * <a name="dmsCrossVpcAccesses"></a>
-     * The `crossVpcAccesses` block supports:
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * The names of the AZ where the Kafka instances reside.
-     * The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-     *
-     * > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-     * Deploy to more availability zones, the better the reliability and SLA coverage.
-     *
-     * > The parameter behavior of `availabilityZones` has been changed from `list` to `set`.
+     * schema: Required
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -647,78 +326,23 @@ export interface KafkaInstanceState {
      * @deprecated The bandwidth has been deprecated. If you need to change the bandwidth, please update the product_id.
      */
     bandwidth?: pulumi.Input<string>;
-    /**
-     * Specifies the broker numbers.
-     * It is required when creating an instance with `flavorId`.
-     */
     brokerNum?: pulumi.Input<number>;
     certReplaced?: pulumi.Input<boolean>;
-    /**
-     * Specifies the charging mode of the instance. Valid values are *prePaid*
-     * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Indicates the IP address of the DMS Kafka instance.
-     */
     connectAddress?: pulumi.Input<string>;
     connectorId?: pulumi.Input<string>;
     connectorNodeNum?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies the cross-VPC access information.
-     * The object structure is documented below.
-     */
     crossVpcAccesses?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaInstanceCrossVpcAccess>[]>;
-    /**
-     * Specifies the description of the DMS Kafka instance. It is a character string
-     * containing not more than 1,024 characters.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable message dumping.
-     * Changing this creates a new instance resource.
-     */
     dumping?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether to enable automatic topic creation. If automatic
-     * topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-     * produced to or consumed from a topic that does not exist.
-     * The default value is false.
-     * Changing this creates a new instance resource.
-     */
     enableAutoTopic?: pulumi.Input<boolean>;
-    /**
-     * Indicates whether public access to the DMS Kafka instance is enabled.
-     */
     enablePublicIp?: pulumi.Input<boolean>;
     enabledMechanisms?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Indicates the message engine.
-     */
     engine?: pulumi.Input<string>;
-    /**
-     * Specifies the version of the Kafka engine,
-     * such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-     */
     engineVersion?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID of the Kafka instance.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     extendTimes?: pulumi.Input<number>;
-    /**
-     * Specifies the Kafka `flavor ID`. This parameter and `productId` are alternative.
-     *
-     * > It is recommended to use `flavorId` if the region supports it.\
-     * One of:
-     * * c6.2u4g.cluster
-     * * c6.4u8g.cluster
-     * * c6.8u16g.cluster
-     * * c6.12u24g.cluster
-     * * c6.16u32g.cluster \
-     * Or use data source sbercloud_dms_kafka_flavors
-     */
     flavorId?: pulumi.Input<string>;
     ipv6ConnectAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     ipv6Enable?: pulumi.Input<boolean>;
@@ -727,45 +351,17 @@ export interface KafkaInstanceState {
      * schema: Internal
      */
     kmsEncryptedPassword?: pulumi.Input<string>;
-    /**
-     * Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-     * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-     * window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintainBegin`
-     * and `maintainEnd` must be set in pairs. If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also
-     * blank. In this case, the system automatically allocates the default start time 02:00.
-     */
     maintainBegin?: pulumi.Input<string>;
-    /**
-     * Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-     * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-     * window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-     * 02:00. Parameters `maintainBegin`
-     * and `maintainEnd` must be set in pairs. If parameter `maintainEnd` is left blank, parameter
-     * `maintainBegin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-     */
     maintainEnd?: pulumi.Input<string>;
     /**
-     * Indicates the Kafka Manager connection address of a Kafka instance.
-     *
      * @deprecated Deprecated
      */
     managementConnectAddress?: pulumi.Input<string>;
     /**
-     * Specifies the password for logging in to the Kafka Manager. The
-     * password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-     * the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-     * =+\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-     *
-     * > **NOTE:** `managerUser` and `managerPassword` are deprecated and will be deleted in future releases
-     *
      * @deprecated Deprecated
      */
     managerPassword?: pulumi.Input<string>;
     /**
-     * Specifies the username for logging in to the Kafka Manager. The username
-     * consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-     * creates a new instance resource.
-     *
      * @deprecated Deprecated
      */
     managerUser?: pulumi.Input<string>;
@@ -774,160 +370,40 @@ export interface KafkaInstanceState {
      */
     manegementConnectAddress?: pulumi.Input<string>;
     messageQueryInstEnable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-     * consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a subnet. Changing this creates a new instance
-     * resource.
-     */
     networkId?: pulumi.Input<string>;
     newTenantIps?: pulumi.Input<pulumi.Input<string>[]>;
     nodeNum?: pulumi.Input<number>;
     parameters?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaInstanceParameter>[]>;
-    /**
-     * Indicates the number of partitions in Kafka instance.
-     */
     partitionNum?: pulumi.Input<number>;
-    /**
-     * Specifies the password of SASL_SSL user. A password must meet the
-     * following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-     * types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\|[{}]:'",<.>/?).
-     * Changing this creates a new instance resource.
-     *
-     * > **NOTE:** `accessUser` and `password` parameters are mandatory when sslEnable is set to true. These parameters are invalid when sslEnable is set to false. \
-     * > **NOTE:** If `accessUser` and `password` are specified, set `sslEnable = true`, to enable SASL_SSL for a Kafka instance.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the instance. If `periodUnit` is set to *month*
-     * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter is
-     * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new resource.
-     */
     periodUnit?: pulumi.Input<string>;
     podConnectAddress?: pulumi.Input<string>;
-    /**
-     * The port number.
-     */
     port?: pulumi.Input<number>;
     portProtocols?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaInstancePortProtocol>[]>;
-    /**
-     * Specifies a product ID, which includes bandwidth, partition, broker and default
-     * storage capacity.
-     *
-     * > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-     * broker changes may cause storage capacity changes. So, if you specify the value of `storageSpace`, you need to
-     * manually modify the value of `storageSpace` after changing the `productId`.
-     */
     productId?: pulumi.Input<string>;
     publicBandwidth?: pulumi.Input<number>;
     publicIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the IDs of the elastic IP address (EIP)
-     * bound to the DMS Kafka instance. Changing this creates a new instance resource.
-     * + If the instance is created with `flavorId`, the total number of public IPs is equal to `brokerNum`.
-     * + If the instance is created with `productId`, the total number of public IPs must provide as follows:
-     *
-     * | Bandwidth | Total number of public IPs |
-     * | ---- | ---- |
-     * | 100MB | 3 |
-     * | 300MB | 3 |
-     * | 600MB | 4 |
-     * | 1,200MB | 8 |
-     */
     publicIpIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the DMS Kafka instances. If omitted, the
-     * provider-level region will be used. Changing this creates a new instance resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Indicates a resource specifications identifier.
-     */
     resourceSpecCode?: pulumi.Input<string>;
-    /**
-     * Specifies the action to be taken when the memory usage reaches the disk
-     * capacity threshold. The valid values are as follows:
-     * + **time_base**: Automatically delete the earliest messages.
-     * + **produce_reject**: Stop producing new messages.
-     */
     retentionPolicy?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a security group.
-     */
     securityGroupId?: pulumi.Input<string>;
     securityProtocol?: pulumi.Input<string>;
-    /**
-     * Indicates whether the Kafka SASL_SSL is enabled.
-     */
     sslEnable?: pulumi.Input<boolean>;
     sslTwoWayEnable?: pulumi.Input<boolean>;
-    /**
-     * Indicates the status of the DMS Kafka instance.
-     */
     status?: pulumi.Input<string>;
     storageResourceId?: pulumi.Input<string>;
-    /**
-     * Specifies the message storage capacity, the unit is GB.
-     * + When bandwidth is 100MB: 600–90000 GB
-     * + When bandwidth is 300MB: 1200–90000 GB
-     * + When bandwidth is 600MB: 2400–90000 GB
-     * + When bandwidth is 1200MB: 4800–90000 GB
-     *
-     * Changing this creates a new instance resource.
-     *
-     * It is required when creating an instance with `flavorId`.
-     */
     storageSpace?: pulumi.Input<number>;
-    /**
-     * Specifies the storage I/O specification. Value range:
-     * + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-     * + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-     * + When bandwidth is 600MB: dms.physical.storage.ultra
-     * + When bandwidth is 1200MB: dms.physical.storage.ultra
-     *
-     * If the instance is created with `productId`, the valid values are as follows:
-     * + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-     * The corresponding bandwidths are **100MB** and **300MB**.
-     * + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-     * The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-     *
-     * Changing this creates a new instance resource.
-     */
     storageSpecCode?: pulumi.Input<string>;
     storageType?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the DMS Kafka instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Indicates the DMS Kafka instance type.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Indicates the used message storage space. Unit: GB
-     */
     usedStorageSpace?: pulumi.Input<number>;
-    /**
-     * Indicates the ID of the user who created the DMS Kafka instance
-     */
     userId?: pulumi.Input<string>;
-    /**
-     * Indicates the name of the user who created the DMS Kafka instance
-     */
     userName?: pulumi.Input<string>;
     vpcClientPlain?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of a VPC. Changing this creates a new instance resource.
-     */
     vpcId?: pulumi.Input<string>;
 }
 
@@ -935,27 +411,11 @@ export interface KafkaInstanceState {
  * The set of arguments for constructing a KafkaInstance resource.
  */
 export interface KafkaInstanceArgs {
-    /**
-     * Specifies the username of SASL_SSL user. A username consists of 4
-     * to 64 characters and supports only letters, digits, and hyphens (-). Changing this creates a new instance resource.
-     */
     accessUser?: pulumi.Input<string>;
     archType?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are "true" and "false".
-     *
-     * <a name="dmsCrossVpcAccesses"></a>
-     * The `crossVpcAccesses` block supports:
-     */
     autoRenew?: pulumi.Input<string>;
     /**
-     * The names of the AZ where the Kafka instances reside.
-     * The parameter value can not be left blank or an empty array. Changing this creates a new instance resource.
-     *
-     * > **NOTE:** Deploy one availability zone or at least three availability zones. Do not select two availability zones.
-     * Deploy to more availability zones, the better the reliability and SLA coverage.
-     *
-     * > The parameter behavior of `availabilityZones` has been changed from `list` to `set`.
+     * schema: Required
      */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -966,216 +426,48 @@ export interface KafkaInstanceArgs {
      * @deprecated The bandwidth has been deprecated. If you need to change the bandwidth, please update the product_id.
      */
     bandwidth?: pulumi.Input<string>;
-    /**
-     * Specifies the broker numbers.
-     * It is required when creating an instance with `flavorId`.
-     */
     brokerNum?: pulumi.Input<number>;
-    /**
-     * Specifies the charging mode of the instance. Valid values are *prePaid*
-     * and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Specifies the cross-VPC access information.
-     * The object structure is documented below.
-     */
     crossVpcAccesses?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaInstanceCrossVpcAccess>[]>;
-    /**
-     * Specifies the description of the DMS Kafka instance. It is a character string
-     * containing not more than 1,024 characters.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable message dumping.
-     * Changing this creates a new instance resource.
-     */
     dumping?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether to enable automatic topic creation. If automatic
-     * topic creation is enabled, a topic will be automatically created with 3 partitions and 3 replicas when a message is
-     * produced to or consumed from a topic that does not exist.
-     * The default value is false.
-     * Changing this creates a new instance resource.
-     */
     enableAutoTopic?: pulumi.Input<boolean>;
     enabledMechanisms?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the version of the Kafka engine,
-     * such as 1.1.0, 2.3.0, 2.7 or other supported versions. Changing this creates a new instance resource.
-     */
     engineVersion: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID of the Kafka instance.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the Kafka `flavor ID`. This parameter and `productId` are alternative.
-     *
-     * > It is recommended to use `flavorId` if the region supports it.\
-     * One of:
-     * * c6.2u4g.cluster
-     * * c6.4u8g.cluster
-     * * c6.8u16g.cluster
-     * * c6.12u24g.cluster
-     * * c6.16u32g.cluster \
-     * Or use data source sbercloud_dms_kafka_flavors
-     */
     flavorId?: pulumi.Input<string>;
     ipv6Enable?: pulumi.Input<boolean>;
     /**
      * schema: Internal
      */
     kmsEncryptedPassword?: pulumi.Input<string>;
-    /**
-     * Specifies the time at which a maintenance time window starts. Format: HH:mm. The
-     * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-     * window. The start time must be set to 22:00, 02:00, 06:00, 10:00, 14:00, or 18:00. Parameters `maintainBegin`
-     * and `maintainEnd` must be set in pairs. If parameter `maintainBegin` is left blank, parameter `maintainEnd` is also
-     * blank. In this case, the system automatically allocates the default start time 02:00.
-     */
     maintainBegin?: pulumi.Input<string>;
-    /**
-     * Specifies the time at which a maintenance time window ends. Format: HH:mm. The
-     * start time and end time of a maintenance time window must indicate the time segment of a supported maintenance time
-     * window. The end time is four hours later than the start time. For example, if the start time is 22:00, the end time is
-     * 02:00. Parameters `maintainBegin`
-     * and `maintainEnd` must be set in pairs. If parameter `maintainEnd` is left blank, parameter
-     * `maintainBegin` is also blank. In this case, the system automatically allocates the default end time 06:00.
-     */
     maintainEnd?: pulumi.Input<string>;
     /**
-     * Specifies the password for logging in to the Kafka Manager. The
-     * password must meet the following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of
-     * the following character types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_
-     * =+\\|[{}]:'",<.>/?). Changing this creates a new instance resource.
-     *
-     * > **NOTE:** `managerUser` and `managerPassword` are deprecated and will be deleted in future releases
-     *
      * @deprecated Deprecated
      */
     managerPassword?: pulumi.Input<string>;
     /**
-     * Specifies the username for logging in to the Kafka Manager. The username
-     * consists of 4 to 64 characters and can contain letters, digits, hyphens (-), and underscores (_). Changing this
-     * creates a new instance resource.
-     *
      * @deprecated Deprecated
      */
     managerUser?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-     * consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a subnet. Changing this creates a new instance
-     * resource.
-     */
     networkId: pulumi.Input<string>;
     newTenantIps?: pulumi.Input<pulumi.Input<string>[]>;
     parameters?: pulumi.Input<pulumi.Input<inputs.Dms.KafkaInstanceParameter>[]>;
-    /**
-     * Specifies the password of SASL_SSL user. A password must meet the
-     * following complexity requirements: Must be 8 to 32 characters long. Must contain at least 2 of the following character
-     * types: lowercase letters, uppercase letters, digits, and special characters (`~!@#$%^&*()-_=+\\|[{}]:'",<.>/?).
-     * Changing this creates a new instance resource.
-     *
-     * > **NOTE:** `accessUser` and `password` parameters are mandatory when sslEnable is set to true. These parameters are invalid when sslEnable is set to false. \
-     * > **NOTE:** If `accessUser` and `password` are specified, set `sslEnable = true`, to enable SASL_SSL for a Kafka instance.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * Specifies the charging period of the instance. If `periodUnit` is set to *month*
-     * , the value ranges from 1 to 9. If `periodUnit` is set to *year*, the value ranges from 1 to 3. This parameter is
-     * mandatory if `chargingMode` is set to *prePaid*. Changing this creates a new resource.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * Specifies the charging period unit of the instance.
-     * Valid values are *month* and *year*. This parameter is mandatory if `chargingMode` is set to *prePaid*.
-     * Changing this creates a new resource.
-     */
     periodUnit?: pulumi.Input<string>;
-    /**
-     * Specifies a product ID, which includes bandwidth, partition, broker and default
-     * storage capacity.
-     *
-     * > **NOTE:** Change this to change the bandwidth, partition and broker of the Kafka instances. Please note that the
-     * broker changes may cause storage capacity changes. So, if you specify the value of `storageSpace`, you need to
-     * manually modify the value of `storageSpace` after changing the `productId`.
-     */
     productId?: pulumi.Input<string>;
-    /**
-     * Specifies the IDs of the elastic IP address (EIP)
-     * bound to the DMS Kafka instance. Changing this creates a new instance resource.
-     * + If the instance is created with `flavorId`, the total number of public IPs is equal to `brokerNum`.
-     * + If the instance is created with `productId`, the total number of public IPs must provide as follows:
-     *
-     * | Bandwidth | Total number of public IPs |
-     * | ---- | ---- |
-     * | 100MB | 3 |
-     * | 300MB | 3 |
-     * | 600MB | 4 |
-     * | 1,200MB | 8 |
-     */
     publicIpIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The region in which to create the DMS Kafka instances. If omitted, the
-     * provider-level region will be used. Changing this creates a new instance resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the action to be taken when the memory usage reaches the disk
-     * capacity threshold. The valid values are as follows:
-     * + **time_base**: Automatically delete the earliest messages.
-     * + **produce_reject**: Stop producing new messages.
-     */
     retentionPolicy?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a security group.
-     */
     securityGroupId: pulumi.Input<string>;
     securityProtocol?: pulumi.Input<string>;
-    /**
-     * Indicates whether the Kafka SASL_SSL is enabled.
-     */
     sslEnable?: pulumi.Input<boolean>;
-    /**
-     * Specifies the message storage capacity, the unit is GB.
-     * + When bandwidth is 100MB: 600–90000 GB
-     * + When bandwidth is 300MB: 1200–90000 GB
-     * + When bandwidth is 600MB: 2400–90000 GB
-     * + When bandwidth is 1200MB: 4800–90000 GB
-     *
-     * Changing this creates a new instance resource.
-     *
-     * It is required when creating an instance with `flavorId`.
-     */
     storageSpace?: pulumi.Input<number>;
-    /**
-     * Specifies the storage I/O specification. Value range:
-     * + When bandwidth is 100MB: dms.physical.storage.high or dms.physical.storage.ultra
-     * + When bandwidth is 300MB: dms.physical.storage.high or dms.physical.storage.ultra
-     * + When bandwidth is 600MB: dms.physical.storage.ultra
-     * + When bandwidth is 1200MB: dms.physical.storage.ultra
-     *
-     * If the instance is created with `productId`, the valid values are as follows:
-     * + **dms.physical.storage.high**: Type of the disk that uses high I/O.
-     * The corresponding bandwidths are **100MB** and **300MB**.
-     * + **dms.physical.storage.ultra**: Type of the disk that uses ultra-high I/O.
-     * The corresponding bandwidths are **100MB**, **300MB**, **600MB** and **1,200MB**.
-     *
-     * Changing this creates a new instance resource.
-     */
     storageSpecCode: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the DMS Kafka instance.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     vpcClientPlain?: pulumi.Input<boolean>;
-    /**
-     * Specifies the ID of a VPC. Changing this creates a new instance resource.
-     */
     vpcId: pulumi.Input<string>;
 }

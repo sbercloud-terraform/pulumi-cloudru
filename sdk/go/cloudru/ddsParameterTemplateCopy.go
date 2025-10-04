@@ -12,110 +12,25 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DDS parameter template copy resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			configurationId := cfg.RequireObject("configurationId")
-//			name := cfg.RequireObject("name")
-//			_, err := sbercloud.NewDdsParameterTemplateCopy(ctx, "test", &sbercloud.DdsParameterTemplateCopyArgs{
-//				ConfigurationId: pulumi.Any(configurationId),
-//				Name:            pulumi.Any(name),
-//				Description:     pulumi.String("test copy"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The DDS copyed parameter template can be imported using the `id`, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy test <id>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason.
-//
-// The missing attributes include: `configuration_id`.
-//
-// It is generally recommended running `pulumi preview` after importing an template.
-//
-// # You can then decide if changes should be applied to the template, or the resource definition should be updated to
-//
-// align with the template. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_dds_parameter_template_copy" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    configuration_id,
-//
-//	  ]
-//
-//	}
-//
-// }
 type DdsParameterTemplateCopy struct {
 	pulumi.CustomResourceState
 
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringOutput `pulumi:"configurationId"`
-	// The create time of the parameter template.
+	// Indicates the create time.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates the database version.
 	NodeVersion pulumi.StringOutput `pulumi:"nodeVersion"`
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues pulumi.StringMapOutput `pulumi:"parameterValues"`
 	// Indicates the parameters defined by users based on the default parameter templates.
-	// The Parameter structure is documented below.
 	Parameters DdsParameterTemplateCopyParameterArrayOutput `pulumi:"parameters"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The update time of the parameter template.
+	Region     pulumi.StringOutput                          `pulumi:"region"`
+	// Indicates the update time.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -153,65 +68,41 @@ func GetDdsParameterTemplateCopy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DdsParameterTemplateCopy resources.
 type ddsParameterTemplateCopyState struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId *string `pulumi:"configurationId"`
-	// The create time of the parameter template.
+	// Indicates the create time.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
 	Description *string `pulumi:"description"`
 	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
 	Name *string `pulumi:"name"`
 	// Indicates the database version.
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues map[string]string `pulumi:"parameterValues"`
 	// Indicates the parameters defined by users based on the default parameter templates.
-	// The Parameter structure is documented below.
 	Parameters []DdsParameterTemplateCopyParameter `pulumi:"parameters"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// The update time of the parameter template.
+	Region     *string                             `pulumi:"region"`
+	// Indicates the update time.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type DdsParameterTemplateCopyState struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringPtrInput
-	// The create time of the parameter template.
+	// Indicates the create time.
 	CreatedAt pulumi.StringPtrInput
 	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
 	Description pulumi.StringPtrInput
 	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
 	Name pulumi.StringPtrInput
 	// Indicates the database version.
 	NodeVersion pulumi.StringPtrInput
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues pulumi.StringMapInput
 	// Indicates the parameters defined by users based on the default parameter templates.
-	// The Parameter structure is documented below.
 	Parameters DdsParameterTemplateCopyParameterArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// The update time of the parameter template.
+	Region     pulumi.StringPtrInput
+	// Indicates the update time.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -221,49 +112,27 @@ func (DdsParameterTemplateCopyState) ElementType() reflect.Type {
 
 type ddsParameterTemplateCopyArgs struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId string `pulumi:"configurationId"`
 	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
 	Description *string `pulumi:"description"`
 	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
 	Name *string `pulumi:"name"`
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues map[string]string `pulumi:"parameterValues"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region          *string           `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DdsParameterTemplateCopy resource.
 type DdsParameterTemplateCopyArgs struct {
 	// Specifies the parameter template ID.
-	// Changing this creates a new resource.
 	ConfigurationId pulumi.StringInput
 	// Specifies the description of replicated parameter template.
-	// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-	// the carriage return character or the following special characters: >!<"&'=
-	// Changing this creates a new resource.
 	Description pulumi.StringPtrInput
 	// Specifies the name of replicated parameter template.
-	// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-	// underscores (_), and periods (.).
-	// Changing this creates a new resource.
 	Name pulumi.StringPtrInput
 	// Specifies the mapping between parameter names and parameter values.
-	// You can customize parameter values based on the parameters in the default parameter template.
 	ParameterValues pulumi.StringMapInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region          pulumi.StringPtrInput
 }
 
 func (DdsParameterTemplateCopyArgs) ElementType() reflect.Type {
@@ -354,28 +223,21 @@ func (o DdsParameterTemplateCopyOutput) ToDdsParameterTemplateCopyOutputWithCont
 }
 
 // Specifies the parameter template ID.
-// Changing this creates a new resource.
 func (o DdsParameterTemplateCopyOutput) ConfigurationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringOutput { return v.ConfigurationId }).(pulumi.StringOutput)
 }
 
-// The create time of the parameter template.
+// Indicates the create time.
 func (o DdsParameterTemplateCopyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // Specifies the description of replicated parameter template.
-// The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-// the carriage return character or the following special characters: >!<"&'=
-// Changing this creates a new resource.
 func (o DdsParameterTemplateCopyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the name of replicated parameter template.
-// The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-// underscores (_), and periods (.).
-// Changing this creates a new resource.
 func (o DdsParameterTemplateCopyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -386,25 +248,20 @@ func (o DdsParameterTemplateCopyOutput) NodeVersion() pulumi.StringOutput {
 }
 
 // Specifies the mapping between parameter names and parameter values.
-// You can customize parameter values based on the parameters in the default parameter template.
 func (o DdsParameterTemplateCopyOutput) ParameterValues() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringMapOutput { return v.ParameterValues }).(pulumi.StringMapOutput)
 }
 
 // Indicates the parameters defined by users based on the default parameter templates.
-// The Parameter structure is documented below.
 func (o DdsParameterTemplateCopyOutput) Parameters() DdsParameterTemplateCopyParameterArrayOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) DdsParameterTemplateCopyParameterArrayOutput { return v.Parameters }).(DdsParameterTemplateCopyParameterArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DdsParameterTemplateCopyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The update time of the parameter template.
+// Indicates the update time.
 func (o DdsParameterTemplateCopyOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdsParameterTemplateCopy) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

@@ -37,34 +37,6 @@ class ClusterArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies available zone.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies flavor id. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies security group ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies subnet ID. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies VPC ID. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Specifies email address for receiving notifications when a table/file migration
-               job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_auto_off: Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-               startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-               the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-               running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies cluster name. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] phone_nums: Specifies phone number for receiving notifications when a table/file
-               migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_boot_time: Specifies time for scheduled startup of a CDM cluster.
-               The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-               enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_off_time: Specifies time for scheduled shutdown of a CDM cluster.
-               The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-               The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-               The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the cluster version. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "flavor_id", flavor_id)
@@ -93,10 +65,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies available zone.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -106,9 +74,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies flavor id. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -118,10 +83,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies security group ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -131,9 +92,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies subnet ID. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -143,9 +101,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies VPC ID. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -155,10 +110,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies email address for receiving notifications when a table/file migration
-        job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -168,10 +119,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -181,12 +128,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="isAutoOff")
     def is_auto_off(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-        startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-        the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-        running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "is_auto_off")
 
     @is_auto_off.setter
@@ -196,9 +137,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies cluster name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -208,10 +146,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="phoneNums")
     def phone_nums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies phone number for receiving notifications when a table/file
-        migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "phone_nums")
 
     @phone_nums.setter
@@ -221,10 +155,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -234,11 +164,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="scheduleBootTime")
     def schedule_boot_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies time for scheduled startup of a CDM cluster.
-        The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-        enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "schedule_boot_time")
 
     @schedule_boot_time.setter
@@ -248,12 +173,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="scheduleOffTime")
     def schedule_off_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies time for scheduled shutdown of a CDM cluster.
-        The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-        The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-        The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "schedule_off_time")
 
     @schedule_off_time.setter
@@ -263,9 +182,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster version. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -298,39 +214,6 @@ class _ClusterState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies available zone.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] created: Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Specifies email address for receiving notifications when a table/file migration
-               job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies flavor id. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterInstanceArgs']]] instances: Instance list. Structure is documented below.
-        :param pulumi.Input[_builtins.bool] is_auto_off: Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-               startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-               the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-               running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies cluster name. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] phone_nums: Specifies phone number for receiving notifications when a table/file
-               migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] public_endpoint: EIP bound to the cluster.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_boot_time: Specifies time for scheduled startup of a CDM cluster.
-               The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-               enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_off_time: Specifies time for scheduled shutdown of a CDM cluster.
-               The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-               The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-               The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies security group ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Status.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies subnet ID. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the cluster version. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies VPC ID. Changing this parameter will create a new resource.
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
@@ -376,10 +259,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies available zone.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -389,9 +268,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-        """
         return pulumi.get(self, "created")
 
     @created.setter
@@ -401,10 +277,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies email address for receiving notifications when a table/file migration
-        job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "emails")
 
     @emails.setter
@@ -414,10 +286,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -427,9 +295,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies flavor id. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -448,9 +313,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterInstanceArgs']]]]:
-        """
-        Instance list. Structure is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @instances.setter
@@ -460,12 +322,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="isAutoOff")
     def is_auto_off(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-        startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-        the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-        running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "is_auto_off")
 
     @is_auto_off.setter
@@ -475,9 +331,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies cluster name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -487,10 +340,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="phoneNums")
     def phone_nums(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies phone number for receiving notifications when a table/file
-        migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "phone_nums")
 
     @phone_nums.setter
@@ -500,9 +349,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="publicEndpoint")
     def public_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        EIP bound to the cluster.
-        """
         return pulumi.get(self, "public_endpoint")
 
     @public_endpoint.setter
@@ -512,9 +358,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Public IP.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -524,10 +367,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -537,11 +376,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="scheduleBootTime")
     def schedule_boot_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies time for scheduled startup of a CDM cluster.
-        The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-        enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "schedule_boot_time")
 
     @schedule_boot_time.setter
@@ -551,12 +385,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="scheduleOffTime")
     def schedule_off_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies time for scheduled shutdown of a CDM cluster.
-        The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-        The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-        The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "schedule_off_time")
 
     @schedule_off_time.setter
@@ -566,10 +394,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies security group ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
@@ -579,9 +403,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -591,9 +412,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies subnet ID. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -603,9 +421,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster version. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -615,9 +430,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies VPC ID. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -647,98 +459,9 @@ class Cluster(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages CDM cluster resource within SberCloud.
-
-        ## Example Usage
-
-        ### create a cdm cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        flavor_id = config.require_object("flavorId")
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        test = sbercloud.get_cdm_flavors()
-        cluster = sbercloud.cdm.Cluster("cluster",
-            name=name,
-            availability_zone=availability_zone,
-            flavor_id=test.flavors[0].id,
-            subnet_id=subnet_id,
-            vpc_id=vpc_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ## Import
-
-        Clusters can be imported by `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Cdm/cluster:Cluster test b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `email` and `phone_num`.
-
-        It is generally recommended running `pulumi preview` after importing a cluster.
-
-        You can then decide if changes should be applied to the cluster, or the resource definition
-
-        should be updated to align with the cluster. Also you can ignore changes as below.
-
-        resource "sbercloud_cdm_cluster" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              email, phone_num,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies available zone.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Specifies email address for receiving notifications when a table/file migration
-               job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies flavor id. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_auto_off: Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-               startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-               the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-               running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies cluster name. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] phone_nums: Specifies phone number for receiving notifications when a table/file
-               migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_boot_time: Specifies time for scheduled startup of a CDM cluster.
-               The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-               enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_off_time: Specifies time for scheduled shutdown of a CDM cluster.
-               The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-               The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-               The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies security group ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies subnet ID. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the cluster version. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies VPC ID. Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -747,68 +470,7 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages CDM cluster resource within SberCloud.
-
-        ## Example Usage
-
-        ### create a cdm cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        flavor_id = config.require_object("flavorId")
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        test = sbercloud.get_cdm_flavors()
-        cluster = sbercloud.cdm.Cluster("cluster",
-            name=name,
-            availability_zone=availability_zone,
-            flavor_id=test.flavors[0].id,
-            subnet_id=subnet_id,
-            vpc_id=vpc_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ## Import
-
-        Clusters can be imported by `id`. For example,
-
-        ```sh
-        $ pulumi import sbercloud:Cdm/cluster:Cluster test b11b407c-e604-4e8d-8bc4-92398320b847
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `email` and `phone_num`.
-
-        It is generally recommended running `pulumi preview` after importing a cluster.
-
-        You can then decide if changes should be applied to the cluster, or the resource definition
-
-        should be updated to align with the cluster. Also you can ignore changes as below.
-
-        resource "sbercloud_cdm_cluster" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              email, phone_num,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -914,39 +576,6 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies available zone.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] created: Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Specifies email address for receiving notifications when a table/file migration
-               job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies flavor id. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterInstanceArgs', 'ClusterInstanceArgsDict']]]] instances: Instance list. Structure is documented below.
-        :param pulumi.Input[_builtins.bool] is_auto_off: Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-               startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-               the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-               running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies cluster name. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] phone_nums: Specifies phone number for receiving notifications when a table/file
-               migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] public_endpoint: EIP bound to the cluster.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_boot_time: Specifies time for scheduled startup of a CDM cluster.
-               The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-               enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] schedule_off_time: Specifies time for scheduled shutdown of a CDM cluster.
-               The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-               The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-               The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies security group ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Status.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies subnet ID. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] version: Specifies the cluster version. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies VPC ID. Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -977,44 +606,26 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies available zone.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:
-        """
-        Create time. The format is: `YYYY-MM-DDThh:mm:ss`.
-        """
         return pulumi.get(self, "created")
 
     @_builtins.property
     @pulumi.getter
     def emails(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies email address for receiving notifications when a table/file migration
-        job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "emails")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies flavor id. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -1025,123 +636,70 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def instances(self) -> pulumi.Output[Sequence['outputs.ClusterInstance']]:
-        """
-        Instance list. Structure is documented below.
-        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
     @pulumi.getter(name="isAutoOff")
     def is_auto_off(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies Whether to enable auto shutdown. The auto shutdown and scheduled
-        startup/shutdown functions cannot be enabled at the same time. When auto shutdown is enabled, if no job is running in
-        the cluster and no scheduled job is created, a cluster will be automatically shut down 15 minutes after it starts
-        running to reduce costs. The default value is `false`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "is_auto_off")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies cluster name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="phoneNums")
     def phone_nums(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        Specifies phone number for receiving notifications when a table/file
-        migration job fails or an EIP exception occurs. The max number is 5. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "phone_nums")
 
     @_builtins.property
     @pulumi.getter(name="publicEndpoint")
     def public_endpoint(self) -> pulumi.Output[_builtins.str]:
-        """
-        EIP bound to the cluster.
-        """
         return pulumi.get(self, "public_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Public IP.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="scheduleBootTime")
     def schedule_boot_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies time for scheduled startup of a CDM cluster.
-        The CDM cluster starts at this time every day. The scheduled startup/shutdown and auto shutdown function cannot be
-        enabled at the same time. The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "schedule_boot_time")
 
     @_builtins.property
     @pulumi.getter(name="scheduleOffTime")
     def schedule_off_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies time for scheduled shutdown of a CDM cluster.
-        The system shuts down directly at this time every day without waiting for unfinished jobs to complete.
-        The scheduled startup/shutdown and auto shutdown function cannot be enabled at the same time.
-        The time format is `hh:mm:ss`. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "schedule_off_time")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies security group ID.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies subnet ID. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the cluster version. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies VPC ID. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "vpc_id")
 

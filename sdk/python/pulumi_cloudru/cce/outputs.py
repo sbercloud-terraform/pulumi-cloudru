@@ -111,30 +111,6 @@ class AddonValues(dict):
                  custom_json: Optional[_builtins.str] = None,
                  flavor: Optional[Mapping[str, _builtins.str]] = None,
                  flavor_json: Optional[_builtins.str] = None):
-        """
-        :param Mapping[str, _builtins.str] basic: Specifies the key/value pairs vary depending on the add-on.
-               Only supports non-nested structure and only supports string type elements.
-               This is an alternative to `basic_json`, but it is not recommended.
-               Changing this parameter will create a new resource.
-        :param _builtins.str basic_json: Specifies the json string vary depending on the add-on.
-               Changing this parameter will create a new resource.
-        :param Mapping[str, _builtins.str] custom: Specifies the key/value pairs vary depending on the add-on.
-               Only supports non-nested structure and only supports string type elements.
-               This is an alternative to `custom_json`, but it is not recommended.
-               Changing this parameter will create a new resource.
-        :param _builtins.str custom_json: Specifies the json string vary depending on the add-on.
-               Changing this parameter will create a new resource.
-        :param Mapping[str, _builtins.str] flavor: Specifies the key/value pairs vary depending on the add-on.
-               Only supports non-nested structure and only supports string type elements.
-               This is an alternative to `flavor_json`, but it is not recommended.
-               Changing this parameter will create a new resource.
-               
-               Arguments which can be passed to the `basic_json`, `custom_json` and `flavor_json` add-on parameters depends on
-               the add-on type and version. For more detailed description of add-ons
-               see add-ons description
-        :param _builtins.str flavor_json: Specifies the json string vary depending on the add-on.
-               Changing this parameter will create a new resource.
-        """
         if basic is not None:
             pulumi.set(__self__, "basic", basic)
         if basic_json is not None:
@@ -151,65 +127,31 @@ class AddonValues(dict):
     @_builtins.property
     @pulumi.getter
     def basic(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `basic_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "basic")
 
     @_builtins.property
     @pulumi.getter(name="basicJson")
     def basic_json(self) -> Optional[_builtins.str]:
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "basic_json")
 
     @_builtins.property
     @pulumi.getter
     def custom(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `custom_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "custom")
 
     @_builtins.property
     @pulumi.getter(name="customJson")
     def custom_json(self) -> Optional[_builtins.str]:
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "custom_json")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `flavor_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-
-        Arguments which can be passed to the `basic_json`, `custom_json` and `flavor_json` add-on parameters depends on
-        the add-on type and version. For more detailed description of add-ons
-        see add-ons description
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="flavorJson")
     def flavor_json(self) -> Optional[_builtins.str]:
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "flavor_json")
 
 
@@ -236,12 +178,6 @@ class ClusterCertificateCluster(dict):
                  certificate_authority_data: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  server: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str certificate_authority_data: The certificate data.
-        :param _builtins.str name: Specifies the component name.
-               Changing this parameter will create a new cluster resource.
-        :param _builtins.str server: The server IP address.
-        """
         if certificate_authority_data is not None:
             pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
         if name is not None:
@@ -252,26 +188,16 @@ class ClusterCertificateCluster(dict):
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityData")
     def certificate_authority_data(self) -> Optional[_builtins.str]:
-        """
-        The certificate data.
-        """
         return pulumi.get(self, "certificate_authority_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def server(self) -> Optional[_builtins.str]:
-        """
-        The server IP address.
-        """
         return pulumi.get(self, "server")
 
 
@@ -300,12 +226,6 @@ class ClusterCertificateUser(dict):
                  client_certificate_data: Optional[_builtins.str] = None,
                  client_key_data: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str client_certificate_data: The client certificate data.
-        :param _builtins.str client_key_data: The client key data.
-        :param _builtins.str name: Specifies the component name.
-               Changing this parameter will create a new cluster resource.
-        """
         if client_certificate_data is not None:
             pulumi.set(__self__, "client_certificate_data", client_certificate_data)
         if client_key_data is not None:
@@ -316,26 +236,16 @@ class ClusterCertificateUser(dict):
     @_builtins.property
     @pulumi.getter(name="clientCertificateData")
     def client_certificate_data(self) -> Optional[_builtins.str]:
-        """
-        The client certificate data.
-        """
         return pulumi.get(self, "client_certificate_data")
 
     @_builtins.property
     @pulumi.getter(name="clientKeyData")
     def client_key_data(self) -> Optional[_builtins.str]:
-        """
-        The client key data.
-        """
         return pulumi.get(self, "client_key_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "name")
 
 
@@ -344,12 +254,6 @@ class ClusterComponentConfiguration(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  configurations: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the component name.
-               Changing this parameter will create a new cluster resource.
-        :param _builtins.str configurations: Specifies JSON string of the component configurations.
-               Changing this parameter will create a new cluster resource.
-        """
         pulumi.set(__self__, "name", name)
         if configurations is not None:
             pulumi.set(__self__, "configurations", configurations)
@@ -357,19 +261,11 @@ class ClusterComponentConfiguration(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> Optional[_builtins.str]:
-        """
-        Specifies JSON string of the component configurations.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "configurations")
 
 
@@ -447,46 +343,6 @@ class ClusterExtendParam(dict):
                  docker_umask_mode: Optional[_builtins.str] = None,
                  dss_master_volumes: Optional[_builtins.str] = None,
                  fix_pool_mask: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str cluster_az: Specifies the AZ of master nodes in the cluster. The value can be:
-               + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-               + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-               This parameter is mandatory for dedicated CCE clusters.
-               
-               Changing this parameter will create a new cluster resource.
-        :param _builtins.str cpu_manager_policy: Specifies the cluster CPU management policy.
-               The value can be:
-               + **none**: CPU cores will not be exclusively allocated to workload pods.
-               Select this value if you want a large pool of shareable CPU cores.
-               + **static**: CPU cores can be exclusively allocated to workload pods.
-               Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-               this setting is valid only for nodes where common containers, not Kata containers, run.
-               
-               Defaults to none.
-               Changing this parameter will create a new cluster resource.
-               
-               <a name="cce_cluster_component_configurations"></a>
-               The `component_configurations` block supports:
-        :param _builtins.str dec_master_flavor: Specifies the specifications of the master node
-               in the dedicated hybrid cluster.
-               Changing this parameter will create a new cluster resource.
-        :param _builtins.str docker_umask_mode: Specifies the default UmaskMode configuration of Docker in a
-               cluster. The value can be **secure** or **normal**, defaults to normal.
-               Changing this parameter will create a new cluster resource.
-        :param _builtins.str dss_master_volumes: Specifies whether the system and data disks of a master node
-               use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-               This parameter is mandatory for dedicated CCE clusters.
-               It is in the following format:
-               
-               ```bash
-               <rootVol.dssPoolID>.<rootVol.volType>;<dataVol.dssPoolID>.<dataVol.volType>
-               ```
-               
-               Changing this parameter will create a new cluster resource.
-        :param _builtins.str fix_pool_mask: Specifies the number of mask bits of the fixed IP address pool
-               of the container network model. This field can only be used when `container_network_type` is set to **vpc-router**.
-               Changing this parameter will create a new cluster resource.
-        """
         if cluster_az is not None:
             pulumi.set(__self__, "cluster_az", cluster_az)
         if cpu_manager_policy is not None:
@@ -503,81 +359,31 @@ class ClusterExtendParam(dict):
     @_builtins.property
     @pulumi.getter(name="clusterAz")
     def cluster_az(self) -> Optional[_builtins.str]:
-        """
-        Specifies the AZ of master nodes in the cluster. The value can be:
-        + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-        + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-        This parameter is mandatory for dedicated CCE clusters.
-
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "cluster_az")
 
     @_builtins.property
     @pulumi.getter(name="cpuManagerPolicy")
     def cpu_manager_policy(self) -> Optional[_builtins.str]:
-        """
-        Specifies the cluster CPU management policy.
-        The value can be:
-        + **none**: CPU cores will not be exclusively allocated to workload pods.
-        Select this value if you want a large pool of shareable CPU cores.
-        + **static**: CPU cores can be exclusively allocated to workload pods.
-        Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-        this setting is valid only for nodes where common containers, not Kata containers, run.
-
-        Defaults to none.
-        Changing this parameter will create a new cluster resource.
-
-        <a name="cce_cluster_component_configurations"></a>
-        The `component_configurations` block supports:
-        """
         return pulumi.get(self, "cpu_manager_policy")
 
     @_builtins.property
     @pulumi.getter(name="decMasterFlavor")
     def dec_master_flavor(self) -> Optional[_builtins.str]:
-        """
-        Specifies the specifications of the master node
-        in the dedicated hybrid cluster.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "dec_master_flavor")
 
     @_builtins.property
     @pulumi.getter(name="dockerUmaskMode")
     def docker_umask_mode(self) -> Optional[_builtins.str]:
-        """
-        Specifies the default UmaskMode configuration of Docker in a
-        cluster. The value can be **secure** or **normal**, defaults to normal.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "docker_umask_mode")
 
     @_builtins.property
     @pulumi.getter(name="dssMasterVolumes")
     def dss_master_volumes(self) -> Optional[_builtins.str]:
-        """
-        Specifies whether the system and data disks of a master node
-        use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-        This parameter is mandatory for dedicated CCE clusters.
-        It is in the following format:
-
-        ```bash
-        <rootVol.dssPoolID>.<rootVol.volType>;<dataVol.dssPoolID>.<dataVol.volType>
-        ```
-
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "dss_master_volumes")
 
     @_builtins.property
     @pulumi.getter(name="fixPoolMask")
     def fix_pool_mask(self) -> Optional[_builtins.str]:
-        """
-        Specifies the number of mask bits of the fixed IP address pool
-        of the container network model. This field can only be used when `container_network_type` is set to **vpc-router**.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "fix_pool_mask")
 
 
@@ -602,26 +408,12 @@ class ClusterMaster(dict):
 
     def __init__(__self__, *,
                  availability_zone: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str availability_zone: Specifies the availability zone of the master node.
-               Changing this parameter will create a new cluster resource.
-               
-               <a name="cce_cluster_extend_params"></a>
-               The `extend_params` block supports:
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
-        """
-        Specifies the availability zone of the master node.
-        Changing this parameter will create a new cluster resource.
-
-        <a name="cce_cluster_extend_params"></a>
-        The `extend_params` block supports:
-        """
         return pulumi.get(self, "availability_zone")
 
 
@@ -755,18 +547,12 @@ class NodeAttachExtensionNic(dict):
 
     def __init__(__self__, *,
                  subnet_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str subnet_id: The ID of the subnet to which the NIC belongs.
-        """
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
 
@@ -938,9 +724,6 @@ class NodeAttachStorageGroup(dict):
                  selector_names: Sequence[_builtins.str],
                  virtual_spaces: Sequence['outputs.NodeAttachStorageGroupVirtualSpace'],
                  cce_managed: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.str name: Specifies the Node Name.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "selector_names", selector_names)
         pulumi.set(__self__, "virtual_spaces", virtual_spaces)
@@ -950,9 +733,6 @@ class NodeAttachStorageGroup(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1000,9 +780,6 @@ class NodeAttachStorageGroupVirtualSpace(dict):
                  lvm_lv_type: Optional[_builtins.str] = None,
                  lvm_path: Optional[_builtins.str] = None,
                  runtime_lv_type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the Node Name.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         if lvm_lv_type is not None:
@@ -1015,9 +792,6 @@ class NodeAttachStorageGroupVirtualSpace(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1076,9 +850,6 @@ class NodeAttachStorageSelector(dict):
                  match_label_size: Optional[_builtins.str] = None,
                  match_label_volume_type: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the Node Name.
-        """
         pulumi.set(__self__, "name", name)
         if match_label_count is not None:
             pulumi.set(__self__, "match_label_count", match_label_count)
@@ -1096,9 +867,6 @@ class NodeAttachStorageSelector(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1138,16 +906,6 @@ class NodeAttachTaint(dict):
                  effect: _builtins.str,
                  key: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str effect: Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-               Changing this parameter will create a new resource.
-        :param _builtins.str key: A key must contain 1 to 63 characters starting with a letter or digit.
-               Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-               as the prefix of a key. Changing this parameter will create a new resource.
-        :param _builtins.str value: A value must start with a letter or digit and can contain a maximum of 63
-               characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-               create a new resource.
-        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1155,30 +913,16 @@ class NodeAttachTaint(dict):
     @_builtins.property
     @pulumi.getter
     def effect(self) -> _builtins.str:
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "effect")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit.
-        Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-        as the prefix of a key. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        A value must start with a letter or digit and can contain a maximum of 63
-        characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-        create a new resource.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1220,24 +964,7 @@ class NodeDataVolume(dict):
                  kms_key_id: Optional[_builtins.str] = None,
                  throughput: Optional[_builtins.int] = None):
         """
-        :param _builtins.int size: Specifies the disk size in GB.
-               Changing this parameter will create a new resource.
-        :param _builtins.str volumetype: Specifies the disk type.
-               Changing this parameter will create a new resource.
-        :param _builtins.str extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param Mapping[str, _builtins.str] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param _builtins.bool hw_passthrough: schema: Internal
-        :param _builtins.str kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -1259,19 +986,11 @@ class NodeDataVolume(dict):
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the disk size in GB.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Specifies the disk type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @_builtins.property
@@ -1283,26 +1002,11 @@ class NodeDataVolume(dict):
     @pulumi.getter(name="extendParam")
     @_utilities.deprecated("""use extend_params instead""")
     def extend_param(self) -> Optional[_builtins.str]:
-        """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
-        """
         return pulumi.get(self, "extend_param")
 
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
@@ -1321,10 +1025,6 @@ class NodeDataVolume(dict):
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
@@ -1386,14 +1086,6 @@ class NodeExtendParams(dict):
                  security_reinforcement_type: Optional[_builtins.str] = None,
                  spot_price: Optional[_builtins.str] = None,
                  system_reserved_mem: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param _builtins.str postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param _builtins.str preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
         if docker_base_size is not None:
@@ -1444,10 +1136,6 @@ class NodeExtendParams(dict):
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[_builtins.int]:
-        """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @_builtins.property
@@ -1468,19 +1156,11 @@ class NodeExtendParams(dict):
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> Optional[_builtins.str]:
-        """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> Optional[_builtins.str]:
-        """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @_builtins.property
@@ -1520,19 +1200,11 @@ class NodeExtensionNic(dict):
 
     def __init__(__self__, *,
                  subnet_id: _builtins.str):
-        """
-        :param _builtins.str subnet_id: Specifies the ID of the subnet to which the NIC belongs.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "subnet_id", subnet_id)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        Specifies the ID of the subnet to which the NIC belongs.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
 
@@ -1540,19 +1212,11 @@ class NodeExtensionNic(dict):
 class NodeHostnameConfig(dict):
     def __init__(__self__, *,
                  type: _builtins.str):
-        """
-        :param _builtins.str type: Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-               The default value is **evs**. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
 
@@ -1594,21 +1258,7 @@ class NodePoolDataVolume(dict):
                  kms_key_id: Optional[_builtins.str] = None,
                  throughput: Optional[_builtins.int] = None):
         """
-        :param _builtins.int size: Specifies the disk size in GB. Changing this parameter will create a new resource.
-        :param _builtins.str volumetype: Specifies the disk type. Changing this parameter will create a new resource.
-        :param _builtins.str dss_pool_id: Specifies the DSS pool ID. This field is used only for dedicated storage.
-               Changing this parameter will create a new resource.
-        :param Mapping[str, _builtins.str] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param _builtins.bool hw_passthrough: schema: Internal
-        :param _builtins.int iops: Specifies the iops of the disk,
-               required when `volumetype` is **GPSSD2** or **ESSD2**.
-        :param _builtins.str kms_key_id: Specifies the KMS key ID. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
-        :param _builtins.int throughput: Specifies the throughput of the disk in MiB/s,
-               required when `volumetype` is **GPSSD2**.
-               
-               > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -1630,26 +1280,16 @@ class NodePoolDataVolume(dict):
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the disk size in GB. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Specifies the disk type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @_builtins.property
     @pulumi.getter(name="dssPoolId")
     def dss_pool_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the DSS pool ID. This field is used only for dedicated storage.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "dss_pool_id")
 
     @_builtins.property
@@ -1661,10 +1301,6 @@ class NodePoolDataVolume(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
@@ -1678,30 +1314,16 @@ class NodePoolDataVolume(dict):
     @_builtins.property
     @pulumi.getter
     def iops(self) -> Optional[_builtins.int]:
-        """
-        Specifies the iops of the disk,
-        required when `volumetype` is **GPSSD2** or **ESSD2**.
-        """
         return pulumi.get(self, "iops")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the KMS key ID. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter
     def throughput(self) -> Optional[_builtins.int]:
-        """
-        Specifies the throughput of the disk in MiB/s,
-        required when `volumetype` is **GPSSD2**.
-
-        > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
-        """
         return pulumi.get(self, "throughput")
 
 
@@ -1758,28 +1380,6 @@ class NodePoolExtendParams(dict):
                  security_reinforcement_type: Optional[_builtins.str] = None,
                  spot_price: Optional[_builtins.str] = None,
                  system_reserved_mem: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str agency_name: Specifies the agency name.
-               Changing this parameter will create a new resource.
-        :param _builtins.int docker_base_size: Specifies the available disk space of a single container on a node,
-               in GB. Changing this parameter will create a new resource.
-        :param _builtins.int kube_reserved_mem: Specifies the reserved node memory, which is reserved for
-               Kubernetes-related components. Changing this parameter will create a new resource.
-        :param _builtins.int max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param _builtins.str nic_threshold: Specifies the ENI pre-binding thresholds.
-               Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-        :param _builtins.str node_image_id: Specifies the image ID to create the node.
-               Changing this parameter will create a new resource.
-        :param _builtins.str node_multi_queue: Specifies the number of ENI queues.
-               Example setting: **"[{\\"queue\\":4}]"**. Changing this parameter will create a new resource.
-        :param _builtins.str postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param _builtins.str preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param _builtins.int system_reserved_mem: Specifies the reserved node memory, which is reserved
-               value for system components. Changing this parameter will create a new resource.
-        """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
         if docker_base_size is not None:
@@ -1810,28 +1410,16 @@ class NodePoolExtendParams(dict):
     @_builtins.property
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the agency name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "agency_name")
 
     @_builtins.property
     @pulumi.getter(name="dockerBaseSize")
     def docker_base_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the available disk space of a single container on a node,
-        in GB. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "docker_base_size")
 
     @_builtins.property
     @pulumi.getter(name="kubeReservedMem")
     def kube_reserved_mem(self) -> Optional[_builtins.int]:
-        """
-        Specifies the reserved node memory, which is reserved for
-        Kubernetes-related components. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kube_reserved_mem")
 
     @_builtins.property
@@ -1842,55 +1430,31 @@ class NodePoolExtendParams(dict):
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[_builtins.int]:
-        """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @_builtins.property
     @pulumi.getter(name="nicThreshold")
     def nic_threshold(self) -> Optional[_builtins.str]:
-        """
-        Specifies the ENI pre-binding thresholds.
-        Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "nic_threshold")
 
     @_builtins.property
     @pulumi.getter(name="nodeImageId")
     def node_image_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the image ID to create the node.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "node_image_id")
 
     @_builtins.property
     @pulumi.getter(name="nodeMultiQueue")
     def node_multi_queue(self) -> Optional[_builtins.str]:
-        """
-        Specifies the number of ENI queues.
-        Example setting: **"[{\\"queue\\":4}]"**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "node_multi_queue")
 
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> Optional[_builtins.str]:
-        """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> Optional[_builtins.str]:
-        """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @_builtins.property
@@ -1906,10 +1470,6 @@ class NodePoolExtendParams(dict):
     @_builtins.property
     @pulumi.getter(name="systemReservedMem")
     def system_reserved_mem(self) -> Optional[_builtins.int]:
-        """
-        Specifies the reserved node memory, which is reserved
-        value for system components. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "system_reserved_mem")
 
 
@@ -1918,16 +1478,6 @@ class NodePoolExtensionScaleGroup(dict):
     def __init__(__self__, *,
                  metadata: Optional['outputs.NodePoolExtensionScaleGroupMetadata'] = None,
                  spec: Optional['outputs.NodePoolExtensionScaleGroupSpec'] = None):
-        """
-        :param 'NodePoolExtensionScaleGroupMetadataArgs' metadata: Specifies the basic information about the extended scaling group.
-               The object structure is documented below.
-        :param 'NodePoolExtensionScaleGroupSpecArgs' spec: Specifies the configurations of the extended scaling group,
-               which carry different configurations from those of the default scaling group.
-               The object structure is documented below.
-               
-               <a name="metadata"></a>
-               The `metadata` block supports:
-        """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if spec is not None:
@@ -1936,23 +1486,11 @@ class NodePoolExtensionScaleGroup(dict):
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional['outputs.NodePoolExtensionScaleGroupMetadata']:
-        """
-        Specifies the basic information about the extended scaling group.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "metadata")
 
     @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional['outputs.NodePoolExtensionScaleGroupSpec']:
-        """
-        Specifies the configurations of the extended scaling group,
-        which carry different configurations from those of the default scaling group.
-        The object structure is documented below.
-
-        <a name="metadata"></a>
-        The `metadata` block supports:
-        """
         return pulumi.get(self, "spec")
 
 
@@ -1960,18 +1498,12 @@ class NodePoolExtensionScaleGroup(dict):
 class NodePoolExtensionScaleGroupMetadata(dict):
     def __init__(__self__, *,
                  name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the node pool name.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the node pool name.
-        """
         return pulumi.get(self, "name")
 
 
@@ -1999,19 +1531,6 @@ class NodePoolExtensionScaleGroupSpec(dict):
                  az: Optional[_builtins.str] = None,
                  capacity_reservation_specification: Optional['outputs.NodePoolExtensionScaleGroupSpecCapacityReservationSpecification'] = None,
                  flavor: Optional[_builtins.str] = None):
-        """
-        :param 'NodePoolExtensionScaleGroupSpecAutoscalingArgs' autoscaling: Specifies the auto scaling configurations of the extended scaling group.
-               The object structure is documented below.
-               
-               <a name="capacity_reservation_specification"></a>
-               The `capacity_reservation_specification` block supports:
-        :param _builtins.str az: Specifies the availability zone of a node.
-               If this parameter is not specified or left blank, the default scaling group configurations take effect.
-        :param 'NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs' capacity_reservation_specification: Specifies the capacity reservation
-               configurations of the extended scaling group.
-               The object structure is documented below.
-        :param _builtins.str flavor: Specifies the node flavor.
-        """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if az is not None:
@@ -2024,40 +1543,21 @@ class NodePoolExtensionScaleGroupSpec(dict):
     @_builtins.property
     @pulumi.getter
     def autoscaling(self) -> Optional['outputs.NodePoolExtensionScaleGroupSpecAutoscaling']:
-        """
-        Specifies the auto scaling configurations of the extended scaling group.
-        The object structure is documented below.
-
-        <a name="capacity_reservation_specification"></a>
-        The `capacity_reservation_specification` block supports:
-        """
         return pulumi.get(self, "autoscaling")
 
     @_builtins.property
     @pulumi.getter
     def az(self) -> Optional[_builtins.str]:
-        """
-        Specifies the availability zone of a node.
-        If this parameter is not specified or left blank, the default scaling group configurations take effect.
-        """
         return pulumi.get(self, "az")
 
     @_builtins.property
     @pulumi.getter(name="capacityReservationSpecification")
     def capacity_reservation_specification(self) -> Optional['outputs.NodePoolExtensionScaleGroupSpecCapacityReservationSpecification']:
-        """
-        Specifies the capacity reservation
-        configurations of the extended scaling group.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "capacity_reservation_specification")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> Optional[_builtins.str]:
-        """
-        Specifies the node flavor.
-        """
         return pulumi.get(self, "flavor")
 
 
@@ -2089,13 +1589,6 @@ class NodePoolExtensionScaleGroupSpecAutoscaling(dict):
                  extension_priority: Optional[_builtins.int] = None,
                  max_node_count: Optional[_builtins.int] = None,
                  min_node_count: Optional[_builtins.int] = None):
-        """
-        :param _builtins.bool enable: Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-        :param _builtins.int extension_priority: Specifies the priority of the scaling group, defaults to **0**.
-               A higher value indicates a greater priority.
-        :param _builtins.int max_node_count: Specifies the maximum number of nodes allowed if auto scaling is enabled.
-        :param _builtins.int min_node_count: Specifies the minimum number of nodes allowed if auto scaling is enabled.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if extension_priority is not None:
@@ -2108,34 +1601,21 @@ class NodePoolExtensionScaleGroupSpecAutoscaling(dict):
     @_builtins.property
     @pulumi.getter
     def enable(self) -> Optional[_builtins.bool]:
-        """
-        Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-        """
         return pulumi.get(self, "enable")
 
     @_builtins.property
     @pulumi.getter(name="extensionPriority")
     def extension_priority(self) -> Optional[_builtins.int]:
-        """
-        Specifies the priority of the scaling group, defaults to **0**.
-        A higher value indicates a greater priority.
-        """
         return pulumi.get(self, "extension_priority")
 
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[_builtins.int]:
-        """
-        Specifies the maximum number of nodes allowed if auto scaling is enabled.
-        """
         return pulumi.get(self, "max_node_count")
 
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[_builtins.int]:
-        """
-        Specifies the minimum number of nodes allowed if auto scaling is enabled.
-        """
         return pulumi.get(self, "min_node_count")
 
 
@@ -2144,15 +1624,6 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecification(dict):
     def __init__(__self__, *,
                  id: Optional[_builtins.str] = None,
                  preference: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str id: The resource ID in UUID format.
-        :param _builtins.str preference: Specifies the capacity of a private storage pool. If the value is none,
-               the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-               In this case, the `id` cannot be left blank.
-               
-               <a name="autoscaling"></a>
-               The `autoscaling` block supports:
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if preference is not None:
@@ -2161,22 +1632,11 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecification(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        The resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def preference(self) -> Optional[_builtins.str]:
-        """
-        Specifies the capacity of a private storage pool. If the value is none,
-        the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-        In this case, the `id` cannot be left blank.
-
-        <a name="autoscaling"></a>
-        The `autoscaling` block supports:
-        """
         return pulumi.get(self, "preference")
 
 
@@ -2184,17 +1644,11 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecification(dict):
 class NodePoolHostnameConfig(dict):
     def __init__(__self__, *,
                  type: _builtins.str):
-        """
-        :param _builtins.str type: Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-        """
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-        """
         return pulumi.get(self, "type")
 
 
@@ -2236,19 +1690,7 @@ class NodePoolRootVolume(dict):
                  kms_key_id: Optional[_builtins.str] = None,
                  throughput: Optional[_builtins.int] = None):
         """
-        :param _builtins.int size: Specifies the disk size in GB. Changing this parameter will create a new resource.
-        :param _builtins.str volumetype: Specifies the disk type. Changing this parameter will create a new resource.
-        :param _builtins.str dss_pool_id: Specifies the DSS pool ID. This field is used only for dedicated storage.
-               Changing this parameter will create a new resource.
-        :param Mapping[str, _builtins.str] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param _builtins.bool hw_passthrough: schema: Internal
-        :param _builtins.int iops: Specifies the iops of the disk,
-               required when `volumetype` is **GPSSD2** or **ESSD2**.
-        :param _builtins.str kms_key_id: Specifies the KMS key ID. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
-        :param _builtins.int throughput: Specifies the throughput of the disk in MiB/s,
-               required when `volumetype` is **GPSSD2**.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -2270,26 +1712,16 @@ class NodePoolRootVolume(dict):
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the disk size in GB. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Specifies the disk type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @_builtins.property
     @pulumi.getter(name="dssPoolId")
     def dss_pool_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the DSS pool ID. This field is used only for dedicated storage.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "dss_pool_id")
 
     @_builtins.property
@@ -2301,10 +1733,6 @@ class NodePoolRootVolume(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
@@ -2318,28 +1746,16 @@ class NodePoolRootVolume(dict):
     @_builtins.property
     @pulumi.getter
     def iops(self) -> Optional[_builtins.int]:
-        """
-        Specifies the iops of the disk,
-        required when `volumetype` is **GPSSD2** or **ESSD2**.
-        """
         return pulumi.get(self, "iops")
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the KMS key ID. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
     @pulumi.getter
     def throughput(self) -> Optional[_builtins.int]:
-        """
-        Specifies the throughput of the disk in MiB/s,
-        required when `volumetype` is **GPSSD2**.
-        """
         return pulumi.get(self, "throughput")
 
 
@@ -2348,35 +1764,17 @@ class NodePoolStorage(dict):
     def __init__(__self__, *,
                  groups: Sequence['outputs.NodePoolStorageGroup'],
                  selectors: Sequence['outputs.NodePoolStorageSelector']):
-        """
-        :param Sequence['NodePoolStorageGroupArgs'] groups: Specifies the storage group consists of multiple storage devices.
-               This is used to divide storage space. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param Sequence['NodePoolStorageSelectorArgs'] selectors: Specifies the disk selection.
-               Matched disks are managed according to match labels and storage type. Structure is documented below.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "groups", groups)
         pulumi.set(__self__, "selectors", selectors)
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.NodePoolStorageGroup']:
-        """
-        Specifies the storage group consists of multiple storage devices.
-        This is used to divide storage space. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
     @pulumi.getter
     def selectors(self) -> Sequence['outputs.NodePoolStorageSelector']:
-        """
-        Specifies the disk selection.
-        Matched disks are managed according to match labels and storage type. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selectors")
 
 
@@ -2408,22 +1806,6 @@ class NodePoolStorageGroup(dict):
                  selector_names: Sequence[_builtins.str],
                  virtual_spaces: Sequence['outputs.NodePoolStorageGroupVirtualSpace'],
                  cce_managed: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.str name: Specifies the name of an extended scaling group.
-               The value cannot be default and can contain a maximum of 55 characters.
-               Only digits, lowercase letters, and hyphens (-) are allowed.
-               
-               <a name="spec"></a>
-               The `spec` block supports:
-        :param Sequence[_builtins.str] selector_names: Specifies the list of names of selectors to match.
-               This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-               but a selector can match only one group. Changing this parameter will create a new resource.
-        :param Sequence['NodePoolStorageGroupVirtualSpaceArgs'] virtual_spaces: Specifies the detailed management of space configuration in a group.
-               Changing this parameter will create a new resource.
-        :param _builtins.bool cce_managed: Specifies the whether the storage space is for **kubernetes** and
-               **runtime** components. Only one group can be set to true. The default value is **false**.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "selector_names", selector_names)
         pulumi.set(__self__, "virtual_spaces", virtual_spaces)
@@ -2433,43 +1815,21 @@ class NodePoolStorageGroup(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of an extended scaling group.
-        The value cannot be default and can contain a maximum of 55 characters.
-        Only digits, lowercase letters, and hyphens (-) are allowed.
-
-        <a name="spec"></a>
-        The `spec` block supports:
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="selectorNames")
     def selector_names(self) -> Sequence[_builtins.str]:
-        """
-        Specifies the list of names of selectors to match.
-        This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-        but a selector can match only one group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selector_names")
 
     @_builtins.property
     @pulumi.getter(name="virtualSpaces")
     def virtual_spaces(self) -> Sequence['outputs.NodePoolStorageGroupVirtualSpace']:
-        """
-        Specifies the detailed management of space configuration in a group.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "virtual_spaces")
 
     @_builtins.property
     @pulumi.getter(name="cceManaged")
     def cce_managed(self) -> Optional[_builtins.bool]:
-        """
-        Specifies the whether the storage space is for **kubernetes** and
-        **runtime** components. Only one group can be set to true. The default value is **false**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cce_managed")
 
 
@@ -2502,23 +1862,6 @@ class NodePoolStorageGroupVirtualSpace(dict):
                  lvm_lv_type: Optional[_builtins.str] = None,
                  lvm_path: Optional[_builtins.str] = None,
                  runtime_lv_type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-               and **user** are supported. Changing this parameter will create a new resource.
-        :param _builtins.str size: Specifies the size of a virtual space. Only an integer percentage is supported.
-               Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-               Changing this parameter will create a new resource.
-        :param _builtins.str lvm_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-               a new resource.
-        :param _builtins.str lvm_path: Specifies the absolute path to which the disk is attached.
-               This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        :param _builtins.str runtime_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-               
-               <a name="hostname_config"></a>
-               The `hostname_config` block supports:
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         if lvm_lv_type is not None:
@@ -2531,51 +1874,26 @@ class NodePoolStorageGroupVirtualSpace(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-        and **user** are supported. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.str:
-        """
-        Specifies the size of a virtual space. Only an integer percentage is supported.
-        Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter(name="lvmLvType")
     def lvm_lv_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "lvm_lv_type")
 
     @_builtins.property
     @pulumi.getter(name="lvmPath")
     def lvm_path(self) -> Optional[_builtins.str]:
-        """
-        Specifies the absolute path to which the disk is attached.
-        This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "lvm_path")
 
     @_builtins.property
     @pulumi.getter(name="runtimeLvType")
     def runtime_lv_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-
-        <a name="hostname_config"></a>
-        The `hostname_config` block supports:
-        """
         return pulumi.get(self, "runtime_lv_type")
 
 
@@ -2614,24 +1932,6 @@ class NodePoolStorageSelector(dict):
                  match_label_size: Optional[_builtins.str] = None,
                  match_label_volume_type: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the selector name, used as the index of `selector_names` in storage group.
-               The name of each selector must be unique. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_count: Specifies the number of disks to be selected. If omitted,
-               all disks of this type are selected. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_metadata_cmkid: Specifies the customer master key ID of an encrypted
-               disk. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_metadata_encrypted: Specifies the disk encryption identifier.
-               Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-               If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_size: Specifies the matched disk size. If omitted,
-               the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_volume_type: Specifies the EVS disk type. Currently,
-               **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-               Changing this parameter will create a new resource.
-        :param _builtins.str type: Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-               The default value is **evs**. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         if match_label_count is not None:
             pulumi.set(__self__, "match_label_count", match_label_count)
@@ -2649,66 +1949,36 @@ class NodePoolStorageSelector(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the selector name, used as the index of `selector_names` in storage group.
-        The name of each selector must be unique. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelCount")
     def match_label_count(self) -> Optional[_builtins.str]:
-        """
-        Specifies the number of disks to be selected. If omitted,
-        all disks of this type are selected. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_count")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataCmkid")
     def match_label_metadata_cmkid(self) -> Optional[_builtins.str]:
-        """
-        Specifies the customer master key ID of an encrypted
-        disk. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_cmkid")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataEncrypted")
     def match_label_metadata_encrypted(self) -> Optional[_builtins.str]:
-        """
-        Specifies the disk encryption identifier.
-        Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-        If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_encrypted")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelSize")
     def match_label_size(self) -> Optional[_builtins.str]:
-        """
-        Specifies the matched disk size. If omitted,
-        the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_size")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelVolumeType")
     def match_label_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the EVS disk type. Currently,
-        **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_volume_type")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
 
@@ -2718,17 +1988,6 @@ class NodePoolTaint(dict):
                  effect: _builtins.str,
                  key: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str effect: Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-               
-               <a name="extend_params"></a>
-               The `extend_params` block supports:
-        :param _builtins.str key: A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-               digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-               prefix of a key.
-        :param _builtins.str value: A value must start with a letter or digit and can contain a maximum of 63 characters,
-               including letters, digits, hyphens (-), underscores (_), and periods (.).
-        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -2736,31 +1995,16 @@ class NodePoolTaint(dict):
     @_builtins.property
     @pulumi.getter
     def effect(self) -> _builtins.str:
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-
-        <a name="extend_params"></a>
-        The `extend_params` block supports:
-        """
         return pulumi.get(self, "effect")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-        digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-        prefix of a key.
-        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        A value must start with a letter or digit and can contain a maximum of 63 characters,
-        including letters, digits, hyphens (-), underscores (_), and periods (.).
-        """
         return pulumi.get(self, "value")
 
 
@@ -2802,24 +2046,7 @@ class NodeRootVolume(dict):
                  kms_key_id: Optional[_builtins.str] = None,
                  throughput: Optional[_builtins.int] = None):
         """
-        :param _builtins.int size: Specifies the disk size in GB.
-               Changing this parameter will create a new resource.
-        :param _builtins.str volumetype: Specifies the disk type.
-               Changing this parameter will create a new resource.
-        :param _builtins.str extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param Mapping[str, _builtins.str] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param _builtins.bool hw_passthrough: schema: Internal
-        :param _builtins.str kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -2841,19 +2068,11 @@ class NodeRootVolume(dict):
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the disk size in GB.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Specifies the disk type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @_builtins.property
@@ -2865,26 +2084,11 @@ class NodeRootVolume(dict):
     @pulumi.getter(name="extendParam")
     @_utilities.deprecated("""use extend_params instead""")
     def extend_param(self) -> Optional[_builtins.str]:
-        """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
-        """
         return pulumi.get(self, "extend_param")
 
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
@@ -2903,10 +2107,6 @@ class NodeRootVolume(dict):
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @_builtins.property
@@ -2920,35 +2120,17 @@ class NodeStorage(dict):
     def __init__(__self__, *,
                  groups: Sequence['outputs.NodeStorageGroup'],
                  selectors: Sequence['outputs.NodeStorageSelector']):
-        """
-        :param Sequence['NodeStorageGroupArgs'] groups: Specifies the storage group consists of multiple storage devices.
-               This is used to divide storage space. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param Sequence['NodeStorageSelectorArgs'] selectors: Specifies the disk selection.
-               Matched disks are managed according to match labels and storage type. Structure is documented below.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "groups", groups)
         pulumi.set(__self__, "selectors", selectors)
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence['outputs.NodeStorageGroup']:
-        """
-        Specifies the storage group consists of multiple storage devices.
-        This is used to divide storage space. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
     @pulumi.getter
     def selectors(self) -> Sequence['outputs.NodeStorageSelector']:
-        """
-        Specifies the disk selection.
-        Matched disks are managed according to match labels and storage type. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selectors")
 
 
@@ -2980,18 +2162,6 @@ class NodeStorageGroup(dict):
                  selector_names: Sequence[_builtins.str],
                  virtual_spaces: Sequence['outputs.NodeStorageGroupVirtualSpace'],
                  cce_managed: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.str name: Specifies the name of a virtual storage group. Each group name must be unique.
-               Changing this parameter will create a new resource.
-        :param Sequence[_builtins.str] selector_names: Specifies the list of names of seletors to match.
-               This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-               but a selector can match only one group. Changing this parameter will create a new resource.
-        :param Sequence['NodeStorageGroupVirtualSpaceArgs'] virtual_spaces: Specifies the detailed management of space configuration in a group.
-               Changing this parameter will create a new resource.
-        :param _builtins.bool cce_managed: Specifies the whether the storage space is for **kubernetes** and
-               **runtime** components. Only one group can be set to true. The default value is **false**.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "selector_names", selector_names)
         pulumi.set(__self__, "virtual_spaces", virtual_spaces)
@@ -3001,39 +2171,21 @@ class NodeStorageGroup(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of a virtual storage group. Each group name must be unique.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="selectorNames")
     def selector_names(self) -> Sequence[_builtins.str]:
-        """
-        Specifies the list of names of seletors to match.
-        This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-        but a selector can match only one group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selector_names")
 
     @_builtins.property
     @pulumi.getter(name="virtualSpaces")
     def virtual_spaces(self) -> Sequence['outputs.NodeStorageGroupVirtualSpace']:
-        """
-        Specifies the detailed management of space configuration in a group.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "virtual_spaces")
 
     @_builtins.property
     @pulumi.getter(name="cceManaged")
     def cce_managed(self) -> Optional[_builtins.bool]:
-        """
-        Specifies the whether the storage space is for **kubernetes** and
-        **runtime** components. Only one group can be set to true. The default value is **false**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cce_managed")
 
 
@@ -3066,20 +2218,6 @@ class NodeStorageGroupVirtualSpace(dict):
                  lvm_lv_type: Optional[_builtins.str] = None,
                  lvm_path: Optional[_builtins.str] = None,
                  runtime_lv_type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-               and **user** are supported. Changing this parameter will create a new resource.
-        :param _builtins.str size: Specifies the size of a virtual space. Only an integer percentage is supported.
-               Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-               Changing this parameter will create a new resource.
-        :param _builtins.str lvm_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-               a new resource.
-        :param _builtins.str lvm_path: Specifies the absolute path to which the disk is attached.
-               This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        :param _builtins.str runtime_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         if lvm_lv_type is not None:
@@ -3092,48 +2230,26 @@ class NodeStorageGroupVirtualSpace(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-        and **user** are supported. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.str:
-        """
-        Specifies the size of a virtual space. Only an integer percentage is supported.
-        Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter(name="lvmLvType")
     def lvm_lv_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "lvm_lv_type")
 
     @_builtins.property
     @pulumi.getter(name="lvmPath")
     def lvm_path(self) -> Optional[_builtins.str]:
-        """
-        Specifies the absolute path to which the disk is attached.
-        This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "lvm_path")
 
     @_builtins.property
     @pulumi.getter(name="runtimeLvType")
     def runtime_lv_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "runtime_lv_type")
 
 
@@ -3172,24 +2288,6 @@ class NodeStorageSelector(dict):
                  match_label_size: Optional[_builtins.str] = None,
                  match_label_volume_type: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Specifies the selector name, used as the index of `selector_names` in storage group.
-               The name of each selector must be unique. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_count: Specifies the number of disks to be selected. If omitted,
-               all disks of this type are selected. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_metadata_cmkid: Specifies the cstomer master key ID of an encrypted
-               disk. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_metadata_encrypted: Specifies the disk encryption identifier.
-               Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-               If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_size: Specifies the matched disk size. If omitted,
-               the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        :param _builtins.str match_label_volume_type: Specifies the EVS disk type. Currently,
-               **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-               Changing this parameter will create a new resource.
-        :param _builtins.str type: Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-               The default value is **evs**. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         if match_label_count is not None:
             pulumi.set(__self__, "match_label_count", match_label_count)
@@ -3207,66 +2305,36 @@ class NodeStorageSelector(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the selector name, used as the index of `selector_names` in storage group.
-        The name of each selector must be unique. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelCount")
     def match_label_count(self) -> Optional[_builtins.str]:
-        """
-        Specifies the number of disks to be selected. If omitted,
-        all disks of this type are selected. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_count")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataCmkid")
     def match_label_metadata_cmkid(self) -> Optional[_builtins.str]:
-        """
-        Specifies the cstomer master key ID of an encrypted
-        disk. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_cmkid")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataEncrypted")
     def match_label_metadata_encrypted(self) -> Optional[_builtins.str]:
-        """
-        Specifies the disk encryption identifier.
-        Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-        If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_encrypted")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelSize")
     def match_label_size(self) -> Optional[_builtins.str]:
-        """
-        Specifies the matched disk size. If omitted,
-        the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_size")
 
     @_builtins.property
     @pulumi.getter(name="matchLabelVolumeType")
     def match_label_volume_type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the EVS disk type. Currently,
-        **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_volume_type")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
 
@@ -3276,16 +2344,6 @@ class NodeTaint(dict):
                  effect: _builtins.str,
                  key: _builtins.str,
                  value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str effect: Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-               Changing this parameter will create a new resource.
-        :param _builtins.str key: A key must contain 1 to 63 characters starting with a letter or digit.
-               Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-               as the prefix of a key. Changing this parameter will create a new resource.
-        :param _builtins.str value: A value must start with a letter or digit and can contain a maximum of 63
-               characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-               create a new resource.
-        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -3294,30 +2352,16 @@ class NodeTaint(dict):
     @_builtins.property
     @pulumi.getter
     def effect(self) -> _builtins.str:
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "effect")
 
     @_builtins.property
     @pulumi.getter
     def key(self) -> _builtins.str:
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit.
-        Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-        as the prefix of a key. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
-        """
-        A value must start with a letter or digit and can contain a maximum of 63
-        characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-        create a new resource.
-        """
         return pulumi.get(self, "value")
 
 
@@ -3346,11 +2390,6 @@ class GetClusterCertificateClusterResult(dict):
                  certificate_authority_data: _builtins.str,
                  name: _builtins.str,
                  server: _builtins.str):
-        """
-        :param _builtins.str certificate_authority_data: The certificate data.
-        :param _builtins.str name: Specifies the name of the cluster.
-        :param _builtins.str server: The server IP address.
-        """
         pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "server", server)
@@ -3358,25 +2397,16 @@ class GetClusterCertificateClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityData")
     def certificate_authority_data(self) -> _builtins.str:
-        """
-        The certificate data.
-        """
         return pulumi.get(self, "certificate_authority_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the cluster.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def server(self) -> _builtins.str:
-        """
-        The server IP address.
-        """
         return pulumi.get(self, "server")
 
 
@@ -3386,11 +2416,6 @@ class GetClusterCertificateUserResult(dict):
                  client_certificate_data: _builtins.str,
                  client_key_data: _builtins.str,
                  name: _builtins.str):
-        """
-        :param _builtins.str client_certificate_data: The client certificate data.
-        :param _builtins.str client_key_data: The client key data.
-        :param _builtins.str name: Specifies the name of the cluster.
-        """
         pulumi.set(__self__, "client_certificate_data", client_certificate_data)
         pulumi.set(__self__, "client_key_data", client_key_data)
         pulumi.set(__self__, "name", name)
@@ -3398,25 +2423,16 @@ class GetClusterCertificateUserResult(dict):
     @_builtins.property
     @pulumi.getter(name="clientCertificateData")
     def client_certificate_data(self) -> _builtins.str:
-        """
-        The client certificate data.
-        """
         return pulumi.get(self, "client_certificate_data")
 
     @_builtins.property
     @pulumi.getter(name="clientKeyData")
     def client_key_data(self) -> _builtins.str:
-        """
-        The client key data.
-        """
         return pulumi.get(self, "client_key_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the cluster.
-        """
         return pulumi.get(self, "name")
 
 
@@ -3427,12 +2443,6 @@ class GetClusterCertificatesClusterResult(dict):
                  insecure_skip_tls_verify: _builtins.bool,
                  name: _builtins.str,
                  server: _builtins.str):
-        """
-        :param _builtins.str certificate_authority_data: The certificate authority data of the cluster certificate.
-        :param _builtins.bool insecure_skip_tls_verify: Whether insecure skip tls verify of the cluster certificate.
-        :param _builtins.str name: The context name of the cluster certificate.
-        :param _builtins.str server: The server address of the cluster certificate.
-        """
         pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
         pulumi.set(__self__, "insecure_skip_tls_verify", insecure_skip_tls_verify)
         pulumi.set(__self__, "name", name)
@@ -3441,33 +2451,21 @@ class GetClusterCertificatesClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityData")
     def certificate_authority_data(self) -> _builtins.str:
-        """
-        The certificate authority data of the cluster certificate.
-        """
         return pulumi.get(self, "certificate_authority_data")
 
     @_builtins.property
     @pulumi.getter(name="insecureSkipTlsVerify")
     def insecure_skip_tls_verify(self) -> _builtins.bool:
-        """
-        Whether insecure skip tls verify of the cluster certificate.
-        """
         return pulumi.get(self, "insecure_skip_tls_verify")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The context name of the cluster certificate.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def server(self) -> _builtins.str:
-        """
-        The server address of the cluster certificate.
-        """
         return pulumi.get(self, "server")
 
 
@@ -3477,11 +2475,6 @@ class GetClusterCertificatesContextResult(dict):
                  cluster: _builtins.str,
                  name: _builtins.str,
                  user: _builtins.str):
-        """
-        :param _builtins.str cluster: The context cluster of the cluster certificate.
-        :param _builtins.str name: The context name of the cluster certificate.
-        :param _builtins.str user: The context user of the cluster certificate.
-        """
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "user", user)
@@ -3489,25 +2482,16 @@ class GetClusterCertificatesContextResult(dict):
     @_builtins.property
     @pulumi.getter
     def cluster(self) -> _builtins.str:
-        """
-        The context cluster of the cluster certificate.
-        """
         return pulumi.get(self, "cluster")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The context name of the cluster certificate.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def user(self) -> _builtins.str:
-        """
-        The context user of the cluster certificate.
-        """
         return pulumi.get(self, "user")
 
 
@@ -3517,11 +2501,6 @@ class GetClusterCertificatesUserResult(dict):
                  client_certificate_data: _builtins.str,
                  client_key_data: _builtins.str,
                  name: _builtins.str):
-        """
-        :param _builtins.str client_certificate_data: The client certificate data of the cluster certificate.
-        :param _builtins.str client_key_data: The client key data of the cluster certificate.
-        :param _builtins.str name: The context name of the cluster certificate.
-        """
         pulumi.set(__self__, "client_certificate_data", client_certificate_data)
         pulumi.set(__self__, "client_key_data", client_key_data)
         pulumi.set(__self__, "name", name)
@@ -3529,25 +2508,16 @@ class GetClusterCertificatesUserResult(dict):
     @_builtins.property
     @pulumi.getter(name="clientCertificateData")
     def client_certificate_data(self) -> _builtins.str:
-        """
-        The client certificate data of the cluster certificate.
-        """
         return pulumi.get(self, "client_certificate_data")
 
     @_builtins.property
     @pulumi.getter(name="clientKeyData")
     def client_key_data(self) -> _builtins.str:
-        """
-        The client key data of the cluster certificate.
-        """
         return pulumi.get(self, "client_key_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The context name of the cluster certificate.
-        """
         return pulumi.get(self, "name")
 
 
@@ -3556,31 +2526,17 @@ class GetClusterEndpointResult(dict):
     def __init__(__self__, *,
                  type: _builtins.str,
                  url: _builtins.str):
-        """
-        :param _builtins.str type: The type of the cluster access address.
-               + **Internal**: The user's subnet access address.
-               + **External**: The public network access address.
-        :param _builtins.str url: The URL of the cluster access address.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of the cluster access address.
-        + **Internal**: The user's subnet access address.
-        + **External**: The public network access address.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
-        """
-        The URL of the cluster access address.
-        """
         return pulumi.get(self, "url")
 
 
@@ -3588,17 +2544,11 @@ class GetClusterEndpointResult(dict):
 class GetClusterMasterResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str):
-        """
-        :param _builtins.str availability_zone: The availability zone (AZ) of the master node.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The availability zone (AZ) of the master node.
-        """
         return pulumi.get(self, "availability_zone")
 
 
@@ -3628,31 +2578,6 @@ class GetClustersClusterResult(dict):
                  status: _builtins.str,
                  subnet_id: _builtins.str,
                  vpc_id: _builtins.str):
-        """
-        :param _builtins.str authentication_mode: The authentication mode of the cluster, possible values are x509 and rbac. Defaults to **rbac**.
-        :param _builtins.int billing_mode: The charging mode of the cluster.
-        :param Sequence['GetClustersClusterCertificateClusterArgs'] certificate_clusters: The certificate clusters. Structure is documented below.
-        :param Sequence['GetClustersClusterCertificateUserArgs'] certificate_users: The certificate users. Structure is documented below.
-        :param _builtins.str cluster_type: Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-        :param _builtins.str cluster_version: The version of the cluster.
-        :param _builtins.str container_network_cidr: The container network segment.
-        :param _builtins.str container_network_type: The container network type: **overlay_l2** , **underlay_ipvlan**, **vpc-router** or **eni**.
-        :param _builtins.str description: The description of the cluster.
-        :param Sequence['GetClustersClusterEndpointArgs'] endpoints: The access addresses of kube-apiserver in the cluster. Structure is documented below.
-        :param _builtins.str eni_subnet_cidr: The ENI network segment.
-        :param _builtins.str eni_subnet_id: The ENI**IPv4 subnet ID** of the subnet where the ENI resides.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the cluster.
-        :param _builtins.str flavor_id: The specification of the cluster.
-        :param _builtins.str id: The ID of the cluster.
-        :param _builtins.str kube_config_raw: The raw Kubernetes config to be used by kubectl and other compatible tools.
-        :param Sequence['GetClustersClusterMasterArgs'] masters: The advanced configuration of master nodes.
-        :param _builtins.str name: Specifies the name of the cluster.
-        :param _builtins.str security_group_id: The security group ID of the cluster.
-        :param _builtins.str service_network_cidr: The service network segment.
-        :param _builtins.str status: Specifies the status of the cluster.
-        :param _builtins.str subnet_id: The ID of the subnet used to create the node.
-        :param _builtins.str vpc_id: Specifies the VPC ID to which the cluster belongs.
-        """
         pulumi.set(__self__, "authentication_mode", authentication_mode)
         pulumi.set(__self__, "billing_mode", billing_mode)
         pulumi.set(__self__, "certificate_clusters", certificate_clusters)
@@ -3680,185 +2605,116 @@ class GetClustersClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="authenticationMode")
     def authentication_mode(self) -> _builtins.str:
-        """
-        The authentication mode of the cluster, possible values are x509 and rbac. Defaults to **rbac**.
-        """
         return pulumi.get(self, "authentication_mode")
 
     @_builtins.property
     @pulumi.getter(name="billingMode")
     def billing_mode(self) -> _builtins.int:
-        """
-        The charging mode of the cluster.
-        """
         return pulumi.get(self, "billing_mode")
 
     @_builtins.property
     @pulumi.getter(name="certificateClusters")
     def certificate_clusters(self) -> Sequence['outputs.GetClustersClusterCertificateClusterResult']:
-        """
-        The certificate clusters. Structure is documented below.
-        """
         return pulumi.get(self, "certificate_clusters")
 
     @_builtins.property
     @pulumi.getter(name="certificateUsers")
     def certificate_users(self) -> Sequence['outputs.GetClustersClusterCertificateUserResult']:
-        """
-        The certificate users. Structure is documented below.
-        """
         return pulumi.get(self, "certificate_users")
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> _builtins.str:
-        """
-        Specifies the type of the cluster. Possible values: **VirtualMachine**, **BareMetal**.
-        """
         return pulumi.get(self, "cluster_type")
 
     @_builtins.property
     @pulumi.getter(name="clusterVersion")
     def cluster_version(self) -> _builtins.str:
-        """
-        The version of the cluster.
-        """
         return pulumi.get(self, "cluster_version")
 
     @_builtins.property
     @pulumi.getter(name="containerNetworkCidr")
     def container_network_cidr(self) -> _builtins.str:
-        """
-        The container network segment.
-        """
         return pulumi.get(self, "container_network_cidr")
 
     @_builtins.property
     @pulumi.getter(name="containerNetworkType")
     def container_network_type(self) -> _builtins.str:
-        """
-        The container network type: **overlay_l2** , **underlay_ipvlan**, **vpc-router** or **eni**.
-        """
         return pulumi.get(self, "container_network_type")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The description of the cluster.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetClustersClusterEndpointResult']:
-        """
-        The access addresses of kube-apiserver in the cluster. Structure is documented below.
-        """
         return pulumi.get(self, "endpoints")
 
     @_builtins.property
     @pulumi.getter(name="eniSubnetCidr")
     def eni_subnet_cidr(self) -> _builtins.str:
-        """
-        The ENI network segment.
-        """
         return pulumi.get(self, "eni_subnet_cidr")
 
     @_builtins.property
     @pulumi.getter(name="eniSubnetId")
     def eni_subnet_id(self) -> _builtins.str:
-        """
-        The ENI**IPv4 subnet ID** of the subnet where the ENI resides.
-        """
         return pulumi.get(self, "eni_subnet_id")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project ID of the cluster.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
-        """
-        The specification of the cluster.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the cluster.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="kubeConfigRaw")
     def kube_config_raw(self) -> _builtins.str:
-        """
-        The raw Kubernetes config to be used by kubectl and other compatible tools.
-        """
         return pulumi.get(self, "kube_config_raw")
 
     @_builtins.property
     @pulumi.getter
     def masters(self) -> Sequence['outputs.GetClustersClusterMasterResult']:
-        """
-        The advanced configuration of master nodes.
-        """
         return pulumi.get(self, "masters")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the cluster.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
-        """
-        The security group ID of the cluster.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter(name="serviceNetworkCidr")
     def service_network_cidr(self) -> _builtins.str:
-        """
-        The service network segment.
-        """
         return pulumi.get(self, "service_network_cidr")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the cluster.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        The ID of the subnet used to create the node.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
-        """
-        Specifies the VPC ID to which the cluster belongs.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -3868,11 +2724,6 @@ class GetClustersClusterCertificateClusterResult(dict):
                  certificate_authority_data: _builtins.str,
                  name: _builtins.str,
                  server: _builtins.str):
-        """
-        :param _builtins.str certificate_authority_data: The certificate data.
-        :param _builtins.str name: Specifies the name of the cluster.
-        :param _builtins.str server: The server IP address.
-        """
         pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "server", server)
@@ -3880,25 +2731,16 @@ class GetClustersClusterCertificateClusterResult(dict):
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityData")
     def certificate_authority_data(self) -> _builtins.str:
-        """
-        The certificate data.
-        """
         return pulumi.get(self, "certificate_authority_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the cluster.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def server(self) -> _builtins.str:
-        """
-        The server IP address.
-        """
         return pulumi.get(self, "server")
 
 
@@ -3908,11 +2750,6 @@ class GetClustersClusterCertificateUserResult(dict):
                  client_certificate_data: _builtins.str,
                  client_key_data: _builtins.str,
                  name: _builtins.str):
-        """
-        :param _builtins.str client_certificate_data: The client certificate data.
-        :param _builtins.str client_key_data: The client key data.
-        :param _builtins.str name: Specifies the name of the cluster.
-        """
         pulumi.set(__self__, "client_certificate_data", client_certificate_data)
         pulumi.set(__self__, "client_key_data", client_key_data)
         pulumi.set(__self__, "name", name)
@@ -3920,25 +2757,16 @@ class GetClustersClusterCertificateUserResult(dict):
     @_builtins.property
     @pulumi.getter(name="clientCertificateData")
     def client_certificate_data(self) -> _builtins.str:
-        """
-        The client certificate data.
-        """
         return pulumi.get(self, "client_certificate_data")
 
     @_builtins.property
     @pulumi.getter(name="clientKeyData")
     def client_key_data(self) -> _builtins.str:
-        """
-        The client key data.
-        """
         return pulumi.get(self, "client_key_data")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the cluster.
-        """
         return pulumi.get(self, "name")
 
 
@@ -3947,31 +2775,17 @@ class GetClustersClusterEndpointResult(dict):
     def __init__(__self__, *,
                  type: _builtins.str,
                  url: _builtins.str):
-        """
-        :param _builtins.str type: The type of the cluster access address.
-               + **Internal**: The user's subnet access address.
-               + **External**: The public network access address.
-        :param _builtins.str url: The URL of the cluster access address.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "url", url)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of the cluster access address.
-        + **Internal**: The user's subnet access address.
-        + **External**: The public network access address.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
-        """
-        The URL of the cluster access address.
-        """
         return pulumi.get(self, "url")
 
 
@@ -3979,17 +2793,11 @@ class GetClustersClusterEndpointResult(dict):
 class GetClustersClusterMasterResult(dict):
     def __init__(__self__, *,
                  availability_zone: _builtins.str):
-        """
-        :param _builtins.str availability_zone: The availability zone (AZ) of the master node.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The availability zone (AZ) of the master node.
-        """
         return pulumi.get(self, "availability_zone")
 
 
@@ -3999,11 +2807,6 @@ class GetNodeDataVolumeResult(dict):
                  extend_params: Mapping[str, _builtins.str],
                  size: _builtins.int,
                  volumetype: _builtins.str):
-        """
-        :param Mapping[str, _builtins.str] extend_params: Disk expansion parameters.
-        :param _builtins.int size: Disk size in GB.
-        :param _builtins.str volumetype: Disk type.
-        """
         pulumi.set(__self__, "extend_params", extend_params)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -4011,25 +2814,16 @@ class GetNodeDataVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Mapping[str, _builtins.str]:
-        """
-        Disk expansion parameters.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Disk size in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "volumetype")
 
 
@@ -4051,11 +2845,6 @@ class GetNodePoolDataVolumeResult(dict):
                  extend_params: Mapping[str, _builtins.str],
                  size: _builtins.int,
                  volumetype: _builtins.str):
-        """
-        :param Mapping[str, _builtins.str] extend_params: Disk expansion parameters.
-        :param _builtins.int size: Disk size in GB.
-        :param _builtins.str volumetype: Disk type.
-        """
         pulumi.set(__self__, "extend_params", extend_params)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -4063,25 +2852,16 @@ class GetNodePoolDataVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Mapping[str, _builtins.str]:
-        """
-        Disk expansion parameters.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Disk size in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "volumetype")
 
 
@@ -4089,17 +2869,11 @@ class GetNodePoolDataVolumeResult(dict):
 class GetNodePoolHostnameConfigResult(dict):
     def __init__(__self__, *,
                  type: _builtins.str):
-        """
-        :param _builtins.str type: Node Pool type.
-        """
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Node Pool type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -4109,11 +2883,6 @@ class GetNodePoolRootVolumeResult(dict):
                  extend_params: Mapping[str, _builtins.str],
                  size: _builtins.int,
                  volumetype: _builtins.str):
-        """
-        :param Mapping[str, _builtins.str] extend_params: Disk expansion parameters.
-        :param _builtins.int size: Disk size in GB.
-        :param _builtins.str volumetype: Disk type.
-        """
         pulumi.set(__self__, "extend_params", extend_params)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -4121,25 +2890,16 @@ class GetNodePoolRootVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Mapping[str, _builtins.str]:
-        """
-        Disk expansion parameters.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Disk size in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "volumetype")
 
 
@@ -4149,11 +2909,6 @@ class GetNodeRootVolumeResult(dict):
                  extend_params: Mapping[str, _builtins.str],
                  size: _builtins.int,
                  volumetype: _builtins.str):
-        """
-        :param Mapping[str, _builtins.str] extend_params: Disk expansion parameters.
-        :param _builtins.int size: Disk size in GB.
-        :param _builtins.str volumetype: Disk type.
-        """
         pulumi.set(__self__, "extend_params", extend_params)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -4161,25 +2916,16 @@ class GetNodeRootVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Mapping[str, _builtins.str]:
-        """
-        Disk expansion parameters.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Disk size in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "volumetype")
 
 
@@ -4204,24 +2950,6 @@ class GetNodesNodeResult(dict):
                  status: _builtins.str,
                  subnet_id: _builtins.str,
                  tags: Mapping[str, _builtins.str]):
-        """
-        :param _builtins.str availability_zone: The available partitions where the node is located.
-        :param _builtins.int billing_mode: The node's billing mode: The value is 0 (on demand).
-        :param Sequence['GetNodesNodeDataVolumeArgs'] data_volumes: The data related configuration. Structure is documented below.
-        :param _builtins.str ecs_group_id: The ID of ECS group to which the node belongs.
-        :param _builtins.str flavor_id: The flavor ID to be used.
-        :param _builtins.str id: The ID of the node.
-        :param _builtins.str key_pair: The key pair name when logging in to select the key pair mode.
-        :param _builtins.str name: Specifies the of the node.
-        :param _builtins.str os: The operating System of the node.
-        :param _builtins.str private_ip: The private IP of the node.
-        :param _builtins.str public_ip: The elastic IP parameters of the node.
-        :param Sequence['GetNodesNodeRootVolumeArgs'] root_volumes: The system disk related configuration. Structure is documented below.
-        :param _builtins.str server_id: The node's virtual machine ID in ECS.
-        :param _builtins.str status: Specifies the status of the node.
-        :param _builtins.str subnet_id: The ID of the subnet to which the NIC belongs.
-        :param Mapping[str, _builtins.str] tags: The tags of a VM node, key/value pair format.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "billing_mode", billing_mode)
         pulumi.set(__self__, "data_volumes", data_volumes)
@@ -4244,33 +2972,21 @@ class GetNodesNodeResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The available partitions where the node is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="billingMode")
     def billing_mode(self) -> _builtins.int:
-        """
-        The node's billing mode: The value is 0 (on demand).
-        """
         return pulumi.get(self, "billing_mode")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> Sequence['outputs.GetNodesNodeDataVolumeResult']:
-        """
-        The data related configuration. Structure is documented below.
-        """
         return pulumi.get(self, "data_volumes")
 
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> _builtins.str:
-        """
-        The ID of ECS group to which the node belongs.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @_builtins.property
@@ -4281,9 +2997,6 @@ class GetNodesNodeResult(dict):
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
-        """
-        The flavor ID to be used.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -4294,89 +3007,56 @@ class GetNodesNodeResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the node.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> _builtins.str:
-        """
-        The key pair name when logging in to select the key pair mode.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the of the node.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def os(self) -> _builtins.str:
-        """
-        The operating System of the node.
-        """
         return pulumi.get(self, "os")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> _builtins.str:
-        """
-        The private IP of the node.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
-        """
-        The elastic IP parameters of the node.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter(name="rootVolumes")
     def root_volumes(self) -> Sequence['outputs.GetNodesNodeRootVolumeResult']:
-        """
-        The system disk related configuration. Structure is documented below.
-        """
         return pulumi.get(self, "root_volumes")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> _builtins.str:
-        """
-        The node's virtual machine ID in ECS.
-        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the node.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
 
@@ -4386,11 +3066,6 @@ class GetNodesNodeDataVolumeResult(dict):
                  extend_params: Mapping[str, _builtins.str],
                  size: _builtins.int,
                  volumetype: _builtins.str):
-        """
-        :param Mapping[str, _builtins.str] extend_params: Disk expansion parameters.
-        :param _builtins.int size: Disk size in GB.
-        :param _builtins.str volumetype: Disk type.
-        """
         pulumi.set(__self__, "extend_params", extend_params)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -4398,25 +3073,16 @@ class GetNodesNodeDataVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Mapping[str, _builtins.str]:
-        """
-        Disk expansion parameters.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Disk size in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "volumetype")
 
 
@@ -4438,11 +3104,6 @@ class GetNodesNodeRootVolumeResult(dict):
                  extend_params: Mapping[str, _builtins.str],
                  size: _builtins.int,
                  volumetype: _builtins.str):
-        """
-        :param Mapping[str, _builtins.str] extend_params: Disk expansion parameters.
-        :param _builtins.int size: Disk size in GB.
-        :param _builtins.str volumetype: Disk type.
-        """
         pulumi.set(__self__, "extend_params", extend_params)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -4450,25 +3111,16 @@ class GetNodesNodeRootVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Mapping[str, _builtins.str]:
-        """
-        Disk expansion parameters.
-        """
         return pulumi.get(self, "extend_params")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Disk size in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> _builtins.str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "volumetype")
 
 

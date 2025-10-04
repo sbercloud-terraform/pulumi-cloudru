@@ -4,44 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW alarm configuration resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const fwInstanceId = config.requireObject<any>("fwInstanceId");
- * const alarmType = config.requireObject<any>("alarmType");
- * const alarmTimePeriod = config.requireObject<any>("alarmTimePeriod");
- * const severity = config.requireObject<any>("severity");
- * const frequencyCount = config.requireObject<any>("frequencyCount");
- * const frequencyTime = config.requireObject<any>("frequencyTime");
- * const topicUrn = config.requireObject<any>("topicUrn");
- * const test = new sbercloud.cfw.AlarmConfig("test", {
- *     fwInstanceId: fwInstanceId,
- *     alarmType: alarmType,
- *     alarmTimePeriod: alarmTimePeriod,
- *     frequencyCount: frequencyCount,
- *     frequencyTime: frequencyTime,
- *     severity: severity,
- *     topicUrn: topicUrn,
- * });
- * ```
- *
- * ## Import
- *
- * The alarm configuration can be imported using `fw_instance_id`, `alarm_type`, separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/alarmConfig:AlarmConfig test <fw_instance_id>/<alarm_type>
- * ```
- */
 export class AlarmConfig extends pulumi.CustomResource {
     /**
      * Get an existing AlarmConfig resource's state with the given name, ID, and optional extra
@@ -72,31 +34,19 @@ export class AlarmConfig extends pulumi.CustomResource {
 
     /**
      * Specifies the alarm period.
-     * The valid values are as follows:
-     * + **0**: 8:00 to 22:00;
-     * + **1**: all day;
      */
     declare public readonly alarmTimePeriod: pulumi.Output<number>;
     /**
      * Specifies the alarm type.
-     * The valid values are as follows.
-     * + **0**: attack;
-     * + **1**: traffic threshold crossing;
-     * + **2**: EIP unprotected;
-     * + **3**: threat intelligence;
      */
     declare public readonly alarmType: pulumi.Output<number>;
     declare public readonly enableForceNew: pulumi.Output<string | undefined>;
     /**
      * Specifies the alarm triggering frequency.
-     * + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-     * + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
      */
     declare public readonly frequencyCount: pulumi.Output<number>;
     /**
      * Specifies the alarm frequency time range.
-     * + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-     * + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
      */
     declare public readonly frequencyTime: pulumi.Output<number>;
     /**
@@ -104,20 +54,15 @@ export class AlarmConfig extends pulumi.CustomResource {
      */
     declare public readonly fwInstanceId: pulumi.Output<string>;
     /**
-     * The language.
+     * The alarm language.
      */
     declare public /*out*/ readonly language: pulumi.Output<string>;
     /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this will create new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Specifies the alarm severity.
-     * + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-     * **MEDIUM**, and **LOW**, separated by commas.
-     * + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-     * + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
      */
     declare public readonly severity: pulumi.Output<string>;
     /**
@@ -199,31 +144,19 @@ export class AlarmConfig extends pulumi.CustomResource {
 export interface AlarmConfigState {
     /**
      * Specifies the alarm period.
-     * The valid values are as follows:
-     * + **0**: 8:00 to 22:00;
-     * + **1**: all day;
      */
     alarmTimePeriod?: pulumi.Input<number>;
     /**
      * Specifies the alarm type.
-     * The valid values are as follows.
-     * + **0**: attack;
-     * + **1**: traffic threshold crossing;
-     * + **2**: EIP unprotected;
-     * + **3**: threat intelligence;
      */
     alarmType?: pulumi.Input<number>;
     enableForceNew?: pulumi.Input<string>;
     /**
      * Specifies the alarm triggering frequency.
-     * + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-     * + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
      */
     frequencyCount?: pulumi.Input<number>;
     /**
      * Specifies the alarm frequency time range.
-     * + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-     * + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
      */
     frequencyTime?: pulumi.Input<number>;
     /**
@@ -231,20 +164,15 @@ export interface AlarmConfigState {
      */
     fwInstanceId?: pulumi.Input<string>;
     /**
-     * The language.
+     * The alarm language.
      */
     language?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this will create new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     region?: pulumi.Input<string>;
     /**
      * Specifies the alarm severity.
-     * + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-     * **MEDIUM**, and **LOW**, separated by commas.
-     * + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-     * + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
      */
     severity?: pulumi.Input<string>;
     /**
@@ -263,31 +191,19 @@ export interface AlarmConfigState {
 export interface AlarmConfigArgs {
     /**
      * Specifies the alarm period.
-     * The valid values are as follows:
-     * + **0**: 8:00 to 22:00;
-     * + **1**: all day;
      */
     alarmTimePeriod: pulumi.Input<number>;
     /**
      * Specifies the alarm type.
-     * The valid values are as follows.
-     * + **0**: attack;
-     * + **1**: traffic threshold crossing;
-     * + **2**: EIP unprotected;
-     * + **3**: threat intelligence;
      */
     alarmType: pulumi.Input<number>;
     enableForceNew?: pulumi.Input<string>;
     /**
      * Specifies the alarm triggering frequency.
-     * + If `alarmType` is **0** or **3**, the value of `frequencyCount` must be between **1** and **2000**.
-     * + If `alarmType` is **1** or **2**, the value of `frequencyCount` should be **1**.
      */
     frequencyCount: pulumi.Input<number>;
     /**
      * Specifies the alarm frequency time range.
-     * + If `alarmType` is **0** or **3**, the value of `frequencyTime` must be between **1** and **60**.
-     * + If `alarmType` is **1** or **2**, the value of `frequencyTime` should be **1**.
      */
     frequencyTime: pulumi.Input<number>;
     /**
@@ -295,16 +211,11 @@ export interface AlarmConfigArgs {
      */
     fwInstanceId: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this will create new resource.
+     * The region in which to create the resource. If omitted, the provider-level region will be used.
      */
     region?: pulumi.Input<string>;
     /**
      * Specifies the alarm severity.
-     * + If `alarmType` is **0** or **3**, the value of `severity` can be a combination of **CRITICAL**, **HIGH**,
-     * **MEDIUM**, and **LOW**, separated by commas.
-     * + If `alarmType` is **1**, the value of `severity` can be **0** (70%), **1** (80%), or **2** (90%).
-     * + If `alarmType` is **2**, the value of `severity` must be **3** (EIP).
      */
     severity: pulumi.Input<string>;
     /**

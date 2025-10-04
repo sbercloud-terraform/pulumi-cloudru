@@ -4,23 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the ID of an available DCS product.
- *
- * !> **WARNING:** It has been deprecated. This data source is used for the `productId` of the
- * `sbercloud.Dcs.Instance` resource. Now `productId` has been deprecated and this data source is no longer used.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const product1 = sbercloud.getDcsProduct({
- *     specCode: "dcs.single_node",
- * });
- * ```
- */
 export function getDcsProduct(args?: GetDcsProductArgs, opts?: pulumi.InvokeOptions): Promise<GetDcsProductResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,16 +17,7 @@ export function getDcsProduct(args?: GetDcsProductArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getDcsProduct.
  */
 export interface GetDcsProductArgs {
-    /**
-     * Specifies the region in which to obtain the dcs products.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the DCS instance specification code. For details, see
-     * [Querying Service Specifications](https://support.hc.sbercloud.ru/api/dcs/dcs-api-0312040.html).
-     * + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
-     */
     specCode?: string;
 }
 
@@ -51,19 +25,9 @@ export interface GetDcsProductArgs {
  * A collection of values returned by getDcsProduct.
  */
 export interface GetDcsProductResult {
-    /**
-     * The mode of a cache engine. The value is one of *single*, *ha*, *cluster*,
-     * *proxy* and *ha_rw_split*.
-     */
     readonly cacheMode: string;
     readonly capacity: string;
-    /**
-     * The cache engine. The value is *redis* or *memcached*.
-     */
     readonly engine: string;
-    /**
-     * The supported versions of a cache engine.
-     */
     readonly engineVersion: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -72,23 +36,6 @@ export interface GetDcsProductResult {
     readonly region: string;
     readonly specCode: string;
 }
-/**
- * Use this data source to get the ID of an available DCS product.
- *
- * !> **WARNING:** It has been deprecated. This data source is used for the `productId` of the
- * `sbercloud.Dcs.Instance` resource. Now `productId` has been deprecated and this data source is no longer used.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const product1 = sbercloud.getDcsProduct({
- *     specCode: "dcs.single_node",
- * });
- * ```
- */
 export function getDcsProductOutput(args?: GetDcsProductOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDcsProductResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -102,15 +49,6 @@ export function getDcsProductOutput(args?: GetDcsProductOutputArgs, opts?: pulum
  * A collection of arguments for invoking getDcsProduct.
  */
 export interface GetDcsProductOutputArgs {
-    /**
-     * Specifies the region in which to obtain the dcs products.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the DCS instance specification code. For details, see
-     * [Querying Service Specifications](https://support.hc.sbercloud.ru/api/dcs/dcs-api-0312040.html).
-     * + Log in to the DCS console, click *Buy DCS Instance*, and find the corresponding instance specification.
-     */
     specCode?: pulumi.Input<string>;
 }

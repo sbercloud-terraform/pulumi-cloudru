@@ -11,37 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RDS storage types.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.GetStorageTypes(ctx, &rds.GetStorageTypesArgs{
-//				DbType:    "MySQL",
-//				DbVersion: "8.0",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetStorageTypes(ctx *pulumi.Context, args *GetStorageTypesArgs, opts ...pulumi.InvokeOption) (*GetStorageTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStorageTypesResult
@@ -54,15 +23,10 @@ func GetStorageTypes(ctx *pulumi.Context, args *GetStorageTypesArgs, opts ...pul
 
 // A collection of arguments for invoking getStorageTypes.
 type GetStorageTypesArgs struct {
-	// DB engine. The valid values are **MySQL**, **PostgreSQL**, **SQLServer**.
-	DbType string `pulumi:"dbType"`
-	// DB version number.
-	DbVersion string `pulumi:"dbVersion"`
-	// HA mode. The valid values are **single**, **ha**, **replica**.
+	DbType       string  `pulumi:"dbType"`
+	DbVersion    string  `pulumi:"dbVersion"`
 	InstanceMode *string `pulumi:"instanceMode"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Region       *string `pulumi:"region"`
 }
 
 // A collection of values returned by getStorageTypes.
@@ -70,11 +34,9 @@ type GetStorageTypesResult struct {
 	DbType    string `pulumi:"dbType"`
 	DbVersion string `pulumi:"dbVersion"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string  `pulumi:"id"`
-	InstanceMode *string `pulumi:"instanceMode"`
-	Region       string  `pulumi:"region"`
-	// Storage type list. For details, see Data structure of the storageType field.
-	// The storageType structure is documented below.
+	Id           string                       `pulumi:"id"`
+	InstanceMode *string                      `pulumi:"instanceMode"`
+	Region       string                       `pulumi:"region"`
 	StorageTypes []GetStorageTypesStorageType `pulumi:"storageTypes"`
 }
 
@@ -89,15 +51,10 @@ func GetStorageTypesOutput(ctx *pulumi.Context, args GetStorageTypesOutputArgs, 
 
 // A collection of arguments for invoking getStorageTypes.
 type GetStorageTypesOutputArgs struct {
-	// DB engine. The valid values are **MySQL**, **PostgreSQL**, **SQLServer**.
-	DbType pulumi.StringInput `pulumi:"dbType"`
-	// DB version number.
-	DbVersion pulumi.StringInput `pulumi:"dbVersion"`
-	// HA mode. The valid values are **single**, **ha**, **replica**.
+	DbType       pulumi.StringInput    `pulumi:"dbType"`
+	DbVersion    pulumi.StringInput    `pulumi:"dbVersion"`
 	InstanceMode pulumi.StringPtrInput `pulumi:"instanceMode"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetStorageTypesOutputArgs) ElementType() reflect.Type {
@@ -140,8 +97,6 @@ func (o GetStorageTypesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageTypesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Storage type list. For details, see Data structure of the storageType field.
-// The storageType structure is documented below.
 func (o GetStorageTypesResultOutput) StorageTypes() GetStorageTypesStorageTypeArrayOutput {
 	return o.ApplyT(func(v GetStorageTypesResult) []GetStorageTypesStorageType { return v.StorageTypes }).(GetStorageTypesStorageTypeArrayOutput)
 }

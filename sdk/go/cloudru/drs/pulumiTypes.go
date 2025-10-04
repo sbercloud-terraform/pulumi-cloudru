@@ -14,54 +14,20 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type JobDestinationDb struct {
-	// Specifies the migration engine type.
-	// Changing this parameter will create a new resource. The options are as follows:
-	// + **mysql**:  MySQL migration, MySQL synchronization use.
-	// + **mongodb**: Mongodb migration use.
-	// + **cloudDataGuard-mysql**: Disaster recovery use.
-	// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-	// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-	// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-	// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-	// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-	EngineType string `pulumi:"engineType"`
-	// Specifies the instance id of database when it is a RDS database.
-	// Changing this parameter will create a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the IP of database. Changing this parameter will create a new resource.
-	Ip string `pulumi:"ip"`
-	// Specifies the job name. The name consists of 4 to 50 characters, starting with
-	// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
-	Name *string `pulumi:"name"`
-	// Specifies the password of database.
-	// Changing this parameter will create a new resource.
-	Password string `pulumi:"password"`
-	// Specifies the port of database. Changing this parameter will create a new resource.
-	Port int `pulumi:"port"`
-	// The region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the checksum of SSL certificate content.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
+	EngineType      string  `pulumi:"engineType"`
+	InstanceId      *string `pulumi:"instanceId"`
+	Ip              string  `pulumi:"ip"`
+	Name            *string `pulumi:"name"`
+	Password        string  `pulumi:"password"`
+	Port            int     `pulumi:"port"`
+	Region          *string `pulumi:"region"`
 	SslCertCheckSum *string `pulumi:"sslCertCheckSum"`
-	// Specifies the SSL certificate content, encrypted with base64.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertKey *string `pulumi:"sslCertKey"`
-	// Specifies SSL certificate name.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertName *string `pulumi:"sslCertName"`
-	// Specifies SSL certificate password. It is mandatory when
-	// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
+	SslCertKey      *string `pulumi:"sslCertKey"`
+	SslCertName     *string `pulumi:"sslCertName"`
 	SslCertPassword *string `pulumi:"sslCertPassword"`
-	// Specifies whether to enable SSL connection.
-	// Changing this parameter will create a new resource.
-	SslEnabled *bool `pulumi:"sslEnabled"`
-	// Specifies subnet ID of database when it is a RDS database.
-	// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the user name of database.
-	// Changing this parameter will create a new resource.
-	User string `pulumi:"user"`
+	SslEnabled      *bool   `pulumi:"sslEnabled"`
+	SubnetId        *string `pulumi:"subnetId"`
+	User            string  `pulumi:"user"`
 }
 
 // JobDestinationDbInput is an input type that accepts JobDestinationDbArgs and JobDestinationDbOutput values.
@@ -76,54 +42,20 @@ type JobDestinationDbInput interface {
 }
 
 type JobDestinationDbArgs struct {
-	// Specifies the migration engine type.
-	// Changing this parameter will create a new resource. The options are as follows:
-	// + **mysql**:  MySQL migration, MySQL synchronization use.
-	// + **mongodb**: Mongodb migration use.
-	// + **cloudDataGuard-mysql**: Disaster recovery use.
-	// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-	// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-	// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-	// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-	// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-	EngineType pulumi.StringInput `pulumi:"engineType"`
-	// Specifies the instance id of database when it is a RDS database.
-	// Changing this parameter will create a new resource.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the IP of database. Changing this parameter will create a new resource.
-	Ip pulumi.StringInput `pulumi:"ip"`
-	// Specifies the job name. The name consists of 4 to 50 characters, starting with
-	// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the password of database.
-	// Changing this parameter will create a new resource.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Specifies the port of database. Changing this parameter will create a new resource.
-	Port pulumi.IntInput `pulumi:"port"`
-	// The region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the checksum of SSL certificate content.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
+	EngineType      pulumi.StringInput    `pulumi:"engineType"`
+	InstanceId      pulumi.StringPtrInput `pulumi:"instanceId"`
+	Ip              pulumi.StringInput    `pulumi:"ip"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	Password        pulumi.StringInput    `pulumi:"password"`
+	Port            pulumi.IntInput       `pulumi:"port"`
+	Region          pulumi.StringPtrInput `pulumi:"region"`
 	SslCertCheckSum pulumi.StringPtrInput `pulumi:"sslCertCheckSum"`
-	// Specifies the SSL certificate content, encrypted with base64.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertKey pulumi.StringPtrInput `pulumi:"sslCertKey"`
-	// Specifies SSL certificate name.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertName pulumi.StringPtrInput `pulumi:"sslCertName"`
-	// Specifies SSL certificate password. It is mandatory when
-	// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
+	SslCertKey      pulumi.StringPtrInput `pulumi:"sslCertKey"`
+	SslCertName     pulumi.StringPtrInput `pulumi:"sslCertName"`
 	SslCertPassword pulumi.StringPtrInput `pulumi:"sslCertPassword"`
-	// Specifies whether to enable SSL connection.
-	// Changing this parameter will create a new resource.
-	SslEnabled pulumi.BoolPtrInput `pulumi:"sslEnabled"`
-	// Specifies subnet ID of database when it is a RDS database.
-	// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-	// Specifies the user name of database.
-	// Changing this parameter will create a new resource.
-	User pulumi.StringInput `pulumi:"user"`
+	SslEnabled      pulumi.BoolPtrInput   `pulumi:"sslEnabled"`
+	SubnetId        pulumi.StringPtrInput `pulumi:"subnetId"`
+	User            pulumi.StringInput    `pulumi:"user"`
 }
 
 func (JobDestinationDbArgs) ElementType() reflect.Type {
@@ -203,92 +135,58 @@ func (o JobDestinationDbOutput) ToJobDestinationDbPtrOutputWithContext(ctx conte
 	}).(JobDestinationDbPtrOutput)
 }
 
-// Specifies the migration engine type.
-// Changing this parameter will create a new resource. The options are as follows:
-// + **mysql**:  MySQL migration, MySQL synchronization use.
-// + **mongodb**: Mongodb migration use.
-// + **cloudDataGuard-mysql**: Disaster recovery use.
-// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
 func (o JobDestinationDbOutput) EngineType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobDestinationDb) string { return v.EngineType }).(pulumi.StringOutput)
 }
 
-// Specifies the instance id of database when it is a RDS database.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the IP of database. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v JobDestinationDb) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Specifies the job name. The name consists of 4 to 50 characters, starting with
-// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
 func (o JobDestinationDbOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the password of database.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v JobDestinationDb) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Specifies the port of database. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v JobDestinationDb) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the checksum of SSL certificate content.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) SslCertCheckSum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.SslCertCheckSum }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the SSL certificate content, encrypted with base64.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) SslCertKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.SslCertKey }).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate name.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) SslCertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.SslCertName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate password. It is mandatory when
-// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) SslCertPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.SslCertPassword }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable SSL connection.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) SslEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *bool { return v.SslEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies subnet ID of database when it is a RDS database.
-// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobDestinationDb) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the user name of database.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v JobDestinationDb) string { return v.User }).(pulumi.StringOutput)
 }
@@ -317,16 +215,6 @@ func (o JobDestinationDbPtrOutput) Elem() JobDestinationDbOutput {
 	}).(JobDestinationDbOutput)
 }
 
-// Specifies the migration engine type.
-// Changing this parameter will create a new resource. The options are as follows:
-// + **mysql**:  MySQL migration, MySQL synchronization use.
-// + **mongodb**: Mongodb migration use.
-// + **cloudDataGuard-mysql**: Disaster recovery use.
-// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
 func (o JobDestinationDbPtrOutput) EngineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -336,8 +224,6 @@ func (o JobDestinationDbPtrOutput) EngineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the instance id of database when it is a RDS database.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -347,7 +233,6 @@ func (o JobDestinationDbPtrOutput) InstanceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the IP of database. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -357,8 +242,6 @@ func (o JobDestinationDbPtrOutput) Ip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the job name. The name consists of 4 to 50 characters, starting with
-// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
 func (o JobDestinationDbPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -368,8 +251,6 @@ func (o JobDestinationDbPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the password of database.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -379,7 +260,6 @@ func (o JobDestinationDbPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the port of database. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *int {
 		if v == nil {
@@ -389,8 +269,6 @@ func (o JobDestinationDbPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -400,8 +278,6 @@ func (o JobDestinationDbPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the checksum of SSL certificate content.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) SslCertCheckSum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -411,8 +287,6 @@ func (o JobDestinationDbPtrOutput) SslCertCheckSum() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the SSL certificate content, encrypted with base64.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) SslCertKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -422,8 +296,6 @@ func (o JobDestinationDbPtrOutput) SslCertKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate name.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) SslCertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -433,8 +305,6 @@ func (o JobDestinationDbPtrOutput) SslCertName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate password. It is mandatory when
-// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) SslCertPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -444,8 +314,6 @@ func (o JobDestinationDbPtrOutput) SslCertPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable SSL connection.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) SslEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *bool {
 		if v == nil {
@@ -455,8 +323,6 @@ func (o JobDestinationDbPtrOutput) SslEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies subnet ID of database when it is a RDS database.
-// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -466,8 +332,6 @@ func (o JobDestinationDbPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the user name of database.
-// Changing this parameter will create a new resource.
 func (o JobDestinationDbPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobDestinationDb) *string {
 		if v == nil {
@@ -478,15 +342,8 @@ func (o JobDestinationDbPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 type JobLimitSpeed struct {
-	// Specifies the time to end speed limit, this time is UTC time. The input must
-	// end at 59 minutes, the format is `hh:mm`, for example: 15:59. Changing this parameter will create a new resource.
-	EndTime string `pulumi:"endTime"`
-	// Specifies the transmission speed, the value range is 1 to 9999, unit: `MB/s`.
-	// Changing this parameter will create a new resource.
-	Speed string `pulumi:"speed"`
-	// Specifies the time to start speed limit, this time is UTC time. The start
-	// time is the whole hour, if there is a minute, it will be ignored, the format is `hh:mm`, and the hour number
-	// is two digits, for example: 01:00. Changing this parameter will create a new resource.
+	EndTime   string `pulumi:"endTime"`
+	Speed     string `pulumi:"speed"`
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -502,15 +359,8 @@ type JobLimitSpeedInput interface {
 }
 
 type JobLimitSpeedArgs struct {
-	// Specifies the time to end speed limit, this time is UTC time. The input must
-	// end at 59 minutes, the format is `hh:mm`, for example: 15:59. Changing this parameter will create a new resource.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Specifies the transmission speed, the value range is 1 to 9999, unit: `MB/s`.
-	// Changing this parameter will create a new resource.
-	Speed pulumi.StringInput `pulumi:"speed"`
-	// Specifies the time to start speed limit, this time is UTC time. The start
-	// time is the whole hour, if there is a minute, it will be ignored, the format is `hh:mm`, and the hour number
-	// is two digits, for example: 01:00. Changing this parameter will create a new resource.
+	EndTime   pulumi.StringInput `pulumi:"endTime"`
+	Speed     pulumi.StringInput `pulumi:"speed"`
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -565,21 +415,14 @@ func (o JobLimitSpeedOutput) ToJobLimitSpeedOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Specifies the time to end speed limit, this time is UTC time. The input must
-// end at 59 minutes, the format is `hh:mm`, for example: 15:59. Changing this parameter will create a new resource.
 func (o JobLimitSpeedOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobLimitSpeed) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Specifies the transmission speed, the value range is 1 to 9999, unit: `MB/s`.
-// Changing this parameter will create a new resource.
 func (o JobLimitSpeedOutput) Speed() pulumi.StringOutput {
 	return o.ApplyT(func(v JobLimitSpeed) string { return v.Speed }).(pulumi.StringOutput)
 }
 
-// Specifies the time to start speed limit, this time is UTC time. The start
-// time is the whole hour, if there is a minute, it will be ignored, the format is `hh:mm`, and the hour number
-// is two digits, for example: 01:00. Changing this parameter will create a new resource.
 func (o JobLimitSpeedOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v JobLimitSpeed) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -605,54 +448,20 @@ func (o JobLimitSpeedArrayOutput) Index(i pulumi.IntInput) JobLimitSpeedOutput {
 }
 
 type JobSourceDb struct {
-	// Specifies the migration engine type.
-	// Changing this parameter will create a new resource. The options are as follows:
-	// + **mysql**:  MySQL migration, MySQL synchronization use.
-	// + **mongodb**: Mongodb migration use.
-	// + **cloudDataGuard-mysql**: Disaster recovery use.
-	// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-	// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-	// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-	// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-	// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-	EngineType string `pulumi:"engineType"`
-	// Specifies the instance id of database when it is a RDS database.
-	// Changing this parameter will create a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the IP of database. Changing this parameter will create a new resource.
-	Ip string `pulumi:"ip"`
-	// Specifies the job name. The name consists of 4 to 50 characters, starting with
-	// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
-	Name *string `pulumi:"name"`
-	// Specifies the password of database.
-	// Changing this parameter will create a new resource.
-	Password string `pulumi:"password"`
-	// Specifies the port of database. Changing this parameter will create a new resource.
-	Port int `pulumi:"port"`
-	// The region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the checksum of SSL certificate content.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
+	EngineType      string  `pulumi:"engineType"`
+	InstanceId      *string `pulumi:"instanceId"`
+	Ip              string  `pulumi:"ip"`
+	Name            *string `pulumi:"name"`
+	Password        string  `pulumi:"password"`
+	Port            int     `pulumi:"port"`
+	Region          *string `pulumi:"region"`
 	SslCertCheckSum *string `pulumi:"sslCertCheckSum"`
-	// Specifies the SSL certificate content, encrypted with base64.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertKey *string `pulumi:"sslCertKey"`
-	// Specifies SSL certificate name.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertName *string `pulumi:"sslCertName"`
-	// Specifies SSL certificate password. It is mandatory when
-	// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
+	SslCertKey      *string `pulumi:"sslCertKey"`
+	SslCertName     *string `pulumi:"sslCertName"`
 	SslCertPassword *string `pulumi:"sslCertPassword"`
-	// Specifies whether to enable SSL connection.
-	// Changing this parameter will create a new resource.
-	SslEnabled *bool `pulumi:"sslEnabled"`
-	// Specifies subnet ID of database when it is a RDS database.
-	// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-	SubnetId *string `pulumi:"subnetId"`
-	// Specifies the user name of database.
-	// Changing this parameter will create a new resource.
-	User string `pulumi:"user"`
+	SslEnabled      *bool   `pulumi:"sslEnabled"`
+	SubnetId        *string `pulumi:"subnetId"`
+	User            string  `pulumi:"user"`
 }
 
 // JobSourceDbInput is an input type that accepts JobSourceDbArgs and JobSourceDbOutput values.
@@ -667,54 +476,20 @@ type JobSourceDbInput interface {
 }
 
 type JobSourceDbArgs struct {
-	// Specifies the migration engine type.
-	// Changing this parameter will create a new resource. The options are as follows:
-	// + **mysql**:  MySQL migration, MySQL synchronization use.
-	// + **mongodb**: Mongodb migration use.
-	// + **cloudDataGuard-mysql**: Disaster recovery use.
-	// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-	// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-	// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-	// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-	// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
-	EngineType pulumi.StringInput `pulumi:"engineType"`
-	// Specifies the instance id of database when it is a RDS database.
-	// Changing this parameter will create a new resource.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the IP of database. Changing this parameter will create a new resource.
-	Ip pulumi.StringInput `pulumi:"ip"`
-	// Specifies the job name. The name consists of 4 to 50 characters, starting with
-	// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the password of database.
-	// Changing this parameter will create a new resource.
-	Password pulumi.StringInput `pulumi:"password"`
-	// Specifies the port of database. Changing this parameter will create a new resource.
-	Port pulumi.IntInput `pulumi:"port"`
-	// The region in which to create the resource. If omitted, the
-	// provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the checksum of SSL certificate content.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
+	EngineType      pulumi.StringInput    `pulumi:"engineType"`
+	InstanceId      pulumi.StringPtrInput `pulumi:"instanceId"`
+	Ip              pulumi.StringInput    `pulumi:"ip"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	Password        pulumi.StringInput    `pulumi:"password"`
+	Port            pulumi.IntInput       `pulumi:"port"`
+	Region          pulumi.StringPtrInput `pulumi:"region"`
 	SslCertCheckSum pulumi.StringPtrInput `pulumi:"sslCertCheckSum"`
-	// Specifies the SSL certificate content, encrypted with base64.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertKey pulumi.StringPtrInput `pulumi:"sslCertKey"`
-	// Specifies SSL certificate name.
-	// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
-	SslCertName pulumi.StringPtrInput `pulumi:"sslCertName"`
-	// Specifies SSL certificate password. It is mandatory when
-	// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
+	SslCertKey      pulumi.StringPtrInput `pulumi:"sslCertKey"`
+	SslCertName     pulumi.StringPtrInput `pulumi:"sslCertName"`
 	SslCertPassword pulumi.StringPtrInput `pulumi:"sslCertPassword"`
-	// Specifies whether to enable SSL connection.
-	// Changing this parameter will create a new resource.
-	SslEnabled pulumi.BoolPtrInput `pulumi:"sslEnabled"`
-	// Specifies subnet ID of database when it is a RDS database.
-	// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
-	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-	// Specifies the user name of database.
-	// Changing this parameter will create a new resource.
-	User pulumi.StringInput `pulumi:"user"`
+	SslEnabled      pulumi.BoolPtrInput   `pulumi:"sslEnabled"`
+	SubnetId        pulumi.StringPtrInput `pulumi:"subnetId"`
+	User            pulumi.StringInput    `pulumi:"user"`
 }
 
 func (JobSourceDbArgs) ElementType() reflect.Type {
@@ -794,92 +569,58 @@ func (o JobSourceDbOutput) ToJobSourceDbPtrOutputWithContext(ctx context.Context
 	}).(JobSourceDbPtrOutput)
 }
 
-// Specifies the migration engine type.
-// Changing this parameter will create a new resource. The options are as follows:
-// + **mysql**:  MySQL migration, MySQL synchronization use.
-// + **mongodb**: Mongodb migration use.
-// + **cloudDataGuard-mysql**: Disaster recovery use.
-// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
 func (o JobSourceDbOutput) EngineType() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSourceDb) string { return v.EngineType }).(pulumi.StringOutput)
 }
 
-// Specifies the instance id of database when it is a RDS database.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the IP of database. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSourceDb) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Specifies the job name. The name consists of 4 to 50 characters, starting with
-// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
 func (o JobSourceDbOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the password of database.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSourceDb) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Specifies the port of database. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSourceDb) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the checksum of SSL certificate content.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) SslCertCheckSum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.SslCertCheckSum }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the SSL certificate content, encrypted with base64.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) SslCertKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.SslCertKey }).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate name.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) SslCertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.SslCertName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate password. It is mandatory when
-// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) SslCertPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.SslCertPassword }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable SSL connection.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) SslEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *bool { return v.SslEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies subnet ID of database when it is a RDS database.
-// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobSourceDb) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the user name of database.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v JobSourceDb) string { return v.User }).(pulumi.StringOutput)
 }
@@ -908,16 +649,6 @@ func (o JobSourceDbPtrOutput) Elem() JobSourceDbOutput {
 	}).(JobSourceDbOutput)
 }
 
-// Specifies the migration engine type.
-// Changing this parameter will create a new resource. The options are as follows:
-// + **mysql**:  MySQL migration, MySQL synchronization use.
-// + **mongodb**: Mongodb migration use.
-// + **cloudDataGuard-mysql**: Disaster recovery use.
-// + **gaussdbv5**: GaussDB (for openGauss) synchronization use.
-// + **mysql-to-kafka**: Synchronization from MySQL to Kafka use.
-// + **taurus-to-kafka**: Synchronization from GaussDB(for MySQL) to Kafka use.
-// + **gaussdbv5ha-to-kafka**: Synchronization from GaussDB primary/standby to Kafka use.
-// + **postgresql**: Synchronization from PostgreSQL to PostgreSQL use.
 func (o JobSourceDbPtrOutput) EngineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -927,8 +658,6 @@ func (o JobSourceDbPtrOutput) EngineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the instance id of database when it is a RDS database.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -938,7 +667,6 @@ func (o JobSourceDbPtrOutput) InstanceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the IP of database. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -948,8 +676,6 @@ func (o JobSourceDbPtrOutput) Ip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the job name. The name consists of 4 to 50 characters, starting with
-// a letter. Only letters, digits, underscores (\_) and hyphens (-) are allowed.
 func (o JobSourceDbPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -959,8 +685,6 @@ func (o JobSourceDbPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the password of database.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -970,7 +694,6 @@ func (o JobSourceDbPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the port of database. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *int {
 		if v == nil {
@@ -980,8 +703,6 @@ func (o JobSourceDbPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The region in which to create the resource. If omitted, the
-// provider-level region will be used. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -991,8 +712,6 @@ func (o JobSourceDbPtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the checksum of SSL certificate content.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) SslCertCheckSum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -1002,8 +721,6 @@ func (o JobSourceDbPtrOutput) SslCertCheckSum() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the SSL certificate content, encrypted with base64.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) SslCertKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -1013,8 +730,6 @@ func (o JobSourceDbPtrOutput) SslCertKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate name.
-// It is mandatory when `sslEnabled` is `true`. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) SslCertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -1024,8 +739,6 @@ func (o JobSourceDbPtrOutput) SslCertName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies SSL certificate password. It is mandatory when
-// `sslEnabled` is `true` and the certificate file suffix is `.p12`. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) SslCertPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -1035,8 +748,6 @@ func (o JobSourceDbPtrOutput) SslCertPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to enable SSL connection.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) SslEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *bool {
 		if v == nil {
@@ -1046,8 +757,6 @@ func (o JobSourceDbPtrOutput) SslEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Specifies subnet ID of database when it is a RDS database.
-// It is mandatory when `direction` is `down`. Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {
@@ -1057,8 +766,6 @@ func (o JobSourceDbPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the user name of database.
-// Changing this parameter will create a new resource.
 func (o JobSourceDbPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSourceDb) *string {
 		if v == nil {

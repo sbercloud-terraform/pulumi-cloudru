@@ -12,81 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Provides an access rule resource of Scalable File Resource (SFS).
-//
-// ## Example Usage
-//
-// ### Usage in VPC authorization scenarios
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/sfs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			shareName := cfg.RequireObject("shareName")
-//			vpcId := cfg.RequireObject("vpcId")
-//			share_file, err := sfs.NewFileSystem(ctx, "share-file", &sfs.FileSystemArgs{
-//				Name:       pulumi.Any(shareName),
-//				Size:       pulumi.Int(100),
-//				ShareProto: pulumi.String("NFS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sfs.NewAccessRule(ctx, "rule_1", &sfs.AccessRuleArgs{
-//				SfsId:    share_file.ID(),
-//				AccessTo: pulumi.Any(vpcId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// SFS access rule can be imported by specifying the SFS ID and access rule ID separated by a slash, e.g.:
-//
-// ```sh
-// $ pulumi import sbercloud:Sfs/accessRule:AccessRule sbercloud_sfs_access_rule <sfs_id>/<rule_id>
-// ```
 type AccessRule struct {
 	pulumi.CustomResourceState
 
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 	AccessLevel pulumi.StringPtrOutput `pulumi:"accessLevel"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	AccessTo pulumi.StringOutput `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringPtrOutput `pulumi:"accessType"`
-	// The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the UUID of the shared file system. Changing this will create a new access rule.
-	SfsId pulumi.StringOutput `pulumi:"sfsId"`
-	// The status of the share access rule.
-	Status pulumi.StringOutput `pulumi:"status"`
+	AccessTo    pulumi.StringOutput    `pulumi:"accessTo"`
+	AccessType  pulumi.StringPtrOutput `pulumi:"accessType"`
+	Region      pulumi.StringOutput    `pulumi:"region"`
+	SfsId       pulumi.StringOutput    `pulumi:"sfsId"`
+	Status      pulumi.StringOutput    `pulumi:"status"`
 }
 
 // NewAccessRule registers a new resource with the given unique name, arguments, and options.
@@ -125,55 +59,21 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	AccessTo *string `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType *string `pulumi:"accessType"`
-	// The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-	Region *string `pulumi:"region"`
-	// Specifies the UUID of the shared file system. Changing this will create a new access rule.
-	SfsId *string `pulumi:"sfsId"`
-	// The status of the share access rule.
-	Status *string `pulumi:"status"`
+	AccessTo    *string `pulumi:"accessTo"`
+	AccessType  *string `pulumi:"accessType"`
+	Region      *string `pulumi:"region"`
+	SfsId       *string `pulumi:"sfsId"`
+	Status      *string `pulumi:"status"`
 }
 
 type AccessRuleState struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 	AccessLevel pulumi.StringPtrInput
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	AccessTo pulumi.StringPtrInput
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringPtrInput
-	// The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-	Region pulumi.StringPtrInput
-	// Specifies the UUID of the shared file system. Changing this will create a new access rule.
-	SfsId pulumi.StringPtrInput
-	// The status of the share access rule.
-	Status pulumi.StringPtrInput
+	AccessTo    pulumi.StringPtrInput
+	AccessType  pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	SfsId       pulumi.StringPtrInput
+	Status      pulumi.StringPtrInput
 }
 
 func (AccessRuleState) ElementType() reflect.Type {
@@ -181,52 +81,20 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	AccessTo string `pulumi:"accessTo"`
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType *string `pulumi:"accessType"`
-	// The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-	Region *string `pulumi:"region"`
-	// Specifies the UUID of the shared file system. Changing this will create a new access rule.
-	SfsId string `pulumi:"sfsId"`
+	AccessTo    string  `pulumi:"accessTo"`
+	AccessType  *string `pulumi:"accessType"`
+	Region      *string `pulumi:"region"`
+	SfsId       string  `pulumi:"sfsId"`
 }
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
-	// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-	// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 	AccessLevel pulumi.StringPtrInput
-	// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-	// Changing this will create a new access rule. The value varies according to the scenario:
-	// - Set the VPC ID in VPC authorization scenarios.
-	// - Set this parameter in IP address authorization scenario.
-	//
-	// For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-	//
-	// For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-	// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
-	AccessTo pulumi.StringInput
-	// Specifies the type of the share access rule. The default value is *cert*.
-	// Changing this will create a new access rule.
-	AccessType pulumi.StringPtrInput
-	// The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
-	Region pulumi.StringPtrInput
-	// Specifies the UUID of the shared file system. Changing this will create a new access rule.
-	SfsId pulumi.StringInput
+	AccessTo    pulumi.StringInput
+	AccessType  pulumi.StringPtrInput
+	Region      pulumi.StringPtrInput
+	SfsId       pulumi.StringInput
 }
 
 func (AccessRuleArgs) ElementType() reflect.Type {
@@ -316,43 +184,26 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-// Specifies the access level of the shared file system. Possible values are *ro* (read-only)
-// and *rw* (read-write). The default value is *rw* (read/write). Changing this will create a new access rule.
 func (o AccessRuleOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the value that defines the access rule. The value contains 1 to 255 characters.
-// Changing this will create a new access rule. The value varies according to the scenario:
-// - Set the VPC ID in VPC authorization scenarios.
-// - Set this parameter in IP address authorization scenario.
-//
-// For an NFS shared file system, the value in the format of *VPC_ID#IP_address#priority#user_permission*.
-// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#100#all_squash,root_squash.
-//
-// For a CIFS shared file system, the value in the format of *VPC_ID#IP_address#priority*.
-// For example, 0157b53f-4974-4e80-91c9-098532bcaf00#2.2.2.2/16#0.
 func (o AccessRuleOutput) AccessTo() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.AccessTo }).(pulumi.StringOutput)
 }
 
-// Specifies the type of the share access rule. The default value is *cert*.
-// Changing this will create a new access rule.
 func (o AccessRuleOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
-// The region in which to create the sfs access rule resource. If omitted, the provider-level region will be used. Changing this creates a new access rule resource.
 func (o AccessRuleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the UUID of the shared file system. Changing this will create a new access rule.
 func (o AccessRuleOutput) SfsId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.SfsId }).(pulumi.StringOutput)
 }
 
-// The status of the share access rule.
 func (o AccessRuleOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

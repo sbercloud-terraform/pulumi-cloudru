@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ extend available flavor details within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsRocketmqExtendFlavors({
- *     instanceId: instanceId,
- * });
- * ```
- */
 export function getDmsRocketmqExtendFlavors(args: GetDmsRocketmqExtendFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqExtendFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", {
@@ -38,30 +22,11 @@ export function getDmsRocketmqExtendFlavors(args: GetDmsRocketmqExtendFlavorsArg
  * A collection of arguments for invoking getDmsRocketmqExtendFlavors.
  */
 export interface GetDmsRocketmqExtendFlavorsArgs {
-    /**
-     * Specifies the type of CPU architecture, e.g. **X86**.
-     */
     archType?: string;
-    /**
-     * Specifies the flavor billing mode. The valid values are **prePaid** and **postPaid**.
-     */
     chargingMode?: string;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
-     */
     storageSpecCode?: string;
-    /**
-     * Specifies the flavor type.
-     */
     type?: string;
 }
 
@@ -71,9 +36,6 @@ export interface GetDmsRocketmqExtendFlavorsArgs {
 export interface GetDmsRocketmqExtendFlavorsResult {
     readonly archType?: string;
     readonly chargingMode?: string;
-    /**
-     * Indicates the list of flavor details.
-     */
     readonly flavors: outputs.GetDmsRocketmqExtendFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -81,35 +43,10 @@ export interface GetDmsRocketmqExtendFlavorsResult {
     readonly id: string;
     readonly instanceId: string;
     readonly region: string;
-    /**
-     * Indicates the disk IO encoding.
-     */
     readonly storageSpecCode?: string;
-    /**
-     * Indicates the disk type.
-     */
     readonly type?: string;
-    /**
-     * Indicates the supported flavor versions.
-     */
     readonly versions: string[];
 }
-/**
- * Use this data source to get the list of RocketMQ extend available flavor details within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const test = sbercloud.getDmsRocketmqExtendFlavors({
- *     instanceId: instanceId,
- * });
- * ```
- */
 export function getDmsRocketmqExtendFlavorsOutput(args: GetDmsRocketmqExtendFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqExtendFlavorsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqExtendFlavors:getDmsRocketmqExtendFlavors", {
@@ -126,29 +63,10 @@ export function getDmsRocketmqExtendFlavorsOutput(args: GetDmsRocketmqExtendFlav
  * A collection of arguments for invoking getDmsRocketmqExtendFlavors.
  */
 export interface GetDmsRocketmqExtendFlavorsOutputArgs {
-    /**
-     * Specifies the type of CPU architecture, e.g. **X86**.
-     */
     archType?: pulumi.Input<string>;
-    /**
-     * Specifies the flavor billing mode. The valid values are **prePaid** and **postPaid**.
-     */
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
-     */
     storageSpecCode?: pulumi.Input<string>;
-    /**
-     * Specifies the flavor type.
-     */
     type?: pulumi.Input<string>;
 }

@@ -29,17 +29,6 @@ class SecgroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Secgroup resource.
-        :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[_builtins.str] description: Description of the security group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the security group.
-               Changing this creates a new security group.
-        :param pulumi.Input[_builtins.str] name: A unique name for the security group.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
         """
         if delete_default_rules is not None:
             pulumi.set(__self__, "delete_default_rules", delete_default_rules)
@@ -57,11 +46,6 @@ class SecgroupArgs:
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRules")
     def delete_default_rules(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         return pulumi.get(self, "delete_default_rules")
 
     @delete_default_rules.setter
@@ -71,9 +55,6 @@ class SecgroupArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of the security group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -83,10 +64,6 @@ class SecgroupArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the security group.
-        Changing this creates a new security group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -96,9 +73,6 @@ class SecgroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -108,12 +82,6 @@ class SecgroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -144,21 +112,6 @@ class _SecgroupState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Secgroup resources.
-        :param pulumi.Input[_builtins.str] created_at: The creation time, in UTC format.
-        :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[_builtins.str] description: Description of the security group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the security group.
-               Changing this creates a new security group.
-        :param pulumi.Input[_builtins.str] name: A unique name for the security group.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
-        :param pulumi.Input[Sequence[pulumi.Input['SecgroupRuleArgs']]] rules: The array of security group rules associating with the security group.
-               The rule object is documented below.
-        :param pulumi.Input[_builtins.str] updated_at: The last update time, in UTC format.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -182,9 +135,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The creation time, in UTC format.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -194,11 +144,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRules")
     def delete_default_rules(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         return pulumi.get(self, "delete_default_rules")
 
     @delete_default_rules.setter
@@ -208,9 +153,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of the security group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -220,10 +162,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the security group.
-        Changing this creates a new security group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -233,9 +171,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -245,12 +180,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -260,10 +189,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter
     def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecgroupRuleArgs']]]]:
-        """
-        The array of security group rules associating with the security group.
-        The rule object is documented below.
-        """
         return pulumi.get(self, "rules")
 
     @rules.setter
@@ -282,9 +207,6 @@ class _SecgroupState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The last update time, in UTC format.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -306,27 +228,9 @@ class Secgroup(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        ## Import
-
-        Security Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/secgroup:Secgroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
-        ```
-
+        Create a Secgroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[_builtins.str] description: Description of the security group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the security group.
-               Changing this creates a new security group.
-        :param pulumi.Input[_builtins.str] name: A unique name for the security group.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
         """
         ...
     @overload
@@ -335,14 +239,7 @@ class Secgroup(pulumi.CustomResource):
                  args: Optional[SecgroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
-
-        Security Groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/secgroup:Secgroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
-        ```
-
+        Create a Secgroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SecgroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -408,21 +305,6 @@ class Secgroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: The creation time, in UTC format.
-        :param pulumi.Input[_builtins.bool] delete_default_rules: Whether or not to delete the default
-               egress security rules. This is `false` by default. See the below note
-               for more information.
-        :param pulumi.Input[_builtins.str] description: Description of the security group.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the security group.
-               Changing this creates a new security group.
-        :param pulumi.Input[_builtins.str] name: A unique name for the security group.
-        :param pulumi.Input[_builtins.str] region: The region in which to obtain the V2 networking client.
-               A networking client is needed to create a port. If omitted, the
-               `region` argument of the provider is used. Changing this creates a new
-               security group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['SecgroupRuleArgs', 'SecgroupRuleArgsDict']]]] rules: The array of security group rules associating with the security group.
-               The rule object is documented below.
-        :param pulumi.Input[_builtins.str] updated_at: The last update time, in UTC format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,64 +324,36 @@ class Secgroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The creation time, in UTC format.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="deleteDefaultRules")
     def delete_default_rules(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Whether or not to delete the default
-        egress security rules. This is `false` by default. See the below note
-        for more information.
-        """
         return pulumi.get(self, "delete_default_rules")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Description of the security group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the security group.
-        Changing this creates a new security group.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        A unique name for the security group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to obtain the V2 networking client.
-        A networking client is needed to create a port. If omitted, the
-        `region` argument of the provider is used. Changing this creates a new
-        security group.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def rules(self) -> pulumi.Output[Sequence['outputs.SecgroupRule']]:
-        """
-        The array of security group rules associating with the security group.
-        The rule object is documented below.
-        """
         return pulumi.get(self, "rules")
 
     @_builtins.property
@@ -510,8 +364,5 @@ class Secgroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The last update time, in UTC format.
-        """
         return pulumi.get(self, "updated_at")
 

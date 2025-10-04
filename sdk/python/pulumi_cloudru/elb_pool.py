@@ -45,27 +45,6 @@ class ElbPoolArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElbPool resource.
-        :param pulumi.Input[_builtins.str] lb_method: The load balancing algorithm to distribute traffic to the pool's members. Must be one
-               of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        :param pulumi.Input[_builtins.str] protocol: The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-               
-               + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-               + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-               + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-               + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-               + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-               
-               Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the pool.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener on which the members of the pool will be associated with.
-               Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this pool. Changing this
-               creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the pool.
-        :param pulumi.Input['ElbPoolPersistenceArgs'] persistence: Omit this field to prevent session persistence. Indicates whether
-               connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB pool resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new pool.
         """
         pulumi.set(__self__, "lb_method", lb_method)
         pulumi.set(__self__, "protocol", protocol)
@@ -113,10 +92,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> pulumi.Input[_builtins.str]:
-        """
-        The load balancing algorithm to distribute traffic to the pool's members. Must be one
-        of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        """
         return pulumi.get(self, "lb_method")
 
     @lb_method.setter
@@ -126,17 +101,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
-        """
-        The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-
-        + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-        + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-        + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-        + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-        + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-
-        Changing this creates a new pool.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -182,9 +146,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the pool.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -212,10 +173,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Listener on which the members of the pool will be associated with.
-        Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -225,10 +182,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The load balancer on which to provision this pool. Changing this
-        creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -247,9 +200,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the pool.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -259,10 +209,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter
     def persistence(self) -> Optional[pulumi.Input['ElbPoolPersistenceArgs']]:
-        """
-        Omit this field to prevent session persistence. Indicates whether
-        connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
@@ -299,10 +245,6 @@ class ElbPoolArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB pool resource. If omitted, the the
-        provider-level region will be used. Changing this creates a new pool.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -377,27 +319,6 @@ class _ElbPoolState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElbPool resources.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the pool.
-        :param pulumi.Input[_builtins.str] lb_method: The load balancing algorithm to distribute traffic to the pool's members. Must be one
-               of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener on which the members of the pool will be associated with.
-               Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this pool. Changing this
-               creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the pool.
-        :param pulumi.Input['ElbPoolPersistenceArgs'] persistence: Omit this field to prevent session persistence. Indicates whether
-               connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] protocol: The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-               
-               + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-               + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-               + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-               + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-               + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-               
-               Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB pool resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new pool.
         """
         if any_port_enable is not None:
             pulumi.set(__self__, "any_port_enable", any_port_enable)
@@ -500,9 +421,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the pool.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -539,10 +457,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The load balancing algorithm to distribute traffic to the pool's members. Must be one
-        of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        """
         return pulumi.get(self, "lb_method")
 
     @lb_method.setter
@@ -552,10 +466,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The Listener on which the members of the pool will be associated with.
-        Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
@@ -565,10 +475,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The load balancer on which to provision this pool. Changing this
-        creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @loadbalancer_id.setter
@@ -596,9 +502,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the pool.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -608,10 +511,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter
     def persistence(self) -> Optional[pulumi.Input['ElbPoolPersistenceArgs']]:
-        """
-        Omit this field to prevent session persistence. Indicates whether
-        connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
@@ -639,17 +538,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-
-        + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-        + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-        + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-        + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-        + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-
-        Changing this creates a new pool.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -668,10 +556,6 @@ class _ElbPoolState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB pool resource. If omitted, the the
-        provider-level region will be used. Changing this creates a new pool.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -754,55 +638,9 @@ class ElbPool(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB pool resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        pool1 = sbercloud.ElbPool("pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            listener_id="{{ listener_id }}",
-            persistence={
-                "type": "HTTP_COOKIE",
-                "cookie_name": "testCookie",
-            })
-        ```
-
-        ## Import
-
-        ELB pool can be imported using the pool ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbPool:ElbPool pool_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a ElbPool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the pool.
-        :param pulumi.Input[_builtins.str] lb_method: The load balancing algorithm to distribute traffic to the pool's members. Must be one
-               of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener on which the members of the pool will be associated with.
-               Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this pool. Changing this
-               creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the pool.
-        :param pulumi.Input[Union['ElbPoolPersistenceArgs', 'ElbPoolPersistenceArgsDict']] persistence: Omit this field to prevent session persistence. Indicates whether
-               connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] protocol: The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-               
-               + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-               + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-               + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-               + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-               + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-               
-               Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB pool resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new pool.
         """
         ...
     @overload
@@ -811,32 +649,7 @@ class ElbPool(pulumi.CustomResource):
                  args: ElbPoolArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB pool resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        pool1 = sbercloud.ElbPool("pool_1",
-            protocol="HTTP",
-            lb_method="ROUND_ROBIN",
-            listener_id="{{ listener_id }}",
-            persistence={
-                "type": "HTTP_COOKIE",
-                "cookie_name": "testCookie",
-            })
-        ```
-
-        ## Import
-
-        ELB pool can be imported using the pool ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbPool:ElbPool pool_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
+        Create a ElbPool resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbPoolArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -956,27 +769,6 @@ class ElbPool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the pool.
-        :param pulumi.Input[_builtins.str] lb_method: The load balancing algorithm to distribute traffic to the pool's members. Must be one
-               of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        :param pulumi.Input[_builtins.str] listener_id: The Listener on which the members of the pool will be associated with.
-               Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] loadbalancer_id: The load balancer on which to provision this pool. Changing this
-               creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the pool.
-        :param pulumi.Input[Union['ElbPoolPersistenceArgs', 'ElbPoolPersistenceArgsDict']] persistence: Omit this field to prevent session persistence. Indicates whether
-               connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] protocol: The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-               
-               + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-               + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-               + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-               + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-               + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-               
-               Changing this creates a new pool.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB pool resource. If omitted, the the
-               provider-level region will be used. Changing this creates a new pool.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1038,9 +830,6 @@ class ElbPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Human-readable description for the pool.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -1061,28 +850,16 @@ class ElbPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> pulumi.Output[_builtins.str]:
-        """
-        The load balancing algorithm to distribute traffic to the pool's members. Must be one
-        of ROUND_ROBIN, LEAST_CONNECTIONS, or SOURCE_IP.
-        """
         return pulumi.get(self, "lb_method")
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
     def listener_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The Listener on which the members of the pool will be associated with.
-        Changing this creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "listener_id")
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerId")
     def loadbalancer_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The load balancer on which to provision this pool. Changing this
-        creates a new pool. Note:  Exactly one of LoadbalancerID or ListenerID must be provided.
-        """
         return pulumi.get(self, "loadbalancer_id")
 
     @_builtins.property
@@ -1098,18 +875,11 @@ class ElbPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the pool.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def persistence(self) -> pulumi.Output[Optional['outputs.ElbPoolPersistence']]:
-        """
-        Omit this field to prevent session persistence. Indicates whether
-        connections in the same session will be processed by the same Pool member or not. Changing this creates a new pool.
-        """
         return pulumi.get(self, "persistence")
 
     @_builtins.property
@@ -1125,17 +895,6 @@ class ElbPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
-        """
-        The protocol - can either be TCP, UDP, HTTP, HTTPS or QUIC.
-
-        + When the protocol used by the listener is UDP, the protocol of the backend pool must be UDP or QUIC.
-        + When the protocol used by the listener is TCP, the protocol of the backend pool must be TCP.
-        + When the protocol used by the listener is HTTP, the protocol of the backend pool must be HTTP.
-        + When the protocol used by the listener is HTTPS, the protocol of the backend pool must be HTTPS.
-        + When the protocol used by the listener is TERMINATED_HTTPS, the protocol of the backend pool must be HTTP.
-
-        Changing this creates a new pool.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
@@ -1146,10 +905,6 @@ class ElbPool(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the ELB pool resource. If omitted, the the
-        provider-level region will be used. Changing this creates a new pool.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property

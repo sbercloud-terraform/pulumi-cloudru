@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW IPS basic protection rules.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = sbercloud.Cfw.getIpsRules({
- *     objectId: objectId,
- * });
- * ```
- */
 export function getIpsRules(args: GetIpsRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetIpsRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Cfw/getIpsRules:getIpsRules", {
@@ -39,36 +23,12 @@ export function getIpsRules(args: GetIpsRulesArgs, opts?: pulumi.InvokeOptions):
  * A collection of arguments for invoking getIpsRules.
  */
 export interface GetIpsRulesArgs {
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the IPS rule ID.
-     */
     ipsId?: string;
-    /**
-     * Specifies the IPS rule name.
-     * This parameter supports fuzzy search.
-     */
     ipsNameLike?: string;
-    /**
-     * Specifies the IPS rule status.
-     * The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
-     */
     ipsStatus?: string;
-    /**
-     * Specifies whether to check for new update rules.
-     */
     isUpdatedIpsRuleQueried?: boolean;
-    /**
-     * Specifies the protected object ID.
-     */
     objectId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -81,39 +41,14 @@ export interface GetIpsRulesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The IPS rule ID.
-     */
     readonly ipsId?: string;
     readonly ipsNameLike?: string;
-    /**
-     * The current status of the IPS rule.
-     */
     readonly ipsStatus?: string;
     readonly isUpdatedIpsRuleQueried?: boolean;
     readonly objectId: string;
-    /**
-     * The IPS rule list.
-     */
     readonly records: outputs.Cfw.GetIpsRulesRecord[];
     readonly region: string;
 }
-/**
- * Use this data source to get the list of CFW IPS basic protection rules.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const objectId = config.requireObject<any>("objectId");
- * const test = sbercloud.Cfw.getIpsRules({
- *     objectId: objectId,
- * });
- * ```
- */
 export function getIpsRulesOutput(args: GetIpsRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpsRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Cfw/getIpsRules:getIpsRules", {
@@ -131,35 +66,11 @@ export function getIpsRulesOutput(args: GetIpsRulesOutputArgs, opts?: pulumi.Inv
  * A collection of arguments for invoking getIpsRules.
  */
 export interface GetIpsRulesOutputArgs {
-    /**
-     * Specifies the enterprise project ID.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the IPS rule ID.
-     */
     ipsId?: pulumi.Input<string>;
-    /**
-     * Specifies the IPS rule name.
-     * This parameter supports fuzzy search.
-     */
     ipsNameLike?: pulumi.Input<string>;
-    /**
-     * Specifies the IPS rule status.
-     * The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
-     */
     ipsStatus?: pulumi.Input<string>;
-    /**
-     * Specifies whether to check for new update rules.
-     */
     isUpdatedIpsRuleQueried?: pulumi.Input<boolean>;
-    /**
-     * Specifies the protected object ID.
-     */
     objectId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

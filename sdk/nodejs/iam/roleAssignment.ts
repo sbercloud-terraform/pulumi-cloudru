@@ -4,47 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a Role assignment within group on SberCloud IAM Service.
- *
- * Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
- *
- * ## Example Usage
- *
- * ### Assign Role On Project Level
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const role1 = sbercloud.Iam.getRole({
- *     name: "rds_adm",
- * });
- * const group1 = new sbercloud.iam.Group("group_1", {name: "group_1"});
- * const roleAssignment1 = new sbercloud.iam.RoleAssignment("role_assignment_1", {
- *     roleId: role1.then(role1 => role1.id),
- *     groupId: group1.id,
- *     projectId: projectId,
- * });
- * ```
- *
- * ### Assign Role On Domain Level
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const role1 = sbercloud.Iam.getRole({
- *     name: "secu_admin",
- * });
- * const group1 = new sbercloud.iam.Group("group_1", {name: "group_1"});
- * const roleAssignment1 = new sbercloud.iam.RoleAssignment("role_assignment_1", {
- *     roleId: role1.then(role1 => role1.id),
- *     groupId: group1.id,
- *     domainId: domainId,
- * });
- * ```
- */
 export class RoleAssignment extends pulumi.CustomResource {
     /**
      * Get an existing RoleAssignment resource's state with the given name, ID, and optional extra
@@ -73,24 +32,10 @@ export class RoleAssignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === RoleAssignment.__pulumiType;
     }
 
-    /**
-     * Specifies the domain to assign the role
-     * in.
-     */
     declare public readonly domainId: pulumi.Output<string | undefined>;
     declare public readonly enterpriseProjectId: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the group to assign the role to.
-     */
     declare public readonly groupId: pulumi.Output<string>;
-    /**
-     * Specifies the project to assign the role
-     * in.
-     */
     declare public readonly projectId: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the role to assign.
-     */
     declare public readonly roleId: pulumi.Output<string>;
 
     /**
@@ -134,24 +79,10 @@ export class RoleAssignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoleAssignment resources.
  */
 export interface RoleAssignmentState {
-    /**
-     * Specifies the domain to assign the role
-     * in.
-     */
     domainId?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the group to assign the role to.
-     */
     groupId?: pulumi.Input<string>;
-    /**
-     * Specifies the project to assign the role
-     * in.
-     */
     projectId?: pulumi.Input<string>;
-    /**
-     * Specifies the role to assign.
-     */
     roleId?: pulumi.Input<string>;
 }
 
@@ -159,23 +90,9 @@ export interface RoleAssignmentState {
  * The set of arguments for constructing a RoleAssignment resource.
  */
 export interface RoleAssignmentArgs {
-    /**
-     * Specifies the domain to assign the role
-     * in.
-     */
     domainId?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the group to assign the role to.
-     */
     groupId: pulumi.Input<string>;
-    /**
-     * Specifies the project to assign the role
-     * in.
-     */
     projectId?: pulumi.Input<string>;
-    /**
-     * Specifies the role to assign.
-     */
     roleId: pulumi.Input<string>;
 }

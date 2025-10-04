@@ -24,37 +24,13 @@ MYPY = False
 if not MYPY:
     class ClusterInstanceArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance ID.
-        """
         manage_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Management IP address.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies cluster name. Changing this parameter will create a new resource.
-        """
         private_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Private IP.
-        """
         public_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Public IP.
-        """
         role: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance role.
-        """
         traffic_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Traffic IP.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instance type.
-        """
 elif False:
     ClusterInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -69,16 +45,6 @@ class ClusterInstanceArgs:
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  traffic_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: Instance ID.
-        :param pulumi.Input[_builtins.str] manage_ip: Management IP address.
-        :param pulumi.Input[_builtins.str] name: Specifies cluster name. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP.
-        :param pulumi.Input[_builtins.str] public_ip: Public IP.
-        :param pulumi.Input[_builtins.str] role: Instance role.
-        :param pulumi.Input[_builtins.str] traffic_ip: Traffic IP.
-        :param pulumi.Input[_builtins.str] type: Instance type.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if manage_ip is not None:
@@ -99,9 +65,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance ID.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -111,9 +74,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="manageIp")
     def manage_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Management IP address.
-        """
         return pulumi.get(self, "manage_ip")
 
     @manage_ip.setter
@@ -123,9 +83,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies cluster name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -135,9 +92,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Private IP.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -147,9 +101,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Public IP.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -159,9 +110,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance role.
-        """
         return pulumi.get(self, "role")
 
     @role.setter
@@ -171,9 +119,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter(name="trafficIp")
     def traffic_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Traffic IP.
-        """
         return pulumi.get(self, "traffic_ip")
 
     @traffic_ip.setter
@@ -183,9 +128,6 @@ class ClusterInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter

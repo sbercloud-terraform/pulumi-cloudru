@@ -52,16 +52,6 @@ class ClusterInstance(dict):
                  role: Optional[_builtins.str] = None,
                  traffic_ip: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str id: Instance ID.
-        :param _builtins.str manage_ip: Management IP address.
-        :param _builtins.str name: Specifies cluster name. Changing this parameter will create a new resource.
-        :param _builtins.str private_ip: Private IP.
-        :param _builtins.str public_ip: Public IP.
-        :param _builtins.str role: Instance role.
-        :param _builtins.str traffic_ip: Traffic IP.
-        :param _builtins.str type: Instance type.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if manage_ip is not None:
@@ -82,65 +72,41 @@ class ClusterInstance(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Instance ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="manageIp")
     def manage_ip(self) -> Optional[_builtins.str]:
-        """
-        Management IP address.
-        """
         return pulumi.get(self, "manage_ip")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Specifies cluster name. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[_builtins.str]:
-        """
-        Private IP.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[_builtins.str]:
-        """
-        Public IP.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[_builtins.str]:
-        """
-        Instance role.
-        """
         return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter(name="trafficIp")
     def traffic_ip(self) -> Optional[_builtins.str]:
-        """
-        Traffic IP.
-        """
         return pulumi.get(self, "traffic_ip")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Instance type.
-        """
         return pulumi.get(self, "type")
 
 

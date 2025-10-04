@@ -53,9 +53,6 @@ class GetFgsDependencyVersionsResult:
     @_builtins.property
     @pulumi.getter(name="dependencyId")
     def dependency_id(self) -> _builtins.str:
-        """
-        The ID of the dependency package corresponding to the version.
-        """
         return pulumi.get(self, "dependency_id")
 
     @_builtins.property
@@ -74,17 +71,11 @@ class GetFgsDependencyVersionsResult:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[_builtins.str]:
-        """
-        The runtime of the dependency package version.
-        """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.int]:
-        """
-        The dependency package version.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
@@ -95,10 +86,6 @@ class GetFgsDependencyVersionsResult:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetFgsDependencyVersionsVersionResult']:
-        """
-        All dependency package versions that match the filter parameters.  
-        The versions structure is documented below.
-        """
         return pulumi.get(self, "versions")
 
 
@@ -124,60 +111,7 @@ def get_fgs_dependency_versions(dependency_id: Optional[_builtins.str] = None,
                                 version_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFgsDependencyVersionsResult:
     """
-    Use this data source to get the list of dependency package versions within SberCloud.
-
-    ## Example Usage
-
-    ### Query all versions under a specified dependency package
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    dependency_id = config.require_object("dependencyId")
-    test = sbercloud.get_fgs_dependency_versions(dependency_id=dependency_id)
-    ```
-
-    ### Query a specified dependency package version
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    dependency_id = config.require_object("dependencyId")
-    version_name = config.require_object("versionName")
-    test = sbercloud.get_fgs_dependency_versions(dependency_id=dependency_id,
-        version=version_name)
-    ```
-
-
-    :param _builtins.str dependency_id: Specifies the ID of the dependency package to which the versions belong.
-    :param _builtins.str region: Specifies the region where the dependency package and the versions are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the runtime of the dependency package version.  
-           The valid values are as follows:
-           + **Java8**
-           + **Java11**
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Go1.8**
-           + **Go1.x**
-           + **C#(.NET Core 2.0)**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **Custom**
-           + **PHP 7.3**
-           + **http**
-    :param _builtins.int version: Specifies the version of the dependency package.
-    :param _builtins.str version_id: Specifies the ID of the dependency package version.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dependencyId'] = dependency_id
@@ -203,60 +137,7 @@ def get_fgs_dependency_versions_output(dependency_id: Optional[pulumi.Input[_bui
                                        version_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFgsDependencyVersionsResult]:
     """
-    Use this data source to get the list of dependency package versions within SberCloud.
-
-    ## Example Usage
-
-    ### Query all versions under a specified dependency package
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    dependency_id = config.require_object("dependencyId")
-    test = sbercloud.get_fgs_dependency_versions(dependency_id=dependency_id)
-    ```
-
-    ### Query a specified dependency package version
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    dependency_id = config.require_object("dependencyId")
-    version_name = config.require_object("versionName")
-    test = sbercloud.get_fgs_dependency_versions(dependency_id=dependency_id,
-        version=version_name)
-    ```
-
-
-    :param _builtins.str dependency_id: Specifies the ID of the dependency package to which the versions belong.
-    :param _builtins.str region: Specifies the region where the dependency package and the versions are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str runtime: Specifies the runtime of the dependency package version.  
-           The valid values are as follows:
-           + **Java8**
-           + **Java11**
-           + **Node.js6.10**
-           + **Node.js8.10**
-           + **Node.js10.16**
-           + **Node.js12.13**
-           + **Node.js14.18**
-           + **Python2.7**
-           + **Python3.6**
-           + **Python3.9**
-           + **Go1.8**
-           + **Go1.x**
-           + **C#(.NET Core 2.0)**
-           + **C#(.NET Core 2.1)**
-           + **C#(.NET Core 3.1)**
-           + **Custom**
-           + **PHP 7.3**
-           + **http**
-    :param _builtins.int version: Specifies the version of the dependency package.
-    :param _builtins.str version_id: Specifies the ID of the dependency package version.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['dependencyId'] = dependency_id

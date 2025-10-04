@@ -255,50 +255,7 @@ class Snapshot(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an EVS snapshot resource.
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        myvolume = sbercloud.evs.Volume("myvolume",
-            name="volume",
-            description="my volume",
-            volume_type="SSD",
-            size=20,
-            availability_zone="ru-moscow-1a",
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        snapshot1 = sbercloud.evs.Snapshot("snapshot_1",
-            name="snapshot-001",
-            description="Daily backup",
-            volume_id=myvolume.id)
-        ```
-
-        The following arguments are supported:
-
-        * `region` - (Optional, String, ForceNew) The region in which to create the evs snapshot resource. If omitted, the provider-level region will be used. Changing this creates a new EVS snapshot resource.
-
-        * `volume_id` - (Required, String, ForceNew) The id of the snapshot's source disk. Changing the parameter creates a new snapshot.
-
-        * `name` - (Required, String) The name of the snapshot. The value can contain a maximum of 255 bytes.
-
-        * `description` - (Optional, String) The description of the snapshot. The value can contain a maximum of 255 bytes.
-
-        * `force` - (Optional, Bool) Specifies the flag for forcibly creating a snapshot. Default to false.
-
-        In addition to all arguments above, the following attributes are exported:
-
-        * `id` - The id of the snapshot.
-
-        * `status` - The status of the snapshot.
-
-        * `size` - The size of the snapshot in GB.
-
-        EVS snapshot can be imported using the `snapshot id`, e.g.
-
+        Create a Snapshot resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -309,50 +266,7 @@ class Snapshot(pulumi.CustomResource):
                  args: SnapshotArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an EVS snapshot resource.
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        myvolume = sbercloud.evs.Volume("myvolume",
-            name="volume",
-            description="my volume",
-            volume_type="SSD",
-            size=20,
-            availability_zone="ru-moscow-1a",
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        snapshot1 = sbercloud.evs.Snapshot("snapshot_1",
-            name="snapshot-001",
-            description="Daily backup",
-            volume_id=myvolume.id)
-        ```
-
-        The following arguments are supported:
-
-        * `region` - (Optional, String, ForceNew) The region in which to create the evs snapshot resource. If omitted, the provider-level region will be used. Changing this creates a new EVS snapshot resource.
-
-        * `volume_id` - (Required, String, ForceNew) The id of the snapshot's source disk. Changing the parameter creates a new snapshot.
-
-        * `name` - (Required, String) The name of the snapshot. The value can contain a maximum of 255 bytes.
-
-        * `description` - (Optional, String) The description of the snapshot. The value can contain a maximum of 255 bytes.
-
-        * `force` - (Optional, Bool) Specifies the flag for forcibly creating a snapshot. Default to false.
-
-        In addition to all arguments above, the following attributes are exported:
-
-        * `id` - The id of the snapshot.
-
-        * `status` - The status of the snapshot.
-
-        * `size` - The size of the snapshot in GB.
-
-        EVS snapshot can be imported using the `snapshot id`, e.g.
-
+        Create a Snapshot resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SnapshotArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

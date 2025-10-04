@@ -76,17 +76,11 @@ class GetIpsCustomRulesResult:
     @_builtins.property
     @pulumi.getter(name="affectedOs")
     def affected_os(self) -> Optional[_builtins.int]:
-        """
-        The affected OS.
-        """
         return pulumi.get(self, "affected_os")
 
     @_builtins.property
     @pulumi.getter(name="attackType")
     def attack_type(self) -> Optional[_builtins.int]:
-        """
-        The attack type.
-        """
         return pulumi.get(self, "attack_type")
 
     @_builtins.property
@@ -110,9 +104,6 @@ class GetIpsCustomRulesResult:
     @_builtins.property
     @pulumi.getter(name="ipsName")
     def ips_name(self) -> Optional[_builtins.str]:
-        """
-        The IPS rule name.
-        """
         return pulumi.get(self, "ips_name")
 
     @_builtins.property
@@ -123,17 +114,11 @@ class GetIpsCustomRulesResult:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[_builtins.int]:
-        """
-        The protocol.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetIpsCustomRulesRecordResult']:
-        """
-        The custom IPS rule records.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -144,17 +129,11 @@ class GetIpsCustomRulesResult:
     @_builtins.property
     @pulumi.getter
     def severity(self) -> Optional[_builtins.int]:
-        """
-        The severity.
-        """
         return pulumi.get(self, "severity")
 
     @_builtins.property
     @pulumi.getter
     def software(self) -> Optional[_builtins.int]:
-        """
-        The affected software.
-        """
         return pulumi.get(self, "software")
 
 
@@ -192,139 +171,7 @@ def get_ips_custom_rules(action_type: Optional[_builtins.int] = None,
                          software: Optional[_builtins.int] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpsCustomRulesResult:
     """
-    Use the data source to get the list of CFW IPS custom rules.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_ips_custom_rules(fw_instance_id=fw_instance_id,
-        object_id=object_id)
-    ```
-
-
-    :param _builtins.int action_type: Specifies the action type.
-           The valid value can be **0** (log only) or **1** (reset/block).
-    :param _builtins.int affected_os: Specifies the affected OS.
-           The valid values are as follows:
-           + **1**: Windows;
-           + **2**: Linux;
-           + **3**: FreeBSD;
-           + **4**: Solaris;
-           + **5**: Other Unix;
-           + **6**: Network device;
-           + **7**: MAC OS;
-           + **8**: IOS;
-           + **9**: Android;
-           + **10**: Other;
-    :param _builtins.int attack_type: Specifies the attack type.
-           The valid values are as follows:
-           + **1**: access control;
-           + **2**: vulnerability scan;
-           + **3**: email phishing;
-           + **4**: vulnerability exploits;
-           + **5**: web attack;
-           + **6**: password cracking;
-           + **7**: hijacking attack;
-           + **8**: protocol exception;
-           + **9**: trojan;
-           + **10**: worm;
-           + **11**: buffer overflow;
-           + **12**: hacker tool;
-           + **13**: spyware;
-           + **14**: DDoS flood;
-           + **15**: application-layer DDoS attack;
-           + **16**: other suspicious behavior;
-           + **17**: suspicious DNS activity;
-           + **18**: phishing;
-           + **19**: spam;
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str ips_name: Specifies the IPS custom rule name.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.int protocol: Specifies the protocol.
-           The valid values are as follows:
-           + **1**: FTP;
-           + **2**: TELNET;
-           + **3**: SMTP;
-           + **4**: DNS-TCP;
-           + **5**: DNS-UDP;
-           + **6**: DHCP;
-           + **7**: TFTP;
-           + **8**: FINGER;
-           + **9**: HTTP;
-           + **10**: POP3;
-           + **11**: SUNRPC-TCP;
-           + **12**: SUNRPC-UDP;
-           + **13**: NNTP;
-           + **14**: MSRPC-TCP;
-           + **15**: MSRPC-UDP;
-           + **16**: NETBIOS-NAME_TCP;
-           + **17**: NETBIOS-NAME_UDP;
-           + **18**: NETBIOS-SMB;
-           + **19**: NETBIOS-DATAGRAM;
-           + **20**: IMAP4;
-           + **21**: SNMP;
-           + **22**: LDAP;
-           + **23**: MSSQL;
-           + **24**: ORACLE;
-           + **25**: MYSQL;
-           + **26**: VOIP-SIP-TCP;
-           + **27**: VOIP-SIP-UDP;
-           + **28**: VOIP-H245;
-           + **29**: VOIP-Q931;
-           + **30**: OTHER-TCP;
-           + **31**: OTHER-UDP;
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int severity: Specifies the severity.
-           The valid values are as follows:
-           + **0**: critical;
-           + **1**: high;
-           + **2**: medium;
-           + **3**: low;
-    :param _builtins.int software: Specifies the affected software.
-           The valid values are as follows:
-           + **1**: ADOBE;
-           + **2**: APACHE;
-           + **3**: APPLE;
-           + **4**: CA;
-           + **5**: CISCO;
-           + **6**: GOOGLE CHROME;
-           + **7**: HP;
-           + **8**: IBM;
-           + **9**: IE;
-           + **10**: IIS;
-           + **11**: MCAFEE;
-           + **12**: MEDIAPLAYER;
-           + **13**: MICROSOFT.NET;
-           + **14**: MICROSOFT EDGE;
-           + **15**: MICROSOFT EXCHANGE;
-           + **16**: MICROSOFT OFFICE;
-           + **17**: MICROSOFT OUTLOOK;
-           + **18**: MICROSOFT SHAREPOINT;
-           + **19**: MICROSOFT WINDOWS;
-           + **20**: MOZILLA;
-           + **21**: MSSQL;
-           + **22**: MYSQL;
-           + **23**: NOVELL;
-           + **24**: ORACLE;
-           + **25**: SAMBA;
-           + **26**: SAMSUNG;
-           + **27**: SAP;
-           + **28**: SCADA;
-           + **29**: SQUID;
-           + **30**: SUN;
-           + **31**: SYMANTEC;
-           + **32**: TREND MICRO;
-           + **33**: VMWARE;
-           + **34**: WORDPRESS;
-           + **35**: OTHER;
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['actionType'] = action_type
@@ -368,139 +215,7 @@ def get_ips_custom_rules_output(action_type: Optional[pulumi.Input[Optional[_bui
                                 software: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpsCustomRulesResult]:
     """
-    Use the data source to get the list of CFW IPS custom rules.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_ips_custom_rules(fw_instance_id=fw_instance_id,
-        object_id=object_id)
-    ```
-
-
-    :param _builtins.int action_type: Specifies the action type.
-           The valid value can be **0** (log only) or **1** (reset/block).
-    :param _builtins.int affected_os: Specifies the affected OS.
-           The valid values are as follows:
-           + **1**: Windows;
-           + **2**: Linux;
-           + **3**: FreeBSD;
-           + **4**: Solaris;
-           + **5**: Other Unix;
-           + **6**: Network device;
-           + **7**: MAC OS;
-           + **8**: IOS;
-           + **9**: Android;
-           + **10**: Other;
-    :param _builtins.int attack_type: Specifies the attack type.
-           The valid values are as follows:
-           + **1**: access control;
-           + **2**: vulnerability scan;
-           + **3**: email phishing;
-           + **4**: vulnerability exploits;
-           + **5**: web attack;
-           + **6**: password cracking;
-           + **7**: hijacking attack;
-           + **8**: protocol exception;
-           + **9**: trojan;
-           + **10**: worm;
-           + **11**: buffer overflow;
-           + **12**: hacker tool;
-           + **13**: spyware;
-           + **14**: DDoS flood;
-           + **15**: application-layer DDoS attack;
-           + **16**: other suspicious behavior;
-           + **17**: suspicious DNS activity;
-           + **18**: phishing;
-           + **19**: spam;
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall ID.
-    :param _builtins.str ips_name: Specifies the IPS custom rule name.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.int protocol: Specifies the protocol.
-           The valid values are as follows:
-           + **1**: FTP;
-           + **2**: TELNET;
-           + **3**: SMTP;
-           + **4**: DNS-TCP;
-           + **5**: DNS-UDP;
-           + **6**: DHCP;
-           + **7**: TFTP;
-           + **8**: FINGER;
-           + **9**: HTTP;
-           + **10**: POP3;
-           + **11**: SUNRPC-TCP;
-           + **12**: SUNRPC-UDP;
-           + **13**: NNTP;
-           + **14**: MSRPC-TCP;
-           + **15**: MSRPC-UDP;
-           + **16**: NETBIOS-NAME_TCP;
-           + **17**: NETBIOS-NAME_UDP;
-           + **18**: NETBIOS-SMB;
-           + **19**: NETBIOS-DATAGRAM;
-           + **20**: IMAP4;
-           + **21**: SNMP;
-           + **22**: LDAP;
-           + **23**: MSSQL;
-           + **24**: ORACLE;
-           + **25**: MYSQL;
-           + **26**: VOIP-SIP-TCP;
-           + **27**: VOIP-SIP-UDP;
-           + **28**: VOIP-H245;
-           + **29**: VOIP-Q931;
-           + **30**: OTHER-TCP;
-           + **31**: OTHER-UDP;
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int severity: Specifies the severity.
-           The valid values are as follows:
-           + **0**: critical;
-           + **1**: high;
-           + **2**: medium;
-           + **3**: low;
-    :param _builtins.int software: Specifies the affected software.
-           The valid values are as follows:
-           + **1**: ADOBE;
-           + **2**: APACHE;
-           + **3**: APPLE;
-           + **4**: CA;
-           + **5**: CISCO;
-           + **6**: GOOGLE CHROME;
-           + **7**: HP;
-           + **8**: IBM;
-           + **9**: IE;
-           + **10**: IIS;
-           + **11**: MCAFEE;
-           + **12**: MEDIAPLAYER;
-           + **13**: MICROSOFT.NET;
-           + **14**: MICROSOFT EDGE;
-           + **15**: MICROSOFT EXCHANGE;
-           + **16**: MICROSOFT OFFICE;
-           + **17**: MICROSOFT OUTLOOK;
-           + **18**: MICROSOFT SHAREPOINT;
-           + **19**: MICROSOFT WINDOWS;
-           + **20**: MOZILLA;
-           + **21**: MSSQL;
-           + **22**: MYSQL;
-           + **23**: NOVELL;
-           + **24**: ORACLE;
-           + **25**: SAMBA;
-           + **26**: SAMSUNG;
-           + **27**: SAP;
-           + **28**: SCADA;
-           + **29**: SQUID;
-           + **30**: SUN;
-           + **31**: SYMANTEC;
-           + **32**: TREND MICRO;
-           + **33**: VMWARE;
-           + **34**: WORDPRESS;
-           + **35**: OTHER;
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['actionType'] = action_type

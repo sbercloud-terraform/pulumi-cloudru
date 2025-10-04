@@ -4,30 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DCS backup resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const dcsInstanceId = config.requireObject<any>("dcsInstanceId");
- * const test = new sbercloud.DcsBackup("test", {instanceId: dcsInstanceId});
- * ```
- *
- * ## Import
- *
- * The DCS backup can be imported using the DCS instance ID and backup ID separated by a slash, e.g.:
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dcsBackup:DcsBackup test <instance_id>/<backup_id>
- * ```
- */
 export class DcsBackup extends pulumi.CustomResource {
     /**
      * Get an existing DcsBackup resource's state with the given name, ID, and optional extra
@@ -58,9 +34,6 @@ export class DcsBackup extends pulumi.CustomResource {
 
     /**
      * Specifies the format of the DCS instance backup.
-     * Value options: **aof**, **rdb**. Default to rdb.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly backupFormat: pulumi.Output<string>;
     /**
@@ -68,25 +41,19 @@ export class DcsBackup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly backupId: pulumi.Output<string>;
     /**
-     * Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-     * The value is in UTC format.
+     * Indicates the time when the backup task is created.
      */
     declare public /*out*/ readonly beginTime: pulumi.Output<string>;
     /**
      * Specifies the description of DCS instance backup.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-     * The value is in UTC format.
+     * Indicates the time at which DCS instance backup is completed.
      */
     declare public /*out*/ readonly endTime: pulumi.Output<string>;
     /**
      * Specifies the ID of the DCS instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
@@ -97,29 +64,17 @@ export class DcsBackup extends pulumi.CustomResource {
      * Indicates the backup name.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the size of the backup file (byte).
      */
     declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
-     * Indicates the backup status. Valid value:
-     * + **waiting**: The task is waiting to begin.
-     * + **backuping**: DCS instance backup is in progress.
-     * + **succeed**: DCS instance backup succeeded.
-     * + **failed**: DCS instance backup failed.
-     * + **expired**: The backup file has expired.
-     * + **deleted**: The backup file has been deleted manually.
+     * Indicates the backup status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Indicates the backup type. Valid value:
-     * + **manual**: indicates manual backup.
-     * + **auto**: indicates automatic backup.
+     * Indicates the backup type.
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -177,9 +132,6 @@ export class DcsBackup extends pulumi.CustomResource {
 export interface DcsBackupState {
     /**
      * Specifies the format of the DCS instance backup.
-     * Value options: **aof**, **rdb**. Default to rdb.
-     *
-     * Changing this parameter will create a new resource.
      */
     backupFormat?: pulumi.Input<string>;
     /**
@@ -187,25 +139,19 @@ export interface DcsBackupState {
      */
     backupId?: pulumi.Input<string>;
     /**
-     * Indicates the time when the backup task is created. The format is yyyy-mm-dd hh:mm:ss.
-     * The value is in UTC format.
+     * Indicates the time when the backup task is created.
      */
     beginTime?: pulumi.Input<string>;
     /**
      * Specifies the description of DCS instance backup.
-     *
-     * Changing this parameter will create a new resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicates the time at which DCS instance backup is completed. The format is yyyy-mm-dd hh:mm:ss.
-     * The value is in UTC format.
+     * Indicates the time at which DCS instance backup is completed.
      */
     endTime?: pulumi.Input<string>;
     /**
      * Specifies the ID of the DCS instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -216,29 +162,17 @@ export interface DcsBackupState {
      * Indicates the backup name.
      */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Indicates the size of the backup file (byte).
      */
     size?: pulumi.Input<number>;
     /**
-     * Indicates the backup status. Valid value:
-     * + **waiting**: The task is waiting to begin.
-     * + **backuping**: DCS instance backup is in progress.
-     * + **succeed**: DCS instance backup succeeded.
-     * + **failed**: DCS instance backup failed.
-     * + **expired**: The backup file has expired.
-     * + **deleted**: The backup file has been deleted manually.
+     * Indicates the backup status.
      */
     status?: pulumi.Input<string>;
     /**
-     * Indicates the backup type. Valid value:
-     * + **manual**: indicates manual backup.
-     * + **auto**: indicates automatic backup.
+     * Indicates the backup type.
      */
     type?: pulumi.Input<string>;
 }
@@ -249,26 +183,15 @@ export interface DcsBackupState {
 export interface DcsBackupArgs {
     /**
      * Specifies the format of the DCS instance backup.
-     * Value options: **aof**, **rdb**. Default to rdb.
-     *
-     * Changing this parameter will create a new resource.
      */
     backupFormat?: pulumi.Input<string>;
     /**
      * Specifies the description of DCS instance backup.
-     *
-     * Changing this parameter will create a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the ID of the DCS instance.
-     *
-     * Changing this parameter will create a new resource.
      */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

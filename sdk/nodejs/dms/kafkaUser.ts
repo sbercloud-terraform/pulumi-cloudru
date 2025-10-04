@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a DMS kafka user resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const kafkaInstanceId = config.requireObject<any>("kafkaInstanceId");
- * const userPassword = config.requireObject<any>("userPassword");
- * const user = new sbercloud.dms.KafkaUser("user", {
- *     instanceId: kafkaInstanceId,
- *     name: "user_1",
- *     password: userPassword,
- *     description: "test_description",
- * });
- * ```
- *
- * ## Import
- *
- * DMS kafka users can be imported using the kafka instance ID and user name separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Dms/kafkaUser:KafkaUser user c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/user_1
- * ```
- */
 export class KafkaUser extends pulumi.CustomResource {
     /**
      * Get an existing KafkaUser resource's state with the given name, ID, and optional extra
@@ -62,41 +32,13 @@ export class KafkaUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === KafkaUser.__pulumiType;
     }
 
-    /**
-     * Indicates the create time.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Indicates whether the application is the default application.
-     */
     declare public /*out*/ readonly defaultApp: pulumi.Output<boolean>;
-    /**
-     * Specifies the description of the user.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the ID of the DMS kafka instance to which the user belongs.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the name of the user. Changing this creates a new resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the password of the user. The parameter must be 8 to 32 characters
-     * long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-     * The value must be different from name.
-     */
     declare public readonly password: pulumi.Output<string>;
-    /**
-     * The region in which to create the DMS kafka user resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Indicates the user role.
-     */
     declare public /*out*/ readonly role: pulumi.Output<string>;
 
     /**
@@ -148,41 +90,13 @@ export class KafkaUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KafkaUser resources.
  */
 export interface KafkaUserState {
-    /**
-     * Indicates the create time.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Indicates whether the application is the default application.
-     */
     defaultApp?: pulumi.Input<boolean>;
-    /**
-     * Specifies the description of the user.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the DMS kafka instance to which the user belongs.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the user. Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the password of the user. The parameter must be 8 to 32 characters
-     * long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-     * The value must be different from name.
-     */
     password?: pulumi.Input<string>;
-    /**
-     * The region in which to create the DMS kafka user resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Indicates the user role.
-     */
     role?: pulumi.Input<string>;
 }
 
@@ -190,28 +104,9 @@ export interface KafkaUserState {
  * The set of arguments for constructing a KafkaUser resource.
  */
 export interface KafkaUserArgs {
-    /**
-     * Specifies the description of the user.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the DMS kafka instance to which the user belongs.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the name of the user. Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the password of the user. The parameter must be 8 to 32 characters
-     * long and contain only letters(case-sensitive), digits, and special characters(`~!@#$%^&*()-_=+|[{}]:'",<.>/?).
-     * The value must be different from name.
-     */
     password: pulumi.Input<string>;
-    /**
-     * The region in which to create the DMS kafka user resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

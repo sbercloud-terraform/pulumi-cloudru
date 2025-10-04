@@ -11,7 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// This resource can be useful for getting back a list of subnet ids for a vpc.
 func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.InvokeOption) (*GetSubnetIdsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetIdsResult
@@ -24,18 +23,14 @@ func GetSubnetIds(ctx *pulumi.Context, args *GetSubnetIdsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSubnetIds.
 type GetSubnetIdsArgs struct {
-	// The region in which to obtain the subnet ids. If omitted, the provider-level region will
-	// be used.
 	Region *string `pulumi:"region"`
-	// Specifies the VPC ID used as the query filter.
-	VpcId string `pulumi:"vpcId"`
+	VpcId  string  `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getSubnetIds.
 type GetSubnetIdsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A set of all the subnet ids found. This data source will fail if none are found.
+	Id     string   `pulumi:"id"`
 	Ids    []string `pulumi:"ids"`
 	Region string   `pulumi:"region"`
 	VpcId  string   `pulumi:"vpcId"`
@@ -52,11 +47,8 @@ func GetSubnetIdsOutput(ctx *pulumi.Context, args GetSubnetIdsOutputArgs, opts .
 
 // A collection of arguments for invoking getSubnetIds.
 type GetSubnetIdsOutputArgs struct {
-	// The region in which to obtain the subnet ids. If omitted, the provider-level region will
-	// be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the VPC ID used as the query filter.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	VpcId  pulumi.StringInput    `pulumi:"vpcId"`
 }
 
 func (GetSubnetIdsOutputArgs) ElementType() reflect.Type {
@@ -83,7 +75,6 @@ func (o GetSubnetIdsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetIdsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A set of all the subnet ids found. This data source will fail if none are found.
 func (o GetSubnetIdsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSubnetIdsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }

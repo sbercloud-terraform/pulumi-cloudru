@@ -12,103 +12,23 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DCS account resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := sbercloud.NewDcsAccount(ctx, "test", &sbercloud.DcsAccountArgs{
-//				InstanceId:      pulumi.Any(instanceId),
-//				AccountName:     pulumi.String("user"),
-//				AccountRole:     pulumi.String("read"),
-//				AccountPassword: pulumi.String("Terraform@123"),
-//				Description:     pulumi.String("add account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The DCS account can be imported using the DCS instance ID and the DCS account ID separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:index/dcsAccount:DcsAccount test <instance_id>/<id>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `account_password`.
-//
-// It is generally recommended running `pulumi preview` after importing the account.
-//
-// # You can then decide if changes should be applied to the account, or the resource definition should be updated to
-//
-// align with the account. Also you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_dcs_account" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    account_password,
-//
-//	  ]
-//
-//	}
-//
-// }
 type DcsAccount struct {
 	pulumi.CustomResourceState
 
 	// Specifies the name of the account.
-	// Changing this creates a new resource.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
 	// Specifies the password of the account.
 	AccountPassword pulumi.StringOutput `pulumi:"accountPassword"`
 	// Specifies the role of the account.
-	// Value options:
-	// + **read**: The account has read-only privilege.
-	// + **write**: The account has read and write privilege.
 	AccountRole pulumi.StringOutput `pulumi:"accountRole"`
-	// Indicates the type of the account. The value can be **normal** or **default**.
+	// Indicates the type of the account.
 	AccountType pulumi.StringOutput `pulumi:"accountType"`
 	// Specifies the description of the account.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies the ID of the DCS instance.
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-	// **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+	Region     pulumi.StringOutput `pulumi:"region"`
+	// Indicates the status of the account.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -162,53 +82,37 @@ func GetDcsAccount(ctx *pulumi.Context,
 // Input properties used for looking up and filtering DcsAccount resources.
 type dcsAccountState struct {
 	// Specifies the name of the account.
-	// Changing this creates a new resource.
 	AccountName *string `pulumi:"accountName"`
 	// Specifies the password of the account.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// Specifies the role of the account.
-	// Value options:
-	// + **read**: The account has read-only privilege.
-	// + **write**: The account has read and write privilege.
 	AccountRole *string `pulumi:"accountRole"`
-	// Indicates the type of the account. The value can be **normal** or **default**.
+	// Indicates the type of the account.
 	AccountType *string `pulumi:"accountType"`
 	// Specifies the description of the account.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the DCS instance.
-	// Changing this creates a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-	// **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+	Region     *string `pulumi:"region"`
+	// Indicates the status of the account.
 	Status *string `pulumi:"status"`
 }
 
 type DcsAccountState struct {
 	// Specifies the name of the account.
-	// Changing this creates a new resource.
 	AccountName pulumi.StringPtrInput
 	// Specifies the password of the account.
 	AccountPassword pulumi.StringPtrInput
 	// Specifies the role of the account.
-	// Value options:
-	// + **read**: The account has read-only privilege.
-	// + **write**: The account has read and write privilege.
 	AccountRole pulumi.StringPtrInput
-	// Indicates the type of the account. The value can be **normal** or **default**.
+	// Indicates the type of the account.
 	AccountType pulumi.StringPtrInput
 	// Specifies the description of the account.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the DCS instance.
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-	// **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+	Region     pulumi.StringPtrInput
+	// Indicates the status of the account.
 	Status pulumi.StringPtrInput
 }
 
@@ -218,45 +122,31 @@ func (DcsAccountState) ElementType() reflect.Type {
 
 type dcsAccountArgs struct {
 	// Specifies the name of the account.
-	// Changing this creates a new resource.
 	AccountName string `pulumi:"accountName"`
 	// Specifies the password of the account.
 	AccountPassword string `pulumi:"accountPassword"`
 	// Specifies the role of the account.
-	// Value options:
-	// + **read**: The account has read-only privilege.
-	// + **write**: The account has read and write privilege.
 	AccountRole string `pulumi:"accountRole"`
 	// Specifies the description of the account.
 	Description *string `pulumi:"description"`
 	// Specifies the ID of the DCS instance.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a DcsAccount resource.
 type DcsAccountArgs struct {
 	// Specifies the name of the account.
-	// Changing this creates a new resource.
 	AccountName pulumi.StringInput
 	// Specifies the password of the account.
 	AccountPassword pulumi.StringInput
 	// Specifies the role of the account.
-	// Value options:
-	// + **read**: The account has read-only privilege.
-	// + **write**: The account has read and write privilege.
 	AccountRole pulumi.StringInput
 	// Specifies the description of the account.
 	Description pulumi.StringPtrInput
 	// Specifies the ID of the DCS instance.
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region     pulumi.StringPtrInput
 }
 
 func (DcsAccountArgs) ElementType() reflect.Type {
@@ -347,7 +237,6 @@ func (o DcsAccountOutput) ToDcsAccountOutputWithContext(ctx context.Context) Dcs
 }
 
 // Specifies the name of the account.
-// Changing this creates a new resource.
 func (o DcsAccountOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsAccount) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
@@ -358,14 +247,11 @@ func (o DcsAccountOutput) AccountPassword() pulumi.StringOutput {
 }
 
 // Specifies the role of the account.
-// Value options:
-// + **read**: The account has read-only privilege.
-// + **write**: The account has read and write privilege.
 func (o DcsAccountOutput) AccountRole() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsAccount) pulumi.StringOutput { return v.AccountRole }).(pulumi.StringOutput)
 }
 
-// Indicates the type of the account. The value can be **normal** or **default**.
+// Indicates the type of the account.
 func (o DcsAccountOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsAccount) pulumi.StringOutput { return v.AccountType }).(pulumi.StringOutput)
 }
@@ -376,19 +262,15 @@ func (o DcsAccountOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Specifies the ID of the DCS instance.
-// Changing this creates a new resource.
 func (o DcsAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this creates a new resource.
 func (o DcsAccountOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsAccount) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the status of the account. The value can be **CREATING**, **AVAILABLE**, **CREATEFAILED**,
-// **DELETED**, **DELETEFAILED**, **DELETING**, **UPDATING** or **ERROR**.
+// Indicates the status of the account.
 func (o DcsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *DcsAccount) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

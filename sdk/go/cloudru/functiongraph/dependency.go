@@ -12,65 +12,26 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a custom dependency package within SberCloud FunctionGraph.
-//
-// > This resource will be deprecated in a future version. Please use `FgsDependencyVersion` resource to
-// replace it. For specific usage instructions, please refer to the corresponding document.
-//
-// ## Example Usage
-//
-// ## Import
-//
-// Dependencies can be imported using the `id`, e.g.:
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:FunctionGraph/dependency:Dependency test 795e722f-0c23-41b6-a189-dcd56f889cf6
-// ```
 type Dependency struct {
 	pulumi.CustomResourceState
 
-	// Specifies the dependency description.
-	// The description can contain a maximum of `512` characters.
+	// The description of the dependency package.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The unique ID of the dependency package.
+	// The etag of the dependency package.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The OBS storage URL of the dependency package.
 	Link pulumi.StringOutput `pulumi:"link"`
-	// Specifies the dependency name.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+	// The name of the dependency package.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The base64 encoded digest of the dependency after encryption by MD5.
+	// The owner name of the dependency package.
 	Owner pulumi.StringOutput `pulumi:"owner"`
-	// Specifies the region in which to create a custom dependency package.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the dependency package is located.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the dependency package runtime.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **PHP7.3**
-	// + **Custom**
-	// + **http**
+	// The runtime of the dependency package.
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
-	// The dependency package size in bytes.
+	// The capacity of the dependency package.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The dependency package version.
+	// The version of the dependency package.
 	Version pulumi.IntOutput `pulumi:"version"`
 }
 
@@ -110,90 +71,44 @@ func GetDependency(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dependency resources.
 type dependencyState struct {
-	// Specifies the dependency description.
-	// The description can contain a maximum of `512` characters.
+	// The description of the dependency package.
 	Description *string `pulumi:"description"`
-	// The unique ID of the dependency package.
+	// The etag of the dependency package.
 	Etag *string `pulumi:"etag"`
 	// The OBS storage URL of the dependency package.
 	Link *string `pulumi:"link"`
-	// Specifies the dependency name.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+	// The name of the dependency package.
 	Name *string `pulumi:"name"`
-	// The base64 encoded digest of the dependency after encryption by MD5.
+	// The owner name of the dependency package.
 	Owner *string `pulumi:"owner"`
-	// Specifies the region in which to create a custom dependency package.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the dependency package is located.
 	Region *string `pulumi:"region"`
-	// Specifies the dependency package runtime.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **PHP7.3**
-	// + **Custom**
-	// + **http**
+	// The runtime of the dependency package.
 	Runtime *string `pulumi:"runtime"`
-	// The dependency package size in bytes.
+	// The capacity of the dependency package.
 	Size *int `pulumi:"size"`
-	// The dependency package version.
+	// The version of the dependency package.
 	Version *int `pulumi:"version"`
 }
 
 type DependencyState struct {
-	// Specifies the dependency description.
-	// The description can contain a maximum of `512` characters.
+	// The description of the dependency package.
 	Description pulumi.StringPtrInput
-	// The unique ID of the dependency package.
+	// The etag of the dependency package.
 	Etag pulumi.StringPtrInput
 	// The OBS storage URL of the dependency package.
 	Link pulumi.StringPtrInput
-	// Specifies the dependency name.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+	// The name of the dependency package.
 	Name pulumi.StringPtrInput
-	// The base64 encoded digest of the dependency after encryption by MD5.
+	// The owner name of the dependency package.
 	Owner pulumi.StringPtrInput
-	// Specifies the region in which to create a custom dependency package.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the dependency package is located.
 	Region pulumi.StringPtrInput
-	// Specifies the dependency package runtime.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **PHP7.3**
-	// + **Custom**
-	// + **http**
+	// The runtime of the dependency package.
 	Runtime pulumi.StringPtrInput
-	// The dependency package size in bytes.
+	// The capacity of the dependency package.
 	Size pulumi.IntPtrInput
-	// The dependency package version.
+	// The version of the dependency package.
 	Version pulumi.IntPtrInput
 }
 
@@ -202,75 +117,29 @@ func (DependencyState) ElementType() reflect.Type {
 }
 
 type dependencyArgs struct {
-	// Specifies the dependency description.
-	// The description can contain a maximum of `512` characters.
+	// The description of the dependency package.
 	Description *string `pulumi:"description"`
 	// The OBS storage URL of the dependency package.
 	Link string `pulumi:"link"`
-	// Specifies the dependency name.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+	// The name of the dependency package.
 	Name *string `pulumi:"name"`
-	// Specifies the region in which to create a custom dependency package.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the dependency package is located.
 	Region *string `pulumi:"region"`
-	// Specifies the dependency package runtime.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **PHP7.3**
-	// + **Custom**
-	// + **http**
+	// The runtime of the dependency package.
 	Runtime string `pulumi:"runtime"`
 }
 
 // The set of arguments for constructing a Dependency resource.
 type DependencyArgs struct {
-	// Specifies the dependency description.
-	// The description can contain a maximum of `512` characters.
+	// The description of the dependency package.
 	Description pulumi.StringPtrInput
 	// The OBS storage URL of the dependency package.
 	Link pulumi.StringInput
-	// Specifies the dependency name.
-	// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-	// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+	// The name of the dependency package.
 	Name pulumi.StringPtrInput
-	// Specifies the region in which to create a custom dependency package.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
+	// The region where the dependency package is located.
 	Region pulumi.StringPtrInput
-	// Specifies the dependency package runtime.
-	// The valid values are as follows:
-	// + **Java8**
-	// + **Java11**
-	// + **Node.js6.10**
-	// + **Node.js8.10**
-	// + **Node.js10.16**
-	// + **Node.js12.13**
-	// + **Node.js14.18**
-	// + **Python2.7**
-	// + **Python3.6**
-	// + **Python3.9**
-	// + **Go1.8**
-	// + **Go1.x**
-	// + **C#(.NET Core 2.0)**
-	// + **C#(.NET Core 2.1)**
-	// + **C#(.NET Core 3.1)**
-	// + **PHP7.3**
-	// + **Custom**
-	// + **http**
+	// The runtime of the dependency package.
 	Runtime pulumi.StringInput
 }
 
@@ -361,13 +230,12 @@ func (o DependencyOutput) ToDependencyOutputWithContext(ctx context.Context) Dep
 	return o
 }
 
-// Specifies the dependency description.
-// The description can contain a maximum of `512` characters.
+// The description of the dependency package.
 func (o DependencyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The unique ID of the dependency package.
+// The etag of the dependency package.
 func (o DependencyOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -377,54 +245,32 @@ func (o DependencyOutput) Link() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Link }).(pulumi.StringOutput)
 }
 
-// Specifies the dependency name.
-// The name can contain a maximum of `96` characters and must start with a letter and end with a letter or digit.
-// Only letters, digits, underscores (_), periods (.), and hyphens (-) are allowed.
+// The name of the dependency package.
 func (o DependencyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The base64 encoded digest of the dependency after encryption by MD5.
+// The owner name of the dependency package.
 func (o DependencyOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Owner }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create a custom dependency package.
-// If omitted, the provider-level region will be used. Changing this will create a new resource.
+// The region where the dependency package is located.
 func (o DependencyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the dependency package runtime.
-// The valid values are as follows:
-// + **Java8**
-// + **Java11**
-// + **Node.js6.10**
-// + **Node.js8.10**
-// + **Node.js10.16**
-// + **Node.js12.13**
-// + **Node.js14.18**
-// + **Python2.7**
-// + **Python3.6**
-// + **Python3.9**
-// + **Go1.8**
-// + **Go1.x**
-// + **C#(.NET Core 2.0)**
-// + **C#(.NET Core 2.1)**
-// + **C#(.NET Core 3.1)**
-// + **PHP7.3**
-// + **Custom**
-// + **http**
+// The runtime of the dependency package.
 func (o DependencyOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }
 
-// The dependency package size in bytes.
+// The capacity of the dependency package.
 func (o DependencyOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The dependency package version.
+// The version of the dependency package.
 func (o DependencyOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v *Dependency) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }

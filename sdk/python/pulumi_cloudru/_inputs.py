@@ -1333,25 +1333,10 @@ class CbrCheckpointBackupArgs:
 if not MYPY:
     class DcsParametersConfigurationParameterArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter name.
-        """
         need_restart: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether a restart is required.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter type.
-        """
         user_permission: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates a user permission
-        """
         value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter value.
-        """
 elif False:
     DcsParametersConfigurationParameterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1363,13 +1348,6 @@ class DcsParametersConfigurationParameterArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  user_permission: Optional[pulumi.Input[_builtins.str]] = None,
                  value: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Indicates the parameter name.
-        :param pulumi.Input[_builtins.bool] need_restart: Indicates whether a restart is required.
-        :param pulumi.Input[_builtins.str] type: Indicates the parameter type.
-        :param pulumi.Input[_builtins.str] user_permission: Indicates a user permission
-        :param pulumi.Input[_builtins.str] value: Indicates the parameter value.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if need_restart is not None:
@@ -1384,9 +1362,6 @@ class DcsParametersConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1396,9 +1371,6 @@ class DcsParametersConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter(name="needRestart")
     def need_restart(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Indicates whether a restart is required.
-        """
         return pulumi.get(self, "need_restart")
 
     @need_restart.setter
@@ -1408,9 +1380,6 @@ class DcsParametersConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1420,9 +1389,6 @@ class DcsParametersConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter(name="userPermission")
     def user_permission(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates a user permission
-        """
         return pulumi.get(self, "user_permission")
 
     @user_permission.setter
@@ -1432,9 +1398,6 @@ class DcsParametersConfigurationParameterArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter value.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1445,51 +1408,18 @@ class DcsParametersConfigurationParameterArgs:
 if not MYPY:
     class DcsRestoreRestoreRecordArgsDict(TypedDict):
         backup_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the backup record.
-        """
         backup_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the backup record.
-        """
         backup_remark: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of DCS instance backup.
-        """
         created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time at which the restoration task is created.
-        """
         error_code: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Error code returned if DCS instance restoration fails.
-        """
         progress: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Restoration progress.
-        """
         restore_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the restoration record.
-        """
         restore_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the restoration record.
-        """
         restore_remark: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of DCS instance restoration.
-        """
         source_instance_id: NotRequired[pulumi.Input[_builtins.str]]
         source_instance_name: NotRequired[pulumi.Input[_builtins.str]]
         status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Restoration status:
-        """
         updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Time at which DCS instance restoration completed.
-        """
 elif False:
     DcsRestoreRestoreRecordArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1509,19 +1439,6 @@ class DcsRestoreRestoreRecordArgs:
                  source_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] backup_id: ID of the backup record.
-        :param pulumi.Input[_builtins.str] backup_name: Name of the backup record.
-        :param pulumi.Input[_builtins.str] backup_remark: Description of DCS instance backup.
-        :param pulumi.Input[_builtins.str] created_at: Time at which the restoration task is created.
-        :param pulumi.Input[_builtins.str] error_code: Error code returned if DCS instance restoration fails.
-        :param pulumi.Input[_builtins.str] progress: Restoration progress.
-        :param pulumi.Input[_builtins.str] restore_id: ID of the restoration record.
-        :param pulumi.Input[_builtins.str] restore_name: Name of the restoration record.
-        :param pulumi.Input[_builtins.str] restore_remark: Description of DCS instance restoration.
-        :param pulumi.Input[_builtins.str] status: Restoration status:
-        :param pulumi.Input[_builtins.str] updated_at: Time at which DCS instance restoration completed.
-        """
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
         if backup_name is not None:
@@ -1552,9 +1469,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of the backup record.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -1564,9 +1478,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the backup record.
-        """
         return pulumi.get(self, "backup_name")
 
     @backup_name.setter
@@ -1576,9 +1487,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="backupRemark")
     def backup_remark(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of DCS instance backup.
-        """
         return pulumi.get(self, "backup_remark")
 
     @backup_remark.setter
@@ -1588,9 +1496,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time at which the restoration task is created.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -1600,9 +1505,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Error code returned if DCS instance restoration fails.
-        """
         return pulumi.get(self, "error_code")
 
     @error_code.setter
@@ -1612,9 +1514,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter
     def progress(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Restoration progress.
-        """
         return pulumi.get(self, "progress")
 
     @progress.setter
@@ -1624,9 +1523,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="restoreId")
     def restore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of the restoration record.
-        """
         return pulumi.get(self, "restore_id")
 
     @restore_id.setter
@@ -1636,9 +1532,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="restoreName")
     def restore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Name of the restoration record.
-        """
         return pulumi.get(self, "restore_name")
 
     @restore_name.setter
@@ -1648,9 +1541,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="restoreRemark")
     def restore_remark(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of DCS instance restoration.
-        """
         return pulumi.get(self, "restore_remark")
 
     @restore_remark.setter
@@ -1678,9 +1568,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Restoration status:
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1690,9 +1577,6 @@ class DcsRestoreRestoreRecordArgs:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time at which DCS instance restoration completed.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -1703,17 +1587,8 @@ class DcsRestoreRestoreRecordArgs:
 if not MYPY:
     class DdsParameterTemplateCompareDifferenceArgsDict(TypedDict):
         parameter_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter name.
-        """
         source_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter value in the source parameter template.
-        """
         target_value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Indicates the parameter value in the destination parameter template.
-        """
 elif False:
     DdsParameterTemplateCompareDifferenceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1723,11 +1598,6 @@ class DdsParameterTemplateCompareDifferenceArgs:
                  parameter_name: Optional[pulumi.Input[_builtins.str]] = None,
                  source_value: Optional[pulumi.Input[_builtins.str]] = None,
                  target_value: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] parameter_name: Indicates the parameter name.
-        :param pulumi.Input[_builtins.str] source_value: Indicates the parameter value in the source parameter template.
-        :param pulumi.Input[_builtins.str] target_value: Indicates the parameter value in the destination parameter template.
-        """
         if parameter_name is not None:
             pulumi.set(__self__, "parameter_name", parameter_name)
         if source_value is not None:
@@ -1738,9 +1608,6 @@ class DdsParameterTemplateCompareDifferenceArgs:
     @_builtins.property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter name.
-        """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
@@ -1750,9 +1617,6 @@ class DdsParameterTemplateCompareDifferenceArgs:
     @_builtins.property
     @pulumi.getter(name="sourceValue")
     def source_value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter value in the source parameter template.
-        """
         return pulumi.get(self, "source_value")
 
     @source_value.setter
@@ -1762,9 +1626,6 @@ class DdsParameterTemplateCompareDifferenceArgs:
     @_builtins.property
     @pulumi.getter(name="targetValue")
     def target_value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the parameter value in the destination parameter template.
-        """
         return pulumi.get(self, "target_value")
 
     @target_value.setter
@@ -1776,33 +1637,23 @@ if not MYPY:
     class DdsParameterTemplateCopyParameterArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of replicated parameter template.
-        The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-        the carriage return character or the following special characters: >!<"&'=
-        Changing this creates a new resource.
+        Indicates the parameter description.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the name of replicated parameter template.
-        The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
-        Changing this creates a new resource.
+        Indicates the parameter name.
         """
         readonly: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Indicates whether the parameter is read-only.
-        + If the value is **true**, the parameter is read-only.
-        + If the value is **false**, the parameter is not read-only.
         """
         restart_required: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Indicates whether the instance needs to be restarted.
-        + If the value is **true**, restart is required.
-        + If the value is **false**, restart is not required.
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        Indicates the parameter type.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1826,21 +1677,11 @@ class DdsParameterTemplateCopyParameterArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  value_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] description: Specifies the description of replicated parameter template.
-               The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-               the carriage return character or the following special characters: >!<"&'=
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of replicated parameter template.
-               The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] description: Indicates the parameter description.
+        :param pulumi.Input[_builtins.str] name: Indicates the parameter name.
         :param pulumi.Input[_builtins.bool] readonly: Indicates whether the parameter is read-only.
-               + If the value is **true**, the parameter is read-only.
-               + If the value is **false**, the parameter is not read-only.
         :param pulumi.Input[_builtins.bool] restart_required: Indicates whether the instance needs to be restarted.
-               + If the value is **true**, restart is required.
-               + If the value is **false**, restart is not required.
-        :param pulumi.Input[_builtins.str] type: Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        :param pulumi.Input[_builtins.str] type: Indicates the parameter type.
         :param pulumi.Input[_builtins.str] value: Indicates the parameter value.
         :param pulumi.Input[_builtins.str] value_range: Indicates the value range.
         """
@@ -1863,10 +1704,7 @@ class DdsParameterTemplateCopyParameterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of replicated parameter template.
-        The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-        the carriage return character or the following special characters: >!<"&'=
-        Changing this creates a new resource.
+        Indicates the parameter description.
         """
         return pulumi.get(self, "description")
 
@@ -1878,10 +1716,7 @@ class DdsParameterTemplateCopyParameterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of replicated parameter template.
-        The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
-        Changing this creates a new resource.
+        Indicates the parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -1894,8 +1729,6 @@ class DdsParameterTemplateCopyParameterArgs:
     def readonly(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Indicates whether the parameter is read-only.
-        + If the value is **true**, the parameter is read-only.
-        + If the value is **false**, the parameter is not read-only.
         """
         return pulumi.get(self, "readonly")
 
@@ -1908,8 +1741,6 @@ class DdsParameterTemplateCopyParameterArgs:
     def restart_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Indicates whether the instance needs to be restarted.
-        + If the value is **true**, restart is required.
-        + If the value is **false**, restart is not required.
         """
         return pulumi.get(self, "restart_required")
 
@@ -1921,7 +1752,7 @@ class DdsParameterTemplateCopyParameterArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        Indicates the parameter type.
         """
         return pulumi.get(self, "type")
 
@@ -1958,31 +1789,23 @@ if not MYPY:
     class DdsParameterTemplateParameterArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the parameter template description.
-        The description must consist of a maximum of 256 characters and cannot contain the carriage
-        return character or the following special characters: >!<"&'=.
+        Indicates the parameter description.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the parameter template name.
-        The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
+        Indicates the parameter name.
         """
         readonly: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Indicates whether the parameter is read-only.
-        + If the value is **true**, the parameter is read-only.
-        + If the value is **false**, the parameter is not read-only.
         """
         restart_required: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Indicates whether the instance needs to be restarted.
-        + If the value is **true**, restart is required.
-        + If the value is **false**, restart is not required.
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        Indicates the parameter type.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -2006,19 +1829,11 @@ class DdsParameterTemplateParameterArgs:
                  value: Optional[pulumi.Input[_builtins.str]] = None,
                  value_range: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] description: Specifies the parameter template description.
-               The description must consist of a maximum of 256 characters and cannot contain the carriage
-               return character or the following special characters: >!<"&'=.
-        :param pulumi.Input[_builtins.str] name: Specifies the parameter template name.
-               The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
+        :param pulumi.Input[_builtins.str] description: Indicates the parameter description.
+        :param pulumi.Input[_builtins.str] name: Indicates the parameter name.
         :param pulumi.Input[_builtins.bool] readonly: Indicates whether the parameter is read-only.
-               + If the value is **true**, the parameter is read-only.
-               + If the value is **false**, the parameter is not read-only.
         :param pulumi.Input[_builtins.bool] restart_required: Indicates whether the instance needs to be restarted.
-               + If the value is **true**, restart is required.
-               + If the value is **false**, restart is not required.
-        :param pulumi.Input[_builtins.str] type: Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        :param pulumi.Input[_builtins.str] type: Indicates the parameter type.
         :param pulumi.Input[_builtins.str] value: Indicates the parameter value.
         :param pulumi.Input[_builtins.str] value_range: Indicates the value range.
         """
@@ -2041,9 +1856,7 @@ class DdsParameterTemplateParameterArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the parameter template description.
-        The description must consist of a maximum of 256 characters and cannot contain the carriage
-        return character or the following special characters: >!<"&'=.
+        Indicates the parameter description.
         """
         return pulumi.get(self, "description")
 
@@ -2055,9 +1868,7 @@ class DdsParameterTemplateParameterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the parameter template name.
-        The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
+        Indicates the parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -2070,8 +1881,6 @@ class DdsParameterTemplateParameterArgs:
     def readonly(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Indicates whether the parameter is read-only.
-        + If the value is **true**, the parameter is read-only.
-        + If the value is **false**, the parameter is not read-only.
         """
         return pulumi.get(self, "readonly")
 
@@ -2084,8 +1893,6 @@ class DdsParameterTemplateParameterArgs:
     def restart_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Indicates whether the instance needs to be restarted.
-        + If the value is **true**, restart is required.
-        + If the value is **false**, restart is not required.
         """
         return pulumi.get(self, "restart_required")
 
@@ -2097,7 +1904,7 @@ class DdsParameterTemplateParameterArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        Indicates the parameter type.
         """
         return pulumi.get(self, "type")
 
@@ -2311,15 +2118,7 @@ class DmsRocketmqDeadLetterResendResendResultArgs:
 if not MYPY:
     class DmsRocketmqInstanceConfigArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the config name.
-        """
         value: pulumi.Input[_builtins.str]
-        """
-        Specifies the config value.
-
-        > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
-        """
 elif False:
     DmsRocketmqInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2328,21 +2127,12 @@ class DmsRocketmqInstanceConfigArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the config name.
-        :param pulumi.Input[_builtins.str] value: Specifies the config value.
-               
-               > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the config name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2352,11 +2142,6 @@ class DmsRocketmqInstanceConfigArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the config value.
-
-        > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -2367,22 +2152,10 @@ class DmsRocketmqInstanceConfigArgs:
 if not MYPY:
     class DmsRocketmqInstanceCrossVpcAccessArgsDict(TypedDict):
         advertised_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The advertised IP Address or domain name.
-        """
         lisenter_ip: NotRequired[pulumi.Input[_builtins.str]]
         listener_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The listener IP address.
-        """
         port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port number.
-        """
         port_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port ID associated with the address.
-        """
 elif False:
     DmsRocketmqInstanceCrossVpcAccessArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2394,12 +2167,6 @@ class DmsRocketmqInstanceCrossVpcAccessArgs:
                  listener_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  port_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] advertised_ip: The advertised IP Address or domain name.
-        :param pulumi.Input[_builtins.str] listener_ip: The listener IP address.
-        :param pulumi.Input[_builtins.int] port: The port number.
-        :param pulumi.Input[_builtins.str] port_id: The port ID associated with the address.
-        """
         if advertised_ip is not None:
             pulumi.set(__self__, "advertised_ip", advertised_ip)
         if lisenter_ip is not None:
@@ -2417,9 +2184,6 @@ class DmsRocketmqInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter(name="advertisedIp")
     def advertised_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The advertised IP Address or domain name.
-        """
         return pulumi.get(self, "advertised_ip")
 
     @advertised_ip.setter
@@ -2439,9 +2203,6 @@ class DmsRocketmqInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter(name="listenerIp")
     def listener_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The listener IP address.
-        """
         return pulumi.get(self, "listener_ip")
 
     @listener_ip.setter
@@ -2451,9 +2212,6 @@ class DmsRocketmqInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -2463,9 +2221,6 @@ class DmsRocketmqInstanceCrossVpcAccessArgs:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The port ID associated with the address.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -2477,24 +2232,23 @@ if not MYPY:
     class DmsRocketmqMigrationTaskBindingArgsDict(TypedDict):
         destination: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the message target. Changing this creates a new resource.
+        Specifies the message target.
         """
         destination_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the message target type.
-        Changing this creates a new resource.
         """
         routing_key: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the routing key. Changing this creates a new resource.
+        Specifies the routing key.
         """
         source: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the message source. Changing this creates a new resource.
+        Specifies the message source.
         """
         vhost: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
 elif False:
     DmsRocketmqMigrationTaskBindingArgsDict: TypeAlias = Mapping[str, Any]
@@ -2508,12 +2262,11 @@ class DmsRocketmqMigrationTaskBindingArgs:
                  source: Optional[pulumi.Input[_builtins.str]] = None,
                  vhost: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] destination: Specifies the message target. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] destination: Specifies the message target.
         :param pulumi.Input[_builtins.str] destination_type: Specifies the message target type.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] routing_key: Specifies the routing key. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] source: Specifies the message source. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] vhost: Specifies the virtual host name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] routing_key: Specifies the routing key.
+        :param pulumi.Input[_builtins.str] source: Specifies the message source.
+        :param pulumi.Input[_builtins.str] vhost: Specifies the virtual host name.
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -2530,7 +2283,7 @@ class DmsRocketmqMigrationTaskBindingArgs:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the message target. Changing this creates a new resource.
+        Specifies the message target.
         """
         return pulumi.get(self, "destination")
 
@@ -2543,7 +2296,6 @@ class DmsRocketmqMigrationTaskBindingArgs:
     def destination_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the message target type.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "destination_type")
 
@@ -2555,7 +2307,7 @@ class DmsRocketmqMigrationTaskBindingArgs:
     @pulumi.getter(name="routingKey")
     def routing_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the routing key. Changing this creates a new resource.
+        Specifies the routing key.
         """
         return pulumi.get(self, "routing_key")
 
@@ -2567,7 +2319,7 @@ class DmsRocketmqMigrationTaskBindingArgs:
     @pulumi.getter
     def source(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the message source. Changing this creates a new resource.
+        Specifies the message source.
         """
         return pulumi.get(self, "source")
 
@@ -2579,7 +2331,7 @@ class DmsRocketmqMigrationTaskBindingArgs:
     @pulumi.getter
     def vhost(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "vhost")
 
@@ -2593,22 +2345,18 @@ if not MYPY:
         durable: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether to enable data persistence.
-        Changing this creates a new resource.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the switch name.
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the exchange type. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_bindings"></a>
-        The `bindings` block supports:
+        Specifies the exchange type.
         """
         vhost: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
 elif False:
     DmsRocketmqMigrationTaskExchangeArgsDict: TypeAlias = Mapping[str, Any]
@@ -2622,13 +2370,9 @@ class DmsRocketmqMigrationTaskExchangeArgs:
                  vhost: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] durable: Specifies whether to enable data persistence.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the exchange type. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_bindings"></a>
-               The `bindings` block supports:
-        :param pulumi.Input[_builtins.str] vhost: Specifies the virtual host name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the switch name.
+        :param pulumi.Input[_builtins.str] type: Specifies the exchange type.
+        :param pulumi.Input[_builtins.str] vhost: Specifies the virtual host name.
         """
         if durable is not None:
             pulumi.set(__self__, "durable", durable)
@@ -2644,7 +2388,6 @@ class DmsRocketmqMigrationTaskExchangeArgs:
     def durable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to enable data persistence.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "durable")
 
@@ -2656,7 +2399,7 @@ class DmsRocketmqMigrationTaskExchangeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the switch name.
         """
         return pulumi.get(self, "name")
 
@@ -2668,10 +2411,7 @@ class DmsRocketmqMigrationTaskExchangeArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the exchange type. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_bindings"></a>
-        The `bindings` block supports:
+        Specifies the exchange type.
         """
         return pulumi.get(self, "type")
 
@@ -2683,7 +2423,7 @@ class DmsRocketmqMigrationTaskExchangeArgs:
     @pulumi.getter
     def vhost(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "vhost")
 
@@ -2697,15 +2437,14 @@ if not MYPY:
         durable: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether to enable data persistence.
-        Changing this creates a new resource.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the queue name.
         """
         vhost: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
 elif False:
     DmsRocketmqMigrationTaskQueueArgsDict: TypeAlias = Mapping[str, Any]
@@ -2718,9 +2457,8 @@ class DmsRocketmqMigrationTaskQueueArgs:
                  vhost: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] durable: Specifies whether to enable data persistence.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] vhost: Specifies the virtual host name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the queue name.
+        :param pulumi.Input[_builtins.str] vhost: Specifies the virtual host name.
         """
         if durable is not None:
             pulumi.set(__self__, "durable", durable)
@@ -2734,7 +2472,6 @@ class DmsRocketmqMigrationTaskQueueArgs:
     def durable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to enable data persistence.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "durable")
 
@@ -2746,7 +2483,7 @@ class DmsRocketmqMigrationTaskQueueArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the queue name.
         """
         return pulumi.get(self, "name")
 
@@ -2758,7 +2495,7 @@ class DmsRocketmqMigrationTaskQueueArgs:
     @pulumi.getter
     def vhost(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "vhost")
 
@@ -2772,45 +2509,34 @@ if not MYPY:
         group_name: pulumi.Input[_builtins.str]
         """
         Specifies the name of a consumer group.
-        Changing this creates a new resource.
         """
         consume_broadcast_enable: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether to enable broadcast.
-        Changing this creates a new resource.
         """
         consume_enable: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether to enable consumption.
-        Changing this creates a new resource.
         """
         consume_from_min_enable: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Specifies whether to enable consumption from the earliest
-        offset. Changing this creates a new resource.
+        Specifies whether to enable consumption from the earliest offset.
         """
         notify_consumerids_changed_enable: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether to notify changes of consumer IDs.
-        Changing this creates a new resource.
         """
         retry_max_times: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the maximum number of consumption retries.
-        Changing this creates a new resource.
         """
         retry_queue_num: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the number of retry queues.
-        Changing this creates a new resource.
         """
         which_broker_when_consume_slow: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the ID of the broker selected for slow
-        consumption. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_vhosts"></a>
-        The `vhosts` block supports:
+        Specifies the ID of the broker selected for slow consumption.
         """
 elif False:
     DmsRocketmqMigrationTaskSubscriptionGroupArgsDict: TypeAlias = Mapping[str, Any]
@@ -2828,24 +2554,13 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
                  which_broker_when_consume_slow: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] group_name: Specifies the name of a consumer group.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.bool] consume_broadcast_enable: Specifies whether to enable broadcast.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.bool] consume_enable: Specifies whether to enable consumption.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.bool] consume_from_min_enable: Specifies whether to enable consumption from the earliest
-               offset. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.bool] consume_from_min_enable: Specifies whether to enable consumption from the earliest offset.
         :param pulumi.Input[_builtins.bool] notify_consumerids_changed_enable: Specifies whether to notify changes of consumer IDs.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.int] retry_max_times: Specifies the maximum number of consumption retries.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.int] retry_queue_num: Specifies the number of retry queues.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] which_broker_when_consume_slow: Specifies the ID of the broker selected for slow
-               consumption. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_vhosts"></a>
-               The `vhosts` block supports:
+        :param pulumi.Input[_builtins.int] which_broker_when_consume_slow: Specifies the ID of the broker selected for slow consumption.
         """
         pulumi.set(__self__, "group_name", group_name)
         if consume_broadcast_enable is not None:
@@ -2868,7 +2583,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     def group_name(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the name of a consumer group.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "group_name")
 
@@ -2881,7 +2595,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     def consume_broadcast_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to enable broadcast.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "consume_broadcast_enable")
 
@@ -2894,7 +2607,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     def consume_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to enable consumption.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "consume_enable")
 
@@ -2906,8 +2618,7 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     @pulumi.getter(name="consumeFromMinEnable")
     def consume_from_min_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether to enable consumption from the earliest
-        offset. Changing this creates a new resource.
+        Specifies whether to enable consumption from the earliest offset.
         """
         return pulumi.get(self, "consume_from_min_enable")
 
@@ -2920,7 +2631,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     def notify_consumerids_changed_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether to notify changes of consumer IDs.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "notify_consumerids_changed_enable")
 
@@ -2933,7 +2643,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     def retry_max_times(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the maximum number of consumption retries.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "retry_max_times")
 
@@ -2946,7 +2655,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     def retry_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the number of retry queues.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "retry_queue_num")
 
@@ -2958,11 +2666,7 @@ class DmsRocketmqMigrationTaskSubscriptionGroupArgs:
     @pulumi.getter(name="whichBrokerWhenConsumeSlow")
     def which_broker_when_consume_slow(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the ID of the broker selected for slow
-        consumption. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_vhosts"></a>
-        The `vhosts` block supports:
+        Specifies the ID of the broker selected for slow consumption.
         """
         return pulumi.get(self, "which_broker_when_consume_slow")
 
@@ -2975,39 +2679,31 @@ if not MYPY:
     class DmsRocketmqMigrationTaskTopicConfigArgsDict(TypedDict):
         topic_name: pulumi.Input[_builtins.str]
         """
-        Specifies the topic name. Changing this creates a new resource.
+        Specifies the topic name.
         """
         order: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Specifies whether a message is an ordered message.
-        Changing this creates a new resource.
         """
         perm: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Specifies the number of permission. Changing this creates a new resource.
+        Specifies the number of permission.
         """
         read_queue_num: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the number of read queues.
-        Changing this creates a new resource.
         """
         topic_filter_type: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the filter type of a topic.
-        Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
         """
         topic_sys_flag: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the system flag of a topic.
-        Changing this creates a new resource.
         """
         write_queue_num: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the number of write queues.
-        Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_subscription_groups"></a>
-        The `subscription_groups` block supports:
         """
 elif False:
     DmsRocketmqMigrationTaskTopicConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3023,21 +2719,13 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
                  topic_sys_flag: Optional[pulumi.Input[_builtins.int]] = None,
                  write_queue_num: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] topic_name: Specifies the topic name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] topic_name: Specifies the topic name.
         :param pulumi.Input[_builtins.bool] order: Specifies whether a message is an ordered message.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] perm: Specifies the number of permission. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.int] perm: Specifies the number of permission.
         :param pulumi.Input[_builtins.int] read_queue_num: Specifies the number of read queues.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.str] topic_filter_type: Specifies the filter type of a topic.
-               Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
         :param pulumi.Input[_builtins.int] topic_sys_flag: Specifies the system flag of a topic.
-               Changing this creates a new resource.
         :param pulumi.Input[_builtins.int] write_queue_num: Specifies the number of write queues.
-               Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_subscription_groups"></a>
-               The `subscription_groups` block supports:
         """
         pulumi.set(__self__, "topic_name", topic_name)
         if order is not None:
@@ -3057,7 +2745,7 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the topic name. Changing this creates a new resource.
+        Specifies the topic name.
         """
         return pulumi.get(self, "topic_name")
 
@@ -3070,7 +2758,6 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     def order(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Specifies whether a message is an ordered message.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "order")
 
@@ -3082,7 +2769,7 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     @pulumi.getter
     def perm(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the number of permission. Changing this creates a new resource.
+        Specifies the number of permission.
         """
         return pulumi.get(self, "perm")
 
@@ -3095,7 +2782,6 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     def read_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the number of read queues.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "read_queue_num")
 
@@ -3108,7 +2794,6 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     def topic_filter_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the filter type of a topic.
-        Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_filter_type")
 
@@ -3121,7 +2806,6 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     def topic_sys_flag(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the system flag of a topic.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_sys_flag")
 
@@ -3134,10 +2818,6 @@ class DmsRocketmqMigrationTaskTopicConfigArgs:
     def write_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the number of write queues.
-        Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_subscription_groups"></a>
-        The `subscription_groups` block supports:
         """
         return pulumi.get(self, "write_queue_num")
 
@@ -3150,7 +2830,7 @@ if not MYPY:
     class DmsRocketmqMigrationTaskVhostArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
 elif False:
     DmsRocketmqMigrationTaskVhostArgsDict: TypeAlias = Mapping[str, Any]
@@ -3160,7 +2840,7 @@ class DmsRocketmqMigrationTaskVhostArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Specifies the switch name. Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the virtual host name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -3169,7 +2849,7 @@ class DmsRocketmqMigrationTaskVhostArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "name")
 
@@ -3182,18 +2862,15 @@ if not MYPY:
     class DmsRocketmqTopicBrokerArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the name of the broker.
-
-        <a name="DmsRocketMQTopic_QueueRef"></a>
-        The `queues` block supports:
+        Indicates the name of the broker.
         """
         read_queue_num: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Indicates the read queues number of the broker. It's useless when create a topic.
+        Indicates the read queues number of the broker.
         """
         write_queue_num: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Indicates the read queues number of the broker. It's useless when create a topic.
+        Indicates the read queues number of the broker.
         """
 elif False:
     DmsRocketmqTopicBrokerArgsDict: TypeAlias = Mapping[str, Any]
@@ -3205,12 +2882,9 @@ class DmsRocketmqTopicBrokerArgs:
                  read_queue_num: Optional[pulumi.Input[_builtins.int]] = None,
                  write_queue_num: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the broker.
-               
-               <a name="DmsRocketMQTopic_QueueRef"></a>
-               The `queues` block supports:
-        :param pulumi.Input[_builtins.int] read_queue_num: Indicates the read queues number of the broker. It's useless when create a topic.
-        :param pulumi.Input[_builtins.int] write_queue_num: Indicates the read queues number of the broker. It's useless when create a topic.
+        :param pulumi.Input[_builtins.str] name: Indicates the name of the broker.
+        :param pulumi.Input[_builtins.int] read_queue_num: Indicates the read queues number of the broker.
+        :param pulumi.Input[_builtins.int] write_queue_num: Indicates the read queues number of the broker.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -3223,10 +2897,7 @@ class DmsRocketmqTopicBrokerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the name of the broker.
-
-        <a name="DmsRocketMQTopic_QueueRef"></a>
-        The `queues` block supports:
+        Indicates the name of the broker.
         """
         return pulumi.get(self, "name")
 
@@ -3238,7 +2909,7 @@ class DmsRocketmqTopicBrokerArgs:
     @pulumi.getter(name="readQueueNum")
     def read_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Indicates the read queues number of the broker. It's useless when create a topic.
+        Indicates the read queues number of the broker.
         """
         return pulumi.get(self, "read_queue_num")
 
@@ -3250,7 +2921,7 @@ class DmsRocketmqTopicBrokerArgs:
     @pulumi.getter(name="writeQueueNum")
     def write_queue_num(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Indicates the read queues number of the broker. It's useless when create a topic.
+        Indicates the read queues number of the broker.
         """
         return pulumi.get(self, "write_queue_num")
 
@@ -3424,13 +3095,7 @@ class DmsRocketmqUserTopicPermArgs:
 if not MYPY:
     class ElbIpgroupIpListArgsDict(TypedDict):
         ip: pulumi.Input[_builtins.str]
-        """
-        IP address or CIDR block.
-        """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Human-readable description for the ip.
-        """
 elif False:
     ElbIpgroupIpListArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3439,10 +3104,6 @@ class ElbIpgroupIpListArgs:
     def __init__(__self__, *,
                  ip: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] ip: IP address or CIDR block.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the ip.
-        """
         pulumi.set(__self__, "ip", ip)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -3450,9 +3111,6 @@ class ElbIpgroupIpListArgs:
     @_builtins.property
     @pulumi.getter
     def ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        IP address or CIDR block.
-        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -3462,9 +3120,6 @@ class ElbIpgroupIpListArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the ip.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -4304,9 +3959,6 @@ class ElbL7policyRedirectUrlConfigRemoveHeadersConfigConfigArgs:
 if not MYPY:
     class ElbL7ruleConditionArgsDict(TypedDict):
         value: pulumi.Input[_builtins.str]
-        """
-        The value to use for the comparison.
-        """
         key: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
     ElbL7ruleConditionArgsDict: TypeAlias = Mapping[str, Any]
@@ -4316,9 +3968,6 @@ class ElbL7ruleConditionArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[_builtins.str],
                  key: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] value: The value to use for the comparison.
-        """
         pulumi.set(__self__, "value", value)
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -4326,9 +3975,6 @@ class ElbL7ruleConditionArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        The value to use for the comparison.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -4529,22 +4175,8 @@ class ElbMemberStatusReasonArgs:
 if not MYPY:
     class ElbPoolPersistenceArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        The type of persistence mode. The current specification supports SOURCE_IP,
-        HTTP_COOKIE, and APP_COOKIE.
-        """
         cookie_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the cookie if persistence mode is set appropriately. Required
-        if `type = APP_COOKIE`.
-        """
         timeout: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the sticky session timeout duration in minutes. This parameter is
-        invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-        + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-        + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
 elif False:
     ElbPoolPersistenceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4554,16 +4186,6 @@ class ElbPoolPersistenceArgs:
                  type: pulumi.Input[_builtins.str],
                  cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] type: The type of persistence mode. The current specification supports SOURCE_IP,
-               HTTP_COOKIE, and APP_COOKIE.
-        :param pulumi.Input[_builtins.str] cookie_name: The name of the cookie if persistence mode is set appropriately. Required
-               if `type = APP_COOKIE`.
-        :param pulumi.Input[_builtins.int] timeout: Specifies the sticky session timeout duration in minutes. This parameter is
-               invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-               + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-               + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         pulumi.set(__self__, "type", type)
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
@@ -4573,10 +4195,6 @@ class ElbPoolPersistenceArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        The type of persistence mode. The current specification supports SOURCE_IP,
-        HTTP_COOKIE, and APP_COOKIE.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -4586,10 +4204,6 @@ class ElbPoolPersistenceArgs:
     @_builtins.property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the cookie if persistence mode is set appropriately. Required
-        if `type = APP_COOKIE`.
-        """
         return pulumi.get(self, "cookie_name")
 
     @cookie_name.setter
@@ -4599,12 +4213,6 @@ class ElbPoolPersistenceArgs:
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the sticky session timeout duration in minutes. This parameter is
-        invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-        + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-        + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
@@ -4615,9 +4223,6 @@ class ElbPoolPersistenceArgs:
 if not MYPY:
     class ElbSecurityPolicyListenerArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The listener id.
-        """
 elif False:
     ElbSecurityPolicyListenerArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4625,18 +4230,12 @@ elif False:
 class ElbSecurityPolicyListenerArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: The listener id.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The listener id.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -4912,24 +4511,11 @@ if not MYPY:
     class FgsAsyncInvokeConfigurationOnFailureArgsDict(TypedDict):
         destination: pulumi.Input[_builtins.str]
         """
-        Specifies the object type.  
-        The valid values are as follows:
-        + **OBS**
-        + **SMN**
-        + **DIS**
-        + **FunctionGraph**
+        The object type.
         """
         param: pulumi.Input[_builtins.str]
         """
-        Specifies the parameters (map object in JSON format) corresponding to the target service.
-        + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-        expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-        + The **SMN** objects include: `topic_urn`.
-        + The **DIS** objects include: `stream_name`.
-        + The **FunctionGraph** objects include: `func_urn` (function URN).
-
-        > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-        corresponding service.
+        The parameters (in JSON format) corresponding to the target service.
         """
 elif False:
     FgsAsyncInvokeConfigurationOnFailureArgsDict: TypeAlias = Mapping[str, Any]
@@ -4940,21 +4526,8 @@ class FgsAsyncInvokeConfigurationOnFailureArgs:
                  destination: pulumi.Input[_builtins.str],
                  param: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] destination: Specifies the object type.  
-               The valid values are as follows:
-               + **OBS**
-               + **SMN**
-               + **DIS**
-               + **FunctionGraph**
-        :param pulumi.Input[_builtins.str] param: Specifies the parameters (map object in JSON format) corresponding to the target service.
-               + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-               expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-               + The **SMN** objects include: `topic_urn`.
-               + The **DIS** objects include: `stream_name`.
-               + The **FunctionGraph** objects include: `func_urn` (function URN).
-               
-               > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-               corresponding service.
+        :param pulumi.Input[_builtins.str] destination: The object type.
+        :param pulumi.Input[_builtins.str] param: The parameters (in JSON format) corresponding to the target service.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "param", param)
@@ -4963,12 +4536,7 @@ class FgsAsyncInvokeConfigurationOnFailureArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the object type.  
-        The valid values are as follows:
-        + **OBS**
-        + **SMN**
-        + **DIS**
-        + **FunctionGraph**
+        The object type.
         """
         return pulumi.get(self, "destination")
 
@@ -4980,15 +4548,7 @@ class FgsAsyncInvokeConfigurationOnFailureArgs:
     @pulumi.getter
     def param(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the parameters (map object in JSON format) corresponding to the target service.
-        + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-        expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-        + The **SMN** objects include: `topic_urn`.
-        + The **DIS** objects include: `stream_name`.
-        + The **FunctionGraph** objects include: `func_urn` (function URN).
-
-        > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-        corresponding service.
+        The parameters (in JSON format) corresponding to the target service.
         """
         return pulumi.get(self, "param")
 
@@ -5001,24 +4561,11 @@ if not MYPY:
     class FgsAsyncInvokeConfigurationOnSuccessArgsDict(TypedDict):
         destination: pulumi.Input[_builtins.str]
         """
-        Specifies the object type.  
-        The valid values are as follows:
-        + **OBS**
-        + **SMN**
-        + **DIS**
-        + **FunctionGraph**
+        The object type.
         """
         param: pulumi.Input[_builtins.str]
         """
-        Specifies the parameters (map object in JSON format) corresponding to the target service.
-        + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-        expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-        + The **SMN** objects include: `topic_urn`.
-        + The **DIS** objects include: `stream_name`.
-        + The **FunctionGraph** objects include: `func_urn` (function URN).
-
-        > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-        corresponding service.
+        The parameters (in JSON format) corresponding to the target service.
         """
 elif False:
     FgsAsyncInvokeConfigurationOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
@@ -5029,21 +4576,8 @@ class FgsAsyncInvokeConfigurationOnSuccessArgs:
                  destination: pulumi.Input[_builtins.str],
                  param: pulumi.Input[_builtins.str]):
         """
-        :param pulumi.Input[_builtins.str] destination: Specifies the object type.  
-               The valid values are as follows:
-               + **OBS**
-               + **SMN**
-               + **DIS**
-               + **FunctionGraph**
-        :param pulumi.Input[_builtins.str] param: Specifies the parameters (map object in JSON format) corresponding to the target service.
-               + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-               expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-               + The **SMN** objects include: `topic_urn`.
-               + The **DIS** objects include: `stream_name`.
-               + The **FunctionGraph** objects include: `func_urn` (function URN).
-               
-               > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-               corresponding service.
+        :param pulumi.Input[_builtins.str] destination: The object type.
+        :param pulumi.Input[_builtins.str] param: The parameters (in JSON format) corresponding to the target service.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "param", param)
@@ -5052,12 +4586,7 @@ class FgsAsyncInvokeConfigurationOnSuccessArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the object type.  
-        The valid values are as follows:
-        + **OBS**
-        + **SMN**
-        + **DIS**
-        + **FunctionGraph**
+        The object type.
         """
         return pulumi.get(self, "destination")
 
@@ -5069,15 +4598,7 @@ class FgsAsyncInvokeConfigurationOnSuccessArgs:
     @pulumi.getter
     def param(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the parameters (map object in JSON format) corresponding to the target service.
-        + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-        expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-        + The **SMN** objects include: `topic_urn`.
-        + The **DIS** objects include: `stream_name`.
-        + The **FunctionGraph** objects include: `func_urn` (function URN).
-
-        > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-        corresponding service.
+        The parameters (in JSON format) corresponding to the target service.
         """
         return pulumi.get(self, "param")
 
@@ -5194,7 +4715,7 @@ if not MYPY:
     class GesGraphPublicIpArgsDict(TypedDict):
         eip_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+        The EIP ID.
         """
         public_bind_type: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5209,7 +4730,7 @@ class GesGraphPublicIpArgs:
                  eip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_bind_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] eip_id: Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] eip_id: The EIP ID.
         :param pulumi.Input[_builtins.str] public_bind_type: The bind type of public IP.
         """
         if eip_id is not None:
@@ -5221,7 +4742,7 @@ class GesGraphPublicIpArgs:
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+        The EIP ID.
         """
         return pulumi.get(self, "eip_id")
 
@@ -5298,7 +4819,7 @@ if not MYPY:
     class ObsBucketAclAccountPermissionArgsDict(TypedDict):
         account_id: pulumi.Input[_builtins.str]
         """
-        Specifies the account id to authorize. The account id cannot be the bucket owner,
+        Specifies the account id to authorize. The account id cannot be the bucket owner, 
         and must be unique.
         """
         access_to_acls: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -5319,7 +4840,7 @@ class ObsBucketAclAccountPermissionArgs:
                  access_to_acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  access_to_buckets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        :param pulumi.Input[_builtins.str] account_id: Specifies the account id to authorize. The account id cannot be the bucket owner,
+        :param pulumi.Input[_builtins.str] account_id: Specifies the account id to authorize. The account id cannot be the bucket owner, 
                and must be unique.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_to_acls: Specifies the access to acl. Valid values are **READ_ACP** and **WRITE_ACP**.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_to_buckets: Specifies the access to bucket. Valid values are **READ** and **WRITE**.
@@ -5334,7 +4855,7 @@ class ObsBucketAclAccountPermissionArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the account id to authorize. The account id cannot be the bucket owner,
+        Specifies the account id to authorize. The account id cannot be the bucket owner, 
         and must be unique.
         """
         return pulumi.get(self, "account_id")
@@ -6045,17 +5566,8 @@ class SmnSubscriptionFilterPolicyArgs:
 if not MYPY:
     class SwrOrganizationPermissionsSelfPermissionArgsDict(TypedDict):
         permission: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The permission of current user.
-        """
         user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of current user.
-        """
         user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of current user.
-        """
 elif False:
     SwrOrganizationPermissionsSelfPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6065,11 +5577,6 @@ class SwrOrganizationPermissionsSelfPermissionArgs:
                  permission: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] permission: The permission of current user.
-        :param pulumi.Input[_builtins.str] user_id: The ID of current user.
-        :param pulumi.Input[_builtins.str] user_name: The name of current user.
-        """
         if permission is not None:
             pulumi.set(__self__, "permission", permission)
         if user_id is not None:
@@ -6080,9 +5587,6 @@ class SwrOrganizationPermissionsSelfPermissionArgs:
     @_builtins.property
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The permission of current user.
-        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -6092,9 +5596,6 @@ class SwrOrganizationPermissionsSelfPermissionArgs:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of current user.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -6104,9 +5605,6 @@ class SwrOrganizationPermissionsSelfPermissionArgs:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of current user.
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -6117,18 +5615,8 @@ class SwrOrganizationPermissionsSelfPermissionArgs:
 if not MYPY:
     class SwrOrganizationPermissionsUserArgsDict(TypedDict):
         permission: pulumi.Input[_builtins.str]
-        """
-        Specifies the permission of the existing SberCloud user.
-        The values can be **Manage**, **Write** and **Read**.
-        """
         user_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the ID of the existing SberCloud user.
-        """
         user_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the name of the existing SberCloud user.
-        """
 elif False:
     SwrOrganizationPermissionsUserArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6138,12 +5626,6 @@ class SwrOrganizationPermissionsUserArgs:
                  permission: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.str],
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] permission: Specifies the permission of the existing SberCloud user.
-               The values can be **Manage**, **Write** and **Read**.
-        :param pulumi.Input[_builtins.str] user_id: Specifies the ID of the existing SberCloud user.
-        :param pulumi.Input[_builtins.str] user_name: Specifies the name of the existing SberCloud user.
-        """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "user_id", user_id)
         if user_name is not None:
@@ -6152,10 +5634,6 @@ class SwrOrganizationPermissionsUserArgs:
     @_builtins.property
     @pulumi.getter
     def permission(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the permission of the existing SberCloud user.
-        The values can be **Manage**, **Write** and **Read**.
-        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -6165,9 +5643,6 @@ class SwrOrganizationPermissionsUserArgs:
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the existing SberCloud user.
-        """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
@@ -6177,9 +5652,6 @@ class SwrOrganizationPermissionsUserArgs:
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the existing SberCloud user.
-        """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
@@ -6191,44 +5663,31 @@ if not MYPY:
     class VpnConnectionIkepolicyArgsDict(TypedDict):
         authentication_algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The authentication algorithm. The value can be **sha1**, **md5**,
-        **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-        please use them with caution.
+        The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         """
         authentication_method: NotRequired[pulumi.Input[_builtins.str]]
         """
         The authentication method during IKE negotiation.
-        The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
         """
         dh_group: NotRequired[pulumi.Input[_builtins.str]]
         """
         Specifies the DH group used for key exchange in phase 1.
-        The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-        or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-        or **group14** as they have low security. Defaults to **group15**.
         """
         dpd: NotRequired[pulumi.Input['VpnConnectionIkepolicyDpdArgsDict']]
         """
         Specifies the dead peer detection (DPD) object.
-        The dpd structure is documented below.
-
-        <a name="Connection_DPD"></a>
-        The `dpd` block supports:
         """
         encryption_algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-        **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-        **3des** is less secure, please use it with caution.
+        The encryption algorithm, 3DES is less secure, please use them with caution.
         """
         ike_version: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+        The IKE negotiation version.
         """
         lifetime_seconds: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The lifecycle time of Ipsec tunnel in seconds.
-        The value ranges from **60** to **604800**. Defaults to **3600**.
+        The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
         """
         local_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6236,7 +5695,7 @@ if not MYPY:
         """
         local_id_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+        The local ID type.
         """
         peer_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6244,17 +5703,15 @@ if not MYPY:
         """
         peer_id_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+        The peer ID type.
         """
         pfs: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-        **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        The DH key group used by PFS.
         """
         phase1_negotiation_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         The negotiation mode, only works when the ike_version is v1.
-        The value can be **main** or **aggressive**. Defaults to **main**.
         """
 elif False:
     VpnConnectionIkepolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -6276,34 +5733,19 @@ class VpnConnectionIkepolicyArgs:
                  pfs: Optional[pulumi.Input[_builtins.str]] = None,
                  phase1_negotiation_mode: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] authentication_algorithm: The authentication algorithm. The value can be **sha1**, **md5**,
-               **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-               please use them with caution.
+        :param pulumi.Input[_builtins.str] authentication_algorithm: The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         :param pulumi.Input[_builtins.str] authentication_method: The authentication method during IKE negotiation.
-               The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
         :param pulumi.Input[_builtins.str] dh_group: Specifies the DH group used for key exchange in phase 1.
-               The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-               or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-               or **group14** as they have low security. Defaults to **group15**.
         :param pulumi.Input['VpnConnectionIkepolicyDpdArgs'] dpd: Specifies the dead peer detection (DPD) object.
-               The dpd structure is documented below.
-               
-               <a name="Connection_DPD"></a>
-               The `dpd` block supports:
-        :param pulumi.Input[_builtins.str] encryption_algorithm: The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-               **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-               **3des** is less secure, please use it with caution.
-        :param pulumi.Input[_builtins.str] ike_version: The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
-        :param pulumi.Input[_builtins.int] lifetime_seconds: The lifecycle time of Ipsec tunnel in seconds.
-               The value ranges from **60** to **604800**. Defaults to **3600**.
+        :param pulumi.Input[_builtins.str] encryption_algorithm: The encryption algorithm, 3DES is less secure, please use them with caution.
+        :param pulumi.Input[_builtins.str] ike_version: The IKE negotiation version.
+        :param pulumi.Input[_builtins.int] lifetime_seconds: The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
         :param pulumi.Input[_builtins.str] local_id: The local ID.
-        :param pulumi.Input[_builtins.str] local_id_type: The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+        :param pulumi.Input[_builtins.str] local_id_type: The local ID type.
         :param pulumi.Input[_builtins.str] peer_id: The peer ID.
-        :param pulumi.Input[_builtins.str] peer_id_type: The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
-        :param pulumi.Input[_builtins.str] pfs: The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-               **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        :param pulumi.Input[_builtins.str] peer_id_type: The peer ID type.
+        :param pulumi.Input[_builtins.str] pfs: The DH key group used by PFS.
         :param pulumi.Input[_builtins.str] phase1_negotiation_mode: The negotiation mode, only works when the ike_version is v1.
-               The value can be **main** or **aggressive**. Defaults to **main**.
         """
         if authentication_algorithm is not None:
             pulumi.set(__self__, "authentication_algorithm", authentication_algorithm)
@@ -6336,9 +5778,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter(name="authenticationAlgorithm")
     def authentication_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The authentication algorithm. The value can be **sha1**, **md5**,
-        **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-        please use them with caution.
+        The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         """
         return pulumi.get(self, "authentication_algorithm")
 
@@ -6351,7 +5791,6 @@ class VpnConnectionIkepolicyArgs:
     def authentication_method(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The authentication method during IKE negotiation.
-        The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
         """
         return pulumi.get(self, "authentication_method")
 
@@ -6364,9 +5803,6 @@ class VpnConnectionIkepolicyArgs:
     def dh_group(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the DH group used for key exchange in phase 1.
-        The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-        or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-        or **group14** as they have low security. Defaults to **group15**.
         """
         return pulumi.get(self, "dh_group")
 
@@ -6379,10 +5815,6 @@ class VpnConnectionIkepolicyArgs:
     def dpd(self) -> Optional[pulumi.Input['VpnConnectionIkepolicyDpdArgs']]:
         """
         Specifies the dead peer detection (DPD) object.
-        The dpd structure is documented below.
-
-        <a name="Connection_DPD"></a>
-        The `dpd` block supports:
         """
         return pulumi.get(self, "dpd")
 
@@ -6394,9 +5826,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-        **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-        **3des** is less secure, please use it with caution.
+        The encryption algorithm, 3DES is less secure, please use them with caution.
         """
         return pulumi.get(self, "encryption_algorithm")
 
@@ -6408,7 +5838,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+        The IKE negotiation version.
         """
         return pulumi.get(self, "ike_version")
 
@@ -6420,8 +5850,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The lifecycle time of Ipsec tunnel in seconds.
-        The value ranges from **60** to **604800**. Defaults to **3600**.
+        The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -6445,7 +5874,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter(name="localIdType")
     def local_id_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+        The local ID type.
         """
         return pulumi.get(self, "local_id_type")
 
@@ -6469,7 +5898,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter(name="peerIdType")
     def peer_id_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+        The peer ID type.
         """
         return pulumi.get(self, "peer_id_type")
 
@@ -6481,8 +5910,7 @@ class VpnConnectionIkepolicyArgs:
     @pulumi.getter
     def pfs(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-        **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        The DH key group used by PFS.
         """
         return pulumi.get(self, "pfs")
 
@@ -6495,7 +5923,6 @@ class VpnConnectionIkepolicyArgs:
     def phase1_negotiation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The negotiation mode, only works when the ike_version is v1.
-        The value can be **main** or **aggressive**. Defaults to **main**.
         """
         return pulumi.get(self, "phase1_negotiation_mode")
 
@@ -6509,23 +5936,14 @@ if not MYPY:
         interval: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the DPD idle timeout period.
-        The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
         """
         msg: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the format of DPD packets. The value can be:
-        + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-        + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-
-        Defaults to **seq-hash-notify**.
-
-        <a name="Connection_CreateRequestIpsecPolicy"></a>
-        The `ipsecpolicy` block supports:
+        Specifies the format of DPD packets.
         """
         timeout: NotRequired[pulumi.Input[_builtins.int]]
         """
         Specifies the interval for retransmitting DPD packets.
-        The value ranges from **2** to **60**, in seconds. Defaults to **15**.
         """
 elif False:
     VpnConnectionIkepolicyDpdArgsDict: TypeAlias = Mapping[str, Any]
@@ -6538,17 +5956,8 @@ class VpnConnectionIkepolicyDpdArgs:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] interval: Specifies the DPD idle timeout period.
-               The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
-        :param pulumi.Input[_builtins.str] msg: Specifies the format of DPD packets. The value can be:
-               + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-               + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-               
-               Defaults to **seq-hash-notify**.
-               
-               <a name="Connection_CreateRequestIpsecPolicy"></a>
-               The `ipsecpolicy` block supports:
+        :param pulumi.Input[_builtins.str] msg: Specifies the format of DPD packets.
         :param pulumi.Input[_builtins.int] timeout: Specifies the interval for retransmitting DPD packets.
-               The value ranges from **2** to **60**, in seconds. Defaults to **15**.
         """
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -6562,7 +5971,6 @@ class VpnConnectionIkepolicyDpdArgs:
     def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the DPD idle timeout period.
-        The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
         """
         return pulumi.get(self, "interval")
 
@@ -6574,14 +5982,7 @@ class VpnConnectionIkepolicyDpdArgs:
     @pulumi.getter
     def msg(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the format of DPD packets. The value can be:
-        + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-        + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-
-        Defaults to **seq-hash-notify**.
-
-        <a name="Connection_CreateRequestIpsecPolicy"></a>
-        The `ipsecpolicy` block supports:
+        Specifies the format of DPD packets.
         """
         return pulumi.get(self, "msg")
 
@@ -6594,7 +5995,6 @@ class VpnConnectionIkepolicyDpdArgs:
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the interval for retransmitting DPD packets.
-        The value ranges from **2** to **60**, in seconds. Defaults to **15**.
         """
         return pulumi.get(self, "timeout")
 
@@ -6607,38 +6007,27 @@ if not MYPY:
     class VpnConnectionIpsecpolicyArgsDict(TypedDict):
         authentication_algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The authentication algorithm. The value can be **sha1**, **md5**,
-        **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-        please use them with caution.
+        The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         """
         encapsulation_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         The encapsulation mode, only **tunnel** supported for now.
-        Defaults to **tunnel**.
-
-        <a name="Connection_PolicyRule"></a>
-        The `policy_rules` block supports:
         """
         encryption_algorithm: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-        **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-        **3des** is less secure, please use it with caution.
+        The encryption algorithm, 3DES is less secure, please use them with caution.
         """
         lifetime_seconds: NotRequired[pulumi.Input[_builtins.int]]
         """
         The lifecycle time of Ipsec tunnel in seconds.
-        The value ranges from **60** to **604800**. Defaults to **3600**.
         """
         pfs: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-        **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        The DH key group used by PFS.
         """
         transform_protocol: NotRequired[pulumi.Input[_builtins.str]]
         """
         The transform protocol. Only **esp** supported for now.
-        Defaults to **esp**.
         """
 elif False:
     VpnConnectionIpsecpolicyArgsDict: TypeAlias = Mapping[str, Any]
@@ -6653,23 +6042,12 @@ class VpnConnectionIpsecpolicyArgs:
                  pfs: Optional[pulumi.Input[_builtins.str]] = None,
                  transform_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] authentication_algorithm: The authentication algorithm. The value can be **sha1**, **md5**,
-               **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-               please use them with caution.
+        :param pulumi.Input[_builtins.str] authentication_algorithm: The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         :param pulumi.Input[_builtins.str] encapsulation_mode: The encapsulation mode, only **tunnel** supported for now.
-               Defaults to **tunnel**.
-               
-               <a name="Connection_PolicyRule"></a>
-               The `policy_rules` block supports:
-        :param pulumi.Input[_builtins.str] encryption_algorithm: The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-               **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-               **3des** is less secure, please use it with caution.
+        :param pulumi.Input[_builtins.str] encryption_algorithm: The encryption algorithm, 3DES is less secure, please use them with caution.
         :param pulumi.Input[_builtins.int] lifetime_seconds: The lifecycle time of Ipsec tunnel in seconds.
-               The value ranges from **60** to **604800**. Defaults to **3600**.
-        :param pulumi.Input[_builtins.str] pfs: The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-               **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        :param pulumi.Input[_builtins.str] pfs: The DH key group used by PFS.
         :param pulumi.Input[_builtins.str] transform_protocol: The transform protocol. Only **esp** supported for now.
-               Defaults to **esp**.
         """
         if authentication_algorithm is not None:
             pulumi.set(__self__, "authentication_algorithm", authentication_algorithm)
@@ -6688,9 +6066,7 @@ class VpnConnectionIpsecpolicyArgs:
     @pulumi.getter(name="authenticationAlgorithm")
     def authentication_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The authentication algorithm. The value can be **sha1**, **md5**,
-        **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-        please use them with caution.
+        The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         """
         return pulumi.get(self, "authentication_algorithm")
 
@@ -6703,10 +6079,6 @@ class VpnConnectionIpsecpolicyArgs:
     def encapsulation_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The encapsulation mode, only **tunnel** supported for now.
-        Defaults to **tunnel**.
-
-        <a name="Connection_PolicyRule"></a>
-        The `policy_rules` block supports:
         """
         return pulumi.get(self, "encapsulation_mode")
 
@@ -6718,9 +6090,7 @@ class VpnConnectionIpsecpolicyArgs:
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-        **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-        **3des** is less secure, please use it with caution.
+        The encryption algorithm, 3DES is less secure, please use them with caution.
         """
         return pulumi.get(self, "encryption_algorithm")
 
@@ -6733,7 +6103,6 @@ class VpnConnectionIpsecpolicyArgs:
     def lifetime_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The lifecycle time of Ipsec tunnel in seconds.
-        The value ranges from **60** to **604800**. Defaults to **3600**.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -6745,8 +6114,7 @@ class VpnConnectionIpsecpolicyArgs:
     @pulumi.getter
     def pfs(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-        **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        The DH key group used by PFS.
         """
         return pulumi.get(self, "pfs")
 
@@ -6759,7 +6127,6 @@ class VpnConnectionIpsecpolicyArgs:
     def transform_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The transform protocol. Only **esp** supported for now.
-        Defaults to **esp**.
         """
         return pulumi.get(self, "transform_protocol")
 
@@ -6843,89 +6210,26 @@ class VpnConnectionPolicyRuleArgs:
 if not MYPY:
     class VpnGatewayCertificateArgsDict(TypedDict):
         certificate_chain: pulumi.Input[_builtins.str]
-        """
-        The certificate chain of the gateway certificate.
-        """
         content: pulumi.Input[_builtins.str]
-        """
-        The content of the gateway certificate.
-        """
         enc_certificate: pulumi.Input[_builtins.str]
-        """
-        The enc certificate of the gateway certificate.
-        """
         enc_private_key: pulumi.Input[_builtins.str]
-        """
-        The enc private key of the gateway certificate.
-        """
         name: pulumi.Input[_builtins.str]
-        """
-        The name of the gateway certificate.
-        """
         private_key: pulumi.Input[_builtins.str]
-        """
-        The private of the gateway certificate.
-        """
         certificate_chain_expire_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The expire time of the certificate.
-        """
         certificate_chain_serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The serial number of the certificate chain.
-        """
         certificate_chain_subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subject of the certificate chain.
-        """
         certificate_expire_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The expire time of the certificate.
-        """
         certificate_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate ID.
-        """
         certificate_serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The serial number of the certificate.
-        """
         certificate_subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subject of the certificate.
-        """
         created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The create time of the gateway certificate.
-        """
         enc_certificate_expire_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The expire time of the enc certificate.
-        """
         enc_certificate_serial_number: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The serial number of the enc certificate.
-        """
         enc_certificate_subject: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The subject of the enc certificate.
-        """
         issuer: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The issuer of the certificate.
-        """
         signature_algorithm: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The signature algorithm of the certificate.
-        """
         status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the certificate.
-        """
         updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The update time of the gateway certificate.
-        """
 elif False:
     VpnGatewayCertificateArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -6953,29 +6257,6 @@ class VpnGatewayCertificateArgs:
                  signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] certificate_chain: The certificate chain of the gateway certificate.
-        :param pulumi.Input[_builtins.str] content: The content of the gateway certificate.
-        :param pulumi.Input[_builtins.str] enc_certificate: The enc certificate of the gateway certificate.
-        :param pulumi.Input[_builtins.str] enc_private_key: The enc private key of the gateway certificate.
-        :param pulumi.Input[_builtins.str] name: The name of the gateway certificate.
-        :param pulumi.Input[_builtins.str] private_key: The private of the gateway certificate.
-        :param pulumi.Input[_builtins.str] certificate_chain_expire_time: The expire time of the certificate.
-        :param pulumi.Input[_builtins.str] certificate_chain_serial_number: The serial number of the certificate chain.
-        :param pulumi.Input[_builtins.str] certificate_chain_subject: The subject of the certificate chain.
-        :param pulumi.Input[_builtins.str] certificate_expire_time: The expire time of the certificate.
-        :param pulumi.Input[_builtins.str] certificate_id: The certificate ID.
-        :param pulumi.Input[_builtins.str] certificate_serial_number: The serial number of the certificate.
-        :param pulumi.Input[_builtins.str] certificate_subject: The subject of the certificate.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the gateway certificate.
-        :param pulumi.Input[_builtins.str] enc_certificate_expire_time: The expire time of the enc certificate.
-        :param pulumi.Input[_builtins.str] enc_certificate_serial_number: The serial number of the enc certificate.
-        :param pulumi.Input[_builtins.str] enc_certificate_subject: The subject of the enc certificate.
-        :param pulumi.Input[_builtins.str] issuer: The issuer of the certificate.
-        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm of the certificate.
-        :param pulumi.Input[_builtins.str] status: The status of the certificate.
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the gateway certificate.
-        """
         pulumi.set(__self__, "certificate_chain", certificate_chain)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "enc_certificate", enc_certificate)
@@ -7016,9 +6297,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> pulumi.Input[_builtins.str]:
-        """
-        The certificate chain of the gateway certificate.
-        """
         return pulumi.get(self, "certificate_chain")
 
     @certificate_chain.setter
@@ -7028,9 +6306,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def content(self) -> pulumi.Input[_builtins.str]:
-        """
-        The content of the gateway certificate.
-        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -7040,9 +6315,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="encCertificate")
     def enc_certificate(self) -> pulumi.Input[_builtins.str]:
-        """
-        The enc certificate of the gateway certificate.
-        """
         return pulumi.get(self, "enc_certificate")
 
     @enc_certificate.setter
@@ -7052,9 +6324,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="encPrivateKey")
     def enc_private_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The enc private key of the gateway certificate.
-        """
         return pulumi.get(self, "enc_private_key")
 
     @enc_private_key.setter
@@ -7064,9 +6333,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the gateway certificate.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -7076,9 +6342,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Input[_builtins.str]:
-        """
-        The private of the gateway certificate.
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -7088,9 +6351,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateChainExpireTime")
     def certificate_chain_expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The expire time of the certificate.
-        """
         return pulumi.get(self, "certificate_chain_expire_time")
 
     @certificate_chain_expire_time.setter
@@ -7100,9 +6360,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateChainSerialNumber")
     def certificate_chain_serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The serial number of the certificate chain.
-        """
         return pulumi.get(self, "certificate_chain_serial_number")
 
     @certificate_chain_serial_number.setter
@@ -7112,9 +6369,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateChainSubject")
     def certificate_chain_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The subject of the certificate chain.
-        """
         return pulumi.get(self, "certificate_chain_subject")
 
     @certificate_chain_subject.setter
@@ -7124,9 +6378,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateExpireTime")
     def certificate_expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The expire time of the certificate.
-        """
         return pulumi.get(self, "certificate_expire_time")
 
     @certificate_expire_time.setter
@@ -7136,9 +6387,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The certificate ID.
-        """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
@@ -7148,9 +6396,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateSerialNumber")
     def certificate_serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The serial number of the certificate.
-        """
         return pulumi.get(self, "certificate_serial_number")
 
     @certificate_serial_number.setter
@@ -7160,9 +6405,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="certificateSubject")
     def certificate_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The subject of the certificate.
-        """
         return pulumi.get(self, "certificate_subject")
 
     @certificate_subject.setter
@@ -7172,9 +6414,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The create time of the gateway certificate.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -7184,9 +6423,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="encCertificateExpireTime")
     def enc_certificate_expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The expire time of the enc certificate.
-        """
         return pulumi.get(self, "enc_certificate_expire_time")
 
     @enc_certificate_expire_time.setter
@@ -7196,9 +6432,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="encCertificateSerialNumber")
     def enc_certificate_serial_number(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The serial number of the enc certificate.
-        """
         return pulumi.get(self, "enc_certificate_serial_number")
 
     @enc_certificate_serial_number.setter
@@ -7208,9 +6441,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="encCertificateSubject")
     def enc_certificate_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The subject of the enc certificate.
-        """
         return pulumi.get(self, "enc_certificate_subject")
 
     @enc_certificate_subject.setter
@@ -7220,9 +6450,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The issuer of the certificate.
-        """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
@@ -7232,9 +6459,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The signature algorithm of the certificate.
-        """
         return pulumi.get(self, "signature_algorithm")
 
     @signature_algorithm.setter
@@ -7244,9 +6468,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the certificate.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -7256,9 +6477,6 @@ class VpnGatewayCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The update time of the gateway certificate.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -7275,31 +6493,18 @@ if not MYPY:
         bandwidth_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         bandwidth_size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         charge_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         ip_address: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7312,8 +6517,6 @@ if not MYPY:
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
 elif False:
     VpnGatewayEip1ArgsDict: TypeAlias = Mapping[str, Any]
@@ -7332,27 +6535,12 @@ class VpnGatewayEip1Args:
         """
         :param pulumi.Input[_builtins.str] bandwidth_id: The bandwidth ID.
         :param pulumi.Input[_builtins.str] bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param pulumi.Input[_builtins.str] charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param pulumi.Input[_builtins.str] id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ip_address: The public IP address.
         :param pulumi.Input[_builtins.int] ip_version: The public IP version.
         :param pulumi.Input[_builtins.str] type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -7388,8 +6576,6 @@ class VpnGatewayEip1Args:
     def bandwidth_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -7401,11 +6587,7 @@ class VpnGatewayEip1Args:
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -7418,11 +6600,6 @@ class VpnGatewayEip1Args:
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -7435,8 +6612,6 @@ class VpnGatewayEip1Args:
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -7473,8 +6648,6 @@ class VpnGatewayEip1Args:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -7492,31 +6665,18 @@ if not MYPY:
         bandwidth_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         bandwidth_size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         charge_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         ip_address: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7529,8 +6689,6 @@ if not MYPY:
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
 elif False:
     VpnGatewayEip2ArgsDict: TypeAlias = Mapping[str, Any]
@@ -7549,27 +6707,12 @@ class VpnGatewayEip2Args:
         """
         :param pulumi.Input[_builtins.str] bandwidth_id: The bandwidth ID.
         :param pulumi.Input[_builtins.str] bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param pulumi.Input[_builtins.str] charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param pulumi.Input[_builtins.str] id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ip_address: The public IP address.
         :param pulumi.Input[_builtins.int] ip_version: The public IP version.
         :param pulumi.Input[_builtins.str] type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -7605,8 +6748,6 @@ class VpnGatewayEip2Args:
     def bandwidth_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -7618,11 +6759,7 @@ class VpnGatewayEip2Args:
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -7635,11 +6772,6 @@ class VpnGatewayEip2Args:
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -7652,8 +6784,6 @@ class VpnGatewayEip2Args:
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -7690,8 +6820,6 @@ class VpnGatewayEip2Args:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -7709,31 +6837,18 @@ if not MYPY:
         bandwidth_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         bandwidth_size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         charge_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         ip_address: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7746,8 +6861,6 @@ if not MYPY:
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
 elif False:
     VpnGatewayMasterEipArgsDict: TypeAlias = Mapping[str, Any]
@@ -7766,27 +6879,12 @@ class VpnGatewayMasterEipArgs:
         """
         :param pulumi.Input[_builtins.str] bandwidth_id: The bandwidth ID.
         :param pulumi.Input[_builtins.str] bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param pulumi.Input[_builtins.str] charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param pulumi.Input[_builtins.str] id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ip_address: The public IP address.
         :param pulumi.Input[_builtins.int] ip_version: The public IP version.
         :param pulumi.Input[_builtins.str] type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -7822,8 +6920,6 @@ class VpnGatewayMasterEipArgs:
     def bandwidth_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -7835,11 +6931,7 @@ class VpnGatewayMasterEipArgs:
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -7852,11 +6944,6 @@ class VpnGatewayMasterEipArgs:
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -7869,8 +6956,6 @@ class VpnGatewayMasterEipArgs:
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -7907,8 +6992,6 @@ class VpnGatewayMasterEipArgs:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -7926,31 +7009,18 @@ if not MYPY:
         bandwidth_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         bandwidth_size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         charge_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         id: NotRequired[pulumi.Input[_builtins.str]]
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         ip_address: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -7963,8 +7033,6 @@ if not MYPY:
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
 elif False:
     VpnGatewaySlaveEipArgsDict: TypeAlias = Mapping[str, Any]
@@ -7983,27 +7051,12 @@ class VpnGatewaySlaveEipArgs:
         """
         :param pulumi.Input[_builtins.str] bandwidth_id: The bandwidth ID.
         :param pulumi.Input[_builtins.str] bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param pulumi.Input[_builtins.str] charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param pulumi.Input[_builtins.str] id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ip_address: The public IP address.
         :param pulumi.Input[_builtins.int] ip_version: The public IP version.
         :param pulumi.Input[_builtins.str] type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -8039,8 +7092,6 @@ class VpnGatewaySlaveEipArgs:
     def bandwidth_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -8052,11 +7103,7 @@ class VpnGatewaySlaveEipArgs:
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -8069,11 +7116,6 @@ class VpnGatewaySlaveEipArgs:
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -8086,8 +7128,6 @@ class VpnGatewaySlaveEipArgs:
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -8124,8 +7164,6 @@ class VpnGatewaySlaveEipArgs:
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 

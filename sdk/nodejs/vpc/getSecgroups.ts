@@ -6,24 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of the available SberCloud security groups.
- *
- * ## Example Usage
- *
- * ### Filter the list of security groups by a description keyword
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const keyWord = config.requireObject<any>("keyWord");
- * const test = sbercloud.Vpc.getSecgroups({
- *     description: keyWord,
- * });
- * ```
- */
 export function getSecgroups(args?: GetSecgroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecgroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -40,27 +22,10 @@ export function getSecgroups(args?: GetSecgroupsArgs, opts?: pulumi.InvokeOption
  * A collection of arguments for invoking getSecgroups.
  */
 export interface GetSecgroupsArgs {
-    /**
-     * Specifies the description of the security group. The security groups can be
-     * filtered by keywords in the description.
-     */
     description?: string;
-    /**
-     * Specifies the enterprise project ID of the security group.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the id of the desired security group.
-     */
     id?: string;
-    /**
-     * Specifies the name of the security group.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the security group list.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -68,46 +33,13 @@ export interface GetSecgroupsArgs {
  * A collection of values returned by getSecgroups.
  */
 export interface GetSecgroupsResult {
-    /**
-     * The description of the security group.
-     */
     readonly description?: string;
-    /**
-     * The enterprise project ID of the security group.
-     */
     readonly enterpriseProjectId?: string;
-    /**
-     * The security group ID.
-     */
     readonly id: string;
-    /**
-     * The name of the security group.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * The list of security groups. The object is documented below.
-     */
     readonly securityGroups: outputs.Vpc.GetSecgroupsSecurityGroup[];
 }
-/**
- * Use this data source to get the list of the available SberCloud security groups.
- *
- * ## Example Usage
- *
- * ### Filter the list of security groups by a description keyword
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const keyWord = config.requireObject<any>("keyWord");
- * const test = sbercloud.Vpc.getSecgroups({
- *     description: keyWord,
- * });
- * ```
- */
 export function getSecgroupsOutput(args?: GetSecgroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecgroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -124,26 +56,9 @@ export function getSecgroupsOutput(args?: GetSecgroupsOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getSecgroups.
  */
 export interface GetSecgroupsOutputArgs {
-    /**
-     * Specifies the description of the security group. The security groups can be
-     * filtered by keywords in the description.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID of the security group.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the id of the desired security group.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the security group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the security group list.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

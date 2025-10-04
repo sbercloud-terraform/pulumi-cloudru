@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an RDS instance EIP associate resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const publicIp = config.requireObject<any>("publicIp");
- * const publicIpId = config.requireObject<any>("publicIpId");
- * const test = new sbercloud.rds.InstanceEipAssociate("test", {
- *     instanceId: instanceId,
- *     publicIp: publicIp,
- *     publicIpId: nodeId,
- * });
- * ```
- *
- * ## Import
- *
- * The RDS instance eip associate can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Rds/instanceEipAssociate:InstanceEipAssociate test <id>
- * ```
- */
 export class InstanceEipAssociate extends pulumi.CustomResource {
     /**
      * Get an existing InstanceEipAssociate resource's state with the given name, ID, and optional extra
@@ -63,22 +33,9 @@ export class InstanceEipAssociate extends pulumi.CustomResource {
     }
 
     declare public readonly enableForceNew: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the ID of an RDS instance.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * Specifies the EIP address to be bound.
-     */
     declare public readonly publicIp: pulumi.Output<string>;
-    /**
-     * Specifies the EIP ID.
-     */
     declare public readonly publicIpId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -126,22 +83,9 @@ export class InstanceEipAssociate extends pulumi.CustomResource {
  */
 export interface InstanceEipAssociateState {
     enableForceNew?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of an RDS instance.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * Specifies the EIP address to be bound.
-     */
     publicIp?: pulumi.Input<string>;
-    /**
-     * Specifies the EIP ID.
-     */
     publicIpId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -150,21 +94,8 @@ export interface InstanceEipAssociateState {
  */
 export interface InstanceEipAssociateArgs {
     enableForceNew?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of an RDS instance.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the EIP address to be bound.
-     */
     publicIp: pulumi.Input<string>;
-    /**
-     * Specifies the EIP ID.
-     */
     publicIpId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

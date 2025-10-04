@@ -11,53 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to filter ER instances within SberCloud.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := er.GetInstances(ctx, &er.GetInstancesArgs{
-//				Tags: map[string]interface{}{
-//					"foo": "bar",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
@@ -70,43 +23,27 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
-	// Specifies the enterprise project ID of the ER instances to be queried.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the ID used to query specified ER instance.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the name used to filter the ER instances.
-	// The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-	// hyphens (-) are allowed.
-	Name *string `pulumi:"name"`
-	// Specifies whether resources belong to the current renant.
-	OwnedBySelf *bool `pulumi:"ownedBySelf"`
-	// Specifies the region where the ER instances are located.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status used to filter the ER instances.
-	Status *string `pulumi:"status"`
-	// Specifies the key/value pairs used to filter the ER instances.
-	Tags map[string]string `pulumi:"tags"`
+	EnterpriseProjectId *string           `pulumi:"enterpriseProjectId"`
+	InstanceId          *string           `pulumi:"instanceId"`
+	Name                *string           `pulumi:"name"`
+	OwnedBySelf         *bool             `pulumi:"ownedBySelf"`
+	Region              *string           `pulumi:"region"`
+	Status              *string           `pulumi:"status"`
+	Tags                map[string]string `pulumi:"tags"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
-	// The ID of enterprise project to which the ER instance belongs.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string  `pulumi:"id"`
-	InstanceId *string `pulumi:"instanceId"`
-	// All instances that match the filter parameters.\
-	// The object structure is documented below.
-	Instances []GetInstancesInstance `pulumi:"instances"`
-	// The name of the ER instance.
-	Name        *string `pulumi:"name"`
-	OwnedBySelf *bool   `pulumi:"ownedBySelf"`
-	Region      *string `pulumi:"region"`
-	// The current status of the ER instance.
-	Status *string `pulumi:"status"`
-	// The key/value pairs to associate with the ER instance.
-	Tags map[string]string `pulumi:"tags"`
+	Id          string                 `pulumi:"id"`
+	InstanceId  *string                `pulumi:"instanceId"`
+	Instances   []GetInstancesInstance `pulumi:"instances"`
+	Name        *string                `pulumi:"name"`
+	OwnedBySelf *bool                  `pulumi:"ownedBySelf"`
+	Region      *string                `pulumi:"region"`
+	Status      *string                `pulumi:"status"`
+	Tags        map[string]string      `pulumi:"tags"`
 }
 
 func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts ...pulumi.InvokeOption) GetInstancesResultOutput {
@@ -120,23 +57,13 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
-	// Specifies the enterprise project ID of the ER instances to be queried.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the ID used to query specified ER instance.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Specifies the name used to filter the ER instances.
-	// The valid length is limited from `1` to `64`, only Chinese and English letters, digits, underscores (_) and
-	// hyphens (-) are allowed.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies whether resources belong to the current renant.
-	OwnedBySelf pulumi.BoolPtrInput `pulumi:"ownedBySelf"`
-	// Specifies the region where the ER instances are located.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status used to filter the ER instances.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the key/value pairs used to filter the ER instances.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
+	InstanceId          pulumi.StringPtrInput `pulumi:"instanceId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	OwnedBySelf         pulumi.BoolPtrInput   `pulumi:"ownedBySelf"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	Status              pulumi.StringPtrInput `pulumi:"status"`
+	Tags                pulumi.StringMapInput `pulumi:"tags"`
 }
 
 func (GetInstancesOutputArgs) ElementType() reflect.Type {
@@ -158,7 +85,6 @@ func (o GetInstancesResultOutput) ToGetInstancesResultOutputWithContext(ctx cont
 	return o
 }
 
-// The ID of enterprise project to which the ER instance belongs.
 func (o GetInstancesResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -172,13 +98,10 @@ func (o GetInstancesResultOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
-// All instances that match the filter parameters.\
-// The object structure is documented below.
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }
 
-// The name of the ER instance.
 func (o GetInstancesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -191,12 +114,10 @@ func (o GetInstancesResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The current status of the ER instance.
 func (o GetInstancesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The key/value pairs to associate with the ER instance.
 func (o GetInstancesResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

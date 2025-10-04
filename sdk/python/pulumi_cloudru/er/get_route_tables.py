@@ -66,9 +66,6 @@ class GetRouteTablesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the route table.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -84,10 +81,6 @@ class GetRouteTablesResult:
     @_builtins.property
     @pulumi.getter(name="routeTables")
     def route_tables(self) -> Sequence['outputs.GetRouteTablesRouteTableResult']:
-        """
-        All route tables that match the filter parameters.  
-        The object structure is documented below.
-        """
         return pulumi.get(self, "route_tables")
 
     @_builtins.property
@@ -118,51 +111,7 @@ def get_route_tables(instance_id: Optional[_builtins.str] = None,
                      tags: Optional[Mapping[str, _builtins.str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteTablesResult:
     """
-    Use this data source to query the route tables under the ER instance within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ### Querying specified route tables under ER instance using name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    route_table_name = config.require_object("routeTableName")
-    test = sbercloud.Er.get_route_tables(instance_id=instance_id,
-        name=route_table_name)
-    ```
-
-    ### Querying specified route tables under ER instance using tags
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Er.get_route_tables(instance_id=instance_id,
-        tags={
-            "foo": "bar",
-        })
-    ```
-
-
-    :param _builtins.str instance_id: Specifies the ID of the ER instance to which the route tables belongs.
-    :param _builtins.str name: Specifies the name used to filter the route tables.  
-           The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-           hyphens (-) and dots (.) allowed.
-    :param _builtins.str region: Specifies the region where the ER instance and route table are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: Specifies the route table ID used to query specified route table.
-    :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs used to filter the route tables.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -188,51 +137,7 @@ def get_route_tables_output(instance_id: Optional[pulumi.Input[_builtins.str]] =
                             tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteTablesResult]:
     """
-    Use this data source to query the route tables under the ER instance within SberCloud.
-
-    Before using enterprise router, define custom endpoint as shown below:
-    ```python
-    import pulumi
-    ```
-
-    ## Example Usage
-
-    ### Querying specified route tables under ER instance using name
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    route_table_name = config.require_object("routeTableName")
-    test = sbercloud.Er.get_route_tables(instance_id=instance_id,
-        name=route_table_name)
-    ```
-
-    ### Querying specified route tables under ER instance using tags
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    instance_id = config.require_object("instanceId")
-    test = sbercloud.Er.get_route_tables(instance_id=instance_id,
-        tags={
-            "foo": "bar",
-        })
-    ```
-
-
-    :param _builtins.str instance_id: Specifies the ID of the ER instance to which the route tables belongs.
-    :param _builtins.str name: Specifies the name used to filter the route tables.  
-           The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-           hyphens (-) and dots (.) allowed.
-    :param _builtins.str region: Specifies the region where the ER instance and route table are located.  
-           If omitted, the provider-level region will be used.
-    :param _builtins.str route_table_id: Specifies the route table ID used to query specified route table.
-    :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs used to filter the route tables.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

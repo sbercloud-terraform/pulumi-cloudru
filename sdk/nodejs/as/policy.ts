@@ -6,110 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an AS policy resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### AS Recurrence Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const asGroupId = config.requireObject<any>("asGroupId");
- * const myAspolicy = new sbercloud.as.Policy("my_aspolicy", {
- *     scalingPolicyName: "my_aspolicy",
- *     scalingPolicyType: "RECURRENCE",
- *     scalingGroupId: asGroupId,
- *     scalingPolicyAction: {
- *         operation: "ADD",
- *         instanceNumber: 1,
- *     },
- *     scheduledPolicy: {
- *         launchTime: "07:00",
- *         recurrenceType: "Daily",
- *         startTime: "2022-11-30T12:00Z",
- *         endTime: "2022-12-30T12:00Z",
- *     },
- * });
- * ```
- *
- * ### AS Scheduled Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const asGroupId = config.requireObject<any>("asGroupId");
- * const myAspolicy1 = new sbercloud.as.Policy("my_aspolicy_1", {
- *     scalingPolicyName: "my_aspolicy_1",
- *     scalingPolicyType: "SCHEDULED",
- *     scalingGroupId: asGroupId,
- *     scalingPolicyAction: {
- *         operation: "REMOVE",
- *         instanceNumber: 1,
- *     },
- *     scheduledPolicy: {
- *         launchTime: "2022-12-22T12:00Z",
- *     },
- * });
- * ```
- *
- * ### AS Alarm Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const asGroupId = config.requireObject<any>("asGroupId");
- * const alarmRule = new sbercloud.ces.Alarmrule("alarm_rule", {
- *     alarmName: "as_alarm_rule",
- *     metric: {
- *         namespace: "SYS.AS",
- *         metricName: "cpu_util",
- *         dimensions: [{
- *             name: "AutoScalingGroup",
- *             value: asGroupId,
- *         }],
- *     },
- *     condition: {
- *         period: 300,
- *         filter: "average",
- *         comparisonOperator: ">=",
- *         value: 60,
- *         unit: "%",
- *         count: 1,
- *     },
- *     alarmActions: [{
- *         type: "autoscaling",
- *         notificationLists: [],
- *     }],
- * });
- * const myAspolicy2 = new sbercloud.as.Policy("my_aspolicy_2", {
- *     scalingPolicyName: "my_aspolicy_2",
- *     scalingPolicyType: "ALARM",
- *     scalingGroupId: asGroupId,
- *     alarmId: alarmRule.id,
- *     coolDownTime: 900,
- *     scalingPolicyAction: {
- *         operation: "ADD",
- *         instanceNumber: 1,
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * AS policies can be imported by their `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:As/policy:Policy test 9fcb65fe-fd79-4407-8fa0-07602044e1c3
- * ```
- */
 export class Policy extends pulumi.CustomResource {
     /**
      * Get an existing Policy resource's state with the given name, ID, and optional extra
@@ -139,55 +35,15 @@ export class Policy extends pulumi.CustomResource {
     }
 
     declare public readonly action: pulumi.Output<string>;
-    /**
-     * Specifies the alarm rule ID. This parameter is mandatory when `scalingPolicyType`
-     * is set to `ALARM`.
-     */
     declare public readonly alarmId: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the cooling duration (in seconds).
-     * The value ranges from 0 to 86400 and is 300 by default.
-     *
-     * <a name="scheduledPolicyObject"></a>
-     * The `scheduledPolicy` block supports:
-     */
     declare public readonly coolDownTime: pulumi.Output<number>;
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the AS policy. If omitted, the
-     * provider-level region will be used. Changing this creates a new AS policy.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the AS group ID. Changing this creates a new AS policy.
-     */
     declare public readonly scalingGroupId: pulumi.Output<string>;
-    /**
-     * Specifies the action of the AS policy.
-     * The object structure is documented below.
-     */
     declare public readonly scalingPolicyAction: pulumi.Output<outputs.As.PolicyScalingPolicyAction>;
-    /**
-     * Specifies the name of the AS policy. The name contains only letters, digits,
-     * underscores(_), and hyphens(-), and cannot exceed 64 characters.
-     */
     declare public readonly scalingPolicyName: pulumi.Output<string>;
-    /**
-     * Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-     * + **ALARM**: indicates that the scaling action is triggered by an alarm.
-     * + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-     * + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-     */
     declare public readonly scalingPolicyType: pulumi.Output<string>;
-    /**
-     * Specifies the periodic or scheduled AS policy.
-     * This parameter is mandatory when `scalingPolicyType` is set to `SCHEDULED` or `RECURRENCE`.
-     * The object structure is documented below.
-     */
     declare public readonly scheduledPolicy: pulumi.Output<outputs.As.PolicyScheduledPolicy>;
-    /**
-     * The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
@@ -247,55 +103,15 @@ export class Policy extends pulumi.CustomResource {
  */
 export interface PolicyState {
     action?: pulumi.Input<string>;
-    /**
-     * Specifies the alarm rule ID. This parameter is mandatory when `scalingPolicyType`
-     * is set to `ALARM`.
-     */
     alarmId?: pulumi.Input<string>;
-    /**
-     * Specifies the cooling duration (in seconds).
-     * The value ranges from 0 to 86400 and is 300 by default.
-     *
-     * <a name="scheduledPolicyObject"></a>
-     * The `scheduledPolicy` block supports:
-     */
     coolDownTime?: pulumi.Input<number>;
     createTime?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the AS policy. If omitted, the
-     * provider-level region will be used. Changing this creates a new AS policy.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the AS group ID. Changing this creates a new AS policy.
-     */
     scalingGroupId?: pulumi.Input<string>;
-    /**
-     * Specifies the action of the AS policy.
-     * The object structure is documented below.
-     */
     scalingPolicyAction?: pulumi.Input<inputs.As.PolicyScalingPolicyAction>;
-    /**
-     * Specifies the name of the AS policy. The name contains only letters, digits,
-     * underscores(_), and hyphens(-), and cannot exceed 64 characters.
-     */
     scalingPolicyName?: pulumi.Input<string>;
-    /**
-     * Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-     * + **ALARM**: indicates that the scaling action is triggered by an alarm.
-     * + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-     * + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-     */
     scalingPolicyType?: pulumi.Input<string>;
-    /**
-     * Specifies the periodic or scheduled AS policy.
-     * This parameter is mandatory when `scalingPolicyType` is set to `SCHEDULED` or `RECURRENCE`.
-     * The object structure is documented below.
-     */
     scheduledPolicy?: pulumi.Input<inputs.As.PolicyScheduledPolicy>;
-    /**
-     * The AS policy status. The value can be *INSERVICE*, *PAUSED* or *EXECUTING*.
-     */
     status?: pulumi.Input<string>;
 }
 
@@ -304,49 +120,12 @@ export interface PolicyState {
  */
 export interface PolicyArgs {
     action?: pulumi.Input<string>;
-    /**
-     * Specifies the alarm rule ID. This parameter is mandatory when `scalingPolicyType`
-     * is set to `ALARM`.
-     */
     alarmId?: pulumi.Input<string>;
-    /**
-     * Specifies the cooling duration (in seconds).
-     * The value ranges from 0 to 86400 and is 300 by default.
-     *
-     * <a name="scheduledPolicyObject"></a>
-     * The `scheduledPolicy` block supports:
-     */
     coolDownTime?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to create the AS policy. If omitted, the
-     * provider-level region will be used. Changing this creates a new AS policy.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the AS group ID. Changing this creates a new AS policy.
-     */
     scalingGroupId: pulumi.Input<string>;
-    /**
-     * Specifies the action of the AS policy.
-     * The object structure is documented below.
-     */
     scalingPolicyAction?: pulumi.Input<inputs.As.PolicyScalingPolicyAction>;
-    /**
-     * Specifies the name of the AS policy. The name contains only letters, digits,
-     * underscores(_), and hyphens(-), and cannot exceed 64 characters.
-     */
     scalingPolicyName: pulumi.Input<string>;
-    /**
-     * Specifies the AS policy type. The value can be `ALARM`, `SCHEDULED` or `RECURRENCE`.
-     * + **ALARM**: indicates that the scaling action is triggered by an alarm.
-     * + **SCHEDULED**: indicates that the scaling action is triggered as scheduled.
-     * + **RECURRENCE**: indicates that the scaling action is triggered periodically.
-     */
     scalingPolicyType: pulumi.Input<string>;
-    /**
-     * Specifies the periodic or scheduled AS policy.
-     * This parameter is mandatory when `scalingPolicyType` is set to `SCHEDULED` or `RECURRENCE`.
-     * The object structure is documented below.
-     */
     scheduledPolicy?: pulumi.Input<inputs.As.PolicyScheduledPolicy>;
 }

@@ -12,9 +12,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// GES graph management
-//
-// ## Example Usage
 type GesGraph struct {
 	pulumi.CustomResourceState
 
@@ -43,26 +40,21 @@ type GesGraph struct {
 	// Whether to retain the backups of a graph after it is deleted.
 	KeepBackup        pulumi.BoolOutput               `pulumi:"keepBackup"`
 	LtsOperationTrace GesGraphLtsOperationTraceOutput `pulumi:"ltsOperationTrace"`
-	// Indicates the graph name.  Changing this parameter will create a new resource.
+	// The graph name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Indicates the private network access address of a graph instance.
-	// Users can access the instance using the IP address through the ECS
-	// deployed on the private network.
+	// Floating IP address of a graph instance.
 	PrivateIp pulumi.StringOutput `pulumi:"privateIp"`
 	// Graph product type
 	ProductType pulumi.StringOutput `pulumi:"productType"`
-	// Indicates the public network access address of a graph instance.
-	// Users can access the instance using the IP address from the Internet.
-	PublicIp GesGraphPublicIpOutput `pulumi:"publicIp"`
-	// Indicates the region code.  Changing this parameter will create a new resource.
-	Region      pulumi.StringOutput `pulumi:"region"`
-	Replication pulumi.IntOutput    `pulumi:"replication"`
-	// Indicates the security group ID.  Changing this parameter will create a new resource.
+	// The information about public IP.
+	PublicIp    GesGraphPublicIpOutput `pulumi:"publicIp"`
+	Region      pulumi.StringOutput    `pulumi:"region"`
+	Replication pulumi.IntOutput       `pulumi:"replication"`
+	// The security group ID.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// Indicates the OBS file import status:
-	// success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+	// Status of a graph.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+	// The subnet ID.
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// The key/value pairs to associate with the graph.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -70,7 +62,7 @@ type GesGraph struct {
 	TrafficIpLists pulumi.StringArrayOutput `pulumi:"trafficIpLists"`
 	// ID type of vertices. This parameter is mandatory only for database edition graphs.
 	VertexIdType GesGraphVertexIdTypeOutput `pulumi:"vertexIdType"`
-	// Indicates the VPC ID.  Changing this parameter will create a new resource.
+	// The VPC ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -147,26 +139,21 @@ type gesGraphState struct {
 	// Whether to retain the backups of a graph after it is deleted.
 	KeepBackup        *bool                      `pulumi:"keepBackup"`
 	LtsOperationTrace *GesGraphLtsOperationTrace `pulumi:"ltsOperationTrace"`
-	// Indicates the graph name.  Changing this parameter will create a new resource.
+	// The graph name.
 	Name *string `pulumi:"name"`
-	// Indicates the private network access address of a graph instance.
-	// Users can access the instance using the IP address through the ECS
-	// deployed on the private network.
+	// Floating IP address of a graph instance.
 	PrivateIp *string `pulumi:"privateIp"`
 	// Graph product type
 	ProductType *string `pulumi:"productType"`
-	// Indicates the public network access address of a graph instance.
-	// Users can access the instance using the IP address from the Internet.
-	PublicIp *GesGraphPublicIp `pulumi:"publicIp"`
-	// Indicates the region code.  Changing this parameter will create a new resource.
-	Region      *string `pulumi:"region"`
-	Replication *int    `pulumi:"replication"`
-	// Indicates the security group ID.  Changing this parameter will create a new resource.
+	// The information about public IP.
+	PublicIp    *GesGraphPublicIp `pulumi:"publicIp"`
+	Region      *string           `pulumi:"region"`
+	Replication *int              `pulumi:"replication"`
+	// The security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// Indicates the OBS file import status:
-	// success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+	// Status of a graph.
 	Status *string `pulumi:"status"`
-	// Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+	// The subnet ID.
 	SubnetId *string `pulumi:"subnetId"`
 	// The key/value pairs to associate with the graph.
 	Tags map[string]string `pulumi:"tags"`
@@ -174,7 +161,7 @@ type gesGraphState struct {
 	TrafficIpLists []string `pulumi:"trafficIpLists"`
 	// ID type of vertices. This parameter is mandatory only for database edition graphs.
 	VertexIdType *GesGraphVertexIdType `pulumi:"vertexIdType"`
-	// Indicates the VPC ID.  Changing this parameter will create a new resource.
+	// The VPC ID.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -204,26 +191,21 @@ type GesGraphState struct {
 	// Whether to retain the backups of a graph after it is deleted.
 	KeepBackup        pulumi.BoolPtrInput
 	LtsOperationTrace GesGraphLtsOperationTracePtrInput
-	// Indicates the graph name.  Changing this parameter will create a new resource.
+	// The graph name.
 	Name pulumi.StringPtrInput
-	// Indicates the private network access address of a graph instance.
-	// Users can access the instance using the IP address through the ECS
-	// deployed on the private network.
+	// Floating IP address of a graph instance.
 	PrivateIp pulumi.StringPtrInput
 	// Graph product type
 	ProductType pulumi.StringPtrInput
-	// Indicates the public network access address of a graph instance.
-	// Users can access the instance using the IP address from the Internet.
-	PublicIp GesGraphPublicIpPtrInput
-	// Indicates the region code.  Changing this parameter will create a new resource.
+	// The information about public IP.
+	PublicIp    GesGraphPublicIpPtrInput
 	Region      pulumi.StringPtrInput
 	Replication pulumi.IntPtrInput
-	// Indicates the security group ID.  Changing this parameter will create a new resource.
+	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
-	// Indicates the OBS file import status:
-	// success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+	// Status of a graph.
 	Status pulumi.StringPtrInput
-	// Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+	// The subnet ID.
 	SubnetId pulumi.StringPtrInput
 	// The key/value pairs to associate with the graph.
 	Tags pulumi.StringMapInput
@@ -231,7 +213,7 @@ type GesGraphState struct {
 	TrafficIpLists pulumi.StringArrayInput
 	// ID type of vertices. This parameter is mandatory only for database edition graphs.
 	VertexIdType GesGraphVertexIdTypePtrInput
-	// Indicates the VPC ID.  Changing this parameter will create a new resource.
+	// The VPC ID.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -263,25 +245,23 @@ type gesGraphArgs struct {
 	// Whether to retain the backups of a graph after it is deleted.
 	KeepBackup        *bool                      `pulumi:"keepBackup"`
 	LtsOperationTrace *GesGraphLtsOperationTrace `pulumi:"ltsOperationTrace"`
-	// Indicates the graph name.  Changing this parameter will create a new resource.
+	// The graph name.
 	Name *string `pulumi:"name"`
 	// Graph product type
 	ProductType *string `pulumi:"productType"`
-	// Indicates the public network access address of a graph instance.
-	// Users can access the instance using the IP address from the Internet.
-	PublicIp *GesGraphPublicIp `pulumi:"publicIp"`
-	// Indicates the region code.  Changing this parameter will create a new resource.
-	Region      *string `pulumi:"region"`
-	Replication *int    `pulumi:"replication"`
-	// Indicates the security group ID.  Changing this parameter will create a new resource.
+	// The information about public IP.
+	PublicIp    *GesGraphPublicIp `pulumi:"publicIp"`
+	Region      *string           `pulumi:"region"`
+	Replication *int              `pulumi:"replication"`
+	// The security group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+	// The subnet ID.
 	SubnetId string `pulumi:"subnetId"`
 	// The key/value pairs to associate with the graph.
 	Tags map[string]string `pulumi:"tags"`
 	// ID type of vertices. This parameter is mandatory only for database edition graphs.
 	VertexIdType *GesGraphVertexIdType `pulumi:"vertexIdType"`
-	// Indicates the VPC ID.  Changing this parameter will create a new resource.
+	// The VPC ID.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -310,25 +290,23 @@ type GesGraphArgs struct {
 	// Whether to retain the backups of a graph after it is deleted.
 	KeepBackup        pulumi.BoolPtrInput
 	LtsOperationTrace GesGraphLtsOperationTracePtrInput
-	// Indicates the graph name.  Changing this parameter will create a new resource.
+	// The graph name.
 	Name pulumi.StringPtrInput
 	// Graph product type
 	ProductType pulumi.StringPtrInput
-	// Indicates the public network access address of a graph instance.
-	// Users can access the instance using the IP address from the Internet.
-	PublicIp GesGraphPublicIpPtrInput
-	// Indicates the region code.  Changing this parameter will create a new resource.
+	// The information about public IP.
+	PublicIp    GesGraphPublicIpPtrInput
 	Region      pulumi.StringPtrInput
 	Replication pulumi.IntPtrInput
-	// Indicates the security group ID.  Changing this parameter will create a new resource.
+	// The security group ID.
 	SecurityGroupId pulumi.StringInput
-	// Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+	// The subnet ID.
 	SubnetId pulumi.StringInput
 	// The key/value pairs to associate with the graph.
 	Tags pulumi.StringMapInput
 	// ID type of vertices. This parameter is mandatory only for database edition graphs.
 	VertexIdType GesGraphVertexIdTypePtrInput
-	// Indicates the VPC ID.  Changing this parameter will create a new resource.
+	// The VPC ID.
 	VpcId pulumi.StringInput
 }
 
@@ -483,14 +461,12 @@ func (o GesGraphOutput) LtsOperationTrace() GesGraphLtsOperationTraceOutput {
 	return o.ApplyT(func(v *GesGraph) GesGraphLtsOperationTraceOutput { return v.LtsOperationTrace }).(GesGraphLtsOperationTraceOutput)
 }
 
-// Indicates the graph name.  Changing this parameter will create a new resource.
+// The graph name.
 func (o GesGraphOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the private network access address of a graph instance.
-// Users can access the instance using the IP address through the ECS
-// deployed on the private network.
+// Floating IP address of a graph instance.
 func (o GesGraphOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.PrivateIp }).(pulumi.StringOutput)
 }
@@ -500,13 +476,11 @@ func (o GesGraphOutput) ProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.ProductType }).(pulumi.StringOutput)
 }
 
-// Indicates the public network access address of a graph instance.
-// Users can access the instance using the IP address from the Internet.
+// The information about public IP.
 func (o GesGraphOutput) PublicIp() GesGraphPublicIpOutput {
 	return o.ApplyT(func(v *GesGraph) GesGraphPublicIpOutput { return v.PublicIp }).(GesGraphPublicIpOutput)
 }
 
-// Indicates the region code.  Changing this parameter will create a new resource.
 func (o GesGraphOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
@@ -515,18 +489,17 @@ func (o GesGraphOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.IntOutput { return v.Replication }).(pulumi.IntOutput)
 }
 
-// Indicates the security group ID.  Changing this parameter will create a new resource.
+// The security group ID.
 func (o GesGraphOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Indicates the OBS file import status:
-// success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+// Status of a graph.
 func (o GesGraphOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+// The subnet ID.
 func (o GesGraphOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.SubnetId }).(pulumi.StringOutput)
 }
@@ -546,7 +519,7 @@ func (o GesGraphOutput) VertexIdType() GesGraphVertexIdTypeOutput {
 	return o.ApplyT(func(v *GesGraph) GesGraphVertexIdTypeOutput { return v.VertexIdType }).(GesGraphVertexIdTypeOutput)
 }
 
-// Indicates the VPC ID.  Changing this parameter will create a new resource.
+// The VPC ID.
 func (o GesGraphOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GesGraph) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

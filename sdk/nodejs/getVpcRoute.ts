@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * !> **WARNING:** It has been deprecated, use `sbercloud.Vpc.RouteTable` to get the route details.
- *
- * Provides details about a specific VPC route.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const vpcRoute = sbercloud.getVpcRoute({
- *     vpcId: vpcId,
- * });
- * ```
- */
 export function getVpcRoute(args?: GetVpcRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcRouteResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -37,30 +21,11 @@ export function getVpcRoute(args?: GetVpcRouteArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getVpcRoute.
  */
 export interface GetVpcRouteArgs {
-    /**
-     * The route destination address (CIDR).
-     */
     destination?: string;
-    /**
-     * The id of the specific route to retrieve.
-     */
     id?: string;
-    /**
-     * The region in which to obtain the vpc route. If omitted, the provider-level region will
-     * be used.
-     */
     region?: string;
-    /**
-     * Only the administrator can specify the tenant ID of other tenants.
-     */
     tenantId?: string;
-    /**
-     * Route type for filtering.
-     */
     type?: string;
-    /**
-     * The id of the VPC that the desired route belongs to.
-     */
     vpcId?: string;
 }
 
@@ -70,31 +35,12 @@ export interface GetVpcRouteArgs {
 export interface GetVpcRouteResult {
     readonly destination: string;
     readonly id: string;
-    /**
-     * The next hop of the route. If the route type is peering, it will provide VPC peering connection ID.
-     */
     readonly nexthop: string;
     readonly region: string;
     readonly tenantId: string;
     readonly type: string;
     readonly vpcId: string;
 }
-/**
- * !> **WARNING:** It has been deprecated, use `sbercloud.Vpc.RouteTable` to get the route details.
- *
- * Provides details about a specific VPC route.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const vpcRoute = sbercloud.getVpcRoute({
- *     vpcId: vpcId,
- * });
- * ```
- */
 export function getVpcRouteOutput(args?: GetVpcRouteOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcRouteResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -112,29 +58,10 @@ export function getVpcRouteOutput(args?: GetVpcRouteOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getVpcRoute.
  */
 export interface GetVpcRouteOutputArgs {
-    /**
-     * The route destination address (CIDR).
-     */
     destination?: pulumi.Input<string>;
-    /**
-     * The id of the specific route to retrieve.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the vpc route. If omitted, the provider-level region will
-     * be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Only the administrator can specify the tenant ID of other tenants.
-     */
     tenantId?: pulumi.Input<string>;
-    /**
-     * Route type for filtering.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * The id of the VPC that the desired route belongs to.
-     */
     vpcId?: pulumi.Input<string>;
 }

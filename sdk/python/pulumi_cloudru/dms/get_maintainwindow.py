@@ -101,23 +101,7 @@ def get_maintainwindow(begin: Optional[_builtins.str] = None,
                        seq: Optional[_builtins.int] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaintainwindowResult:
     """
-    Use this data source to get the ID of an available SberCloud DMS maintainwindow.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    maintainwindow1 = sbercloud.Dms.get_maintainwindow(seq=1)
-    ```
-
-
-    :param _builtins.str begin: Indicates the time at which a maintenance time window starts.
-    :param _builtins.bool default: Indicates whether a maintenance time window is set to the default time segment.
-    :param _builtins.str end: Indicates the time at which a maintenance time window ends.
-    :param _builtins.str region: The region in which to obtain the dms maintainwindows. If omitted, the provider-level region will be used.
-    :param _builtins.int seq: Indicates the sequential number of a maintenance time window.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['begin'] = begin
@@ -142,23 +126,7 @@ def get_maintainwindow_output(begin: Optional[pulumi.Input[Optional[_builtins.st
                               seq: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaintainwindowResult]:
     """
-    Use this data source to get the ID of an available SberCloud DMS maintainwindow.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    maintainwindow1 = sbercloud.Dms.get_maintainwindow(seq=1)
-    ```
-
-
-    :param _builtins.str begin: Indicates the time at which a maintenance time window starts.
-    :param _builtins.bool default: Indicates whether a maintenance time window is set to the default time segment.
-    :param _builtins.str end: Indicates the time at which a maintenance time window ends.
-    :param _builtins.str region: The region in which to obtain the dms maintainwindows. If omitted, the provider-level region will be used.
-    :param _builtins.int seq: Indicates the sequential number of a maintenance time window.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['begin'] = begin

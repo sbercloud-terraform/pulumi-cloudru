@@ -6,32 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides a CCE add-on resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const clusterId = config.requireObject<any>("clusterId");
- * const addonTest = new sbercloud.cce.Addon("addon_test", {
- *     clusterId: clusterId,
- *     templateName: "metrics-server",
- *     version: "1.1.10",
- * });
- * ```
- *
- * ## Import
- *
- * CCE add-on can be imported using the cluster ID and add-on ID separated by a slash, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Cce/addon:Addon my_addon bb6923e4-b16e-11eb-b0cd-0255ac101da1/c7ecb230-b16f-11eb-b3b6-0255ac1015a3
- * ```
- */
 export class Addon extends pulumi.CustomResource {
     /**
      * Get an existing Addon resource's state with the given name, ID, and optional extra
@@ -60,39 +34,12 @@ export class Addon extends pulumi.CustomResource {
         return obj['__pulumiType'] === Addon.__pulumiType;
     }
 
-    /**
-     * Specifies the cluster ID.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly clusterId: pulumi.Output<string>;
-    /**
-     * Description of add-on instance.
-     */
     declare public /*out*/ readonly description: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the CCE add-on resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Add-on status information.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the name of the add-on template.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly templateName: pulumi.Output<string>;
-    /**
-     * Specifies the add-on template installation parameters.
-     * These parameters vary depending on the add-on. Structure is documented below.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly values: pulumi.Output<outputs.Cce.AddonValues | undefined>;
-    /**
-     * Specifies the version of the add-on.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly version: pulumi.Output<string>;
 
     /**
@@ -140,39 +87,12 @@ export class Addon extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Addon resources.
  */
 export interface AddonState {
-    /**
-     * Specifies the cluster ID.
-     * Changing this parameter will create a new resource.
-     */
     clusterId?: pulumi.Input<string>;
-    /**
-     * Description of add-on instance.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the CCE add-on resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Add-on status information.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the add-on template.
-     * Changing this parameter will create a new resource.
-     */
     templateName?: pulumi.Input<string>;
-    /**
-     * Specifies the add-on template installation parameters.
-     * These parameters vary depending on the add-on. Structure is documented below.
-     * Changing this parameter will create a new resource.
-     */
     values?: pulumi.Input<inputs.Cce.AddonValues>;
-    /**
-     * Specifies the version of the add-on.
-     * Changing this parameter will create a new resource.
-     */
     version?: pulumi.Input<string>;
 }
 
@@ -180,30 +100,9 @@ export interface AddonState {
  * The set of arguments for constructing a Addon resource.
  */
 export interface AddonArgs {
-    /**
-     * Specifies the cluster ID.
-     * Changing this parameter will create a new resource.
-     */
     clusterId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the CCE add-on resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new CCE add-on resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the add-on template.
-     * Changing this parameter will create a new resource.
-     */
     templateName: pulumi.Input<string>;
-    /**
-     * Specifies the add-on template installation parameters.
-     * These parameters vary depending on the add-on. Structure is documented below.
-     * Changing this parameter will create a new resource.
-     */
     values?: pulumi.Input<inputs.Cce.AddonValues>;
-    /**
-     * Specifies the version of the add-on.
-     * Changing this parameter will create a new resource.
-     */
     version?: pulumi.Input<string>;
 }

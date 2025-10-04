@@ -62,9 +62,6 @@ class VolumeAttachment(dict):
                  id: Optional[_builtins.str] = None,
                  instance_id: Optional[_builtins.str] = None,
                  volume_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str id: Specifies a resource ID in UUID format.
-        """
         if attached_at is not None:
             pulumi.set(__self__, "attached_at", attached_at)
         if attached_volume_id is not None:
@@ -103,9 +100,6 @@ class VolumeAttachment(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Specifies a resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -142,9 +136,6 @@ class VolumeIopsAttribute(dict):
                  frozened: Optional[_builtins.bool] = None,
                  id: Optional[_builtins.str] = None,
                  total_val: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str id: Specifies a resource ID in UUID format.
-        """
         if frozened is not None:
             pulumi.set(__self__, "frozened", frozened)
         if id is not None:
@@ -160,9 +151,6 @@ class VolumeIopsAttribute(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Specifies a resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -215,9 +203,6 @@ class VolumeThroughputAttribute(dict):
                  frozened: Optional[_builtins.bool] = None,
                  id: Optional[_builtins.str] = None,
                  total_val: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str id: Specifies a resource ID in UUID format.
-        """
         if frozened is not None:
             pulumi.set(__self__, "frozened", frozened)
         if id is not None:
@@ -233,9 +218,6 @@ class VolumeThroughputAttribute(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Specifies a resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -274,37 +256,6 @@ class GetVolumesVolumeResult(dict):
                  volume_image_metadata: Mapping[str, _builtins.str],
                  volume_type: _builtins.str,
                  wwn: _builtins.str):
-        """
-        :param Sequence['GetVolumesVolumeAttachmentArgs'] attachments: The disk attachment information. Structure is documented below.
-        :param _builtins.str availability_zone: Specifies the availability zone for the disks.
-        :param _builtins.bool bootable: Whether the disk is bootable.
-        :param _builtins.str create_at: The time when the disk was created.
-        :param _builtins.str description: The disk description.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID for filtering.
-        :param _builtins.str id: The ID of the attached resource in UUID format.
-        :param _builtins.str name: The disk name.
-        :param _builtins.str service_type: The service type, such as EVS, DSS or DESS.
-        :param _builtins.bool shareable: Specifies whether the disk is shareable.
-        :param _builtins.int size: The disk size, in GB.
-        :param _builtins.str status: Specifies the disk status. The valid values are as following:
-               + **FREEZED**
-               + **BIND_ERROR**
-               + **BINDING**
-               + **PENDING_DELETE**
-               + **PENDING_CREATE**
-               + **NOTIFYING**
-               + **NOTIFY_DELETE**
-               + **PENDING_UPDATE**
-               + **DOWN**
-               + **ACTIVE**
-               + **ELB**
-               + **ERROR**
-               + **VPN**
-        :param Mapping[str, _builtins.str] tags: Specifies the included key/value pairs which associated with the desired disk.
-        :param _builtins.str update_at: The time when the disk was updated.
-               w
-        :param _builtins.str wwn: The unique identifier used when attaching the disk.
-        """
         pulumi.set(__self__, "attachments", attachments)
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "bootable", bootable)
@@ -336,33 +287,21 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> Sequence['outputs.GetVolumesVolumeAttachmentResult']:
-        """
-        The disk attachment information. Structure is documented below.
-        """
         return pulumi.get(self, "attachments")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        Specifies the availability zone for the disks.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def bootable(self) -> _builtins.bool:
-        """
-        Whether the disk is bootable.
-        """
         return pulumi.get(self, "bootable")
 
     @_builtins.property
     @pulumi.getter(name="createAt")
     def create_at(self) -> _builtins.str:
-        """
-        The time when the disk was created.
-        """
         return pulumi.get(self, "create_at")
 
     @_builtins.property
@@ -378,25 +317,16 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The disk description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project ID for filtering.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the attached resource in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -422,9 +352,6 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The disk name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -435,25 +362,16 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="serviceType")
     def service_type(self) -> _builtins.str:
-        """
-        The service type, such as EVS, DSS or DESS.
-        """
         return pulumi.get(self, "service_type")
 
     @_builtins.property
     @pulumi.getter
     def shareable(self) -> _builtins.bool:
-        """
-        Specifies whether the disk is shareable.
-        """
         return pulumi.get(self, "shareable")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        The disk size, in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
@@ -464,30 +382,11 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the disk status. The valid values are as following:
-        + **FREEZED**
-        + **BIND_ERROR**
-        + **BINDING**
-        + **PENDING_DELETE**
-        + **PENDING_CREATE**
-        + **NOTIFYING**
-        + **NOTIFY_DELETE**
-        + **PENDING_UPDATE**
-        + **DOWN**
-        + **ACTIVE**
-        + **ELB**
-        + **ERROR**
-        + **VPN**
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        Specifies the included key/value pairs which associated with the desired disk.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -503,10 +402,6 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="updateAt")
     def update_at(self) -> _builtins.str:
-        """
-        The time when the disk was updated.
-        w
-        """
         return pulumi.get(self, "update_at")
 
     @_builtins.property
@@ -522,9 +417,6 @@ class GetVolumesVolumeResult(dict):
     @_builtins.property
     @pulumi.getter
     def wwn(self) -> _builtins.str:
-        """
-        The unique identifier used when attaching the disk.
-        """
         return pulumi.get(self, "wwn")
 
 
@@ -539,13 +431,6 @@ class GetVolumesVolumeAttachmentResult(dict):
                  id: _builtins.str,
                  server_id: _builtins.str,
                  volume_id: _builtins.str):
-        """
-        :param _builtins.str attached_at: The time when the disk was attached.
-        :param _builtins.str attached_mode: The ID of the attachment information.
-        :param _builtins.str device_name: The device name to which the disk is attached.
-        :param _builtins.str id: The ID of the attached resource in UUID format.
-        :param _builtins.str server_id: Specifies the server ID to which the disks are attached.
-        """
         pulumi.set(__self__, "attached_at", attached_at)
         pulumi.set(__self__, "attached_mode", attached_mode)
         pulumi.set(__self__, "attached_volume_id", attached_volume_id)
@@ -558,17 +443,11 @@ class GetVolumesVolumeAttachmentResult(dict):
     @_builtins.property
     @pulumi.getter(name="attachedAt")
     def attached_at(self) -> _builtins.str:
-        """
-        The time when the disk was attached.
-        """
         return pulumi.get(self, "attached_at")
 
     @_builtins.property
     @pulumi.getter(name="attachedMode")
     def attached_mode(self) -> _builtins.str:
-        """
-        The ID of the attachment information.
-        """
         return pulumi.get(self, "attached_mode")
 
     @_builtins.property
@@ -579,9 +458,6 @@ class GetVolumesVolumeAttachmentResult(dict):
     @_builtins.property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> _builtins.str:
-        """
-        The device name to which the disk is attached.
-        """
         return pulumi.get(self, "device_name")
 
     @_builtins.property
@@ -592,17 +468,11 @@ class GetVolumesVolumeAttachmentResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the attached resource in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> _builtins.str:
-        """
-        Specifies the server ID to which the disks are attached.
-        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
@@ -617,9 +487,6 @@ class GetVolumesVolumeIopsAttributeResult(dict):
                  frozened: _builtins.bool,
                  id: _builtins.str,
                  total_val: _builtins.int):
-        """
-        :param _builtins.str id: The ID of the attached resource in UUID format.
-        """
         pulumi.set(__self__, "frozened", frozened)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "total_val", total_val)
@@ -632,9 +499,6 @@ class GetVolumesVolumeIopsAttributeResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the attached resource in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -668,9 +532,6 @@ class GetVolumesVolumeThroughputAttributeResult(dict):
                  frozened: _builtins.bool,
                  id: _builtins.str,
                  total_val: _builtins.int):
-        """
-        :param _builtins.str id: The ID of the attached resource in UUID format.
-        """
         pulumi.set(__self__, "frozened", frozened)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "total_val", total_val)
@@ -683,9 +544,6 @@ class GetVolumesVolumeThroughputAttributeResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the attached resource in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property

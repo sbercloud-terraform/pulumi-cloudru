@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manage a log stream resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### create a log stream
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const testGroup = new sbercloud.lts.Group("test_group", {
- *     groupName: "test_group",
- *     ttlInDays: 1,
- * });
- * const testStream = new sbercloud.lts.Stream("test_stream", {
- *     groupId: testGroup.id,
- *     streamName: "testacc_stream",
- * });
- * ```
- *
- * ## Import
- *
- * Log stream can be imported using the lts group ID and stream ID separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Lts/stream:Stream stream_1 393f2bfd-2244-11ea-adb7-286ed488c87f/72855918-20b1-11ea-80e0-286ed488c880
- * ```
- */
 export class Stream extends pulumi.CustomResource {
     /**
      * Get an existing Stream resource's state with the given name, ID, and optional extra
@@ -63,28 +34,13 @@ export class Stream extends pulumi.CustomResource {
 
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Number of log stream filters.
-     */
     declare public /*out*/ readonly filterCount: pulumi.Output<number>;
-    /**
-     * Specifies the ID of a created log group. Changing this parameter will create
-     * a new resource.
-     */
     declare public readonly groupId: pulumi.Output<string>;
     /**
      * Whether to favorite the log stream.
      */
     declare public readonly isFavorite: pulumi.Output<boolean | undefined>;
-    /**
-     * The region in which to create the log stream resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new log stream resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the log stream name. Changing this parameter will create a new
-     * resource.
-     */
     declare public readonly streamName: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public readonly ttlInDays: pulumi.Output<number>;
@@ -140,28 +96,13 @@ export class Stream extends pulumi.CustomResource {
 export interface StreamState {
     createdAt?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Number of log stream filters.
-     */
     filterCount?: pulumi.Input<number>;
-    /**
-     * Specifies the ID of a created log group. Changing this parameter will create
-     * a new resource.
-     */
     groupId?: pulumi.Input<string>;
     /**
      * Whether to favorite the log stream.
      */
     isFavorite?: pulumi.Input<boolean>;
-    /**
-     * The region in which to create the log stream resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new log stream resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the log stream name. Changing this parameter will create a new
-     * resource.
-     */
     streamName?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ttlInDays?: pulumi.Input<number>;
@@ -172,24 +113,12 @@ export interface StreamState {
  */
 export interface StreamArgs {
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of a created log group. Changing this parameter will create
-     * a new resource.
-     */
     groupId: pulumi.Input<string>;
     /**
      * Whether to favorite the log stream.
      */
     isFavorite?: pulumi.Input<boolean>;
-    /**
-     * The region in which to create the log stream resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new log stream resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the log stream name. Changing this parameter will create a new
-     * resource.
-     */
     streamName: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ttlInDays?: pulumi.Input<number>;

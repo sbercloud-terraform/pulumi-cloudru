@@ -55,9 +55,6 @@ class GetCustomRoleResult:
     @_builtins.property
     @pulumi.getter
     def catalog(self) -> _builtins.str:
-        """
-        The catalog of the custom policy.
-        """
         return pulumi.get(self, "catalog")
 
     @_builtins.property
@@ -83,9 +80,6 @@ class GetCustomRoleResult:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> _builtins.str:
-        """
-        Document of the custom policy.
-        """
         return pulumi.get(self, "policy")
 
     @_builtins.property
@@ -123,24 +117,7 @@ def get_custom_role(description: Optional[_builtins.str] = None,
                     type: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCustomRoleResult:
     """
-    Use this data source to get the ID of an IAM **custom policy**.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    role = sbercloud.Iam.get_custom_role(name="custom_role")
-    ```
-
-
-    :param _builtins.str description: Description of the custom policy.
-    :param _builtins.str domain_id: The domain the policy belongs to.
-    :param _builtins.str id: ID of the custom policy.
-    :param _builtins.str name: Name of the custom policy.
-    :param _builtins.int references: The number of citations for the custom policy.
-    :param _builtins.str type: Display mode. Valid options are _AX_: Account level and _XA_: Project level.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -169,24 +146,7 @@ def get_custom_role_output(description: Optional[pulumi.Input[Optional[_builtins
                            type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomRoleResult]:
     """
-    Use this data source to get the ID of an IAM **custom policy**.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    role = sbercloud.Iam.get_custom_role(name="custom_role")
-    ```
-
-
-    :param _builtins.str description: Description of the custom policy.
-    :param _builtins.str domain_id: The domain the policy belongs to.
-    :param _builtins.str id: ID of the custom policy.
-    :param _builtins.str name: Name of the custom policy.
-    :param _builtins.int references: The number of citations for the custom policy.
-    :param _builtins.str type: Display mode. Valid options are _AX_: Account level and _XA_: Project level.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

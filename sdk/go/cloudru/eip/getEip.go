@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the details of an available EIP.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/eip"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := eip.GetEip(ctx, &eip.GetEipArgs{
-//				PublicIp: pulumi.StringRef("123.60.208.163"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEip(ctx *pulumi.Context, args *GetEipArgs, opts ...pulumi.InvokeOption) (*GetEipResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEipResult
@@ -50,43 +23,31 @@ func GetEip(ctx *pulumi.Context, args *GetEipArgs, opts ...pulumi.InvokeOption) 
 
 // A collection of arguments for invoking getEip.
 type GetEipArgs struct {
-	// The enterprise project id of the EIP.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The port id of the EIP.
-	PortId *string `pulumi:"portId"`
-	// The public ip address of the EIP.
-	PublicIp *string `pulumi:"publicIp"`
-	// The region in which to obtain the EIP. If omitted, the provider-level region will be
-	// used.
-	Region *string `pulumi:"region"`
+	PortId              *string `pulumi:"portId"`
+	PublicIp            *string `pulumi:"publicIp"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getEip.
 type GetEipResult struct {
-	// The bandwidth id of the EIP.
-	BandwidthId   string `pulumi:"bandwidthId"`
-	BandwidthName string `pulumi:"bandwidthName"`
-	// The bandwidth share type of the EIP.
-	BandwidthShareType string `pulumi:"bandwidthShareType"`
-	// The bandwidth size of the EIP.
+	BandwidthId         string `pulumi:"bandwidthId"`
+	BandwidthName       string `pulumi:"bandwidthName"`
+	BandwidthShareType  string `pulumi:"bandwidthShareType"`
 	BandwidthSize       int    `pulumi:"bandwidthSize"`
 	CreatedAt           string `pulumi:"createdAt"`
 	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The IP version, either 4 or 6.
+	Id          string `pulumi:"id"`
 	IpVersion   int    `pulumi:"ipVersion"`
 	Ipv6Address string `pulumi:"ipv6Address"`
 	Name        string `pulumi:"name"`
 	PortId      string `pulumi:"portId"`
-	// The private ip of the EIP.
-	PrivateIp string `pulumi:"privateIp"`
-	PublicIp  string `pulumi:"publicIp"`
-	Region    string `pulumi:"region"`
-	// The status of the EIP.
-	Status string `pulumi:"status"`
-	// The type of the EIP.
-	Type string `pulumi:"type"`
+	PrivateIp   string `pulumi:"privateIp"`
+	PublicIp    string `pulumi:"publicIp"`
+	Region      string `pulumi:"region"`
+	Status      string `pulumi:"status"`
+	Type        string `pulumi:"type"`
 }
 
 func GetEipOutput(ctx *pulumi.Context, args GetEipOutputArgs, opts ...pulumi.InvokeOption) GetEipResultOutput {
@@ -100,15 +61,10 @@ func GetEipOutput(ctx *pulumi.Context, args GetEipOutputArgs, opts ...pulumi.Inv
 
 // A collection of arguments for invoking getEip.
 type GetEipOutputArgs struct {
-	// The enterprise project id of the EIP.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// The port id of the EIP.
-	PortId pulumi.StringPtrInput `pulumi:"portId"`
-	// The public ip address of the EIP.
-	PublicIp pulumi.StringPtrInput `pulumi:"publicIp"`
-	// The region in which to obtain the EIP. If omitted, the provider-level region will be
-	// used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	PortId              pulumi.StringPtrInput `pulumi:"portId"`
+	PublicIp            pulumi.StringPtrInput `pulumi:"publicIp"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetEipOutputArgs) ElementType() reflect.Type {
@@ -130,7 +86,6 @@ func (o GetEipResultOutput) ToGetEipResultOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The bandwidth id of the EIP.
 func (o GetEipResultOutput) BandwidthId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.BandwidthId }).(pulumi.StringOutput)
 }
@@ -139,12 +94,10 @@ func (o GetEipResultOutput) BandwidthName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.BandwidthName }).(pulumi.StringOutput)
 }
 
-// The bandwidth share type of the EIP.
 func (o GetEipResultOutput) BandwidthShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.BandwidthShareType }).(pulumi.StringOutput)
 }
 
-// The bandwidth size of the EIP.
 func (o GetEipResultOutput) BandwidthSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEipResult) int { return v.BandwidthSize }).(pulumi.IntOutput)
 }
@@ -162,7 +115,6 @@ func (o GetEipResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IP version, either 4 or 6.
 func (o GetEipResultOutput) IpVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEipResult) int { return v.IpVersion }).(pulumi.IntOutput)
 }
@@ -179,7 +131,6 @@ func (o GetEipResultOutput) PortId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.PortId }).(pulumi.StringOutput)
 }
 
-// The private ip of the EIP.
 func (o GetEipResultOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
@@ -192,12 +143,10 @@ func (o GetEipResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The status of the EIP.
 func (o GetEipResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The type of the EIP.
 func (o GetEipResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEipResult) string { return v.Type }).(pulumi.StringOutput)
 }

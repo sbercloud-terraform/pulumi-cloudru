@@ -34,22 +34,15 @@ class ZoneArgs:
                  zone_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[_builtins.str] description: A description of the zone.
+        :param pulumi.Input[_builtins.str] description: The description of the zone.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the zone. Changing this creates a
-               new zone.
-        :param pulumi.Input[_builtins.str] name: The name of the zone. Note the `.` at the end of the name. Changing this creates
-               a new DNS zone.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
+        :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive resolution proxy mode for subdomains of the private zone.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DNS zone. If omitted, the `region` argument
-               of the provider will be used. Changing this creates a new DNS zone.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneRouterArgs']]] routers: Router configuration block which is required if zone_type is private. The router
-               structure is documented below.
         :param pulumi.Input[_builtins.str] status: The status of the zone.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the zone.
         :param pulumi.Input[_builtins.int] ttl: The time to live (TTL) of the zone.
-        :param pulumi.Input[_builtins.str] zone_type: The type of zone. Can either be `public` or `private`. Changing this
-               creates a new DNS zone.
+        :param pulumi.Input[_builtins.str] zone_type: The type of zone.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -78,7 +71,7 @@ class ZoneArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A description of the zone.
+        The description of the zone.
         """
         return pulumi.get(self, "description")
 
@@ -102,8 +95,7 @@ class ZoneArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project id of the zone. Changing this creates a
-        new zone.
+        The enterprise project ID of the zone.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -115,8 +107,7 @@ class ZoneArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the zone. Note the `.` at the end of the name. Changing this creates
-        a new DNS zone.
+        The name of the zone.
         """
         return pulumi.get(self, "name")
 
@@ -139,10 +130,6 @@ class ZoneArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DNS zone. If omitted, the `region` argument
-        of the provider will be used. Changing this creates a new DNS zone.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -152,10 +139,6 @@ class ZoneArgs:
     @_builtins.property
     @pulumi.getter
     def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneRouterArgs']]]]:
-        """
-        Router configuration block which is required if zone_type is private. The router
-        structure is documented below.
-        """
         return pulumi.get(self, "routers")
 
     @routers.setter
@@ -202,8 +185,7 @@ class ZoneArgs:
     @pulumi.getter(name="zoneType")
     def zone_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of zone. Can either be `public` or `private`. Changing this
-        creates a new DNS zone.
+        The type of zone.
         """
         return pulumi.get(self, "zone_type")
 
@@ -229,23 +211,16 @@ class _ZoneState:
                  zone_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
-        :param pulumi.Input[_builtins.str] description: A description of the zone.
+        :param pulumi.Input[_builtins.str] description: The description of the zone.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the zone. Changing this creates a
-               new zone.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] masters: An array of master DNS servers.
-        :param pulumi.Input[_builtins.str] name: The name of the zone. Note the `.` at the end of the name. Changing this creates
-               a new DNS zone.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] masters: The list of the masters of the DNS server.
+        :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive resolution proxy mode for subdomains of the private zone.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DNS zone. If omitted, the `region` argument
-               of the provider will be used. Changing this creates a new DNS zone.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneRouterArgs']]] routers: Router configuration block which is required if zone_type is private. The router
-               structure is documented below.
         :param pulumi.Input[_builtins.str] status: The status of the zone.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the zone.
         :param pulumi.Input[_builtins.int] ttl: The time to live (TTL) of the zone.
-        :param pulumi.Input[_builtins.str] zone_type: The type of zone. Can either be `public` or `private`. Changing this
-               creates a new DNS zone.
+        :param pulumi.Input[_builtins.str] zone_type: The type of zone.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -276,7 +251,7 @@ class _ZoneState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A description of the zone.
+        The description of the zone.
         """
         return pulumi.get(self, "description")
 
@@ -300,8 +275,7 @@ class _ZoneState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project id of the zone. Changing this creates a
-        new zone.
+        The enterprise project ID of the zone.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -313,7 +287,7 @@ class _ZoneState:
     @pulumi.getter
     def masters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        An array of master DNS servers.
+        The list of the masters of the DNS server.
         """
         return pulumi.get(self, "masters")
 
@@ -325,8 +299,7 @@ class _ZoneState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the zone. Note the `.` at the end of the name. Changing this creates
-        a new DNS zone.
+        The name of the zone.
         """
         return pulumi.get(self, "name")
 
@@ -349,10 +322,6 @@ class _ZoneState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the DNS zone. If omitted, the `region` argument
-        of the provider will be used. Changing this creates a new DNS zone.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -362,10 +331,6 @@ class _ZoneState:
     @_builtins.property
     @pulumi.getter
     def routers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneRouterArgs']]]]:
-        """
-        Router configuration block which is required if zone_type is private. The router
-        structure is documented below.
-        """
         return pulumi.get(self, "routers")
 
     @routers.setter
@@ -412,8 +377,7 @@ class _ZoneState:
     @pulumi.getter(name="zoneType")
     def zone_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of zone. Can either be `public` or `private`. Changing this
-        creates a new DNS zone.
+        The type of zone.
         """
         return pulumi.get(self, "zone_type")
 
@@ -441,67 +405,18 @@ class Zone(pulumi.CustomResource):
                  zone_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DNS zone in the SberCloud DNS Service.
-
-        ## Example Usage
-
-        ### Create a public DNS zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        my_public_zone = sbercloud.dns.Zone("my_public_zone",
-            name="example.com.",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            zone_type="public")
-        ```
-
-        ### Create a private DNS zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        my_private_zone = sbercloud.dns.Zone("my_private_zone",
-            name="1.example.com.",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            zone_type="private",
-            routers=[{
-                "router_id": "2c1fe4bd-ebad-44ca-ae9d-e94e63847b75",
-            }])
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the zone ID:
-
-        ```sh
-        $ pulumi import sbercloud:Dns/zone:Zone zone_1 <zone_id>
-        ```
-
+        Create a Zone resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: A description of the zone.
+        :param pulumi.Input[_builtins.str] description: The description of the zone.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the zone. Changing this creates a
-               new zone.
-        :param pulumi.Input[_builtins.str] name: The name of the zone. Note the `.` at the end of the name. Changing this creates
-               a new DNS zone.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
+        :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive resolution proxy mode for subdomains of the private zone.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DNS zone. If omitted, the `region` argument
-               of the provider will be used. Changing this creates a new DNS zone.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneRouterArgs', 'ZoneRouterArgsDict']]]] routers: Router configuration block which is required if zone_type is private. The router
-               structure is documented below.
         :param pulumi.Input[_builtins.str] status: The status of the zone.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the zone.
         :param pulumi.Input[_builtins.int] ttl: The time to live (TTL) of the zone.
-        :param pulumi.Input[_builtins.str] zone_type: The type of zone. Can either be `public` or `private`. Changing this
-               creates a new DNS zone.
+        :param pulumi.Input[_builtins.str] zone_type: The type of zone.
         """
         ...
     @overload
@@ -510,49 +425,7 @@ class Zone(pulumi.CustomResource):
                  args: Optional[ZoneArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DNS zone in the SberCloud DNS Service.
-
-        ## Example Usage
-
-        ### Create a public DNS zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        my_public_zone = sbercloud.dns.Zone("my_public_zone",
-            name="example.com.",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            zone_type="public")
-        ```
-
-        ### Create a private DNS zone
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        my_private_zone = sbercloud.dns.Zone("my_private_zone",
-            name="1.example.com.",
-            email="jdoe@example.com",
-            description="An example zone",
-            ttl=3000,
-            zone_type="private",
-            routers=[{
-                "router_id": "2c1fe4bd-ebad-44ca-ae9d-e94e63847b75",
-            }])
-        ```
-
-        ## Import
-
-        This resource can be imported by specifying the zone ID:
-
-        ```sh
-        $ pulumi import sbercloud:Dns/zone:Zone zone_1 <zone_id>
-        ```
-
+        Create a Zone resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -629,23 +502,16 @@ class Zone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: A description of the zone.
+        :param pulumi.Input[_builtins.str] description: The description of the zone.
         :param pulumi.Input[_builtins.str] email: The email address of the administrator managing the zone.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the zone. Changing this creates a
-               new zone.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] masters: An array of master DNS servers.
-        :param pulumi.Input[_builtins.str] name: The name of the zone. Note the `.` at the end of the name. Changing this creates
-               a new DNS zone.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID of the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] masters: The list of the masters of the DNS server.
+        :param pulumi.Input[_builtins.str] name: The name of the zone.
         :param pulumi.Input[_builtins.str] proxy_pattern: The recursive resolution proxy mode for subdomains of the private zone.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the DNS zone. If omitted, the `region` argument
-               of the provider will be used. Changing this creates a new DNS zone.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneRouterArgs', 'ZoneRouterArgsDict']]]] routers: Router configuration block which is required if zone_type is private. The router
-               structure is documented below.
         :param pulumi.Input[_builtins.str] status: The status of the zone.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the zone.
         :param pulumi.Input[_builtins.int] ttl: The time to live (TTL) of the zone.
-        :param pulumi.Input[_builtins.str] zone_type: The type of zone. Can either be `public` or `private`. Changing this
-               creates a new DNS zone.
+        :param pulumi.Input[_builtins.str] zone_type: The type of zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -669,7 +535,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        A description of the zone.
+        The description of the zone.
         """
         return pulumi.get(self, "description")
 
@@ -685,8 +551,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The enterprise project id of the zone. Changing this creates a
-        new zone.
+        The enterprise project ID of the zone.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -694,7 +559,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def masters(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        An array of master DNS servers.
+        The list of the masters of the DNS server.
         """
         return pulumi.get(self, "masters")
 
@@ -702,8 +567,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the zone. Note the `.` at the end of the name. Changing this creates
-        a new DNS zone.
+        The name of the zone.
         """
         return pulumi.get(self, "name")
 
@@ -718,19 +582,11 @@ class Zone(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the DNS zone. If omitted, the `region` argument
-        of the provider will be used. Changing this creates a new DNS zone.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def routers(self) -> pulumi.Output[Optional[Sequence['outputs.ZoneRouter']]]:
-        """
-        Router configuration block which is required if zone_type is private. The router
-        structure is documented below.
-        """
         return pulumi.get(self, "routers")
 
     @_builtins.property
@@ -761,8 +617,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter(name="zoneType")
     def zone_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type of zone. Can either be `public` or `private`. Changing this
-        creates a new DNS zone.
+        The type of zone.
         """
         return pulumi.get(self, "zone_type")
 

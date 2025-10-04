@@ -6,9 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of DMS rocketMQ topics.
- */
 export function getDmsRocketmqTopics(args: GetDmsRocketmqTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics", {
@@ -25,30 +22,11 @@ export function getDmsRocketmqTopics(args: GetDmsRocketmqTopicsArgs, opts?: pulu
  * A collection of arguments for invoking getDmsRocketmqTopics.
  */
 export interface GetDmsRocketmqTopicsArgs {
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: string;
-    /**
-     * Specifies the topic name.
-     */
     name?: string;
-    /**
-     * Specifies the permission. Value options: **sub**, **pub** or **all**.
-     */
     permission?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the number of total read queue.
-     */
     totalReadQueueNum?: number;
-    /**
-     * Specifies the number of total write queue.
-     */
     totalWriteQueueNum?: number;
 }
 
@@ -61,32 +39,13 @@ export interface GetDmsRocketmqTopicsResult {
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Indicates the topic name.
-     */
     readonly name?: string;
-    /**
-     * Indicates the permission. Value options: **sub**, **pub** or **all**.
-     */
     readonly permission?: string;
     readonly region: string;
-    /**
-     * The list of topics.
-     * The topics structure is documented below.
-     */
     readonly topics: outputs.GetDmsRocketmqTopicsTopic[];
-    /**
-     * Indicates the number of total read queue.
-     */
     readonly totalReadQueueNum?: number;
-    /**
-     * Indicates the number of total write queue.
-     */
     readonly totalWriteQueueNum?: number;
 }
-/**
- * Use this data source to get the list of DMS rocketMQ topics.
- */
 export function getDmsRocketmqTopicsOutput(args: GetDmsRocketmqTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqTopics:getDmsRocketmqTopics", {
@@ -103,29 +62,10 @@ export function getDmsRocketmqTopicsOutput(args: GetDmsRocketmqTopicsOutputArgs,
  * A collection of arguments for invoking getDmsRocketmqTopics.
  */
 export interface GetDmsRocketmqTopicsOutputArgs {
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the topic name.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the permission. Value options: **sub**, **pub** or **all**.
-     */
     permission?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the number of total read queue.
-     */
     totalReadQueueNum?: pulumi.Input<number>;
-    /**
-     * Specifies the number of total write queue.
-     */
     totalWriteQueueNum?: pulumi.Input<number>;
 }

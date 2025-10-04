@@ -11,95 +11,19 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a network ACL resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/networkacl"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			subnet, err := vpc.GetSubnet(ctx, &vpc.GetSubnetArgs{
-//				Name: pulumi.StringRef("subnet-default"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			rule1, err := networkacl.NewAclRule(ctx, "rule_1", &networkacl.AclRuleArgs{
-//				Name:            pulumi.String("my-rule-1"),
-//				Description:     pulumi.String("drop TELNET traffic"),
-//				Action:          pulumi.String("deny"),
-//				Protocol:        pulumi.String("tcp"),
-//				DestinationPort: pulumi.String("23"),
-//				Enabled:         pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			rule2, err := networkacl.NewAclRule(ctx, "rule_2", &networkacl.AclRuleArgs{
-//				Name:            pulumi.String("my-rule-2"),
-//				Description:     pulumi.String("drop NTP traffic"),
-//				Action:          pulumi.String("deny"),
-//				Protocol:        pulumi.String("udp"),
-//				DestinationPort: pulumi.String("123"),
-//				Enabled:         pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = networkacl.NewAcl(ctx, "fw_acl", &networkacl.AclArgs{
-//				Name: pulumi.String("my-fw-acl"),
-//				Subnets: pulumi.StringArray{
-//					pulumi.String(subnet.Id),
-//				},
-//				InboundRules: pulumi.StringArray{
-//					rule1.ID(),
-//					rule2.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// Specifies the supplementary information about the network ACL. This parameter can
-	// contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The ID of the ingress firewall policy for the network ACL.
-	InboundPolicyId pulumi.StringOutput `pulumi:"inboundPolicyId"`
-	// A list of the IDs of ingress rules associated with the network ACL.
-	InboundRules pulumi.StringArrayOutput `pulumi:"inboundRules"`
-	// Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-	// which may consist of letters, digits, underscores (_), and hyphens (-).
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the egress firewall policy for the network ACL.
-	OutboundPolicyId pulumi.StringOutput `pulumi:"outboundPolicyId"`
-	// A list of the IDs of egress rules associated with the network ACL.
-	OutboundRules pulumi.StringArrayOutput `pulumi:"outboundRules"`
-	// A list of the port IDs of the subnet gateway.
-	Ports pulumi.StringArrayOutput `pulumi:"ports"`
-	// The region in which to create the network acl resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new network acl resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// The status of the network ACL.
-	Status pulumi.StringOutput `pulumi:"status"`
-	// A list of the IDs of networks associated with the network ACL.
-	Subnets pulumi.StringArrayOutput `pulumi:"subnets"`
+	Description      pulumi.StringPtrOutput   `pulumi:"description"`
+	InboundPolicyId  pulumi.StringOutput      `pulumi:"inboundPolicyId"`
+	InboundRules     pulumi.StringArrayOutput `pulumi:"inboundRules"`
+	Name             pulumi.StringOutput      `pulumi:"name"`
+	OutboundPolicyId pulumi.StringOutput      `pulumi:"outboundPolicyId"`
+	OutboundRules    pulumi.StringArrayOutput `pulumi:"outboundRules"`
+	Ports            pulumi.StringArrayOutput `pulumi:"ports"`
+	Region           pulumi.StringOutput      `pulumi:"region"`
+	Status           pulumi.StringOutput      `pulumi:"status"`
+	Subnets          pulumi.StringArrayOutput `pulumi:"subnets"`
 }
 
 // NewAcl registers a new resource with the given unique name, arguments, and options.
@@ -132,55 +56,29 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// Specifies the supplementary information about the network ACL. This parameter can
-	// contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-	Description *string `pulumi:"description"`
-	// The ID of the ingress firewall policy for the network ACL.
-	InboundPolicyId *string `pulumi:"inboundPolicyId"`
-	// A list of the IDs of ingress rules associated with the network ACL.
-	InboundRules []string `pulumi:"inboundRules"`
-	// Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-	// which may consist of letters, digits, underscores (_), and hyphens (-).
-	Name *string `pulumi:"name"`
-	// The ID of the egress firewall policy for the network ACL.
-	OutboundPolicyId *string `pulumi:"outboundPolicyId"`
-	// A list of the IDs of egress rules associated with the network ACL.
-	OutboundRules []string `pulumi:"outboundRules"`
-	// A list of the port IDs of the subnet gateway.
-	Ports []string `pulumi:"ports"`
-	// The region in which to create the network acl resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new network acl resource.
-	Region *string `pulumi:"region"`
-	// The status of the network ACL.
-	Status *string `pulumi:"status"`
-	// A list of the IDs of networks associated with the network ACL.
-	Subnets []string `pulumi:"subnets"`
+	Description      *string  `pulumi:"description"`
+	InboundPolicyId  *string  `pulumi:"inboundPolicyId"`
+	InboundRules     []string `pulumi:"inboundRules"`
+	Name             *string  `pulumi:"name"`
+	OutboundPolicyId *string  `pulumi:"outboundPolicyId"`
+	OutboundRules    []string `pulumi:"outboundRules"`
+	Ports            []string `pulumi:"ports"`
+	Region           *string  `pulumi:"region"`
+	Status           *string  `pulumi:"status"`
+	Subnets          []string `pulumi:"subnets"`
 }
 
 type AclState struct {
-	// Specifies the supplementary information about the network ACL. This parameter can
-	// contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrInput
-	// The ID of the ingress firewall policy for the network ACL.
-	InboundPolicyId pulumi.StringPtrInput
-	// A list of the IDs of ingress rules associated with the network ACL.
-	InboundRules pulumi.StringArrayInput
-	// Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-	// which may consist of letters, digits, underscores (_), and hyphens (-).
-	Name pulumi.StringPtrInput
-	// The ID of the egress firewall policy for the network ACL.
+	Description      pulumi.StringPtrInput
+	InboundPolicyId  pulumi.StringPtrInput
+	InboundRules     pulumi.StringArrayInput
+	Name             pulumi.StringPtrInput
 	OutboundPolicyId pulumi.StringPtrInput
-	// A list of the IDs of egress rules associated with the network ACL.
-	OutboundRules pulumi.StringArrayInput
-	// A list of the port IDs of the subnet gateway.
-	Ports pulumi.StringArrayInput
-	// The region in which to create the network acl resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new network acl resource.
-	Region pulumi.StringPtrInput
-	// The status of the network ACL.
-	Status pulumi.StringPtrInput
-	// A list of the IDs of networks associated with the network ACL.
-	Subnets pulumi.StringArrayInput
+	OutboundRules    pulumi.StringArrayInput
+	Ports            pulumi.StringArrayInput
+	Region           pulumi.StringPtrInput
+	Status           pulumi.StringPtrInput
+	Subnets          pulumi.StringArrayInput
 }
 
 func (AclState) ElementType() reflect.Type {
@@ -188,40 +86,22 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// Specifies the supplementary information about the network ACL. This parameter can
-	// contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-	Description *string `pulumi:"description"`
-	// A list of the IDs of ingress rules associated with the network ACL.
-	InboundRules []string `pulumi:"inboundRules"`
-	// Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-	// which may consist of letters, digits, underscores (_), and hyphens (-).
-	Name *string `pulumi:"name"`
-	// A list of the IDs of egress rules associated with the network ACL.
+	Description   *string  `pulumi:"description"`
+	InboundRules  []string `pulumi:"inboundRules"`
+	Name          *string  `pulumi:"name"`
 	OutboundRules []string `pulumi:"outboundRules"`
-	// The region in which to create the network acl resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new network acl resource.
-	Region *string `pulumi:"region"`
-	// A list of the IDs of networks associated with the network ACL.
-	Subnets []string `pulumi:"subnets"`
+	Region        *string  `pulumi:"region"`
+	Subnets       []string `pulumi:"subnets"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// Specifies the supplementary information about the network ACL. This parameter can
-	// contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrInput
-	// A list of the IDs of ingress rules associated with the network ACL.
-	InboundRules pulumi.StringArrayInput
-	// Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-	// which may consist of letters, digits, underscores (_), and hyphens (-).
-	Name pulumi.StringPtrInput
-	// A list of the IDs of egress rules associated with the network ACL.
+	Description   pulumi.StringPtrInput
+	InboundRules  pulumi.StringArrayInput
+	Name          pulumi.StringPtrInput
 	OutboundRules pulumi.StringArrayInput
-	// The region in which to create the network acl resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new network acl resource.
-	Region pulumi.StringPtrInput
-	// A list of the IDs of networks associated with the network ACL.
-	Subnets pulumi.StringArrayInput
+	Region        pulumi.StringPtrInput
+	Subnets       pulumi.StringArrayInput
 }
 
 func (AclArgs) ElementType() reflect.Type {
@@ -311,55 +191,42 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// Specifies the supplementary information about the network ACL. This parameter can
-// contain a maximum of 255 characters and cannot contain angle brackets (< or >).
 func (o AclOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the ingress firewall policy for the network ACL.
 func (o AclOutput) InboundPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.InboundPolicyId }).(pulumi.StringOutput)
 }
 
-// A list of the IDs of ingress rules associated with the network ACL.
 func (o AclOutput) InboundRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringArrayOutput { return v.InboundRules }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-// which may consist of letters, digits, underscores (_), and hyphens (-).
 func (o AclOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the egress firewall policy for the network ACL.
 func (o AclOutput) OutboundPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.OutboundPolicyId }).(pulumi.StringOutput)
 }
 
-// A list of the IDs of egress rules associated with the network ACL.
 func (o AclOutput) OutboundRules() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringArrayOutput { return v.OutboundRules }).(pulumi.StringArrayOutput)
 }
 
-// A list of the port IDs of the subnet gateway.
 func (o AclOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
 }
 
-// The region in which to create the network acl resource. If omitted, the
-// provider-level region will be used. Changing this creates a new network acl resource.
 func (o AclOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The status of the network ACL.
 func (o AclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A list of the IDs of networks associated with the network ACL.
 func (o AclOutput) Subnets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringArrayOutput { return v.Subnets }).(pulumi.StringArrayOutput)
 }

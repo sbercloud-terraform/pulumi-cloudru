@@ -68,25 +68,16 @@ class GetVaultsResult:
     @_builtins.property
     @pulumi.getter(name="autoExpandEnabled")
     def auto_expand_enabled(self) -> Optional[_builtins.bool]:
-        """
-        Whether to enable automatic expansion of the backup protection type vault.
-        """
         return pulumi.get(self, "auto_expand_enabled")
 
     @_builtins.property
     @pulumi.getter(name="consistentLevel")
     def consistent_level(self) -> Optional[_builtins.str]:
-        """
-        The backup specifications.
-        """
         return pulumi.get(self, "consistent_level")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[_builtins.str]:
-        """
-        The enterprise project ID.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -100,25 +91,16 @@ class GetVaultsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The CBR vault name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> Optional[_builtins.str]:
-        """
-        The policy associated with the CBR vault.
-        """
         return pulumi.get(self, "policy_id")
 
     @_builtins.property
     @pulumi.getter(name="protectionType")
     def protection_type(self) -> Optional[_builtins.str]:
-        """
-        The protection type of the CBR vault.
-        """
         return pulumi.get(self, "protection_type")
 
     @_builtins.property
@@ -129,33 +111,21 @@ class GetVaultsResult:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
-        """
-        The vault capacity, in GB.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The vault status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The object type of the CBR vault.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def vaults(self) -> Sequence['outputs.GetVaultsVaultResult']:
-        """
-        List of CBR vault details. The object structure of each CBR vault is documented below.
-        """
         return pulumi.get(self, "vaults")
 
 
@@ -191,40 +161,7 @@ def get_vaults(auto_expand_enabled: Optional[_builtins.bool] = None,
                type: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVaultsResult:
     """
-    Use this data source to get available CBR vaults within Sbercloud.
-
-    ## Example Usage
-
-    ### Get vaults for all server type
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cbr.get_vaults(type="server")
-    ```
-
-
-    :param _builtins.bool auto_expand_enabled: Specifies whether to enable automatic expansion of the backup protection
-           type vault. Default to **false**.
-    :param _builtins.str consistent_level: Specifies the backup specifications.
-           The value is crash_consistent by default (crash consistent backup).
-           
-           Only server type vaults support application consistent.
-    :param _builtins.str enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-    :param _builtins.str name: Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-           characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-    :param _builtins.str policy_id: Specifies a policy to associate with the CBR vault.
-    :param _builtins.str protection_type: Specifies the protection type of the CBR vault.
-           The valid value is **backup**.
-    :param _builtins.str region: Specifies the region in which to query the CBR vaults.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int size: Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
-    :param _builtins.str status: Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
-    :param _builtins.str type: Specifies the object type of the CBR vault. The vaild values are as follows:
-           + **server** (Cloud Servers)
-           + **disk** (EVS Disks)
-           + **turbo** (SFS Turbo file systems)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['autoExpandEnabled'] = auto_expand_enabled
@@ -265,40 +202,7 @@ def get_vaults_output(auto_expand_enabled: Optional[pulumi.Input[Optional[_built
                       type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVaultsResult]:
     """
-    Use this data source to get available CBR vaults within Sbercloud.
-
-    ## Example Usage
-
-    ### Get vaults for all server type
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Cbr.get_vaults(type="server")
-    ```
-
-
-    :param _builtins.bool auto_expand_enabled: Specifies whether to enable automatic expansion of the backup protection
-           type vault. Default to **false**.
-    :param _builtins.str consistent_level: Specifies the backup specifications.
-           The value is crash_consistent by default (crash consistent backup).
-           
-           Only server type vaults support application consistent.
-    :param _builtins.str enterprise_project_id: Specifies a unique ID in UUID format of enterprise project.
-    :param _builtins.str name: Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-           characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-    :param _builtins.str policy_id: Specifies a policy to associate with the CBR vault.
-    :param _builtins.str protection_type: Specifies the protection type of the CBR vault.
-           The valid value is **backup**.
-    :param _builtins.str region: Specifies the region in which to query the CBR vaults.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int size: Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
-    :param _builtins.str status: Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
-    :param _builtins.str type: Specifies the object type of the CBR vault. The vaild values are as follows:
-           + **server** (Cloud Servers)
-           + **disk** (EVS Disks)
-           + **turbo** (SFS Turbo file systems)
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['autoExpandEnabled'] = auto_expand_enabled

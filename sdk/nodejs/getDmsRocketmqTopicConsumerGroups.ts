@@ -4,24 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ topic consumer groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topicName = config.requireObject<any>("topicName");
- * const test = sbercloud.getDmsRocketmqTopicConsumerGroups({
- *     instanceId: instanceId,
- *     topicName: topicName,
- * });
- * ```
- */
 export function getDmsRocketmqTopicConsumerGroups(args: GetDmsRocketmqTopicConsumerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqTopicConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups", {
@@ -35,18 +17,8 @@ export function getDmsRocketmqTopicConsumerGroups(args: GetDmsRocketmqTopicConsu
  * A collection of arguments for invoking getDmsRocketmqTopicConsumerGroups.
  */
 export interface GetDmsRocketmqTopicConsumerGroupsArgs {
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the topic name.
-     */
     topicName: string;
 }
 
@@ -54,9 +26,6 @@ export interface GetDmsRocketmqTopicConsumerGroupsArgs {
  * A collection of values returned by getDmsRocketmqTopicConsumerGroups.
  */
 export interface GetDmsRocketmqTopicConsumerGroupsResult {
-    /**
-     * Indicates the consumer group list.
-     */
     readonly groups: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -66,24 +35,6 @@ export interface GetDmsRocketmqTopicConsumerGroupsResult {
     readonly region: string;
     readonly topicName: string;
 }
-/**
- * Use this data source to get the list of RocketMQ topic consumer groups.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const topicName = config.requireObject<any>("topicName");
- * const test = sbercloud.getDmsRocketmqTopicConsumerGroups({
- *     instanceId: instanceId,
- *     topicName: topicName,
- * });
- * ```
- */
 export function getDmsRocketmqTopicConsumerGroupsOutput(args: GetDmsRocketmqTopicConsumerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqTopicConsumerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqTopicConsumerGroups:getDmsRocketmqTopicConsumerGroups", {
@@ -97,17 +48,7 @@ export function getDmsRocketmqTopicConsumerGroupsOutput(args: GetDmsRocketmqTopi
  * A collection of arguments for invoking getDmsRocketmqTopicConsumerGroups.
  */
 export interface GetDmsRocketmqTopicConsumerGroupsOutputArgs {
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the topic name.
-     */
     topicName: pulumi.Input<string>;
 }

@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of applications within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const test = sbercloud.getFgsApplications({
- *     name: name,
- * });
- * ```
- */
 export function getFgsApplications(args?: GetFgsApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,29 +22,10 @@ export function getFgsApplications(args?: GetFgsApplicationsArgs, opts?: pulumi.
  * A collection of arguments for invoking getFgsApplications.
  */
 export interface GetFgsApplicationsArgs {
-    /**
-     * Specifies the application ID used to query specified application.
-     */
     applicationId?: string;
-    /**
-     * Specifies the description of the application to be queried.
-     */
     description?: string;
-    /**
-     * Specifies the application name used to query specified application.
-     */
     name?: string;
-    /**
-     * Specifies the region where the applications are located.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the status of the application to be queried.  
-     * The valid values are as follows:
-     * + **success**: The application created successfully.
-     * + **repoFail**: The application repository creation failed.
-     */
     status?: string;
 }
 
@@ -69,45 +34,16 @@ export interface GetFgsApplicationsArgs {
  */
 export interface GetFgsApplicationsResult {
     readonly applicationId?: string;
-    /**
-     * All applications that match the filter parameters.
-     * The applications structure is documented below.
-     */
     readonly applications: outputs.GetFgsApplicationsApplication[];
-    /**
-     * The description of application.
-     */
     readonly description?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The name of application.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * The status of application.
-     */
     readonly status?: string;
 }
-/**
- * Use this data source to get the list of applications within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const test = sbercloud.getFgsApplications({
- *     name: name,
- * });
- * ```
- */
 export function getFgsApplicationsOutput(args?: GetFgsApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -124,28 +60,9 @@ export function getFgsApplicationsOutput(args?: GetFgsApplicationsOutputArgs, op
  * A collection of arguments for invoking getFgsApplications.
  */
 export interface GetFgsApplicationsOutputArgs {
-    /**
-     * Specifies the application ID used to query specified application.
-     */
     applicationId?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the application to be queried.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the application name used to query specified application.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region where the applications are located.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the application to be queried.  
-     * The valid values are as follows:
-     * + **success**: The application created successfully.
-     * + **repoFail**: The application repository creation failed.
-     */
     status?: pulumi.Input<string>;
 }

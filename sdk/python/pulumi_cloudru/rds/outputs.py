@@ -98,19 +98,7 @@ class InstanceBackupStrategy(dict):
                  keep_days: Optional[_builtins.int] = None,
                  period: Optional[_builtins.str] = None):
         """
-        :param _builtins.str start_time: Specifies the backup time window. Automated backups will be triggered during the
-               backup time window. It must be a valid value in the **hh:mm-HH:MM**
-               format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-               MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-               00.
-        :param _builtins.int keep_days: Specifies the retention days for specific backup files. The value range is from 0 to 732.
-               
-               > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-               policy.
-        :param _builtins.str period: Specifies the backup cycle. Automatic backups will be performed on the specified days of
-               the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-               number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-               Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
+        :param _builtins.int keep_days: schema: Required
         """
         pulumi.set(__self__, "start_time", start_time)
         if keep_days is not None:
@@ -121,35 +109,19 @@ class InstanceBackupStrategy(dict):
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
-        """
-        Specifies the backup time window. Automated backups will be triggered during the
-        backup time window. It must be a valid value in the **hh:mm-HH:MM**
-        format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-        MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-        00.
-        """
         return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> Optional[_builtins.int]:
         """
-        Specifies the retention days for specific backup files. The value range is from 0 to 732.
-
-        > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-        policy.
+        schema: Required
         """
         return pulumi.get(self, "keep_days")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[_builtins.str]:
-        """
-        Specifies the backup cycle. Automatic backups will be performed on the specified days of
-        the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-        number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-        Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
-        """
         return pulumi.get(self, "period")
 
 
@@ -178,23 +150,6 @@ class InstanceDb(dict):
                  password: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
                  user_name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str type: Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-               and **SQLServer**. Changing this parameter will create a new resource.
-        :param _builtins.str version: Specifies the database version. Changing this parameter will create a new
-               resource.
-        :param _builtins.str password: Specifies the database password. The value should contain 8 to 32 characters,
-               including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-               to enter a strong password to improve security, preventing security risks such as brute force cracking.
-        :param _builtins.int port: Specifies the database port.
-               + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-               and cannot be used). The default value is 3306.
-               + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-               + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-               default value is 1433.
-               + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-               and cannot be used). The default value is 3306.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
         if password is not None:
@@ -207,44 +162,21 @@ class InstanceDb(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-        and **SQLServer**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
-        """
-        Specifies the database version. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "version")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
-        """
-        Specifies the database password. The value should contain 8 to 32 characters,
-        including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-        to enter a strong password to improve security, preventing security risks such as brute force cracking.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
-        """
-        Specifies the database port.
-        + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-        and cannot be used). The default value is 3306.
-        + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-        + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-        default value is 1433.
-        + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-        and cannot be used). The default value is 3306.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
@@ -276,11 +208,6 @@ class InstanceMsdtcHost(dict):
                  host_name: _builtins.str,
                  ip: _builtins.str,
                  id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str host_name: Specifies the host name.
-        :param _builtins.str ip: Specifies the host IP address.
-        :param _builtins.str id: Indicates the host ID.
-        """
         pulumi.set(__self__, "host_name", host_name)
         pulumi.set(__self__, "ip", ip)
         if id is not None:
@@ -289,25 +216,16 @@ class InstanceMsdtcHost(dict):
     @_builtins.property
     @pulumi.getter(name="hostName")
     def host_name(self) -> _builtins.str:
-        """
-        Specifies the host name.
-        """
         return pulumi.get(self, "host_name")
 
     @_builtins.property
     @pulumi.getter
     def ip(self) -> _builtins.str:
-        """
-        Specifies the host IP address.
-        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the host ID.
-        """
         return pulumi.get(self, "id")
 
 
@@ -336,17 +254,6 @@ class InstanceNode(dict):
                  name: Optional[_builtins.str] = None,
                  role: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str availability_zone: Specifies the list of AZ name. Changing this parameter will create a
-               new resource.
-        :param _builtins.str id: Indicates the host ID.
-        :param _builtins.str name: Specifies the DB instance name. The DB instance name of the same type must be unique for
-               the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-               contain only letters, digits, hyphens (-), and underscores (_).
-        :param _builtins.str role: Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-               respectively.
-        :param _builtins.str status: Indicates the node status.
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if id is not None:
@@ -361,45 +268,26 @@ class InstanceNode(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[_builtins.str]:
-        """
-        Specifies the list of AZ name. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        Indicates the host ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the DB instance name. The DB instance name of the same type must be unique for
-        the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-        contain only letters, digits, hyphens (-), and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> Optional[_builtins.str]:
-        """
-        Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-        respectively.
-        """
         return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
 
@@ -408,35 +296,17 @@ class InstanceParameter(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the parameter name. Some of them needs the instance to be restarted
-               to take effect.
-        :param _builtins.str value: Specifies the parameter value.
-               
-               <a name="RdsInstance_MsdtcHosts"></a>
-               The `msdtc_hosts` block supports:
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the parameter name. Some of them needs the instance to be restarted
-        to take effect.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        Specifies the parameter value.
-
-        <a name="RdsInstance_MsdtcHosts"></a>
-        The `msdtc_hosts` block supports:
-        """
         return pulumi.get(self, "value")
 
 
@@ -467,14 +337,6 @@ class InstanceRestore(dict):
                  backup_id: _builtins.str,
                  instance_id: _builtins.str,
                  database_name: Optional[Mapping[str, _builtins.str]] = None):
-        """
-        :param _builtins.str backup_id: Specifies the ID of the backup used to restore data. Changing this
-               parameter will create a new resource.
-        :param _builtins.str instance_id: Specifies the source DB instance ID. Changing this parameter will create
-               a new resource.
-        :param Mapping[str, _builtins.str] database_name: Specifies the database to be restored. This parameter applies only to
-               Microsoft SQL Server databases. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "instance_id", instance_id)
         if database_name is not None:
@@ -483,28 +345,16 @@ class InstanceRestore(dict):
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> _builtins.str:
-        """
-        Specifies the ID of the backup used to restore data. Changing this
-        parameter will create a new resource.
-        """
         return pulumi.get(self, "backup_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
-        """
-        Specifies the source DB instance ID. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        Specifies the database to be restored. This parameter applies only to
-        Microsoft SQL Server databases. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "database_name")
 
 
@@ -537,27 +387,6 @@ class InstanceVolume(dict):
                  disk_encryption_id: Optional[_builtins.str] = None,
                  limit_size: Optional[_builtins.int] = None,
                  trigger_threshold: Optional[_builtins.int] = None):
-        """
-        :param _builtins.int size: Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-               multiple of 10 and greater than the original size.
-        :param _builtins.str type: Specifies the volume type. Its value can be any of the following and is
-               case-sensitive:
-               + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-               instances (MySQL and PostreSQL).
-               + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-               + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-               
-               Changing this parameter will create a new resource.
-        :param _builtins.str disk_encryption_id: Specifies the key ID for disk encryption.
-               Changing this parameter will create a new resource.
-        :param _builtins.int limit_size: Specifies the upper limit of automatic expansion of storage, in GB.
-        :param _builtins.int trigger_threshold: Specifies the threshold to trigger automatic expansion.  
-               If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-               The valid values are as follows:
-               + **10**
-               + **15**
-               + **20**
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
         if disk_encryption_id is not None:
@@ -570,55 +399,26 @@ class InstanceVolume(dict):
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-        multiple of 10 and greater than the original size.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the volume type. Its value can be any of the following and is
-        case-sensitive:
-        + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-        instances (MySQL and PostreSQL).
-        + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-        + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> Optional[_builtins.str]:
-        """
-        Specifies the key ID for disk encryption.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "disk_encryption_id")
 
     @_builtins.property
     @pulumi.getter(name="limitSize")
     def limit_size(self) -> Optional[_builtins.int]:
-        """
-        Specifies the upper limit of automatic expansion of storage, in GB.
-        """
         return pulumi.get(self, "limit_size")
 
     @_builtins.property
     @pulumi.getter(name="triggerThreshold")
     def trigger_threshold(self) -> Optional[_builtins.int]:
-        """
-        Specifies the threshold to trigger automatic expansion.  
-        If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-        The valid values are as follows:
-        + **10**
-        + **15**
-        + **20**
-        """
         return pulumi.get(self, "trigger_threshold")
 
 
@@ -629,11 +429,7 @@ class MysqlDatabasePrivilegeUser(dict):
                  readonly: Optional[_builtins.bool] = None):
         """
         :param _builtins.str name: Specifies the username of the database account.
-        :param _builtins.bool readonly: Specifies the read-only permission. The value can be:
-               + **true**: indicates the read-only permission.
-               + **false**: indicates the read and write permission.
-               
-               The default value is **false**.
+        :param _builtins.bool readonly: Specifies the read-only permission.
         """
         pulumi.set(__self__, "name", name)
         if readonly is not None:
@@ -651,11 +447,7 @@ class MysqlDatabasePrivilegeUser(dict):
     @pulumi.getter
     def readonly(self) -> Optional[_builtins.bool]:
         """
-        Specifies the read-only permission. The value can be:
-        + **true**: indicates the read-only permission.
-        + **false**: indicates the read and write permission.
-
-        The default value is **false**.
+        Specifies the read-only permission.
         """
         return pulumi.get(self, "readonly")
 
@@ -685,12 +477,8 @@ class MysqlDatabaseTableRestoreDatabase(dict):
                  new_name: _builtins.str,
                  old_name: _builtins.str):
         """
-        :param _builtins.str new_name: Specifies the name of the table after restoration.
-               
-               Changing this creates a new resource.
-        :param _builtins.str old_name: Specifies the name of the table before restoration.
-               
-               Changing this creates a new resource.
+        :param _builtins.str new_name: Specifies the name of the database after restoration.
+        :param _builtins.str old_name: Specifies the name of the database before restoration.
         """
         pulumi.set(__self__, "new_name", new_name)
         pulumi.set(__self__, "old_name", old_name)
@@ -699,9 +487,7 @@ class MysqlDatabaseTableRestoreDatabase(dict):
     @pulumi.getter(name="newName")
     def new_name(self) -> _builtins.str:
         """
-        Specifies the name of the table after restoration.
-
-        Changing this creates a new resource.
+        Specifies the name of the database after restoration.
         """
         return pulumi.get(self, "new_name")
 
@@ -709,9 +495,7 @@ class MysqlDatabaseTableRestoreDatabase(dict):
     @pulumi.getter(name="oldName")
     def old_name(self) -> _builtins.str:
         """
-        Specifies the name of the table before restoration.
-
-        Changing this creates a new resource.
+        Specifies the name of the database before restoration.
         """
         return pulumi.get(self, "old_name")
 
@@ -723,15 +507,7 @@ class MysqlDatabaseTableRestoreRestoreTable(dict):
                  tables: Sequence['outputs.MysqlDatabaseTableRestoreRestoreTableTable']):
         """
         :param _builtins.str database: Specifies the database name.
-               
-               Changing this creates a new resource.
         :param Sequence['MysqlDatabaseTableRestoreRestoreTableTableArgs'] tables: Specifies the tables.
-               The tables structure is documented below.
-               
-               Changing this creates a new resource.
-               
-               <a name="tables_struct"></a>
-               The `tables` block supports:
         """
         pulumi.set(__self__, "database", database)
         pulumi.set(__self__, "tables", tables)
@@ -741,8 +517,6 @@ class MysqlDatabaseTableRestoreRestoreTable(dict):
     def database(self) -> _builtins.str:
         """
         Specifies the database name.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "database")
 
@@ -751,12 +525,6 @@ class MysqlDatabaseTableRestoreRestoreTable(dict):
     def tables(self) -> Sequence['outputs.MysqlDatabaseTableRestoreRestoreTableTable']:
         """
         Specifies the tables.
-        The tables structure is documented below.
-
-        Changing this creates a new resource.
-
-        <a name="tables_struct"></a>
-        The `tables` block supports:
         """
         return pulumi.get(self, "tables")
 
@@ -787,11 +555,7 @@ class MysqlDatabaseTableRestoreRestoreTableTable(dict):
                  old_name: _builtins.str):
         """
         :param _builtins.str new_name: Specifies the name of the table after restoration.
-               
-               Changing this creates a new resource.
         :param _builtins.str old_name: Specifies the name of the table before restoration.
-               
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "new_name", new_name)
         pulumi.set(__self__, "old_name", old_name)
@@ -801,8 +565,6 @@ class MysqlDatabaseTableRestoreRestoreTableTable(dict):
     def new_name(self) -> _builtins.str:
         """
         Specifies the name of the table after restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "new_name")
 
@@ -811,8 +573,6 @@ class MysqlDatabaseTableRestoreRestoreTableTable(dict):
     def old_name(self) -> _builtins.str:
         """
         Specifies the name of the table before restoration.
-
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "old_name")
 
@@ -846,15 +606,6 @@ class ParametergroupConfigurationParameter(dict):
                  type: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None,
                  value_range: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str description: The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        :param _builtins.str name: The parameter group name. It contains a maximum of 64 characters.
-        :param _builtins.bool readonly: Indicates whether the parameter is read-only.
-        :param _builtins.bool restart_required: Indicates whether a restart is required.
-        :param _builtins.str type: Indicates the parameter type.
-        :param _builtins.str value: Indicates the parameter value.
-        :param _builtins.str value_range: Indicates the parameter value range.
-        """
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -873,57 +624,36 @@ class ParametergroupConfigurationParameter(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The parameter group name. It contains a maximum of 64 characters.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def readonly(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether the parameter is read-only.
-        """
         return pulumi.get(self, "readonly")
 
     @_builtins.property
     @pulumi.getter(name="restartRequired")
     def restart_required(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether a restart is required.
-        """
         return pulumi.get(self, "restart_required")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter value.
-        """
         return pulumi.get(self, "value")
 
     @_builtins.property
     @pulumi.getter(name="valueRange")
     def value_range(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter value range.
-        """
         return pulumi.get(self, "value_range")
 
 
@@ -932,35 +662,17 @@ class ParametergroupDatastore(dict):
     def __init__(__self__, *,
                  type: _builtins.str,
                  version: _builtins.str):
-        """
-        :param _builtins.str type: The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-        :param _builtins.str version: Specifies the database version.
-               
-               * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-               * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-               * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
-        """
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
-        """
-        Specifies the database version.
-
-        * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-        * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-        * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
-        """
         return pulumi.get(self, "version")
 
 
@@ -1012,7 +724,8 @@ class PgAccountAttribute(dict):
         :param _builtins.int rol_conn_limit: Indicates the maximum number of concurrent connections to a DB instance.
         :param _builtins.bool rol_create_db: Indicates whether a user can create a database.
         :param _builtins.bool rol_create_role: Indicates whether a user can create other sub-users.
-        :param _builtins.bool rol_inherit: Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+        :param _builtins.bool rol_inherit: Indicates whether a user automatically inherits the permissions of the role to which the
+               user belongs.
         :param _builtins.bool rol_replication: Indicates whether the user is a replication role.
         :param _builtins.bool rol_super: Indicates whether a user has the super-user permission.
         """
@@ -1077,7 +790,8 @@ class PgAccountAttribute(dict):
     @pulumi.getter(name="rolInherit")
     def rol_inherit(self) -> Optional[_builtins.bool]:
         """
-        Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+        Indicates whether a user automatically inherits the permissions of the role to which the
+        user belongs.
         """
         return pulumi.get(self, "rol_inherit")
 
@@ -1196,12 +910,6 @@ class ReadReplicaInstanceDb(dict):
                  type: Optional[_builtins.str] = None,
                  user_name: Optional[_builtins.str] = None,
                  version: Optional[_builtins.str] = None):
-        """
-        :param _builtins.int port: Indicates the database port information.
-        :param _builtins.str type: Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        :param _builtins.str user_name: Indicates the default user name of database.
-        :param _builtins.str version: Indicates the database version.
-        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if type is not None:
@@ -1214,33 +922,21 @@ class ReadReplicaInstanceDb(dict):
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
-        """
-        Indicates the database port information.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the default user name of database.
-        """
         return pulumi.get(self, "user_name")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
-        """
-        Indicates the database version.
-        """
         return pulumi.get(self, "version")
 
 
@@ -1249,24 +945,12 @@ class ReadReplicaInstanceParameter(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the DB instance name. The DB instance name of the same type
-               must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-               It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the DB instance name. The DB instance name of the same type
-        must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-        It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1305,13 +989,7 @@ class ReadReplicaInstanceVolume(dict):
                  size: Optional[_builtins.int] = None,
                  trigger_threshold: Optional[_builtins.int] = None):
         """
-        :param _builtins.str type: Specifies the volume type. Its value can be any of the following and is case-sensitive:
-               - *ESSD* - ultrahigh I/O.
-               - *CLOUDSSD* - high I/O.
-               
-               Changing this parameter will create a new resource.
-        :param _builtins.str disk_encryption_id: Specifies the key ID for disk encryption.
-               Changing this parameter will create a new resource.
+        :param _builtins.str disk_encryption_id: schema: Computed
         """
         pulumi.set(__self__, "type", type)
         if disk_encryption_id is not None:
@@ -1326,21 +1004,13 @@ class ReadReplicaInstanceVolume(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the volume type. Its value can be any of the following and is case-sensitive:
-        - *ESSD* - ultrahigh I/O.
-        - *CLOUDSSD* - high I/O.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> Optional[_builtins.str]:
         """
-        Specifies the key ID for disk encryption.
-        Changing this parameter will create a new resource.
+        schema: Computed
         """
         return pulumi.get(self, "disk_encryption_id")
 
@@ -1367,11 +1037,7 @@ class SqlserverDatabasePrivilegeUser(dict):
                  readonly: Optional[_builtins.bool] = None):
         """
         :param _builtins.str name: Specifies the username of the database account.
-        :param _builtins.bool readonly: Specifies the read-only permission. Value options:
-               + **true**: indicates the read-only permission.
-               + **false**: indicates the read and write permission.
-               
-               Defaults to **false**.
+        :param _builtins.bool readonly: Specifies the read-only permission.
         """
         pulumi.set(__self__, "name", name)
         if readonly is not None:
@@ -1389,11 +1055,7 @@ class SqlserverDatabasePrivilegeUser(dict):
     @pulumi.getter
     def readonly(self) -> Optional[_builtins.bool]:
         """
-        Specifies the read-only permission. Value options:
-        + **true**: indicates the read-only permission.
-        + **false**: indicates the read and write permission.
-
-        Defaults to **false**.
+        Specifies the read-only permission.
         """
         return pulumi.get(self, "readonly")
 
@@ -1414,24 +1076,15 @@ class GetBackupsBackupResult(dict):
                  type: _builtins.str):
         """
         :param _builtins.bool associated_with_ddm: Whether a DDM instance has been associated.
-        :param _builtins.str begin_time: Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
+        :param _builtins.str begin_time: Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
         :param Sequence['GetBackupsBackupDatabaseArgs'] databases: Database been backed up.
-               The databases structure is documented below.
-        :param Sequence['GetBackupsBackupDatastoreArgs'] datastores: The database information.
-               The datastore structure is documented below.
-        :param _builtins.str end_time: End time in the "yyyy-mm-ddThh:mm:ssZ" format.
+        :param _builtins.str end_time: Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
         :param _builtins.str id: Backup ID.
-        :param _builtins.str instance_id: Instance ID.
+        :param _builtins.str instance_id: RDS instance ID.
         :param _builtins.str name: Backup name.
         :param _builtins.int size: Backup size in KB.
-        :param _builtins.str status: Backup status.  
-               The options are as follows:
-               - **BUILDING**: Backup in progress.
-               - **COMPLETED**: Backup completed.
-               - **FAILED**: Backup failed.
-               - **DELETING**: Backup being deleted.
-        :param _builtins.str type: DB engine.  
-               The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+        :param _builtins.str status: Backup status.
+        :param _builtins.str type: Backup type.
         """
         pulumi.set(__self__, "associated_with_ddm", associated_with_ddm)
         pulumi.set(__self__, "begin_time", begin_time)
@@ -1457,7 +1110,7 @@ class GetBackupsBackupResult(dict):
     @pulumi.getter(name="beginTime")
     def begin_time(self) -> _builtins.str:
         """
-        Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
+        Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
         """
         return pulumi.get(self, "begin_time")
 
@@ -1466,24 +1119,19 @@ class GetBackupsBackupResult(dict):
     def databases(self) -> Sequence['outputs.GetBackupsBackupDatabaseResult']:
         """
         Database been backed up.
-        The databases structure is documented below.
         """
         return pulumi.get(self, "databases")
 
     @_builtins.property
     @pulumi.getter
     def datastores(self) -> Sequence['outputs.GetBackupsBackupDatastoreResult']:
-        """
-        The database information.
-        The datastore structure is documented below.
-        """
         return pulumi.get(self, "datastores")
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     def end_time(self) -> _builtins.str:
         """
-        End time in the "yyyy-mm-ddThh:mm:ssZ" format.
+        Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
         """
         return pulumi.get(self, "end_time")
 
@@ -1499,7 +1147,7 @@ class GetBackupsBackupResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> _builtins.str:
         """
-        Instance ID.
+        RDS instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -1523,12 +1171,7 @@ class GetBackupsBackupResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Backup status.  
-        The options are as follows:
-        - **BUILDING**: Backup in progress.
-        - **COMPLETED**: Backup completed.
-        - **FAILED**: Backup failed.
-        - **DELETING**: Backup being deleted.
+        Backup status.
         """
         return pulumi.get(self, "status")
 
@@ -1536,8 +1179,7 @@ class GetBackupsBackupResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        DB engine.  
-        The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+        Backup type.
         """
         return pulumi.get(self, "type")
 
@@ -1547,7 +1189,7 @@ class GetBackupsBackupDatabaseResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str):
         """
-        :param _builtins.str name: Backup name.
+        :param _builtins.str name: Database to be backed up for Microsoft SQL Server.
         """
         pulumi.set(__self__, "name", name)
 
@@ -1555,7 +1197,7 @@ class GetBackupsBackupDatabaseResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Backup name.
+        Database to be backed up for Microsoft SQL Server.
         """
         return pulumi.get(self, "name")
 
@@ -1566,8 +1208,7 @@ class GetBackupsBackupDatastoreResult(dict):
                  type: _builtins.str,
                  version: _builtins.str):
         """
-        :param _builtins.str type: DB engine.  
-               The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+        :param _builtins.str type: DB engine.
         :param _builtins.str version: DB engine version.
         """
         pulumi.set(__self__, "type", type)
@@ -1577,8 +1218,7 @@ class GetBackupsBackupDatastoreResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        DB engine.  
-        The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+        DB engine.
         """
         return pulumi.get(self, "type")
 
@@ -1596,27 +1236,17 @@ class GetEngineVersionsVersionResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
                  name: _builtins.str):
-        """
-        :param _builtins.str id: Version ID.
-        :param _builtins.str name: Version name.
-        """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Version ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Version name.
-        """
         return pulumi.get(self, "name")
 
 
@@ -1632,20 +1262,6 @@ class GetFlavorsFlavorResult(dict):
                  mode: _builtins.str,
                  name: _builtins.str,
                  vcpus: _builtins.int):
-        """
-        :param Sequence[_builtins.str] availability_zones: The availability zones which the RDS flavor belongs to.
-        :param Sequence[_builtins.str] db_versions: The Available versions of the database.
-        :param _builtins.str group_type: Specifies the performance specification, the valid values are as follows:
-               + **normal**: General enhanced.
-               + **normal2**: General enhanced type II.
-        :param _builtins.str id: The ID of the rds flavor.
-        :param _builtins.str instance_mode: The mode of instance. Value: *ha*(indicates primary/standby instance),
-               *single*(indicates single instance) and *replica*(indicates read replicas).
-        :param _builtins.int memory: Specifies the memory size(GB) in the RDS flavor.
-        :param _builtins.str mode: See 'instance_mode' above.
-        :param _builtins.str name: The name of the rds flavor.
-        :param _builtins.int vcpus: Specifies the number of vCPUs in the RDS flavor.
-        """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "db_versions", db_versions)
         pulumi.set(__self__, "group_type", group_type)
@@ -1659,77 +1275,47 @@ class GetFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
-        """
-        The availability zones which the RDS flavor belongs to.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter(name="dbVersions")
     def db_versions(self) -> Sequence[_builtins.str]:
-        """
-        The Available versions of the database.
-        """
         return pulumi.get(self, "db_versions")
 
     @_builtins.property
     @pulumi.getter(name="groupType")
     def group_type(self) -> _builtins.str:
-        """
-        Specifies the performance specification, the valid values are as follows:
-        + **normal**: General enhanced.
-        + **normal2**: General enhanced type II.
-        """
         return pulumi.get(self, "group_type")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the rds flavor.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="instanceMode")
     def instance_mode(self) -> _builtins.str:
-        """
-        The mode of instance. Value: *ha*(indicates primary/standby instance),
-        *single*(indicates single instance) and *replica*(indicates read replicas).
-        """
         return pulumi.get(self, "instance_mode")
 
     @_builtins.property
     @pulumi.getter
     def memory(self) -> _builtins.int:
-        """
-        Specifies the memory size(GB) in the RDS flavor.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""use instance_mode instead""")
     def mode(self) -> _builtins.str:
-        """
-        See 'instance_mode' above.
-        """
         return pulumi.get(self, "mode")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The name of the rds flavor.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> _builtins.int:
-        """
-        Specifies the number of vCPUs in the RDS flavor.
-        """
         return pulumi.get(self, "vcpus")
 
 
@@ -1759,32 +1345,6 @@ class GetInstancesInstanceResult(dict):
                  time_zone: _builtins.str,
                  volumes: Sequence['outputs.GetInstancesInstanceVolumeResult'],
                  vpc_id: _builtins.str):
-        """
-        :param Sequence[_builtins.str] availability_zones: Indicates the availability zone where the node resides.
-        :param Sequence['GetInstancesInstanceBackupStrategyArgs'] backup_strategies: Indicates the advanced backup policy. Structure is documented below.
-        :param _builtins.str created: Indicates the creation time.
-        :param Sequence['GetInstancesInstanceDbArgs'] dbs: Indicates the database information. Structure is documented below.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-        :param _builtins.str fixed_ip: Indicates the intranet floating IP address of the instance.
-        :param _builtins.str flavor: Indicates the instance specifications.
-        :param _builtins.str ha_replication_mode: Indicates the replication mode for the standby DB instance.
-        :param _builtins.str id: Indicates the node ID.
-        :param _builtins.str name: Specifies the name of the instance.
-        :param Sequence['GetInstancesInstanceNodeArgs'] nodes: Indicates the instance nodes information. Structure is documented below.
-        :param _builtins.str param_group_id: Indicates the configuration ID.
-        :param Sequence[_builtins.str] private_ips: Indicates the private ips in list.
-        :param Sequence[_builtins.str] public_ips: Indicates the public ips in list.
-        :param _builtins.str region: The region in which to obtain the instances. If omitted, the provider-level region will
-               be used.
-        :param _builtins.str security_group_id: Indicates the security group ID.
-        :param _builtins.bool ssl_enable: Indicates whether to enable SSL.
-        :param _builtins.str status: Indicates the node status.
-        :param _builtins.str subnet_id: Specifies the network ID of a subnet.
-        :param Mapping[str, _builtins.str] tags: Indicates the tags of the instance.
-        :param _builtins.str time_zone: Indicates the time zone.
-        :param Sequence['GetInstancesInstanceVolumeArgs'] volumes: Indicates the volume information. Structure is documented below.
-        :param _builtins.str vpc_id: Specifies the VPC ID.
-        """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "backup_strategies", backup_strategies)
         pulumi.set(__self__, "created", created)
@@ -1812,186 +1372,116 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the availability zone where the node resides.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter(name="backupStrategies")
     def backup_strategies(self) -> Sequence['outputs.GetInstancesInstanceBackupStrategyResult']:
-        """
-        Indicates the advanced backup policy. Structure is documented below.
-        """
         return pulumi.get(self, "backup_strategies")
 
     @_builtins.property
     @pulumi.getter
     def created(self) -> _builtins.str:
-        """
-        Indicates the creation time.
-        """
         return pulumi.get(self, "created")
 
     @_builtins.property
     @pulumi.getter
     def dbs(self) -> Sequence['outputs.GetInstancesInstanceDbResult']:
-        """
-        Indicates the database information. Structure is documented below.
-        """
         return pulumi.get(self, "dbs")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project id.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> _builtins.str:
-        """
-        Indicates the intranet floating IP address of the instance.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> _builtins.str:
-        """
-        Indicates the instance specifications.
-        """
         return pulumi.get(self, "flavor")
 
     @_builtins.property
     @pulumi.getter(name="haReplicationMode")
     def ha_replication_mode(self) -> _builtins.str:
-        """
-        Indicates the replication mode for the standby DB instance.
-        """
         return pulumi.get(self, "ha_replication_mode")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the node ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the instance.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetInstancesInstanceNodeResult']:
-        """
-        Indicates the instance nodes information. Structure is documented below.
-        """
         return pulumi.get(self, "nodes")
 
     @_builtins.property
     @pulumi.getter(name="paramGroupId")
     def param_group_id(self) -> _builtins.str:
-        """
-        Indicates the configuration ID.
-        """
         return pulumi.get(self, "param_group_id")
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
     def private_ips(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the private ips in list.
-        """
         return pulumi.get(self, "private_ips")
 
     @_builtins.property
     @pulumi.getter(name="publicIps")
     def public_ips(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the public ips in list.
-        """
         return pulumi.get(self, "public_ips")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
-        """
-        The region in which to obtain the instances. If omitted, the provider-level region will
-        be used.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
-        """
-        Indicates the security group ID.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> _builtins.bool:
-        """
-        Indicates whether to enable SSL.
-        """
         return pulumi.get(self, "ssl_enable")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
-        """
-        Specifies the network ID of a subnet.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        Indicates the tags of the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> _builtins.str:
-        """
-        Indicates the time zone.
-        """
         return pulumi.get(self, "time_zone")
 
     @_builtins.property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetInstancesInstanceVolumeResult']:
-        """
-        Indicates the volume information. Structure is documented below.
-        """
         return pulumi.get(self, "volumes")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
-        """
-        Specifies the VPC ID.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -2000,27 +1490,17 @@ class GetInstancesInstanceBackupStrategyResult(dict):
     def __init__(__self__, *,
                  keep_days: _builtins.int,
                  start_time: _builtins.str):
-        """
-        :param _builtins.int keep_days: Indicates the number of days to retain the generated.
-        :param _builtins.str start_time: Indicates the backup time window.
-        """
         pulumi.set(__self__, "keep_days", keep_days)
         pulumi.set(__self__, "start_time", start_time)
 
     @_builtins.property
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> _builtins.int:
-        """
-        Indicates the number of days to retain the generated.
-        """
         return pulumi.get(self, "keep_days")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
-        """
-        Indicates the backup time window.
-        """
         return pulumi.get(self, "start_time")
 
 
@@ -2031,12 +1511,6 @@ class GetInstancesInstanceDbResult(dict):
                  type: _builtins.str,
                  user_name: _builtins.str,
                  version: _builtins.str):
-        """
-        :param _builtins.int port: Indicates the database port.
-        :param _builtins.str type: Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-        :param _builtins.str user_name: Indicates the database user name.
-        :param _builtins.str version: Indicates the database version.
-        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_name", user_name)
@@ -2045,33 +1519,21 @@ class GetInstancesInstanceDbResult(dict):
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
-        """
-        Indicates the database port.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> _builtins.str:
-        """
-        Indicates the database user name.
-        """
         return pulumi.get(self, "user_name")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> _builtins.str:
-        """
-        Indicates the database version.
-        """
         return pulumi.get(self, "version")
 
 
@@ -2083,13 +1545,6 @@ class GetInstancesInstanceNodeResult(dict):
                  name: _builtins.str,
                  role: _builtins.str,
                  status: _builtins.str):
-        """
-        :param _builtins.str availability_zone: Indicates the availability zone where the node resides.
-        :param _builtins.str id: Indicates the node ID.
-        :param _builtins.str name: Specifies the name of the instance.
-        :param _builtins.str role: Indicates the node type.
-        :param _builtins.str status: Indicates the node status.
-        """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -2099,41 +1554,26 @@ class GetInstancesInstanceNodeResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        Indicates the availability zone where the node resides.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the node ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the instance.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def role(self) -> _builtins.str:
-        """
-        Indicates the node type.
-        """
         return pulumi.get(self, "role")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Indicates the node status.
-        """
         return pulumi.get(self, "status")
 
 
@@ -2143,11 +1583,6 @@ class GetInstancesInstanceVolumeResult(dict):
                  disk_encryption_id: _builtins.str,
                  size: _builtins.int,
                  type: _builtins.str):
-        """
-        :param _builtins.str disk_encryption_id: Indicates the kms key id.
-        :param _builtins.int size: Indicates the volume size.
-        :param _builtins.str type: Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-        """
         pulumi.set(__self__, "disk_encryption_id", disk_encryption_id)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
@@ -2155,25 +1590,16 @@ class GetInstancesInstanceVolumeResult(dict):
     @_builtins.property
     @pulumi.getter(name="diskEncryptionId")
     def disk_encryption_id(self) -> _builtins.str:
-        """
-        Indicates the kms key id.
-        """
         return pulumi.get(self, "disk_encryption_id")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        Indicates the volume size.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-        """
         return pulumi.get(self, "type")
 
 
@@ -2472,31 +1898,8 @@ class GetStorageTypesStorageTypeResult(dict):
                  support_compute_group_types: Sequence[_builtins.str]):
         """
         :param Mapping[str, _builtins.str] az_status: The status details of the AZs to which the specification belongs.
-               Key indicates the AZ ID, and value indicates the specification status in the AZ.
-               The options of value are as follows:
-               - **normal**: The specifications in the AZ are available.
-               - **unsupported**: The specifications are not supported by the AZ.
-               - **sellout**: The specifications in the AZ are sold out.
-        :param _builtins.str name: Storage type.  
-               The options are as follows:
-               - **ULTRAHIGH**: SSD storage.
-               - **LOCALSSD**: Local SSD storage.
-               - **CLOUDSSD**: Cloud SSD storage.
-               This storage type is supported only with general-purpose and dedicated DB instances.
-               - **ESSD**: extreme SSD storage.
-               This storage type is supported only with dedicated DB instances.
+        :param _builtins.str name: Storage type.
         :param Sequence[_builtins.str] support_compute_group_types: Performance specifications.
-               The options are as follows:
-               - **normal**: General-enhanced.
-               - **normal2**: General-enhanced II.
-               - **armFlavors**: Kunpeng general-enhanced.
-               - **dedicicatenormal**: Exclusive x86.
-               - **armlocalssd**: Standard Kunpeng.
-               - **normallocalssd**: Standard x86.
-               - **general**: General-purpose.
-               - **dedicated**: Dedicated, which is only supported for cloud SSDs.
-               - **rapid**: Dedicated, which is only supported for extreme SSDs.
-               - **bigmen**: Large-memory.
         """
         pulumi.set(__self__, "az_status", az_status)
         pulumi.set(__self__, "name", name)
@@ -2507,11 +1910,6 @@ class GetStorageTypesStorageTypeResult(dict):
     def az_status(self) -> Mapping[str, _builtins.str]:
         """
         The status details of the AZs to which the specification belongs.
-        Key indicates the AZ ID, and value indicates the specification status in the AZ.
-        The options of value are as follows:
-        - **normal**: The specifications in the AZ are available.
-        - **unsupported**: The specifications are not supported by the AZ.
-        - **sellout**: The specifications in the AZ are sold out.
         """
         return pulumi.get(self, "az_status")
 
@@ -2519,14 +1917,7 @@ class GetStorageTypesStorageTypeResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Storage type.  
-        The options are as follows:
-        - **ULTRAHIGH**: SSD storage.
-        - **LOCALSSD**: Local SSD storage.
-        - **CLOUDSSD**: Cloud SSD storage.
-        This storage type is supported only with general-purpose and dedicated DB instances.
-        - **ESSD**: extreme SSD storage.
-        This storage type is supported only with dedicated DB instances.
+        Storage type.
         """
         return pulumi.get(self, "name")
 
@@ -2535,17 +1926,6 @@ class GetStorageTypesStorageTypeResult(dict):
     def support_compute_group_types(self) -> Sequence[_builtins.str]:
         """
         Performance specifications.
-        The options are as follows:
-        - **normal**: General-enhanced.
-        - **normal2**: General-enhanced II.
-        - **armFlavors**: Kunpeng general-enhanced.
-        - **dedicicatenormal**: Exclusive x86.
-        - **armlocalssd**: Standard Kunpeng.
-        - **normallocalssd**: Standard x86.
-        - **general**: General-purpose.
-        - **dedicated**: Dedicated, which is only supported for cloud SSDs.
-        - **rapid**: Dedicated, which is only supported for extreme SSDs.
-        - **bigmen**: Large-memory.
         """
         return pulumi.get(self, "support_compute_group_types")
 

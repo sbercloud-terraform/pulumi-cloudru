@@ -74,25 +74,16 @@ class GetProtectionRulesResult:
     @_builtins.property
     @pulumi.getter(name="actionType")
     def action_type(self) -> Optional[_builtins.str]:
-        """
-        The rule action type.
-        """
         return pulumi.get(self, "action_type")
 
     @_builtins.property
     @pulumi.getter
     def destination(self) -> Optional[_builtins.str]:
-        """
-        The destination configuration.
-        """
         return pulumi.get(self, "destination")
 
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[_builtins.str]:
-        """
-        The direction of a rule.
-        """
         return pulumi.get(self, "direction")
 
     @_builtins.property
@@ -111,9 +102,6 @@ class GetProtectionRulesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The custom service name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -124,9 +112,6 @@ class GetProtectionRulesResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetProtectionRulesRecordResult']:
-        """
-        The protection rule list.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -137,41 +122,26 @@ class GetProtectionRulesResult:
     @_builtins.property
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> Optional[_builtins.str]:
-        """
-        The rule ID.
-        """
         return pulumi.get(self, "rule_id")
 
     @_builtins.property
     @pulumi.getter
     def source(self) -> Optional[_builtins.str]:
-        """
-        The source configuration.
-        """
         return pulumi.get(self, "source")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The rule status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The tag of a rule.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The source type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -211,46 +181,7 @@ def get_protection_rules(action_type: Optional[_builtins.str] = None,
                          type: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProtectionRulesResult:
     """
-    Use this data source to get the list of CFW protection rules.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    name = config.require_object("name")
-    test = sbercloud.Cfw.get_protection_rules(object_id=object_id,
-        name=name)
-    ```
-
-
-    :param _builtins.str action_type: Specifies the rule action type.
-           The options are as follows:
-           + **0**: allow;
-           + **1**: deny.
-    :param _builtins.str destination: Specifies the destination address.
-    :param _builtins.str direction: Specifies the rule direction.
-           The options are as follows:
-           + **0**: inbound;
-           + **1**: outbound.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str name: Specifies the rule name.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str rule_id: Specifies the rule ID.
-    :param _builtins.str source: Specifies the source address.
-    :param _builtins.str status: Specifies the rule status.
-           The options are as follows:
-           + **0**: disabled;
-           + **1**: enabled.
-    :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs to associate with the protection rule.
-           Tags should have only one key/value pair.
-    :param _builtins.str type: Specifies the rule type.
-           The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['actionType'] = action_type
@@ -297,46 +228,7 @@ def get_protection_rules_output(action_type: Optional[pulumi.Input[Optional[_bui
                                 type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProtectionRulesResult]:
     """
-    Use this data source to get the list of CFW protection rules.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    object_id = config.require_object("objectId")
-    name = config.require_object("name")
-    test = sbercloud.Cfw.get_protection_rules(object_id=object_id,
-        name=name)
-    ```
-
-
-    :param _builtins.str action_type: Specifies the rule action type.
-           The options are as follows:
-           + **0**: allow;
-           + **1**: deny.
-    :param _builtins.str destination: Specifies the destination address.
-    :param _builtins.str direction: Specifies the rule direction.
-           The options are as follows:
-           + **0**: inbound;
-           + **1**: outbound.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str name: Specifies the rule name.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str rule_id: Specifies the rule ID.
-    :param _builtins.str source: Specifies the source address.
-    :param _builtins.str status: Specifies the rule status.
-           The options are as follows:
-           + **0**: disabled;
-           + **1**: enabled.
-    :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs to associate with the protection rule.
-           Tags should have only one key/value pair.
-    :param _builtins.str type: Specifies the rule type.
-           The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['actionType'] = action_type

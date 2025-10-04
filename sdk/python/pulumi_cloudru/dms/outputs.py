@@ -61,12 +61,6 @@ class KafkaInstanceCrossVpcAccess(dict):
                  listener_ip: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
                  port_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str advertised_ip: The advertised IP Address or domain name.
-        :param _builtins.str listener_ip: The listener IP address.
-        :param _builtins.int port: The port number.
-        :param _builtins.str port_id: The port ID associated with the address.
-        """
         if advertised_ip is not None:
             pulumi.set(__self__, "advertised_ip", advertised_ip)
         if lisenter_ip is not None:
@@ -81,9 +75,6 @@ class KafkaInstanceCrossVpcAccess(dict):
     @_builtins.property
     @pulumi.getter(name="advertisedIp")
     def advertised_ip(self) -> Optional[_builtins.str]:
-        """
-        The advertised IP Address or domain name.
-        """
         return pulumi.get(self, "advertised_ip")
 
     @_builtins.property
@@ -95,25 +86,16 @@ class KafkaInstanceCrossVpcAccess(dict):
     @_builtins.property
     @pulumi.getter(name="listenerIp")
     def listener_ip(self) -> Optional[_builtins.str]:
-        """
-        The listener IP address.
-        """
         return pulumi.get(self, "listener_ip")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[_builtins.str]:
-        """
-        The port ID associated with the address.
-        """
         return pulumi.get(self, "port_id")
 
 
@@ -122,20 +104,12 @@ class KafkaInstanceParameter(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-               consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the DMS Kafka instance. An instance name starts with a letter,
-        consists of 4 to 64 characters, and supports only letters, digits, hyphens (-) and underscores (_).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -368,33 +342,17 @@ class KafkaPermissionsPolicy(dict):
     def __init__(__self__, *,
                  access_policy: _builtins.str,
                  user_name: _builtins.str):
-        """
-        :param _builtins.str access_policy: Specifies the permissions type. The value can be:
-               + **all**: publish and subscribe permissions.
-               + **pub**: publish permissions.
-               + **sub**: subscribe permissions.
-        :param _builtins.str user_name: Specifies the username.
-        """
         pulumi.set(__self__, "access_policy", access_policy)
         pulumi.set(__self__, "user_name", user_name)
 
     @_builtins.property
     @pulumi.getter(name="accessPolicy")
     def access_policy(self) -> _builtins.str:
-        """
-        Specifies the permissions type. The value can be:
-        + **all**: publish and subscribe permissions.
-        + **pub**: publish permissions.
-        + **sub**: subscribe permissions.
-        """
         return pulumi.get(self, "access_policy")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> _builtins.str:
-        """
-        Specifies the username.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -403,22 +361,12 @@ class KafkaTopicConfig(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the name of the topic. The name starts with a letter, consists of 4 to
-               64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-               resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the topic. The name starts with a letter, consists of 4 to
-        64 characters, and supports only letters, digits, hyphens (-) and underscores (_). Changing this creates a new
-        resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -438,19 +386,6 @@ class GetFlavorsFlavorResult(dict):
                  support_features: Sequence['outputs.GetFlavorsFlavorSupportFeatureResult'],
                  type: _builtins.str,
                  vm_specification: _builtins.str):
-        """
-        :param Sequence[_builtins.str] arch_types: The list of supported CPU architectures.
-        :param Sequence[_builtins.str] charging_modes: The list of supported billing modes.
-        :param _builtins.str id: The flavor ID.
-        :param Sequence['GetFlavorsFlavorIoArgs'] ios: The list of supported disk IO types.
-               The object structure is documented below.
-        :param Sequence['GetFlavorsFlavorPropertyArgs'] properties: The function property details.
-               The object structure is documented below.
-        :param Sequence['GetFlavorsFlavorSupportFeatureArgs'] support_features: The list of features supported by the current specification.
-               The object structure is documented below.
-        :param _builtins.str type: Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-        :param _builtins.str vm_specification: The underlying VM specification.
-        """
         pulumi.set(__self__, "arch_types", arch_types)
         pulumi.set(__self__, "charging_modes", charging_modes)
         pulumi.set(__self__, "id", id)
@@ -463,68 +398,41 @@ class GetFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter(name="archTypes")
     def arch_types(self) -> Sequence[_builtins.str]:
-        """
-        The list of supported CPU architectures.
-        """
         return pulumi.get(self, "arch_types")
 
     @_builtins.property
     @pulumi.getter(name="chargingModes")
     def charging_modes(self) -> Sequence[_builtins.str]:
-        """
-        The list of supported billing modes.
-        """
         return pulumi.get(self, "charging_modes")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The flavor ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def ios(self) -> Sequence['outputs.GetFlavorsFlavorIoResult']:
-        """
-        The list of supported disk IO types.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "ios")
 
     @_builtins.property
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetFlavorsFlavorPropertyResult']:
-        """
-        The function property details.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "properties")
 
     @_builtins.property
     @pulumi.getter(name="supportFeatures")
     def support_features(self) -> Sequence['outputs.GetFlavorsFlavorSupportFeatureResult']:
-        """
-        The list of features supported by the current specification.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "support_features")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vmSpecification")
     def vm_specification(self) -> _builtins.str:
-        """
-        The underlying VM specification.
-        """
         return pulumi.get(self, "vm_specification")
 
 
@@ -535,14 +443,6 @@ class GetFlavorsFlavorIoResult(dict):
                  storage_spec_code: _builtins.str,
                  type: _builtins.str,
                  unavailability_zones: Sequence[_builtins.str]):
-        """
-        :param Sequence[_builtins.str] availability_zones: Specifies the list of availability zones with available resources.
-        :param _builtins.str storage_spec_code: Specifies the disk IO encoding.
-               + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-               + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-        :param _builtins.str type: Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-        :param Sequence[_builtins.str] unavailability_zones: The list of unavailability zones with available resources.
-        """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "storage_spec_code", storage_spec_code)
         pulumi.set(__self__, "type", type)
@@ -551,35 +451,21 @@ class GetFlavorsFlavorIoResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
-        """
-        Specifies the list of availability zones with available resources.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> _builtins.str:
-        """
-        Specifies the disk IO encoding.
-        + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-        + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies flavor type. The valid values are **single**, **cluster** and **cluster.small**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="unavailabilityZones")
     def unavailability_zones(self) -> Sequence[_builtins.str]:
-        """
-        The list of unavailability zones with available resources.
-        """
         return pulumi.get(self, "unavailability_zones")
 
 
@@ -595,17 +481,6 @@ class GetFlavorsFlavorPropertyResult(dict):
                  max_tps_per_broker: _builtins.int,
                  min_broker: _builtins.int,
                  min_storage_per_node: _builtins.int):
-        """
-        :param _builtins.str flavor_alias: The flavor ID alias.
-        :param _builtins.int max_bandwidth_per_broker: The maximum bandwidth per broker.
-        :param _builtins.int max_broker: The maximum number of brokers.
-        :param _builtins.int max_consumer_per_broker: The maximum number of consumers per broker.
-        :param _builtins.int max_partition_per_broker: The maximum number of partitions per broker.
-        :param _builtins.int max_storage_per_node: The maximum storage per node. The unit is GB.
-        :param _builtins.int max_tps_per_broker: The maximum TPS per broker.
-        :param _builtins.int min_broker: The minimum number of brokers.
-        :param _builtins.int min_storage_per_node: The minimum storage per node. The unit is GB.
-        """
         pulumi.set(__self__, "flavor_alias", flavor_alias)
         pulumi.set(__self__, "max_bandwidth_per_broker", max_bandwidth_per_broker)
         pulumi.set(__self__, "max_broker", max_broker)
@@ -619,73 +494,46 @@ class GetFlavorsFlavorPropertyResult(dict):
     @_builtins.property
     @pulumi.getter(name="flavorAlias")
     def flavor_alias(self) -> _builtins.str:
-        """
-        The flavor ID alias.
-        """
         return pulumi.get(self, "flavor_alias")
 
     @_builtins.property
     @pulumi.getter(name="maxBandwidthPerBroker")
     def max_bandwidth_per_broker(self) -> _builtins.int:
-        """
-        The maximum bandwidth per broker.
-        """
         return pulumi.get(self, "max_bandwidth_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxBroker")
     def max_broker(self) -> _builtins.int:
-        """
-        The maximum number of brokers.
-        """
         return pulumi.get(self, "max_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxConsumerPerBroker")
     def max_consumer_per_broker(self) -> _builtins.int:
-        """
-        The maximum number of consumers per broker.
-        """
         return pulumi.get(self, "max_consumer_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxPartitionPerBroker")
     def max_partition_per_broker(self) -> _builtins.int:
-        """
-        The maximum number of partitions per broker.
-        """
         return pulumi.get(self, "max_partition_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxStoragePerNode")
     def max_storage_per_node(self) -> _builtins.int:
-        """
-        The maximum storage per node. The unit is GB.
-        """
         return pulumi.get(self, "max_storage_per_node")
 
     @_builtins.property
     @pulumi.getter(name="maxTpsPerBroker")
     def max_tps_per_broker(self) -> _builtins.int:
-        """
-        The maximum TPS per broker.
-        """
         return pulumi.get(self, "max_tps_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="minBroker")
     def min_broker(self) -> _builtins.int:
-        """
-        The minimum number of brokers.
-        """
         return pulumi.get(self, "min_broker")
 
     @_builtins.property
     @pulumi.getter(name="minStoragePerNode")
     def min_storage_per_node(self) -> _builtins.int:
-        """
-        The minimum storage per node. The unit is GB.
-        """
         return pulumi.get(self, "min_storage_per_node")
 
 
@@ -694,29 +542,17 @@ class GetFlavorsFlavorSupportFeatureResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  properties: Sequence['outputs.GetFlavorsFlavorSupportFeaturePropertyResult']):
-        """
-        :param _builtins.str name: The function name, e.g. **connector_obs**.
-        :param Sequence['GetFlavorsFlavorSupportFeaturePropertyArgs'] properties: The function property details.
-               The object structure is documented below.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "properties", properties)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The function name, e.g. **connector_obs**.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetFlavorsFlavorSupportFeaturePropertyResult']:
-        """
-        The function property details.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "properties")
 
 
@@ -727,12 +563,6 @@ class GetFlavorsFlavorSupportFeaturePropertyResult(dict):
                  max_task: _builtins.int,
                  min_node: _builtins.int,
                  min_task: _builtins.int):
-        """
-        :param _builtins.int max_node: The maximum number of nodes for the dump function.
-        :param _builtins.int max_task: The maximum number of tasks for the dump function.
-        :param _builtins.int min_node: The minimum number of nodes for the dump function.
-        :param _builtins.int min_task: The minimum number of tasks for the dump function.
-        """
         pulumi.set(__self__, "max_node", max_node)
         pulumi.set(__self__, "max_task", max_task)
         pulumi.set(__self__, "min_node", min_node)
@@ -741,33 +571,21 @@ class GetFlavorsFlavorSupportFeaturePropertyResult(dict):
     @_builtins.property
     @pulumi.getter(name="maxNode")
     def max_node(self) -> _builtins.int:
-        """
-        The maximum number of nodes for the dump function.
-        """
         return pulumi.get(self, "max_node")
 
     @_builtins.property
     @pulumi.getter(name="maxTask")
     def max_task(self) -> _builtins.int:
-        """
-        The maximum number of tasks for the dump function.
-        """
         return pulumi.get(self, "max_task")
 
     @_builtins.property
     @pulumi.getter(name="minNode")
     def min_node(self) -> _builtins.int:
-        """
-        The minimum number of nodes for the dump function.
-        """
         return pulumi.get(self, "min_node")
 
     @_builtins.property
     @pulumi.getter(name="minTask")
     def min_task(self) -> _builtins.int:
-        """
-        The minimum number of tasks for the dump function.
-        """
         return pulumi.get(self, "min_task")
 
 
@@ -812,45 +630,6 @@ class GetInstancesInstanceResult(dict):
                  user_id: _builtins.str,
                  user_name: _builtins.str,
                  vpc_id: _builtins.str):
-        """
-        :param _builtins.str access_user: The access username.
-        :param Sequence[_builtins.str] availability_zones: The list of AZ names.
-        :param _builtins.str connect_address: The IP address for instance connection.
-        :param Sequence['GetInstancesInstanceCrossVpcAccessArgs'] cross_vpc_accesses: Indicates the Access information of cross-VPC. The structure is documented below.
-        :param _builtins.str description: The instance description.
-        :param _builtins.bool dumping: Whether to dumping is enabled.
-        :param _builtins.bool enable_auto_topic: Whether to enable automatic topic creation.
-        :param _builtins.bool enable_public_ip: Whether public access to the instance is enabled.
-        :param _builtins.str engine_version: The kafka engine version.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID to which all instances of the list
-               belong.
-        :param _builtins.str id: The instance ID.
-        :param _builtins.str maintain_begin: The time at which a maintenance time window starts, the format is `HH:mm`.
-        :param _builtins.str maintain_end: The time at which a maintenance time window ends, the format is `HH:mm`.
-        :param _builtins.str management_connect_address: The connection address of the Kafka manager of an instance.
-        :param _builtins.str manager_user: The username for logging in to the Kafka Manager.
-        :param _builtins.str name: Specifies the kafka instance name for data-source queries.
-        :param _builtins.str network_id: The subnet ID to which the instance belongs.
-        :param _builtins.int partition_num: The maximum number of topics in the DMS kafka instance.
-        :param _builtins.int port: The port number.
-        :param _builtins.str product_id: The product ID used by the instance.
-        :param _builtins.str public_conn_addresses: The instance public access address.
-               The format of each connection address is `{IP address}:{port}`.
-        :param Sequence[_builtins.str] public_ip_ids: The IDs of the elastic IP address (EIP).
-        :param _builtins.str resource_spec_code: The resource specifications identifier.
-        :param _builtins.str retention_policy: The action to be taken when the memory usage reaches the disk capacity threshold.
-        :param _builtins.str security_group_id: The security group ID associated with the instance.
-        :param _builtins.bool ssl_enable: Whether the Kafka SASL_SSL is enabled.
-        :param _builtins.str status: Specifies the kafka instance status for data-source queries.
-        :param _builtins.int storage_space: The message storage capacity, in GB unit.
-        :param _builtins.str storage_spec_code: The storage I/O specification.
-        :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
-        :param _builtins.str type: The instance type.
-        :param _builtins.int used_storage_space: The used message storage space, in GB unit.
-        :param _builtins.str user_id: The user ID who created the instance.
-        :param _builtins.str user_name: The username who created the instance.
-        :param _builtins.str vpc_id: The VPC ID to which the instance belongs.
-        """
         pulumi.set(__self__, "access_user", access_user)
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "connect_address", connect_address)
@@ -893,65 +672,41 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="accessUser")
     def access_user(self) -> _builtins.str:
-        """
-        The access username.
-        """
         return pulumi.get(self, "access_user")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
-        """
-        The list of AZ names.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter(name="connectAddress")
     def connect_address(self) -> _builtins.str:
-        """
-        The IP address for instance connection.
-        """
         return pulumi.get(self, "connect_address")
 
     @_builtins.property
     @pulumi.getter(name="crossVpcAccesses")
     def cross_vpc_accesses(self) -> Sequence['outputs.GetInstancesInstanceCrossVpcAccessResult']:
-        """
-        Indicates the Access information of cross-VPC. The structure is documented below.
-        """
         return pulumi.get(self, "cross_vpc_accesses")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        The instance description.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def dumping(self) -> _builtins.bool:
-        """
-        Whether to dumping is enabled.
-        """
         return pulumi.get(self, "dumping")
 
     @_builtins.property
     @pulumi.getter(name="enableAutoTopic")
     def enable_auto_topic(self) -> _builtins.bool:
-        """
-        Whether to enable automatic topic creation.
-        """
         return pulumi.get(self, "enable_auto_topic")
 
     @_builtins.property
     @pulumi.getter(name="enablePublicIp")
     def enable_public_ip(self) -> _builtins.bool:
-        """
-        Whether public access to the instance is enabled.
-        """
         return pulumi.get(self, "enable_public_ip")
 
     @_builtins.property
@@ -962,58 +717,36 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> _builtins.str:
-        """
-        The kafka engine version.
-        """
         return pulumi.get(self, "engine_version")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Specifies the enterprise project ID to which all instances of the list
-        belong.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The instance ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maintainBegin")
     def maintain_begin(self) -> _builtins.str:
-        """
-        The time at which a maintenance time window starts, the format is `HH:mm`.
-        """
         return pulumi.get(self, "maintain_begin")
 
     @_builtins.property
     @pulumi.getter(name="maintainEnd")
     def maintain_end(self) -> _builtins.str:
-        """
-        The time at which a maintenance time window ends, the format is `HH:mm`.
-        """
         return pulumi.get(self, "maintain_end")
 
     @_builtins.property
     @pulumi.getter(name="managementConnectAddress")
     def management_connect_address(self) -> _builtins.str:
-        """
-        The connection address of the Kafka manager of an instance.
-        """
         return pulumi.get(self, "management_connect_address")
 
     @_builtins.property
     @pulumi.getter(name="managerUser")
     def manager_user(self) -> _builtins.str:
-        """
-        The username for logging in to the Kafka Manager.
-        """
         return pulumi.get(self, "manager_user")
 
     @_builtins.property
@@ -1025,82 +758,51 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the kafka instance name for data-source queries.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> _builtins.str:
-        """
-        The subnet ID to which the instance belongs.
-        """
         return pulumi.get(self, "network_id")
 
     @_builtins.property
     @pulumi.getter(name="partitionNum")
     def partition_num(self) -> _builtins.int:
-        """
-        The maximum number of topics in the DMS kafka instance.
-        """
         return pulumi.get(self, "partition_num")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="productId")
     def product_id(self) -> _builtins.str:
-        """
-        The product ID used by the instance.
-        """
         return pulumi.get(self, "product_id")
 
     @_builtins.property
     @pulumi.getter(name="publicConnAddresses")
     def public_conn_addresses(self) -> _builtins.str:
-        """
-        The instance public access address.
-        The format of each connection address is `{IP address}:{port}`.
-        """
         return pulumi.get(self, "public_conn_addresses")
 
     @_builtins.property
     @pulumi.getter(name="publicIpIds")
     def public_ip_ids(self) -> Sequence[_builtins.str]:
-        """
-        The IDs of the elastic IP address (EIP).
-        """
         return pulumi.get(self, "public_ip_ids")
 
     @_builtins.property
     @pulumi.getter(name="resourceSpecCode")
     def resource_spec_code(self) -> _builtins.str:
-        """
-        The resource specifications identifier.
-        """
         return pulumi.get(self, "resource_spec_code")
 
     @_builtins.property
     @pulumi.getter(name="retentionPolicy")
     def retention_policy(self) -> _builtins.str:
-        """
-        The action to be taken when the memory usage reaches the disk capacity threshold.
-        """
         return pulumi.get(self, "retention_policy")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
-        """
-        The security group ID associated with the instance.
-        """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
@@ -1111,81 +813,51 @@ class GetInstancesInstanceResult(dict):
     @_builtins.property
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> _builtins.bool:
-        """
-        Whether the Kafka SASL_SSL is enabled.
-        """
         return pulumi.get(self, "ssl_enable")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the kafka instance status for data-source queries.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="storageSpace")
     def storage_space(self) -> _builtins.int:
-        """
-        The message storage capacity, in GB unit.
-        """
         return pulumi.get(self, "storage_space")
 
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> _builtins.str:
-        """
-        The storage I/O specification.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
-        """
-        The key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The instance type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="usedStorageSpace")
     def used_storage_space(self) -> _builtins.int:
-        """
-        The used message storage space, in GB unit.
-        """
         return pulumi.get(self, "used_storage_space")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> _builtins.str:
-        """
-        The user ID who created the instance.
-        """
         return pulumi.get(self, "user_id")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> _builtins.str:
-        """
-        The username who created the instance.
-        """
         return pulumi.get(self, "user_name")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
-        """
-        The VPC ID to which the instance belongs.
-        """
         return pulumi.get(self, "vpc_id")
 
 
@@ -1197,12 +869,6 @@ class GetInstancesInstanceCrossVpcAccessResult(dict):
                  listener_ip: _builtins.str,
                  port: _builtins.int,
                  port_id: _builtins.str):
-        """
-        :param _builtins.str advertised_ip: The advertised IP Address.
-        :param _builtins.str listener_ip: The listener IP address.
-        :param _builtins.int port: The port number.
-        :param _builtins.str port_id: The port ID associated with the address
-        """
         pulumi.set(__self__, "advertised_ip", advertised_ip)
         pulumi.set(__self__, "lisenter_ip", lisenter_ip)
         pulumi.set(__self__, "listener_ip", listener_ip)
@@ -1212,9 +878,6 @@ class GetInstancesInstanceCrossVpcAccessResult(dict):
     @_builtins.property
     @pulumi.getter(name="advertisedIp")
     def advertised_ip(self) -> _builtins.str:
-        """
-        The advertised IP Address.
-        """
         return pulumi.get(self, "advertised_ip")
 
     @_builtins.property
@@ -1226,25 +889,16 @@ class GetInstancesInstanceCrossVpcAccessResult(dict):
     @_builtins.property
     @pulumi.getter(name="listenerIp")
     def listener_ip(self) -> _builtins.str:
-        """
-        The listener IP address.
-        """
         return pulumi.get(self, "listener_ip")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> _builtins.str:
-        """
-        The port ID associated with the address
-        """
         return pulumi.get(self, "port_id")
 
 

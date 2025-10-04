@@ -6,11 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * GES graph management
- *
- * ## Example Usage
- */
 export class GesGraph extends pulumi.CustomResource {
     /**
      * Get an existing GesGraph resource's state with the given name, ID, and optional extra
@@ -89,13 +84,11 @@ export class GesGraph extends pulumi.CustomResource {
     declare public readonly keepBackup: pulumi.Output<boolean>;
     declare public readonly ltsOperationTrace: pulumi.Output<outputs.GesGraphLtsOperationTrace>;
     /**
-     * Indicates the graph name.  Changing this parameter will create a new resource.
+     * The graph name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Indicates the private network access address of a graph instance.
-     * Users can access the instance using the IP address through the ECS
-     * deployed on the private network.
+     * Floating IP address of a graph instance.
      */
     declare public /*out*/ readonly privateIp: pulumi.Output<string>;
     /**
@@ -103,26 +96,21 @@ export class GesGraph extends pulumi.CustomResource {
      */
     declare public readonly productType: pulumi.Output<string>;
     /**
-     * Indicates the public network access address of a graph instance.
-     * Users can access the instance using the IP address from the Internet.
+     * The information about public IP.
      */
     declare public readonly publicIp: pulumi.Output<outputs.GesGraphPublicIp>;
-    /**
-     * Indicates the region code.  Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public readonly replication: pulumi.Output<number>;
     /**
-     * Indicates the security group ID.  Changing this parameter will create a new resource.
+     * The security group ID.
      */
     declare public readonly securityGroupId: pulumi.Output<string>;
     /**
-     * Indicates the OBS file import status:
-     * success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+     * Status of a graph.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+     * The subnet ID.
      */
     declare public readonly subnetId: pulumi.Output<string>;
     /**
@@ -138,7 +126,7 @@ export class GesGraph extends pulumi.CustomResource {
      */
     declare public readonly vertexIdType: pulumi.Output<outputs.GesGraphVertexIdType>;
     /**
-     * Indicates the VPC ID.  Changing this parameter will create a new resource.
+     * The VPC ID.
      */
     declare public readonly vpcId: pulumi.Output<string>;
 
@@ -287,13 +275,11 @@ export interface GesGraphState {
     keepBackup?: pulumi.Input<boolean>;
     ltsOperationTrace?: pulumi.Input<inputs.GesGraphLtsOperationTrace>;
     /**
-     * Indicates the graph name.  Changing this parameter will create a new resource.
+     * The graph name.
      */
     name?: pulumi.Input<string>;
     /**
-     * Indicates the private network access address of a graph instance.
-     * Users can access the instance using the IP address through the ECS
-     * deployed on the private network.
+     * Floating IP address of a graph instance.
      */
     privateIp?: pulumi.Input<string>;
     /**
@@ -301,26 +287,21 @@ export interface GesGraphState {
      */
     productType?: pulumi.Input<string>;
     /**
-     * Indicates the public network access address of a graph instance.
-     * Users can access the instance using the IP address from the Internet.
+     * The information about public IP.
      */
     publicIp?: pulumi.Input<inputs.GesGraphPublicIp>;
-    /**
-     * Indicates the region code.  Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     replication?: pulumi.Input<number>;
     /**
-     * Indicates the security group ID.  Changing this parameter will create a new resource.
+     * The security group ID.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * Indicates the OBS file import status:
-     * success: Imported successfully. partiallyFailed: Partially failed. failed: Failed to import the file.
+     * Status of a graph.
      */
     status?: pulumi.Input<string>;
     /**
-     * Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+     * The subnet ID.
      */
     subnetId?: pulumi.Input<string>;
     /**
@@ -336,7 +317,7 @@ export interface GesGraphState {
      */
     vertexIdType?: pulumi.Input<inputs.GesGraphVertexIdType>;
     /**
-     * Indicates the VPC ID.  Changing this parameter will create a new resource.
+     * The VPC ID.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -391,7 +372,7 @@ export interface GesGraphArgs {
     keepBackup?: pulumi.Input<boolean>;
     ltsOperationTrace?: pulumi.Input<inputs.GesGraphLtsOperationTrace>;
     /**
-     * Indicates the graph name.  Changing this parameter will create a new resource.
+     * The graph name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -399,21 +380,17 @@ export interface GesGraphArgs {
      */
     productType?: pulumi.Input<string>;
     /**
-     * Indicates the public network access address of a graph instance.
-     * Users can access the instance using the IP address from the Internet.
+     * The information about public IP.
      */
     publicIp?: pulumi.Input<inputs.GesGraphPublicIp>;
-    /**
-     * Indicates the region code.  Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
     replication?: pulumi.Input<number>;
     /**
-     * Indicates the security group ID.  Changing this parameter will create a new resource.
+     * The security group ID.
      */
     securityGroupId: pulumi.Input<string>;
     /**
-     * Indicates the subnet ID in the specified VPC.  Changing this parameter will create a new resource.
+     * The subnet ID.
      */
     subnetId: pulumi.Input<string>;
     /**
@@ -425,7 +402,7 @@ export interface GesGraphArgs {
      */
     vertexIdType?: pulumi.Input<inputs.GesGraphVertexIdType>;
     /**
-     * Indicates the VPC ID.  Changing this parameter will create a new resource.
+     * The VPC ID.
      */
     vpcId: pulumi.Input<string>;
 }

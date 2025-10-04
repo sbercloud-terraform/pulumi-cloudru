@@ -12,60 +12,12 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a ACL resource within SberCloud IAM service. The ACL allowing user access only from specified IP address
-// ranges and IPv4 CIDR blocks. The ACL take effect for IAM users under the Domain account rather than the account itself.
-//
-// Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.NewAcl(ctx, "acl", &iam.AclArgs{
-//				Type: pulumi.String("console"),
-//				IpCidrs: iam.AclIpCidrArray{
-//					&iam.AclIpCidrArgs{
-//						Cidr:        pulumi.String("159.138.39.192/32"),
-//						Description: pulumi.String("This is a test ip address"),
-//					},
-//				},
-//				IpRanges: iam.AclIpRangeArray{
-//					&iam.AclIpRangeArgs{
-//						Range:       pulumi.String("0.0.0.0-255.255.255.0"),
-//						Description: pulumi.String("This is a test ip range"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Acl struct {
 	pulumi.CustomResourceState
 
-	// Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
-	// The `ipCidrs` cannot repeat. The structure is documented below.
-	IpCidrs AclIpCidrArrayOutput `pulumi:"ipCidrs"`
-	// Specifies the IP address ranges from which console access or api access is allowed.
-	// The `ipRanges` cannot repeat. The structure is documented below.
+	IpCidrs  AclIpCidrArrayOutput  `pulumi:"ipCidrs"`
 	IpRanges AclIpRangeArrayOutput `pulumi:"ipRanges"`
-	// Specifies the ACL is created through the Console or API. valid value are '
-	// console' and 'api'. Changing this parameter will create a new ACL.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type     pulumi.StringOutput   `pulumi:"type"`
 }
 
 // NewAcl registers a new resource with the given unique name, arguments, and options.
@@ -101,27 +53,15 @@ func GetAcl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Acl resources.
 type aclState struct {
-	// Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
-	// The `ipCidrs` cannot repeat. The structure is documented below.
-	IpCidrs []AclIpCidr `pulumi:"ipCidrs"`
-	// Specifies the IP address ranges from which console access or api access is allowed.
-	// The `ipRanges` cannot repeat. The structure is documented below.
+	IpCidrs  []AclIpCidr  `pulumi:"ipCidrs"`
 	IpRanges []AclIpRange `pulumi:"ipRanges"`
-	// Specifies the ACL is created through the Console or API. valid value are '
-	// console' and 'api'. Changing this parameter will create a new ACL.
-	Type *string `pulumi:"type"`
+	Type     *string      `pulumi:"type"`
 }
 
 type AclState struct {
-	// Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
-	// The `ipCidrs` cannot repeat. The structure is documented below.
-	IpCidrs AclIpCidrArrayInput
-	// Specifies the IP address ranges from which console access or api access is allowed.
-	// The `ipRanges` cannot repeat. The structure is documented below.
+	IpCidrs  AclIpCidrArrayInput
 	IpRanges AclIpRangeArrayInput
-	// Specifies the ACL is created through the Console or API. valid value are '
-	// console' and 'api'. Changing this parameter will create a new ACL.
-	Type pulumi.StringPtrInput
+	Type     pulumi.StringPtrInput
 }
 
 func (AclState) ElementType() reflect.Type {
@@ -129,28 +69,16 @@ func (AclState) ElementType() reflect.Type {
 }
 
 type aclArgs struct {
-	// Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
-	// The `ipCidrs` cannot repeat. The structure is documented below.
-	IpCidrs []AclIpCidr `pulumi:"ipCidrs"`
-	// Specifies the IP address ranges from which console access or api access is allowed.
-	// The `ipRanges` cannot repeat. The structure is documented below.
+	IpCidrs  []AclIpCidr  `pulumi:"ipCidrs"`
 	IpRanges []AclIpRange `pulumi:"ipRanges"`
-	// Specifies the ACL is created through the Console or API. valid value are '
-	// console' and 'api'. Changing this parameter will create a new ACL.
-	Type string `pulumi:"type"`
+	Type     string       `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Acl resource.
 type AclArgs struct {
-	// Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
-	// The `ipCidrs` cannot repeat. The structure is documented below.
-	IpCidrs AclIpCidrArrayInput
-	// Specifies the IP address ranges from which console access or api access is allowed.
-	// The `ipRanges` cannot repeat. The structure is documented below.
+	IpCidrs  AclIpCidrArrayInput
 	IpRanges AclIpRangeArrayInput
-	// Specifies the ACL is created through the Console or API. valid value are '
-	// console' and 'api'. Changing this parameter will create a new ACL.
-	Type pulumi.StringInput
+	Type     pulumi.StringInput
 }
 
 func (AclArgs) ElementType() reflect.Type {
@@ -240,20 +168,14 @@ func (o AclOutput) ToAclOutputWithContext(ctx context.Context) AclOutput {
 	return o
 }
 
-// Specifies the IPv4 CIDR blocks from which console access or api access is allowed.
-// The `ipCidrs` cannot repeat. The structure is documented below.
 func (o AclOutput) IpCidrs() AclIpCidrArrayOutput {
 	return o.ApplyT(func(v *Acl) AclIpCidrArrayOutput { return v.IpCidrs }).(AclIpCidrArrayOutput)
 }
 
-// Specifies the IP address ranges from which console access or api access is allowed.
-// The `ipRanges` cannot repeat. The structure is documented below.
 func (o AclOutput) IpRanges() AclIpRangeArrayOutput {
 	return o.ApplyT(func(v *Acl) AclIpRangeArrayOutput { return v.IpRanges }).(AclIpRangeArrayOutput)
 }
 
-// Specifies the ACL is created through the Console or API. valid value are '
-// console' and 'api'. Changing this parameter will create a new ACL.
 func (o AclOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

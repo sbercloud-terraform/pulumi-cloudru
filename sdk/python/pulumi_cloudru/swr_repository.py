@@ -27,15 +27,6 @@ class SwrRepositoryArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SwrRepository resource.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) the repository belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] category: Specifies the category of the repository.
-               The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the repository.
-        :param pulumi.Input[_builtins.bool] is_public: Specifies whether the repository is public. Default is false.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the repository. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "organization", organization)
         if category is not None:
@@ -52,10 +43,6 @@ class SwrRepositoryArgs:
     @_builtins.property
     @pulumi.getter
     def organization(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the organization (namespace) the repository belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "organization")
 
     @organization.setter
@@ -65,10 +52,6 @@ class SwrRepositoryArgs:
     @_builtins.property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the category of the repository.
-        The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -78,9 +61,6 @@ class SwrRepositoryArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the repository.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -90,9 +70,6 @@ class SwrRepositoryArgs:
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the repository is public. Default is false.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -102,9 +79,6 @@ class SwrRepositoryArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the repository. Changing this creates a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -114,10 +88,6 @@ class SwrRepositoryArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -141,20 +111,6 @@ class _SwrRepositoryState:
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SwrRepository resources.
-        :param pulumi.Input[_builtins.str] category: Specifies the category of the repository.
-               The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the repository.
-        :param pulumi.Input[_builtins.str] internal_path: Intra-cluster image address for docker pull.
-        :param pulumi.Input[_builtins.bool] is_public: Specifies whether the repository is public. Default is false.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the repository. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] num_images: Number of image tags in a repository.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) the repository belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] path: Image address for docker pull.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] repository_id: Numeric ID of the repository
-        :param pulumi.Input[_builtins.int] size: Repository size.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -182,10 +138,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the category of the repository.
-        The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -195,9 +147,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the repository.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -207,9 +156,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter(name="internalPath")
     def internal_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Intra-cluster image address for docker pull.
-        """
         return pulumi.get(self, "internal_path")
 
     @internal_path.setter
@@ -219,9 +165,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the repository is public. Default is false.
-        """
         return pulumi.get(self, "is_public")
 
     @is_public.setter
@@ -231,9 +174,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the repository. Changing this creates a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -243,9 +183,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter(name="numImages")
     def num_images(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Number of image tags in a repository.
-        """
         return pulumi.get(self, "num_images")
 
     @num_images.setter
@@ -255,10 +192,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the organization (namespace) the repository belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "organization")
 
     @organization.setter
@@ -268,9 +201,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Image address for docker pull.
-        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -280,10 +210,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -293,9 +219,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Numeric ID of the repository
-        """
         return pulumi.get(self, "repository_id")
 
     @repository_id.setter
@@ -305,9 +228,6 @@ class _SwrRepositoryState:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Repository size.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -329,42 +249,9 @@ class SwrRepository(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a SWR repository resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        organization_name = config.require_object("organizationName")
-        test = sbercloud.SwrRepository("test",
-            organization=organization_name,
-            name="%s",
-            description="Test repository",
-            category="linux")
-        ```
-
-        ## Import
-
-        Repository can be imported using the organization name and repository name separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:index/swrRepository:SwrRepository test org-name/repo-name
-        ```
-
+        Create a SwrRepository resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] category: Specifies the category of the repository.
-               The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the repository.
-        :param pulumi.Input[_builtins.bool] is_public: Specifies whether the repository is public. Default is false.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the repository. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) the repository belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -373,31 +260,7 @@ class SwrRepository(pulumi.CustomResource):
                  args: SwrRepositoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a SWR repository resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        organization_name = config.require_object("organizationName")
-        test = sbercloud.SwrRepository("test",
-            organization=organization_name,
-            name="%s",
-            description="Test repository",
-            category="linux")
-        ```
-
-        ## Import
-
-        Repository can be imported using the organization name and repository name separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:index/swrRepository:SwrRepository test org-name/repo-name
-        ```
-
+        Create a SwrRepository resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SwrRepositoryArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -469,20 +332,6 @@ class SwrRepository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] category: Specifies the category of the repository.
-               The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the repository.
-        :param pulumi.Input[_builtins.str] internal_path: Intra-cluster image address for docker pull.
-        :param pulumi.Input[_builtins.bool] is_public: Specifies whether the repository is public. Default is false.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the repository. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] num_images: Number of image tags in a repository.
-        :param pulumi.Input[_builtins.str] organization: Specifies the name of the organization (namespace) the repository belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] path: Image address for docker pull.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.int] repository_id: Numeric ID of the repository
-        :param pulumi.Input[_builtins.int] size: Repository size.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -504,91 +353,55 @@ class SwrRepository(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the category of the repository.
-        The value can be `app_server`, `linux`, `framework_app`, `database`, `lang`, `other`, `windows`, `arm`.
-        """
         return pulumi.get(self, "category")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the repository.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="internalPath")
     def internal_path(self) -> pulumi.Output[_builtins.str]:
-        """
-        Intra-cluster image address for docker pull.
-        """
         return pulumi.get(self, "internal_path")
 
     @_builtins.property
     @pulumi.getter(name="isPublic")
     def is_public(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the repository is public. Default is false.
-        """
         return pulumi.get(self, "is_public")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the repository. Changing this creates a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="numImages")
     def num_images(self) -> pulumi.Output[_builtins.int]:
-        """
-        Number of image tags in a repository.
-        """
         return pulumi.get(self, "num_images")
 
     @_builtins.property
     @pulumi.getter
     def organization(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the organization (namespace) the repository belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "organization")
 
     @_builtins.property
     @pulumi.getter
     def path(self) -> pulumi.Output[_builtins.str]:
-        """
-        Image address for docker pull.
-        """
         return pulumi.get(self, "path")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="repositoryId")
     def repository_id(self) -> pulumi.Output[_builtins.int]:
-        """
-        Numeric ID of the repository
-        """
         return pulumi.get(self, "repository_id")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
-        """
-        Repository size.
-        """
         return pulumi.get(self, "size")
 

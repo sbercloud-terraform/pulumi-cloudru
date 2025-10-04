@@ -12,85 +12,21 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a CFW service group member resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			groupId := cfg.RequireObject("groupId")
-//			protocol := cfg.RequireObject("protocol")
-//			sourcePort := cfg.RequireObject("sourcePort")
-//			destPort := cfg.RequireObject("destPort")
-//			_, err := cfw.NewServiceGroupMember(ctx, "test", &cfw.ServiceGroupMemberArgs{
-//				GroupId:    pulumi.Any(groupId),
-//				Protocol:   pulumi.Any(protocol),
-//				SourcePort: pulumi.Any(sourcePort),
-//				DestPort:   pulumi.Any(destPort),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The service group member can be imported using service group ID and member ID, separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Cfw/serviceGroupMember:ServiceGroupMember test <group_id>/<member_id>
-// ```
 type ServiceGroupMember struct {
 	pulumi.CustomResourceState
 
 	// Specifies the service group member description.
-	//
-	// Changing this parameter will create a new resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Specifies the destination port.
-	//
-	// Changing this parameter will create a new resource.
 	DestPort pulumi.StringOutput `pulumi:"destPort"`
 	// Specifies the ID of the service group.
-	//
-	// Changing this parameter will create a new resource.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// Specifies the service group member name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
-	//
-	// Changing this parameter will create a new resource.
-	Protocol pulumi.IntOutput `pulumi:"protocol"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Protocol pulumi.IntOutput    `pulumi:"protocol"`
+	Region   pulumi.StringOutput `pulumi:"region"`
 	// Specifies the source port.
-	//
-	// Changing this parameter will create a new resource.
 	SourcePort pulumi.StringOutput `pulumi:"sourcePort"`
 }
 
@@ -137,69 +73,33 @@ func GetServiceGroupMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServiceGroupMember resources.
 type serviceGroupMemberState struct {
 	// Specifies the service group member description.
-	//
-	// Changing this parameter will create a new resource.
 	Description *string `pulumi:"description"`
 	// Specifies the destination port.
-	//
-	// Changing this parameter will create a new resource.
 	DestPort *string `pulumi:"destPort"`
 	// Specifies the ID of the service group.
-	//
-	// Changing this parameter will create a new resource.
 	GroupId *string `pulumi:"groupId"`
 	// Specifies the service group member name.
 	Name *string `pulumi:"name"`
 	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
-	//
-	// Changing this parameter will create a new resource.
-	Protocol *int `pulumi:"protocol"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Protocol *int    `pulumi:"protocol"`
+	Region   *string `pulumi:"region"`
 	// Specifies the source port.
-	//
-	// Changing this parameter will create a new resource.
 	SourcePort *string `pulumi:"sourcePort"`
 }
 
 type ServiceGroupMemberState struct {
 	// Specifies the service group member description.
-	//
-	// Changing this parameter will create a new resource.
 	Description pulumi.StringPtrInput
 	// Specifies the destination port.
-	//
-	// Changing this parameter will create a new resource.
 	DestPort pulumi.StringPtrInput
 	// Specifies the ID of the service group.
-	//
-	// Changing this parameter will create a new resource.
 	GroupId pulumi.StringPtrInput
 	// Specifies the service group member name.
 	Name pulumi.StringPtrInput
 	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
-	//
-	// Changing this parameter will create a new resource.
 	Protocol pulumi.IntPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 	// Specifies the source port.
-	//
-	// Changing this parameter will create a new resource.
 	SourcePort pulumi.StringPtrInput
 }
 
@@ -209,70 +109,34 @@ func (ServiceGroupMemberState) ElementType() reflect.Type {
 
 type serviceGroupMemberArgs struct {
 	// Specifies the service group member description.
-	//
-	// Changing this parameter will create a new resource.
 	Description *string `pulumi:"description"`
 	// Specifies the destination port.
-	//
-	// Changing this parameter will create a new resource.
 	DestPort string `pulumi:"destPort"`
 	// Specifies the ID of the service group.
-	//
-	// Changing this parameter will create a new resource.
 	GroupId string `pulumi:"groupId"`
 	// Specifies the service group member name.
 	Name *string `pulumi:"name"`
 	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
-	//
-	// Changing this parameter will create a new resource.
-	Protocol int `pulumi:"protocol"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	Protocol int     `pulumi:"protocol"`
+	Region   *string `pulumi:"region"`
 	// Specifies the source port.
-	//
-	// Changing this parameter will create a new resource.
 	SourcePort string `pulumi:"sourcePort"`
 }
 
 // The set of arguments for constructing a ServiceGroupMember resource.
 type ServiceGroupMemberArgs struct {
 	// Specifies the service group member description.
-	//
-	// Changing this parameter will create a new resource.
 	Description pulumi.StringPtrInput
 	// Specifies the destination port.
-	//
-	// Changing this parameter will create a new resource.
 	DestPort pulumi.StringInput
 	// Specifies the ID of the service group.
-	//
-	// Changing this parameter will create a new resource.
 	GroupId pulumi.StringInput
 	// Specifies the service group member name.
 	Name pulumi.StringPtrInput
 	// Specifies the protocol type.
-	// The valid values are:
-	// + **6**: indicates TCP;
-	// + **17**: indicates UDP;
-	// + **1**: indicates ICMP;
-	// + **58**: indicates ICMPv6;
-	// + **-1**: indicates any protocol.
-	//
-	// Changing this parameter will create a new resource.
 	Protocol pulumi.IntInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 	// Specifies the source port.
-	//
-	// Changing this parameter will create a new resource.
 	SourcePort pulumi.StringInput
 }
 
@@ -364,22 +228,16 @@ func (o ServiceGroupMemberOutput) ToServiceGroupMemberOutputWithContext(ctx cont
 }
 
 // Specifies the service group member description.
-//
-// Changing this parameter will create a new resource.
 func (o ServiceGroupMemberOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroupMember) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // Specifies the destination port.
-//
-// Changing this parameter will create a new resource.
 func (o ServiceGroupMemberOutput) DestPort() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroupMember) pulumi.StringOutput { return v.DestPort }).(pulumi.StringOutput)
 }
 
 // Specifies the ID of the service group.
-//
-// Changing this parameter will create a new resource.
 func (o ServiceGroupMemberOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroupMember) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
@@ -390,27 +248,15 @@ func (o ServiceGroupMemberOutput) Name() pulumi.StringOutput {
 }
 
 // Specifies the protocol type.
-// The valid values are:
-// + **6**: indicates TCP;
-// + **17**: indicates UDP;
-// + **1**: indicates ICMP;
-// + **58**: indicates ICMPv6;
-// + **-1**: indicates any protocol.
-//
-// Changing this parameter will create a new resource.
 func (o ServiceGroupMemberOutput) Protocol() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServiceGroupMember) pulumi.IntOutput { return v.Protocol }).(pulumi.IntOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o ServiceGroupMemberOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroupMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the source port.
-//
-// Changing this parameter will create a new resource.
 func (o ServiceGroupMemberOutput) SourcePort() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceGroupMember) pulumi.StringOutput { return v.SourcePort }).(pulumi.StringOutput)
 }

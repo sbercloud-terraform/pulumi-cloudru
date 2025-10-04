@@ -1126,13 +1126,6 @@ class DcsParametersConfigurationParameter(dict):
                  type: Optional[_builtins.str] = None,
                  user_permission: Optional[_builtins.str] = None,
                  value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: Indicates the parameter name.
-        :param _builtins.bool need_restart: Indicates whether a restart is required.
-        :param _builtins.str type: Indicates the parameter type.
-        :param _builtins.str user_permission: Indicates a user permission
-        :param _builtins.str value: Indicates the parameter value.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if need_restart is not None:
@@ -1147,41 +1140,26 @@ class DcsParametersConfigurationParameter(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="needRestart")
     def need_restart(self) -> Optional[_builtins.bool]:
-        """
-        Indicates whether a restart is required.
-        """
         return pulumi.get(self, "need_restart")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="userPermission")
     def user_permission(self) -> Optional[_builtins.str]:
-        """
-        Indicates a user permission
-        """
         return pulumi.get(self, "user_permission")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter value.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1238,19 +1216,6 @@ class DcsRestoreRestoreRecord(dict):
                  source_instance_name: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None,
                  updated_at: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str backup_id: ID of the backup record.
-        :param _builtins.str backup_name: Name of the backup record.
-        :param _builtins.str backup_remark: Description of DCS instance backup.
-        :param _builtins.str created_at: Time at which the restoration task is created.
-        :param _builtins.str error_code: Error code returned if DCS instance restoration fails.
-        :param _builtins.str progress: Restoration progress.
-        :param _builtins.str restore_id: ID of the restoration record.
-        :param _builtins.str restore_name: Name of the restoration record.
-        :param _builtins.str restore_remark: Description of DCS instance restoration.
-        :param _builtins.str status: Restoration status:
-        :param _builtins.str updated_at: Time at which DCS instance restoration completed.
-        """
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
         if backup_name is not None:
@@ -1281,73 +1246,46 @@ class DcsRestoreRestoreRecord(dict):
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[_builtins.str]:
-        """
-        ID of the backup record.
-        """
         return pulumi.get(self, "backup_id")
 
     @_builtins.property
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[_builtins.str]:
-        """
-        Name of the backup record.
-        """
         return pulumi.get(self, "backup_name")
 
     @_builtins.property
     @pulumi.getter(name="backupRemark")
     def backup_remark(self) -> Optional[_builtins.str]:
-        """
-        Description of DCS instance backup.
-        """
         return pulumi.get(self, "backup_remark")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[_builtins.str]:
-        """
-        Time at which the restoration task is created.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="errorCode")
     def error_code(self) -> Optional[_builtins.str]:
-        """
-        Error code returned if DCS instance restoration fails.
-        """
         return pulumi.get(self, "error_code")
 
     @_builtins.property
     @pulumi.getter
     def progress(self) -> Optional[_builtins.str]:
-        """
-        Restoration progress.
-        """
         return pulumi.get(self, "progress")
 
     @_builtins.property
     @pulumi.getter(name="restoreId")
     def restore_id(self) -> Optional[_builtins.str]:
-        """
-        ID of the restoration record.
-        """
         return pulumi.get(self, "restore_id")
 
     @_builtins.property
     @pulumi.getter(name="restoreName")
     def restore_name(self) -> Optional[_builtins.str]:
-        """
-        Name of the restoration record.
-        """
         return pulumi.get(self, "restore_name")
 
     @_builtins.property
     @pulumi.getter(name="restoreRemark")
     def restore_remark(self) -> Optional[_builtins.str]:
-        """
-        Description of DCS instance restoration.
-        """
         return pulumi.get(self, "restore_remark")
 
     @_builtins.property
@@ -1363,17 +1301,11 @@ class DcsRestoreRestoreRecord(dict):
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        Restoration status:
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[_builtins.str]:
-        """
-        Time at which DCS instance restoration completed.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -1404,11 +1336,6 @@ class DdsParameterTemplateCompareDifference(dict):
                  parameter_name: Optional[_builtins.str] = None,
                  source_value: Optional[_builtins.str] = None,
                  target_value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str parameter_name: Indicates the parameter name.
-        :param _builtins.str source_value: Indicates the parameter value in the source parameter template.
-        :param _builtins.str target_value: Indicates the parameter value in the destination parameter template.
-        """
         if parameter_name is not None:
             pulumi.set(__self__, "parameter_name", parameter_name)
         if source_value is not None:
@@ -1419,25 +1346,16 @@ class DdsParameterTemplateCompareDifference(dict):
     @_builtins.property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter name.
-        """
         return pulumi.get(self, "parameter_name")
 
     @_builtins.property
     @pulumi.getter(name="sourceValue")
     def source_value(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter value in the source parameter template.
-        """
         return pulumi.get(self, "source_value")
 
     @_builtins.property
     @pulumi.getter(name="targetValue")
     def target_value(self) -> Optional[_builtins.str]:
-        """
-        Indicates the parameter value in the destination parameter template.
-        """
         return pulumi.get(self, "target_value")
 
 
@@ -1471,21 +1389,11 @@ class DdsParameterTemplateCopyParameter(dict):
                  value: Optional[_builtins.str] = None,
                  value_range: Optional[_builtins.str] = None):
         """
-        :param _builtins.str description: Specifies the description of replicated parameter template.
-               The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-               the carriage return character or the following special characters: >!<"&'=
-               Changing this creates a new resource.
-        :param _builtins.str name: Specifies the name of replicated parameter template.
-               The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
-               Changing this creates a new resource.
+        :param _builtins.str description: Indicates the parameter description.
+        :param _builtins.str name: Indicates the parameter name.
         :param _builtins.bool readonly: Indicates whether the parameter is read-only.
-               + If the value is **true**, the parameter is read-only.
-               + If the value is **false**, the parameter is not read-only.
         :param _builtins.bool restart_required: Indicates whether the instance needs to be restarted.
-               + If the value is **true**, restart is required.
-               + If the value is **false**, restart is not required.
-        :param _builtins.str type: Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        :param _builtins.str type: Indicates the parameter type.
         :param _builtins.str value: Indicates the parameter value.
         :param _builtins.str value_range: Indicates the value range.
         """
@@ -1508,10 +1416,7 @@ class DdsParameterTemplateCopyParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the description of replicated parameter template.
-        The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-        the carriage return character or the following special characters: >!<"&'=
-        Changing this creates a new resource.
+        Indicates the parameter description.
         """
         return pulumi.get(self, "description")
 
@@ -1519,10 +1424,7 @@ class DdsParameterTemplateCopyParameter(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the name of replicated parameter template.
-        The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
-        Changing this creates a new resource.
+        Indicates the parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -1531,8 +1433,6 @@ class DdsParameterTemplateCopyParameter(dict):
     def readonly(self) -> Optional[_builtins.bool]:
         """
         Indicates whether the parameter is read-only.
-        + If the value is **true**, the parameter is read-only.
-        + If the value is **false**, the parameter is not read-only.
         """
         return pulumi.get(self, "readonly")
 
@@ -1541,8 +1441,6 @@ class DdsParameterTemplateCopyParameter(dict):
     def restart_required(self) -> Optional[_builtins.bool]:
         """
         Indicates whether the instance needs to be restarted.
-        + If the value is **true**, restart is required.
-        + If the value is **false**, restart is not required.
         """
         return pulumi.get(self, "restart_required")
 
@@ -1550,7 +1448,7 @@ class DdsParameterTemplateCopyParameter(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        Indicates the parameter type.
         """
         return pulumi.get(self, "type")
 
@@ -1601,19 +1499,11 @@ class DdsParameterTemplateParameter(dict):
                  value: Optional[_builtins.str] = None,
                  value_range: Optional[_builtins.str] = None):
         """
-        :param _builtins.str description: Specifies the parameter template description.
-               The description must consist of a maximum of 256 characters and cannot contain the carriage
-               return character or the following special characters: >!<"&'=.
-        :param _builtins.str name: Specifies the parameter template name.
-               The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-               underscores (_), and periods (.).
+        :param _builtins.str description: Indicates the parameter description.
+        :param _builtins.str name: Indicates the parameter name.
         :param _builtins.bool readonly: Indicates whether the parameter is read-only.
-               + If the value is **true**, the parameter is read-only.
-               + If the value is **false**, the parameter is not read-only.
         :param _builtins.bool restart_required: Indicates whether the instance needs to be restarted.
-               + If the value is **true**, restart is required.
-               + If the value is **false**, restart is not required.
-        :param _builtins.str type: Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        :param _builtins.str type: Indicates the parameter type.
         :param _builtins.str value: Indicates the parameter value.
         :param _builtins.str value_range: Indicates the value range.
         """
@@ -1636,9 +1526,7 @@ class DdsParameterTemplateParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
         """
-        Specifies the parameter template description.
-        The description must consist of a maximum of 256 characters and cannot contain the carriage
-        return character or the following special characters: >!<"&'=.
+        Indicates the parameter description.
         """
         return pulumi.get(self, "description")
 
@@ -1646,9 +1534,7 @@ class DdsParameterTemplateParameter(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the parameter template name.
-        The value must be 1 to 64 characters, which can contain only letters, digits, hyphens (-),
-        underscores (_), and periods (.).
+        Indicates the parameter name.
         """
         return pulumi.get(self, "name")
 
@@ -1657,8 +1543,6 @@ class DdsParameterTemplateParameter(dict):
     def readonly(self) -> Optional[_builtins.bool]:
         """
         Indicates whether the parameter is read-only.
-        + If the value is **true**, the parameter is read-only.
-        + If the value is **false**, the parameter is not read-only.
         """
         return pulumi.get(self, "readonly")
 
@@ -1667,8 +1551,6 @@ class DdsParameterTemplateParameter(dict):
     def restart_required(self) -> Optional[_builtins.bool]:
         """
         Indicates whether the instance needs to be restarted.
-        + If the value is **true**, restart is required.
-        + If the value is **false**, restart is not required.
         """
         return pulumi.get(self, "restart_required")
 
@@ -1676,7 +1558,7 @@ class DdsParameterTemplateParameter(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Indicates the parameter type. The value can be integer, string, boolean, float, or list.
+        Indicates the parameter type.
         """
         return pulumi.get(self, "type")
 
@@ -1849,31 +1731,17 @@ class DmsRocketmqInstanceConfig(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  value: _builtins.str):
-        """
-        :param _builtins.str name: Specifies the config name.
-        :param _builtins.str value: Specifies the config value.
-               
-               > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the config name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        Specifies the config value.
-
-        > When `name` is **fileReservedTime**, `value` ranges from `1` to `720` and unit is **hour**. Defaults to `48`.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1908,12 +1776,6 @@ class DmsRocketmqInstanceCrossVpcAccess(dict):
                  listener_ip: Optional[_builtins.str] = None,
                  port: Optional[_builtins.int] = None,
                  port_id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str advertised_ip: The advertised IP Address or domain name.
-        :param _builtins.str listener_ip: The listener IP address.
-        :param _builtins.int port: The port number.
-        :param _builtins.str port_id: The port ID associated with the address.
-        """
         if advertised_ip is not None:
             pulumi.set(__self__, "advertised_ip", advertised_ip)
         if lisenter_ip is not None:
@@ -1928,9 +1790,6 @@ class DmsRocketmqInstanceCrossVpcAccess(dict):
     @_builtins.property
     @pulumi.getter(name="advertisedIp")
     def advertised_ip(self) -> Optional[_builtins.str]:
-        """
-        The advertised IP Address or domain name.
-        """
         return pulumi.get(self, "advertised_ip")
 
     @_builtins.property
@@ -1942,25 +1801,16 @@ class DmsRocketmqInstanceCrossVpcAccess(dict):
     @_builtins.property
     @pulumi.getter(name="listenerIp")
     def listener_ip(self) -> Optional[_builtins.str]:
-        """
-        The listener IP address.
-        """
         return pulumi.get(self, "listener_ip")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[_builtins.int]:
-        """
-        The port number.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[_builtins.str]:
-        """
-        The port ID associated with the address.
-        """
         return pulumi.get(self, "port_id")
 
 
@@ -1992,12 +1842,11 @@ class DmsRocketmqMigrationTaskBinding(dict):
                  source: Optional[_builtins.str] = None,
                  vhost: Optional[_builtins.str] = None):
         """
-        :param _builtins.str destination: Specifies the message target. Changing this creates a new resource.
+        :param _builtins.str destination: Specifies the message target.
         :param _builtins.str destination_type: Specifies the message target type.
-               Changing this creates a new resource.
-        :param _builtins.str routing_key: Specifies the routing key. Changing this creates a new resource.
-        :param _builtins.str source: Specifies the message source. Changing this creates a new resource.
-        :param _builtins.str vhost: Specifies the virtual host name. Changing this creates a new resource.
+        :param _builtins.str routing_key: Specifies the routing key.
+        :param _builtins.str source: Specifies the message source.
+        :param _builtins.str vhost: Specifies the virtual host name.
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -2014,7 +1863,7 @@ class DmsRocketmqMigrationTaskBinding(dict):
     @pulumi.getter
     def destination(self) -> Optional[_builtins.str]:
         """
-        Specifies the message target. Changing this creates a new resource.
+        Specifies the message target.
         """
         return pulumi.get(self, "destination")
 
@@ -2023,7 +1872,6 @@ class DmsRocketmqMigrationTaskBinding(dict):
     def destination_type(self) -> Optional[_builtins.str]:
         """
         Specifies the message target type.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "destination_type")
 
@@ -2031,7 +1879,7 @@ class DmsRocketmqMigrationTaskBinding(dict):
     @pulumi.getter(name="routingKey")
     def routing_key(self) -> Optional[_builtins.str]:
         """
-        Specifies the routing key. Changing this creates a new resource.
+        Specifies the routing key.
         """
         return pulumi.get(self, "routing_key")
 
@@ -2039,7 +1887,7 @@ class DmsRocketmqMigrationTaskBinding(dict):
     @pulumi.getter
     def source(self) -> Optional[_builtins.str]:
         """
-        Specifies the message source. Changing this creates a new resource.
+        Specifies the message source.
         """
         return pulumi.get(self, "source")
 
@@ -2047,7 +1895,7 @@ class DmsRocketmqMigrationTaskBinding(dict):
     @pulumi.getter
     def vhost(self) -> Optional[_builtins.str]:
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "vhost")
 
@@ -2061,13 +1909,9 @@ class DmsRocketmqMigrationTaskExchange(dict):
                  vhost: Optional[_builtins.str] = None):
         """
         :param _builtins.bool durable: Specifies whether to enable data persistence.
-               Changing this creates a new resource.
-        :param _builtins.str name: Specifies the switch name. Changing this creates a new resource.
-        :param _builtins.str type: Specifies the exchange type. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_bindings"></a>
-               The `bindings` block supports:
-        :param _builtins.str vhost: Specifies the virtual host name. Changing this creates a new resource.
+        :param _builtins.str name: Specifies the switch name.
+        :param _builtins.str type: Specifies the exchange type.
+        :param _builtins.str vhost: Specifies the virtual host name.
         """
         if durable is not None:
             pulumi.set(__self__, "durable", durable)
@@ -2083,7 +1927,6 @@ class DmsRocketmqMigrationTaskExchange(dict):
     def durable(self) -> Optional[_builtins.bool]:
         """
         Specifies whether to enable data persistence.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "durable")
 
@@ -2091,7 +1934,7 @@ class DmsRocketmqMigrationTaskExchange(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the switch name.
         """
         return pulumi.get(self, "name")
 
@@ -2099,10 +1942,7 @@ class DmsRocketmqMigrationTaskExchange(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Specifies the exchange type. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_bindings"></a>
-        The `bindings` block supports:
+        Specifies the exchange type.
         """
         return pulumi.get(self, "type")
 
@@ -2110,7 +1950,7 @@ class DmsRocketmqMigrationTaskExchange(dict):
     @pulumi.getter
     def vhost(self) -> Optional[_builtins.str]:
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "vhost")
 
@@ -2123,9 +1963,8 @@ class DmsRocketmqMigrationTaskQueue(dict):
                  vhost: Optional[_builtins.str] = None):
         """
         :param _builtins.bool durable: Specifies whether to enable data persistence.
-               Changing this creates a new resource.
-        :param _builtins.str name: Specifies the switch name. Changing this creates a new resource.
-        :param _builtins.str vhost: Specifies the virtual host name. Changing this creates a new resource.
+        :param _builtins.str name: Specifies the queue name.
+        :param _builtins.str vhost: Specifies the virtual host name.
         """
         if durable is not None:
             pulumi.set(__self__, "durable", durable)
@@ -2139,7 +1978,6 @@ class DmsRocketmqMigrationTaskQueue(dict):
     def durable(self) -> Optional[_builtins.bool]:
         """
         Specifies whether to enable data persistence.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "durable")
 
@@ -2147,7 +1985,7 @@ class DmsRocketmqMigrationTaskQueue(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the queue name.
         """
         return pulumi.get(self, "name")
 
@@ -2155,7 +1993,7 @@ class DmsRocketmqMigrationTaskQueue(dict):
     @pulumi.getter
     def vhost(self) -> Optional[_builtins.str]:
         """
-        Specifies the virtual host name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "vhost")
 
@@ -2204,24 +2042,13 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
                  which_broker_when_consume_slow: Optional[_builtins.int] = None):
         """
         :param _builtins.str group_name: Specifies the name of a consumer group.
-               Changing this creates a new resource.
         :param _builtins.bool consume_broadcast_enable: Specifies whether to enable broadcast.
-               Changing this creates a new resource.
         :param _builtins.bool consume_enable: Specifies whether to enable consumption.
-               Changing this creates a new resource.
-        :param _builtins.bool consume_from_min_enable: Specifies whether to enable consumption from the earliest
-               offset. Changing this creates a new resource.
+        :param _builtins.bool consume_from_min_enable: Specifies whether to enable consumption from the earliest offset.
         :param _builtins.bool notify_consumerids_changed_enable: Specifies whether to notify changes of consumer IDs.
-               Changing this creates a new resource.
         :param _builtins.int retry_max_times: Specifies the maximum number of consumption retries.
-               Changing this creates a new resource.
         :param _builtins.int retry_queue_num: Specifies the number of retry queues.
-               Changing this creates a new resource.
-        :param _builtins.int which_broker_when_consume_slow: Specifies the ID of the broker selected for slow
-               consumption. Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_vhosts"></a>
-               The `vhosts` block supports:
+        :param _builtins.int which_broker_when_consume_slow: Specifies the ID of the broker selected for slow consumption.
         """
         pulumi.set(__self__, "group_name", group_name)
         if consume_broadcast_enable is not None:
@@ -2244,7 +2071,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     def group_name(self) -> _builtins.str:
         """
         Specifies the name of a consumer group.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "group_name")
 
@@ -2253,7 +2079,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     def consume_broadcast_enable(self) -> Optional[_builtins.bool]:
         """
         Specifies whether to enable broadcast.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "consume_broadcast_enable")
 
@@ -2262,7 +2087,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     def consume_enable(self) -> Optional[_builtins.bool]:
         """
         Specifies whether to enable consumption.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "consume_enable")
 
@@ -2270,8 +2094,7 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     @pulumi.getter(name="consumeFromMinEnable")
     def consume_from_min_enable(self) -> Optional[_builtins.bool]:
         """
-        Specifies whether to enable consumption from the earliest
-        offset. Changing this creates a new resource.
+        Specifies whether to enable consumption from the earliest offset.
         """
         return pulumi.get(self, "consume_from_min_enable")
 
@@ -2280,7 +2103,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     def notify_consumerids_changed_enable(self) -> Optional[_builtins.bool]:
         """
         Specifies whether to notify changes of consumer IDs.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "notify_consumerids_changed_enable")
 
@@ -2289,7 +2111,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     def retry_max_times(self) -> Optional[_builtins.int]:
         """
         Specifies the maximum number of consumption retries.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "retry_max_times")
 
@@ -2298,7 +2119,6 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     def retry_queue_num(self) -> Optional[_builtins.int]:
         """
         Specifies the number of retry queues.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "retry_queue_num")
 
@@ -2306,11 +2126,7 @@ class DmsRocketmqMigrationTaskSubscriptionGroup(dict):
     @pulumi.getter(name="whichBrokerWhenConsumeSlow")
     def which_broker_when_consume_slow(self) -> Optional[_builtins.int]:
         """
-        Specifies the ID of the broker selected for slow
-        consumption. Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_vhosts"></a>
-        The `vhosts` block supports:
+        Specifies the ID of the broker selected for slow consumption.
         """
         return pulumi.get(self, "which_broker_when_consume_slow")
 
@@ -2351,21 +2167,13 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
                  topic_sys_flag: Optional[_builtins.int] = None,
                  write_queue_num: Optional[_builtins.int] = None):
         """
-        :param _builtins.str topic_name: Specifies the topic name. Changing this creates a new resource.
+        :param _builtins.str topic_name: Specifies the topic name.
         :param _builtins.bool order: Specifies whether a message is an ordered message.
-               Changing this creates a new resource.
-        :param _builtins.int perm: Specifies the number of permission. Changing this creates a new resource.
+        :param _builtins.int perm: Specifies the number of permission.
         :param _builtins.int read_queue_num: Specifies the number of read queues.
-               Changing this creates a new resource.
         :param _builtins.str topic_filter_type: Specifies the filter type of a topic.
-               Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
         :param _builtins.int topic_sys_flag: Specifies the system flag of a topic.
-               Changing this creates a new resource.
         :param _builtins.int write_queue_num: Specifies the number of write queues.
-               Changing this creates a new resource.
-               
-               <a name="RocketMQ_migration_task_subscription_groups"></a>
-               The `subscription_groups` block supports:
         """
         pulumi.set(__self__, "topic_name", topic_name)
         if order is not None:
@@ -2385,7 +2193,7 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     @pulumi.getter(name="topicName")
     def topic_name(self) -> _builtins.str:
         """
-        Specifies the topic name. Changing this creates a new resource.
+        Specifies the topic name.
         """
         return pulumi.get(self, "topic_name")
 
@@ -2394,7 +2202,6 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     def order(self) -> Optional[_builtins.bool]:
         """
         Specifies whether a message is an ordered message.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "order")
 
@@ -2402,7 +2209,7 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     @pulumi.getter
     def perm(self) -> Optional[_builtins.int]:
         """
-        Specifies the number of permission. Changing this creates a new resource.
+        Specifies the number of permission.
         """
         return pulumi.get(self, "perm")
 
@@ -2411,7 +2218,6 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     def read_queue_num(self) -> Optional[_builtins.int]:
         """
         Specifies the number of read queues.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "read_queue_num")
 
@@ -2420,7 +2226,6 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     def topic_filter_type(self) -> Optional[_builtins.str]:
         """
         Specifies the filter type of a topic.
-        Value options: **SINGLE_TAG**, **MULTI_TAG**. Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_filter_type")
 
@@ -2429,7 +2234,6 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     def topic_sys_flag(self) -> Optional[_builtins.int]:
         """
         Specifies the system flag of a topic.
-        Changing this creates a new resource.
         """
         return pulumi.get(self, "topic_sys_flag")
 
@@ -2438,10 +2242,6 @@ class DmsRocketmqMigrationTaskTopicConfig(dict):
     def write_queue_num(self) -> Optional[_builtins.int]:
         """
         Specifies the number of write queues.
-        Changing this creates a new resource.
-
-        <a name="RocketMQ_migration_task_subscription_groups"></a>
-        The `subscription_groups` block supports:
         """
         return pulumi.get(self, "write_queue_num")
 
@@ -2451,7 +2251,7 @@ class DmsRocketmqMigrationTaskVhost(dict):
     def __init__(__self__, *,
                  name: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Specifies the switch name. Changing this creates a new resource.
+        :param _builtins.str name: Specifies the virtual host name.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2460,7 +2260,7 @@ class DmsRocketmqMigrationTaskVhost(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the switch name. Changing this creates a new resource.
+        Specifies the virtual host name.
         """
         return pulumi.get(self, "name")
 
@@ -2491,12 +2291,9 @@ class DmsRocketmqTopicBroker(dict):
                  read_queue_num: Optional[_builtins.int] = None,
                  write_queue_num: Optional[_builtins.int] = None):
         """
-        :param _builtins.str name: Specifies the name of the broker.
-               
-               <a name="DmsRocketMQTopic_QueueRef"></a>
-               The `queues` block supports:
-        :param _builtins.int read_queue_num: Indicates the read queues number of the broker. It's useless when create a topic.
-        :param _builtins.int write_queue_num: Indicates the read queues number of the broker. It's useless when create a topic.
+        :param _builtins.str name: Indicates the name of the broker.
+        :param _builtins.int read_queue_num: Indicates the read queues number of the broker.
+        :param _builtins.int write_queue_num: Indicates the read queues number of the broker.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2509,10 +2306,7 @@ class DmsRocketmqTopicBroker(dict):
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         """
-        Specifies the name of the broker.
-
-        <a name="DmsRocketMQTopic_QueueRef"></a>
-        The `queues` block supports:
+        Indicates the name of the broker.
         """
         return pulumi.get(self, "name")
 
@@ -2520,7 +2314,7 @@ class DmsRocketmqTopicBroker(dict):
     @pulumi.getter(name="readQueueNum")
     def read_queue_num(self) -> Optional[_builtins.int]:
         """
-        Indicates the read queues number of the broker. It's useless when create a topic.
+        Indicates the read queues number of the broker.
         """
         return pulumi.get(self, "read_queue_num")
 
@@ -2528,7 +2322,7 @@ class DmsRocketmqTopicBroker(dict):
     @pulumi.getter(name="writeQueueNum")
     def write_queue_num(self) -> Optional[_builtins.int]:
         """
-        Indicates the read queues number of the broker. It's useless when create a topic.
+        Indicates the read queues number of the broker.
         """
         return pulumi.get(self, "write_queue_num")
 
@@ -2652,10 +2446,6 @@ class ElbIpgroupIpList(dict):
     def __init__(__self__, *,
                  ip: _builtins.str,
                  description: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str ip: IP address or CIDR block.
-        :param _builtins.str description: Human-readable description for the ip.
-        """
         pulumi.set(__self__, "ip", ip)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -2663,17 +2453,11 @@ class ElbIpgroupIpList(dict):
     @_builtins.property
     @pulumi.getter
     def ip(self) -> _builtins.str:
-        """
-        IP address or CIDR block.
-        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Human-readable description for the ip.
-        """
         return pulumi.get(self, "description")
 
 
@@ -3336,9 +3120,6 @@ class ElbL7ruleCondition(dict):
     def __init__(__self__, *,
                  value: _builtins.str,
                  key: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str value: The value to use for the comparison.
-        """
         pulumi.set(__self__, "value", value)
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -3346,9 +3127,6 @@ class ElbL7ruleCondition(dict):
     @_builtins.property
     @pulumi.getter
     def value(self) -> _builtins.str:
-        """
-        The value to use for the comparison.
-        """
         return pulumi.get(self, "value")
 
     @_builtins.property
@@ -3566,16 +3344,6 @@ class ElbPoolPersistence(dict):
                  type: _builtins.str,
                  cookie_name: Optional[_builtins.str] = None,
                  timeout: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str type: The type of persistence mode. The current specification supports SOURCE_IP,
-               HTTP_COOKIE, and APP_COOKIE.
-        :param _builtins.str cookie_name: The name of the cookie if persistence mode is set appropriately. Required
-               if `type = APP_COOKIE`.
-        :param _builtins.int timeout: Specifies the sticky session timeout duration in minutes. This parameter is
-               invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-               + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-               + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         pulumi.set(__self__, "type", type)
         if cookie_name is not None:
             pulumi.set(__self__, "cookie_name", cookie_name)
@@ -3585,30 +3353,16 @@ class ElbPoolPersistence(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of persistence mode. The current specification supports SOURCE_IP,
-        HTTP_COOKIE, and APP_COOKIE.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="cookieName")
     def cookie_name(self) -> Optional[_builtins.str]:
-        """
-        The name of the cookie if persistence mode is set appropriately. Required
-        if `type = APP_COOKIE`.
-        """
         return pulumi.get(self, "cookie_name")
 
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[_builtins.int]:
-        """
-        Specifies the sticky session timeout duration in minutes. This parameter is
-        invalid when type is set to APP_COOKIE. The value range varies depending on the protocol of the backend server group:
-        + When the protocol of the backend server group is TCP or UDP, the value ranges from 1 to 60.
-        + When the protocol of the backend server group is HTTP or HTTPS, the value ranges from 1 to 1440.
-        """
         return pulumi.get(self, "timeout")
 
 
@@ -3616,18 +3370,12 @@ class ElbPoolPersistence(dict):
 class ElbSecurityPolicyListener(dict):
     def __init__(__self__, *,
                  id: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str id: The listener id.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[_builtins.str]:
-        """
-        The listener id.
-        """
         return pulumi.get(self, "id")
 
 
@@ -3845,21 +3593,8 @@ class FgsAsyncInvokeConfigurationOnFailure(dict):
                  destination: _builtins.str,
                  param: _builtins.str):
         """
-        :param _builtins.str destination: Specifies the object type.  
-               The valid values are as follows:
-               + **OBS**
-               + **SMN**
-               + **DIS**
-               + **FunctionGraph**
-        :param _builtins.str param: Specifies the parameters (map object in JSON format) corresponding to the target service.
-               + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-               expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-               + The **SMN** objects include: `topic_urn`.
-               + The **DIS** objects include: `stream_name`.
-               + The **FunctionGraph** objects include: `func_urn` (function URN).
-               
-               > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-               corresponding service.
+        :param _builtins.str destination: The object type.
+        :param _builtins.str param: The parameters (in JSON format) corresponding to the target service.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "param", param)
@@ -3868,12 +3603,7 @@ class FgsAsyncInvokeConfigurationOnFailure(dict):
     @pulumi.getter
     def destination(self) -> _builtins.str:
         """
-        Specifies the object type.  
-        The valid values are as follows:
-        + **OBS**
-        + **SMN**
-        + **DIS**
-        + **FunctionGraph**
+        The object type.
         """
         return pulumi.get(self, "destination")
 
@@ -3881,15 +3611,7 @@ class FgsAsyncInvokeConfigurationOnFailure(dict):
     @pulumi.getter
     def param(self) -> _builtins.str:
         """
-        Specifies the parameters (map object in JSON format) corresponding to the target service.
-        + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-        expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-        + The **SMN** objects include: `topic_urn`.
-        + The **DIS** objects include: `stream_name`.
-        + The **FunctionGraph** objects include: `func_urn` (function URN).
-
-        > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-        corresponding service.
+        The parameters (in JSON format) corresponding to the target service.
         """
         return pulumi.get(self, "param")
 
@@ -3900,21 +3622,8 @@ class FgsAsyncInvokeConfigurationOnSuccess(dict):
                  destination: _builtins.str,
                  param: _builtins.str):
         """
-        :param _builtins.str destination: Specifies the object type.  
-               The valid values are as follows:
-               + **OBS**
-               + **SMN**
-               + **DIS**
-               + **FunctionGraph**
-        :param _builtins.str param: Specifies the parameters (map object in JSON format) corresponding to the target service.
-               + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-               expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-               + The **SMN** objects include: `topic_urn`.
-               + The **DIS** objects include: `stream_name`.
-               + The **FunctionGraph** objects include: `func_urn` (function URN).
-               
-               > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-               corresponding service.
+        :param _builtins.str destination: The object type.
+        :param _builtins.str param: The parameters (in JSON format) corresponding to the target service.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "param", param)
@@ -3923,12 +3632,7 @@ class FgsAsyncInvokeConfigurationOnSuccess(dict):
     @pulumi.getter
     def destination(self) -> _builtins.str:
         """
-        Specifies the object type.  
-        The valid values are as follows:
-        + **OBS**
-        + **SMN**
-        + **DIS**
-        + **FunctionGraph**
+        The object type.
         """
         return pulumi.get(self, "destination")
 
@@ -3936,15 +3640,7 @@ class FgsAsyncInvokeConfigurationOnSuccess(dict):
     @pulumi.getter
     def param(self) -> _builtins.str:
         """
-        Specifies the parameters (map object in JSON format) corresponding to the target service.
-        + The **OBS** objects include: `bucket` (bucket name), `prefix` (object directory prefix) and `expires` (object
-        expiration time, the valid value ranges from `0` to `365`. If the value is `0`, the object will not expire.).
-        + The **SMN** objects include: `topic_urn`.
-        + The **DIS** objects include: `stream_name`.
-        + The **FunctionGraph** objects include: `func_urn` (function URN).
-
-        > If you enable the destination function, you must be ensured that the agent contains the operation authority of the
-        corresponding service.
+        The parameters (in JSON format) corresponding to the target service.
         """
         return pulumi.get(self, "param")
 
@@ -4072,7 +3768,7 @@ class GesGraphPublicIp(dict):
                  eip_id: Optional[_builtins.str] = None,
                  public_bind_type: Optional[_builtins.str] = None):
         """
-        :param _builtins.str eip_id: Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+        :param _builtins.str eip_id: The EIP ID.
         :param _builtins.str public_bind_type: The bind type of public IP.
         """
         if eip_id is not None:
@@ -4084,7 +3780,7 @@ class GesGraphPublicIp(dict):
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[_builtins.str]:
         """
-        Indicates the ID of an EIP.  Changing this parameter will create a new resource.
+        The EIP ID.
         """
         return pulumi.get(self, "eip_id")
 
@@ -4175,7 +3871,7 @@ class ObsBucketAclAccountPermission(dict):
                  access_to_acls: Optional[Sequence[_builtins.str]] = None,
                  access_to_buckets: Optional[Sequence[_builtins.str]] = None):
         """
-        :param _builtins.str account_id: Specifies the account id to authorize. The account id cannot be the bucket owner,
+        :param _builtins.str account_id: Specifies the account id to authorize. The account id cannot be the bucket owner, 
                and must be unique.
         :param Sequence[_builtins.str] access_to_acls: Specifies the access to acl. Valid values are **READ_ACP** and **WRITE_ACP**.
         :param Sequence[_builtins.str] access_to_buckets: Specifies the access to bucket. Valid values are **READ** and **WRITE**.
@@ -4190,7 +3886,7 @@ class ObsBucketAclAccountPermission(dict):
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        Specifies the account id to authorize. The account id cannot be the bucket owner,
+        Specifies the account id to authorize. The account id cannot be the bucket owner, 
         and must be unique.
         """
         return pulumi.get(self, "account_id")
@@ -4768,11 +4464,6 @@ class SwrOrganizationPermissionsSelfPermission(dict):
                  permission: Optional[_builtins.str] = None,
                  user_id: Optional[_builtins.str] = None,
                  user_name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str permission: The permission of current user.
-        :param _builtins.str user_id: The ID of current user.
-        :param _builtins.str user_name: The name of current user.
-        """
         if permission is not None:
             pulumi.set(__self__, "permission", permission)
         if user_id is not None:
@@ -4783,25 +4474,16 @@ class SwrOrganizationPermissionsSelfPermission(dict):
     @_builtins.property
     @pulumi.getter
     def permission(self) -> Optional[_builtins.str]:
-        """
-        The permission of current user.
-        """
         return pulumi.get(self, "permission")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of current user.
-        """
         return pulumi.get(self, "user_id")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[_builtins.str]:
-        """
-        The name of current user.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -4830,12 +4512,6 @@ class SwrOrganizationPermissionsUser(dict):
                  permission: _builtins.str,
                  user_id: _builtins.str,
                  user_name: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str permission: Specifies the permission of the existing SberCloud user.
-               The values can be **Manage**, **Write** and **Read**.
-        :param _builtins.str user_id: Specifies the ID of the existing SberCloud user.
-        :param _builtins.str user_name: Specifies the name of the existing SberCloud user.
-        """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "user_id", user_id)
         if user_name is not None:
@@ -4844,26 +4520,16 @@ class SwrOrganizationPermissionsUser(dict):
     @_builtins.property
     @pulumi.getter
     def permission(self) -> _builtins.str:
-        """
-        Specifies the permission of the existing SberCloud user.
-        The values can be **Manage**, **Write** and **Read**.
-        """
         return pulumi.get(self, "permission")
 
     @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> _builtins.str:
-        """
-        Specifies the ID of the existing SberCloud user.
-        """
         return pulumi.get(self, "user_id")
 
     @_builtins.property
     @pulumi.getter(name="userName")
     def user_name(self) -> Optional[_builtins.str]:
-        """
-        Specifies the name of the existing SberCloud user.
-        """
         return pulumi.get(self, "user_name")
 
 
@@ -4921,34 +4587,19 @@ class VpnConnectionIkepolicy(dict):
                  pfs: Optional[_builtins.str] = None,
                  phase1_negotiation_mode: Optional[_builtins.str] = None):
         """
-        :param _builtins.str authentication_algorithm: The authentication algorithm. The value can be **sha1**, **md5**,
-               **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-               please use them with caution.
+        :param _builtins.str authentication_algorithm: The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         :param _builtins.str authentication_method: The authentication method during IKE negotiation.
-               The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
         :param _builtins.str dh_group: Specifies the DH group used for key exchange in phase 1.
-               The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-               or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-               or **group14** as they have low security. Defaults to **group15**.
         :param 'VpnConnectionIkepolicyDpdArgs' dpd: Specifies the dead peer detection (DPD) object.
-               The dpd structure is documented below.
-               
-               <a name="Connection_DPD"></a>
-               The `dpd` block supports:
-        :param _builtins.str encryption_algorithm: The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-               **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-               **3des** is less secure, please use it with caution.
-        :param _builtins.str ike_version: The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
-        :param _builtins.int lifetime_seconds: The lifecycle time of Ipsec tunnel in seconds.
-               The value ranges from **60** to **604800**. Defaults to **3600**.
+        :param _builtins.str encryption_algorithm: The encryption algorithm, 3DES is less secure, please use them with caution.
+        :param _builtins.str ike_version: The IKE negotiation version.
+        :param _builtins.int lifetime_seconds: The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
         :param _builtins.str local_id: The local ID.
-        :param _builtins.str local_id_type: The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+        :param _builtins.str local_id_type: The local ID type.
         :param _builtins.str peer_id: The peer ID.
-        :param _builtins.str peer_id_type: The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
-        :param _builtins.str pfs: The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-               **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        :param _builtins.str peer_id_type: The peer ID type.
+        :param _builtins.str pfs: The DH key group used by PFS.
         :param _builtins.str phase1_negotiation_mode: The negotiation mode, only works when the ike_version is v1.
-               The value can be **main** or **aggressive**. Defaults to **main**.
         """
         if authentication_algorithm is not None:
             pulumi.set(__self__, "authentication_algorithm", authentication_algorithm)
@@ -4981,9 +4632,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter(name="authenticationAlgorithm")
     def authentication_algorithm(self) -> Optional[_builtins.str]:
         """
-        The authentication algorithm. The value can be **sha1**, **md5**,
-        **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-        please use them with caution.
+        The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         """
         return pulumi.get(self, "authentication_algorithm")
 
@@ -4992,7 +4641,6 @@ class VpnConnectionIkepolicy(dict):
     def authentication_method(self) -> Optional[_builtins.str]:
         """
         The authentication method during IKE negotiation.
-        The value can be **pre-share** and **digital-envelope-v2**. Defaults to **pre-share**.
         """
         return pulumi.get(self, "authentication_method")
 
@@ -5001,9 +4649,6 @@ class VpnConnectionIkepolicy(dict):
     def dh_group(self) -> Optional[_builtins.str]:
         """
         Specifies the DH group used for key exchange in phase 1.
-        The value can be **group1**, **group2**, **group5**, **group14**, **group15**, **group16**, **group19**, **group20**,
-        or **group21**. Exercise caution when using **group1**, **group2**, **group5**,
-        or **group14** as they have low security. Defaults to **group15**.
         """
         return pulumi.get(self, "dh_group")
 
@@ -5012,10 +4657,6 @@ class VpnConnectionIkepolicy(dict):
     def dpd(self) -> Optional['outputs.VpnConnectionIkepolicyDpd']:
         """
         Specifies the dead peer detection (DPD) object.
-        The dpd structure is documented below.
-
-        <a name="Connection_DPD"></a>
-        The `dpd` block supports:
         """
         return pulumi.get(self, "dpd")
 
@@ -5023,9 +4664,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> Optional[_builtins.str]:
         """
-        The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-        **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-        **3des** is less secure, please use it with caution.
+        The encryption algorithm, 3DES is less secure, please use them with caution.
         """
         return pulumi.get(self, "encryption_algorithm")
 
@@ -5033,7 +4672,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[_builtins.str]:
         """
-        The IKE negotiation version. The value can be **v1** and **v2**. Defaults to **v2**.
+        The IKE negotiation version.
         """
         return pulumi.get(self, "ike_version")
 
@@ -5041,8 +4680,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> Optional[_builtins.int]:
         """
-        The lifecycle time of Ipsec tunnel in seconds.
-        The value ranges from **60** to **604800**. Defaults to **3600**.
+        The life cycle of SA in seconds, when the life cycle expires, IKE SA will be automatically updated.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -5058,7 +4696,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter(name="localIdType")
     def local_id_type(self) -> Optional[_builtins.str]:
         """
-        The local ID type. The value can be **ip** or **fqdn**. Defaults to **ip**.
+        The local ID type.
         """
         return pulumi.get(self, "local_id_type")
 
@@ -5074,7 +4712,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter(name="peerIdType")
     def peer_id_type(self) -> Optional[_builtins.str]:
         """
-        The peer ID type. The value can be **ip**, **fqdn** or **any**. Defaults to **ip**.
+        The peer ID type.
         """
         return pulumi.get(self, "peer_id_type")
 
@@ -5082,8 +4720,7 @@ class VpnConnectionIkepolicy(dict):
     @pulumi.getter
     def pfs(self) -> Optional[_builtins.str]:
         """
-        The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-        **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        The DH key group used by PFS.
         """
         return pulumi.get(self, "pfs")
 
@@ -5092,7 +4729,6 @@ class VpnConnectionIkepolicy(dict):
     def phase1_negotiation_mode(self) -> Optional[_builtins.str]:
         """
         The negotiation mode, only works when the ike_version is v1.
-        The value can be **main** or **aggressive**. Defaults to **main**.
         """
         return pulumi.get(self, "phase1_negotiation_mode")
 
@@ -5105,17 +4741,8 @@ class VpnConnectionIkepolicyDpd(dict):
                  timeout: Optional[_builtins.int] = None):
         """
         :param _builtins.int interval: Specifies the DPD idle timeout period.
-               The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
-        :param _builtins.str msg: Specifies the format of DPD packets. The value can be:
-               + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-               + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-               
-               Defaults to **seq-hash-notify**.
-               
-               <a name="Connection_CreateRequestIpsecPolicy"></a>
-               The `ipsecpolicy` block supports:
+        :param _builtins.str msg: Specifies the format of DPD packets.
         :param _builtins.int timeout: Specifies the interval for retransmitting DPD packets.
-               The value ranges from **2** to **60**, in seconds. Defaults to **15**.
         """
         if interval is not None:
             pulumi.set(__self__, "interval", interval)
@@ -5129,7 +4756,6 @@ class VpnConnectionIkepolicyDpd(dict):
     def interval(self) -> Optional[_builtins.int]:
         """
         Specifies the DPD idle timeout period.
-        The value ranges from **10** to **3600**, in seconds. Defaults to **30**.
         """
         return pulumi.get(self, "interval")
 
@@ -5137,14 +4763,7 @@ class VpnConnectionIkepolicyDpd(dict):
     @pulumi.getter
     def msg(self) -> Optional[_builtins.str]:
         """
-        Specifies the format of DPD packets. The value can be:
-        + **seq-hash-notify**: indicates that the payload of DPD packets is in the sequence of hash-notify;
-        + **seq-notify-hash**: indicates that the payload of DPD packets is in the sequence of notify-hash;
-
-        Defaults to **seq-hash-notify**.
-
-        <a name="Connection_CreateRequestIpsecPolicy"></a>
-        The `ipsecpolicy` block supports:
+        Specifies the format of DPD packets.
         """
         return pulumi.get(self, "msg")
 
@@ -5153,7 +4772,6 @@ class VpnConnectionIkepolicyDpd(dict):
     def timeout(self) -> Optional[_builtins.int]:
         """
         Specifies the interval for retransmitting DPD packets.
-        The value ranges from **2** to **60**, in seconds. Defaults to **15**.
         """
         return pulumi.get(self, "timeout")
 
@@ -5193,23 +4811,12 @@ class VpnConnectionIpsecpolicy(dict):
                  pfs: Optional[_builtins.str] = None,
                  transform_protocol: Optional[_builtins.str] = None):
         """
-        :param _builtins.str authentication_algorithm: The authentication algorithm. The value can be **sha1**, **md5**,
-               **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-               please use them with caution.
+        :param _builtins.str authentication_algorithm: The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         :param _builtins.str encapsulation_mode: The encapsulation mode, only **tunnel** supported for now.
-               Defaults to **tunnel**.
-               
-               <a name="Connection_PolicyRule"></a>
-               The `policy_rules` block supports:
-        :param _builtins.str encryption_algorithm: The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-               **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-               **3des** is less secure, please use it with caution.
+        :param _builtins.str encryption_algorithm: The encryption algorithm, 3DES is less secure, please use them with caution.
         :param _builtins.int lifetime_seconds: The lifecycle time of Ipsec tunnel in seconds.
-               The value ranges from **60** to **604800**. Defaults to **3600**.
-        :param _builtins.str pfs: The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-               **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        :param _builtins.str pfs: The DH key group used by PFS.
         :param _builtins.str transform_protocol: The transform protocol. Only **esp** supported for now.
-               Defaults to **esp**.
         """
         if authentication_algorithm is not None:
             pulumi.set(__self__, "authentication_algorithm", authentication_algorithm)
@@ -5228,9 +4835,7 @@ class VpnConnectionIpsecpolicy(dict):
     @pulumi.getter(name="authenticationAlgorithm")
     def authentication_algorithm(self) -> Optional[_builtins.str]:
         """
-        The authentication algorithm. The value can be **sha1**, **md5**,
-        **sha2-256**, **sha2-384**, **sha2-512**. Defaults to **sha2-256**. **sha1** and **md5** are less secure,
-        please use them with caution.
+        The authentication algorithm, SHA1 and MD5 are less secure, please use them with caution.
         """
         return pulumi.get(self, "authentication_algorithm")
 
@@ -5239,10 +4844,6 @@ class VpnConnectionIpsecpolicy(dict):
     def encapsulation_mode(self) -> Optional[_builtins.str]:
         """
         The encapsulation mode, only **tunnel** supported for now.
-        Defaults to **tunnel**.
-
-        <a name="Connection_PolicyRule"></a>
-        The `policy_rules` block supports:
         """
         return pulumi.get(self, "encapsulation_mode")
 
@@ -5250,9 +4851,7 @@ class VpnConnectionIpsecpolicy(dict):
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> Optional[_builtins.str]:
         """
-        The encryption algorithm. The value can be **3des**, **aes-128**, **aes-192**,
-        **aes-256**, **aes-128-gcm-16**, **aes-256-gcm-16**, **aes-128-gcm-128**, **aes-256-gcm-128**. Defaults to **aes-128**.
-        **3des** is less secure, please use it with caution.
+        The encryption algorithm, 3DES is less secure, please use them with caution.
         """
         return pulumi.get(self, "encryption_algorithm")
 
@@ -5261,7 +4860,6 @@ class VpnConnectionIpsecpolicy(dict):
     def lifetime_seconds(self) -> Optional[_builtins.int]:
         """
         The lifecycle time of Ipsec tunnel in seconds.
-        The value ranges from **60** to **604800**. Defaults to **3600**.
         """
         return pulumi.get(self, "lifetime_seconds")
 
@@ -5269,8 +4867,7 @@ class VpnConnectionIpsecpolicy(dict):
     @pulumi.getter
     def pfs(self) -> Optional[_builtins.str]:
         """
-        The DH key group used by PFS. The value can be **group1**, **group2**, **group5**, **group14**
-        **group16**, **group19**, **group20**, **group21**. Defaults to **group14**.
+        The DH key group used by PFS.
         """
         return pulumi.get(self, "pfs")
 
@@ -5279,7 +4876,6 @@ class VpnConnectionIpsecpolicy(dict):
     def transform_protocol(self) -> Optional[_builtins.str]:
         """
         The transform protocol. Only **esp** supported for now.
-        Defaults to **esp**.
         """
         return pulumi.get(self, "transform_protocol")
 
@@ -5417,29 +5013,6 @@ class VpnGatewayCertificate(dict):
                  signature_algorithm: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None,
                  updated_at: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str certificate_chain: The certificate chain of the gateway certificate.
-        :param _builtins.str content: The content of the gateway certificate.
-        :param _builtins.str enc_certificate: The enc certificate of the gateway certificate.
-        :param _builtins.str enc_private_key: The enc private key of the gateway certificate.
-        :param _builtins.str name: The name of the gateway certificate.
-        :param _builtins.str private_key: The private of the gateway certificate.
-        :param _builtins.str certificate_chain_expire_time: The expire time of the certificate.
-        :param _builtins.str certificate_chain_serial_number: The serial number of the certificate chain.
-        :param _builtins.str certificate_chain_subject: The subject of the certificate chain.
-        :param _builtins.str certificate_expire_time: The expire time of the certificate.
-        :param _builtins.str certificate_id: The certificate ID.
-        :param _builtins.str certificate_serial_number: The serial number of the certificate.
-        :param _builtins.str certificate_subject: The subject of the certificate.
-        :param _builtins.str created_at: The create time of the gateway certificate.
-        :param _builtins.str enc_certificate_expire_time: The expire time of the enc certificate.
-        :param _builtins.str enc_certificate_serial_number: The serial number of the enc certificate.
-        :param _builtins.str enc_certificate_subject: The subject of the enc certificate.
-        :param _builtins.str issuer: The issuer of the certificate.
-        :param _builtins.str signature_algorithm: The signature algorithm of the certificate.
-        :param _builtins.str status: The status of the certificate.
-        :param _builtins.str updated_at: The update time of the gateway certificate.
-        """
         pulumi.set(__self__, "certificate_chain", certificate_chain)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "enc_certificate", enc_certificate)
@@ -5480,169 +5053,106 @@ class VpnGatewayCertificate(dict):
     @_builtins.property
     @pulumi.getter(name="certificateChain")
     def certificate_chain(self) -> _builtins.str:
-        """
-        The certificate chain of the gateway certificate.
-        """
         return pulumi.get(self, "certificate_chain")
 
     @_builtins.property
     @pulumi.getter
     def content(self) -> _builtins.str:
-        """
-        The content of the gateway certificate.
-        """
         return pulumi.get(self, "content")
 
     @_builtins.property
     @pulumi.getter(name="encCertificate")
     def enc_certificate(self) -> _builtins.str:
-        """
-        The enc certificate of the gateway certificate.
-        """
         return pulumi.get(self, "enc_certificate")
 
     @_builtins.property
     @pulumi.getter(name="encPrivateKey")
     def enc_private_key(self) -> _builtins.str:
-        """
-        The enc private key of the gateway certificate.
-        """
         return pulumi.get(self, "enc_private_key")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The name of the gateway certificate.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> _builtins.str:
-        """
-        The private of the gateway certificate.
-        """
         return pulumi.get(self, "private_key")
 
     @_builtins.property
     @pulumi.getter(name="certificateChainExpireTime")
     def certificate_chain_expire_time(self) -> Optional[_builtins.str]:
-        """
-        The expire time of the certificate.
-        """
         return pulumi.get(self, "certificate_chain_expire_time")
 
     @_builtins.property
     @pulumi.getter(name="certificateChainSerialNumber")
     def certificate_chain_serial_number(self) -> Optional[_builtins.str]:
-        """
-        The serial number of the certificate chain.
-        """
         return pulumi.get(self, "certificate_chain_serial_number")
 
     @_builtins.property
     @pulumi.getter(name="certificateChainSubject")
     def certificate_chain_subject(self) -> Optional[_builtins.str]:
-        """
-        The subject of the certificate chain.
-        """
         return pulumi.get(self, "certificate_chain_subject")
 
     @_builtins.property
     @pulumi.getter(name="certificateExpireTime")
     def certificate_expire_time(self) -> Optional[_builtins.str]:
-        """
-        The expire time of the certificate.
-        """
         return pulumi.get(self, "certificate_expire_time")
 
     @_builtins.property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[_builtins.str]:
-        """
-        The certificate ID.
-        """
         return pulumi.get(self, "certificate_id")
 
     @_builtins.property
     @pulumi.getter(name="certificateSerialNumber")
     def certificate_serial_number(self) -> Optional[_builtins.str]:
-        """
-        The serial number of the certificate.
-        """
         return pulumi.get(self, "certificate_serial_number")
 
     @_builtins.property
     @pulumi.getter(name="certificateSubject")
     def certificate_subject(self) -> Optional[_builtins.str]:
-        """
-        The subject of the certificate.
-        """
         return pulumi.get(self, "certificate_subject")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[_builtins.str]:
-        """
-        The create time of the gateway certificate.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="encCertificateExpireTime")
     def enc_certificate_expire_time(self) -> Optional[_builtins.str]:
-        """
-        The expire time of the enc certificate.
-        """
         return pulumi.get(self, "enc_certificate_expire_time")
 
     @_builtins.property
     @pulumi.getter(name="encCertificateSerialNumber")
     def enc_certificate_serial_number(self) -> Optional[_builtins.str]:
-        """
-        The serial number of the enc certificate.
-        """
         return pulumi.get(self, "enc_certificate_serial_number")
 
     @_builtins.property
     @pulumi.getter(name="encCertificateSubject")
     def enc_certificate_subject(self) -> Optional[_builtins.str]:
-        """
-        The subject of the enc certificate.
-        """
         return pulumi.get(self, "enc_certificate_subject")
 
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> Optional[_builtins.str]:
-        """
-        The issuer of the certificate.
-        """
         return pulumi.get(self, "issuer")
 
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[_builtins.str]:
-        """
-        The signature algorithm of the certificate.
-        """
         return pulumi.get(self, "signature_algorithm")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
-        """
-        The status of the certificate.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[_builtins.str]:
-        """
-        The update time of the gateway certificate.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -5687,27 +5197,12 @@ class VpnGatewayEip1(dict):
         """
         :param _builtins.str bandwidth_id: The bandwidth ID.
         :param _builtins.str bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param _builtins.str charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param _builtins.str id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param _builtins.str ip_address: The public IP address.
         :param _builtins.int ip_version: The public IP version.
         :param _builtins.str type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -5739,8 +5234,6 @@ class VpnGatewayEip1(dict):
     def bandwidth_name(self) -> Optional[_builtins.str]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -5748,11 +5241,7 @@ class VpnGatewayEip1(dict):
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[_builtins.int]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -5761,11 +5250,6 @@ class VpnGatewayEip1(dict):
     def charge_mode(self) -> Optional[_builtins.str]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -5774,8 +5258,6 @@ class VpnGatewayEip1(dict):
     def id(self) -> Optional[_builtins.str]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -5800,8 +5282,6 @@ class VpnGatewayEip1(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -5847,27 +5327,12 @@ class VpnGatewayEip2(dict):
         """
         :param _builtins.str bandwidth_id: The bandwidth ID.
         :param _builtins.str bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param _builtins.str charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param _builtins.str id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param _builtins.str ip_address: The public IP address.
         :param _builtins.int ip_version: The public IP version.
         :param _builtins.str type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -5899,8 +5364,6 @@ class VpnGatewayEip2(dict):
     def bandwidth_name(self) -> Optional[_builtins.str]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -5908,11 +5371,7 @@ class VpnGatewayEip2(dict):
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[_builtins.int]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -5921,11 +5380,6 @@ class VpnGatewayEip2(dict):
     def charge_mode(self) -> Optional[_builtins.str]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -5934,8 +5388,6 @@ class VpnGatewayEip2(dict):
     def id(self) -> Optional[_builtins.str]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -5960,8 +5412,6 @@ class VpnGatewayEip2(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -6007,27 +5457,12 @@ class VpnGatewayMasterEip(dict):
         """
         :param _builtins.str bandwidth_id: The bandwidth ID.
         :param _builtins.str bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param _builtins.str charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param _builtins.str id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param _builtins.str ip_address: The public IP address.
         :param _builtins.int ip_version: The public IP version.
         :param _builtins.str type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -6059,8 +5494,6 @@ class VpnGatewayMasterEip(dict):
     def bandwidth_name(self) -> Optional[_builtins.str]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -6068,11 +5501,7 @@ class VpnGatewayMasterEip(dict):
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[_builtins.int]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -6081,11 +5510,6 @@ class VpnGatewayMasterEip(dict):
     def charge_mode(self) -> Optional[_builtins.str]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -6094,8 +5518,6 @@ class VpnGatewayMasterEip(dict):
     def id(self) -> Optional[_builtins.str]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -6120,8 +5542,6 @@ class VpnGatewayMasterEip(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -6167,27 +5587,12 @@ class VpnGatewaySlaveEip(dict):
         """
         :param _builtins.str bandwidth_id: The bandwidth ID.
         :param _builtins.str bandwidth_name: The bandwidth name.
-               
-               Changing this parameter will create a new resource.
-        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-               cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-               When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-               
-               Changing this parameter will create a new resource.
+        :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         :param _builtins.str charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-               
-               Changing this parameter will create a new resource.
-               
-               > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-               create a new EIP.
         :param _builtins.str id: The public IP ID.
-               
-               Changing this parameter will create a new resource.
         :param _builtins.str ip_address: The public IP address.
         :param _builtins.int ip_version: The public IP version.
         :param _builtins.str type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
-               
-               Changing this parameter will create a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -6219,8 +5624,6 @@ class VpnGatewaySlaveEip(dict):
     def bandwidth_name(self) -> Optional[_builtins.str]:
         """
         The bandwidth name.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "bandwidth_name")
 
@@ -6228,11 +5631,7 @@ class VpnGatewaySlaveEip(dict):
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[_builtins.int]:
         """
-        Bandwidth size in Mbit/s. When the `flavor` is **Basic**, the value
-        cannot be greater than **100**. When the `flavor` is **Professional1**, the value cannot be greater than **300**.
-        When the `flavor` is **Professional2**, the value cannot be greater than **1000**.
-
-        Changing this parameter will create a new resource.
+        Bandwidth size in Mbit/s. When the flavor is **V300**, the value cannot be greater than **300**.
         """
         return pulumi.get(self, "bandwidth_size")
 
@@ -6241,11 +5640,6 @@ class VpnGatewaySlaveEip(dict):
     def charge_mode(self) -> Optional[_builtins.str]:
         """
         The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
-
-        Changing this parameter will create a new resource.
-
-        > You can use `id` to specify an existing EIP or use `type`, `bandwidth_name`, `bandwidth_size` and `charge_mode` to
-        create a new EIP.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -6254,8 +5648,6 @@ class VpnGatewaySlaveEip(dict):
     def id(self) -> Optional[_builtins.str]:
         """
         The public IP ID.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "id")
 
@@ -6280,8 +5672,6 @@ class VpnGatewaySlaveEip(dict):
     def type(self) -> Optional[_builtins.str]:
         """
         The EIP type. The value can be **5_bgp** and **5_sbgp**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "type")
 
@@ -10466,15 +9856,6 @@ class GetCbhAvailabilityZonesAvailabilityZoneResult(dict):
                  region_id: _builtins.str,
                  status: _builtins.str,
                  type: _builtins.str):
-        """
-        :param _builtins.str display_name: Specifies the display name of the availability zone to be queried.
-        :param _builtins.str name: Specifies the name of the availability zone to be queried.
-        :param _builtins.str region_id: The ID of the region in which the availability zone belongs.
-        :param _builtins.str status: The status of the availability zone. The value can be **Running**.
-        :param _builtins.str type: The type of the availability zone. The valid values are as follows:
-               + **Core**: Core availability zone.
-               + **Dedicated**: Exclusive availability zone, only open to internal customers.
-        """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region_id", region_id)
@@ -10484,43 +9865,26 @@ class GetCbhAvailabilityZonesAvailabilityZoneResult(dict):
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
-        """
-        Specifies the display name of the availability zone to be queried.
-        """
         return pulumi.get(self, "display_name")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the availability zone to be queried.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
-        """
-        The ID of the region in which the availability zone belongs.
-        """
         return pulumi.get(self, "region_id")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        The status of the availability zone. The value can be **Running**.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of the availability zone. The valid values are as follows:
-        + **Core**: Core availability zone.
-        + **Dedicated**: Exclusive availability zone, only open to internal customers.
-        """
         return pulumi.get(self, "type")
 
 
@@ -10535,18 +9899,6 @@ class GetCbhFlavorsFlavorResult(dict):
                  memory: _builtins.int,
                  type: _builtins.str,
                  vcpus: _builtins.int):
-        """
-        :param _builtins.int asset: Specifies the number of CBH assets.
-        :param _builtins.float data_disk_size: The size of the CBH data disk, in TB.
-        :param _builtins.int ecs_system_data_size: The disk size of the CBH system disk, in GB.
-        :param _builtins.str id: Indicates the ID of the specification.
-        :param _builtins.int max_connection: Specifies the maximum number of connections to the CBH.
-        :param _builtins.int memory: Specifies the memory size of the CBH, in GB.
-        :param _builtins.str type: Specifies the type of CBH specification. The value can be:
-               + **basic**: Standard version.
-               + **enhance**: Professional version.
-        :param _builtins.int vcpus: Specifies the number of CPU cores of the CBH.
-        """
         pulumi.set(__self__, "asset", asset)
         pulumi.set(__self__, "data_disk_size", data_disk_size)
         pulumi.set(__self__, "ecs_system_data_size", ecs_system_data_size)
@@ -10559,67 +9911,41 @@ class GetCbhFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def asset(self) -> _builtins.int:
-        """
-        Specifies the number of CBH assets.
-        """
         return pulumi.get(self, "asset")
 
     @_builtins.property
     @pulumi.getter(name="dataDiskSize")
     def data_disk_size(self) -> _builtins.float:
-        """
-        The size of the CBH data disk, in TB.
-        """
         return pulumi.get(self, "data_disk_size")
 
     @_builtins.property
     @pulumi.getter(name="ecsSystemDataSize")
     def ecs_system_data_size(self) -> _builtins.int:
-        """
-        The disk size of the CBH system disk, in GB.
-        """
         return pulumi.get(self, "ecs_system_data_size")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the ID of the specification.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="maxConnection")
     def max_connection(self) -> _builtins.int:
-        """
-        Specifies the maximum number of connections to the CBH.
-        """
         return pulumi.get(self, "max_connection")
 
     @_builtins.property
     @pulumi.getter
     def memory(self) -> _builtins.int:
-        """
-        Specifies the memory size of the CBH, in GB.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the type of CBH specification. The value can be:
-        + **basic**: Standard version.
-        + **enhance**: Professional version.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> _builtins.int:
-        """
-        Specifies the number of CPU cores of the CBH.
-        """
         return pulumi.get(self, "vcpus")
 
 
@@ -10640,17 +9966,17 @@ class GetCbhInstancesInstanceResult(dict):
                  vpc_id: _builtins.str):
         """
         :param _builtins.str availability_zone: Indicates the availability zone name.
-        :param _builtins.str flavor_id: Specifies the specification of the instance.
+        :param _builtins.str flavor_id: Indicates the specification of the instance.
         :param _builtins.str id: Indicates the ID of the instance.
-        :param _builtins.str name: Specifies the instance name.
+        :param _builtins.str name: Indicates the instance name.
         :param _builtins.str private_ip: Indicates the private IP address of the instance.
         :param _builtins.str public_ip: Indicates the elastic IP address.
         :param _builtins.str public_ip_id: Indicates the ID of the elastic IP.
-        :param _builtins.str security_group_id: Specifies the ID of a security group.
+        :param _builtins.str security_group_id: Indicates the ID of a security group.
         :param _builtins.str status: Indicates the status of the instance.
-        :param _builtins.str subnet_id: Specifies the ID of a subnet.
-        :param _builtins.str version: Specifies the current version of the instance image.
-        :param _builtins.str vpc_id: Specifies the ID of a VPC.
+        :param _builtins.str subnet_id: Indicates the ID of a subnet.
+        :param _builtins.str version: Indicates the current version of the instance image.
+        :param _builtins.str vpc_id: Indicates the ID of a VPC.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "flavor_id", flavor_id)
@@ -10677,7 +10003,7 @@ class GetCbhInstancesInstanceResult(dict):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> _builtins.str:
         """
-        Specifies the specification of the instance.
+        Indicates the specification of the instance.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -10693,7 +10019,7 @@ class GetCbhInstancesInstanceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the instance name.
+        Indicates the instance name.
         """
         return pulumi.get(self, "name")
 
@@ -10725,7 +10051,7 @@ class GetCbhInstancesInstanceResult(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
         """
-        Specifies the ID of a security group.
+        Indicates the ID of a security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -10741,7 +10067,7 @@ class GetCbhInstancesInstanceResult(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> _builtins.str:
         """
-        Specifies the ID of a subnet.
+        Indicates the ID of a subnet.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -10749,7 +10075,7 @@ class GetCbhInstancesInstanceResult(dict):
     @pulumi.getter
     def version(self) -> _builtins.str:
         """
-        Specifies the current version of the instance image.
+        Indicates the current version of the instance image.
         """
         return pulumi.get(self, "version")
 
@@ -10757,7 +10083,7 @@ class GetCbhInstancesInstanceResult(dict):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.str:
         """
-        Specifies the ID of a VPC.
+        Indicates the ID of a VPC.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -10790,7 +10116,7 @@ class GetCbrBackupChildrenResult(dict):
         :param _builtins.str enterprise_project_id: The enterprise project to which the backup sub-backup resource belongs.
         :param _builtins.str expired_at: The expiration time of the sub-backup.
         :param Sequence['GetCbrBackupChildrenExtendInfoArgs'] extend_infos: The extended information.
-        :param _builtins.str id: Specifies the backup ID.
+        :param _builtins.str id: The sub-backup ID.
         :param _builtins.str name: The sub-backup name.
         :param Sequence['GetCbrBackupChildrenReplicationRecordArgs'] replication_records: The replication records.
         :param _builtins.str resource_az: The availability zone where the backup sub-backup resource is located.
@@ -10801,7 +10127,7 @@ class GetCbrBackupChildrenResult(dict):
         :param _builtins.str status: The sub-backup status.
         :param _builtins.str type: The sub-backup type.
         :param _builtins.str updated_at: The latest update time of the sub-backup.
-        :param _builtins.str vault_id: The vault to which the backup resource belongs.
+        :param _builtins.str vault_id: The vault to which the backup sub-backup resource belongs.
         """
         pulumi.set(__self__, "checkpoint_id", checkpoint_id)
         pulumi.set(__self__, "created_at", created_at)
@@ -10874,7 +10200,7 @@ class GetCbrBackupChildrenResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Specifies the backup ID.
+        The sub-backup ID.
         """
         return pulumi.get(self, "id")
 
@@ -10962,7 +10288,7 @@ class GetCbrBackupChildrenResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The vault to which the backup resource belongs.
+        The vault to which the backup sub-backup resource belongs.
         """
         return pulumi.get(self, "vault_id")
 
@@ -11102,21 +10428,20 @@ class GetCbrBackupChildrenReplicationRecordResult(dict):
                  status: _builtins.str,
                  vault_id: _builtins.str):
         """
-        :param _builtins.str created_at: The creation time of the sub-backup.
+        :param _builtins.str created_at: The creation time of the replication.
         :param _builtins.str destination_backup_id: The ID of the destination backup used for replication.
         :param _builtins.str destination_checkpoint_id: The record ID of the destination backup used for replication.
         :param _builtins.str destination_project_id: The ID of the replication destination project.
         :param _builtins.str destination_region: The replication destination region.
         :param _builtins.str destination_vault_id: The destination vault ID.
         :param Sequence['GetCbrBackupChildrenReplicationRecordExtraInfoArgs'] extra_infos: The additional information of the replication.
-               The object structure is documented below.
-        :param _builtins.str id: Specifies the backup ID.
+        :param _builtins.str id: The replication record ID.
         :param _builtins.str source_backup_id: The ID of the source backup used for replication.
         :param _builtins.str source_checkpoint_id: The ID of the source backup record used for replication.
         :param _builtins.str source_project_id: The ID of the replication source project.
         :param _builtins.str source_region: The replication source region.
-        :param _builtins.str status: The sub-backup status.
-        :param _builtins.str vault_id: The vault to which the backup resource belongs.
+        :param _builtins.str status: The replication status.
+        :param _builtins.str vault_id: The ID of the vault where the backup resides.
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "destination_backup_id", destination_backup_id)
@@ -11137,7 +10462,7 @@ class GetCbrBackupChildrenReplicationRecordResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        The creation time of the sub-backup.
+        The creation time of the replication.
         """
         return pulumi.get(self, "created_at")
 
@@ -11186,7 +10511,6 @@ class GetCbrBackupChildrenReplicationRecordResult(dict):
     def extra_infos(self) -> Sequence['outputs.GetCbrBackupChildrenReplicationRecordExtraInfoResult']:
         """
         The additional information of the replication.
-        The object structure is documented below.
         """
         return pulumi.get(self, "extra_infos")
 
@@ -11194,7 +10518,7 @@ class GetCbrBackupChildrenReplicationRecordResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Specifies the backup ID.
+        The replication record ID.
         """
         return pulumi.get(self, "id")
 
@@ -11234,7 +10558,7 @@ class GetCbrBackupChildrenReplicationRecordResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The sub-backup status.
+        The replication status.
         """
         return pulumi.get(self, "status")
 
@@ -11242,7 +10566,7 @@ class GetCbrBackupChildrenReplicationRecordResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The vault to which the backup resource belongs.
+        The ID of the vault where the backup resides.
         """
         return pulumi.get(self, "vault_id")
 
@@ -11256,7 +10580,7 @@ class GetCbrBackupChildrenReplicationRecordExtraInfoResult(dict):
                  fail_reason: _builtins.str,
                  progress: _builtins.int):
         """
-        :param _builtins.bool auto_trigger: Whether the backup is automatically generated.
+        :param _builtins.bool auto_trigger: Whether replication is automatically scheduled.
         :param _builtins.str destination_vault_id: The destination vault ID.
         :param _builtins.str fail_code: The error code.
         :param _builtins.str fail_reason: The error cause.
@@ -11272,7 +10596,7 @@ class GetCbrBackupChildrenReplicationRecordExtraInfoResult(dict):
     @pulumi.getter(name="autoTrigger")
     def auto_trigger(self) -> _builtins.bool:
         """
-        Whether the backup is automatically generated.
+        Whether replication is automatically scheduled.
         """
         return pulumi.get(self, "auto_trigger")
 
@@ -11444,21 +10768,20 @@ class GetCbrBackupReplicationRecordResult(dict):
                  status: _builtins.str,
                  vault_id: _builtins.str):
         """
-        :param _builtins.str created_at: The creation time of the sub-backup.
+        :param _builtins.str created_at: The creation time of the replication.
         :param _builtins.str destination_backup_id: The ID of the destination backup used for replication.
         :param _builtins.str destination_checkpoint_id: The record ID of the destination backup used for replication.
         :param _builtins.str destination_project_id: The ID of the replication destination project.
         :param _builtins.str destination_region: The replication destination region.
         :param _builtins.str destination_vault_id: The destination vault ID.
         :param Sequence['GetCbrBackupReplicationRecordExtraInfoArgs'] extra_infos: The additional information of the replication.
-               The object structure is documented below.
-        :param _builtins.str id: Specifies the backup ID.
+        :param _builtins.str id: The replication record ID.
         :param _builtins.str source_backup_id: The ID of the source backup used for replication.
         :param _builtins.str source_checkpoint_id: The ID of the source backup record used for replication.
         :param _builtins.str source_project_id: The ID of the replication source project.
         :param _builtins.str source_region: The replication source region.
-        :param _builtins.str status: The sub-backup status.
-        :param _builtins.str vault_id: The vault to which the backup resource belongs.
+        :param _builtins.str status: The replication status.
+        :param _builtins.str vault_id: The ID of the vault where the backup resides.
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "destination_backup_id", destination_backup_id)
@@ -11479,7 +10802,7 @@ class GetCbrBackupReplicationRecordResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        The creation time of the sub-backup.
+        The creation time of the replication.
         """
         return pulumi.get(self, "created_at")
 
@@ -11528,7 +10851,6 @@ class GetCbrBackupReplicationRecordResult(dict):
     def extra_infos(self) -> Sequence['outputs.GetCbrBackupReplicationRecordExtraInfoResult']:
         """
         The additional information of the replication.
-        The object structure is documented below.
         """
         return pulumi.get(self, "extra_infos")
 
@@ -11536,7 +10858,7 @@ class GetCbrBackupReplicationRecordResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Specifies the backup ID.
+        The replication record ID.
         """
         return pulumi.get(self, "id")
 
@@ -11576,7 +10898,7 @@ class GetCbrBackupReplicationRecordResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The sub-backup status.
+        The replication status.
         """
         return pulumi.get(self, "status")
 
@@ -11584,7 +10906,7 @@ class GetCbrBackupReplicationRecordResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        The vault to which the backup resource belongs.
+        The ID of the vault where the backup resides.
         """
         return pulumi.get(self, "vault_id")
 
@@ -11598,7 +10920,7 @@ class GetCbrBackupReplicationRecordExtraInfoResult(dict):
                  fail_reason: _builtins.str,
                  progress: _builtins.int):
         """
-        :param _builtins.bool auto_trigger: Whether the backup is automatically generated.
+        :param _builtins.bool auto_trigger: Whether replication is automatically scheduled.
         :param _builtins.str destination_vault_id: The destination vault ID.
         :param _builtins.str fail_code: The error code.
         :param _builtins.str fail_reason: The error cause.
@@ -11614,7 +10936,7 @@ class GetCbrBackupReplicationRecordExtraInfoResult(dict):
     @pulumi.getter(name="autoTrigger")
     def auto_trigger(self) -> _builtins.bool:
         """
-        Whether the backup is automatically generated.
+        Whether replication is automatically scheduled.
         """
         return pulumi.get(self, "auto_trigger")
 
@@ -11668,30 +10990,19 @@ class GetCbrPoliciesPolicyResult(dict):
                  time_zone: _builtins.str,
                  type: _builtins.str):
         """
-        :param Sequence['GetCbrPoliciesPolicyAssociatedVaultArgs'] associated_vaults: The vault associated with the CBR policy.
-               The associated_vaults structure is documented below.
-        :param Sequence['GetCbrPoliciesPolicyBackupCycleArgs'] backup_cycles: The scheduling rule for the policy backup execution.
-               The backup_cycle structure is documented below.
-        :param _builtins.int backup_quantity: The maximum number of retained backups. The value ranges from `2` to `99,999`.
-               This parameter and `time_period` are alternative.
+        :param Sequence['GetCbrPoliciesPolicyAssociatedVaultArgs'] associated_vaults: The vault associated with the CBR policy
+        :param Sequence['GetCbrPoliciesPolicyBackupCycleArgs'] backup_cycles: The scheduling rule for the CBR policy backup execution.
+        :param _builtins.int backup_quantity: The maximum number of retained backups.
         :param _builtins.str destination_project_id: The ID of the replication destination project.
         :param _builtins.str destination_region: The name of the replication destination region.
-        :param _builtins.bool enable_acceleration: Whether to enable the acceleration function to shorten the replication time for cross-region.
-               The valid values are as follows:
-               + **true**: Enabled acceleration
-               + **false**: Not enabled acceleration
-        :param _builtins.bool enabled: Specifies the policy enabling status to query. The valid values are as follows:
-               + **true**: Policy enabled
-               + **false**: Policy not enabled
+        :param _builtins.bool enable_acceleration: Whether to enable the acceleration function to shorten the replication time for cross-region
+        :param _builtins.bool enabled: Whether to enable the CBR policy.
         :param _builtins.str id: The policy ID.
-        :param Sequence['GetCbrPoliciesPolicyLongTermRetentionArgs'] long_term_retentions: The long-term retention rules, which is an advanced options of the `backup_quantity`.
-               The long_term_retention structure is documented below.
-        :param _builtins.str name: Specifies the policy name used to query.
-        :param _builtins.int time_period: The duration (in days) for retained backups. The value ranges from `2` to `99,999`.
-        :param _builtins.str time_zone: The UTC time zone, e.g. `UTC+08:00`. Only available when `long_term_retention` is set.
-        :param _builtins.str type: Specifies the policy type used to query. The valid values are as follows:
-               + **backup**: Backup policy
-               + **replication**: Replication policy
+        :param Sequence['GetCbrPoliciesPolicyLongTermRetentionArgs'] long_term_retentions: The long-term retention rules.
+        :param _builtins.str name: The policy name.
+        :param _builtins.int time_period: The duration (in days) for retained backups.
+        :param _builtins.str time_zone: The UTC time zone.
+        :param _builtins.str type: The protection type of the CBR policy.
         """
         pulumi.set(__self__, "associated_vaults", associated_vaults)
         pulumi.set(__self__, "backup_cycles", backup_cycles)
@@ -11711,8 +11022,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="associatedVaults")
     def associated_vaults(self) -> Sequence['outputs.GetCbrPoliciesPolicyAssociatedVaultResult']:
         """
-        The vault associated with the CBR policy.
-        The associated_vaults structure is documented below.
+        The vault associated with the CBR policy
         """
         return pulumi.get(self, "associated_vaults")
 
@@ -11720,8 +11030,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="backupCycles")
     def backup_cycles(self) -> Sequence['outputs.GetCbrPoliciesPolicyBackupCycleResult']:
         """
-        The scheduling rule for the policy backup execution.
-        The backup_cycle structure is documented below.
+        The scheduling rule for the CBR policy backup execution.
         """
         return pulumi.get(self, "backup_cycles")
 
@@ -11729,8 +11038,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="backupQuantity")
     def backup_quantity(self) -> _builtins.int:
         """
-        The maximum number of retained backups. The value ranges from `2` to `99,999`.
-        This parameter and `time_period` are alternative.
+        The maximum number of retained backups.
         """
         return pulumi.get(self, "backup_quantity")
 
@@ -11754,10 +11062,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="enableAcceleration")
     def enable_acceleration(self) -> _builtins.bool:
         """
-        Whether to enable the acceleration function to shorten the replication time for cross-region.
-        The valid values are as follows:
-        + **true**: Enabled acceleration
-        + **false**: Not enabled acceleration
+        Whether to enable the acceleration function to shorten the replication time for cross-region
         """
         return pulumi.get(self, "enable_acceleration")
 
@@ -11765,9 +11070,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         """
-        Specifies the policy enabling status to query. The valid values are as follows:
-        + **true**: Policy enabled
-        + **false**: Policy not enabled
+        Whether to enable the CBR policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -11783,8 +11086,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="longTermRetentions")
     def long_term_retentions(self) -> Sequence['outputs.GetCbrPoliciesPolicyLongTermRetentionResult']:
         """
-        The long-term retention rules, which is an advanced options of the `backup_quantity`.
-        The long_term_retention structure is documented below.
+        The long-term retention rules.
         """
         return pulumi.get(self, "long_term_retentions")
 
@@ -11792,7 +11094,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the policy name used to query.
+        The policy name.
         """
         return pulumi.get(self, "name")
 
@@ -11800,7 +11102,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="timePeriod")
     def time_period(self) -> _builtins.int:
         """
-        The duration (in days) for retained backups. The value ranges from `2` to `99,999`.
+        The duration (in days) for retained backups.
         """
         return pulumi.get(self, "time_period")
 
@@ -11808,7 +11110,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> _builtins.str:
         """
-        The UTC time zone, e.g. `UTC+08:00`. Only available when `long_term_retention` is set.
+        The UTC time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -11816,9 +11118,7 @@ class GetCbrPoliciesPolicyResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the policy type used to query. The valid values are as follows:
-        + **backup**: Backup policy
-        + **replication**: Replication policy
+        The protection type of the CBR policy.
         """
         return pulumi.get(self, "type")
 
@@ -11829,8 +11129,8 @@ class GetCbrPoliciesPolicyAssociatedVaultResult(dict):
                  destination_vault_id: _builtins.str,
                  vault_id: _builtins.str):
         """
-        :param _builtins.str destination_vault_id: The destination vault ID associated with CBR policy.
-        :param _builtins.str vault_id: Specifies the vault ID of the associated policy used to query.
+        :param _builtins.str destination_vault_id: The destination vault ID associated with CBR policy
+        :param _builtins.str vault_id: The vault ID of the associated CBR policy
         """
         pulumi.set(__self__, "destination_vault_id", destination_vault_id)
         pulumi.set(__self__, "vault_id", vault_id)
@@ -11839,7 +11139,7 @@ class GetCbrPoliciesPolicyAssociatedVaultResult(dict):
     @pulumi.getter(name="destinationVaultId")
     def destination_vault_id(self) -> _builtins.str:
         """
-        The destination vault ID associated with CBR policy.
+        The destination vault ID associated with CBR policy
         """
         return pulumi.get(self, "destination_vault_id")
 
@@ -11847,7 +11147,7 @@ class GetCbrPoliciesPolicyAssociatedVaultResult(dict):
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> _builtins.str:
         """
-        Specifies the vault ID of the associated policy used to query.
+        The vault ID of the associated CBR policy
         """
         return pulumi.get(self, "vault_id")
 
@@ -11859,11 +11159,9 @@ class GetCbrPoliciesPolicyBackupCycleResult(dict):
                  execution_times: Sequence[_builtins.str],
                  interval: _builtins.int):
         """
-        :param _builtins.str days: The weekly backup day of backup schedule. It supports seven days a week (MO, TU, WE, TH, FR, SA, SU)
-               and this parameter is separated by a comma (,) without spaces between the date and date.
-        :param Sequence[_builtins.str] execution_times: The backup time. Automated backups will be triggered at the backup
-               time. The current time is in the UTC format (HH:MM).
-        :param _builtins.int interval: The interval (in days) of backup schedule. The value range is `1` to `30`.
+        :param _builtins.str days: The weekly backup time.
+        :param Sequence[_builtins.str] execution_times: The execution time of the policy.
+        :param _builtins.int interval: The number of days between each backup.
         """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "execution_times", execution_times)
@@ -11873,8 +11171,7 @@ class GetCbrPoliciesPolicyBackupCycleResult(dict):
     @pulumi.getter
     def days(self) -> _builtins.str:
         """
-        The weekly backup day of backup schedule. It supports seven days a week (MO, TU, WE, TH, FR, SA, SU)
-        and this parameter is separated by a comma (,) without spaces between the date and date.
+        The weekly backup time.
         """
         return pulumi.get(self, "days")
 
@@ -11882,8 +11179,7 @@ class GetCbrPoliciesPolicyBackupCycleResult(dict):
     @pulumi.getter(name="executionTimes")
     def execution_times(self) -> Sequence[_builtins.str]:
         """
-        The backup time. Automated backups will be triggered at the backup
-        time. The current time is in the UTC format (HH:MM).
+        The execution time of the policy.
         """
         return pulumi.get(self, "execution_times")
 
@@ -11891,7 +11187,7 @@ class GetCbrPoliciesPolicyBackupCycleResult(dict):
     @pulumi.getter
     def interval(self) -> _builtins.int:
         """
-        The interval (in days) of backup schedule. The value range is `1` to `30`.
+        The number of days between each backup.
         """
         return pulumi.get(self, "interval")
 
@@ -11907,7 +11203,6 @@ class GetCbrPoliciesPolicyLongTermRetentionResult(dict):
         """
         :param _builtins.int daily: The latest backup of each day is saved in the long term.
         :param _builtins.int full_backup_interval: How often (after how many incremental backups) a full backup is performed.
-               The valid value ranges from `-1` to `100`. If `-1` is specified, full backup will not be performed.
         :param _builtins.int monthly: The latest backup of each month is saved in the long term.
         :param _builtins.int weekly: The latest backup of each week is saved in the long term.
         :param _builtins.int yearly: The latest backup of each year is saved in the long term.
@@ -11931,7 +11226,6 @@ class GetCbrPoliciesPolicyLongTermRetentionResult(dict):
     def full_backup_interval(self) -> _builtins.int:
         """
         How often (after how many incremental backups) a full backup is performed.
-        The valid value ranges from `-1` to `100`. If `-1` is specified, full backup will not be performed.
         """
         return pulumi.get(self, "full_backup_interval")
 
@@ -11967,10 +11261,6 @@ class GetCdmFlavorsFlavorResult(dict):
                  id: _builtins.str,
                  memory: _builtins.str,
                  name: _builtins.str):
-        """
-        :param _builtins.str id: The id of the cdm flavor.
-        :param _builtins.str name: The name of the cdm flavor.
-        """
         pulumi.set(__self__, "cpu", cpu)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "memory", memory)
@@ -11984,9 +11274,6 @@ class GetCdmFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The id of the cdm flavor.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -11997,9 +11284,6 @@ class GetCdmFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        The name of the cdm flavor.
-        """
         return pulumi.get(self, "name")
 
 
@@ -12090,14 +11374,14 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
                  state: _builtins.str):
         """
         :param _builtins.str assignment_strategy: Indicates the partition assignment strategy.
-        :param _builtins.int coordinator_id: Specifies the coordinator ID.
+        :param _builtins.int coordinator_id: Indicates the coordinator ID.
         :param _builtins.str created_at: Indicates the create time.
-        :param _builtins.str description: Specifies the group description.
+        :param _builtins.str description: Indicates the consumer group description.
         :param Sequence['GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetArgs'] group_message_offsets: Indicates the group message offsets.
-        :param _builtins.int lag: Specifies the number of accumulated messages.
-        :param Sequence['GetDmsKafkaConsumerGroupsGroupMemberArgs'] members: Indicates the consumer group members
-        :param _builtins.str name: Specifies the group name.
-        :param _builtins.str state: Specifies the consumer group status.
+        :param _builtins.int lag: Indicates the number of accumulated messages.
+        :param Sequence['GetDmsKafkaConsumerGroupsGroupMemberArgs'] members: Indicates the consumer group members.
+        :param _builtins.str name: Indicates the consumer group name.
+        :param _builtins.str state: Indicates the consumer group status.
         """
         pulumi.set(__self__, "assignment_strategy", assignment_strategy)
         pulumi.set(__self__, "coordinator_id", coordinator_id)
@@ -12121,7 +11405,7 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
     @pulumi.getter(name="coordinatorId")
     def coordinator_id(self) -> _builtins.int:
         """
-        Specifies the coordinator ID.
+        Indicates the coordinator ID.
         """
         return pulumi.get(self, "coordinator_id")
 
@@ -12137,7 +11421,7 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Specifies the group description.
+        Indicates the consumer group description.
         """
         return pulumi.get(self, "description")
 
@@ -12153,7 +11437,7 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
     @pulumi.getter
     def lag(self) -> _builtins.int:
         """
-        Specifies the number of accumulated messages.
+        Indicates the number of accumulated messages.
         """
         return pulumi.get(self, "lag")
 
@@ -12161,7 +11445,7 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetDmsKafkaConsumerGroupsGroupMemberResult']:
         """
-        Indicates the consumer group members
+        Indicates the consumer group members.
         """
         return pulumi.get(self, "members")
 
@@ -12169,7 +11453,7 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the group name.
+        Indicates the consumer group name.
         """
         return pulumi.get(self, "name")
 
@@ -12177,7 +11461,7 @@ class GetDmsKafkaConsumerGroupsGroupResult(dict):
     @pulumi.getter
     def state(self) -> _builtins.str:
         """
-        Specifies the consumer group status.
+        Indicates the consumer group status.
         """
         return pulumi.get(self, "state")
 
@@ -12191,7 +11475,7 @@ class GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetResult(dict):
                  partition: _builtins.int,
                  topic: _builtins.str):
         """
-        :param _builtins.int lag: Specifies the number of accumulated messages.
+        :param _builtins.int lag: Indicates the number of accumulated messages.
         :param _builtins.int message_current_offset: Indicates the message current offset.
         :param _builtins.int message_log_end_offset: Indicates the message log end offset.
         :param _builtins.int partition: Indicates the partition.
@@ -12207,7 +11491,7 @@ class GetDmsKafkaConsumerGroupsGroupGroupMessageOffsetResult(dict):
     @pulumi.getter
     def lag(self) -> _builtins.int:
         """
-        Specifies the number of accumulated messages.
+        Indicates the number of accumulated messages.
         """
         return pulumi.get(self, "lag")
 
@@ -12342,10 +11626,8 @@ class GetDmsKafkaMessagesMessageResult(dict):
         :param _builtins.bool huge_message: Indicates the big data flag.
         :param _builtins.str key: Indicates the message key.
         :param _builtins.str message_id: Indicates the message ID.
-        :param _builtins.int message_offset: Specifies the message offset.
-               This parameter is mandatory when you query the message content by offset.
-        :param _builtins.int partition: Specifies the partition.
-               This parameter is mandatory when you query the message content by offset.
+        :param _builtins.int message_offset: Indicates the message offset.
+        :param _builtins.int partition: Indicates the partition where the message is located.
         :param _builtins.int size: Indicates the message size.
         :param _builtins.str tag: Indicates the message label.
         :param _builtins.str timestamp: Indicates the message production time.
@@ -12398,8 +11680,7 @@ class GetDmsKafkaMessagesMessageResult(dict):
     @pulumi.getter(name="messageOffset")
     def message_offset(self) -> _builtins.int:
         """
-        Specifies the message offset.
-        This parameter is mandatory when you query the message content by offset.
+        Indicates the message offset.
         """
         return pulumi.get(self, "message_offset")
 
@@ -12407,8 +11688,7 @@ class GetDmsKafkaMessagesMessageResult(dict):
     @pulumi.getter
     def partition(self) -> _builtins.int:
         """
-        Specifies the partition.
-        This parameter is mandatory when you query the message content by offset.
+        Indicates the partition where the message is located.
         """
         return pulumi.get(self, "partition")
 
@@ -12456,8 +11736,8 @@ class GetDmsKafkaUsersUserResult(dict):
         """
         :param _builtins.str created_at: Indicates the create time.
         :param _builtins.bool default_app: Indicates whether the application is the default application.
-        :param _builtins.str description: Specifies the user description.
-        :param _builtins.str name: Specifies the user name.
+        :param _builtins.str description: Indicates the description.
+        :param _builtins.str name: Indicates the username.
         :param _builtins.str role: Indicates the user role.
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -12486,7 +11766,7 @@ class GetDmsKafkaUsersUserResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Specifies the user description.
+        Indicates the description.
         """
         return pulumi.get(self, "description")
 
@@ -12494,7 +11774,7 @@ class GetDmsKafkaUsersUserResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the user name.
+        Indicates the username.
         """
         return pulumi.get(self, "name")
 
@@ -12518,19 +11798,6 @@ class GetDmsRabbitmqFlavorsFlavorResult(dict):
                  support_features: Sequence['outputs.GetDmsRabbitmqFlavorsFlavorSupportFeatureResult'],
                  type: _builtins.str,
                  vm_specification: _builtins.str):
-        """
-        :param Sequence[_builtins.str] arch_types: Indicates the list of supported CPU architectures.
-        :param Sequence[_builtins.str] charging_modes: Indicates the list of supported billing modes.
-        :param _builtins.str id: Indicates the flavor ID.
-        :param Sequence['GetDmsRabbitmqFlavorsFlavorIoArgs'] ios: Indicates the list of supported disk IO types.
-               The object structure is documented below.
-        :param Sequence['GetDmsRabbitmqFlavorsFlavorPropertyArgs'] properties: Indicates the function property details.
-               The object structure is documented below.
-        :param Sequence['GetDmsRabbitmqFlavorsFlavorSupportFeatureArgs'] support_features: Indicates the list of features supported by the current specification.
-               The object structure is documented below.
-        :param _builtins.str type: Specifies flavor type. The valid values are **single** and **cluster**.
-        :param _builtins.str vm_specification: Indicates the underlying VM specification.
-        """
         pulumi.set(__self__, "arch_types", arch_types)
         pulumi.set(__self__, "charging_modes", charging_modes)
         pulumi.set(__self__, "id", id)
@@ -12543,68 +11810,41 @@ class GetDmsRabbitmqFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter(name="archTypes")
     def arch_types(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the list of supported CPU architectures.
-        """
         return pulumi.get(self, "arch_types")
 
     @_builtins.property
     @pulumi.getter(name="chargingModes")
     def charging_modes(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the list of supported billing modes.
-        """
         return pulumi.get(self, "charging_modes")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the flavor ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def ios(self) -> Sequence['outputs.GetDmsRabbitmqFlavorsFlavorIoResult']:
-        """
-        Indicates the list of supported disk IO types.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "ios")
 
     @_builtins.property
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetDmsRabbitmqFlavorsFlavorPropertyResult']:
-        """
-        Indicates the function property details.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "properties")
 
     @_builtins.property
     @pulumi.getter(name="supportFeatures")
     def support_features(self) -> Sequence['outputs.GetDmsRabbitmqFlavorsFlavorSupportFeatureResult']:
-        """
-        Indicates the list of features supported by the current specification.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "support_features")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies flavor type. The valid values are **single** and **cluster**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vmSpecification")
     def vm_specification(self) -> _builtins.str:
-        """
-        Indicates the underlying VM specification.
-        """
         return pulumi.get(self, "vm_specification")
 
 
@@ -12615,14 +11855,6 @@ class GetDmsRabbitmqFlavorsFlavorIoResult(dict):
                  storage_spec_code: _builtins.str,
                  type: _builtins.str,
                  unavailability_zones: Sequence[_builtins.str]):
-        """
-        :param Sequence[_builtins.str] availability_zones: Specifies the list of availability zones with available resources.
-        :param _builtins.str storage_spec_code: Specifies the disk IO encoding.
-               + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-               + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-        :param _builtins.str type: Specifies flavor type. The valid values are **single** and **cluster**.
-        :param Sequence[_builtins.str] unavailability_zones: Indicates the list of unavailability zones with available resources.
-        """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "storage_spec_code", storage_spec_code)
         pulumi.set(__self__, "type", type)
@@ -12631,35 +11863,21 @@ class GetDmsRabbitmqFlavorsFlavorIoResult(dict):
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
-        """
-        Specifies the list of availability zones with available resources.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> _builtins.str:
-        """
-        Specifies the disk IO encoding.
-        + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-        + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-        """
         return pulumi.get(self, "storage_spec_code")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies flavor type. The valid values are **single** and **cluster**.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="unavailabilityZones")
     def unavailability_zones(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the list of unavailability zones with available resources.
-        """
         return pulumi.get(self, "unavailability_zones")
 
 
@@ -12675,17 +11893,6 @@ class GetDmsRabbitmqFlavorsFlavorPropertyResult(dict):
                  max_tps_per_broker: _builtins.int,
                  min_broker: _builtins.int,
                  min_storage_per_node: _builtins.int):
-        """
-        :param _builtins.str flavor_alias: Indicates the flavor ID alias.
-        :param _builtins.int max_bandwidth_per_broker: Indicates the maximum bandwidth per broker.
-        :param _builtins.int max_broker: Indicates the maximum number of brokers.
-        :param _builtins.int max_consumer_per_broker: Indicates the maximum number of consumers per broker.
-        :param _builtins.int max_partition_per_broker: Indicates the maximum number of partitions per broker.
-        :param _builtins.int max_storage_per_node: Indicates the maximum storage per node. The unit is GB.
-        :param _builtins.int max_tps_per_broker: Indicates the maximum TPS per broker.
-        :param _builtins.int min_broker: Indicates the minimum number of brokers.
-        :param _builtins.int min_storage_per_node: Indicates the minimum storage per node. The unit is GB.
-        """
         pulumi.set(__self__, "flavor_alias", flavor_alias)
         pulumi.set(__self__, "max_bandwidth_per_broker", max_bandwidth_per_broker)
         pulumi.set(__self__, "max_broker", max_broker)
@@ -12699,73 +11906,46 @@ class GetDmsRabbitmqFlavorsFlavorPropertyResult(dict):
     @_builtins.property
     @pulumi.getter(name="flavorAlias")
     def flavor_alias(self) -> _builtins.str:
-        """
-        Indicates the flavor ID alias.
-        """
         return pulumi.get(self, "flavor_alias")
 
     @_builtins.property
     @pulumi.getter(name="maxBandwidthPerBroker")
     def max_bandwidth_per_broker(self) -> _builtins.int:
-        """
-        Indicates the maximum bandwidth per broker.
-        """
         return pulumi.get(self, "max_bandwidth_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxBroker")
     def max_broker(self) -> _builtins.int:
-        """
-        Indicates the maximum number of brokers.
-        """
         return pulumi.get(self, "max_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxConsumerPerBroker")
     def max_consumer_per_broker(self) -> _builtins.int:
-        """
-        Indicates the maximum number of consumers per broker.
-        """
         return pulumi.get(self, "max_consumer_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxPartitionPerBroker")
     def max_partition_per_broker(self) -> _builtins.int:
-        """
-        Indicates the maximum number of partitions per broker.
-        """
         return pulumi.get(self, "max_partition_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="maxStoragePerNode")
     def max_storage_per_node(self) -> _builtins.int:
-        """
-        Indicates the maximum storage per node. The unit is GB.
-        """
         return pulumi.get(self, "max_storage_per_node")
 
     @_builtins.property
     @pulumi.getter(name="maxTpsPerBroker")
     def max_tps_per_broker(self) -> _builtins.int:
-        """
-        Indicates the maximum TPS per broker.
-        """
         return pulumi.get(self, "max_tps_per_broker")
 
     @_builtins.property
     @pulumi.getter(name="minBroker")
     def min_broker(self) -> _builtins.int:
-        """
-        Indicates the minimum number of brokers.
-        """
         return pulumi.get(self, "min_broker")
 
     @_builtins.property
     @pulumi.getter(name="minStoragePerNode")
     def min_storage_per_node(self) -> _builtins.int:
-        """
-        Indicates the minimum storage per node. The unit is GB.
-        """
         return pulumi.get(self, "min_storage_per_node")
 
 
@@ -12774,29 +11954,17 @@ class GetDmsRabbitmqFlavorsFlavorSupportFeatureResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  properties: Sequence['outputs.GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyResult']):
-        """
-        :param _builtins.str name: Indicates the function name, e.g. **connector_obs**.
-        :param Sequence['GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyArgs'] properties: Indicates the function property details.
-               The object structure is documented below.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "properties", properties)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Indicates the function name, e.g. **connector_obs**.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyResult']:
-        """
-        Indicates the function property details.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "properties")
 
 
@@ -12807,12 +11975,6 @@ class GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyResult(dict):
                  max_task: _builtins.int,
                  min_node: _builtins.int,
                  min_task: _builtins.int):
-        """
-        :param _builtins.int max_node: Indicates the maximum number of nodes for the dump function.
-        :param _builtins.int max_task: Indicates the maximum number of tasks for the dump function.
-        :param _builtins.int min_node: Indicates the minimum number of nodes for the dump function.
-        :param _builtins.int min_task: Indicates the minimum number of tasks for the dump function.
-        """
         pulumi.set(__self__, "max_node", max_node)
         pulumi.set(__self__, "max_task", max_task)
         pulumi.set(__self__, "min_node", min_node)
@@ -12821,33 +11983,21 @@ class GetDmsRabbitmqFlavorsFlavorSupportFeaturePropertyResult(dict):
     @_builtins.property
     @pulumi.getter(name="maxNode")
     def max_node(self) -> _builtins.int:
-        """
-        Indicates the maximum number of nodes for the dump function.
-        """
         return pulumi.get(self, "max_node")
 
     @_builtins.property
     @pulumi.getter(name="maxTask")
     def max_task(self) -> _builtins.int:
-        """
-        Indicates the maximum number of tasks for the dump function.
-        """
         return pulumi.get(self, "max_task")
 
     @_builtins.property
     @pulumi.getter(name="minNode")
     def min_node(self) -> _builtins.int:
-        """
-        Indicates the minimum number of nodes for the dump function.
-        """
         return pulumi.get(self, "min_node")
 
     @_builtins.property
     @pulumi.getter(name="minTask")
     def min_task(self) -> _builtins.int:
-        """
-        Indicates the minimum number of tasks for the dump function.
-        """
         return pulumi.get(self, "min_task")
 
 
@@ -12911,14 +12061,6 @@ class GetDmsRocketmqConsumerGroupsGroupResult(dict):
                  enabled: _builtins.bool,
                  name: _builtins.str,
                  retry_max_times: _builtins.int):
-        """
-        :param _builtins.bool broadcast: Specifies whether to broadcast the consumer group. Defaults to **false**.
-        :param Sequence[_builtins.str] brokers: Indicates the list of associated brokers of the consumer group.
-        :param _builtins.str description: Indicates the description of the consumer group.
-        :param _builtins.bool enabled: Specifies the consumer group is enabled or not. Defaults to **true**.
-        :param _builtins.str name: Specifies the name of the consumer group.
-        :param _builtins.int retry_max_times: Specifies the maximum number of retry times.
-        """
         pulumi.set(__self__, "broadcast", broadcast)
         pulumi.set(__self__, "brokers", brokers)
         pulumi.set(__self__, "description", description)
@@ -12929,49 +12071,31 @@ class GetDmsRocketmqConsumerGroupsGroupResult(dict):
     @_builtins.property
     @pulumi.getter
     def broadcast(self) -> _builtins.bool:
-        """
-        Specifies whether to broadcast the consumer group. Defaults to **false**.
-        """
         return pulumi.get(self, "broadcast")
 
     @_builtins.property
     @pulumi.getter
     def brokers(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the list of associated brokers of the consumer group.
-        """
         return pulumi.get(self, "brokers")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Indicates the description of the consumer group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
-        """
-        Specifies the consumer group is enabled or not. Defaults to **true**.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the consumer group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="retryMaxTimes")
     def retry_max_times(self) -> _builtins.int:
-        """
-        Specifies the maximum number of retry times.
-        """
         return pulumi.get(self, "retry_max_times")
 
 
@@ -13046,7 +12170,7 @@ class GetDmsRocketmqConsumersClientSubscriptionResult(dict):
         """
         :param _builtins.str expression: Indicates the subscription tag.
         :param _builtins.str topic: Indicates the name of the subscribed topic.
-        :param _builtins.str type: Indicates the subscription type. The value can be **TAG** and **SQL92**.
+        :param _builtins.str type: Indicates the subscription type.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "topic", topic)
@@ -13072,7 +12196,7 @@ class GetDmsRocketmqConsumersClientSubscriptionResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Indicates the subscription type. The value can be **TAG** and **SQL92**.
+        Indicates the subscription type.
         """
         return pulumi.get(self, "type")
 
@@ -13093,15 +12217,15 @@ class GetDmsRocketmqExtendFlavorsFlavorResult(dict):
                  vm_specification: _builtins.str):
         """
         :param Sequence[_builtins.str] arch_types: Indicates the list of supported CPU architectures.
-        :param Sequence[_builtins.str] available_zones: Indicates the list of availability zones with available resources.
+        :param Sequence[_builtins.str] available_zones: Indicates the AZs where there are available resources.
         :param _builtins.str billing_code: Indicates the billing code.
         :param Sequence[_builtins.str] charging_modes: Indicates the list of supported billing modes.
         :param _builtins.str id: Indicates the flavor ID.
         :param Sequence['GetDmsRocketmqExtendFlavorsFlavorIoArgs'] ios: Indicates the list of supported disk IO types.
-        :param Sequence['GetDmsRocketmqExtendFlavorsFlavorPropertyArgs'] properties: Indicates the key-value pair of a feature.
+        :param Sequence['GetDmsRocketmqExtendFlavorsFlavorPropertyArgs'] properties: Indicates the properties of the current specification.
         :param Sequence['GetDmsRocketmqExtendFlavorsFlavorSupportFeatureArgs'] support_features: Indicates the supported features.
-        :param _builtins.str type: Specifies the flavor type.
-        :param Sequence[_builtins.str] unavailable_zones: Indicates the list of unavailability zones with available resources.
+        :param _builtins.str type: Indicates the flavor type.
+        :param Sequence[_builtins.str] unavailable_zones: Indicates the AZs where resources are unavailable.
         :param _builtins.str vm_specification: Indicates the underlying VM specification.
         """
         pulumi.set(__self__, "arch_types", arch_types)
@@ -13128,7 +12252,7 @@ class GetDmsRocketmqExtendFlavorsFlavorResult(dict):
     @pulumi.getter(name="availableZones")
     def available_zones(self) -> Sequence[_builtins.str]:
         """
-        Indicates the list of availability zones with available resources.
+        Indicates the AZs where there are available resources.
         """
         return pulumi.get(self, "available_zones")
 
@@ -13168,7 +12292,7 @@ class GetDmsRocketmqExtendFlavorsFlavorResult(dict):
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetDmsRocketmqExtendFlavorsFlavorPropertyResult']:
         """
-        Indicates the key-value pair of a feature.
+        Indicates the properties of the current specification.
         """
         return pulumi.get(self, "properties")
 
@@ -13184,7 +12308,7 @@ class GetDmsRocketmqExtendFlavorsFlavorResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the flavor type.
+        Indicates the flavor type.
         """
         return pulumi.get(self, "type")
 
@@ -13192,7 +12316,7 @@ class GetDmsRocketmqExtendFlavorsFlavorResult(dict):
     @pulumi.getter(name="unavailableZones")
     def unavailable_zones(self) -> Sequence[_builtins.str]:
         """
-        Indicates the list of unavailability zones with available resources.
+        Indicates the AZs where resources are unavailable.
         """
         return pulumi.get(self, "unavailable_zones")
 
@@ -13214,8 +12338,8 @@ class GetDmsRocketmqExtendFlavorsFlavorIoResult(dict):
                  unavailable_zones: Sequence[_builtins.str]):
         """
         :param Sequence[_builtins.str] available_zones: Indicates the list of availability zones with available resources.
-        :param _builtins.str storage_spec_code: Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
-        :param _builtins.str type: Specifies the flavor type.
+        :param _builtins.str storage_spec_code: Indicates the disk IO encoding.
+        :param _builtins.str type: Indicates the disk type.
         :param Sequence[_builtins.str] unavailable_zones: Indicates the list of unavailability zones with available resources.
         """
         pulumi.set(__self__, "available_zones", available_zones)
@@ -13235,7 +12359,7 @@ class GetDmsRocketmqExtendFlavorsFlavorIoResult(dict):
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> _builtins.str:
         """
-        Specifies the disk IO encoding, e.g. **dms.physical.storage.high.v2**.
+        Indicates the disk IO encoding.
         """
         return pulumi.get(self, "storage_spec_code")
 
@@ -13243,7 +12367,7 @@ class GetDmsRocketmqExtendFlavorsFlavorIoResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the flavor type.
+        Indicates the disk type.
         """
         return pulumi.get(self, "type")
 
@@ -13396,13 +12520,10 @@ class GetDmsRocketmqFlavorsFlavorResult(dict):
         :param Sequence[_builtins.str] charging_modes: Indicates the list of the billing modes.
         :param _builtins.str id: Indicates the ID of the flavor.
         :param Sequence['GetDmsRocketmqFlavorsFlavorIoArgs'] ios: Indicates the list of disk IO types.
-               The ios structure is documented below.
-        :param Sequence['GetDmsRocketmqFlavorsFlavorPropertyArgs'] properties: Indicates the list of the function property details.
-               The properties structure is documented below.
+        :param Sequence['GetDmsRocketmqFlavorsFlavorPropertyArgs'] properties: Indicates the list of the properties of the current specification.
         :param Sequence['GetDmsRocketmqFlavorsFlavorSupportFeatureArgs'] support_features: Indicates the list of features supported by the current specification.
-               The support_features structure is documented below.
-        :param _builtins.str type: Specifies the type of the flavor. Value options: **single** and **cluster**.
-        :param _builtins.str vm_specification: Indicates the underlying VM specification, e.g. **c6.large.2**
+        :param _builtins.str type: Indicates the type of the flavor.
+        :param _builtins.str vm_specification: Indicates the underlying VM specification.
         """
         pulumi.set(__self__, "arch_types", arch_types)
         pulumi.set(__self__, "charging_modes", charging_modes)
@@ -13442,7 +12563,6 @@ class GetDmsRocketmqFlavorsFlavorResult(dict):
     def ios(self) -> Sequence['outputs.GetDmsRocketmqFlavorsFlavorIoResult']:
         """
         Indicates the list of disk IO types.
-        The ios structure is documented below.
         """
         return pulumi.get(self, "ios")
 
@@ -13450,8 +12570,7 @@ class GetDmsRocketmqFlavorsFlavorResult(dict):
     @pulumi.getter
     def properties(self) -> Sequence['outputs.GetDmsRocketmqFlavorsFlavorPropertyResult']:
         """
-        Indicates the list of the function property details.
-        The properties structure is documented below.
+        Indicates the list of the properties of the current specification.
         """
         return pulumi.get(self, "properties")
 
@@ -13460,7 +12579,6 @@ class GetDmsRocketmqFlavorsFlavorResult(dict):
     def support_features(self) -> Sequence['outputs.GetDmsRocketmqFlavorsFlavorSupportFeatureResult']:
         """
         Indicates the list of features supported by the current specification.
-        The support_features structure is documented below.
         """
         return pulumi.get(self, "support_features")
 
@@ -13468,7 +12586,7 @@ class GetDmsRocketmqFlavorsFlavorResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the type of the flavor. Value options: **single** and **cluster**.
+        Indicates the type of the flavor.
         """
         return pulumi.get(self, "type")
 
@@ -13476,7 +12594,7 @@ class GetDmsRocketmqFlavorsFlavorResult(dict):
     @pulumi.getter(name="vmSpecification")
     def vm_specification(self) -> _builtins.str:
         """
-        Indicates the underlying VM specification, e.g. **c6.large.2**
+        Indicates the underlying VM specification.
         """
         return pulumi.get(self, "vm_specification")
 
@@ -13489,12 +12607,9 @@ class GetDmsRocketmqFlavorsFlavorIoResult(dict):
                  type: _builtins.str,
                  unavailability_zones: Sequence[_builtins.str]):
         """
-        :param Sequence[_builtins.str] availability_zones: Specifies the list of availability zone names.
-        :param _builtins.str storage_spec_code: Specifies the disk IO encoding.
-               Value options:
-               + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-               + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
-        :param _builtins.str type: Specifies the type of the flavor. Value options: **single** and **cluster**.
+        :param Sequence[_builtins.str] availability_zones: Indicates the list of availability zone names.
+        :param _builtins.str storage_spec_code: Indicates the disk IO encoding.
+        :param _builtins.str type: Indicates the disk type.
         :param Sequence[_builtins.str] unavailability_zones: Indicates the list of unavailability zone names.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
@@ -13506,7 +12621,7 @@ class GetDmsRocketmqFlavorsFlavorIoResult(dict):
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
         """
-        Specifies the list of availability zone names.
+        Indicates the list of availability zone names.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -13514,10 +12629,7 @@ class GetDmsRocketmqFlavorsFlavorIoResult(dict):
     @pulumi.getter(name="storageSpecCode")
     def storage_spec_code(self) -> _builtins.str:
         """
-        Specifies the disk IO encoding.
-        Value options:
-        + **dms.physical.storage.high.v2**: Type of the disk that uses high I/O.
-        + **dms.physical.storage.ultra.v2**: Type of the disk that uses ultra-high I/O.
+        Indicates the disk IO encoding.
         """
         return pulumi.get(self, "storage_spec_code")
 
@@ -13525,7 +12637,7 @@ class GetDmsRocketmqFlavorsFlavorIoResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the type of the flavor. Value options: **single** and **cluster**.
+        Indicates the disk type.
         """
         return pulumi.get(self, "type")
 
@@ -13650,9 +12762,8 @@ class GetDmsRocketmqFlavorsFlavorSupportFeatureResult(dict):
                  name: _builtins.str,
                  properties: Sequence['outputs.GetDmsRocketmqFlavorsFlavorSupportFeaturePropertyResult']):
         """
-        :param _builtins.str name: Indicates the function name, e.g. **connector_obs**.
+        :param _builtins.str name: Indicates the function name.
         :param Sequence['GetDmsRocketmqFlavorsFlavorSupportFeaturePropertyArgs'] properties: Indicates the list of the function property details.
-               The properties structure is documented below.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "properties", properties)
@@ -13661,7 +12772,7 @@ class GetDmsRocketmqFlavorsFlavorSupportFeatureResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Indicates the function name, e.g. **connector_obs**.
+        Indicates the function name.
         """
         return pulumi.get(self, "name")
 
@@ -13670,7 +12781,6 @@ class GetDmsRocketmqFlavorsFlavorSupportFeatureResult(dict):
     def properties(self) -> Sequence['outputs.GetDmsRocketmqFlavorsFlavorSupportFeaturePropertyResult']:
         """
         Indicates the list of the function property details.
-        The properties structure is documented below.
         """
         return pulumi.get(self, "properties")
 
@@ -13762,41 +12872,36 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
                  used_storage_space: _builtins.int,
                  vpc_id: _builtins.str):
         """
-        :param Sequence[_builtins.str] availability_zones: Indicates the list of availability zone names, where
-               instance brokers reside and which has available resources.
+        :param Sequence[_builtins.str] availability_zones: Indicates the list of availability zone names.
         :param _builtins.str broker_address: Indicates the service data address.
-        :param _builtins.int broker_num: Specifies the broker numbers. Defaults to 1.
+        :param _builtins.int broker_num: Indicates the broker numbers.
         :param Sequence['GetDmsRocketmqInstancesInstanceCrossVpcAccessArgs'] cross_vpc_accesses: Indicates the Cross-VPC access information.
-               The CrossVpc structure is documented below.
         :param _builtins.str description: Indicates the description of the DMS RocketMQ instance.
         :param _builtins.bool enable_acl: Indicates whether access control is enabled.
         :param _builtins.bool enable_publicip: Indicates whether to enable public access.
         :param _builtins.str engine_version: Indicates the version of the RocketMQ engine.
         :param _builtins.str flavor_id: Indicates a product ID.
         :param _builtins.str id: Indicates the ID of the DMS RocketMQ instance.
-        :param _builtins.bool ipv6_enable: Indicates whether to support IPv6. Defaults to false.
+        :param _builtins.bool ipv6_enable: Indicates whether to support IPv6.
         :param _builtins.str maintain_begin: Indicates the time at which the maintenance window starts. The format is HH:mm:ss.
         :param _builtins.str maintain_end: Indicates the time at which the maintenance window ends. The format is HH:mm:ss.
-        :param _builtins.str name: Specifies the name of the DMS RocketMQ instance.
+        :param _builtins.str name: Indicates the name of the DMS RocketMQ instance.
         :param _builtins.str namesrv_address: Indicates the metadata address.
-        :param _builtins.bool new_spec_billing_enable: Indicates the whether billing based on new specifications is enabled.
+        :param _builtins.bool new_spec_billing_enable: Indicates whether billing based on new specifications is enabled.
         :param _builtins.int node_num: Indicates the node quantity.
         :param _builtins.str public_broker_address: Indicates the public network service data address.
         :param _builtins.str public_namesrv_address: Indicates the public network metadata address.
         :param _builtins.str publicip_address: Indicates the public IP address.
         :param _builtins.str publicip_id: Indicates the ID of the EIP bound to the instance.
-               Use commas (,) to separate multiple EIP IDs.
-               This parameter is mandatory if public access is enabled (that is, enable_publicip is set to true).
         :param _builtins.str resource_spec_code: Indicates the resource specifications.
         :param _builtins.str security_group_id: Indicates the ID of a security group.
-        :param _builtins.str specification: Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-               and the number of nodes are returned.
-        :param _builtins.bool ssl_enable: Indicates whether the RocketMQ SASL_SSL is enabled. Defaults to false.
-        :param _builtins.str status: Specifies the status of the DMS RocketMQ instance.
+        :param _builtins.str specification: Indicates the instance specification.
+        :param _builtins.bool ssl_enable: Indicates whether the RocketMQ SASL_SSL is enabled.
+        :param _builtins.str status: Indicates the status of the DMS RocketMQ instance.
         :param _builtins.int storage_space: Indicates the message storage capacity. Unit: GB.
         :param _builtins.str storage_spec_code: Indicates the storage I/O specification.
         :param _builtins.str subnet_id: Indicates the ID of a subnet.
-        :param _builtins.str type: Indicates the DMS RocketMQ instance type.
+        :param _builtins.str type: Indicates the DMS RocketMQ instance type. Value: cluster.
         :param _builtins.int used_storage_space: Indicates the used message storage space. Unit: GB.
         :param _builtins.str vpc_id: Indicates the ID of a VPC.
         """
@@ -13837,8 +12942,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence[_builtins.str]:
         """
-        Indicates the list of availability zone names, where
-        instance brokers reside and which has available resources.
+        Indicates the list of availability zone names.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -13854,7 +12958,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter(name="brokerNum")
     def broker_num(self) -> _builtins.int:
         """
-        Specifies the broker numbers. Defaults to 1.
+        Indicates the broker numbers.
         """
         return pulumi.get(self, "broker_num")
 
@@ -13863,7 +12967,6 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     def cross_vpc_accesses(self) -> Sequence['outputs.GetDmsRocketmqInstancesInstanceCrossVpcAccessResult']:
         """
         Indicates the Cross-VPC access information.
-        The CrossVpc structure is documented below.
         """
         return pulumi.get(self, "cross_vpc_accesses")
 
@@ -13919,7 +13022,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> _builtins.bool:
         """
-        Indicates whether to support IPv6. Defaults to false.
+        Indicates whether to support IPv6.
         """
         return pulumi.get(self, "ipv6_enable")
 
@@ -13943,7 +13046,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the DMS RocketMQ instance.
+        Indicates the name of the DMS RocketMQ instance.
         """
         return pulumi.get(self, "name")
 
@@ -13959,7 +13062,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter(name="newSpecBillingEnable")
     def new_spec_billing_enable(self) -> _builtins.bool:
         """
-        Indicates the whether billing based on new specifications is enabled.
+        Indicates whether billing based on new specifications is enabled.
         """
         return pulumi.get(self, "new_spec_billing_enable")
 
@@ -14000,8 +13103,6 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     def publicip_id(self) -> _builtins.str:
         """
         Indicates the ID of the EIP bound to the instance.
-        Use commas (,) to separate multiple EIP IDs.
-        This parameter is mandatory if public access is enabled (that is, enable_publicip is set to true).
         """
         return pulumi.get(self, "publicip_id")
 
@@ -14025,8 +13126,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter
     def specification(self) -> _builtins.str:
         """
-        Indicates the instance specification. For a cluster DMS RocketMQ instance, VM specifications
-        and the number of nodes are returned.
+        Indicates the instance specification.
         """
         return pulumi.get(self, "specification")
 
@@ -14034,7 +13134,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter(name="sslEnable")
     def ssl_enable(self) -> _builtins.bool:
         """
-        Indicates whether the RocketMQ SASL_SSL is enabled. Defaults to false.
+        Indicates whether the RocketMQ SASL_SSL is enabled.
         """
         return pulumi.get(self, "ssl_enable")
 
@@ -14042,7 +13142,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies the status of the DMS RocketMQ instance.
+        Indicates the status of the DMS RocketMQ instance.
         """
         return pulumi.get(self, "status")
 
@@ -14074,7 +13174,7 @@ class GetDmsRocketmqInstancesInstanceResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Indicates the DMS RocketMQ instance type.
+        Indicates the DMS RocketMQ instance type. Value: cluster.
         """
         return pulumi.get(self, "type")
 
@@ -14103,12 +13203,6 @@ class GetDmsRocketmqInstancesInstanceCrossVpcAccessResult(dict):
                  listener_ip: _builtins.str,
                  port: _builtins.int,
                  port_id: _builtins.str):
-        """
-        :param _builtins.str advertised_ip: Indicates the advertised IP.
-        :param _builtins.str listener_ip: Indicates the IP of the listener.
-        :param _builtins.int port: Indicates the port.
-        :param _builtins.str port_id: Indicates the port ID associated with the address.
-        """
         pulumi.set(__self__, "advertised_ip", advertised_ip)
         pulumi.set(__self__, "lisenter_ip", lisenter_ip)
         pulumi.set(__self__, "listener_ip", listener_ip)
@@ -14118,9 +13212,6 @@ class GetDmsRocketmqInstancesInstanceCrossVpcAccessResult(dict):
     @_builtins.property
     @pulumi.getter(name="advertisedIp")
     def advertised_ip(self) -> _builtins.str:
-        """
-        Indicates the advertised IP.
-        """
         return pulumi.get(self, "advertised_ip")
 
     @_builtins.property
@@ -14132,25 +13223,16 @@ class GetDmsRocketmqInstancesInstanceCrossVpcAccessResult(dict):
     @_builtins.property
     @pulumi.getter(name="listenerIp")
     def listener_ip(self) -> _builtins.str:
-        """
-        Indicates the IP of the listener.
-        """
         return pulumi.get(self, "listener_ip")
 
     @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
-        """
-        Indicates the port.
-        """
         return pulumi.get(self, "port")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> _builtins.str:
-        """
-        Indicates the port ID associated with the address.
-        """
         return pulumi.get(self, "port_id")
 
 
@@ -14181,11 +13263,6 @@ class GetDmsRocketmqMessageTracesTraceResult(dict):
         :param _builtins.float body_length: Specifies the message body length.
         :param _builtins.str client_host: Specifies the IP address of the host that generates the message.
         :param _builtins.float consume_status: Specifies the consumption status.
-               + **0**: successful
-               + **1**: timeout
-               + **2**: abnormal
-               + **3**: null
-               + **5**: failed
         :param _builtins.float cost_time: Specifies the time spent.
         :param _builtins.bool from_transaction_check: Specifies whether the response is a transaction check response.
         :param _builtins.str group_name: Specifies the producer group or consumer group.
@@ -14246,11 +13323,6 @@ class GetDmsRocketmqMessageTracesTraceResult(dict):
     def consume_status(self) -> _builtins.float:
         """
         Specifies the consumption status.
-        + **0**: successful
-        + **1**: timeout
-        + **2**: abnormal
-        + **3**: null
-        + **5**: failed
         """
         return pulumi.get(self, "consume_status")
 
@@ -14407,13 +13479,12 @@ class GetDmsRocketmqMessagesMessageResult(dict):
                  store_size: _builtins.int,
                  store_time: _builtins.str):
         """
-        :param _builtins.str body: Indicates the message body. Only return when querying message by message ID.
+        :param _builtins.str body: Indicates the message body.
         :param _builtins.int body_crc: Indicates the message body checksum.
         :param _builtins.str born_host: Indicates the IP address of the host that generates the message.
         :param _builtins.str born_time: Indicates the message generated time.
-        :param _builtins.str message_id: Specifies the message ID.
+        :param _builtins.str message_id: Indicates the message ID.
         :param Sequence['GetDmsRocketmqMessagesMessagePropertyListArgs'] property_lists: Indicates the property list.
-               The property_list structure is documented below.
         :param _builtins.int queue_id: Indicates the queue ID.
         :param _builtins.int queue_offset: Indicates the offset in the queue.
         :param _builtins.int reconsume_times: Indicates the number of retry times.
@@ -14438,7 +13509,7 @@ class GetDmsRocketmqMessagesMessageResult(dict):
     @pulumi.getter
     def body(self) -> _builtins.str:
         """
-        Indicates the message body. Only return when querying message by message ID.
+        Indicates the message body.
         """
         return pulumi.get(self, "body")
 
@@ -14470,7 +13541,7 @@ class GetDmsRocketmqMessagesMessageResult(dict):
     @pulumi.getter(name="messageId")
     def message_id(self) -> _builtins.str:
         """
-        Specifies the message ID.
+        Indicates the message ID.
         """
         return pulumi.get(self, "message_id")
 
@@ -14479,7 +13550,6 @@ class GetDmsRocketmqMessagesMessageResult(dict):
     def property_lists(self) -> Sequence['outputs.GetDmsRocketmqMessagesMessagePropertyListResult']:
         """
         Indicates the property list.
-        The property_list structure is documented below.
         """
         return pulumi.get(self, "property_lists")
 
@@ -14571,11 +13641,10 @@ class GetDmsRocketmqMigrationTasksTaskResult(dict):
                  type: _builtins.str):
         """
         :param _builtins.str id: Indicates the ID of a metadata migration task.
-        :param _builtins.str name: Specifies the RocketMQ migration task name.
+        :param _builtins.str name: Indicates the name of a metadata migration task.
         :param _builtins.str start_date: Indicates the start time of a metadata migration task.
         :param _builtins.str status: Indicates the status of a metadata migration task.
-        :param _builtins.str type: Specifies the RocketMQ migration task type.
-               Valid values are **rocketmq** and **rabbitToRocket**.
+        :param _builtins.str type: Indicates the metadata migration task type.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -14595,7 +13664,7 @@ class GetDmsRocketmqMigrationTasksTaskResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the RocketMQ migration task name.
+        Indicates the name of a metadata migration task.
         """
         return pulumi.get(self, "name")
 
@@ -14619,8 +13688,7 @@ class GetDmsRocketmqMigrationTasksTaskResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the RocketMQ migration task type.
-        Valid values are **rocketmq** and **rabbitToRocket**.
+        Indicates the metadata migration task type.
         """
         return pulumi.get(self, "type")
 
@@ -14684,14 +13752,6 @@ class GetDmsRocketmqTopicsTopicResult(dict):
                  permission: _builtins.str,
                  total_read_queue_num: _builtins.int,
                  total_write_queue_num: _builtins.int):
-        """
-        :param Sequence['GetDmsRocketmqTopicsTopicBrokerArgs'] brokers: The list of brokers.
-               The brokers structure is documented below.
-        :param _builtins.str name: Specifies the topic name.
-        :param _builtins.str permission: Specifies the permission. Value options: **sub**, **pub** or **all**.
-        :param _builtins.int total_read_queue_num: Specifies the number of total read queue.
-        :param _builtins.int total_write_queue_num: Specifies the number of total write queue.
-        """
         pulumi.set(__self__, "brokers", brokers)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -14701,42 +13761,26 @@ class GetDmsRocketmqTopicsTopicResult(dict):
     @_builtins.property
     @pulumi.getter
     def brokers(self) -> Sequence['outputs.GetDmsRocketmqTopicsTopicBrokerResult']:
-        """
-        The list of brokers.
-        The brokers structure is documented below.
-        """
         return pulumi.get(self, "brokers")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the topic name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def permission(self) -> _builtins.str:
-        """
-        Specifies the permission. Value options: **sub**, **pub** or **all**.
-        """
         return pulumi.get(self, "permission")
 
     @_builtins.property
     @pulumi.getter(name="totalReadQueueNum")
     def total_read_queue_num(self) -> _builtins.int:
-        """
-        Specifies the number of total read queue.
-        """
         return pulumi.get(self, "total_read_queue_num")
 
     @_builtins.property
     @pulumi.getter(name="totalWriteQueueNum")
     def total_write_queue_num(self) -> _builtins.int:
-        """
-        Specifies the number of total write queue.
-        """
         return pulumi.get(self, "total_write_queue_num")
 
 
@@ -14746,11 +13790,6 @@ class GetDmsRocketmqTopicsTopicBrokerResult(dict):
                  broker_name: _builtins.str,
                  read_queue_num: _builtins.int,
                  write_queue_num: _builtins.int):
-        """
-        :param _builtins.str broker_name: Indicates the broker name.
-        :param _builtins.int read_queue_num: Indicates the number of read queue.
-        :param _builtins.int write_queue_num: Indicates the number of write queue.
-        """
         pulumi.set(__self__, "broker_name", broker_name)
         pulumi.set(__self__, "read_queue_num", read_queue_num)
         pulumi.set(__self__, "write_queue_num", write_queue_num)
@@ -14758,25 +13797,16 @@ class GetDmsRocketmqTopicsTopicBrokerResult(dict):
     @_builtins.property
     @pulumi.getter(name="brokerName")
     def broker_name(self) -> _builtins.str:
-        """
-        Indicates the broker name.
-        """
         return pulumi.get(self, "broker_name")
 
     @_builtins.property
     @pulumi.getter(name="readQueueNum")
     def read_queue_num(self) -> _builtins.int:
-        """
-        Indicates the number of read queue.
-        """
         return pulumi.get(self, "read_queue_num")
 
     @_builtins.property
     @pulumi.getter(name="writeQueueNum")
     def write_queue_num(self) -> _builtins.int:
-        """
-        Indicates the number of write queue.
-        """
         return pulumi.get(self, "write_queue_num")
 
 
@@ -14790,19 +13820,6 @@ class GetDmsRocketmqUsersUserResult(dict):
                  group_perms: Sequence['outputs.GetDmsRocketmqUsersUserGroupPermResult'],
                  topic_perms: Sequence['outputs.GetDmsRocketmqUsersUserTopicPermResult'],
                  white_remote_address: _builtins.str):
-        """
-        :param _builtins.str access_key: Specifies the user name.
-        :param _builtins.bool admin: Specifies whether the user is an administrator.
-        :param _builtins.str default_group_perm: Specifies the default consumer group permissions.
-               Value options: **SUB**, **DENY**.
-        :param _builtins.str default_topic_perm: Specifies the default topic permissions.
-               Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-        :param Sequence['GetDmsRocketmqUsersUserGroupPermArgs'] group_perms: The list of the special consumer group permissions.
-               The group_perms structure is documented below.
-        :param Sequence['GetDmsRocketmqUsersUserTopicPermArgs'] topic_perms: The list of the special topic permissions.
-               The topic_perms structure is documented below.
-        :param _builtins.str white_remote_address: Specifies the IP address whitelist.
-        """
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "admin", admin)
         pulumi.set(__self__, "default_group_perm", default_group_perm)
@@ -14814,61 +13831,36 @@ class GetDmsRocketmqUsersUserResult(dict):
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> _builtins.str:
-        """
-        Specifies the user name.
-        """
         return pulumi.get(self, "access_key")
 
     @_builtins.property
     @pulumi.getter
     def admin(self) -> _builtins.bool:
-        """
-        Specifies whether the user is an administrator.
-        """
         return pulumi.get(self, "admin")
 
     @_builtins.property
     @pulumi.getter(name="defaultGroupPerm")
     def default_group_perm(self) -> _builtins.str:
-        """
-        Specifies the default consumer group permissions.
-        Value options: **SUB**, **DENY**.
-        """
         return pulumi.get(self, "default_group_perm")
 
     @_builtins.property
     @pulumi.getter(name="defaultTopicPerm")
     def default_topic_perm(self) -> _builtins.str:
-        """
-        Specifies the default topic permissions.
-        Value options: **PUB|SUB**, **PUB**, **SUB**, **DENY**.
-        """
         return pulumi.get(self, "default_topic_perm")
 
     @_builtins.property
     @pulumi.getter(name="groupPerms")
     def group_perms(self) -> Sequence['outputs.GetDmsRocketmqUsersUserGroupPermResult']:
-        """
-        The list of the special consumer group permissions.
-        The group_perms structure is documented below.
-        """
         return pulumi.get(self, "group_perms")
 
     @_builtins.property
     @pulumi.getter(name="topicPerms")
     def topic_perms(self) -> Sequence['outputs.GetDmsRocketmqUsersUserTopicPermResult']:
-        """
-        The list of the special topic permissions.
-        The topic_perms structure is documented below.
-        """
         return pulumi.get(self, "topic_perms")
 
     @_builtins.property
     @pulumi.getter(name="whiteRemoteAddress")
     def white_remote_address(self) -> _builtins.str:
-        """
-        Specifies the IP address whitelist.
-        """
         return pulumi.get(self, "white_remote_address")
 
 
@@ -14877,29 +13869,17 @@ class GetDmsRocketmqUsersUserGroupPermResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  perm: _builtins.str):
-        """
-        :param _builtins.str name: Indicates the name of consumer group.
-        :param _builtins.str perm: Indicates the permissions of consumer group.
-               Value options: **SUB**, **DENY**.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "perm", perm)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Indicates the name of consumer group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def perm(self) -> _builtins.str:
-        """
-        Indicates the permissions of consumer group.
-        Value options: **SUB**, **DENY**.
-        """
         return pulumi.get(self, "perm")
 
 
@@ -14908,29 +13888,17 @@ class GetDmsRocketmqUsersUserTopicPermResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  perm: _builtins.str):
-        """
-        :param _builtins.str name: Indicates the name of consumer group.
-        :param _builtins.str perm: Indicates the permissions of consumer group.
-               Value options: **SUB**, **DENY**.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "perm", perm)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Indicates the name of consumer group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def perm(self) -> _builtins.str:
-        """
-        Indicates the permissions of consumer group.
-        Value options: **SUB**, **DENY**.
-        """
         return pulumi.get(self, "perm")
 
 
@@ -14950,15 +13918,6 @@ class GetElbFlavorsFlavorResult(dict):
                  qps: _builtins.int,
                  shared: _builtins.bool,
                  type: _builtins.str):
-        """
-        :param _builtins.int bandwidth: Specifies the bandwidth size(Mbit/s) in the flavor.
-        :param _builtins.int cps: Specifies the cps in the flavor.
-        :param _builtins.str id: ID of the flavor.
-        :param _builtins.int max_connections: Specifies the maximum connections in the flavor.
-        :param _builtins.str name: Name of the flavor.
-        :param _builtins.int qps: Specifies the qps in the L7 flavor.
-        :param _builtins.str type: Specifies the flavor type. Valid values are L4 and L7.
-        """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "cps", cps)
@@ -14976,9 +13935,6 @@ class GetElbFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
-        """
-        Specifies the bandwidth size(Mbit/s) in the flavor.
-        """
         return pulumi.get(self, "bandwidth")
 
     @_builtins.property
@@ -14989,9 +13945,6 @@ class GetElbFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def cps(self) -> _builtins.int:
-        """
-        Specifies the cps in the flavor.
-        """
         return pulumi.get(self, "cps")
 
     @_builtins.property
@@ -15007,9 +13960,6 @@ class GetElbFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        ID of the flavor.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -15020,17 +13970,11 @@ class GetElbFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter(name="maxConnections")
     def max_connections(self) -> _builtins.int:
-        """
-        Specifies the maximum connections in the flavor.
-        """
         return pulumi.get(self, "max_connections")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Name of the flavor.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -15041,9 +13985,6 @@ class GetElbFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def qps(self) -> _builtins.int:
-        """
-        Specifies the qps in the L7 flavor.
-        """
         return pulumi.get(self, "qps")
 
     @_builtins.property
@@ -15054,9 +13995,6 @@ class GetElbFlavorsFlavorResult(dict):
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        Specifies the flavor type. Valid values are L4 and L7.
-        """
         return pulumi.get(self, "type")
 
 
@@ -15093,25 +14031,23 @@ class GetElbPoolsPoolResult(dict):
         """
         :param _builtins.bool connection_drain_enabled: Whether to enable delayed logout.
         :param _builtins.int connection_drain_timeout: The timeout of the delayed logout in seconds.
-        :param _builtins.str description: Specifies the description of the ELB pool.
-        :param _builtins.str healthmonitor_id: Specifies the health monitor ID of the ELB pool.
-        :param _builtins.str id: The listener, loadbalancer or member ID.
-        :param _builtins.str ip_version: The IP version of the LB pool.
-        :param _builtins.str lb_method: Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-               or SOURCE_IP.
-        :param Sequence['GetElbPoolsPoolListenerArgs'] listeners: The listener list. The object structure is documented below.
-        :param Sequence['GetElbPoolsPoolLoadbalancerArgs'] loadbalancers: The loadbalancer list. The object structure is documented below.
-        :param Sequence['GetElbPoolsPoolMemberArgs'] members: The member list. The object structure is documented below.
+        :param _builtins.str description: The description of pool.
+        :param _builtins.str healthmonitor_id: The health monitor ID of the ELB pool.
+        :param _builtins.str id: The pool ID.
+        :param _builtins.str ip_version: The IP version of pool.
+        :param _builtins.str lb_method: The method of the ELB pool.
+        :param Sequence['GetElbPoolsPoolListenerArgs'] listeners: Listener list. For details, see Data structure of the listener field.
+        :param Sequence['GetElbPoolsPoolLoadbalancerArgs'] loadbalancers: Loadbalancer list. For details, see Data structure of the loadbalancer field.
+        :param Sequence['GetElbPoolsPoolMemberArgs'] members: Loadbalancer list. For details, see Data structure of the members field.
         :param _builtins.int minimum_healthy_member_count: The timeout of the delayed logout in seconds.
-        :param _builtins.str name: Specifies the name of the ELB pool.
-        :param Sequence['GetElbPoolsPoolPersistenceArgs'] persistences: Indicates whether connections in the same session will be processed by the same pool member or not.
-               The object structure is documented below.
+        :param _builtins.str name: The pool name.
+        :param Sequence['GetElbPoolsPoolPersistenceArgs'] persistences: Whether connections in the same session will be processed by the same pool member or not.
         :param _builtins.str protection_reason: The reason for update protection.
         :param _builtins.str protection_status: The protection status for update.
-        :param _builtins.str protocol: Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
+        :param _builtins.str protocol: The protocol of pool.
         :param _builtins.int slow_start_duration: The slow start duration, in seconds.
         :param _builtins.bool slow_start_enabled: Whether to enable slow start.
-        :param _builtins.str type: The type of persistence mode.
+        :param _builtins.str type: The type of the backend server group.
         :param _builtins.str vpc_id: The ID of the VPC where the backend server group works.
         """
         pulumi.set(__self__, "any_port_enable", any_port_enable)
@@ -15172,7 +14108,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Specifies the description of the ELB pool.
+        The description of pool.
         """
         return pulumi.get(self, "description")
 
@@ -15185,7 +14121,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter(name="healthmonitorId")
     def healthmonitor_id(self) -> _builtins.str:
         """
-        Specifies the health monitor ID of the ELB pool.
+        The health monitor ID of the ELB pool.
         """
         return pulumi.get(self, "healthmonitor_id")
 
@@ -15193,7 +14129,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The listener, loadbalancer or member ID.
+        The pool ID.
         """
         return pulumi.get(self, "id")
 
@@ -15201,7 +14137,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> _builtins.str:
         """
-        The IP version of the LB pool.
+        The IP version of pool.
         """
         return pulumi.get(self, "ip_version")
 
@@ -15209,8 +14145,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter(name="lbMethod")
     def lb_method(self) -> _builtins.str:
         """
-        Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-        or SOURCE_IP.
+        The method of the ELB pool.
         """
         return pulumi.get(self, "lb_method")
 
@@ -15218,7 +14153,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def listeners(self) -> Sequence['outputs.GetElbPoolsPoolListenerResult']:
         """
-        The listener list. The object structure is documented below.
+        Listener list. For details, see Data structure of the listener field.
         """
         return pulumi.get(self, "listeners")
 
@@ -15226,7 +14161,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def loadbalancers(self) -> Sequence['outputs.GetElbPoolsPoolLoadbalancerResult']:
         """
-        The loadbalancer list. The object structure is documented below.
+        Loadbalancer list. For details, see Data structure of the loadbalancer field.
         """
         return pulumi.get(self, "loadbalancers")
 
@@ -15239,7 +14174,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetElbPoolsPoolMemberResult']:
         """
-        The member list. The object structure is documented below.
+        Loadbalancer list. For details, see Data structure of the members field.
         """
         return pulumi.get(self, "members")
 
@@ -15255,7 +14190,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the ELB pool.
+        The pool name.
         """
         return pulumi.get(self, "name")
 
@@ -15263,8 +14198,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def persistences(self) -> Sequence['outputs.GetElbPoolsPoolPersistenceResult']:
         """
-        Indicates whether connections in the same session will be processed by the same pool member or not.
-        The object structure is documented below.
+        Whether connections in the same session will be processed by the same pool member or not.
         """
         return pulumi.get(self, "persistences")
 
@@ -15288,7 +14222,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.str:
         """
-        Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
+        The protocol of pool.
         """
         return pulumi.get(self, "protocol")
 
@@ -15322,7 +14256,7 @@ class GetElbPoolsPoolResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of persistence mode.
+        The type of the backend server group.
         """
         return pulumi.get(self, "type")
 
@@ -15345,7 +14279,7 @@ class GetElbPoolsPoolListenerResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
-        :param _builtins.str id: The listener, loadbalancer or member ID.
+        :param _builtins.str id: The listener ID.
         """
         pulumi.set(__self__, "id", id)
 
@@ -15353,7 +14287,7 @@ class GetElbPoolsPoolListenerResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The listener, loadbalancer or member ID.
+        The listener ID.
         """
         return pulumi.get(self, "id")
 
@@ -15363,7 +14297,7 @@ class GetElbPoolsPoolLoadbalancerResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
-        :param _builtins.str id: The listener, loadbalancer or member ID.
+        :param _builtins.str id: The loadbalancer ID.
         """
         pulumi.set(__self__, "id", id)
 
@@ -15371,7 +14305,7 @@ class GetElbPoolsPoolLoadbalancerResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The listener, loadbalancer or member ID.
+        The loadbalancer ID.
         """
         return pulumi.get(self, "id")
 
@@ -15381,7 +14315,7 @@ class GetElbPoolsPoolMemberResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str):
         """
-        :param _builtins.str id: The listener, loadbalancer or member ID.
+        :param _builtins.str id: The member ID.
         """
         pulumi.set(__self__, "id", id)
 
@@ -15389,7 +14323,7 @@ class GetElbPoolsPoolMemberResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The listener, loadbalancer or member ID.
+        The member ID.
         """
         return pulumi.get(self, "id")
 
@@ -15463,31 +14397,11 @@ class GetFgsApplicationTemplatesTemplateResult(dict):
                  runtime: _builtins.str,
                  type: _builtins.str):
         """
-        :param _builtins.str category: Specifies the category used to query the application templates.
+        :param _builtins.str category: The template category.
         :param _builtins.str description: The description of template.
         :param _builtins.str id: The template ID.
         :param _builtins.str name: The template name.
-        :param _builtins.str runtime: Specifies the runtime name used to query the application templates.  
-               The valid values are as follows:
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Node.js16.17**
-               + **Node.js18.15**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Python3.10**
-               + **Java8**
-               + **Java11**
-               + **Go1.x**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **http**
-               + **PHP7.3**
-               + **Custom**
+        :param _builtins.str runtime: The template runtime.
         :param _builtins.str type: The type of the function application.
         """
         pulumi.set(__self__, "category", category)
@@ -15501,7 +14415,7 @@ class GetFgsApplicationTemplatesTemplateResult(dict):
     @pulumi.getter
     def category(self) -> _builtins.str:
         """
-        Specifies the category used to query the application templates.
+        The template category.
         """
         return pulumi.get(self, "category")
 
@@ -15533,27 +14447,7 @@ class GetFgsApplicationTemplatesTemplateResult(dict):
     @pulumi.getter
     def runtime(self) -> _builtins.str:
         """
-        Specifies the runtime name used to query the application templates.  
-        The valid values are as follows:
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Node.js16.17**
-        + **Node.js18.15**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Python3.10**
-        + **Java8**
-        + **Java11**
-        + **Go1.x**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **http**
-        + **PHP7.3**
-        + **Custom**
+        The template runtime.
         """
         return pulumi.get(self, "runtime")
 
@@ -15575,14 +14469,11 @@ class GetFgsApplicationsApplicationResult(dict):
                  status: _builtins.str,
                  updated_at: _builtins.str):
         """
-        :param _builtins.str description: Specifies the description of the application to be queried.
+        :param _builtins.str description: The latest update time of the application, in RFC3339 format.
         :param _builtins.str id: The ID of application.
-        :param _builtins.str name: Specifies the application name used to query specified application.
-        :param _builtins.str status: Specifies the status of the application to be queried.  
-               The valid values are as follows:
-               + **success**: The application created successfully.
-               + **repoFail**: The application repository creation failed.
-        :param _builtins.str updated_at: The latest update time of the application, in RFC3339 format.
+        :param _builtins.str name: The name of application.
+        :param _builtins.str status: The status of application.
+        :param _builtins.str updated_at: The description of application.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -15594,7 +14485,7 @@ class GetFgsApplicationsApplicationResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Specifies the description of the application to be queried.
+        The latest update time of the application, in RFC3339 format.
         """
         return pulumi.get(self, "description")
 
@@ -15610,7 +14501,7 @@ class GetFgsApplicationsApplicationResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the application name used to query specified application.
+        The name of application.
         """
         return pulumi.get(self, "name")
 
@@ -15618,10 +14509,7 @@ class GetFgsApplicationsApplicationResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies the status of the application to be queried.  
-        The valid values are as follows:
-        + **success**: The application created successfully.
-        + **repoFail**: The application repository creation failed.
+        The status of application.
         """
         return pulumi.get(self, "status")
 
@@ -15629,7 +14517,7 @@ class GetFgsApplicationsApplicationResult(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        The latest update time of the application, in RFC3339 format.
+        The description of application.
         """
         return pulumi.get(self, "updated_at")
 
@@ -15648,35 +14536,16 @@ class GetFgsDependencyVersionsVersionResult(dict):
                  size: _builtins.int,
                  version: _builtins.int):
         """
-        :param _builtins.str dependency_id: Specifies the ID of the dependency package to which the versions belong.
+        :param _builtins.str dependency_id: The ID of the dependency package corresponding to the version.
         :param _builtins.str dependency_name: The name of the dependency package corresponding to the version.
         :param _builtins.str description: The description of the dependency package version.
         :param _builtins.str etag: The unique ID of the dependency.
         :param _builtins.str id: The ID of the dependency package version.
         :param _builtins.str link: The OBS bucket path where the dependency package version is located.
-        :param _builtins.str owner: The dependency owner, `public` indicates a public dependency.
-        :param _builtins.str runtime: Specifies the runtime of the dependency package version.  
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Go1.8**
-               + **Go1.x**
-               + **C#(.NET Core 2.0)**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **Custom**
-               + **PHP 7.3**
-               + **http**
+        :param _builtins.str owner: The dependency owner, public indicates a public dependency.
+        :param _builtins.str runtime: The runtime of the dependency package version.
         :param _builtins.int size: The size of the ZIP file used by the dependency package version, in bytes.
-        :param _builtins.int version: Specifies the version of the dependency package.
+        :param _builtins.int version: The dependency package version.
         """
         pulumi.set(__self__, "dependency_id", dependency_id)
         pulumi.set(__self__, "dependency_name", dependency_name)
@@ -15693,7 +14562,7 @@ class GetFgsDependencyVersionsVersionResult(dict):
     @pulumi.getter(name="dependencyId")
     def dependency_id(self) -> _builtins.str:
         """
-        Specifies the ID of the dependency package to which the versions belong.
+        The ID of the dependency package corresponding to the version.
         """
         return pulumi.get(self, "dependency_id")
 
@@ -15741,7 +14610,7 @@ class GetFgsDependencyVersionsVersionResult(dict):
     @pulumi.getter
     def owner(self) -> _builtins.str:
         """
-        The dependency owner, `public` indicates a public dependency.
+        The dependency owner, public indicates a public dependency.
         """
         return pulumi.get(self, "owner")
 
@@ -15749,26 +14618,7 @@ class GetFgsDependencyVersionsVersionResult(dict):
     @pulumi.getter
     def runtime(self) -> _builtins.str:
         """
-        Specifies the runtime of the dependency package version.  
-        The valid values are as follows:
-        + **Java8**
-        + **Java11**
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Go1.8**
-        + **Go1.x**
-        + **C#(.NET Core 2.0)**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **Custom**
-        + **PHP 7.3**
-        + **http**
+        The runtime of the dependency package version.
         """
         return pulumi.get(self, "runtime")
 
@@ -15784,7 +14634,7 @@ class GetFgsDependencyVersionsVersionResult(dict):
     @pulumi.getter
     def version(self) -> _builtins.int:
         """
-        Specifies the version of the dependency package.
+        The dependency package version.
         """
         return pulumi.get(self, "version")
 
@@ -15842,29 +14692,8 @@ class GetFgsFunctionTriggersTriggerResult(dict):
         :param _builtins.str created_at: The creation time of the function trigger, in RFC3339 format.
         :param _builtins.str event_data: The detailed configuration of the function trigger.
         :param _builtins.str id: The ID of the function trigger.
-        :param _builtins.str status: Specifies status of the function trigger.
-               The valid values are as follows:
-               + **ACTIVE**
-               + **DISABLED**
-        :param _builtins.str type: Specifies type of the function trigger.
-               The valid values are as follows:
-               + **TIMER**
-               + **APIG**
-               + **CTS**
-               + **DDS**
-               + **DMS**
-               + **DIS**
-               + **LTS**
-               + **OBS**
-               + **SMN**
-               + **KAFKA**
-               + **RABBITMQ**
-               + **DEDICATEDGATEWAY**
-               + **OPENSOURCEKAFKA**
-               + **APIC**
-               + **GAUSSMONGO**
-               + **EVENTGRID**
-               + **IOTDA**
+        :param _builtins.str status: The current status of the function trigger.
+        :param _builtins.str type: The type of the function trigger.
         :param _builtins.str updated_at: The latest update time of the function trigger, in RFC3339 format.
         """
         pulumi.set(__self__, "created_at", created_at)
@@ -15902,10 +14731,7 @@ class GetFgsFunctionTriggersTriggerResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies status of the function trigger.
-        The valid values are as follows:
-        + **ACTIVE**
-        + **DISABLED**
+        The current status of the function trigger.
         """
         return pulumi.get(self, "status")
 
@@ -15913,25 +14739,7 @@ class GetFgsFunctionTriggersTriggerResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies type of the function trigger.
-        The valid values are as follows:
-        + **TIMER**
-        + **APIG**
-        + **CTS**
-        + **DDS**
-        + **DMS**
-        + **DIS**
-        + **LTS**
-        + **OBS**
-        + **SMN**
-        + **KAFKA**
-        + **RABBITMQ**
-        + **DEDICATEDGATEWAY**
-        + **OPENSOURCEKAFKA**
-        + **APIC**
-        + **GAUSSMONGO**
-        + **EVENTGRID**
-        + **IOTDA**
+        The type of the function trigger.
         """
         return pulumi.get(self, "type")
 
@@ -15977,14 +14785,10 @@ class GetFgsFunctionsFunctionResult(dict):
         :param _builtins.str app_agency: The IAM agency name for the function execution.
         :param _builtins.str code_filename: The name of the function file.
         :param _builtins.str code_type: The function code type.
-               + **inline**: inline code.
-               + **zip**: ZIP file.
-               + **jar**: JAR file or java functions.
-               + **obs**: function code stored in an OBS bucket.
         :param _builtins.str code_url: The code URL.
         :param _builtins.str description: The description of the function.
         :param _builtins.str encrypted_user_data: The custom user data (key/value pairs) defined to be encrypted for the function.
-        :param _builtins.str enterprise_project_id: Specifies the ID of the enterprise project to which the functions belong.
+        :param _builtins.str enterprise_project_id: The enterprise project ID to which the function belongs.
         :param _builtins.str functiongraph_version: The functionGraph version.
         :param _builtins.str handler: The entry point of the function.
         :param _builtins.str initializer_handler: The initializer of the function.
@@ -15992,35 +14796,13 @@ class GetFgsFunctionsFunctionResult(dict):
         :param _builtins.str log_group_id: The LTS log group ID.
         :param _builtins.str log_stream_id: The LTS log stream ID.
         :param _builtins.str max_instance_num: The maximum number of instances for a single function.
-        :param _builtins.int memory_size: The memory size allocated to the function, the unit is MB.
-        :param _builtins.str name: Specifies the function name used to query the specified function.
+        :param _builtins.int memory_size: The memory size(MB) allocated to the function.
+        :param _builtins.str name: The function name.
         :param _builtins.str network_id: The network ID of subnet to which the function belongs.
-        :param _builtins.str package: The package name that the function used.
-        :param _builtins.str runtime: Specifies the dependency package runtime used to query the functions.  
-               The valid values are as follows:
-               + **Java8**
-               + **Java11**
-               + **Node.js6.10**
-               + **Node.js8.10**
-               + **Node.js10.16**
-               + **Node.js12.13**
-               + **Node.js14.18**
-               + **Node.js16.17**
-               + **Node.js18.15**
-               + **Python2.7**
-               + **Python3.6**
-               + **Python3.9**
-               + **Python3.10**
-               + **Go1.x**
-               + **C#(.NET Core 2.1)**
-               + **C#(.NET Core 3.1)**
-               + **Custom**
-               + **PHP7.3**
-               + **http**
-               + **Custom Image**
-               + **Cangjie1.0**
+        :param _builtins.str package: The package name that function used.
+        :param _builtins.str runtime: The dependency package runtime of the function.
         :param _builtins.int timeout: The timeout interval of the function.
-        :param _builtins.str urn: Specifies the function URN used to query the specified function.
+        :param _builtins.str urn: The function URN.
         :param _builtins.str user_data: The custom user data (key/value pairs) defined for the function.
         :param _builtins.str version: The function version.
         :param _builtins.str vpc_id: The VPC ID to which the function belongs.
@@ -16080,10 +14862,6 @@ class GetFgsFunctionsFunctionResult(dict):
     def code_type(self) -> _builtins.str:
         """
         The function code type.
-        + **inline**: inline code.
-        + **zip**: ZIP file.
-        + **jar**: JAR file or java functions.
-        + **obs**: function code stored in an OBS bucket.
         """
         return pulumi.get(self, "code_type")
 
@@ -16115,7 +14893,7 @@ class GetFgsFunctionsFunctionResult(dict):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
         """
-        Specifies the ID of the enterprise project to which the functions belong.
+        The enterprise project ID to which the function belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -16179,7 +14957,7 @@ class GetFgsFunctionsFunctionResult(dict):
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> _builtins.int:
         """
-        The memory size allocated to the function, the unit is MB.
+        The memory size(MB) allocated to the function.
         """
         return pulumi.get(self, "memory_size")
 
@@ -16187,7 +14965,7 @@ class GetFgsFunctionsFunctionResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the function name used to query the specified function.
+        The function name.
         """
         return pulumi.get(self, "name")
 
@@ -16203,7 +14981,7 @@ class GetFgsFunctionsFunctionResult(dict):
     @pulumi.getter
     def package(self) -> _builtins.str:
         """
-        The package name that the function used.
+        The package name that function used.
         """
         return pulumi.get(self, "package")
 
@@ -16211,29 +14989,7 @@ class GetFgsFunctionsFunctionResult(dict):
     @pulumi.getter
     def runtime(self) -> _builtins.str:
         """
-        Specifies the dependency package runtime used to query the functions.  
-        The valid values are as follows:
-        + **Java8**
-        + **Java11**
-        + **Node.js6.10**
-        + **Node.js8.10**
-        + **Node.js10.16**
-        + **Node.js12.13**
-        + **Node.js14.18**
-        + **Node.js16.17**
-        + **Node.js18.15**
-        + **Python2.7**
-        + **Python3.6**
-        + **Python3.9**
-        + **Python3.10**
-        + **Go1.x**
-        + **C#(.NET Core 2.1)**
-        + **C#(.NET Core 3.1)**
-        + **Custom**
-        + **PHP7.3**
-        + **http**
-        + **Custom Image**
-        + **Cangjie1.0**
+        The dependency package runtime of the function.
         """
         return pulumi.get(self, "runtime")
 
@@ -16249,7 +15005,7 @@ class GetFgsFunctionsFunctionResult(dict):
     @pulumi.getter
     def urn(self) -> _builtins.str:
         """
-        Specifies the function URN used to query the specified function.
+        The function URN.
         """
         return pulumi.get(self, "urn")
 
@@ -16288,15 +15044,6 @@ class GetFgsQuotasQuotaResult(dict):
         """
         :param _builtins.int limit: The number of available quota.
         :param _builtins.str type: The resource type corresponding to quota.
-               + **fgs_func_scale_down_timeout**: Release time of idle function instances in FunctionGraph `v1`.
-               + **fgs_func_occurs**: Indicates instance quota for functions in FunctionGraph `v1` and reserved instance quota for
-               functions in FunctionGraph `v2`.
-               + **fgs_func_pat_idle_time**: Release time of idle PAT in VPC function.
-               + **fgs_func_num**: User function quantity quota.
-               + **fgs_func_code_size**: Total code size quota of user functions.
-               + **fgs_workflow_num**: Function flow quantity quota.
-               + **fgs_on_demand_instance_limit**: Maximum number of instances per function in FunctionGraph `v2`.
-               + **fgs_func_qos_limit**: Instance quantity quota of user functions.
         :param _builtins.str unit: The unit of usage.
         :param _builtins.int used: The number of quota used.
         """
@@ -16318,15 +15065,6 @@ class GetFgsQuotasQuotaResult(dict):
     def type(self) -> _builtins.str:
         """
         The resource type corresponding to quota.
-        + **fgs_func_scale_down_timeout**: Release time of idle function instances in FunctionGraph `v1`.
-        + **fgs_func_occurs**: Indicates instance quota for functions in FunctionGraph `v1` and reserved instance quota for
-        functions in FunctionGraph `v2`.
-        + **fgs_func_pat_idle_time**: Release time of idle PAT in VPC function.
-        + **fgs_func_num**: User function quantity quota.
-        + **fgs_func_code_size**: Total code size quota of user functions.
-        + **fgs_workflow_num**: Function flow quantity quota.
-        + **fgs_on_demand_instance_limit**: Maximum number of instances per function in FunctionGraph `v2`.
-        + **fgs_func_qos_limit**: Instance quantity quota of user functions.
         """
         return pulumi.get(self, "type")
 
@@ -16362,7 +15100,6 @@ class GetKpsFailedTasksTaskResult(dict):
         :param _builtins.str id: The ID of the task.
         :param _builtins.str keypair_name: The name of the keypair associated with the task.
         :param _builtins.str operate_type: The operation type of the task.
-               The value can be **FAILED_RESET**, **FAILED_REPLACE** or **FAILED_UNBIND**.
         :param _builtins.str server_id: The ID of the instance associated with the task.
         :param _builtins.str server_name: The name of the instance associated with the task.
         :param _builtins.str task_error_code: The error code of the task execution failure.
@@ -16399,7 +15136,6 @@ class GetKpsFailedTasksTaskResult(dict):
     def operate_type(self) -> _builtins.str:
         """
         The operation type of the task.
-        The value can be **FAILED_RESET**, **FAILED_REPLACE** or **FAILED_UNBIND**.
         """
         return pulumi.get(self, "operate_type")
 
@@ -16457,7 +15193,6 @@ class GetKpsRunningTasksTaskResult(dict):
         :param _builtins.str id: The ID of the task.
         :param _builtins.str keypair_name: The name of the keypair associated with the task.
         :param _builtins.str operate_type: The operation type of the task.
-               The value can be **RUNNING**.
         :param _builtins.str server_id: The ID of the instance associated with the task.
         :param _builtins.str server_name: The name of the instance associated with the task.
         :param _builtins.str task_time: The start time of the task, in RFC3339 format.
@@ -16490,7 +15225,6 @@ class GetKpsRunningTasksTaskResult(dict):
     def operate_type(self) -> _builtins.str:
         """
         The operation type of the task.
-        The value can be **RUNNING**.
         """
         return pulumi.get(self, "operate_type")
 
@@ -16985,15 +15719,6 @@ class GetVpnConnectionHealthChecksConnectionHealthCheckResult(dict):
                  source_ip: _builtins.str,
                  status: _builtins.str,
                  type: _builtins.str):
-        """
-        :param _builtins.str connection_id: Specifies the ID of the VPN connection.
-        :param _builtins.str destination_ip: Specifies the destination IP of the VPN connection health check.
-        :param _builtins.str id: The ID of the connection health check.
-        :param _builtins.str proto_type: The proto type of the connection health check.
-        :param _builtins.str source_ip: Specifies the source IP of the VPN connection health check.
-        :param _builtins.str status: Specifies the status of the VPN connection health check.
-        :param _builtins.str type: The type of the connection health check.
-        """
         pulumi.set(__self__, "connection_id", connection_id)
         pulumi.set(__self__, "destination_ip", destination_ip)
         pulumi.set(__self__, "id", id)
@@ -17005,57 +15730,36 @@ class GetVpnConnectionHealthChecksConnectionHealthCheckResult(dict):
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> _builtins.str:
-        """
-        Specifies the ID of the VPN connection.
-        """
         return pulumi.get(self, "connection_id")
 
     @_builtins.property
     @pulumi.getter(name="destinationIp")
     def destination_ip(self) -> _builtins.str:
-        """
-        Specifies the destination IP of the VPN connection health check.
-        """
         return pulumi.get(self, "destination_ip")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The ID of the connection health check.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="protoType")
     def proto_type(self) -> _builtins.str:
-        """
-        The proto type of the connection health check.
-        """
         return pulumi.get(self, "proto_type")
 
     @_builtins.property
     @pulumi.getter(name="sourceIp")
     def source_ip(self) -> _builtins.str:
-        """
-        Specifies the source IP of the VPN connection health check.
-        """
         return pulumi.get(self, "source_ip")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the VPN connection health check.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
-        """
-        The type of the connection health check.
-        """
         return pulumi.get(self, "type")
 
 
@@ -17081,27 +15785,6 @@ class GetVpnConnectionsConnectionResult(dict):
                  tunnel_peer_address: _builtins.str,
                  updated_at: _builtins.str,
                  vpn_type: _builtins.str):
-        """
-        :param _builtins.str connection_monitor_id: Indicates the connection monitor ID of the connection.
-        :param _builtins.str created_at: The created time.
-        :param _builtins.str customer_gateway_id: Indicates the customer gateway ID of the connection.
-        :param _builtins.bool enable_nqa: Indicates the enable nqa of the connection.
-        :param _builtins.str enterprise_project_id: Indicates the enterprise project ID of the connection.
-        :param _builtins.str gateway_id: Specifies the gateway ID of the VPN connection.
-        :param _builtins.str gateway_ip: Specifies the gateway IP of the VPN connection.
-        :param _builtins.str ha_role: Indicates the ha role of the connection.
-        :param _builtins.str id: Indicates the ID of the connection.
-        :param Sequence['GetVpnConnectionsConnectionIkepolicyArgs'] ikepolicies: Indicates the ikepolicy information of the connection.
-        :param Sequence['GetVpnConnectionsConnectionIpsecpolicyArgs'] ipsecpolicies: Indicates the ipsecpolicy information of the connection.
-        :param _builtins.str name: Specifies the name of the VPN connection.
-        :param Sequence[_builtins.str] peer_subnets: Indicates the peer subnets of the connection.
-        :param Sequence['GetVpnConnectionsConnectionPolicyRuleArgs'] policy_rules: Indicates the policy rules information of the connection.
-        :param _builtins.str status: Specifies the status of the VPN connection.
-        :param _builtins.str tunnel_local_address: Indicates the tunnel local address of the connection.
-        :param _builtins.str tunnel_peer_address: Indicates the tunnel peer address of the connection.
-        :param _builtins.str updated_at: The last updated time.
-        :param _builtins.str vpn_type: Specifies the VPN type of the VPN connection.
-        """
         pulumi.set(__self__, "connection_monitor_id", connection_monitor_id)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
@@ -17125,153 +15808,96 @@ class GetVpnConnectionsConnectionResult(dict):
     @_builtins.property
     @pulumi.getter(name="connectionMonitorId")
     def connection_monitor_id(self) -> _builtins.str:
-        """
-        Indicates the connection monitor ID of the connection.
-        """
         return pulumi.get(self, "connection_monitor_id")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The created time.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="customerGatewayId")
     def customer_gateway_id(self) -> _builtins.str:
-        """
-        Indicates the customer gateway ID of the connection.
-        """
         return pulumi.get(self, "customer_gateway_id")
 
     @_builtins.property
     @pulumi.getter(name="enableNqa")
     def enable_nqa(self) -> _builtins.bool:
-        """
-        Indicates the enable nqa of the connection.
-        """
         return pulumi.get(self, "enable_nqa")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
-        """
-        Indicates the enterprise project ID of the connection.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="gatewayId")
     def gateway_id(self) -> _builtins.str:
-        """
-        Specifies the gateway ID of the VPN connection.
-        """
         return pulumi.get(self, "gateway_id")
 
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> _builtins.str:
-        """
-        Specifies the gateway IP of the VPN connection.
-        """
         return pulumi.get(self, "gateway_ip")
 
     @_builtins.property
     @pulumi.getter(name="haRole")
     def ha_role(self) -> _builtins.str:
-        """
-        Indicates the ha role of the connection.
-        """
         return pulumi.get(self, "ha_role")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the ID of the connection.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def ikepolicies(self) -> Sequence['outputs.GetVpnConnectionsConnectionIkepolicyResult']:
-        """
-        Indicates the ikepolicy information of the connection.
-        """
         return pulumi.get(self, "ikepolicies")
 
     @_builtins.property
     @pulumi.getter
     def ipsecpolicies(self) -> Sequence['outputs.GetVpnConnectionsConnectionIpsecpolicyResult']:
-        """
-        Indicates the ipsecpolicy information of the connection.
-        """
         return pulumi.get(self, "ipsecpolicies")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the VPN connection.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="peerSubnets")
     def peer_subnets(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the peer subnets of the connection.
-        """
         return pulumi.get(self, "peer_subnets")
 
     @_builtins.property
     @pulumi.getter(name="policyRules")
     def policy_rules(self) -> Sequence['outputs.GetVpnConnectionsConnectionPolicyRuleResult']:
-        """
-        Indicates the policy rules information of the connection.
-        """
         return pulumi.get(self, "policy_rules")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        Specifies the status of the VPN connection.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="tunnelLocalAddress")
     def tunnel_local_address(self) -> _builtins.str:
-        """
-        Indicates the tunnel local address of the connection.
-        """
         return pulumi.get(self, "tunnel_local_address")
 
     @_builtins.property
     @pulumi.getter(name="tunnelPeerAddress")
     def tunnel_peer_address(self) -> _builtins.str:
-        """
-        Indicates the tunnel peer address of the connection.
-        """
         return pulumi.get(self, "tunnel_peer_address")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The last updated time.
-        """
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="vpnType")
     def vpn_type(self) -> _builtins.str:
-        """
-        Specifies the VPN type of the VPN connection.
-        """
         return pulumi.get(self, "vpn_type")
 
 
@@ -17290,20 +15916,6 @@ class GetVpnConnectionsConnectionIkepolicyResult(dict):
                  peer_id: _builtins.str,
                  peer_id_type: _builtins.str,
                  phase1_negotiation_mode: _builtins.str):
-        """
-        :param _builtins.str authentication_algorithm: Indicates the authentication algorithm of the ikepolicy certificate.
-        :param _builtins.str authentication_method: Indicates the souauthentication methodrce of the ikepolicy certificate.
-        :param _builtins.str dh_group: Indicates the dh group of the ikepolicy certificate.
-        :param Sequence['GetVpnConnectionsConnectionIkepolicyDpdArgs'] dpds: Indicates the dpd information of the ikepolicy certificate.
-        :param _builtins.str encryption_algorithm: Indicates the encryption algorithm of the ikepolicy certificate.
-        :param _builtins.str ike_version: Indicates the ike version of the ikepolicy certificate.
-        :param _builtins.int lifetime_seconds: Indicates the lifetime seconds of the ipsecpolicy certificate.
-        :param _builtins.str local_id: Indicates the local ID of the ikepolicy certificate.
-        :param _builtins.str local_id_type: Indicates the local ID type of the ikepolicy certificate.
-        :param _builtins.str peer_id: Indicates the peer ID of the ikepolicy certificate.
-        :param _builtins.str peer_id_type: Indicates the peer ID type of the ikepolicy certificate.
-        :param _builtins.str phase1_negotiation_mode: Indicates the phase1 negotiation mode of the ikepolicy certificate.
-        """
         pulumi.set(__self__, "authentication_algorithm", authentication_algorithm)
         pulumi.set(__self__, "authentication_method", authentication_method)
         pulumi.set(__self__, "dh_group", dh_group)
@@ -17320,97 +15932,61 @@ class GetVpnConnectionsConnectionIkepolicyResult(dict):
     @_builtins.property
     @pulumi.getter(name="authenticationAlgorithm")
     def authentication_algorithm(self) -> _builtins.str:
-        """
-        Indicates the authentication algorithm of the ikepolicy certificate.
-        """
         return pulumi.get(self, "authentication_algorithm")
 
     @_builtins.property
     @pulumi.getter(name="authenticationMethod")
     def authentication_method(self) -> _builtins.str:
-        """
-        Indicates the souauthentication methodrce of the ikepolicy certificate.
-        """
         return pulumi.get(self, "authentication_method")
 
     @_builtins.property
     @pulumi.getter(name="dhGroup")
     def dh_group(self) -> _builtins.str:
-        """
-        Indicates the dh group of the ikepolicy certificate.
-        """
         return pulumi.get(self, "dh_group")
 
     @_builtins.property
     @pulumi.getter
     def dpds(self) -> Sequence['outputs.GetVpnConnectionsConnectionIkepolicyDpdResult']:
-        """
-        Indicates the dpd information of the ikepolicy certificate.
-        """
         return pulumi.get(self, "dpds")
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> _builtins.str:
-        """
-        Indicates the encryption algorithm of the ikepolicy certificate.
-        """
         return pulumi.get(self, "encryption_algorithm")
 
     @_builtins.property
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> _builtins.str:
-        """
-        Indicates the ike version of the ikepolicy certificate.
-        """
         return pulumi.get(self, "ike_version")
 
     @_builtins.property
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> _builtins.int:
-        """
-        Indicates the lifetime seconds of the ipsecpolicy certificate.
-        """
         return pulumi.get(self, "lifetime_seconds")
 
     @_builtins.property
     @pulumi.getter(name="localId")
     def local_id(self) -> _builtins.str:
-        """
-        Indicates the local ID of the ikepolicy certificate.
-        """
         return pulumi.get(self, "local_id")
 
     @_builtins.property
     @pulumi.getter(name="localIdType")
     def local_id_type(self) -> _builtins.str:
-        """
-        Indicates the local ID type of the ikepolicy certificate.
-        """
         return pulumi.get(self, "local_id_type")
 
     @_builtins.property
     @pulumi.getter(name="peerId")
     def peer_id(self) -> _builtins.str:
-        """
-        Indicates the peer ID of the ikepolicy certificate.
-        """
         return pulumi.get(self, "peer_id")
 
     @_builtins.property
     @pulumi.getter(name="peerIdType")
     def peer_id_type(self) -> _builtins.str:
-        """
-        Indicates the peer ID type of the ikepolicy certificate.
-        """
         return pulumi.get(self, "peer_id_type")
 
     @_builtins.property
     @pulumi.getter(name="phase1NegotiationMode")
     def phase1_negotiation_mode(self) -> _builtins.str:
-        """
-        Indicates the phase1 negotiation mode of the ikepolicy certificate.
-        """
         return pulumi.get(self, "phase1_negotiation_mode")
 
 
@@ -17420,11 +15996,6 @@ class GetVpnConnectionsConnectionIkepolicyDpdResult(dict):
                  interval: _builtins.int,
                  msg: _builtins.str,
                  timeout: _builtins.int):
-        """
-        :param _builtins.int interval: Indicates the interval of the dpd certificate.
-        :param _builtins.str msg: Indicates the msg of the dpd certificate.
-        :param _builtins.int timeout: Indicates the timeout of the dpd certificate.
-        """
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "msg", msg)
         pulumi.set(__self__, "timeout", timeout)
@@ -17432,25 +16003,16 @@ class GetVpnConnectionsConnectionIkepolicyDpdResult(dict):
     @_builtins.property
     @pulumi.getter
     def interval(self) -> _builtins.int:
-        """
-        Indicates the interval of the dpd certificate.
-        """
         return pulumi.get(self, "interval")
 
     @_builtins.property
     @pulumi.getter
     def msg(self) -> _builtins.str:
-        """
-        Indicates the msg of the dpd certificate.
-        """
         return pulumi.get(self, "msg")
 
     @_builtins.property
     @pulumi.getter
     def timeout(self) -> _builtins.int:
-        """
-        Indicates the timeout of the dpd certificate.
-        """
         return pulumi.get(self, "timeout")
 
 
@@ -17463,14 +16025,6 @@ class GetVpnConnectionsConnectionIpsecpolicyResult(dict):
                  lifetime_seconds: _builtins.int,
                  pfs: _builtins.str,
                  transform_protocol: _builtins.str):
-        """
-        :param _builtins.str authentication_algorithm: Indicates the authentication algorithm of the ikepolicy certificate.
-        :param _builtins.str encapsulation_mode: Indicates the encapsulation mode of the ipsecpolicy certificate.
-        :param _builtins.str encryption_algorithm: Indicates the encryption algorithm of the ikepolicy certificate.
-        :param _builtins.int lifetime_seconds: Indicates the lifetime seconds of the ipsecpolicy certificate.
-        :param _builtins.str pfs: Indicates the pfs of the ipsecpolicy certificate.
-        :param _builtins.str transform_protocol: Indicates the transform protocol of the ipsecpolicy certificate.
-        """
         pulumi.set(__self__, "authentication_algorithm", authentication_algorithm)
         pulumi.set(__self__, "encapsulation_mode", encapsulation_mode)
         pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
@@ -17481,49 +16035,31 @@ class GetVpnConnectionsConnectionIpsecpolicyResult(dict):
     @_builtins.property
     @pulumi.getter(name="authenticationAlgorithm")
     def authentication_algorithm(self) -> _builtins.str:
-        """
-        Indicates the authentication algorithm of the ikepolicy certificate.
-        """
         return pulumi.get(self, "authentication_algorithm")
 
     @_builtins.property
     @pulumi.getter(name="encapsulationMode")
     def encapsulation_mode(self) -> _builtins.str:
-        """
-        Indicates the encapsulation mode of the ipsecpolicy certificate.
-        """
         return pulumi.get(self, "encapsulation_mode")
 
     @_builtins.property
     @pulumi.getter(name="encryptionAlgorithm")
     def encryption_algorithm(self) -> _builtins.str:
-        """
-        Indicates the encryption algorithm of the ikepolicy certificate.
-        """
         return pulumi.get(self, "encryption_algorithm")
 
     @_builtins.property
     @pulumi.getter(name="lifetimeSeconds")
     def lifetime_seconds(self) -> _builtins.int:
-        """
-        Indicates the lifetime seconds of the ipsecpolicy certificate.
-        """
         return pulumi.get(self, "lifetime_seconds")
 
     @_builtins.property
     @pulumi.getter
     def pfs(self) -> _builtins.str:
-        """
-        Indicates the pfs of the ipsecpolicy certificate.
-        """
         return pulumi.get(self, "pfs")
 
     @_builtins.property
     @pulumi.getter(name="transformProtocol")
     def transform_protocol(self) -> _builtins.str:
-        """
-        Indicates the transform protocol of the ipsecpolicy certificate.
-        """
         return pulumi.get(self, "transform_protocol")
 
 
@@ -17533,11 +16069,6 @@ class GetVpnConnectionsConnectionPolicyRuleResult(dict):
                  destinations: Sequence[_builtins.str],
                  rule_index: _builtins.int,
                  source: _builtins.str):
-        """
-        :param Sequence[_builtins.str] destinations: Indicates the destination of the policy rules certificate.
-        :param _builtins.int rule_index: Indicates the rule index of the policy rules.
-        :param _builtins.str source: Indicates the source of the policy rules certificate.
-        """
         pulumi.set(__self__, "destinations", destinations)
         pulumi.set(__self__, "rule_index", rule_index)
         pulumi.set(__self__, "source", source)
@@ -17545,25 +16076,16 @@ class GetVpnConnectionsConnectionPolicyRuleResult(dict):
     @_builtins.property
     @pulumi.getter
     def destinations(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the destination of the policy rules certificate.
-        """
         return pulumi.get(self, "destinations")
 
     @_builtins.property
     @pulumi.getter(name="ruleIndex")
     def rule_index(self) -> _builtins.int:
-        """
-        Indicates the rule index of the policy rules.
-        """
         return pulumi.get(self, "rule_index")
 
     @_builtins.property
     @pulumi.getter
     def source(self) -> _builtins.str:
-        """
-        Indicates the source of the policy rules certificate.
-        """
         return pulumi.get(self, "source")
 
 
@@ -17580,20 +16102,6 @@ class GetVpnCustomerGatewaysCustomerGatewayResult(dict):
                  name: _builtins.str,
                  route_mode: _builtins.str,
                  updated_at: _builtins.str):
-        """
-        :param _builtins.int asn: Specifies the BGP ASN number of the customer gateway, only works when the route_mode is
-               **bgp**. The value ranges from **1** to **4294967295**.
-        :param Sequence['GetVpnCustomerGatewaysCustomerGatewayCaCertificateArgs'] ca_certificates: Indicates the ca certificate information of the customer gateway.
-               The ca_certificate structure is documented below.
-        :param _builtins.str created_at: The created time.
-        :param _builtins.str id: Indicates the ID of the customer gateway.
-        :param _builtins.str id_type: Indicates the id_type of the customer gateway.
-        :param _builtins.str id_value: Indicates the id_value of the customer gateway.
-        :param _builtins.str ip: Specifies the IP address of the customer gateway.
-        :param _builtins.str name: Specifies the customer gateway name.
-        :param _builtins.str route_mode: Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
-        :param _builtins.str updated_at: The last updated time.
-        """
         pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "ca_certificates", ca_certificates)
         pulumi.set(__self__, "created_at", created_at)
@@ -17608,83 +16116,51 @@ class GetVpnCustomerGatewaysCustomerGatewayResult(dict):
     @_builtins.property
     @pulumi.getter
     def asn(self) -> _builtins.int:
-        """
-        Specifies the BGP ASN number of the customer gateway, only works when the route_mode is
-        **bgp**. The value ranges from **1** to **4294967295**.
-        """
         return pulumi.get(self, "asn")
 
     @_builtins.property
     @pulumi.getter(name="caCertificates")
     def ca_certificates(self) -> Sequence['outputs.GetVpnCustomerGatewaysCustomerGatewayCaCertificateResult']:
-        """
-        Indicates the ca certificate information of the customer gateway.
-        The ca_certificate structure is documented below.
-        """
         return pulumi.get(self, "ca_certificates")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
-        """
-        The created time.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the ID of the customer gateway.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="idType")
     def id_type(self) -> _builtins.str:
-        """
-        Indicates the id_type of the customer gateway.
-        """
         return pulumi.get(self, "id_type")
 
     @_builtins.property
     @pulumi.getter(name="idValue")
     def id_value(self) -> _builtins.str:
-        """
-        Indicates the id_value of the customer gateway.
-        """
         return pulumi.get(self, "id_value")
 
     @_builtins.property
     @pulumi.getter
     def ip(self) -> _builtins.str:
-        """
-        Specifies the IP address of the customer gateway.
-        """
         return pulumi.get(self, "ip")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the customer gateway name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="routeMode")
     def route_mode(self) -> _builtins.str:
-        """
-        Specifies the route mode of the customer gateway. The value can be **static** and **bgp**.
-        """
         return pulumi.get(self, "route_mode")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
-        """
-        The last updated time.
-        """
         return pulumi.get(self, "updated_at")
 
 
@@ -17697,14 +16173,6 @@ class GetVpnCustomerGatewaysCustomerGatewayCaCertificateResult(dict):
                  serial_number: _builtins.str,
                  signature_algorithm: _builtins.str,
                  subject: _builtins.str):
-        """
-        :param _builtins.str expire_time: Indicates the expire time of the customer gateway certificate.
-        :param _builtins.bool is_updatable: Indicates whether the customer gateway certificate is updatable.
-        :param _builtins.str issuer: Indicates the issuer of the customer gateway certificate.
-        :param _builtins.str serial_number: Indicates the serial number of the customer gateway certificate.
-        :param _builtins.str signature_algorithm: Indicates the signature algorithm of the customer gateway certificate.
-        :param _builtins.str subject: Indicates the subject of the customer gateway certificate.
-        """
         pulumi.set(__self__, "expire_time", expire_time)
         pulumi.set(__self__, "is_updatable", is_updatable)
         pulumi.set(__self__, "issuer", issuer)
@@ -17715,49 +16183,31 @@ class GetVpnCustomerGatewaysCustomerGatewayCaCertificateResult(dict):
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> _builtins.str:
-        """
-        Indicates the expire time of the customer gateway certificate.
-        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
     @pulumi.getter(name="isUpdatable")
     def is_updatable(self) -> _builtins.bool:
-        """
-        Indicates whether the customer gateway certificate is updatable.
-        """
         return pulumi.get(self, "is_updatable")
 
     @_builtins.property
     @pulumi.getter
     def issuer(self) -> _builtins.str:
-        """
-        Indicates the issuer of the customer gateway certificate.
-        """
         return pulumi.get(self, "issuer")
 
     @_builtins.property
     @pulumi.getter(name="serialNumber")
     def serial_number(self) -> _builtins.str:
-        """
-        Indicates the serial number of the customer gateway certificate.
-        """
         return pulumi.get(self, "serial_number")
 
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> _builtins.str:
-        """
-        Indicates the signature algorithm of the customer gateway certificate.
-        """
         return pulumi.get(self, "signature_algorithm")
 
     @_builtins.property
     @pulumi.getter
     def subject(self) -> _builtins.str:
-        """
-        Indicates the subject of the customer gateway certificate.
-        """
         return pulumi.get(self, "subject")
 
 
@@ -17792,26 +16242,21 @@ class GetVpnGatewaysGatewayResult(dict):
         :param Sequence[_builtins.str] access_private_ips: The list of private access IPs.
         :param _builtins.str access_subnet_id: The ID of the access subnet.
         :param _builtins.str access_vpc_id: The ID of the access VPC.
-        :param _builtins.str attachment_type: Specifies the attachment type of the gateway.
-               The value can be: **vpc** and **er**.
+        :param _builtins.str attachment_type: The attachment type.
         :param Sequence[_builtins.str] availability_zones: The availability zone IDs.
         :param _builtins.int bgp_asn: The ASN number of BGP
-        :param _builtins.str connect_subnet: The VPC network segment used by the VPN gateway.
+        :param _builtins.str connect_subnet: The VPC network segment used by the VPN gateway
         :param _builtins.int connection_number: The max number of connections.
         :param _builtins.str created_at: The create time.
-        :param Sequence['GetVpnGatewaysGatewayEipArgs'] eips: The EIPs used by the fateway.
-               The eips structure is documented below.
-        :param _builtins.str enterprise_project_id: Specifies the enterprise project ID of the gateway.
+        :param _builtins.str enterprise_project_id: The enterprise project ID
         :param _builtins.str er_attachment_id: The ER attachment ID.
         :param _builtins.str er_id: The ID of the ER to which the VPN gateway is connected.
         :param _builtins.str flavor: The flavor of the VPN gateway.
         :param _builtins.str ha_mode: The HA mode.
-               The value can be: **active-active** and **active-standby**.
-        :param _builtins.str id: The public IP ID.
+        :param _builtins.str id: The ID of the gateway
         :param Sequence[_builtins.str] local_subnets: The local subnets.
-        :param _builtins.str name: Specifies the name of the gateway.
-        :param _builtins.str network_type: Specifies the network type of the gateway.
-               The value can be: **public** and **private**.
+        :param _builtins.str name: The name of the gateway.
+        :param _builtins.str network_type: The network type of the gateway.
         :param _builtins.str status: The status of the gateway.
         :param _builtins.str updated_at: The update time.
         :param _builtins.int used_connection_group: The number of used connection groups.
@@ -17871,8 +16316,7 @@ class GetVpnGatewaysGatewayResult(dict):
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> _builtins.str:
         """
-        Specifies the attachment type of the gateway.
-        The value can be: **vpc** and **er**.
+        The attachment type.
         """
         return pulumi.get(self, "attachment_type")
 
@@ -17896,7 +16340,7 @@ class GetVpnGatewaysGatewayResult(dict):
     @pulumi.getter(name="connectSubnet")
     def connect_subnet(self) -> _builtins.str:
         """
-        The VPC network segment used by the VPN gateway.
+        The VPC network segment used by the VPN gateway
         """
         return pulumi.get(self, "connect_subnet")
 
@@ -17919,17 +16363,13 @@ class GetVpnGatewaysGatewayResult(dict):
     @_builtins.property
     @pulumi.getter
     def eips(self) -> Sequence['outputs.GetVpnGatewaysGatewayEipResult']:
-        """
-        The EIPs used by the fateway.
-        The eips structure is documented below.
-        """
         return pulumi.get(self, "eips")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> _builtins.str:
         """
-        Specifies the enterprise project ID of the gateway.
+        The enterprise project ID
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -17962,7 +16402,6 @@ class GetVpnGatewaysGatewayResult(dict):
     def ha_mode(self) -> _builtins.str:
         """
         The HA mode.
-        The value can be: **active-active** and **active-standby**.
         """
         return pulumi.get(self, "ha_mode")
 
@@ -17970,7 +16409,7 @@ class GetVpnGatewaysGatewayResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The public IP ID.
+        The ID of the gateway
         """
         return pulumi.get(self, "id")
 
@@ -17986,7 +16425,7 @@ class GetVpnGatewaysGatewayResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the gateway.
+        The name of the gateway.
         """
         return pulumi.get(self, "name")
 
@@ -17994,8 +16433,7 @@ class GetVpnGatewaysGatewayResult(dict):
     @pulumi.getter(name="networkType")
     def network_type(self) -> _builtins.str:
         """
-        Specifies the network type of the gateway.
-        The value can be: **public** and **private**.
+        The network type of the gateway.
         """
         return pulumi.get(self, "network_type")
 
@@ -18059,11 +16497,11 @@ class GetVpnGatewaysGatewayEipResult(dict):
         :param _builtins.str bandwidth_name: The bandwidth name.
         :param _builtins.int bandwidth_size: Bandwidth size in Mbit/s.
         :param _builtins.str billing_info: The billing info.
-        :param _builtins.str charge_mode: The charge mode of the bandwidth.
+        :param _builtins.str charge_mode: The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
         :param _builtins.str id: The public IP ID.
         :param _builtins.str ip_address: The public IP address.
         :param _builtins.int ip_version: The public IP version.
-        :param _builtins.str type: The EIP type.
+        :param _builtins.str type: The EIP type. The value can be **5_bgp** and **5_sbgp**.
         """
         pulumi.set(__self__, "bandwidth_billing_info", bandwidth_billing_info)
         pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -18120,7 +16558,7 @@ class GetVpnGatewaysGatewayEipResult(dict):
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> _builtins.str:
         """
-        The charge mode of the bandwidth.
+        The charge mode of the bandwidth. The value can be **bandwidth** and **traffic**.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -18152,7 +16590,7 @@ class GetVpnGatewaysGatewayEipResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The EIP type.
+        The EIP type. The value can be **5_bgp** and **5_sbgp**.
         """
         return pulumi.get(self, "type")
 

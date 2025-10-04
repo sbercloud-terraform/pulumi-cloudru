@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW tags.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfw.GetTags(ctx, &cfw.GetTagsArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption) (*GetTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTagsResult
@@ -48,18 +23,15 @@ func GetTags(ctx *pulumi.Context, args *GetTagsArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getTags.
 type GetTagsArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getTags.
 type GetTagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The tag list.
-	Tags []GetTagsTag `pulumi:"tags"`
+	Id     string       `pulumi:"id"`
+	Region string       `pulumi:"region"`
+	Tags   []GetTagsTag `pulumi:"tags"`
 }
 
 func GetTagsOutput(ctx *pulumi.Context, args GetTagsOutputArgs, opts ...pulumi.InvokeOption) GetTagsResultOutput {
@@ -73,8 +45,6 @@ func GetTagsOutput(ctx *pulumi.Context, args GetTagsOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getTags.
 type GetTagsOutputArgs struct {
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
@@ -106,7 +76,6 @@ func (o GetTagsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTagsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The tag list.
 func (o GetTagsResultOutput) Tags() GetTagsTagArrayOutput {
 	return o.ApplyT(func(v GetTagsResult) []GetTagsTag { return v.Tags }).(GetTagsTagArrayOutput)
 }

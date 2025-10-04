@@ -12,99 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS SQLServer account resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewSqlserverAccount(ctx, "test", &rds.SqlserverAccountArgs{
-//				InstanceId: pulumi.Any(instanceId),
-//				Name:       pulumi.String("test_account_name"),
-//				Password:   pulumi.String("Test@12345678"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS sqlserver account can be imported using the `instance_id` and `name` separated by a slash, e.g.
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/sqlserverAccount:SqlserverAccount test <instance_id>/<name>
-// ```
-//
-// # Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-//
-// API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-//
-// running `pulumi preview` after importing a RDS SQLServer account. You can then decide if changes should be applied to
-//
-// the RDS SQLServer account, or the resource definition should be updated to align with the RDS SQLServer account. Also
-//
-// you can ignore changes as below.
-//
-// hcl
-//
-// resource "sbercloud_rds_sqlserver_account" "test" {
-//
-//	  ...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [
-//
-//	    password,
-//
-//	  ]
-//
-//	}
-//
-// }
 type SqlserverAccount struct {
 	pulumi.CustomResourceState
 
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the username of the DB account. The username consists of 1 to 128
-	// characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-	// and **rdsmirror**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the password of the DB account. It consists of 8 to 128 characters and
-	// contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters.
+	// Specifies the password of the DB account.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Indicates the DB user status. Its value can be any of the following:
-	// + **unavailable**: The database user is unavailable.
-	// + **available**: The database user is available.
+	Region   pulumi.StringOutput `pulumi:"region"`
+	// Indicates the DB user status.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -152,49 +70,25 @@ func GetSqlserverAccount(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SqlserverAccount resources.
 type sqlserverAccountState struct {
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the username of the DB account. The username consists of 1 to 128
-	// characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-	// and **rdsmirror**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name *string `pulumi:"name"`
-	// Specifies the password of the DB account. It consists of 8 to 128 characters and
-	// contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters.
+	// Specifies the password of the DB account.
 	Password *string `pulumi:"password"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Indicates the DB user status. Its value can be any of the following:
-	// + **unavailable**: The database user is unavailable.
-	// + **available**: The database user is available.
+	Region   *string `pulumi:"region"`
+	// Indicates the DB user status.
 	State *string `pulumi:"state"`
 }
 
 type SqlserverAccountState struct {
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the username of the DB account. The username consists of 1 to 128
-	// characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-	// and **rdsmirror**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name pulumi.StringPtrInput
-	// Specifies the password of the DB account. It consists of 8 to 128 characters and
-	// contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters.
+	// Specifies the password of the DB account.
 	Password pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Indicates the DB user status. Its value can be any of the following:
-	// + **unavailable**: The database user is unavailable.
-	// + **available**: The database user is available.
+	Region   pulumi.StringPtrInput
+	// Indicates the DB user status.
 	State pulumi.StringPtrInput
 }
 
@@ -204,43 +98,23 @@ func (SqlserverAccountState) ElementType() reflect.Type {
 
 type sqlserverAccountArgs struct {
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId string `pulumi:"instanceId"`
-	// Specifies the username of the DB account. The username consists of 1 to 128
-	// characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-	// and **rdsmirror**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name *string `pulumi:"name"`
-	// Specifies the password of the DB account. It consists of 8 to 128 characters and
-	// contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters.
-	Password string `pulumi:"password"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	// Specifies the password of the DB account.
+	Password string  `pulumi:"password"`
+	Region   *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a SqlserverAccount resource.
 type SqlserverAccountArgs struct {
 	// Specifies the ID of the RDS SQLServer instance.
-	//
-	// Changing this parameter will create a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the username of the DB account. The username consists of 1 to 128
-	// characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-	// and **rdsmirror**.
-	//
-	// Changing this parameter will create a new resource.
+	// Specifies the username of the DB account.
 	Name pulumi.StringPtrInput
-	// Specifies the password of the DB account. It consists of 8 to 128 characters and
-	// contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-	// characters.
+	// Specifies the password of the DB account.
 	Password pulumi.StringInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (SqlserverAccountArgs) ElementType() reflect.Type {
@@ -331,37 +205,25 @@ func (o SqlserverAccountOutput) ToSqlserverAccountOutputWithContext(ctx context.
 }
 
 // Specifies the ID of the RDS SQLServer instance.
-//
-// Changing this parameter will create a new resource.
 func (o SqlserverAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverAccount) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the username of the DB account. The username consists of 1 to 128
-// characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-// and **rdsmirror**.
-//
-// Changing this parameter will create a new resource.
+// Specifies the username of the DB account.
 func (o SqlserverAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverAccount) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the password of the DB account. It consists of 8 to 128 characters and
-// contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-// characters.
+// Specifies the password of the DB account.
 func (o SqlserverAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverAccount) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o SqlserverAccountOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverAccount) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the DB user status. Its value can be any of the following:
-// + **unavailable**: The database user is unavailable.
-// + **available**: The database user is available.
+// Indicates the DB user status.
 func (o SqlserverAccountOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverAccount) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

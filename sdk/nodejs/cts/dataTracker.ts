@@ -4,35 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages CTS **data** tracker resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const dataBucket = config.requireObject<any>("dataBucket");
- * const transferBucket = config.requireObject<any>("transferBucket");
- * const tracker = new sbercloud.cts.DataTracker("tracker", {
- *     name: "data-tracker",
- *     dataBucket: dataBucket,
- *     bucketName: transferBucket,
- *     filePrefix: "cloudTrace",
- *     ltsEnabled: true,
- * });
- * ```
- *
- * ## Import
- *
- * CTS data tracker can be imported using `name`, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Cts/dataTracker:DataTracker tracker your_tracker_name
- * ```
- */
 export class DataTracker extends pulumi.CustomResource {
     /**
      * Get an existing DataTracker resource's state with the given name, ID, and optional extra
@@ -62,75 +33,29 @@ export class DataTracker extends pulumi.CustomResource {
     }
 
     declare public /*out*/ readonly agencyName: pulumi.Output<string>;
-    /**
-     * Specifies the OBS bucket to which traces will be transferred.
-     */
     declare public readonly bucketName: pulumi.Output<string | undefined>;
     declare public readonly compressType: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createTime: pulumi.Output<number>;
-    /**
-     * Specifies the OBS bucket tracked by the data tracker.
-     * Changing this creates a new resource.
-     */
     declare public readonly dataBucket: pulumi.Output<string>;
-    /**
-     * Specifies an array of operation types tracked by the data tracker,
-     * the value of operation can be **WRITE** or **READ**.
-     */
     declare public readonly dataOperations: pulumi.Output<string[]>;
     declare public /*out*/ readonly detail: pulumi.Output<string>;
     declare public /*out*/ readonly domainId: pulumi.Output<string>;
-    /**
-     * Specifies whether tracker is enabled.
-     */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the file name prefix to mark trace files that need to be stored
-     * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-     * and periods (.) are allowed.
-     */
     declare public readonly filePrefix: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly groupId: pulumi.Output<string>;
     declare public /*out*/ readonly isAuthorizedBucket: pulumi.Output<boolean>;
     declare public readonly isSortByService: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly logGroupName: pulumi.Output<string>;
     declare public /*out*/ readonly logTopicName: pulumi.Output<string>;
-    /**
-     * Specifies whether trace analysis is enabled.
-     */
     declare public readonly ltsEnabled: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the data tracker name. The name cannot be system or ststem-trace.
-     * Changing this creates a new resource.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the retention period that traces are stored in `bucketName`,
-     * the value can be **0**(permanent), **30**, **60**, **90**, **180** or **1095**.
-     */
     declare public readonly obsRetentionPeriod: pulumi.Output<number | undefined>;
-    /**
-     * Specifies the region in which to manage the CTS data tracker resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The tracker status, the value can be **enabled**, **disabled** or **error**.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     declare public /*out*/ readonly streamId: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Whether traces will be transferred.
-     */
     declare public /*out*/ readonly transferEnabled: pulumi.Output<boolean>;
-    /**
-     * The tracker type, only **data** is available.
-     */
     declare public /*out*/ readonly type: pulumi.Output<string>;
-    /**
-     * Specifies whether trace file verification is enabled during trace transfer.
-     */
     declare public readonly validateFile: pulumi.Output<boolean | undefined>;
 
     /**
@@ -212,75 +137,29 @@ export class DataTracker extends pulumi.CustomResource {
  */
 export interface DataTrackerState {
     agencyName?: pulumi.Input<string>;
-    /**
-     * Specifies the OBS bucket to which traces will be transferred.
-     */
     bucketName?: pulumi.Input<string>;
     compressType?: pulumi.Input<string>;
     createTime?: pulumi.Input<number>;
-    /**
-     * Specifies the OBS bucket tracked by the data tracker.
-     * Changing this creates a new resource.
-     */
     dataBucket?: pulumi.Input<string>;
-    /**
-     * Specifies an array of operation types tracked by the data tracker,
-     * the value of operation can be **WRITE** or **READ**.
-     */
     dataOperations?: pulumi.Input<pulumi.Input<string>[]>;
     detail?: pulumi.Input<string>;
     domainId?: pulumi.Input<string>;
-    /**
-     * Specifies whether tracker is enabled.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the file name prefix to mark trace files that need to be stored
-     * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-     * and periods (.) are allowed.
-     */
     filePrefix?: pulumi.Input<string>;
     groupId?: pulumi.Input<string>;
     isAuthorizedBucket?: pulumi.Input<boolean>;
     isSortByService?: pulumi.Input<boolean>;
     logGroupName?: pulumi.Input<string>;
     logTopicName?: pulumi.Input<string>;
-    /**
-     * Specifies whether trace analysis is enabled.
-     */
     ltsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the data tracker name. The name cannot be system or ststem-trace.
-     * Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the retention period that traces are stored in `bucketName`,
-     * the value can be **0**(permanent), **30**, **60**, **90**, **180** or **1095**.
-     */
     obsRetentionPeriod?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to manage the CTS data tracker resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The tracker status, the value can be **enabled**, **disabled** or **error**.
-     */
     status?: pulumi.Input<string>;
     streamId?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Whether traces will be transferred.
-     */
     transferEnabled?: pulumi.Input<boolean>;
-    /**
-     * The tracker type, only **data** is available.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * Specifies whether trace file verification is enabled during trace transfer.
-     */
     validateFile?: pulumi.Input<boolean>;
 }
 
@@ -288,54 +167,17 @@ export interface DataTrackerState {
  * The set of arguments for constructing a DataTracker resource.
  */
 export interface DataTrackerArgs {
-    /**
-     * Specifies the OBS bucket to which traces will be transferred.
-     */
     bucketName?: pulumi.Input<string>;
     compressType?: pulumi.Input<string>;
-    /**
-     * Specifies the OBS bucket tracked by the data tracker.
-     * Changing this creates a new resource.
-     */
     dataBucket: pulumi.Input<string>;
-    /**
-     * Specifies an array of operation types tracked by the data tracker,
-     * the value of operation can be **WRITE** or **READ**.
-     */
     dataOperations?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies whether tracker is enabled.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the file name prefix to mark trace files that need to be stored
-     * in an OBS bucket. The value contains 0 to 64 characters. Only letters, numbers, hyphens (-), underscores (_),
-     * and periods (.) are allowed.
-     */
     filePrefix?: pulumi.Input<string>;
     isSortByService?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether trace analysis is enabled.
-     */
     ltsEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the data tracker name. The name cannot be system or ststem-trace.
-     * Changing this creates a new resource.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the retention period that traces are stored in `bucketName`,
-     * the value can be **0**(permanent), **30**, **60**, **90**, **180** or **1095**.
-     */
     obsRetentionPeriod?: pulumi.Input<number>;
-    /**
-     * Specifies the region in which to manage the CTS data tracker resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies whether trace file verification is enabled during trace transfer.
-     */
     validateFile?: pulumi.Input<boolean>;
 }

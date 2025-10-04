@@ -6,93 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages an AS bandwidth scaling policy resource within SberCloud.
- *
- * > AS cannot scale yearly/monthly bandwidths.
- *
- * ## Example Usage
- *
- * ### AS Recurrence Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bandwidthId = config.requireObject<any>("bandwidthId");
- * const bwPolicy = new sbercloud.as.BandwidthPolicy("bw_policy", {
- *     scalingPolicyName: "bw_policy",
- *     scalingPolicyType: "RECURRENCE",
- *     bandwidthId: bandwidthId,
- *     coolDownTime: 600,
- *     scalingPolicyAction: {
- *         operation: "ADD",
- *         size: 1,
- *     },
- *     scheduledPolicy: {
- *         launchTime: "07:00",
- *         recurrenceType: "Weekly",
- *         recurrenceValue: "1,3,5",
- *         startTime: "2022-09-30T12:00Z",
- *         endTime: "2022-12-30T12:00Z",
- *     },
- * });
- * ```
- *
- * ### AS Scheduled Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bandwidthId = config.requireObject<any>("bandwidthId");
- * const bwPolicy = new sbercloud.as.BandwidthPolicy("bw_policy", {
- *     scalingPolicyName: "bw_policy",
- *     scalingPolicyType: "SCHEDULED",
- *     bandwidthId: bandwidthId,
- *     coolDownTime: 600,
- *     scalingPolicyAction: {
- *         operation: "ADD",
- *         size: 1,
- *     },
- *     scheduledPolicy: {
- *         launchTime: "2022-09-30T12:00Z",
- *     },
- * });
- * ```
- *
- * ### AS Alarm Policy
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bandwidthId = config.requireObject<any>("bandwidthId");
- * const alarmId = config.requireObject<any>("alarmId");
- * const test = new sbercloud.as.BandwidthPolicy("test", {
- *     scalingPolicyName: "bw_policy",
- *     scalingPolicyType: "ALARM",
- *     bandwidthId: bandwidthId,
- *     alarmId: alarmId,
- *     scalingPolicyAction: {
- *         operation: "ADD",
- *         size: 1,
- *         limits: 300,
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * The bandwidth scaling policies can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:As/bandwidthPolicy:BandwidthPolicy test 0ce123456a00f2591fabc00385ff1234
- * ```
- */
 export class BandwidthPolicy extends pulumi.CustomResource {
     /**
      * Get an existing BandwidthPolicy resource's state with the given name, ID, and optional extra
@@ -127,7 +40,6 @@ export class BandwidthPolicy extends pulumi.CustomResource {
     declare public readonly action: pulumi.Output<string | undefined>;
     /**
      * Specifies the alarm rule ID.
-     * This parameter is mandatory when `scalingPolicyType` is set to ALARM.
      */
     declare public readonly alarmId: pulumi.Output<string>;
     /**
@@ -136,7 +48,6 @@ export class BandwidthPolicy extends pulumi.CustomResource {
     declare public readonly bandwidthId: pulumi.Output<string>;
     /**
      * Specifies the cooldown period (in seconds).
-     * The value ranges from 0 to 86400 and is 300 by default.
      */
     declare public readonly coolDownTime: pulumi.Output<number>;
     /**
@@ -145,7 +56,6 @@ export class BandwidthPolicy extends pulumi.CustomResource {
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
      * Specifies the description of the AS policy.
-     * The value can contain 0 to 256 characters.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
@@ -156,43 +66,23 @@ export class BandwidthPolicy extends pulumi.CustomResource {
      * The bandwidth policy additional information.
      */
     declare public /*out*/ readonly metaDatas: pulumi.Output<outputs.As.BandwidthPolicyMetaData[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the scaling action of the AS policy.
-     * The object structure is documented below.
-     */
     declare public readonly scalingPolicyAction: pulumi.Output<outputs.As.BandwidthPolicyScalingPolicyAction>;
     /**
      * Specifies the AS policy name.
-     * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
      */
     declare public readonly scalingPolicyName: pulumi.Output<string>;
     /**
-     * Specifies the AS policy type. The options are as follows:
-     * - **ALARM** (corresponding to `alarmId`): indicates that the scaling action is triggered by an alarm.
-     * - **SCHEDULED** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered as scheduled.
-     * - **RECURRENCE** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered periodically.
+     * Specifies the AS policy type.
      */
     declare public readonly scalingPolicyType: pulumi.Output<string>;
     /**
-     * The scaling resource type. The value is fixed to **BANDWIDTH**.
+     * the scaling resource type.
      */
     declare public /*out*/ readonly scalingResourceType: pulumi.Output<string>;
-    /**
-     * Specifies the periodic or scheduled AS policy.
-     * This parameter is mandatory when `scalingPolicyType` is set to SCHEDULED or RECURRENCE.
-     * The object structure is documented below.
-     *
-     * <a name="ASBandWidthPolicy_ScalingPolicyAction"></a>
-     * The `scalingPolicyAction` block supports:
-     */
     declare public readonly scheduledPolicy: pulumi.Output<outputs.As.BandwidthPolicyScheduledPolicy>;
     /**
-     * The AS policy status. The value can be **INSERVICE**, **PAUSED** and **EXECUTING**.
+     * the AS policy status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -266,7 +156,6 @@ export interface BandwidthPolicyState {
     action?: pulumi.Input<string>;
     /**
      * Specifies the alarm rule ID.
-     * This parameter is mandatory when `scalingPolicyType` is set to ALARM.
      */
     alarmId?: pulumi.Input<string>;
     /**
@@ -275,7 +164,6 @@ export interface BandwidthPolicyState {
     bandwidthId?: pulumi.Input<string>;
     /**
      * Specifies the cooldown period (in seconds).
-     * The value ranges from 0 to 86400 and is 300 by default.
      */
     coolDownTime?: pulumi.Input<number>;
     /**
@@ -284,7 +172,6 @@ export interface BandwidthPolicyState {
     createTime?: pulumi.Input<string>;
     /**
      * Specifies the description of the AS policy.
-     * The value can contain 0 to 256 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -295,43 +182,23 @@ export interface BandwidthPolicyState {
      * The bandwidth policy additional information.
      */
     metaDatas?: pulumi.Input<pulumi.Input<inputs.As.BandwidthPolicyMetaData>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the scaling action of the AS policy.
-     * The object structure is documented below.
-     */
     scalingPolicyAction?: pulumi.Input<inputs.As.BandwidthPolicyScalingPolicyAction>;
     /**
      * Specifies the AS policy name.
-     * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
      */
     scalingPolicyName?: pulumi.Input<string>;
     /**
-     * Specifies the AS policy type. The options are as follows:
-     * - **ALARM** (corresponding to `alarmId`): indicates that the scaling action is triggered by an alarm.
-     * - **SCHEDULED** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered as scheduled.
-     * - **RECURRENCE** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered periodically.
+     * Specifies the AS policy type.
      */
     scalingPolicyType?: pulumi.Input<string>;
     /**
-     * The scaling resource type. The value is fixed to **BANDWIDTH**.
+     * the scaling resource type.
      */
     scalingResourceType?: pulumi.Input<string>;
-    /**
-     * Specifies the periodic or scheduled AS policy.
-     * This parameter is mandatory when `scalingPolicyType` is set to SCHEDULED or RECURRENCE.
-     * The object structure is documented below.
-     *
-     * <a name="ASBandWidthPolicy_ScalingPolicyAction"></a>
-     * The `scalingPolicyAction` block supports:
-     */
     scheduledPolicy?: pulumi.Input<inputs.As.BandwidthPolicyScheduledPolicy>;
     /**
-     * The AS policy status. The value can be **INSERVICE**, **PAUSED** and **EXECUTING**.
+     * the AS policy status.
      */
     status?: pulumi.Input<string>;
 }
@@ -346,7 +213,6 @@ export interface BandwidthPolicyArgs {
     action?: pulumi.Input<string>;
     /**
      * Specifies the alarm rule ID.
-     * This parameter is mandatory when `scalingPolicyType` is set to ALARM.
      */
     alarmId?: pulumi.Input<string>;
     /**
@@ -355,47 +221,25 @@ export interface BandwidthPolicyArgs {
     bandwidthId: pulumi.Input<string>;
     /**
      * Specifies the cooldown period (in seconds).
-     * The value ranges from 0 to 86400 and is 300 by default.
      */
     coolDownTime?: pulumi.Input<number>;
     /**
      * Specifies the description of the AS policy.
-     * The value can contain 0 to 256 characters.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the alarm interval of the bandwidth policy.
      */
     intervalAlarmActions?: pulumi.Input<pulumi.Input<inputs.As.BandwidthPolicyIntervalAlarmAction>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the scaling action of the AS policy.
-     * The object structure is documented below.
-     */
     scalingPolicyAction?: pulumi.Input<inputs.As.BandwidthPolicyScalingPolicyAction>;
     /**
      * Specifies the AS policy name.
-     * The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
      */
     scalingPolicyName: pulumi.Input<string>;
     /**
-     * Specifies the AS policy type. The options are as follows:
-     * - **ALARM** (corresponding to `alarmId`): indicates that the scaling action is triggered by an alarm.
-     * - **SCHEDULED** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered as scheduled.
-     * - **RECURRENCE** (corresponding to `scheduledPolicy`): indicates that the scaling action is triggered periodically.
+     * Specifies the AS policy type.
      */
     scalingPolicyType: pulumi.Input<string>;
-    /**
-     * Specifies the periodic or scheduled AS policy.
-     * This parameter is mandatory when `scalingPolicyType` is set to SCHEDULED or RECURRENCE.
-     * The object structure is documented below.
-     *
-     * <a name="ASBandWidthPolicy_ScalingPolicyAction"></a>
-     * The `scalingPolicyAction` block supports:
-     */
     scheduledPolicy?: pulumi.Input<inputs.As.BandwidthPolicyScheduledPolicy>;
 }

@@ -6,25 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the available ELB Flavors.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavors = sbercloud.getElbFlavors({
- *     type: "L7",
- *     maxConnections: 200000,
- *     cps: 2000,
- *     bandwidth: 50,
- * });
- * // Create Dedicated Load Balancer with the first matched flavor
- * const lb = new sbercloud.ElbLoadbalancer("lb", {l7FlavorId: flavors.then(flavors => flavors.ids?.[0])});
- * ```
- */
 export function getElbFlavors(args?: GetElbFlavorsArgs, opts?: pulumi.InvokeOptions): Promise<GetElbFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,40 +30,18 @@ export function getElbFlavors(args?: GetElbFlavorsArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getElbFlavors.
  */
 export interface GetElbFlavorsArgs {
-    /**
-     * Specifies the bandwidth size(Mbit/s) in the flavor.
-     */
     bandwidth?: number;
     category?: number;
-    /**
-     * Specifies the cps in the flavor.
-     */
     cps?: number;
     flavorId?: string;
     flavorSoldOut?: string;
     listAll?: string;
-    /**
-     * Specifies the maximum connections in the flavor.
-     */
     maxConnections?: number;
-    /**
-     * Name of the flavor.
-     */
     name?: string;
     publicBorderGroup?: string;
-    /**
-     * Specifies the qps in the L7 flavor.
-     */
     qps?: number;
-    /**
-     * The region in which to obtain the flavors. If omitted, the provider-level region will be
-     * used.
-     */
     region?: string;
     shared?: string;
-    /**
-     * Specifies the flavor type. Valid values are L4 and L7.
-     */
     type?: string;
 }
 
@@ -90,69 +49,26 @@ export interface GetElbFlavorsArgs {
  * A collection of values returned by getElbFlavors.
  */
 export interface GetElbFlavorsResult {
-    /**
-     * Bandwidth size(Mbit/s) of the flavor.
-     */
     readonly bandwidth?: number;
     readonly category?: number;
-    /**
-     * Cps of the flavor.
-     */
     readonly cps?: number;
     readonly flavorId?: string;
     readonly flavorSoldOut?: string;
-    /**
-     * A list of flavors. Each element contains the following attributes:
-     */
     readonly flavors: outputs.GetElbFlavorsFlavor[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of flavor IDs.
-     */
     readonly ids: string[];
     readonly listAll?: string;
-    /**
-     * Maximum connections of the flavor.
-     */
     readonly maxConnections?: number;
-    /**
-     * Name of the flavor.
-     */
     readonly name?: string;
     readonly publicBorderGroup?: string;
-    /**
-     * Qps of the L7 flavor.
-     */
     readonly qps?: number;
     readonly region: string;
     readonly shared?: string;
-    /**
-     * Type of the flavor.
-     */
     readonly type?: string;
 }
-/**
- * Use this data source to get the available ELB Flavors.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const flavors = sbercloud.getElbFlavors({
- *     type: "L7",
- *     maxConnections: 200000,
- *     cps: 2000,
- *     bandwidth: 50,
- * });
- * // Create Dedicated Load Balancer with the first matched flavor
- * const lb = new sbercloud.ElbLoadbalancer("lb", {l7FlavorId: flavors.then(flavors => flavors.ids?.[0])});
- * ```
- */
 export function getElbFlavorsOutput(args?: GetElbFlavorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElbFlavorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -177,39 +93,17 @@ export function getElbFlavorsOutput(args?: GetElbFlavorsOutputArgs, opts?: pulum
  * A collection of arguments for invoking getElbFlavors.
  */
 export interface GetElbFlavorsOutputArgs {
-    /**
-     * Specifies the bandwidth size(Mbit/s) in the flavor.
-     */
     bandwidth?: pulumi.Input<number>;
     category?: pulumi.Input<number>;
-    /**
-     * Specifies the cps in the flavor.
-     */
     cps?: pulumi.Input<number>;
     flavorId?: pulumi.Input<string>;
     flavorSoldOut?: pulumi.Input<string>;
     listAll?: pulumi.Input<string>;
-    /**
-     * Specifies the maximum connections in the flavor.
-     */
     maxConnections?: pulumi.Input<number>;
-    /**
-     * Name of the flavor.
-     */
     name?: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
-    /**
-     * Specifies the qps in the L7 flavor.
-     */
     qps?: pulumi.Input<number>;
-    /**
-     * The region in which to obtain the flavors. If omitted, the provider-level region will be
-     * used.
-     */
     region?: pulumi.Input<string>;
     shared?: pulumi.Input<string>;
-    /**
-     * Specifies the flavor type. Valid values are L4 and L7.
-     */
     type?: pulumi.Input<string>;
 }

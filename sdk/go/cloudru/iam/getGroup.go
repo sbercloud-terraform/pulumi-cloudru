@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get details of the specified IAM user group.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.GetGroup(ctx, &iam.GetGroupArgs{
-//				Name: pulumi.StringRef("my_group"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.InvokeOption) (*LookupGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupResult
@@ -50,26 +23,18 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupArgs struct {
-	// Specifies the description of the identity group.
 	Description *string `pulumi:"description"`
-	// Specifies the ID of the identity group.
-	Id *string `pulumi:"id"`
-	// Specifies the name of the identity group.
-	Name *string `pulumi:"name"`
+	Id          *string `pulumi:"id"`
+	Name        *string `pulumi:"name"`
 }
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
-	// Indicates the description of the IAM user.
-	Description string `pulumi:"description"`
-	// Indicates the domain the group belongs to.
-	DomainId string `pulumi:"domainId"`
-	// Indicates the ID of the User.
-	Id string `pulumi:"id"`
-	// Indicates the IAM user name.
-	Name string `pulumi:"name"`
-	// Indicates the users the group contains. Structure is documented below.
-	Users []GetGroupUser `pulumi:"users"`
+	Description string         `pulumi:"description"`
+	DomainId    string         `pulumi:"domainId"`
+	Id          string         `pulumi:"id"`
+	Name        string         `pulumi:"name"`
+	Users       []GetGroupUser `pulumi:"users"`
 }
 
 func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
@@ -83,12 +48,9 @@ func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupOutputArgs struct {
-	// Specifies the description of the identity group.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Specifies the ID of the identity group.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the name of the identity group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupGroupOutputArgs) ElementType() reflect.Type {
@@ -110,27 +72,22 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx contex
 	return o
 }
 
-// Indicates the description of the IAM user.
 func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Indicates the domain the group belongs to.
 func (o LookupGroupResultOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.DomainId }).(pulumi.StringOutput)
 }
 
-// Indicates the ID of the User.
 func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates the IAM user name.
 func (o LookupGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the users the group contains. Structure is documented below.
 func (o LookupGroupResultOutput) Users() GetGroupUserArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []GetGroupUser { return v.Users }).(GetGroupUserArrayOutput)
 }

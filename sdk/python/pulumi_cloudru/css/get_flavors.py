@@ -56,9 +56,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetFlavorsFlavorResult']:
-        """
-        Indicates the flavors information. Structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
@@ -72,49 +69,31 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.int]:
-        """
-        The memory size in GB.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the CSS flavor. It is referenced by `node_config.flavor` in `Css.Cluster`.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> _builtins.str:
-        """
-        The region where the node resides.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The node instance type.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> Optional[_builtins.int]:
-        """
-        The number of vCPUs.
-        """
         return pulumi.get(self, "vcpus")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
-        """
-        The engine version.
-        """
         return pulumi.get(self, "version")
 
 
@@ -142,30 +121,7 @@ def get_flavors(memory: Optional[_builtins.int] = None,
                 version: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
-    Use this data source to get available flavors of SberCloud CSS node instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Css.get_flavors(type="ess",
-        version="7.9.3",
-        vcpus=4,
-        memory=32)
-    ```
-
-
-    :param _builtins.int memory: Specifies the memory size(GB) in the CSS flavor.
-    :param _builtins.str name: Specifies the name of the CSS flavor.
-    :param _builtins.str region: Specifies the region in which to obtain the CSS flavors. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str type: Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-           and `ess-client`.
-    :param _builtins.int vcpus: Specifies the number of vCPUs in the CSS flavor.
-    :param _builtins.str version: Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-           `7.6.2` and `7.9.3`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['memory'] = memory
@@ -194,30 +150,7 @@ def get_flavors_output(memory: Optional[pulumi.Input[Optional[_builtins.int]]] =
                        version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
-    Use this data source to get available flavors of SberCloud CSS node instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.Css.get_flavors(type="ess",
-        version="7.9.3",
-        vcpus=4,
-        memory=32)
-    ```
-
-
-    :param _builtins.int memory: Specifies the memory size(GB) in the CSS flavor.
-    :param _builtins.str name: Specifies the name of the CSS flavor.
-    :param _builtins.str region: Specifies the region in which to obtain the CSS flavors. If omitted, the
-           provider-level region will be used.
-    :param _builtins.str type: Specifies the node instance type. The options are `ess`, `ess-cold`, `ess-master`
-           and `ess-client`.
-    :param _builtins.int vcpus: Specifies the number of vCPUs in the CSS flavor.
-    :param _builtins.str version: Specifies the engine version. The options are `5.5.1`, `6.2.3`, `6.5.4`, `7.1.1`,
-           `7.6.2` and `7.9.3`.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['memory'] = memory

@@ -25,11 +25,6 @@ class BucketPolicyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketPolicy resource.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to apply the policy.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "policy", policy)
@@ -41,9 +36,6 @@ class BucketPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the bucket to which to apply the policy.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -53,10 +45,6 @@ class BucketPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the text of the bucket policy in JSON format. For more information about
-        obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -66,9 +54,6 @@ class BucketPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="policyFormat")
     def policy_format(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        """
         return pulumi.get(self, "policy_format")
 
     @policy_format.setter
@@ -78,9 +63,6 @@ class BucketPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -97,11 +79,6 @@ class _BucketPolicyState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketPolicy resources.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to apply the policy.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
         """
         if bucket is not None:
             pulumi.set(__self__, "bucket", bucket)
@@ -115,9 +92,6 @@ class _BucketPolicyState:
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the bucket to which to apply the policy.
-        """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
@@ -127,10 +101,6 @@ class _BucketPolicyState:
     @_builtins.property
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the text of the bucket policy in JSON format. For more information about
-        obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        """
         return pulumi.get(self, "policy")
 
     @policy.setter
@@ -140,9 +110,6 @@ class _BucketPolicyState:
     @_builtins.property
     @pulumi.getter(name="policyFormat")
     def policy_format(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        """
         return pulumi.get(self, "policy_format")
 
     @policy_format.setter
@@ -152,9 +119,6 @@ class _BucketPolicyState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -174,82 +138,9 @@ class BucketPolicy(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Attaches a policy to an OBS bucket resource.
-
-        ## Example Usage
-
-        ### Policy with OBS format
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
-        policy = sbercloud.obs.BucketPolicy("policy",
-            bucket=bucket.id,
-            policy=\"\"\"{
-          "Statement": [
-            {
-              "Sid": "AddPerm",
-              "Effect": "Allow",
-              "Principal": {"ID": "*"},
-              "Action": ["GetObject"],
-              "Resource": "my-test-bucket/*"
-            } 
-          ]
-        }
-        \"\"\")
-        ```
-
-        ### Policy with S3 format
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
-        s3_policy = sbercloud.obs.BucketPolicy("s3_policy",
-            bucket=bucket.id,
-            policy_format="s3",
-            policy=\"\"\"{
-          "Version": "2008-10-17",
-          "Id": "MYBUCKETPOLICY",
-          "Statement": [
-            {
-              "Sid": "IPAllow",
-              "Effect": "Allow",
-              "Principal": "*",
-              "Action": "s3:*",
-              "Resource": "arn:aws:s3:::my-test-bucket/*",
-              "Condition": {
-                "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
-        ## Import
-
-        OBS format bucket policy can be imported using the `<bucket>`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy policy <bucket-name>
-        ```
-        S3 foramt bucket policy can be imported using the `<bucket>` and "s3" by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy s3_policy <bucket-name>/s3
-        ```
-
+        Create a BucketPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to apply the policy.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
         """
         ...
     @overload
@@ -258,75 +149,7 @@ class BucketPolicy(pulumi.CustomResource):
                  args: BucketPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Attaches a policy to an OBS bucket resource.
-
-        ## Example Usage
-
-        ### Policy with OBS format
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
-        policy = sbercloud.obs.BucketPolicy("policy",
-            bucket=bucket.id,
-            policy=\"\"\"{
-          "Statement": [
-            {
-              "Sid": "AddPerm",
-              "Effect": "Allow",
-              "Principal": {"ID": "*"},
-              "Action": ["GetObject"],
-              "Resource": "my-test-bucket/*"
-            } 
-          ]
-        }
-        \"\"\")
-        ```
-
-        ### Policy with S3 format
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bucket = sbercloud.obs.Bucket("bucket", bucket="my-test-bucket")
-        s3_policy = sbercloud.obs.BucketPolicy("s3_policy",
-            bucket=bucket.id,
-            policy_format="s3",
-            policy=\"\"\"{
-          "Version": "2008-10-17",
-          "Id": "MYBUCKETPOLICY",
-          "Statement": [
-            {
-              "Sid": "IPAllow",
-              "Effect": "Allow",
-              "Principal": "*",
-              "Action": "s3:*",
-              "Resource": "arn:aws:s3:::my-test-bucket/*",
-              "Condition": {
-                "IpAddress": {"aws:SourceIp": "8.8.8.8/32"}
-              }
-            }
-          ]
-        }
-        \"\"\")
-        ```
-
-        ## Import
-
-        OBS format bucket policy can be imported using the `<bucket>`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy policy <bucket-name>
-        ```
-        S3 foramt bucket policy can be imported using the `<bucket>` and "s3" by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Obs/bucketPolicy:BucketPolicy s3_policy <bucket-name>/s3
-        ```
-
+        Create a BucketPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param BucketPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -384,11 +207,6 @@ class BucketPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bucket: Specifies the name of the bucket to which to apply the policy.
-        :param pulumi.Input[_builtins.str] policy: Specifies the text of the bucket policy in JSON format. For more information about
-               obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        :param pulumi.Input[_builtins.str] policy_format: Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        :param pulumi.Input[_builtins.str] region: The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -403,33 +221,20 @@ class BucketPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def bucket(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the bucket to which to apply the policy.
-        """
         return pulumi.get(self, "bucket")
 
     @_builtins.property
     @pulumi.getter
     def policy(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the text of the bucket policy in JSON format. For more information about
-        obs format bucket policy, see the [Developer Guide](https://support.hc.sbercloud.ru/api/obs/obs_04_0027.html).
-        """
         return pulumi.get(self, "policy")
 
     @_builtins.property
     @pulumi.getter(name="policyFormat")
     def policy_format(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the policy format, the supported values are *obs* and *s3*. Defaults to *obs* .
-        """
         return pulumi.get(self, "policy_format")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the OBS bucket policy resource. If omitted, the provider-level region will be used. Changing this creates a new OBS bucket policy resource.
-        """
         return pulumi.get(self, "region")
 

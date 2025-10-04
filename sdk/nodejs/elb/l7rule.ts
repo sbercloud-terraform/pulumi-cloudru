@@ -4,55 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages an ELB L7 Rule resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const loadbalancer1 = new sbercloud.elb.Loadbalancer("loadbalancer_1", {
- *     name: "loadbalancer_1",
- *     vipSubnetId: subnetId,
- * });
- * const listener1 = new sbercloud.elb.Listener("listener_1", {
- *     name: "listener_1",
- *     protocol: "HTTP",
- *     protocolPort: 8080,
- *     loadbalancerId: loadbalancer1.id,
- * });
- * const pool1 = new sbercloud.elb.Pool("pool_1", {
- *     name: "pool_1",
- *     protocol: "HTTP",
- *     lbMethod: "ROUND_ROBIN",
- *     loadbalancerId: loadbalancer1.id,
- * });
- * const l7policy1 = new sbercloud.elb.L7policy("l7policy_1", {
- *     name: "test",
- *     action: "REDIRECT_TO_POOL",
- *     description: "test l7 policy",
- *     position: 1,
- *     listenerId: listener1.id,
- *     redirectPoolId: pool1.id,
- * });
- * const l7rule1 = new sbercloud.elb.L7rule("l7rule_1", {
- *     l7policyId: l7policy1.id,
- *     type: "PATH",
- *     compareType: "EQUAL_TO",
- *     value: "/api",
- * });
- * ```
- *
- * ## Import
- *
- * Load Balancer L7 Rule can be imported using the L7 Policy ID and L7 Rule ID separated by a slash, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Elb/l7rule:L7rule l7rule_1 e0bd694a-abbe-450e-b329-0931fd1cc5eb/4086b0c9-b18c-4d1c-b6b8-4c56c3ad2a9e
- * ```
- */
 export class L7rule extends pulumi.CustomResource {
     /**
      * Get an existing L7rule resource's state with the given name, ID, and optional extra
@@ -81,44 +32,17 @@ export class L7rule extends pulumi.CustomResource {
         return obj['__pulumiType'] === L7rule.__pulumiType;
     }
 
-    /**
-     * The administrative state of the L7 Rule. The value can only be true (UP).
-     */
     declare public readonly adminStateUp: pulumi.Output<boolean | undefined>;
-    /**
-     * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-     */
     declare public readonly compareType: pulumi.Output<string>;
-    /**
-     * The key to use for the comparison. For example, the name of the cookie to
-     * evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-     */
     declare public readonly key: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-     */
     declare public readonly l7policyId: pulumi.Output<string>;
-    /**
-     * The ID of the Listener owning this resource.
-     */
     declare public /*out*/ readonly listenerId: pulumi.Output<string>;
-    /**
-     * The region in which to create the L7 Rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Rule.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     declare public readonly tenantId: pulumi.Output<string>;
-    /**
-     * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-     * L7 Rule.
-     */
     declare public readonly type: pulumi.Output<string>;
-    /**
-     * The value to use for the comparison. For example, the file type to compare.
-     */
     declare public readonly value: pulumi.Output<string>;
 
     /**
@@ -176,44 +100,17 @@ export class L7rule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering L7rule resources.
  */
 export interface L7ruleState {
-    /**
-     * The administrative state of the L7 Rule. The value can only be true (UP).
-     */
     adminStateUp?: pulumi.Input<boolean>;
-    /**
-     * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-     */
     compareType?: pulumi.Input<string>;
-    /**
-     * The key to use for the comparison. For example, the name of the cookie to
-     * evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-     */
     l7policyId?: pulumi.Input<string>;
-    /**
-     * The ID of the Listener owning this resource.
-     */
     listenerId?: pulumi.Input<string>;
-    /**
-     * The region in which to create the L7 Rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Rule.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-     * L7 Rule.
-     */
     type?: pulumi.Input<string>;
-    /**
-     * The value to use for the comparison. For example, the file type to compare.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -221,39 +118,15 @@ export interface L7ruleState {
  * The set of arguments for constructing a L7rule resource.
  */
 export interface L7ruleArgs {
-    /**
-     * The administrative state of the L7 Rule. The value can only be true (UP).
-     */
     adminStateUp?: pulumi.Input<boolean>;
-    /**
-     * The comparison type for the L7 rule - can either be STARTS_WITH, EQUAL_TO or REGEX
-     */
     compareType: pulumi.Input<string>;
-    /**
-     * The key to use for the comparison. For example, the name of the cookie to
-     * evaluate. Valid when `type` is set to COOKIE or HEADER. Changing this creates a new L7 Rule.
-     */
     key?: pulumi.Input<string>;
-    /**
-     * The ID of the L7 Policy to query. Changing this creates a new L7 Rule.
-     */
     l7policyId: pulumi.Input<string>;
-    /**
-     * The region in which to create the L7 Rule resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new L7 Rule.
-     */
     region?: pulumi.Input<string>;
     /**
      * @deprecated tenant_id is deprecated
      */
     tenantId?: pulumi.Input<string>;
-    /**
-     * The L7 Rule type - can either be HOST_NAME or PATH. Changing this creates a new
-     * L7 Rule.
-     */
     type: pulumi.Input<string>;
-    /**
-     * The value to use for the comparison. For example, the file type to compare.
-     */
     value: pulumi.Input<string>;
 }

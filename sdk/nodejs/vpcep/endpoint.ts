@@ -4,73 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Provides a resource to manage a VPC endpoint resource.
- *
- * ## Example Usage
- *
- * ### Access to the public service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const vpcId = config.requireObject<any>("vpcId");
- * const networkId = config.requireObject<any>("networkId");
- * const cloudService = sbercloud.Vpcep.getPublicServices({
- *     serviceName: "dis",
- * });
- * const myendpoint = new sbercloud.vpcep.Endpoint("myendpoint", {
- *     serviceId: cloudService.then(cloudService => cloudService.services?.[0]?.id),
- *     vpcId: vpcId,
- *     networkId: networkId,
- *     enableDns: true,
- *     enableWhitelist: true,
- *     whitelists: ["192.168.0.0/24"],
- * });
- * ```
- *
- * ### Access to the private service
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const serviceVpcId = config.requireObject<any>("serviceVpcId");
- * const vmPort = config.requireObject<any>("vmPort");
- * const vpcId = config.requireObject<any>("vpcId");
- * const networkId = config.requireObject<any>("networkId");
- * const demo = new sbercloud.vpcep.Service("demo", {
- *     name: "demo-service",
- *     serverType: "VM",
- *     vpcId: serviceVpcId,
- *     portId: vmPort,
- *     portMappings: [{
- *         servicePort: 8080,
- *         terminalPort: 80,
- *     }],
- * });
- * const demoEndpoint = new sbercloud.vpcep.Endpoint("demo", {
- *     serviceId: demo.id,
- *     vpcId: vpcId,
- *     networkId: networkId,
- *     enableDns: true,
- *     description: "test description",
- * });
- * ```
- *
- * ## Import
- *
- * VPC endpoint can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Vpcep/endpoint:Endpoint test <id>
- * ```
- */
 export class Endpoint extends pulumi.CustomResource {
     /**
      * Get an existing Endpoint resource's state with the given name, ID, and optional extra
@@ -99,76 +32,20 @@ export class Endpoint extends pulumi.CustomResource {
         return obj['__pulumiType'] === Endpoint.__pulumiType;
     }
 
-    /**
-     * Specifies the description of the VPC endpoint.
-     *
-     * Changing this creates a new VPC endpoint.
-     */
     declare public readonly description: pulumi.Output<string>;
-    /**
-     * Specifies whether to create a private domain name. The default value is
-     * true. Changing this creates a new VPC endpoint.
-     */
     declare public readonly enableDns: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies whether to enable access control. The default value is
-     * false.
-     */
     declare public readonly enableWhitelist: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies the IP address for accessing the associated VPC endpoint
-     * service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-     */
     declare public readonly ipAddress: pulumi.Output<string>;
-    /**
-     * Specifies the network ID of the subnet in the VPC specified by `vpcId`.
-     * Changing this creates a new VPC endpoint.
-     */
     declare public readonly networkId: pulumi.Output<string>;
-    /**
-     * The packet ID of the VPC endpoint.
-     */
     declare public /*out*/ readonly packetId: pulumi.Output<number>;
-    /**
-     * The domain name for accessing the associated VPC endpoint service. This parameter is only
-     * available when enableDns is set to true.
-     */
     declare public /*out*/ readonly privateDomainName: pulumi.Output<string>;
-    /**
-     * The region in which to create the VPC endpoint. If omitted, the provider-level
-     * region will be used. Changing this creates a new VPC endpoint.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the VPC endpoint service.
-     * The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-     */
     declare public readonly serviceId: pulumi.Output<string>;
-    /**
-     * The name of the VPC endpoint service.
-     */
     declare public /*out*/ readonly serviceName: pulumi.Output<string>;
-    /**
-     * The type of the VPC endpoint service.
-     */
     declare public /*out*/ readonly serviceType: pulumi.Output<string>;
-    /**
-     * The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * The key/value pairs to associate with the VPC endpoint.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-     * this creates a new VPC endpoint.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
-    /**
-     * Specifies the list of IP address or CIDR block which can be accessed to the
-     * VPC endpoint. This field is valid when `enableWhitelist` is set to **true**. The max length of whitelist is 20.
-     */
     declare public readonly whitelists: pulumi.Output<string[] | undefined>;
 
     /**
@@ -235,76 +112,20 @@ export class Endpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Endpoint resources.
  */
 export interface EndpointState {
-    /**
-     * Specifies the description of the VPC endpoint.
-     *
-     * Changing this creates a new VPC endpoint.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to create a private domain name. The default value is
-     * true. Changing this creates a new VPC endpoint.
-     */
     enableDns?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether to enable access control. The default value is
-     * false.
-     */
     enableWhitelist?: pulumi.Input<boolean>;
-    /**
-     * Specifies the IP address for accessing the associated VPC endpoint
-     * service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-     */
     ipAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the network ID of the subnet in the VPC specified by `vpcId`.
-     * Changing this creates a new VPC endpoint.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * The packet ID of the VPC endpoint.
-     */
     packetId?: pulumi.Input<number>;
-    /**
-     * The domain name for accessing the associated VPC endpoint service. This parameter is only
-     * available when enableDns is set to true.
-     */
     privateDomainName?: pulumi.Input<string>;
-    /**
-     * The region in which to create the VPC endpoint. If omitted, the provider-level
-     * region will be used. Changing this creates a new VPC endpoint.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the VPC endpoint service.
-     * The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-     */
     serviceId?: pulumi.Input<string>;
-    /**
-     * The name of the VPC endpoint service.
-     */
     serviceName?: pulumi.Input<string>;
-    /**
-     * The type of the VPC endpoint service.
-     */
     serviceType?: pulumi.Input<string>;
-    /**
-     * The status of the VPC endpoint. The value can be **accepted**, **pendingAcceptance** or **rejected**.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the VPC endpoint.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-     * this creates a new VPC endpoint.
-     */
     vpcId?: pulumi.Input<string>;
-    /**
-     * Specifies the list of IP address or CIDR block which can be accessed to the
-     * VPC endpoint. This field is valid when `enableWhitelist` is set to **true**. The max length of whitelist is 20.
-     */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -312,54 +133,14 @@ export interface EndpointState {
  * The set of arguments for constructing a Endpoint resource.
  */
 export interface EndpointArgs {
-    /**
-     * Specifies the description of the VPC endpoint.
-     *
-     * Changing this creates a new VPC endpoint.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to create a private domain name. The default value is
-     * true. Changing this creates a new VPC endpoint.
-     */
     enableDns?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether to enable access control. The default value is
-     * false.
-     */
     enableWhitelist?: pulumi.Input<boolean>;
-    /**
-     * Specifies the IP address for accessing the associated VPC endpoint
-     * service. Only IPv4 addresses are supported. Changing this creates a new VPC endpoint.
-     */
     ipAddress?: pulumi.Input<string>;
-    /**
-     * Specifies the network ID of the subnet in the VPC specified by `vpcId`.
-     * Changing this creates a new VPC endpoint.
-     */
     networkId: pulumi.Input<string>;
-    /**
-     * The region in which to create the VPC endpoint. If omitted, the provider-level
-     * region will be used. Changing this creates a new VPC endpoint.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the VPC endpoint service.
-     * The VPC endpoint service could be private or public. Changing this creates a new VPC endpoint.
-     */
     serviceId: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the VPC endpoint.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the ID of the VPC where the VPC endpoint is to be created. Changing
-     * this creates a new VPC endpoint.
-     */
     vpcId: pulumi.Input<string>;
-    /**
-     * Specifies the list of IP address or CIDR block which can be accessed to the
-     * VPC endpoint. This field is valid when `enableWhitelist` is set to **true**. The max length of whitelist is 20.
-     */
     whitelists?: pulumi.Input<pulumi.Input<string>[]>;
 }

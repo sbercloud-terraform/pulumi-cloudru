@@ -27,10 +27,6 @@ class DcsRestoreArgs:
                  remark: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DcsRestore resource.
-        :param pulumi.Input[_builtins.str] backup_id: ID of the backup record.
-        :param pulumi.Input[_builtins.str] instance_id: A dcs_instance ID in UUID format.
-        :param pulumi.Input[_builtins.str] project_id: The enterprise project id of the dcs instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] remark: Description of DCS instance restoration.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -41,9 +37,6 @@ class DcsRestoreArgs:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        ID of the backup record.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -53,9 +46,6 @@ class DcsRestoreArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        A dcs_instance ID in UUID format.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -65,9 +55,6 @@ class DcsRestoreArgs:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The enterprise project id of the dcs instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -77,9 +64,6 @@ class DcsRestoreArgs:
     @_builtins.property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of DCS instance restoration.
-        """
         return pulumi.get(self, "remark")
 
     @remark.setter
@@ -97,11 +81,6 @@ class _DcsRestoreState:
                  restore_records: Optional[pulumi.Input[Sequence[pulumi.Input['DcsRestoreRestoreRecordArgs']]]] = None):
         """
         Input properties used for looking up and filtering DcsRestore resources.
-        :param pulumi.Input[_builtins.str] backup_id: ID of the backup record.
-        :param pulumi.Input[_builtins.str] instance_id: A dcs_instance ID in UUID format.
-        :param pulumi.Input[_builtins.str] project_id: The enterprise project id of the dcs instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] remark: Description of DCS instance restoration.
-        :param pulumi.Input[Sequence[pulumi.Input['DcsRestoreRestoreRecordArgs']]] restore_records: Array of the restoration records.
         """
         if backup_id is not None:
             pulumi.set(__self__, "backup_id", backup_id)
@@ -117,9 +96,6 @@ class _DcsRestoreState:
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of the backup record.
-        """
         return pulumi.get(self, "backup_id")
 
     @backup_id.setter
@@ -129,9 +105,6 @@ class _DcsRestoreState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A dcs_instance ID in UUID format.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -141,9 +114,6 @@ class _DcsRestoreState:
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the dcs instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
@@ -153,9 +123,6 @@ class _DcsRestoreState:
     @_builtins.property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of DCS instance restoration.
-        """
         return pulumi.get(self, "remark")
 
     @remark.setter
@@ -165,9 +132,6 @@ class _DcsRestoreState:
     @_builtins.property
     @pulumi.getter(name="restoreRecords")
     def restore_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DcsRestoreRestoreRecordArgs']]]]:
-        """
-        Array of the restoration records.
-        """
         return pulumi.get(self, "restore_records")
 
     @restore_records.setter
@@ -187,73 +151,9 @@ class DcsRestore(pulumi.CustomResource):
                  remark: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a DCS instance within SberCloud.
-
-        ## Example Usage
-
-        ### Create a single mode Redis instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        project_id = config.require_object("projectId")
-        instance_id = config.require_object("instanceId")
-        backup_id = config.require_object("backupId")
-        test = sbercloud.DcsRestore("test",
-            project_id=project_id,
-            instance_id=instance_id,
-            backup_id=backup_id,
-            remark="restore instance")
-        ```
-
-        ## Import
-
-        DCS instance can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dcsRestore:DcsRestore instance_1 80e373f9-872e-4046-aae9-ccd9ddc55511
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `password`, `auto_renew`, `period`, `period_unit`, `rename_commands`,
-
-        `internal_version`, `save_days`, `backup_type`, `begin_at`, `period_type`, `backup_at`.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_dcs_instance" "instance_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password, rename_commands,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DcsRestore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backup_id: ID of the backup record.
-        :param pulumi.Input[_builtins.str] instance_id: A dcs_instance ID in UUID format.
-        :param pulumi.Input[_builtins.str] project_id: The enterprise project id of the dcs instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] remark: Description of DCS instance restoration.
         """
         ...
     @overload
@@ -262,67 +162,7 @@ class DcsRestore(pulumi.CustomResource):
                  args: DcsRestoreArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a DCS instance within SberCloud.
-
-        ## Example Usage
-
-        ### Create a single mode Redis instance
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        project_id = config.require_object("projectId")
-        instance_id = config.require_object("instanceId")
-        backup_id = config.require_object("backupId")
-        test = sbercloud.DcsRestore("test",
-            project_id=project_id,
-            instance_id=instance_id,
-            backup_id=backup_id,
-            remark="restore instance")
-        ```
-
-        ## Import
-
-        DCS instance can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/dcsRestore:DcsRestore instance_1 80e373f9-872e-4046-aae9-ccd9ddc55511
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason.
-
-        The missing attributes include: `password`, `auto_renew`, `period`, `period_unit`, `rename_commands`,
-
-        `internal_version`, `save_days`, `backup_type`, `begin_at`, `period_type`, `backup_at`.
-
-        It is generally recommended running `pulumi preview` after importing an instance.
-
-        You can then decide if changes should be applied to the instance, or the resource definition should be updated to
-
-        align with the instance. Also you can ignore changes as below.
-
-        resource "sbercloud_dcs_instance" "instance_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password, rename_commands,
-            
-            ]
-
-          }
-
-        }
-
+        Create a DcsRestore resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DcsRestoreArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -384,11 +224,6 @@ class DcsRestore(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] backup_id: ID of the backup record.
-        :param pulumi.Input[_builtins.str] instance_id: A dcs_instance ID in UUID format.
-        :param pulumi.Input[_builtins.str] project_id: The enterprise project id of the dcs instance. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] remark: Description of DCS instance restoration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DcsRestoreRestoreRecordArgs', 'DcsRestoreRestoreRecordArgsDict']]]] restore_records: Array of the restoration records.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -404,40 +239,25 @@ class DcsRestore(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="backupId")
     def backup_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        ID of the backup record.
-        """
         return pulumi.get(self, "backup_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        A dcs_instance ID in UUID format.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the dcs instance. Changing this creates a new instance.
-        """
         return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
     def remark(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Description of DCS instance restoration.
-        """
         return pulumi.get(self, "remark")
 
     @_builtins.property
     @pulumi.getter(name="restoreRecords")
     def restore_records(self) -> pulumi.Output[Sequence['outputs.DcsRestoreRestoreRecord']]:
-        """
-        Array of the restoration records.
-        """
         return pulumi.get(self, "restore_records")
 

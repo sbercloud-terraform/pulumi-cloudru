@@ -6,130 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DMS RocketMQ migration task resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### RoecktMQ migration task from RocketMQ to RocketMQ
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const name = config.requireObject<any>("name");
- * const topicName = config.requireObject<any>("topicName");
- * const groupName = config.requireObject<any>("groupName");
- * const test = new sbercloud.DmsRocketmqMigrationTask("test", {
- *     instanceId: instanceId,
- *     overwrite: "true",
- *     name: name,
- *     type: "rocketmq",
- *     topicConfigs: [{
- *         order: false,
- *         perm: 6,
- *         readQueueNum: 16,
- *         topicFilterType: "SINGLE_TAG",
- *         topicName: topicName,
- *         topicSysFlag: 0,
- *         writeQueueNum: 16,
- *     }],
- *     subscriptionGroups: [{
- *         consumeBroadcastEnable: true,
- *         consumeEnable: true,
- *         consumeFromMinEnable: true,
- *         groupName: groupName,
- *         notifyConsumeridsChangedEnable: true,
- *         retryMaxTimes: 16,
- *         retryQueueNum: 1,
- *         whichBrokerWhenConsumeSlow: 1,
- *     }],
- * });
- * ```
- *
- * ### RoecktMQ migration task from RabbitMQ to RocketMQ
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const name = config.requireObject<any>("name");
- * const vhostName = config.requireObject<any>("vhostName");
- * const queueName = config.requireObject<any>("queueName");
- * const exchangeName = config.requireObject<any>("exchangeName");
- * const test = new sbercloud.DmsRocketmqMigrationTask("test", {
- *     instanceId: instanceId,
- *     overwrite: "true",
- *     name: name,
- *     type: "rabbitToRocket",
- *     vhosts: [{
- *         name: vhostName,
- *     }],
- *     queues: [{
- *         name: queueName,
- *         vhost: vhostName,
- *         durable: false,
- *     }],
- *     exchanges: [{
- *         name: exchangeName,
- *         vhost: vhostName,
- *         type: "topic",
- *         durable: false,
- *     }],
- *     bindings: [{
- *         source: exchangeName,
- *         vhost: vhostName,
- *         destination: queueName,
- *         destinationType: "queue",
- *         routingKey: queueName,
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * The RocketMQ migration task can be imported using the RocketMQ instance ID and the RocketMQ migration task ID
- *
- * separated by a slash, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/dmsRocketmqMigrationTask:DmsRocketmqMigrationTask test <instance_id>/<id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attribute includes: `overwrite`.
- *
- * It is generally recommended running `pulumi preview` after importing the task. You can then decide
- *
- * if changes should be applied to the task, or the resource definition should be updated to align with the task.
- *
- * Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_dms_rocketmq_migration_task" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       overwrite,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
     /**
      * Get an existing DmsRocketmqMigrationTask resource's state with the given name, ID, and optional extra
@@ -160,82 +36,51 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
 
     /**
      * Specifies the binding metadata.
-     * The bindings structure is documented below.
-     * Changing this creates a new resource.
-     *
-     * > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-     *
-     * <a name="RocketMQ_migration_task_topic_configs"></a>
-     * The `topicConfigs` block supports:
      */
     declare public readonly bindings: pulumi.Output<outputs.DmsRocketmqMigrationTaskBinding[]>;
     /**
      * Specifies the exchange metadata.
-     * The exchanges structure is documented below.
-     * Changing this creates a new resource.
      */
     declare public readonly exchanges: pulumi.Output<outputs.DmsRocketmqMigrationTaskExchange[]>;
     /**
      * Specifies the ID of the RocketMQ instance.
-     * Changing this creates a new resource.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
-     * Specifies the switch name. Changing this creates a new resource.
+     * Specifies the name of the migration task.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies whether to overwrite configurations with the same name.
-     * Value options:
-     * + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-     * + **false**: An error is reported when a topic or group already exists.
-     * Changing this creates a new resource.
      */
     declare public readonly overwrite: pulumi.Output<string>;
     /**
      * Specifies the queue metadata.
-     * The queues structure is documented below.
-     * Changing this creates a new resource.
      */
     declare public readonly queues: pulumi.Output<outputs.DmsRocketmqMigrationTaskQueue[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
      * Indicates the start time of the migration task.
      */
     declare public /*out*/ readonly startDate: pulumi.Output<string>;
     /**
-     * Indicates the status of the migration task. The value can be **finished** or **failed***.
+     * Indicates the status of the migration task.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Specifies the consumer group metadata.
-     * The subscriptionGroups structure is documented below.
-     * Changing this creates a new resource.
-     *
-     * > **NOTE:** Parameters `topicConfigs` and `subscriptionGroups` are required when `type` is set to **rocketmq**.
      */
     declare public readonly subscriptionGroups: pulumi.Output<outputs.DmsRocketmqMigrationTaskSubscriptionGroup[]>;
     /**
      * Specifies the topic metadata.
-     * The topicConfigs structure is documented below.
-     * Changing this creates a new resource.
      */
     declare public readonly topicConfigs: pulumi.Output<outputs.DmsRocketmqMigrationTaskTopicConfig[]>;
     /**
-     * Specifies the exchange type. Changing this creates a new resource.
-     *
-     * <a name="RocketMQ_migration_task_bindings"></a>
-     * The `bindings` block supports:
+     * Specifies the migration task type.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
      * Specifies the virtual hosts metadata.
-     * The vhosts structure is documented below.
-     * Changing this creates a new resource.
      */
     declare public readonly vhosts: pulumi.Output<outputs.DmsRocketmqMigrationTaskVhost[]>;
 
@@ -301,82 +146,51 @@ export class DmsRocketmqMigrationTask extends pulumi.CustomResource {
 export interface DmsRocketmqMigrationTaskState {
     /**
      * Specifies the binding metadata.
-     * The bindings structure is documented below.
-     * Changing this creates a new resource.
-     *
-     * > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-     *
-     * <a name="RocketMQ_migration_task_topic_configs"></a>
-     * The `topicConfigs` block supports:
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskBinding>[]>;
     /**
      * Specifies the exchange metadata.
-     * The exchanges structure is documented below.
-     * Changing this creates a new resource.
      */
     exchanges?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskExchange>[]>;
     /**
      * Specifies the ID of the RocketMQ instance.
-     * Changing this creates a new resource.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Specifies the switch name. Changing this creates a new resource.
+     * Specifies the name of the migration task.
      */
     name?: pulumi.Input<string>;
     /**
      * Specifies whether to overwrite configurations with the same name.
-     * Value options:
-     * + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-     * + **false**: An error is reported when a topic or group already exists.
-     * Changing this creates a new resource.
      */
     overwrite?: pulumi.Input<string>;
     /**
      * Specifies the queue metadata.
-     * The queues structure is documented below.
-     * Changing this creates a new resource.
      */
     queues?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskQueue>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Indicates the start time of the migration task.
      */
     startDate?: pulumi.Input<string>;
     /**
-     * Indicates the status of the migration task. The value can be **finished** or **failed***.
+     * Indicates the status of the migration task.
      */
     status?: pulumi.Input<string>;
     /**
      * Specifies the consumer group metadata.
-     * The subscriptionGroups structure is documented below.
-     * Changing this creates a new resource.
-     *
-     * > **NOTE:** Parameters `topicConfigs` and `subscriptionGroups` are required when `type` is set to **rocketmq**.
      */
     subscriptionGroups?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskSubscriptionGroup>[]>;
     /**
      * Specifies the topic metadata.
-     * The topicConfigs structure is documented below.
-     * Changing this creates a new resource.
      */
     topicConfigs?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskTopicConfig>[]>;
     /**
-     * Specifies the exchange type. Changing this creates a new resource.
-     *
-     * <a name="RocketMQ_migration_task_bindings"></a>
-     * The `bindings` block supports:
+     * Specifies the migration task type.
      */
     type?: pulumi.Input<string>;
     /**
      * Specifies the virtual hosts metadata.
-     * The vhosts structure is documented below.
-     * Changing this creates a new resource.
      */
     vhosts?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskVhost>[]>;
 }
@@ -387,74 +201,43 @@ export interface DmsRocketmqMigrationTaskState {
 export interface DmsRocketmqMigrationTaskArgs {
     /**
      * Specifies the binding metadata.
-     * The bindings structure is documented below.
-     * Changing this creates a new resource.
-     *
-     * > **NOTE:** Parameters `vhosts`, `queues`, `exchanges` and `bindings` are required when `type` is set to **rabbitToRocket**.
-     *
-     * <a name="RocketMQ_migration_task_topic_configs"></a>
-     * The `topicConfigs` block supports:
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskBinding>[]>;
     /**
      * Specifies the exchange metadata.
-     * The exchanges structure is documented below.
-     * Changing this creates a new resource.
      */
     exchanges?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskExchange>[]>;
     /**
      * Specifies the ID of the RocketMQ instance.
-     * Changing this creates a new resource.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the switch name. Changing this creates a new resource.
+     * Specifies the name of the migration task.
      */
     name?: pulumi.Input<string>;
     /**
      * Specifies whether to overwrite configurations with the same name.
-     * Value options:
-     * + **true**: Configurations in the destination metadata with the same name as the source metadata will be overwritten.
-     * + **false**: An error is reported when a topic or group already exists.
-     * Changing this creates a new resource.
      */
     overwrite: pulumi.Input<string>;
     /**
      * Specifies the queue metadata.
-     * The queues structure is documented below.
-     * Changing this creates a new resource.
      */
     queues?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskQueue>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
      * Specifies the consumer group metadata.
-     * The subscriptionGroups structure is documented below.
-     * Changing this creates a new resource.
-     *
-     * > **NOTE:** Parameters `topicConfigs` and `subscriptionGroups` are required when `type` is set to **rocketmq**.
      */
     subscriptionGroups?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskSubscriptionGroup>[]>;
     /**
      * Specifies the topic metadata.
-     * The topicConfigs structure is documented below.
-     * Changing this creates a new resource.
      */
     topicConfigs?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskTopicConfig>[]>;
     /**
-     * Specifies the exchange type. Changing this creates a new resource.
-     *
-     * <a name="RocketMQ_migration_task_bindings"></a>
-     * The `bindings` block supports:
+     * Specifies the migration task type.
      */
     type: pulumi.Input<string>;
     /**
      * Specifies the virtual hosts metadata.
-     * The vhosts structure is documented below.
-     * Changing this creates a new resource.
      */
     vhosts?: pulumi.Input<pulumi.Input<inputs.DmsRocketmqMigrationTaskVhost>[]>;
 }

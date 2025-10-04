@@ -11,65 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of VPC subnet.
-//
-// ## Example Usage
-//
-// # An example filter by name and tag
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// subnet, err := vpc.GetSubnets(ctx, &vpc.GetSubnetsArgs{
-// Name: pulumi.StringRef(subnetName),
-// Tags: map[string]interface{}{
-// "foo": "bar,value",
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("subnetVpcIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-34)))
-// return nil
-// })
-// }
-// ```
-//
-// ## **Attributes Reference**
-//
-// The following attributes are exported:
-//
-// * `id` - Indicates a data source ID.
-// * `subnets` - Indicates a list of all subnets found. Structure is documented below.
-//
-// The `subnets` block supports:
-//
-// * `id` - Indicates the ID of the subnet.
-// * `name` - Indicates the name of the subnet.
-// * `cidr` - Indicates the cidr block of the subnet.
-// * `status` - Indicates the current status of the subnet.
-// * `vpcId` - Indicates the Id of the VPC that the subnet belongs to.
-// * `gatewayIp` - Indicates the subnet gateway address of the subnet.
-// * `primaryDns` - Indicates the IP address of DNS server 1 on the subnet.
-// * `secondaryDns` - Indicates the IP address of DNS server 2 on the subnet.
-// * `availabilityZone` - Indicates the availability zone (AZ) to which the subnet belongs to.
-// * `subnetId` - Indicates the subnet (Native OpenStack API) ID.
-// * `dhcpEnable` - Indicates whether the DHCP is enabled.
-// * `dnsList` - Indicates The IP address list of DNS servers on the subnet.
-// * `ipv4SubnetId` - Indicates the ID of the IPv4 subnet (Native OpenStack API).
-// * `ipv6Enable` - Indicates whether the IPv6 is enabled.
-// * `ipv6SubnetId` - Indicates the ID of the IPv6 subnet (Native OpenStack API).
-// * `ipv6Cidr` - Indicates the IPv6 subnet CIDR block.
-// * `ipv6Gateway` - Indicates the IPv6 subnet gateway.
-// * `tags` - Indicates the key/value pairs which associated with the subnet.
 func GetSubnets(ctx *pulumi.Context, args *GetSubnetsArgs, opts ...pulumi.InvokeOption) (*GetSubnetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubnetsResult
@@ -82,35 +23,17 @@ func GetSubnets(ctx *pulumi.Context, args *GetSubnetsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getSubnets.
 type GetSubnetsArgs struct {
-	// Specifies the availability zone (AZ) to which the desired subnet belongs to.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Specifies the network segment of desired subnet. The value must be in CIDR format.
-	Cidr *string `pulumi:"cidr"`
-	// Specifies the subnet gateway address of desired subnet.
-	GatewayIp *string `pulumi:"gatewayIp"`
-	// Specifies the id of the desired subnet.
-	Id *string `pulumi:"id"`
-	// Specifies the name of the desired subnet.
-	Name *string `pulumi:"name"`
-	// Specifies the IP address of DNS server 1 on the desired subnet.
-	PrimaryDns *string `pulumi:"primaryDns"`
-	// Specifies the region in which to obtain the subnet. If omitted, the provider-level
-	// region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the IP address of DNS server 2 on the desired subnet.
-	SecondaryDns *string `pulumi:"secondaryDns"`
-	// Specifies the current status of the desired subnet.
-	// the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-	Status *string `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired subnet.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags map[string]string `pulumi:"tags"`
-	// Specifies the id of the VPC that the desired subnet belongs to.
-	VpcId *string `pulumi:"vpcId"`
+	AvailabilityZone *string           `pulumi:"availabilityZone"`
+	Cidr             *string           `pulumi:"cidr"`
+	GatewayIp        *string           `pulumi:"gatewayIp"`
+	Id               *string           `pulumi:"id"`
+	Name             *string           `pulumi:"name"`
+	PrimaryDns       *string           `pulumi:"primaryDns"`
+	Region           *string           `pulumi:"region"`
+	SecondaryDns     *string           `pulumi:"secondaryDns"`
+	Status           *string           `pulumi:"status"`
+	Tags             map[string]string `pulumi:"tags"`
+	VpcId            *string           `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getSubnets.
@@ -140,35 +63,17 @@ func GetSubnetsOutput(ctx *pulumi.Context, args GetSubnetsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getSubnets.
 type GetSubnetsOutputArgs struct {
-	// Specifies the availability zone (AZ) to which the desired subnet belongs to.
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Specifies the network segment of desired subnet. The value must be in CIDR format.
-	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
-	// Specifies the subnet gateway address of desired subnet.
-	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
-	// Specifies the id of the desired subnet.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the name of the desired subnet.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the IP address of DNS server 1 on the desired subnet.
-	PrimaryDns pulumi.StringPtrInput `pulumi:"primaryDns"`
-	// Specifies the region in which to obtain the subnet. If omitted, the provider-level
-	// region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the IP address of DNS server 2 on the desired subnet.
-	SecondaryDns pulumi.StringPtrInput `pulumi:"secondaryDns"`
-	// Specifies the current status of the desired subnet.
-	// the value can be ACTIVE, DOWN, UNKNOWN, or ERROR.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Specifies the included key/value pairs which associated with the desired subnet.
-	//
-	// > A maximum of 10 tag keys are allowed for each query operation. Each tag key can have up to 10 tag values.
-	// The tag key cannot be left blank or set to an empty string. Each tag key must be unique, and each tag value in a
-	// tag must be unique, use commas(,) to separate the multiple values. An empty for values indicates any value.
-	// The values are in the OR relationship.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Specifies the id of the VPC that the desired subnet belongs to.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	Cidr             pulumi.StringPtrInput `pulumi:"cidr"`
+	GatewayIp        pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	Id               pulumi.StringPtrInput `pulumi:"id"`
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	PrimaryDns       pulumi.StringPtrInput `pulumi:"primaryDns"`
+	Region           pulumi.StringPtrInput `pulumi:"region"`
+	SecondaryDns     pulumi.StringPtrInput `pulumi:"secondaryDns"`
+	Status           pulumi.StringPtrInput `pulumi:"status"`
+	Tags             pulumi.StringMapInput `pulumi:"tags"`
+	VpcId            pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetSubnetsOutputArgs) ElementType() reflect.Type {

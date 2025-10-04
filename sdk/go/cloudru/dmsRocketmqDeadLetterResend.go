@@ -12,59 +12,15 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a DMS RocketMQ dead letter messages resend resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			deadLetterTopic := cfg.RequireObject("deadLetterTopic")
-//			messageIdList := cfg.RequireObject("messageIdList")
-//			_, err := sbercloud.NewDmsRocketmqDeadLetterResend(ctx, "test", &sbercloud.DmsRocketmqDeadLetterResendArgs{
-//				InstanceId:     pulumi.Any(instanceId),
-//				Topic:          pulumi.Any(deadLetterTopic),
-//				MessageIdLists: pulumi.Any(messageIdList),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type DmsRocketmqDeadLetterResend struct {
 	pulumi.CustomResourceState
 
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	InstanceId     pulumi.StringOutput      `pulumi:"instanceId"`
 	MessageIdLists pulumi.StringArrayOutput `pulumi:"messageIdLists"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region         pulumi.StringOutput      `pulumi:"region"`
 	// Indicates the resend results.
-	// The resendResults structure is documented below.
 	ResendResults DmsRocketmqDeadLetterResendResendResultArrayOutput `pulumi:"resendResults"`
-	// Specifies the dead letter topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringOutput `pulumi:"topic"`
+	Topic         pulumi.StringOutput                                `pulumi:"topic"`
 }
 
 // NewDmsRocketmqDeadLetterResend registers a new resource with the given unique name, arguments, and options.
@@ -106,41 +62,21 @@ func GetDmsRocketmqDeadLetterResend(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DmsRocketmqDeadLetterResend resources.
 type dmsRocketmqDeadLetterResendState struct {
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	InstanceId     *string  `pulumi:"instanceId"`
 	MessageIdLists []string `pulumi:"messageIdLists"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	Region         *string  `pulumi:"region"`
 	// Indicates the resend results.
-	// The resendResults structure is documented below.
 	ResendResults []DmsRocketmqDeadLetterResendResendResult `pulumi:"resendResults"`
-	// Specifies the dead letter topic name.
-	// Changing this creates a new resource.
-	Topic *string `pulumi:"topic"`
+	Topic         *string                                   `pulumi:"topic"`
 }
 
 type DmsRocketmqDeadLetterResendState struct {
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringPtrInput
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	InstanceId     pulumi.StringPtrInput
 	MessageIdLists pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
 	// Indicates the resend results.
-	// The resendResults structure is documented below.
 	ResendResults DmsRocketmqDeadLetterResendResendResultArrayInput
-	// Specifies the dead letter topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringPtrInput
+	Topic         pulumi.StringPtrInput
 }
 
 func (DmsRocketmqDeadLetterResendState) ElementType() reflect.Type {
@@ -148,36 +84,18 @@ func (DmsRocketmqDeadLetterResendState) ElementType() reflect.Type {
 }
 
 type dmsRocketmqDeadLetterResendArgs struct {
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	InstanceId     string   `pulumi:"instanceId"`
 	MessageIdLists []string `pulumi:"messageIdLists"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the dead letter topic name.
-	// Changing this creates a new resource.
-	Topic string `pulumi:"topic"`
+	Region         *string  `pulumi:"region"`
+	Topic          string   `pulumi:"topic"`
 }
 
 // The set of arguments for constructing a DmsRocketmqDeadLetterResend resource.
 type DmsRocketmqDeadLetterResendArgs struct {
-	// Specifies the instance ID.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringInput
-	// Specifies the message ID list.
-	// Changing this creates a new resource.
+	InstanceId     pulumi.StringInput
 	MessageIdLists pulumi.StringArrayInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used.
-	// Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the dead letter topic name.
-	// Changing this creates a new resource.
-	Topic pulumi.StringInput
+	Region         pulumi.StringPtrInput
+	Topic          pulumi.StringInput
 }
 
 func (DmsRocketmqDeadLetterResendArgs) ElementType() reflect.Type {
@@ -267,35 +185,25 @@ func (o DmsRocketmqDeadLetterResendOutput) ToDmsRocketmqDeadLetterResendOutputWi
 	return o
 }
 
-// Specifies the instance ID.
-// Changing this creates a new resource.
 func (o DmsRocketmqDeadLetterResendOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqDeadLetterResend) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the message ID list.
-// Changing this creates a new resource.
 func (o DmsRocketmqDeadLetterResendOutput) MessageIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqDeadLetterResend) pulumi.StringArrayOutput { return v.MessageIdLists }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used.
-// Changing this creates a new resource.
 func (o DmsRocketmqDeadLetterResendOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqDeadLetterResend) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Indicates the resend results.
-// The resendResults structure is documented below.
 func (o DmsRocketmqDeadLetterResendOutput) ResendResults() DmsRocketmqDeadLetterResendResendResultArrayOutput {
 	return o.ApplyT(func(v *DmsRocketmqDeadLetterResend) DmsRocketmqDeadLetterResendResendResultArrayOutput {
 		return v.ResendResults
 	}).(DmsRocketmqDeadLetterResendResendResultArrayOutput)
 }
 
-// Specifies the dead letter topic name.
-// Changing this creates a new resource.
 func (o DmsRocketmqDeadLetterResendOutput) Topic() pulumi.StringOutput {
 	return o.ApplyT(func(v *DmsRocketmqDeadLetterResend) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }

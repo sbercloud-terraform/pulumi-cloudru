@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get all OBS buckets.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/obs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := obs.GetBuckets(ctx, &obs.GetBucketsArgs{
-//				Bucket: pulumi.StringRef("your-bucket-name"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.InvokeOption) (*GetBucketsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBucketsResult
@@ -48,26 +23,18 @@ func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getBuckets.
 type GetBucketsArgs struct {
-	// The name of the OBS bucket.
-	Bucket *string `pulumi:"bucket"`
-	// The enterprise project id of the OBS bucket.
+	Bucket              *string `pulumi:"bucket"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The region in which to obtain the OBS bucket.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getBuckets.
 type GetBucketsResult struct {
-	// The name of the OBS bucket.
-	Bucket *string `pulumi:"bucket"`
-	// A list of OBS buckets.
-	Buckets []GetBucketsBucket `pulumi:"buckets"`
-	// The enterprise project id of the OBS bucket.
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
+	Bucket              *string            `pulumi:"bucket"`
+	Buckets             []GetBucketsBucket `pulumi:"buckets"`
+	EnterpriseProjectId *string            `pulumi:"enterpriseProjectId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The region where the OBS bucket belongs.
+	Id     string  `pulumi:"id"`
 	Region *string `pulumi:"region"`
 }
 
@@ -82,13 +49,9 @@ func GetBucketsOutput(ctx *pulumi.Context, args GetBucketsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getBuckets.
 type GetBucketsOutputArgs struct {
-	// The name of the OBS bucket.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// The enterprise project id of the OBS bucket.
+	Bucket              pulumi.StringPtrInput `pulumi:"bucket"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// The region in which to obtain the OBS bucket.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetBucketsOutputArgs) ElementType() reflect.Type {
@@ -110,17 +73,14 @@ func (o GetBucketsResultOutput) ToGetBucketsResultOutputWithContext(ctx context.
 	return o
 }
 
-// The name of the OBS bucket.
 func (o GetBucketsResultOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBucketsResult) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
-// A list of OBS buckets.
 func (o GetBucketsResultOutput) Buckets() GetBucketsBucketArrayOutput {
 	return o.ApplyT(func(v GetBucketsResult) []GetBucketsBucket { return v.Buckets }).(GetBucketsBucketArrayOutput)
 }
 
-// The enterprise project id of the OBS bucket.
 func (o GetBucketsResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBucketsResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -130,7 +90,6 @@ func (o GetBucketsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBucketsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The region where the OBS bucket belongs.
 func (o GetBucketsResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetBucketsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }

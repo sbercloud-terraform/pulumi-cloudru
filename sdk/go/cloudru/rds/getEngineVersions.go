@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to obtain all version information of the specified engine type of SberCloud RDS.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := rds.GetEngineVersions(ctx, &rds.GetEngineVersionsArgs{
-//				Type: pulumi.StringRef("SQLServer"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ...pulumi.InvokeOption) (*GetEngineVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEngineVersionsResult
@@ -50,21 +23,16 @@ func GetEngineVersions(ctx *pulumi.Context, args *GetEngineVersionsArgs, opts ..
 
 // A collection of arguments for invoking getEngineVersions.
 type GetEngineVersionsArgs struct {
-	// The region in which to obtain the RDS engine versions.
-	// If omitted, the provider-level region will be used.
 	Region *string `pulumi:"region"`
-	// Specifies the RDS engine type.
-	// The valid values are **MySQL**, **PostgreSQL** and **SQLServer**, default to **MySQL**.
-	Type *string `pulumi:"type"`
+	Type   *string `pulumi:"type"`
 }
 
 // A collection of values returned by getEngineVersions.
 type GetEngineVersionsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id     string  `pulumi:"id"`
-	Region *string `pulumi:"region"`
-	Type   *string `pulumi:"type"`
-	// List of RDS versions. Structure is documented below.
+	Id       string                     `pulumi:"id"`
+	Region   *string                    `pulumi:"region"`
+	Type     *string                    `pulumi:"type"`
 	Versions []GetEngineVersionsVersion `pulumi:"versions"`
 }
 
@@ -79,12 +47,8 @@ func GetEngineVersionsOutput(ctx *pulumi.Context, args GetEngineVersionsOutputAr
 
 // A collection of arguments for invoking getEngineVersions.
 type GetEngineVersionsOutputArgs struct {
-	// The region in which to obtain the RDS engine versions.
-	// If omitted, the provider-level region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the RDS engine type.
-	// The valid values are **MySQL**, **PostgreSQL** and **SQLServer**, default to **MySQL**.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type   pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetEngineVersionsOutputArgs) ElementType() reflect.Type {
@@ -119,7 +83,6 @@ func (o GetEngineVersionsResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// List of RDS versions. Structure is documented below.
 func (o GetEngineVersionsResultOutput) Versions() GetEngineVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetEngineVersionsResult) []GetEngineVersionsVersion { return v.Versions }).(GetEngineVersionsVersionArrayOutput)
 }

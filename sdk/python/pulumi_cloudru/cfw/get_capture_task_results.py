@@ -65,25 +65,16 @@ class GetCaptureTaskResultsResult:
     @_builtins.property
     @pulumi.getter
     def captcha(self) -> _builtins.str:
-        """
-        The captcha.
-        """
         return pulumi.get(self, "captcha")
 
     @_builtins.property
     @pulumi.getter
     def expires(self) -> _builtins.int:
-        """
-        The expiration time of the download link.
-        """
         return pulumi.get(self, "expires")
 
     @_builtins.property
     @pulumi.getter(name="fileLists")
     def file_lists(self) -> Sequence['outputs.GetCaptureTaskResultsFileListResult']:
-        """
-        The capture file list.
-        """
         return pulumi.get(self, "file_lists")
 
     @_builtins.property
@@ -112,9 +103,6 @@ class GetCaptureTaskResultsResult:
     @_builtins.property
     @pulumi.getter(name="requestHeaders")
     def request_headers(self) -> Sequence['outputs.GetCaptureTaskResultsRequestHeaderResult']:
-        """
-        The request header.
-        """
         return pulumi.get(self, "request_headers")
 
     @_builtins.property
@@ -130,9 +118,6 @@ class GetCaptureTaskResultsResult:
     @_builtins.property
     @pulumi.getter
     def url(self) -> _builtins.str:
-        """
-        The download link.
-        """
         return pulumi.get(self, "url")
 
 
@@ -162,35 +147,7 @@ def get_capture_task_results(fw_instance_id: Optional[_builtins.str] = None,
                              type: Optional[_builtins.int] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCaptureTaskResultsResult:
     """
-    Use this data source to get the list of CFW capture task results.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    task_id = config.require_object("taskId")
-    test = sbercloud.Cfw.get_capture_task_results(fw_instance_id=fw_instance_id,
-        task_id=task_id)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the ID of the firewall instance.
-    :param Sequence[_builtins.str] ips: Specifies the public IP address ranges.
-           A maximum of three address ranges can be specified.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str task_id: Specifies the capture task ID.
-    :param _builtins.int type: Specifies whether to set a public IP address for downloading.
-           The valid values are as follows:
-           + **0**: unlimited;
-           + **1**: set a public IP address for downloading. Currently, this feature can be used in the
-           following regions: **cn-north-11**, **cn-east-5**, **af-south-1**, **ap-southeast-1**,
-           **ap-southeast-3**, **ap-southeast-2**, **ap-southeast-4**, **tr-west-1**, **la-north-2**,
-           **sa-brazil-1**, **la-south-2**, **me-east-1**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id
@@ -220,35 +177,7 @@ def get_capture_task_results_output(fw_instance_id: Optional[pulumi.Input[_built
                                     type: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaptureTaskResultsResult]:
     """
-    Use this data source to get the list of CFW capture task results.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    task_id = config.require_object("taskId")
-    test = sbercloud.Cfw.get_capture_task_results(fw_instance_id=fw_instance_id,
-        task_id=task_id)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the ID of the firewall instance.
-    :param Sequence[_builtins.str] ips: Specifies the public IP address ranges.
-           A maximum of three address ranges can be specified.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str task_id: Specifies the capture task ID.
-    :param _builtins.int type: Specifies whether to set a public IP address for downloading.
-           The valid values are as follows:
-           + **0**: unlimited;
-           + **1**: set a public IP address for downloading. Currently, this feature can be used in the
-           following regions: **cn-north-11**, **cn-east-5**, **af-south-1**, **ap-southeast-1**,
-           **ap-southeast-3**, **ap-southeast-2**, **ap-southeast-4**, **tr-west-1**, **la-north-2**,
-           **sa-brazil-1**, **la-south-2**, **me-east-1**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id

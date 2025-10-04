@@ -47,18 +47,11 @@ class GetCbhAvailabilityZonesResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Sequence['outputs.GetCbhAvailabilityZonesAvailabilityZoneResult']:
-        """
-        All availability zones that match the filter parameters.  
-        The availability_zones structure is documented below.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[_builtins.str]:
-        """
-        The display name of the availability zone.
-        """
         return pulumi.get(self, "display_name")
 
     @_builtins.property
@@ -72,9 +65,6 @@ class GetCbhAvailabilityZonesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The name of the availability zone.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -101,24 +91,7 @@ def get_cbh_availability_zones(display_name: Optional[_builtins.str] = None,
                                region: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCbhAvailabilityZonesResult:
     """
-    Use this data source to get the list of CBH availability zones within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    availability_zone_name = config.require_object("availabilityZoneName")
-    test = sbercloud.get_cbh_availability_zones(name=availability_zone_name)
-    ```
-
-
-    :param _builtins.str display_name: Specifies the display name of the availability zone to be queried.
-    :param _builtins.str name: Specifies the name of the availability zone to be queried.
-    :param _builtins.str region: Specifies the region in which to query the CBH availability zones.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -138,24 +111,7 @@ def get_cbh_availability_zones_output(display_name: Optional[pulumi.Input[Option
                                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCbhAvailabilityZonesResult]:
     """
-    Use this data source to get the list of CBH availability zones within SberCloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    availability_zone_name = config.require_object("availabilityZoneName")
-    test = sbercloud.get_cbh_availability_zones(name=availability_zone_name)
-    ```
-
-
-    :param _builtins.str display_name: Specifies the display name of the availability zone to be queried.
-    :param _builtins.str name: Specifies the name of the availability zone to be queried.
-    :param _builtins.str region: Specifies the region in which to query the CBH availability zones.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayName'] = display_name

@@ -68,9 +68,6 @@ class GetDomainNameGroupsResult:
     @_builtins.property
     @pulumi.getter(name="configStatus")
     def config_status(self) -> Optional[_builtins.str]:
-        """
-        The configuration status.
-        """
         return pulumi.get(self, "config_status")
 
     @_builtins.property
@@ -86,9 +83,6 @@ class GetDomainNameGroupsResult:
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[_builtins.str]:
-        """
-        The domain name group ID.
-        """
         return pulumi.get(self, "group_id")
 
     @_builtins.property
@@ -107,9 +101,6 @@ class GetDomainNameGroupsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The rule name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -120,17 +111,11 @@ class GetDomainNameGroupsResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetDomainNameGroupsRecordResult']:
-        """
-        The domain name group list.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
     @pulumi.getter(name="refCount")
     def ref_count(self) -> Optional[_builtins.str]:
-        """
-        The domain name group reference count.
-        """
         return pulumi.get(self, "ref_count")
 
     @_builtins.property
@@ -141,9 +126,6 @@ class GetDomainNameGroupsResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The domain name group type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -179,43 +161,7 @@ def get_domain_name_groups(config_status: Optional[_builtins.str] = None,
                            type: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainNameGroupsResult:
     """
-    Use this data source to get the list of CFW domain name groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_domain_name_groups(fw_instance_id=fw_instance_id,
-        object_id=object_id)
-    ```
-
-
-    :param _builtins.str config_status: Specifies the configuration status.
-           The valid values are as follows:
-           + **-1**: not configured.
-           + **0**: configuration failed.
-           + **1**: configuration succeeded.
-           + **2**: configuration in progress.
-           + **3**: normal.
-           + **4**: configuration exception - domain group usage.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str group_id: Specifies the domain name group ID.
-    :param _builtins.str key_word: Specifies the key word.
-    :param _builtins.str name: Specifies the name of a domain name group.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str ref_count: Specifies the domain name group reference count.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the domain name group type.
-           The value can be:
-           + **0**: means application type;
-           + **1**: means network type.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['configStatus'] = config_status
@@ -256,43 +202,7 @@ def get_domain_name_groups_output(config_status: Optional[pulumi.Input[Optional[
                                   type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainNameGroupsResult]:
     """
-    Use this data source to get the list of CFW domain name groups.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    object_id = config.require_object("objectId")
-    test = sbercloud.Cfw.get_domain_name_groups(fw_instance_id=fw_instance_id,
-        object_id=object_id)
-    ```
-
-
-    :param _builtins.str config_status: Specifies the configuration status.
-           The valid values are as follows:
-           + **-1**: not configured.
-           + **0**: configuration failed.
-           + **1**: configuration succeeded.
-           + **2**: configuration in progress.
-           + **3**: normal.
-           + **4**: configuration exception - domain group usage.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project ID.
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str group_id: Specifies the domain name group ID.
-    :param _builtins.str key_word: Specifies the key word.
-    :param _builtins.str name: Specifies the name of a domain name group.
-    :param _builtins.str object_id: Specifies the protected object ID.
-    :param _builtins.str ref_count: Specifies the domain name group reference count.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the domain name group type.
-           The value can be:
-           + **0**: means application type;
-           + **1**: means network type.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['configStatus'] = config_status

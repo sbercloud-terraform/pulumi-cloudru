@@ -6,20 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of application templates within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getFgsApplicationTemplates({
- *     runtime: "Python2.7",
- * });
- * ```
- */
 export function getFgsApplicationTemplates(args?: GetFgsApplicationTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsApplicationTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -34,38 +20,8 @@ export function getFgsApplicationTemplates(args?: GetFgsApplicationTemplatesArgs
  * A collection of arguments for invoking getFgsApplicationTemplates.
  */
 export interface GetFgsApplicationTemplatesArgs {
-    /**
-     * Specifies the category used to query the application templates.
-     */
     category?: string;
-    /**
-     * Specifies the region where the application templates are located.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the runtime name used to query the application templates.  
-     * The valid values are as follows:
-     * + **Node.js6.10**
-     * + **Node.js8.10**
-     * + **Node.js10.16**
-     * + **Node.js12.13**
-     * + **Node.js14.18**
-     * + **Node.js16.17**
-     * + **Node.js18.15**
-     * + **Python2.7**
-     * + **Python3.6**
-     * + **Python3.9**
-     * + **Python3.10**
-     * + **Java8**
-     * + **Java11**
-     * + **Go1.x**
-     * + **C#(.NET Core 2.1)**
-     * + **C#(.NET Core 3.1)**
-     * + **http**
-     * + **PHP7.3**
-     * + **Custom**
-     */
     runtime?: string;
 }
 
@@ -73,39 +29,15 @@ export interface GetFgsApplicationTemplatesArgs {
  * A collection of values returned by getFgsApplicationTemplates.
  */
 export interface GetFgsApplicationTemplatesResult {
-    /**
-     * The template category.
-     */
     readonly category?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The template runtime.
-     */
     readonly runtime?: string;
-    /**
-     * All application templates that match the filter parameters.  
-     * The templates structure is documented below.
-     */
     readonly templates: outputs.GetFgsApplicationTemplatesTemplate[];
 }
-/**
- * Use this data source to get the list of application templates within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getFgsApplicationTemplates({
- *     runtime: "Python2.7",
- * });
- * ```
- */
 export function getFgsApplicationTemplatesOutput(args?: GetFgsApplicationTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsApplicationTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -120,37 +52,7 @@ export function getFgsApplicationTemplatesOutput(args?: GetFgsApplicationTemplat
  * A collection of arguments for invoking getFgsApplicationTemplates.
  */
 export interface GetFgsApplicationTemplatesOutputArgs {
-    /**
-     * Specifies the category used to query the application templates.
-     */
     category?: pulumi.Input<string>;
-    /**
-     * Specifies the region where the application templates are located.  
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the runtime name used to query the application templates.  
-     * The valid values are as follows:
-     * + **Node.js6.10**
-     * + **Node.js8.10**
-     * + **Node.js10.16**
-     * + **Node.js12.13**
-     * + **Node.js14.18**
-     * + **Node.js16.17**
-     * + **Node.js18.15**
-     * + **Python2.7**
-     * + **Python3.6**
-     * + **Python3.9**
-     * + **Python3.10**
-     * + **Java8**
-     * + **Java11**
-     * + **Go1.x**
-     * + **C#(.NET Core 2.1)**
-     * + **C#(.NET Core 3.1)**
-     * + **http**
-     * + **PHP7.3**
-     * + **Custom**
-     */
     runtime?: pulumi.Input<string>;
 }

@@ -6,18 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get a list of running tasks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getKpsRunningTasks({});
- * ```
- */
 export function getKpsRunningTasks(args?: GetKpsRunningTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetKpsRunningTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,10 +18,6 @@ export function getKpsRunningTasks(args?: GetKpsRunningTasksArgs, opts?: pulumi.
  * A collection of arguments for invoking getKpsRunningTasks.
  */
 export interface GetKpsRunningTasksArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -46,23 +30,8 @@ export interface GetKpsRunningTasksResult {
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The list of the running tasks.
-     */
     readonly tasks: outputs.GetKpsRunningTasksTask[];
 }
-/**
- * Use this data source to get a list of running tasks.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getKpsRunningTasks({});
- * ```
- */
 export function getKpsRunningTasksOutput(args?: GetKpsRunningTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKpsRunningTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,9 +44,5 @@ export function getKpsRunningTasksOutput(args?: GetKpsRunningTasksOutputArgs, op
  * A collection of arguments for invoking getKpsRunningTasks.
  */
 export interface GetKpsRunningTasksOutputArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

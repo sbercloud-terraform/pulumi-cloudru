@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of ELB pools.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/elb"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			poolName := cfg.RequireObject("poolName")
-//			_, err := elb.GetPools(ctx, &elb.GetPoolsArgs{
-//				Name: pulumi.StringRef(poolName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPools(ctx *pulumi.Context, args *GetPoolsArgs, opts ...pulumi.InvokeOption) (*GetPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPoolsResult
@@ -53,52 +23,35 @@ func GetPools(ctx *pulumi.Context, args *GetPoolsArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getPools.
 type GetPoolsArgs struct {
-	// Specifies the description of the ELB pool.
 	Description         *string `pulumi:"description"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the health monitor ID of the ELB pool.
-	HealthmonitorId *string `pulumi:"healthmonitorId"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
-	LbMethod *string `pulumi:"lbMethod"`
-	// Specifies the loadbalancer ID of the ELB pool.
-	LoadbalancerId *string `pulumi:"loadbalancerId"`
-	MemberAddress  *string `pulumi:"memberAddress"`
-	MemberDeviceId *string `pulumi:"memberDeviceId"`
-	// Specifies the name of the ELB pool.
-	Name *string `pulumi:"name"`
-	// Specifies the ID of the ELB pool.
-	PoolId *string `pulumi:"poolId"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-	Protocol *string `pulumi:"protocol"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	HealthmonitorId     *string `pulumi:"healthmonitorId"`
+	LbMethod            *string `pulumi:"lbMethod"`
+	LoadbalancerId      *string `pulumi:"loadbalancerId"`
+	MemberAddress       *string `pulumi:"memberAddress"`
+	MemberDeviceId      *string `pulumi:"memberDeviceId"`
+	Name                *string `pulumi:"name"`
+	PoolId              *string `pulumi:"poolId"`
+	Protocol            *string `pulumi:"protocol"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getPools.
 type GetPoolsResult struct {
-	// The description of pool.
 	Description         *string `pulumi:"description"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// The health monitor ID of the LB pool.
-	HealthmonitorId *string `pulumi:"healthmonitorId"`
+	HealthmonitorId     *string `pulumi:"healthmonitorId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The load balancing algorithm to distribute traffic to the pool's members.
-	LbMethod       *string `pulumi:"lbMethod"`
-	LoadbalancerId *string `pulumi:"loadbalancerId"`
-	MemberAddress  *string `pulumi:"memberAddress"`
-	MemberDeviceId *string `pulumi:"memberDeviceId"`
-	// The pool name.
-	Name   *string `pulumi:"name"`
-	PoolId *string `pulumi:"poolId"`
-	// The pool list. For details, see data structure of the pool field.
-	// The object structure is documented below.
-	Pools []GetPoolsPool `pulumi:"pools"`
-	// The protocol of pool.
-	Protocol *string `pulumi:"protocol"`
-	Region   string  `pulumi:"region"`
+	Id             string         `pulumi:"id"`
+	LbMethod       *string        `pulumi:"lbMethod"`
+	LoadbalancerId *string        `pulumi:"loadbalancerId"`
+	MemberAddress  *string        `pulumi:"memberAddress"`
+	MemberDeviceId *string        `pulumi:"memberDeviceId"`
+	Name           *string        `pulumi:"name"`
+	PoolId         *string        `pulumi:"poolId"`
+	Pools          []GetPoolsPool `pulumi:"pools"`
+	Protocol       *string        `pulumi:"protocol"`
+	Region         string         `pulumi:"region"`
 }
 
 func GetPoolsOutput(ctx *pulumi.Context, args GetPoolsOutputArgs, opts ...pulumi.InvokeOption) GetPoolsResultOutput {
@@ -112,27 +65,17 @@ func GetPoolsOutput(ctx *pulumi.Context, args GetPoolsOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getPools.
 type GetPoolsOutputArgs struct {
-	// Specifies the description of the ELB pool.
 	Description         pulumi.StringPtrInput `pulumi:"description"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the health monitor ID of the ELB pool.
-	HealthmonitorId pulumi.StringPtrInput `pulumi:"healthmonitorId"`
-	// Specifies the method of the ELB pool. Must be one of ROUND_ROBIN, LEAST_CONNECTIONS,
-	// or SOURCE_IP.
-	LbMethod pulumi.StringPtrInput `pulumi:"lbMethod"`
-	// Specifies the loadbalancer ID of the ELB pool.
-	LoadbalancerId pulumi.StringPtrInput `pulumi:"loadbalancerId"`
-	MemberAddress  pulumi.StringPtrInput `pulumi:"memberAddress"`
-	MemberDeviceId pulumi.StringPtrInput `pulumi:"memberDeviceId"`
-	// Specifies the name of the ELB pool.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the ID of the ELB pool.
-	PoolId pulumi.StringPtrInput `pulumi:"poolId"`
-	// Specifies the protocol of the ELB pool. This can either be TCP, UDP or HTTP.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	HealthmonitorId     pulumi.StringPtrInput `pulumi:"healthmonitorId"`
+	LbMethod            pulumi.StringPtrInput `pulumi:"lbMethod"`
+	LoadbalancerId      pulumi.StringPtrInput `pulumi:"loadbalancerId"`
+	MemberAddress       pulumi.StringPtrInput `pulumi:"memberAddress"`
+	MemberDeviceId      pulumi.StringPtrInput `pulumi:"memberDeviceId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	PoolId              pulumi.StringPtrInput `pulumi:"poolId"`
+	Protocol            pulumi.StringPtrInput `pulumi:"protocol"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetPoolsOutputArgs) ElementType() reflect.Type {
@@ -154,7 +97,6 @@ func (o GetPoolsResultOutput) ToGetPoolsResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The description of pool.
 func (o GetPoolsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -163,7 +105,6 @@ func (o GetPoolsResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
 
-// The health monitor ID of the LB pool.
 func (o GetPoolsResultOutput) HealthmonitorId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.HealthmonitorId }).(pulumi.StringPtrOutput)
 }
@@ -173,7 +114,6 @@ func (o GetPoolsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPoolsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The load balancing algorithm to distribute traffic to the pool's members.
 func (o GetPoolsResultOutput) LbMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.LbMethod }).(pulumi.StringPtrOutput)
 }
@@ -190,7 +130,6 @@ func (o GetPoolsResultOutput) MemberDeviceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.MemberDeviceId }).(pulumi.StringPtrOutput)
 }
 
-// The pool name.
 func (o GetPoolsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -199,13 +138,10 @@ func (o GetPoolsResultOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.PoolId }).(pulumi.StringPtrOutput)
 }
 
-// The pool list. For details, see data structure of the pool field.
-// The object structure is documented below.
 func (o GetPoolsResultOutput) Pools() GetPoolsPoolArrayOutput {
 	return o.ApplyT(func(v GetPoolsResult) []GetPoolsPool { return v.Pools }).(GetPoolsPoolArrayOutput)
 }
 
-// The protocol of pool.
 func (o GetPoolsResultOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPoolsResult) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }

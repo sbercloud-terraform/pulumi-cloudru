@@ -11,58 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of propagations.
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			routeTableId := cfg.RequireObject("routeTableId")
-//			attachmentId := cfg.RequireObject("attachmentId")
-//			_, err := er.GetPropagations(ctx, &er.GetPropagationsArgs{
-//				InstanceId:   instanceId,
-//				RouteTableId: routeTableId,
-//				AttachmentId: pulumi.StringRef(attachmentId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPropagations(ctx *pulumi.Context, args *GetPropagationsArgs, opts ...pulumi.InvokeOption) (*GetPropagationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPropagationsResult
@@ -75,50 +23,25 @@ func GetPropagations(ctx *pulumi.Context, args *GetPropagationsArgs, opts ...pul
 
 // A collection of arguments for invoking getPropagations.
 type GetPropagationsArgs struct {
-	// Specifies the attachment ID to which the propagation belongs.
-	AttachmentId *string `pulumi:"attachmentId"`
-	// Specifies the attachment type of corresponding to the propagation.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
-	// + **enc**: Enterprise connect network in EC.
-	// + **cfw**: VPC border firewall.
+	AttachmentId   *string `pulumi:"attachmentId"`
 	AttachmentType *string `pulumi:"attachmentType"`
-	// Specifies the ER instance ID to which the propagation belongs.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the route table ID to which the propagation belongs.
-	RouteTableId string `pulumi:"routeTableId"`
-	// Specifies the status of the propagation. Default value is `available`.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	Status *string `pulumi:"status"`
+	InstanceId     string  `pulumi:"instanceId"`
+	Region         *string `pulumi:"region"`
+	RouteTableId   string  `pulumi:"routeTableId"`
+	Status         *string `pulumi:"status"`
 }
 
 // A collection of values returned by getPropagations.
 type GetPropagationsResult struct {
-	// The attachment ID corresponding to the propagation.
-	AttachmentId *string `pulumi:"attachmentId"`
-	// The attachment type corresponding to the propagation.
+	AttachmentId   *string `pulumi:"attachmentId"`
 	AttachmentType *string `pulumi:"attachmentType"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The ER instance ID to which the propagation belongs.
-	InstanceId string `pulumi:"instanceId"`
-	// All propagations that match the filter parameters.
-	// The propagations structure is documented below.
+	Id           string                       `pulumi:"id"`
+	InstanceId   string                       `pulumi:"instanceId"`
 	Propagations []GetPropagationsPropagation `pulumi:"propagations"`
 	Region       *string                      `pulumi:"region"`
-	// The route table ID of corresponding to the propagation.
-	RouteTableId string `pulumi:"routeTableId"`
-	// The current status of the propagation.
-	Status *string `pulumi:"status"`
+	RouteTableId string                       `pulumi:"routeTableId"`
+	Status       *string                      `pulumi:"status"`
 }
 
 func GetPropagationsOutput(ctx *pulumi.Context, args GetPropagationsOutputArgs, opts ...pulumi.InvokeOption) GetPropagationsResultOutput {
@@ -132,30 +55,12 @@ func GetPropagationsOutput(ctx *pulumi.Context, args GetPropagationsOutputArgs, 
 
 // A collection of arguments for invoking getPropagations.
 type GetPropagationsOutputArgs struct {
-	// Specifies the attachment ID to which the propagation belongs.
-	AttachmentId pulumi.StringPtrInput `pulumi:"attachmentId"`
-	// Specifies the attachment type of corresponding to the propagation.\
-	// The valid values are as follows:
-	// + **vpc**: Virtual private cloud.
-	// + **vpn**: VPN gateway.
-	// + **vgw**: Virtual gateway of cloud private line.
-	// + **peering**: Peering connection, through the cloud connection (CC) to load ERs in different regions to create a
-	//   peering connection.
-	// + **enc**: Enterprise connect network in EC.
-	// + **cfw**: VPC border firewall.
+	AttachmentId   pulumi.StringPtrInput `pulumi:"attachmentId"`
 	AttachmentType pulumi.StringPtrInput `pulumi:"attachmentType"`
-	// Specifies the ER instance ID to which the propagation belongs.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the route table ID to which the propagation belongs.
-	RouteTableId pulumi.StringInput `pulumi:"routeTableId"`
-	// Specifies the status of the propagation. Default value is `available`.
-	// The valid values are as follows:
-	// + **available**
-	// + **failed**
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	InstanceId     pulumi.StringInput    `pulumi:"instanceId"`
+	Region         pulumi.StringPtrInput `pulumi:"region"`
+	RouteTableId   pulumi.StringInput    `pulumi:"routeTableId"`
+	Status         pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetPropagationsOutputArgs) ElementType() reflect.Type {
@@ -177,12 +82,10 @@ func (o GetPropagationsResultOutput) ToGetPropagationsResultOutputWithContext(ct
 	return o
 }
 
-// The attachment ID corresponding to the propagation.
 func (o GetPropagationsResultOutput) AttachmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPropagationsResult) *string { return v.AttachmentId }).(pulumi.StringPtrOutput)
 }
 
-// The attachment type corresponding to the propagation.
 func (o GetPropagationsResultOutput) AttachmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPropagationsResult) *string { return v.AttachmentType }).(pulumi.StringPtrOutput)
 }
@@ -192,13 +95,10 @@ func (o GetPropagationsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ER instance ID to which the propagation belongs.
 func (o GetPropagationsResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// All propagations that match the filter parameters.
-// The propagations structure is documented below.
 func (o GetPropagationsResultOutput) Propagations() GetPropagationsPropagationArrayOutput {
 	return o.ApplyT(func(v GetPropagationsResult) []GetPropagationsPropagation { return v.Propagations }).(GetPropagationsPropagationArrayOutput)
 }
@@ -207,12 +107,10 @@ func (o GetPropagationsResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPropagationsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The route table ID of corresponding to the propagation.
 func (o GetPropagationsResultOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPropagationsResult) string { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The current status of the propagation.
 func (o GetPropagationsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPropagationsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

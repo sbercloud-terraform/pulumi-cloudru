@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * * Associates the **IPv4** address of an ECS instance to a specified EIP.
- * * Associates the **IPv6** address of an ECS instance to a specified **Shared** Bandwidth.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * This resource can be imported by specifying all three arguments, separated by a forward slash:
- *
- * ```sh
- * $ pulumi import sbercloud:Ecs/eipAssociate:EipAssociate bind <eip address or bandwidth_id>/<instance_id>/<fixed_ip>
- * ```
- */
 export class EipAssociate extends pulumi.CustomResource {
     /**
      * Get an existing EipAssociate resource's state with the given name, ID, and optional extra
@@ -46,36 +32,11 @@ export class EipAssociate extends pulumi.CustomResource {
         return obj['__pulumiType'] === EipAssociate.__pulumiType;
     }
 
-    /**
-     * Specifies the **shared** bandwidth ID to associate.
-     * It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-     * Changing this creates a new resource.
-     */
     declare public readonly bandwidthId: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the private IP address to direct traffic to. It's **mandatory**
-     * and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-     * Changing this creates a new resource.
-     */
     declare public readonly fixedIp: pulumi.Output<string>;
-    /**
-     * Specifies the ID of ECS instance to associated with.
-     * Changing this creates a new resource.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * The port ID of the ECS instance that associated with.
-     */
     declare public /*out*/ readonly portId: pulumi.Output<string>;
-    /**
-     * Specifies the EIP address to associate. It's **mandatory**
-     * when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-     */
     declare public readonly publicIp: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the region in which to create the associated resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -118,36 +79,11 @@ export class EipAssociate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EipAssociate resources.
  */
 export interface EipAssociateState {
-    /**
-     * Specifies the **shared** bandwidth ID to associate.
-     * It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-     * Changing this creates a new resource.
-     */
     bandwidthId?: pulumi.Input<string>;
-    /**
-     * Specifies the private IP address to direct traffic to. It's **mandatory**
-     * and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-     * Changing this creates a new resource.
-     */
     fixedIp?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of ECS instance to associated with.
-     * Changing this creates a new resource.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * The port ID of the ECS instance that associated with.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * Specifies the EIP address to associate. It's **mandatory**
-     * when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-     */
     publicIp?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the associated resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -155,31 +91,9 @@ export interface EipAssociateState {
  * The set of arguments for constructing a EipAssociate resource.
  */
 export interface EipAssociateArgs {
-    /**
-     * Specifies the **shared** bandwidth ID to associate.
-     * It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-     * Changing this creates a new resource.
-     */
     bandwidthId?: pulumi.Input<string>;
-    /**
-     * Specifies the private IP address to direct traffic to. It's **mandatory**
-     * and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-     * Changing this creates a new resource.
-     */
     fixedIp?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of ECS instance to associated with.
-     * Changing this creates a new resource.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the EIP address to associate. It's **mandatory**
-     * when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-     */
     publicIp?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the associated resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

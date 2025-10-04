@@ -11,42 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW flow logs.
-//
-// > **NOTE:** Up to 1000 logs can be retrieved. Set filter criteria to narrow down the search scope.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			fwInstanceId := cfg.RequireObject("fwInstanceId")
-//			startTime := cfg.RequireObject("startTime")
-//			endTime := cfg.RequireObject("endTime")
-//			_, err := cfw.GetFlowLogs(ctx, &cfw.GetFlowLogsArgs{
-//				FwInstanceId: fwInstanceId,
-//				StartTime:    startTime,
-//				EndTime:      endTime,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFlowLogs(ctx *pulumi.Context, args *GetFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetFlowLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowLogsResult
@@ -59,82 +23,47 @@ func GetFlowLogs(ctx *pulumi.Context, args *GetFlowLogsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getFlowLogs.
 type GetFlowLogsArgs struct {
-	// Specifies the application protocol.
-	App *string `pulumi:"app"`
-	// Specifies the direction. The values can be **out2in** and **in2out**.
-	Direction *string `pulumi:"direction"`
-	// Specifies the destination city name.
-	DstCityName *string `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
-	DstIp *string `pulumi:"dstIp"`
-	// Specifies the destination port.
-	DstPort *int `pulumi:"dstPort"`
-	// Specifies the destination province name.
-	DstProvinceName *string `pulumi:"dstProvinceName"`
-	// Specifies the destination region name.
-	DstRegionName *string `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	EndTime string `pulumi:"endTime"`
-	// Specifies the enterprise project id.
+	App                 *string `pulumi:"app"`
+	Direction           *string `pulumi:"direction"`
+	DstCityName         *string `pulumi:"dstCityName"`
+	DstIp               *string `pulumi:"dstIp"`
+	DstPort             *int    `pulumi:"dstPort"`
+	DstProvinceName     *string `pulumi:"dstProvinceName"`
+	DstRegionName       *string `pulumi:"dstRegionName"`
+	EndTime             string  `pulumi:"endTime"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId string `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the source city name.
-	SrcCityName *string `pulumi:"srcCityName"`
-	// Specifies the source IP address.
-	SrcIp *string `pulumi:"srcIp"`
-	// Specifies the source port.
-	SrcPort *int `pulumi:"srcPort"`
-	// Specifies the source province name.
-	SrcProvinceName *string `pulumi:"srcProvinceName"`
-	// Specifies the source region name.
-	SrcRegionName *string `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	StartTime string `pulumi:"startTime"`
+	FwInstanceId        string  `pulumi:"fwInstanceId"`
+	Region              *string `pulumi:"region"`
+	SrcCityName         *string `pulumi:"srcCityName"`
+	SrcIp               *string `pulumi:"srcIp"`
+	SrcPort             *int    `pulumi:"srcPort"`
+	SrcProvinceName     *string `pulumi:"srcProvinceName"`
+	SrcRegionName       *string `pulumi:"srcRegionName"`
+	StartTime           string  `pulumi:"startTime"`
 }
 
 // A collection of values returned by getFlowLogs.
 type GetFlowLogsResult struct {
-	// The application protocol.
-	App *string `pulumi:"app"`
-	// The direction, which can be inbound or outbound.
-	Direction *string `pulumi:"direction"`
-	// The destination city name.
-	DstCityName *string `pulumi:"dstCityName"`
-	// The destination IP address.
-	DstIp *string `pulumi:"dstIp"`
-	// The destination port.
-	DstPort *int `pulumi:"dstPort"`
-	// The destination province name.
-	DstProvinceName *string `pulumi:"dstProvinceName"`
-	// The destination region name.
-	DstRegionName *string `pulumi:"dstRegionName"`
-	// The end time.
+	App                 *string `pulumi:"app"`
+	Direction           *string `pulumi:"direction"`
+	DstCityName         *string `pulumi:"dstCityName"`
+	DstIp               *string `pulumi:"dstIp"`
+	DstPort             *int    `pulumi:"dstPort"`
+	DstProvinceName     *string `pulumi:"dstProvinceName"`
+	DstRegionName       *string `pulumi:"dstRegionName"`
 	EndTime             string  `pulumi:"endTime"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FwInstanceId        string  `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The flow log records.
-	Records []GetFlowLogsRecord `pulumi:"records"`
-	Region  string              `pulumi:"region"`
-	// The source city name.
-	SrcCityName *string `pulumi:"srcCityName"`
-	// The source IP address.
-	SrcIp *string `pulumi:"srcIp"`
-	// The source port.
-	SrcPort *int `pulumi:"srcPort"`
-	// The source province name.
-	SrcProvinceName *string `pulumi:"srcProvinceName"`
-	// The source region name.
-	SrcRegionName *string `pulumi:"srcRegionName"`
-	// The start time.
-	StartTime string `pulumi:"startTime"`
+	Id              string              `pulumi:"id"`
+	Records         []GetFlowLogsRecord `pulumi:"records"`
+	Region          string              `pulumi:"region"`
+	SrcCityName     *string             `pulumi:"srcCityName"`
+	SrcIp           *string             `pulumi:"srcIp"`
+	SrcPort         *int                `pulumi:"srcPort"`
+	SrcProvinceName *string             `pulumi:"srcProvinceName"`
+	SrcRegionName   *string             `pulumi:"srcRegionName"`
+	StartTime       string              `pulumi:"startTime"`
 }
 
 func GetFlowLogsOutput(ctx *pulumi.Context, args GetFlowLogsOutputArgs, opts ...pulumi.InvokeOption) GetFlowLogsResultOutput {
@@ -148,43 +77,23 @@ func GetFlowLogsOutput(ctx *pulumi.Context, args GetFlowLogsOutputArgs, opts ...
 
 // A collection of arguments for invoking getFlowLogs.
 type GetFlowLogsOutputArgs struct {
-	// Specifies the application protocol.
-	App pulumi.StringPtrInput `pulumi:"app"`
-	// Specifies the direction. The values can be **out2in** and **in2out**.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Specifies the destination city name.
-	DstCityName pulumi.StringPtrInput `pulumi:"dstCityName"`
-	// Specifies the destination IP address.
-	DstIp pulumi.StringPtrInput `pulumi:"dstIp"`
-	// Specifies the destination port.
-	DstPort pulumi.IntPtrInput `pulumi:"dstPort"`
-	// Specifies the destination province name.
-	DstProvinceName pulumi.StringPtrInput `pulumi:"dstProvinceName"`
-	// Specifies the destination region name.
-	DstRegionName pulumi.StringPtrInput `pulumi:"dstRegionName"`
-	// Specifies the end time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Specifies the enterprise project id.
+	App                 pulumi.StringPtrInput `pulumi:"app"`
+	Direction           pulumi.StringPtrInput `pulumi:"direction"`
+	DstCityName         pulumi.StringPtrInput `pulumi:"dstCityName"`
+	DstIp               pulumi.StringPtrInput `pulumi:"dstIp"`
+	DstPort             pulumi.IntPtrInput    `pulumi:"dstPort"`
+	DstProvinceName     pulumi.StringPtrInput `pulumi:"dstProvinceName"`
+	DstRegionName       pulumi.StringPtrInput `pulumi:"dstRegionName"`
+	EndTime             pulumi.StringInput    `pulumi:"endTime"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId pulumi.StringInput `pulumi:"fwInstanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the source city name.
-	SrcCityName pulumi.StringPtrInput `pulumi:"srcCityName"`
-	// Specifies the source IP address.
-	SrcIp pulumi.StringPtrInput `pulumi:"srcIp"`
-	// Specifies the source port.
-	SrcPort pulumi.IntPtrInput `pulumi:"srcPort"`
-	// Specifies the source province name.
-	SrcProvinceName pulumi.StringPtrInput `pulumi:"srcProvinceName"`
-	// Specifies the source region name.
-	SrcRegionName pulumi.StringPtrInput `pulumi:"srcRegionName"`
-	// Specifies the start time. The time is in UTC.
-	// The format is **yyyy-MM-dd HH:mm:ss**.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	FwInstanceId        pulumi.StringInput    `pulumi:"fwInstanceId"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
+	SrcCityName         pulumi.StringPtrInput `pulumi:"srcCityName"`
+	SrcIp               pulumi.StringPtrInput `pulumi:"srcIp"`
+	SrcPort             pulumi.IntPtrInput    `pulumi:"srcPort"`
+	SrcProvinceName     pulumi.StringPtrInput `pulumi:"srcProvinceName"`
+	SrcRegionName       pulumi.StringPtrInput `pulumi:"srcRegionName"`
+	StartTime           pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (GetFlowLogsOutputArgs) ElementType() reflect.Type {
@@ -206,42 +115,34 @@ func (o GetFlowLogsResultOutput) ToGetFlowLogsResultOutputWithContext(ctx contex
 	return o
 }
 
-// The application protocol.
 func (o GetFlowLogsResultOutput) App() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.App }).(pulumi.StringPtrOutput)
 }
 
-// The direction, which can be inbound or outbound.
 func (o GetFlowLogsResultOutput) Direction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.Direction }).(pulumi.StringPtrOutput)
 }
 
-// The destination city name.
 func (o GetFlowLogsResultOutput) DstCityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.DstCityName }).(pulumi.StringPtrOutput)
 }
 
-// The destination IP address.
 func (o GetFlowLogsResultOutput) DstIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.DstIp }).(pulumi.StringPtrOutput)
 }
 
-// The destination port.
 func (o GetFlowLogsResultOutput) DstPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *int { return v.DstPort }).(pulumi.IntPtrOutput)
 }
 
-// The destination province name.
 func (o GetFlowLogsResultOutput) DstProvinceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.DstProvinceName }).(pulumi.StringPtrOutput)
 }
 
-// The destination region name.
 func (o GetFlowLogsResultOutput) DstRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.DstRegionName }).(pulumi.StringPtrOutput)
 }
 
-// The end time.
 func (o GetFlowLogsResultOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) string { return v.EndTime }).(pulumi.StringOutput)
 }
@@ -259,7 +160,6 @@ func (o GetFlowLogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The flow log records.
 func (o GetFlowLogsResultOutput) Records() GetFlowLogsRecordArrayOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) []GetFlowLogsRecord { return v.Records }).(GetFlowLogsRecordArrayOutput)
 }
@@ -268,32 +168,26 @@ func (o GetFlowLogsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The source city name.
 func (o GetFlowLogsResultOutput) SrcCityName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.SrcCityName }).(pulumi.StringPtrOutput)
 }
 
-// The source IP address.
 func (o GetFlowLogsResultOutput) SrcIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.SrcIp }).(pulumi.StringPtrOutput)
 }
 
-// The source port.
 func (o GetFlowLogsResultOutput) SrcPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *int { return v.SrcPort }).(pulumi.IntPtrOutput)
 }
 
-// The source province name.
 func (o GetFlowLogsResultOutput) SrcProvinceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.SrcProvinceName }).(pulumi.StringPtrOutput)
 }
 
-// The source region name.
 func (o GetFlowLogsResultOutput) SrcRegionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) *string { return v.SrcRegionName }).(pulumi.StringPtrOutput)
 }
 
-// The start time.
 func (o GetFlowLogsResultOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowLogsResult) string { return v.StartTime }).(pulumi.StringOutput)
 }

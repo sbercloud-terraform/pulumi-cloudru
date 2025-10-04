@@ -25,15 +25,9 @@ class AttachmentAccepterArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AttachmentAccepter resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the action type.  
-               The valid values are as follows:
-               + **accept**
-               + **reject**
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment to be accept or reject.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the shared ER instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] action: The action type.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment to be action.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "attachment_id", attachment_id)
@@ -45,10 +39,7 @@ class AttachmentAccepterArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the action type.  
-        The valid values are as follows:
-        + **accept**
-        + **reject**
+        The action type.
         """
         return pulumi.get(self, "action")
 
@@ -60,7 +51,7 @@ class AttachmentAccepterArgs:
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the attachment to be accept or reject.
+        The ID of the attachment to be action.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -72,7 +63,7 @@ class AttachmentAccepterArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the shared ER instance.
+        The ID of the ER instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -83,11 +74,6 @@ class AttachmentAccepterArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -104,15 +90,9 @@ class _AttachmentAccepterState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AttachmentAccepter resources.
-        :param pulumi.Input[_builtins.str] action: Specifies the action type.  
-               The valid values are as follows:
-               + **accept**
-               + **reject**
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment to be accept or reject.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the shared ER instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] action: The action type.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment to be action.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -127,10 +107,7 @@ class _AttachmentAccepterState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the action type.  
-        The valid values are as follows:
-        + **accept**
-        + **reject**
+        The action type.
         """
         return pulumi.get(self, "action")
 
@@ -142,7 +119,7 @@ class _AttachmentAccepterState:
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the attachment to be accept or reject.
+        The ID of the attachment to be action.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -154,7 +131,7 @@ class _AttachmentAccepterState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the shared ER instance.
+        The ID of the ER instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -165,11 +142,6 @@ class _AttachmentAccepterState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -189,42 +161,12 @@ class AttachmentAccepter(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Use this resource to accept or reject the shared attachment within SberCloud.
-
-        > This resource is only a one-time action resource for operating the attachment. Deleting this resource
-           will not clear the corresponding request record, but will only remove the resource information from the tfstate file.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        attachment_id = config.require_object("attachmentId")
-        test = sbercloud.er.AttachmentAccepter("test",
-            instance_id=instance_id,
-            attachment_id=attachment_id,
-            action="accept")
-        ```
-
+        Create a AttachmentAccepter resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the action type.  
-               The valid values are as follows:
-               + **accept**
-               + **reject**
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment to be accept or reject.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the shared ER instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] action: The action type.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment to be action.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance.
         """
         ...
     @overload
@@ -233,31 +175,7 @@ class AttachmentAccepter(pulumi.CustomResource):
                  args: AttachmentAccepterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Use this resource to accept or reject the shared attachment within SberCloud.
-
-        > This resource is only a one-time action resource for operating the attachment. Deleting this resource
-           will not clear the corresponding request record, but will only remove the resource information from the tfstate file.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        attachment_id = config.require_object("attachmentId")
-        test = sbercloud.er.AttachmentAccepter("test",
-            instance_id=instance_id,
-            attachment_id=attachment_id,
-            action="accept")
-        ```
-
+        Create a AttachmentAccepter resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AttachmentAccepterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -317,15 +235,9 @@ class AttachmentAccepter(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] action: Specifies the action type.  
-               The valid values are as follows:
-               + **accept**
-               + **reject**
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the attachment to be accept or reject.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the shared ER instance.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] action: The action type.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the attachment to be action.
+        :param pulumi.Input[_builtins.str] instance_id: The ID of the ER instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,10 +253,7 @@ class AttachmentAccepter(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the action type.  
-        The valid values are as follows:
-        + **accept**
-        + **reject**
+        The action type.
         """
         return pulumi.get(self, "action")
 
@@ -352,7 +261,7 @@ class AttachmentAccepter(pulumi.CustomResource):
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the attachment to be accept or reject.
+        The ID of the attachment to be action.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -360,17 +269,12 @@ class AttachmentAccepter(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the shared ER instance.
+        The ID of the ER instance.
         """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

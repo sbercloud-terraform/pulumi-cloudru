@@ -26,18 +26,11 @@ class StaticRouteArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a StaticRoute resource.
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination of the static route.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the static route
-               belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the corresponding attachment.
-        :param pulumi.Input[_builtins.bool] is_blackhole: Specifies whether route is the black hole route, defaults to `false`.  
-               + If the value is empty or `false`, the parameter `attachment_id` is required.
-               + If the value is `true`, the parameter `attachment_id` must be empty.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the static route and related route table are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] destination: The destination of the static route.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the static route belongs.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the corresponding attachment.
+        :param pulumi.Input[_builtins.bool] is_blackhole: Whether route is the black hole route.
+        :param pulumi.Input[_builtins.str] region: The region where the static route and related route table are located.
         """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "route_table_id", route_table_id)
@@ -52,8 +45,7 @@ class StaticRouteArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the destination of the static route.  
-        Changing this parameter will create a new resource.
+        The destination of the static route.
         """
         return pulumi.get(self, "destination")
 
@@ -65,9 +57,7 @@ class StaticRouteArgs:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the route table to which the static route
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the route table to which the static route belongs.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -79,7 +69,7 @@ class StaticRouteArgs:
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the corresponding attachment.
+        The ID of the corresponding attachment.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -91,9 +81,7 @@ class StaticRouteArgs:
     @pulumi.getter(name="isBlackhole")
     def is_blackhole(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether route is the black hole route, defaults to `false`.  
-        + If the value is empty or `false`, the parameter `attachment_id` is required.
-        + If the value is `true`, the parameter `attachment_id` must be empty.
+        Whether route is the black hole route.
         """
         return pulumi.get(self, "is_blackhole")
 
@@ -105,9 +93,7 @@ class StaticRouteArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the static route and related route table are
-        located.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the static route and related route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -130,19 +116,12 @@ class _StaticRouteState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StaticRoute resources.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the corresponding attachment.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the corresponding attachment.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the static route.
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination of the static route.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_blackhole: Specifies whether route is the black hole route, defaults to `false`.  
-               + If the value is empty or `false`, the parameter `attachment_id` is required.
-               + If the value is `true`, the parameter `attachment_id` must be empty.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the static route and related route table are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the static route
-               belongs.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] destination: The destination of the static route.
+        :param pulumi.Input[_builtins.bool] is_blackhole: Whether route is the black hole route.
+        :param pulumi.Input[_builtins.str] region: The region where the static route and related route table are located.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the static route belongs.
         :param pulumi.Input[_builtins.str] status: The current status of the static route.
         :param pulumi.Input[_builtins.str] type: The type of the static route.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the static route.
@@ -170,7 +149,7 @@ class _StaticRouteState:
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the corresponding attachment.
+        The ID of the corresponding attachment.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -194,8 +173,7 @@ class _StaticRouteState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the destination of the static route.  
-        Changing this parameter will create a new resource.
+        The destination of the static route.
         """
         return pulumi.get(self, "destination")
 
@@ -207,9 +185,7 @@ class _StaticRouteState:
     @pulumi.getter(name="isBlackhole")
     def is_blackhole(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether route is the black hole route, defaults to `false`.  
-        + If the value is empty or `false`, the parameter `attachment_id` is required.
-        + If the value is `true`, the parameter `attachment_id` must be empty.
+        Whether route is the black hole route.
         """
         return pulumi.get(self, "is_blackhole")
 
@@ -221,9 +197,7 @@ class _StaticRouteState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the static route and related route table are
-        located.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the static route and related route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -235,9 +209,7 @@ class _StaticRouteState:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of the route table to which the static route
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the route table to which the static route belongs.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -295,70 +267,14 @@ class StaticRoute(pulumi.CustomResource):
                  route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a static route under the ER route table within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ### Create a static route and cross the VPC
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        route_table_id = config.require_object("routeTableId")
-        destination_vpc_cidr = config.require_object("destinationVpcCidr")
-        source_vpc_attachment_id = config.require_object("sourceVpcAttachmentId")
-        test = sbercloud.er.StaticRoute("test",
-            route_table_id=route_table_id,
-            destination=destination_vpc_cidr,
-            attachment_id=source_vpc_attachment_id)
-        ```
-
-        ### Create a black hole route
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        route_table_id = config.require_object("routeTableId")
-        destination_vpc_cidr = config.require_object("destinationVpcCidr")
-        test = sbercloud.er.StaticRoute("test",
-            route_table_id=route_table_id,
-            destination=destination_vpc_cidr,
-            is_blackhole=True)
-        ```
-
-        ## Import
-
-        Static routes can be imported using the related `route_table_id` and their `id`, separated by a slash (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/staticRoute:StaticRoute test <route_table_id>/<id>
-        ```
-
+        Create a StaticRoute resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the corresponding attachment.
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination of the static route.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_blackhole: Specifies whether route is the black hole route, defaults to `false`.  
-               + If the value is empty or `false`, the parameter `attachment_id` is required.
-               + If the value is `true`, the parameter `attachment_id` must be empty.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the static route and related route table are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the static route
-               belongs.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the corresponding attachment.
+        :param pulumi.Input[_builtins.str] destination: The destination of the static route.
+        :param pulumi.Input[_builtins.bool] is_blackhole: Whether route is the black hole route.
+        :param pulumi.Input[_builtins.str] region: The region where the static route and related route table are located.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the static route belongs.
         """
         ...
     @overload
@@ -367,56 +283,7 @@ class StaticRoute(pulumi.CustomResource):
                  args: StaticRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a static route under the ER route table within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ### Create a static route and cross the VPC
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        route_table_id = config.require_object("routeTableId")
-        destination_vpc_cidr = config.require_object("destinationVpcCidr")
-        source_vpc_attachment_id = config.require_object("sourceVpcAttachmentId")
-        test = sbercloud.er.StaticRoute("test",
-            route_table_id=route_table_id,
-            destination=destination_vpc_cidr,
-            attachment_id=source_vpc_attachment_id)
-        ```
-
-        ### Create a black hole route
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        route_table_id = config.require_object("routeTableId")
-        destination_vpc_cidr = config.require_object("destinationVpcCidr")
-        test = sbercloud.er.StaticRoute("test",
-            route_table_id=route_table_id,
-            destination=destination_vpc_cidr,
-            is_blackhole=True)
-        ```
-
-        ## Import
-
-        Static routes can be imported using the related `route_table_id` and their `id`, separated by a slash (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/staticRoute:StaticRoute test <route_table_id>/<id>
-        ```
-
+        Create a StaticRoute resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param StaticRouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -485,19 +352,12 @@ class StaticRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] attachment_id: Specifies the ID of the corresponding attachment.
+        :param pulumi.Input[_builtins.str] attachment_id: The ID of the corresponding attachment.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the static route.
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination of the static route.  
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_blackhole: Specifies whether route is the black hole route, defaults to `false`.  
-               + If the value is empty or `false`, the parameter `attachment_id` is required.
-               + If the value is `true`, the parameter `attachment_id` must be empty.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the static route and related route table are
-               located.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] route_table_id: Specifies the ID of the route table to which the static route
-               belongs.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] destination: The destination of the static route.
+        :param pulumi.Input[_builtins.bool] is_blackhole: Whether route is the black hole route.
+        :param pulumi.Input[_builtins.str] region: The region where the static route and related route table are located.
+        :param pulumi.Input[_builtins.str] route_table_id: The ID of the route table to which the static route belongs.
         :param pulumi.Input[_builtins.str] status: The current status of the static route.
         :param pulumi.Input[_builtins.str] type: The type of the static route.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the static route.
@@ -521,7 +381,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter(name="attachmentId")
     def attachment_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the ID of the corresponding attachment.
+        The ID of the corresponding attachment.
         """
         return pulumi.get(self, "attachment_id")
 
@@ -537,8 +397,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the destination of the static route.  
-        Changing this parameter will create a new resource.
+        The destination of the static route.
         """
         return pulumi.get(self, "destination")
 
@@ -546,9 +405,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter(name="isBlackhole")
     def is_blackhole(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether route is the black hole route, defaults to `false`.  
-        + If the value is empty or `false`, the parameter `attachment_id` is required.
-        + If the value is `true`, the parameter `attachment_id` must be empty.
+        Whether route is the black hole route.
         """
         return pulumi.get(self, "is_blackhole")
 
@@ -556,9 +413,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the static route and related route table are
-        located.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        The region where the static route and related route table are located.
         """
         return pulumi.get(self, "region")
 
@@ -566,9 +421,7 @@ class StaticRoute(pulumi.CustomResource):
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the ID of the route table to which the static route
-        belongs.
-        Changing this parameter will create a new resource.
+        The ID of the route table to which the static route belongs.
         """
         return pulumi.get(self, "route_table_id")
 

@@ -54,9 +54,6 @@ class GetKpsFailedTasksResult:
     @_builtins.property
     @pulumi.getter
     def tasks(self) -> Sequence['outputs.GetKpsFailedTasksTaskResult']:
-        """
-        The list of the failed tasks.
-        """
         return pulumi.get(self, "tasks")
 
 
@@ -74,20 +71,7 @@ class AwaitableGetKpsFailedTasksResult(GetKpsFailedTasksResult):
 def get_kps_failed_tasks(region: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKpsFailedTasksResult:
     """
-    Use this data source to get a list of the tasks that failed to bind, unbind, reset or replace key pairs.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_kps_failed_tasks()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -101,20 +85,7 @@ def get_kps_failed_tasks(region: Optional[_builtins.str] = None,
 def get_kps_failed_tasks_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKpsFailedTasksResult]:
     """
-    Use this data source to get a list of the tasks that failed to bind, unbind, reset or replace key pairs.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    test = sbercloud.get_kps_failed_tasks()
-    ```
-
-
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['region'] = region

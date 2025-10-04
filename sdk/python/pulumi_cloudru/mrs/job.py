@@ -30,50 +30,6 @@ class JobArgs:
                  sql: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies an ID of the MapReduce cluster to which the job belongs to.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce job. The name can contain 1 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce job resource.
-               
-               <!-- Placing the html block above list will lead to improperly rendered content -->
-               * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-               The valid values are as follows:
-               + Flink
-               + HiveSql
-               + HiveScript
-               + MapReduce
-               + SparkSubmit
-               + SparkSql
-               + SparkScript
-               
-               Changing this will create a new MapReduce job resource.
-               
-               > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        :param pulumi.Input[_builtins.str] parameters: Specifies the parameters for the MapReduce job. Add an at sign (@) before
-               each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-               This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-               MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] program_parameters: Specifies the the key/value pairs of the program parameters, such as
-               thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-               can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-               **HiveScript**. Refer to the documents for each type of support key-values.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] program_path: Specifies the .jar package path or .py file path for program execution.
-               The parameter must meet the following requirements:
-               + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-               + The address cannot be empty or full of spaces.
-               + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-               with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-               
-               Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the MapReduce job resource. If
-               omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] service_parameters: Specifies the key/value pairs used to modify service configuration.
-               Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] sql: Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-               or **SparkSql**. Changing this will create a new MapReduce job resource.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "type", type)
@@ -95,10 +51,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies an ID of the MapReduce cluster to which the job belongs to.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -117,26 +69,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the MapReduce job. The name can contain 1 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce job resource.
-
-        <!-- Placing the html block above list will lead to improperly rendered content -->
-        * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-        The valid values are as follows:
-        + Flink
-        + HiveSql
-        + HiveScript
-        + MapReduce
-        + SparkSubmit
-        + SparkSql
-        + SparkScript
-
-        Changing this will create a new MapReduce job resource.
-
-        > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -146,12 +78,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the parameters for the MapReduce job. Add an at sign (@) before
-        each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-        This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-        MapReduce job resource.
-        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -161,13 +87,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="programParameters")
     def program_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the the key/value pairs of the program parameters, such as
-        thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-        can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-        **HiveScript**. Refer to the documents for each type of support key-values.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "program_parameters")
 
     @program_parameters.setter
@@ -177,16 +96,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="programPath")
     def program_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the .jar package path or .py file path for program execution.
-        The parameter must meet the following requirements:
-        + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-        + The address cannot be empty or full of spaces.
-        + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-        with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-
-        Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "program_path")
 
     @program_path.setter
@@ -196,10 +105,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the MapReduce job resource. If
-        omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -209,11 +114,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter(name="serviceParameters")
     def service_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs used to modify service configuration.
-        Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "service_parameters")
 
     @service_parameters.setter
@@ -223,10 +123,6 @@ class JobArgs:
     @_builtins.property
     @pulumi.getter
     def sql(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-        or **SparkSql**. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "sql")
 
     @sql.setter
@@ -252,54 +148,6 @@ class _JobState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies an ID of the MapReduce cluster to which the job belongs to.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] finish_time: The completion time of the MapReduce job.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce job. The name can contain 1 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce job resource.
-               
-               <!-- Placing the html block above list will lead to improperly rendered content -->
-               * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-               The valid values are as follows:
-               + Flink
-               + HiveSql
-               + HiveScript
-               + MapReduce
-               + SparkSubmit
-               + SparkSql
-               + SparkScript
-               
-               Changing this will create a new MapReduce job resource.
-               
-               > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        :param pulumi.Input[_builtins.str] parameters: Specifies the parameters for the MapReduce job. Add an at sign (@) before
-               each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-               This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-               MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] program_parameters: Specifies the the key/value pairs of the program parameters, such as
-               thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-               can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-               **HiveScript**. Refer to the documents for each type of support key-values.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] program_path: Specifies the .jar package path or .py file path for program execution.
-               The parameter must meet the following requirements:
-               + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-               + The address cannot be empty or full of spaces.
-               + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-               with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-               
-               Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the MapReduce job resource. If
-               omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] service_parameters: Specifies the key/value pairs used to modify service configuration.
-               Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] sql: Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-               or **SparkSql**. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] start_time: The creation time of the MapReduce job.
-        :param pulumi.Input[_builtins.str] status: Status of the MapReduce job.
-        :param pulumi.Input[_builtins.str] submit_time: The submission time of the MapReduce job.
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -331,10 +179,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies an ID of the MapReduce cluster to which the job belongs to.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -344,9 +188,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="finishTime")
     def finish_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The completion time of the MapReduce job.
-        """
         return pulumi.get(self, "finish_time")
 
     @finish_time.setter
@@ -356,26 +197,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the MapReduce job. The name can contain 1 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce job resource.
-
-        <!-- Placing the html block above list will lead to improperly rendered content -->
-        * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-        The valid values are as follows:
-        + Flink
-        + HiveSql
-        + HiveScript
-        + MapReduce
-        + SparkSubmit
-        + SparkSql
-        + SparkScript
-
-        Changing this will create a new MapReduce job resource.
-
-        > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -385,12 +206,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the parameters for the MapReduce job. Add an at sign (@) before
-        each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-        This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-        MapReduce job resource.
-        """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
@@ -400,13 +215,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="programParameters")
     def program_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the the key/value pairs of the program parameters, such as
-        thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-        can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-        **HiveScript**. Refer to the documents for each type of support key-values.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "program_parameters")
 
     @program_parameters.setter
@@ -416,16 +224,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="programPath")
     def program_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the .jar package path or .py file path for program execution.
-        The parameter must meet the following requirements:
-        + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-        + The address cannot be empty or full of spaces.
-        + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-        with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-
-        Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "program_path")
 
     @program_path.setter
@@ -435,10 +233,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the MapReduce job resource. If
-        omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -448,11 +242,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="serviceParameters")
     def service_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs used to modify service configuration.
-        Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "service_parameters")
 
     @service_parameters.setter
@@ -462,10 +251,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def sql(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-        or **SparkSql**. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "sql")
 
     @sql.setter
@@ -475,9 +260,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The creation time of the MapReduce job.
-        """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
@@ -487,9 +269,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Status of the MapReduce job.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -499,9 +278,6 @@ class _JobState:
     @_builtins.property
     @pulumi.getter(name="submitTime")
     def submit_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The submission time of the MapReduce job.
-        """
         return pulumi.get(self, "submit_time")
 
     @submit_time.setter
@@ -535,86 +311,9 @@ class Job(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manage a job resource within SberCloud MRS.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        job_name = config.require_object("jobName")
-        program_path = config.require_object("programPath")
-        access_key = config.require_object("accessKey")
-        secret_key = config.require_object("secretKey")
-        test1 = sbercloud.mrs.Job("test_1",
-            cluster_id=cluster_id,
-            type="SparkSubmit",
-            name=job_name,
-            program_path=program_path,
-            parameters=f"{access_key} {secret_key} 1 obs://obs-demo-analysis/input obs://obs-demo-analysis/output",
-            program_parameters={
-                "--class": "com.sbercloud.bigdata.spark.examples.DriverBehavior",
-            })
-        ```
-
-        ## Import
-
-        MapReduce jobs can be imported using their `id` and the IDs of the MapReduce cluster to which the job belongs, separated
-        by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Mrs/job:Job test <cluster_id>/<id>
-        ```
-
+        Create a Job resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies an ID of the MapReduce cluster to which the job belongs to.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce job. The name can contain 1 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce job resource.
-               
-               <!-- Placing the html block above list will lead to improperly rendered content -->
-               * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-               The valid values are as follows:
-               + Flink
-               + HiveSql
-               + HiveScript
-               + MapReduce
-               + SparkSubmit
-               + SparkSql
-               + SparkScript
-               
-               Changing this will create a new MapReduce job resource.
-               
-               > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        :param pulumi.Input[_builtins.str] parameters: Specifies the parameters for the MapReduce job. Add an at sign (@) before
-               each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-               This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-               MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] program_parameters: Specifies the the key/value pairs of the program parameters, such as
-               thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-               can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-               **HiveScript**. Refer to the documents for each type of support key-values.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] program_path: Specifies the .jar package path or .py file path for program execution.
-               The parameter must meet the following requirements:
-               + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-               + The address cannot be empty or full of spaces.
-               + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-               with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-               
-               Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the MapReduce job resource. If
-               omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] service_parameters: Specifies the key/value pairs used to modify service configuration.
-               Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] sql: Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-               or **SparkSql**. Changing this will create a new MapReduce job resource.
         """
         ...
     @overload
@@ -623,40 +322,7 @@ class Job(pulumi.CustomResource):
                  args: JobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manage a job resource within SberCloud MRS.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        job_name = config.require_object("jobName")
-        program_path = config.require_object("programPath")
-        access_key = config.require_object("accessKey")
-        secret_key = config.require_object("secretKey")
-        test1 = sbercloud.mrs.Job("test_1",
-            cluster_id=cluster_id,
-            type="SparkSubmit",
-            name=job_name,
-            program_path=program_path,
-            parameters=f"{access_key} {secret_key} 1 obs://obs-demo-analysis/input obs://obs-demo-analysis/output",
-            program_parameters={
-                "--class": "com.sbercloud.bigdata.spark.examples.DriverBehavior",
-            })
-        ```
-
-        ## Import
-
-        MapReduce jobs can be imported using their `id` and the IDs of the MapReduce cluster to which the job belongs, separated
-        by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Mrs/job:Job test <cluster_id>/<id>
-        ```
-
+        Create a Job resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -737,54 +403,6 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies an ID of the MapReduce cluster to which the job belongs to.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] finish_time: The completion time of the MapReduce job.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the MapReduce job. The name can contain 1 to 64
-               characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-               MapReduce job resource.
-               
-               <!-- Placing the html block above list will lead to improperly rendered content -->
-               * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-               The valid values are as follows:
-               + Flink
-               + HiveSql
-               + HiveScript
-               + MapReduce
-               + SparkSubmit
-               + SparkSql
-               + SparkScript
-               
-               Changing this will create a new MapReduce job resource.
-               
-               > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        :param pulumi.Input[_builtins.str] parameters: Specifies the parameters for the MapReduce job. Add an at sign (@) before
-               each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-               This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-               MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] program_parameters: Specifies the the key/value pairs of the program parameters, such as
-               thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-               can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-               **HiveScript**. Refer to the documents for each type of support key-values.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] program_path: Specifies the .jar package path or .py file path for program execution.
-               The parameter must meet the following requirements:
-               + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-               + The address cannot be empty or full of spaces.
-               + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-               with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-               
-               Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the MapReduce job resource. If
-               omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] service_parameters: Specifies the key/value pairs used to modify service configuration.
-               Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-               Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] sql: Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-               or **SparkSql**. Changing this will create a new MapReduce job resource.
-        :param pulumi.Input[_builtins.str] start_time: The creation time of the MapReduce job.
-        :param pulumi.Input[_builtins.str] status: Status of the MapReduce job.
-        :param pulumi.Input[_builtins.str] submit_time: The submission time of the MapReduce job.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -808,133 +426,61 @@ class Job(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies an ID of the MapReduce cluster to which the job belongs to.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="finishTime")
     def finish_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The completion time of the MapReduce job.
-        """
         return pulumi.get(self, "finish_time")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the MapReduce job. The name can contain 1 to 64
-        characters, which may consist of letters, digits, underscores (_) and hyphens (-). Changing this will create a new
-        MapReduce job resource.
-
-        <!-- Placing the html block above list will lead to improperly rendered content -->
-        * <a name="mapreduce_job_type">`type`</a> - (Required, String, ForceNew) Specifies the job type.
-        The valid values are as follows:
-        + Flink
-        + HiveSql
-        + HiveScript
-        + MapReduce
-        + SparkSubmit
-        + SparkSql
-        + SparkScript
-
-        Changing this will create a new MapReduce job resource.
-
-        > **NOTE:** Spark and Hive jobs can be added to only clusters including Spark and Hive components.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the parameters for the MapReduce job. Add an at sign (@) before
-        each parameter can prevent the parameters being saved in plaintext format. Each parameters are separated with spaces.
-        This parameter can be set when `type` is **Flink**, **MapReduce** or **SparkSubmit**. Changing this will create a new
-        MapReduce job resource.
-        """
         return pulumi.get(self, "parameters")
 
     @_builtins.property
     @pulumi.getter(name="programParameters")
     def program_parameters(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the the key/value pairs of the program parameters, such as
-        thread, memory, and vCPUs, are used to optimize resource usage and improve job execution performance. This parameter
-        can be set when `type` is **Flink**, **SparkSubmit**, **SparkSql**, **SparkScript**, **HiveSql** or
-        **HiveScript**. Refer to the documents for each type of support key-values.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "program_parameters")
 
     @_builtins.property
     @pulumi.getter(name="programPath")
     def program_path(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the .jar package path or .py file path for program execution.
-        The parameter must meet the following requirements:
-        + Contains a maximum of 1023 characters, excluding special characters such as `;|&><'$`.
-        + The address cannot be empty or full of spaces.
-        + The program support OBS or DHFS to storage program file or package. For OBS, starts with (OBS:) **obs://** and end
-        with **.jar** or **.py**. For DHFS, starts with (DHFS:) **/user**.
-
-        Required if `type` is **MapReduce** or **SparkSubmit**. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "program_path")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the MapReduce job resource. If
-        omitted, the provider-level region will be used. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="serviceParameters")
     def service_parameters(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs used to modify service configuration.
-        Parameter configurations of services are available on the Service Configuration tab page of MapReduce Manager.
-        Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "service_parameters")
 
     @_builtins.property
     @pulumi.getter
     def sql(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the SQL command or file path. Only required if `type` is **HiveSql**
-        or **SparkSql**. Changing this will create a new MapReduce job resource.
-        """
         return pulumi.get(self, "sql")
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The creation time of the MapReduce job.
-        """
         return pulumi.get(self, "start_time")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Status of the MapReduce job.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="submitTime")
     def submit_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        The submission time of the MapReduce job.
-        """
         return pulumi.get(self, "submit_time")
 
     @_builtins.property

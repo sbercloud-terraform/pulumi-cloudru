@@ -111,22 +111,10 @@ func (o BackupDatabaseArrayOutput) Index(i pulumi.IntInput) BackupDatabaseOutput
 }
 
 type InstanceBackupStrategy struct {
-	// Specifies the retention days for specific backup files. The value range is from 0 to 732.
-	//
-	// > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-	// policy.
-	KeepDays *int `pulumi:"keepDays"`
-	// Specifies the backup cycle. Automatic backups will be performed on the specified days of
-	// the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-	// number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-	// Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
-	Period *string `pulumi:"period"`
-	// Specifies the backup time window. Automated backups will be triggered during the
-	// backup time window. It must be a valid value in the **hh:mm-HH:MM**
-	// format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-	// MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-	// 00.
-	StartTime string `pulumi:"startTime"`
+	// schema: Required
+	KeepDays  *int    `pulumi:"keepDays"`
+	Period    *string `pulumi:"period"`
+	StartTime string  `pulumi:"startTime"`
 }
 
 // InstanceBackupStrategyInput is an input type that accepts InstanceBackupStrategyArgs and InstanceBackupStrategyOutput values.
@@ -141,22 +129,10 @@ type InstanceBackupStrategyInput interface {
 }
 
 type InstanceBackupStrategyArgs struct {
-	// Specifies the retention days for specific backup files. The value range is from 0 to 732.
-	//
-	// > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-	// policy.
-	KeepDays pulumi.IntPtrInput `pulumi:"keepDays"`
-	// Specifies the backup cycle. Automatic backups will be performed on the specified days of
-	// the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-	// number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-	// Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
-	Period pulumi.StringPtrInput `pulumi:"period"`
-	// Specifies the backup time window. Automated backups will be triggered during the
-	// backup time window. It must be a valid value in the **hh:mm-HH:MM**
-	// format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-	// MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-	// 00.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	// schema: Required
+	KeepDays  pulumi.IntPtrInput    `pulumi:"keepDays"`
+	Period    pulumi.StringPtrInput `pulumi:"period"`
+	StartTime pulumi.StringInput    `pulumi:"startTime"`
 }
 
 func (InstanceBackupStrategyArgs) ElementType() reflect.Type {
@@ -236,27 +212,15 @@ func (o InstanceBackupStrategyOutput) ToInstanceBackupStrategyPtrOutputWithConte
 	}).(InstanceBackupStrategyPtrOutput)
 }
 
-// Specifies the retention days for specific backup files. The value range is from 0 to 732.
-//
-// > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-// policy.
+// schema: Required
 func (o InstanceBackupStrategyOutput) KeepDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBackupStrategy) *int { return v.KeepDays }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the backup cycle. Automatic backups will be performed on the specified days of
-// the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-// number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-// Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
 func (o InstanceBackupStrategyOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupStrategy) *string { return v.Period }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the backup time window. Automated backups will be triggered during the
-// backup time window. It must be a valid value in the **hh:mm-HH:MM**
-// format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-// MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-// 00.
 func (o InstanceBackupStrategyOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceBackupStrategy) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -285,10 +249,7 @@ func (o InstanceBackupStrategyPtrOutput) Elem() InstanceBackupStrategyOutput {
 	}).(InstanceBackupStrategyOutput)
 }
 
-// Specifies the retention days for specific backup files. The value range is from 0 to 732.
-//
-// > **NOTE:** Primary/standby DB instances of Microsoft SQL Server do not support disabling the automated backup
-// policy.
+// schema: Required
 func (o InstanceBackupStrategyPtrOutput) KeepDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupStrategy) *int {
 		if v == nil {
@@ -298,10 +259,6 @@ func (o InstanceBackupStrategyPtrOutput) KeepDays() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the backup cycle. Automatic backups will be performed on the specified days of
-// the week, except when disabling the automatic backup policy. The value range is a comma-separated number, where each
-// number represents a day of the week. For example, a value of 1,2,3,4 would set the backup cycle to Monday, Tuesday,
-// Wednesday, and Thursday. The default value is 1,2,3,4,5,6,7.
 func (o InstanceBackupStrategyPtrOutput) Period() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupStrategy) *string {
 		if v == nil {
@@ -311,11 +268,6 @@ func (o InstanceBackupStrategyPtrOutput) Period() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the backup time window. Automated backups will be triggered during the
-// backup time window. It must be a valid value in the **hh:mm-HH:MM**
-// format. The current time is in the UTC format. The HH value must be 1 greater than the hh value. The values of mm and
-// MM must be the same and must be set to any of the following: 00, 15, 30, or 45. Example value: 08:15-09:15 23:00-00:
-// 00.
 func (o InstanceBackupStrategyPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupStrategy) *string {
 		if v == nil {
@@ -326,26 +278,11 @@ func (o InstanceBackupStrategyPtrOutput) StartTime() pulumi.StringPtrOutput {
 }
 
 type InstanceDb struct {
-	// Specifies the database password. The value should contain 8 to 32 characters,
-	// including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-	// to enter a strong password to improve security, preventing security risks such as brute force cracking.
 	Password *string `pulumi:"password"`
-	// Specifies the database port.
-	// + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-	//   and cannot be used). The default value is 3306.
-	// + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-	// + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-	//   default value is 1433.
-	// + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-	//   and cannot be used). The default value is 3306.
-	Port *int `pulumi:"port"`
-	// Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-	// and **SQLServer**. Changing this parameter will create a new resource.
+	Port     *int    `pulumi:"port"`
 	Type     string  `pulumi:"type"`
 	UserName *string `pulumi:"userName"`
-	// Specifies the database version. Changing this parameter will create a new
-	// resource.
-	Version string `pulumi:"version"`
+	Version  string  `pulumi:"version"`
 }
 
 // InstanceDbInput is an input type that accepts InstanceDbArgs and InstanceDbOutput values.
@@ -360,26 +297,11 @@ type InstanceDbInput interface {
 }
 
 type InstanceDbArgs struct {
-	// Specifies the database password. The value should contain 8 to 32 characters,
-	// including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-	// to enter a strong password to improve security, preventing security risks such as brute force cracking.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Specifies the database port.
-	// + The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-	//   and cannot be used). The default value is 3306.
-	// + The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-	// + The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-	//   default value is 1433.
-	// + The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-	//   and cannot be used). The default value is 3306.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-	// and **SQLServer**. Changing this parameter will create a new resource.
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
 	Type     pulumi.StringInput    `pulumi:"type"`
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
-	// Specifies the database version. Changing this parameter will create a new
-	// resource.
-	Version pulumi.StringInput `pulumi:"version"`
+	Version  pulumi.StringInput    `pulumi:"version"`
 }
 
 func (InstanceDbArgs) ElementType() reflect.Type {
@@ -459,27 +381,14 @@ func (o InstanceDbOutput) ToInstanceDbPtrOutputWithContext(ctx context.Context) 
 	}).(InstanceDbPtrOutput)
 }
 
-// Specifies the database password. The value should contain 8 to 32 characters,
-// including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-// to enter a strong password to improve security, preventing security risks such as brute force cracking.
 func (o InstanceDbOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDb) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the database port.
-//   - The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-//     and cannot be used). The default value is 3306.
-//   - The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-//   - The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-//     default value is 1433.
-//   - The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-//     and cannot be used). The default value is 3306.
 func (o InstanceDbOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDb) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-// and **SQLServer**. Changing this parameter will create a new resource.
 func (o InstanceDbOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDb) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -488,8 +397,6 @@ func (o InstanceDbOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDb) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the database version. Changing this parameter will create a new
-// resource.
 func (o InstanceDbOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceDb) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -518,9 +425,6 @@ func (o InstanceDbPtrOutput) Elem() InstanceDbOutput {
 	}).(InstanceDbOutput)
 }
 
-// Specifies the database password. The value should contain 8 to 32 characters,
-// including uppercase and lowercase letters, digits, and the following special characters: ~!@#%^*-_=+? You are advised
-// to enter a strong password to improve security, preventing security risks such as brute force cracking.
 func (o InstanceDbPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDb) *string {
 		if v == nil {
@@ -530,14 +434,6 @@ func (o InstanceDbPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the database port.
-//   - The MySQL database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-//     and cannot be used). The default value is 3306.
-//   - The PostgreSQL database port ranges from 2100 to 9500. The default value is 5432.
-//   - The Microsoft SQL Server database port can be 1433 or ranges from 2100 to 9500, excluding 5355 and 5985. The
-//     default value is 1433.
-//   - The MariaDB database port ranges from 1024 to 65535 (excluding 12017 and 33071, which are occupied by the RDS system
-//     and cannot be used). The default value is 3306.
 func (o InstanceDbPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceDb) *int {
 		if v == nil {
@@ -547,8 +443,6 @@ func (o InstanceDbPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the DB engine. Available value are **MySQL**, **PostgreSQL**
-// and **SQLServer**. Changing this parameter will create a new resource.
 func (o InstanceDbPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDb) *string {
 		if v == nil {
@@ -567,8 +461,6 @@ func (o InstanceDbPtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the database version. Changing this parameter will create a new
-// resource.
 func (o InstanceDbPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceDb) *string {
 		if v == nil {
@@ -579,12 +471,9 @@ func (o InstanceDbPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type InstanceMsdtcHost struct {
-	// Specifies the host name.
-	HostName string `pulumi:"hostName"`
-	// Indicates the host ID.
-	Id *string `pulumi:"id"`
-	// Specifies the host IP address.
-	Ip string `pulumi:"ip"`
+	HostName string  `pulumi:"hostName"`
+	Id       *string `pulumi:"id"`
+	Ip       string  `pulumi:"ip"`
 }
 
 // InstanceMsdtcHostInput is an input type that accepts InstanceMsdtcHostArgs and InstanceMsdtcHostOutput values.
@@ -599,12 +488,9 @@ type InstanceMsdtcHostInput interface {
 }
 
 type InstanceMsdtcHostArgs struct {
-	// Specifies the host name.
-	HostName pulumi.StringInput `pulumi:"hostName"`
-	// Indicates the host ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the host IP address.
-	Ip pulumi.StringInput `pulumi:"ip"`
+	HostName pulumi.StringInput    `pulumi:"hostName"`
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	Ip       pulumi.StringInput    `pulumi:"ip"`
 }
 
 func (InstanceMsdtcHostArgs) ElementType() reflect.Type {
@@ -658,17 +544,14 @@ func (o InstanceMsdtcHostOutput) ToInstanceMsdtcHostOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the host name.
 func (o InstanceMsdtcHostOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMsdtcHost) string { return v.HostName }).(pulumi.StringOutput)
 }
 
-// Indicates the host ID.
 func (o InstanceMsdtcHostOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMsdtcHost) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the host IP address.
 func (o InstanceMsdtcHostOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceMsdtcHost) string { return v.Ip }).(pulumi.StringOutput)
 }
@@ -694,20 +577,11 @@ func (o InstanceMsdtcHostArrayOutput) Index(i pulumi.IntInput) InstanceMsdtcHost
 }
 
 type InstanceNode struct {
-	// Specifies the list of AZ name. Changing this parameter will create a
-	// new resource.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Indicates the host ID.
-	Id *string `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type must be unique for
-	// the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-	// contain only letters, digits, hyphens (-), and underscores (_).
-	Name *string `pulumi:"name"`
-	// Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-	// respectively.
-	Role *string `pulumi:"role"`
-	// Indicates the node status.
-	Status *string `pulumi:"status"`
+	Id               *string `pulumi:"id"`
+	Name             *string `pulumi:"name"`
+	Role             *string `pulumi:"role"`
+	Status           *string `pulumi:"status"`
 }
 
 // InstanceNodeInput is an input type that accepts InstanceNodeArgs and InstanceNodeOutput values.
@@ -722,20 +596,11 @@ type InstanceNodeInput interface {
 }
 
 type InstanceNodeArgs struct {
-	// Specifies the list of AZ name. Changing this parameter will create a
-	// new resource.
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Indicates the host ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Specifies the DB instance name. The DB instance name of the same type must be unique for
-	// the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-	// contain only letters, digits, hyphens (-), and underscores (_).
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-	// respectively.
-	Role pulumi.StringPtrInput `pulumi:"role"`
-	// Indicates the node status.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Id               pulumi.StringPtrInput `pulumi:"id"`
+	Name             pulumi.StringPtrInput `pulumi:"name"`
+	Role             pulumi.StringPtrInput `pulumi:"role"`
+	Status           pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (InstanceNodeArgs) ElementType() reflect.Type {
@@ -789,31 +654,22 @@ func (o InstanceNodeOutput) ToInstanceNodeOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Specifies the list of AZ name. Changing this parameter will create a
-// new resource.
 func (o InstanceNodeOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the host ID.
 func (o InstanceNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the DB instance name. The DB instance name of the same type must be unique for
-// the same tenant. The value must be 4 to 64 characters in length and start with a letter. It is case-sensitive and can
-// contain only letters, digits, hyphens (-), and underscores (_).
 func (o InstanceNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the node type. The value can be master or slave, indicating the primary node or standby node
-// respectively.
 func (o InstanceNodeOutput) Role() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the node status.
 func (o InstanceNodeOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNode) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -839,13 +695,7 @@ func (o InstanceNodeArrayOutput) Index(i pulumi.IntInput) InstanceNodeOutput {
 }
 
 type InstanceParameter struct {
-	// Specifies the parameter name. Some of them needs the instance to be restarted
-	// to take effect.
-	Name string `pulumi:"name"`
-	// Specifies the parameter value.
-	//
-	// <a name="RdsInstance_MsdtcHosts"></a>
-	// The `msdtcHosts` block supports:
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -861,13 +711,7 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	// Specifies the parameter name. Some of them needs the instance to be restarted
-	// to take effect.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the parameter value.
-	//
-	// <a name="RdsInstance_MsdtcHosts"></a>
-	// The `msdtcHosts` block supports:
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -922,16 +766,10 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the parameter name. Some of them needs the instance to be restarted
-// to take effect.
 func (o InstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the parameter value.
-//
-// <a name="RdsInstance_MsdtcHosts"></a>
-// The `msdtcHosts` block supports:
 func (o InstanceParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -957,15 +795,9 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 }
 
 type InstanceRestore struct {
-	// Specifies the ID of the backup used to restore data. Changing this
-	// parameter will create a new resource.
-	BackupId string `pulumi:"backupId"`
-	// Specifies the database to be restored. This parameter applies only to
-	// Microsoft SQL Server databases. Changing this parameter will create a new resource.
+	BackupId     string            `pulumi:"backupId"`
 	DatabaseName map[string]string `pulumi:"databaseName"`
-	// Specifies the source DB instance ID. Changing this parameter will create
-	// a new resource.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId   string            `pulumi:"instanceId"`
 }
 
 // InstanceRestoreInput is an input type that accepts InstanceRestoreArgs and InstanceRestoreOutput values.
@@ -980,15 +812,9 @@ type InstanceRestoreInput interface {
 }
 
 type InstanceRestoreArgs struct {
-	// Specifies the ID of the backup used to restore data. Changing this
-	// parameter will create a new resource.
-	BackupId pulumi.StringInput `pulumi:"backupId"`
-	// Specifies the database to be restored. This parameter applies only to
-	// Microsoft SQL Server databases. Changing this parameter will create a new resource.
+	BackupId     pulumi.StringInput    `pulumi:"backupId"`
 	DatabaseName pulumi.StringMapInput `pulumi:"databaseName"`
-	// Specifies the source DB instance ID. Changing this parameter will create
-	// a new resource.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	InstanceId   pulumi.StringInput    `pulumi:"instanceId"`
 }
 
 func (InstanceRestoreArgs) ElementType() reflect.Type {
@@ -1068,20 +894,14 @@ func (o InstanceRestoreOutput) ToInstanceRestorePtrOutputWithContext(ctx context
 	}).(InstanceRestorePtrOutput)
 }
 
-// Specifies the ID of the backup used to restore data. Changing this
-// parameter will create a new resource.
 func (o InstanceRestoreOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceRestore) string { return v.BackupId }).(pulumi.StringOutput)
 }
 
-// Specifies the database to be restored. This parameter applies only to
-// Microsoft SQL Server databases. Changing this parameter will create a new resource.
 func (o InstanceRestoreOutput) DatabaseName() pulumi.StringMapOutput {
 	return o.ApplyT(func(v InstanceRestore) map[string]string { return v.DatabaseName }).(pulumi.StringMapOutput)
 }
 
-// Specifies the source DB instance ID. Changing this parameter will create
-// a new resource.
 func (o InstanceRestoreOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceRestore) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -1110,8 +930,6 @@ func (o InstanceRestorePtrOutput) Elem() InstanceRestoreOutput {
 	}).(InstanceRestoreOutput)
 }
 
-// Specifies the ID of the backup used to restore data. Changing this
-// parameter will create a new resource.
 func (o InstanceRestorePtrOutput) BackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceRestore) *string {
 		if v == nil {
@@ -1121,8 +939,6 @@ func (o InstanceRestorePtrOutput) BackupId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the database to be restored. This parameter applies only to
-// Microsoft SQL Server databases. Changing this parameter will create a new resource.
 func (o InstanceRestorePtrOutput) DatabaseName() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InstanceRestore) map[string]string {
 		if v == nil {
@@ -1132,8 +948,6 @@ func (o InstanceRestorePtrOutput) DatabaseName() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Specifies the source DB instance ID. Changing this parameter will create
-// a new resource.
 func (o InstanceRestorePtrOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceRestore) *string {
 		if v == nil {
@@ -1144,30 +958,11 @@ func (o InstanceRestorePtrOutput) InstanceId() pulumi.StringPtrOutput {
 }
 
 type InstanceVolume struct {
-	// Specifies the key ID for disk encryption.
-	// Changing this parameter will create a new resource.
 	DiskEncryptionId *string `pulumi:"diskEncryptionId"`
-	// Specifies the upper limit of automatic expansion of storage, in GB.
-	LimitSize *int `pulumi:"limitSize"`
-	// Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-	// multiple of 10 and greater than the original size.
-	Size int `pulumi:"size"`
-	// Specifies the threshold to trigger automatic expansion.\
-	// If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-	// The valid values are as follows:
-	// + **10**
-	// + **15**
-	// + **20**
-	TriggerThreshold *int `pulumi:"triggerThreshold"`
-	// Specifies the volume type. Its value can be any of the following and is
-	// case-sensitive:
-	// + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-	//   instances (MySQL and PostreSQL).
-	// + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-	// + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-	//
-	// Changing this parameter will create a new resource.
-	Type string `pulumi:"type"`
+	LimitSize        *int    `pulumi:"limitSize"`
+	Size             int     `pulumi:"size"`
+	TriggerThreshold *int    `pulumi:"triggerThreshold"`
+	Type             string  `pulumi:"type"`
 }
 
 // InstanceVolumeInput is an input type that accepts InstanceVolumeArgs and InstanceVolumeOutput values.
@@ -1182,30 +977,11 @@ type InstanceVolumeInput interface {
 }
 
 type InstanceVolumeArgs struct {
-	// Specifies the key ID for disk encryption.
-	// Changing this parameter will create a new resource.
 	DiskEncryptionId pulumi.StringPtrInput `pulumi:"diskEncryptionId"`
-	// Specifies the upper limit of automatic expansion of storage, in GB.
-	LimitSize pulumi.IntPtrInput `pulumi:"limitSize"`
-	// Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-	// multiple of 10 and greater than the original size.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the threshold to trigger automatic expansion.\
-	// If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-	// The valid values are as follows:
-	// + **10**
-	// + **15**
-	// + **20**
-	TriggerThreshold pulumi.IntPtrInput `pulumi:"triggerThreshold"`
-	// Specifies the volume type. Its value can be any of the following and is
-	// case-sensitive:
-	// + **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-	//   instances (MySQL and PostreSQL).
-	// + **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-	// + **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-	//
-	// Changing this parameter will create a new resource.
-	Type pulumi.StringInput `pulumi:"type"`
+	LimitSize        pulumi.IntPtrInput    `pulumi:"limitSize"`
+	Size             pulumi.IntInput       `pulumi:"size"`
+	TriggerThreshold pulumi.IntPtrInput    `pulumi:"triggerThreshold"`
+	Type             pulumi.StringInput    `pulumi:"type"`
 }
 
 func (InstanceVolumeArgs) ElementType() reflect.Type {
@@ -1285,41 +1061,22 @@ func (o InstanceVolumeOutput) ToInstanceVolumePtrOutputWithContext(ctx context.C
 	}).(InstanceVolumePtrOutput)
 }
 
-// Specifies the key ID for disk encryption.
-// Changing this parameter will create a new resource.
 func (o InstanceVolumeOutput) DiskEncryptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceVolume) *string { return v.DiskEncryptionId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the upper limit of automatic expansion of storage, in GB.
 func (o InstanceVolumeOutput) LimitSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceVolume) *int { return v.LimitSize }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-// multiple of 10 and greater than the original size.
 func (o InstanceVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the threshold to trigger automatic expansion.\
-// If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-// The valid values are as follows:
-// + **10**
-// + **15**
-// + **20**
 func (o InstanceVolumeOutput) TriggerThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceVolume) *int { return v.TriggerThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Its value can be any of the following and is
-// case-sensitive:
-//   - **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-//     instances (MySQL and PostreSQL).
-//   - **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-//   - **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-//
-// Changing this parameter will create a new resource.
 func (o InstanceVolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceVolume) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1348,8 +1105,6 @@ func (o InstanceVolumePtrOutput) Elem() InstanceVolumeOutput {
 	}).(InstanceVolumeOutput)
 }
 
-// Specifies the key ID for disk encryption.
-// Changing this parameter will create a new resource.
 func (o InstanceVolumePtrOutput) DiskEncryptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceVolume) *string {
 		if v == nil {
@@ -1359,7 +1114,6 @@ func (o InstanceVolumePtrOutput) DiskEncryptionId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the upper limit of automatic expansion of storage, in GB.
 func (o InstanceVolumePtrOutput) LimitSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceVolume) *int {
 		if v == nil {
@@ -1369,8 +1123,6 @@ func (o InstanceVolumePtrOutput) LimitSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume size. Its value range is from 40 GB to 4000 GB. The value must be a
-// multiple of 10 and greater than the original size.
 func (o InstanceVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceVolume) *int {
 		if v == nil {
@@ -1380,12 +1132,6 @@ func (o InstanceVolumePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the threshold to trigger automatic expansion.\
-// If the available storage drops to this threshold or `10` GB, the automatic expansion is triggered.
-// The valid values are as follows:
-// + **10**
-// + **15**
-// + **20**
 func (o InstanceVolumePtrOutput) TriggerThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceVolume) *int {
 		if v == nil {
@@ -1395,14 +1141,6 @@ func (o InstanceVolumePtrOutput) TriggerThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Its value can be any of the following and is
-// case-sensitive:
-//   - **CLOUDSSD**: cloud SSD storage. This storage type is supported only with general-purpose and dedicated DB
-//     instances (MySQL and PostreSQL).
-//   - **ESSD**: extreme SSD storage. Supported by: MySQL primary/standby, PostgeSQL (both single and primary/standby).
-//   - **ULTRAHIGH** the only storage type for SQLServer, not supported by other DB engines.
-//
-// Changing this parameter will create a new resource.
 func (o InstanceVolumePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceVolume) *string {
 		if v == nil {
@@ -1415,11 +1153,7 @@ func (o InstanceVolumePtrOutput) Type() pulumi.StringPtrOutput {
 type MysqlDatabasePrivilegeUser struct {
 	// Specifies the username of the database account.
 	Name string `pulumi:"name"`
-	// Specifies the read-only permission. The value can be:
-	// + **true**: indicates the read-only permission.
-	// + **false**: indicates the read and write permission.
-	//
-	// The default value is **false**.
+	// Specifies the read-only permission.
 	Readonly *bool `pulumi:"readonly"`
 }
 
@@ -1437,11 +1171,7 @@ type MysqlDatabasePrivilegeUserInput interface {
 type MysqlDatabasePrivilegeUserArgs struct {
 	// Specifies the username of the database account.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the read-only permission. The value can be:
-	// + **true**: indicates the read-only permission.
-	// + **false**: indicates the read and write permission.
-	//
-	// The default value is **false**.
+	// Specifies the read-only permission.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 }
 
@@ -1501,11 +1231,7 @@ func (o MysqlDatabasePrivilegeUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabasePrivilegeUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the read-only permission. The value can be:
-// + **true**: indicates the read-only permission.
-// + **false**: indicates the read and write permission.
-//
-// The default value is **false**.
+// Specifies the read-only permission.
 func (o MysqlDatabasePrivilegeUserOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MysqlDatabasePrivilegeUser) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
@@ -1531,13 +1257,9 @@ func (o MysqlDatabasePrivilegeUserArrayOutput) Index(i pulumi.IntInput) MysqlDat
 }
 
 type MysqlDatabaseTableRestoreDatabase struct {
-	// Specifies the name of the table after restoration.
-	//
-	// Changing this creates a new resource.
+	// Specifies the name of the database after restoration.
 	NewName string `pulumi:"newName"`
-	// Specifies the name of the table before restoration.
-	//
-	// Changing this creates a new resource.
+	// Specifies the name of the database before restoration.
 	OldName string `pulumi:"oldName"`
 }
 
@@ -1553,13 +1275,9 @@ type MysqlDatabaseTableRestoreDatabaseInput interface {
 }
 
 type MysqlDatabaseTableRestoreDatabaseArgs struct {
-	// Specifies the name of the table after restoration.
-	//
-	// Changing this creates a new resource.
+	// Specifies the name of the database after restoration.
 	NewName pulumi.StringInput `pulumi:"newName"`
-	// Specifies the name of the table before restoration.
-	//
-	// Changing this creates a new resource.
+	// Specifies the name of the database before restoration.
 	OldName pulumi.StringInput `pulumi:"oldName"`
 }
 
@@ -1614,16 +1332,12 @@ func (o MysqlDatabaseTableRestoreDatabaseOutput) ToMysqlDatabaseTableRestoreData
 	return o
 }
 
-// Specifies the name of the table after restoration.
-//
-// Changing this creates a new resource.
+// Specifies the name of the database after restoration.
 func (o MysqlDatabaseTableRestoreDatabaseOutput) NewName() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabaseTableRestoreDatabase) string { return v.NewName }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the table before restoration.
-//
-// Changing this creates a new resource.
+// Specifies the name of the database before restoration.
 func (o MysqlDatabaseTableRestoreDatabaseOutput) OldName() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabaseTableRestoreDatabase) string { return v.OldName }).(pulumi.StringOutput)
 }
@@ -1650,16 +1364,8 @@ func (o MysqlDatabaseTableRestoreDatabaseArrayOutput) Index(i pulumi.IntInput) M
 
 type MysqlDatabaseTableRestoreRestoreTable struct {
 	// Specifies the database name.
-	//
-	// Changing this creates a new resource.
 	Database string `pulumi:"database"`
 	// Specifies the tables.
-	// The tables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// <a name="tablesStruct"></a>
-	// The `tables` block supports:
 	Tables []MysqlDatabaseTableRestoreRestoreTableTable `pulumi:"tables"`
 }
 
@@ -1676,16 +1382,8 @@ type MysqlDatabaseTableRestoreRestoreTableInput interface {
 
 type MysqlDatabaseTableRestoreRestoreTableArgs struct {
 	// Specifies the database name.
-	//
-	// Changing this creates a new resource.
 	Database pulumi.StringInput `pulumi:"database"`
 	// Specifies the tables.
-	// The tables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// <a name="tablesStruct"></a>
-	// The `tables` block supports:
 	Tables MysqlDatabaseTableRestoreRestoreTableTableArrayInput `pulumi:"tables"`
 }
 
@@ -1741,19 +1439,11 @@ func (o MysqlDatabaseTableRestoreRestoreTableOutput) ToMysqlDatabaseTableRestore
 }
 
 // Specifies the database name.
-//
-// Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreRestoreTableOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabaseTableRestoreRestoreTable) string { return v.Database }).(pulumi.StringOutput)
 }
 
 // Specifies the tables.
-// The tables structure is documented below.
-//
-// Changing this creates a new resource.
-//
-// <a name="tablesStruct"></a>
-// The `tables` block supports:
 func (o MysqlDatabaseTableRestoreRestoreTableOutput) Tables() MysqlDatabaseTableRestoreRestoreTableTableArrayOutput {
 	return o.ApplyT(func(v MysqlDatabaseTableRestoreRestoreTable) []MysqlDatabaseTableRestoreRestoreTableTable {
 		return v.Tables
@@ -1782,12 +1472,8 @@ func (o MysqlDatabaseTableRestoreRestoreTableArrayOutput) Index(i pulumi.IntInpu
 
 type MysqlDatabaseTableRestoreRestoreTableTable struct {
 	// Specifies the name of the table after restoration.
-	//
-	// Changing this creates a new resource.
 	NewName string `pulumi:"newName"`
 	// Specifies the name of the table before restoration.
-	//
-	// Changing this creates a new resource.
 	OldName string `pulumi:"oldName"`
 }
 
@@ -1804,12 +1490,8 @@ type MysqlDatabaseTableRestoreRestoreTableTableInput interface {
 
 type MysqlDatabaseTableRestoreRestoreTableTableArgs struct {
 	// Specifies the name of the table after restoration.
-	//
-	// Changing this creates a new resource.
 	NewName pulumi.StringInput `pulumi:"newName"`
 	// Specifies the name of the table before restoration.
-	//
-	// Changing this creates a new resource.
 	OldName pulumi.StringInput `pulumi:"oldName"`
 }
 
@@ -1865,15 +1547,11 @@ func (o MysqlDatabaseTableRestoreRestoreTableTableOutput) ToMysqlDatabaseTableRe
 }
 
 // Specifies the name of the table after restoration.
-//
-// Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreRestoreTableTableOutput) NewName() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabaseTableRestoreRestoreTableTable) string { return v.NewName }).(pulumi.StringOutput)
 }
 
 // Specifies the name of the table before restoration.
-//
-// Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreRestoreTableTableOutput) OldName() pulumi.StringOutput {
 	return o.ApplyT(func(v MysqlDatabaseTableRestoreRestoreTableTable) string { return v.OldName }).(pulumi.StringOutput)
 }
@@ -1899,20 +1577,13 @@ func (o MysqlDatabaseTableRestoreRestoreTableTableArrayOutput) Index(i pulumi.In
 }
 
 type ParametergroupConfigurationParameter struct {
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-	Description *string `pulumi:"description"`
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name *string `pulumi:"name"`
-	// Indicates whether the parameter is read-only.
-	Readonly *bool `pulumi:"readonly"`
-	// Indicates whether a restart is required.
-	RestartRequired *bool `pulumi:"restartRequired"`
-	// Indicates the parameter type.
-	Type *string `pulumi:"type"`
-	// Indicates the parameter value.
-	Value *string `pulumi:"value"`
-	// Indicates the parameter value range.
-	ValueRange *string `pulumi:"valueRange"`
+	Description     *string `pulumi:"description"`
+	Name            *string `pulumi:"name"`
+	Readonly        *bool   `pulumi:"readonly"`
+	RestartRequired *bool   `pulumi:"restartRequired"`
+	Type            *string `pulumi:"type"`
+	Value           *string `pulumi:"value"`
+	ValueRange      *string `pulumi:"valueRange"`
 }
 
 // ParametergroupConfigurationParameterInput is an input type that accepts ParametergroupConfigurationParameterArgs and ParametergroupConfigurationParameterOutput values.
@@ -1927,20 +1598,13 @@ type ParametergroupConfigurationParameterInput interface {
 }
 
 type ParametergroupConfigurationParameterArgs struct {
-	// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The parameter group name. It contains a maximum of 64 characters.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates whether the parameter is read-only.
-	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
-	// Indicates whether a restart is required.
-	RestartRequired pulumi.BoolPtrInput `pulumi:"restartRequired"`
-	// Indicates the parameter type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Indicates the parameter value.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// Indicates the parameter value range.
-	ValueRange pulumi.StringPtrInput `pulumi:"valueRange"`
+	Description     pulumi.StringPtrInput `pulumi:"description"`
+	Name            pulumi.StringPtrInput `pulumi:"name"`
+	Readonly        pulumi.BoolPtrInput   `pulumi:"readonly"`
+	RestartRequired pulumi.BoolPtrInput   `pulumi:"restartRequired"`
+	Type            pulumi.StringPtrInput `pulumi:"type"`
+	Value           pulumi.StringPtrInput `pulumi:"value"`
+	ValueRange      pulumi.StringPtrInput `pulumi:"valueRange"`
 }
 
 func (ParametergroupConfigurationParameterArgs) ElementType() reflect.Type {
@@ -1994,37 +1658,30 @@ func (o ParametergroupConfigurationParameterOutput) ToParametergroupConfiguratio
 	return o
 }
 
-// The parameter group description. It contains a maximum of 256 characters and cannot contain the following special characters:>!<"&'= the value is left blank by default.
 func (o ParametergroupConfigurationParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The parameter group name. It contains a maximum of 64 characters.
 func (o ParametergroupConfigurationParameterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the parameter is read-only.
 func (o ParametergroupConfigurationParameterOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether a restart is required.
 func (o ParametergroupConfigurationParameterOutput) RestartRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *bool { return v.RestartRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates the parameter type.
 func (o ParametergroupConfigurationParameterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the parameter value.
 func (o ParametergroupConfigurationParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the parameter value range.
 func (o ParametergroupConfigurationParameterOutput) ValueRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParametergroupConfigurationParameter) *string { return v.ValueRange }).(pulumi.StringPtrOutput)
 }
@@ -2050,13 +1707,7 @@ func (o ParametergroupConfigurationParameterArrayOutput) Index(i pulumi.IntInput
 }
 
 type ParametergroupDatastore struct {
-	// The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-	Type string `pulumi:"type"`
-	// Specifies the database version.
-	//
-	// * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-	// * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-	// * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
+	Type    string `pulumi:"type"`
 	Version string `pulumi:"version"`
 }
 
@@ -2072,13 +1723,7 @@ type ParametergroupDatastoreInput interface {
 }
 
 type ParametergroupDatastoreArgs struct {
-	// The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Specifies the database version.
-	//
-	// * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-	// * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-	// * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
+	Type    pulumi.StringInput `pulumi:"type"`
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -2159,16 +1804,10 @@ func (o ParametergroupDatastoreOutput) ToParametergroupDatastorePtrOutputWithCon
 	}).(ParametergroupDatastorePtrOutput)
 }
 
-// The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
 func (o ParametergroupDatastoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ParametergroupDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the database version.
-//
-// * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-// * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-// * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
 func (o ParametergroupDatastoreOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v ParametergroupDatastore) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -2197,7 +1836,6 @@ func (o ParametergroupDatastorePtrOutput) Elem() ParametergroupDatastoreOutput {
 	}).(ParametergroupDatastoreOutput)
 }
 
-// The DB engine. Currently, MySQL, PostgreSQL, and Microsoft SQL Server are supported. The value is case-insensitive and can be mysql, postgresql, or sqlserver.
 func (o ParametergroupDatastorePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ParametergroupDatastore) *string {
 		if v == nil {
@@ -2207,11 +1845,6 @@ func (o ParametergroupDatastorePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the database version.
-//
-// * MySQL databases support MySQL 5.6, 5.7 and 8.0. Example value: 5.7.
-// * PostgreSQL databases support PostgreSQL 9.5, 9.6, 10, 11 and 12. Example value: 9.5.
-// * Microsoft SQL Server databases support 2012_SE, 2014_SE, 2016_SE, 2012_EE, 2014_EE, 2016_EE and 2017_EE. Example value: 2014_SE.
 func (o ParametergroupDatastorePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ParametergroupDatastore) *string {
 		if v == nil {
@@ -2232,7 +1865,8 @@ type PgAccountAttribute struct {
 	RolCreateDb *bool `pulumi:"rolCreateDb"`
 	// Indicates whether a user can create other sub-users.
 	RolCreateRole *bool `pulumi:"rolCreateRole"`
-	// Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+	// Indicates whether a user automatically inherits the permissions of the role to which the
+	// user belongs.
 	RolInherit *bool `pulumi:"rolInherit"`
 	// Indicates whether the user is a replication role.
 	RolReplication *bool `pulumi:"rolReplication"`
@@ -2262,7 +1896,8 @@ type PgAccountAttributeArgs struct {
 	RolCreateDb pulumi.BoolPtrInput `pulumi:"rolCreateDb"`
 	// Indicates whether a user can create other sub-users.
 	RolCreateRole pulumi.BoolPtrInput `pulumi:"rolCreateRole"`
-	// Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+	// Indicates whether a user automatically inherits the permissions of the role to which the
+	// user belongs.
 	RolInherit pulumi.BoolPtrInput `pulumi:"rolInherit"`
 	// Indicates whether the user is a replication role.
 	RolReplication pulumi.BoolPtrInput `pulumi:"rolReplication"`
@@ -2346,7 +1981,8 @@ func (o PgAccountAttributeOutput) RolCreateRole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PgAccountAttribute) *bool { return v.RolCreateRole }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether a user automatically inherits the permissions of the role to which the user belongs.
+// Indicates whether a user automatically inherits the permissions of the role to which the
+// user belongs.
 func (o PgAccountAttributeOutput) RolInherit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PgAccountAttribute) *bool { return v.RolInherit }).(pulumi.BoolPtrOutput)
 }
@@ -2524,14 +2160,10 @@ func (o PgHbaHostBasedAuthenticationArrayOutput) Index(i pulumi.IntInput) PgHbaH
 }
 
 type ReadReplicaInstanceDb struct {
-	// Indicates the database port information.
-	Port *int `pulumi:"port"`
-	// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	Type *string `pulumi:"type"`
-	// Indicates the default user name of database.
+	Port     *int    `pulumi:"port"`
+	Type     *string `pulumi:"type"`
 	UserName *string `pulumi:"userName"`
-	// Indicates the database version.
-	Version *string `pulumi:"version"`
+	Version  *string `pulumi:"version"`
 }
 
 // ReadReplicaInstanceDbInput is an input type that accepts ReadReplicaInstanceDbArgs and ReadReplicaInstanceDbOutput values.
@@ -2546,14 +2178,10 @@ type ReadReplicaInstanceDbInput interface {
 }
 
 type ReadReplicaInstanceDbArgs struct {
-	// Indicates the database port information.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Indicates the default user name of database.
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
+	Type     pulumi.StringPtrInput `pulumi:"type"`
 	UserName pulumi.StringPtrInput `pulumi:"userName"`
-	// Indicates the database version.
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	Version  pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (ReadReplicaInstanceDbArgs) ElementType() reflect.Type {
@@ -2633,22 +2261,18 @@ func (o ReadReplicaInstanceDbOutput) ToReadReplicaInstanceDbPtrOutputWithContext
 	}).(ReadReplicaInstanceDbPtrOutput)
 }
 
-// Indicates the database port information.
 func (o ReadReplicaInstanceDbOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceDb) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
 func (o ReadReplicaInstanceDbOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceDb) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the default user name of database.
 func (o ReadReplicaInstanceDbOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceDb) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the database version.
 func (o ReadReplicaInstanceDbOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceDb) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2677,7 +2301,6 @@ func (o ReadReplicaInstanceDbPtrOutput) Elem() ReadReplicaInstanceDbOutput {
 	}).(ReadReplicaInstanceDbOutput)
 }
 
-// Indicates the database port information.
 func (o ReadReplicaInstanceDbPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstanceDb) *int {
 		if v == nil {
@@ -2687,7 +2310,6 @@ func (o ReadReplicaInstanceDbPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Indicates the DB engine. Value: MySQL, PostgreSQL, SQLServer.
 func (o ReadReplicaInstanceDbPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstanceDb) *string {
 		if v == nil {
@@ -2697,7 +2319,6 @@ func (o ReadReplicaInstanceDbPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates the default user name of database.
 func (o ReadReplicaInstanceDbPtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstanceDb) *string {
 		if v == nil {
@@ -2707,7 +2328,6 @@ func (o ReadReplicaInstanceDbPtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Indicates the database version.
 func (o ReadReplicaInstanceDbPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstanceDb) *string {
 		if v == nil {
@@ -2718,10 +2338,6 @@ func (o ReadReplicaInstanceDbPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type ReadReplicaInstanceParameter struct {
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
@@ -2738,10 +2354,6 @@ type ReadReplicaInstanceParameterInput interface {
 }
 
 type ReadReplicaInstanceParameterArgs struct {
-	// Specifies the DB instance name. The DB instance name of the same type
-	// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-	// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-	// Changing this parameter will create a new resource.
 	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -2797,10 +2409,6 @@ func (o ReadReplicaInstanceParameterOutput) ToReadReplicaInstanceParameterOutput
 	return o
 }
 
-// Specifies the DB instance name. The DB instance name of the same type
-// must be unique for the same tenant. The value must be 4 to 64 characters in length and start with a letter.
-// It is case-sensitive and can contain only letters, digits, hyphens (-), and underscores (_).
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2830,18 +2438,12 @@ func (o ReadReplicaInstanceParameterArrayOutput) Index(i pulumi.IntInput) ReadRe
 }
 
 type ReadReplicaInstanceVolume struct {
-	// Specifies the key ID for disk encryption.
-	// Changing this parameter will create a new resource.
+	// schema: Computed
 	DiskEncryptionId *string `pulumi:"diskEncryptionId"`
 	LimitSize        *int    `pulumi:"limitSize"`
 	Size             *int    `pulumi:"size"`
 	TriggerThreshold *int    `pulumi:"triggerThreshold"`
-	// Specifies the volume type. Its value can be any of the following and is case-sensitive:
-	// - *ESSD* - ultrahigh I/O.
-	// - *CLOUDSSD* - high I/O.
-	//
-	// Changing this parameter will create a new resource.
-	Type string `pulumi:"type"`
+	Type             string  `pulumi:"type"`
 }
 
 // ReadReplicaInstanceVolumeInput is an input type that accepts ReadReplicaInstanceVolumeArgs and ReadReplicaInstanceVolumeOutput values.
@@ -2856,18 +2458,12 @@ type ReadReplicaInstanceVolumeInput interface {
 }
 
 type ReadReplicaInstanceVolumeArgs struct {
-	// Specifies the key ID for disk encryption.
-	// Changing this parameter will create a new resource.
+	// schema: Computed
 	DiskEncryptionId pulumi.StringPtrInput `pulumi:"diskEncryptionId"`
 	LimitSize        pulumi.IntPtrInput    `pulumi:"limitSize"`
 	Size             pulumi.IntPtrInput    `pulumi:"size"`
 	TriggerThreshold pulumi.IntPtrInput    `pulumi:"triggerThreshold"`
-	// Specifies the volume type. Its value can be any of the following and is case-sensitive:
-	// - *ESSD* - ultrahigh I/O.
-	// - *CLOUDSSD* - high I/O.
-	//
-	// Changing this parameter will create a new resource.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type             pulumi.StringInput    `pulumi:"type"`
 }
 
 func (ReadReplicaInstanceVolumeArgs) ElementType() reflect.Type {
@@ -2947,8 +2543,7 @@ func (o ReadReplicaInstanceVolumeOutput) ToReadReplicaInstanceVolumePtrOutputWit
 	}).(ReadReplicaInstanceVolumePtrOutput)
 }
 
-// Specifies the key ID for disk encryption.
-// Changing this parameter will create a new resource.
+// schema: Computed
 func (o ReadReplicaInstanceVolumeOutput) DiskEncryptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceVolume) *string { return v.DiskEncryptionId }).(pulumi.StringPtrOutput)
 }
@@ -2965,11 +2560,6 @@ func (o ReadReplicaInstanceVolumeOutput) TriggerThreshold() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v ReadReplicaInstanceVolume) *int { return v.TriggerThreshold }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Its value can be any of the following and is case-sensitive:
-// - *ESSD* - ultrahigh I/O.
-// - *CLOUDSSD* - high I/O.
-//
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceVolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ReadReplicaInstanceVolume) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2998,8 +2588,7 @@ func (o ReadReplicaInstanceVolumePtrOutput) Elem() ReadReplicaInstanceVolumeOutp
 	}).(ReadReplicaInstanceVolumeOutput)
 }
 
-// Specifies the key ID for disk encryption.
-// Changing this parameter will create a new resource.
+// schema: Computed
 func (o ReadReplicaInstanceVolumePtrOutput) DiskEncryptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstanceVolume) *string {
 		if v == nil {
@@ -3036,11 +2625,6 @@ func (o ReadReplicaInstanceVolumePtrOutput) TriggerThreshold() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the volume type. Its value can be any of the following and is case-sensitive:
-// - *ESSD* - ultrahigh I/O.
-// - *CLOUDSSD* - high I/O.
-//
-// Changing this parameter will create a new resource.
 func (o ReadReplicaInstanceVolumePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReadReplicaInstanceVolume) *string {
 		if v == nil {
@@ -3053,11 +2637,7 @@ func (o ReadReplicaInstanceVolumePtrOutput) Type() pulumi.StringPtrOutput {
 type SqlserverDatabasePrivilegeUser struct {
 	// Specifies the username of the database account.
 	Name string `pulumi:"name"`
-	// Specifies the read-only permission. Value options:
-	// + **true**: indicates the read-only permission.
-	// + **false**: indicates the read and write permission.
-	//
-	// Defaults to **false**.
+	// Specifies the read-only permission.
 	Readonly *bool `pulumi:"readonly"`
 }
 
@@ -3075,11 +2655,7 @@ type SqlserverDatabasePrivilegeUserInput interface {
 type SqlserverDatabasePrivilegeUserArgs struct {
 	// Specifies the username of the database account.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the read-only permission. Value options:
-	// + **true**: indicates the read-only permission.
-	// + **false**: indicates the read and write permission.
-	//
-	// Defaults to **false**.
+	// Specifies the read-only permission.
 	Readonly pulumi.BoolPtrInput `pulumi:"readonly"`
 }
 
@@ -3139,11 +2715,7 @@ func (o SqlserverDatabasePrivilegeUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlserverDatabasePrivilegeUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the read-only permission. Value options:
-// + **true**: indicates the read-only permission.
-// + **false**: indicates the read and write permission.
-//
-// Defaults to **false**.
+// Specifies the read-only permission.
 func (o SqlserverDatabasePrivilegeUserOutput) Readonly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlserverDatabasePrivilegeUser) *bool { return v.Readonly }).(pulumi.BoolPtrOutput)
 }
@@ -3171,33 +2743,24 @@ func (o SqlserverDatabasePrivilegeUserArrayOutput) Index(i pulumi.IntInput) Sqls
 type GetBackupsBackup struct {
 	// Whether a DDM instance has been associated.
 	AssociatedWithDdm bool `pulumi:"associatedWithDdm"`
-	// Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
+	// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	BeginTime string `pulumi:"beginTime"`
 	// Database been backed up.
-	// The databases structure is documented below.
-	Databases []GetBackupsBackupDatabase `pulumi:"databases"`
-	// The database information.
-	// The datastore structure is documented below.
+	Databases  []GetBackupsBackupDatabase  `pulumi:"databases"`
 	Datastores []GetBackupsBackupDatastore `pulumi:"datastores"`
-	// End time in the "yyyy-mm-ddThh:mm:ssZ" format.
+	// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	EndTime string `pulumi:"endTime"`
 	// Backup ID.
 	Id string `pulumi:"id"`
-	// Instance ID.
+	// RDS instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// Backup name.
 	Name string `pulumi:"name"`
 	// Backup size in KB.
 	Size int `pulumi:"size"`
-	// Backup status.\
-	// The options are as follows:
-	// - **BUILDING**: Backup in progress.
-	// - **COMPLETED**: Backup completed.
-	// - **FAILED**: Backup failed.
-	// - **DELETING**: Backup being deleted.
+	// Backup status.
 	Status string `pulumi:"status"`
-	// DB engine.\
-	// The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+	// Backup type.
 	Type string `pulumi:"type"`
 }
 
@@ -3215,33 +2778,24 @@ type GetBackupsBackupInput interface {
 type GetBackupsBackupArgs struct {
 	// Whether a DDM instance has been associated.
 	AssociatedWithDdm pulumi.BoolInput `pulumi:"associatedWithDdm"`
-	// Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
+	// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	BeginTime pulumi.StringInput `pulumi:"beginTime"`
 	// Database been backed up.
-	// The databases structure is documented below.
-	Databases GetBackupsBackupDatabaseArrayInput `pulumi:"databases"`
-	// The database information.
-	// The datastore structure is documented below.
+	Databases  GetBackupsBackupDatabaseArrayInput  `pulumi:"databases"`
 	Datastores GetBackupsBackupDatastoreArrayInput `pulumi:"datastores"`
-	// End time in the "yyyy-mm-ddThh:mm:ssZ" format.
+	// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// Backup ID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Instance ID.
+	// RDS instance ID.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Backup name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Backup size in KB.
 	Size pulumi.IntInput `pulumi:"size"`
-	// Backup status.\
-	// The options are as follows:
-	// - **BUILDING**: Backup in progress.
-	// - **COMPLETED**: Backup completed.
-	// - **FAILED**: Backup failed.
-	// - **DELETING**: Backup being deleted.
+	// Backup status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// DB engine.\
-	// The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+	// Backup type.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3301,24 +2855,21 @@ func (o GetBackupsBackupOutput) AssociatedWithDdm() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBackupsBackup) bool { return v.AssociatedWithDdm }).(pulumi.BoolOutput)
 }
 
-// Start time in the "yyyy-mm-ddThh:mm:ssZ" format.
+// Backup start time in the "yyyy-mm-ddThh:mm:ssZ" format.
 func (o GetBackupsBackupOutput) BeginTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackup) string { return v.BeginTime }).(pulumi.StringOutput)
 }
 
 // Database been backed up.
-// The databases structure is documented below.
 func (o GetBackupsBackupOutput) Databases() GetBackupsBackupDatabaseArrayOutput {
 	return o.ApplyT(func(v GetBackupsBackup) []GetBackupsBackupDatabase { return v.Databases }).(GetBackupsBackupDatabaseArrayOutput)
 }
 
-// The database information.
-// The datastore structure is documented below.
 func (o GetBackupsBackupOutput) Datastores() GetBackupsBackupDatastoreArrayOutput {
 	return o.ApplyT(func(v GetBackupsBackup) []GetBackupsBackupDatastore { return v.Datastores }).(GetBackupsBackupDatastoreArrayOutput)
 }
 
-// End time in the "yyyy-mm-ddThh:mm:ssZ" format.
+// Backup end time in the "yyyy-mm-ddThh:mm:ssZ" format.
 func (o GetBackupsBackupOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackup) string { return v.EndTime }).(pulumi.StringOutput)
 }
@@ -3328,7 +2879,7 @@ func (o GetBackupsBackupOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackup) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Instance ID.
+// RDS instance ID.
 func (o GetBackupsBackupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackup) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -3343,18 +2894,12 @@ func (o GetBackupsBackupOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackupsBackup) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Backup status.\
-// The options are as follows:
-// - **BUILDING**: Backup in progress.
-// - **COMPLETED**: Backup completed.
-// - **FAILED**: Backup failed.
-// - **DELETING**: Backup being deleted.
+// Backup status.
 func (o GetBackupsBackupOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackup) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// DB engine.\
-// The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+// Backup type.
 func (o GetBackupsBackupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackup) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3380,7 +2925,7 @@ func (o GetBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetBackupsBackupOu
 }
 
 type GetBackupsBackupDatabase struct {
-	// Backup name.
+	// Database to be backed up for Microsoft SQL Server.
 	Name string `pulumi:"name"`
 }
 
@@ -3396,7 +2941,7 @@ type GetBackupsBackupDatabaseInput interface {
 }
 
 type GetBackupsBackupDatabaseArgs struct {
-	// Backup name.
+	// Database to be backed up for Microsoft SQL Server.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3451,7 +2996,7 @@ func (o GetBackupsBackupDatabaseOutput) ToGetBackupsBackupDatabaseOutputWithCont
 	return o
 }
 
-// Backup name.
+// Database to be backed up for Microsoft SQL Server.
 func (o GetBackupsBackupDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackupDatabase) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3477,8 +3022,7 @@ func (o GetBackupsBackupDatabaseArrayOutput) Index(i pulumi.IntInput) GetBackups
 }
 
 type GetBackupsBackupDatastore struct {
-	// DB engine.\
-	// The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+	// DB engine.
 	Type string `pulumi:"type"`
 	// DB engine version.
 	Version string `pulumi:"version"`
@@ -3496,8 +3040,7 @@ type GetBackupsBackupDatastoreInput interface {
 }
 
 type GetBackupsBackupDatastoreArgs struct {
-	// DB engine.\
-	// The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+	// DB engine.
 	Type pulumi.StringInput `pulumi:"type"`
 	// DB engine version.
 	Version pulumi.StringInput `pulumi:"version"`
@@ -3554,8 +3097,7 @@ func (o GetBackupsBackupDatastoreOutput) ToGetBackupsBackupDatastoreOutputWithCo
 	return o
 }
 
-// DB engine.\
-// The value can be: **MySQL**, **PostgreSQL**, **SQLServer**.
+// DB engine.
 func (o GetBackupsBackupDatastoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupsBackupDatastore) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3586,9 +3128,7 @@ func (o GetBackupsBackupDatastoreArrayOutput) Index(i pulumi.IntInput) GetBackup
 }
 
 type GetEngineVersionsVersion struct {
-	// Version ID.
-	Id string `pulumi:"id"`
-	// Version name.
+	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
 }
 
@@ -3604,9 +3144,7 @@ type GetEngineVersionsVersionInput interface {
 }
 
 type GetEngineVersionsVersionArgs struct {
-	// Version ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Version name.
+	Id   pulumi.StringInput `pulumi:"id"`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3661,12 +3199,10 @@ func (o GetEngineVersionsVersionOutput) ToGetEngineVersionsVersionOutputWithCont
 	return o
 }
 
-// Version ID.
 func (o GetEngineVersionsVersionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEngineVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Version name.
 func (o GetEngineVersionsVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEngineVersionsVersion) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3692,29 +3228,16 @@ func (o GetEngineVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetEngineV
 }
 
 type GetFlavorsFlavor struct {
-	// The availability zones which the RDS flavor belongs to.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The Available versions of the database.
-	DbVersions []string `pulumi:"dbVersions"`
-	// Specifies the performance specification, the valid values are as follows:
-	// + **normal**: General enhanced.
-	// + **normal2**: General enhanced type II.
-	GroupType string `pulumi:"groupType"`
-	// The ID of the rds flavor.
-	Id string `pulumi:"id"`
-	// The mode of instance. Value: *ha*(indicates primary/standby instance),
-	// *single*(indicates single instance) and *replica*(indicates read replicas).
-	InstanceMode string `pulumi:"instanceMode"`
-	// Specifies the memory size(GB) in the RDS flavor.
-	Memory int `pulumi:"memory"`
-	// See 'instance_mode' above.
-	//
+	DbVersions        []string `pulumi:"dbVersions"`
+	GroupType         string   `pulumi:"groupType"`
+	Id                string   `pulumi:"id"`
+	InstanceMode      string   `pulumi:"instanceMode"`
+	Memory            int      `pulumi:"memory"`
 	// Deprecated: use instanceMode instead
-	Mode string `pulumi:"mode"`
-	// The name of the rds flavor.
-	Name string `pulumi:"name"`
-	// Specifies the number of vCPUs in the RDS flavor.
-	Vcpus int `pulumi:"vcpus"`
+	Mode  string `pulumi:"mode"`
+	Name  string `pulumi:"name"`
+	Vcpus int    `pulumi:"vcpus"`
 }
 
 // GetFlavorsFlavorInput is an input type that accepts GetFlavorsFlavorArgs and GetFlavorsFlavorOutput values.
@@ -3729,29 +3252,16 @@ type GetFlavorsFlavorInput interface {
 }
 
 type GetFlavorsFlavorArgs struct {
-	// The availability zones which the RDS flavor belongs to.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// The Available versions of the database.
-	DbVersions pulumi.StringArrayInput `pulumi:"dbVersions"`
-	// Specifies the performance specification, the valid values are as follows:
-	// + **normal**: General enhanced.
-	// + **normal2**: General enhanced type II.
-	GroupType pulumi.StringInput `pulumi:"groupType"`
-	// The ID of the rds flavor.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The mode of instance. Value: *ha*(indicates primary/standby instance),
-	// *single*(indicates single instance) and *replica*(indicates read replicas).
-	InstanceMode pulumi.StringInput `pulumi:"instanceMode"`
-	// Specifies the memory size(GB) in the RDS flavor.
-	Memory pulumi.IntInput `pulumi:"memory"`
-	// See 'instance_mode' above.
-	//
+	DbVersions        pulumi.StringArrayInput `pulumi:"dbVersions"`
+	GroupType         pulumi.StringInput      `pulumi:"groupType"`
+	Id                pulumi.StringInput      `pulumi:"id"`
+	InstanceMode      pulumi.StringInput      `pulumi:"instanceMode"`
+	Memory            pulumi.IntInput         `pulumi:"memory"`
 	// Deprecated: use instanceMode instead
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// The name of the rds flavor.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the number of vCPUs in the RDS flavor.
-	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+	Mode  pulumi.StringInput `pulumi:"mode"`
+	Name  pulumi.StringInput `pulumi:"name"`
+	Vcpus pulumi.IntInput    `pulumi:"vcpus"`
 }
 
 func (GetFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -3805,52 +3315,39 @@ func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutputWithContext(ctx context.
 	return o
 }
 
-// The availability zones which the RDS flavor belongs to.
 func (o GetFlavorsFlavorOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// The Available versions of the database.
 func (o GetFlavorsFlavorOutput) DbVersions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []string { return v.DbVersions }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the performance specification, the valid values are as follows:
-// + **normal**: General enhanced.
-// + **normal2**: General enhanced type II.
 func (o GetFlavorsFlavorOutput) GroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.GroupType }).(pulumi.StringOutput)
 }
 
-// The ID of the rds flavor.
 func (o GetFlavorsFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The mode of instance. Value: *ha*(indicates primary/standby instance),
-// *single*(indicates single instance) and *replica*(indicates read replicas).
 func (o GetFlavorsFlavorOutput) InstanceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.InstanceMode }).(pulumi.StringOutput)
 }
 
-// Specifies the memory size(GB) in the RDS flavor.
 func (o GetFlavorsFlavorOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.Memory }).(pulumi.IntOutput)
 }
 
-// See 'instance_mode' above.
-//
 // Deprecated: use instanceMode instead
 func (o GetFlavorsFlavorOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name of the rds flavor.
 func (o GetFlavorsFlavorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the number of vCPUs in the RDS flavor.
 func (o GetFlavorsFlavorOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
 }
@@ -3876,53 +3373,29 @@ func (o GetFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetFlavorsFlavorOu
 }
 
 type GetInstancesInstance struct {
-	// Indicates the availability zone where the node resides.
-	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// Indicates the advanced backup policy. Structure is documented below.
-	BackupStrategies []GetInstancesInstanceBackupStrategy `pulumi:"backupStrategies"`
-	// Indicates the creation time.
-	Created string `pulumi:"created"`
-	// Indicates the database information. Structure is documented below.
-	Dbs []GetInstancesInstanceDb `pulumi:"dbs"`
-	// Specifies the enterprise project id.
-	EnterpriseProjectId string `pulumi:"enterpriseProjectId"`
-	// Indicates the intranet floating IP address of the instance.
-	FixedIp string `pulumi:"fixedIp"`
-	// Indicates the instance specifications.
-	Flavor string `pulumi:"flavor"`
-	// Indicates the replication mode for the standby DB instance.
-	HaReplicationMode string `pulumi:"haReplicationMode"`
-	// Indicates the node ID.
-	Id string `pulumi:"id"`
-	// Specifies the name of the instance.
-	Name string `pulumi:"name"`
-	// Indicates the instance nodes information. Structure is documented below.
-	Nodes []GetInstancesInstanceNode `pulumi:"nodes"`
-	// Indicates the configuration ID.
-	ParamGroupId string `pulumi:"paramGroupId"`
-	// Indicates the private ips in list.
-	PrivateIps []string `pulumi:"privateIps"`
-	// Indicates the public ips in list.
-	PublicIps []string `pulumi:"publicIps"`
-	// The region in which to obtain the instances. If omitted, the provider-level region will
-	// be used.
-	Region string `pulumi:"region"`
-	// Indicates the security group ID.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// Indicates whether to enable SSL.
-	SslEnable bool `pulumi:"sslEnable"`
-	// Indicates the node status.
-	Status string `pulumi:"status"`
-	// Specifies the network ID of a subnet.
-	SubnetId string `pulumi:"subnetId"`
-	// Indicates the tags of the instance.
-	Tags map[string]string `pulumi:"tags"`
-	// Indicates the time zone.
-	TimeZone string `pulumi:"timeZone"`
-	// Indicates the volume information. Structure is documented below.
-	Volumes []GetInstancesInstanceVolume `pulumi:"volumes"`
-	// Specifies the VPC ID.
-	VpcId string `pulumi:"vpcId"`
+	AvailabilityZones   []string                             `pulumi:"availabilityZones"`
+	BackupStrategies    []GetInstancesInstanceBackupStrategy `pulumi:"backupStrategies"`
+	Created             string                               `pulumi:"created"`
+	Dbs                 []GetInstancesInstanceDb             `pulumi:"dbs"`
+	EnterpriseProjectId string                               `pulumi:"enterpriseProjectId"`
+	FixedIp             string                               `pulumi:"fixedIp"`
+	Flavor              string                               `pulumi:"flavor"`
+	HaReplicationMode   string                               `pulumi:"haReplicationMode"`
+	Id                  string                               `pulumi:"id"`
+	Name                string                               `pulumi:"name"`
+	Nodes               []GetInstancesInstanceNode           `pulumi:"nodes"`
+	ParamGroupId        string                               `pulumi:"paramGroupId"`
+	PrivateIps          []string                             `pulumi:"privateIps"`
+	PublicIps           []string                             `pulumi:"publicIps"`
+	Region              string                               `pulumi:"region"`
+	SecurityGroupId     string                               `pulumi:"securityGroupId"`
+	SslEnable           bool                                 `pulumi:"sslEnable"`
+	Status              string                               `pulumi:"status"`
+	SubnetId            string                               `pulumi:"subnetId"`
+	Tags                map[string]string                    `pulumi:"tags"`
+	TimeZone            string                               `pulumi:"timeZone"`
+	Volumes             []GetInstancesInstanceVolume         `pulumi:"volumes"`
+	VpcId               string                               `pulumi:"vpcId"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -3937,53 +3410,29 @@ type GetInstancesInstanceInput interface {
 }
 
 type GetInstancesInstanceArgs struct {
-	// Indicates the availability zone where the node resides.
-	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
-	// Indicates the advanced backup policy. Structure is documented below.
-	BackupStrategies GetInstancesInstanceBackupStrategyArrayInput `pulumi:"backupStrategies"`
-	// Indicates the creation time.
-	Created pulumi.StringInput `pulumi:"created"`
-	// Indicates the database information. Structure is documented below.
-	Dbs GetInstancesInstanceDbArrayInput `pulumi:"dbs"`
-	// Specifies the enterprise project id.
-	EnterpriseProjectId pulumi.StringInput `pulumi:"enterpriseProjectId"`
-	// Indicates the intranet floating IP address of the instance.
-	FixedIp pulumi.StringInput `pulumi:"fixedIp"`
-	// Indicates the instance specifications.
-	Flavor pulumi.StringInput `pulumi:"flavor"`
-	// Indicates the replication mode for the standby DB instance.
-	HaReplicationMode pulumi.StringInput `pulumi:"haReplicationMode"`
-	// Indicates the node ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the instance.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the instance nodes information. Structure is documented below.
-	Nodes GetInstancesInstanceNodeArrayInput `pulumi:"nodes"`
-	// Indicates the configuration ID.
-	ParamGroupId pulumi.StringInput `pulumi:"paramGroupId"`
-	// Indicates the private ips in list.
-	PrivateIps pulumi.StringArrayInput `pulumi:"privateIps"`
-	// Indicates the public ips in list.
-	PublicIps pulumi.StringArrayInput `pulumi:"publicIps"`
-	// The region in which to obtain the instances. If omitted, the provider-level region will
-	// be used.
-	Region pulumi.StringInput `pulumi:"region"`
-	// Indicates the security group ID.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// Indicates whether to enable SSL.
-	SslEnable pulumi.BoolInput `pulumi:"sslEnable"`
-	// Indicates the node status.
-	Status pulumi.StringInput `pulumi:"status"`
-	// Specifies the network ID of a subnet.
-	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// Indicates the tags of the instance.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Indicates the time zone.
-	TimeZone pulumi.StringInput `pulumi:"timeZone"`
-	// Indicates the volume information. Structure is documented below.
-	Volumes GetInstancesInstanceVolumeArrayInput `pulumi:"volumes"`
-	// Specifies the VPC ID.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
+	AvailabilityZones   pulumi.StringArrayInput                      `pulumi:"availabilityZones"`
+	BackupStrategies    GetInstancesInstanceBackupStrategyArrayInput `pulumi:"backupStrategies"`
+	Created             pulumi.StringInput                           `pulumi:"created"`
+	Dbs                 GetInstancesInstanceDbArrayInput             `pulumi:"dbs"`
+	EnterpriseProjectId pulumi.StringInput                           `pulumi:"enterpriseProjectId"`
+	FixedIp             pulumi.StringInput                           `pulumi:"fixedIp"`
+	Flavor              pulumi.StringInput                           `pulumi:"flavor"`
+	HaReplicationMode   pulumi.StringInput                           `pulumi:"haReplicationMode"`
+	Id                  pulumi.StringInput                           `pulumi:"id"`
+	Name                pulumi.StringInput                           `pulumi:"name"`
+	Nodes               GetInstancesInstanceNodeArrayInput           `pulumi:"nodes"`
+	ParamGroupId        pulumi.StringInput                           `pulumi:"paramGroupId"`
+	PrivateIps          pulumi.StringArrayInput                      `pulumi:"privateIps"`
+	PublicIps           pulumi.StringArrayInput                      `pulumi:"publicIps"`
+	Region              pulumi.StringInput                           `pulumi:"region"`
+	SecurityGroupId     pulumi.StringInput                           `pulumi:"securityGroupId"`
+	SslEnable           pulumi.BoolInput                             `pulumi:"sslEnable"`
+	Status              pulumi.StringInput                           `pulumi:"status"`
+	SubnetId            pulumi.StringInput                           `pulumi:"subnetId"`
+	Tags                pulumi.StringMapInput                        `pulumi:"tags"`
+	TimeZone            pulumi.StringInput                           `pulumi:"timeZone"`
+	Volumes             GetInstancesInstanceVolumeArrayInput         `pulumi:"volumes"`
+	VpcId               pulumi.StringInput                           `pulumi:"vpcId"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -4037,118 +3486,94 @@ func (o GetInstancesInstanceOutput) ToGetInstancesInstanceOutputWithContext(ctx 
 	return o
 }
 
-// Indicates the availability zone where the node resides.
 func (o GetInstancesInstanceOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the advanced backup policy. Structure is documented below.
 func (o GetInstancesInstanceOutput) BackupStrategies() GetInstancesInstanceBackupStrategyArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceBackupStrategy { return v.BackupStrategies }).(GetInstancesInstanceBackupStrategyArrayOutput)
 }
 
-// Indicates the creation time.
 func (o GetInstancesInstanceOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// Indicates the database information. Structure is documented below.
 func (o GetInstancesInstanceOutput) Dbs() GetInstancesInstanceDbArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceDb { return v.Dbs }).(GetInstancesInstanceDbArrayOutput)
 }
 
-// Specifies the enterprise project id.
 func (o GetInstancesInstanceOutput) EnterpriseProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.EnterpriseProjectId }).(pulumi.StringOutput)
 }
 
-// Indicates the intranet floating IP address of the instance.
 func (o GetInstancesInstanceOutput) FixedIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.FixedIp }).(pulumi.StringOutput)
 }
 
-// Indicates the instance specifications.
 func (o GetInstancesInstanceOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// Indicates the replication mode for the standby DB instance.
 func (o GetInstancesInstanceOutput) HaReplicationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.HaReplicationMode }).(pulumi.StringOutput)
 }
 
-// Indicates the node ID.
 func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the instance.
 func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the instance nodes information. Structure is documented below.
 func (o GetInstancesInstanceOutput) Nodes() GetInstancesInstanceNodeArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceNode { return v.Nodes }).(GetInstancesInstanceNodeArrayOutput)
 }
 
-// Indicates the configuration ID.
 func (o GetInstancesInstanceOutput) ParamGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ParamGroupId }).(pulumi.StringOutput)
 }
 
-// Indicates the private ips in list.
 func (o GetInstancesInstanceOutput) PrivateIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.PrivateIps }).(pulumi.StringArrayOutput)
 }
 
-// Indicates the public ips in list.
 func (o GetInstancesInstanceOutput) PublicIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []string { return v.PublicIps }).(pulumi.StringArrayOutput)
 }
 
-// The region in which to obtain the instances. If omitted, the provider-level region will
-// be used.
 func (o GetInstancesInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates the security group ID.
 func (o GetInstancesInstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// Indicates whether to enable SSL.
 func (o GetInstancesInstanceOutput) SslEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstancesInstance) bool { return v.SslEnable }).(pulumi.BoolOutput)
 }
 
-// Indicates the node status.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Specifies the network ID of a subnet.
 func (o GetInstancesInstanceOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// Indicates the tags of the instance.
 func (o GetInstancesInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Indicates the time zone.
 func (o GetInstancesInstanceOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
-// Indicates the volume information. Structure is documented below.
 func (o GetInstancesInstanceOutput) Volumes() GetInstancesInstanceVolumeArrayOutput {
 	return o.ApplyT(func(v GetInstancesInstance) []GetInstancesInstanceVolume { return v.Volumes }).(GetInstancesInstanceVolumeArrayOutput)
 }
 
-// Specifies the VPC ID.
 func (o GetInstancesInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -4174,9 +3599,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceBackupStrategy struct {
-	// Indicates the number of days to retain the generated.
-	KeepDays int `pulumi:"keepDays"`
-	// Indicates the backup time window.
+	KeepDays  int    `pulumi:"keepDays"`
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -4192,9 +3615,7 @@ type GetInstancesInstanceBackupStrategyInput interface {
 }
 
 type GetInstancesInstanceBackupStrategyArgs struct {
-	// Indicates the number of days to retain the generated.
-	KeepDays pulumi.IntInput `pulumi:"keepDays"`
-	// Indicates the backup time window.
+	KeepDays  pulumi.IntInput    `pulumi:"keepDays"`
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -4249,12 +3670,10 @@ func (o GetInstancesInstanceBackupStrategyOutput) ToGetInstancesInstanceBackupSt
 	return o
 }
 
-// Indicates the number of days to retain the generated.
 func (o GetInstancesInstanceBackupStrategyOutput) KeepDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceBackupStrategy) int { return v.KeepDays }).(pulumi.IntOutput)
 }
 
-// Indicates the backup time window.
 func (o GetInstancesInstanceBackupStrategyOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceBackupStrategy) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -4280,14 +3699,10 @@ func (o GetInstancesInstanceBackupStrategyArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetInstancesInstanceDb struct {
-	// Indicates the database port.
-	Port int `pulumi:"port"`
-	// Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-	Type string `pulumi:"type"`
-	// Indicates the database user name.
+	Port     int    `pulumi:"port"`
+	Type     string `pulumi:"type"`
 	UserName string `pulumi:"userName"`
-	// Indicates the database version.
-	Version string `pulumi:"version"`
+	Version  string `pulumi:"version"`
 }
 
 // GetInstancesInstanceDbInput is an input type that accepts GetInstancesInstanceDbArgs and GetInstancesInstanceDbOutput values.
@@ -4302,14 +3717,10 @@ type GetInstancesInstanceDbInput interface {
 }
 
 type GetInstancesInstanceDbArgs struct {
-	// Indicates the database port.
-	Port pulumi.IntInput `pulumi:"port"`
-	// Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Indicates the database user name.
+	Port     pulumi.IntInput    `pulumi:"port"`
+	Type     pulumi.StringInput `pulumi:"type"`
 	UserName pulumi.StringInput `pulumi:"userName"`
-	// Indicates the database version.
-	Version pulumi.StringInput `pulumi:"version"`
+	Version  pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetInstancesInstanceDbArgs) ElementType() reflect.Type {
@@ -4363,22 +3774,18 @@ func (o GetInstancesInstanceDbOutput) ToGetInstancesInstanceDbOutputWithContext(
 	return o
 }
 
-// Indicates the database port.
 func (o GetInstancesInstanceDbOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDb) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
 func (o GetInstancesInstanceDbOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDb) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Indicates the database user name.
 func (o GetInstancesInstanceDbOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDb) string { return v.UserName }).(pulumi.StringOutput)
 }
 
-// Indicates the database version.
 func (o GetInstancesInstanceDbOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceDb) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -4404,16 +3811,11 @@ func (o GetInstancesInstanceDbArrayOutput) Index(i pulumi.IntInput) GetInstances
 }
 
 type GetInstancesInstanceNode struct {
-	// Indicates the availability zone where the node resides.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	// Indicates the node ID.
-	Id string `pulumi:"id"`
-	// Specifies the name of the instance.
-	Name string `pulumi:"name"`
-	// Indicates the node type.
-	Role string `pulumi:"role"`
-	// Indicates the node status.
-	Status string `pulumi:"status"`
+	Id               string `pulumi:"id"`
+	Name             string `pulumi:"name"`
+	Role             string `pulumi:"role"`
+	Status           string `pulumi:"status"`
 }
 
 // GetInstancesInstanceNodeInput is an input type that accepts GetInstancesInstanceNodeArgs and GetInstancesInstanceNodeOutput values.
@@ -4428,16 +3830,11 @@ type GetInstancesInstanceNodeInput interface {
 }
 
 type GetInstancesInstanceNodeArgs struct {
-	// Indicates the availability zone where the node resides.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
-	// Indicates the node ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of the instance.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates the node type.
-	Role pulumi.StringInput `pulumi:"role"`
-	// Indicates the node status.
-	Status pulumi.StringInput `pulumi:"status"`
+	Id               pulumi.StringInput `pulumi:"id"`
+	Name             pulumi.StringInput `pulumi:"name"`
+	Role             pulumi.StringInput `pulumi:"role"`
+	Status           pulumi.StringInput `pulumi:"status"`
 }
 
 func (GetInstancesInstanceNodeArgs) ElementType() reflect.Type {
@@ -4491,27 +3888,22 @@ func (o GetInstancesInstanceNodeOutput) ToGetInstancesInstanceNodeOutputWithCont
 	return o
 }
 
-// Indicates the availability zone where the node resides.
 func (o GetInstancesInstanceNodeOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNode) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Indicates the node ID.
 func (o GetInstancesInstanceNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the instance.
 func (o GetInstancesInstanceNodeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNode) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the node type.
 func (o GetInstancesInstanceNodeOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNode) string { return v.Role }).(pulumi.StringOutput)
 }
 
-// Indicates the node status.
 func (o GetInstancesInstanceNodeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceNode) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4537,12 +3929,9 @@ func (o GetInstancesInstanceNodeArrayOutput) Index(i pulumi.IntInput) GetInstanc
 }
 
 type GetInstancesInstanceVolume struct {
-	// Indicates the kms key id.
 	DiskEncryptionId string `pulumi:"diskEncryptionId"`
-	// Indicates the volume size.
-	Size int `pulumi:"size"`
-	// Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-	Type string `pulumi:"type"`
+	Size             int    `pulumi:"size"`
+	Type             string `pulumi:"type"`
 }
 
 // GetInstancesInstanceVolumeInput is an input type that accepts GetInstancesInstanceVolumeArgs and GetInstancesInstanceVolumeOutput values.
@@ -4557,12 +3946,9 @@ type GetInstancesInstanceVolumeInput interface {
 }
 
 type GetInstancesInstanceVolumeArgs struct {
-	// Indicates the kms key id.
 	DiskEncryptionId pulumi.StringInput `pulumi:"diskEncryptionId"`
-	// Indicates the volume size.
-	Size pulumi.IntInput `pulumi:"size"`
-	// Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
-	Type pulumi.StringInput `pulumi:"type"`
+	Size             pulumi.IntInput    `pulumi:"size"`
+	Type             pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetInstancesInstanceVolumeArgs) ElementType() reflect.Type {
@@ -4616,17 +4002,14 @@ func (o GetInstancesInstanceVolumeOutput) ToGetInstancesInstanceVolumeOutputWith
 	return o
 }
 
-// Indicates the kms key id.
 func (o GetInstancesInstanceVolumeOutput) DiskEncryptionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolume) string { return v.DiskEncryptionId }).(pulumi.StringOutput)
 }
 
-// Indicates the volume size.
 func (o GetInstancesInstanceVolumeOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolume) int { return v.Size }).(pulumi.IntOutput)
 }
 
-// Specifies the type of the instance. Valid values are: Single, Ha, Replica, and Enterprise.
 func (o GetInstancesInstanceVolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceVolume) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5309,33 +4692,10 @@ func (o GetPgSqlLimitsSqlLimitArrayOutput) Index(i pulumi.IntInput) GetPgSqlLimi
 
 type GetStorageTypesStorageType struct {
 	// The status details of the AZs to which the specification belongs.
-	// Key indicates the AZ ID, and value indicates the specification status in the AZ.
-	// The options of value are as follows:
-	// - **normal**: The specifications in the AZ are available.
-	// - **unsupported**: The specifications are not supported by the AZ.
-	// - **sellout**: The specifications in the AZ are sold out.
 	AzStatus map[string]string `pulumi:"azStatus"`
-	// Storage type.\
-	// The options are as follows:
-	// - **ULTRAHIGH**: SSD storage.
-	// - **LOCALSSD**: Local SSD storage.
-	// - **CLOUDSSD**: Cloud SSD storage.
-	//   This storage type is supported only with general-purpose and dedicated DB instances.
-	// - **ESSD**: extreme SSD storage.
-	//   This storage type is supported only with dedicated DB instances.
+	// Storage type.
 	Name string `pulumi:"name"`
 	// Performance specifications.
-	// The options are as follows:
-	// - **normal**: General-enhanced.
-	// - **normal2**: General-enhanced II.
-	// - **armFlavors**: Kunpeng general-enhanced.
-	// - **dedicicatenormal**: Exclusive x86.
-	// - **armlocalssd**: Standard Kunpeng.
-	// - **normallocalssd**: Standard x86.
-	// - **general**: General-purpose.
-	// - **dedicated**: Dedicated, which is only supported for cloud SSDs.
-	// - **rapid**: Dedicated, which is only supported for extreme SSDs.
-	// - **bigmen**: Large-memory.
 	SupportComputeGroupTypes []string `pulumi:"supportComputeGroupTypes"`
 }
 
@@ -5352,33 +4712,10 @@ type GetStorageTypesStorageTypeInput interface {
 
 type GetStorageTypesStorageTypeArgs struct {
 	// The status details of the AZs to which the specification belongs.
-	// Key indicates the AZ ID, and value indicates the specification status in the AZ.
-	// The options of value are as follows:
-	// - **normal**: The specifications in the AZ are available.
-	// - **unsupported**: The specifications are not supported by the AZ.
-	// - **sellout**: The specifications in the AZ are sold out.
 	AzStatus pulumi.StringMapInput `pulumi:"azStatus"`
-	// Storage type.\
-	// The options are as follows:
-	// - **ULTRAHIGH**: SSD storage.
-	// - **LOCALSSD**: Local SSD storage.
-	// - **CLOUDSSD**: Cloud SSD storage.
-	//   This storage type is supported only with general-purpose and dedicated DB instances.
-	// - **ESSD**: extreme SSD storage.
-	//   This storage type is supported only with dedicated DB instances.
+	// Storage type.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Performance specifications.
-	// The options are as follows:
-	// - **normal**: General-enhanced.
-	// - **normal2**: General-enhanced II.
-	// - **armFlavors**: Kunpeng general-enhanced.
-	// - **dedicicatenormal**: Exclusive x86.
-	// - **armlocalssd**: Standard Kunpeng.
-	// - **normallocalssd**: Standard x86.
-	// - **general**: General-purpose.
-	// - **dedicated**: Dedicated, which is only supported for cloud SSDs.
-	// - **rapid**: Dedicated, which is only supported for extreme SSDs.
-	// - **bigmen**: Large-memory.
 	SupportComputeGroupTypes pulumi.StringArrayInput `pulumi:"supportComputeGroupTypes"`
 }
 
@@ -5434,39 +4771,16 @@ func (o GetStorageTypesStorageTypeOutput) ToGetStorageTypesStorageTypeOutputWith
 }
 
 // The status details of the AZs to which the specification belongs.
-// Key indicates the AZ ID, and value indicates the specification status in the AZ.
-// The options of value are as follows:
-// - **normal**: The specifications in the AZ are available.
-// - **unsupported**: The specifications are not supported by the AZ.
-// - **sellout**: The specifications in the AZ are sold out.
 func (o GetStorageTypesStorageTypeOutput) AzStatus() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetStorageTypesStorageType) map[string]string { return v.AzStatus }).(pulumi.StringMapOutput)
 }
 
-// Storage type.\
-// The options are as follows:
-//   - **ULTRAHIGH**: SSD storage.
-//   - **LOCALSSD**: Local SSD storage.
-//   - **CLOUDSSD**: Cloud SSD storage.
-//     This storage type is supported only with general-purpose and dedicated DB instances.
-//   - **ESSD**: extreme SSD storage.
-//     This storage type is supported only with dedicated DB instances.
+// Storage type.
 func (o GetStorageTypesStorageTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageTypesStorageType) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Performance specifications.
-// The options are as follows:
-// - **normal**: General-enhanced.
-// - **normal2**: General-enhanced II.
-// - **armFlavors**: Kunpeng general-enhanced.
-// - **dedicicatenormal**: Exclusive x86.
-// - **armlocalssd**: Standard Kunpeng.
-// - **normallocalssd**: Standard x86.
-// - **general**: General-purpose.
-// - **dedicated**: Dedicated, which is only supported for cloud SSDs.
-// - **rapid**: Dedicated, which is only supported for extreme SSDs.
-// - **bigmen**: Large-memory.
 func (o GetStorageTypesStorageTypeOutput) SupportComputeGroupTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetStorageTypesStorageType) []string { return v.SupportComputeGroupTypes }).(pulumi.StringArrayOutput)
 }

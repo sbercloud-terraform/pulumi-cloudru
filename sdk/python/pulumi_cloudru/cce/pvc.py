@@ -30,31 +30,6 @@ class PvcArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pvc resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_modes: Specifies the desired access modes the volume should have.
-               The valid values are as follows:
-               + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-               + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-               + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE PVC belongs.
-        :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to logically divide your containers into different
-               group. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] storage: Specifies the minimum amount of storage resources required.
-               Changing this creates a new PVC resource.
-        :param pulumi.Input[_builtins.str] storage_class_name: Specifies the type of the storage bound to the CCE PVC.
-               The valid values are as follows:
-               + **csi-disk**: EVS.
-               + **csi-obs**: OBS.
-               + **csi-nas**: SFS.
-               + **csi-sfsturbo**: SFS-Turbo.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies the unstructured key value map for external parameters.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the PVC resource. This parameter can contain a
-               maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-               lowercase letters and digits. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the PVC resource.
-               If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
         """
         pulumi.set(__self__, "access_modes", access_modes)
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -73,13 +48,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter(name="accessModes")
     def access_modes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the desired access modes the volume should have.
-        The valid values are as follows:
-        + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-        + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-        + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        """
         return pulumi.get(self, "access_modes")
 
     @access_modes.setter
@@ -89,9 +57,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the cluster ID to which the CCE PVC belongs.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -101,10 +66,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the namespace to logically divide your containers into different
-        group. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -114,10 +75,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the minimum amount of storage resources required.
-        Changing this creates a new PVC resource.
-        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -127,14 +84,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter(name="storageClassName")
     def storage_class_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the type of the storage bound to the CCE PVC.
-        The valid values are as follows:
-        + **csi-disk**: EVS.
-        + **csi-obs**: OBS.
-        + **csi-nas**: SFS.
-        + **csi-sfsturbo**: SFS-Turbo.
-        """
         return pulumi.get(self, "storage_class_name")
 
     @storage_class_name.setter
@@ -144,10 +93,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the unstructured key value map for external parameters.
-        Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -157,10 +102,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the map of string keys and values for labels.
-        Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -170,11 +111,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique name of the PVC resource. This parameter can contain a
-        maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-        lowercase letters and digits. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -184,10 +120,6 @@ class PvcArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the PVC resource.
-        If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -211,35 +143,6 @@ class _PvcState:
                  storage_class_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pvc resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_modes: Specifies the desired access modes the volume should have.
-               The valid values are as follows:
-               + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-               + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-               + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies the unstructured key value map for external parameters.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE PVC belongs.
-        :param pulumi.Input[_builtins.str] creation_timestamp: The server time when PVC was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the PVC resource. This parameter can contain a
-               maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-               lowercase letters and digits. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to logically divide your containers into different
-               group. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the PVC resource.
-               If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] status: The current phase of the PVC.
-               + **Pending**: Not yet bound.
-               + **Bound**: Already bound.
-        :param pulumi.Input[_builtins.str] storage: Specifies the minimum amount of storage resources required.
-               Changing this creates a new PVC resource.
-        :param pulumi.Input[_builtins.str] storage_class_name: Specifies the type of the storage bound to the CCE PVC.
-               The valid values are as follows:
-               + **csi-disk**: EVS.
-               + **csi-obs**: OBS.
-               + **csi-nas**: SFS.
-               + **csi-sfsturbo**: SFS-Turbo.
         """
         if access_modes is not None:
             pulumi.set(__self__, "access_modes", access_modes)
@@ -267,13 +170,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter(name="accessModes")
     def access_modes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the desired access modes the volume should have.
-        The valid values are as follows:
-        + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-        + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-        + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        """
         return pulumi.get(self, "access_modes")
 
     @access_modes.setter
@@ -283,10 +179,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the unstructured key value map for external parameters.
-        Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
@@ -296,9 +188,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster ID to which the CCE PVC belongs.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -308,9 +197,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The server time when PVC was created.
-        """
         return pulumi.get(self, "creation_timestamp")
 
     @creation_timestamp.setter
@@ -320,10 +206,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the map of string keys and values for labels.
-        Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -333,11 +215,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the unique name of the PVC resource. This parameter can contain a
-        maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-        lowercase letters and digits. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -347,10 +224,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the namespace to logically divide your containers into different
-        group. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
@@ -360,10 +233,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the PVC resource.
-        If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -373,11 +242,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The current phase of the PVC.
-        + **Pending**: Not yet bound.
-        + **Bound**: Already bound.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -387,10 +251,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the minimum amount of storage resources required.
-        Changing this creates a new PVC resource.
-        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -400,14 +260,6 @@ class _PvcState:
     @_builtins.property
     @pulumi.getter(name="storageClassName")
     def storage_class_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the type of the storage bound to the CCE PVC.
-        The valid values are as follows:
-        + **csi-disk**: EVS.
-        + **csi-obs**: OBS.
-        + **csi-nas**: SFS.
-        + **csi-sfsturbo**: SFS-Turbo.
-        """
         return pulumi.get(self, "storage_class_name")
 
     @storage_class_name.setter
@@ -432,135 +284,9 @@ class Pvc(pulumi.CustomResource):
                  storage_class_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CCE Persistent Volume Claim resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create PVC with EVS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        namespace = config.require_object("namespace")
-        pvc_name = config.require_object("pvcName")
-        test = sbercloud.cce.Pvc("test",
-            cluster_id=cluster_id,
-            namespace=namespace,
-            name=pvc_name,
-            annotations={
-                "everest.io/disk-volume-type": "SSD",
-            },
-            storage_class_name="csi-disk",
-            access_modes=["ReadWriteOnce"],
-            storage="10Gi")
-        ```
-
-        ### Create PVC with OBS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        namespace = config.require_object("namespace")
-        pvc_name = config.require_object("pvcName")
-        test = sbercloud.cce.Pvc("test",
-            cluster_id=cluster_id,
-            namespace=namespace,
-            name=pvc_name,
-            annotations={
-                "everest.io/obs-volume-type": "STANDARD",
-                "csi.storage.k8s.io/fstype": "obsfs",
-            },
-            storage_class_name="csi-obs",
-            access_modes=["ReadWriteMany"],
-            storage="1Gi")
-        ```
-
-        ### Create PVC with SFS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        namespace = config.require_object("namespace")
-        pvc_name = config.require_object("pvcName")
-        test = sbercloud.cce.Pvc("test",
-            cluster_id=cluster_id,
-            namespace=namespace,
-            name=pvc_name,
-            storage_class_name="csi-nas",
-            access_modes=["ReadWriteMany"],
-            storage="10Gi")
-        ```
-
-        ## Import
-
-        CCE PVC can be imported using the cluster ID, namespace and name separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Cce/pvc:Pvc test 5c20fdad-7288-11eb-b817-0255ac10158b/default/pvc_name
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `annotations`.
-
-        It is generally recommended running `pulumi preview` after importing a PVC.
-
-        You can then decide if changes should be applied to the PVC, or the resource
-
-        definition should be updated to align with the PVC. Also you can ignore changes as below.
-
-        resource "sbercloud_cce_pvc" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              annotations,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Pvc resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_modes: Specifies the desired access modes the volume should have.
-               The valid values are as follows:
-               + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-               + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-               + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies the unstructured key value map for external parameters.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE PVC belongs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the PVC resource. This parameter can contain a
-               maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-               lowercase letters and digits. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to logically divide your containers into different
-               group. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the PVC resource.
-               If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] storage: Specifies the minimum amount of storage resources required.
-               Changing this creates a new PVC resource.
-        :param pulumi.Input[_builtins.str] storage_class_name: Specifies the type of the storage bound to the CCE PVC.
-               The valid values are as follows:
-               + **csi-disk**: EVS.
-               + **csi-obs**: OBS.
-               + **csi-nas**: SFS.
-               + **csi-sfsturbo**: SFS-Turbo.
         """
         ...
     @overload
@@ -569,108 +295,7 @@ class Pvc(pulumi.CustomResource):
                  args: PvcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CCE Persistent Volume Claim resource within SberCloud.
-
-        ## Example Usage
-
-        ### Create PVC with EVS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        namespace = config.require_object("namespace")
-        pvc_name = config.require_object("pvcName")
-        test = sbercloud.cce.Pvc("test",
-            cluster_id=cluster_id,
-            namespace=namespace,
-            name=pvc_name,
-            annotations={
-                "everest.io/disk-volume-type": "SSD",
-            },
-            storage_class_name="csi-disk",
-            access_modes=["ReadWriteOnce"],
-            storage="10Gi")
-        ```
-
-        ### Create PVC with OBS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        namespace = config.require_object("namespace")
-        pvc_name = config.require_object("pvcName")
-        test = sbercloud.cce.Pvc("test",
-            cluster_id=cluster_id,
-            namespace=namespace,
-            name=pvc_name,
-            annotations={
-                "everest.io/obs-volume-type": "STANDARD",
-                "csi.storage.k8s.io/fstype": "obsfs",
-            },
-            storage_class_name="csi-obs",
-            access_modes=["ReadWriteMany"],
-            storage="1Gi")
-        ```
-
-        ### Create PVC with SFS
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        cluster_id = config.require_object("clusterId")
-        namespace = config.require_object("namespace")
-        pvc_name = config.require_object("pvcName")
-        test = sbercloud.cce.Pvc("test",
-            cluster_id=cluster_id,
-            namespace=namespace,
-            name=pvc_name,
-            storage_class_name="csi-nas",
-            access_modes=["ReadWriteMany"],
-            storage="10Gi")
-        ```
-
-        ## Import
-
-        CCE PVC can be imported using the cluster ID, namespace and name separated by a slash, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Cce/pvc:Pvc test 5c20fdad-7288-11eb-b817-0255ac10158b/default/pvc_name
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `annotations`.
-
-        It is generally recommended running `pulumi preview` after importing a PVC.
-
-        You can then decide if changes should be applied to the PVC, or the resource
-
-        definition should be updated to align with the PVC. Also you can ignore changes as below.
-
-        resource "sbercloud_cce_pvc" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              annotations,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Pvc resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PvcArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -753,35 +378,6 @@ class Pvc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] access_modes: Specifies the desired access modes the volume should have.
-               The valid values are as follows:
-               + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-               + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-               + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Specifies the unstructured key value map for external parameters.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the cluster ID to which the CCE PVC belongs.
-        :param pulumi.Input[_builtins.str] creation_timestamp: The server time when PVC was created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the map of string keys and values for labels.
-               Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the unique name of the PVC resource. This parameter can contain a
-               maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-               lowercase letters and digits. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] namespace: Specifies the namespace to logically divide your containers into different
-               group. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the PVC resource.
-               If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-        :param pulumi.Input[_builtins.str] status: The current phase of the PVC.
-               + **Pending**: Not yet bound.
-               + **Bound**: Already bound.
-        :param pulumi.Input[_builtins.str] storage: Specifies the minimum amount of storage resources required.
-               Changing this creates a new PVC resource.
-        :param pulumi.Input[_builtins.str] storage_class_name: Specifies the type of the storage bound to the CCE PVC.
-               The valid values are as follows:
-               + **csi-disk**: EVS.
-               + **csi-obs**: OBS.
-               + **csi-nas**: SFS.
-               + **csi-sfsturbo**: SFS-Turbo.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -803,106 +399,55 @@ class Pvc(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessModes")
     def access_modes(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the desired access modes the volume should have.
-        The valid values are as follows:
-        + **ReadWriteOnce**: The volume can be mounted as read-write by a single node.
-        + **ReadOnlyMany**: The volume can be mounted as read-only by many nodes.
-        + **ReadWriteMany**: The volume can be mounted as read-write by many nodes.
-        """
         return pulumi.get(self, "access_modes")
 
     @_builtins.property
     @pulumi.getter
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the unstructured key value map for external parameters.
-        Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "annotations")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the cluster ID to which the CCE PVC belongs.
-        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[_builtins.str]:
-        """
-        The server time when PVC was created.
-        """
         return pulumi.get(self, "creation_timestamp")
 
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the map of string keys and values for labels.
-        Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the unique name of the PVC resource. This parameter can contain a
-        maximum of 63 characters, which may consist of lowercase letters, digits and hyphens (-), and must start and end with
-        lowercase letters and digits. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def namespace(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the namespace to logically divide your containers into different
-        group. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "namespace")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the PVC resource.
-        If omitted, the provider-level region will be used. Changing this will create a new PVC resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The current phase of the PVC.
-        + **Pending**: Not yet bound.
-        + **Bound**: Already bound.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the minimum amount of storage resources required.
-        Changing this creates a new PVC resource.
-        """
         return pulumi.get(self, "storage")
 
     @_builtins.property
     @pulumi.getter(name="storageClassName")
     def storage_class_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the type of the storage bound to the CCE PVC.
-        The valid values are as follows:
-        + **csi-disk**: EVS.
-        + **csi-obs**: OBS.
-        + **csi-nas**: SFS.
-        + **csi-sfsturbo**: SFS-Turbo.
-        """
         return pulumi.get(self, "storage_class_name")
 

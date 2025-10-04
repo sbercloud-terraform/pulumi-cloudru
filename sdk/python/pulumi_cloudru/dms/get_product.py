@@ -132,9 +132,6 @@ class GetProductResult:
     @_builtins.property
     @pulumi.getter(name="storageSpecCodes")
     def storage_spec_codes(self) -> Sequence[_builtins.str]:
-        """
-        The available I/O specifications.
-        """
         return pulumi.get(self, "storage_spec_codes")
 
     @_builtins.property
@@ -184,53 +181,7 @@ def get_product(availability_zones: Optional[Sequence[_builtins.str]] = None,
                 vm_specification: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProductResult:
     """
-    Use this data source to get the ID of an available SberCloud DMS product.
-
-    ## Example Usage
-
-    ### Filter DMS kafka product list by I/O specification
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    product1 = sbercloud.Dms.get_product(engine="kafka",
-        version="1.1.0",
-        instance_type="cluster",
-        partition_num="300",
-        storage="600",
-        storage_spec_code="dms.physical.storage.high")
-    ```
-
-    ### Filter DMS kafka product list by underlying VM specification
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    product2 = sbercloud.Dms.get_product(engine="kafka",
-        version="2.3.0",
-        instance_type="cluster",
-        vm_specification="c6.large.2")
-    ```
-
-
-    :param Sequence[_builtins.str] availability_zones: Indicates the list of availability zones with available resources.
-    :param _builtins.str bandwidth: Indicates the baseline bandwidth of a DMS instance.
-           The valid values are **100MB**, **300MB**, **600MB** and **1200MB**.
-    :param _builtins.str engine: Indicates the name of a message engine. The valid values are **kafka**, **rabbitmq**.
-    :param _builtins.str instance_type: Indicates an instance type. The valid values are **single** and **cluster**.
-    :param _builtins.str node_num: Indicates the number of nodes in a cluster.
-    :param _builtins.str partition_num: Indicates the maximum number of topics that can be created for a Kafka instance.
-           The valid values are **300**, **900** and **1800**.
-    :param _builtins.str region: The region in which to obtain the dms products. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str storage: Indicates the storage capacity of the resource.
-           The default value is the storage capacity of the product.
-    :param _builtins.str storage_spec_code: Indicates an I/O specification.
-           The valid values are **dms.physical.storage.high** and **dms.physical.storage.ultra**.
-    :param _builtins.str version: Indicates the version of a message engine.
-    :param _builtins.str vm_specification: Indicates underlying VM specification, such as **c6.large.2**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZones'] = availability_zones
@@ -277,53 +228,7 @@ def get_product_output(availability_zones: Optional[pulumi.Input[Optional[Sequen
                        vm_specification: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductResult]:
     """
-    Use this data source to get the ID of an available SberCloud DMS product.
-
-    ## Example Usage
-
-    ### Filter DMS kafka product list by I/O specification
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    product1 = sbercloud.Dms.get_product(engine="kafka",
-        version="1.1.0",
-        instance_type="cluster",
-        partition_num="300",
-        storage="600",
-        storage_spec_code="dms.physical.storage.high")
-    ```
-
-    ### Filter DMS kafka product list by underlying VM specification
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    product2 = sbercloud.Dms.get_product(engine="kafka",
-        version="2.3.0",
-        instance_type="cluster",
-        vm_specification="c6.large.2")
-    ```
-
-
-    :param Sequence[_builtins.str] availability_zones: Indicates the list of availability zones with available resources.
-    :param _builtins.str bandwidth: Indicates the baseline bandwidth of a DMS instance.
-           The valid values are **100MB**, **300MB**, **600MB** and **1200MB**.
-    :param _builtins.str engine: Indicates the name of a message engine. The valid values are **kafka**, **rabbitmq**.
-    :param _builtins.str instance_type: Indicates an instance type. The valid values are **single** and **cluster**.
-    :param _builtins.str node_num: Indicates the number of nodes in a cluster.
-    :param _builtins.str partition_num: Indicates the maximum number of topics that can be created for a Kafka instance.
-           The valid values are **300**, **900** and **1800**.
-    :param _builtins.str region: The region in which to obtain the dms products. If omitted, the provider-level region
-           will be used.
-    :param _builtins.str storage: Indicates the storage capacity of the resource.
-           The default value is the storage capacity of the product.
-    :param _builtins.str storage_spec_code: Indicates an I/O specification.
-           The valid values are **dms.physical.storage.high** and **dms.physical.storage.ultra**.
-    :param _builtins.str version: Indicates the version of a message engine.
-    :param _builtins.str vm_specification: Indicates underlying VM specification, such as **c6.large.2**.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZones'] = availability_zones

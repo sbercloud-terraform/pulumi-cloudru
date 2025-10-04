@@ -12,82 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a **Custom Policy** resource within SberCloud IAM service.
-//
-// ->**Note** You _must_ have admin privileges in your SberCloud cloud to use this resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.NewRole(ctx, "role1", &iam.RoleArgs{
-//				Name:        pulumi.String("test"),
-//				Description: pulumi.String("created by terraform"),
-//				Type:        pulumi.String("AX"),
-//				Policy: pulumi.String(`{
-//	  "Version": "1.1",
-//	  "Statement": [
-//	    {
-//	      "Action": [
-//	        "obs:bucket:GetBucketAcl"
-//	      ],
-//	      "Effect": "Allow",
-//	      "Resource": [
-//	        "obs:*:*:bucket:*"
-//	      ],
-//	      "Condition": {
-//	        "StringStartWith": {
-//	          "g:ProjectName": [
-//	            "ru-moscow-1"
-//	          ]
-//	        }
-//	      }
-//	    }
-//	  ]
-//	}
-//
-// `),
-//
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Roles can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Iam/role:Role role1 89c60255-9bd6-460c-822a-e2b959ede9d2
-// ```
 type Role struct {
 	pulumi.CustomResourceState
 
-	// Description of the custom policy.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Name of the custom policy.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Document of the custom policy in JSON format.
-	Policy pulumi.StringOutput `pulumi:"policy"`
-	// The number of references.
-	References pulumi.IntOutput `pulumi:"references"`
-	// Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Name        pulumi.StringOutput `pulumi:"name"`
+	Policy      pulumi.StringOutput `pulumi:"policy"`
+	References  pulumi.IntOutput    `pulumi:"references"`
+	Type        pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewRole registers a new resource with the given unique name, arguments, and options.
@@ -129,29 +61,19 @@ func GetRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Role resources.
 type roleState struct {
-	// Description of the custom policy.
 	Description *string `pulumi:"description"`
-	// Name of the custom policy.
-	Name *string `pulumi:"name"`
-	// Document of the custom policy in JSON format.
-	Policy *string `pulumi:"policy"`
-	// The number of references.
-	References *int `pulumi:"references"`
-	// Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-	Type *string `pulumi:"type"`
+	Name        *string `pulumi:"name"`
+	Policy      *string `pulumi:"policy"`
+	References  *int    `pulumi:"references"`
+	Type        *string `pulumi:"type"`
 }
 
 type RoleState struct {
-	// Description of the custom policy.
 	Description pulumi.StringPtrInput
-	// Name of the custom policy.
-	Name pulumi.StringPtrInput
-	// Document of the custom policy in JSON format.
-	Policy pulumi.StringPtrInput
-	// The number of references.
-	References pulumi.IntPtrInput
-	// Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-	Type pulumi.StringPtrInput
+	Name        pulumi.StringPtrInput
+	Policy      pulumi.StringPtrInput
+	References  pulumi.IntPtrInput
+	Type        pulumi.StringPtrInput
 }
 
 func (RoleState) ElementType() reflect.Type {
@@ -159,26 +81,18 @@ func (RoleState) ElementType() reflect.Type {
 }
 
 type roleArgs struct {
-	// Description of the custom policy.
-	Description string `pulumi:"description"`
-	// Name of the custom policy.
-	Name *string `pulumi:"name"`
-	// Document of the custom policy in JSON format.
-	Policy string `pulumi:"policy"`
-	// Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-	Type string `pulumi:"type"`
+	Description string  `pulumi:"description"`
+	Name        *string `pulumi:"name"`
+	Policy      string  `pulumi:"policy"`
+	Type        string  `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Role resource.
 type RoleArgs struct {
-	// Description of the custom policy.
 	Description pulumi.StringInput
-	// Name of the custom policy.
-	Name pulumi.StringPtrInput
-	// Document of the custom policy in JSON format.
-	Policy pulumi.StringInput
-	// Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-	Type pulumi.StringInput
+	Name        pulumi.StringPtrInput
+	Policy      pulumi.StringInput
+	Type        pulumi.StringInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {
@@ -268,27 +182,22 @@ func (o RoleOutput) ToRoleOutputWithContext(ctx context.Context) RoleOutput {
 	return o
 }
 
-// Description of the custom policy.
 func (o RoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the custom policy.
 func (o RoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Document of the custom policy in JSON format.
 func (o RoleOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Policy }).(pulumi.StringOutput)
 }
 
-// The number of references.
 func (o RoleOutput) References() pulumi.IntOutput {
 	return o.ApplyT(func(v *Role) pulumi.IntOutput { return v.References }).(pulumi.IntOutput)
 }
 
-// Display mode. Valid options are _AX_: Account level and _XA_: Project level.
 func (o RoleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Role) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

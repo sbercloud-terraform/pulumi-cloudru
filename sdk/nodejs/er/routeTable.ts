@@ -4,44 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a route table resource under the ER instance within SberCloud.
- *
- * Before using enterprise router, define custom endpoint as shown below:
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * ```
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const routeTableName = config.requireObject<any>("routeTableName");
- * const test = new sbercloud.er.RouteTable("test", {
- *     instanceId: instanceId,
- *     name: routeTableName,
- *     description: "Route table created by terraform",
- *     tags: {
- *         foo: "bar",
- *         owner: "terraform",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * Route tables can be imported using their `id` and the related `instance_id`, separated by slashes (/), e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Er/routeTable:RouteTable test <instance_id>/<id>
- * ```
- */
 export class RouteTable extends pulumi.CustomResource {
     /**
      * Get an existing RouteTable resource's state with the given name, ID, and optional extra
@@ -75,13 +37,11 @@ export class RouteTable extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Specifies the description of the route table.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the ER route table.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Specifies the ID of the ER instance to which the route table belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the route table belongs.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     /**
@@ -93,23 +53,17 @@ export class RouteTable extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly isDefaultPropagation: pulumi.Output<boolean>;
     /**
-     * Specifies the name of the route table.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The name of the route table.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and route table are located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
      * The current status of the route table.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the key/value pairs to associate with the route table.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The latest update time.
@@ -169,13 +123,11 @@ export interface RouteTableState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Specifies the description of the route table.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the ER route table.
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the ER instance to which the route table belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the route table belongs.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -187,23 +139,17 @@ export interface RouteTableState {
      */
     isDefaultPropagation?: pulumi.Input<boolean>;
     /**
-     * Specifies the name of the route table.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The name of the route table.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and route table are located.
      */
     region?: pulumi.Input<string>;
     /**
      * The current status of the route table.
      */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the route table.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The latest update time.
@@ -216,28 +162,20 @@ export interface RouteTableState {
  */
 export interface RouteTableArgs {
     /**
-     * Specifies the description of the route table.  
-     * The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+     * The description of the ER route table.
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the ER instance to which the route table belongs.  
-     * Changing this parameter will create a new resource.
+     * The ID of the ER instance to which the route table belongs.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Specifies the name of the route table.  
-     * The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-     * hyphens (-) and dots (.) allowed.
+     * The name of the route table.
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the region where the ER instance and route table are located.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the ER instance and route table are located.
      */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the key/value pairs to associate with the route table.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -11,35 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// !> **WARNING:** It has been deprecated, use `Vpc.RouteTable` to get the route details.
-//
-// Provides details about a specific VPC route.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sbercloud.GetVpcRoute(ctx, &cloudru.GetVpcRouteArgs{
-//				VpcId: pulumi.StringRef(vpcId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpcRoute(ctx *pulumi.Context, args *GetVpcRouteArgs, opts ...pulumi.InvokeOption) (*GetVpcRouteResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcRouteResult
@@ -52,31 +23,23 @@ func GetVpcRoute(ctx *pulumi.Context, args *GetVpcRouteArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getVpcRoute.
 type GetVpcRouteArgs struct {
-	// The route destination address (CIDR).
 	Destination *string `pulumi:"destination"`
-	// The id of the specific route to retrieve.
-	Id *string `pulumi:"id"`
-	// The region in which to obtain the vpc route. If omitted, the provider-level region will
-	// be used.
-	Region *string `pulumi:"region"`
-	// Only the administrator can specify the tenant ID of other tenants.
-	TenantId *string `pulumi:"tenantId"`
-	// Route type for filtering.
-	Type *string `pulumi:"type"`
-	// The id of the VPC that the desired route belongs to.
-	VpcId *string `pulumi:"vpcId"`
+	Id          *string `pulumi:"id"`
+	Region      *string `pulumi:"region"`
+	TenantId    *string `pulumi:"tenantId"`
+	Type        *string `pulumi:"type"`
+	VpcId       *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcRoute.
 type GetVpcRouteResult struct {
 	Destination string `pulumi:"destination"`
 	Id          string `pulumi:"id"`
-	// The next hop of the route. If the route type is peering, it will provide VPC peering connection ID.
-	Nexthop  string `pulumi:"nexthop"`
-	Region   string `pulumi:"region"`
-	TenantId string `pulumi:"tenantId"`
-	Type     string `pulumi:"type"`
-	VpcId    string `pulumi:"vpcId"`
+	Nexthop     string `pulumi:"nexthop"`
+	Region      string `pulumi:"region"`
+	TenantId    string `pulumi:"tenantId"`
+	Type        string `pulumi:"type"`
+	VpcId       string `pulumi:"vpcId"`
 }
 
 func GetVpcRouteOutput(ctx *pulumi.Context, args GetVpcRouteOutputArgs, opts ...pulumi.InvokeOption) GetVpcRouteResultOutput {
@@ -90,19 +53,12 @@ func GetVpcRouteOutput(ctx *pulumi.Context, args GetVpcRouteOutputArgs, opts ...
 
 // A collection of arguments for invoking getVpcRoute.
 type GetVpcRouteOutputArgs struct {
-	// The route destination address (CIDR).
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// The id of the specific route to retrieve.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The region in which to obtain the vpc route. If omitted, the provider-level region will
-	// be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Only the administrator can specify the tenant ID of other tenants.
-	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
-	// Route type for filtering.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The id of the VPC that the desired route belongs to.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	Id          pulumi.StringPtrInput `pulumi:"id"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
+	TenantId    pulumi.StringPtrInput `pulumi:"tenantId"`
+	Type        pulumi.StringPtrInput `pulumi:"type"`
+	VpcId       pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetVpcRouteOutputArgs) ElementType() reflect.Type {
@@ -132,7 +88,6 @@ func (o GetVpcRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The next hop of the route. If the route type is peering, it will provide VPC peering connection ID.
 func (o GetVpcRouteResultOutput) Nexthop() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcRouteResult) string { return v.Nexthop }).(pulumi.StringOutput)
 }

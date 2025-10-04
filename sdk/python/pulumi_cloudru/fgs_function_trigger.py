@@ -26,29 +26,11 @@ class FgsFunctionTriggerArgs:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FgsFunctionTrigger resource.
-        :param pulumi.Input[_builtins.str] event_data: Specifies the detailed configuration of the function trigger event, in JSON
-               format.
-               For various types of trigger parameter configurations, please refer to the
-               [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-               
-               > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-               for updateable fields.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the function trigger belongs.  
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the function trigger.  
-               The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-               Changing this will create a new resource.
-               
-               > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function trigger is located.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Specifies the status of the function trigger.  
-               The valid values are **ACTIVE** and **DISABLED**.
-               About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-               **ACTIVE**.
-               
-               > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-               `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+        :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
+        :param pulumi.Input[_builtins.str] type: The type of the function trigger.
+        :param pulumi.Input[_builtins.str] region: The region where the function trigger is located.
+        :param pulumi.Input[_builtins.str] status: The expected status of the function trigger.
         """
         pulumi.set(__self__, "event_data", event_data)
         pulumi.set(__self__, "function_urn", function_urn)
@@ -62,13 +44,7 @@ class FgsFunctionTriggerArgs:
     @pulumi.getter(name="eventData")
     def event_data(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the detailed configuration of the function trigger event, in JSON
-        format.
-        For various types of trigger parameter configurations, please refer to the
-        [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-
-        > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-        for updateable fields.
+        The detailed configuration of the function trigger event, in JSON format.
         """
         return pulumi.get(self, "event_data")
 
@@ -80,8 +56,7 @@ class FgsFunctionTriggerArgs:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the function URN to which the function trigger belongs.  
-        Changing this will create a new resource.
+        The function URN to which the function trigger belongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -93,11 +68,7 @@ class FgsFunctionTriggerArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the type of the function trigger.  
-        The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-        Changing this will create a new resource.
-
-        > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+        The type of the function trigger.
         """
         return pulumi.get(self, "type")
 
@@ -109,8 +80,7 @@ class FgsFunctionTriggerArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the function trigger is located.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the function trigger is located.
         """
         return pulumi.get(self, "region")
 
@@ -122,13 +92,7 @@ class FgsFunctionTriggerArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the status of the function trigger.  
-        The valid values are **ACTIVE** and **DISABLED**.
-        About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-        **ACTIVE**.
-
-        > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-        `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+        The expected status of the function trigger.
         """
         return pulumi.get(self, "status")
 
@@ -150,29 +114,11 @@ class _FgsFunctionTriggerState:
         """
         Input properties used for looking up and filtering FgsFunctionTrigger resources.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the function trigger.
-        :param pulumi.Input[_builtins.str] event_data: Specifies the detailed configuration of the function trigger event, in JSON
-               format.
-               For various types of trigger parameter configurations, please refer to the
-               [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-               
-               > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-               for updateable fields.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the function trigger belongs.  
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function trigger is located.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Specifies the status of the function trigger.  
-               The valid values are **ACTIVE** and **DISABLED**.
-               About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-               **ACTIVE**.
-               
-               > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-               `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the function trigger.  
-               The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-               Changing this will create a new resource.
-               
-               > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+        :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the function trigger is located.
+        :param pulumi.Input[_builtins.str] status: The expected status of the function trigger.
+        :param pulumi.Input[_builtins.str] type: The type of the function trigger.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the function trigger.
         """
         if created_at is not None:
@@ -206,13 +152,7 @@ class _FgsFunctionTriggerState:
     @pulumi.getter(name="eventData")
     def event_data(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the detailed configuration of the function trigger event, in JSON
-        format.
-        For various types of trigger parameter configurations, please refer to the
-        [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-
-        > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-        for updateable fields.
+        The detailed configuration of the function trigger event, in JSON format.
         """
         return pulumi.get(self, "event_data")
 
@@ -224,8 +164,7 @@ class _FgsFunctionTriggerState:
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the function URN to which the function trigger belongs.  
-        Changing this will create a new resource.
+        The function URN to which the function trigger belongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -237,8 +176,7 @@ class _FgsFunctionTriggerState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the region where the function trigger is located.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the function trigger is located.
         """
         return pulumi.get(self, "region")
 
@@ -250,13 +188,7 @@ class _FgsFunctionTriggerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the status of the function trigger.  
-        The valid values are **ACTIVE** and **DISABLED**.
-        About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-        **ACTIVE**.
-
-        > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-        `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+        The expected status of the function trigger.
         """
         return pulumi.get(self, "status")
 
@@ -268,11 +200,7 @@ class _FgsFunctionTriggerState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the type of the function trigger.  
-        The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-        Changing this will create a new resource.
-
-        > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+        The type of the function trigger.
         """
         return pulumi.get(self, "type")
 
@@ -306,45 +234,14 @@ class FgsFunctionTrigger(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages the function trigger resource within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        Function trigger can be imported using the `function_urn`, `type` and `id`, separated by the slashes (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger test <function_urn>/<type>/<id>
-        ```
-
+        Create a FgsFunctionTrigger resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] event_data: Specifies the detailed configuration of the function trigger event, in JSON
-               format.
-               For various types of trigger parameter configurations, please refer to the
-               [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-               
-               > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-               for updateable fields.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the function trigger belongs.  
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function trigger is located.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Specifies the status of the function trigger.  
-               The valid values are **ACTIVE** and **DISABLED**.
-               About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-               **ACTIVE**.
-               
-               > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-               `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the function trigger.  
-               The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-               Changing this will create a new resource.
-               
-               > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+        :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the function trigger is located.
+        :param pulumi.Input[_builtins.str] status: The expected status of the function trigger.
+        :param pulumi.Input[_builtins.str] type: The type of the function trigger.
         """
         ...
     @overload
@@ -353,20 +250,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
                  args: FgsFunctionTriggerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages the function trigger resource within SberCloud.
-
-        ## Example Usage
-
-        ## Import
-
-        Function trigger can be imported using the `function_urn`, `type` and `id`, separated by the slashes (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/fgsFunctionTrigger:FgsFunctionTrigger test <function_urn>/<type>/<id>
-        ```
-
+        Create a FgsFunctionTrigger resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FgsFunctionTriggerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -434,29 +318,11 @@ class FgsFunctionTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The creation time of the function trigger.
-        :param pulumi.Input[_builtins.str] event_data: Specifies the detailed configuration of the function trigger event, in JSON
-               format.
-               For various types of trigger parameter configurations, please refer to the
-               [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-               
-               > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-               for updateable fields.
-        :param pulumi.Input[_builtins.str] function_urn: Specifies the function URN to which the function trigger belongs.  
-               Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region where the function trigger is located.  
-               If omitted, the provider-level region will be used. Changing this will create a new resource.
-        :param pulumi.Input[_builtins.str] status: Specifies the status of the function trigger.  
-               The valid values are **ACTIVE** and **DISABLED**.
-               About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-               **ACTIVE**.
-               
-               > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-               `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
-        :param pulumi.Input[_builtins.str] type: Specifies the type of the function trigger.  
-               The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-               Changing this will create a new resource.
-               
-               > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+        :param pulumi.Input[_builtins.str] event_data: The detailed configuration of the function trigger event, in JSON format.
+        :param pulumi.Input[_builtins.str] function_urn: The function URN to which the function trigger belongs.
+        :param pulumi.Input[_builtins.str] region: The region where the function trigger is located.
+        :param pulumi.Input[_builtins.str] status: The expected status of the function trigger.
+        :param pulumi.Input[_builtins.str] type: The type of the function trigger.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time of the function trigger.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -484,13 +350,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     @pulumi.getter(name="eventData")
     def event_data(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the detailed configuration of the function trigger event, in JSON
-        format.
-        For various types of trigger parameter configurations, please refer to the
-        [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#functiongraph_06_0122__request_TriggerEventDataRequestBody).
-
-        > Please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0124.html#functiongraph_06_0124__request_UpdateriggerEventData)
-        for updateable fields.
+        The detailed configuration of the function trigger event, in JSON format.
         """
         return pulumi.get(self, "event_data")
 
@@ -498,8 +358,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     @pulumi.getter(name="functionUrn")
     def function_urn(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the function URN to which the function trigger belongs.  
-        Changing this will create a new resource.
+        The function URN to which the function trigger belongs.
         """
         return pulumi.get(self, "function_urn")
 
@@ -507,8 +366,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the region where the function trigger is located.  
-        If omitted, the provider-level region will be used. Changing this will create a new resource.
+        The region where the function trigger is located.
         """
         return pulumi.get(self, "region")
 
@@ -516,13 +374,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the status of the function trigger.  
-        The valid values are **ACTIVE** and **DISABLED**.
-        About `DDS` and `Kafka` triggers, the default value is **DISABLED**, for the other triggers, the default value is
-        **ACTIVE**.
-
-        > Currently, only some triggers support setting the **DISABLED** value, such as `TIMER`, `DDS`, `DMS`, `KAFKA` and
-        `LTS`. For more details, please refer to the [documentation](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html).
+        The expected status of the function trigger.
         """
         return pulumi.get(self, "status")
 
@@ -530,11 +382,7 @@ class FgsFunctionTrigger(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the type of the function trigger.  
-        The valid values are **TIMER**, **APIG**, **CTS**, **DDS**, **DEDICATEDGATEWAY**, etc.
-        Changing this will create a new resource.
-
-        > For more available values, please refer to the [documentation table 3](https://support.sbercloud.com/intl/en-us/api-functiongraph/functiongraph_06_0122.html#section2).
+        The type of the function trigger.
         """
         return pulumi.get(self, "type")
 

@@ -43,7 +43,7 @@ class ZoneRouter(dict):
                  router_id: _builtins.str,
                  router_region: Optional[_builtins.str] = None):
         """
-        :param _builtins.str router_id: ID of the associated VPC.
+        :param _builtins.str router_id: The ID of the associated VPC.
         :param _builtins.str router_region: The region of the VPC.
         """
         pulumi.set(__self__, "router_id", router_id)
@@ -54,7 +54,7 @@ class ZoneRouter(dict):
     @pulumi.getter(name="routerId")
     def router_id(self) -> _builtins.str:
         """
-        ID of the associated VPC.
+        The ID of the associated VPC.
         """
         return pulumi.get(self, "router_id")
 

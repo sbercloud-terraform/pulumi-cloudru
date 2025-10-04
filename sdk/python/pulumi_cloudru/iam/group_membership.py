@@ -23,8 +23,6 @@ class GroupMembershipArgs:
                  users: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a GroupMembership resource.
-        :param pulumi.Input[_builtins.str] group: The group ID of this membership.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: A List of user IDs to associate to the group.
         """
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "users", users)
@@ -32,9 +30,6 @@ class GroupMembershipArgs:
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Input[_builtins.str]:
-        """
-        The group ID of this membership.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -44,9 +39,6 @@ class GroupMembershipArgs:
     @_builtins.property
     @pulumi.getter
     def users(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        A List of user IDs to associate to the group.
-        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -61,8 +53,6 @@ class _GroupMembershipState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering GroupMembership resources.
-        :param pulumi.Input[_builtins.str] group: The group ID of this membership.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: A List of user IDs to associate to the group.
         """
         if group is not None:
             pulumi.set(__self__, "group", group)
@@ -72,9 +62,6 @@ class _GroupMembershipState:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The group ID of this membership.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -84,9 +71,6 @@ class _GroupMembershipState:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A List of user IDs to associate to the group.
-        """
         return pulumi.get(self, "users")
 
     @users.setter
@@ -104,39 +88,9 @@ class GroupMembership(pulumi.CustomResource):
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a User Group Membership resource within SberCloud IAM service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        group1 = sbercloud.iam.Group("group_1",
-            name="group1",
-            description="This is a test group")
-        user1 = sbercloud.iam.User("user_1",
-            name="user1",
-            enabled=True,
-            password="password12345!")
-        user2 = sbercloud.iam.User("user_2",
-            name="user2",
-            enabled=True,
-            password="password12345!")
-        membership1 = sbercloud.iam.GroupMembership("membership_1",
-            group=group1.id,
-            users=[
-                user1.id,
-                user2.id,
-            ])
-        ```
-
+        Create a GroupMembership resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group: The group ID of this membership.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: A List of user IDs to associate to the group.
         """
         ...
     @overload
@@ -145,35 +99,7 @@ class GroupMembership(pulumi.CustomResource):
                  args: GroupMembershipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a User Group Membership resource within SberCloud IAM service.
-
-        Note: You _must_ have admin privileges in your SberCloud cloud to use this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        group1 = sbercloud.iam.Group("group_1",
-            name="group1",
-            description="This is a test group")
-        user1 = sbercloud.iam.User("user_1",
-            name="user1",
-            enabled=True,
-            password="password12345!")
-        user2 = sbercloud.iam.User("user_2",
-            name="user2",
-            enabled=True,
-            password="password12345!")
-        membership1 = sbercloud.iam.GroupMembership("membership_1",
-            group=group1.id,
-            users=[
-                user1.id,
-                user2.id,
-            ])
-        ```
-
+        Create a GroupMembership resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -225,8 +151,6 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group: The group ID of this membership.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] users: A List of user IDs to associate to the group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -239,16 +163,10 @@ class GroupMembership(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def group(self) -> pulumi.Output[_builtins.str]:
-        """
-        The group ID of this membership.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter
     def users(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        A List of user IDs to associate to the group.
-        """
         return pulumi.get(self, "users")
 

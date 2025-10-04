@@ -6,24 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of RocketMQ consumer group access users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const group = config.requireObject<any>("group");
- * const test = sbercloud.getDmsRocketmqConsumerGroupAccessUsers({
- *     instanceId: instanceId,
- *     group: group,
- * });
- * ```
- */
 export function getDmsRocketmqConsumerGroupAccessUsers(args: GetDmsRocketmqConsumerGroupAccessUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqConsumerGroupAccessUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", {
@@ -37,18 +19,8 @@ export function getDmsRocketmqConsumerGroupAccessUsers(args: GetDmsRocketmqConsu
  * A collection of arguments for invoking getDmsRocketmqConsumerGroupAccessUsers.
  */
 export interface GetDmsRocketmqConsumerGroupAccessUsersArgs {
-    /**
-     * Specifies the consumer group.
-     */
     group: string;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: string;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -62,30 +34,9 @@ export interface GetDmsRocketmqConsumerGroupAccessUsersResult {
      */
     readonly id: string;
     readonly instanceId: string;
-    /**
-     * Indicates the user list.
-     */
     readonly policies: outputs.GetDmsRocketmqConsumerGroupAccessUsersPolicy[];
     readonly region: string;
 }
-/**
- * Use this data source to get the list of RocketMQ consumer group access users.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const instanceId = config.requireObject<any>("instanceId");
- * const group = config.requireObject<any>("group");
- * const test = sbercloud.getDmsRocketmqConsumerGroupAccessUsers({
- *     instanceId: instanceId,
- *     group: group,
- * });
- * ```
- */
 export function getDmsRocketmqConsumerGroupAccessUsersOutput(args: GetDmsRocketmqConsumerGroupAccessUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqConsumerGroupAccessUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqConsumerGroupAccessUsers:getDmsRocketmqConsumerGroupAccessUsers", {
@@ -99,17 +50,7 @@ export function getDmsRocketmqConsumerGroupAccessUsersOutput(args: GetDmsRocketm
  * A collection of arguments for invoking getDmsRocketmqConsumerGroupAccessUsers.
  */
 export interface GetDmsRocketmqConsumerGroupAccessUsersOutputArgs {
-    /**
-     * Specifies the consumer group.
-     */
     group: pulumi.Input<string>;
-    /**
-     * Specifies the instance ID.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

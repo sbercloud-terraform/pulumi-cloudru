@@ -59,9 +59,6 @@ class GetAddressGroupMembersResult:
     @_builtins.property
     @pulumi.getter
     def address(self) -> Optional[_builtins.str]:
-        """
-        The IP address.
-        """
         return pulumi.get(self, "address")
 
     @_builtins.property
@@ -85,9 +82,6 @@ class GetAddressGroupMembersResult:
     @_builtins.property
     @pulumi.getter(name="itemId")
     def item_id(self) -> Optional[_builtins.str]:
-        """
-        The ID of an address group member.
-        """
         return pulumi.get(self, "item_id")
 
     @_builtins.property
@@ -103,9 +97,6 @@ class GetAddressGroupMembersResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetAddressGroupMembersRecordResult']:
-        """
-        The IP address group member list.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -140,30 +131,7 @@ def get_address_group_members(address: Optional[_builtins.str] = None,
                               region: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAddressGroupMembersResult:
     """
-    Use this data source to get the list of CFW address group members.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    group_id = config.require_object("groupId")
-    test = sbercloud.Cfw.get_address_group_members(group_id=group_id)
-    ```
-
-
-    :param _builtins.str address: Specifies the IP address
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str group_id: Specifies the ID of the IP address group.
-    :param _builtins.str item_id: Specifies the address group member ID.
-    :param _builtins.str key_word: Specifies the keyword.
-    :param _builtins.str query_address_set_type: Specifies the query address group type.
-           + **0** means custom define address set.
-           + **1** means predefined address set.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address
@@ -195,30 +163,7 @@ def get_address_group_members_output(address: Optional[pulumi.Input[Optional[_bu
                                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressGroupMembersResult]:
     """
-    Use this data source to get the list of CFW address group members.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    group_id = config.require_object("groupId")
-    test = sbercloud.Cfw.get_address_group_members(group_id=group_id)
-    ```
-
-
-    :param _builtins.str address: Specifies the IP address
-    :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-    :param _builtins.str group_id: Specifies the ID of the IP address group.
-    :param _builtins.str item_id: Specifies the address group member ID.
-    :param _builtins.str key_word: Specifies the keyword.
-    :param _builtins.str query_address_set_type: Specifies the query address group type.
-           + **0** means custom define address set.
-           + **1** means predefined address set.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['address'] = address

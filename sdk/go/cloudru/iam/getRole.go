@@ -11,31 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/iam"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iam.GetRole(ctx, &iam.GetRoleArgs{
-//				Name: pulumi.StringRef("secu_admin"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.InvokeOption) (*LookupRoleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleResult
@@ -48,28 +23,20 @@ func LookupRole(ctx *pulumi.Context, args *LookupRoleArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getRole.
 type LookupRoleArgs struct {
-	// Specifies the display name of the role displayed on the console.
-	// It is recommended to use this parameter instead of `name` and required if `name` is not specified.
 	DisplayName *string `pulumi:"displayName"`
-	// Specifies the name of the role for internal use.
-	// It's required if `displayName` is not specified.
-	Name *string `pulumi:"name"`
+	Name        *string `pulumi:"name"`
 }
 
 // A collection of values returned by getRole.
 type LookupRoleResult struct {
-	// The service catalog of the policy.
-	Catalog string `pulumi:"catalog"`
-	// The description of the policy.
+	Catalog     string `pulumi:"catalog"`
 	Description string `pulumi:"description"`
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id   string `pulumi:"id"`
-	Name string `pulumi:"name"`
-	// The content of the policy.
+	Id     string `pulumi:"id"`
+	Name   string `pulumi:"name"`
 	Policy string `pulumi:"policy"`
-	// The display mode of the policy.
-	Type string `pulumi:"type"`
+	Type   string `pulumi:"type"`
 }
 
 func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pulumi.InvokeOption) LookupRoleResultOutput {
@@ -83,12 +50,8 @@ func LookupRoleOutput(ctx *pulumi.Context, args LookupRoleOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getRole.
 type LookupRoleOutputArgs struct {
-	// Specifies the display name of the role displayed on the console.
-	// It is recommended to use this parameter instead of `name` and required if `name` is not specified.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Specifies the name of the role for internal use.
-	// It's required if `displayName` is not specified.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
 }
 
 func (LookupRoleOutputArgs) ElementType() reflect.Type {
@@ -110,12 +73,10 @@ func (o LookupRoleResultOutput) ToLookupRoleResultOutputWithContext(ctx context.
 	return o
 }
 
-// The service catalog of the policy.
 func (o LookupRoleResultOutput) Catalog() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Catalog }).(pulumi.StringOutput)
 }
 
-// The description of the policy.
 func (o LookupRoleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -133,12 +94,10 @@ func (o LookupRoleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The content of the policy.
 func (o LookupRoleResultOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Policy }).(pulumi.StringOutput)
 }
 
-// The display mode of the policy.
 func (o LookupRoleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleResult) string { return v.Type }).(pulumi.StringOutput)
 }

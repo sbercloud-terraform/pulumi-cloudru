@@ -23,10 +23,6 @@ class SwrOrganizationArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SwrOrganization resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the organization. The organization name must be globally
-               unique.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -36,10 +32,6 @@ class SwrOrganizationArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the organization. The organization name must be globally
-        unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -49,10 +41,6 @@ class SwrOrganizationArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -70,13 +58,6 @@ class _SwrOrganizationState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SwrOrganization resources.
-        :param pulumi.Input[_builtins.str] creator: The creator user name of the organization.
-        :param pulumi.Input[_builtins.str] login_server: The URL that can be used to log into the container registry.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the organization. The organization name must be globally
-               unique.
-        :param pulumi.Input[_builtins.str] permission: The permission of the organization, the value can be Manage, Write, and Read.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
@@ -92,9 +73,6 @@ class _SwrOrganizationState:
     @_builtins.property
     @pulumi.getter
     def creator(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The creator user name of the organization.
-        """
         return pulumi.get(self, "creator")
 
     @creator.setter
@@ -104,9 +82,6 @@ class _SwrOrganizationState:
     @_builtins.property
     @pulumi.getter(name="loginServer")
     def login_server(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The URL that can be used to log into the container registry.
-        """
         return pulumi.get(self, "login_server")
 
     @login_server.setter
@@ -116,10 +91,6 @@ class _SwrOrganizationState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the organization. The organization name must be globally
-        unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -129,9 +100,6 @@ class _SwrOrganizationState:
     @_builtins.property
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The permission of the organization, the value can be Manage, Write, and Read.
-        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -141,10 +109,6 @@ class _SwrOrganizationState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -162,31 +126,9 @@ class SwrOrganization(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a SWR organization resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.SwrOrganization("test", name="terraform-test")
-        ```
-
-        ## Import
-
-        Organizations can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/swrOrganization:SwrOrganization test org-name
-        ```
-
+        Create a SwrOrganization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the organization. The organization name must be globally
-               unique.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -195,25 +137,7 @@ class SwrOrganization(pulumi.CustomResource):
                  args: Optional[SwrOrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a SWR organization resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        test = sbercloud.SwrOrganization("test", name="terraform-test")
-        ```
-
-        ## Import
-
-        Organizations can be imported using the `name`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/swrOrganization:SwrOrganization test org-name
-        ```
-
+        Create a SwrOrganization resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SwrOrganizationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -267,13 +191,6 @@ class SwrOrganization(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] creator: The creator user name of the organization.
-        :param pulumi.Input[_builtins.str] login_server: The URL that can be used to log into the container registry.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the organization. The organization name must be globally
-               unique.
-        :param pulumi.Input[_builtins.str] permission: The permission of the organization, the value can be Manage, Write, and Read.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource. If omitted, the
-               provider-level region will be used. Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -289,42 +206,25 @@ class SwrOrganization(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def creator(self) -> pulumi.Output[_builtins.str]:
-        """
-        The creator user name of the organization.
-        """
         return pulumi.get(self, "creator")
 
     @_builtins.property
     @pulumi.getter(name="loginServer")
     def login_server(self) -> pulumi.Output[_builtins.str]:
-        """
-        The URL that can be used to log into the container registry.
-        """
         return pulumi.get(self, "login_server")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the organization. The organization name must be globally
-        unique.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def permission(self) -> pulumi.Output[_builtins.str]:
-        """
-        The permission of the organization, the value can be Manage, Write, and Read.
-        """
         return pulumi.get(self, "permission")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource. If omitted, the
-        provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

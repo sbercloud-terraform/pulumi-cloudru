@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of CFW service groups.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cfw"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			objectId := cfg.RequireObject("objectId")
-//			_, err := cfw.GetServiceGroups(ctx, &cfw.GetServiceGroupsArgs{
-//				ObjectId: objectId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServiceGroups(ctx *pulumi.Context, args *GetServiceGroupsArgs, opts ...pulumi.InvokeOption) (*GetServiceGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceGroupsResult
@@ -53,19 +23,12 @@ func GetServiceGroups(ctx *pulumi.Context, args *GetServiceGroupsArgs, opts ...p
 
 // A collection of arguments for invoking getServiceGroups.
 type GetServiceGroupsArgs struct {
-	// Specifies the enterprise project ID.
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId *string `pulumi:"fwInstanceId"`
-	// Specifies the keyword of the service group description.
-	KeyWord *string `pulumi:"keyWord"`
-	// Specifies the name of the service group.
-	Name *string `pulumi:"name"`
-	// Specifies the protected object ID.
-	ObjectId string `pulumi:"objectId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	FwInstanceId        *string `pulumi:"fwInstanceId"`
+	KeyWord             *string `pulumi:"keyWord"`
+	Name                *string `pulumi:"name"`
+	ObjectId            string  `pulumi:"objectId"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getServiceGroups.
@@ -73,13 +36,11 @@ type GetServiceGroupsResult struct {
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
 	FwInstanceId        *string `pulumi:"fwInstanceId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
-	KeyWord *string `pulumi:"keyWord"`
-	// The name of the service group.
-	Name     *string `pulumi:"name"`
-	ObjectId string  `pulumi:"objectId"`
-	Region   string  `pulumi:"region"`
-	// Service group list
+	Id            string                         `pulumi:"id"`
+	KeyWord       *string                        `pulumi:"keyWord"`
+	Name          *string                        `pulumi:"name"`
+	ObjectId      string                         `pulumi:"objectId"`
+	Region        string                         `pulumi:"region"`
 	ServiceGroups []GetServiceGroupsServiceGroup `pulumi:"serviceGroups"`
 }
 
@@ -94,19 +55,12 @@ func GetServiceGroupsOutput(ctx *pulumi.Context, args GetServiceGroupsOutputArgs
 
 // A collection of arguments for invoking getServiceGroups.
 type GetServiceGroupsOutputArgs struct {
-	// Specifies the enterprise project ID.
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the firewall instance ID.
-	FwInstanceId pulumi.StringPtrInput `pulumi:"fwInstanceId"`
-	// Specifies the keyword of the service group description.
-	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
-	// Specifies the name of the service group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the protected object ID.
-	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	FwInstanceId        pulumi.StringPtrInput `pulumi:"fwInstanceId"`
+	KeyWord             pulumi.StringPtrInput `pulumi:"keyWord"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	ObjectId            pulumi.StringInput    `pulumi:"objectId"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetServiceGroupsOutputArgs) ElementType() reflect.Type {
@@ -145,7 +99,6 @@ func (o GetServiceGroupsResultOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupsResult) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
 }
 
-// The name of the service group.
 func (o GetServiceGroupsResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceGroupsResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +111,6 @@ func (o GetServiceGroupsResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceGroupsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Service group list
 func (o GetServiceGroupsResultOutput) ServiceGroups() GetServiceGroupsServiceGroupArrayOutput {
 	return o.ApplyT(func(v GetServiceGroupsResult) []GetServiceGroupsServiceGroup { return v.ServiceGroups }).(GetServiceGroupsServiceGroupArrayOutput)
 }

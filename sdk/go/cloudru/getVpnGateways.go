@@ -11,36 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of VPN gateways.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			gatewayName := cfg.RequireObject("gatewayName")
-//			_, err := sbercloud.GetVpnGateways(ctx, &cloudru.GetVpnGatewaysArgs{
-//				Name: pulumi.StringRef(gatewayName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVpnGateways(ctx *pulumi.Context, args *GetVpnGatewaysArgs, opts ...pulumi.InvokeOption) (*GetVpnGatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpnGatewaysResult
@@ -53,38 +23,23 @@ func GetVpnGateways(ctx *pulumi.Context, args *GetVpnGatewaysArgs, opts ...pulum
 
 // A collection of arguments for invoking getVpnGateways.
 type GetVpnGatewaysArgs struct {
-	// Specifies the attachment type of the gateway.
-	// The value can be: **vpc** and **er**.
-	AttachmentType *string `pulumi:"attachmentType"`
-	// Specifies the enterprise project ID of the gateway.
+	AttachmentType      *string `pulumi:"attachmentType"`
 	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	// Specifies the ID of the gateway.
-	GatewayId *string `pulumi:"gatewayId"`
-	// Specifies the name of the gateway.
-	Name *string `pulumi:"name"`
-	// Specifies the network type of the gateway.
-	// The value can be: **public** and **private**.
-	NetworkType *string `pulumi:"networkType"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	GatewayId           *string `pulumi:"gatewayId"`
+	Name                *string `pulumi:"name"`
+	NetworkType         *string `pulumi:"networkType"`
+	Region              *string `pulumi:"region"`
 }
 
 // A collection of values returned by getVpnGateways.
 type GetVpnGatewaysResult struct {
-	// The attachment type.
-	AttachmentType *string `pulumi:"attachmentType"`
-	// The enterprise project ID
-	EnterpriseProjectId *string `pulumi:"enterpriseProjectId"`
-	GatewayId           *string `pulumi:"gatewayId"`
-	// The list of gateways.
-	// The gateways structure is documented below.
-	Gateways []GetVpnGatewaysGateway `pulumi:"gateways"`
+	AttachmentType      *string                 `pulumi:"attachmentType"`
+	EnterpriseProjectId *string                 `pulumi:"enterpriseProjectId"`
+	GatewayId           *string                 `pulumi:"gatewayId"`
+	Gateways            []GetVpnGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The name of the gateway.
-	Name *string `pulumi:"name"`
-	// The network type of the gateway.
+	Id          string  `pulumi:"id"`
+	Name        *string `pulumi:"name"`
 	NetworkType *string `pulumi:"networkType"`
 	Region      string  `pulumi:"region"`
 }
@@ -100,21 +55,12 @@ func GetVpnGatewaysOutput(ctx *pulumi.Context, args GetVpnGatewaysOutputArgs, op
 
 // A collection of arguments for invoking getVpnGateways.
 type GetVpnGatewaysOutputArgs struct {
-	// Specifies the attachment type of the gateway.
-	// The value can be: **vpc** and **er**.
-	AttachmentType pulumi.StringPtrInput `pulumi:"attachmentType"`
-	// Specifies the enterprise project ID of the gateway.
+	AttachmentType      pulumi.StringPtrInput `pulumi:"attachmentType"`
 	EnterpriseProjectId pulumi.StringPtrInput `pulumi:"enterpriseProjectId"`
-	// Specifies the ID of the gateway.
-	GatewayId pulumi.StringPtrInput `pulumi:"gatewayId"`
-	// Specifies the name of the gateway.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the network type of the gateway.
-	// The value can be: **public** and **private**.
-	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	// Specifies the region in which to query the data source.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	GatewayId           pulumi.StringPtrInput `pulumi:"gatewayId"`
+	Name                pulumi.StringPtrInput `pulumi:"name"`
+	NetworkType         pulumi.StringPtrInput `pulumi:"networkType"`
+	Region              pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetVpnGatewaysOutputArgs) ElementType() reflect.Type {
@@ -136,12 +82,10 @@ func (o GetVpnGatewaysResultOutput) ToGetVpnGatewaysResultOutputWithContext(ctx 
 	return o
 }
 
-// The attachment type.
 func (o GetVpnGatewaysResultOutput) AttachmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) *string { return v.AttachmentType }).(pulumi.StringPtrOutput)
 }
 
-// The enterprise project ID
 func (o GetVpnGatewaysResultOutput) EnterpriseProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) *string { return v.EnterpriseProjectId }).(pulumi.StringPtrOutput)
 }
@@ -150,8 +94,6 @@ func (o GetVpnGatewaysResultOutput) GatewayId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) *string { return v.GatewayId }).(pulumi.StringPtrOutput)
 }
 
-// The list of gateways.
-// The gateways structure is documented below.
 func (o GetVpnGatewaysResultOutput) Gateways() GetVpnGatewaysGatewayArrayOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) []GetVpnGatewaysGateway { return v.Gateways }).(GetVpnGatewaysGatewayArrayOutput)
 }
@@ -161,12 +103,10 @@ func (o GetVpnGatewaysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the gateway.
 func (o GetVpnGatewaysResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The network type of the gateway.
 func (o GetVpnGatewaysResultOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpnGatewaysResult) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }

@@ -29,19 +29,6 @@ class SmnSubscriptionArgs:
                  remark: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SmnSubscription resource.
-        :param pulumi.Input[_builtins.str] endpoint: Message endpoint.
-               + **For an HTTP subscription**, the endpoint starts with `http://`.
-               + **For an HTTPS subscription**, the endpoint starts with `https://`.
-               + **For an email subscription**, the endpoint is an mail address.
-               + **For an SMS message subscription**, the endpoint is a phone number,
-               the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-               + **For a functiongraph subscription**, the endpoint is a workflow ID.
-        :param pulumi.Input[_builtins.str] protocol: Protocol of the message endpoint. Currently, email,
-               sms, http, and https are supported.
-        :param pulumi.Input[_builtins.str] topic_urn: Resource identifier of a topic, which is unique.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        :param pulumi.Input[_builtins.str] remark: Remark information. The remarks must be a UTF-8-coded
-               character string containing 128 bytes.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "protocol", protocol)
@@ -56,15 +43,6 @@ class SmnSubscriptionArgs:
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> pulumi.Input[_builtins.str]:
-        """
-        Message endpoint.
-        + **For an HTTP subscription**, the endpoint starts with `http://`.
-        + **For an HTTPS subscription**, the endpoint starts with `https://`.
-        + **For an email subscription**, the endpoint is an mail address.
-        + **For an SMS message subscription**, the endpoint is a phone number,
-        the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-        + **For a functiongraph subscription**, the endpoint is a workflow ID.
-        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -74,10 +52,6 @@ class SmnSubscriptionArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
-        """
-        Protocol of the message endpoint. Currently, email,
-        sms, http, and https are supported.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -87,9 +61,6 @@ class SmnSubscriptionArgs:
     @_builtins.property
     @pulumi.getter(name="topicUrn")
     def topic_urn(self) -> pulumi.Input[_builtins.str]:
-        """
-        Resource identifier of a topic, which is unique.
-        """
         return pulumi.get(self, "topic_urn")
 
     @topic_urn.setter
@@ -108,9 +79,6 @@ class SmnSubscriptionArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -120,10 +88,6 @@ class SmnSubscriptionArgs:
     @_builtins.property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Remark information. The remarks must be a UTF-8-coded
-        character string containing 128 bytes.
-        """
         return pulumi.get(self, "remark")
 
     @remark.setter
@@ -146,26 +110,7 @@ class _SmnSubscriptionState:
                  topic_urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SmnSubscription resources.
-        :param pulumi.Input[_builtins.str] endpoint: Message endpoint.
-               + **For an HTTP subscription**, the endpoint starts with `http://`.
-               + **For an HTTPS subscription**, the endpoint starts with `https://`.
-               + **For an email subscription**, the endpoint is an mail address.
-               + **For an SMS message subscription**, the endpoint is a phone number,
-               the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-               + **For a functiongraph subscription**, the endpoint is a workflow ID.
         :param pulumi.Input[Sequence[pulumi.Input['SmnSubscriptionFilterPolicyArgs']]] filter_policies: The message filter policies of a subscriber.
-        :param pulumi.Input[_builtins.str] owner: Project ID of the topic creator.
-        :param pulumi.Input[_builtins.str] protocol: Protocol of the message endpoint. Currently, email,
-               sms, http, and https are supported.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        :param pulumi.Input[_builtins.str] remark: Remark information. The remarks must be a UTF-8-coded
-               character string containing 128 bytes.
-        :param pulumi.Input[_builtins.int] status: Subscription status.
-               + **0**: indicates that the subscription is not confirmed.
-               + **1**: indicates that the subscription is confirmed.
-               + **3**: indicates that the subscription is canceled.
-        :param pulumi.Input[_builtins.str] subscription_urn: Resource identifier of a subscription, which is unique.
-        :param pulumi.Input[_builtins.str] topic_urn: Resource identifier of a topic, which is unique.
         """
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
@@ -191,15 +136,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Message endpoint.
-        + **For an HTTP subscription**, the endpoint starts with `http://`.
-        + **For an HTTPS subscription**, the endpoint starts with `https://`.
-        + **For an email subscription**, the endpoint is an mail address.
-        + **For an SMS message subscription**, the endpoint is a phone number,
-        the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-        + **For a functiongraph subscription**, the endpoint is a workflow ID.
-        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -230,9 +166,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Project ID of the topic creator.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -242,10 +175,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Protocol of the message endpoint. Currently, email,
-        sms, http, and https are supported.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -255,9 +184,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -267,10 +193,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Remark information. The remarks must be a UTF-8-coded
-        character string containing 128 bytes.
-        """
         return pulumi.get(self, "remark")
 
     @remark.setter
@@ -280,12 +202,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Subscription status.
-        + **0**: indicates that the subscription is not confirmed.
-        + **1**: indicates that the subscription is confirmed.
-        + **3**: indicates that the subscription is canceled.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -295,9 +211,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter(name="subscriptionUrn")
     def subscription_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Resource identifier of a subscription, which is unique.
-        """
         return pulumi.get(self, "subscription_urn")
 
     @subscription_urn.setter
@@ -307,9 +220,6 @@ class _SmnSubscriptionState:
     @_builtins.property
     @pulumi.getter(name="topicUrn")
     def topic_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Resource identifier of a topic, which is unique.
-        """
         return pulumi.get(self, "topic_urn")
 
     @topic_urn.setter
@@ -331,52 +241,9 @@ class SmnSubscription(pulumi.CustomResource):
                  topic_urn: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages SMN subscription resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        topic1 = sbercloud.SmnTopic("topic_1",
-            name="topic_1",
-            display_name="The display name of topic_1")
-        subscription1 = sbercloud.SmnSubscription("subscription_1",
-            topic_urn=topic1.id,
-            endpoint="mailtest@gmail.com",
-            protocol="email",
-            remark="O&M")
-        subscription2 = sbercloud.SmnSubscription("subscription_2",
-            topic_urn=topic1.id,
-            endpoint="13600000000",
-            protocol="sms",
-            remark="O&M")
-        ```
-
-        ## Import
-
-        SMN subscription can be imported using the `id` (subscription urn), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/smnSubscription:SmnSubscription subscription_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
-        ```
-
+        Create a SmnSubscription resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] endpoint: Message endpoint.
-               + **For an HTTP subscription**, the endpoint starts with `http://`.
-               + **For an HTTPS subscription**, the endpoint starts with `https://`.
-               + **For an email subscription**, the endpoint is an mail address.
-               + **For an SMS message subscription**, the endpoint is a phone number,
-               the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-               + **For a functiongraph subscription**, the endpoint is a workflow ID.
-        :param pulumi.Input[_builtins.str] protocol: Protocol of the message endpoint. Currently, email,
-               sms, http, and https are supported.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        :param pulumi.Input[_builtins.str] remark: Remark information. The remarks must be a UTF-8-coded
-               character string containing 128 bytes.
-        :param pulumi.Input[_builtins.str] topic_urn: Resource identifier of a topic, which is unique.
         """
         ...
     @overload
@@ -385,37 +252,7 @@ class SmnSubscription(pulumi.CustomResource):
                  args: SmnSubscriptionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages SMN subscription resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        topic1 = sbercloud.SmnTopic("topic_1",
-            name="topic_1",
-            display_name="The display name of topic_1")
-        subscription1 = sbercloud.SmnSubscription("subscription_1",
-            topic_urn=topic1.id,
-            endpoint="mailtest@gmail.com",
-            protocol="email",
-            remark="O&M")
-        subscription2 = sbercloud.SmnSubscription("subscription_2",
-            topic_urn=topic1.id,
-            endpoint="13600000000",
-            protocol="sms",
-            remark="O&M")
-        ```
-
-        ## Import
-
-        SMN subscription can be imported using the `id` (subscription urn), e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/smnSubscription:SmnSubscription subscription_1 urn:smn:ru-moscow-1:0f5181caba0024e72f89c0045e707b91:topic_1:9c06f9d90cc549359e3bf67860a0736a
-        ```
-
+        Create a SmnSubscription resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SmnSubscriptionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -489,26 +326,7 @@ class SmnSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] endpoint: Message endpoint.
-               + **For an HTTP subscription**, the endpoint starts with `http://`.
-               + **For an HTTPS subscription**, the endpoint starts with `https://`.
-               + **For an email subscription**, the endpoint is an mail address.
-               + **For an SMS message subscription**, the endpoint is a phone number,
-               the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-               + **For a functiongraph subscription**, the endpoint is a workflow ID.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SmnSubscriptionFilterPolicyArgs', 'SmnSubscriptionFilterPolicyArgsDict']]]] filter_policies: The message filter policies of a subscriber.
-        :param pulumi.Input[_builtins.str] owner: Project ID of the topic creator.
-        :param pulumi.Input[_builtins.str] protocol: Protocol of the message endpoint. Currently, email,
-               sms, http, and https are supported.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        :param pulumi.Input[_builtins.str] remark: Remark information. The remarks must be a UTF-8-coded
-               character string containing 128 bytes.
-        :param pulumi.Input[_builtins.int] status: Subscription status.
-               + **0**: indicates that the subscription is not confirmed.
-               + **1**: indicates that the subscription is confirmed.
-               + **3**: indicates that the subscription is canceled.
-        :param pulumi.Input[_builtins.str] subscription_urn: Resource identifier of a subscription, which is unique.
-        :param pulumi.Input[_builtins.str] topic_urn: Resource identifier of a topic, which is unique.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -529,15 +347,6 @@ class SmnSubscription(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[_builtins.str]:
-        """
-        Message endpoint.
-        + **For an HTTP subscription**, the endpoint starts with `http://`.
-        + **For an HTTPS subscription**, the endpoint starts with `https://`.
-        + **For an email subscription**, the endpoint is an mail address.
-        + **For an SMS message subscription**, the endpoint is a phone number,
-        the format is \\[+\\]\\[country code\\]\\[phone number\\], e.g. +7905xxx0000.
-        + **For a functiongraph subscription**, the endpoint is a workflow ID.
-        """
         return pulumi.get(self, "endpoint")
 
     @_builtins.property
@@ -556,61 +365,35 @@ class SmnSubscription(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        Project ID of the topic creator.
-        """
         return pulumi.get(self, "owner")
 
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[_builtins.str]:
-        """
-        Protocol of the message endpoint. Currently, email,
-        sms, http, and https are supported.
-        """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the SMN subscription resource. If omitted, the provider-level region will be used. Changing this creates a new SMN subscription resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def remark(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Remark information. The remarks must be a UTF-8-coded
-        character string containing 128 bytes.
-        """
         return pulumi.get(self, "remark")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.int]:
-        """
-        Subscription status.
-        + **0**: indicates that the subscription is not confirmed.
-        + **1**: indicates that the subscription is confirmed.
-        + **3**: indicates that the subscription is canceled.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subscriptionUrn")
     def subscription_urn(self) -> pulumi.Output[_builtins.str]:
-        """
-        Resource identifier of a subscription, which is unique.
-        """
         return pulumi.get(self, "subscription_urn")
 
     @_builtins.property
     @pulumi.getter(name="topicUrn")
     def topic_urn(self) -> pulumi.Output[_builtins.str]:
-        """
-        Resource identifier of a topic, which is unique.
-        """
         return pulumi.get(self, "topic_urn")
 

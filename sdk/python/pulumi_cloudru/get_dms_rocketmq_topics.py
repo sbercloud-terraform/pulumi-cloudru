@@ -69,17 +69,11 @@ class GetDmsRocketmqTopicsResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        Indicates the topic name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def permission(self) -> Optional[_builtins.str]:
-        """
-        Indicates the permission. Value options: **sub**, **pub** or **all**.
-        """
         return pulumi.get(self, "permission")
 
     @_builtins.property
@@ -90,26 +84,16 @@ class GetDmsRocketmqTopicsResult:
     @_builtins.property
     @pulumi.getter
     def topics(self) -> Sequence['outputs.GetDmsRocketmqTopicsTopicResult']:
-        """
-        The list of topics.
-        The topics structure is documented below.
-        """
         return pulumi.get(self, "topics")
 
     @_builtins.property
     @pulumi.getter(name="totalReadQueueNum")
     def total_read_queue_num(self) -> Optional[_builtins.int]:
-        """
-        Indicates the number of total read queue.
-        """
         return pulumi.get(self, "total_read_queue_num")
 
     @_builtins.property
     @pulumi.getter(name="totalWriteQueueNum")
     def total_write_queue_num(self) -> Optional[_builtins.int]:
-        """
-        Indicates the number of total write queue.
-        """
         return pulumi.get(self, "total_write_queue_num")
 
 
@@ -137,16 +121,7 @@ def get_dms_rocketmq_topics(instance_id: Optional[_builtins.str] = None,
                             total_write_queue_num: Optional[_builtins.int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqTopicsResult:
     """
-    Use this data source to get the list of DMS rocketMQ topics.
-
-
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str name: Specifies the topic name.
-    :param _builtins.str permission: Specifies the permission. Value options: **sub**, **pub** or **all**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int total_read_queue_num: Specifies the number of total read queue.
-    :param _builtins.int total_write_queue_num: Specifies the number of total write queue.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -175,16 +150,7 @@ def get_dms_rocketmq_topics_output(instance_id: Optional[pulumi.Input[_builtins.
                                    total_write_queue_num: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqTopicsResult]:
     """
-    Use this data source to get the list of DMS rocketMQ topics.
-
-
-    :param _builtins.str instance_id: Specifies the ID of the rocketMQ instance.
-    :param _builtins.str name: Specifies the topic name.
-    :param _builtins.str permission: Specifies the permission. Value options: **sub**, **pub** or **all**.
-    :param _builtins.str region: Specifies the region in which to query the data source.
-           If omitted, the provider-level region will be used.
-    :param _builtins.int total_read_queue_num: Specifies the number of total read queue.
-    :param _builtins.int total_write_queue_num: Specifies the number of total write queue.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

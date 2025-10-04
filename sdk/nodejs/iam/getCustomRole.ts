@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an IAM **custom policy**.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const role = sbercloud.Iam.getCustomRole({
- *     name: "custom_role",
- * });
- * ```
- */
 export function getCustomRole(args?: GetCustomRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -35,29 +21,11 @@ export function getCustomRole(args?: GetCustomRoleArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getCustomRole.
  */
 export interface GetCustomRoleArgs {
-    /**
-     * Description of the custom policy.
-     */
     description?: string;
-    /**
-     * The domain the policy belongs to.
-     */
     domainId?: string;
-    /**
-     * ID of the custom policy.
-     */
     id?: string;
-    /**
-     * Name of the custom policy.
-     */
     name?: string;
-    /**
-     * The number of citations for the custom policy.
-     */
     references?: number;
-    /**
-     * Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-     */
     type?: string;
 }
 
@@ -65,35 +33,15 @@ export interface GetCustomRoleArgs {
  * A collection of values returned by getCustomRole.
  */
 export interface GetCustomRoleResult {
-    /**
-     * The catalog of the custom policy.
-     */
     readonly catalog: string;
     readonly description: string;
     readonly domainId: string;
     readonly id: string;
     readonly name: string;
-    /**
-     * Document of the custom policy.
-     */
     readonly policy: string;
     readonly references: number;
     readonly type: string;
 }
-/**
- * Use this data source to get the ID of an IAM **custom policy**.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const role = sbercloud.Iam.getCustomRole({
- *     name: "custom_role",
- * });
- * ```
- */
 export function getCustomRoleOutput(args?: GetCustomRoleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomRoleResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -111,28 +59,10 @@ export function getCustomRoleOutput(args?: GetCustomRoleOutputArgs, opts?: pulum
  * A collection of arguments for invoking getCustomRole.
  */
 export interface GetCustomRoleOutputArgs {
-    /**
-     * Description of the custom policy.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The domain the policy belongs to.
-     */
     domainId?: pulumi.Input<string>;
-    /**
-     * ID of the custom policy.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Name of the custom policy.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The number of citations for the custom policy.
-     */
     references?: pulumi.Input<number>;
-    /**
-     * Display mode. Valid options are _AX_: Account level and _XA_: Project level.
-     */
     type?: pulumi.Input<string>;
 }

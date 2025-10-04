@@ -28,22 +28,6 @@ class PackageArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Package resource.
-        :param pulumi.Input[_builtins.str] object_path: Specifies the OBS storage path where the package is located.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] type: Specifies the package type.
-               + **jar**: `.jar` or jar related files.
-               + **pyFile**: `.py` or python related files.
-               + **file**: Other user files.
-               
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the group name which the package belongs to.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.bool] is_async: Specifies whether to upload resource packages in asynchronous mode.
-               The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the package owner. The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to upload packages.
-               If omitted, the provider-level region will be used.
-               Changing this parameter will delete the current package and upload a new package.
         """
         pulumi.set(__self__, "object_path", object_path)
         pulumi.set(__self__, "type", type)
@@ -61,10 +45,6 @@ class PackageArgs:
     @_builtins.property
     @pulumi.getter(name="objectPath")
     def object_path(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the OBS storage path where the package is located.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "object_path")
 
     @object_path.setter
@@ -74,14 +54,6 @@ class PackageArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the package type.
-        + **jar**: `.jar` or jar related files.
-        + **pyFile**: `.py` or python related files.
-        + **file**: Other user files.
-
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -91,10 +63,6 @@ class PackageArgs:
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the group name which the package belongs to.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -104,10 +72,6 @@ class PackageArgs:
     @_builtins.property
     @pulumi.getter(name="isAsync")
     def is_async(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to upload resource packages in asynchronous mode.
-        The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "is_async")
 
     @is_async.setter
@@ -117,9 +81,6 @@ class PackageArgs:
     @_builtins.property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the package owner. The owner must be IAM user.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -129,11 +90,6 @@ class PackageArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to upload packages.
-        If omitted, the provider-level region will be used.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -166,26 +122,6 @@ class _PackageState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Package resources.
-        :param pulumi.Input[_builtins.str] created_at: Time when a queue is created.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the group name which the package belongs to.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.bool] is_async: Specifies whether to upload resource packages in asynchronous mode.
-               The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] object_name: The package name.
-        :param pulumi.Input[_builtins.str] object_path: Specifies the OBS storage path where the package is located.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the package owner. The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to upload packages.
-               If omitted, the provider-level region will be used.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] status: Status of a package group to be uploaded.
-        :param pulumi.Input[_builtins.str] type: Specifies the package type.
-               + **jar**: `.jar` or jar related files.
-               + **pyFile**: `.py` or python related files.
-               + **file**: Other user files.
-               
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] updated_at: The last time when the package configuration update has complated.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -213,9 +149,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time when a queue is created.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -225,10 +158,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the group name which the package belongs to.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
@@ -238,10 +167,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter(name="isAsync")
     def is_async(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to upload resource packages in asynchronous mode.
-        The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "is_async")
 
     @is_async.setter
@@ -251,9 +176,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter(name="objectName")
     def object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The package name.
-        """
         return pulumi.get(self, "object_name")
 
     @object_name.setter
@@ -263,10 +185,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter(name="objectPath")
     def object_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the OBS storage path where the package is located.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "object_path")
 
     @object_path.setter
@@ -276,9 +194,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter
     def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the package owner. The owner must be IAM user.
-        """
         return pulumi.get(self, "owner")
 
     @owner.setter
@@ -288,11 +203,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to upload packages.
-        If omitted, the provider-level region will be used.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -302,9 +212,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Status of a package group to be uploaded.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -323,14 +230,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the package type.
-        + **jar**: `.jar` or jar related files.
-        + **pyFile**: `.py` or python related files.
-        + **file**: Other user files.
-
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -340,9 +239,6 @@ class _PackageState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The last time when the package configuration update has complated.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -365,43 +261,9 @@ class Package(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages DLI package resource within SberCloud
-
-        ## Example Usage
-
-        ### Upload the specified python script as a resource package
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_name = config.require_object("groupName")
-        access_domain_name = config.require_object("accessDomainName")
-        queue = sbercloud.dli.Package("queue",
-            group_name=group_name,
-            object_path=f"https://{access_domain_name}/dli/packages/object_file.py",
-            type="pyFile")
-        ```
-
+        Create a Package resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the group name which the package belongs to.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.bool] is_async: Specifies whether to upload resource packages in asynchronous mode.
-               The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] object_path: Specifies the OBS storage path where the package is located.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the package owner. The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to upload packages.
-               If omitted, the provider-level region will be used.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] type: Specifies the package type.
-               + **jar**: `.jar` or jar related files.
-               + **pyFile**: `.py` or python related files.
-               + **file**: Other user files.
-               
-               Changing this parameter will delete the current package and upload a new package.
         """
         ...
     @overload
@@ -410,25 +272,7 @@ class Package(pulumi.CustomResource):
                  args: PackageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages DLI package resource within SberCloud
-
-        ## Example Usage
-
-        ### Upload the specified python script as a resource package
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_name = config.require_object("groupName")
-        access_domain_name = config.require_object("accessDomainName")
-        queue = sbercloud.dli.Package("queue",
-            group_name=group_name,
-            object_path=f"https://{access_domain_name}/dli/packages/object_file.py",
-            type="pyFile")
-        ```
-
+        Create a Package resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param PackageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -503,26 +347,6 @@ class Package(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: Time when a queue is created.
-        :param pulumi.Input[_builtins.str] group_name: Specifies the group name which the package belongs to.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.bool] is_async: Specifies whether to upload resource packages in asynchronous mode.
-               The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] object_name: The package name.
-        :param pulumi.Input[_builtins.str] object_path: Specifies the OBS storage path where the package is located.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] owner: Specifies the name of the package owner. The owner must be IAM user.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to upload packages.
-               If omitted, the provider-level region will be used.
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] status: Status of a package group to be uploaded.
-        :param pulumi.Input[_builtins.str] type: Specifies the package type.
-               + **jar**: `.jar` or jar related files.
-               + **pyFile**: `.py` or python related files.
-               + **file**: Other user files.
-               
-               Changing this parameter will delete the current package and upload a new package.
-        :param pulumi.Input[_builtins.str] updated_at: The last time when the package configuration update has complated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -544,70 +368,41 @@ class Package(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Time when a queue is created.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     def group_name(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the group name which the package belongs to.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "group_name")
 
     @_builtins.property
     @pulumi.getter(name="isAsync")
     def is_async(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to upload resource packages in asynchronous mode.
-        The default value is **false**. Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "is_async")
 
     @_builtins.property
     @pulumi.getter(name="objectName")
     def object_name(self) -> pulumi.Output[_builtins.str]:
-        """
-        The package name.
-        """
         return pulumi.get(self, "object_name")
 
     @_builtins.property
     @pulumi.getter(name="objectPath")
     def object_path(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the OBS storage path where the package is located.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "object_path")
 
     @_builtins.property
     @pulumi.getter
     def owner(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the package owner. The owner must be IAM user.
-        """
         return pulumi.get(self, "owner")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to upload packages.
-        If omitted, the provider-level region will be used.
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Status of a package group to be uploaded.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
@@ -618,21 +413,10 @@ class Package(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the package type.
-        + **jar**: `.jar` or jar related files.
-        + **pyFile**: `.py` or python related files.
-        + **file**: Other user files.
-
-        Changing this parameter will delete the current package and upload a new package.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The last time when the package configuration update has complated.
-        """
         return pulumi.get(self, "updated_at")
 

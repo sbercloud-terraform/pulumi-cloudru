@@ -6,55 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manage the conversion rules of identity provider within SberCloud IAM service.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const providerId = config.requireObject<any>("providerId");
- * const conversion = new sbercloud.iam.ProviderConversion("conversion", {
- *     providerId: providerId,
- *     conversionRules: [
- *         {
- *             locals: [{
- *                 username: "Tom",
- *             }],
- *             remotes: [{
- *                 attribute: "Tom",
- *             }],
- *         },
- *         {
- *             locals: [{
- *                 username: "FederationUser",
- *             }],
- *             remotes: [{
- *                 attribute: "username",
- *                 condition: "any_one_of",
- *                 values: [
- *                     "Tom",
- *                     "Jerry",
- *                 ],
- *             }],
- *         },
- *     ],
- * });
- * ```
- *
- * <!--markdownlint-disable MD033-->
- *
- * ## Import
- *
- * Identity provider conversion rules are imported using the `provider_id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Iam/providerConversion:ProviderConversion conversion example_com_provider_oidc
- * ```
- */
 export class ProviderConversion extends pulumi.CustomResource {
     /**
      * Get an existing ProviderConversion resource's state with the given name, ID, and optional extra
@@ -83,20 +34,7 @@ export class ProviderConversion extends pulumi.CustomResource {
         return obj['__pulumiType'] === ProviderConversion.__pulumiType;
     }
 
-    /**
-     * Specifies the identity conversion rules of the identity provider.
-     * You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-     * to cloud resources.
-     * The object structure is documented below.
-     *
-     * <a name="conversionRules"></a>
-     * The `conversionRules` block supports:
-     */
     declare public readonly conversionRules: pulumi.Output<outputs.Iam.ProviderConversionConversionRule[]>;
-    /**
-     * The ID of the identity provider used to manage the conversion rules.
-     * Changing this parameter will create a new resource.
-     */
     declare public readonly providerId: pulumi.Output<string>;
 
     /**
@@ -134,20 +72,7 @@ export class ProviderConversion extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ProviderConversion resources.
  */
 export interface ProviderConversionState {
-    /**
-     * Specifies the identity conversion rules of the identity provider.
-     * You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-     * to cloud resources.
-     * The object structure is documented below.
-     *
-     * <a name="conversionRules"></a>
-     * The `conversionRules` block supports:
-     */
     conversionRules?: pulumi.Input<pulumi.Input<inputs.Iam.ProviderConversionConversionRule>[]>;
-    /**
-     * The ID of the identity provider used to manage the conversion rules.
-     * Changing this parameter will create a new resource.
-     */
     providerId?: pulumi.Input<string>;
 }
 
@@ -155,19 +80,6 @@ export interface ProviderConversionState {
  * The set of arguments for constructing a ProviderConversion resource.
  */
 export interface ProviderConversionArgs {
-    /**
-     * Specifies the identity conversion rules of the identity provider.
-     * You can use identity conversion rules to map the identities of existing users to Huawei Cloud and manage their access
-     * to cloud resources.
-     * The object structure is documented below.
-     *
-     * <a name="conversionRules"></a>
-     * The `conversionRules` block supports:
-     */
     conversionRules: pulumi.Input<pulumi.Input<inputs.Iam.ProviderConversionConversionRule>[]>;
-    /**
-     * The ID of the identity provider used to manage the conversion rules.
-     * Changing this parameter will create a new resource.
-     */
     providerId: pulumi.Input<string>;
 }

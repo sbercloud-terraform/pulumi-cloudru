@@ -11,39 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ consumers.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			group := cfg.RequireObject("group")
-//			_, err := sbercloud.GetDmsRocketmqConsumers(ctx, &cloudru.GetDmsRocketmqConsumersArgs{
-//				InstanceId: instanceId,
-//				Group:      group,
-//				IsDetail:   pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqConsumers(ctx *pulumi.Context, args *GetDmsRocketmqConsumersArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqConsumersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqConsumersResult
@@ -56,31 +23,23 @@ func GetDmsRocketmqConsumers(ctx *pulumi.Context, args *GetDmsRocketmqConsumersA
 
 // A collection of arguments for invoking getDmsRocketmqConsumers.
 type GetDmsRocketmqConsumersArgs struct {
-	// Specifies the consumer group name.
-	Group string `pulumi:"group"`
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies whether to query the consumer details.
-	IsDetail *bool `pulumi:"isDetail"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
+	Group      string  `pulumi:"group"`
+	InstanceId string  `pulumi:"instanceId"`
+	IsDetail   *bool   `pulumi:"isDetail"`
+	Region     *string `pulumi:"region"`
 }
 
 // A collection of values returned by getDmsRocketmqConsumers.
 type GetDmsRocketmqConsumersResult struct {
-	// Indicates the list of consumer subscription details.
 	Clients []GetDmsRocketmqConsumersClient `pulumi:"clients"`
 	Group   string                          `pulumi:"group"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	IsDetail   *bool  `pulumi:"isDetail"`
-	// Indicates whether the consumer group is online.
-	Online bool   `pulumi:"online"`
-	Region string `pulumi:"region"`
-	// Indicates whether subscriptions are consistent.
-	SubscriptionConsistency bool `pulumi:"subscriptionConsistency"`
+	Id                      string `pulumi:"id"`
+	InstanceId              string `pulumi:"instanceId"`
+	IsDetail                *bool  `pulumi:"isDetail"`
+	Online                  bool   `pulumi:"online"`
+	Region                  string `pulumi:"region"`
+	SubscriptionConsistency bool   `pulumi:"subscriptionConsistency"`
 }
 
 func GetDmsRocketmqConsumersOutput(ctx *pulumi.Context, args GetDmsRocketmqConsumersOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqConsumersResultOutput {
@@ -94,15 +53,10 @@ func GetDmsRocketmqConsumersOutput(ctx *pulumi.Context, args GetDmsRocketmqConsu
 
 // A collection of arguments for invoking getDmsRocketmqConsumers.
 type GetDmsRocketmqConsumersOutputArgs struct {
-	// Specifies the consumer group name.
-	Group pulumi.StringInput `pulumi:"group"`
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies whether to query the consumer details.
-	IsDetail pulumi.BoolPtrInput `pulumi:"isDetail"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	Group      pulumi.StringInput    `pulumi:"group"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	IsDetail   pulumi.BoolPtrInput   `pulumi:"isDetail"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetDmsRocketmqConsumersOutputArgs) ElementType() reflect.Type {
@@ -124,7 +78,6 @@ func (o GetDmsRocketmqConsumersResultOutput) ToGetDmsRocketmqConsumersResultOutp
 	return o
 }
 
-// Indicates the list of consumer subscription details.
 func (o GetDmsRocketmqConsumersResultOutput) Clients() GetDmsRocketmqConsumersClientArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumersResult) []GetDmsRocketmqConsumersClient { return v.Clients }).(GetDmsRocketmqConsumersClientArrayOutput)
 }
@@ -146,7 +99,6 @@ func (o GetDmsRocketmqConsumersResultOutput) IsDetail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumersResult) *bool { return v.IsDetail }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether the consumer group is online.
 func (o GetDmsRocketmqConsumersResultOutput) Online() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumersResult) bool { return v.Online }).(pulumi.BoolOutput)
 }
@@ -155,7 +107,6 @@ func (o GetDmsRocketmqConsumersResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumersResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Indicates whether subscriptions are consistent.
 func (o GetDmsRocketmqConsumersResultOutput) SubscriptionConsistency() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDmsRocketmqConsumersResult) bool { return v.SubscriptionConsistency }).(pulumi.BoolOutput)
 }

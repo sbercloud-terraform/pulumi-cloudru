@@ -60,9 +60,6 @@ class GetDmsRocketmqMessageTracesResult:
     @_builtins.property
     @pulumi.getter(name="messageId")
     def message_id(self) -> _builtins.str:
-        """
-        Specifies the message ID.
-        """
         return pulumi.get(self, "message_id")
 
     @_builtins.property
@@ -73,9 +70,6 @@ class GetDmsRocketmqMessageTracesResult:
     @_builtins.property
     @pulumi.getter
     def traces(self) -> Sequence['outputs.GetDmsRocketmqMessageTracesTraceResult']:
-        """
-        Specifies the message trace list.
-        """
         return pulumi.get(self, "traces")
 
 
@@ -97,13 +91,7 @@ def get_dms_rocketmq_message_traces(instance_id: Optional[_builtins.str] = None,
                                     region: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDmsRocketmqMessageTracesResult:
     """
-    Use this data source to get the list of RocketMQ message traces.
-
-
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str message_id: Specifies the message ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
@@ -123,13 +111,7 @@ def get_dms_rocketmq_message_traces_output(instance_id: Optional[pulumi.Input[_b
                                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDmsRocketmqMessageTracesResult]:
     """
-    Use this data source to get the list of RocketMQ message traces.
-
-
-    :param _builtins.str instance_id: Specifies the instance ID.
-    :param _builtins.str message_id: Specifies the message ID.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id

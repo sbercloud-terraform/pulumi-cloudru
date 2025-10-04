@@ -52,10 +52,6 @@ class GetDataKeyResult:
     @_builtins.property
     @pulumi.getter(name="cipherText")
     def cipher_text(self) -> _builtins.str:
-        """
-        The ciphertext of a DEK is expressed in hexadecimal format, and two
-        characters indicate one byte.
-        """
         return pulumi.get(self, "cipher_text")
 
     @_builtins.property
@@ -84,10 +80,6 @@ class GetDataKeyResult:
     @_builtins.property
     @pulumi.getter(name="plainText")
     def plain_text(self) -> _builtins.str:
-        """
-        The plaintext of a DEK is expressed in hexadecimal format, and two
-        characters indicate one byte.
-        """
         return pulumi.get(self, "plain_text")
 
     @_builtins.property
@@ -117,34 +109,7 @@ def get_data_key(datakey_length: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataKeyResult:
     """
-    Use this data source to get the plaintext and the ciphertext of an available
-    SberCloud KMS DEK (data encryption key).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    key1 = sbercloud.dew.Key("key1",
-        key_alias="key_1",
-        pending_days="7",
-        key_description="first test key")
-    kms_datakey1 = sbercloud.Dew.get_data_key_output(key_id=key1.id,
-        datakey_length="512")
-    ```
-
-
-    :param _builtins.str datakey_length: Number of bits in the length of a DEK (data encryption keys).
-           The maximum number is 512. Changing this gets the new data encryption key.
-    :param _builtins.str encryption_context: The value of this parameter must be a series of
-           "key:value" pairs used to record resource context information. The value of this
-           parameter must not contain sensitive information and must be within 8192 characters
-           in length. Example: {"Key1":"Value1","Key2":"Value2"}
-    :param _builtins.str key_id: The globally unique identifier for the key.
-           Changing this gets the new data encryption key.
-    :param _builtins.str region: The region in which to obtain the keys. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['datakeyLength'] = datakey_length
@@ -168,34 +133,7 @@ def get_data_key_output(datakey_length: Optional[pulumi.Input[_builtins.str]] = 
                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataKeyResult]:
     """
-    Use this data source to get the plaintext and the ciphertext of an available
-    SberCloud KMS DEK (data encryption key).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudru as sbercloud
-    import pulumi_sbercloud as sbercloud
-
-    key1 = sbercloud.dew.Key("key1",
-        key_alias="key_1",
-        pending_days="7",
-        key_description="first test key")
-    kms_datakey1 = sbercloud.Dew.get_data_key_output(key_id=key1.id,
-        datakey_length="512")
-    ```
-
-
-    :param _builtins.str datakey_length: Number of bits in the length of a DEK (data encryption keys).
-           The maximum number is 512. Changing this gets the new data encryption key.
-    :param _builtins.str encryption_context: The value of this parameter must be a series of
-           "key:value" pairs used to record resource context information. The value of this
-           parameter must not contain sensitive information and must be within 8192 characters
-           in length. Example: {"Key1":"Value1","Key2":"Value2"}
-    :param _builtins.str key_id: The globally unique identifier for the key.
-           Changing this gets the new data encryption key.
-    :param _builtins.str region: The region in which to obtain the keys. If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['datakeyLength'] = datakey_length

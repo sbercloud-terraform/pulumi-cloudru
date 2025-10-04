@@ -12,125 +12,17 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages a VPC route resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Add route to the default route table
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			nexthop := cfg.RequireObject("nexthop")
-//			_, err := vpc.NewRoute(ctx, "vpc_route", &vpc.RouteArgs{
-//				VpcId:       pulumi.Any(vpcId),
-//				Destination: pulumi.String("192.168.0.0/16"),
-//				Type:        pulumi.String("peering"),
-//				Nexthop:     pulumi.Any(nexthop),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Add route to a custom route table
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			vpcId := cfg.RequireObject("vpcId")
-//			nexthop := cfg.RequireObject("nexthop")
-//			rtb, err := vpc.GetRouteTable(ctx, &vpc.GetRouteTableArgs{
-//				VpcId: vpcId,
-//				Name:  pulumi.StringRef("demo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewRoute(ctx, "vpc_route", &vpc.RouteArgs{
-//				VpcId:        pulumi.Any(vpcId),
-//				RouteTableId: pulumi.String(rtb.Id),
-//				Destination:  pulumi.String("172.16.8.0/24"),
-//				Type:         pulumi.String("ecs"),
-//				Nexthop:      pulumi.Any(nexthop),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// VPC routes can be imported using the route table ID and their `destination` separated by a slash, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Vpc/route:Route test <route_table_id>/<destination>
-// ```
 type Route struct {
 	pulumi.CustomResourceState
 
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-	// subnet in the VPC. Changing this creates a new resource.
-	Destination pulumi.StringOutput `pulumi:"destination"`
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop pulumi.StringOutput `pulumi:"nexthop"`
-	// The region in which to create the VPC route. If omitted, the provider-level
-	// region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the route table ID for which a route is to be added.
-	// If the value is not set, the route will be added to the *default* route table.
-	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
-	// The name of route table.
-	RouteTableName pulumi.StringOutput `pulumi:"routeTableName"`
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type pulumi.StringOutput `pulumi:"type"`
-	// Specifies the VPC for which a route is to be added. Changing this creates a
-	// new resource.
-	VpcId pulumi.StringOutput `pulumi:"vpcId"`
+	Description    pulumi.StringPtrOutput `pulumi:"description"`
+	Destination    pulumi.StringOutput    `pulumi:"destination"`
+	Nexthop        pulumi.StringOutput    `pulumi:"nexthop"`
+	Region         pulumi.StringOutput    `pulumi:"region"`
+	RouteTableId   pulumi.StringOutput    `pulumi:"routeTableId"`
+	RouteTableName pulumi.StringOutput    `pulumi:"routeTableName"`
+	Type           pulumi.StringOutput    `pulumi:"type"`
+	VpcId          pulumi.StringOutput    `pulumi:"vpcId"`
 }
 
 // NewRoute registers a new resource with the given unique name, arguments, and options.
@@ -175,71 +67,25 @@ func GetRoute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Route resources.
 type routeState struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description *string `pulumi:"description"`
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-	// subnet in the VPC. Changing this creates a new resource.
-	Destination *string `pulumi:"destination"`
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop *string `pulumi:"nexthop"`
-	// The region in which to create the VPC route. If omitted, the provider-level
-	// region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the route table ID for which a route is to be added.
-	// If the value is not set, the route will be added to the *default* route table.
-	RouteTableId *string `pulumi:"routeTableId"`
-	// The name of route table.
+	Description    *string `pulumi:"description"`
+	Destination    *string `pulumi:"destination"`
+	Nexthop        *string `pulumi:"nexthop"`
+	Region         *string `pulumi:"region"`
+	RouteTableId   *string `pulumi:"routeTableId"`
 	RouteTableName *string `pulumi:"routeTableName"`
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type *string `pulumi:"type"`
-	// Specifies the VPC for which a route is to be added. Changing this creates a
-	// new resource.
-	VpcId *string `pulumi:"vpcId"`
+	Type           *string `pulumi:"type"`
+	VpcId          *string `pulumi:"vpcId"`
 }
 
 type RouteState struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrInput
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-	// subnet in the VPC. Changing this creates a new resource.
-	Destination pulumi.StringPtrInput
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop pulumi.StringPtrInput
-	// The region in which to create the VPC route. If omitted, the provider-level
-	// region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the route table ID for which a route is to be added.
-	// If the value is not set, the route will be added to the *default* route table.
-	RouteTableId pulumi.StringPtrInput
-	// The name of route table.
+	Description    pulumi.StringPtrInput
+	Destination    pulumi.StringPtrInput
+	Nexthop        pulumi.StringPtrInput
+	Region         pulumi.StringPtrInput
+	RouteTableId   pulumi.StringPtrInput
 	RouteTableName pulumi.StringPtrInput
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type pulumi.StringPtrInput
-	// Specifies the VPC for which a route is to be added. Changing this creates a
-	// new resource.
-	VpcId pulumi.StringPtrInput
+	Type           pulumi.StringPtrInput
+	VpcId          pulumi.StringPtrInput
 }
 
 func (RouteState) ElementType() reflect.Type {
@@ -247,68 +93,24 @@ func (RouteState) ElementType() reflect.Type {
 }
 
 type routeArgs struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description *string `pulumi:"description"`
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-	// subnet in the VPC. Changing this creates a new resource.
-	Destination string `pulumi:"destination"`
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop string `pulumi:"nexthop"`
-	// The region in which to create the VPC route. If omitted, the provider-level
-	// region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the route table ID for which a route is to be added.
-	// If the value is not set, the route will be added to the *default* route table.
+	Description  *string `pulumi:"description"`
+	Destination  string  `pulumi:"destination"`
+	Nexthop      string  `pulumi:"nexthop"`
+	Region       *string `pulumi:"region"`
 	RouteTableId *string `pulumi:"routeTableId"`
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type string `pulumi:"type"`
-	// Specifies the VPC for which a route is to be added. Changing this creates a
-	// new resource.
-	VpcId string `pulumi:"vpcId"`
+	Type         string  `pulumi:"type"`
+	VpcId        string  `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Route resource.
 type RouteArgs struct {
-	// Specifies the supplementary information about the route.
-	// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-	Description pulumi.StringPtrInput
-	// Specifies the destination address in the CIDR notation format,
-	// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-	// subnet in the VPC. Changing this creates a new resource.
-	Destination pulumi.StringInput
-	// Specifies the next hop.
-	// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-	// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-	// + If the route type is **vip**, the value is a virtual IP address.
-	// + If the route type is **nat**, the value is a VPN gateway ID.
-	// + If the route type is **peering**, the value is a VPC peering connection ID.
-	// + If the route type is **vpn**, the value is a VPN gateway ID.
-	// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-	// + If the route type is **cc**, the value is a Cloud Connection ID.
-	Nexthop pulumi.StringInput
-	// The region in which to create the VPC route. If omitted, the provider-level
-	// region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the route table ID for which a route is to be added.
-	// If the value is not set, the route will be added to the *default* route table.
+	Description  pulumi.StringPtrInput
+	Destination  pulumi.StringInput
+	Nexthop      pulumi.StringInput
+	Region       pulumi.StringPtrInput
 	RouteTableId pulumi.StringPtrInput
-	// Specifies the route type. Currently, the value can be:
-	// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-	Type pulumi.StringInput
-	// Specifies the VPC for which a route is to be added. Changing this creates a
-	// new resource.
-	VpcId pulumi.StringInput
+	Type         pulumi.StringInput
+	VpcId        pulumi.StringInput
 }
 
 func (RouteArgs) ElementType() reflect.Type {
@@ -398,57 +200,34 @@ func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return o
 }
 
-// Specifies the supplementary information about the route.
-// The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
 func (o RouteOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the destination address in the CIDR notation format,
-// for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap with any
-// subnet in the VPC. Changing this creates a new resource.
 func (o RouteOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Specifies the next hop.
-// + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-// + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-// + If the route type is **vip**, the value is a virtual IP address.
-// + If the route type is **nat**, the value is a VPN gateway ID.
-// + If the route type is **peering**, the value is a VPC peering connection ID.
-// + If the route type is **vpn**, the value is a VPN gateway ID.
-// + If the route type is **dc**, the value is a Direct Connect gateway ID.
-// + If the route type is **cc**, the value is a Cloud Connection ID.
 func (o RouteOutput) Nexthop() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Nexthop }).(pulumi.StringOutput)
 }
 
-// The region in which to create the VPC route. If omitted, the provider-level
-// region will be used. Changing this creates a new resource.
 func (o RouteOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the route table ID for which a route is to be added.
-// If the value is not set, the route will be added to the *default* route table.
 func (o RouteOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }
 
-// The name of route table.
 func (o RouteOutput) RouteTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.RouteTableName }).(pulumi.StringOutput)
 }
 
-// Specifies the route type. Currently, the value can be:
-// **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
 func (o RouteOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC for which a route is to be added. Changing this creates a
-// new resource.
 func (o RouteOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

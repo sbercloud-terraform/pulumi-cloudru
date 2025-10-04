@@ -26,18 +26,8 @@ class SqlserverAccountArgs:
         """
         The set of arguments for constructing a SqlserverAccount resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. It consists of 8 to 128 characters and
-               contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username consists of 1 to 128
-               characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-               and **rdsmirror**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "password", password)
@@ -51,8 +41,6 @@ class SqlserverAccountArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RDS SQLServer instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -64,9 +52,7 @@ class SqlserverAccountArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the password of the DB account. It consists of 8 to 128 characters and
-        contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-        characters.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
@@ -78,11 +64,7 @@ class SqlserverAccountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the username of the DB account. The username consists of 1 to 128
-        characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-        and **rdsmirror**.
-
-        Changing this parameter will create a new resource.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -93,10 +75,6 @@ class SqlserverAccountArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -115,21 +93,9 @@ class _SqlserverAccountState:
         """
         Input properties used for looking up and filtering SqlserverAccount resources.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username consists of 1 to 128
-               characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-               and **rdsmirror**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. It consists of 8 to 128 characters and
-               contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] state: Indicates the DB user status. Its value can be any of the following:
-               + **unavailable**: The database user is unavailable.
-               + **available**: The database user is available.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
+        :param pulumi.Input[_builtins.str] state: Indicates the DB user status.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
@@ -147,8 +113,6 @@ class _SqlserverAccountState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RDS SQLServer instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -160,11 +124,7 @@ class _SqlserverAccountState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the username of the DB account. The username consists of 1 to 128
-        characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-        and **rdsmirror**.
-
-        Changing this parameter will create a new resource.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -176,9 +136,7 @@ class _SqlserverAccountState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the password of the DB account. It consists of 8 to 128 characters and
-        contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-        characters.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
@@ -189,10 +147,6 @@ class _SqlserverAccountState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -203,9 +157,7 @@ class _SqlserverAccountState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Indicates the DB user status. Its value can be any of the following:
-        + **unavailable**: The database user is unavailable.
-        + **available**: The database user is available.
+        Indicates the DB user status.
         """
         return pulumi.get(self, "state")
 
@@ -226,75 +178,12 @@ class SqlserverAccount(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages RDS SQLServer account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.SqlserverAccount("test",
-            instance_id=instance_id,
-            name="test_account_name",
-            password="Test@12345678")
-        ```
-
-        ## Import
-
-        The RDS sqlserver account can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlserverAccount:SqlserverAccount test <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-
-        running `pulumi preview` after importing a RDS SQLServer account. You can then decide if changes should be applied to
-
-        the RDS SQLServer account, or the resource definition should be updated to align with the RDS SQLServer account. Also
-
-        you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_sqlserver_account" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password,
-            
-            ]
-
-          }
-
-        }
-
+        Create a SqlserverAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username consists of 1 to 128
-               characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-               and **rdsmirror**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. It consists of 8 to 128 characters and
-               contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
         """
         ...
     @overload
@@ -303,60 +192,7 @@ class SqlserverAccount(pulumi.CustomResource):
                  args: SqlserverAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS SQLServer account resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.SqlserverAccount("test",
-            instance_id=instance_id,
-            name="test_account_name",
-            password="Test@12345678")
-        ```
-
-        ## Import
-
-        The RDS sqlserver account can be imported using the `instance_id` and `name` separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlserverAccount:SqlserverAccount test <instance_id>/<name>
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `password`. It is generally recommended
-
-        running `pulumi preview` after importing a RDS SQLServer account. You can then decide if changes should be applied to
-
-        the RDS SQLServer account, or the resource definition should be updated to align with the RDS SQLServer account. Also
-
-        you can ignore changes as below.
-
-        hcl
-
-        resource "sbercloud_rds_sqlserver_account" "test" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              password,
-            
-            ]
-
-          }
-
-        }
-
+        Create a SqlserverAccount resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlserverAccountArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -419,21 +255,9 @@ class SqlserverAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS SQLServer instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account. The username consists of 1 to 128
-               characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-               and **rdsmirror**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account. It consists of 8 to 128 characters and
-               contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-               characters.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] state: Indicates the DB user status. Its value can be any of the following:
-               + **unavailable**: The database user is unavailable.
-               + **available**: The database user is available.
+        :param pulumi.Input[_builtins.str] name: Specifies the username of the DB account.
+        :param pulumi.Input[_builtins.str] password: Specifies the password of the DB account.
+        :param pulumi.Input[_builtins.str] state: Indicates the DB user status.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -451,8 +275,6 @@ class SqlserverAccount(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RDS SQLServer instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -460,11 +282,7 @@ class SqlserverAccount(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the username of the DB account. The username consists of 1 to 128
-        characters and must be different from system usernames. System users include **rdsadmin**, **rdsuser**, **rdsbackup**,
-        and **rdsmirror**.
-
-        Changing this parameter will create a new resource.
+        Specifies the username of the DB account.
         """
         return pulumi.get(self, "name")
 
@@ -472,28 +290,20 @@ class SqlserverAccount(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the password of the DB account. It consists of 8 to 128 characters and
-        contains at least three types of the following characters: uppercase letters, lowercase letters, digits, and special
-        characters.
+        Specifies the password of the DB account.
         """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        Indicates the DB user status. Its value can be any of the following:
-        + **unavailable**: The database user is unavailable.
-        + **available**: The database user is available.
+        Indicates the DB user status.
         """
         return pulumi.get(self, "state")
 

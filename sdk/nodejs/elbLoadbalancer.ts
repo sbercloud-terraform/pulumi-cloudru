@@ -4,122 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a Dedicated Load Balancer resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Basic Loadbalancer
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const basic = new sbercloud.ElbLoadbalancer("basic", {
- *     name: "basic",
- *     description: "basic example",
- *     crossVpcBackend: true,
- *     vpcId: "{{ vpc_id }}",
- *     ipv4SubnetId: "{{ ipv4_subnet_id }}",
- *     l4FlavorId: "{{ l4_flavor_id }}",
- *     l7FlavorId: "{{ l7_flavor_id }}",
- *     availabilityZones: [
- *         "ru-moscow-1a",
- *         "ru-moscow-1b",
- *     ],
- *     enterpriseProjectId: "{{ eps_id }}",
- * });
- * ```
- *
- * ### Loadbalancer With Existing EIP
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const basic = new sbercloud.ElbLoadbalancer("basic", {
- *     name: "basic",
- *     description: "basic example",
- *     crossVpcBackend: true,
- *     vpcId: "{{ vpc_id }}",
- *     ipv6NetworkId: "{{ ipv6_network_id }}",
- *     ipv6BandwidthId: "{{ ipv6_bandwidth_id }}",
- *     ipv4SubnetId: "{{ ipv4_subnet_id }}",
- *     l4FlavorId: "{{ l4_flavor_id }}",
- *     l7FlavorId: "{{ l7_flavor_id }}",
- *     availabilityZones: [
- *         "ru-moscow-1a",
- *         "ru-moscow-1b",
- *     ],
- *     enterpriseProjectId: "{{ eps_id }}",
- *     ipv4EipId: "{{ eip_id }}",
- * });
- * ```
- *
- * ### Loadbalancer With EIP
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const basic = new sbercloud.ElbLoadbalancer("basic", {
- *     name: "basic",
- *     description: "basic example",
- *     crossVpcBackend: true,
- *     vpcId: "{{ vpc_id }}",
- *     ipv6NetworkId: "{{ ipv6_network_id }}",
- *     ipv6BandwidthId: "{{ ipv6_bandwidth_id }}",
- *     ipv4SubnetId: "{{ ipv4_subnet_id }}",
- *     l4FlavorId: "{{ l4_flavor_id }}",
- *     l7FlavorId: "{{ l7_flavor_id }}",
- *     availabilityZones: [
- *         "ru-moscow-1a",
- *         "ru-moscow-1b",
- *     ],
- *     enterpriseProjectId: "{{ eps_id }}",
- *     iptype: "5_bgp",
- *     bandwidthChargeMode: "traffic",
- *     sharetype: "PER",
- *     bandwidthSize: 10,
- * });
- * ```
- *
- * ## Import
- *
- * ELB loadbalancer can be imported using the loadbalancer ID, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/elbLoadbalancer:ElbLoadbalancer loadbalancer_1 5c20fdad-7288-11eb-b817-0255ac10158b
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason. The missing attributes include: `ipv6_bandwidth_id`, `iptype`,
- *
- * `bandwidth_charge_mode`, `sharetype` and `bandwidth_size`.
- *
- * It is generally recommended running `pulumi preview` after importing a loadbalancer.
- *
- * You can then decide if changes should be applied to the loadbalancer, or the resource
- *
- * definition should be updated to align with the loadbalancer. Also you can ignore changes as below.
- *
- * resource "sbercloud_elb_loadbalancer" "loadbalancer_1" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       ipv6_bandwidth_id, iptype, bandwidth_charge_mode, sharetype, bandwidth_size,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class ElbLoadbalancer extends pulumi.CustomResource {
     /**
      * Get an existing ElbLoadbalancer resource's state with the given name, ID, and optional extra
@@ -152,116 +36,46 @@ export class ElbLoadbalancer extends pulumi.CustomResource {
      * @deprecated Deprecated
      */
     declare public readonly autoPay: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-     */
     declare public readonly autoRenew: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether autoscaling is enabled. Valid values are **true** and
-     * **false**.
-     */
     declare public readonly autoscalingEnabled: pulumi.Output<boolean>;
-    /**
-     * Specifies the list of AZ names. Changing this parameter will create a
-     * new resource.
-     */
     declare public readonly availabilityZones: pulumi.Output<string[]>;
     declare public readonly backendSubnets: pulumi.Output<string[]>;
-    /**
-     * Bandwidth billing type. Changing this parameter will create a
-     * new resource.
-     */
     declare public readonly bandwidthChargeMode: pulumi.Output<string>;
     declare public readonly bandwidthId: pulumi.Output<string>;
-    /**
-     * Bandwidth size. Changing this parameter will create a new resource.
-     */
     declare public readonly bandwidthSize: pulumi.Output<number>;
     declare public /*out*/ readonly chargeMode: pulumi.Output<string>;
     declare public readonly chargingMode: pulumi.Output<string>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Enable this if you want to associate the IP addresses of backend servers with
-     * your load balancer. Can only be true when updating.
-     */
     declare public readonly crossVpcBackend: pulumi.Output<boolean>;
     declare public readonly deletionProtectionEnable: pulumi.Output<boolean | undefined>;
-    /**
-     * Human-readable description for the loadbalancer.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly elbVirsubnetType: pulumi.Output<string>;
-    /**
-     * The enterprise project id of the loadbalancer. Changing this
-     * creates a new loadbalancer.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public readonly forceDelete: pulumi.Output<boolean | undefined>;
     declare public /*out*/ readonly frozenScene: pulumi.Output<string>;
     declare public /*out*/ readonly guaranteed: pulumi.Output<boolean>;
     declare public /*out*/ readonly gwFlavorId: pulumi.Output<string>;
-    /**
-     * Elastic IP type. Changing this parameter will create a new resource.
-     */
     declare public readonly iptype: pulumi.Output<string>;
-    /**
-     * The ipv4 address of the load balancer.
-     */
     declare public readonly ipv4Address: pulumi.Output<string>;
-    /**
-     * The ipv4 eip address of the Load Balancer.
-     */
     declare public /*out*/ readonly ipv4Eip: pulumi.Output<string>;
-    /**
-     * The ID of the EIP. Changing this parameter will create a new resource.
-     *
-     * > **NOTE:** If the ipv4EipId parameter is configured, you do not need to configure the bandwidth parameters:
-     * `iptype`, `bandwidthChargeMode`, `bandwidthSize` and `shareType`.
-     */
     declare public readonly ipv4EipId: pulumi.Output<string>;
     declare public /*out*/ readonly ipv4PortId: pulumi.Output<string>;
     /**
-     * The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-     * ipv4 address.
+     * the IPv4 subnet ID of the subnet where the load balancer resides
      */
     declare public readonly ipv4SubnetId: pulumi.Output<string | undefined>;
-    /**
-     * The ipv6 address of the Load Balancer.
-     */
     declare public readonly ipv6Address: pulumi.Output<string>;
-    /**
-     * The ipv6 bandwidth id. Only support shared bandwidth.
-     */
     declare public readonly ipv6BandwidthId: pulumi.Output<string | undefined>;
-    /**
-     * The ipv6 eip address of the Load Balancer.
-     */
     declare public /*out*/ readonly ipv6Eip: pulumi.Output<string>;
-    /**
-     * The ipv6 eip id of the Load Balancer.
-     */
     declare public /*out*/ readonly ipv6EipId: pulumi.Output<string>;
     /**
-     * The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
+     * the ID of the subnet where the load balancer resides
      */
     declare public readonly ipv6NetworkId: pulumi.Output<string | undefined>;
-    /**
-     * The L4 flavor id of the load balancer.
-     */
     declare public readonly l4FlavorId: pulumi.Output<string>;
-    /**
-     * The L7 flavor id of the load balancer.
-     */
     declare public readonly l7FlavorId: pulumi.Output<string>;
     declare public readonly loadbalancerType: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-     * This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-     */
     declare public readonly minL7FlavorId: pulumi.Output<string>;
-    /**
-     * Human-readable name for the loadbalancer.
-     */
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly operatingStatus: pulumi.Output<string>;
     declare public readonly period: pulumi.Output<number | undefined>;
@@ -269,24 +83,10 @@ export class ElbLoadbalancer extends pulumi.CustomResource {
     declare public readonly protectionReason: pulumi.Output<string | undefined>;
     declare public readonly protectionStatus: pulumi.Output<string>;
     declare public /*out*/ readonly publicBorderGroup: pulumi.Output<string>;
-    /**
-     * The region in which to create the loadbalancer resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new loadbalancer.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Bandwidth sharing type. Changing this parameter will create a new resource.
-     */
     declare public readonly sharetype: pulumi.Output<string>;
-    /**
-     * The key/value pairs to associate with the loadbalancer.
-     */
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
-    /**
-     * The vpc on which to create the loadbalancer. Changing this creates a new
-     * loadbalancer.
-     */
     declare public readonly vpcId: pulumi.Output<string>;
     declare public readonly wafFailureAction: pulumi.Output<string>;
 
@@ -418,116 +218,46 @@ export interface ElbLoadbalancerState {
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-     */
     autoRenew?: pulumi.Input<string>;
-    /**
-     * Specifies whether autoscaling is enabled. Valid values are **true** and
-     * **false**.
-     */
     autoscalingEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the list of AZ names. Changing this parameter will create a
-     * new resource.
-     */
     availabilityZones?: pulumi.Input<pulumi.Input<string>[]>;
     backendSubnets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Bandwidth billing type. Changing this parameter will create a
-     * new resource.
-     */
     bandwidthChargeMode?: pulumi.Input<string>;
     bandwidthId?: pulumi.Input<string>;
-    /**
-     * Bandwidth size. Changing this parameter will create a new resource.
-     */
     bandwidthSize?: pulumi.Input<number>;
     chargeMode?: pulumi.Input<string>;
     chargingMode?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * Enable this if you want to associate the IP addresses of backend servers with
-     * your load balancer. Can only be true when updating.
-     */
     crossVpcBackend?: pulumi.Input<boolean>;
     deletionProtectionEnable?: pulumi.Input<boolean>;
-    /**
-     * Human-readable description for the loadbalancer.
-     */
     description?: pulumi.Input<string>;
     elbVirsubnetType?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the loadbalancer. Changing this
-     * creates a new loadbalancer.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     forceDelete?: pulumi.Input<boolean>;
     frozenScene?: pulumi.Input<string>;
     guaranteed?: pulumi.Input<boolean>;
     gwFlavorId?: pulumi.Input<string>;
-    /**
-     * Elastic IP type. Changing this parameter will create a new resource.
-     */
     iptype?: pulumi.Input<string>;
-    /**
-     * The ipv4 address of the load balancer.
-     */
     ipv4Address?: pulumi.Input<string>;
-    /**
-     * The ipv4 eip address of the Load Balancer.
-     */
     ipv4Eip?: pulumi.Input<string>;
-    /**
-     * The ID of the EIP. Changing this parameter will create a new resource.
-     *
-     * > **NOTE:** If the ipv4EipId parameter is configured, you do not need to configure the bandwidth parameters:
-     * `iptype`, `bandwidthChargeMode`, `bandwidthSize` and `shareType`.
-     */
     ipv4EipId?: pulumi.Input<string>;
     ipv4PortId?: pulumi.Input<string>;
     /**
-     * The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-     * ipv4 address.
+     * the IPv4 subnet ID of the subnet where the load balancer resides
      */
     ipv4SubnetId?: pulumi.Input<string>;
-    /**
-     * The ipv6 address of the Load Balancer.
-     */
     ipv6Address?: pulumi.Input<string>;
-    /**
-     * The ipv6 bandwidth id. Only support shared bandwidth.
-     */
     ipv6BandwidthId?: pulumi.Input<string>;
-    /**
-     * The ipv6 eip address of the Load Balancer.
-     */
     ipv6Eip?: pulumi.Input<string>;
-    /**
-     * The ipv6 eip id of the Load Balancer.
-     */
     ipv6EipId?: pulumi.Input<string>;
     /**
-     * The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
+     * the ID of the subnet where the load balancer resides
      */
     ipv6NetworkId?: pulumi.Input<string>;
-    /**
-     * The L4 flavor id of the load balancer.
-     */
     l4FlavorId?: pulumi.Input<string>;
-    /**
-     * The L7 flavor id of the load balancer.
-     */
     l7FlavorId?: pulumi.Input<string>;
     loadbalancerType?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-     * This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-     */
     minL7FlavorId?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the loadbalancer.
-     */
     name?: pulumi.Input<string>;
     operatingStatus?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
@@ -535,24 +265,10 @@ export interface ElbLoadbalancerState {
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
     publicBorderGroup?: pulumi.Input<string>;
-    /**
-     * The region in which to create the loadbalancer resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new loadbalancer.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Bandwidth sharing type. Changing this parameter will create a new resource.
-     */
     sharetype?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the loadbalancer.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * The vpc on which to create the loadbalancer. Changing this creates a new
-     * loadbalancer.
-     */
     vpcId?: pulumi.Input<string>;
     wafFailureAction?: pulumi.Input<string>;
 }
@@ -565,119 +281,44 @@ export interface ElbLoadbalancerArgs {
      * @deprecated Deprecated
      */
     autoPay?: pulumi.Input<string>;
-    /**
-     * Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-     */
     autoRenew?: pulumi.Input<string>;
-    /**
-     * Specifies whether autoscaling is enabled. Valid values are **true** and
-     * **false**.
-     */
     autoscalingEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the list of AZ names. Changing this parameter will create a
-     * new resource.
-     */
     availabilityZones: pulumi.Input<pulumi.Input<string>[]>;
     backendSubnets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Bandwidth billing type. Changing this parameter will create a
-     * new resource.
-     */
     bandwidthChargeMode?: pulumi.Input<string>;
     bandwidthId?: pulumi.Input<string>;
-    /**
-     * Bandwidth size. Changing this parameter will create a new resource.
-     */
     bandwidthSize?: pulumi.Input<number>;
     chargingMode?: pulumi.Input<string>;
-    /**
-     * Enable this if you want to associate the IP addresses of backend servers with
-     * your load balancer. Can only be true when updating.
-     */
     crossVpcBackend?: pulumi.Input<boolean>;
     deletionProtectionEnable?: pulumi.Input<boolean>;
-    /**
-     * Human-readable description for the loadbalancer.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The enterprise project id of the loadbalancer. Changing this
-     * creates a new loadbalancer.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
     forceDelete?: pulumi.Input<boolean>;
-    /**
-     * Elastic IP type. Changing this parameter will create a new resource.
-     */
     iptype?: pulumi.Input<string>;
-    /**
-     * The ipv4 address of the load balancer.
-     */
     ipv4Address?: pulumi.Input<string>;
-    /**
-     * The ID of the EIP. Changing this parameter will create a new resource.
-     *
-     * > **NOTE:** If the ipv4EipId parameter is configured, you do not need to configure the bandwidth parameters:
-     * `iptype`, `bandwidthChargeMode`, `bandwidthSize` and `shareType`.
-     */
     ipv4EipId?: pulumi.Input<string>;
     /**
-     * The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-     * ipv4 address.
+     * the IPv4 subnet ID of the subnet where the load balancer resides
      */
     ipv4SubnetId?: pulumi.Input<string>;
-    /**
-     * The ipv6 address of the Load Balancer.
-     */
     ipv6Address?: pulumi.Input<string>;
-    /**
-     * The ipv6 bandwidth id. Only support shared bandwidth.
-     */
     ipv6BandwidthId?: pulumi.Input<string>;
     /**
-     * The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
+     * the ID of the subnet where the load balancer resides
      */
     ipv6NetworkId?: pulumi.Input<string>;
-    /**
-     * The L4 flavor id of the load balancer.
-     */
     l4FlavorId?: pulumi.Input<string>;
-    /**
-     * The L7 flavor id of the load balancer.
-     */
     l7FlavorId?: pulumi.Input<string>;
     loadbalancerType?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-     * This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-     */
     minL7FlavorId?: pulumi.Input<string>;
-    /**
-     * Human-readable name for the loadbalancer.
-     */
     name?: pulumi.Input<string>;
     period?: pulumi.Input<number>;
     periodUnit?: pulumi.Input<string>;
     protectionReason?: pulumi.Input<string>;
     protectionStatus?: pulumi.Input<string>;
-    /**
-     * The region in which to create the loadbalancer resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new loadbalancer.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Bandwidth sharing type. Changing this parameter will create a new resource.
-     */
     sharetype?: pulumi.Input<string>;
-    /**
-     * The key/value pairs to associate with the loadbalancer.
-     */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The vpc on which to create the loadbalancer. Changing this creates a new
-     * loadbalancer.
-     */
     vpcId?: pulumi.Input<string>;
     wafFailureAction?: pulumi.Input<string>;
 }

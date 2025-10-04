@@ -31,25 +31,6 @@ class FlowLogArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FlowLog resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the flow log belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_group_id: Specifies the LTS log group ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_store_type: Specifies the storage type of flow log. The valid value is **LTS**.  
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_stream_id: Specifies the LTS log stream ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_id: Specifies the resource ID to which the logs to be collected.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_type: Specifies the resource type to which the logs to be collected.
-               The valid value is **attachment**.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the flow log.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the flow log function. The default value is **true**.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the flow log.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "log_group_id", log_group_id)
@@ -69,10 +50,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the ER instance to which the flow log belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -82,10 +59,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter(name="logGroupId")
     def log_group_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the LTS log group ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_group_id")
 
     @log_group_id.setter
@@ -95,10 +68,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter(name="logStoreType")
     def log_store_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the storage type of flow log. The valid value is **LTS**.  
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_store_type")
 
     @log_store_type.setter
@@ -108,10 +77,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter(name="logStreamId")
     def log_stream_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the LTS log stream ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_stream_id")
 
     @log_stream_id.setter
@@ -121,10 +86,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the resource ID to which the logs to be collected.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
@@ -134,11 +95,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the resource type to which the logs to be collected.
-        The valid value is **attachment**.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -148,9 +104,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the flow log.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -160,9 +113,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the flow log function. The default value is **true**.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -172,9 +122,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the flow log.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -184,11 +131,6 @@ class FlowLogArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -214,28 +156,6 @@ class _FlowLogState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FlowLog resources.
-        :param pulumi.Input[_builtins.str] created_at: The creation time of the flow log.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the flow log.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the flow log function. The default value is **true**.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the flow log belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_group_id: Specifies the LTS log group ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_store_type: Specifies the storage type of flow log. The valid value is **LTS**.  
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_stream_id: Specifies the LTS log stream ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the flow log.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_id: Specifies the resource ID to which the logs to be collected.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_type: Specifies the resource type to which the logs to be collected.
-               The valid value is **attachment**.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] state: The current status of the flow log.
-        :param pulumi.Input[_builtins.str] updated_at: The latest update time of the flow log.
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -267,9 +187,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The creation time of the flow log.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -279,9 +196,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the description of the flow log.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -291,9 +205,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable the flow log function. The default value is **true**.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -303,10 +214,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the ER instance to which the flow log belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -316,10 +223,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="logGroupId")
     def log_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the LTS log group ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_group_id")
 
     @log_group_id.setter
@@ -329,10 +232,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="logStoreType")
     def log_store_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage type of flow log. The valid value is **LTS**.  
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_store_type")
 
     @log_store_type.setter
@@ -342,10 +241,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="logStreamId")
     def log_stream_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the LTS log stream ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_stream_id")
 
     @log_stream_id.setter
@@ -355,9 +250,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the flow log.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -367,11 +259,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -381,10 +268,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the resource ID to which the logs to be collected.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
@@ -394,11 +277,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the resource type to which the logs to be collected.
-        The valid value is **attachment**.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -408,9 +286,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The current status of the flow log.
-        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -420,9 +295,6 @@ class _FlowLogState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The latest update time of the flow log.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -448,68 +320,9 @@ class FlowLog(pulumi.CustomResource):
                  resource_type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a flow log resource under the ER instance within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        log_group_id = config.require_object("logGroupId")
-        log_stream_id = config.require_object("logStreamId")
-        resource_id = config.require_object("resourceId")
-        flow_log_name = config.require_object("flowLogName")
-        test = sbercloud.er.FlowLog("test",
-            instance_id=instance_id,
-            log_store_type="LTS",
-            log_group_id=log_group_id,
-            log_stream_id=log_stream_id,
-            resource_type="attachment",
-            resource_id=resource_id,
-            name=flow_log_name,
-            description="Flow log created by terraform",
-            enabled=False)
-        ```
-
-        ## Import
-
-        The flow log can be imported using the related `instance_id` and their `id`, separated by a slash (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/flowLog:FlowLog test <instance_id>/<id>
-        ```
-
+        Create a FlowLog resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the flow log.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the flow log function. The default value is **true**.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the flow log belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_group_id: Specifies the LTS log group ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_store_type: Specifies the storage type of flow log. The valid value is **LTS**.  
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_stream_id: Specifies the LTS log stream ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the flow log.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_id: Specifies the resource ID to which the logs to be collected.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_type: Specifies the resource type to which the logs to be collected.
-               The valid value is **attachment**.
-               Changing this creates a new resource.
         """
         ...
     @overload
@@ -518,47 +331,7 @@ class FlowLog(pulumi.CustomResource):
                  args: FlowLogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a flow log resource under the ER instance within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        log_group_id = config.require_object("logGroupId")
-        log_stream_id = config.require_object("logStreamId")
-        resource_id = config.require_object("resourceId")
-        flow_log_name = config.require_object("flowLogName")
-        test = sbercloud.er.FlowLog("test",
-            instance_id=instance_id,
-            log_store_type="LTS",
-            log_group_id=log_group_id,
-            log_stream_id=log_stream_id,
-            resource_type="attachment",
-            resource_id=resource_id,
-            name=flow_log_name,
-            description="Flow log created by terraform",
-            enabled=False)
-        ```
-
-        ## Import
-
-        The flow log can be imported using the related `instance_id` and their `id`, separated by a slash (/), e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/flowLog:FlowLog test <instance_id>/<id>
-        ```
-
+        Create a FlowLog resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param FlowLogArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -648,28 +421,6 @@ class FlowLog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] created_at: The creation time of the flow log.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the flow log.
-        :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable the flow log function. The default value is **true**.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the ER instance to which the flow log belongs.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_group_id: Specifies the LTS log group ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_store_type: Specifies the storage type of flow log. The valid value is **LTS**.  
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] log_stream_id: Specifies the LTS log stream ID.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the flow log.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_id: Specifies the resource ID to which the logs to be collected.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] resource_type: Specifies the resource type to which the logs to be collected.
-               The valid value is **attachment**.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] state: The current status of the flow log.
-        :param pulumi.Input[_builtins.str] updated_at: The latest update time of the flow log.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -693,113 +444,65 @@ class FlowLog(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The creation time of the flow log.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the description of the flow log.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable the flow log function. The default value is **true**.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the ER instance to which the flow log belongs.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="logGroupId")
     def log_group_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the LTS log group ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_group_id")
 
     @_builtins.property
     @pulumi.getter(name="logStoreType")
     def log_store_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the storage type of flow log. The valid value is **LTS**.  
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_store_type")
 
     @_builtins.property
     @pulumi.getter(name="logStreamId")
     def log_stream_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the LTS log stream ID.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "log_stream_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the flow log.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the resource ID to which the logs to be collected.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the resource type to which the logs to be collected.
-        The valid value is **attachment**.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "resource_type")
 
     @_builtins.property
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
-        """
-        The current status of the flow log.
-        """
         return pulumi.get(self, "state")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        The latest update time of the flow log.
-        """
         return pulumi.get(self, "updated_at")
 

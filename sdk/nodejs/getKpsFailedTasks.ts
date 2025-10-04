@@ -6,18 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get a list of the tasks that failed to bind, unbind, reset or replace key pairs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getKpsFailedTasks({});
- * ```
- */
 export function getKpsFailedTasks(args?: GetKpsFailedTasksArgs, opts?: pulumi.InvokeOptions): Promise<GetKpsFailedTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,10 +18,6 @@ export function getKpsFailedTasks(args?: GetKpsFailedTasksArgs, opts?: pulumi.In
  * A collection of arguments for invoking getKpsFailedTasks.
  */
 export interface GetKpsFailedTasksArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -46,23 +30,8 @@ export interface GetKpsFailedTasksResult {
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The list of the failed tasks.
-     */
     readonly tasks: outputs.GetKpsFailedTasksTask[];
 }
-/**
- * Use this data source to get a list of the tasks that failed to bind, unbind, reset or replace key pairs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.getKpsFailedTasks({});
- * ```
- */
 export function getKpsFailedTasksOutput(args?: GetKpsFailedTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKpsFailedTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,9 +44,5 @@ export function getKpsFailedTasksOutput(args?: GetKpsFailedTasksOutputArgs, opts
  * A collection of arguments for invoking getKpsFailedTasks.
  */
 export interface GetKpsFailedTasksOutputArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

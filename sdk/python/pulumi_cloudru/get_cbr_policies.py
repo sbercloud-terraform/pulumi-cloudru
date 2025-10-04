@@ -56,11 +56,6 @@ class GetCbrPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
-        """
-        Whether to enable the policy. The valid values are as follows:
-        + **true**: Policy enabled
-        + **false**: Policy not enabled
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -74,18 +69,11 @@ class GetCbrPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
-        """
-        The policy name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def policies(self) -> Sequence['outputs.GetCbrPoliciesPolicyResult']:
-        """
-        All CBR policies that match the filter parameters.
-        The policies structure is documented below.
-        """
         return pulumi.get(self, "policies")
 
     @_builtins.property
@@ -101,19 +89,11 @@ class GetCbrPoliciesResult:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
-        """
-        The protection type of the policy. The valid values are as follows:
-        + **backup**: Backup policy
-        + **replication**: Replication policy
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
     def vault_id(self) -> Optional[_builtins.str]:
-        """
-        The vault ID of the associated CBR policy.
-        """
         return pulumi.get(self, "vault_id")
 
 
@@ -141,31 +121,7 @@ def get_cbr_policies(enabled: Optional[_builtins.bool] = None,
                      vault_id: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCbrPoliciesResult:
     """
-    Use this data source to get available CBR policies within Sbercloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    policy_name = config.require_object("policyName")
-    test = sbercloud.get_cbr_policies(name=policy_name)
-    ```
-
-
-    :param _builtins.bool enabled: Specifies the policy enabling status to query. The valid values are as follows:
-           + **true**: Policy enabled
-           + **false**: Policy not enabled
-    :param _builtins.str name: Specifies the policy name used to query.
-    :param _builtins.str policy_id: Specifies the policy ID used to query.
-    :param _builtins.str region: Specifies the region in which to query the policies.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the policy type used to query. The valid values are as follows:
-           + **backup**: Backup policy
-           + **replication**: Replication policy
-    :param _builtins.str vault_id: Specifies the vault ID of the associated policy used to query.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled
@@ -194,31 +150,7 @@ def get_cbr_policies_output(enabled: Optional[pulumi.Input[Optional[_builtins.bo
                             vault_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCbrPoliciesResult]:
     """
-    Use this data source to get available CBR policies within Sbercloud.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    policy_name = config.require_object("policyName")
-    test = sbercloud.get_cbr_policies(name=policy_name)
-    ```
-
-
-    :param _builtins.bool enabled: Specifies the policy enabling status to query. The valid values are as follows:
-           + **true**: Policy enabled
-           + **false**: Policy not enabled
-    :param _builtins.str name: Specifies the policy name used to query.
-    :param _builtins.str policy_id: Specifies the policy ID used to query.
-    :param _builtins.str region: Specifies the region in which to query the policies.
-           If omitted, the provider-level region will be used.
-    :param _builtins.str type: Specifies the policy type used to query. The valid values are as follows:
-           + **backup**: Backup policy
-           + **replication**: Replication policy
-    :param _builtins.str vault_id: Specifies the vault ID of the associated policy used to query.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enabled'] = enabled

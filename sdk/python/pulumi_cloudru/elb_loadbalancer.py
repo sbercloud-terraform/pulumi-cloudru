@@ -56,41 +56,8 @@ class ElbLoadbalancerArgs:
                  waf_failure_action: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElbLoadbalancer resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of AZ names. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        :param pulumi.Input[_builtins.bool] autoscaling_enabled: Specifies whether autoscaling is enabled. Valid values are **true** and
-               **false**.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Bandwidth billing type. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] cross_vpc_backend: Enable this if you want to associate the IP addresses of backend servers with
-               your load balancer. Can only be true when updating.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the loadbalancer.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the loadbalancer. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] iptype: Elastic IP type. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ipv4_address: The ipv4 address of the load balancer.
-        :param pulumi.Input[_builtins.str] ipv4_eip_id: The ID of the EIP. Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[_builtins.str] ipv4_subnet_id: The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-               ipv4 address.
-        :param pulumi.Input[_builtins.str] ipv6_address: The ipv6 address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_bandwidth_id: The ipv6 bandwidth id. Only support shared bandwidth.
-        :param pulumi.Input[_builtins.str] ipv6_network_id: The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
-        :param pulumi.Input[_builtins.str] l4_flavor_id: The L4 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] l7_flavor_id: The L7 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] min_l7_flavor_id: Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-               This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the loadbalancer.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the loadbalancer resource. If omitted, the
-               provider-level region will be used. Changing this creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] sharetype: Bandwidth sharing type. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the loadbalancer.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc on which to create the loadbalancer. Changing this creates a new
-               loadbalancer.
+        :param pulumi.Input[_builtins.str] ipv4_subnet_id: the IPv4 subnet ID of the subnet where the load balancer resides
+        :param pulumi.Input[_builtins.str] ipv6_network_id: the ID of the subnet where the load balancer resides
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         if auto_pay is not None:
@@ -168,10 +135,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the list of AZ names. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -191,9 +154,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -203,10 +163,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="autoscalingEnabled")
     def autoscaling_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether autoscaling is enabled. Valid values are **true** and
-        **false**.
-        """
         return pulumi.get(self, "autoscaling_enabled")
 
     @autoscaling_enabled.setter
@@ -225,10 +181,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="bandwidthChargeMode")
     def bandwidth_charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Bandwidth billing type. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "bandwidth_charge_mode")
 
     @bandwidth_charge_mode.setter
@@ -247,9 +199,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Bandwidth size. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @bandwidth_size.setter
@@ -268,10 +217,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="crossVpcBackend")
     def cross_vpc_backend(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable this if you want to associate the IP addresses of backend servers with
-        your load balancer. Can only be true when updating.
-        """
         return pulumi.get(self, "cross_vpc_backend")
 
     @cross_vpc_backend.setter
@@ -290,9 +235,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the loadbalancer.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -302,10 +244,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the loadbalancer. Changing this
-        creates a new loadbalancer.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -324,9 +262,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter
     def iptype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Elastic IP type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "iptype")
 
     @iptype.setter
@@ -336,9 +271,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv4 address of the load balancer.
-        """
         return pulumi.get(self, "ipv4_address")
 
     @ipv4_address.setter
@@ -348,12 +280,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="ipv4EipId")
     def ipv4_eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the EIP. Changing this parameter will create a new resource.
-
-        > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-        `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        """
         return pulumi.get(self, "ipv4_eip_id")
 
     @ipv4_eip_id.setter
@@ -364,8 +290,7 @@ class ElbLoadbalancerArgs:
     @pulumi.getter(name="ipv4SubnetId")
     def ipv4_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-        ipv4 address.
+        the IPv4 subnet ID of the subnet where the load balancer resides
         """
         return pulumi.get(self, "ipv4_subnet_id")
 
@@ -376,9 +301,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv6 address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -388,9 +310,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6BandwidthId")
     def ipv6_bandwidth_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv6 bandwidth id. Only support shared bandwidth.
-        """
         return pulumi.get(self, "ipv6_bandwidth_id")
 
     @ipv6_bandwidth_id.setter
@@ -401,7 +320,7 @@ class ElbLoadbalancerArgs:
     @pulumi.getter(name="ipv6NetworkId")
     def ipv6_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
+        the ID of the subnet where the load balancer resides
         """
         return pulumi.get(self, "ipv6_network_id")
 
@@ -412,9 +331,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="l4FlavorId")
     def l4_flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The L4 flavor id of the load balancer.
-        """
         return pulumi.get(self, "l4_flavor_id")
 
     @l4_flavor_id.setter
@@ -424,9 +340,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="l7FlavorId")
     def l7_flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The L7 flavor id of the load balancer.
-        """
         return pulumi.get(self, "l7_flavor_id")
 
     @l7_flavor_id.setter
@@ -445,10 +358,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="minL7FlavorId")
     def min_l7_flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-        This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        """
         return pulumi.get(self, "min_l7_flavor_id")
 
     @min_l7_flavor_id.setter
@@ -458,9 +367,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the loadbalancer.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -506,10 +412,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the loadbalancer resource. If omitted, the
-        provider-level region will be used. Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -519,9 +421,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter
     def sharetype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Bandwidth sharing type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "sharetype")
 
     @sharetype.setter
@@ -531,9 +430,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the loadbalancer.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -543,10 +439,6 @@ class ElbLoadbalancerArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The vpc on which to create the loadbalancer. Changing this creates a new
-        loadbalancer.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -616,44 +508,8 @@ class _ElbLoadbalancerState:
                  waf_failure_action: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElbLoadbalancer resources.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        :param pulumi.Input[_builtins.bool] autoscaling_enabled: Specifies whether autoscaling is enabled. Valid values are **true** and
-               **false**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of AZ names. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Bandwidth billing type. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] cross_vpc_backend: Enable this if you want to associate the IP addresses of backend servers with
-               your load balancer. Can only be true when updating.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the loadbalancer.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the loadbalancer. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] iptype: Elastic IP type. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ipv4_address: The ipv4 address of the load balancer.
-        :param pulumi.Input[_builtins.str] ipv4_eip: The ipv4 eip address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv4_eip_id: The ID of the EIP. Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[_builtins.str] ipv4_subnet_id: The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-               ipv4 address.
-        :param pulumi.Input[_builtins.str] ipv6_address: The ipv6 address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_bandwidth_id: The ipv6 bandwidth id. Only support shared bandwidth.
-        :param pulumi.Input[_builtins.str] ipv6_eip: The ipv6 eip address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_eip_id: The ipv6 eip id of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_network_id: The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
-        :param pulumi.Input[_builtins.str] l4_flavor_id: The L4 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] l7_flavor_id: The L7 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] min_l7_flavor_id: Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-               This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the loadbalancer.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the loadbalancer resource. If omitted, the
-               provider-level region will be used. Changing this creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] sharetype: Bandwidth sharing type. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the loadbalancer.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc on which to create the loadbalancer. Changing this creates a new
-               loadbalancer.
+        :param pulumi.Input[_builtins.str] ipv4_subnet_id: the IPv4 subnet ID of the subnet where the load balancer resides
+        :param pulumi.Input[_builtins.str] ipv6_network_id: the ID of the subnet where the load balancer resides
         """
         if auto_pay is not None:
             warnings.warn("""Deprecated""", DeprecationWarning)
@@ -768,9 +624,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -780,10 +633,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="autoscalingEnabled")
     def autoscaling_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether autoscaling is enabled. Valid values are **true** and
-        **false**.
-        """
         return pulumi.get(self, "autoscaling_enabled")
 
     @autoscaling_enabled.setter
@@ -793,10 +642,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the list of AZ names. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "availability_zones")
 
     @availability_zones.setter
@@ -815,10 +660,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="bandwidthChargeMode")
     def bandwidth_charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Bandwidth billing type. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "bandwidth_charge_mode")
 
     @bandwidth_charge_mode.setter
@@ -837,9 +678,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Bandwidth size. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @bandwidth_size.setter
@@ -876,10 +714,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="crossVpcBackend")
     def cross_vpc_backend(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Enable this if you want to associate the IP addresses of backend servers with
-        your load balancer. Can only be true when updating.
-        """
         return pulumi.get(self, "cross_vpc_backend")
 
     @cross_vpc_backend.setter
@@ -898,9 +732,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the loadbalancer.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -919,10 +750,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the loadbalancer. Changing this
-        creates a new loadbalancer.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -968,9 +795,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter
     def iptype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Elastic IP type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "iptype")
 
     @iptype.setter
@@ -980,9 +804,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv4 address of the load balancer.
-        """
         return pulumi.get(self, "ipv4_address")
 
     @ipv4_address.setter
@@ -992,9 +813,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv4Eip")
     def ipv4_eip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv4 eip address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv4_eip")
 
     @ipv4_eip.setter
@@ -1004,12 +822,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv4EipId")
     def ipv4_eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the EIP. Changing this parameter will create a new resource.
-
-        > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-        `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        """
         return pulumi.get(self, "ipv4_eip_id")
 
     @ipv4_eip_id.setter
@@ -1029,8 +841,7 @@ class _ElbLoadbalancerState:
     @pulumi.getter(name="ipv4SubnetId")
     def ipv4_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-        ipv4 address.
+        the IPv4 subnet ID of the subnet where the load balancer resides
         """
         return pulumi.get(self, "ipv4_subnet_id")
 
@@ -1041,9 +852,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv6 address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -1053,9 +861,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv6BandwidthId")
     def ipv6_bandwidth_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv6 bandwidth id. Only support shared bandwidth.
-        """
         return pulumi.get(self, "ipv6_bandwidth_id")
 
     @ipv6_bandwidth_id.setter
@@ -1065,9 +870,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv6Eip")
     def ipv6_eip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv6 eip address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_eip")
 
     @ipv6_eip.setter
@@ -1077,9 +879,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="ipv6EipId")
     def ipv6_eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ipv6 eip id of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_eip_id")
 
     @ipv6_eip_id.setter
@@ -1090,7 +889,7 @@ class _ElbLoadbalancerState:
     @pulumi.getter(name="ipv6NetworkId")
     def ipv6_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
+        the ID of the subnet where the load balancer resides
         """
         return pulumi.get(self, "ipv6_network_id")
 
@@ -1101,9 +900,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="l4FlavorId")
     def l4_flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The L4 flavor id of the load balancer.
-        """
         return pulumi.get(self, "l4_flavor_id")
 
     @l4_flavor_id.setter
@@ -1113,9 +909,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="l7FlavorId")
     def l7_flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The L7 flavor id of the load balancer.
-        """
         return pulumi.get(self, "l7_flavor_id")
 
     @l7_flavor_id.setter
@@ -1134,10 +927,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="minL7FlavorId")
     def min_l7_flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-        This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        """
         return pulumi.get(self, "min_l7_flavor_id")
 
     @min_l7_flavor_id.setter
@@ -1147,9 +936,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the loadbalancer.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1213,10 +999,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the loadbalancer resource. If omitted, the
-        provider-level region will be used. Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1226,9 +1008,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter
     def sharetype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Bandwidth sharing type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "sharetype")
 
     @sharetype.setter
@@ -1238,9 +1017,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the loadbalancer.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1259,10 +1035,6 @@ class _ElbLoadbalancerState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The vpc on which to create the loadbalancer. Changing this creates a new
-        loadbalancer.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -1322,155 +1094,11 @@ class ElbLoadbalancer(pulumi.CustomResource):
                  waf_failure_action: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a Dedicated Load Balancer resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Loadbalancer
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbLoadbalancer("basic",
-            name="basic",
-            description="basic example",
-            cross_vpc_backend=True,
-            vpc_id="{{ vpc_id }}",
-            ipv4_subnet_id="{{ ipv4_subnet_id }}",
-            l4_flavor_id="{{ l4_flavor_id }}",
-            l7_flavor_id="{{ l7_flavor_id }}",
-            availability_zones=[
-                "ru-moscow-1a",
-                "ru-moscow-1b",
-            ],
-            enterprise_project_id="{{ eps_id }}")
-        ```
-
-        ### Loadbalancer With Existing EIP
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbLoadbalancer("basic",
-            name="basic",
-            description="basic example",
-            cross_vpc_backend=True,
-            vpc_id="{{ vpc_id }}",
-            ipv6_network_id="{{ ipv6_network_id }}",
-            ipv6_bandwidth_id="{{ ipv6_bandwidth_id }}",
-            ipv4_subnet_id="{{ ipv4_subnet_id }}",
-            l4_flavor_id="{{ l4_flavor_id }}",
-            l7_flavor_id="{{ l7_flavor_id }}",
-            availability_zones=[
-                "ru-moscow-1a",
-                "ru-moscow-1b",
-            ],
-            enterprise_project_id="{{ eps_id }}",
-            ipv4_eip_id="{{ eip_id }}")
-        ```
-
-        ### Loadbalancer With EIP
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbLoadbalancer("basic",
-            name="basic",
-            description="basic example",
-            cross_vpc_backend=True,
-            vpc_id="{{ vpc_id }}",
-            ipv6_network_id="{{ ipv6_network_id }}",
-            ipv6_bandwidth_id="{{ ipv6_bandwidth_id }}",
-            ipv4_subnet_id="{{ ipv4_subnet_id }}",
-            l4_flavor_id="{{ l4_flavor_id }}",
-            l7_flavor_id="{{ l7_flavor_id }}",
-            availability_zones=[
-                "ru-moscow-1a",
-                "ru-moscow-1b",
-            ],
-            enterprise_project_id="{{ eps_id }}",
-            iptype="5_bgp",
-            bandwidth_charge_mode="traffic",
-            sharetype="PER",
-            bandwidth_size=10)
-        ```
-
-        ## Import
-
-        ELB loadbalancer can be imported using the loadbalancer ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbLoadbalancer:ElbLoadbalancer loadbalancer_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `ipv6_bandwidth_id`, `iptype`,
-
-        `bandwidth_charge_mode`, `sharetype` and `bandwidth_size`.
-
-        It is generally recommended running `pulumi preview` after importing a loadbalancer.
-
-        You can then decide if changes should be applied to the loadbalancer, or the resource
-
-        definition should be updated to align with the loadbalancer. Also you can ignore changes as below.
-
-        resource "sbercloud_elb_loadbalancer" "loadbalancer_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              ipv6_bandwidth_id, iptype, bandwidth_charge_mode, sharetype, bandwidth_size,
-            
-            ]
-
-          }
-
-        }
-
+        Create a ElbLoadbalancer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        :param pulumi.Input[_builtins.bool] autoscaling_enabled: Specifies whether autoscaling is enabled. Valid values are **true** and
-               **false**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of AZ names. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Bandwidth billing type. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] cross_vpc_backend: Enable this if you want to associate the IP addresses of backend servers with
-               your load balancer. Can only be true when updating.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the loadbalancer.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the loadbalancer. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] iptype: Elastic IP type. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ipv4_address: The ipv4 address of the load balancer.
-        :param pulumi.Input[_builtins.str] ipv4_eip_id: The ID of the EIP. Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[_builtins.str] ipv4_subnet_id: The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-               ipv4 address.
-        :param pulumi.Input[_builtins.str] ipv6_address: The ipv6 address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_bandwidth_id: The ipv6 bandwidth id. Only support shared bandwidth.
-        :param pulumi.Input[_builtins.str] ipv6_network_id: The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
-        :param pulumi.Input[_builtins.str] l4_flavor_id: The L4 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] l7_flavor_id: The L7 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] min_l7_flavor_id: Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-               This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the loadbalancer.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the loadbalancer resource. If omitted, the
-               provider-level region will be used. Changing this creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] sharetype: Bandwidth sharing type. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the loadbalancer.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc on which to create the loadbalancer. Changing this creates a new
-               loadbalancer.
+        :param pulumi.Input[_builtins.str] ipv4_subnet_id: the IPv4 subnet ID of the subnet where the load balancer resides
+        :param pulumi.Input[_builtins.str] ipv6_network_id: the ID of the subnet where the load balancer resides
         """
         ...
     @overload
@@ -1479,118 +1107,7 @@ class ElbLoadbalancer(pulumi.CustomResource):
                  args: ElbLoadbalancerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Dedicated Load Balancer resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Loadbalancer
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbLoadbalancer("basic",
-            name="basic",
-            description="basic example",
-            cross_vpc_backend=True,
-            vpc_id="{{ vpc_id }}",
-            ipv4_subnet_id="{{ ipv4_subnet_id }}",
-            l4_flavor_id="{{ l4_flavor_id }}",
-            l7_flavor_id="{{ l7_flavor_id }}",
-            availability_zones=[
-                "ru-moscow-1a",
-                "ru-moscow-1b",
-            ],
-            enterprise_project_id="{{ eps_id }}")
-        ```
-
-        ### Loadbalancer With Existing EIP
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbLoadbalancer("basic",
-            name="basic",
-            description="basic example",
-            cross_vpc_backend=True,
-            vpc_id="{{ vpc_id }}",
-            ipv6_network_id="{{ ipv6_network_id }}",
-            ipv6_bandwidth_id="{{ ipv6_bandwidth_id }}",
-            ipv4_subnet_id="{{ ipv4_subnet_id }}",
-            l4_flavor_id="{{ l4_flavor_id }}",
-            l7_flavor_id="{{ l7_flavor_id }}",
-            availability_zones=[
-                "ru-moscow-1a",
-                "ru-moscow-1b",
-            ],
-            enterprise_project_id="{{ eps_id }}",
-            ipv4_eip_id="{{ eip_id }}")
-        ```
-
-        ### Loadbalancer With EIP
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        basic = sbercloud.ElbLoadbalancer("basic",
-            name="basic",
-            description="basic example",
-            cross_vpc_backend=True,
-            vpc_id="{{ vpc_id }}",
-            ipv6_network_id="{{ ipv6_network_id }}",
-            ipv6_bandwidth_id="{{ ipv6_bandwidth_id }}",
-            ipv4_subnet_id="{{ ipv4_subnet_id }}",
-            l4_flavor_id="{{ l4_flavor_id }}",
-            l7_flavor_id="{{ l7_flavor_id }}",
-            availability_zones=[
-                "ru-moscow-1a",
-                "ru-moscow-1b",
-            ],
-            enterprise_project_id="{{ eps_id }}",
-            iptype="5_bgp",
-            bandwidth_charge_mode="traffic",
-            sharetype="PER",
-            bandwidth_size=10)
-        ```
-
-        ## Import
-
-        ELB loadbalancer can be imported using the loadbalancer ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbLoadbalancer:ElbLoadbalancer loadbalancer_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `ipv6_bandwidth_id`, `iptype`,
-
-        `bandwidth_charge_mode`, `sharetype` and `bandwidth_size`.
-
-        It is generally recommended running `pulumi preview` after importing a loadbalancer.
-
-        You can then decide if changes should be applied to the loadbalancer, or the resource
-
-        definition should be updated to align with the loadbalancer. Also you can ignore changes as below.
-
-        resource "sbercloud_elb_loadbalancer" "loadbalancer_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              ipv6_bandwidth_id, iptype, bandwidth_charge_mode, sharetype, bandwidth_size,
-            
-            ]
-
-          }
-
-        }
-
+        Create a ElbLoadbalancer resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbLoadbalancerArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1765,44 +1282,8 @@ class ElbLoadbalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        :param pulumi.Input[_builtins.bool] autoscaling_enabled: Specifies whether autoscaling is enabled. Valid values are **true** and
-               **false**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: Specifies the list of AZ names. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Bandwidth billing type. Changing this parameter will create a
-               new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Bandwidth size. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] cross_vpc_backend: Enable this if you want to associate the IP addresses of backend servers with
-               your load balancer. Can only be true when updating.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the loadbalancer.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the loadbalancer. Changing this
-               creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] iptype: Elastic IP type. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ipv4_address: The ipv4 address of the load balancer.
-        :param pulumi.Input[_builtins.str] ipv4_eip: The ipv4 eip address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv4_eip_id: The ID of the EIP. Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[_builtins.str] ipv4_subnet_id: The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-               ipv4 address.
-        :param pulumi.Input[_builtins.str] ipv6_address: The ipv6 address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_bandwidth_id: The ipv6 bandwidth id. Only support shared bandwidth.
-        :param pulumi.Input[_builtins.str] ipv6_eip: The ipv6 eip address of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_eip_id: The ipv6 eip id of the Load Balancer.
-        :param pulumi.Input[_builtins.str] ipv6_network_id: The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
-        :param pulumi.Input[_builtins.str] l4_flavor_id: The L4 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] l7_flavor_id: The L7 flavor id of the load balancer.
-        :param pulumi.Input[_builtins.str] min_l7_flavor_id: Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-               This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the loadbalancer.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the loadbalancer resource. If omitted, the
-               provider-level region will be used. Changing this creates a new loadbalancer.
-        :param pulumi.Input[_builtins.str] sharetype: Bandwidth sharing type. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the loadbalancer.
-        :param pulumi.Input[_builtins.str] vpc_id: The vpc on which to create the loadbalancer. Changing this creates a new
-               loadbalancer.
+        :param pulumi.Input[_builtins.str] ipv4_subnet_id: the IPv4 subnet ID of the subnet where the load balancer resides
+        :param pulumi.Input[_builtins.str] ipv6_network_id: the ID of the subnet where the load balancer resides
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1867,27 +1348,16 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are **true** and **false**.
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="autoscalingEnabled")
     def autoscaling_enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether autoscaling is enabled. Valid values are **true** and
-        **false**.
-        """
         return pulumi.get(self, "autoscaling_enabled")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the list of AZ names. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
@@ -1898,10 +1368,6 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="bandwidthChargeMode")
     def bandwidth_charge_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Bandwidth billing type. Changing this parameter will create a
-        new resource.
-        """
         return pulumi.get(self, "bandwidth_charge_mode")
 
     @_builtins.property
@@ -1912,9 +1378,6 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> pulumi.Output[_builtins.int]:
-        """
-        Bandwidth size. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @_builtins.property
@@ -1935,10 +1398,6 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="crossVpcBackend")
     def cross_vpc_backend(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Enable this if you want to associate the IP addresses of backend servers with
-        your load balancer. Can only be true when updating.
-        """
         return pulumi.get(self, "cross_vpc_backend")
 
     @_builtins.property
@@ -1949,9 +1408,6 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Human-readable description for the loadbalancer.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -1962,10 +1418,6 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the loadbalancer. Changing this
-        creates a new loadbalancer.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
@@ -1991,36 +1443,21 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def iptype(self) -> pulumi.Output[_builtins.str]:
-        """
-        Elastic IP type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "iptype")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Address")
     def ipv4_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ipv4 address of the load balancer.
-        """
         return pulumi.get(self, "ipv4_address")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Eip")
     def ipv4_eip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ipv4 eip address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv4_eip")
 
     @_builtins.property
     @pulumi.getter(name="ipv4EipId")
     def ipv4_eip_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the EIP. Changing this parameter will create a new resource.
-
-        > **NOTE:** If the ipv4_eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-        `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        """
         return pulumi.get(self, "ipv4_eip_id")
 
     @_builtins.property
@@ -2032,65 +1469,46 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @pulumi.getter(name="ipv4SubnetId")
     def ipv4_subnet_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The **IPv4 subnet ID** of the subnet on which to allocate the loadbalancer's
-        ipv4 address.
+        the IPv4 subnet ID of the subnet where the load balancer resides
         """
         return pulumi.get(self, "ipv4_subnet_id")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ipv6 address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_address")
 
     @_builtins.property
     @pulumi.getter(name="ipv6BandwidthId")
     def ipv6_bandwidth_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The ipv6 bandwidth id. Only support shared bandwidth.
-        """
         return pulumi.get(self, "ipv6_bandwidth_id")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Eip")
     def ipv6_eip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ipv6 eip address of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_eip")
 
     @_builtins.property
     @pulumi.getter(name="ipv6EipId")
     def ipv6_eip_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ipv6 eip id of the Load Balancer.
-        """
         return pulumi.get(self, "ipv6_eip_id")
 
     @_builtins.property
     @pulumi.getter(name="ipv6NetworkId")
     def ipv6_network_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The **ID** of the subnet on which to allocate the loadbalancer's ipv6 address.
+        the ID of the subnet where the load balancer resides
         """
         return pulumi.get(self, "ipv6_network_id")
 
     @_builtins.property
     @pulumi.getter(name="l4FlavorId")
     def l4_flavor_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The L4 flavor id of the load balancer.
-        """
         return pulumi.get(self, "l4_flavor_id")
 
     @_builtins.property
     @pulumi.getter(name="l7FlavorId")
     def l7_flavor_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The L7 flavor id of the load balancer.
-        """
         return pulumi.get(self, "l7_flavor_id")
 
     @_builtins.property
@@ -2101,18 +1519,11 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="minL7FlavorId")
     def min_l7_flavor_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the minimum Layer-7 flavor for elastic scaling.
-        This parameter cannot be left blank if there are HTTP or HTTPS listeners.
-        """
         return pulumi.get(self, "min_l7_flavor_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the loadbalancer.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -2148,26 +1559,16 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the loadbalancer resource. If omitted, the
-        provider-level region will be used. Changing this creates a new loadbalancer.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def sharetype(self) -> pulumi.Output[_builtins.str]:
-        """
-        Bandwidth sharing type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "sharetype")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the loadbalancer.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
@@ -2178,10 +1579,6 @@ class ElbLoadbalancer(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The vpc on which to create the loadbalancer. Changing this creates a new
-        loadbalancer.
-        """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property

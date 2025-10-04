@@ -57,9 +57,6 @@ class GetCaptureTasksResult:
     @_builtins.property
     @pulumi.getter
     def records(self) -> Sequence['outputs.GetCaptureTasksRecordResult']:
-        """
-        List of capture task information.
-        """
         return pulumi.get(self, "records")
 
     @_builtins.property
@@ -84,23 +81,7 @@ def get_capture_tasks(fw_instance_id: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCaptureTasksResult:
     """
-    Use this data source to get the list of CFW capture tasks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    test = sbercloud.Cfw.get_capture_tasks(fw_instance_id=fw_instance_id)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the ID of the firewall instance.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id
@@ -117,23 +98,7 @@ def get_capture_tasks_output(fw_instance_id: Optional[pulumi.Input[_builtins.str
                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaptureTasksResult]:
     """
-    Use this data source to get the list of CFW capture tasks.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    fw_instance_id = config.require_object("fwInstanceId")
-    test = sbercloud.Cfw.get_capture_tasks(fw_instance_id=fw_instance_id)
-    ```
-
-
-    :param _builtins.str fw_instance_id: Specifies the ID of the firewall instance.
-    :param _builtins.str region: Specifies the region in which to query the resource.
-           If omitted, the provider-level region will be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['fwInstanceId'] = fw_instance_id

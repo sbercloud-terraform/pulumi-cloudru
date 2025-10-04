@@ -174,19 +174,19 @@ if not MYPY:
     class FunctionFuncMountArgsDict(TypedDict):
         local_mount_path: pulumi.Input[_builtins.str]
         """
-        Specifies the function access path.
+        The function access path.
         """
         mount_resource: pulumi.Input[_builtins.str]
         """
-        Specifies the ID of the mounted resource (corresponding cloud service).
+        The ID of the mounted resource (corresponding cloud service).
         """
         mount_share_path: pulumi.Input[_builtins.str]
         """
-        Specifies the remote mount path. Example: 192.168.0.12:/data.
+        The remote mount path.
         """
         mount_type: pulumi.Input[_builtins.str]
         """
-        Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+        The mount type.
         """
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -204,10 +204,10 @@ class FunctionFuncMountArgs:
                  mount_type: pulumi.Input[_builtins.str],
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] local_mount_path: Specifies the function access path.
-        :param pulumi.Input[_builtins.str] mount_resource: Specifies the ID of the mounted resource (corresponding cloud service).
-        :param pulumi.Input[_builtins.str] mount_share_path: Specifies the remote mount path. Example: 192.168.0.12:/data.
-        :param pulumi.Input[_builtins.str] mount_type: Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+        :param pulumi.Input[_builtins.str] local_mount_path: The function access path.
+        :param pulumi.Input[_builtins.str] mount_resource: The ID of the mounted resource (corresponding cloud service).
+        :param pulumi.Input[_builtins.str] mount_share_path: The remote mount path.
+        :param pulumi.Input[_builtins.str] mount_type: The mount type.
         :param pulumi.Input[_builtins.str] status: The mount status.
         """
         pulumi.set(__self__, "local_mount_path", local_mount_path)
@@ -221,7 +221,7 @@ class FunctionFuncMountArgs:
     @pulumi.getter(name="localMountPath")
     def local_mount_path(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the function access path.
+        The function access path.
         """
         return pulumi.get(self, "local_mount_path")
 
@@ -233,7 +233,7 @@ class FunctionFuncMountArgs:
     @pulumi.getter(name="mountResource")
     def mount_resource(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the ID of the mounted resource (corresponding cloud service).
+        The ID of the mounted resource (corresponding cloud service).
         """
         return pulumi.get(self, "mount_resource")
 
@@ -245,7 +245,7 @@ class FunctionFuncMountArgs:
     @pulumi.getter(name="mountSharePath")
     def mount_share_path(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the remote mount path. Example: 192.168.0.12:/data.
+        The remote mount path.
         """
         return pulumi.get(self, "mount_share_path")
 
@@ -257,7 +257,7 @@ class FunctionFuncMountArgs:
     @pulumi.getter(name="mountType")
     def mount_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the mount type. Options: sfs, sfsTurbo, and ecs.
+        The mount type.
         """
         return pulumi.get(self, "mount_type")
 
@@ -334,7 +334,7 @@ if not MYPY:
     class FunctionNetworkControllerTriggerAccessVpcArgsDict(TypedDict):
         vpc_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the ID of VPC.
+        The ID of the VPC that can trigger the function.
         """
         vpc_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -349,7 +349,7 @@ class FunctionNetworkControllerTriggerAccessVpcArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of VPC.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC that can trigger the function.
         :param pulumi.Input[_builtins.str] vpc_name: The ID of the VPC that can trigger the function.
         """
         if vpc_id is not None:
@@ -361,7 +361,7 @@ class FunctionNetworkControllerTriggerAccessVpcArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the ID of VPC.
+        The ID of the VPC that can trigger the function.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -559,7 +559,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the function.
+        The name of scheduled policy configuration.
         """
         start_time: pulumi.Input[_builtins.int]
         """
@@ -580,7 +580,7 @@ class FunctionReservedInstanceTacticsConfigCronConfigArgs:
         :param pulumi.Input[_builtins.int] count: The number of reserved instance to which the policy belongs.
         :param pulumi.Input[_builtins.str] cron: The cron expression.
         :param pulumi.Input[_builtins.int] expired_time: The expiration timestamp of the policy.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.str] name: The name of scheduled policy configuration.
         :param pulumi.Input[_builtins.int] start_time: The effective timestamp of policy.
         """
         pulumi.set(__self__, "count", count)
@@ -629,7 +629,7 @@ class FunctionReservedInstanceTacticsConfigCronConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the function.
+        The name of scheduled policy configuration.
         """
         return pulumi.get(self, "name")
 
@@ -658,7 +658,7 @@ if not MYPY:
         """
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the function.
+        The name of metric policy.
         """
         threshold: pulumi.Input[_builtins.int]
         """
@@ -680,7 +680,7 @@ class FunctionReservedInstanceTacticsConfigMetricConfigArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.int] min: The minimun of traffic.
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.str] name: The name of metric policy.
         :param pulumi.Input[_builtins.int] threshold: The metric policy threshold.
         :param pulumi.Input[_builtins.str] type: The type of metric policy.
         """
@@ -705,7 +705,7 @@ class FunctionReservedInstanceTacticsConfigMetricConfigArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the function.
+        The name of metric policy.
         """
         return pulumi.get(self, "name")
 
@@ -742,7 +742,7 @@ if not MYPY:
     class FunctionVersionArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the function.
+        The version name.
         """
         aliases: NotRequired[pulumi.Input['FunctionVersionAliasesArgsDict']]
         """
@@ -750,7 +750,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the function.
+        The description of the version.
         """
 elif False:
     FunctionVersionArgsDict: TypeAlias = Mapping[str, Any]
@@ -762,9 +762,9 @@ class FunctionVersionArgs:
                  aliases: Optional[pulumi.Input['FunctionVersionAliasesArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.str] name: The version name.
         :param pulumi.Input['FunctionVersionAliasesArgs'] aliases: The aliases management for specified version.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the function.
+        :param pulumi.Input[_builtins.str] description: The description of the version.
         """
         pulumi.set(__self__, "name", name)
         if aliases is not None:
@@ -776,7 +776,7 @@ class FunctionVersionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the function.
+        The version name.
         """
         return pulumi.get(self, "name")
 
@@ -800,7 +800,7 @@ class FunctionVersionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the function.
+        The description of the version.
         """
         return pulumi.get(self, "description")
 
@@ -813,7 +813,7 @@ if not MYPY:
     class FunctionVersionAliasesArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
-        Specifies the name of the function.
+        The name of the version alias.
         """
         additional_version_strategy: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -825,7 +825,7 @@ if not MYPY:
         """
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the description of the function.
+        The description of the version alias.
         """
 elif False:
     FunctionVersionAliasesArgsDict: TypeAlias = Mapping[str, Any]
@@ -838,10 +838,10 @@ class FunctionVersionAliasesArgs:
                  additional_version_weights: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of the function.
+        :param pulumi.Input[_builtins.str] name: The name of the version alias.
         :param pulumi.Input[_builtins.str] additional_version_strategy: The description of the version alias.
         :param pulumi.Input[_builtins.str] additional_version_weights: The percentage grayscale configuration of the version alias.
-        :param pulumi.Input[_builtins.str] description: Specifies the description of the function.
+        :param pulumi.Input[_builtins.str] description: The description of the version alias.
         """
         pulumi.set(__self__, "name", name)
         if additional_version_strategy is not None:
@@ -855,7 +855,7 @@ class FunctionVersionAliasesArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        Specifies the name of the function.
+        The name of the version alias.
         """
         return pulumi.get(self, "name")
 
@@ -891,7 +891,7 @@ class FunctionVersionAliasesArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the description of the function.
+        The description of the version alias.
         """
         return pulumi.get(self, "description")
 

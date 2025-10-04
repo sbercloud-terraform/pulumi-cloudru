@@ -27,15 +27,6 @@ class AclArgs:
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Acl resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the network ACL. This parameter can
-               contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inbound_rules: A list of the IDs of ingress rules associated with the network ACL.
-        :param pulumi.Input[_builtins.str] name: Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-               which may consist of letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_rules: A list of the IDs of egress rules associated with the network ACL.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network acl resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network acl resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: A list of the IDs of networks associated with the network ACL.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -53,10 +44,6 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the network ACL. This parameter can
-        contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -66,9 +53,6 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the IDs of ingress rules associated with the network ACL.
-        """
         return pulumi.get(self, "inbound_rules")
 
     @inbound_rules.setter
@@ -78,10 +62,6 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-        which may consist of letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -91,9 +71,6 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter(name="outboundRules")
     def outbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the IDs of egress rules associated with the network ACL.
-        """
         return pulumi.get(self, "outbound_rules")
 
     @outbound_rules.setter
@@ -103,10 +80,6 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the network acl resource. If omitted, the
-        provider-level region will be used. Changing this creates a new network acl resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -116,9 +89,6 @@ class AclArgs:
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the IDs of networks associated with the network ACL.
-        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -141,19 +111,6 @@ class _AclState:
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the network ACL. This parameter can
-               contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] inbound_policy_id: The ID of the ingress firewall policy for the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inbound_rules: A list of the IDs of ingress rules associated with the network ACL.
-        :param pulumi.Input[_builtins.str] name: Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-               which may consist of letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] outbound_policy_id: The ID of the egress firewall policy for the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_rules: A list of the IDs of egress rules associated with the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: A list of the port IDs of the subnet gateway.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network acl resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network acl resource.
-        :param pulumi.Input[_builtins.str] status: The status of the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: A list of the IDs of networks associated with the network ACL.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -179,10 +136,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the network ACL. This parameter can
-        contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -192,9 +145,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter(name="inboundPolicyId")
     def inbound_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the ingress firewall policy for the network ACL.
-        """
         return pulumi.get(self, "inbound_policy_id")
 
     @inbound_policy_id.setter
@@ -204,9 +154,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the IDs of ingress rules associated with the network ACL.
-        """
         return pulumi.get(self, "inbound_rules")
 
     @inbound_rules.setter
@@ -216,10 +163,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-        which may consist of letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -229,9 +172,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter(name="outboundPolicyId")
     def outbound_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the egress firewall policy for the network ACL.
-        """
         return pulumi.get(self, "outbound_policy_id")
 
     @outbound_policy_id.setter
@@ -241,9 +181,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter(name="outboundRules")
     def outbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the IDs of egress rules associated with the network ACL.
-        """
         return pulumi.get(self, "outbound_rules")
 
     @outbound_rules.setter
@@ -253,9 +190,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the port IDs of the subnet gateway.
-        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -265,10 +199,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the network acl resource. If omitted, the
-        provider-level region will be used. Changing this creates a new network acl resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -278,9 +208,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of the network ACL.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -290,9 +217,6 @@ class _AclState:
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        A list of the IDs of networks associated with the network ACL.
-        """
         return pulumi.get(self, "subnets")
 
     @subnets.setter
@@ -314,50 +238,9 @@ class Acl(pulumi.CustomResource):
                  subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages a network ACL resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        subnet = sbercloud.Vpc.get_subnet(name="subnet-default")
-        rule1 = sbercloud.networkacl.AclRule("rule_1",
-            name="my-rule-1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = sbercloud.networkacl.AclRule("rule_2",
-            name="my-rule-2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        fw_acl = sbercloud.networkacl.Acl("fw_acl",
-            name="my-fw-acl",
-            subnets=[subnet.id],
-            inbound_rules=[
-                rule1.id,
-                rule2.id,
-            ])
-        ```
-
+        Create a Acl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the network ACL. This parameter can
-               contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inbound_rules: A list of the IDs of ingress rules associated with the network ACL.
-        :param pulumi.Input[_builtins.str] name: Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-               which may consist of letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_rules: A list of the IDs of egress rules associated with the network ACL.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network acl resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network acl resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: A list of the IDs of networks associated with the network ACL.
         """
         ...
     @overload
@@ -366,39 +249,7 @@ class Acl(pulumi.CustomResource):
                  args: Optional[AclArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a network ACL resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        subnet = sbercloud.Vpc.get_subnet(name="subnet-default")
-        rule1 = sbercloud.networkacl.AclRule("rule_1",
-            name="my-rule-1",
-            description="drop TELNET traffic",
-            action="deny",
-            protocol="tcp",
-            destination_port="23",
-            enabled=True)
-        rule2 = sbercloud.networkacl.AclRule("rule_2",
-            name="my-rule-2",
-            description="drop NTP traffic",
-            action="deny",
-            protocol="udp",
-            destination_port="123",
-            enabled=False)
-        fw_acl = sbercloud.networkacl.Acl("fw_acl",
-            name="my-fw-acl",
-            subnets=[subnet.id],
-            inbound_rules=[
-                rule1.id,
-                rule2.id,
-            ])
-        ```
-
+        Create a Acl resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -466,19 +317,6 @@ class Acl(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the network ACL. This parameter can
-               contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.str] inbound_policy_id: The ID of the ingress firewall policy for the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inbound_rules: A list of the IDs of ingress rules associated with the network ACL.
-        :param pulumi.Input[_builtins.str] name: Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-               which may consist of letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] outbound_policy_id: The ID of the egress firewall policy for the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] outbound_rules: A list of the IDs of egress rules associated with the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: A list of the port IDs of the subnet gateway.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the network acl resource. If omitted, the
-               provider-level region will be used. Changing this creates a new network acl resource.
-        :param pulumi.Input[_builtins.str] status: The status of the network ACL.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] subnets: A list of the IDs of networks associated with the network ACL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -499,83 +337,50 @@ class Acl(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the supplementary information about the network ACL. This parameter can
-        contain a maximum of 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="inboundPolicyId")
     def inbound_policy_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the ingress firewall policy for the network ACL.
-        """
         return pulumi.get(self, "inbound_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="inboundRules")
     def inbound_rules(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        A list of the IDs of ingress rules associated with the network ACL.
-        """
         return pulumi.get(self, "inbound_rules")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the network ACL name. This parameter can contain a maximum of 64 characters,
-        which may consist of letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="outboundPolicyId")
     def outbound_policy_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the egress firewall policy for the network ACL.
-        """
         return pulumi.get(self, "outbound_policy_id")
 
     @_builtins.property
     @pulumi.getter(name="outboundRules")
     def outbound_rules(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        A list of the IDs of egress rules associated with the network ACL.
-        """
         return pulumi.get(self, "outbound_rules")
 
     @_builtins.property
     @pulumi.getter
     def ports(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        A list of the port IDs of the subnet gateway.
-        """
         return pulumi.get(self, "ports")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the network acl resource. If omitted, the
-        provider-level region will be used. Changing this creates a new network acl resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of the network ACL.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def subnets(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
-        """
-        A list of the IDs of networks associated with the network ACL.
-        """
         return pulumi.get(self, "subnets")
 

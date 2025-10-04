@@ -32,16 +32,6 @@ class AddressGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AddressGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Specifies an array of one or more IP addresses. The address can be a single IP
-               address, IP address range or IP address CIDR. The maximum length is 20.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the IP address group.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this creates a new address group.
-        :param pulumi.Input[_builtins.str] name: Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), hyphens (-) and periods (.).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the IP address group. If omitted, the
-               provider-level region will be used. Changing this creates a new address group.
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -65,10 +55,6 @@ class AddressGroupArgs:
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more IP addresses. The address can be a single IP
-        address, IP address range or IP address CIDR. The maximum length is 20.
-        """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
@@ -78,10 +64,6 @@ class AddressGroupArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the IP address group.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -118,10 +100,6 @@ class AddressGroupArgs:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the IP version, either `4` (default) or `6`.
-        Changing this creates a new address group.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -140,10 +118,6 @@ class AddressGroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-        letters, digits, underscores (_), hyphens (-) and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -153,10 +127,6 @@ class AddressGroupArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the IP address group. If omitted, the
-        provider-level region will be used. Changing this creates a new address group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -178,16 +148,6 @@ class _AddressGroupState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressGroup resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Specifies an array of one or more IP addresses. The address can be a single IP
-               address, IP address range or IP address CIDR. The maximum length is 20.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the IP address group.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this creates a new address group.
-        :param pulumi.Input[_builtins.str] name: Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), hyphens (-) and periods (.).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the IP address group. If omitted, the
-               provider-level region will be used. Changing this creates a new address group.
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -211,10 +171,6 @@ class _AddressGroupState:
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies an array of one or more IP addresses. The address can be a single IP
-        address, IP address range or IP address CIDR. The maximum length is 20.
-        """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
@@ -224,10 +180,6 @@ class _AddressGroupState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the IP address group.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -264,10 +216,6 @@ class _AddressGroupState:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the IP version, either `4` (default) or `6`.
-        Changing this creates a new address group.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -286,10 +234,6 @@ class _AddressGroupState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-        letters, digits, underscores (_), hyphens (-) and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -299,10 +243,6 @@ class _AddressGroupState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the IP address group. If omitted, the
-        provider-level region will be used. Changing this creates a new address group.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -327,56 +267,9 @@ class AddressGroup(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPC IP address group resource within SberCloud.
-
-        ## Example Usage
-
-        ### IPv4 Address Group
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        ipv4 = sbercloud.vpc.AddressGroup("ipv4",
-            name="group-ipv4",
-            addresses=[
-                "192.168.10.10",
-                "192.168.1.1-192.168.1.50",
-            ])
-        ```
-
-        ### IPv6 Address Group
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        ipv6 = sbercloud.vpc.AddressGroup("ipv6",
-            name="group-ipv6",
-            ip_version=6,
-            addresses=["2001:db8:a583:6e::/64"])
-        ```
-
-        ## Import
-
-        IP address groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/addressGroup:AddressGroup test bc96f6b0-ca2c-42ee-b719-0f26bc9c8661
-        ```
-
+        Create a AddressGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Specifies an array of one or more IP addresses. The address can be a single IP
-               address, IP address range or IP address CIDR. The maximum length is 20.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the IP address group.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this creates a new address group.
-        :param pulumi.Input[_builtins.str] name: Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), hyphens (-) and periods (.).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the IP address group. If omitted, the
-               provider-level region will be used. Changing this creates a new address group.
         """
         ...
     @overload
@@ -385,44 +278,7 @@ class AddressGroup(pulumi.CustomResource):
                  args: Optional[AddressGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPC IP address group resource within SberCloud.
-
-        ## Example Usage
-
-        ### IPv4 Address Group
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        ipv4 = sbercloud.vpc.AddressGroup("ipv4",
-            name="group-ipv4",
-            addresses=[
-                "192.168.10.10",
-                "192.168.1.1-192.168.1.50",
-            ])
-        ```
-
-        ### IPv6 Address Group
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        ipv6 = sbercloud.vpc.AddressGroup("ipv6",
-            name="group-ipv6",
-            ip_version=6,
-            addresses=["2001:db8:a583:6e::/64"])
-        ```
-
-        ## Import
-
-        IP address groups can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/addressGroup:AddressGroup test bc96f6b0-ca2c-42ee-b719-0f26bc9c8661
-        ```
-
+        Create a AddressGroup resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AddressGroupArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -491,16 +347,6 @@ class AddressGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] addresses: Specifies an array of one or more IP addresses. The address can be a single IP
-               address, IP address range or IP address CIDR. The maximum length is 20.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the IP address group.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.int] ip_version: Specifies the IP version, either `4` (default) or `6`.
-               Changing this creates a new address group.
-        :param pulumi.Input[_builtins.str] name: Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), hyphens (-) and periods (.).
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the IP address group. If omitted, the
-               provider-level region will be used. Changing this creates a new address group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -520,19 +366,11 @@ class AddressGroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies an array of one or more IP addresses. The address can be a single IP
-        address, IP address range or IP address CIDR. The maximum length is 20.
-        """
         return pulumi.get(self, "addresses")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the supplementary information about the IP address group.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -553,10 +391,6 @@ class AddressGroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the IP version, either `4` (default) or `6`.
-        Changing this creates a new address group.
-        """
         return pulumi.get(self, "ip_version")
 
     @_builtins.property
@@ -567,18 +401,10 @@ class AddressGroup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-        letters, digits, underscores (_), hyphens (-) and periods (.).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the IP address group. If omitted, the
-        provider-level region will be used. Changing this creates a new address group.
-        """
         return pulumi.get(self, "region")
 

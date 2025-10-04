@@ -14,23 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type InstanceBackupPolicy struct {
-	// Day in a week on which backup starts, the value ranges from `1` to `7`.
-	// Where: 1 indicates Monday; 7 indicates Sunday.
-	BackupAts []int `pulumi:"backupAts"`
-	// Backup type. Default value is `auto`. The valid values are as follows:
+	BackupAts  []int   `pulumi:"backupAts"`
 	BackupType *string `pulumi:"backupType"`
-	// Time at which backup starts.
-	// Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-	//
-	// <a name="DcsInstance_Parameters"></a>
-	// The `parameters` block supports:
-	BeginAt string `pulumi:"beginAt"`
-	// Interval at which backup is performed. Default value is `weekly`.
-	// Currently, only weekly backup is supported.
+	BeginAt    string  `pulumi:"beginAt"`
 	PeriodType *string `pulumi:"periodType"`
-	// Retention time. Unit: day, the value ranges from `1` to `7`.
-	// This parameter is required if the backupType is **auto**.
-	SaveDays *int `pulumi:"saveDays"`
+	SaveDays   *int    `pulumi:"saveDays"`
 }
 
 // InstanceBackupPolicyInput is an input type that accepts InstanceBackupPolicyArgs and InstanceBackupPolicyOutput values.
@@ -45,23 +33,11 @@ type InstanceBackupPolicyInput interface {
 }
 
 type InstanceBackupPolicyArgs struct {
-	// Day in a week on which backup starts, the value ranges from `1` to `7`.
-	// Where: 1 indicates Monday; 7 indicates Sunday.
-	BackupAts pulumi.IntArrayInput `pulumi:"backupAts"`
-	// Backup type. Default value is `auto`. The valid values are as follows:
+	BackupAts  pulumi.IntArrayInput  `pulumi:"backupAts"`
 	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
-	// Time at which backup starts.
-	// Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-	//
-	// <a name="DcsInstance_Parameters"></a>
-	// The `parameters` block supports:
-	BeginAt pulumi.StringInput `pulumi:"beginAt"`
-	// Interval at which backup is performed. Default value is `weekly`.
-	// Currently, only weekly backup is supported.
+	BeginAt    pulumi.StringInput    `pulumi:"beginAt"`
 	PeriodType pulumi.StringPtrInput `pulumi:"periodType"`
-	// Retention time. Unit: day, the value ranges from `1` to `7`.
-	// This parameter is required if the backupType is **auto**.
-	SaveDays pulumi.IntPtrInput `pulumi:"saveDays"`
+	SaveDays   pulumi.IntPtrInput    `pulumi:"saveDays"`
 }
 
 func (InstanceBackupPolicyArgs) ElementType() reflect.Type {
@@ -141,34 +117,22 @@ func (o InstanceBackupPolicyOutput) ToInstanceBackupPolicyPtrOutputWithContext(c
 	}).(InstanceBackupPolicyPtrOutput)
 }
 
-// Day in a week on which backup starts, the value ranges from `1` to `7`.
-// Where: 1 indicates Monday; 7 indicates Sunday.
 func (o InstanceBackupPolicyOutput) BackupAts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v InstanceBackupPolicy) []int { return v.BackupAts }).(pulumi.IntArrayOutput)
 }
 
-// Backup type. Default value is `auto`. The valid values are as follows:
 func (o InstanceBackupPolicyOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupPolicy) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// Time at which backup starts.
-// Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-//
-// <a name="DcsInstance_Parameters"></a>
-// The `parameters` block supports:
 func (o InstanceBackupPolicyOutput) BeginAt() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceBackupPolicy) string { return v.BeginAt }).(pulumi.StringOutput)
 }
 
-// Interval at which backup is performed. Default value is `weekly`.
-// Currently, only weekly backup is supported.
 func (o InstanceBackupPolicyOutput) PeriodType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBackupPolicy) *string { return v.PeriodType }).(pulumi.StringPtrOutput)
 }
 
-// Retention time. Unit: day, the value ranges from `1` to `7`.
-// This parameter is required if the backupType is **auto**.
 func (o InstanceBackupPolicyOutput) SaveDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBackupPolicy) *int { return v.SaveDays }).(pulumi.IntPtrOutput)
 }
@@ -197,8 +161,6 @@ func (o InstanceBackupPolicyPtrOutput) Elem() InstanceBackupPolicyOutput {
 	}).(InstanceBackupPolicyOutput)
 }
 
-// Day in a week on which backup starts, the value ranges from `1` to `7`.
-// Where: 1 indicates Monday; 7 indicates Sunday.
 func (o InstanceBackupPolicyPtrOutput) BackupAts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *InstanceBackupPolicy) []int {
 		if v == nil {
@@ -208,7 +170,6 @@ func (o InstanceBackupPolicyPtrOutput) BackupAts() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
-// Backup type. Default value is `auto`. The valid values are as follows:
 func (o InstanceBackupPolicyPtrOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupPolicy) *string {
 		if v == nil {
@@ -218,11 +179,6 @@ func (o InstanceBackupPolicyPtrOutput) BackupType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time at which backup starts.
-// Format: `hh24:00-hh24:00`, "00:00-01:00" indicates that backup starts at 00:00:00.
-//
-// <a name="DcsInstance_Parameters"></a>
-// The `parameters` block supports:
 func (o InstanceBackupPolicyPtrOutput) BeginAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupPolicy) *string {
 		if v == nil {
@@ -232,8 +188,6 @@ func (o InstanceBackupPolicyPtrOutput) BeginAt() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Interval at which backup is performed. Default value is `weekly`.
-// Currently, only weekly backup is supported.
 func (o InstanceBackupPolicyPtrOutput) PeriodType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupPolicy) *string {
 		if v == nil {
@@ -243,8 +197,6 @@ func (o InstanceBackupPolicyPtrOutput) PeriodType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Retention time. Unit: day, the value ranges from `1` to `7`.
-// This parameter is required if the backupType is **auto**.
 func (o InstanceBackupPolicyPtrOutput) SaveDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceBackupPolicy) *int {
 		if v == nil {
@@ -255,26 +207,16 @@ func (o InstanceBackupPolicyPtrOutput) SaveDays() pulumi.IntPtrOutput {
 }
 
 type InstanceBandwidthInfo struct {
-	// Indicates the bandwidth size, the unit is **GB**.
-	Bandwidth *int `pulumi:"bandwidth"`
-	// Indicates the begin time of temporary increase.
-	BeginTime *string `pulumi:"beginTime"`
-	// Indicates the current time.
-	CurrentTime *string `pulumi:"currentTime"`
-	// Indicates the end time of temporary increase.
-	EndTime *string `pulumi:"endTime"`
-	// Indicates the number of increases.
-	ExpandCount *int `pulumi:"expandCount"`
-	// Indicates the interval between temporary increases, the unit is **ms**.
-	ExpandEffectTime *int `pulumi:"expandEffectTime"`
-	// Indicates the time interval to the next increase, the unit is **ms**.
-	ExpandIntervalTime *int `pulumi:"expandIntervalTime"`
-	// Indicates the maximum number of increases.
-	MaxExpandCount *int `pulumi:"maxExpandCount"`
-	// Indicates the next increase time.
-	NextExpandTime *string `pulumi:"nextExpandTime"`
-	// Indicates whether the increase task is running.
-	TaskRunning *bool `pulumi:"taskRunning"`
+	Bandwidth          *int    `pulumi:"bandwidth"`
+	BeginTime          *string `pulumi:"beginTime"`
+	CurrentTime        *string `pulumi:"currentTime"`
+	EndTime            *string `pulumi:"endTime"`
+	ExpandCount        *int    `pulumi:"expandCount"`
+	ExpandEffectTime   *int    `pulumi:"expandEffectTime"`
+	ExpandIntervalTime *int    `pulumi:"expandIntervalTime"`
+	MaxExpandCount     *int    `pulumi:"maxExpandCount"`
+	NextExpandTime     *string `pulumi:"nextExpandTime"`
+	TaskRunning        *bool   `pulumi:"taskRunning"`
 }
 
 // InstanceBandwidthInfoInput is an input type that accepts InstanceBandwidthInfoArgs and InstanceBandwidthInfoOutput values.
@@ -289,26 +231,16 @@ type InstanceBandwidthInfoInput interface {
 }
 
 type InstanceBandwidthInfoArgs struct {
-	// Indicates the bandwidth size, the unit is **GB**.
-	Bandwidth pulumi.IntPtrInput `pulumi:"bandwidth"`
-	// Indicates the begin time of temporary increase.
-	BeginTime pulumi.StringPtrInput `pulumi:"beginTime"`
-	// Indicates the current time.
-	CurrentTime pulumi.StringPtrInput `pulumi:"currentTime"`
-	// Indicates the end time of temporary increase.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Indicates the number of increases.
-	ExpandCount pulumi.IntPtrInput `pulumi:"expandCount"`
-	// Indicates the interval between temporary increases, the unit is **ms**.
-	ExpandEffectTime pulumi.IntPtrInput `pulumi:"expandEffectTime"`
-	// Indicates the time interval to the next increase, the unit is **ms**.
-	ExpandIntervalTime pulumi.IntPtrInput `pulumi:"expandIntervalTime"`
-	// Indicates the maximum number of increases.
-	MaxExpandCount pulumi.IntPtrInput `pulumi:"maxExpandCount"`
-	// Indicates the next increase time.
-	NextExpandTime pulumi.StringPtrInput `pulumi:"nextExpandTime"`
-	// Indicates whether the increase task is running.
-	TaskRunning pulumi.BoolPtrInput `pulumi:"taskRunning"`
+	Bandwidth          pulumi.IntPtrInput    `pulumi:"bandwidth"`
+	BeginTime          pulumi.StringPtrInput `pulumi:"beginTime"`
+	CurrentTime        pulumi.StringPtrInput `pulumi:"currentTime"`
+	EndTime            pulumi.StringPtrInput `pulumi:"endTime"`
+	ExpandCount        pulumi.IntPtrInput    `pulumi:"expandCount"`
+	ExpandEffectTime   pulumi.IntPtrInput    `pulumi:"expandEffectTime"`
+	ExpandIntervalTime pulumi.IntPtrInput    `pulumi:"expandIntervalTime"`
+	MaxExpandCount     pulumi.IntPtrInput    `pulumi:"maxExpandCount"`
+	NextExpandTime     pulumi.StringPtrInput `pulumi:"nextExpandTime"`
+	TaskRunning        pulumi.BoolPtrInput   `pulumi:"taskRunning"`
 }
 
 func (InstanceBandwidthInfoArgs) ElementType() reflect.Type {
@@ -362,52 +294,42 @@ func (o InstanceBandwidthInfoOutput) ToInstanceBandwidthInfoOutputWithContext(ct
 	return o
 }
 
-// Indicates the bandwidth size, the unit is **GB**.
 func (o InstanceBandwidthInfoOutput) Bandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *int { return v.Bandwidth }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the begin time of temporary increase.
 func (o InstanceBandwidthInfoOutput) BeginTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *string { return v.BeginTime }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the current time.
 func (o InstanceBandwidthInfoOutput) CurrentTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *string { return v.CurrentTime }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the end time of temporary increase.
 func (o InstanceBandwidthInfoOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Indicates the number of increases.
 func (o InstanceBandwidthInfoOutput) ExpandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *int { return v.ExpandCount }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the interval between temporary increases, the unit is **ms**.
 func (o InstanceBandwidthInfoOutput) ExpandEffectTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *int { return v.ExpandEffectTime }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the time interval to the next increase, the unit is **ms**.
 func (o InstanceBandwidthInfoOutput) ExpandIntervalTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *int { return v.ExpandIntervalTime }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the maximum number of increases.
 func (o InstanceBandwidthInfoOutput) MaxExpandCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *int { return v.MaxExpandCount }).(pulumi.IntPtrOutput)
 }
 
-// Indicates the next increase time.
 func (o InstanceBandwidthInfoOutput) NextExpandTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *string { return v.NextExpandTime }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the increase task is running.
 func (o InstanceBandwidthInfoOutput) TaskRunning() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v InstanceBandwidthInfo) *bool { return v.TaskRunning }).(pulumi.BoolPtrOutput)
 }
@@ -433,13 +355,8 @@ func (o InstanceBandwidthInfoArrayOutput) Index(i pulumi.IntInput) InstanceBandw
 }
 
 type InstanceParameter struct {
-	// A resource ID in UUID format.
-	Id string `pulumi:"id"`
-	// Specifies the name of an instance.
-	// The name must be 4 to 64 characters and start with a letter.
-	// Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-	Name string `pulumi:"name"`
-	// Specifies the value of the configuration item.
+	Id    string `pulumi:"id"`
+	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
 
@@ -455,13 +372,8 @@ type InstanceParameterInput interface {
 }
 
 type InstanceParameterArgs struct {
-	// A resource ID in UUID format.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies the name of an instance.
-	// The name must be 4 to 64 characters and start with a letter.
-	// Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Specifies the value of the configuration item.
+	Id    pulumi.StringInput `pulumi:"id"`
+	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -516,19 +428,14 @@ func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx contex
 	return o
 }
 
-// A resource ID in UUID format.
 func (o InstanceParameterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies the name of an instance.
-// The name must be 4 to 64 characters and start with a letter.
-// Only english, letters (case-insensitive), digits, underscores (_) ,and hyphens (-) are allowed.
 func (o InstanceParameterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the value of the configuration item.
 func (o InstanceParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -554,10 +461,7 @@ func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameter
 }
 
 type InstanceWhitelist struct {
-	// Specifies the name of IP address group.
-	GroupName string `pulumi:"groupName"`
-	// Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-	// The maximum is 20.
+	GroupName   string   `pulumi:"groupName"`
 	IpAddresses []string `pulumi:"ipAddresses"`
 }
 
@@ -573,10 +477,7 @@ type InstanceWhitelistInput interface {
 }
 
 type InstanceWhitelistArgs struct {
-	// Specifies the name of IP address group.
-	GroupName pulumi.StringInput `pulumi:"groupName"`
-	// Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-	// The maximum is 20.
+	GroupName   pulumi.StringInput      `pulumi:"groupName"`
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
 }
 
@@ -631,13 +532,10 @@ func (o InstanceWhitelistOutput) ToInstanceWhitelistOutputWithContext(ctx contex
 	return o
 }
 
-// Specifies the name of IP address group.
 func (o InstanceWhitelistOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceWhitelist) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// Specifies the list of IP address or CIDR which can be whitelisted for an instance.
-// The maximum is 20.
 func (o InstanceWhitelistOutput) IpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v InstanceWhitelist) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
 }
@@ -663,36 +561,15 @@ func (o InstanceWhitelistArrayOutput) Index(i pulumi.IntInput) InstanceWhitelist
 }
 
 type GetFlavorsFlavor struct {
-	// An array of available zones where the cache specification can be used.
-	AvailableZones []string `pulumi:"availableZones"`
-	// The mode of a cache engine. The valid values are as follows:
-	CacheMode string `pulumi:"cacheMode"`
-	// The total memory of the cache, in GB.
-	// + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-	//   `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-	//   `1024`.
-	// + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-	// + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	Capacity float64 `pulumi:"capacity"`
-	// The charging modes for the specification cache instance.
-	// + `Hourly` - Pay-per-use.
-	// + `Monthly` - Pay monthly.
-	// + `Yearly` - Annual payment.
-	ChargingModes []string `pulumi:"chargingModes"`
-	// The CPU architecture of cache instance.
-	// Valid values *x86_64* and *aarch64*.
-	CpuArchitecture string `pulumi:"cpuArchitecture"`
-	// The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-	// Default value is *Redis*.
-	Engine string `pulumi:"engine"`
-	// Supported versions of the specification.
-	EngineVersions string `pulumi:"engineVersions"`
-	// Number of IP addresses corresponding to the specifications.
-	IpCount int `pulumi:"ipCount"`
-	// The flavor name of the cache instance.
-	Name string `pulumi:"name"`
+	AvailableZones  []string `pulumi:"availableZones"`
+	CacheMode       string   `pulumi:"cacheMode"`
+	Capacity        float64  `pulumi:"capacity"`
+	ChargingModes   []string `pulumi:"chargingModes"`
+	CpuArchitecture string   `pulumi:"cpuArchitecture"`
+	Engine          string   `pulumi:"engine"`
+	EngineVersions  string   `pulumi:"engineVersions"`
+	IpCount         int      `pulumi:"ipCount"`
+	Name            string   `pulumi:"name"`
 }
 
 // GetFlavorsFlavorInput is an input type that accepts GetFlavorsFlavorArgs and GetFlavorsFlavorOutput values.
@@ -707,36 +584,15 @@ type GetFlavorsFlavorInput interface {
 }
 
 type GetFlavorsFlavorArgs struct {
-	// An array of available zones where the cache specification can be used.
-	AvailableZones pulumi.StringArrayInput `pulumi:"availableZones"`
-	// The mode of a cache engine. The valid values are as follows:
-	CacheMode pulumi.StringInput `pulumi:"cacheMode"`
-	// The total memory of the cache, in GB.
-	// + **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-	//   `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-	//   `1024`.
-	// + **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	//   Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-	// + **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-	Capacity pulumi.Float64Input `pulumi:"capacity"`
-	// The charging modes for the specification cache instance.
-	// + `Hourly` - Pay-per-use.
-	// + `Monthly` - Pay monthly.
-	// + `Yearly` - Annual payment.
-	ChargingModes pulumi.StringArrayInput `pulumi:"chargingModes"`
-	// The CPU architecture of cache instance.
-	// Valid values *x86_64* and *aarch64*.
-	CpuArchitecture pulumi.StringInput `pulumi:"cpuArchitecture"`
-	// The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-	// Default value is *Redis*.
-	Engine pulumi.StringInput `pulumi:"engine"`
-	// Supported versions of the specification.
-	EngineVersions pulumi.StringInput `pulumi:"engineVersions"`
-	// Number of IP addresses corresponding to the specifications.
-	IpCount pulumi.IntInput `pulumi:"ipCount"`
-	// The flavor name of the cache instance.
-	Name pulumi.StringInput `pulumi:"name"`
+	AvailableZones  pulumi.StringArrayInput `pulumi:"availableZones"`
+	CacheMode       pulumi.StringInput      `pulumi:"cacheMode"`
+	Capacity        pulumi.Float64Input     `pulumi:"capacity"`
+	ChargingModes   pulumi.StringArrayInput `pulumi:"chargingModes"`
+	CpuArchitecture pulumi.StringInput      `pulumi:"cpuArchitecture"`
+	Engine          pulumi.StringInput      `pulumi:"engine"`
+	EngineVersions  pulumi.StringInput      `pulumi:"engineVersions"`
+	IpCount         pulumi.IntInput         `pulumi:"ipCount"`
+	Name            pulumi.StringInput      `pulumi:"name"`
 }
 
 func (GetFlavorsFlavorArgs) ElementType() reflect.Type {
@@ -790,59 +646,38 @@ func (o GetFlavorsFlavorOutput) ToGetFlavorsFlavorOutputWithContext(ctx context.
 	return o
 }
 
-// An array of available zones where the cache specification can be used.
 func (o GetFlavorsFlavorOutput) AvailableZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []string { return v.AvailableZones }).(pulumi.StringArrayOutput)
 }
 
-// The mode of a cache engine. The valid values are as follows:
 func (o GetFlavorsFlavorOutput) CacheMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.CacheMode }).(pulumi.StringOutput)
 }
 
-// The total memory of the cache, in GB.
-//   - **Redis4.0 and Redis5.0**: Stand-alone and active/standby type instance values:
-//     `1`, `2`, `4`, `8`, `16`, `32` and `64`.
-//     Cluster instance specifications support `24`, `32`, `48`, `64`, `96`, `128`, `192`, `256`, `384`, `512`, `768` and
-//     `1024`.
-//   - **Redis3.0**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
-//     Proxy cluster instance specifications support `64`, `128`, `256`, `512`, and `1024`.
-//   - **Memcached**: Stand-alone and active/standby type instance values: `2`, `4`, `8`, `16`, `32` and `64`.
 func (o GetFlavorsFlavorOutput) Capacity() pulumi.Float64Output {
 	return o.ApplyT(func(v GetFlavorsFlavor) float64 { return v.Capacity }).(pulumi.Float64Output)
 }
 
-// The charging modes for the specification cache instance.
-// + `Hourly` - Pay-per-use.
-// + `Monthly` - Pay monthly.
-// + `Yearly` - Annual payment.
 func (o GetFlavorsFlavorOutput) ChargingModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) []string { return v.ChargingModes }).(pulumi.StringArrayOutput)
 }
 
-// The CPU architecture of cache instance.
-// Valid values *x86_64* and *aarch64*.
 func (o GetFlavorsFlavorOutput) CpuArchitecture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.CpuArchitecture }).(pulumi.StringOutput)
 }
 
-// The engine of the cache instance. Valid values are *Redis* and *Memcached*.
-// Default value is *Redis*.
 func (o GetFlavorsFlavorOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Supported versions of the specification.
 func (o GetFlavorsFlavorOutput) EngineVersions() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.EngineVersions }).(pulumi.StringOutput)
 }
 
-// Number of IP addresses corresponding to the specifications.
 func (o GetFlavorsFlavorOutput) IpCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) int { return v.IpCount }).(pulumi.IntOutput)
 }
 
-// The flavor name of the cache instance.
 func (o GetFlavorsFlavorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
 }

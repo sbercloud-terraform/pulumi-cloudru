@@ -11,55 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to query the tag list of a specifies resource within SberCloud.
-//
-// ## Example Usage
-//
-// Before using enterprise router, define custom endpoint as shown below:
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/er"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := er.GetResourceTags(ctx, &er.GetResourceTagsArgs{
-//				ResourceType: "instance",
-//				ResourceId:   instanceId,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetResourceTags(ctx *pulumi.Context, args *GetResourceTagsArgs, opts ...pulumi.InvokeOption) (*GetResourceTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceTagsResult
@@ -72,33 +23,19 @@ func GetResourceTags(ctx *pulumi.Context, args *GetResourceTagsArgs, opts ...pul
 
 // A collection of arguments for invoking getResourceTags.
 type GetResourceTagsArgs struct {
-	// Specifies the region in which to query the resource tags.\
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the resource ID to which the tags belong that to be queried.
-	ResourceId string `pulumi:"resourceId"`
-	// Specifies the resource type to which the tags belong that to be queried.\
-	// The valid values are as follows:
-	// + **instance**: enterprise router instance.
-	// + **route-table**: route table.
-	// + **vpc-attachment**: VPC connection.
-	// + **vgw-attachment**: virtual gateway connection.
-	// + **peering-attachment**: peering connection.
-	// + **vpn-attachment**: VPN gateway connection.
-	// + **ecn-attachment**: enterprise network connection.
-	// + **cfw-attachment**: cloud firewall connection.
-	ResourceType string `pulumi:"resourceType"`
+	Region       *string `pulumi:"region"`
+	ResourceId   string  `pulumi:"resourceId"`
+	ResourceType string  `pulumi:"resourceType"`
 }
 
 // A collection of values returned by getResourceTags.
 type GetResourceTagsResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id           string `pulumi:"id"`
-	Region       string `pulumi:"region"`
-	ResourceId   string `pulumi:"resourceId"`
-	ResourceType string `pulumi:"resourceType"`
-	// The tags of a specified resource.
-	Tags map[string]string `pulumi:"tags"`
+	Id           string            `pulumi:"id"`
+	Region       string            `pulumi:"region"`
+	ResourceId   string            `pulumi:"resourceId"`
+	ResourceType string            `pulumi:"resourceType"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 func GetResourceTagsOutput(ctx *pulumi.Context, args GetResourceTagsOutputArgs, opts ...pulumi.InvokeOption) GetResourceTagsResultOutput {
@@ -112,22 +49,9 @@ func GetResourceTagsOutput(ctx *pulumi.Context, args GetResourceTagsOutputArgs, 
 
 // A collection of arguments for invoking getResourceTags.
 type GetResourceTagsOutputArgs struct {
-	// Specifies the region in which to query the resource tags.\
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the resource ID to which the tags belong that to be queried.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// Specifies the resource type to which the tags belong that to be queried.\
-	// The valid values are as follows:
-	// + **instance**: enterprise router instance.
-	// + **route-table**: route table.
-	// + **vpc-attachment**: VPC connection.
-	// + **vgw-attachment**: virtual gateway connection.
-	// + **peering-attachment**: peering connection.
-	// + **vpn-attachment**: VPN gateway connection.
-	// + **ecn-attachment**: enterprise network connection.
-	// + **cfw-attachment**: cloud firewall connection.
-	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	Region       pulumi.StringPtrInput `pulumi:"region"`
+	ResourceId   pulumi.StringInput    `pulumi:"resourceId"`
+	ResourceType pulumi.StringInput    `pulumi:"resourceType"`
 }
 
 func (GetResourceTagsOutputArgs) ElementType() reflect.Type {
@@ -166,7 +90,6 @@ func (o GetResourceTagsResultOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResourceTagsResult) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The tags of a specified resource.
 func (o GetResourceTagsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetResourceTagsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the details of an available EIP.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const byAddress = sbercloud.Eip.getEip({
- *     publicIp: "123.60.208.163",
- * });
- * ```
- */
 export function getEip(args?: GetEipArgs, opts?: pulumi.InvokeOptions): Promise<GetEipResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -33,22 +19,9 @@ export function getEip(args?: GetEipArgs, opts?: pulumi.InvokeOptions): Promise<
  * A collection of arguments for invoking getEip.
  */
 export interface GetEipArgs {
-    /**
-     * The enterprise project id of the EIP.
-     */
     enterpriseProjectId?: string;
-    /**
-     * The port id of the EIP.
-     */
     portId?: string;
-    /**
-     * The public ip address of the EIP.
-     */
     publicIp?: string;
-    /**
-     * The region in which to obtain the EIP. If omitted, the provider-level region will be
-     * used.
-     */
     region?: string;
 }
 
@@ -56,18 +29,9 @@ export interface GetEipArgs {
  * A collection of values returned by getEip.
  */
 export interface GetEipResult {
-    /**
-     * The bandwidth id of the EIP.
-     */
     readonly bandwidthId: string;
     readonly bandwidthName: string;
-    /**
-     * The bandwidth share type of the EIP.
-     */
     readonly bandwidthShareType: string;
-    /**
-     * The bandwidth size of the EIP.
-     */
     readonly bandwidthSize: number;
     readonly createdAt: string;
     readonly enterpriseProjectId: string;
@@ -75,42 +39,16 @@ export interface GetEipResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The IP version, either 4 or 6.
-     */
     readonly ipVersion: number;
     readonly ipv6Address: string;
     readonly name: string;
     readonly portId: string;
-    /**
-     * The private ip of the EIP.
-     */
     readonly privateIp: string;
     readonly publicIp: string;
     readonly region: string;
-    /**
-     * The status of the EIP.
-     */
     readonly status: string;
-    /**
-     * The type of the EIP.
-     */
     readonly type: string;
 }
-/**
- * Use this data source to get the details of an available EIP.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const byAddress = sbercloud.Eip.getEip({
- *     publicIp: "123.60.208.163",
- * });
- * ```
- */
 export function getEipOutput(args?: GetEipOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEipResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -126,21 +64,8 @@ export function getEipOutput(args?: GetEipOutputArgs, opts?: pulumi.InvokeOutput
  * A collection of arguments for invoking getEip.
  */
 export interface GetEipOutputArgs {
-    /**
-     * The enterprise project id of the EIP.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The port id of the EIP.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * The public ip address of the EIP.
-     */
     publicIp?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the EIP. If omitted, the provider-level region will be
-     * used.
-     */
     region?: pulumi.Input<string>;
 }

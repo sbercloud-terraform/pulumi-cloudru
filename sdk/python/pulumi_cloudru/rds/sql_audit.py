@@ -27,17 +27,10 @@ class SqlAuditArgs:
         """
         The set of arguments for constructing a SqlAudit resource.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-               **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-               **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-               It is not supported for PostgreSQL.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time
-               when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types.
+        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time when SQL
+               audit is disabled.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "keep_days", keep_days)
@@ -53,8 +46,6 @@ class SqlAuditArgs:
     def instance_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the RDS instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -66,7 +57,7 @@ class SqlAuditArgs:
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> pulumi.Input[_builtins.int]:
         """
-        Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+        Specifies the number of days for storing audit logs.
         """
         return pulumi.get(self, "keep_days")
 
@@ -78,10 +69,7 @@ class SqlAuditArgs:
     @pulumi.getter(name="auditTypes")
     def audit_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-        **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-        **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-        It is not supported for PostgreSQL.
+        Specifies the list of audit types.
         """
         return pulumi.get(self, "audit_types")
 
@@ -92,10 +80,6 @@ class SqlAuditArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -106,8 +90,8 @@ class SqlAuditArgs:
     @pulumi.getter(name="reserveAuditlogs")
     def reserve_auditlogs(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the historical audit logs will be reserved for some time
-        when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        Specifies whether the historical audit logs will be reserved for some time when SQL
+        audit is disabled.
         """
         return pulumi.get(self, "reserve_auditlogs")
 
@@ -126,18 +110,11 @@ class _SqlAuditState:
                  reserve_auditlogs: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SqlAudit resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-               **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-               **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-               It is not supported for PostgreSQL.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time
-               when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs.
+        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time when SQL
+               audit is disabled.
         """
         if audit_types is not None:
             pulumi.set(__self__, "audit_types", audit_types)
@@ -154,10 +131,7 @@ class _SqlAuditState:
     @pulumi.getter(name="auditTypes")
     def audit_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-        **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-        **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-        It is not supported for PostgreSQL.
+        Specifies the list of audit types.
         """
         return pulumi.get(self, "audit_types")
 
@@ -170,8 +144,6 @@ class _SqlAuditState:
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the RDS instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -183,7 +155,7 @@ class _SqlAuditState:
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+        Specifies the number of days for storing audit logs.
         """
         return pulumi.get(self, "keep_days")
 
@@ -194,10 +166,6 @@ class _SqlAuditState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -208,8 +176,8 @@ class _SqlAuditState:
     @pulumi.getter(name="reserveAuditlogs")
     def reserve_auditlogs(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Specifies whether the historical audit logs will be reserved for some time
-        when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        Specifies whether the historical audit logs will be reserved for some time when SQL
+        audit is disabled.
         """
         return pulumi.get(self, "reserve_auditlogs")
 
@@ -231,47 +199,14 @@ class SqlAudit(pulumi.CustomResource):
                  reserve_auditlogs: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Manages RDS SQL audit resource within SberCloud.
-
-        > **NOTE:** Only MySQL and PostgreSQL engines are supported.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.SqlAudit("test",
-            instance_id=instance_id,
-            keep_days=5)
-        ```
-
-        ## Import
-
-        The RDS SQL audit can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlAudit:SqlAudit test <id>
-        ```
-
+        Create a SqlAudit resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-               **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-               **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-               It is not supported for PostgreSQL.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time
-               when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs.
+        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time when SQL
+               audit is disabled.
         """
         ...
     @overload
@@ -280,33 +215,7 @@ class SqlAudit(pulumi.CustomResource):
                  args: SqlAuditArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages RDS SQL audit resource within SberCloud.
-
-        > **NOTE:** Only MySQL and PostgreSQL engines are supported.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        instance_id = config.require_object("instanceId")
-        test = sbercloud.rds.SqlAudit("test",
-            instance_id=instance_id,
-            keep_days=5)
-        ```
-
-        ## Import
-
-        The RDS SQL audit can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Rds/sqlAudit:SqlAudit test <id>
-        ```
-
+        Create a SqlAudit resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SqlAuditArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -367,18 +276,11 @@ class SqlAudit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-               **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-               **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-               It is not supported for PostgreSQL.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] audit_types: Specifies the list of audit types.
         :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of the RDS instance.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time
-               when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        :param pulumi.Input[_builtins.int] keep_days: Specifies the number of days for storing audit logs.
+        :param pulumi.Input[_builtins.bool] reserve_auditlogs: Specifies whether the historical audit logs will be reserved for some time when SQL
+               audit is disabled.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -395,10 +297,7 @@ class SqlAudit(pulumi.CustomResource):
     @pulumi.getter(name="auditTypes")
     def audit_types(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Specifies the list of audit types. Value options: **CREATE_USER**, **DROP_USER**,
-        **RENAME_USER**, **GRANT**, **REVOKE**, **CREATE**, **ALTER**, **DROP**, **RENAME**, **TRUNCATE**, **INSERT**,
-        **DELETE**, **UPDATE**, **REPLACE**, **SELECT**, **BEGIN/COMMIT/ROLLBACK**, **PREPARED_STATEMENT**.
-        It is not supported for PostgreSQL.
+        Specifies the list of audit types.
         """
         return pulumi.get(self, "audit_types")
 
@@ -407,8 +306,6 @@ class SqlAudit(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the RDS instance.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "instance_id")
 
@@ -416,25 +313,21 @@ class SqlAudit(pulumi.CustomResource):
     @pulumi.getter(name="keepDays")
     def keep_days(self) -> pulumi.Output[_builtins.int]:
         """
-        Specifies the number of days for storing audit logs. Value ranges from `1` to `732`.
+        Specifies the number of days for storing audit logs.
         """
         return pulumi.get(self, "keep_days")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="reserveAuditlogs")
     def reserve_auditlogs(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Specifies whether the historical audit logs will be reserved for some time
-        when SQL audit is disabled. It is valid only when SQL audit is disabled.
+        Specifies whether the historical audit logs will be reserved for some time when SQL
+        audit is disabled.
         """
         return pulumi.get(self, "reserve_auditlogs")
 

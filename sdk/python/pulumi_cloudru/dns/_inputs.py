@@ -25,7 +25,7 @@ if not MYPY:
     class ZoneRouterArgsDict(TypedDict):
         router_id: pulumi.Input[_builtins.str]
         """
-        ID of the associated VPC.
+        The ID of the associated VPC.
         """
         router_region: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -40,7 +40,7 @@ class ZoneRouterArgs:
                  router_id: pulumi.Input[_builtins.str],
                  router_region: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] router_id: ID of the associated VPC.
+        :param pulumi.Input[_builtins.str] router_id: The ID of the associated VPC.
         :param pulumi.Input[_builtins.str] router_region: The region of the VPC.
         """
         pulumi.set(__self__, "router_id", router_id)
@@ -51,7 +51,7 @@ class ZoneRouterArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Input[_builtins.str]:
         """
-        ID of the associated VPC.
+        The ID of the associated VPC.
         """
         return pulumi.get(self, "router_id")
 

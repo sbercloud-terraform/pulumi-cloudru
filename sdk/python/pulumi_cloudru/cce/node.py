@@ -73,86 +73,15 @@ class NodeArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None):
         """
         The set of arguments for constructing a Node resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the name of the available partition (AZ). Changing this
-               parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input['NodeRootVolumeArgs'] root_volume: Specifies the configuration of the system disk.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: schema: Internal
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Specifies the bandwidth billing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Specifies the bandwidth size.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CCE node. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeDataVolumeArgs']]] data_volumes: Specifies the configurations of the data disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: Specifies the ECS group ID. If specified, the node will be created under
-               the cloud server group. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ecs_performance_type: schema: Deprecated
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of the EIP.
-               Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the fixed IP of the NIC.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] iptype: Specifies the elastic IP type.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: schema: Deprecated
         :param pulumi.Input[_builtins.bool] keep_ecs: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the node name.
-        :param pulumi.Input[_builtins.str] os: Specifies the operating system of the node.
-               Changing this parameter will create a new resource.
-               For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CCE node.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] max_pods: schema: Deprecated
+        :param pulumi.Input[_builtins.str] postinstall: schema: Deprecated
+        :param pulumi.Input[_builtins.str] preinstall: schema: Deprecated
         :param pulumi.Input[_builtins.str] product_id: schema: Deprecated
         :param pulumi.Input[_builtins.str] public_key: schema: Deprecated
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE node resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the runtime of the CCE node. Valid values are *docker* and
-               *containerd*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] sharetype: Specifies the bandwidth sharing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['NodeStorageArgs'] storage: Specifies the disk initialization management parameter.
-               If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-               This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the subnet to which the NIC belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -269,10 +198,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of the available partition (AZ). Changing this
-        parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -282,10 +207,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the cluster.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -295,10 +216,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the flavor ID. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -308,10 +225,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="rootVolume")
     def root_volume(self) -> pulumi.Input['NodeRootVolumeArgs']:
-        """
-        Specifies the configuration of the system disk.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "root_volume")
 
     @root_volume.setter
@@ -343,10 +256,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "
-        false". Changing this creates a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -356,10 +265,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="bandwidthChargeMode")
     def bandwidth_charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the bandwidth billing type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_charge_mode")
 
     @bandwidth_charge_mode.setter
@@ -369,10 +274,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the bandwidth size.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @bandwidth_size.setter
@@ -392,10 +293,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the CCE node. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -405,10 +302,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataVolumeArgs']]]]:
-        """
-        Specifies the configurations of the data disk.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_volumes")
 
     @data_volumes.setter
@@ -427,10 +320,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ECS group ID. If specified, the node will be created under
-        the cloud server group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @ecs_group_id.setter
@@ -452,13 +341,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the EIP.
-        Changing this parameter will create a new resource.
-
-        > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-        `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        """
         return pulumi.get(self, "eip_id")
 
     @eip_id.setter
@@ -497,15 +379,7 @@ class NodeArgs:
     @pulumi.getter(name="extendParam")
     def extend_param(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
+        schema: Deprecated
         """
         return pulumi.get(self, "extend_param")
 
@@ -544,10 +418,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the fixed IP of the NIC.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -575,10 +445,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def iptype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the elastic IP type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "iptype")
 
     @iptype.setter
@@ -600,10 +466,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the key pair name when logging in to select the key pair mode.
-        This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -613,10 +475,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a Kubernetes node, key/value pair format.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -627,8 +485,7 @@ class NodeArgs:
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "max_pods")
 
@@ -639,9 +496,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the node name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -661,11 +515,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the operating system of the node.
-        Changing this parameter will create a new resource.
-        For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -684,11 +533,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the root password when logging in to select the password mode.
-        This parameter can be plain or salted and is alternative to `key_pair`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -698,11 +542,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -712,11 +551,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the CCE node.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -727,8 +561,7 @@ class NodeArgs:
     @pulumi.getter
     def postinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "postinstall")
 
@@ -740,8 +573,7 @@ class NodeArgs:
     @pulumi.getter
     def preinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "preinstall")
 
@@ -785,10 +617,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the CCE node resource.
-        If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -798,10 +626,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the runtime of the CCE node. Valid values are *docker* and
-        *containerd*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -811,10 +635,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def sharetype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the bandwidth sharing type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "sharetype")
 
     @sharetype.setter
@@ -824,11 +644,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input['NodeStorageArgs']]:
-        """
-        Specifies the disk initialization management parameter.
-        If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-        This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -838,10 +653,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the subnet to which the NIC belongs.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -851,9 +662,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -863,10 +671,6 @@ class NodeArgs:
     @_builtins.property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]]:
-        """
-        Specifies the taints configuration of the nodes to set anti-affinity.
-        Changing this parameter will create a new resource. Each taint contains the following parameters:
-        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -934,88 +738,14 @@ class _NodeState:
         """
         Input properties used for looking up and filtering Node resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: schema: Internal
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the name of the available partition (AZ). Changing this
-               parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Specifies the bandwidth billing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Specifies the bandwidth size.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CCE node. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeDataVolumeArgs']]] data_volumes: Specifies the configurations of the data disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: Specifies the ECS group ID. If specified, the node will be created under
-               the cloud server group. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ecs_performance_type: schema: Deprecated
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of the EIP.
-               Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the fixed IP of the NIC.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] iptype: Specifies the elastic IP type.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: schema: Deprecated
         :param pulumi.Input[_builtins.bool] keep_ecs: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the node name.
-        :param pulumi.Input[_builtins.str] os: Specifies the operating system of the node.
-               Changing this parameter will create a new resource.
-               For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CCE node.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP of the CCE node.
+        :param pulumi.Input[_builtins.int] max_pods: schema: Deprecated
+        :param pulumi.Input[_builtins.str] postinstall: schema: Deprecated
+        :param pulumi.Input[_builtins.str] preinstall: schema: Deprecated
         :param pulumi.Input[_builtins.str] product_id: schema: Deprecated
-        :param pulumi.Input[_builtins.str] public_ip: Public IP of the CCE node.
         :param pulumi.Input[_builtins.str] public_key: schema: Deprecated
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE node resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        :param pulumi.Input['NodeRootVolumeArgs'] root_volume: Specifies the configuration of the system disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the runtime of the CCE node. Valid values are *docker* and
-               *containerd*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] server_id: ID of the ECS instance associated with the node.
-        :param pulumi.Input[_builtins.str] sharetype: Specifies the bandwidth sharing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['NodeStorageArgs'] storage: Specifies the disk initialization management parameter.
-               If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-               This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the subnet to which the NIC belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -1166,10 +896,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "
-        false". Changing this creates a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -1179,10 +905,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the name of the available partition (AZ). Changing this
-        parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -1192,10 +914,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="bandwidthChargeMode")
     def bandwidth_charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the bandwidth billing type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_charge_mode")
 
     @bandwidth_charge_mode.setter
@@ -1205,10 +923,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the bandwidth size.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @bandwidth_size.setter
@@ -1228,10 +942,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the CCE node. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -1241,10 +951,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the cluster.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
@@ -1254,10 +960,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataVolumeArgs']]]]:
-        """
-        Specifies the configurations of the data disk.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_volumes")
 
     @data_volumes.setter
@@ -1276,10 +978,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ECS group ID. If specified, the node will be created under
-        the cloud server group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @ecs_group_id.setter
@@ -1301,13 +999,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the EIP.
-        Changing this parameter will create a new resource.
-
-        > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-        `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        """
         return pulumi.get(self, "eip_id")
 
     @eip_id.setter
@@ -1346,15 +1037,7 @@ class _NodeState:
     @pulumi.getter(name="extendParam")
     def extend_param(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
+        schema: Deprecated
         """
         return pulumi.get(self, "extend_param")
 
@@ -1393,10 +1076,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the fixed IP of the NIC.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -1406,10 +1085,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the flavor ID. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "flavor_id")
 
     @flavor_id.setter
@@ -1437,10 +1112,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def iptype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the elastic IP type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "iptype")
 
     @iptype.setter
@@ -1462,10 +1133,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the key pair name when logging in to select the key pair mode.
-        This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key_pair")
 
     @key_pair.setter
@@ -1475,10 +1142,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a Kubernetes node, key/value pair format.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "labels")
 
     @labels.setter
@@ -1489,8 +1152,7 @@ class _NodeState:
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "max_pods")
 
@@ -1501,9 +1163,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the node name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1523,11 +1182,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the operating system of the node.
-        Changing this parameter will create a new resource.
-        For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -1546,11 +1200,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the root password when logging in to select the password mode.
-        This parameter can be plain or salted and is alternative to `key_pair`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -1560,11 +1209,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1574,11 +1218,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the CCE node.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -1589,8 +1228,7 @@ class _NodeState:
     @pulumi.getter
     def postinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "postinstall")
 
@@ -1602,8 +1240,7 @@ class _NodeState:
     @pulumi.getter
     def preinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "preinstall")
 
@@ -1614,9 +1251,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Private IP of the CCE node.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -1647,9 +1281,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Public IP of the CCE node.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -1671,10 +1302,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the CCE node resource.
-        If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1684,10 +1311,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="rootVolume")
     def root_volume(self) -> Optional[pulumi.Input['NodeRootVolumeArgs']]:
-        """
-        Specifies the configuration of the system disk.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "root_volume")
 
     @root_volume.setter
@@ -1697,10 +1320,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the runtime of the CCE node. Valid values are *docker* and
-        *containerd*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
@@ -1710,9 +1329,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        ID of the ECS instance associated with the node.
-        """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
@@ -1722,10 +1338,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def sharetype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the bandwidth sharing type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "sharetype")
 
     @sharetype.setter
@@ -1744,11 +1356,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def storage(self) -> Optional[pulumi.Input['NodeStorageArgs']]:
-        """
-        Specifies the disk initialization management parameter.
-        If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-        This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -1758,10 +1365,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the subnet to which the NIC belongs.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1771,9 +1374,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1783,10 +1383,6 @@ class _NodeState:
     @_builtins.property
     @pulumi.getter
     def taints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]]:
-        """
-        Specifies the taints configuration of the nodes to set anti-affinity.
-        Changing this parameter will create a new resource. Each taint contains the following parameters:
-        """
         return pulumi.get(self, "taints")
 
     @taints.setter
@@ -1852,299 +1448,18 @@ class Node(pulumi.CustomResource):
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTaintArgs', 'NodeTaintArgsDict']]]]] = None,
                  __props__=None):
         """
-        Add a node to a CCE cluster.
-
-        ## Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        myaz = sbercloud.get_availability_zones()
-        mykp = sbercloud.ecs.Keypair("mykp",
-            name="mykp",
-            public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLo1BCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAT9+OfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZquwhvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TAIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIFuu1p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB jrp-hp-pc")
-        mycluster = sbercloud.cce.Cluster("mycluster",
-            name="mycluster",
-            cluster_type="VirtualMachine",
-            flavor_id="cce.s1.small",
-            vpc_id=myvpc["id"],
-            subnet_id=mysubnet["id"],
-            container_network_type="overlay_l2")
-        node = sbercloud.cce.Node("node",
-            cluster_id=mycluster.id,
-            name="node",
-            flavor_id="s3.large.2",
-            availability_zone=myaz.names[0],
-            key_pair=mykp.name,
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SAS",
-            },
-            data_volumes=[{
-                "size": 100,
-                "volumetype": "SAS",
-            }])
-        ```
-
-        ## Node with Eip
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        mynode = sbercloud.cce.Node("mynode",
-            cluster_id=mycluster["id"],
-            name="mynode",
-            flavor_id="s3.large.2",
-            availability_zone=myaz["names"][0],
-            key_pair=mykp["name"],
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SAS",
-            },
-            data_volumes=[{
-                "size": 100,
-                "volumetype": "SAS",
-            }],
-            iptype="5_bgp",
-            bandwidth_charge_mode="traffic",
-            sharetype="PER",
-            bandwidth_size=100)
-        ```
-
-        ## Node with Existing Eip
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        myeip = sbercloud.vpc.Eip("myeip",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "name": "test",
-                "size": 8,
-                "share_type": "PER",
-                "charge_mode": "traffic",
-            })
-        mynode = sbercloud.cce.Node("mynode",
-            cluster_id=mycluster["id"],
-            name="mynode",
-            flavor_id="s3.large.2",
-            availability_zone=myaz["names"][0],
-            key_pair=mykp["name"],
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SAS",
-            },
-            data_volumes=[{
-                "size": 100,
-                "volumetype": "SAS",
-            }],
-            eip_id=myeip.id)
-        ```
-
-        ## Node with storage configuration
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        mynode = sbercloud.cce.Node("mynode",
-            cluster_id=mycluster["id"],
-            name="mynode",
-            flavor_id="s3.large.2",
-            availability_zone=myaz["names"][0],
-            key_pair=mykp["name"],
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SSD",
-            },
-            data_volumes=[
-                {
-                    "size": 100,
-                    "volumetype": "SSD",
-                },
-                {
-                    "size": 100,
-                    "volumetype": "SSD",
-                    "kms_key_id": mykey["id"],
-                },
-            ],
-            storage={
-                "selectors": [
-                    {
-                        "name": "cceUse",
-                        "type": "evs",
-                        "match_label_size": "100",
-                        "match_label_count": "1",
-                    },
-                    {
-                        "name": "user",
-                        "type": "evs",
-                        "match_label_size": "100",
-                        "match_label_metadata_encrypted": "1",
-                        "match_label_metadata_cmkid": mykey["id"],
-                        "match_label_count": "1",
-                    },
-                ],
-                "groups": [
-                    {
-                        "name": "vgpaas",
-                        "selector_names": ["cceUse"],
-                        "cce_managed": True,
-                        "virtual_spaces": [
-                            {
-                                "name": "kubernetes",
-                                "size": "10%",
-                                "lvm_lv_type": "linear",
-                            },
-                            {
-                                "name": "runtime",
-                                "size": "90%",
-                                "lvm_lv_type": "linear",
-                            },
-                        ],
-                    },
-                    {
-                        "name": "vguser",
-                        "selector_names": ["user"],
-                        "virtual_spaces": [{
-                            "name": "user",
-                            "size": "100%",
-                            "lvm_lv_type": "linear",
-                            "lvm_path": "/workspace",
-                        }],
-                    },
-                ],
-            })
-        ```
-
-        ## Import
-
-        CCE node can be imported using the cluster ID and node ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cce/node:Node my_node 5c20fdad-7288-11eb-b817-0255ac10158b/e9287dff-7288-11eb-b817-0255ac10158b
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `password`, `fixed_ip`, `eip_id`, `preinstall`, `postinstall`, `iptype`, `bandwidth_charge_mode`, `bandwidth_size`,
-
-        `share_type`, `max_pods`, `extend_param`, `labels`, `taints` and arguments for pre-paid. It is generally recommended
-
-        running `pulumi preview` after importing a node. You can then decide if changes should be applied to the node, or the
-
-        resource definition should be updated to align with the node. Also you can ignore changes as below.
-
-        resource "sbercloud_cce_node" "my_node" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              extend_param, labels,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Node resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: schema: Internal
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the name of the available partition (AZ). Changing this
-               parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Specifies the bandwidth billing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Specifies the bandwidth size.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CCE node. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataVolumeArgs', 'NodeDataVolumeArgsDict']]]] data_volumes: Specifies the configurations of the data disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: Specifies the ECS group ID. If specified, the node will be created under
-               the cloud server group. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ecs_performance_type: schema: Deprecated
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of the EIP.
-               Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the fixed IP of the NIC.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] iptype: Specifies the elastic IP type.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: schema: Deprecated
         :param pulumi.Input[_builtins.bool] keep_ecs: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the node name.
-        :param pulumi.Input[_builtins.str] os: Specifies the operating system of the node.
-               Changing this parameter will create a new resource.
-               For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CCE node.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.int] max_pods: schema: Deprecated
+        :param pulumi.Input[_builtins.str] postinstall: schema: Deprecated
+        :param pulumi.Input[_builtins.str] preinstall: schema: Deprecated
         :param pulumi.Input[_builtins.str] product_id: schema: Deprecated
         :param pulumi.Input[_builtins.str] public_key: schema: Deprecated
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE node resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        :param pulumi.Input[Union['NodeRootVolumeArgs', 'NodeRootVolumeArgsDict']] root_volume: Specifies the configuration of the system disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the runtime of the CCE node. Valid values are *docker* and
-               *containerd*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] sharetype: Specifies the bandwidth sharing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['NodeStorageArgs', 'NodeStorageArgsDict']] storage: Specifies the disk initialization management parameter.
-               If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-               This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the subnet to which the NIC belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTaintArgs', 'NodeTaintArgsDict']]]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         ...
     @overload
@@ -2153,217 +1468,7 @@ class Node(pulumi.CustomResource):
                  args: NodeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Add a node to a CCE cluster.
-
-        ## Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        myaz = sbercloud.get_availability_zones()
-        mykp = sbercloud.ecs.Keypair("mykp",
-            name="mykp",
-            public_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDAjpC1hwiOCCmKEWxJ4qzTTsJbKzndLo1BCz5PcwtUnflmU+gHJtWMZKpuEGVi29h0A/+ydKek1O18k10Ff+4tyFjiHDQAT9+OfgWf7+b1yK+qDip3X1C0UPMbwHlTfSGWLGZquwhvEFx9k3h/M+VtMvwR1lJ9LUyTAImnNjWG7TAIPmui30HvM2UiFEmqkr4ijq45MyX2+fLIePLRIFuu1p4whjHAQYufqyno3BS48icQb4p6iVEZPo4AE2o9oIyQvj2mx4dk5Y8CgSETOZTYDOR3rU2fZTRDRgPJDH9FWvQjF5tA0p3d9CoWWd2s6GKKbfoUIi8R/Db1BSPJwkqB jrp-hp-pc")
-        mycluster = sbercloud.cce.Cluster("mycluster",
-            name="mycluster",
-            cluster_type="VirtualMachine",
-            flavor_id="cce.s1.small",
-            vpc_id=myvpc["id"],
-            subnet_id=mysubnet["id"],
-            container_network_type="overlay_l2")
-        node = sbercloud.cce.Node("node",
-            cluster_id=mycluster.id,
-            name="node",
-            flavor_id="s3.large.2",
-            availability_zone=myaz.names[0],
-            key_pair=mykp.name,
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SAS",
-            },
-            data_volumes=[{
-                "size": 100,
-                "volumetype": "SAS",
-            }])
-        ```
-
-        ## Node with Eip
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        mynode = sbercloud.cce.Node("mynode",
-            cluster_id=mycluster["id"],
-            name="mynode",
-            flavor_id="s3.large.2",
-            availability_zone=myaz["names"][0],
-            key_pair=mykp["name"],
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SAS",
-            },
-            data_volumes=[{
-                "size": 100,
-                "volumetype": "SAS",
-            }],
-            iptype="5_bgp",
-            bandwidth_charge_mode="traffic",
-            sharetype="PER",
-            bandwidth_size=100)
-        ```
-
-        ## Node with Existing Eip
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        myeip = sbercloud.vpc.Eip("myeip",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "name": "test",
-                "size": 8,
-                "share_type": "PER",
-                "charge_mode": "traffic",
-            })
-        mynode = sbercloud.cce.Node("mynode",
-            cluster_id=mycluster["id"],
-            name="mynode",
-            flavor_id="s3.large.2",
-            availability_zone=myaz["names"][0],
-            key_pair=mykp["name"],
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SAS",
-            },
-            data_volumes=[{
-                "size": 100,
-                "volumetype": "SAS",
-            }],
-            eip_id=myeip.id)
-        ```
-
-        ## Node with storage configuration
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        mynode = sbercloud.cce.Node("mynode",
-            cluster_id=mycluster["id"],
-            name="mynode",
-            flavor_id="s3.large.2",
-            availability_zone=myaz["names"][0],
-            key_pair=mykp["name"],
-            os="CentOS 7.6",
-            root_volume={
-                "size": 50,
-                "volumetype": "SSD",
-            },
-            data_volumes=[
-                {
-                    "size": 100,
-                    "volumetype": "SSD",
-                },
-                {
-                    "size": 100,
-                    "volumetype": "SSD",
-                    "kms_key_id": mykey["id"],
-                },
-            ],
-            storage={
-                "selectors": [
-                    {
-                        "name": "cceUse",
-                        "type": "evs",
-                        "match_label_size": "100",
-                        "match_label_count": "1",
-                    },
-                    {
-                        "name": "user",
-                        "type": "evs",
-                        "match_label_size": "100",
-                        "match_label_metadata_encrypted": "1",
-                        "match_label_metadata_cmkid": mykey["id"],
-                        "match_label_count": "1",
-                    },
-                ],
-                "groups": [
-                    {
-                        "name": "vgpaas",
-                        "selector_names": ["cceUse"],
-                        "cce_managed": True,
-                        "virtual_spaces": [
-                            {
-                                "name": "kubernetes",
-                                "size": "10%",
-                                "lvm_lv_type": "linear",
-                            },
-                            {
-                                "name": "runtime",
-                                "size": "90%",
-                                "lvm_lv_type": "linear",
-                            },
-                        ],
-                    },
-                    {
-                        "name": "vguser",
-                        "selector_names": ["user"],
-                        "virtual_spaces": [{
-                            "name": "user",
-                            "size": "100%",
-                            "lvm_lv_type": "linear",
-                            "lvm_path": "/workspace",
-                        }],
-                    },
-                ],
-            })
-        ```
-
-        ## Import
-
-        CCE node can be imported using the cluster ID and node ID separated by a slash, e.g.:
-
-        ```sh
-        $ pulumi import sbercloud:Cce/node:Node my_node 5c20fdad-7288-11eb-b817-0255ac10158b/e9287dff-7288-11eb-b817-0255ac10158b
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include:
-
-        `password`, `fixed_ip`, `eip_id`, `preinstall`, `postinstall`, `iptype`, `bandwidth_charge_mode`, `bandwidth_size`,
-
-        `share_type`, `max_pods`, `extend_param`, `labels`, `taints` and arguments for pre-paid. It is generally recommended
-
-        running `pulumi preview` after importing a node. You can then decide if changes should be applied to the node, or the
-
-        resource definition should be updated to align with the node. Also you can ignore changes as below.
-
-        resource "sbercloud_cce_node" "my_node" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              extend_param, labels,
-            
-            ]
-
-          }
-
-        }
-
+        Create a Node resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NodeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2574,88 +1679,14 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: schema: Internal
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the name of the available partition (AZ). Changing this
-               parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_charge_mode: Specifies the bandwidth billing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] bandwidth_size: Specifies the bandwidth size.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the CCE node. Valid values are *prePaid*
-               and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] cluster_id: Specifies the ID of the cluster.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeDataVolumeArgs', 'NodeDataVolumeArgsDict']]]] data_volumes: Specifies the configurations of the data disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ecs_group_id: Specifies the ECS group ID. If specified, the node will be created under
-               the cloud server group. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] ecs_performance_type: schema: Deprecated
-        :param pulumi.Input[_builtins.str] eip_id: Specifies the ID of the EIP.
-               Changing this parameter will create a new resource.
-               
-               > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-               `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the fixed IP of the NIC.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] flavor_id: Specifies the flavor ID. Changing this parameter will create a new
-               resource.
-        :param pulumi.Input[_builtins.str] iptype: Specifies the elastic IP type.
-               Changing this parameter will create a new resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_param: schema: Deprecated
         :param pulumi.Input[_builtins.bool] keep_ecs: schema: Internal
-        :param pulumi.Input[_builtins.str] key_pair: Specifies the key pair name when logging in to select the key pair mode.
-               This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Specifies the tags of a Kubernetes node, key/value pair format.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] name: Specifies the node name.
-        :param pulumi.Input[_builtins.str] os: Specifies the operating system of the node.
-               Changing this parameter will create a new resource.
-               For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        :param pulumi.Input[_builtins.str] password: Specifies the root password when logging in to select the password mode.
-               This parameter can be plain or salted and is alternative to `key_pair`.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-               , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-               mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the CCE node.
-               Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] private_ip: Private IP of the CCE node.
+        :param pulumi.Input[_builtins.int] max_pods: schema: Deprecated
+        :param pulumi.Input[_builtins.str] postinstall: schema: Deprecated
+        :param pulumi.Input[_builtins.str] preinstall: schema: Deprecated
         :param pulumi.Input[_builtins.str] product_id: schema: Deprecated
-        :param pulumi.Input[_builtins.str] public_ip: Public IP of the CCE node.
         :param pulumi.Input[_builtins.str] public_key: schema: Deprecated
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the CCE node resource.
-               If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        :param pulumi.Input[Union['NodeRootVolumeArgs', 'NodeRootVolumeArgsDict']] root_volume: Specifies the configuration of the system disk.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime: Specifies the runtime of the CCE node. Valid values are *docker* and
-               *containerd*. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] server_id: ID of the ECS instance associated with the node.
-        :param pulumi.Input[_builtins.str] sharetype: Specifies the bandwidth sharing type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['NodeStorageArgs', 'NodeStorageArgsDict']] storage: Specifies the disk initialization management parameter.
-               If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-               This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the subnet to which the NIC belongs.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of a VM node, key/value pair format.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTaintArgs', 'NodeTaintArgsDict']]]] taints: Specifies the taints configuration of the nodes to set anti-affinity.
-               Changing this parameter will create a new resource. Each taint contains the following parameters:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2734,37 +1765,21 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "
-        false". Changing this creates a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the name of the available partition (AZ). Changing this
-        parameter will create a new resource.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthChargeMode")
     def bandwidth_charge_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the bandwidth billing type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_charge_mode")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthSize")
     def bandwidth_size(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the bandwidth size.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "bandwidth_size")
 
     @_builtins.property
@@ -2776,28 +1791,16 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the charging mode of the CCE node. Valid values are *prePaid*
-        and *postPaid*, defaults to *postPaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "charging_mode")
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the cluster.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cluster_id")
 
     @_builtins.property
     @pulumi.getter(name="dataVolumes")
     def data_volumes(self) -> pulumi.Output[Sequence['outputs.NodeDataVolume']]:
-        """
-        Specifies the configurations of the data disk.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "data_volumes")
 
     @_builtins.property
@@ -2808,10 +1811,6 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ecsGroupId")
     def ecs_group_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ECS group ID. If specified, the node will be created under
-        the cloud server group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "ecs_group_id")
 
     @_builtins.property
@@ -2825,13 +1824,6 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="eipId")
     def eip_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the ID of the EIP.
-        Changing this parameter will create a new resource.
-
-        > **NOTE:** If the eip_id parameter is configured, you do not need to configure the bandwidth parameters:
-        `iptype`, `bandwidth_charge_mode`, `bandwidth_size` and `share_type`.
-        """
         return pulumi.get(self, "eip_id")
 
     @_builtins.property
@@ -2854,15 +1846,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter(name="extendParam")
     def extend_param(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
+        schema: Deprecated
         """
         return pulumi.get(self, "extend_param")
 
@@ -2885,19 +1869,11 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the fixed IP of the NIC.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the flavor ID. Changing this parameter will create a new
-        resource.
-        """
         return pulumi.get(self, "flavor_id")
 
     @_builtins.property
@@ -2913,10 +1889,6 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def iptype(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the elastic IP type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "iptype")
 
     @_builtins.property
@@ -2930,36 +1902,24 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the key pair name when logging in to select the key pair mode.
-        This parameter and `password` are alternative. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of a Kubernetes node, key/value pair format.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "max_pods")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the node name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -2971,11 +1931,6 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def os(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the operating system of the node.
-        Changing this parameter will create a new resource.
-        For VM nodes, clusters of v1.13 and later support *CentOS 7.6* and *Ubuntu 18.04*.
-        """
         return pulumi.get(self, "os")
 
     @_builtins.property
@@ -2986,39 +1941,23 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the root password when logging in to select the password mode.
-        This parameter can be plain or salted and is alternative to `key_pair`.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period of the CCE node. If `period_unit` is set to *month*
-        , the value ranges from 1 to 9. If `period_unit` is set to *year*, the value ranges from 1 to 3. This parameter is
-        mandatory if `charging_mode` is set to *prePaid*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit of the CCE node.
-        Valid values are *month* and *year*. This parameter is mandatory if `charging_mode` is set to *prePaid*.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "postinstall")
 
@@ -3026,17 +1965,13 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def preinstall(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
+        schema: Deprecated
         """
         return pulumi.get(self, "preinstall")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Private IP of the CCE node.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
@@ -3055,9 +1990,6 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Public IP of the CCE node.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
@@ -3071,45 +2003,26 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the CCE node resource.
-        If omitted, the provider-level region will be used. Changing this creates a new CCE node resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="rootVolume")
     def root_volume(self) -> pulumi.Output['outputs.NodeRootVolume']:
-        """
-        Specifies the configuration of the system disk.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "root_volume")
 
     @_builtins.property
     @pulumi.getter
     def runtime(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the runtime of the CCE node. Valid values are *docker* and
-        *containerd*. Changing this creates a new resource.
-        """
         return pulumi.get(self, "runtime")
 
     @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        ID of the ECS instance associated with the node.
-        """
         return pulumi.get(self, "server_id")
 
     @_builtins.property
     @pulumi.getter
     def sharetype(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the bandwidth sharing type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "sharetype")
 
     @_builtins.property
@@ -3120,36 +2033,20 @@ class Node(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Output[Optional['outputs.NodeStorage']]:
-        """
-        Specifies the disk initialization management parameter.
-        If omitted, disks are managed based on the DockerLVMConfigOverride parameter in extendParam.
-        This parameter is supported for clusters of v1.15.11 and later. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "storage")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the subnet to which the NIC belongs.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of a VM node, key/value pair format.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
     def taints(self) -> pulumi.Output[Optional[Sequence['outputs.NodeTaint']]]:
-        """
-        Specifies the taints configuration of the nodes to set anti-affinity.
-        Changing this parameter will create a new resource. Each taint contains the following parameters:
-        """
         return pulumi.get(self, "taints")
 

@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get a list of CCE nodes.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/cce"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			clusterId := cfg.RequireObject("clusterId")
-//			nodeName := cfg.RequireObject("nodeName")
-//			_, err := cce.GetNodes(ctx, &cce.GetNodesArgs{
-//				ClusterId: clusterId,
-//				Name:      pulumi.StringRef(nodeName),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetNodes(ctx *pulumi.Context, args *GetNodesArgs, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodesResult
@@ -55,36 +23,26 @@ func GetNodes(ctx *pulumi.Context, args *GetNodesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getNodes.
 type GetNodesArgs struct {
-	// Specifies the ID of CCE cluster.
 	ClusterId     string  `pulumi:"clusterId"`
 	IgnoreDetails *string `pulumi:"ignoreDetails"`
-	// Specifies the of the node.
-	Name *string `pulumi:"name"`
-	// Specifies the ID of the node.
-	NodeId *string `pulumi:"nodeId"`
-	// Specifies the region in which to obtain the CCE nodes. If omitted, the provider-level
-	// region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the status of the node.
-	Status *string `pulumi:"status"`
+	Name          *string `pulumi:"name"`
+	NodeId        *string `pulumi:"nodeId"`
+	Region        *string `pulumi:"region"`
+	Status        *string `pulumi:"status"`
 }
 
 // A collection of values returned by getNodes.
 type GetNodesResult struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Indicates a list of IDs of all CCE nodes found.
-	Ids           []string `pulumi:"ids"`
-	IgnoreDetails *string  `pulumi:"ignoreDetails"`
-	// The name of the node.
-	Name   *string `pulumi:"name"`
-	NodeId *string `pulumi:"nodeId"`
-	// Indicates a list of CCE nodes found. Structure is documented below.
-	Nodes  []GetNodesNode `pulumi:"nodes"`
-	Region string         `pulumi:"region"`
-	// The state of the node.
-	Status *string `pulumi:"status"`
+	Id            string         `pulumi:"id"`
+	Ids           []string       `pulumi:"ids"`
+	IgnoreDetails *string        `pulumi:"ignoreDetails"`
+	Name          *string        `pulumi:"name"`
+	NodeId        *string        `pulumi:"nodeId"`
+	Nodes         []GetNodesNode `pulumi:"nodes"`
+	Region        string         `pulumi:"region"`
+	Status        *string        `pulumi:"status"`
 }
 
 func GetNodesOutput(ctx *pulumi.Context, args GetNodesOutputArgs, opts ...pulumi.InvokeOption) GetNodesResultOutput {
@@ -98,18 +56,12 @@ func GetNodesOutput(ctx *pulumi.Context, args GetNodesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getNodes.
 type GetNodesOutputArgs struct {
-	// Specifies the ID of CCE cluster.
 	ClusterId     pulumi.StringInput    `pulumi:"clusterId"`
 	IgnoreDetails pulumi.StringPtrInput `pulumi:"ignoreDetails"`
-	// Specifies the of the node.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Specifies the ID of the node.
-	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// Specifies the region in which to obtain the CCE nodes. If omitted, the provider-level
-	// region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the status of the node.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+	Name          pulumi.StringPtrInput `pulumi:"name"`
+	NodeId        pulumi.StringPtrInput `pulumi:"nodeId"`
+	Region        pulumi.StringPtrInput `pulumi:"region"`
+	Status        pulumi.StringPtrInput `pulumi:"status"`
 }
 
 func (GetNodesOutputArgs) ElementType() reflect.Type {
@@ -140,7 +92,6 @@ func (o GetNodesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Indicates a list of IDs of all CCE nodes found.
 func (o GetNodesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -149,7 +100,6 @@ func (o GetNodesResultOutput) IgnoreDetails() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodesResult) *string { return v.IgnoreDetails }).(pulumi.StringPtrOutput)
 }
 
-// The name of the node.
 func (o GetNodesResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodesResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +108,6 @@ func (o GetNodesResultOutput) NodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodesResult) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// Indicates a list of CCE nodes found. Structure is documented below.
 func (o GetNodesResultOutput) Nodes() GetNodesNodeArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []GetNodesNode { return v.Nodes }).(GetNodesNodeArrayOutput)
 }
@@ -167,7 +116,6 @@ func (o GetNodesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The state of the node.
 func (o GetNodesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }

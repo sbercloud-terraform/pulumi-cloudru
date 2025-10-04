@@ -33,38 +33,16 @@ class InstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the ER instance.  
-               The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the ER instance is located.
-               The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-               availability which will ensure reliability and disaster recovery.
-        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared
-               attachment.
-               The default value is **false**.
+        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the Enterprise router.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the Enterprise router is located.
+        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared attachment.
         :param pulumi.Input[_builtins.str] default_association_route_table_id: The ID of the default association route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_association` is set to **true**.
         :param pulumi.Input[_builtins.str] default_propagation_route_table_id: The ID of the default propagation route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_propagation` is set to **true**.
-        :param pulumi.Input[_builtins.str] description: The description of the ER instance.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the ER instance
-               belongs.
-        :param pulumi.Input[_builtins.str] name: The router name.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
+        :param pulumi.Input[_builtins.str] description: The description of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.
+        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the Enterprise router belongs.
+        :param pulumi.Input[_builtins.str] name: The router name.
         """
         pulumi.set(__self__, "asn", asn)
         pulumi.set(__self__, "availability_zones", availability_zones)
@@ -93,10 +71,7 @@ class InstanceArgs:
     @pulumi.getter
     def asn(self) -> pulumi.Input[_builtins.int]:
         """
-        The BGP AS number of the ER instance.  
-        The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-
-        Changing this parameter will create a new resource.
+        The BGP AS number of the Enterprise router.
         """
         return pulumi.get(self, "asn")
 
@@ -108,9 +83,7 @@ class InstanceArgs:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The availability zone list where the ER instance is located.
-        The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-        availability which will ensure reliability and disaster recovery.
+        The availability zone list where the Enterprise router is located.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -122,9 +95,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoAcceptSharedAttachments")
     def auto_accept_shared_attachments(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to automatically accept the creation of shared
-        attachment.
-        The default value is **false**.
+        Whether to automatically accept the creation of shared attachment.
         """
         return pulumi.get(self, "auto_accept_shared_attachments")
 
@@ -137,9 +108,6 @@ class InstanceArgs:
     def default_association_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the default association route table.
-
-        > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-        `enable_default_association` is set to **true**.
         """
         return pulumi.get(self, "default_association_route_table_id")
 
@@ -152,9 +120,6 @@ class InstanceArgs:
     def default_propagation_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the default propagation route table.
-
-        > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-        `enable_default_propagation` is set to **true**.
         """
         return pulumi.get(self, "default_propagation_route_table_id")
 
@@ -166,8 +131,7 @@ class InstanceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the ER instance.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the Enterprise router.
         """
         return pulumi.get(self, "description")
 
@@ -179,8 +143,7 @@ class InstanceArgs:
     @pulumi.getter(name="enableDefaultAssociation")
     def enable_default_association(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable the association of the default route table.  
-        The default value is **false**.
+        Whether to enable the association of the default route table.
         """
         return pulumi.get(self, "enable_default_association")
 
@@ -192,8 +155,7 @@ class InstanceArgs:
     @pulumi.getter(name="enableDefaultPropagation")
     def enable_default_propagation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable the propagation of the default route table.  
-        The default value is **false**.
+        Whether to enable the propagation of the default route table.
         """
         return pulumi.get(self, "enable_default_propagation")
 
@@ -205,8 +167,7 @@ class InstanceArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the enterprise project ID to which the ER instance
-        belongs.
+        The enterprise project ID to which the Enterprise router belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -218,9 +179,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The router name.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The router name.
         """
         return pulumi.get(self, "name")
 
@@ -231,10 +190,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -244,9 +199,6 @@ class InstanceArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -274,40 +226,18 @@ class _InstanceState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the ER instance.  
-               The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared
-               attachment.
-               The default value is **false**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the ER instance is located.
-               The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-               availability which will ensure reliability and disaster recovery.
+        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the Enterprise router is located.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
         :param pulumi.Input[_builtins.str] default_association_route_table_id: The ID of the default association route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_association` is set to **true**.
         :param pulumi.Input[_builtins.str] default_propagation_route_table_id: The ID of the default propagation route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_propagation` is set to **true**.
-        :param pulumi.Input[_builtins.str] description: The description of the ER instance.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the ER instance
-               belongs.
-        :param pulumi.Input[_builtins.str] name: The router name.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: The description of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.
+        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the Enterprise router belongs.
+        :param pulumi.Input[_builtins.str] name: The router name.
         :param pulumi.Input[_builtins.str] status: Current status of the router.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
         """
         if asn is not None:
@@ -345,10 +275,7 @@ class _InstanceState:
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The BGP AS number of the ER instance.  
-        The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-
-        Changing this parameter will create a new resource.
+        The BGP AS number of the Enterprise router.
         """
         return pulumi.get(self, "asn")
 
@@ -360,9 +287,7 @@ class _InstanceState:
     @pulumi.getter(name="autoAcceptSharedAttachments")
     def auto_accept_shared_attachments(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to automatically accept the creation of shared
-        attachment.
-        The default value is **false**.
+        Whether to automatically accept the creation of shared attachment.
         """
         return pulumi.get(self, "auto_accept_shared_attachments")
 
@@ -374,9 +299,7 @@ class _InstanceState:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The availability zone list where the ER instance is located.
-        The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-        availability which will ensure reliability and disaster recovery.
+        The availability zone list where the Enterprise router is located.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -401,9 +324,6 @@ class _InstanceState:
     def default_association_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the default association route table.
-
-        > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-        `enable_default_association` is set to **true**.
         """
         return pulumi.get(self, "default_association_route_table_id")
 
@@ -416,9 +336,6 @@ class _InstanceState:
     def default_propagation_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the default propagation route table.
-
-        > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-        `enable_default_propagation` is set to **true**.
         """
         return pulumi.get(self, "default_propagation_route_table_id")
 
@@ -430,8 +347,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The description of the ER instance.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the Enterprise router.
         """
         return pulumi.get(self, "description")
 
@@ -443,8 +359,7 @@ class _InstanceState:
     @pulumi.getter(name="enableDefaultAssociation")
     def enable_default_association(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable the association of the default route table.  
-        The default value is **false**.
+        Whether to enable the association of the default route table.
         """
         return pulumi.get(self, "enable_default_association")
 
@@ -456,8 +371,7 @@ class _InstanceState:
     @pulumi.getter(name="enableDefaultPropagation")
     def enable_default_propagation(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to enable the propagation of the default route table.  
-        The default value is **false**.
+        Whether to enable the propagation of the default route table.
         """
         return pulumi.get(self, "enable_default_propagation")
 
@@ -469,8 +383,7 @@ class _InstanceState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the enterprise project ID to which the ER instance
-        belongs.
+        The enterprise project ID to which the Enterprise router belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -482,9 +395,7 @@ class _InstanceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The router name.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The router name.
         """
         return pulumi.get(self, "name")
 
@@ -495,10 +406,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -520,9 +427,6 @@ class _InstanceState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -562,73 +466,19 @@ class Instance(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages an ER instance resource within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        router_name = config.require_object("routerName")
-        bgp_as_number = config.require_object("bgpAsNumber")
-        availability_zones = config.require_object("availabilityZones")
-        test = sbercloud.er.Instance("test",
-            availability_zones=availability_zones,
-            name=router_name,
-            asn=bgp_as_number)
-        ```
-
-        ## Import
-
-        The router instance can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/instance:Instance test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the ER instance.  
-               The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared
-               attachment.
-               The default value is **false**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the ER instance is located.
-               The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-               availability which will ensure reliability and disaster recovery.
+        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the Enterprise router is located.
         :param pulumi.Input[_builtins.str] default_association_route_table_id: The ID of the default association route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_association` is set to **true**.
         :param pulumi.Input[_builtins.str] default_propagation_route_table_id: The ID of the default propagation route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_propagation` is set to **true**.
-        :param pulumi.Input[_builtins.str] description: The description of the ER instance.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the ER instance
-               belongs.
-        :param pulumi.Input[_builtins.str] name: The router name.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
+        :param pulumi.Input[_builtins.str] description: The description of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.
+        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the Enterprise router belongs.
+        :param pulumi.Input[_builtins.str] name: The router name.
         """
         ...
     @overload
@@ -637,39 +487,7 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ER instance resource within SberCloud.
-
-        Before using enterprise router, define custom endpoint as shown below:
-        ```python
-        import pulumi
-        ```
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        router_name = config.require_object("routerName")
-        bgp_as_number = config.require_object("bgpAsNumber")
-        availability_zones = config.require_object("availabilityZones")
-        test = sbercloud.er.Instance("test",
-            availability_zones=availability_zones,
-            name=router_name,
-            asn=bgp_as_number)
-        ```
-
-        ## Import
-
-        The router instance can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Er/instance:Instance test 0ce123456a00f2591fabc00385ff1234
-        ```
-
+        Create a Instance resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -757,40 +575,18 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the ER instance.  
-               The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared
-               attachment.
-               The default value is **false**.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the ER instance is located.
-               The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-               availability which will ensure reliability and disaster recovery.
+        :param pulumi.Input[_builtins.int] asn: The BGP AS number of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] auto_accept_shared_attachments: Whether to automatically accept the creation of shared attachment.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone list where the Enterprise router is located.
         :param pulumi.Input[_builtins.str] created_at: The creation time.
         :param pulumi.Input[_builtins.str] default_association_route_table_id: The ID of the default association route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_association` is set to **true**.
         :param pulumi.Input[_builtins.str] default_propagation_route_table_id: The ID of the default propagation route table.
-               
-               > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-               `enable_default_propagation` is set to **true**.
-        :param pulumi.Input[_builtins.str] description: The description of the ER instance.  
-               The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
-        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.  
-               The default value is **false**.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project ID to which the ER instance
-               belongs.
-        :param pulumi.Input[_builtins.str] name: The router name.  
-               The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-               hyphens (-) and dots (.) allowed.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+        :param pulumi.Input[_builtins.str] description: The description of the Enterprise router.
+        :param pulumi.Input[_builtins.bool] enable_default_association: Whether to enable the association of the default route table.
+        :param pulumi.Input[_builtins.bool] enable_default_propagation: Whether to enable the propagation of the default route table.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the Enterprise router belongs.
+        :param pulumi.Input[_builtins.str] name: The router name.
         :param pulumi.Input[_builtins.str] status: Current status of the router.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the instance.
         :param pulumi.Input[_builtins.str] updated_at: The latest update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -818,10 +614,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def asn(self) -> pulumi.Output[_builtins.int]:
         """
-        The BGP AS number of the ER instance.  
-        The valid value is range from `64,512` to `65534` or range from `4,200,000,000` to `4,294,967,294`.
-
-        Changing this parameter will create a new resource.
+        The BGP AS number of the Enterprise router.
         """
         return pulumi.get(self, "asn")
 
@@ -829,9 +622,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoAcceptSharedAttachments")
     def auto_accept_shared_attachments(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to automatically accept the creation of shared
-        attachment.
-        The default value is **false**.
+        Whether to automatically accept the creation of shared attachment.
         """
         return pulumi.get(self, "auto_accept_shared_attachments")
 
@@ -839,9 +630,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The availability zone list where the ER instance is located.
-        The maximum number of availability zone is two. Select two AZs to configure active-active deployment for high
-        availability which will ensure reliability and disaster recovery.
+        The availability zone list where the Enterprise router is located.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -858,9 +647,6 @@ class Instance(pulumi.CustomResource):
     def default_association_route_table_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the default association route table.
-
-        > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-        `enable_default_association` is set to **true**.
         """
         return pulumi.get(self, "default_association_route_table_id")
 
@@ -869,9 +655,6 @@ class Instance(pulumi.CustomResource):
     def default_propagation_route_table_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the default propagation route table.
-
-        > Before modifying the default routing table of this instance (except cancel the default route table), make sure
-        `enable_default_propagation` is set to **true**.
         """
         return pulumi.get(self, "default_propagation_route_table_id")
 
@@ -879,8 +662,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The description of the ER instance.  
-        The description contain a maximum of `255` characters, and the angle brackets (< and >) are not allowed.
+        The description of the Enterprise router.
         """
         return pulumi.get(self, "description")
 
@@ -888,8 +670,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableDefaultAssociation")
     def enable_default_association(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to enable the association of the default route table.  
-        The default value is **false**.
+        Whether to enable the association of the default route table.
         """
         return pulumi.get(self, "enable_default_association")
 
@@ -897,8 +678,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enableDefaultPropagation")
     def enable_default_propagation(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to enable the propagation of the default route table.  
-        The default value is **false**.
+        Whether to enable the propagation of the default route table.
         """
         return pulumi.get(self, "enable_default_propagation")
 
@@ -906,8 +686,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the enterprise project ID to which the ER instance
-        belongs.
+        The enterprise project ID to which the Enterprise router belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -915,19 +694,13 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The router name.  
-        The name can contain `1` to `64` characters, only English letters, Chinese characters, digits, underscore (_),
-        hyphens (-) and dots (.) allowed.
+        The router name.
         """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -941,9 +714,6 @@ class Instance(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property

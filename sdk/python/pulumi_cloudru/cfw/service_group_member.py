@@ -29,29 +29,11 @@ class ServiceGroupMemberArgs:
         """
         The set of arguments for constructing a ServiceGroupMember resource.
         :param pulumi.Input[_builtins.str] dest_port: Specifies the destination port.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the service group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
-               The valid values are:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] source_port: Specifies the source port.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] description: Specifies the service group member description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the service group member name.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "dest_port", dest_port)
         pulumi.set(__self__, "group_id", group_id)
@@ -69,8 +51,6 @@ class ServiceGroupMemberArgs:
     def dest_port(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the destination port.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "dest_port")
 
@@ -83,8 +63,6 @@ class ServiceGroupMemberArgs:
     def group_id(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the ID of the service group.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -97,14 +75,6 @@ class ServiceGroupMemberArgs:
     def protocol(self) -> pulumi.Input[_builtins.int]:
         """
         Specifies the protocol type.
-        The valid values are:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "protocol")
 
@@ -117,8 +87,6 @@ class ServiceGroupMemberArgs:
     def source_port(self) -> pulumi.Input[_builtins.str]:
         """
         Specifies the source port.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "source_port")
 
@@ -131,8 +99,6 @@ class ServiceGroupMemberArgs:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the service group member description.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -155,10 +121,6 @@ class ServiceGroupMemberArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -179,29 +141,11 @@ class _ServiceGroupMemberState:
         """
         Input properties used for looking up and filtering ServiceGroupMember resources.
         :param pulumi.Input[_builtins.str] description: Specifies the service group member description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] dest_port: Specifies the destination port.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the service group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the service group member name.
         :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
-               The valid values are:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] source_port: Specifies the source port.
-               
-               Changing this parameter will create a new resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -223,8 +167,6 @@ class _ServiceGroupMemberState:
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the service group member description.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -237,8 +179,6 @@ class _ServiceGroupMemberState:
     def dest_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the destination port.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "dest_port")
 
@@ -251,8 +191,6 @@ class _ServiceGroupMemberState:
     def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the ID of the service group.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -277,14 +215,6 @@ class _ServiceGroupMemberState:
     def protocol(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Specifies the protocol type.
-        The valid values are:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "protocol")
 
@@ -295,10 +225,6 @@ class _ServiceGroupMemberState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -310,8 +236,6 @@ class _ServiceGroupMemberState:
     def source_port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Specifies the source port.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "source_port")
 
@@ -335,62 +259,15 @@ class ServiceGroupMember(pulumi.CustomResource):
                  source_port: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a CFW service group member resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_id = config.require_object("groupId")
-        protocol = config.require_object("protocol")
-        source_port = config.require_object("sourcePort")
-        dest_port = config.require_object("destPort")
-        test = sbercloud.cfw.ServiceGroupMember("test",
-            group_id=group_id,
-            protocol=protocol,
-            source_port=source_port,
-            dest_port=dest_port)
-        ```
-
-        ## Import
-
-        The service group member can be imported using service group ID and member ID, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/serviceGroupMember:ServiceGroupMember test <group_id>/<member_id>
-        ```
-
+        Create a ServiceGroupMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Specifies the service group member description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] dest_port: Specifies the destination port.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the service group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the service group member name.
         :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
-               The valid values are:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] source_port: Specifies the source port.
-               
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -399,36 +276,7 @@ class ServiceGroupMember(pulumi.CustomResource):
                  args: ServiceGroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW service group member resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        group_id = config.require_object("groupId")
-        protocol = config.require_object("protocol")
-        source_port = config.require_object("sourcePort")
-        dest_port = config.require_object("destPort")
-        test = sbercloud.cfw.ServiceGroupMember("test",
-            group_id=group_id,
-            protocol=protocol,
-            source_port=source_port,
-            dest_port=dest_port)
-        ```
-
-        ## Import
-
-        The service group member can be imported using service group ID and member ID, separated by a slash, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/serviceGroupMember:ServiceGroupMember test <group_id>/<member_id>
-        ```
-
+        Create a ServiceGroupMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ServiceGroupMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -500,29 +348,11 @@ class ServiceGroupMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Specifies the service group member description.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] dest_port: Specifies the destination port.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] group_id: Specifies the ID of the service group.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] name: Specifies the service group member name.
         :param pulumi.Input[_builtins.int] protocol: Specifies the protocol type.
-               The valid values are:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] source_port: Specifies the source port.
-               
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -542,8 +372,6 @@ class ServiceGroupMember(pulumi.CustomResource):
     def description(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the service group member description.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "description")
 
@@ -552,8 +380,6 @@ class ServiceGroupMember(pulumi.CustomResource):
     def dest_port(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the destination port.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "dest_port")
 
@@ -562,8 +388,6 @@ class ServiceGroupMember(pulumi.CustomResource):
     def group_id(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the ID of the service group.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "group_id")
 
@@ -580,24 +404,12 @@ class ServiceGroupMember(pulumi.CustomResource):
     def protocol(self) -> pulumi.Output[_builtins.int]:
         """
         Specifies the protocol type.
-        The valid values are:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "protocol")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -605,8 +417,6 @@ class ServiceGroupMember(pulumi.CustomResource):
     def source_port(self) -> pulumi.Output[_builtins.str]:
         """
         Specifies the source port.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "source_port")
 

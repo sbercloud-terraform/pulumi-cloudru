@@ -71,21 +71,9 @@ class AddressGroupIpExtraSetArgs:
 if not MYPY:
     class BandwidthPublicipArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the EIP or IPv6 port that uses the bandwidth.
-        """
         ip_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IPv4 or IPv6 address.
-        """
         ip_version: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The IP version, either 4 or 6.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The EIP type.
-        """
 elif False:
     BandwidthPublicipArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -96,12 +84,6 @@ class BandwidthPublicipArgs:
                  ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                  ip_version: Optional[pulumi.Input[_builtins.int]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: The ID of the EIP or IPv6 port that uses the bandwidth.
-        :param pulumi.Input[_builtins.str] ip_address: The IPv4 or IPv6 address.
-        :param pulumi.Input[_builtins.int] ip_version: The IP version, either 4 or 6.
-        :param pulumi.Input[_builtins.str] type: The EIP type.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ip_address is not None:
@@ -114,9 +96,6 @@ class BandwidthPublicipArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the EIP or IPv6 port that uses the bandwidth.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -126,9 +105,6 @@ class BandwidthPublicipArgs:
     @_builtins.property
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IPv4 or IPv6 address.
-        """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
@@ -138,9 +114,6 @@ class BandwidthPublicipArgs:
     @_builtins.property
     @pulumi.getter(name="ipVersion")
     def ip_version(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The IP version, either 4 or 6.
-        """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
@@ -150,9 +123,6 @@ class BandwidthPublicipArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The EIP type.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -164,30 +134,23 @@ if not MYPY:
     class EipBandwidthArgsDict(TypedDict):
         share_type: pulumi.Input[_builtins.str]
         """
-        Whether the bandwidth is dedicated or shared. Changing this creates a new
-        eip. Possible values are as follows:
-        + *PER*: Dedicated bandwidth
-        + *WHOLE*: Shared bandwidth
+        Whether the bandwidth is dedicated or shared.
         """
         charge_mode: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies whether the bandwidth is billed by traffic or by bandwidth
-        size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+        Whether the bandwidth is billed by traffic or by bandwidth size.
         """
         id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The shared bandwidth id. This parameter is mandatory when
-        `share_type` is set to *WHOLE*. Changing this creates a new eip.
+        The shared bandwidth ID.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-        underscores (_), and hyphens (-). This parameter is mandatory when `share_type` is set to *PER*.
+        The dedicated bandwidth name.
         """
         size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-        when `share_type` is set to *PER*.
+        The dedicated bandwidth size.
         """
 elif False:
     EipBandwidthArgsDict: TypeAlias = Mapping[str, Any]
@@ -201,18 +164,11 @@ class EipBandwidthArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] share_type: Whether the bandwidth is dedicated or shared. Changing this creates a new
-               eip. Possible values are as follows:
-               + *PER*: Dedicated bandwidth
-               + *WHOLE*: Shared bandwidth
-        :param pulumi.Input[_builtins.str] charge_mode: Specifies whether the bandwidth is billed by traffic or by bandwidth
-               size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
-        :param pulumi.Input[_builtins.str] id: The shared bandwidth id. This parameter is mandatory when
-               `share_type` is set to *WHOLE*. Changing this creates a new eip.
-        :param pulumi.Input[_builtins.str] name: The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-               underscores (_), and hyphens (-). This parameter is mandatory when `share_type` is set to *PER*.
-        :param pulumi.Input[_builtins.int] size: The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-               when `share_type` is set to *PER*.
+        :param pulumi.Input[_builtins.str] share_type: Whether the bandwidth is dedicated or shared.
+        :param pulumi.Input[_builtins.str] charge_mode: Whether the bandwidth is billed by traffic or by bandwidth size.
+        :param pulumi.Input[_builtins.str] id: The shared bandwidth ID.
+        :param pulumi.Input[_builtins.str] name: The dedicated bandwidth name.
+        :param pulumi.Input[_builtins.int] size: The dedicated bandwidth size.
         """
         pulumi.set(__self__, "share_type", share_type)
         if charge_mode is not None:
@@ -228,10 +184,7 @@ class EipBandwidthArgs:
     @pulumi.getter(name="shareType")
     def share_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Whether the bandwidth is dedicated or shared. Changing this creates a new
-        eip. Possible values are as follows:
-        + *PER*: Dedicated bandwidth
-        + *WHOLE*: Shared bandwidth
+        Whether the bandwidth is dedicated or shared.
         """
         return pulumi.get(self, "share_type")
 
@@ -243,8 +196,7 @@ class EipBandwidthArgs:
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies whether the bandwidth is billed by traffic or by bandwidth
-        size. The value can be *traffic* or *bandwidth*. Changing this creates a new eip.
+        Whether the bandwidth is billed by traffic or by bandwidth size.
         """
         return pulumi.get(self, "charge_mode")
 
@@ -256,8 +208,7 @@ class EipBandwidthArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The shared bandwidth id. This parameter is mandatory when
-        `share_type` is set to *WHOLE*. Changing this creates a new eip.
+        The shared bandwidth ID.
         """
         return pulumi.get(self, "id")
 
@@ -269,8 +220,7 @@ class EipBandwidthArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The bandwidth name, which is a string of 1 to 64 characters that contain letters, digits,
-        underscores (_), and hyphens (-). This parameter is mandatory when `share_type` is set to *PER*.
+        The dedicated bandwidth name.
         """
         return pulumi.get(self, "name")
 
@@ -282,8 +232,7 @@ class EipBandwidthArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The bandwidth size. The value ranges from 1 to 300 Mbit/s. This parameter is mandatory
-        when `share_type` is set to *PER*.
+        The dedicated bandwidth size.
         """
         return pulumi.get(self, "size")
 
@@ -296,8 +245,7 @@ if not MYPY:
     class EipPublicipArgsDict(TypedDict):
         ip_address: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The value must be a valid IP address in the available IP address segment.
-        Changing this creates a new eip.
+        The EIP address to be assigned.
         """
         ip_version: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -305,12 +253,11 @@ if not MYPY:
         """
         port_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The port id which this eip will associate with. If the value is "" or this not
-        specified, the eip will be in unbind state.
+        schema: Deprecated
         """
         type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The type of the eip. Changing this creates a new eip.
+        The EIP type.
         """
 elif False:
     EipPublicipArgsDict: TypeAlias = Mapping[str, Any]
@@ -323,12 +270,10 @@ class EipPublicipArgs:
                  port_id: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] ip_address: The value must be a valid IP address in the available IP address segment.
-               Changing this creates a new eip.
+        :param pulumi.Input[_builtins.str] ip_address: The EIP address to be assigned.
         :param pulumi.Input[_builtins.int] ip_version: The IP version.
-        :param pulumi.Input[_builtins.str] port_id: The port id which this eip will associate with. If the value is "" or this not
-               specified, the eip will be in unbind state.
-        :param pulumi.Input[_builtins.str] type: The type of the eip. Changing this creates a new eip.
+        :param pulumi.Input[_builtins.str] port_id: schema: Deprecated
+        :param pulumi.Input[_builtins.str] type: The EIP type.
         """
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
@@ -343,8 +288,7 @@ class EipPublicipArgs:
     @pulumi.getter(name="ipAddress")
     def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The value must be a valid IP address in the available IP address segment.
-        Changing this creates a new eip.
+        The EIP address to be assigned.
         """
         return pulumi.get(self, "ip_address")
 
@@ -368,8 +312,7 @@ class EipPublicipArgs:
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The port id which this eip will associate with. If the value is "" or this not
-        specified, the eip will be in unbind state.
+        schema: Deprecated
         """
         return pulumi.get(self, "port_id")
 
@@ -381,7 +324,7 @@ class EipPublicipArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the eip. Changing this creates a new eip.
+        The EIP type.
         """
         return pulumi.get(self, "type")
 
@@ -393,33 +336,9 @@ class EipPublicipArgs:
 if not MYPY:
     class RouteTableRouteArgsDict(TypedDict):
         destination: pulumi.Input[_builtins.str]
-        """
-        Specifies the destination address in the CIDR notation format,
-        for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-        with any subnet in the VPC.
-        """
         nexthop: pulumi.Input[_builtins.str]
-        """
-        Specifies the next hop.
-        + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-        + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-        + If the route type is **vip**, the value is a virtual IP address.
-        + If the route type is **nat**, the value is a VPN gateway ID.
-        + If the route type is **peering**, the value is a VPC peering connection ID.
-        + If the route type is **vpn**, the value is a VPN gateway ID.
-        + If the route type is **dc**, the value is a Direct Connect gateway ID.
-        + If the route type is **cc**, the value is a Cloud Connection ID.
-        """
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the route type. Currently, the value can be:
-        **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
 elif False:
     RouteTableRouteArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -430,24 +349,6 @@ class RouteTableRouteArgs:
                  nexthop: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] destination: Specifies the destination address in the CIDR notation format,
-               for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-               with any subnet in the VPC.
-        :param pulumi.Input[_builtins.str] nexthop: Specifies the next hop.
-               + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-               + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-               + If the route type is **vip**, the value is a virtual IP address.
-               + If the route type is **nat**, the value is a VPN gateway ID.
-               + If the route type is **peering**, the value is a VPC peering connection ID.
-               + If the route type is **vpn**, the value is a VPN gateway ID.
-               + If the route type is **dc**, the value is a Direct Connect gateway ID.
-               + If the route type is **cc**, the value is a Cloud Connection ID.
-        :param pulumi.Input[_builtins.str] type: Specifies the route type. Currently, the value can be:
-               **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        :param pulumi.Input[_builtins.str] description: Specifies the supplementary information about the route.
-               The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "nexthop", nexthop)
         pulumi.set(__self__, "type", type)
@@ -457,11 +358,6 @@ class RouteTableRouteArgs:
     @_builtins.property
     @pulumi.getter
     def destination(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the destination address in the CIDR notation format,
-        for example, 192.168.200.0/24. The destination of each route must be unique and cannot overlap
-        with any subnet in the VPC.
-        """
         return pulumi.get(self, "destination")
 
     @destination.setter
@@ -471,17 +367,6 @@ class RouteTableRouteArgs:
     @_builtins.property
     @pulumi.getter
     def nexthop(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the next hop.
-        + If the route type is **ecs**, the value is an ECS instance ID in the VPC.
-        + If the route type is **eni**, the value is the extension NIC of an ECS in the VPC.
-        + If the route type is **vip**, the value is a virtual IP address.
-        + If the route type is **nat**, the value is a VPN gateway ID.
-        + If the route type is **peering**, the value is a VPC peering connection ID.
-        + If the route type is **vpn**, the value is a VPN gateway ID.
-        + If the route type is **dc**, the value is a Direct Connect gateway ID.
-        + If the route type is **cc**, the value is a Cloud Connection ID.
-        """
         return pulumi.get(self, "nexthop")
 
     @nexthop.setter
@@ -491,10 +376,6 @@ class RouteTableRouteArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the route type. Currently, the value can be:
-        **ecs**, **eni**, **vip**, **nat**, **peering**, **vpn**, **dc** and **cc**.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -504,10 +385,6 @@ class RouteTableRouteArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the supplementary information about the route.
-        The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -518,25 +395,10 @@ class RouteTableRouteArgs:
 if not MYPY:
     class SecgroupRuleArgsDict(TypedDict):
         action: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The effective policy.
-        """
         description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the security group.
-        """
         direction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The direction of the rule. The value can be *egress* or *ingress*.
-        """
         ethertype: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP protocol version. The value can be *IPv4* or *IPv6*.
-        """
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The security group rule ID.
-        """
         port_range_max: NotRequired[pulumi.Input[_builtins.int]]
         """
         schema: Deprecated
@@ -546,29 +408,11 @@ if not MYPY:
         schema: Deprecated
         """
         ports: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The port value range.
-        """
         priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The priority number.
-        """
         protocol: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The protocol type.
-        """
         remote_address_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the remote address group.
-        """
         remote_group_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the peer security group.
-        """
         remote_ip_prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The remote IP address. The value can be in the CIDR format or IP addresses.
-        """
 elif False:
     SecgroupRuleArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -589,19 +433,8 @@ class SecgroupRuleArgs:
                  remote_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                  remote_ip_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] action: The effective policy.
-        :param pulumi.Input[_builtins.str] description: Description of the security group.
-        :param pulumi.Input[_builtins.str] direction: The direction of the rule. The value can be *egress* or *ingress*.
-        :param pulumi.Input[_builtins.str] ethertype: The IP protocol version. The value can be *IPv4* or *IPv6*.
-        :param pulumi.Input[_builtins.str] id: The security group rule ID.
         :param pulumi.Input[_builtins.int] port_range_max: schema: Deprecated
         :param pulumi.Input[_builtins.int] port_range_min: schema: Deprecated
-        :param pulumi.Input[_builtins.str] ports: The port value range.
-        :param pulumi.Input[_builtins.int] priority: The priority number.
-        :param pulumi.Input[_builtins.str] protocol: The protocol type.
-        :param pulumi.Input[_builtins.str] remote_address_group_id: The ID of the remote address group.
-        :param pulumi.Input[_builtins.str] remote_group_id: The ID of the peer security group.
-        :param pulumi.Input[_builtins.str] remote_ip_prefix: The remote IP address. The value can be in the CIDR format or IP addresses.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -633,9 +466,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The effective policy.
-        """
         return pulumi.get(self, "action")
 
     @action.setter
@@ -645,9 +475,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Description of the security group.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -657,9 +484,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The direction of the rule. The value can be *egress* or *ingress*.
-        """
         return pulumi.get(self, "direction")
 
     @direction.setter
@@ -669,9 +493,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def ethertype(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP protocol version. The value can be *IPv4* or *IPv6*.
-        """
         return pulumi.get(self, "ethertype")
 
     @ethertype.setter
@@ -681,9 +502,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The security group rule ID.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -717,9 +535,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The port value range.
-        """
         return pulumi.get(self, "ports")
 
     @ports.setter
@@ -729,9 +544,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The priority number.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -741,9 +553,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The protocol type.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -753,9 +562,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter(name="remoteAddressGroupId")
     def remote_address_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the remote address group.
-        """
         return pulumi.get(self, "remote_address_group_id")
 
     @remote_address_group_id.setter
@@ -765,9 +571,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter(name="remoteGroupId")
     def remote_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the peer security group.
-        """
         return pulumi.get(self, "remote_group_id")
 
     @remote_group_id.setter
@@ -777,9 +580,6 @@ class SecgroupRuleArgs:
     @_builtins.property
     @pulumi.getter(name="remoteIpPrefix")
     def remote_ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The remote IP address. The value can be in the CIDR format or IP addresses.
-        """
         return pulumi.get(self, "remote_ip_prefix")
 
     @remote_ip_prefix.setter

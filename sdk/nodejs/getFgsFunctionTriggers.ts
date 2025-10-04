@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of function triggers of FunctionGraph within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const functionUrn = config.requireObject<any>("functionUrn");
- * const test = sbercloud.getFgsFunctionTriggers({
- *     functionUrn: functionUrn,
- * });
- * ```
- */
 export function getFgsFunctionTriggers(args: GetFgsFunctionTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetFgsFunctionTriggersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers", {
@@ -39,59 +23,12 @@ export function getFgsFunctionTriggers(args: GetFgsFunctionTriggersArgs, opts?: 
  * A collection of arguments for invoking getFgsFunctionTriggers.
  */
 export interface GetFgsFunctionTriggersArgs {
-    /**
-     * Specifies end time of creation time of the function trigger.
-     * The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-     *
-     * > The `status`, `startTime` and `endTime` parameters does not take effect for some triggers, e.g. `SMN`.
-     */
     endTime?: string;
-    /**
-     * Specifies the function URN to which the trigger belongs.
-     */
     functionUrn: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies start time of creation time of the function trigger.
-     * The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-     */
     startTime?: string;
-    /**
-     * Specifies status of the function trigger.
-     * The valid values are as follows:
-     * + **ACTIVE**
-     * + **DISABLED**
-     */
     status?: string;
-    /**
-     * Specifies the ID of the function trigger.
-     */
     triggerId?: string;
-    /**
-     * Specifies type of the function trigger.
-     * The valid values are as follows:
-     * + **TIMER**
-     * + **APIG**
-     * + **CTS**
-     * + **DDS**
-     * + **DMS**
-     * + **DIS**
-     * + **LTS**
-     * + **OBS**
-     * + **SMN**
-     * + **KAFKA**
-     * + **RABBITMQ**
-     * + **DEDICATEDGATEWAY**
-     * + **OPENSOURCEKAFKA**
-     * + **APIC**
-     * + **GAUSSMONGO**
-     * + **EVENTGRID**
-     * + **IOTDA**
-     */
     type?: string;
 }
 
@@ -107,37 +44,11 @@ export interface GetFgsFunctionTriggersResult {
     readonly id: string;
     readonly region: string;
     readonly startTime?: string;
-    /**
-     * The current status of the function trigger.
-     */
     readonly status?: string;
     readonly triggerId?: string;
-    /**
-     * All triggers that match the filter parameters.
-     * The triggers structure is documented below.
-     */
     readonly triggers: outputs.GetFgsFunctionTriggersTrigger[];
-    /**
-     * The type of the function trigger.
-     */
     readonly type?: string;
 }
-/**
- * Use this data source to get the list of function triggers of FunctionGraph within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const functionUrn = config.requireObject<any>("functionUrn");
- * const test = sbercloud.getFgsFunctionTriggers({
- *     functionUrn: functionUrn,
- * });
- * ```
- */
 export function getFgsFunctionTriggersOutput(args: GetFgsFunctionTriggersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFgsFunctionTriggersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getFgsFunctionTriggers:getFgsFunctionTriggers", {
@@ -155,58 +66,11 @@ export function getFgsFunctionTriggersOutput(args: GetFgsFunctionTriggersOutputA
  * A collection of arguments for invoking getFgsFunctionTriggers.
  */
 export interface GetFgsFunctionTriggersOutputArgs {
-    /**
-     * Specifies end time of creation time of the function trigger.
-     * The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-     *
-     * > The `status`, `startTime` and `endTime` parameters does not take effect for some triggers, e.g. `SMN`.
-     */
     endTime?: pulumi.Input<string>;
-    /**
-     * Specifies the function URN to which the trigger belongs.
-     */
     functionUrn: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies start time of creation time of the function trigger.
-     * The format is `YYYY-MM-DDThh:mm:ss{timezone}`.
-     */
     startTime?: pulumi.Input<string>;
-    /**
-     * Specifies status of the function trigger.
-     * The valid values are as follows:
-     * + **ACTIVE**
-     * + **DISABLED**
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the function trigger.
-     */
     triggerId?: pulumi.Input<string>;
-    /**
-     * Specifies type of the function trigger.
-     * The valid values are as follows:
-     * + **TIMER**
-     * + **APIG**
-     * + **CTS**
-     * + **DDS**
-     * + **DMS**
-     * + **DIS**
-     * + **LTS**
-     * + **OBS**
-     * + **SMN**
-     * + **KAFKA**
-     * + **RABBITMQ**
-     * + **DEDICATEDGATEWAY**
-     * + **OPENSOURCEKAFKA**
-     * + **APIC**
-     * + **GAUSSMONGO**
-     * + **EVENTGRID**
-     * + **IOTDA**
-     */
     type?: pulumi.Input<string>;
 }

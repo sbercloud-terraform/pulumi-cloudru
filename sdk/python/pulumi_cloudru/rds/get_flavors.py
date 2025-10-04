@@ -77,17 +77,11 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def flavors(self) -> Sequence['outputs.GetFlavorsFlavorResult']:
-        """
-        Indicates the flavors information. Structure is documented below.
-        """
         return pulumi.get(self, "flavors")
 
     @_builtins.property
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[_builtins.str]:
-        """
-        The performance specification.
-        """
         return pulumi.get(self, "group_type")
 
     @_builtins.property
@@ -101,17 +95,11 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter(name="instanceMode")
     def instance_mode(self) -> Optional[_builtins.str]:
-        """
-        The mode of instance.
-        """
         return pulumi.get(self, "instance_mode")
 
     @_builtins.property
     @pulumi.getter
     def memory(self) -> Optional[_builtins.int]:
-        """
-        Indicates the memory size in GB.
-        """
         return pulumi.get(self, "memory")
 
     @_builtins.property
@@ -122,9 +110,6 @@ class GetFlavorsResult:
     @_builtins.property
     @pulumi.getter
     def vcpus(self) -> Optional[_builtins.int]:
-        """
-        Indicates the CPU size.
-        """
         return pulumi.get(self, "vcpus")
 
 
@@ -156,37 +141,7 @@ def get_flavors(availability_zone: Optional[_builtins.str] = None,
                 vcpus: Optional[_builtins.int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFlavorsResult:
     """
-    Use this data source to get available SberCloud rds flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.Rds.get_flavors(db_type="PostgreSQL",
-        db_version="12",
-        instance_mode="ha")
-    ```
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone which the RDS flavor belongs to.
-    :param _builtins.str db_type: Specifies the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-    :param _builtins.str db_version: Specifies the database version. Available value:
-           
-           type | version
-           ---- | ---
-           MySQL| 5.6 <br>5.7 <br>8.0
-           PostgreSQL | 9.5 <br> 9.6 <br>10 <br>11 <br>12 <br>13 <br>14
-           SQLServer| 2012_SE <br>2014_SE <br>2016_SE <br>2017_SE <br>2012_EE <br>2014_EE <br>2016_EE <br>2017_EE <br>2017_WEB
-    :param _builtins.str group_type: Specifies the performance specification, the valid values are as follows:
-           + **normal**: General enhanced.
-           + **normal2**: General enhanced type II.
-    :param _builtins.str instance_mode: The mode of instance. Value: *ha*(indicates primary/standby instance),
-           *single*(indicates single instance) and *replica*(indicates read replicas).
-    :param _builtins.int memory: Specifies the memory size(GB) in the RDS flavor.
-    :param _builtins.str region: The region in which to obtain the RDS flavors. If omitted, the provider-level region will be used.
-    :param _builtins.int vcpus: Specifies the number of vCPUs in the RDS flavor.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -221,37 +176,7 @@ def get_flavors_output(availability_zone: Optional[pulumi.Input[Optional[_builti
                        vcpus: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlavorsResult]:
     """
-    Use this data source to get available SberCloud rds flavors.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    flavor = sbercloud.Rds.get_flavors(db_type="PostgreSQL",
-        db_version="12",
-        instance_mode="ha")
-    ```
-
-
-    :param _builtins.str availability_zone: Specifies the availability zone which the RDS flavor belongs to.
-    :param _builtins.str db_type: Specifies the DB engine. Value: MySQL, PostgreSQL, SQLServer.
-    :param _builtins.str db_version: Specifies the database version. Available value:
-           
-           type | version
-           ---- | ---
-           MySQL| 5.6 <br>5.7 <br>8.0
-           PostgreSQL | 9.5 <br> 9.6 <br>10 <br>11 <br>12 <br>13 <br>14
-           SQLServer| 2012_SE <br>2014_SE <br>2016_SE <br>2017_SE <br>2012_EE <br>2014_EE <br>2016_EE <br>2017_EE <br>2017_WEB
-    :param _builtins.str group_type: Specifies the performance specification, the valid values are as follows:
-           + **normal**: General enhanced.
-           + **normal2**: General enhanced type II.
-    :param _builtins.str instance_mode: The mode of instance. Value: *ha*(indicates primary/standby instance),
-           *single*(indicates single instance) and *replica*(indicates read replicas).
-    :param _builtins.int memory: Specifies the memory size(GB) in the RDS flavor.
-    :param _builtins.str region: The region in which to obtain the RDS flavors. If omitted, the provider-level region will be used.
-    :param _builtins.int vcpus: Specifies the number of vCPUs in the RDS flavor.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone

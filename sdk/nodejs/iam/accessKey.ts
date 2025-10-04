@@ -4,25 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a permanent Access Key resource within SberCloud IAM service.
- *
- * > **NOTE:** You _must_ have admin privileges in your SberCloud cloud to use this resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const user1 = new sbercloud.iam.User("user_1", {
- *     name: "user_1",
- *     description: "A user",
- *     password: "password123!",
- * });
- * const key1 = new sbercloud.iam.AccessKey("key_1", {userId: user1.id});
- * ```
- */
 export class AccessKey extends pulumi.CustomResource {
     /**
      * Get an existing AccessKey resource's state with the given name, ID, and optional extra
@@ -51,46 +32,15 @@ export class AccessKey extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessKey.__pulumiType;
     }
 
-    /**
-     * The time when the access key was created.
-     */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
-    /**
-     * Specifies the description of the access key.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly encryptedSecret: pulumi.Output<string>;
-    /**
-     * The fingerprint of the PGP key used to encrypt the secret
-     */
     declare public /*out*/ readonly keyFingerprint: pulumi.Output<string>;
-    /**
-     * Either a base-64 encoded PGP public key, or a keybase username in the form
-     * `keybase:some_person_that_exists`. Changing this creates a new resource.
-     */
     declare public readonly pgpKey: pulumi.Output<string | undefined>;
-    /**
-     * The access secret key. Setting the value only when writing to `secretFile` failed.
-     */
     declare public /*out*/ readonly secret: pulumi.Output<string>;
-    /**
-     * Specifies the file name that can save access key and access secret key.
-     * Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-     */
     declare public readonly secretFile: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the status of the access key. It must be *active* or *inactive*. Default value
-     * is *active*.
-     */
     declare public readonly status: pulumi.Output<string>;
-    /**
-     * Specifies the ID of the user who is requesting to create an access key.
-     * Changing this creates a new resource.
-     */
     declare public readonly userId: pulumi.Output<string>;
-    /**
-     * The name of IAM user.
-     */
     declare public /*out*/ readonly userName: pulumi.Output<string>;
 
     /**
@@ -143,46 +93,15 @@ export class AccessKey extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessKey resources.
  */
 export interface AccessKeyState {
-    /**
-     * The time when the access key was created.
-     */
     createTime?: pulumi.Input<string>;
-    /**
-     * Specifies the description of the access key.
-     */
     description?: pulumi.Input<string>;
     encryptedSecret?: pulumi.Input<string>;
-    /**
-     * The fingerprint of the PGP key used to encrypt the secret
-     */
     keyFingerprint?: pulumi.Input<string>;
-    /**
-     * Either a base-64 encoded PGP public key, or a keybase username in the form
-     * `keybase:some_person_that_exists`. Changing this creates a new resource.
-     */
     pgpKey?: pulumi.Input<string>;
-    /**
-     * The access secret key. Setting the value only when writing to `secretFile` failed.
-     */
     secret?: pulumi.Input<string>;
-    /**
-     * Specifies the file name that can save access key and access secret key.
-     * Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-     */
     secretFile?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the access key. It must be *active* or *inactive*. Default value
-     * is *active*.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the user who is requesting to create an access key.
-     * Changing this creates a new resource.
-     */
     userId?: pulumi.Input<string>;
-    /**
-     * The name of IAM user.
-     */
     userName?: pulumi.Input<string>;
 }
 
@@ -190,28 +109,9 @@ export interface AccessKeyState {
  * The set of arguments for constructing a AccessKey resource.
  */
 export interface AccessKeyArgs {
-    /**
-     * Specifies the description of the access key.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Either a base-64 encoded PGP public key, or a keybase username in the form
-     * `keybase:some_person_that_exists`. Changing this creates a new resource.
-     */
     pgpKey?: pulumi.Input<string>;
-    /**
-     * Specifies the file name that can save access key and access secret key.
-     * Defaults to *./credentials-{{user name}}.csv*. Changing this creates a new resource.
-     */
     secretFile?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the access key. It must be *active* or *inactive*. Default value
-     * is *active*.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the user who is requesting to create an access key.
-     * Changing this creates a new resource.
-     */
     userId: pulumi.Input<string>;
 }

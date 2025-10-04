@@ -4,43 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Associates an EIP to a port.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const myport = sbercloud.Vpc.getPort({
- *     networkId: "a5bbd213-e1d3-49b6-aed1-9df60ea94b9a",
- * });
- * const myeip = new sbercloud.vpc.Eip("myeip", {
- *     publicip: {
- *         type: "5_bgp",
- *     },
- *     bandwidth: {
- *         name: "test",
- *         size: 8,
- *         shareType: "PER",
- *         chargeMode: "traffic",
- *     },
- * });
- * const associated = new sbercloud.NetworkingEipAssociate("associated", {
- *     publicIp: myeip.address,
- *     portId: myport.then(myport => myport.id),
- * });
- * ```
- *
- * ## Import
- *
- * EIP associations can be imported using the `id` of the EIP, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:index/networkingEipAssociate:NetworkingEipAssociate eip 2c7f39f3-702b-48d1-940c-b50384177ee1
- * ```
- */
 export class NetworkingEipAssociate extends pulumi.CustomResource {
     /**
      * Get an existing NetworkingEipAssociate resource's state with the given name, ID, and optional extra
@@ -72,14 +35,7 @@ export class NetworkingEipAssociate extends pulumi.CustomResource {
     declare public readonly fixedIp: pulumi.Output<string>;
     declare public /*out*/ readonly macAddress: pulumi.Output<string>;
     declare public readonly networkId: pulumi.Output<string>;
-    /**
-     * ID of an existing port with at least one IP address to
-     * associate with this EIP.
-     */
     declare public readonly portId: pulumi.Output<string>;
-    /**
-     * The EIP to associate.
-     */
     declare public readonly publicIp: pulumi.Output<string>;
     declare public /*out*/ readonly publicIpv6: pulumi.Output<string>;
     declare public readonly region: pulumi.Output<string>;
@@ -132,14 +88,7 @@ export interface NetworkingEipAssociateState {
     fixedIp?: pulumi.Input<string>;
     macAddress?: pulumi.Input<string>;
     networkId?: pulumi.Input<string>;
-    /**
-     * ID of an existing port with at least one IP address to
-     * associate with this EIP.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * The EIP to associate.
-     */
     publicIp?: pulumi.Input<string>;
     publicIpv6?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
@@ -152,14 +101,7 @@ export interface NetworkingEipAssociateState {
 export interface NetworkingEipAssociateArgs {
     fixedIp?: pulumi.Input<string>;
     networkId?: pulumi.Input<string>;
-    /**
-     * ID of an existing port with at least one IP address to
-     * associate with this EIP.
-     */
     portId?: pulumi.Input<string>;
-    /**
-     * The EIP to associate.
-     */
     publicIp: pulumi.Input<string>;
     region?: pulumi.Input<string>;
 }

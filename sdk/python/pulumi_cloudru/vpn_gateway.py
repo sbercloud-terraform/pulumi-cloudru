@@ -47,85 +47,21 @@ class VpnGatewayArgs:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpnGateway resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The list of availability zone IDs.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_private_ip1: The private IP 1 in private network type VPN gateway.
-               It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_private_ip2: The private IP 2 in private network type VPN gateway.
-               It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID.
-               The default value is the value of `connect_subnet`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID.
-               The default value is the value of `vpc_id`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP. The value ranges from **1** to **4294967295**.
-               Defaults to **64512**
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] attachment_type: The attachment type. The value can be **vpc** and **er**.
-               Defaults to **vpc**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['VpnGatewayCertificateArgs'] certificate: The GM certificate of the **GM** flavor gateway.
-               The object structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone IDs.
+        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID of the VPN gateway.
+        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID of the VPN gateway.
+        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP
+        :param pulumi.Input[_builtins.str] attachment_type: The attachment type.
         :param pulumi.Input[_builtins.str] connect_subnet: The Network ID of the VPC subnet used by the VPN gateway.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Whether to delete the EIP when the VPN gateway is deleted.
-        :param pulumi.Input['VpnGatewayEip1Args'] eip1: The master 1 IP in active-active VPN gateway or the master IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['VpnGatewayEip2Args'] eip2: The master 2 IP in active-active VPN gateway or the slave IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
-               
-               <a name="Gateway_CreateRequestEip"></a>
-               The `eip1` or `eip2` block supports:
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID
         :param pulumi.Input[_builtins.str] er_id: The enterprise router ID to attach with to VPN gateway.
-               This parameter is mandatory when `attachment_type` is **er**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] flavor: The flavor of the VPN gateway.
-               The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of VPN gateway. Valid values are **active-active** and
-               **active-standby**. The default value is **active-active**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The list of local subnets.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-        :param pulumi.Input[_builtins.str] name: The name of the gateway certificate.
-        :param pulumi.Input[_builtins.str] network_type: The network type. The value can be **public** and **private**.
-               Defaults to **public**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN gateway.
-               
-               <a name="Gateway_certificate_attr"></a>
-               The `certificate` block supports:
+        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of the VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The local subnets.
+        :param pulumi.Input[_builtins.str] name: The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
+        :param pulumi.Input[_builtins.str] network_type: The network type of the VPN gateway.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPN gateway is connected.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         if access_private_ip1 is not None:
@@ -179,9 +115,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of availability zone IDs.
-
-        Changing this parameter will create a new resource.
+        The availability zone IDs.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -192,13 +126,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="accessPrivateIp1")
     def access_private_ip1(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private IP 1 in private network type VPN gateway.
-        It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-        Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "access_private_ip1")
 
     @access_private_ip1.setter
@@ -208,13 +135,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter(name="accessPrivateIp2")
     def access_private_ip2(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private IP 2 in private network type VPN gateway.
-        It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-        Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "access_private_ip2")
 
     @access_private_ip2.setter
@@ -225,10 +145,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="accessSubnetId")
     def access_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access subnet ID.
-        The default value is the value of `connect_subnet`.
-
-        Changing this parameter will create a new resource.
+        The access subnet ID of the VPN gateway.
         """
         return pulumi.get(self, "access_subnet_id")
 
@@ -240,10 +157,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="accessVpcId")
     def access_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access VPC ID.
-        The default value is the value of `vpc_id`.
-
-        Changing this parameter will create a new resource.
+        The access VPC ID of the VPN gateway.
         """
         return pulumi.get(self, "access_vpc_id")
 
@@ -255,10 +169,7 @@ class VpnGatewayArgs:
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ASN number of BGP. The value ranges from **1** to **4294967295**.
-        Defaults to **64512**
-
-        Changing this parameter will create a new resource.
+        The ASN number of BGP
         """
         return pulumi.get(self, "asn")
 
@@ -270,10 +181,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The attachment type. The value can be **vpc** and **er**.
-        Defaults to **vpc**.
-
-        Changing this parameter will create a new resource.
+        The attachment type.
         """
         return pulumi.get(self, "attachment_type")
 
@@ -284,10 +192,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input['VpnGatewayCertificateArgs']]:
-        """
-        The GM certificate of the **GM** flavor gateway.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -299,9 +203,6 @@ class VpnGatewayArgs:
     def connect_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The Network ID of the VPC subnet used by the VPN gateway.
-        This parameter is mandatory when `attachment_type` is **vpc**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "connect_subnet")
 
@@ -324,13 +225,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def eip1(self) -> Optional[pulumi.Input['VpnGatewayEip1Args']]:
-        """
-        The master 1 IP in active-active VPN gateway or the master IP
-        in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-        The object structure is documented below.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "eip1")
 
     @eip1.setter
@@ -340,13 +234,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def eip2(self) -> Optional[pulumi.Input['VpnGatewayEip2Args']]:
-        """
-        The master 2 IP in active-active VPN gateway or the slave IP
-        in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-        The object structure is documented below.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "eip2")
 
     @eip2.setter
@@ -357,10 +244,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project ID.
-
-        <a name="Gateway_CreateRequestEip"></a>
-        The `eip1` or `eip2` block supports:
+        The enterprise project ID
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -373,9 +257,6 @@ class VpnGatewayArgs:
     def er_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The enterprise router ID to attach with to VPN gateway.
-        This parameter is mandatory when `attachment_type` is **er**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "er_id")
 
@@ -388,9 +269,6 @@ class VpnGatewayArgs:
     def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The flavor of the VPN gateway.
-        The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "flavor")
 
@@ -402,10 +280,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="haMode")
     def ha_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The HA mode of VPN gateway. Valid values are **active-active** and
-        **active-standby**. The default value is **active-active**.
-
-        Changing this parameter will create a new resource.
+        The HA mode of the VPN gateway.
         """
         return pulumi.get(self, "ha_mode")
 
@@ -417,8 +292,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="localSubnets")
     def local_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of local subnets.
-        This parameter is mandatory when `attachment_type` is **vpc**.
+        The local subnets.
         """
         return pulumi.get(self, "local_subnets")
 
@@ -439,7 +313,7 @@ class VpnGatewayArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the gateway certificate.
+        The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
         """
         return pulumi.get(self, "name")
 
@@ -451,10 +325,7 @@ class VpnGatewayArgs:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network type. The value can be **public** and **private**.
-        Defaults to **public**.
-
-        Changing this parameter will create a new resource.
+        The network type of the VPN gateway.
         """
         return pulumi.get(self, "network_type")
 
@@ -465,10 +336,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -487,12 +354,6 @@ class VpnGatewayArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the VPN gateway.
-
-        <a name="Gateway_certificate_attr"></a>
-        The `certificate` block supports:
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -504,9 +365,6 @@ class VpnGatewayArgs:
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the VPC to which the VPN gateway is connected.
-        This parameter is mandatory when `attachment_type` is **vpc**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -550,91 +408,27 @@ class _VpnGatewayState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpnGateway resources.
-        :param pulumi.Input[_builtins.str] access_private_ip1: The private IP 1 in private network type VPN gateway.
-               It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_private_ip2: The private IP 2 in private network type VPN gateway.
-               It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID.
-               The default value is the value of `connect_subnet`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID.
-               The default value is the value of `vpc_id`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP. The value ranges from **1** to **4294967295**.
-               Defaults to **64512**
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] attachment_type: The attachment type. The value can be **vpc** and **er**.
-               Defaults to **vpc**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The list of availability zone IDs.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['VpnGatewayCertificateArgs'] certificate: The GM certificate of the **GM** flavor gateway.
-               The object structure is documented below.
+        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID of the VPN gateway.
+        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID of the VPN gateway.
+        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP
+        :param pulumi.Input[_builtins.str] attachment_type: The attachment type.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone IDs.
         :param pulumi.Input[_builtins.str] connect_subnet: The Network ID of the VPC subnet used by the VPN gateway.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the gateway certificate.
+        :param pulumi.Input[_builtins.str] created_at: The create time.
         :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Whether to delete the EIP when the VPN gateway is deleted.
-        :param pulumi.Input['VpnGatewayEip1Args'] eip1: The master 1 IP in active-active VPN gateway or the master IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['VpnGatewayEip2Args'] eip2: The master 2 IP in active-active VPN gateway or the slave IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
-               
-               <a name="Gateway_CreateRequestEip"></a>
-               The `eip1` or `eip2` block supports:
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID
         :param pulumi.Input[_builtins.str] er_attachment_id: The ER attachment ID.
         :param pulumi.Input[_builtins.str] er_id: The enterprise router ID to attach with to VPN gateway.
-               This parameter is mandatory when `attachment_type` is **er**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] flavor: The flavor of the VPN gateway.
-               The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of VPN gateway. Valid values are **active-active** and
-               **active-standby**. The default value is **active-active**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The list of local subnets.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-        :param pulumi.Input[_builtins.str] name: The name of the gateway certificate.
-        :param pulumi.Input[_builtins.str] network_type: The network type. The value can be **public** and **private**.
-               Defaults to **public**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: The status of the certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN gateway.
-               
-               <a name="Gateway_certificate_attr"></a>
-               The `certificate` block supports:
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the gateway certificate.
+        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of the VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The local subnets.
+        :param pulumi.Input[_builtins.str] name: The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
+        :param pulumi.Input[_builtins.str] network_type: The network type of the VPN gateway.
+        :param pulumi.Input[_builtins.str] status: The status of VPN gateway.
+        :param pulumi.Input[_builtins.str] updated_at: The update time.
         :param pulumi.Input[_builtins.int] used_connection_group: The number of used connection groups.
         :param pulumi.Input[_builtins.int] used_connection_number: The number of used connections.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPN gateway is connected.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
         """
         if access_private_ip1 is not None:
             pulumi.set(__self__, "access_private_ip1", access_private_ip1)
@@ -700,13 +494,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter(name="accessPrivateIp1")
     def access_private_ip1(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private IP 1 in private network type VPN gateway.
-        It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-        Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "access_private_ip1")
 
     @access_private_ip1.setter
@@ -716,13 +503,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter(name="accessPrivateIp2")
     def access_private_ip2(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private IP 2 in private network type VPN gateway.
-        It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-        Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "access_private_ip2")
 
     @access_private_ip2.setter
@@ -733,10 +513,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="accessSubnetId")
     def access_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access subnet ID.
-        The default value is the value of `connect_subnet`.
-
-        Changing this parameter will create a new resource.
+        The access subnet ID of the VPN gateway.
         """
         return pulumi.get(self, "access_subnet_id")
 
@@ -748,10 +525,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="accessVpcId")
     def access_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The access VPC ID.
-        The default value is the value of `vpc_id`.
-
-        Changing this parameter will create a new resource.
+        The access VPC ID of the VPN gateway.
         """
         return pulumi.get(self, "access_vpc_id")
 
@@ -763,10 +537,7 @@ class _VpnGatewayState:
     @pulumi.getter
     def asn(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ASN number of BGP. The value ranges from **1** to **4294967295**.
-        Defaults to **64512**
-
-        Changing this parameter will create a new resource.
+        The ASN number of BGP
         """
         return pulumi.get(self, "asn")
 
@@ -778,10 +549,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The attachment type. The value can be **vpc** and **er**.
-        Defaults to **vpc**.
-
-        Changing this parameter will create a new resource.
+        The attachment type.
         """
         return pulumi.get(self, "attachment_type")
 
@@ -793,9 +561,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of availability zone IDs.
-
-        Changing this parameter will create a new resource.
+        The availability zone IDs.
         """
         return pulumi.get(self, "availability_zones")
 
@@ -806,10 +572,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input['VpnGatewayCertificateArgs']]:
-        """
-        The GM certificate of the **GM** flavor gateway.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -821,9 +583,6 @@ class _VpnGatewayState:
     def connect_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The Network ID of the VPC subnet used by the VPN gateway.
-        This parameter is mandatory when `attachment_type` is **vpc**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "connect_subnet")
 
@@ -835,7 +594,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The create time of the gateway certificate.
+        The create time.
         """
         return pulumi.get(self, "created_at")
 
@@ -858,13 +617,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter
     def eip1(self) -> Optional[pulumi.Input['VpnGatewayEip1Args']]:
-        """
-        The master 1 IP in active-active VPN gateway or the master IP
-        in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-        The object structure is documented below.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "eip1")
 
     @eip1.setter
@@ -874,13 +626,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter
     def eip2(self) -> Optional[pulumi.Input['VpnGatewayEip2Args']]:
-        """
-        The master 2 IP in active-active VPN gateway or the slave IP
-        in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-        The object structure is documented below.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "eip2")
 
     @eip2.setter
@@ -891,10 +636,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project ID.
-
-        <a name="Gateway_CreateRequestEip"></a>
-        The `eip1` or `eip2` block supports:
+        The enterprise project ID
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -919,9 +661,6 @@ class _VpnGatewayState:
     def er_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The enterprise router ID to attach with to VPN gateway.
-        This parameter is mandatory when `attachment_type` is **er**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "er_id")
 
@@ -934,9 +673,6 @@ class _VpnGatewayState:
     def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The flavor of the VPN gateway.
-        The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "flavor")
 
@@ -948,10 +684,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="haMode")
     def ha_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The HA mode of VPN gateway. Valid values are **active-active** and
-        **active-standby**. The default value is **active-active**.
-
-        Changing this parameter will create a new resource.
+        The HA mode of the VPN gateway.
         """
         return pulumi.get(self, "ha_mode")
 
@@ -963,8 +696,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="localSubnets")
     def local_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of local subnets.
-        This parameter is mandatory when `attachment_type` is **vpc**.
+        The local subnets.
         """
         return pulumi.get(self, "local_subnets")
 
@@ -985,7 +717,7 @@ class _VpnGatewayState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the gateway certificate.
+        The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
         """
         return pulumi.get(self, "name")
 
@@ -997,10 +729,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network type. The value can be **public** and **private**.
-        Defaults to **public**.
-
-        Changing this parameter will create a new resource.
+        The network type of the VPN gateway.
         """
         return pulumi.get(self, "network_type")
 
@@ -1011,10 +740,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1034,7 +759,7 @@ class _VpnGatewayState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The status of the certificate.
+        The status of VPN gateway.
         """
         return pulumi.get(self, "status")
 
@@ -1045,12 +770,6 @@ class _VpnGatewayState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the tags of the VPN gateway.
-
-        <a name="Gateway_certificate_attr"></a>
-        The `certificate` block supports:
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1061,7 +780,7 @@ class _VpnGatewayState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The update time of the gateway certificate.
+        The update time.
         """
         return pulumi.get(self, "updated_at")
 
@@ -1098,9 +817,6 @@ class _VpnGatewayState:
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the VPC to which the VPN gateway is connected.
-        This parameter is mandatory when `attachment_type` is **vpc**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1141,252 +857,24 @@ class VpnGateway(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages a VPN gateway resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        eip_id1 = config.require_object("eipId1")
-        eip_id2 = config.require_object("eipId2")
-        test = sbercloud.get_vpn_gateway_availability_zones(flavor="professional1",
-            attachment_type="vpc")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name=name,
-            vpc_id=vpc_id,
-            local_subnets=[
-                "192.168.0.0/24",
-                "192.168.1.0/24",
-            ],
-            connect_subnet=subnet_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            eip1={
-                "id": eip_id1,
-            },
-            eip2={
-                "id": eip_id2,
-            })
-        ```
-
-        ### Creating a VPN gateway with creating new EIPs
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        bandwidth_name1 = config.require_object("bandwidthName1")
-        bandwidth_name2 = config.require_object("bandwidthName2")
-        test = sbercloud.get_vpn_gateway_availability_zones(flavor="professional1",
-            attachment_type="vpc")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name=name,
-            vpc_id=vpc_id,
-            local_subnets=[
-                "192.168.0.0/24",
-                "192.168.1.0/24",
-            ],
-            connect_subnet=subnet_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            eip1={
-                "bandwidth_name": bandwidth_name1,
-                "type": "5_bgp",
-                "bandwidth_size": 5,
-                "charge_mode": "traffic",
-            },
-            eip2={
-                "bandwidth_name": bandwidth_name2,
-                "type": "5_bgp",
-                "bandwidth_size": 5,
-                "charge_mode": "traffic",
-            })
-        ```
-
-        ### Creating a private VPN gateway with Enterprise Router
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        er_id = config.require_object("erId")
-        access_vpc_id = config.require_object("accessVpcId")
-        access_subnet_id = config.require_object("accessSubnetId")
-        access_private_ip1 = config.require_object("accessPrivateIp1")
-        access_private_ip2 = config.require_object("accessPrivateIp2")
-        test = sbercloud.get_vpn_gateway_availability_zones(flavor="professional1",
-            attachment_type="er")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name=name,
-            network_type="private",
-            attachment_type="er",
-            er_id=er_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            access_vpc_id=access_vpc_id,
-            access_subnet_id=access_subnet_id,
-            access_private_ip1=access_private_ip1,
-            access_private_ip2=access_private_ip2)
-        ```
-
-        ### Creating a GM VPN gateway with certificate
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        cidr = config.require_object("cidr")
-        subnet_id = config.require_object("subnetId")
-        test = sbercloud.get_vpn_gateway_availability_zones(attachment_type="er",
-            flavor="GM")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name="test",
-            vpc_id=vpc_id,
-            flavor="GM",
-            network_type="private",
-            local_subnets=[cidr],
-            connect_subnet=subnet_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            certificate={
-                "name": "test",
-                "content": \"\"\"-----BEGIN CERTIFICATE-----
-        THIS IS YOUR CERT CONTENT
-        -----END CERTIFICATE-----\"\"\",
-                "private_key": \"\"\"-----BEGIN EC PRIVATE KEY-----
-        THIS IS YOUR PRIVATE KEY CONTENT
-        -----END EC PRIVATE KEY-----\"\"\",
-                "certificate_chain": \"\"\"-----BEGIN CERTIFICATE-----
-        THIS IS YOUR CERTIFICATE CHAIN CONTENT
-        -----END CERTIFICATE-----\"\"\",
-                "enc_certificate": \"\"\"-----BEGIN CERTIFICATE-----
-        THIS IS YOUR ENC CERTIFICATE CONTENT
-        -----END CERTIFICATE-----\"\"\",
-                "enc_private_key": \"\"\"-----BEGIN EC PRIVATE KEY-----
-        THIS IS YOUR ENC PRIVATE KEY CONTENT
-        -----END EC PRIVATE KEY-----\"\"\",
-            })
-        ```
-
-        ## Import
-
-        The gateway can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnGateway:VpnGateway test <id>
-        ```
-
+        Create a VpnGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_private_ip1: The private IP 1 in private network type VPN gateway.
-               It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_private_ip2: The private IP 2 in private network type VPN gateway.
-               It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID.
-               The default value is the value of `connect_subnet`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID.
-               The default value is the value of `vpc_id`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP. The value ranges from **1** to **4294967295**.
-               Defaults to **64512**
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] attachment_type: The attachment type. The value can be **vpc** and **er**.
-               Defaults to **vpc**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The list of availability zone IDs.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['VpnGatewayCertificateArgs', 'VpnGatewayCertificateArgsDict']] certificate: The GM certificate of the **GM** flavor gateway.
-               The object structure is documented below.
+        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID of the VPN gateway.
+        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID of the VPN gateway.
+        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP
+        :param pulumi.Input[_builtins.str] attachment_type: The attachment type.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone IDs.
         :param pulumi.Input[_builtins.str] connect_subnet: The Network ID of the VPC subnet used by the VPN gateway.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Whether to delete the EIP when the VPN gateway is deleted.
-        :param pulumi.Input[Union['VpnGatewayEip1Args', 'VpnGatewayEip1ArgsDict']] eip1: The master 1 IP in active-active VPN gateway or the master IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['VpnGatewayEip2Args', 'VpnGatewayEip2ArgsDict']] eip2: The master 2 IP in active-active VPN gateway or the slave IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
-               
-               <a name="Gateway_CreateRequestEip"></a>
-               The `eip1` or `eip2` block supports:
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID
         :param pulumi.Input[_builtins.str] er_id: The enterprise router ID to attach with to VPN gateway.
-               This parameter is mandatory when `attachment_type` is **er**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] flavor: The flavor of the VPN gateway.
-               The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of VPN gateway. Valid values are **active-active** and
-               **active-standby**. The default value is **active-active**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The list of local subnets.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-        :param pulumi.Input[_builtins.str] name: The name of the gateway certificate.
-        :param pulumi.Input[_builtins.str] network_type: The network type. The value can be **public** and **private**.
-               Defaults to **public**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN gateway.
-               
-               <a name="Gateway_certificate_attr"></a>
-               The `certificate` block supports:
+        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of the VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The local subnets.
+        :param pulumi.Input[_builtins.str] name: The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
+        :param pulumi.Input[_builtins.str] network_type: The network type of the VPN gateway.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPN gateway is connected.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
         """
         ...
     @overload
@@ -1395,171 +883,7 @@ class VpnGateway(pulumi.CustomResource):
                  args: VpnGatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a VPN gateway resource within SberCloud.
-
-        ## Example Usage
-
-        ### Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        eip_id1 = config.require_object("eipId1")
-        eip_id2 = config.require_object("eipId2")
-        test = sbercloud.get_vpn_gateway_availability_zones(flavor="professional1",
-            attachment_type="vpc")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name=name,
-            vpc_id=vpc_id,
-            local_subnets=[
-                "192.168.0.0/24",
-                "192.168.1.0/24",
-            ],
-            connect_subnet=subnet_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            eip1={
-                "id": eip_id1,
-            },
-            eip2={
-                "id": eip_id2,
-            })
-        ```
-
-        ### Creating a VPN gateway with creating new EIPs
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        bandwidth_name1 = config.require_object("bandwidthName1")
-        bandwidth_name2 = config.require_object("bandwidthName2")
-        test = sbercloud.get_vpn_gateway_availability_zones(flavor="professional1",
-            attachment_type="vpc")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name=name,
-            vpc_id=vpc_id,
-            local_subnets=[
-                "192.168.0.0/24",
-                "192.168.1.0/24",
-            ],
-            connect_subnet=subnet_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            eip1={
-                "bandwidth_name": bandwidth_name1,
-                "type": "5_bgp",
-                "bandwidth_size": 5,
-                "charge_mode": "traffic",
-            },
-            eip2={
-                "bandwidth_name": bandwidth_name2,
-                "type": "5_bgp",
-                "bandwidth_size": 5,
-                "charge_mode": "traffic",
-            })
-        ```
-
-        ### Creating a private VPN gateway with Enterprise Router
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        name = config.require_object("name")
-        er_id = config.require_object("erId")
-        access_vpc_id = config.require_object("accessVpcId")
-        access_subnet_id = config.require_object("accessSubnetId")
-        access_private_ip1 = config.require_object("accessPrivateIp1")
-        access_private_ip2 = config.require_object("accessPrivateIp2")
-        test = sbercloud.get_vpn_gateway_availability_zones(flavor="professional1",
-            attachment_type="er")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name=name,
-            network_type="private",
-            attachment_type="er",
-            er_id=er_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            access_vpc_id=access_vpc_id,
-            access_subnet_id=access_subnet_id,
-            access_private_ip1=access_private_ip1,
-            access_private_ip2=access_private_ip2)
-        ```
-
-        ### Creating a GM VPN gateway with certificate
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-        import pulumi_sbercloud as sbercloud
-
-        config = pulumi.Config()
-        vpc_id = config.require_object("vpcId")
-        cidr = config.require_object("cidr")
-        subnet_id = config.require_object("subnetId")
-        test = sbercloud.get_vpn_gateway_availability_zones(attachment_type="er",
-            flavor="GM")
-        test_vpn_gateway = sbercloud.VpnGateway("test",
-            name="test",
-            vpc_id=vpc_id,
-            flavor="GM",
-            network_type="private",
-            local_subnets=[cidr],
-            connect_subnet=subnet_id,
-            availability_zones=[
-                test.names[0],
-                test.names[1],
-            ],
-            certificate={
-                "name": "test",
-                "content": \"\"\"-----BEGIN CERTIFICATE-----
-        THIS IS YOUR CERT CONTENT
-        -----END CERTIFICATE-----\"\"\",
-                "private_key": \"\"\"-----BEGIN EC PRIVATE KEY-----
-        THIS IS YOUR PRIVATE KEY CONTENT
-        -----END EC PRIVATE KEY-----\"\"\",
-                "certificate_chain": \"\"\"-----BEGIN CERTIFICATE-----
-        THIS IS YOUR CERTIFICATE CHAIN CONTENT
-        -----END CERTIFICATE-----\"\"\",
-                "enc_certificate": \"\"\"-----BEGIN CERTIFICATE-----
-        THIS IS YOUR ENC CERTIFICATE CONTENT
-        -----END CERTIFICATE-----\"\"\",
-                "enc_private_key": \"\"\"-----BEGIN EC PRIVATE KEY-----
-        THIS IS YOUR ENC PRIVATE KEY CONTENT
-        -----END EC PRIVATE KEY-----\"\"\",
-            })
-        ```
-
-        ## Import
-
-        The gateway can be imported using the `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:index/vpnGateway:VpnGateway test <id>
-        ```
-
+        Create a VpnGateway resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param VpnGatewayArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1687,91 +1011,27 @@ class VpnGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_private_ip1: The private IP 1 in private network type VPN gateway.
-               It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_private_ip2: The private IP 2 in private network type VPN gateway.
-               It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-               Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID.
-               The default value is the value of `connect_subnet`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID.
-               The default value is the value of `vpc_id`.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP. The value ranges from **1** to **4294967295**.
-               Defaults to **64512**
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] attachment_type: The attachment type. The value can be **vpc** and **er**.
-               Defaults to **vpc**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The list of availability zone IDs.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['VpnGatewayCertificateArgs', 'VpnGatewayCertificateArgsDict']] certificate: The GM certificate of the **GM** flavor gateway.
-               The object structure is documented below.
+        :param pulumi.Input[_builtins.str] access_subnet_id: The access subnet ID of the VPN gateway.
+        :param pulumi.Input[_builtins.str] access_vpc_id: The access VPC ID of the VPN gateway.
+        :param pulumi.Input[_builtins.int] asn: The ASN number of BGP
+        :param pulumi.Input[_builtins.str] attachment_type: The attachment type.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: The availability zone IDs.
         :param pulumi.Input[_builtins.str] connect_subnet: The Network ID of the VPC subnet used by the VPN gateway.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] created_at: The create time of the gateway certificate.
+        :param pulumi.Input[_builtins.str] created_at: The create time.
         :param pulumi.Input[_builtins.bool] delete_eip_on_termination: Whether to delete the EIP when the VPN gateway is deleted.
-        :param pulumi.Input[Union['VpnGatewayEip1Args', 'VpnGatewayEip1ArgsDict']] eip1: The master 1 IP in active-active VPN gateway or the master IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['VpnGatewayEip2Args', 'VpnGatewayEip2ArgsDict']] eip2: The master 2 IP in active-active VPN gateway or the slave IP
-               in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-               The object structure is documented below.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID.
-               
-               <a name="Gateway_CreateRequestEip"></a>
-               The `eip1` or `eip2` block supports:
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID
         :param pulumi.Input[_builtins.str] er_attachment_id: The ER attachment ID.
         :param pulumi.Input[_builtins.str] er_id: The enterprise router ID to attach with to VPN gateway.
-               This parameter is mandatory when `attachment_type` is **er**.
-               
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.str] flavor: The flavor of the VPN gateway.
-               The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of VPN gateway. Valid values are **active-active** and
-               **active-standby**. The default value is **active-active**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The list of local subnets.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-        :param pulumi.Input[_builtins.str] name: The name of the gateway certificate.
-        :param pulumi.Input[_builtins.str] network_type: The network type. The value can be **public** and **private**.
-               Defaults to **public**.
-               
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the resource.
-               If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] status: The status of the certificate.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the tags of the VPN gateway.
-               
-               <a name="Gateway_certificate_attr"></a>
-               The `certificate` block supports:
-        :param pulumi.Input[_builtins.str] updated_at: The update time of the gateway certificate.
+        :param pulumi.Input[_builtins.str] ha_mode: The HA mode of the VPN gateway.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] local_subnets: The local subnets.
+        :param pulumi.Input[_builtins.str] name: The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
+        :param pulumi.Input[_builtins.str] network_type: The network type of the VPN gateway.
+        :param pulumi.Input[_builtins.str] status: The status of VPN gateway.
+        :param pulumi.Input[_builtins.str] updated_at: The update time.
         :param pulumi.Input[_builtins.int] used_connection_group: The number of used connection groups.
         :param pulumi.Input[_builtins.int] used_connection_number: The number of used connections.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC to which the VPN gateway is connected.
-               This parameter is mandatory when `attachment_type` is **vpc**.
-               
-               Changing this parameter will create a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1812,35 +1072,18 @@ class VpnGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="accessPrivateIp1")
     def access_private_ip1(self) -> pulumi.Output[_builtins.str]:
-        """
-        The private IP 1 in private network type VPN gateway.
-        It is the master IP 1 in **active-active** HA mode, and the master IP in **active-standby** HA mode.
-        Must declare the **access_private_ip_2** at the same time, and can not use the same IP value.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "access_private_ip1")
 
     @_builtins.property
     @pulumi.getter(name="accessPrivateIp2")
     def access_private_ip2(self) -> pulumi.Output[_builtins.str]:
-        """
-        The private IP 2 in private network type VPN gateway.
-        It is the master IP 2 in **active-active** HA mode, and the slave IP in **active-standby** HA mode.
-        Must declare the **access_private_ip_1** at the same time, and can not use the same IP value.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "access_private_ip2")
 
     @_builtins.property
     @pulumi.getter(name="accessSubnetId")
     def access_subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The access subnet ID.
-        The default value is the value of `connect_subnet`.
-
-        Changing this parameter will create a new resource.
+        The access subnet ID of the VPN gateway.
         """
         return pulumi.get(self, "access_subnet_id")
 
@@ -1848,10 +1091,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="accessVpcId")
     def access_vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The access VPC ID.
-        The default value is the value of `vpc_id`.
-
-        Changing this parameter will create a new resource.
+        The access VPC ID of the VPN gateway.
         """
         return pulumi.get(self, "access_vpc_id")
 
@@ -1859,10 +1099,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter
     def asn(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The ASN number of BGP. The value ranges from **1** to **4294967295**.
-        Defaults to **64512**
-
-        Changing this parameter will create a new resource.
+        The ASN number of BGP
         """
         return pulumi.get(self, "asn")
 
@@ -1870,10 +1107,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="attachmentType")
     def attachment_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The attachment type. The value can be **vpc** and **er**.
-        Defaults to **vpc**.
-
-        Changing this parameter will create a new resource.
+        The attachment type.
         """
         return pulumi.get(self, "attachment_type")
 
@@ -1881,19 +1115,13 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of availability zone IDs.
-
-        Changing this parameter will create a new resource.
+        The availability zone IDs.
         """
         return pulumi.get(self, "availability_zones")
 
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output['outputs.VpnGatewayCertificate']:
-        """
-        The GM certificate of the **GM** flavor gateway.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "certificate")
 
     @_builtins.property
@@ -1901,9 +1129,6 @@ class VpnGateway(pulumi.CustomResource):
     def connect_subnet(self) -> pulumi.Output[_builtins.str]:
         """
         The Network ID of the VPC subnet used by the VPN gateway.
-        This parameter is mandatory when `attachment_type` is **vpc**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "connect_subnet")
 
@@ -1911,7 +1136,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The create time of the gateway certificate.
+        The create time.
         """
         return pulumi.get(self, "created_at")
 
@@ -1926,35 +1151,18 @@ class VpnGateway(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def eip1(self) -> pulumi.Output['outputs.VpnGatewayEip1']:
-        """
-        The master 1 IP in active-active VPN gateway or the master IP
-        in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-        The object structure is documented below.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "eip1")
 
     @_builtins.property
     @pulumi.getter
     def eip2(self) -> pulumi.Output['outputs.VpnGatewayEip2']:
-        """
-        The master 2 IP in active-active VPN gateway or the slave IP
-        in active-standby VPN gateway. This parameter is mandatory when `network_type` is **public** or left empty.
-        The object structure is documented below.
-
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "eip2")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The enterprise project ID.
-
-        <a name="Gateway_CreateRequestEip"></a>
-        The `eip1` or `eip2` block supports:
+        The enterprise project ID
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -1971,9 +1179,6 @@ class VpnGateway(pulumi.CustomResource):
     def er_id(self) -> pulumi.Output[_builtins.str]:
         """
         The enterprise router ID to attach with to VPN gateway.
-        This parameter is mandatory when `attachment_type` is **er**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "er_id")
 
@@ -1982,9 +1187,6 @@ class VpnGateway(pulumi.CustomResource):
     def flavor(self) -> pulumi.Output[_builtins.str]:
         """
         The flavor of the VPN gateway.
-        The value can be **Basic**, **Professional1**, **Professional2** and **GM**. Defaults to **Professional1**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "flavor")
 
@@ -1992,10 +1194,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="haMode")
     def ha_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        The HA mode of VPN gateway. Valid values are **active-active** and
-        **active-standby**. The default value is **active-active**.
-
-        Changing this parameter will create a new resource.
+        The HA mode of the VPN gateway.
         """
         return pulumi.get(self, "ha_mode")
 
@@ -2003,8 +1202,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="localSubnets")
     def local_subnets(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of local subnets.
-        This parameter is mandatory when `attachment_type` is **vpc**.
+        The local subnets.
         """
         return pulumi.get(self, "local_subnets")
 
@@ -2017,7 +1215,7 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the gateway certificate.
+        The name of the VPN gateway. Only letters, digits, underscores(_) and hypens(-) are supported.
         """
         return pulumi.get(self, "name")
 
@@ -2025,20 +1223,13 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter(name="networkType")
     def network_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The network type. The value can be **public** and **private**.
-        Defaults to **public**.
-
-        Changing this parameter will create a new resource.
+        The network type of the VPN gateway.
         """
         return pulumi.get(self, "network_type")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the resource.
-        If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -2050,26 +1241,20 @@ class VpnGateway(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the certificate.
+        The status of VPN gateway.
         """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the tags of the VPN gateway.
-
-        <a name="Gateway_certificate_attr"></a>
-        The `certificate` block supports:
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The update time of the gateway certificate.
+        The update time.
         """
         return pulumi.get(self, "updated_at")
 
@@ -2094,9 +1279,6 @@ class VpnGateway(pulumi.CustomResource):
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
         The ID of the VPC to which the VPN gateway is connected.
-        This parameter is mandatory when `attachment_type` is **vpc**.
-
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "vpc_id")
 

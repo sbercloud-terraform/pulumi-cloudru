@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Provides details about a specific bandwidth.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bandwidthName = config.requireObject<any>("bandwidthName");
- * const bandwidth1 = sbercloud.Eip.getBandwidth({
- *     name: bandwidthName,
- * });
- * ```
- */
 export function getBandwidth(args: GetBandwidthArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:Eip/getBandwidth:getBandwidth", {
@@ -36,22 +20,9 @@ export function getBandwidth(args: GetBandwidthArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getBandwidth.
  */
 export interface GetBandwidthArgs {
-    /**
-     * The enterprise project id of the Shared Bandwidth to retrieve.
-     */
     enterpriseProjectId?: string;
-    /**
-     * The name of the Shared Bandwidth to retrieve.
-     */
     name: string;
-    /**
-     * The region in which to obtain the bandwidth. If omitted, the provider-level region will
-     * be used.
-     */
     region?: string;
-    /**
-     * The size of the Shared Bandwidth to retrieve. The value ranges from 5 to 2000 G.
-     */
     size?: number;
 }
 
@@ -59,13 +30,7 @@ export interface GetBandwidthArgs {
  * A collection of values returned by getBandwidth.
  */
 export interface GetBandwidthResult {
-    /**
-     * Indicates the bandwidth type.
-     */
     readonly bandwidthType: string;
-    /**
-     * Indicates whether the billing is based on traffic, bandwidth, or 95th percentile bandwidth (enhanced).
-     */
     readonly chargeMode: string;
     readonly enterpriseProjectId: string;
     /**
@@ -73,37 +38,12 @@ export interface GetBandwidthResult {
      */
     readonly id: string;
     readonly name: string;
-    /**
-     * An array of EIPs that use the bandwidth. The object includes the following:
-     */
     readonly publicips: outputs.Eip.GetBandwidthPublicip[];
     readonly region: string;
-    /**
-     * Indicates whether the bandwidth is shared or dedicated.
-     */
     readonly shareType: string;
     readonly size: number;
-    /**
-     * Indicates the bandwidth status.
-     */
     readonly status: string;
 }
-/**
- * Provides details about a specific bandwidth.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const bandwidthName = config.requireObject<any>("bandwidthName");
- * const bandwidth1 = sbercloud.Eip.getBandwidth({
- *     name: bandwidthName,
- * });
- * ```
- */
 export function getBandwidthOutput(args: GetBandwidthOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBandwidthResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:Eip/getBandwidth:getBandwidth", {
@@ -118,21 +58,8 @@ export function getBandwidthOutput(args: GetBandwidthOutputArgs, opts?: pulumi.I
  * A collection of arguments for invoking getBandwidth.
  */
 export interface GetBandwidthOutputArgs {
-    /**
-     * The enterprise project id of the Shared Bandwidth to retrieve.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * The name of the Shared Bandwidth to retrieve.
-     */
     name: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the bandwidth. If omitted, the provider-level region will
-     * be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The size of the Shared Bandwidth to retrieve. The value ranges from 5 to 2000 G.
-     */
     size?: pulumi.Input<number>;
 }

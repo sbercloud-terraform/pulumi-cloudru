@@ -6,53 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages an application within SberCloud.
- *
- * > Currently, only available in `cn-north-4` and `cn-east-3` regions.
- *
- * ## Example Usage
- *
- * ## Import
- *
- * Application can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/fgsApplication:FgsApplication test <id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response.
- *
- * The missing attributes include: `template_id`, `agency_name`, `params`.
- *
- * It is generally recommended running `pulumi preview` after importing the application.
- *
- * You can then decide if changes should be applied to the application, or the resource definition should be updated to
- *
- * align with the application. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_fgs_application" "test" {
- *
- *   ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       template_id, agency_name,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class FgsApplication extends pulumi.CustomResource {
     /**
      * Get an existing FgsApplication resource's state with the given name, ID, and optional extra
@@ -82,39 +35,27 @@ export class FgsApplication extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the agency name used by the application.  
-     * Changing this parameter will create a new resource.
-     *
-     * > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-     * permissions. The agency will be deleted when the application is deleted.
+     * The agency name used by the application.
      */
     declare public readonly agencyName: pulumi.Output<string | undefined>;
     /**
-     * Specifies the description of the application.  
-     * The description can contain a maximum of `1,024` characters.
-     * Changing this parameter will create a new resource.
+     * The description of the application.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * Specifies the application name.  
-     * The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_) and hyphens (-) are allowed.
-     * Changing this parameter will create a new resource.
+     * The application name
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Specifies the template parameters, in JSON format.  
-     * Changing this parameter will create a new resource.
+     * The template parameters, in JSON format.
      */
     declare public readonly params: pulumi.Output<string | undefined>;
     /**
-     * Specifies the region in which to create an application.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the application is located.
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * The repository information.  
-     * The repository structure is documented below.
+     * The repository information.
      */
     declare public /*out*/ readonly repositories: pulumi.Output<outputs.FgsApplicationRepository[]>;
     /**
@@ -122,17 +63,15 @@ export class FgsApplication extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly stackId: pulumi.Output<string>;
     /**
-     * The list of the stack resources information.  
-     * The stackResources structure is documented below.
+     * The list of the stack resources information.
      */
     declare public /*out*/ readonly stackResources: pulumi.Output<outputs.FgsApplicationStackResource[]>;
     /**
-     * The repository status.
+     * The application status.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * Specifies the ID of the template used by the application.  
-     * Changing this parameter will create a new resource.
+     * The ID of the template used by the application.
      */
     declare public readonly templateId: pulumi.Output<string | undefined>;
 
@@ -182,39 +121,27 @@ export class FgsApplication extends pulumi.CustomResource {
  */
 export interface FgsApplicationState {
     /**
-     * Specifies the agency name used by the application.  
-     * Changing this parameter will create a new resource.
-     *
-     * > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-     * permissions. The agency will be deleted when the application is deleted.
+     * The agency name used by the application.
      */
     agencyName?: pulumi.Input<string>;
     /**
-     * Specifies the description of the application.  
-     * The description can contain a maximum of `1,024` characters.
-     * Changing this parameter will create a new resource.
+     * The description of the application.
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the application name.  
-     * The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_) and hyphens (-) are allowed.
-     * Changing this parameter will create a new resource.
+     * The application name
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the template parameters, in JSON format.  
-     * Changing this parameter will create a new resource.
+     * The template parameters, in JSON format.
      */
     params?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create an application.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the application is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * The repository information.  
-     * The repository structure is documented below.
+     * The repository information.
      */
     repositories?: pulumi.Input<pulumi.Input<inputs.FgsApplicationRepository>[]>;
     /**
@@ -222,17 +149,15 @@ export interface FgsApplicationState {
      */
     stackId?: pulumi.Input<string>;
     /**
-     * The list of the stack resources information.  
-     * The stackResources structure is documented below.
+     * The list of the stack resources information.
      */
     stackResources?: pulumi.Input<pulumi.Input<inputs.FgsApplicationStackResource>[]>;
     /**
-     * The repository status.
+     * The application status.
      */
     status?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the template used by the application.  
-     * Changing this parameter will create a new resource.
+     * The ID of the template used by the application.
      */
     templateId?: pulumi.Input<string>;
 }
@@ -242,39 +167,27 @@ export interface FgsApplicationState {
  */
 export interface FgsApplicationArgs {
     /**
-     * Specifies the agency name used by the application.  
-     * Changing this parameter will create a new resource.
-     *
-     * > If omitted, the service will automatically create an agency, please ensure that the tenant has IAM related
-     * permissions. The agency will be deleted when the application is deleted.
+     * The agency name used by the application.
      */
     agencyName?: pulumi.Input<string>;
     /**
-     * Specifies the description of the application.  
-     * The description can contain a maximum of `1,024` characters.
-     * Changing this parameter will create a new resource.
+     * The description of the application.
      */
     description?: pulumi.Input<string>;
     /**
-     * Specifies the application name.  
-     * The name can contain a maximum of 60 characters and must start with a letter and end with a letter or digit.
-     * Only letters, digits, underscores (_) and hyphens (-) are allowed.
-     * Changing this parameter will create a new resource.
+     * The application name
      */
     name?: pulumi.Input<string>;
     /**
-     * Specifies the template parameters, in JSON format.  
-     * Changing this parameter will create a new resource.
+     * The template parameters, in JSON format.
      */
     params?: pulumi.Input<string>;
     /**
-     * Specifies the region in which to create an application.  
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
+     * The region where the application is located.
      */
     region?: pulumi.Input<string>;
     /**
-     * Specifies the ID of the template used by the application.  
-     * Changing this parameter will create a new resource.
+     * The ID of the template used by the application.
      */
     templateId?: pulumi.Input<string>;
 }

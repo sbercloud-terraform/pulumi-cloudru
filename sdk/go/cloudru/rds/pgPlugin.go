@@ -12,70 +12,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages RDS for PostgreSQL plugin on the databases within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			databaseName := cfg.RequireObject("databaseName")
-//			_, err := rds.NewPgPlugin(ctx, "test", &rds.PgPluginArgs{
-//				InstanceId:   pulumi.Any(instanceId),
-//				DatabaseName: pulumi.Any(databaseName),
-//				Name:         pulumi.String("pgaudit"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The RDS for PostgreSQL plugin can be imported using the `instance_id`, `database_name` and `name` separated by slashs, e.g.:
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Rds/pgPlugin:PgPlugin test <instance_id>/<database_name>/<name>
-// ```
 type PgPlugin struct {
 	pulumi.CustomResourceState
 
-	// Specifies the database name.
-	// Changing this parameter will create a new resource.
-	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// The plugin description.
-	Description pulumi.StringOutput `pulumi:"description"`
-	// Specifies the PostgreSQL instance ID.
-	// Changing this parameter will create a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the plugin name.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Dependent preloaded library.
+	DatabaseName           pulumi.StringOutput `pulumi:"databaseName"`
+	Description            pulumi.StringOutput `pulumi:"description"`
+	InstanceId             pulumi.StringOutput `pulumi:"instanceId"`
+	Name                   pulumi.StringOutput `pulumi:"name"`
+	Region                 pulumi.StringOutput `pulumi:"region"`
 	SharedPreloadLibraries pulumi.StringOutput `pulumi:"sharedPreloadLibraries"`
-	// The plugin version.
-	Version pulumi.StringOutput `pulumi:"version"`
+	Version                pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewPgPlugin registers a new resource with the given unique name, arguments, and options.
@@ -114,45 +60,23 @@ func GetPgPlugin(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PgPlugin resources.
 type pgPluginState struct {
-	// Specifies the database name.
-	// Changing this parameter will create a new resource.
-	DatabaseName *string `pulumi:"databaseName"`
-	// The plugin description.
-	Description *string `pulumi:"description"`
-	// Specifies the PostgreSQL instance ID.
-	// Changing this parameter will create a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the plugin name.
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
-	// Dependent preloaded library.
+	DatabaseName           *string `pulumi:"databaseName"`
+	Description            *string `pulumi:"description"`
+	InstanceId             *string `pulumi:"instanceId"`
+	Name                   *string `pulumi:"name"`
+	Region                 *string `pulumi:"region"`
 	SharedPreloadLibraries *string `pulumi:"sharedPreloadLibraries"`
-	// The plugin version.
-	Version *string `pulumi:"version"`
+	Version                *string `pulumi:"version"`
 }
 
 type PgPluginState struct {
-	// Specifies the database name.
-	// Changing this parameter will create a new resource.
-	DatabaseName pulumi.StringPtrInput
-	// The plugin description.
-	Description pulumi.StringPtrInput
-	// Specifies the PostgreSQL instance ID.
-	// Changing this parameter will create a new resource.
-	InstanceId pulumi.StringPtrInput
-	// Specifies the plugin name.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
-	// Dependent preloaded library.
+	DatabaseName           pulumi.StringPtrInput
+	Description            pulumi.StringPtrInput
+	InstanceId             pulumi.StringPtrInput
+	Name                   pulumi.StringPtrInput
+	Region                 pulumi.StringPtrInput
 	SharedPreloadLibraries pulumi.StringPtrInput
-	// The plugin version.
-	Version pulumi.StringPtrInput
+	Version                pulumi.StringPtrInput
 }
 
 func (PgPluginState) ElementType() reflect.Type {
@@ -160,34 +84,18 @@ func (PgPluginState) ElementType() reflect.Type {
 }
 
 type pgPluginArgs struct {
-	// Specifies the database name.
-	// Changing this parameter will create a new resource.
-	DatabaseName string `pulumi:"databaseName"`
-	// Specifies the PostgreSQL instance ID.
-	// Changing this parameter will create a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the plugin name.
-	// Changing this parameter will create a new resource.
-	Name *string `pulumi:"name"`
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region *string `pulumi:"region"`
+	DatabaseName string  `pulumi:"databaseName"`
+	InstanceId   string  `pulumi:"instanceId"`
+	Name         *string `pulumi:"name"`
+	Region       *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a PgPlugin resource.
 type PgPluginArgs struct {
-	// Specifies the database name.
-	// Changing this parameter will create a new resource.
 	DatabaseName pulumi.StringInput
-	// Specifies the PostgreSQL instance ID.
-	// Changing this parameter will create a new resource.
-	InstanceId pulumi.StringInput
-	// Specifies the plugin name.
-	// Changing this parameter will create a new resource.
-	Name pulumi.StringPtrInput
-	// Specifies the region in which to create the resource.
-	// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-	Region pulumi.StringPtrInput
+	InstanceId   pulumi.StringInput
+	Name         pulumi.StringPtrInput
+	Region       pulumi.StringPtrInput
 }
 
 func (PgPluginArgs) ElementType() reflect.Type {
@@ -277,41 +185,30 @@ func (o PgPluginOutput) ToPgPluginOutputWithContext(ctx context.Context) PgPlugi
 	return o
 }
 
-// Specifies the database name.
-// Changing this parameter will create a new resource.
 func (o PgPluginOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// The plugin description.
 func (o PgPluginOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Specifies the PostgreSQL instance ID.
-// Changing this parameter will create a new resource.
 func (o PgPluginOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the plugin name.
-// Changing this parameter will create a new resource.
 func (o PgPluginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the region in which to create the resource.
-// If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
 func (o PgPluginOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Dependent preloaded library.
 func (o PgPluginOutput) SharedPreloadLibraries() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.SharedPreloadLibraries }).(pulumi.StringOutput)
 }
 
-// The plugin version.
 func (o PgPluginOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgPlugin) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

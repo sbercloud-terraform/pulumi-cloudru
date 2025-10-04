@@ -4,31 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a log group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### create a log group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const logGroup1 = new sbercloud.lts.Group("log_group1", {
- *     groupName: "log_group1",
- *     ttlInDays: 1,
- * });
- * ```
- *
- * ## Import
- *
- * Log group can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Lts/group:Group group_1 7117d38e-4c8f-4624-a505-bd96b97d024c
- * ```
- */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -62,20 +37,9 @@ export class Group extends pulumi.CustomResource {
      * The enterprise project ID to which the log group belongs.
      */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * Specifies the log group name. Changing this parameter will create a new
-     * resource.
-     */
     declare public readonly groupName: pulumi.Output<string>;
-    /**
-     * The region in which to create the log group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new log group resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * Specifies the log expiration time(days), value range: 1-30.
-     */
     declare public readonly ttlInDays: pulumi.Output<number>;
 
     /**
@@ -126,20 +90,9 @@ export interface GroupState {
      * The enterprise project ID to which the log group belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the log group name. Changing this parameter will create a new
-     * resource.
-     */
     groupName?: pulumi.Input<string>;
-    /**
-     * The region in which to create the log group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new log group resource.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the log expiration time(days), value range: 1-30.
-     */
     ttlInDays?: pulumi.Input<number>;
 }
 
@@ -151,19 +104,8 @@ export interface GroupArgs {
      * The enterprise project ID to which the log group belongs.
      */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the log group name. Changing this parameter will create a new
-     * resource.
-     */
     groupName: pulumi.Input<string>;
-    /**
-     * The region in which to create the log group resource. If omitted, the
-     * provider-level region will be used. Changing this creates a new log group resource.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the log expiration time(days), value range: 1-30.
-     */
     ttlInDays: pulumi.Input<number>;
 }

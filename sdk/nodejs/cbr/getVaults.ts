@@ -6,22 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get available CBR vaults within Sbercloud.
- *
- * ## Example Usage
- *
- * ### Get vaults for all server type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cbr.getVaults({
- *     type: "server",
- * });
- * ```
- */
 export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Promise<GetVaultsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,55 +27,15 @@ export function getVaults(args?: GetVaultsArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getVaults.
  */
 export interface GetVaultsArgs {
-    /**
-     * Specifies whether to enable automatic expansion of the backup protection
-     * type vault. Default to **false**.
-     */
     autoExpandEnabled?: boolean;
-    /**
-     * Specifies the backup specifications.
-     * The value is crashConsistent by default (crash consistent backup).
-     *
-     * Only server type vaults support application consistent.
-     */
     consistentLevel?: string;
-    /**
-     * Specifies a unique ID in UUID format of enterprise project.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-     * characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-     */
     name?: string;
-    /**
-     * Specifies a policy to associate with the CBR vault.
-     */
     policyId?: string;
-    /**
-     * Specifies the protection type of the CBR vault.
-     * The valid value is **backup**.
-     */
     protectionType?: string;
-    /**
-     * Specifies the region in which to query the CBR vaults.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
-     */
     size?: number;
-    /**
-     * Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
-     */
     status?: string;
-    /**
-     * Specifies the object type of the CBR vault. The vaild values are as follows:
-     * + **server** (Cloud Servers)
-     * + **disk** (EVS Disks)
-     * + **turbo** (SFS Turbo file systems)
-     */
     type?: string;
 }
 
@@ -99,68 +43,22 @@ export interface GetVaultsArgs {
  * A collection of values returned by getVaults.
  */
 export interface GetVaultsResult {
-    /**
-     * Whether to enable automatic expansion of the backup protection type vault.
-     */
     readonly autoExpandEnabled?: boolean;
-    /**
-     * The backup specifications.
-     */
     readonly consistentLevel?: string;
-    /**
-     * The enterprise project ID.
-     */
     readonly enterpriseProjectId?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The CBR vault name.
-     */
     readonly name?: string;
-    /**
-     * The policy associated with the CBR vault.
-     */
     readonly policyId?: string;
-    /**
-     * The protection type of the CBR vault.
-     */
     readonly protectionType?: string;
     readonly region?: string;
-    /**
-     * The vault capacity, in GB.
-     */
     readonly size?: number;
-    /**
-     * The vault status.
-     */
     readonly status?: string;
-    /**
-     * The object type of the CBR vault.
-     */
     readonly type?: string;
-    /**
-     * List of CBR vault details. The object structure of each CBR vault is documented below.
-     */
     readonly vaults: outputs.Cbr.GetVaultsVault[];
 }
-/**
- * Use this data source to get available CBR vaults within Sbercloud.
- *
- * ## Example Usage
- *
- * ### Get vaults for all server type
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cbr.getVaults({
- *     type: "server",
- * });
- * ```
- */
 export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVaultsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -182,54 +80,14 @@ export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getVaults.
  */
 export interface GetVaultsOutputArgs {
-    /**
-     * Specifies whether to enable automatic expansion of the backup protection
-     * type vault. Default to **false**.
-     */
     autoExpandEnabled?: pulumi.Input<boolean>;
-    /**
-     * Specifies the backup specifications.
-     * The value is crashConsistent by default (crash consistent backup).
-     *
-     * Only server type vaults support application consistent.
-     */
     consistentLevel?: pulumi.Input<string>;
-    /**
-     * Specifies a unique ID in UUID format of enterprise project.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies a unique name of the CBR vault. This parameter can contain a maximum of 64
-     * characters, which may consist of letters, digits, underscores(_) and hyphens (-).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies a policy to associate with the CBR vault.
-     */
     policyId?: pulumi.Input<string>;
-    /**
-     * Specifies the protection type of the CBR vault.
-     * The valid value is **backup**.
-     */
     protectionType?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the CBR vaults.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the vault sapacity, in GB. The valid value range is `1` to `10,485,760`.
-     */
     size?: pulumi.Input<number>;
-    /**
-     * Specifies the CBR vault status, including **available**, **lock**, **frozen** and **error**.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the object type of the CBR vault. The vaild values are as follows:
-     * + **server** (Cloud Servers)
-     * + **disk** (EVS Disks)
-     * + **turbo** (SFS Turbo file systems)
-     */
     type?: pulumi.Input<string>;
 }

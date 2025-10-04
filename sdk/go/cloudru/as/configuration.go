@@ -12,188 +12,14 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an AS configuration resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### Basic AS Configuration
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/as"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			flavorId := cfg.RequireObject("flavorId")
-//			imageId := cfg.RequireObject("imageId")
-//			sshKey := cfg.RequireObject("sshKey")
-//			securityGroupId := cfg.RequireObject("securityGroupId")
-//			_, err := as.NewConfiguration(ctx, "my_as_config", &as.ConfigurationArgs{
-//				ScalingConfigurationName: pulumi.String("my_as_config"),
-//				InstanceConfig: &as.ConfigurationInstanceConfigArgs{
-//					Flavor:  pulumi.Any(flavorId),
-//					Image:   pulumi.Any(imageId),
-//					KeyName: pulumi.Any(sshKey),
-//					SecurityGroupIds: pulumi.StringArray{
-//						securityGroupId,
-//					},
-//					Disks: as.ConfigurationInstanceConfigDiskArray{
-//						&as.ConfigurationInstanceConfigDiskArgs{
-//							Size:       pulumi.Int(40),
-//							VolumeType: pulumi.String("SSD"),
-//							DiskType:   pulumi.String("SYS"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### AS Configuration With Encrypted Data Disk
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/as"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			flavorId := cfg.RequireObject("flavorId")
-//			imageId := cfg.RequireObject("imageId")
-//			sshKey := cfg.RequireObject("sshKey")
-//			kmsId := cfg.RequireObject("kmsId")
-//			securityGroupId := cfg.RequireObject("securityGroupId")
-//			_, err := as.NewConfiguration(ctx, "my_as_config", &as.ConfigurationArgs{
-//				ScalingConfigurationName: pulumi.String("my_as_config"),
-//				InstanceConfig: &as.ConfigurationInstanceConfigArgs{
-//					Flavor:  pulumi.Any(flavorId),
-//					Image:   pulumi.Any(imageId),
-//					KeyName: pulumi.Any(sshKey),
-//					SecurityGroupIds: pulumi.StringArray{
-//						securityGroupId,
-//					},
-//					Disks: as.ConfigurationInstanceConfigDiskArray{
-//						&as.ConfigurationInstanceConfigDiskArgs{
-//							Size:       pulumi.Int(40),
-//							VolumeType: pulumi.String("SSD"),
-//							DiskType:   pulumi.String("SYS"),
-//						},
-//						&as.ConfigurationInstanceConfigDiskArgs{
-//							Size:       pulumi.Int(100),
-//							VolumeType: pulumi.String("SSD"),
-//							DiskType:   pulumi.String("DATA"),
-//							KmsId:      pulumi.Any(kmsId),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### AS Configuration uses the existing instance specifications as the template
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/as"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			sshKey := cfg.RequireObject("sshKey")
-//			securityGroupId := cfg.RequireObject("securityGroupId")
-//			_, err := as.NewConfiguration(ctx, "my_as_config", &as.ConfigurationArgs{
-//				ScalingConfigurationName: pulumi.String("my_as_config"),
-//				InstanceConfig: &as.ConfigurationInstanceConfigArgs{
-//					InstanceId: pulumi.Any(instanceId),
-//					KeyName:    pulumi.Any(sshKey),
-//					SecurityGroupIds: pulumi.StringArray{
-//						securityGroupId,
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// AS configurations can be imported by their `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:As/configuration:Configuration test 18518c8a-9d15-416b-8add-2ee874751d18
-// ```
-//
-// Note that the imported state may not be identical to your resource definition, due to `instance_config.0.instance_id`
-//
-// is missing from the API response. You can ignore changes after importing an AS configuration as below.
-//
-// resource "sbercloud_as_configuration" "test" {
-//
-//	...
-//
-//	lifecycle {
-//
-//	  ignore_changes = [ instance_config.0.instance_id ]
-//
-//	}
-//
-// }
 type Configuration struct {
 	pulumi.CustomResourceState
 
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Specifies the information about instance configuration.
-	// The object structure is documented below. Changing this will create a new resource.
-	InstanceConfig ConfigurationInstanceConfigOutput `pulumi:"instanceConfig"`
-	// Specifies the region in which to create the AS configuration.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the AS configuration name.
-	// The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-	// Changing this will create a new resource.
-	ScalingConfigurationName pulumi.StringOutput `pulumi:"scalingConfigurationName"`
-	// The AS configuration status, the value can be **Bound** or **Unbound**.
-	Status pulumi.StringOutput `pulumi:"status"`
+	CreateTime               pulumi.StringOutput               `pulumi:"createTime"`
+	InstanceConfig           ConfigurationInstanceConfigOutput `pulumi:"instanceConfig"`
+	Region                   pulumi.StringOutput               `pulumi:"region"`
+	ScalingConfigurationName pulumi.StringOutput               `pulumi:"scalingConfigurationName"`
+	Status                   pulumi.StringOutput               `pulumi:"status"`
 }
 
 // NewConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -232,35 +58,19 @@ func GetConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Configuration resources.
 type configurationState struct {
-	CreateTime *string `pulumi:"createTime"`
-	// Specifies the information about instance configuration.
-	// The object structure is documented below. Changing this will create a new resource.
-	InstanceConfig *ConfigurationInstanceConfig `pulumi:"instanceConfig"`
-	// Specifies the region in which to create the AS configuration.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the AS configuration name.
-	// The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-	// Changing this will create a new resource.
-	ScalingConfigurationName *string `pulumi:"scalingConfigurationName"`
-	// The AS configuration status, the value can be **Bound** or **Unbound**.
-	Status *string `pulumi:"status"`
+	CreateTime               *string                      `pulumi:"createTime"`
+	InstanceConfig           *ConfigurationInstanceConfig `pulumi:"instanceConfig"`
+	Region                   *string                      `pulumi:"region"`
+	ScalingConfigurationName *string                      `pulumi:"scalingConfigurationName"`
+	Status                   *string                      `pulumi:"status"`
 }
 
 type ConfigurationState struct {
-	CreateTime pulumi.StringPtrInput
-	// Specifies the information about instance configuration.
-	// The object structure is documented below. Changing this will create a new resource.
-	InstanceConfig ConfigurationInstanceConfigPtrInput
-	// Specifies the region in which to create the AS configuration.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the AS configuration name.
-	// The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-	// Changing this will create a new resource.
+	CreateTime               pulumi.StringPtrInput
+	InstanceConfig           ConfigurationInstanceConfigPtrInput
+	Region                   pulumi.StringPtrInput
 	ScalingConfigurationName pulumi.StringPtrInput
-	// The AS configuration status, the value can be **Bound** or **Unbound**.
-	Status pulumi.StringPtrInput
+	Status                   pulumi.StringPtrInput
 }
 
 func (ConfigurationState) ElementType() reflect.Type {
@@ -268,29 +78,15 @@ func (ConfigurationState) ElementType() reflect.Type {
 }
 
 type configurationArgs struct {
-	// Specifies the information about instance configuration.
-	// The object structure is documented below. Changing this will create a new resource.
-	InstanceConfig ConfigurationInstanceConfig `pulumi:"instanceConfig"`
-	// Specifies the region in which to create the AS configuration.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the AS configuration name.
-	// The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-	// Changing this will create a new resource.
-	ScalingConfigurationName string `pulumi:"scalingConfigurationName"`
+	InstanceConfig           ConfigurationInstanceConfig `pulumi:"instanceConfig"`
+	Region                   *string                     `pulumi:"region"`
+	ScalingConfigurationName string                      `pulumi:"scalingConfigurationName"`
 }
 
 // The set of arguments for constructing a Configuration resource.
 type ConfigurationArgs struct {
-	// Specifies the information about instance configuration.
-	// The object structure is documented below. Changing this will create a new resource.
-	InstanceConfig ConfigurationInstanceConfigInput
-	// Specifies the region in which to create the AS configuration.
-	// If omitted, the provider-level region will be used. Changing this will create a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the AS configuration name.
-	// The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-	// Changing this will create a new resource.
+	InstanceConfig           ConfigurationInstanceConfigInput
+	Region                   pulumi.StringPtrInput
 	ScalingConfigurationName pulumi.StringInput
 }
 
@@ -385,26 +181,18 @@ func (o ConfigurationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Specifies the information about instance configuration.
-// The object structure is documented below. Changing this will create a new resource.
 func (o ConfigurationOutput) InstanceConfig() ConfigurationInstanceConfigOutput {
 	return o.ApplyT(func(v *Configuration) ConfigurationInstanceConfigOutput { return v.InstanceConfig }).(ConfigurationInstanceConfigOutput)
 }
 
-// Specifies the region in which to create the AS configuration.
-// If omitted, the provider-level region will be used. Changing this will create a new resource.
 func (o ConfigurationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the AS configuration name.
-// The name contains only letters, digits, underscores (_), and hyphens (-), and cannot exceed 64 characters.
-// Changing this will create a new resource.
 func (o ConfigurationOutput) ScalingConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.ScalingConfigurationName }).(pulumi.StringOutput)
 }
 
-// The AS configuration status, the value can be **Bound** or **Unbound**.
 func (o ConfigurationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

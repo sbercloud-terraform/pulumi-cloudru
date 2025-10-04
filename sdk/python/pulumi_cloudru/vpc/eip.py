@@ -34,16 +34,11 @@ class EipArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Eip resource.
-        :param pulumi.Input['EipBandwidthArgs'] bandwidth: The bandwidth object.
-        :param pulumi.Input['EipPublicipArgs'] publicip: The elastic IP address object.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the elastic IP. Changing this
-               creates a new eip.
+        :param pulumi.Input['EipBandwidthArgs'] bandwidth: The bandwidth configuration.
+        :param pulumi.Input['EipPublicipArgs'] publicip: The EIP configuration.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the EIP belongs.
         :param pulumi.Input[_builtins.str] name: The name of the EIP.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the eip resource. If omitted, the provider-level
-               region will be used. Changing this creates a new eip resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the elastic IP.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the EIP resource.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "publicip", publicip)
@@ -73,7 +68,7 @@ class EipArgs:
     @pulumi.getter
     def bandwidth(self) -> pulumi.Input['EipBandwidthArgs']:
         """
-        The bandwidth object.
+        The bandwidth configuration.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -85,7 +80,7 @@ class EipArgs:
     @pulumi.getter
     def publicip(self) -> pulumi.Input['EipPublicipArgs']:
         """
-        The elastic IP address object.
+        The EIP configuration.
         """
         return pulumi.get(self, "publicip")
 
@@ -106,10 +101,6 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "
-        false". Changing this creates a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -129,8 +120,7 @@ class EipArgs:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project id of the elastic IP. Changing this
-        creates a new eip.
+        The enterprise project ID to which the EIP belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -172,8 +162,7 @@ class EipArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region in which to create the eip resource. If omitted, the provider-level
-        region will be used. Changing this creates a new eip resource.
+        The region in which to create the EIP resource.
         """
         return pulumi.get(self, "region")
 
@@ -184,9 +173,6 @@ class EipArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the elastic IP.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -221,21 +207,11 @@ class _EipState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Eip resources.
-        :param pulumi.Input[_builtins.str] address: The IP address of the eip.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input['EipBandwidthArgs'] bandwidth: The bandwidth object.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the elastic IP. Changing this
-               creates a new eip.
-        :param pulumi.Input[_builtins.str] ipv6_address: The IPv6 address of the EIP.
+        :param pulumi.Input['EipBandwidthArgs'] bandwidth: The bandwidth configuration.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the EIP belongs.
         :param pulumi.Input[_builtins.str] name: The name of the EIP.
-        :param pulumi.Input[_builtins.str] port_id: The port ID which the EIP associated with.
-        :param pulumi.Input[_builtins.str] private_ip: The private IP address bound to the EIP.
-        :param pulumi.Input['EipPublicipArgs'] publicip: The elastic IP address object.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the eip resource. If omitted, the provider-level
-               region will be used. Changing this creates a new eip resource.
-        :param pulumi.Input[_builtins.str] status: The status of eip.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the elastic IP.
+        :param pulumi.Input['EipPublicipArgs'] publicip: The EIP configuration.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the EIP resource.
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -288,9 +264,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address of the eip.
-        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -328,10 +301,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "
-        false". Changing this creates a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -342,7 +311,7 @@ class _EipState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input['EipBandwidthArgs']]:
         """
-        The bandwidth object.
+        The bandwidth configuration.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -372,8 +341,7 @@ class _EipState:
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The enterprise project id of the elastic IP. Changing this
-        creates a new eip.
+        The enterprise project ID to which the EIP belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -402,9 +370,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IPv6 address of the EIP.
-        """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
@@ -444,9 +409,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The port ID which the EIP associated with.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -456,9 +418,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private IP address bound to the EIP.
-        """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
@@ -469,7 +428,7 @@ class _EipState:
     @pulumi.getter
     def publicip(self) -> Optional[pulumi.Input['EipPublicipArgs']]:
         """
-        The elastic IP address object.
+        The EIP configuration.
         """
         return pulumi.get(self, "publicip")
 
@@ -481,8 +440,7 @@ class _EipState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region in which to create the eip resource. If omitted, the provider-level
-        region will be used. Changing this creates a new eip resource.
+        The region in which to create the EIP resource.
         """
         return pulumi.get(self, "region")
 
@@ -493,9 +451,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The status of eip.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -505,9 +460,6 @@ class _EipState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs to associate with the elastic IP.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -543,67 +495,14 @@ class Eip(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Manages an EIP resource within SberCloud.
-
-        ## Example Usage
-
-        ### EIP with Dedicated Bandwidth
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        eip1 = sbercloud.vpc.Eip("eip_1",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "share_type": "PER",
-                "name": "test",
-                "size": 10,
-                "charge_mode": "traffic",
-            })
-        ```
-
-        ### EIP with Shared Bandwidth
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bandwidth1 = sbercloud.vpc.Bandwidth("bandwidth_1",
-            name="bandwidth_1",
-            size=5)
-        eip1 = sbercloud.vpc.Eip("eip_1",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "share_type": "WHOLE",
-                "id": bandwidth1.id,
-            })
-        ```
-
-        ## Import
-
-        EIPs can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/eip:Eip eip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
-        ```
-
+        Create a Eip resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[Union['EipBandwidthArgs', 'EipBandwidthArgsDict']] bandwidth: The bandwidth object.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the elastic IP. Changing this
-               creates a new eip.
+        :param pulumi.Input[Union['EipBandwidthArgs', 'EipBandwidthArgsDict']] bandwidth: The bandwidth configuration.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the EIP belongs.
         :param pulumi.Input[_builtins.str] name: The name of the EIP.
-        :param pulumi.Input[Union['EipPublicipArgs', 'EipPublicipArgsDict']] publicip: The elastic IP address object.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the eip resource. If omitted, the provider-level
-               region will be used. Changing this creates a new eip resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the elastic IP.
+        :param pulumi.Input[Union['EipPublicipArgs', 'EipPublicipArgsDict']] publicip: The EIP configuration.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the EIP resource.
         """
         ...
     @overload
@@ -612,55 +511,7 @@ class Eip(pulumi.CustomResource):
                  args: EipArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an EIP resource within SberCloud.
-
-        ## Example Usage
-
-        ### EIP with Dedicated Bandwidth
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        eip1 = sbercloud.vpc.Eip("eip_1",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "share_type": "PER",
-                "name": "test",
-                "size": 10,
-                "charge_mode": "traffic",
-            })
-        ```
-
-        ### EIP with Shared Bandwidth
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        bandwidth1 = sbercloud.vpc.Bandwidth("bandwidth_1",
-            name="bandwidth_1",
-            size=5)
-        eip1 = sbercloud.vpc.Eip("eip_1",
-            publicip={
-                "type": "5_bgp",
-            },
-            bandwidth={
-                "share_type": "WHOLE",
-                "id": bandwidth1.id,
-            })
-        ```
-
-        ## Import
-
-        EIPs can be imported using the `id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/eip:Eip eip_1 2c7f39f3-702b-48d1-940c-b50384177ee1
-        ```
-
+        Create a Eip resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EipArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -761,21 +612,11 @@ class Eip(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The IP address of the eip.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled. Valid values are "true" and "
-               false". Changing this creates a new resource.
-        :param pulumi.Input[Union['EipBandwidthArgs', 'EipBandwidthArgsDict']] bandwidth: The bandwidth object.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the elastic IP. Changing this
-               creates a new eip.
-        :param pulumi.Input[_builtins.str] ipv6_address: The IPv6 address of the EIP.
+        :param pulumi.Input[Union['EipBandwidthArgs', 'EipBandwidthArgsDict']] bandwidth: The bandwidth configuration.
+        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project ID to which the EIP belongs.
         :param pulumi.Input[_builtins.str] name: The name of the EIP.
-        :param pulumi.Input[_builtins.str] port_id: The port ID which the EIP associated with.
-        :param pulumi.Input[_builtins.str] private_ip: The private IP address bound to the EIP.
-        :param pulumi.Input[Union['EipPublicipArgs', 'EipPublicipArgsDict']] publicip: The elastic IP address object.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the eip resource. If omitted, the provider-level
-               region will be used. Changing this creates a new eip resource.
-        :param pulumi.Input[_builtins.str] status: The status of eip.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Specifies the key/value pairs to associate with the elastic IP.
+        :param pulumi.Input[Union['EipPublicipArgs', 'EipPublicipArgsDict']] publicip: The EIP configuration.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the EIP resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -808,9 +649,6 @@ class Eip(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IP address of the eip.
-        """
         return pulumi.get(self, "address")
 
     @_builtins.property
@@ -832,17 +670,13 @@ class Eip(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled. Valid values are "true" and "
-        false". Changing this creates a new resource.
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output['outputs.EipBandwidth']:
         """
-        The bandwidth object.
+        The bandwidth configuration.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -860,8 +694,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The enterprise project id of the elastic IP. Changing this
-        creates a new eip.
+        The enterprise project ID to which the EIP belongs.
         """
         return pulumi.get(self, "enterprise_project_id")
 
@@ -878,9 +711,6 @@ class Eip(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IPv6 address of the EIP.
-        """
         return pulumi.get(self, "ipv6_address")
 
     @_builtins.property
@@ -904,24 +734,18 @@ class Eip(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The port ID which the EIP associated with.
-        """
         return pulumi.get(self, "port_id")
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The private IP address bound to the EIP.
-        """
         return pulumi.get(self, "private_ip")
 
     @_builtins.property
     @pulumi.getter
     def publicip(self) -> pulumi.Output['outputs.EipPublicip']:
         """
-        The elastic IP address object.
+        The EIP configuration.
         """
         return pulumi.get(self, "publicip")
 
@@ -929,25 +753,18 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        The region in which to create the eip resource. If omitted, the provider-level
-        region will be used. Changing this creates a new eip resource.
+        The region in which to create the EIP resource.
         """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        The status of eip.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        Specifies the key/value pairs to associate with the elastic IP.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property

@@ -92,9 +92,6 @@ class AclRuleCustomService(dict):
         :param _builtins.str dest_port: The destination port.
         :param _builtins.int protocol: The protocol type.
         :param _builtins.str source_port: The source port.
-               
-               <a name="CustomServiceGroups"></a>
-               The `custom_service_groups` block supports:
         """
         pulumi.set(__self__, "dest_port", dest_port)
         pulumi.set(__self__, "protocol", protocol)
@@ -121,9 +118,6 @@ class AclRuleCustomService(dict):
     def source_port(self) -> _builtins.str:
         """
         The source port.
-
-        <a name="CustomServiceGroups"></a>
-        The `custom_service_groups` block supports:
         """
         return pulumi.get(self, "source_port")
 
@@ -151,11 +145,8 @@ class AclRuleCustomServiceGroups(dict):
                  group_ids: Sequence[_builtins.str],
                  protocols: Sequence[_builtins.int]):
         """
-        :param Sequence[_builtins.str] group_ids: The IDs of the predefined service groups.
-        :param Sequence[_builtins.int] protocols: The protocols used in the predefined service groups.
-               
-               <a name="SourceRegionList"></a>
-               The `source_region_list` block supports:
+        :param Sequence[_builtins.str] group_ids: The IDs of the service groups.
+        :param Sequence[_builtins.int] protocols: The protocols used in the service groups.
         """
         pulumi.set(__self__, "group_ids", group_ids)
         pulumi.set(__self__, "protocols", protocols)
@@ -164,7 +155,7 @@ class AclRuleCustomServiceGroups(dict):
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> Sequence[_builtins.str]:
         """
-        The IDs of the predefined service groups.
+        The IDs of the service groups.
         """
         return pulumi.get(self, "group_ids")
 
@@ -172,10 +163,7 @@ class AclRuleCustomServiceGroups(dict):
     @pulumi.getter
     def protocols(self) -> Sequence[_builtins.int]:
         """
-        The protocols used in the predefined service groups.
-
-        <a name="SourceRegionList"></a>
-        The `source_region_list` block supports:
+        The protocols used in the service groups.
         """
         return pulumi.get(self, "protocols")
 
@@ -279,11 +267,8 @@ class AclRulePredefinedServiceGroups(dict):
                  group_ids: Sequence[_builtins.str],
                  protocols: Sequence[_builtins.int]):
         """
-        :param Sequence[_builtins.str] group_ids: The IDs of the predefined service groups.
-        :param Sequence[_builtins.int] protocols: The protocols used in the predefined service groups.
-               
-               <a name="SourceRegionList"></a>
-               The `source_region_list` block supports:
+        :param Sequence[_builtins.str] group_ids: The IDs of the service groups.
+        :param Sequence[_builtins.int] protocols: The protocols used in the service groups.
         """
         pulumi.set(__self__, "group_ids", group_ids)
         pulumi.set(__self__, "protocols", protocols)
@@ -292,7 +277,7 @@ class AclRulePredefinedServiceGroups(dict):
     @pulumi.getter(name="groupIds")
     def group_ids(self) -> Sequence[_builtins.str]:
         """
-        The IDs of the predefined service groups.
+        The IDs of the service groups.
         """
         return pulumi.get(self, "group_ids")
 
@@ -300,10 +285,7 @@ class AclRulePredefinedServiceGroups(dict):
     @pulumi.getter
     def protocols(self) -> Sequence[_builtins.int]:
         """
-        The protocols used in the predefined service groups.
-
-        <a name="SourceRegionList"></a>
-        The `source_region_list` block supports:
+        The protocols used in the service groups.
         """
         return pulumi.get(self, "protocols")
 
@@ -333,17 +315,8 @@ class AclRuleSequence(dict):
                  top: Optional[_builtins.int] = None):
         """
         :param _builtins.int bottom: Whether to pin on bottom.
-               The options are as follows:
-               + **0**: no;
-               + **1**: yes;
         :param _builtins.str dest_rule_id: The ID of the rule that the added rule will follow.
         :param _builtins.int top: Whether to pin on top.
-               The options are as follows:
-               + **0**: no;
-               + **1**: yes;
-               
-               <a name="CustomServices"></a>
-               The `custom_services` block supports:
         """
         if bottom is not None:
             pulumi.set(__self__, "bottom", bottom)
@@ -357,9 +330,6 @@ class AclRuleSequence(dict):
     def bottom(self) -> Optional[_builtins.int]:
         """
         Whether to pin on bottom.
-        The options are as follows:
-        + **0**: no;
-        + **1**: yes;
         """
         return pulumi.get(self, "bottom")
 
@@ -376,12 +346,6 @@ class AclRuleSequence(dict):
     def top(self) -> Optional[_builtins.int]:
         """
         Whether to pin on top.
-        The options are as follows:
-        + **0**: no;
-        + **1**: yes;
-
-        <a name="CustomServices"></a>
-        The `custom_services` block supports:
         """
         return pulumi.get(self, "top")
 
@@ -485,16 +449,8 @@ class AntiVirusScanProtocolConfig(dict):
                  action: _builtins.int,
                  protocol_type: _builtins.int):
         """
-        :param _builtins.int action: The anti virus action. The valid value can be **0** (observe) or **1** (block).
+        :param _builtins.int action: The antivirus action.
         :param _builtins.int protocol_type: The protocol type.
-               The valid values are as follows:
-               + **0**: HTTP;
-               + **1**: SMTP;
-               + **2**: POP3;
-               + **3**: IMAP4;
-               + **4**: FTP;
-               + **5**: SMB;
-               + **6**: Malicious Access Control;
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "protocol_type", protocol_type)
@@ -503,7 +459,7 @@ class AntiVirusScanProtocolConfig(dict):
     @pulumi.getter
     def action(self) -> _builtins.int:
         """
-        The anti virus action. The valid value can be **0** (observe) or **1** (block).
+        The antivirus action.
         """
         return pulumi.get(self, "action")
 
@@ -512,14 +468,6 @@ class AntiVirusScanProtocolConfig(dict):
     def protocol_type(self) -> _builtins.int:
         """
         The protocol type.
-        The valid values are as follows:
-        + **0**: HTTP;
-        + **1**: SMTP;
-        + **2**: POP3;
-        + **3**: IMAP4;
-        + **4**: FTP;
-        + **5**: SMB;
-        + **6**: Malicious Access Control;
         """
         return pulumi.get(self, "protocol_type")
 
@@ -547,14 +495,8 @@ class CaptureTaskDestination(dict):
                  address: _builtins.str,
                  address_type: _builtins.int):
         """
-        :param _builtins.str address: Specifies the address.
-        :param _builtins.int address_type: Specifies the address type.
-               The valid values are:
-               + **0**: indicates IPv4;
-               + **1**: indicates IPv6.
-               
-               <a name="Service"></a>
-               The `service` block supports:
+        :param _builtins.str address: The address.
+        :param _builtins.int address_type: The address type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -563,7 +505,7 @@ class CaptureTaskDestination(dict):
     @pulumi.getter
     def address(self) -> _builtins.str:
         """
-        Specifies the address.
+        The address.
         """
         return pulumi.get(self, "address")
 
@@ -571,13 +513,7 @@ class CaptureTaskDestination(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.int:
         """
-        Specifies the address type.
-        The valid values are:
-        + **0**: indicates IPv4;
-        + **1**: indicates IPv6.
-
-        <a name="Service"></a>
-        The `service` block supports:
+        The address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -608,15 +544,9 @@ class CaptureTaskService(dict):
                  dest_port: Optional[_builtins.str] = None,
                  source_port: Optional[_builtins.str] = None):
         """
-        :param _builtins.int protocol: Specifies the protocol type.
-               The valid values are:
-               + **6**: indicates TCP;
-               + **17**: indicates UDP;
-               + **1**: indicates ICMP;
-               + **58**: indicates ICMPv6;
-               + **-1**: indicates any protocol.
-        :param _builtins.str dest_port: Specifies the destination port.
-        :param _builtins.str source_port: Specifies the source port.
+        :param _builtins.int protocol: The protocol type.
+        :param _builtins.str dest_port: The destination port.
+        :param _builtins.str source_port: The source port.
         """
         pulumi.set(__self__, "protocol", protocol)
         if dest_port is not None:
@@ -628,13 +558,7 @@ class CaptureTaskService(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.int:
         """
-        Specifies the protocol type.
-        The valid values are:
-        + **6**: indicates TCP;
-        + **17**: indicates UDP;
-        + **1**: indicates ICMP;
-        + **58**: indicates ICMPv6;
-        + **-1**: indicates any protocol.
+        The protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -642,7 +566,7 @@ class CaptureTaskService(dict):
     @pulumi.getter(name="destPort")
     def dest_port(self) -> Optional[_builtins.str]:
         """
-        Specifies the destination port.
+        The destination port.
         """
         return pulumi.get(self, "dest_port")
 
@@ -650,7 +574,7 @@ class CaptureTaskService(dict):
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> Optional[_builtins.str]:
         """
-        Specifies the source port.
+        The source port.
         """
         return pulumi.get(self, "source_port")
 
@@ -678,14 +602,8 @@ class CaptureTaskSource(dict):
                  address: _builtins.str,
                  address_type: _builtins.int):
         """
-        :param _builtins.str address: Specifies the address.
-        :param _builtins.int address_type: Specifies the address type.
-               The valid values are:
-               + **0**: indicates IPv4;
-               + **1**: indicates IPv6.
-               
-               <a name="Service"></a>
-               The `service` block supports:
+        :param _builtins.str address: The address.
+        :param _builtins.int address_type: The address type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -694,7 +612,7 @@ class CaptureTaskSource(dict):
     @pulumi.getter
     def address(self) -> _builtins.str:
         """
-        Specifies the address.
+        The address.
         """
         return pulumi.get(self, "address")
 
@@ -702,13 +620,7 @@ class CaptureTaskSource(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.int:
         """
-        Specifies the address type.
-        The valid values are:
-        + **0**: indicates IPv4;
-        + **1**: indicates IPv6.
-
-        <a name="Service"></a>
-        The `service` block supports:
+        The address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -817,8 +729,6 @@ class EipProtectionProtectedEip(dict):
         :param _builtins.str id: The ID of the protected EIP.
         :param _builtins.str public_ipv4: The IPv4 address of the protected EIP.
         :param _builtins.str public_ipv6: The IPv6 address of the protected EIP.
-               
-               > At least one of `public_ipv4` and `public_ipv6` must be set.
         """
         pulumi.set(__self__, "id", id)
         if public_ipv4 is not None:
@@ -847,8 +757,6 @@ class EipProtectionProtectedEip(dict):
     def public_ipv6(self) -> Optional[_builtins.str]:
         """
         The IPv6 address of the protected EIP.
-
-        > At least one of `public_ipv4` and `public_ipv6` must be set.
         """
         return pulumi.get(self, "public_ipv6")
 
@@ -914,29 +822,20 @@ class FirewallFlavor(dict):
                  vpc_count: Optional[_builtins.int] = None):
         """
         :param _builtins.str version: Specifies the version of the firewall.
-               When the charging_mode is **prePaid**: the value can be **Standard** and **Prefessional**.
-               When the charging_mode is **postPaid**: the value can be **Prefessional**.
-               Changing this parameter will create a new resource.
-        :param _builtins.int bandwidth: The bandwidth of the firewall.
-        :param _builtins.int default_bandwidth: The default bandwidth of the firewall.
-        :param _builtins.int default_eip_count: The default EIP number of the firewall.
-        :param _builtins.int default_log_storage: The default log storage of the firewall.
-        :param _builtins.int default_vpc_count: The default VPC number of the firewall.
-        :param _builtins.int eip_count: The EIP number of the firewall.
+        :param _builtins.int bandwidth: Specifies the bandwidth of the firewall.
+        :param _builtins.int default_bandwidth: Specifies the default bandwidth of the firewall.
+        :param _builtins.int default_eip_count: Specifies the default EIP number of the firewall.
+        :param _builtins.int default_log_storage: Specifies the default log storage of the firewall.
+        :param _builtins.int default_vpc_count: Specifies the default VPC number of the firewall.
+        :param _builtins.int eip_count: Specifies the EIP number of the firewall.
         :param _builtins.int extend_bandwidth: Specifies the extend bandwidth of the firewall.
-               Only works when the charging_mode is **prePaid**.
-               Changing this parameter will create a new resource.
         :param _builtins.int extend_eip_count: Specifies the extend EIP number of the firewall.
-               Only works when the charging_mode is **prePaid**.
-               Changing this parameter will create a new resource.
         :param _builtins.int extend_vpc_count: Specifies the extend VPC number of the firewall.
-               Only works when the charging_mode is **prePaid**.
-               Changing this parameter will create a new resource.
-        :param _builtins.int log_storage: The log storage of the firewall.
-        :param _builtins.int total_rule_count: The total rule count of the firewall.
-        :param _builtins.int used_rule_count: The used rule count of the firewall.
-        :param _builtins.int vpc_bandwidth: The VPC bandwidth of the firewall.
-        :param _builtins.int vpc_count: The VPC number of the firewall.
+        :param _builtins.int log_storage: Specifies the log storage of the firewall.
+        :param _builtins.int total_rule_count: Specifies the total rule count of the firewall.
+        :param _builtins.int used_rule_count: Specifies the used rule count of the firewall.
+        :param _builtins.int vpc_bandwidth: Specifies the VPC bandwidth of the firewall.
+        :param _builtins.int vpc_count: Specifies the VPC number of the firewall.
         """
         pulumi.set(__self__, "version", version)
         if bandwidth is not None:
@@ -973,9 +872,6 @@ class FirewallFlavor(dict):
     def version(self) -> _builtins.str:
         """
         Specifies the version of the firewall.
-        When the charging_mode is **prePaid**: the value can be **Standard** and **Prefessional**.
-        When the charging_mode is **postPaid**: the value can be **Prefessional**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "version")
 
@@ -983,7 +879,7 @@ class FirewallFlavor(dict):
     @pulumi.getter
     def bandwidth(self) -> Optional[_builtins.int]:
         """
-        The bandwidth of the firewall.
+        Specifies the bandwidth of the firewall.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -991,7 +887,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="defaultBandwidth")
     def default_bandwidth(self) -> Optional[_builtins.int]:
         """
-        The default bandwidth of the firewall.
+        Specifies the default bandwidth of the firewall.
         """
         return pulumi.get(self, "default_bandwidth")
 
@@ -999,7 +895,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="defaultEipCount")
     def default_eip_count(self) -> Optional[_builtins.int]:
         """
-        The default EIP number of the firewall.
+        Specifies the default EIP number of the firewall.
         """
         return pulumi.get(self, "default_eip_count")
 
@@ -1007,7 +903,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="defaultLogStorage")
     def default_log_storage(self) -> Optional[_builtins.int]:
         """
-        The default log storage of the firewall.
+        Specifies the default log storage of the firewall.
         """
         return pulumi.get(self, "default_log_storage")
 
@@ -1015,7 +911,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="defaultVpcCount")
     def default_vpc_count(self) -> Optional[_builtins.int]:
         """
-        The default VPC number of the firewall.
+        Specifies the default VPC number of the firewall.
         """
         return pulumi.get(self, "default_vpc_count")
 
@@ -1023,7 +919,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="eipCount")
     def eip_count(self) -> Optional[_builtins.int]:
         """
-        The EIP number of the firewall.
+        Specifies the EIP number of the firewall.
         """
         return pulumi.get(self, "eip_count")
 
@@ -1032,8 +928,6 @@ class FirewallFlavor(dict):
     def extend_bandwidth(self) -> Optional[_builtins.int]:
         """
         Specifies the extend bandwidth of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "extend_bandwidth")
 
@@ -1042,8 +936,6 @@ class FirewallFlavor(dict):
     def extend_eip_count(self) -> Optional[_builtins.int]:
         """
         Specifies the extend EIP number of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "extend_eip_count")
 
@@ -1052,8 +944,6 @@ class FirewallFlavor(dict):
     def extend_vpc_count(self) -> Optional[_builtins.int]:
         """
         Specifies the extend VPC number of the firewall.
-        Only works when the charging_mode is **prePaid**.
-        Changing this parameter will create a new resource.
         """
         return pulumi.get(self, "extend_vpc_count")
 
@@ -1061,7 +951,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="logStorage")
     def log_storage(self) -> Optional[_builtins.int]:
         """
-        The log storage of the firewall.
+        Specifies the log storage of the firewall.
         """
         return pulumi.get(self, "log_storage")
 
@@ -1069,7 +959,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="totalRuleCount")
     def total_rule_count(self) -> Optional[_builtins.int]:
         """
-        The total rule count of the firewall.
+        Specifies the total rule count of the firewall.
         """
         return pulumi.get(self, "total_rule_count")
 
@@ -1077,7 +967,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="usedRuleCount")
     def used_rule_count(self) -> Optional[_builtins.int]:
         """
-        The used rule count of the firewall.
+        Specifies the used rule count of the firewall.
         """
         return pulumi.get(self, "used_rule_count")
 
@@ -1085,7 +975,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="vpcBandwidth")
     def vpc_bandwidth(self) -> Optional[_builtins.int]:
         """
-        The VPC bandwidth of the firewall.
+        Specifies the VPC bandwidth of the firewall.
         """
         return pulumi.get(self, "vpc_bandwidth")
 
@@ -1093,7 +983,7 @@ class FirewallFlavor(dict):
     @pulumi.getter(name="vpcCount")
     def vpc_count(self) -> Optional[_builtins.int]:
         """
-        The VPC number of the firewall.
+        Specifies the VPC number of the firewall.
         """
         return pulumi.get(self, "vpc_count")
 
@@ -1124,10 +1014,9 @@ class FirewallProtectObject(dict):
                  object_name: Optional[_builtins.str] = None,
                  type: Optional[_builtins.int] = None):
         """
-        :param _builtins.str object_id: The protected object ID.
-        :param _builtins.str object_name: The protected object name.
-        :param _builtins.int type: The object type.
-               The options are as follows: 0: north-south; 1: east-west.
+        :param _builtins.str object_id: Protected object ID
+        :param _builtins.str object_name: Protected object name
+        :param _builtins.int type: Project type. The options are as follows: 0: north-south; 1: east-west.
         """
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
@@ -1140,7 +1029,7 @@ class FirewallProtectObject(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[_builtins.str]:
         """
-        The protected object ID.
+        Protected object ID
         """
         return pulumi.get(self, "object_id")
 
@@ -1148,7 +1037,7 @@ class FirewallProtectObject(dict):
     @pulumi.getter(name="objectName")
     def object_name(self) -> Optional[_builtins.str]:
         """
-        The protected object name.
+        Protected object name
         """
         return pulumi.get(self, "object_name")
 
@@ -1156,8 +1045,7 @@ class FirewallProtectObject(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.int]:
         """
-        The object type.
-        The options are as follows: 0: north-south; 1: east-west.
+        Project type. The options are as follows: 0: north-south; 1: east-west.
         """
         return pulumi.get(self, "type")
 
@@ -1190,30 +1078,30 @@ class GetAccessControlLogsRecordResult(dict):
                  src_region_id: _builtins.str,
                  src_region_name: _builtins.str):
         """
-        :param _builtins.str action: Specifies the action. The values can be **allow** and **deny**.
-        :param _builtins.str app: Specifies the application protocol.
-        :param _builtins.str dst_city_id: The destination city ID.
-        :param _builtins.str dst_city_name: Specifies the destination city name.
+        :param _builtins.str action: The action.
+        :param _builtins.str app: The application protocol.
+        :param _builtins.str dst_city_id: The distination city ID.
+        :param _builtins.str dst_city_name: The distination city name.
         :param _builtins.str dst_host: The destination host.
-        :param _builtins.str dst_ip: Specifies the destination IP address.
-        :param _builtins.int dst_port: Specifies the destination port.
-        :param _builtins.str dst_province_id: The destination province ID.
-        :param _builtins.str dst_province_name: Specifies the destination province name.
+        :param _builtins.str dst_ip: The destination IP address.
+        :param _builtins.int dst_port: The destination port.
+        :param _builtins.str dst_province_id: The distination province ID.
+        :param _builtins.str dst_province_name: The distination province name.
         :param _builtins.str dst_region_id: The destination region ID.
-        :param _builtins.str dst_region_name: Specifies the destination region name.
+        :param _builtins.str dst_region_name: The destination region name.
         :param _builtins.str hit_time: The hit time.
         :param _builtins.str log_id: The document ID.
         :param _builtins.str protocol: The protocol type.
         :param _builtins.str rule_id: The rule ID.
-        :param _builtins.str rule_name: Specifies the rule name.
+        :param _builtins.str rule_name: The rule name.
         :param _builtins.str src_city_id: The source city ID.
-        :param _builtins.str src_city_name: Specifies the source city name.
-        :param _builtins.str src_ip: Specifies the source IP address.
-        :param _builtins.int src_port: Specifies the source port.
+        :param _builtins.str src_city_name: The source city name.
+        :param _builtins.str src_ip: The source IP address.
+        :param _builtins.int src_port: The source port.
         :param _builtins.str src_province_id: The source province ID.
-        :param _builtins.str src_province_name: Specifies the source province name.
+        :param _builtins.str src_province_name: The source province name.
         :param _builtins.str src_region_id: The source region ID.
-        :param _builtins.str src_region_name: Specifies the source region name.
+        :param _builtins.str src_region_name: The source region name.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "app", app)
@@ -1244,7 +1132,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter
     def action(self) -> _builtins.str:
         """
-        Specifies the action. The values can be **allow** and **deny**.
+        The action.
         """
         return pulumi.get(self, "action")
 
@@ -1252,7 +1140,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter
     def app(self) -> _builtins.str:
         """
-        Specifies the application protocol.
+        The application protocol.
         """
         return pulumi.get(self, "app")
 
@@ -1260,7 +1148,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstCityId")
     def dst_city_id(self) -> _builtins.str:
         """
-        The destination city ID.
+        The distination city ID.
         """
         return pulumi.get(self, "dst_city_id")
 
@@ -1268,7 +1156,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstCityName")
     def dst_city_name(self) -> _builtins.str:
         """
-        Specifies the destination city name.
+        The distination city name.
         """
         return pulumi.get(self, "dst_city_name")
 
@@ -1284,7 +1172,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstIp")
     def dst_ip(self) -> _builtins.str:
         """
-        Specifies the destination IP address.
+        The destination IP address.
         """
         return pulumi.get(self, "dst_ip")
 
@@ -1292,7 +1180,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstPort")
     def dst_port(self) -> _builtins.int:
         """
-        Specifies the destination port.
+        The destination port.
         """
         return pulumi.get(self, "dst_port")
 
@@ -1300,7 +1188,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstProvinceId")
     def dst_province_id(self) -> _builtins.str:
         """
-        The destination province ID.
+        The distination province ID.
         """
         return pulumi.get(self, "dst_province_id")
 
@@ -1308,7 +1196,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstProvinceName")
     def dst_province_name(self) -> _builtins.str:
         """
-        Specifies the destination province name.
+        The distination province name.
         """
         return pulumi.get(self, "dst_province_name")
 
@@ -1324,7 +1212,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="dstRegionName")
     def dst_region_name(self) -> _builtins.str:
         """
-        Specifies the destination region name.
+        The destination region name.
         """
         return pulumi.get(self, "dst_region_name")
 
@@ -1364,7 +1252,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> _builtins.str:
         """
-        Specifies the rule name.
+        The rule name.
         """
         return pulumi.get(self, "rule_name")
 
@@ -1380,7 +1268,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="srcCityName")
     def src_city_name(self) -> _builtins.str:
         """
-        Specifies the source city name.
+        The source city name.
         """
         return pulumi.get(self, "src_city_name")
 
@@ -1388,7 +1276,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="srcIp")
     def src_ip(self) -> _builtins.str:
         """
-        Specifies the source IP address.
+        The source IP address.
         """
         return pulumi.get(self, "src_ip")
 
@@ -1396,7 +1284,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="srcPort")
     def src_port(self) -> _builtins.int:
         """
-        Specifies the source port.
+        The source port.
         """
         return pulumi.get(self, "src_port")
 
@@ -1412,7 +1300,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="srcProvinceName")
     def src_province_name(self) -> _builtins.str:
         """
-        Specifies the source province name.
+        The source province name.
         """
         return pulumi.get(self, "src_province_name")
 
@@ -1428,7 +1316,7 @@ class GetAccessControlLogsRecordResult(dict):
     @pulumi.getter(name="srcRegionName")
     def src_region_name(self) -> _builtins.str:
         """
-        Specifies the source region name.
+        The source region name.
         """
         return pulumi.get(self, "src_region_name")
 
@@ -1441,10 +1329,10 @@ class GetAddressGroupMembersRecordResult(dict):
                  description: _builtins.str,
                  item_id: _builtins.str):
         """
-        :param _builtins.str address: Specifies the IP address
+        :param _builtins.str address: The IP address.
         :param _builtins.int address_type: The address type.
         :param _builtins.str description: The address group member description.
-        :param _builtins.str item_id: Specifies the address group member ID.
+        :param _builtins.str item_id: The ID of an address group member.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -1455,7 +1343,7 @@ class GetAddressGroupMembersRecordResult(dict):
     @pulumi.getter
     def address(self) -> _builtins.str:
         """
-        Specifies the IP address
+        The IP address.
         """
         return pulumi.get(self, "address")
 
@@ -1479,7 +1367,7 @@ class GetAddressGroupMembersRecordResult(dict):
     @pulumi.getter(name="itemId")
     def item_id(self) -> _builtins.str:
         """
-        Specifies the address group member ID.
+        The ID of an address group member.
         """
         return pulumi.get(self, "item_id")
 
@@ -1495,12 +1383,11 @@ class GetAddressGroupsAddressGroupResult(dict):
                  ref_count: _builtins.int,
                  type: _builtins.int):
         """
-        :param _builtins.int address_type: Specifies the IP address type.
-               The value can be **0** (IPv4) or **1** (IPv6).
+        :param _builtins.int address_type: The address type.
         :param _builtins.str description: The address groups description.
         :param _builtins.str id: The ID of the IP address group.
-        :param _builtins.str name: Specifies the name of the address group.
-        :param _builtins.str object_id: Specifies the protected object ID.
+        :param _builtins.str name: The IP address group name.
+        :param _builtins.str object_id: The protected object ID.
         :param _builtins.int ref_count: The number of times this address group has been referenced.
         :param _builtins.int type: The address group type.
         """
@@ -1516,8 +1403,7 @@ class GetAddressGroupsAddressGroupResult(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.int:
         """
-        Specifies the IP address type.
-        The value can be **0** (IPv4) or **1** (IPv6).
+        The address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -1541,7 +1427,7 @@ class GetAddressGroupsAddressGroupResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the address group.
+        The IP address group name.
         """
         return pulumi.get(self, "name")
 
@@ -1549,7 +1435,7 @@ class GetAddressGroupsAddressGroupResult(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> _builtins.str:
         """
-        Specifies the protected object ID.
+        The protected object ID.
         """
         return pulumi.get(self, "object_id")
 
@@ -1604,22 +1490,22 @@ class GetAttackLogsRecordResult(dict):
                  src_region_id: _builtins.str,
                  src_region_name: _builtins.str):
         """
-        :param _builtins.str action: The action.
-        :param _builtins.str app: Specifies the application protocol.
-        :param _builtins.str attack_rule: Specifies the intrusion event rule.
-        :param _builtins.str attack_rule_id: Specifies the attack rule ID.
-        :param _builtins.str attack_type: Specifies the intrusion event type.
+        :param _builtins.str action: Then action.
+        :param _builtins.str app: The application protocol.
+        :param _builtins.str attack_rule: The attack rule.
+        :param _builtins.str attack_rule_id: The attack rule ID.
+        :param _builtins.str attack_type: The attack type.
         :param _builtins.str direction: The direction.
-        :param _builtins.str dst_city_id: The destination city ID.
-        :param _builtins.str dst_city_name: Specifies the destination city name.
-        :param _builtins.str dst_ip: Specifies the destination IP address.
-        :param _builtins.int dst_port: Specifies the destination port.
-        :param _builtins.str dst_province_id: The destination province ID.
-        :param _builtins.str dst_province_name: Specifies the destination province name.
+        :param _builtins.str dst_city_id: The distination city ID.
+        :param _builtins.str dst_city_name: The distination city name.
+        :param _builtins.str dst_ip: The destination IP address.
+        :param _builtins.int dst_port: The destination port.
+        :param _builtins.str dst_province_id: The distination province ID.
+        :param _builtins.str dst_province_name: The distination province name.
         :param _builtins.str dst_region_id: The destination region ID.
-        :param _builtins.str dst_region_name: Specifies the destination region name.
+        :param _builtins.str dst_region_name: The destination region name.
         :param _builtins.str event_time: The event time.
-        :param _builtins.str level: Specifies the threat level.
+        :param _builtins.str level: The threat level.
         :param _builtins.str log_id: The log ID.
         :param _builtins.str packet: The attack log packet.
         :param _builtins.int packet_length: The packet length.
@@ -1627,13 +1513,13 @@ class GetAttackLogsRecordResult(dict):
         :param _builtins.str protocol: The protocol.
         :param _builtins.str source: The source.
         :param _builtins.str src_city_id: The source city ID.
-        :param _builtins.str src_city_name: Specifies the source city name.
-        :param _builtins.str src_ip: Specifies the source IP address.
-        :param _builtins.int src_port: Specifies the source port.
+        :param _builtins.str src_city_name: The source city name.
+        :param _builtins.str src_ip: The source IP address.
+        :param _builtins.int src_port: The source port.
         :param _builtins.str src_province_id: The source province ID.
-        :param _builtins.str src_province_name: Specifies the source province name.
+        :param _builtins.str src_province_name: The source province name.
         :param _builtins.str src_region_id: The source region ID.
-        :param _builtins.str src_region_name: Specifies the source region name.
+        :param _builtins.str src_region_name: The source region name.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "app", app)
@@ -1670,7 +1556,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter
     def action(self) -> _builtins.str:
         """
-        The action.
+        Then action.
         """
         return pulumi.get(self, "action")
 
@@ -1678,7 +1564,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter
     def app(self) -> _builtins.str:
         """
-        Specifies the application protocol.
+        The application protocol.
         """
         return pulumi.get(self, "app")
 
@@ -1686,7 +1572,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="attackRule")
     def attack_rule(self) -> _builtins.str:
         """
-        Specifies the intrusion event rule.
+        The attack rule.
         """
         return pulumi.get(self, "attack_rule")
 
@@ -1694,7 +1580,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="attackRuleId")
     def attack_rule_id(self) -> _builtins.str:
         """
-        Specifies the attack rule ID.
+        The attack rule ID.
         """
         return pulumi.get(self, "attack_rule_id")
 
@@ -1702,7 +1588,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="attackType")
     def attack_type(self) -> _builtins.str:
         """
-        Specifies the intrusion event type.
+        The attack type.
         """
         return pulumi.get(self, "attack_type")
 
@@ -1718,7 +1604,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstCityId")
     def dst_city_id(self) -> _builtins.str:
         """
-        The destination city ID.
+        The distination city ID.
         """
         return pulumi.get(self, "dst_city_id")
 
@@ -1726,7 +1612,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstCityName")
     def dst_city_name(self) -> _builtins.str:
         """
-        Specifies the destination city name.
+        The distination city name.
         """
         return pulumi.get(self, "dst_city_name")
 
@@ -1734,7 +1620,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstIp")
     def dst_ip(self) -> _builtins.str:
         """
-        Specifies the destination IP address.
+        The destination IP address.
         """
         return pulumi.get(self, "dst_ip")
 
@@ -1742,7 +1628,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstPort")
     def dst_port(self) -> _builtins.int:
         """
-        Specifies the destination port.
+        The destination port.
         """
         return pulumi.get(self, "dst_port")
 
@@ -1750,7 +1636,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstProvinceId")
     def dst_province_id(self) -> _builtins.str:
         """
-        The destination province ID.
+        The distination province ID.
         """
         return pulumi.get(self, "dst_province_id")
 
@@ -1758,7 +1644,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstProvinceName")
     def dst_province_name(self) -> _builtins.str:
         """
-        Specifies the destination province name.
+        The distination province name.
         """
         return pulumi.get(self, "dst_province_name")
 
@@ -1774,7 +1660,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="dstRegionName")
     def dst_region_name(self) -> _builtins.str:
         """
-        Specifies the destination region name.
+        The destination region name.
         """
         return pulumi.get(self, "dst_region_name")
 
@@ -1790,7 +1676,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter
     def level(self) -> _builtins.str:
         """
-        Specifies the threat level.
+        The threat level.
         """
         return pulumi.get(self, "level")
 
@@ -1854,7 +1740,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="srcCityName")
     def src_city_name(self) -> _builtins.str:
         """
-        Specifies the source city name.
+        The source city name.
         """
         return pulumi.get(self, "src_city_name")
 
@@ -1862,7 +1748,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="srcIp")
     def src_ip(self) -> _builtins.str:
         """
-        Specifies the source IP address.
+        The source IP address.
         """
         return pulumi.get(self, "src_ip")
 
@@ -1870,7 +1756,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="srcPort")
     def src_port(self) -> _builtins.int:
         """
-        Specifies the source port.
+        The source port.
         """
         return pulumi.get(self, "src_port")
 
@@ -1886,7 +1772,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="srcProvinceName")
     def src_province_name(self) -> _builtins.str:
         """
-        Specifies the source province name.
+        The source province name.
         """
         return pulumi.get(self, "src_province_name")
 
@@ -1902,7 +1788,7 @@ class GetAttackLogsRecordResult(dict):
     @pulumi.getter(name="srcRegionName")
     def src_region_name(self) -> _builtins.str:
         """
-        Specifies the source region name.
+        The source region name.
         """
         return pulumi.get(self, "src_region_name")
 
@@ -1958,22 +1844,13 @@ class GetBlackWhiteListsRecordResult(dict):
                  port: _builtins.str,
                  protocol: _builtins.int):
         """
-        :param _builtins.str address: Specifies the IP address.
-        :param _builtins.str address_type: Specifies the IP address type.
-               The valid value can be **0** (IPv4).
-        :param _builtins.str description: Specifies the description.
-        :param _builtins.str direction: Specifies the direction of a black or white address.
-               The options are as follows:
-               + **0**: source address;
-               + **1**: destination address;
-        :param _builtins.str list_id: Specifies the blacklist/whitelist ID.
-        :param _builtins.str port: Specifies the port.
-        :param _builtins.int protocol: Specifies The protocol type.
-               The options are as follows:
-               + **6**: TCP;
-               + **17**: UDP;
-               + **1**: ICMP;
-               + **-1**: any protocol;
+        :param _builtins.str address: The IP address.
+        :param _builtins.str address_type: The IP address type.
+        :param _builtins.str description: The description.
+        :param _builtins.str direction: The direction of a black or white address.
+        :param _builtins.str list_id: The blacklist/whitelist ID.
+        :param _builtins.str port: The port.
+        :param _builtins.int protocol: The protocol type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_type", address_type)
@@ -1987,7 +1864,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter
     def address(self) -> _builtins.str:
         """
-        Specifies the IP address.
+        The IP address.
         """
         return pulumi.get(self, "address")
 
@@ -1995,8 +1872,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.str:
         """
-        Specifies the IP address type.
-        The valid value can be **0** (IPv4).
+        The IP address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -2004,7 +1880,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        Specifies the description.
+        The description.
         """
         return pulumi.get(self, "description")
 
@@ -2012,10 +1888,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter
     def direction(self) -> _builtins.str:
         """
-        Specifies the direction of a black or white address.
-        The options are as follows:
-        + **0**: source address;
-        + **1**: destination address;
+        The direction of a black or white address.
         """
         return pulumi.get(self, "direction")
 
@@ -2023,7 +1896,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter(name="listId")
     def list_id(self) -> _builtins.str:
         """
-        Specifies the blacklist/whitelist ID.
+        The blacklist/whitelist ID.
         """
         return pulumi.get(self, "list_id")
 
@@ -2031,7 +1904,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter
     def port(self) -> _builtins.str:
         """
-        Specifies the port.
+        The port.
         """
         return pulumi.get(self, "port")
 
@@ -2039,12 +1912,7 @@ class GetBlackWhiteListsRecordResult(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.int:
         """
-        Specifies The protocol type.
-        The options are as follows:
-        + **6**: TCP;
-        + **17**: UDP;
-        + **1**: ICMP;
-        + **-1**: any protocol;
+        The protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -2314,25 +2182,15 @@ class GetDomainNameGroupsRecordResult(dict):
                  rules: Sequence['outputs.GetDomainNameGroupsRecordRuleResult'],
                  type: _builtins.str):
         """
-        :param _builtins.str config_status: Specifies the configuration status.
-               The valid values are as follows:
-               + **-1**: not configured.
-               + **0**: configuration failed.
-               + **1**: configuration succeeded.
-               + **2**: configuration in progress.
-               + **3**: normal.
-               + **4**: configuration exception - domain group usage.
-        :param _builtins.str description: The description.
+        :param _builtins.str config_status: The configuration status.
+        :param _builtins.str description: The domain name group description.
         :param Sequence['GetDomainNameGroupsRecordDomainNameArgs'] domain_names: The list of domain names.
-        :param _builtins.str group_id: Specifies the domain name group ID.
+        :param _builtins.str group_id: The domain name group ID.
         :param _builtins.str message: The configuration message.
-        :param _builtins.str name: Specifies the name of a domain name group.
-        :param _builtins.str ref_count: Specifies the domain name group reference count.
+        :param _builtins.str name: The domain name group name.
+        :param _builtins.str ref_count: The domain name group reference count.
         :param Sequence['GetDomainNameGroupsRecordRuleArgs'] rules: The used rule list.
-        :param _builtins.str type: Specifies the domain name group type.
-               The value can be:
-               + **0**: means application type;
-               + **1**: means network type.
+        :param _builtins.str type: The domain name group type.
         """
         pulumi.set(__self__, "config_status", config_status)
         pulumi.set(__self__, "description", description)
@@ -2348,14 +2206,7 @@ class GetDomainNameGroupsRecordResult(dict):
     @pulumi.getter(name="configStatus")
     def config_status(self) -> _builtins.str:
         """
-        Specifies the configuration status.
-        The valid values are as follows:
-        + **-1**: not configured.
-        + **0**: configuration failed.
-        + **1**: configuration succeeded.
-        + **2**: configuration in progress.
-        + **3**: normal.
-        + **4**: configuration exception - domain group usage.
+        The configuration status.
         """
         return pulumi.get(self, "config_status")
 
@@ -2363,7 +2214,7 @@ class GetDomainNameGroupsRecordResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The description.
+        The domain name group description.
         """
         return pulumi.get(self, "description")
 
@@ -2379,7 +2230,7 @@ class GetDomainNameGroupsRecordResult(dict):
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.str:
         """
-        Specifies the domain name group ID.
+        The domain name group ID.
         """
         return pulumi.get(self, "group_id")
 
@@ -2395,7 +2246,7 @@ class GetDomainNameGroupsRecordResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of a domain name group.
+        The domain name group name.
         """
         return pulumi.get(self, "name")
 
@@ -2403,7 +2254,7 @@ class GetDomainNameGroupsRecordResult(dict):
     @pulumi.getter(name="refCount")
     def ref_count(self) -> _builtins.str:
         """
-        Specifies the domain name group reference count.
+        The domain name group reference count.
         """
         return pulumi.get(self, "ref_count")
 
@@ -2419,10 +2270,7 @@ class GetDomainNameGroupsRecordResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the domain name group type.
-        The value can be:
-        + **0**: means application type;
-        + **1**: means network type.
+        The domain name group type.
         """
         return pulumi.get(self, "type")
 
@@ -2474,7 +2322,7 @@ class GetDomainNameGroupsRecordRuleResult(dict):
                  name: _builtins.str):
         """
         :param _builtins.str id: The rule ID.
-        :param _builtins.str name: Specifies the name of a domain name group.
+        :param _builtins.str name: The rule name.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -2491,7 +2339,7 @@ class GetDomainNameGroupsRecordRuleResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of a domain name group.
+        The rule name.
         """
         return pulumi.get(self, "name")
 
@@ -2513,39 +2361,19 @@ class GetFirewallsRecordResult(dict):
                  status: _builtins.int,
                  support_ipv6: _builtins.bool):
         """
-        :param _builtins.int charge_mode: The billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
-        :param _builtins.int engine_type: The engine type.
-        :param Mapping[str, _builtins.bool] feature_toggle: The map of feature toggle.
+        :param _builtins.int charge_mode: Billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
+        :param _builtins.int engine_type: Engine type
+        :param Mapping[str, _builtins.bool] feature_toggle: Whether to enable the feature. The options are true (yes) and false (no).
         :param Sequence['GetFirewallsRecordFlavorArgs'] flavors: The flavor of the firewall.
-               The Flavor structure is documented below.
-        :param _builtins.str fw_instance_id: Specifies the firewall instance ID.
-               If not specified, the first instance will be returned.
-        :param _builtins.int ha_type: The cluster type.
-        :param _builtins.bool is_old_firewall_instance: Whether the engine is an old engine.
-        :param _builtins.str name: The firewall name.
-        :param Sequence['GetFirewallsRecordProtectObjectArgs'] protect_objects: The project list.
-               The Protect Object structure is documented below.
-        :param Sequence['GetFirewallsRecordResourceArgs'] resources: The firewall instance resources.
-               The Firewall Instance Resource structure is
-               documented below.
-        :param _builtins.int service_type: Specifies the service type. The value can be:
-               + **0**: North-south firewall;
-               + **1**: East-west firewall;
-        :param _builtins.int status: The firewall status. The options are as follows:
-               + **-1**: waiting for payment;
-               + **0**: creating;
-               + **1**: deleting;
-               + **2**: running;
-               + **3**: upgrading;
-               + **4**: deletion completed;
-               + **5**: freezing;
-               + **6**: creation failed;
-               + **7**: deletion failed;
-               + **8**: freezing failed;
-               + **9**: storage in progress;
-               + **10**: storage failed;
-               + **11**: upgrade failed;
-        :param _builtins.bool support_ipv6: Whether IPv6 is supported.
+        :param _builtins.str fw_instance_id: Firewall ID
+        :param _builtins.int ha_type: Cluster type
+        :param _builtins.bool is_old_firewall_instance: Whether the engine is an old engine. The options are true (yes) and false (no).
+        :param _builtins.str name: Firewall name
+        :param Sequence['GetFirewallsRecordProtectObjectArgs'] protect_objects: Project list
+        :param Sequence['GetFirewallsRecordResourceArgs'] resources: Firewall instance resources
+        :param _builtins.int service_type: Service type
+        :param _builtins.int status: Firewall status list. The options are as follows: -1: waiting for payment; 0: creating; 1: deleting; 2: running; 3: upgrading; 4: deletion completed; 5: freezing; 6: creation failed; 7: deletion failed; 8: freezing failed; 9: storage in progress; 10: storage failed; 11: upgrade failed
+        :param _builtins.bool support_ipv6: Whether IPv6 is supported. The options are true (yes) and false (no).
         """
         pulumi.set(__self__, "charge_mode", charge_mode)
         pulumi.set(__self__, "engine_type", engine_type)
@@ -2565,7 +2393,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> _builtins.int:
         """
-        The billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
+        Billing mode. The value can be 0 (yearly/monthly) or 1 (pay-per-use).
         """
         return pulumi.get(self, "charge_mode")
 
@@ -2573,7 +2401,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="engineType")
     def engine_type(self) -> _builtins.int:
         """
-        The engine type.
+        Engine type
         """
         return pulumi.get(self, "engine_type")
 
@@ -2581,7 +2409,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="featureToggle")
     def feature_toggle(self) -> Mapping[str, _builtins.bool]:
         """
-        The map of feature toggle.
+        Whether to enable the feature. The options are true (yes) and false (no).
         """
         return pulumi.get(self, "feature_toggle")
 
@@ -2590,7 +2418,6 @@ class GetFirewallsRecordResult(dict):
     def flavors(self) -> Sequence['outputs.GetFirewallsRecordFlavorResult']:
         """
         The flavor of the firewall.
-        The Flavor structure is documented below.
         """
         return pulumi.get(self, "flavors")
 
@@ -2598,8 +2425,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="fwInstanceId")
     def fw_instance_id(self) -> _builtins.str:
         """
-        Specifies the firewall instance ID.
-        If not specified, the first instance will be returned.
+        Firewall ID
         """
         return pulumi.get(self, "fw_instance_id")
 
@@ -2607,7 +2433,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="haType")
     def ha_type(self) -> _builtins.int:
         """
-        The cluster type.
+        Cluster type
         """
         return pulumi.get(self, "ha_type")
 
@@ -2615,7 +2441,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="isOldFirewallInstance")
     def is_old_firewall_instance(self) -> _builtins.bool:
         """
-        Whether the engine is an old engine.
+        Whether the engine is an old engine. The options are true (yes) and false (no).
         """
         return pulumi.get(self, "is_old_firewall_instance")
 
@@ -2623,7 +2449,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The firewall name.
+        Firewall name
         """
         return pulumi.get(self, "name")
 
@@ -2631,8 +2457,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="protectObjects")
     def protect_objects(self) -> Sequence['outputs.GetFirewallsRecordProtectObjectResult']:
         """
-        The project list.
-        The Protect Object structure is documented below.
+        Project list
         """
         return pulumi.get(self, "protect_objects")
 
@@ -2640,9 +2465,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter
     def resources(self) -> Sequence['outputs.GetFirewallsRecordResourceResult']:
         """
-        The firewall instance resources.
-        The Firewall Instance Resource structure is
-        documented below.
+        Firewall instance resources
         """
         return pulumi.get(self, "resources")
 
@@ -2650,9 +2473,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="serviceType")
     def service_type(self) -> _builtins.int:
         """
-        Specifies the service type. The value can be:
-        + **0**: North-south firewall;
-        + **1**: East-west firewall;
+        Service type
         """
         return pulumi.get(self, "service_type")
 
@@ -2660,20 +2481,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.int:
         """
-        The firewall status. The options are as follows:
-        + **-1**: waiting for payment;
-        + **0**: creating;
-        + **1**: deleting;
-        + **2**: running;
-        + **3**: upgrading;
-        + **4**: deletion completed;
-        + **5**: freezing;
-        + **6**: creation failed;
-        + **7**: deletion failed;
-        + **8**: freezing failed;
-        + **9**: storage in progress;
-        + **10**: storage failed;
-        + **11**: upgrade failed;
+        Firewall status list. The options are as follows: -1: waiting for payment; 0: creating; 1: deleting; 2: running; 3: upgrading; 4: deletion completed; 5: freezing; 6: creation failed; 7: deletion failed; 8: freezing failed; 9: storage in progress; 10: storage failed; 11: upgrade failed
         """
         return pulumi.get(self, "status")
 
@@ -2681,7 +2489,7 @@ class GetFirewallsRecordResult(dict):
     @pulumi.getter(name="supportIpv6")
     def support_ipv6(self) -> _builtins.bool:
         """
-        Whether IPv6 is supported.
+        Whether IPv6 is supported. The options are true (yes) and false (no).
         """
         return pulumi.get(self, "support_ipv6")
 
@@ -2695,12 +2503,11 @@ class GetFirewallsRecordFlavorResult(dict):
                  version: _builtins.int,
                  vpc_count: _builtins.int):
         """
-        :param _builtins.int bandwidth: The bandwidth.
-        :param _builtins.int eip_count: The number of EIPs.
-        :param _builtins.int log_storage: The log storage.
-        :param _builtins.int version: The firewall version. The value can be 0 (standard edition), 1 (professional edition),
-               2 (platinum edition), or 3 (basic edition).
-        :param _builtins.int vpc_count: The number of VPCs.
+        :param _builtins.int bandwidth: Bandwidth
+        :param _builtins.int eip_count: Number of EIPs
+        :param _builtins.int log_storage: Log storage
+        :param _builtins.int version: Firewall version. The value can be 0 (standard edition), 1 (professional edition), 2 (platinum edition), or 3 (basic edition).
+        :param _builtins.int vpc_count: Number of VPCs
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "eip_count", eip_count)
@@ -2712,7 +2519,7 @@ class GetFirewallsRecordFlavorResult(dict):
     @pulumi.getter
     def bandwidth(self) -> _builtins.int:
         """
-        The bandwidth.
+        Bandwidth
         """
         return pulumi.get(self, "bandwidth")
 
@@ -2720,7 +2527,7 @@ class GetFirewallsRecordFlavorResult(dict):
     @pulumi.getter(name="eipCount")
     def eip_count(self) -> _builtins.int:
         """
-        The number of EIPs.
+        Number of EIPs
         """
         return pulumi.get(self, "eip_count")
 
@@ -2728,7 +2535,7 @@ class GetFirewallsRecordFlavorResult(dict):
     @pulumi.getter(name="logStorage")
     def log_storage(self) -> _builtins.int:
         """
-        The log storage.
+        Log storage
         """
         return pulumi.get(self, "log_storage")
 
@@ -2736,8 +2543,7 @@ class GetFirewallsRecordFlavorResult(dict):
     @pulumi.getter
     def version(self) -> _builtins.int:
         """
-        The firewall version. The value can be 0 (standard edition), 1 (professional edition),
-        2 (platinum edition), or 3 (basic edition).
+        Firewall version. The value can be 0 (standard edition), 1 (professional edition), 2 (platinum edition), or 3 (basic edition).
         """
         return pulumi.get(self, "version")
 
@@ -2745,7 +2551,7 @@ class GetFirewallsRecordFlavorResult(dict):
     @pulumi.getter(name="vpcCount")
     def vpc_count(self) -> _builtins.int:
         """
-        The number of VPCs.
+        Number of VPCs
         """
         return pulumi.get(self, "vpc_count")
 
@@ -2757,11 +2563,9 @@ class GetFirewallsRecordProtectObjectResult(dict):
                  object_name: _builtins.str,
                  type: _builtins.int):
         """
-        :param _builtins.str object_id: The protected object ID.
-        :param _builtins.str object_name: The protected object name.
-        :param _builtins.int type: The project type. The options are as follows:
-               + **0**: north-south;
-               + **1**: east-west;
+        :param _builtins.str object_id: Protected object ID
+        :param _builtins.str object_name: Protected object name
+        :param _builtins.int type: Project type. The options are as follows: 0: north-south; 1: east-west.
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "object_name", object_name)
@@ -2771,7 +2575,7 @@ class GetFirewallsRecordProtectObjectResult(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> _builtins.str:
         """
-        The protected object ID.
+        Protected object ID
         """
         return pulumi.get(self, "object_id")
 
@@ -2779,7 +2583,7 @@ class GetFirewallsRecordProtectObjectResult(dict):
     @pulumi.getter(name="objectName")
     def object_name(self) -> _builtins.str:
         """
-        The protected object name.
+        Protected object name
         """
         return pulumi.get(self, "object_name")
 
@@ -2787,9 +2591,7 @@ class GetFirewallsRecordProtectObjectResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.int:
         """
-        The project type. The options are as follows:
-        + **0**: north-south;
-        + **1**: east-west;
+        Project type. The options are as follows: 0: north-south; 1: east-west.
         """
         return pulumi.get(self, "type")
 
@@ -2804,17 +2606,12 @@ class GetFirewallsRecordResourceResult(dict):
                  resource_spec_code: _builtins.str,
                  resource_type: _builtins.str):
         """
-        :param _builtins.str cloud_service_type: Service type, which is used by CBC. The value is **hws.service.type.cfw**.
-        :param _builtins.str resource_id: Resource ID.
-        :param _builtins.int resource_size: Resource quantity.
-        :param _builtins.int resource_size_measure_id: Resource unit name.
-        :param _builtins.str resource_spec_code: Inventory unit code.
-        :param _builtins.str resource_type: Resource type. The options are as follows:
-               + **CFW**: hws.resource.type.cfw;
-               + **EIP**: hws.resource.type.cfw.exp.eip;
-               + **Bandwidth**: hws.resource.type.cfw.exp.bandwidth;
-               + **VPC**: hws.resource.type.cfw.exp.vpc;
-               + **Log storage**: hws.resource.type.cfw.exp.logaudit;
+        :param _builtins.str cloud_service_type: Service type, which is used by CBC. The value is hws.service.type.cfw.
+        :param _builtins.str resource_id: Resource ID
+        :param _builtins.int resource_size: Resource quantity
+        :param _builtins.int resource_size_measure_id: Resource unit name
+        :param _builtins.str resource_spec_code: Inventory unit code
+        :param _builtins.str resource_type: Resource type. The options are as follows:1. CFW: hws.resource.type.cfw 2. EIP:hws.resource.type.cfw.exp.eip 3. Bandwidth: hws.resource.type.cfw.exp.bandwidth 4. VPC: hws.resource.type.cfw.exp.vpc 5. Log storage: hws.resource.type.cfw.exp.logaudit
         """
         pulumi.set(__self__, "cloud_service_type", cloud_service_type)
         pulumi.set(__self__, "resource_id", resource_id)
@@ -2827,7 +2624,7 @@ class GetFirewallsRecordResourceResult(dict):
     @pulumi.getter(name="cloudServiceType")
     def cloud_service_type(self) -> _builtins.str:
         """
-        Service type, which is used by CBC. The value is **hws.service.type.cfw**.
+        Service type, which is used by CBC. The value is hws.service.type.cfw.
         """
         return pulumi.get(self, "cloud_service_type")
 
@@ -2835,7 +2632,7 @@ class GetFirewallsRecordResourceResult(dict):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> _builtins.str:
         """
-        Resource ID.
+        Resource ID
         """
         return pulumi.get(self, "resource_id")
 
@@ -2843,7 +2640,7 @@ class GetFirewallsRecordResourceResult(dict):
     @pulumi.getter(name="resourceSize")
     def resource_size(self) -> _builtins.int:
         """
-        Resource quantity.
+        Resource quantity
         """
         return pulumi.get(self, "resource_size")
 
@@ -2851,7 +2648,7 @@ class GetFirewallsRecordResourceResult(dict):
     @pulumi.getter(name="resourceSizeMeasureId")
     def resource_size_measure_id(self) -> _builtins.int:
         """
-        Resource unit name.
+        Resource unit name
         """
         return pulumi.get(self, "resource_size_measure_id")
 
@@ -2859,7 +2656,7 @@ class GetFirewallsRecordResourceResult(dict):
     @pulumi.getter(name="resourceSpecCode")
     def resource_spec_code(self) -> _builtins.str:
         """
-        Inventory unit code.
+        Inventory unit code
         """
         return pulumi.get(self, "resource_spec_code")
 
@@ -2867,12 +2664,7 @@ class GetFirewallsRecordResourceResult(dict):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> _builtins.str:
         """
-        Resource type. The options are as follows:
-        + **CFW**: hws.resource.type.cfw;
-        + **EIP**: hws.resource.type.cfw.exp.eip;
-        + **Bandwidth**: hws.resource.type.cfw.exp.bandwidth;
-        + **VPC**: hws.resource.type.cfw.exp.vpc;
-        + **Log storage**: hws.resource.type.cfw.exp.logaudit;
+        Resource type. The options are as follows:1. CFW: hws.resource.type.cfw 2. EIP:hws.resource.type.cfw.exp.eip 3. Bandwidth: hws.resource.type.cfw.exp.bandwidth 4. VPC: hws.resource.type.cfw.exp.vpc 5. Log storage: hws.resource.type.cfw.exp.logaudit
         """
         return pulumi.get(self, "resource_type")
 
@@ -2906,33 +2698,31 @@ class GetFlowLogsRecordResult(dict):
                  src_region_name: _builtins.str,
                  start_time: _builtins.str):
         """
-        :param _builtins.str app: Specifies the application protocol.
+        :param _builtins.str app: The application protocol.
         :param _builtins.float bytes: The flow log bytes.
-        :param _builtins.str direction: Specifies the direction. The values can be **out2in** and **in2out**.
-        :param _builtins.str dst_city_id: The destination city ID.
-        :param _builtins.str dst_city_name: Specifies the destination city name.
+        :param _builtins.str direction: The direction, which can be inbound or outbound.
+        :param _builtins.str dst_city_id: The distination city ID.
+        :param _builtins.str dst_city_name: The distination city name.
         :param _builtins.str dst_host: The destination host.
-        :param _builtins.str dst_ip: Specifies the destination IP address.
-        :param _builtins.int dst_port: Specifies the destination port.
-        :param _builtins.str dst_province_id: The destination province ID.
-        :param _builtins.str dst_province_name: Specifies the destination province name.
-        :param _builtins.str dst_region_id: The destination region ID.
-        :param _builtins.str dst_region_name: Specifies the destination region name.
-        :param _builtins.str end_time: Specifies the end time. The time is in UTC.
-               The format is **yyyy-MM-dd HH:mm:ss**.
+        :param _builtins.str dst_ip: The destination IP address.
+        :param _builtins.int dst_port: The destination port.
+        :param _builtins.str dst_province_id: The distination province ID.
+        :param _builtins.str dst_province_name: The distination province name.
+        :param _builtins.str dst_region_id: The destination region id.
+        :param _builtins.str dst_region_name: The destination region name.
+        :param _builtins.str end_time: The end time.
         :param _builtins.str log_id: The document ID.
         :param _builtins.int packets: The number of packets.
         :param _builtins.str protocol: The protocol type.
         :param _builtins.str src_city_id: The source city ID.
-        :param _builtins.str src_city_name: Specifies the source city name.
-        :param _builtins.str src_ip: Specifies the source IP address.
-        :param _builtins.int src_port: Specifies the source port.
+        :param _builtins.str src_city_name: The source city name.
+        :param _builtins.str src_ip: The source IP address.
+        :param _builtins.int src_port: The source port.
         :param _builtins.str src_province_id: The source province ID.
-        :param _builtins.str src_province_name: Specifies the source province name.
-        :param _builtins.str src_region_id: The source region ID.
-        :param _builtins.str src_region_name: Specifies the source region name.
-        :param _builtins.str start_time: Specifies the start time. The time is in UTC.
-               The format is **yyyy-MM-dd HH:mm:ss**.
+        :param _builtins.str src_province_name: The source province name.
+        :param _builtins.str src_region_id: The source region id.
+        :param _builtins.str src_region_name: The source region name.
+        :param _builtins.str start_time: The start time.
         """
         pulumi.set(__self__, "app", app)
         pulumi.set(__self__, "bytes", bytes)
@@ -2964,7 +2754,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter
     def app(self) -> _builtins.str:
         """
-        Specifies the application protocol.
+        The application protocol.
         """
         return pulumi.get(self, "app")
 
@@ -2980,7 +2770,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter
     def direction(self) -> _builtins.str:
         """
-        Specifies the direction. The values can be **out2in** and **in2out**.
+        The direction, which can be inbound or outbound.
         """
         return pulumi.get(self, "direction")
 
@@ -2988,7 +2778,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstCityId")
     def dst_city_id(self) -> _builtins.str:
         """
-        The destination city ID.
+        The distination city ID.
         """
         return pulumi.get(self, "dst_city_id")
 
@@ -2996,7 +2786,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstCityName")
     def dst_city_name(self) -> _builtins.str:
         """
-        Specifies the destination city name.
+        The distination city name.
         """
         return pulumi.get(self, "dst_city_name")
 
@@ -3012,7 +2802,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstIp")
     def dst_ip(self) -> _builtins.str:
         """
-        Specifies the destination IP address.
+        The destination IP address.
         """
         return pulumi.get(self, "dst_ip")
 
@@ -3020,7 +2810,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstPort")
     def dst_port(self) -> _builtins.int:
         """
-        Specifies the destination port.
+        The destination port.
         """
         return pulumi.get(self, "dst_port")
 
@@ -3028,7 +2818,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstProvinceId")
     def dst_province_id(self) -> _builtins.str:
         """
-        The destination province ID.
+        The distination province ID.
         """
         return pulumi.get(self, "dst_province_id")
 
@@ -3036,7 +2826,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstProvinceName")
     def dst_province_name(self) -> _builtins.str:
         """
-        Specifies the destination province name.
+        The distination province name.
         """
         return pulumi.get(self, "dst_province_name")
 
@@ -3044,7 +2834,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstRegionId")
     def dst_region_id(self) -> _builtins.str:
         """
-        The destination region ID.
+        The destination region id.
         """
         return pulumi.get(self, "dst_region_id")
 
@@ -3052,7 +2842,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="dstRegionName")
     def dst_region_name(self) -> _builtins.str:
         """
-        Specifies the destination region name.
+        The destination region name.
         """
         return pulumi.get(self, "dst_region_name")
 
@@ -3060,8 +2850,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> _builtins.str:
         """
-        Specifies the end time. The time is in UTC.
-        The format is **yyyy-MM-dd HH:mm:ss**.
+        The end time.
         """
         return pulumi.get(self, "end_time")
 
@@ -3101,7 +2890,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="srcCityName")
     def src_city_name(self) -> _builtins.str:
         """
-        Specifies the source city name.
+        The source city name.
         """
         return pulumi.get(self, "src_city_name")
 
@@ -3109,7 +2898,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="srcIp")
     def src_ip(self) -> _builtins.str:
         """
-        Specifies the source IP address.
+        The source IP address.
         """
         return pulumi.get(self, "src_ip")
 
@@ -3117,7 +2906,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="srcPort")
     def src_port(self) -> _builtins.int:
         """
-        Specifies the source port.
+        The source port.
         """
         return pulumi.get(self, "src_port")
 
@@ -3133,7 +2922,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="srcProvinceName")
     def src_province_name(self) -> _builtins.str:
         """
-        Specifies the source province name.
+        The source province name.
         """
         return pulumi.get(self, "src_province_name")
 
@@ -3141,7 +2930,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="srcRegionId")
     def src_region_id(self) -> _builtins.str:
         """
-        The source region ID.
+        The source region id.
         """
         return pulumi.get(self, "src_region_id")
 
@@ -3149,7 +2938,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="srcRegionName")
     def src_region_name(self) -> _builtins.str:
         """
-        Specifies the source region name.
+        The source region name.
         """
         return pulumi.get(self, "src_region_name")
 
@@ -3157,8 +2946,7 @@ class GetFlowLogsRecordResult(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> _builtins.str:
         """
-        Specifies the start time. The time is in UTC.
-        The format is **yyyy-MM-dd HH:mm:ss**.
+        The start time.
         """
         return pulumi.get(self, "start_time")
 
@@ -3184,39 +2972,8 @@ class GetIpsCustomRulesRecordResult(dict):
                  src_ports: _builtins.str):
         """
         :param _builtins.int action: The action.
-        :param _builtins.int affected_os: Specifies the affected OS.
-               The valid values are as follows:
-               + **1**: Windows;
-               + **2**: Linux;
-               + **3**: FreeBSD;
-               + **4**: Solaris;
-               + **5**: Other Unix;
-               + **6**: Network device;
-               + **7**: MAC OS;
-               + **8**: IOS;
-               + **9**: Android;
-               + **10**: Other;
-        :param _builtins.int attack_type: Specifies the attack type.
-               The valid values are as follows:
-               + **1**: access control;
-               + **2**: vulnerability scan;
-               + **3**: email phishing;
-               + **4**: vulnerability exploits;
-               + **5**: web attack;
-               + **6**: password cracking;
-               + **7**: hijacking attack;
-               + **8**: protocol exception;
-               + **9**: trojan;
-               + **10**: worm;
-               + **11**: buffer overflow;
-               + **12**: hacker tool;
-               + **13**: spyware;
-               + **14**: DDoS flood;
-               + **15**: application-layer DDoS attack;
-               + **16**: other suspicious behavior;
-               + **17**: suspicious DNS activity;
-               + **18**: phishing;
-               + **19**: spam;
+        :param _builtins.int affected_os: The affected OS.
+        :param _builtins.int attack_type: The attack type.
         :param _builtins.int config_status: The rule status.
         :param _builtins.str content: The content storage in JSON format.
         :param _builtins.int dst_port_type: The destination port type.
@@ -3224,83 +2981,10 @@ class GetIpsCustomRulesRecordResult(dict):
         :param _builtins.str group_id: The firewall cluster ID.
         :param _builtins.str ips_cfw_id: The ID of a custom IPS rule in CFW.
         :param _builtins.str ips_id: The ID of a rule in Hillstone.
-        :param _builtins.str ips_name: Specifies the IPS custom rule name.
-        :param _builtins.int protocol: Specifies the protocol.
-               The valid values are as follows:
-               + **1**: FTP;
-               + **2**: TELNET;
-               + **3**: SMTP;
-               + **4**: DNS-TCP;
-               + **5**: DNS-UDP;
-               + **6**: DHCP;
-               + **7**: TFTP;
-               + **8**: FINGER;
-               + **9**: HTTP;
-               + **10**: POP3;
-               + **11**: SUNRPC-TCP;
-               + **12**: SUNRPC-UDP;
-               + **13**: NNTP;
-               + **14**: MSRPC-TCP;
-               + **15**: MSRPC-UDP;
-               + **16**: NETBIOS-NAME_TCP;
-               + **17**: NETBIOS-NAME_UDP;
-               + **18**: NETBIOS-SMB;
-               + **19**: NETBIOS-DATAGRAM;
-               + **20**: IMAP4;
-               + **21**: SNMP;
-               + **22**: LDAP;
-               + **23**: MSSQL;
-               + **24**: ORACLE;
-               + **25**: MYSQL;
-               + **26**: VOIP-SIP-TCP;
-               + **27**: VOIP-SIP-UDP;
-               + **28**: VOIP-H245;
-               + **29**: VOIP-Q931;
-               + **30**: OTHER-TCP;
-               + **31**: OTHER-UDP;
-        :param _builtins.int severity: Specifies the severity.
-               The valid values are as follows:
-               + **0**: critical;
-               + **1**: high;
-               + **2**: medium;
-               + **3**: low;
-        :param _builtins.int software: Specifies the affected software.
-               The valid values are as follows:
-               + **1**: ADOBE;
-               + **2**: APACHE;
-               + **3**: APPLE;
-               + **4**: CA;
-               + **5**: CISCO;
-               + **6**: GOOGLE CHROME;
-               + **7**: HP;
-               + **8**: IBM;
-               + **9**: IE;
-               + **10**: IIS;
-               + **11**: MCAFEE;
-               + **12**: MEDIAPLAYER;
-               + **13**: MICROSOFT.NET;
-               + **14**: MICROSOFT EDGE;
-               + **15**: MICROSOFT EXCHANGE;
-               + **16**: MICROSOFT OFFICE;
-               + **17**: MICROSOFT OUTLOOK;
-               + **18**: MICROSOFT SHAREPOINT;
-               + **19**: MICROSOFT WINDOWS;
-               + **20**: MOZILLA;
-               + **21**: MSSQL;
-               + **22**: MYSQL;
-               + **23**: NOVELL;
-               + **24**: ORACLE;
-               + **25**: SAMBA;
-               + **26**: SAMSUNG;
-               + **27**: SAP;
-               + **28**: SCADA;
-               + **29**: SQUID;
-               + **30**: SUN;
-               + **31**: SYMANTEC;
-               + **32**: TREND MICRO;
-               + **33**: VMWARE;
-               + **34**: WORDPRESS;
-               + **35**: OTHER;
+        :param _builtins.str ips_name: The IPS rule name.
+        :param _builtins.int protocol: The protocol.
+        :param _builtins.int severity: The severity.
+        :param _builtins.int software: The affected software.
         :param _builtins.int src_port_type: The source port type.
         :param _builtins.str src_ports: The source port.
         """
@@ -3333,18 +3017,7 @@ class GetIpsCustomRulesRecordResult(dict):
     @pulumi.getter(name="affectedOs")
     def affected_os(self) -> _builtins.int:
         """
-        Specifies the affected OS.
-        The valid values are as follows:
-        + **1**: Windows;
-        + **2**: Linux;
-        + **3**: FreeBSD;
-        + **4**: Solaris;
-        + **5**: Other Unix;
-        + **6**: Network device;
-        + **7**: MAC OS;
-        + **8**: IOS;
-        + **9**: Android;
-        + **10**: Other;
+        The affected OS.
         """
         return pulumi.get(self, "affected_os")
 
@@ -3352,27 +3025,7 @@ class GetIpsCustomRulesRecordResult(dict):
     @pulumi.getter(name="attackType")
     def attack_type(self) -> _builtins.int:
         """
-        Specifies the attack type.
-        The valid values are as follows:
-        + **1**: access control;
-        + **2**: vulnerability scan;
-        + **3**: email phishing;
-        + **4**: vulnerability exploits;
-        + **5**: web attack;
-        + **6**: password cracking;
-        + **7**: hijacking attack;
-        + **8**: protocol exception;
-        + **9**: trojan;
-        + **10**: worm;
-        + **11**: buffer overflow;
-        + **12**: hacker tool;
-        + **13**: spyware;
-        + **14**: DDoS flood;
-        + **15**: application-layer DDoS attack;
-        + **16**: other suspicious behavior;
-        + **17**: suspicious DNS activity;
-        + **18**: phishing;
-        + **19**: spam;
+        The attack type.
         """
         return pulumi.get(self, "attack_type")
 
@@ -3436,7 +3089,7 @@ class GetIpsCustomRulesRecordResult(dict):
     @pulumi.getter(name="ipsName")
     def ips_name(self) -> _builtins.str:
         """
-        Specifies the IPS custom rule name.
+        The IPS rule name.
         """
         return pulumi.get(self, "ips_name")
 
@@ -3444,39 +3097,7 @@ class GetIpsCustomRulesRecordResult(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.int:
         """
-        Specifies the protocol.
-        The valid values are as follows:
-        + **1**: FTP;
-        + **2**: TELNET;
-        + **3**: SMTP;
-        + **4**: DNS-TCP;
-        + **5**: DNS-UDP;
-        + **6**: DHCP;
-        + **7**: TFTP;
-        + **8**: FINGER;
-        + **9**: HTTP;
-        + **10**: POP3;
-        + **11**: SUNRPC-TCP;
-        + **12**: SUNRPC-UDP;
-        + **13**: NNTP;
-        + **14**: MSRPC-TCP;
-        + **15**: MSRPC-UDP;
-        + **16**: NETBIOS-NAME_TCP;
-        + **17**: NETBIOS-NAME_UDP;
-        + **18**: NETBIOS-SMB;
-        + **19**: NETBIOS-DATAGRAM;
-        + **20**: IMAP4;
-        + **21**: SNMP;
-        + **22**: LDAP;
-        + **23**: MSSQL;
-        + **24**: ORACLE;
-        + **25**: MYSQL;
-        + **26**: VOIP-SIP-TCP;
-        + **27**: VOIP-SIP-UDP;
-        + **28**: VOIP-H245;
-        + **29**: VOIP-Q931;
-        + **30**: OTHER-TCP;
-        + **31**: OTHER-UDP;
+        The protocol.
         """
         return pulumi.get(self, "protocol")
 
@@ -3484,12 +3105,7 @@ class GetIpsCustomRulesRecordResult(dict):
     @pulumi.getter
     def severity(self) -> _builtins.int:
         """
-        Specifies the severity.
-        The valid values are as follows:
-        + **0**: critical;
-        + **1**: high;
-        + **2**: medium;
-        + **3**: low;
+        The severity.
         """
         return pulumi.get(self, "severity")
 
@@ -3497,43 +3113,7 @@ class GetIpsCustomRulesRecordResult(dict):
     @pulumi.getter
     def software(self) -> _builtins.int:
         """
-        Specifies the affected software.
-        The valid values are as follows:
-        + **1**: ADOBE;
-        + **2**: APACHE;
-        + **3**: APPLE;
-        + **4**: CA;
-        + **5**: CISCO;
-        + **6**: GOOGLE CHROME;
-        + **7**: HP;
-        + **8**: IBM;
-        + **9**: IE;
-        + **10**: IIS;
-        + **11**: MCAFEE;
-        + **12**: MEDIAPLAYER;
-        + **13**: MICROSOFT.NET;
-        + **14**: MICROSOFT EDGE;
-        + **15**: MICROSOFT EXCHANGE;
-        + **16**: MICROSOFT OFFICE;
-        + **17**: MICROSOFT OUTLOOK;
-        + **18**: MICROSOFT SHAREPOINT;
-        + **19**: MICROSOFT WINDOWS;
-        + **20**: MOZILLA;
-        + **21**: MSSQL;
-        + **22**: MYSQL;
-        + **23**: NOVELL;
-        + **24**: ORACLE;
-        + **25**: SAMBA;
-        + **26**: SAMSUNG;
-        + **27**: SAP;
-        + **28**: SCADA;
-        + **29**: SQUID;
-        + **30**: SUN;
-        + **31**: SYMANTEC;
-        + **32**: TREND MICRO;
-        + **33**: VMWARE;
-        + **34**: WORDPRESS;
-        + **35**: OTHER;
+        The affected software.
         """
         return pulumi.get(self, "software")
 
@@ -3613,12 +3193,11 @@ class GetIpsRulesRecordResult(dict):
         :param _builtins.str default_status: The default status of the IPS rule.
         :param _builtins.str ips_cve: The CVE.
         :param _builtins.str ips_group: The IPS rule group.
-        :param _builtins.str ips_id: Specifies the IPS rule ID.
+        :param _builtins.str ips_id: The IPS rule ID.
         :param _builtins.str ips_level: The risk level.
         :param _builtins.str ips_name: The IPS rule name.
         :param _builtins.str ips_rules_type: The IPS rule type.
-        :param _builtins.str ips_status: Specifies the IPS rule status.
-               The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
+        :param _builtins.str ips_status: The current status of the IPS rule.
         """
         pulumi.set(__self__, "affected_application", affected_application)
         pulumi.set(__self__, "create_time", create_time)
@@ -3675,7 +3254,7 @@ class GetIpsRulesRecordResult(dict):
     @pulumi.getter(name="ipsId")
     def ips_id(self) -> _builtins.str:
         """
-        Specifies the IPS rule ID.
+        The IPS rule ID.
         """
         return pulumi.get(self, "ips_id")
 
@@ -3707,8 +3286,7 @@ class GetIpsRulesRecordResult(dict):
     @pulumi.getter(name="ipsStatus")
     def ips_status(self) -> _builtins.str:
         """
-        Specifies the IPS rule status.
-        The valid value can be **OBSERVE**, **ENABLE**, or **CLOSE**.
+        The current status of the IPS rule.
         """
         return pulumi.get(self, "ips_status")
 
@@ -3736,36 +3314,25 @@ class GetProtectionRulesRecordResult(dict):
                  tags: Mapping[str, _builtins.str],
                  type: _builtins.str):
         """
-        :param _builtins.str action_type: Specifies the rule action type.
-               The options are as follows:
-               + **0**: allow;
-               + **1**: deny.
+        :param _builtins.str action_type: The rule action type.
         :param _builtins.int address_type: The address type.
         :param _builtins.str created_date: The created time of a rule.
-        :param _builtins.str description: The custom service description.
-        :param Sequence['GetProtectionRulesRecordDestinationArgs'] destinations: Specifies the destination address.
-        :param _builtins.str direction: Specifies the rule direction.
-               The options are as follows:
-               + **0**: inbound;
-               + **1**: outbound.
+        :param _builtins.str description: The rule description.
+        :param Sequence['GetProtectionRulesRecordDestinationArgs'] destinations: The destination configuration.
+        :param _builtins.str direction: The direction of a rule.
         :param _builtins.str last_open_time: The last open time.
         :param _builtins.int long_connect_enable: Whether to support persistent connections.
         :param _builtins.int long_connect_time: The persistent connection duration.
         :param _builtins.int long_connect_time_hour: The persistent connection duration (hour).
         :param _builtins.int long_connect_time_minute: The persistent connection duration (minute).
         :param _builtins.int long_connect_time_second: The persistent connection duration (second).
-        :param _builtins.str name: Specifies the rule name.
-        :param _builtins.str rule_id: Specifies the rule ID.
+        :param _builtins.str name: The rule name.
+        :param _builtins.str rule_id: The rule ID.
         :param Sequence['GetProtectionRulesRecordServiceArgs'] services: The service.
-        :param Sequence['GetProtectionRulesRecordSourceArgs'] sources: Specifies the source address.
-        :param _builtins.str status: Specifies the rule status.
-               The options are as follows:
-               + **0**: disabled;
-               + **1**: enabled.
-        :param Mapping[str, _builtins.str] tags: Specifies the key/value pairs to associate with the protection rule.
-               Tags should have only one key/value pair.
-        :param _builtins.str type: Specifies the rule type.
-               The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        :param Sequence['GetProtectionRulesRecordSourceArgs'] sources: The source configuration.
+        :param _builtins.str status: The rule status.
+        :param Mapping[str, _builtins.str] tags: The tag of a rule.
+        :param _builtins.str type: The rule type.
         """
         pulumi.set(__self__, "action_type", action_type)
         pulumi.set(__self__, "address_type", address_type)
@@ -3791,10 +3358,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter(name="actionType")
     def action_type(self) -> _builtins.str:
         """
-        Specifies the rule action type.
-        The options are as follows:
-        + **0**: allow;
-        + **1**: deny.
+        The rule action type.
         """
         return pulumi.get(self, "action_type")
 
@@ -3818,7 +3382,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        The custom service description.
+        The rule description.
         """
         return pulumi.get(self, "description")
 
@@ -3826,7 +3390,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def destinations(self) -> Sequence['outputs.GetProtectionRulesRecordDestinationResult']:
         """
-        Specifies the destination address.
+        The destination configuration.
         """
         return pulumi.get(self, "destinations")
 
@@ -3834,10 +3398,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def direction(self) -> _builtins.str:
         """
-        Specifies the rule direction.
-        The options are as follows:
-        + **0**: inbound;
-        + **1**: outbound.
+        The direction of a rule.
         """
         return pulumi.get(self, "direction")
 
@@ -3893,7 +3454,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the rule name.
+        The rule name.
         """
         return pulumi.get(self, "name")
 
@@ -3901,7 +3462,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter(name="ruleId")
     def rule_id(self) -> _builtins.str:
         """
-        Specifies the rule ID.
+        The rule ID.
         """
         return pulumi.get(self, "rule_id")
 
@@ -3917,7 +3478,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def sources(self) -> Sequence['outputs.GetProtectionRulesRecordSourceResult']:
         """
-        Specifies the source address.
+        The source configuration.
         """
         return pulumi.get(self, "sources")
 
@@ -3925,10 +3486,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        Specifies the rule status.
-        The options are as follows:
-        + **0**: disabled;
-        + **1**: enabled.
+        The rule status.
         """
         return pulumi.get(self, "status")
 
@@ -3936,8 +3494,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, _builtins.str]:
         """
-        Specifies the key/value pairs to associate with the protection rule.
-        Tags should have only one key/value pair.
+        The tag of a rule.
         """
         return pulumi.get(self, "tags")
 
@@ -3945,8 +3502,7 @@ class GetProtectionRulesRecordResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Specifies the rule type.
-        The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        The rule type.
         """
         return pulumi.get(self, "type")
 
@@ -3967,19 +3523,18 @@ class GetProtectionRulesRecordDestinationResult(dict):
                  region_lists: Sequence['outputs.GetProtectionRulesRecordDestinationRegionListResult'],
                  type: _builtins.int):
         """
-        :param _builtins.str address: The source IP address.
+        :param _builtins.str address: The destination IP address.
         :param Sequence[_builtins.str] address_groups: The address group.
         :param _builtins.str address_set_id: The ID of the associated IP address group.
         :param _builtins.str address_set_name: The IP address group name.
-        :param _builtins.int address_set_type: The address set type.
-        :param _builtins.int address_type: The address type.
-        :param _builtins.str domain_address_name: The name of the domain address.
+        :param _builtins.int address_set_type: The destination address set type.
+        :param _builtins.int address_type: The destination address type.
+        :param _builtins.str domain_address_name: The name of the domain name address.
         :param _builtins.str domain_set_id: The ID of the domain group.
         :param _builtins.str domain_set_name: The name of domain group.
         :param Sequence[_builtins.str] ip_addresses: The IP address list.
         :param Sequence['GetProtectionRulesRecordDestinationRegionListArgs'] region_lists: The region list of a rule.
-        :param _builtins.int type: Specifies the rule type.
-               The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        :param _builtins.int type: The destination type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_groups", address_groups)
@@ -3998,7 +3553,7 @@ class GetProtectionRulesRecordDestinationResult(dict):
     @pulumi.getter
     def address(self) -> _builtins.str:
         """
-        The source IP address.
+        The destination IP address.
         """
         return pulumi.get(self, "address")
 
@@ -4030,7 +3585,7 @@ class GetProtectionRulesRecordDestinationResult(dict):
     @pulumi.getter(name="addressSetType")
     def address_set_type(self) -> _builtins.int:
         """
-        The address set type.
+        The destination address set type.
         """
         return pulumi.get(self, "address_set_type")
 
@@ -4038,7 +3593,7 @@ class GetProtectionRulesRecordDestinationResult(dict):
     @pulumi.getter(name="addressType")
     def address_type(self) -> _builtins.int:
         """
-        The address type.
+        The destination address type.
         """
         return pulumi.get(self, "address_type")
 
@@ -4046,7 +3601,7 @@ class GetProtectionRulesRecordDestinationResult(dict):
     @pulumi.getter(name="domainAddressName")
     def domain_address_name(self) -> _builtins.str:
         """
-        The name of the domain address.
+        The name of the domain name address.
         """
         return pulumi.get(self, "domain_address_name")
 
@@ -4086,8 +3641,7 @@ class GetProtectionRulesRecordDestinationResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.int:
         """
-        Specifies the rule type.
-        The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        The destination type.
         """
         return pulumi.get(self, "type")
 
@@ -4102,7 +3656,7 @@ class GetProtectionRulesRecordDestinationRegionListResult(dict):
         """
         :param _builtins.str description_cn: The Chinese description of a region.
         :param _builtins.str description_en: The English description of a region.
-        :param _builtins.str region_id: The region ID.
+        :param _builtins.str region_id: The region ID of the destination.
         :param _builtins.int region_type: The region type.
         """
         pulumi.set(__self__, "description_cn", description_cn)
@@ -4130,7 +3684,7 @@ class GetProtectionRulesRecordDestinationRegionListResult(dict):
     @pulumi.getter(name="regionId")
     def region_id(self) -> _builtins.str:
         """
-        The region ID.
+        The region ID of the destination.
         """
         return pulumi.get(self, "region_id")
 
@@ -4158,16 +3712,15 @@ class GetProtectionRulesRecordServiceResult(dict):
                  type: _builtins.int):
         """
         :param Sequence['GetProtectionRulesRecordServiceCustomServiceArgs'] custom_services: The custom service.
-        :param _builtins.str dest_port: The destination port.
-        :param _builtins.int protocol: The protocol type of the custom service.
+        :param _builtins.str dest_port: The destination port of the service.
+        :param _builtins.int protocol: The protocol type.
         :param Sequence[_builtins.int] protocols: The protocols.
         :param Sequence[_builtins.str] service_groups: The service group list.
         :param _builtins.str service_set_id: The service group ID.
         :param _builtins.str service_set_name: The service group name.
         :param _builtins.int service_set_type: The service set type.
-        :param _builtins.str source_port: The source port of the custom service.
-        :param _builtins.int type: Specifies the rule type.
-               The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        :param _builtins.str source_port: The source port.
+        :param _builtins.int type: The service input type.
         """
         pulumi.set(__self__, "custom_services", custom_services)
         pulumi.set(__self__, "dest_port", dest_port)
@@ -4192,7 +3745,7 @@ class GetProtectionRulesRecordServiceResult(dict):
     @pulumi.getter(name="destPort")
     def dest_port(self) -> _builtins.str:
         """
-        The destination port.
+        The destination port of the service.
         """
         return pulumi.get(self, "dest_port")
 
@@ -4200,7 +3753,7 @@ class GetProtectionRulesRecordServiceResult(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.int:
         """
-        The protocol type of the custom service.
+        The protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -4248,7 +3801,7 @@ class GetProtectionRulesRecordServiceResult(dict):
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> _builtins.str:
         """
-        The source port of the custom service.
+        The source port.
         """
         return pulumi.get(self, "source_port")
 
@@ -4256,8 +3809,7 @@ class GetProtectionRulesRecordServiceResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.int:
         """
-        Specifies the rule type.
-        The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        The service input type.
         """
         return pulumi.get(self, "type")
 
@@ -4273,7 +3825,7 @@ class GetProtectionRulesRecordServiceCustomServiceResult(dict):
         """
         :param _builtins.str description: The custom service description.
         :param _builtins.str dest_port: The destination port.
-        :param _builtins.str name: Specifies the rule name.
+        :param _builtins.str name: The custom service name.
         :param _builtins.int protocol: The protocol type of the custom service.
         :param _builtins.str source_port: The source port of the custom service.
         """
@@ -4303,7 +3855,7 @@ class GetProtectionRulesRecordServiceCustomServiceResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the rule name.
+        The custom service name.
         """
         return pulumi.get(self, "name")
 
@@ -4347,8 +3899,7 @@ class GetProtectionRulesRecordSourceResult(dict):
         :param _builtins.str domain_address_name: The name of the domain address.
         :param Sequence[_builtins.str] ip_addresses: The IP address list.
         :param Sequence['GetProtectionRulesRecordSourceRegionListArgs'] region_lists: The region list of a rule.
-        :param _builtins.int type: Specifies the rule type.
-               The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        :param _builtins.int type: The source type.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "address_groups", address_groups)
@@ -4437,8 +3988,7 @@ class GetProtectionRulesRecordSourceResult(dict):
     @pulumi.getter
     def type(self) -> _builtins.int:
         """
-        Specifies the rule type.
-        The value can be **0** (Internet rule), **1** (VPC rule), or **2** (NAT rule).
+        The source type.
         """
         return pulumi.get(self, "type")
 
@@ -4533,14 +4083,10 @@ class GetServiceGroupMembersRecordResult(dict):
                  source_port: _builtins.str):
         """
         :param _builtins.str description: The service group member description.
-        :param _builtins.str dest_port: Specifies the destination port.
-        :param _builtins.str item_id: Specifies the service group member ID.
-        :param _builtins.int protocol: Specifies the protocol type.
-               The options are as follows:
-               + **6**: TCP;
-               + **17**: UDP;
-               + **1**: ICMP.
-        :param _builtins.str source_port: Specifies the source port.
+        :param _builtins.str dest_port: The destination port.
+        :param _builtins.str item_id: The service group member ID.
+        :param _builtins.int protocol: The protocol type.
+        :param _builtins.str source_port: The source port.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "dest_port", dest_port)
@@ -4560,7 +4106,7 @@ class GetServiceGroupMembersRecordResult(dict):
     @pulumi.getter(name="destPort")
     def dest_port(self) -> _builtins.str:
         """
-        Specifies the destination port.
+        The destination port.
         """
         return pulumi.get(self, "dest_port")
 
@@ -4568,7 +4114,7 @@ class GetServiceGroupMembersRecordResult(dict):
     @pulumi.getter(name="itemId")
     def item_id(self) -> _builtins.str:
         """
-        Specifies the service group member ID.
+        The service group member ID.
         """
         return pulumi.get(self, "item_id")
 
@@ -4576,11 +4122,7 @@ class GetServiceGroupMembersRecordResult(dict):
     @pulumi.getter
     def protocol(self) -> _builtins.int:
         """
-        Specifies the protocol type.
-        The options are as follows:
-        + **6**: TCP;
-        + **17**: UDP;
-        + **1**: ICMP.
+        The protocol type.
         """
         return pulumi.get(self, "protocol")
 
@@ -4588,7 +4130,7 @@ class GetServiceGroupMembersRecordResult(dict):
     @pulumi.getter(name="sourcePort")
     def source_port(self) -> _builtins.str:
         """
-        Specifies the source port.
+        The source port.
         """
         return pulumi.get(self, "source_port")
 
@@ -4605,7 +4147,7 @@ class GetServiceGroupsServiceGroupResult(dict):
         """
         :param _builtins.str description: The description of the service group.
         :param _builtins.str id: The service group ID.
-        :param _builtins.str name: Specifies the name of the service group.
+        :param _builtins.str name: The name of the service group.
         :param Sequence[_builtins.int] protocols: The protocols of the service group.
         :param _builtins.int ref_count: The number of times this service group has been referenced.
         :param _builtins.int type: The type of the Service group.
@@ -4637,7 +4179,7 @@ class GetServiceGroupsServiceGroupResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        Specifies the name of the service group.
+        The name of the service group.
         """
         return pulumi.get(self, "name")
 

@@ -51,76 +51,11 @@ class ClusterArgs:
                  vpcep_endpoint: Optional[pulumi.Input['ClusterVpcepEndpointArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the engine version.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               The valid values are **true** and **false**, defaults to **false**.
-               
-               <a name="Css_ess_node_config"></a>
-               The `ess_node_config` and `cold_node_config` block supports:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone name.
-               Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-               than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-               distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-               between node quantity in any two AZs is **1** at most.
-        :param pulumi.Input['ClusterBackupStrategyArgs'] backup_strategy: Specifies the advanced backup policy. Structure is documented below.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the cluster.
-               Valid value is **postPaid**, defaults to **postPaid**.
-        :param pulumi.Input['ClusterClientNodeConfigArgs'] client_node_config: Specifies the config of client node.
-               The client_node_config structure is documented below.
-        :param pulumi.Input['ClusterColdNodeConfigArgs'] cold_node_config: Specifies the config of cold data node.
-               The cold_node_config structure is documented below.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-               Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the css cluster, The value **0**
-               indicates the default enterprise project.
-        :param pulumi.Input['ClusterEssNodeConfigArgs'] ess_node_config: Specifies the config of data node.
-               The ess_node_config structure is documented below.
-        :param pulumi.Input[_builtins.bool] https_enabled: Specifies whether to enable HTTPS. Defaults to **false**.
-               When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['ClusterKibanaPublicAccessArgs'] kibana_public_access: Specifies Kibana public network access information.
-               This parameter is valid only when security_mode is set to **true**.
-               The kibana_public_access structure is documented below.
-        :param pulumi.Input['ClusterMasterNodeConfigArgs'] master_node_config: Specifies the config of master node.
-               The master_node_config structure is documented below.
-        :param pulumi.Input[_builtins.str] name: Specifies the cluster name. It contains `4` to `32` characters.
-               Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the cluster administrator in security mode.
-               This parameter is mandatory only when `security_mode` is set to true.
-               The administrator password must meet the following requirements:
-               + The password can contain 8 to 32 characters.
-               + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-               and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-               If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-               
-               > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-               from **postPaid** to **prePaid** billing mode.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are **month** and **year**.
-        :param pulumi.Input['ClusterPublicAccessArgs'] public_access: Specifies the public network access information.
-               The public_access structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID.
-        :param pulumi.Input[_builtins.bool] security_mode: Specifies whether to enable authentication.
-               The value can be **true** or **false**. Authentication is disabled by default.
-               + **true:** Authentication is enabled for the cluster.
-               + **false:** Authentication is disabled for the cluster.
-               
-               > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-               The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-               After the cluster is restarted, the authentication mode for invoking the cluster changes.
-               You need to adjust the authentication mode accordingly.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the Subnet ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['ClusterVpcepEndpointArgs'] vpcep_endpoint: Specifies the VPC endpoint service information.
-               The vpcep_endpoint structure is documented below.
+        :param pulumi.Input[_builtins.str] availability_zone: schema: Required
+        :param pulumi.Input['ClusterEssNodeConfigArgs'] ess_node_config: schema: Required
+        :param pulumi.Input[_builtins.str] security_group_id: schema: Required
+        :param pulumi.Input[_builtins.str] subnet_id: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: schema: Required
         """
         pulumi.set(__self__, "engine_version", engine_version)
         if auto_renew is not None:
@@ -187,9 +122,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the engine version.
-        """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
@@ -199,13 +131,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        The valid values are **true** and **false**, defaults to **false**.
-
-        <a name="Css_ess_node_config"></a>
-        The `ess_node_config` and `cold_node_config` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -216,11 +141,7 @@ class ClusterArgs:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
+        schema: Required
         """
         return pulumi.get(self, "availability_zone")
 
@@ -231,9 +152,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> Optional[pulumi.Input['ClusterBackupStrategyArgs']]:
-        """
-        Specifies the advanced backup policy. Structure is documented below.
-        """
         return pulumi.get(self, "backup_strategy")
 
     @backup_strategy.setter
@@ -243,10 +161,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the cluster.
-        Valid value is **postPaid**, defaults to **postPaid**.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -256,10 +170,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="clientNodeConfig")
     def client_node_config(self) -> Optional[pulumi.Input['ClusterClientNodeConfigArgs']]:
-        """
-        Specifies the config of client node.
-        The client_node_config structure is documented below.
-        """
         return pulumi.get(self, "client_node_config")
 
     @client_node_config.setter
@@ -269,10 +179,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="coldNodeConfig")
     def cold_node_config(self) -> Optional[pulumi.Input['ClusterColdNodeConfigArgs']]:
-        """
-        Specifies the config of cold data node.
-        The cold_node_config structure is documented below.
-        """
         return pulumi.get(self, "cold_node_config")
 
     @cold_node_config.setter
@@ -291,10 +197,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-        Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
@@ -304,10 +206,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the css cluster, The value **0**
-        indicates the default enterprise project.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -318,8 +216,7 @@ class ClusterArgs:
     @pulumi.getter(name="essNodeConfig")
     def ess_node_config(self) -> Optional[pulumi.Input['ClusterEssNodeConfigArgs']]:
         """
-        Specifies the config of data node.
-        The ess_node_config structure is documented below.
+        schema: Required
         """
         return pulumi.get(self, "ess_node_config")
 
@@ -340,11 +237,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="httpsEnabled")
     def https_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable HTTPS. Defaults to **false**.
-        When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "https_enabled")
 
     @https_enabled.setter
@@ -354,11 +246,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="kibanaPublicAccess")
     def kibana_public_access(self) -> Optional[pulumi.Input['ClusterKibanaPublicAccessArgs']]:
-        """
-        Specifies Kibana public network access information.
-        This parameter is valid only when security_mode is set to **true**.
-        The kibana_public_access structure is documented below.
-        """
         return pulumi.get(self, "kibana_public_access")
 
     @kibana_public_access.setter
@@ -368,10 +255,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="masterNodeConfig")
     def master_node_config(self) -> Optional[pulumi.Input['ClusterMasterNodeConfigArgs']]:
-        """
-        Specifies the config of master node.
-        The master_node_config structure is documented below.
-        """
         return pulumi.get(self, "master_node_config")
 
     @master_node_config.setter
@@ -381,11 +264,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster name. It contains `4` to `32` characters.
-        Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -405,14 +283,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password of the cluster administrator in security mode.
-        This parameter is mandatory only when `security_mode` is set to true.
-        The administrator password must meet the following requirements:
-        + The password can contain 8 to 32 characters.
-        + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-        and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -422,14 +292,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-        If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-
-        > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-        from **postPaid** to **prePaid** billing mode.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -439,10 +301,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are **month** and **year**.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -452,10 +310,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['ClusterPublicAccessArgs']]:
-        """
-        Specifies the public network access information.
-        The public_access structure is documented below.
-        """
         return pulumi.get(self, "public_access")
 
     @public_access.setter
@@ -465,10 +319,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -479,7 +329,7 @@ class ClusterArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the security group ID.
+        schema: Required
         """
         return pulumi.get(self, "security_group_id")
 
@@ -490,17 +340,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="securityMode")
     def security_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable authentication.
-        The value can be **true** or **false**. Authentication is disabled by default.
-        + **true:** Authentication is enabled for the cluster.
-        + **false:** Authentication is disabled for the cluster.
-
-        > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-        The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-        After the cluster is restarted, the authentication mode for invoking the cluster changes.
-        You need to adjust the authentication mode accordingly.
-        """
         return pulumi.get(self, "security_mode")
 
     @security_mode.setter
@@ -511,8 +350,7 @@ class ClusterArgs:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the Subnet ID.
-        Changing this parameter will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "subnet_id")
 
@@ -523,9 +361,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -536,8 +371,7 @@ class ClusterArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the VPC ID.
-        Changing this parameter will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "vpc_id")
 
@@ -548,10 +382,6 @@ class ClusterArgs:
     @_builtins.property
     @pulumi.getter(name="vpcepEndpoint")
     def vpcep_endpoint(self) -> Optional[pulumi.Input['ClusterVpcepEndpointArgs']]:
-        """
-        Specifies the VPC endpoint service information.
-        The vpcep_endpoint structure is documented below.
-        """
         return pulumi.get(self, "vpcep_endpoint")
 
     @vpcep_endpoint.setter
@@ -604,89 +434,12 @@ class _ClusterState:
                  vpcep_ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               The valid values are **true** and **false**, defaults to **false**.
-               
-               <a name="Css_ess_node_config"></a>
-               The `ess_node_config` and `cold_node_config` block supports:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone name.
-               Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-               than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-               distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-               between node quantity in any two AZs is **1** at most.
-        :param pulumi.Input[_builtins.bool] backup_available: Whether the snapshot function is enabled.
-        :param pulumi.Input['ClusterBackupStrategyArgs'] backup_strategy: Specifies the advanced backup policy. Structure is documented below.
-        :param pulumi.Input[_builtins.str] bandwidth_resource_id: The resource ID of bandwidth.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the cluster.
-               Valid value is **postPaid**, defaults to **postPaid**.
-        :param pulumi.Input['ClusterClientNodeConfigArgs'] client_node_config: Specifies the config of client node.
-               The client_node_config structure is documented below.
-        :param pulumi.Input['ClusterColdNodeConfigArgs'] cold_node_config: Specifies the config of cold data node.
-               The cold_node_config structure is documented below.
+        :param pulumi.Input[_builtins.str] availability_zone: schema: Required
         :param pulumi.Input[_builtins.str] created: schema: Deprecated; use created_at instead
-        :param pulumi.Input[_builtins.str] created_at: Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        :param pulumi.Input[_builtins.bool] disk_encrypted: Whether disks are encrypted.
-        :param pulumi.Input[_builtins.str] endpoint: The IP address and port number.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-               Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the engine version.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the css cluster, The value **0**
-               indicates the default enterprise project.
-        :param pulumi.Input['ClusterEssNodeConfigArgs'] ess_node_config: Specifies the config of data node.
-               The ess_node_config structure is documented below.
-        :param pulumi.Input[_builtins.bool] https_enabled: Specifies whether to enable HTTPS. Defaults to **false**.
-               When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_period: Whether a cluster is billed on the yearly/monthly mode.
-        :param pulumi.Input['ClusterKibanaPublicAccessArgs'] kibana_public_access: Specifies Kibana public network access information.
-               This parameter is valid only when security_mode is set to **true**.
-               The kibana_public_access structure is documented below.
-        :param pulumi.Input['ClusterMasterNodeConfigArgs'] master_node_config: Specifies the config of master node.
-               The master_node_config structure is documented below.
-        :param pulumi.Input[_builtins.str] name: Specifies the cluster name. It contains `4` to `32` characters.
-               Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeArgs']]] nodes: List of node objects.
-               The nodes structure is documented below.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the cluster administrator in security mode.
-               This parameter is mandatory only when `security_mode` is set to true.
-               The administrator password must meet the following requirements:
-               + The password can contain 8 to 32 characters.
-               + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-               and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-               If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-               
-               > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-               from **postPaid** to **prePaid** billing mode.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are **month** and **year**.
-        :param pulumi.Input['ClusterPublicAccessArgs'] public_access: Specifies the public network access information.
-               The public_access structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID.
-        :param pulumi.Input[_builtins.bool] security_mode: Specifies whether to enable authentication.
-               The value can be **true** or **false**. Authentication is disabled by default.
-               + **true:** Authentication is enabled for the cluster.
-               + **false:** Authentication is disabled for the cluster.
-               
-               > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-               The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-               After the cluster is restarted, the authentication mode for invoking the cluster changes.
-               You need to adjust the authentication mode accordingly.
-        :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the Subnet ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] updated_at: Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input['ClusterVpcepEndpointArgs'] vpcep_endpoint: Specifies the VPC endpoint service information.
-               The vpcep_endpoint structure is documented below.
-        :param pulumi.Input[_builtins.str] vpcep_endpoint_id: The VPC endpoint service ID.
-        :param pulumi.Input[_builtins.str] vpcep_ip: The private IP address of VPC endpoint service.
+        :param pulumi.Input['ClusterEssNodeConfigArgs'] ess_node_config: schema: Required
+        :param pulumi.Input[_builtins.str] security_group_id: schema: Required
+        :param pulumi.Input[_builtins.str] subnet_id: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: schema: Required
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -778,13 +531,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        The valid values are **true** and **false**, defaults to **false**.
-
-        <a name="Css_ess_node_config"></a>
-        The `ess_node_config` and `cold_node_config` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -795,11 +541,7 @@ class _ClusterState:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
+        schema: Required
         """
         return pulumi.get(self, "availability_zone")
 
@@ -810,9 +552,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="backupAvailable")
     def backup_available(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether the snapshot function is enabled.
-        """
         return pulumi.get(self, "backup_available")
 
     @backup_available.setter
@@ -822,9 +561,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> Optional[pulumi.Input['ClusterBackupStrategyArgs']]:
-        """
-        Specifies the advanced backup policy. Structure is documented below.
-        """
         return pulumi.get(self, "backup_strategy")
 
     @backup_strategy.setter
@@ -834,9 +570,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="bandwidthResourceId")
     def bandwidth_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resource ID of bandwidth.
-        """
         return pulumi.get(self, "bandwidth_resource_id")
 
     @bandwidth_resource_id.setter
@@ -846,10 +579,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging mode of the cluster.
-        Valid value is **postPaid**, defaults to **postPaid**.
-        """
         return pulumi.get(self, "charging_mode")
 
     @charging_mode.setter
@@ -859,10 +588,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="clientNodeConfig")
     def client_node_config(self) -> Optional[pulumi.Input['ClusterClientNodeConfigArgs']]:
-        """
-        Specifies the config of client node.
-        The client_node_config structure is documented below.
-        """
         return pulumi.get(self, "client_node_config")
 
     @client_node_config.setter
@@ -872,10 +597,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="coldNodeConfig")
     def cold_node_config(self) -> Optional[pulumi.Input['ClusterColdNodeConfigArgs']]:
-        """
-        Specifies the config of cold data node.
-        The cold_node_config structure is documented below.
-        """
         return pulumi.get(self, "cold_node_config")
 
     @cold_node_config.setter
@@ -897,9 +618,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -909,9 +627,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="diskEncrypted")
     def disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether disks are encrypted.
-        """
         return pulumi.get(self, "disk_encrypted")
 
     @disk_encrypted.setter
@@ -930,9 +645,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IP address and port number.
-        """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
@@ -942,10 +654,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-        Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
@@ -955,9 +663,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the engine version.
-        """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
@@ -967,10 +672,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the enterprise project id of the css cluster, The value **0**
-        indicates the default enterprise project.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -981,8 +682,7 @@ class _ClusterState:
     @pulumi.getter(name="essNodeConfig")
     def ess_node_config(self) -> Optional[pulumi.Input['ClusterEssNodeConfigArgs']]:
         """
-        Specifies the config of data node.
-        The ess_node_config structure is documented below.
+        schema: Required
         """
         return pulumi.get(self, "ess_node_config")
 
@@ -1003,11 +703,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="httpsEnabled")
     def https_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable HTTPS. Defaults to **false**.
-        When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "https_enabled")
 
     @https_enabled.setter
@@ -1017,9 +712,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="isPeriod")
     def is_period(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether a cluster is billed on the yearly/monthly mode.
-        """
         return pulumi.get(self, "is_period")
 
     @is_period.setter
@@ -1029,11 +721,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="kibanaPublicAccess")
     def kibana_public_access(self) -> Optional[pulumi.Input['ClusterKibanaPublicAccessArgs']]:
-        """
-        Specifies Kibana public network access information.
-        This parameter is valid only when security_mode is set to **true**.
-        The kibana_public_access structure is documented below.
-        """
         return pulumi.get(self, "kibana_public_access")
 
     @kibana_public_access.setter
@@ -1043,10 +730,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="masterNodeConfig")
     def master_node_config(self) -> Optional[pulumi.Input['ClusterMasterNodeConfigArgs']]:
-        """
-        Specifies the config of master node.
-        The master_node_config structure is documented below.
-        """
         return pulumi.get(self, "master_node_config")
 
     @master_node_config.setter
@@ -1056,11 +739,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster name. It contains `4` to `32` characters.
-        Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1080,10 +758,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeArgs']]]]:
-        """
-        List of node objects.
-        The nodes structure is documented below.
-        """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
@@ -1093,14 +767,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the password of the cluster administrator in security mode.
-        This parameter is mandatory only when `security_mode` is set to true.
-        The administrator password must meet the following requirements:
-        + The password can contain 8 to 32 characters.
-        + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-        and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        """
         return pulumi.get(self, "password")
 
     @password.setter
@@ -1110,14 +776,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-        If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-
-        > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-        from **postPaid** to **prePaid** billing mode.
-        """
         return pulumi.get(self, "period")
 
     @period.setter
@@ -1127,10 +785,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are **month** and **year**.
-        """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
@@ -1140,10 +794,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional[pulumi.Input['ClusterPublicAccessArgs']]:
-        """
-        Specifies the public network access information.
-        The public_access structure is documented below.
-        """
         return pulumi.get(self, "public_access")
 
     @public_access.setter
@@ -1153,10 +803,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -1167,7 +813,7 @@ class _ClusterState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the security group ID.
+        schema: Required
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1178,17 +824,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="securityMode")
     def security_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable authentication.
-        The value can be **true** or **false**. Authentication is disabled by default.
-        + **true:** Authentication is enabled for the cluster.
-        + **false:** Authentication is disabled for the cluster.
-
-        > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-        The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-        After the cluster is restarted, the authentication mode for invoking the cluster changes.
-        You need to adjust the authentication mode accordingly.
-        """
         return pulumi.get(self, "security_mode")
 
     @security_mode.setter
@@ -1198,9 +833,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Instance status.
-        """
         return pulumi.get(self, "status")
 
     @status.setter
@@ -1211,8 +843,7 @@ class _ClusterState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the Subnet ID.
-        Changing this parameter will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "subnet_id")
 
@@ -1223,9 +854,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -1235,9 +863,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -1248,8 +873,7 @@ class _ClusterState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the VPC ID.
-        Changing this parameter will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "vpc_id")
 
@@ -1260,10 +884,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="vpcepEndpoint")
     def vpcep_endpoint(self) -> Optional[pulumi.Input['ClusterVpcepEndpointArgs']]:
-        """
-        Specifies the VPC endpoint service information.
-        The vpcep_endpoint structure is documented below.
-        """
         return pulumi.get(self, "vpcep_endpoint")
 
     @vpcep_endpoint.setter
@@ -1273,9 +893,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="vpcepEndpointId")
     def vpcep_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The VPC endpoint service ID.
-        """
         return pulumi.get(self, "vpcep_endpoint_id")
 
     @vpcep_endpoint_id.setter
@@ -1285,9 +902,6 @@ class _ClusterState:
     @_builtins.property
     @pulumi.getter(name="vpcepIp")
     def vpcep_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private IP address of VPC endpoint service.
-        """
         return pulumi.get(self, "vpcep_ip")
 
     @vpcep_ip.setter
@@ -1331,184 +945,14 @@ class Cluster(pulumi.CustomResource):
                  vpcep_endpoint: Optional[pulumi.Input[Union['ClusterVpcepEndpointArgs', 'ClusterVpcepEndpointArgsDict']]] = None,
                  __props__=None):
         """
-        Manages CSS cluster resource within SberCloud
-
-        ## Example Usage
-
-        ### create a cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        cluster = sbercloud.css.Cluster("cluster",
-            name="terraform_test_cluster",
-            engine_version="7.10.2",
-            ess_node_config={
-                "flavor": "ess.spec-4u8g",
-                "instance_number": 1,
-                "volume": {
-                    "volume_type": "HIGH",
-                    "size": 40,
-                },
-            },
-            availability_zone=availability_zone,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ### create a cluster with ess-data node and master node
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        cluster = sbercloud.css.Cluster("cluster",
-            name="terraform_test_cluster",
-            engine_version="7.10.2",
-            ess_node_config={
-                "flavor": "ess.spec-4u8g",
-                "instance_number": 1,
-                "volume": {
-                    "volume_type": "HIGH",
-                    "size": 40,
-                },
-            },
-            master_node_config={
-                "flavor": "ess.spec-4u8g",
-                "instance_number": 3,
-                "volume": {
-                    "volume_type": "HIGH",
-                    "size": 40,
-                },
-            },
-            availability_zone=availability_zone,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ### create a cluster with ess-data node and cold node use local disk
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        cluster = sbercloud.css.Cluster("cluster",
-            name="terraform_test_cluster",
-            engine_version="7.10.2",
-            ess_node_config={
-                "flavor": "ess.spec-ds.xlarge.8",
-                "instance_number": 1,
-            },
-            cold_node_config={
-                "flavor": "ess.spec-ds.2xlarge.8",
-                "instance_number": 2,
-            },
-            availability_zone=availability_zone,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ## Import
-
-        The CSS cluster can be imported by `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Css/cluster:Cluster test <id>
-        ```
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               The valid values are **true** and **false**, defaults to **false**.
-               
-               <a name="Css_ess_node_config"></a>
-               The `ess_node_config` and `cold_node_config` block supports:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone name.
-               Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-               than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-               distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-               between node quantity in any two AZs is **1** at most.
-        :param pulumi.Input[Union['ClusterBackupStrategyArgs', 'ClusterBackupStrategyArgsDict']] backup_strategy: Specifies the advanced backup policy. Structure is documented below.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the cluster.
-               Valid value is **postPaid**, defaults to **postPaid**.
-        :param pulumi.Input[Union['ClusterClientNodeConfigArgs', 'ClusterClientNodeConfigArgsDict']] client_node_config: Specifies the config of client node.
-               The client_node_config structure is documented below.
-        :param pulumi.Input[Union['ClusterColdNodeConfigArgs', 'ClusterColdNodeConfigArgsDict']] cold_node_config: Specifies the config of cold data node.
-               The cold_node_config structure is documented below.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-               Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the engine version.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the css cluster, The value **0**
-               indicates the default enterprise project.
-        :param pulumi.Input[Union['ClusterEssNodeConfigArgs', 'ClusterEssNodeConfigArgsDict']] ess_node_config: Specifies the config of data node.
-               The ess_node_config structure is documented below.
-        :param pulumi.Input[_builtins.bool] https_enabled: Specifies whether to enable HTTPS. Defaults to **false**.
-               When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['ClusterKibanaPublicAccessArgs', 'ClusterKibanaPublicAccessArgsDict']] kibana_public_access: Specifies Kibana public network access information.
-               This parameter is valid only when security_mode is set to **true**.
-               The kibana_public_access structure is documented below.
-        :param pulumi.Input[Union['ClusterMasterNodeConfigArgs', 'ClusterMasterNodeConfigArgsDict']] master_node_config: Specifies the config of master node.
-               The master_node_config structure is documented below.
-        :param pulumi.Input[_builtins.str] name: Specifies the cluster name. It contains `4` to `32` characters.
-               Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the cluster administrator in security mode.
-               This parameter is mandatory only when `security_mode` is set to true.
-               The administrator password must meet the following requirements:
-               + The password can contain 8 to 32 characters.
-               + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-               and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-               If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-               
-               > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-               from **postPaid** to **prePaid** billing mode.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are **month** and **year**.
-        :param pulumi.Input[Union['ClusterPublicAccessArgs', 'ClusterPublicAccessArgsDict']] public_access: Specifies the public network access information.
-               The public_access structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID.
-        :param pulumi.Input[_builtins.bool] security_mode: Specifies whether to enable authentication.
-               The value can be **true** or **false**. Authentication is disabled by default.
-               + **true:** Authentication is enabled for the cluster.
-               + **false:** Authentication is disabled for the cluster.
-               
-               > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-               The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-               After the cluster is restarted, the authentication mode for invoking the cluster changes.
-               You need to adjust the authentication mode accordingly.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the Subnet ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['ClusterVpcepEndpointArgs', 'ClusterVpcepEndpointArgsDict']] vpcep_endpoint: Specifies the VPC endpoint service information.
-               The vpcep_endpoint structure is documented below.
+        :param pulumi.Input[_builtins.str] availability_zone: schema: Required
+        :param pulumi.Input[Union['ClusterEssNodeConfigArgs', 'ClusterEssNodeConfigArgsDict']] ess_node_config: schema: Required
+        :param pulumi.Input[_builtins.str] security_group_id: schema: Required
+        :param pulumi.Input[_builtins.str] subnet_id: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: schema: Required
         """
         ...
     @overload
@@ -1517,112 +961,7 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages CSS cluster resource within SberCloud
-
-        ## Example Usage
-
-        ### create a cluster
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        cluster = sbercloud.css.Cluster("cluster",
-            name="terraform_test_cluster",
-            engine_version="7.10.2",
-            ess_node_config={
-                "flavor": "ess.spec-4u8g",
-                "instance_number": 1,
-                "volume": {
-                    "volume_type": "HIGH",
-                    "size": 40,
-                },
-            },
-            availability_zone=availability_zone,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ### create a cluster with ess-data node and master node
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        cluster = sbercloud.css.Cluster("cluster",
-            name="terraform_test_cluster",
-            engine_version="7.10.2",
-            ess_node_config={
-                "flavor": "ess.spec-4u8g",
-                "instance_number": 1,
-                "volume": {
-                    "volume_type": "HIGH",
-                    "size": 40,
-                },
-            },
-            master_node_config={
-                "flavor": "ess.spec-4u8g",
-                "instance_number": 3,
-                "volume": {
-                    "volume_type": "HIGH",
-                    "size": 40,
-                },
-            },
-            availability_zone=availability_zone,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ### create a cluster with ess-data node and cold node use local disk
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        availability_zone = config.require_object("availabilityZone")
-        vpc_id = config.require_object("vpcId")
-        subnet_id = config.require_object("subnetId")
-        secgroup_id = config.require_object("secgroupId")
-        cluster = sbercloud.css.Cluster("cluster",
-            name="terraform_test_cluster",
-            engine_version="7.10.2",
-            ess_node_config={
-                "flavor": "ess.spec-ds.xlarge.8",
-                "instance_number": 1,
-            },
-            cold_node_config={
-                "flavor": "ess.spec-ds.2xlarge.8",
-                "instance_number": 2,
-            },
-            availability_zone=availability_zone,
-            vpc_id=vpc_id,
-            subnet_id=subnet_id,
-            security_group_id=secgroup_id)
-        ```
-
-        ## Import
-
-        The CSS cluster can be imported by `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Css/cluster:Cluster test <id>
-        ```
-
+        Create a Cluster resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ClusterArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1776,89 +1115,12 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] auto_renew: Specifies whether auto renew is enabled.
-               The valid values are **true** and **false**, defaults to **false**.
-               
-               <a name="Css_ess_node_config"></a>
-               The `ess_node_config` and `cold_node_config` block supports:
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone name.
-               Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-               than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-               distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-               between node quantity in any two AZs is **1** at most.
-        :param pulumi.Input[_builtins.bool] backup_available: Whether the snapshot function is enabled.
-        :param pulumi.Input[Union['ClusterBackupStrategyArgs', 'ClusterBackupStrategyArgsDict']] backup_strategy: Specifies the advanced backup policy. Structure is documented below.
-        :param pulumi.Input[_builtins.str] bandwidth_resource_id: The resource ID of bandwidth.
-        :param pulumi.Input[_builtins.str] charging_mode: Specifies the charging mode of the cluster.
-               Valid value is **postPaid**, defaults to **postPaid**.
-        :param pulumi.Input[Union['ClusterClientNodeConfigArgs', 'ClusterClientNodeConfigArgsDict']] client_node_config: Specifies the config of client node.
-               The client_node_config structure is documented below.
-        :param pulumi.Input[Union['ClusterColdNodeConfigArgs', 'ClusterColdNodeConfigArgsDict']] cold_node_config: Specifies the config of cold data node.
-               The cold_node_config structure is documented below.
+        :param pulumi.Input[_builtins.str] availability_zone: schema: Required
         :param pulumi.Input[_builtins.str] created: schema: Deprecated; use created_at instead
-        :param pulumi.Input[_builtins.str] created_at: Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        :param pulumi.Input[_builtins.bool] disk_encrypted: Whether disks are encrypted.
-        :param pulumi.Input[_builtins.str] endpoint: The IP address and port number.
-        :param pulumi.Input[_builtins.str] engine_type: Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-               Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] engine_version: Specifies the engine version.
-        :param pulumi.Input[_builtins.str] enterprise_project_id: Specifies the enterprise project id of the css cluster, The value **0**
-               indicates the default enterprise project.
-        :param pulumi.Input[Union['ClusterEssNodeConfigArgs', 'ClusterEssNodeConfigArgsDict']] ess_node_config: Specifies the config of data node.
-               The ess_node_config structure is documented below.
-        :param pulumi.Input[_builtins.bool] https_enabled: Specifies whether to enable HTTPS. Defaults to **false**.
-               When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] is_period: Whether a cluster is billed on the yearly/monthly mode.
-        :param pulumi.Input[Union['ClusterKibanaPublicAccessArgs', 'ClusterKibanaPublicAccessArgsDict']] kibana_public_access: Specifies Kibana public network access information.
-               This parameter is valid only when security_mode is set to **true**.
-               The kibana_public_access structure is documented below.
-        :param pulumi.Input[Union['ClusterMasterNodeConfigArgs', 'ClusterMasterNodeConfigArgsDict']] master_node_config: Specifies the config of master node.
-               The master_node_config structure is documented below.
-        :param pulumi.Input[_builtins.str] name: Specifies the cluster name. It contains `4` to `32` characters.
-               Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeArgs', 'ClusterNodeArgsDict']]]] nodes: List of node objects.
-               The nodes structure is documented below.
-        :param pulumi.Input[_builtins.str] password: Specifies the password of the cluster administrator in security mode.
-               This parameter is mandatory only when `security_mode` is set to true.
-               The administrator password must meet the following requirements:
-               + The password can contain 8 to 32 characters.
-               + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-               and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        :param pulumi.Input[_builtins.int] period: Specifies the charging period of the instance.
-               If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-               If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-               
-               > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-               from **postPaid** to **prePaid** billing mode.
-        :param pulumi.Input[_builtins.str] period_unit: Specifies the charging period unit of the instance.
-               Valid values are **month** and **year**.
-        :param pulumi.Input[Union['ClusterPublicAccessArgs', 'ClusterPublicAccessArgsDict']] public_access: Specifies the public network access information.
-               The public_access structure is documented below.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the cluster resource. If omitted, the
-               provider-level region will be used. Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] security_group_id: Specifies the security group ID.
-        :param pulumi.Input[_builtins.bool] security_mode: Specifies whether to enable authentication.
-               The value can be **true** or **false**. Authentication is disabled by default.
-               + **true:** Authentication is enabled for the cluster.
-               + **false:** Authentication is disabled for the cluster.
-               
-               > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-               The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-               After the cluster is restarted, the authentication mode for invoking the cluster changes.
-               You need to adjust the authentication mode accordingly.
-        :param pulumi.Input[_builtins.str] status: Instance status.
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the Subnet ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the cluster.
-        :param pulumi.Input[_builtins.str] updated_at: Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the VPC ID.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Union['ClusterVpcepEndpointArgs', 'ClusterVpcepEndpointArgsDict']] vpcep_endpoint: Specifies the VPC endpoint service information.
-               The vpcep_endpoint structure is documented below.
-        :param pulumi.Input[_builtins.str] vpcep_endpoint_id: The VPC endpoint service ID.
-        :param pulumi.Input[_builtins.str] vpcep_ip: The private IP address of VPC endpoint service.
+        :param pulumi.Input[Union['ClusterEssNodeConfigArgs', 'ClusterEssNodeConfigArgsDict']] ess_node_config: schema: Required
+        :param pulumi.Input[_builtins.str] security_group_id: schema: Required
+        :param pulumi.Input[_builtins.str] subnet_id: schema: Required
+        :param pulumi.Input[_builtins.str] vpc_id: schema: Required
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1909,76 +1171,44 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies whether auto renew is enabled.
-        The valid values are **true** and **false**, defaults to **false**.
-
-        <a name="Css_ess_node_config"></a>
-        The `ess_node_config` and `cold_node_config` block supports:
-        """
         return pulumi.get(self, "auto_renew")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the availability zone name.
-        Separate multiple AZs with commas (,), for example, az1,az2. AZs must be unique. The number of nodes must be greater
-        than or equal to the number of AZs. If the number of nodes is a multiple of the number of AZs, the nodes are evenly
-        distributed to each AZ. If the number of nodes is not a multiple of the number of AZs, the absolute difference
-        between node quantity in any two AZs is **1** at most.
+        schema: Required
         """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter(name="backupAvailable")
     def backup_available(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether the snapshot function is enabled.
-        """
         return pulumi.get(self, "backup_available")
 
     @_builtins.property
     @pulumi.getter(name="backupStrategy")
     def backup_strategy(self) -> pulumi.Output[Optional['outputs.ClusterBackupStrategy']]:
-        """
-        Specifies the advanced backup policy. Structure is documented below.
-        """
         return pulumi.get(self, "backup_strategy")
 
     @_builtins.property
     @pulumi.getter(name="bandwidthResourceId")
     def bandwidth_resource_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The resource ID of bandwidth.
-        """
         return pulumi.get(self, "bandwidth_resource_id")
 
     @_builtins.property
     @pulumi.getter(name="chargingMode")
     def charging_mode(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the charging mode of the cluster.
-        Valid value is **postPaid**, defaults to **postPaid**.
-        """
         return pulumi.get(self, "charging_mode")
 
     @_builtins.property
     @pulumi.getter(name="clientNodeConfig")
     def client_node_config(self) -> pulumi.Output[Optional['outputs.ClusterClientNodeConfig']]:
-        """
-        Specifies the config of client node.
-        The client_node_config structure is documented below.
-        """
         return pulumi.get(self, "client_node_config")
 
     @_builtins.property
     @pulumi.getter(name="coldNodeConfig")
     def cold_node_config(self) -> pulumi.Output[Optional['outputs.ClusterColdNodeConfig']]:
-        """
-        Specifies the config of cold data node.
-        The cold_node_config structure is documented below.
-        """
         return pulumi.get(self, "cold_node_config")
 
     @_builtins.property
@@ -1992,17 +1222,11 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Time when a cluster is created. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
     @pulumi.getter(name="diskEncrypted")
     def disk_encrypted(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether disks are encrypted.
-        """
         return pulumi.get(self, "disk_encrypted")
 
     @_builtins.property
@@ -2013,43 +1237,28 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def endpoint(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IP address and port number.
-        """
         return pulumi.get(self, "endpoint")
 
     @_builtins.property
     @pulumi.getter(name="engineType")
     def engine_type(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the engine type. The valid value can be **elasticsearch** or **opensearch**.
-        Defaults to **elasticsearch**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "engine_type")
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the engine version.
-        """
         return pulumi.get(self, "engine_version")
 
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the enterprise project id of the css cluster, The value **0**
-        indicates the default enterprise project.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="essNodeConfig")
     def ess_node_config(self) -> pulumi.Output['outputs.ClusterEssNodeConfig']:
         """
-        Specifies the config of data node.
-        The ess_node_config structure is documented below.
+        schema: Required
         """
         return pulumi.get(self, "ess_node_config")
 
@@ -2062,48 +1271,26 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="httpsEnabled")
     def https_enabled(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Specifies whether to enable HTTPS. Defaults to **false**.
-        When `https_enabled` is set to **true**, the `security_mode` needs to be set to **true**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "https_enabled")
 
     @_builtins.property
     @pulumi.getter(name="isPeriod")
     def is_period(self) -> pulumi.Output[_builtins.bool]:
-        """
-        Whether a cluster is billed on the yearly/monthly mode.
-        """
         return pulumi.get(self, "is_period")
 
     @_builtins.property
     @pulumi.getter(name="kibanaPublicAccess")
     def kibana_public_access(self) -> pulumi.Output[Optional['outputs.ClusterKibanaPublicAccess']]:
-        """
-        Specifies Kibana public network access information.
-        This parameter is valid only when security_mode is set to **true**.
-        The kibana_public_access structure is documented below.
-        """
         return pulumi.get(self, "kibana_public_access")
 
     @_builtins.property
     @pulumi.getter(name="masterNodeConfig")
     def master_node_config(self) -> pulumi.Output[Optional['outputs.ClusterMasterNodeConfig']]:
-        """
-        Specifies the config of master node.
-        The master_node_config structure is documented below.
-        """
         return pulumi.get(self, "master_node_config")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the cluster name. It contains `4` to `32` characters.
-        Only letters, digits, hyphens (-), and underscores (_) are allowed. The value must start with a letter.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -2115,153 +1302,89 @@ class Cluster(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence['outputs.ClusterNode']]:
-        """
-        List of node objects.
-        The nodes structure is documented below.
-        """
         return pulumi.get(self, "nodes")
 
     @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the password of the cluster administrator in security mode.
-        This parameter is mandatory only when `security_mode` is set to true.
-        The administrator password must meet the following requirements:
-        + The password can contain 8 to 32 characters.
-        + The password must contain at least 3 of the following character types: uppercase letters, lowercase letters, digits,
-        and special characters (~!@#$%^&*()-_=+\\\\|[{}];:,<.>/?).
-        """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[_builtins.int]]:
-        """
-        Specifies the charging period of the instance.
-        If `period_unit` is set to **month**, the value ranges from `1` to `9`.
-        If `period_unit` is set to **year**, the value ranges from `1` to `9`.
-
-        > **NOTE:** `charging_mode`, `period_unit`, `period` can only be updated when changing
-        from **postPaid** to **prePaid** billing mode.
-        """
         return pulumi.get(self, "period")
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the charging period unit of the instance.
-        Valid values are **month** and **year**.
-        """
         return pulumi.get(self, "period_unit")
 
     @_builtins.property
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> pulumi.Output[Optional['outputs.ClusterPublicAccess']]:
-        """
-        Specifies the public network access information.
-        The public_access structure is documented below.
-        """
         return pulumi.get(self, "public_access")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the cluster resource. If omitted, the
-        provider-level region will be used. Changing this creates a new cluster resource.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the security group ID.
+        schema: Required
         """
         return pulumi.get(self, "security_group_id")
 
     @_builtins.property
     @pulumi.getter(name="securityMode")
     def security_mode(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether to enable authentication.
-        The value can be **true** or **false**. Authentication is disabled by default.
-        + **true:** Authentication is enabled for the cluster.
-        + **false:** Authentication is disabled for the cluster.
-
-        > **Note:** This parameter is supported in clusters 6.5.4 or later. Exercise caution when performing this operation.
-        The cluster will be restarted to apply the changes. Services will be interrupted for a while.
-        After the cluster is restarted, the authentication mode for invoking the cluster changes.
-        You need to adjust the authentication mode accordingly.
-        """
         return pulumi.get(self, "security_mode")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
-        """
-        Instance status.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the Subnet ID.
-        Changing this parameter will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the cluster.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
-        """
-        Time when a cluster is updated. The format is ISO8601: CCYY-MM-DDThh:mm:ss.
-        """
         return pulumi.get(self, "updated_at")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Specifies the VPC ID.
-        Changing this parameter will create a new resource.
+        schema: Required
         """
         return pulumi.get(self, "vpc_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcepEndpoint")
     def vpcep_endpoint(self) -> pulumi.Output[Optional['outputs.ClusterVpcepEndpoint']]:
-        """
-        Specifies the VPC endpoint service information.
-        The vpcep_endpoint structure is documented below.
-        """
         return pulumi.get(self, "vpcep_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="vpcepEndpointId")
     def vpcep_endpoint_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The VPC endpoint service ID.
-        """
         return pulumi.get(self, "vpcep_endpoint_id")
 
     @_builtins.property
     @pulumi.getter(name="vpcepIp")
     def vpcep_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        The private IP address of VPC endpoint service.
-        """
         return pulumi.get(self, "vpcep_ip")
 

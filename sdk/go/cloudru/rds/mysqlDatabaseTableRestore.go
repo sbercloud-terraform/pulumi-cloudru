@@ -12,118 +12,19 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages an RDS instance MySQL database table restore resource within SberCloud.
-//
-// ## Example Usage
-//
-// ### MySQL databases restore
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewMysqlDatabaseTableRestore(ctx, "test", &rds.MysqlDatabaseTableRestoreArgs{
-//				RestoreTime: pulumi.Int(1673852043000),
-//				InstanceId:  pulumi.Any(instanceId),
-//				Databases: rds.MysqlDatabaseTableRestoreDatabaseArray{
-//					&rds.MysqlDatabaseTableRestoreDatabaseArgs{
-//						OldName: pulumi.String("test111"),
-//						NewName: pulumi.String("test111_update"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### MySQL tables restore
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/rds"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			_, err := rds.NewMysqlDatabaseTableRestore(ctx, "test", &rds.MysqlDatabaseTableRestoreArgs{
-//				RestoreTime: pulumi.Int(1673852043000),
-//				InstanceId:  pulumi.Any(instanceId),
-//				RestoreTables: rds.MysqlDatabaseTableRestoreRestoreTableArray{
-//					&rds.MysqlDatabaseTableRestoreRestoreTableArgs{
-//						Database: pulumi.String("test111"),
-//						Tables: rds.MysqlDatabaseTableRestoreRestoreTableTableArray{
-//							&rds.MysqlDatabaseTableRestoreRestoreTableTableArgs{
-//								OldName: pulumi.String("table111"),
-//								NewName: pulumi.String("table111_update"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type MysqlDatabaseTableRestore struct {
 	pulumi.CustomResourceState
 
 	// Specifies the databases that will be restored.
-	// The databases structure is documented below.
-	//
-	// Changing this creates a new resource.
 	Databases MysqlDatabaseTableRestoreDatabaseArrayOutput `pulumi:"databases"`
 	// Specifies the ID of RDS MySQL instance.
-	//
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Specifies whether to use fast restoration.
-	//
-	// Changing this creates a new resource.
 	IsFastRestore pulumi.BoolPtrOutput `pulumi:"isFastRestore"`
-	// The region in which to create the rds instance resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region        pulumi.StringOutput  `pulumi:"region"`
 	// Specifies the tables that will be restored.
-	// The restoreTables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// > Exactly one of `databases` and `restoreTables` must be set.
-	//
-	// <a name="databasesStruct"></a>
-	// The `databases` block supports:
 	RestoreTables MysqlDatabaseTableRestoreRestoreTableArrayOutput `pulumi:"restoreTables"`
-	// Specifies the restoration time point. A timestamp in milliseconds is used.
-	//
-	// Changing this creates a new resource.
+	// Specifies the restoration time point.
 	RestoreTime pulumi.IntOutput `pulumi:"restoreTime"`
 }
 
@@ -164,67 +65,29 @@ func GetMysqlDatabaseTableRestore(ctx *pulumi.Context,
 // Input properties used for looking up and filtering MysqlDatabaseTableRestore resources.
 type mysqlDatabaseTableRestoreState struct {
 	// Specifies the databases that will be restored.
-	// The databases structure is documented below.
-	//
-	// Changing this creates a new resource.
 	Databases []MysqlDatabaseTableRestoreDatabase `pulumi:"databases"`
 	// Specifies the ID of RDS MySQL instance.
-	//
-	// Changing this creates a new resource.
 	InstanceId *string `pulumi:"instanceId"`
 	// Specifies whether to use fast restoration.
-	//
-	// Changing this creates a new resource.
-	IsFastRestore *bool `pulumi:"isFastRestore"`
-	// The region in which to create the rds instance resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	IsFastRestore *bool   `pulumi:"isFastRestore"`
+	Region        *string `pulumi:"region"`
 	// Specifies the tables that will be restored.
-	// The restoreTables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// > Exactly one of `databases` and `restoreTables` must be set.
-	//
-	// <a name="databasesStruct"></a>
-	// The `databases` block supports:
 	RestoreTables []MysqlDatabaseTableRestoreRestoreTable `pulumi:"restoreTables"`
-	// Specifies the restoration time point. A timestamp in milliseconds is used.
-	//
-	// Changing this creates a new resource.
+	// Specifies the restoration time point.
 	RestoreTime *int `pulumi:"restoreTime"`
 }
 
 type MysqlDatabaseTableRestoreState struct {
 	// Specifies the databases that will be restored.
-	// The databases structure is documented below.
-	//
-	// Changing this creates a new resource.
 	Databases MysqlDatabaseTableRestoreDatabaseArrayInput
 	// Specifies the ID of RDS MySQL instance.
-	//
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringPtrInput
 	// Specifies whether to use fast restoration.
-	//
-	// Changing this creates a new resource.
 	IsFastRestore pulumi.BoolPtrInput
-	// The region in which to create the rds instance resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 	// Specifies the tables that will be restored.
-	// The restoreTables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// > Exactly one of `databases` and `restoreTables` must be set.
-	//
-	// <a name="databasesStruct"></a>
-	// The `databases` block supports:
 	RestoreTables MysqlDatabaseTableRestoreRestoreTableArrayInput
-	// Specifies the restoration time point. A timestamp in milliseconds is used.
-	//
-	// Changing this creates a new resource.
+	// Specifies the restoration time point.
 	RestoreTime pulumi.IntPtrInput
 }
 
@@ -234,68 +97,30 @@ func (MysqlDatabaseTableRestoreState) ElementType() reflect.Type {
 
 type mysqlDatabaseTableRestoreArgs struct {
 	// Specifies the databases that will be restored.
-	// The databases structure is documented below.
-	//
-	// Changing this creates a new resource.
 	Databases []MysqlDatabaseTableRestoreDatabase `pulumi:"databases"`
 	// Specifies the ID of RDS MySQL instance.
-	//
-	// Changing this creates a new resource.
 	InstanceId string `pulumi:"instanceId"`
 	// Specifies whether to use fast restoration.
-	//
-	// Changing this creates a new resource.
-	IsFastRestore *bool `pulumi:"isFastRestore"`
-	// The region in which to create the rds instance resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
+	IsFastRestore *bool   `pulumi:"isFastRestore"`
+	Region        *string `pulumi:"region"`
 	// Specifies the tables that will be restored.
-	// The restoreTables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// > Exactly one of `databases` and `restoreTables` must be set.
-	//
-	// <a name="databasesStruct"></a>
-	// The `databases` block supports:
 	RestoreTables []MysqlDatabaseTableRestoreRestoreTable `pulumi:"restoreTables"`
-	// Specifies the restoration time point. A timestamp in milliseconds is used.
-	//
-	// Changing this creates a new resource.
+	// Specifies the restoration time point.
 	RestoreTime int `pulumi:"restoreTime"`
 }
 
 // The set of arguments for constructing a MysqlDatabaseTableRestore resource.
 type MysqlDatabaseTableRestoreArgs struct {
 	// Specifies the databases that will be restored.
-	// The databases structure is documented below.
-	//
-	// Changing this creates a new resource.
 	Databases MysqlDatabaseTableRestoreDatabaseArrayInput
 	// Specifies the ID of RDS MySQL instance.
-	//
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringInput
 	// Specifies whether to use fast restoration.
-	//
-	// Changing this creates a new resource.
 	IsFastRestore pulumi.BoolPtrInput
-	// The region in which to create the rds instance resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
+	Region        pulumi.StringPtrInput
 	// Specifies the tables that will be restored.
-	// The restoreTables structure is documented below.
-	//
-	// Changing this creates a new resource.
-	//
-	// > Exactly one of `databases` and `restoreTables` must be set.
-	//
-	// <a name="databasesStruct"></a>
-	// The `databases` block supports:
 	RestoreTables MysqlDatabaseTableRestoreRestoreTableArrayInput
-	// Specifies the restoration time point. A timestamp in milliseconds is used.
-	//
-	// Changing this creates a new resource.
+	// Specifies the restoration time point.
 	RestoreTime pulumi.IntInput
 }
 
@@ -387,51 +212,32 @@ func (o MysqlDatabaseTableRestoreOutput) ToMysqlDatabaseTableRestoreOutputWithCo
 }
 
 // Specifies the databases that will be restored.
-// The databases structure is documented below.
-//
-// Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreOutput) Databases() MysqlDatabaseTableRestoreDatabaseArrayOutput {
 	return o.ApplyT(func(v *MysqlDatabaseTableRestore) MysqlDatabaseTableRestoreDatabaseArrayOutput { return v.Databases }).(MysqlDatabaseTableRestoreDatabaseArrayOutput)
 }
 
 // Specifies the ID of RDS MySQL instance.
-//
-// Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabaseTableRestore) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Specifies whether to use fast restoration.
-//
-// Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreOutput) IsFastRestore() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MysqlDatabaseTableRestore) pulumi.BoolPtrOutput { return v.IsFastRestore }).(pulumi.BoolPtrOutput)
 }
 
-// The region in which to create the rds instance resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o MysqlDatabaseTableRestoreOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabaseTableRestore) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Specifies the tables that will be restored.
-// The restoreTables structure is documented below.
-//
-// Changing this creates a new resource.
-//
-// > Exactly one of `databases` and `restoreTables` must be set.
-//
-// <a name="databasesStruct"></a>
-// The `databases` block supports:
 func (o MysqlDatabaseTableRestoreOutput) RestoreTables() MysqlDatabaseTableRestoreRestoreTableArrayOutput {
 	return o.ApplyT(func(v *MysqlDatabaseTableRestore) MysqlDatabaseTableRestoreRestoreTableArrayOutput {
 		return v.RestoreTables
 	}).(MysqlDatabaseTableRestoreRestoreTableArrayOutput)
 }
 
-// Specifies the restoration time point. A timestamp in milliseconds is used.
-//
-// Changing this creates a new resource.
+// Specifies the restoration time point.
 func (o MysqlDatabaseTableRestoreOutput) RestoreTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *MysqlDatabaseTableRestore) pulumi.IntOutput { return v.RestoreTime }).(pulumi.IntOutput)
 }

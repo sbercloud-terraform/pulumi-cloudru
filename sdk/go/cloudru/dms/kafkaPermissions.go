@@ -12,78 +12,13 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use the resource to grant user permissions of a kafka topic within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/dms"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			kafkaInstanceId := cfg.RequireObject("kafkaInstanceId")
-//			kafkaTopicName := cfg.RequireObject("kafkaTopicName")
-//			user1 := cfg.RequireObject("user1")
-//			user2 := cfg.RequireObject("user2")
-//			_, err := dms.NewKafkaPermissions(ctx, "test", &dms.KafkaPermissionsArgs{
-//				InstanceId: pulumi.Any(kafkaInstanceId),
-//				TopicName:  pulumi.Any(kafkaTopicName),
-//				Policies: dms.KafkaPermissionsPolicyArray{
-//					&dms.KafkaPermissionsPolicyArgs{
-//						UserName:     pulumi.Any(user1),
-//						AccessPolicy: pulumi.String("all"),
-//					},
-//					&dms.KafkaPermissionsPolicyArgs{
-//						UserName:     pulumi.Any(user2),
-//						AccessPolicy: pulumi.String("pub"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DMS kafka permissions can be imported using the kafka instance ID and topic name separated by a slash, e.g.:
-//
-// bash
-//
-// ```sh
-// $ pulumi import sbercloud:Dms/kafkaPermissions:KafkaPermissions permissions c8057fe5-23a8-46ef-ad83-c0055b4e0c5c/topic_1
-// ```
 type KafkaPermissions struct {
 	pulumi.CustomResourceState
 
-	// Specifies the ID of the DMS kafka instance to which the permissions belongs.
-	// Changing this creates a new resource.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// Specifies the permissions policies. The object structure is
-	// documented below.
-	//
-	// <a name="dmsKafkaPolicies"></a>
-	// The `policies` block supports:
-	Policies KafkaPermissionsPolicyArrayOutput `pulumi:"policies"`
-	// The region in which to create the DMS kafka permissions resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringOutput `pulumi:"region"`
-	// Specifies the name of the topic to which the permissions belongs.
-	// Changing this creates a new resource.
-	TopicName pulumi.StringOutput `pulumi:"topicName"`
+	InstanceId pulumi.StringOutput               `pulumi:"instanceId"`
+	Policies   KafkaPermissionsPolicyArrayOutput `pulumi:"policies"`
+	Region     pulumi.StringOutput               `pulumi:"region"`
+	TopicName  pulumi.StringOutput               `pulumi:"topicName"`
 }
 
 // NewKafkaPermissions registers a new resource with the given unique name, arguments, and options.
@@ -125,39 +60,17 @@ func GetKafkaPermissions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaPermissions resources.
 type kafkaPermissionsState struct {
-	// Specifies the ID of the DMS kafka instance to which the permissions belongs.
-	// Changing this creates a new resource.
-	InstanceId *string `pulumi:"instanceId"`
-	// Specifies the permissions policies. The object structure is
-	// documented below.
-	//
-	// <a name="dmsKafkaPolicies"></a>
-	// The `policies` block supports:
-	Policies []KafkaPermissionsPolicy `pulumi:"policies"`
-	// The region in which to create the DMS kafka permissions resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the name of the topic to which the permissions belongs.
-	// Changing this creates a new resource.
-	TopicName *string `pulumi:"topicName"`
+	InstanceId *string                  `pulumi:"instanceId"`
+	Policies   []KafkaPermissionsPolicy `pulumi:"policies"`
+	Region     *string                  `pulumi:"region"`
+	TopicName  *string                  `pulumi:"topicName"`
 }
 
 type KafkaPermissionsState struct {
-	// Specifies the ID of the DMS kafka instance to which the permissions belongs.
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringPtrInput
-	// Specifies the permissions policies. The object structure is
-	// documented below.
-	//
-	// <a name="dmsKafkaPolicies"></a>
-	// The `policies` block supports:
-	Policies KafkaPermissionsPolicyArrayInput
-	// The region in which to create the DMS kafka permissions resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the name of the topic to which the permissions belongs.
-	// Changing this creates a new resource.
-	TopicName pulumi.StringPtrInput
+	Policies   KafkaPermissionsPolicyArrayInput
+	Region     pulumi.StringPtrInput
+	TopicName  pulumi.StringPtrInput
 }
 
 func (KafkaPermissionsState) ElementType() reflect.Type {
@@ -165,40 +78,18 @@ func (KafkaPermissionsState) ElementType() reflect.Type {
 }
 
 type kafkaPermissionsArgs struct {
-	// Specifies the ID of the DMS kafka instance to which the permissions belongs.
-	// Changing this creates a new resource.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the permissions policies. The object structure is
-	// documented below.
-	//
-	// <a name="dmsKafkaPolicies"></a>
-	// The `policies` block supports:
-	Policies []KafkaPermissionsPolicy `pulumi:"policies"`
-	// The region in which to create the DMS kafka permissions resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region *string `pulumi:"region"`
-	// Specifies the name of the topic to which the permissions belongs.
-	// Changing this creates a new resource.
-	TopicName string `pulumi:"topicName"`
+	InstanceId string                   `pulumi:"instanceId"`
+	Policies   []KafkaPermissionsPolicy `pulumi:"policies"`
+	Region     *string                  `pulumi:"region"`
+	TopicName  string                   `pulumi:"topicName"`
 }
 
 // The set of arguments for constructing a KafkaPermissions resource.
 type KafkaPermissionsArgs struct {
-	// Specifies the ID of the DMS kafka instance to which the permissions belongs.
-	// Changing this creates a new resource.
 	InstanceId pulumi.StringInput
-	// Specifies the permissions policies. The object structure is
-	// documented below.
-	//
-	// <a name="dmsKafkaPolicies"></a>
-	// The `policies` block supports:
-	Policies KafkaPermissionsPolicyArrayInput
-	// The region in which to create the DMS kafka permissions resource. If omitted, the
-	// provider-level region will be used. Changing this creates a new resource.
-	Region pulumi.StringPtrInput
-	// Specifies the name of the topic to which the permissions belongs.
-	// Changing this creates a new resource.
-	TopicName pulumi.StringInput
+	Policies   KafkaPermissionsPolicyArrayInput
+	Region     pulumi.StringPtrInput
+	TopicName  pulumi.StringInput
 }
 
 func (KafkaPermissionsArgs) ElementType() reflect.Type {
@@ -288,29 +179,18 @@ func (o KafkaPermissionsOutput) ToKafkaPermissionsOutputWithContext(ctx context.
 	return o
 }
 
-// Specifies the ID of the DMS kafka instance to which the permissions belongs.
-// Changing this creates a new resource.
 func (o KafkaPermissionsOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaPermissions) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Specifies the permissions policies. The object structure is
-// documented below.
-//
-// <a name="dmsKafkaPolicies"></a>
-// The `policies` block supports:
 func (o KafkaPermissionsOutput) Policies() KafkaPermissionsPolicyArrayOutput {
 	return o.ApplyT(func(v *KafkaPermissions) KafkaPermissionsPolicyArrayOutput { return v.Policies }).(KafkaPermissionsPolicyArrayOutput)
 }
 
-// The region in which to create the DMS kafka permissions resource. If omitted, the
-// provider-level region will be used. Changing this creates a new resource.
 func (o KafkaPermissionsOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaPermissions) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the topic to which the permissions belongs.
-// Changing this creates a new resource.
 func (o KafkaPermissionsOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaPermissions) pulumi.StringOutput { return v.TopicName }).(pulumi.StringOutput)
 }

@@ -151,35 +151,7 @@ def get_gateway(description: Optional[_builtins.str] = None,
                 vpc_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewayResult:
     """
-    Use this data source to get the information of an available SberCloud NAT gateway.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    natgateway = sbercloud.Nat.get_gateway(name="tf_test_natgateway")
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the nat
-           gateway. The value contains 0 to 255 characters, and angle brackets (<)
-           and (>) are not allowed.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project
-           ID of the NAT gateway.
-    :param _builtins.str id: Specifies the ID of the NAT gateway.
-    :param _builtins.str internal_network_id: Specifies the network ID of the
-           downstream interface (the next hop of the DVR) of the NAT gateway.
-    :param _builtins.str name: Specifies the nat gateway name. The name can
-           contain only digits, letters, underscores (_), and hyphens(-).
-    :param _builtins.str region: Specifies the region in which to create the Nat
-           gateway resource. If omitted, the provider-level region will be used.
-    :param _builtins.str router_id: Specifies the ID of the router this nat
-           gateway belongs to.
-    :param _builtins.str spec: The NAT gateway type.
-           The value can be:
-    :param _builtins.str status: Specifies the status of the NAT gateway.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -221,35 +193,7 @@ def get_gateway_output(description: Optional[pulumi.Input[Optional[_builtins.str
                        vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayResult]:
     """
-    Use this data source to get the information of an available SberCloud NAT gateway.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    natgateway = sbercloud.Nat.get_gateway(name="tf_test_natgateway")
-    ```
-
-
-    :param _builtins.str description: Specifies the description of the nat
-           gateway. The value contains 0 to 255 characters, and angle brackets (<)
-           and (>) are not allowed.
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project
-           ID of the NAT gateway.
-    :param _builtins.str id: Specifies the ID of the NAT gateway.
-    :param _builtins.str internal_network_id: Specifies the network ID of the
-           downstream interface (the next hop of the DVR) of the NAT gateway.
-    :param _builtins.str name: Specifies the nat gateway name. The name can
-           contain only digits, letters, underscores (_), and hyphens(-).
-    :param _builtins.str region: Specifies the region in which to create the Nat
-           gateway resource. If omitted, the provider-level region will be used.
-    :param _builtins.str router_id: Specifies the ID of the router this nat
-           gateway belongs to.
-    :param _builtins.str spec: The NAT gateway type.
-           The value can be:
-    :param _builtins.str status: Specifies the status of the NAT gateway.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['description'] = description

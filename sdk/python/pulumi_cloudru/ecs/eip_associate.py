@@ -26,18 +26,6 @@ class EipAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EipAssociate resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of ECS instance to associated with.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] bandwidth_id: Specifies the **shared** bandwidth ID to associate.
-               It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the private IP address to direct traffic to. It's **mandatory**
-               and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to associate. It's **mandatory**
-               when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the associated resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if bandwidth_id is not None:
@@ -52,10 +40,6 @@ class EipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of ECS instance to associated with.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -65,11 +49,6 @@ class EipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="bandwidthId")
     def bandwidth_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the **shared** bandwidth ID to associate.
-        It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "bandwidth_id")
 
     @bandwidth_id.setter
@@ -79,11 +58,6 @@ class EipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the private IP address to direct traffic to. It's **mandatory**
-        and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -93,10 +67,6 @@ class EipAssociateArgs:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP address to associate. It's **mandatory**
-        when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -106,10 +76,6 @@ class EipAssociateArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the associated resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -128,19 +94,6 @@ class _EipAssociateState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EipAssociate resources.
-        :param pulumi.Input[_builtins.str] bandwidth_id: Specifies the **shared** bandwidth ID to associate.
-               It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the private IP address to direct traffic to. It's **mandatory**
-               and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of ECS instance to associated with.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] port_id: The port ID of the ECS instance that associated with.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to associate. It's **mandatory**
-               when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the associated resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         if bandwidth_id is not None:
             pulumi.set(__self__, "bandwidth_id", bandwidth_id)
@@ -158,11 +111,6 @@ class _EipAssociateState:
     @_builtins.property
     @pulumi.getter(name="bandwidthId")
     def bandwidth_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the **shared** bandwidth ID to associate.
-        It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "bandwidth_id")
 
     @bandwidth_id.setter
@@ -172,11 +120,6 @@ class _EipAssociateState:
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the private IP address to direct traffic to. It's **mandatory**
-        and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @fixed_ip.setter
@@ -186,10 +129,6 @@ class _EipAssociateState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of ECS instance to associated with.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -199,9 +138,6 @@ class _EipAssociateState:
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The port ID of the ECS instance that associated with.
-        """
         return pulumi.get(self, "port_id")
 
     @port_id.setter
@@ -211,10 +147,6 @@ class _EipAssociateState:
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EIP address to associate. It's **mandatory**
-        when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @public_ip.setter
@@ -224,10 +156,6 @@ class _EipAssociateState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the region in which to create the associated resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -248,33 +176,9 @@ class EipAssociate(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        * Associates the **IPv4** address of an ECS instance to a specified EIP.
-        * Associates the **IPv6** address of an ECS instance to a specified **Shared** Bandwidth.
-
-        ## Example Usage
-
-        ## Import
-
-        This resource can be imported by specifying all three arguments, separated by a forward slash:
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/eipAssociate:EipAssociate bind <eip address or bandwidth_id>/<instance_id>/<fixed_ip>
-        ```
-
+        Create a EipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bandwidth_id: Specifies the **shared** bandwidth ID to associate.
-               It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the private IP address to direct traffic to. It's **mandatory**
-               and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of ECS instance to associated with.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to associate. It's **mandatory**
-               when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the associated resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         ...
     @overload
@@ -283,19 +187,7 @@ class EipAssociate(pulumi.CustomResource):
                  args: EipAssociateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        * Associates the **IPv4** address of an ECS instance to a specified EIP.
-        * Associates the **IPv6** address of an ECS instance to a specified **Shared** Bandwidth.
-
-        ## Example Usage
-
-        ## Import
-
-        This resource can be imported by specifying all three arguments, separated by a forward slash:
-
-        ```sh
-        $ pulumi import sbercloud:Ecs/eipAssociate:EipAssociate bind <eip address or bandwidth_id>/<instance_id>/<fixed_ip>
-        ```
-
+        Create a EipAssociate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param EipAssociateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -356,19 +248,6 @@ class EipAssociate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] bandwidth_id: Specifies the **shared** bandwidth ID to associate.
-               It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] fixed_ip: Specifies the private IP address to direct traffic to. It's **mandatory**
-               and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] instance_id: Specifies the ID of ECS instance to associated with.
-               Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] port_id: The port ID of the ECS instance that associated with.
-        :param pulumi.Input[_builtins.str] public_ip: Specifies the EIP address to associate. It's **mandatory**
-               when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        :param pulumi.Input[_builtins.str] region: Specifies the region in which to create the associated resource.
-               If omitted, the provider-level region will be used. Changing this creates a new resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,55 +264,30 @@ class EipAssociate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="bandwidthId")
     def bandwidth_id(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the **shared** bandwidth ID to associate.
-        It's **mandatory** when you want to associate the ECS instance with a specified shared bandwidth.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "bandwidth_id")
 
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the private IP address to direct traffic to. It's **mandatory**
-        and must be a valid IPv6 address when you want to associate the ECS instance with a specified shared bandwidth.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "fixed_ip")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of ECS instance to associated with.
-        Changing this creates a new resource.
-        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
     @pulumi.getter(name="portId")
     def port_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The port ID of the ECS instance that associated with.
-        """
         return pulumi.get(self, "port_id")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies the EIP address to associate. It's **mandatory**
-        when you want to associate the ECS instance with an EIP. Changing this creates a new resource.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the region in which to create the associated resource.
-        If omitted, the provider-level region will be used. Changing this creates a new resource.
-        """
         return pulumi.get(self, "region")
 

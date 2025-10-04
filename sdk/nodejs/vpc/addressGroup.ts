@@ -6,47 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages a VPC IP address group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### IPv4 Address Group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const ipv4 = new sbercloud.vpc.AddressGroup("ipv4", {
- *     name: "group-ipv4",
- *     addresses: [
- *         "192.168.10.10",
- *         "192.168.1.1-192.168.1.50",
- *     ],
- * });
- * ```
- *
- * ### IPv6 Address Group
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const ipv6 = new sbercloud.vpc.AddressGroup("ipv6", {
- *     name: "group-ipv6",
- *     ipVersion: 6,
- *     addresses: ["2001:db8:a583:6e::/64"],
- * });
- * ```
- *
- * ## Import
- *
- * IP address groups can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/addressGroup:AddressGroup test bc96f6b0-ca2c-42ee-b719-0f26bc9c8661
- * ```
- */
 export class AddressGroup extends pulumi.CustomResource {
     /**
      * Get an existing AddressGroup resource's state with the given name, ID, and optional extra
@@ -75,34 +34,14 @@ export class AddressGroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === AddressGroup.__pulumiType;
     }
 
-    /**
-     * Specifies an array of one or more IP addresses. The address can be a single IP
-     * address, IP address range or IP address CIDR. The maximum length is 20.
-     */
     declare public readonly addresses: pulumi.Output<string[]>;
-    /**
-     * Specifies the supplementary information about the IP address group.
-     * The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
     declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     declare public readonly ipExtraSets: pulumi.Output<outputs.Vpc.AddressGroupIpExtraSet[]>;
-    /**
-     * Specifies the IP version, either `4` (default) or `6`.
-     * Changing this creates a new address group.
-     */
     declare public readonly ipVersion: pulumi.Output<number | undefined>;
     declare public readonly maxCapacity: pulumi.Output<number>;
-    /**
-     * Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-     * letters, digits, underscores (_), hyphens (-) and periods (.).
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the IP address group. If omitted, the
-     * provider-level region will be used. Changing this creates a new address group.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -148,34 +87,14 @@ export class AddressGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AddressGroup resources.
  */
 export interface AddressGroupState {
-    /**
-     * Specifies an array of one or more IP addresses. The address can be a single IP
-     * address, IP address range or IP address CIDR. The maximum length is 20.
-     */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the supplementary information about the IP address group.
-     * The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
     ipExtraSets?: pulumi.Input<pulumi.Input<inputs.Vpc.AddressGroupIpExtraSet>[]>;
-    /**
-     * Specifies the IP version, either `4` (default) or `6`.
-     * Changing this creates a new address group.
-     */
     ipVersion?: pulumi.Input<number>;
     maxCapacity?: pulumi.Input<number>;
-    /**
-     * Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-     * letters, digits, underscores (_), hyphens (-) and periods (.).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the IP address group. If omitted, the
-     * provider-level region will be used. Changing this creates a new address group.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -183,33 +102,13 @@ export interface AddressGroupState {
  * The set of arguments for constructing a AddressGroup resource.
  */
 export interface AddressGroupArgs {
-    /**
-     * Specifies an array of one or more IP addresses. The address can be a single IP
-     * address, IP address range or IP address CIDR. The maximum length is 20.
-     */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Specifies the supplementary information about the IP address group.
-     * The value is a string of no more than 255 characters and cannot contain angle brackets (< or >).
-     */
     description?: pulumi.Input<string>;
     enterpriseProjectId?: pulumi.Input<string>;
     forceDestroy?: pulumi.Input<boolean>;
     ipExtraSets?: pulumi.Input<pulumi.Input<inputs.Vpc.AddressGroupIpExtraSet>[]>;
-    /**
-     * Specifies the IP version, either `4` (default) or `6`.
-     * Changing this creates a new address group.
-     */
     ipVersion?: pulumi.Input<number>;
     maxCapacity?: pulumi.Input<number>;
-    /**
-     * Specifies the IP address group name. The value is a string of 1 to 64 characters that can contain
-     * letters, digits, underscores (_), hyphens (-) and periods (.).
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the IP address group. If omitted, the
-     * provider-level region will be used. Changing this creates a new address group.
-     */
     region?: pulumi.Input<string>;
 }

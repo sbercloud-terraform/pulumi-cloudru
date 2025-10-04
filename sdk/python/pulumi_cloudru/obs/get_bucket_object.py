@@ -61,11 +61,6 @@ class GetBucketObjectResult:
     @_builtins.property
     @pulumi.getter
     def body(self) -> _builtins.str:
-        """
-        The content of an object which is available only for objects which have a human-readable Content-Type
-        (text/* and application/json) and smaller than **64KB**. This is to prevent printing unsafe characters and
-        potentially downloading large amount of data.
-        """
         return pulumi.get(self, "body")
 
     @_builtins.property
@@ -76,20 +71,11 @@ class GetBucketObjectResult:
     @_builtins.property
     @pulumi.getter(name="contentType")
     def content_type(self) -> _builtins.str:
-        """
-        a standard MIME type describing the format of the object data, e.g. application/octet-stream.
-        All Valid MIME Types are valid for this input.
-        """
         return pulumi.get(self, "content_type")
 
     @_builtins.property
     @pulumi.getter
     def etag(self) -> _builtins.str:
-        """
-        the ETag generated for the object (an MD5 sum of the object content). When the object is encrypted on the
-        server side, the ETag value is not the MD5 value of the object, but the unique identifier calculated through the
-        server-side encryption.
-        """
         return pulumi.get(self, "etag")
 
     @_builtins.property
@@ -113,25 +99,16 @@ class GetBucketObjectResult:
     @_builtins.property
     @pulumi.getter
     def size(self) -> _builtins.int:
-        """
-        the size of the object in bytes.
-        """
         return pulumi.get(self, "size")
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> _builtins.str:
-        """
-        specifies the storage class of the object.
-        """
         return pulumi.get(self, "storage_class")
 
     @_builtins.property
     @pulumi.getter(name="versionId")
     def version_id(self) -> _builtins.str:
-        """
-        a unique version ID value for the object, if bucket versioning is enabled.
-        """
         return pulumi.get(self, "version_id")
 
 
@@ -158,21 +135,7 @@ def get_bucket_object(bucket: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketObjectResult:
     """
-    Use this data source to get info of special SberCloud obs object.
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    object = sbercloud.Obs.get_bucket_object(bucket="my-test-bucket",
-        key="new-key")
-    ```
-
-
-    :param _builtins.str bucket: The name of the bucket to put the file in.
-    :param _builtins.str key: The name of the object once it is in the bucket.
-    :param _builtins.str region: The region in which to obtain the OBS object. If omitted, the provider-level region will
-           be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bucket'] = bucket
@@ -197,21 +160,7 @@ def get_bucket_object_output(bucket: Optional[pulumi.Input[_builtins.str]] = Non
                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectResult]:
     """
-    Use this data source to get info of special SberCloud obs object.
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    object = sbercloud.Obs.get_bucket_object(bucket="my-test-bucket",
-        key="new-key")
-    ```
-
-
-    :param _builtins.str bucket: The name of the bucket to put the file in.
-    :param _builtins.str key: The name of the object once it is in the bucket.
-    :param _builtins.str region: The region in which to obtain the OBS object. If omitted, the provider-level region will
-           be used.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bucket'] = bucket

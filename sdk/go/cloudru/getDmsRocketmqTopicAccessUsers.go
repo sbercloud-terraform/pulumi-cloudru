@@ -11,38 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of RocketMQ topic access users.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-//	sbercloud "github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			instanceId := cfg.RequireObject("instanceId")
-//			topic := cfg.RequireObject("topic")
-//			_, err := sbercloud.GetDmsRocketmqTopicAccessUsers(ctx, &cloudru.GetDmsRocketmqTopicAccessUsersArgs{
-//				InstanceId: instanceId,
-//				Topic:      topic,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetDmsRocketmqTopicAccessUsers(ctx *pulumi.Context, args *GetDmsRocketmqTopicAccessUsersArgs, opts ...pulumi.InvokeOption) (*GetDmsRocketmqTopicAccessUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDmsRocketmqTopicAccessUsersResult
@@ -55,24 +23,19 @@ func GetDmsRocketmqTopicAccessUsers(ctx *pulumi.Context, args *GetDmsRocketmqTop
 
 // A collection of arguments for invoking getDmsRocketmqTopicAccessUsers.
 type GetDmsRocketmqTopicAccessUsersArgs struct {
-	// Specifies the instance ID.
-	InstanceId string `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the topic name.
-	Topic string `pulumi:"topic"`
+	InstanceId string  `pulumi:"instanceId"`
+	Region     *string `pulumi:"region"`
+	Topic      string  `pulumi:"topic"`
 }
 
 // A collection of values returned by getDmsRocketmqTopicAccessUsers.
 type GetDmsRocketmqTopicAccessUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	InstanceId string `pulumi:"instanceId"`
-	// Indicates the user list.
-	Policies []GetDmsRocketmqTopicAccessUsersPolicy `pulumi:"policies"`
-	Region   string                                 `pulumi:"region"`
-	Topic    string                                 `pulumi:"topic"`
+	Id         string                                 `pulumi:"id"`
+	InstanceId string                                 `pulumi:"instanceId"`
+	Policies   []GetDmsRocketmqTopicAccessUsersPolicy `pulumi:"policies"`
+	Region     string                                 `pulumi:"region"`
+	Topic      string                                 `pulumi:"topic"`
 }
 
 func GetDmsRocketmqTopicAccessUsersOutput(ctx *pulumi.Context, args GetDmsRocketmqTopicAccessUsersOutputArgs, opts ...pulumi.InvokeOption) GetDmsRocketmqTopicAccessUsersResultOutput {
@@ -86,13 +49,9 @@ func GetDmsRocketmqTopicAccessUsersOutput(ctx *pulumi.Context, args GetDmsRocket
 
 // A collection of arguments for invoking getDmsRocketmqTopicAccessUsers.
 type GetDmsRocketmqTopicAccessUsersOutputArgs struct {
-	// Specifies the instance ID.
-	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the topic name.
-	Topic pulumi.StringInput `pulumi:"topic"`
+	InstanceId pulumi.StringInput    `pulumi:"instanceId"`
+	Region     pulumi.StringPtrInput `pulumi:"region"`
+	Topic      pulumi.StringInput    `pulumi:"topic"`
 }
 
 func (GetDmsRocketmqTopicAccessUsersOutputArgs) ElementType() reflect.Type {
@@ -123,7 +82,6 @@ func (o GetDmsRocketmqTopicAccessUsersResultOutput) InstanceId() pulumi.StringOu
 	return o.ApplyT(func(v GetDmsRocketmqTopicAccessUsersResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// Indicates the user list.
 func (o GetDmsRocketmqTopicAccessUsersResultOutput) Policies() GetDmsRocketmqTopicAccessUsersPolicyArrayOutput {
 	return o.ApplyT(func(v GetDmsRocketmqTopicAccessUsersResult) []GetDmsRocketmqTopicAccessUsersPolicy { return v.Policies }).(GetDmsRocketmqTopicAccessUsersPolicyArrayOutput)
 }

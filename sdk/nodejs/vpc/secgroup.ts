@@ -6,15 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * ## Import
- *
- * Security Groups can be imported using the `id`, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Vpc/secgroup:Secgroup secgroup_1 38809219-5e8a-4852-9139-6f461c90e8bc
- * ```
- */
 export class Secgroup extends pulumi.CustomResource {
     /**
      * Get an existing Secgroup resource's state with the given name, ID, and optional extra
@@ -43,45 +34,14 @@ export class Secgroup extends pulumi.CustomResource {
         return obj['__pulumiType'] === Secgroup.__pulumiType;
     }
 
-    /**
-     * The creation time, in UTC format.
-     */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Whether or not to delete the default
-     * egress security rules. This is `false` by default. See the below note
-     * for more information.
-     */
     declare public readonly deleteDefaultRules: pulumi.Output<boolean | undefined>;
-    /**
-     * Description of the security group.
-     */
     declare public readonly description: pulumi.Output<string | undefined>;
-    /**
-     * Specifies the enterprise project id of the security group.
-     * Changing this creates a new security group.
-     */
     declare public readonly enterpriseProjectId: pulumi.Output<string>;
-    /**
-     * A unique name for the security group.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * security group.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The array of security group rules associating with the security group.
-     * The rule object is documented below.
-     */
     declare public /*out*/ readonly rules: pulumi.Output<outputs.Vpc.SecgroupRule[]>;
     declare public readonly tags: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
-     * The last update time, in UTC format.
-     */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
@@ -127,45 +87,14 @@ export class Secgroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Secgroup resources.
  */
 export interface SecgroupState {
-    /**
-     * The creation time, in UTC format.
-     */
     createdAt?: pulumi.Input<string>;
-    /**
-     * Whether or not to delete the default
-     * egress security rules. This is `false` by default. See the below note
-     * for more information.
-     */
     deleteDefaultRules?: pulumi.Input<boolean>;
-    /**
-     * Description of the security group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the security group.
-     * Changing this creates a new security group.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * A unique name for the security group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * security group.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The array of security group rules associating with the security group.
-     * The rule object is documented below.
-     */
     rules?: pulumi.Input<pulumi.Input<inputs.Vpc.SecgroupRule>[]>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * The last update time, in UTC format.
-     */
     updatedAt?: pulumi.Input<string>;
 }
 
@@ -173,31 +102,10 @@ export interface SecgroupState {
  * The set of arguments for constructing a Secgroup resource.
  */
 export interface SecgroupArgs {
-    /**
-     * Whether or not to delete the default
-     * egress security rules. This is `false` by default. See the below note
-     * for more information.
-     */
     deleteDefaultRules?: pulumi.Input<boolean>;
-    /**
-     * Description of the security group.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project id of the security group.
-     * Changing this creates a new security group.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * A unique name for the security group.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the V2 networking client.
-     * A networking client is needed to create a port. If omitted, the
-     * `region` argument of the provider is used. Changing this creates a new
-     * security group.
-     */
     region?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

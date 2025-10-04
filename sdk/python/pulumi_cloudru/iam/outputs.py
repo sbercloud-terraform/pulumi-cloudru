@@ -36,11 +36,6 @@ class AclIpCidr(dict):
     def __init__(__self__, *,
                  cidr: _builtins.str,
                  description: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str cidr: Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-        :param _builtins.str description: Specifies a description about an IPv4 CIDR block. This parameter can contain a
-               maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-        """
         pulumi.set(__self__, "cidr", cidr)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -48,18 +43,11 @@ class AclIpCidr(dict):
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> _builtins.str:
-        """
-        Specifies the IPv4 CIDR block, for example, __192.168.0.0/24__.
-        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Specifies a description about an IPv4 CIDR block. This parameter can contain a
-        maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-        """
         return pulumi.get(self, "description")
 
 
@@ -68,13 +56,6 @@ class AclIpRange(dict):
     def __init__(__self__, *,
                  range: _builtins.str,
                  description: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str range: Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-        :param _builtins.str description: Specifies a description about an IP address range. This parameter can contain a
-               maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-               
-               ->**NOTE:** Up to 200 `ip_cidrs` and `ip_ranges` can be created in total for each access method.
-        """
         pulumi.set(__self__, "range", range)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -82,20 +63,11 @@ class AclIpRange(dict):
     @_builtins.property
     @pulumi.getter
     def range(self) -> _builtins.str:
-        """
-        Specifies the Ip address range, for example, __0.0.0.0-255.255.255.0__.
-        """
         return pulumi.get(self, "range")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[_builtins.str]:
-        """
-        Specifies a description about an IP address range. This parameter can contain a
-        maximum of 255 characters and the following charactors are not allowed:__@#%^&*<>\\\\__.
-
-        ->**NOTE:** Up to 200 `ip_cidrs` and `ip_ranges` can be created in total for each access method.
-        """
         return pulumi.get(self, "description")
 
 
@@ -104,37 +76,17 @@ class AgencyProjectRole(dict):
     def __init__(__self__, *,
                  project: _builtins.str,
                  roles: Sequence[_builtins.str]):
-        """
-        :param _builtins.str project: Specifies the name of project.
-        :param Sequence[_builtins.str] roles: Specifies an array of role names.
-               
-               > **NOTE**
-               - At least one of `project_role` and `domain_roles` must be specified when creating an agency.
-               - We can get all **System-Defined Roles** form
-               [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-        """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "roles", roles)
 
     @_builtins.property
     @pulumi.getter
     def project(self) -> _builtins.str:
-        """
-        Specifies the name of project.
-        """
         return pulumi.get(self, "project")
 
     @_builtins.property
     @pulumi.getter
     def roles(self) -> Sequence[_builtins.str]:
-        """
-        Specifies an array of role names.
-
-        > **NOTE**
-        - At least one of `project_role` and `domain_roles` must be specified when creating an agency.
-        - We can get all **System-Defined Roles** form
-        [SberCloud](https://support.hc.sbercloud.ru/permissions/index.html).
-        """
         return pulumi.get(self, "roles")
 
 
@@ -178,29 +130,6 @@ class ProviderAccessConfig(dict):
                  response_mode: Optional[_builtins.str] = None,
                  response_type: Optional[_builtins.str] = None,
                  scopes: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str access_type: Specifies the access type of the identity provider.
-               Available options are:
-        :param _builtins.str client_id: Specifies the ID of a client registered with the OpenID Connect identity provider.
-        :param _builtins.str provider_url: Specifies the URL of the identity provider.
-               This field corresponds to the iss field in the ID token.
-        :param _builtins.str signing_key: Public key used to sign the ID token of the OpenID Connect identity provider.
-               This field is required only if the protocol is set to *oidc*.
-        :param _builtins.str authorization_endpoint: Specifies the authorization endpoint of the OpenID Connect identity
-               provider. This field is required only if the access type is set to `program_console`.
-        :param _builtins.str response_mode: Response mode.
-               Valid values is *form_post* and *fragment*, default value is *form_post*.
-               This field is required only if the access type is set to `program_console`.
-        :param _builtins.str response_type: Response type. Valid values is *id_token*, default value is *id_token*.
-               This field is required only if the access type is set to `program_console`.
-        :param Sequence[_builtins.str] scopes: Specifies the scopes of authorization requests. It is an array of one or more scopes.
-               Valid values are *openid*, *email*, *profile* and other values defined by you.
-               This field is required only if the access type is set to `program_console`.
-               
-               > **NOTE:** 1. *openid* must be specified for this field.
-               <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-               <br/>Example: openid email host.
-        """
         pulumi.set(__self__, "access_type", access_type)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "provider_url", provider_url)
@@ -217,78 +146,41 @@ class ProviderAccessConfig(dict):
     @_builtins.property
     @pulumi.getter(name="accessType")
     def access_type(self) -> _builtins.str:
-        """
-        Specifies the access type of the identity provider.
-        Available options are:
-        """
         return pulumi.get(self, "access_type")
 
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> _builtins.str:
-        """
-        Specifies the ID of a client registered with the OpenID Connect identity provider.
-        """
         return pulumi.get(self, "client_id")
 
     @_builtins.property
     @pulumi.getter(name="providerUrl")
     def provider_url(self) -> _builtins.str:
-        """
-        Specifies the URL of the identity provider.
-        This field corresponds to the iss field in the ID token.
-        """
         return pulumi.get(self, "provider_url")
 
     @_builtins.property
     @pulumi.getter(name="signingKey")
     def signing_key(self) -> _builtins.str:
-        """
-        Public key used to sign the ID token of the OpenID Connect identity provider.
-        This field is required only if the protocol is set to *oidc*.
-        """
         return pulumi.get(self, "signing_key")
 
     @_builtins.property
     @pulumi.getter(name="authorizationEndpoint")
     def authorization_endpoint(self) -> Optional[_builtins.str]:
-        """
-        Specifies the authorization endpoint of the OpenID Connect identity
-        provider. This field is required only if the access type is set to `program_console`.
-        """
         return pulumi.get(self, "authorization_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="responseMode")
     def response_mode(self) -> Optional[_builtins.str]:
-        """
-        Response mode.
-        Valid values is *form_post* and *fragment*, default value is *form_post*.
-        This field is required only if the access type is set to `program_console`.
-        """
         return pulumi.get(self, "response_mode")
 
     @_builtins.property
     @pulumi.getter(name="responseType")
     def response_type(self) -> Optional[_builtins.str]:
-        """
-        Response type. Valid values is *id_token*, default value is *id_token*.
-        This field is required only if the access type is set to `program_console`.
-        """
         return pulumi.get(self, "response_type")
 
     @_builtins.property
     @pulumi.getter
     def scopes(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the scopes of authorization requests. It is an array of one or more scopes.
-        Valid values are *openid*, *email*, *profile* and other values defined by you.
-        This field is required only if the access type is set to `program_console`.
-
-        > **NOTE:** 1. *openid* must be specified for this field.
-        <br/>2. A maximum of 10 values can be specified, and they must be separated with spaces.
-        <br/>Example: openid email host.
-        """
         return pulumi.get(self, "scopes")
 
 
@@ -297,35 +189,17 @@ class ProviderConversionConversionRule(dict):
     def __init__(__self__, *,
                  locals: Sequence['outputs.ProviderConversionConversionRuleLocal'],
                  remotes: Sequence['outputs.ProviderConversionConversionRuleRemote']):
-        """
-        :param Sequence['ProviderConversionConversionRuleLocalArgs'] locals: Specifies the federated user information on the cloud platform.
-        :param Sequence['ProviderConversionConversionRuleRemoteArgs'] remotes: Specifies Federated user information in the IDP system.
-               
-               > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-               attributes and operators.
-               If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
-        """
         pulumi.set(__self__, "locals", locals)
         pulumi.set(__self__, "remotes", remotes)
 
     @_builtins.property
     @pulumi.getter
     def locals(self) -> Sequence['outputs.ProviderConversionConversionRuleLocal']:
-        """
-        Specifies the federated user information on the cloud platform.
-        """
         return pulumi.get(self, "locals")
 
     @_builtins.property
     @pulumi.getter
     def remotes(self) -> Sequence['outputs.ProviderConversionConversionRuleRemote']:
-        """
-        Specifies Federated user information in the IDP system.
-
-        > **NOTE:** If the protocol of identity provider is SAML, this field is an expression consisting of assertion
-        attributes and operators.
-        If the protocol of identity provider is OIDC, the value of this field is determined by the ID token.
-        """
         return pulumi.get(self, "remotes")
 
 
@@ -334,10 +208,6 @@ class ProviderConversionConversionRuleLocal(dict):
     def __init__(__self__, *,
                  group: Optional[_builtins.str] = None,
                  username: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str group: Specifies the user group to which the federated user belongs on the cloud platform.
-        :param _builtins.str username: Specifies the name of a federated user on the cloud platform.
-        """
         if group is not None:
             pulumi.set(__self__, "group", group)
         if username is not None:
@@ -346,17 +216,11 @@ class ProviderConversionConversionRuleLocal(dict):
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[_builtins.str]:
-        """
-        Specifies the user group to which the federated user belongs on the cloud platform.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
-        """
-        Specifies the name of a federated user on the cloud platform.
-        """
         return pulumi.get(self, "username")
 
 
@@ -366,12 +230,6 @@ class ProviderConversionConversionRuleRemote(dict):
                  attribute: _builtins.str,
                  condition: Optional[_builtins.str] = None,
                  values: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str attribute: Specifies the attribute in the IDP assertion.
-        :param _builtins.str condition: Specifies the condition of conversion rule.
-               Available options are:
-        :param Sequence[_builtins.str] values: Specifies the rule is matched only if the specified strings appear in the attribute type.
-        """
         pulumi.set(__self__, "attribute", attribute)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -381,26 +239,16 @@ class ProviderConversionConversionRuleRemote(dict):
     @_builtins.property
     @pulumi.getter
     def attribute(self) -> _builtins.str:
-        """
-        Specifies the attribute in the IDP assertion.
-        """
         return pulumi.get(self, "attribute")
 
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[_builtins.str]:
-        """
-        Specifies the condition of conversion rule.
-        Available options are:
-        """
         return pulumi.get(self, "condition")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        Specifies the rule is matched only if the specified strings appear in the attribute type.
-        """
         return pulumi.get(self, "values")
 
 
@@ -409,10 +257,6 @@ class ProviderConversionRule(dict):
     def __init__(__self__, *,
                  locals: Optional[Sequence['outputs.ProviderConversionRuleLocal']] = None,
                  remotes: Optional[Sequence['outputs.ProviderConversionRuleRemote']] = None):
-        """
-        :param Sequence['ProviderConversionRuleLocalArgs'] locals: The federated user information on the cloud platform.
-        :param Sequence['ProviderConversionRuleRemoteArgs'] remotes: The description of the identity provider.
-        """
         if locals is not None:
             pulumi.set(__self__, "locals", locals)
         if remotes is not None:
@@ -421,17 +265,11 @@ class ProviderConversionRule(dict):
     @_builtins.property
     @pulumi.getter
     def locals(self) -> Optional[Sequence['outputs.ProviderConversionRuleLocal']]:
-        """
-        The federated user information on the cloud platform.
-        """
         return pulumi.get(self, "locals")
 
     @_builtins.property
     @pulumi.getter
     def remotes(self) -> Optional[Sequence['outputs.ProviderConversionRuleRemote']]:
-        """
-        The description of the identity provider.
-        """
         return pulumi.get(self, "remotes")
 
 
@@ -440,10 +278,6 @@ class ProviderConversionRuleLocal(dict):
     def __init__(__self__, *,
                  group: Optional[_builtins.str] = None,
                  username: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str group: The user group to which the federated user belongs on the cloud platform.
-        :param _builtins.str username: The name of a federated user on the cloud platform.
-        """
         if group is not None:
             pulumi.set(__self__, "group", group)
         if username is not None:
@@ -452,17 +286,11 @@ class ProviderConversionRuleLocal(dict):
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[_builtins.str]:
-        """
-        The user group to which the federated user belongs on the cloud platform.
-        """
         return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter
     def username(self) -> Optional[_builtins.str]:
-        """
-        The name of a federated user on the cloud platform.
-        """
         return pulumi.get(self, "username")
 
 
@@ -472,11 +300,6 @@ class ProviderConversionRuleRemote(dict):
                  attribute: Optional[_builtins.str] = None,
                  condition: Optional[_builtins.str] = None,
                  values: Optional[Sequence[_builtins.str]] = None):
-        """
-        :param _builtins.str attribute: The attribute in the IDP assertion.
-        :param _builtins.str condition: The condition of conversion rule.
-        :param Sequence[_builtins.str] values: The rule is matched only if the specified strings appear in the attribute type.
-        """
         if attribute is not None:
             pulumi.set(__self__, "attribute", attribute)
         if condition is not None:
@@ -487,25 +310,16 @@ class ProviderConversionRuleRemote(dict):
     @_builtins.property
     @pulumi.getter
     def attribute(self) -> Optional[_builtins.str]:
-        """
-        The attribute in the IDP assertion.
-        """
         return pulumi.get(self, "attribute")
 
     @_builtins.property
     @pulumi.getter
     def condition(self) -> Optional[_builtins.str]:
-        """
-        The condition of conversion rule.
-        """
         return pulumi.get(self, "condition")
 
     @_builtins.property
     @pulumi.getter
     def values(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        The rule is matched only if the specified strings appear in the attribute type.
-        """
         return pulumi.get(self, "values")
 
 
@@ -519,17 +333,6 @@ class GetGroupUserResult(dict):
                  password_expires_at: _builtins.str,
                  password_status: _builtins.bool,
                  password_strength: _builtins.str):
-        """
-        :param _builtins.str description: Specifies the description of the identity group.
-        :param _builtins.bool enabled: Indicates the whether the IAM user is enabled.
-        :param _builtins.str id: Specifies the ID of the identity group.
-        :param _builtins.str name: Specifies the name of the identity group.
-        :param _builtins.str password_expires_at: Indicates the time when the password will expire.
-               Null indicates that the password has unlimited validity.
-        :param _builtins.bool password_status: Indicates the password status. True means that the password needs to be changed,
-               and false means that the password is normal.
-        :param _builtins.str password_strength: Indicates the password strength. The value can be high, mid, or low.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "id", id)
@@ -541,59 +344,36 @@ class GetGroupUserResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Specifies the description of the identity group.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
-        """
-        Indicates the whether the IAM user is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Specifies the ID of the identity group.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the name of the identity group.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="passwordExpiresAt")
     def password_expires_at(self) -> _builtins.str:
-        """
-        Indicates the time when the password will expire.
-        Null indicates that the password has unlimited validity.
-        """
         return pulumi.get(self, "password_expires_at")
 
     @_builtins.property
     @pulumi.getter(name="passwordStatus")
     def password_status(self) -> _builtins.bool:
-        """
-        Indicates the password status. True means that the password needs to be changed,
-        and false means that the password is normal.
-        """
         return pulumi.get(self, "password_status")
 
     @_builtins.property
     @pulumi.getter(name="passwordStrength")
     def password_strength(self) -> _builtins.str:
-        """
-        Indicates the password strength. The value can be high, mid, or low.
-        """
         return pulumi.get(self, "password_strength")
 
 
@@ -603,11 +383,6 @@ class GetProjectsProjectResult(dict):
                  enabled: _builtins.bool,
                  id: _builtins.str,
                  name: _builtins.str):
-        """
-        :param _builtins.bool enabled: Whether project is enabled.
-        :param _builtins.str id: The project ID.
-        :param _builtins.str name: Specifies the project name to query.
-        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -615,25 +390,16 @@ class GetProjectsProjectResult(dict):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
-        """
-        Whether project is enabled.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        The project ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the project name to query.
-        """
         return pulumi.get(self, "name")
 
 
@@ -647,17 +413,6 @@ class GetUsersUserResult(dict):
                  name: _builtins.str,
                  password_expires_at: _builtins.str,
                  password_status: _builtins.bool):
-        """
-        :param _builtins.str description: Indicates the description of the IAM user.
-        :param _builtins.bool enabled: Specifies the status of the IAM user, the default value is **true**.
-        :param Sequence[_builtins.str] groups: Indicates the user groups to which an IAM user belongs.
-        :param _builtins.str id: Indicates the ID of the User.
-        :param _builtins.str name: Specifies the IAM user name.
-        :param _builtins.str password_expires_at: Indicates the time when the password will expire.
-               Null indicates that the password has unlimited validity.
-        :param _builtins.bool password_status: Indicates the password status. True means that the password needs to be changed,
-               and false means that the password is normal.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "groups", groups)
@@ -669,59 +424,36 @@ class GetUsersUserResult(dict):
     @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
-        """
-        Indicates the description of the IAM user.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
-        """
-        Specifies the status of the IAM user, the default value is **true**.
-        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> Sequence[_builtins.str]:
-        """
-        Indicates the user groups to which an IAM user belongs.
-        """
         return pulumi.get(self, "groups")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Indicates the ID of the User.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
-        """
-        Specifies the IAM user name.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="passwordExpiresAt")
     def password_expires_at(self) -> _builtins.str:
-        """
-        Indicates the time when the password will expire.
-        Null indicates that the password has unlimited validity.
-        """
         return pulumi.get(self, "password_expires_at")
 
     @_builtins.property
     @pulumi.getter(name="passwordStatus")
     def password_status(self) -> _builtins.bool:
-        """
-        Indicates the password status. True means that the password needs to be changed,
-        and false means that the password is normal.
-        """
         return pulumi.get(self, "password_status")
 
 

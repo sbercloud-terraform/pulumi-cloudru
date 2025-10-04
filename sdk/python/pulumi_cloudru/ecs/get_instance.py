@@ -104,9 +104,6 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> _builtins.str:
-        """
-        The availability zone where the instance is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
@@ -127,9 +124,6 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> Optional[_builtins.str]:
-        """
-        The fixed IPv4 address of the instance on this network.
-        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @_builtins.property
@@ -140,9 +134,6 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> _builtins.str:
-        """
-        The flavor name of the instance.
-        """
         return pulumi.get(self, "flavor_name")
 
     @_builtins.property
@@ -156,17 +147,11 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter(name="imageId")
     def image_id(self) -> _builtins.str:
-        """
-        The image ID of the instance.
-        """
         return pulumi.get(self, "image_id")
 
     @_builtins.property
     @pulumi.getter(name="imageName")
     def image_name(self) -> _builtins.str:
-        """
-        The image name of the instance.
-        """
         return pulumi.get(self, "image_name")
 
     @_builtins.property
@@ -177,9 +162,6 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter(name="keyPair")
     def key_pair(self) -> _builtins.str:
-        """
-        The key pair that is used to authenticate the instance.
-        """
         return pulumi.get(self, "key_pair")
 
     @_builtins.property
@@ -190,18 +172,11 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter
     def networks(self) -> Sequence['outputs.GetInstanceNetworkResult']:
-        """
-        An array of one or more networks to attach to the instance. The network object structure is documented
-        below.
-        """
         return pulumi.get(self, "networks")
 
     @_builtins.property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> _builtins.str:
-        """
-        The EIP address that is associted to the instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @_builtins.property
@@ -212,67 +187,41 @@ class GetInstanceResult:
     @_builtins.property
     @pulumi.getter(name="schedulerHints")
     def scheduler_hints(self) -> Sequence['outputs.GetInstanceSchedulerHintResult']:
-        """
-        The scheduler with hints on how the instance should be launched. The available hints are described
-        below.
-        """
         return pulumi.get(self, "scheduler_hints")
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Sequence[_builtins.str]:
-        """
-        An array of one or more security group IDs to associate with the instance.
-        """
         return pulumi.get(self, "security_group_ids")
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Sequence[_builtins.str]:
-        """
-        An array of one or more security groups to associate with the instance.¶
-        """
         return pulumi.get(self, "security_groups")
 
     @_builtins.property
     @pulumi.getter
     def status(self) -> _builtins.str:
-        """
-        The status of the instance.
-        """
         return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="systemDiskId")
     def system_disk_id(self) -> _builtins.str:
-        """
-        The system disk voume ID.
-        """
         return pulumi.get(self, "system_disk_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, _builtins.str]]:
-        """
-        The key/value pairs to associate with the instance.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="userData")
     def user_data(self) -> _builtins.str:
-        """
-        The user data (information after encoding) configured during instance creation.
-        """
         return pulumi.get(self, "user_data")
 
     @_builtins.property
     @pulumi.getter(name="volumeAttacheds")
     def volume_attacheds(self) -> Sequence['outputs.GetInstanceVolumeAttachedResult']:
-        """
-        An array of one or more disks to attach to the instance. The volume_attached object structure is
-        documented below.
-        """
         return pulumi.get(self, "volume_attacheds")
 
 
@@ -317,29 +266,7 @@ def get_instance(enterprise_project_id: Optional[_builtins.str] = None,
                  tags: Optional[Mapping[str, _builtins.str]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceResult:
     """
-    Use this data source to get the details of a specified compute instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    ecs_name = config.require_object("ecsName")
-    demo = sbercloud.Ecs.get_instance(name=ecs_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-    :param _builtins.str fixed_ip_v4: Specifies the IPv4 addresses of the ECS.
-    :param _builtins.str flavor_id: Specifies the flavor ID.
-    :param _builtins.str instance_id: Specifies the ECS ID.
-           *
-    :param _builtins.str name: Specifies the ECS name, which can be queried with a regular expression.
-    :param _builtins.str region: The region in which to obtain the instance. If omitted, the provider-level region will
-           be used.
-    :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id
@@ -386,29 +313,7 @@ def get_instance_output(enterprise_project_id: Optional[pulumi.Input[Optional[_b
                         tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
     """
-    Use this data source to get the details of a specified compute instance.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_sbercloud as sbercloud
-
-    config = pulumi.Config()
-    ecs_name = config.require_object("ecsName")
-    demo = sbercloud.Ecs.get_instance(name=ecs_name)
-    ```
-
-
-    :param _builtins.str enterprise_project_id: Specifies the enterprise project id.
-    :param _builtins.str fixed_ip_v4: Specifies the IPv4 addresses of the ECS.
-    :param _builtins.str flavor_id: Specifies the flavor ID.
-    :param _builtins.str instance_id: Specifies the ECS ID.
-           *
-    :param _builtins.str name: Specifies the ECS name, which can be queried with a regular expression.
-    :param _builtins.str region: The region in which to obtain the instance. If omitted, the provider-level region will
-           be used.
-    :param Mapping[str, _builtins.str] tags: The key/value pairs to associate with the instance.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['enterpriseProjectId'] = enterprise_project_id

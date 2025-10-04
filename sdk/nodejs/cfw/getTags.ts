@@ -6,18 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the list of CFW tags.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cfw.getTags({});
- * ```
- */
 export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,10 +18,6 @@ export function getTags(args?: GetTagsArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getTags.
  */
 export interface GetTagsArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -46,23 +30,8 @@ export interface GetTagsResult {
      */
     readonly id: string;
     readonly region: string;
-    /**
-     * The tag list.
-     */
     readonly tags: outputs.Cfw.GetTagsTag[];
 }
-/**
- * Use this data source to get the list of CFW tags.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const test = sbercloud.Cfw.getTags({});
- * ```
- */
 export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -75,9 +44,5 @@ export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getTags.
  */
 export interface GetTagsOutputArgs {
-    /**
-     * Specifies the region in which to query the resource.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

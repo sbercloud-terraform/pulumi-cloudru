@@ -6,65 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a DDS parameter template copy resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const configurationId = config.requireObject<any>("configurationId");
- * const name = config.requireObject<any>("name");
- * const test = new sbercloud.DdsParameterTemplateCopy("test", {
- *     configurationId: configurationId,
- *     name: name,
- *     description: "test copy",
- * });
- * ```
- *
- * ## Import
- *
- * The DDS copyed parameter template can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:index/ddsParameterTemplateCopy:DdsParameterTemplateCopy test <id>
- * ```
- *
- * Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
- *
- * API response, security or some other reason.
- *
- * The missing attributes include: `configuration_id`.
- *
- * It is generally recommended running `pulumi preview` after importing an template.
- *
- * You can then decide if changes should be applied to the template, or the resource definition should be updated to
- *
- * align with the template. Also you can ignore changes as below.
- *
- * hcl
- *
- * resource "sbercloud_dds_parameter_template_copy" "test" {
- *
- *     ...
- *
- *   lifecycle {
- *
- *     ignore_changes = [
- *     
- *       configuration_id,
- *     
- *     ]
- *
- *   }
- *
- * }
- */
 export class DdsParameterTemplateCopy extends pulumi.CustomResource {
     /**
      * Get an existing DdsParameterTemplateCopy resource's state with the given name, ID, and optional extra
@@ -95,25 +36,18 @@ export class DdsParameterTemplateCopy extends pulumi.CustomResource {
 
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     declare public readonly configurationId: pulumi.Output<string>;
     /**
-     * The create time of the parameter template.
+     * Indicates the create time.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Specifies the description of replicated parameter template.
-     * The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-     * the carriage return character or the following special characters: >!<"&'=
-     * Changing this creates a new resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Specifies the name of replicated parameter template.
-     * The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-     * underscores (_), and periods (.).
-     * Changing this creates a new resource.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -122,22 +56,15 @@ export class DdsParameterTemplateCopy extends pulumi.CustomResource {
     declare public /*out*/ readonly nodeVersion: pulumi.Output<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
-     * You can customize parameter values based on the parameters in the default parameter template.
      */
     declare public readonly parameterValues: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Indicates the parameters defined by users based on the default parameter templates.
-     * The Parameter structure is documented below.
      */
     declare public /*out*/ readonly parameters: pulumi.Output<outputs.DdsParameterTemplateCopyParameter[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * The update time of the parameter template.
+     * Indicates the update time.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
@@ -189,25 +116,18 @@ export class DdsParameterTemplateCopy extends pulumi.CustomResource {
 export interface DdsParameterTemplateCopyState {
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     configurationId?: pulumi.Input<string>;
     /**
-     * The create time of the parameter template.
+     * Indicates the create time.
      */
     createdAt?: pulumi.Input<string>;
     /**
      * Specifies the description of replicated parameter template.
-     * The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-     * the carriage return character or the following special characters: >!<"&'=
-     * Changing this creates a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the name of replicated parameter template.
-     * The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-     * underscores (_), and periods (.).
-     * Changing this creates a new resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -216,22 +136,15 @@ export interface DdsParameterTemplateCopyState {
     nodeVersion?: pulumi.Input<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
-     * You can customize parameter values based on the parameters in the default parameter template.
      */
     parameterValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Indicates the parameters defined by users based on the default parameter templates.
-     * The Parameter structure is documented below.
      */
     parameters?: pulumi.Input<pulumi.Input<inputs.DdsParameterTemplateCopyParameter>[]>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
     /**
-     * The update time of the parameter template.
+     * Indicates the update time.
      */
     updatedAt?: pulumi.Input<string>;
 }
@@ -242,32 +155,19 @@ export interface DdsParameterTemplateCopyState {
 export interface DdsParameterTemplateCopyArgs {
     /**
      * Specifies the parameter template ID.
-     * Changing this creates a new resource.
      */
     configurationId: pulumi.Input<string>;
     /**
      * Specifies the description of replicated parameter template.
-     * The value is left blank by default. The description must consist of a maximum of **256** characters and cannot contain
-     * the carriage return character or the following special characters: >!<"&'=
-     * Changing this creates a new resource.
      */
     description?: pulumi.Input<string>;
     /**
      * Specifies the name of replicated parameter template.
-     * The parameter template name can contain **1** to **64** characters. It can contain only letters, digits, hyphens (-),
-     * underscores (_), and periods (.).
-     * Changing this creates a new resource.
      */
     name?: pulumi.Input<string>;
     /**
      * Specifies the mapping between parameter names and parameter values.
-     * You can customize parameter values based on the parameters in the default parameter template.
      */
     parameterValues?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used.
-     * Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
 }

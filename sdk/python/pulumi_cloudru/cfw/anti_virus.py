@@ -29,13 +29,7 @@ class AntiVirusArgs:
         The set of arguments for constructing a AntiVirus resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
         :param pulumi.Input[Sequence[pulumi.Input['AntiVirusScanProtocolConfigArgs']]] scan_protocol_configs: Specifies the scan protocol configurations.
-               The scan_protocol_configs structure is documented below.
-               
-               <a name="ScanProtocolConfigs"></a>
-               The `scan_protocol_configs` block supports:
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "scan_protocol_configs", scan_protocol_configs)
@@ -61,10 +55,6 @@ class AntiVirusArgs:
     def scan_protocol_configs(self) -> pulumi.Input[Sequence[pulumi.Input['AntiVirusScanProtocolConfigArgs']]]:
         """
         Specifies the scan protocol configurations.
-        The scan_protocol_configs structure is documented below.
-
-        <a name="ScanProtocolConfigs"></a>
-        The `scan_protocol_configs` block supports:
         """
         return pulumi.get(self, "scan_protocol_configs")
 
@@ -85,9 +75,7 @@ class AntiVirusArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -106,14 +94,8 @@ class _AntiVirusState:
         """
         Input properties used for looking up and filtering AntiVirus resources.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[Sequence[pulumi.Input['AntiVirusScanProtocolConfigArgs']]] scan_protocol_configs: Specifies the scan protocol configurations.
-               The scan_protocol_configs structure is documented below.
-               
-               <a name="ScanProtocolConfigs"></a>
-               The `scan_protocol_configs` block supports:
         """
         if enable_force_new is not None:
             pulumi.set(__self__, "enable_force_new", enable_force_new)
@@ -149,9 +131,7 @@ class _AntiVirusState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -164,10 +144,6 @@ class _AntiVirusState:
     def scan_protocol_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AntiVirusScanProtocolConfigArgs']]]]:
         """
         Specifies the scan protocol configurations.
-        The scan_protocol_configs structure is documented below.
-
-        <a name="ScanProtocolConfigs"></a>
-        The `scan_protocol_configs` block supports:
         """
         return pulumi.get(self, "scan_protocol_configs")
 
@@ -188,51 +164,12 @@ class AntiVirus(pulumi.CustomResource):
                  scan_protocol_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AntiVirusScanProtocolConfigArgs', 'AntiVirusScanProtocolConfigArgsDict']]]]] = None,
                  __props__=None):
         """
-        Manages a CFW anti virus resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        object_id = config.require_object("objectId")
-        test = sbercloud.cfw.AntiVirus("test",
-            object_id=object_id,
-            scan_protocol_configs=[
-                {
-                    "protocol_type": 3,
-                    "action": 1,
-                },
-                {
-                    "protocol_type": 2,
-                    "action": 1,
-                },
-            ])
-        ```
-
-        ## Import
-
-        The anti virus can be imported using `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/antiVirus:AntiVirus test <id>
-        ```
-
+        Create a AntiVirus resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AntiVirusScanProtocolConfigArgs', 'AntiVirusScanProtocolConfigArgsDict']]]] scan_protocol_configs: Specifies the scan protocol configurations.
-               The scan_protocol_configs structure is documented below.
-               
-               <a name="ScanProtocolConfigs"></a>
-               The `scan_protocol_configs` block supports:
         """
         ...
     @overload
@@ -241,40 +178,7 @@ class AntiVirus(pulumi.CustomResource):
                  args: AntiVirusArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a CFW anti virus resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        config = pulumi.Config()
-        object_id = config.require_object("objectId")
-        test = sbercloud.cfw.AntiVirus("test",
-            object_id=object_id,
-            scan_protocol_configs=[
-                {
-                    "protocol_type": 3,
-                    "action": 1,
-                },
-                {
-                    "protocol_type": 2,
-                    "action": 1,
-                },
-            ])
-        ```
-
-        ## Import
-
-        The anti virus can be imported using `id`, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import sbercloud:Cfw/antiVirus:AntiVirus test <id>
-        ```
-
+        Create a AntiVirus resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AntiVirusArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -333,14 +237,8 @@ class AntiVirus(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] object_id: Specifies the protected object ID.
-        :param pulumi.Input[_builtins.str] region: The region in which to create the resource.
-               If omitted, the provider-level region will be used.
-               Changing this creates a new resource.
+        :param pulumi.Input[_builtins.str] region: The region in which to create the resource. If omitted, the provider-level region will be used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AntiVirusScanProtocolConfigArgs', 'AntiVirusScanProtocolConfigArgsDict']]]] scan_protocol_configs: Specifies the scan protocol configurations.
-               The scan_protocol_configs structure is documented below.
-               
-               <a name="ScanProtocolConfigs"></a>
-               The `scan_protocol_configs` block supports:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -369,9 +267,7 @@ class AntiVirus(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        The region in which to create the resource.
-        If omitted, the provider-level region will be used.
-        Changing this creates a new resource.
+        The region in which to create the resource. If omitted, the provider-level region will be used.
         """
         return pulumi.get(self, "region")
 
@@ -380,10 +276,6 @@ class AntiVirus(pulumi.CustomResource):
     def scan_protocol_configs(self) -> pulumi.Output[Sequence['outputs.AntiVirusScanProtocolConfig']]:
         """
         Specifies the scan protocol configurations.
-        The scan_protocol_configs structure is documented below.
-
-        <a name="ScanProtocolConfigs"></a>
-        The `scan_protocol_configs` block supports:
         """
         return pulumi.get(self, "scan_protocol_configs")
 

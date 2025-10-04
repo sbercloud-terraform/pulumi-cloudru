@@ -32,28 +32,10 @@ MYPY = False
 if not MYPY:
     class InstanceBandwidthArgsDict(TypedDict):
         share_type: pulumi.Input[_builtins.str]
-        """
-        Specifies the bandwidth sharing type. Changing this creates a new instance.
-        Possible values are as follows:
-        + **PER**: Dedicated bandwidth
-        + **WHOLE**: Shared bandwidth
-        """
         charge_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-        Changing this creates a new instance.
-        """
         extend_param: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the **shared** bandwidth id. This parameter is mandatory when
-        `share_type` is set to **WHOLE**. Changing this creates a new instance.
-        """
         size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-        This parameter is mandatory when `share_type` is set to **PER**. Changing this creates a new instance.
-        """
 elif False:
     InstanceBandwidthArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -65,18 +47,6 @@ class InstanceBandwidthArgs:
                  extend_param: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] share_type: Specifies the bandwidth sharing type. Changing this creates a new instance.
-               Possible values are as follows:
-               + **PER**: Dedicated bandwidth
-               + **WHOLE**: Shared bandwidth
-        :param pulumi.Input[_builtins.str] charge_mode: Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] id: Specifies the **shared** bandwidth id. This parameter is mandatory when
-               `share_type` is set to **WHOLE**. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.int] size: Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-               This parameter is mandatory when `share_type` is set to **PER**. Changing this creates a new instance.
-        """
         pulumi.set(__self__, "share_type", share_type)
         if charge_mode is not None:
             pulumi.set(__self__, "charge_mode", charge_mode)
@@ -90,12 +60,6 @@ class InstanceBandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="shareType")
     def share_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the bandwidth sharing type. Changing this creates a new instance.
-        Possible values are as follows:
-        + **PER**: Dedicated bandwidth
-        + **WHOLE**: Shared bandwidth
-        """
         return pulumi.get(self, "share_type")
 
     @share_type.setter
@@ -105,10 +69,6 @@ class InstanceBandwidthArgs:
     @_builtins.property
     @pulumi.getter(name="chargeMode")
     def charge_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the bandwidth billing mode. The value can be *traffic* or *bandwidth*.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "charge_mode")
 
     @charge_mode.setter
@@ -127,10 +87,6 @@ class InstanceBandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the **shared** bandwidth id. This parameter is mandatory when
-        `share_type` is set to **WHOLE**. Changing this creates a new instance.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -140,10 +96,6 @@ class InstanceBandwidthArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the bandwidth size. The value ranges from 1 to 300 Mbit/s.
-        This parameter is mandatory when `share_type` is set to **PER**. Changing this creates a new instance.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -154,26 +106,11 @@ class InstanceBandwidthArgs:
 if not MYPY:
     class InstanceDataDiskArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-        Changing this creates a new instance.
-        """
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the ECS data disk type, which must be one of available disk types,
-        contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-        """
         dss_pool_id: NotRequired[pulumi.Input[_builtins.str]]
         iops: NotRequired[pulumi.Input[_builtins.int]]
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the disk.
-        Changing this creates a new instance.
-        """
         snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the snapshot id. Changing this creates a new instance.
-        """
         throughput: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
     InstanceDataDiskArgsDict: TypeAlias = Mapping[str, Any]
@@ -188,15 +125,6 @@ class InstanceDataDiskArgs:
                  kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] size: Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] type: Specifies the ECS data disk type, which must be one of available disk types,
-               contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the disk.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] snapshot_id: Specifies the snapshot id. Changing this creates a new instance.
-        """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
         if dss_pool_id is not None:
@@ -213,10 +141,6 @@ class InstanceDataDiskArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the data disk size, in GB. The value ranges form 10 to 32768.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -226,10 +150,6 @@ class InstanceDataDiskArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ECS data disk type, which must be one of available disk types,
-        contains of *SSD*, *GPSSD* and *SAS*. Changing this creates a new instance.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -257,10 +177,6 @@ class InstanceDataDiskArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the disk.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -270,9 +186,6 @@ class InstanceDataDiskArgs:
     @_builtins.property
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the snapshot id. Changing this creates a new instance.
-        """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
@@ -292,42 +205,21 @@ class InstanceDataDiskArgs:
 if not MYPY:
     class InstanceNetworkArgsDict(TypedDict):
         access_network: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies if this network should be used for provisioning access.
-        Accepts true or false. Defaults to false.
-        """
         fixed_ip_v4: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a fixed IPv4 address to be used on this network.
-        Changing this creates a new instance.
-        """
         fixed_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The Fixed IPv6 address of the instance on that network.
+        schema: Computed
         """
         ipv6_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the IPv6 function is enabled for the nic.
-        Defaults to false. Changing this creates a new instance.
-        """
         mac: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The MAC address of the NIC on that network.
-        """
         port: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The port ID corresponding to the IP address on that network.
+        schema: Computed
         """
         source_dest_check: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether the ECS processes only traffic that is destined specifically
-        for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-        virtual IP address bound to it.
-        """
         uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Specifies the network UUID to attach to the instance.
-        Changing this creates a new instance.
+        schema: Required
         """
 elif False:
     InstanceNetworkArgsDict: TypeAlias = Mapping[str, Any]
@@ -344,20 +236,9 @@ class InstanceNetworkArgs:
                  source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] access_network: Specifies if this network should be used for provisioning access.
-               Accepts true or false. Defaults to false.
-        :param pulumi.Input[_builtins.str] fixed_ip_v4: Specifies a fixed IPv4 address to be used on this network.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] fixed_ip_v6: The Fixed IPv6 address of the instance on that network.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 function is enabled for the nic.
-               Defaults to false. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] mac: The MAC address of the NIC on that network.
-        :param pulumi.Input[_builtins.str] port: The port ID corresponding to the IP address on that network.
-        :param pulumi.Input[_builtins.bool] source_dest_check: Specifies whether the ECS processes only traffic that is destined specifically
-               for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-               virtual IP address bound to it.
-        :param pulumi.Input[_builtins.str] uuid: Specifies the network UUID to attach to the instance.
-               Changing this creates a new instance.
+        :param pulumi.Input[_builtins.str] fixed_ip_v6: schema: Computed
+        :param pulumi.Input[_builtins.str] port: schema: Computed
+        :param pulumi.Input[_builtins.str] uuid: schema: Required
         """
         if access_network is not None:
             pulumi.set(__self__, "access_network", access_network)
@@ -379,10 +260,6 @@ class InstanceNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="accessNetwork")
     def access_network(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies if this network should be used for provisioning access.
-        Accepts true or false. Defaults to false.
-        """
         return pulumi.get(self, "access_network")
 
     @access_network.setter
@@ -392,10 +269,6 @@ class InstanceNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="fixedIpV4")
     def fixed_ip_v4(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a fixed IPv4 address to be used on this network.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "fixed_ip_v4")
 
     @fixed_ip_v4.setter
@@ -406,7 +279,7 @@ class InstanceNetworkArgs:
     @pulumi.getter(name="fixedIpV6")
     def fixed_ip_v6(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The Fixed IPv6 address of the instance on that network.
+        schema: Computed
         """
         return pulumi.get(self, "fixed_ip_v6")
 
@@ -417,10 +290,6 @@ class InstanceNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the IPv6 function is enabled for the nic.
-        Defaults to false. Changing this creates a new instance.
-        """
         return pulumi.get(self, "ipv6_enable")
 
     @ipv6_enable.setter
@@ -430,9 +299,6 @@ class InstanceNetworkArgs:
     @_builtins.property
     @pulumi.getter
     def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The MAC address of the NIC on that network.
-        """
         return pulumi.get(self, "mac")
 
     @mac.setter
@@ -443,7 +309,7 @@ class InstanceNetworkArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The port ID corresponding to the IP address on that network.
+        schema: Computed
         """
         return pulumi.get(self, "port")
 
@@ -454,11 +320,6 @@ class InstanceNetworkArgs:
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
     def source_dest_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the ECS processes only traffic that is destined specifically
-        for it. This function is enabled by default but should be disabled if the ECS functions as a SNAT server or has a
-        virtual IP address bound to it.
-        """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
@@ -469,8 +330,7 @@ class InstanceNetworkArgs:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Specifies the network UUID to attach to the instance.
-        Changing this creates a new instance.
+        schema: Required
         """
         return pulumi.get(self, "uuid")
 
@@ -482,25 +342,12 @@ class InstanceNetworkArgs:
 if not MYPY:
     class InstanceSchedulerHintArgsDict(TypedDict):
         deh_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ID of DeH.
-        This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
-        """
         fault_domain: NotRequired[pulumi.Input[_builtins.str]]
         """
         schema: Internal
         """
         group: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies a UUID of a Server Group.
-        The instance will be placed into that group. Changing this creates a new instance.
-        """
         tenancy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the tenancy specifies whether the ECS is to be created on a
-        Dedicated Host
-        (DeH) or in a shared pool. Changing this creates a new instance.
-        """
 elif False:
     InstanceSchedulerHintArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -512,14 +359,7 @@ class InstanceSchedulerHintArgs:
                  group: Optional[pulumi.Input[_builtins.str]] = None,
                  tenancy: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] deh_id: Specifies the ID of DeH.
-               This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
         :param pulumi.Input[_builtins.str] fault_domain: schema: Internal
-        :param pulumi.Input[_builtins.str] group: Specifies a UUID of a Server Group.
-               The instance will be placed into that group. Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] tenancy: Specifies the tenancy specifies whether the ECS is to be created on a
-               Dedicated Host
-               (DeH) or in a shared pool. Changing this creates a new instance.
         """
         if deh_id is not None:
             pulumi.set(__self__, "deh_id", deh_id)
@@ -533,10 +373,6 @@ class InstanceSchedulerHintArgs:
     @_builtins.property
     @pulumi.getter(name="dehId")
     def deh_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of DeH.
-        This parameter takes effect only when the value of tenancy is dedicated. Changing this creates a new instance.
-        """
         return pulumi.get(self, "deh_id")
 
     @deh_id.setter
@@ -558,10 +394,6 @@ class InstanceSchedulerHintArgs:
     @_builtins.property
     @pulumi.getter
     def group(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies a UUID of a Server Group.
-        The instance will be placed into that group. Changing this creates a new instance.
-        """
         return pulumi.get(self, "group")
 
     @group.setter
@@ -571,11 +403,6 @@ class InstanceSchedulerHintArgs:
     @_builtins.property
     @pulumi.getter
     def tenancy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the tenancy specifies whether the ECS is to be created on a
-        Dedicated Host
-        (DeH) or in a shared pool. Changing this creates a new instance.
-        """
         return pulumi.get(self, "tenancy")
 
     @tenancy.setter
@@ -586,30 +413,11 @@ class InstanceSchedulerHintArgs:
 if not MYPY:
     class InstanceVolumeAttachedArgsDict(TypedDict):
         boot_index: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The volume boot index on that attachment.
-        """
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the disk.
-        Changing this creates a new instance.
-        """
         pci_address: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The volume pci address on that attachment.
-        """
         size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The volume size on that attachment.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The volume type on that attachment.
-        """
         volume_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The volume ID on that attachment.
-        """
 elif False:
     InstanceVolumeAttachedArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -622,15 +430,6 @@ class InstanceVolumeAttachedArgs:
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.int] boot_index: The volume boot index on that attachment.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the disk.
-               Changing this creates a new instance.
-        :param pulumi.Input[_builtins.str] pci_address: The volume pci address on that attachment.
-        :param pulumi.Input[_builtins.int] size: The volume size on that attachment.
-        :param pulumi.Input[_builtins.str] type: The volume type on that attachment.
-        :param pulumi.Input[_builtins.str] volume_id: The volume ID on that attachment.
-        """
         if boot_index is not None:
             pulumi.set(__self__, "boot_index", boot_index)
         if kms_key_id is not None:
@@ -647,9 +446,6 @@ class InstanceVolumeAttachedArgs:
     @_builtins.property
     @pulumi.getter(name="bootIndex")
     def boot_index(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The volume boot index on that attachment.
-        """
         return pulumi.get(self, "boot_index")
 
     @boot_index.setter
@@ -659,10 +455,6 @@ class InstanceVolumeAttachedArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the disk.
-        Changing this creates a new instance.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -672,9 +464,6 @@ class InstanceVolumeAttachedArgs:
     @_builtins.property
     @pulumi.getter(name="pciAddress")
     def pci_address(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The volume pci address on that attachment.
-        """
         return pulumi.get(self, "pci_address")
 
     @pci_address.setter
@@ -684,9 +473,6 @@ class InstanceVolumeAttachedArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        The volume size on that attachment.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -696,9 +482,6 @@ class InstanceVolumeAttachedArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The volume type on that attachment.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -708,9 +491,6 @@ class InstanceVolumeAttachedArgs:
     @_builtins.property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The volume ID on that attachment.
-        """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter

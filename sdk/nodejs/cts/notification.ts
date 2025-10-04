@@ -6,57 +6,6 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
-/**
- * Manages CTS key event notification resource within SberCloud.
- *
- * ## Example Usage
- *
- * ### Complete Notification
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const topicUrn = config.requireObject<any>("topicUrn");
- * const notify = new sbercloud.cts.Notification("notify", {
- *     name: "keyOperate_test",
- *     operationType: "complete",
- *     smnTopic: topicUrn,
- * });
- * ```
- *
- * ### Customized Notification
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const topicUrn = config.requireObject<any>("topicUrn");
- * const notify = new sbercloud.cts.Notification("notify", {
- *     name: "keyOperate_test",
- *     operationType: "customized",
- *     smnTopic: topicUrn,
- *     operations: [{
- *         service: "ECS",
- *         resource: "ecs",
- *         traceNames: [
- *             "createServer",
- *             "deleteServer",
- *         ],
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * CTS notifications can be imported using `name`, e.g.:
- *
- * ```sh
- * $ pulumi import sbercloud:Cts/notification:Notification tracker your_notification
- * ```
- */
 export class Notification extends pulumi.CustomResource {
     /**
      * Get an existing Notification resource's state with the given name, ID, and optional extra
@@ -87,52 +36,15 @@ export class Notification extends pulumi.CustomResource {
 
     declare public readonly agencyName: pulumi.Output<string | undefined>;
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
-    /**
-     * Specifies whether notification is enabled, defaults to true.
-     *
-     * <a name="notificationOperationsObject"></a>
-     * The `operations` block supports:
-     */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     declare public readonly filter: pulumi.Output<outputs.Cts.NotificationFilter | undefined>;
-    /**
-     * Specifies the notification name. The value contains a maximum of 64 characters,
-     * and only letters, digits, underscores(_), and Chinese characters are allowed.
-     */
     declare public readonly name: pulumi.Output<string>;
-    /**
-     * The notification ID in UUID format.
-     */
     declare public /*out*/ readonly notificationId: pulumi.Output<string>;
-    /**
-     * Specifies the operation type, possible options include **complete** and
-     * **customized**.
-     */
     declare public readonly operationType: pulumi.Output<string>;
-    /**
-     * Specifies an array of users. Notifications will be sent when specified users
-     * perform specified operations. All users are selected by default.
-     * The object structure is documented below.
-     */
     declare public readonly operationUsers: pulumi.Output<outputs.Cts.NotificationOperationUser[] | undefined>;
-    /**
-     * Specifies an array of operations that will trigger notifications.
-     * For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-     * The object structure is documented below.
-     */
     declare public readonly operations: pulumi.Output<outputs.Cts.NotificationOperation[] | undefined>;
-    /**
-     * Specifies the region in which to manage the CTS notification resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * Specifies the URN of a topic.
-     */
     declare public readonly smnTopic: pulumi.Output<string | undefined>;
-    /**
-     * The notification status, the value can be **enabled** or **disabled**.
-     */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
@@ -189,52 +101,15 @@ export class Notification extends pulumi.CustomResource {
 export interface NotificationState {
     agencyName?: pulumi.Input<string>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * Specifies whether notification is enabled, defaults to true.
-     *
-     * <a name="notificationOperationsObject"></a>
-     * The `operations` block supports:
-     */
     enabled?: pulumi.Input<boolean>;
     filter?: pulumi.Input<inputs.Cts.NotificationFilter>;
-    /**
-     * Specifies the notification name. The value contains a maximum of 64 characters,
-     * and only letters, digits, underscores(_), and Chinese characters are allowed.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The notification ID in UUID format.
-     */
     notificationId?: pulumi.Input<string>;
-    /**
-     * Specifies the operation type, possible options include **complete** and
-     * **customized**.
-     */
     operationType?: pulumi.Input<string>;
-    /**
-     * Specifies an array of users. Notifications will be sent when specified users
-     * perform specified operations. All users are selected by default.
-     * The object structure is documented below.
-     */
     operationUsers?: pulumi.Input<pulumi.Input<inputs.Cts.NotificationOperationUser>[]>;
-    /**
-     * Specifies an array of operations that will trigger notifications.
-     * For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-     * The object structure is documented below.
-     */
     operations?: pulumi.Input<pulumi.Input<inputs.Cts.NotificationOperation>[]>;
-    /**
-     * Specifies the region in which to manage the CTS notification resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the URN of a topic.
-     */
     smnTopic?: pulumi.Input<string>;
-    /**
-     * The notification status, the value can be **enabled** or **disabled**.
-     */
     status?: pulumi.Input<string>;
 }
 
@@ -243,43 +118,12 @@ export interface NotificationState {
  */
 export interface NotificationArgs {
     agencyName?: pulumi.Input<string>;
-    /**
-     * Specifies whether notification is enabled, defaults to true.
-     *
-     * <a name="notificationOperationsObject"></a>
-     * The `operations` block supports:
-     */
     enabled?: pulumi.Input<boolean>;
     filter?: pulumi.Input<inputs.Cts.NotificationFilter>;
-    /**
-     * Specifies the notification name. The value contains a maximum of 64 characters,
-     * and only letters, digits, underscores(_), and Chinese characters are allowed.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the operation type, possible options include **complete** and
-     * **customized**.
-     */
     operationType: pulumi.Input<string>;
-    /**
-     * Specifies an array of users. Notifications will be sent when specified users
-     * perform specified operations. All users are selected by default.
-     * The object structure is documented below.
-     */
     operationUsers?: pulumi.Input<pulumi.Input<inputs.Cts.NotificationOperationUser>[]>;
-    /**
-     * Specifies an array of operations that will trigger notifications.
-     * For details, see [Supported Services and Operations](https://support.sbercloud.com/intl/en-us/usermanual-cts/cts_03_0022.html).
-     * The object structure is documented below.
-     */
     operations?: pulumi.Input<pulumi.Input<inputs.Cts.NotificationOperation>[]>;
-    /**
-     * Specifies the region in which to manage the CTS notification resource.
-     * If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the URN of a topic.
-     */
     smnTopic?: pulumi.Input<string>;
 }

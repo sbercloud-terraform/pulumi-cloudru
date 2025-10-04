@@ -4,36 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Manages a CFW IP address group resource within SberCloud.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const name = config.requireObject<any>("name");
- * const description = config.requireObject<any>("description");
- * const test = sbercloud.Cfw.getFirewalls({});
- * const testAddressGroup = new sbercloud.cfw.AddressGroup("test", {
- *     objectId: test.then(test => test.records?.[0]?.protectObjects?.[0]?.objectId),
- *     name: name,
- *     description: description,
- * });
- * ```
- *
- * ## Import
- *
- * The ipaddressgroup can be imported using the `id`, e.g.
- *
- * bash
- *
- * ```sh
- * $ pulumi import sbercloud:Cfw/addressGroup:AddressGroup test 0ce123456a00f2591fabc00385ff1234
- * ```
- */
 export class AddressGroup extends pulumi.CustomResource {
     /**
      * Get an existing AddressGroup resource's state with the given name, ID, and optional extra
@@ -63,7 +33,7 @@ export class AddressGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The address type. The value can be **0** (IPv4) or **1** (IPv6).
+     * schema: Computed; Specifies the Address type.
      */
     declare public readonly addressType: pulumi.Output<number>;
     /**
@@ -76,14 +46,8 @@ export class AddressGroup extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     declare public readonly objectId: pulumi.Output<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
 
     /**
@@ -125,7 +89,7 @@ export class AddressGroup extends pulumi.CustomResource {
  */
 export interface AddressGroupState {
     /**
-     * The address type. The value can be **0** (IPv4) or **1** (IPv6).
+     * schema: Computed; Specifies the Address type.
      */
     addressType?: pulumi.Input<number>;
     /**
@@ -138,14 +102,8 @@ export interface AddressGroupState {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }
 
@@ -154,7 +112,7 @@ export interface AddressGroupState {
  */
 export interface AddressGroupArgs {
     /**
-     * The address type. The value can be **0** (IPv4) or **1** (IPv6).
+     * schema: Computed; Specifies the Address type.
      */
     addressType?: pulumi.Input<number>;
     /**
@@ -167,13 +125,7 @@ export interface AddressGroupArgs {
     name?: pulumi.Input<string>;
     /**
      * Specifies the protected object ID.
-     *
-     * Changing this parameter will create a new resource.
      */
     objectId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to create the resource.
-     * If omitted, the provider-level region will be used. Changing this parameter will create a new resource.
-     */
     region?: pulumi.Input<string>;
 }

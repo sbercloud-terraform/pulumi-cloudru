@@ -35,13 +35,11 @@ if not MYPY:
     class ClusterElbArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The cluster ID
+        The ID of the ELB load balancer.
         """
         name: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Cluster name, which must be unique and contains 4 to 64 characters, which
-        consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-        Changing this creates a new cluster resource.
+        The name of the ELB load balancer.
         """
         private_endpoint: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -49,7 +47,7 @@ if not MYPY:
         """
         private_ip: NotRequired[pulumi.Input[_builtins.str]]
         """
-        List of private network IP address.
+        The private IP address of the ELB load balancer.
         """
         private_ip_v6: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -57,13 +55,11 @@ if not MYPY:
         """
         public_ip: NotRequired[pulumi.Input[_builtins.str]]
         """
-        A nested object resource Structure is documented below.
-        Changing this creates a new cluster resource.
+        The public IP address of the ELB load balancer.
         """
         vpc_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        VPC ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The ID of VPC to which the ELB load balancer belongs.
         """
 elif False:
     ClusterElbArgsDict: TypeAlias = Mapping[str, Any]
@@ -79,17 +75,13 @@ class ClusterElbArgs:
                  public_ip: Optional[pulumi.Input[_builtins.str]] = None,
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] id: The cluster ID
-        :param pulumi.Input[_builtins.str] name: Cluster name, which must be unique and contains 4 to 64 characters, which
-               consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] id: The ID of the ELB load balancer.
+        :param pulumi.Input[_builtins.str] name: The name of the ELB load balancer.
         :param pulumi.Input[_builtins.str] private_endpoint: The private endpoint of the ELB load balancer.
-        :param pulumi.Input[_builtins.str] private_ip: List of private network IP address.
+        :param pulumi.Input[_builtins.str] private_ip: The private IP address of the ELB load balancer.
         :param pulumi.Input[_builtins.str] private_ip_v6: The IPv6 address of the ELB load balancer.
-        :param pulumi.Input[_builtins.str] public_ip: A nested object resource Structure is documented below.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] vpc_id: VPC ID, which is used for configuring cluster network.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] public_ip: The public IP address of the ELB load balancer.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of VPC to which the ELB load balancer belongs.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -110,7 +102,7 @@ class ClusterElbArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The cluster ID
+        The ID of the ELB load balancer.
         """
         return pulumi.get(self, "id")
 
@@ -122,9 +114,7 @@ class ClusterElbArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster name, which must be unique and contains 4 to 64 characters, which
-        consist of letters, digits, hyphens(-), or underscores(_) only and must start with a letter.
-        Changing this creates a new cluster resource.
+        The name of the ELB load balancer.
         """
         return pulumi.get(self, "name")
 
@@ -148,7 +138,7 @@ class ClusterElbArgs:
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        List of private network IP address.
+        The private IP address of the ELB load balancer.
         """
         return pulumi.get(self, "private_ip")
 
@@ -172,8 +162,7 @@ class ClusterElbArgs:
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        A nested object resource Structure is documented below.
-        Changing this creates a new cluster resource.
+        The public IP address of the ELB load balancer.
         """
         return pulumi.get(self, "public_ip")
 
@@ -185,8 +174,7 @@ class ClusterElbArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        VPC ID, which is used for configuring cluster network.
-        Changing this creates a new cluster resource.
+        The ID of VPC to which the ELB load balancer belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -199,13 +187,11 @@ if not MYPY:
     class ClusterEndpointArgsDict(TypedDict):
         connect_info: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (Optional, String) Private network connection information.
+        Private network connection information.
         """
         jdbc_url: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (Optional, String)
-        JDBC URL. The following is the default format:
-        jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
         """
 elif False:
     ClusterEndpointArgsDict: TypeAlias = Mapping[str, Any]
@@ -216,10 +202,8 @@ class ClusterEndpointArgs:
                  connect_info: Optional[pulumi.Input[_builtins.str]] = None,
                  jdbc_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] connect_info: (Optional, String) Private network connection information.
-        :param pulumi.Input[_builtins.str] jdbc_url: (Optional, String)
-               JDBC URL. The following is the default format:
-               jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        :param pulumi.Input[_builtins.str] connect_info: Private network connection information.
+        :param pulumi.Input[_builtins.str] jdbc_url: JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
         """
         if connect_info is not None:
             pulumi.set(__self__, "connect_info", connect_info)
@@ -230,7 +214,7 @@ class ClusterEndpointArgs:
     @pulumi.getter(name="connectInfo")
     def connect_info(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, String) Private network connection information.
+        Private network connection information.
         """
         return pulumi.get(self, "connect_info")
 
@@ -242,9 +226,7 @@ class ClusterEndpointArgs:
     @pulumi.getter(name="jdbcUrl")
     def jdbc_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, String)
-        JDBC URL. The following is the default format:
-        jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        JDBC URL. Format: jdbc:postgresql://<connect_info>/<YOUR_DATABASE_NAME>
         """
         return pulumi.get(self, "jdbc_url")
 
@@ -329,13 +311,10 @@ if not MYPY:
     class ClusterPublicEndpointArgsDict(TypedDict):
         jdbc_url: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (Optional, String)
-        JDBC URL. The following is the default format:
-        jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
         """
         public_connect_info: NotRequired[pulumi.Input[_builtins.str]]
         """
-        (Optional, String)
         Public network connection information.
         """
 elif False:
@@ -347,11 +326,8 @@ class ClusterPublicEndpointArgs:
                  jdbc_url: Optional[pulumi.Input[_builtins.str]] = None,
                  public_connect_info: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] jdbc_url: (Optional, String)
-               JDBC URL. The following is the default format:
-               jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
-        :param pulumi.Input[_builtins.str] public_connect_info: (Optional, String)
-               Public network connection information.
+        :param pulumi.Input[_builtins.str] jdbc_url: JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
+        :param pulumi.Input[_builtins.str] public_connect_info: Public network connection information.
         """
         if jdbc_url is not None:
             pulumi.set(__self__, "jdbc_url", jdbc_url)
@@ -362,9 +338,7 @@ class ClusterPublicEndpointArgs:
     @pulumi.getter(name="jdbcUrl")
     def jdbc_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, String)
-        JDBC URL. The following is the default format:
-        jdbc:postgresql://< public_connect_info>/<YOUR_DATABASE_NAME>
+        JDBC URL. Format: jdbc:postgresql://<public_connect_info>/<YOUR_DATABASE_NAME>
         """
         return pulumi.get(self, "jdbc_url")
 
@@ -376,7 +350,6 @@ class ClusterPublicEndpointArgs:
     @pulumi.getter(name="publicConnectInfo")
     def public_connect_info(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (Optional, String)
         Public network connection information.
         """
         return pulumi.get(self, "public_connect_info")
@@ -390,14 +363,11 @@ if not MYPY:
     class ClusterPublicIpArgsDict(TypedDict):
         eip_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        EIP ID.
-        Changing this creates a new cluster resource.
+        The EIP ID.
         """
         public_bind_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Binding type of an EIP. The value can be either of the following:
-        **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-        Changing this creates a new cluster resource.
+        The bind type of public IP.
         """
 elif False:
     ClusterPublicIpArgsDict: TypeAlias = Mapping[str, Any]
@@ -408,11 +378,8 @@ class ClusterPublicIpArgs:
                  eip_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_bind_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] eip_id: EIP ID.
-               Changing this creates a new cluster resource.
-        :param pulumi.Input[_builtins.str] public_bind_type: Binding type of an EIP. The value can be either of the following:
-               **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-               Changing this creates a new cluster resource.
+        :param pulumi.Input[_builtins.str] eip_id: The EIP ID.
+        :param pulumi.Input[_builtins.str] public_bind_type: The bind type of public IP.
         """
         if eip_id is not None:
             pulumi.set(__self__, "eip_id", eip_id)
@@ -423,8 +390,7 @@ class ClusterPublicIpArgs:
     @pulumi.getter(name="eipId")
     def eip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        EIP ID.
-        Changing this creates a new cluster resource.
+        The EIP ID.
         """
         return pulumi.get(self, "eip_id")
 
@@ -436,9 +402,7 @@ class ClusterPublicIpArgs:
     @pulumi.getter(name="publicBindType")
     def public_bind_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Binding type of an EIP. The value can be either of the following:
-        **auto_assign**, **not_use**, **bind_existing**. The default value is **not_use**.
-        Changing this creates a new cluster resource.
+        The bind type of public IP.
         """
         return pulumi.get(self, "public_bind_type")
 

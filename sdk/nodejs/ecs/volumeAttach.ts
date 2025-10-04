@@ -4,49 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Attaches a Volume to an Instance.
- *
- * ## Example Usage
- *
- * ### Basic attachment of a single volume to a single instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const myvol = new sbercloud.evs.Volume("myvol", {
- *     name: "volume",
- *     availabilityZone: "ru-moscow-1a",
- *     volumeType: "SAS",
- *     size: 10,
- * });
- * const myinstance = new sbercloud.ecs.Instance("myinstance", {
- *     name: "instance",
- *     imageId: "ad091b52-742f-469e-8f3c-fd81cadf0743",
- *     flavorId: "s6.small.1",
- *     keyPair: "my_key_pair_name",
- *     securityGroups: ["default"],
- *     availabilityZone: "ru-moscow-1a",
- *     networks: [{
- *         uuid: "55534eaa-533a-419d-9b40-ec427ea7195a",
- *     }],
- * });
- * const attached = new sbercloud.ecs.VolumeAttach("attached", {
- *     instanceId: myinstance.id,
- *     volumeId: myvol.id,
- * });
- * ```
- *
- * ## Import
- *
- * Volume Attachments can be imported using the Instance ID and Volume ID
- * separated by a slash, e.g.
- *
- * ```sh
- * $ pulumi import sbercloud:Ecs/volumeAttach:VolumeAttach va_1 89c60255-9bd6-460c-822a-e2b959ede9d2/45670584-225f-46c3-b33e-6707b589b666
- * ```
- */
 export class VolumeAttach extends pulumi.CustomResource {
     /**
      * Get an existing VolumeAttach resource's state with the given name, ID, and optional extra
@@ -76,21 +33,9 @@ export class VolumeAttach extends pulumi.CustomResource {
     }
 
     declare public readonly device: pulumi.Output<string>;
-    /**
-     * The ID of the Instance to attach the Volume to.
-     */
     declare public readonly instanceId: pulumi.Output<string>;
-    /**
-     * PCI address of the block device.
-     */
     declare public /*out*/ readonly pciAddress: pulumi.Output<string>;
-    /**
-     * The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     declare public readonly region: pulumi.Output<string>;
-    /**
-     * The ID of the Volume to attach to an Instance.
-     */
     declare public readonly volumeId: pulumi.Output<string>;
 
     /**
@@ -135,21 +80,9 @@ export class VolumeAttach extends pulumi.CustomResource {
  */
 export interface VolumeAttachState {
     device?: pulumi.Input<string>;
-    /**
-     * The ID of the Instance to attach the Volume to.
-     */
     instanceId?: pulumi.Input<string>;
-    /**
-     * PCI address of the block device.
-     */
     pciAddress?: pulumi.Input<string>;
-    /**
-     * The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The ID of the Volume to attach to an Instance.
-     */
     volumeId?: pulumi.Input<string>;
 }
 
@@ -158,16 +91,7 @@ export interface VolumeAttachState {
  */
 export interface VolumeAttachArgs {
     device?: pulumi.Input<string>;
-    /**
-     * The ID of the Instance to attach the Volume to.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * The region in which to create the volume resource. If omitted, the provider-level region will be used. Changing this creates a new resource.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The ID of the Volume to attach to an Instance.
-     */
     volumeId: pulumi.Input<string>;
 }

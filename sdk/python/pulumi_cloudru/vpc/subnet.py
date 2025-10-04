@@ -36,31 +36,6 @@ class SubnetArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Subnet resource.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the network segment on which the subnet resides. The value must be in
-               CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-               new Subnet.
-        :param pulumi.Input[_builtins.str] gateway_ip: Specifies the gateway of the subnet. The value must be a valid IP address
-               in the subnet segment. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-               a new Subnet.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone (AZ) to which the subnet belongs.
-               The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the subnet. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.bool] dhcp_enable: Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_lists: Specifies the DNS server address list of a subnet. This field is required if you need to
-               use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-               address 2.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        :param pulumi.Input[_builtins.str] name: Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] primary_dns: Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[_builtins.str] region: Specifies tThe region in which to create the vpc subnet. If omitted, the
-               provider-level region will be used. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] secondary_dns: Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the subnet.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "gateway_ip", gateway_ip)
@@ -93,11 +68,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the network segment on which the subnet resides. The value must be in
-        CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-        new Subnet.
-        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -107,10 +77,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the gateway of the subnet. The value must be a valid IP address
-        in the subnet segment. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "gateway_ip")
 
     @gateway_ip.setter
@@ -120,10 +86,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-        a new Subnet.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -133,10 +95,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone (AZ) to which the subnet belongs.
-        The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -146,10 +104,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies supplementary information about the subnet. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -159,9 +113,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="dhcpEnable")
     def dhcp_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        """
         return pulumi.get(self, "dhcp_enable")
 
     @dhcp_enable.setter
@@ -180,11 +131,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="dnsLists")
     def dns_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the DNS server address list of a subnet. This field is required if you need to
-        use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-        address 2.
-        """
         return pulumi.get(self, "dns_lists")
 
     @dns_lists.setter
@@ -194,9 +140,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        """
         return pulumi.get(self, "ipv6_enable")
 
     @ipv6_enable.setter
@@ -206,10 +149,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-        letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -228,10 +167,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="primaryDns")
     def primary_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-        IP address.
-        """
         return pulumi.get(self, "primary_dns")
 
     @primary_dns.setter
@@ -241,10 +176,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies tThe region in which to create the vpc subnet. If omitted, the
-        provider-level region will be used. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -254,10 +185,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter(name="secondaryDns")
     def secondary_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-        IP address.
-        """
         return pulumi.get(self, "secondary_dns")
 
     @secondary_dns.setter
@@ -267,9 +194,6 @@ class SubnetArgs:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the subnet.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -302,36 +226,7 @@ class _SubnetState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Subnet resources.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone (AZ) to which the subnet belongs.
-               The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the network segment on which the subnet resides. The value must be in
-               CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-               new Subnet.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the subnet. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.bool] dhcp_enable: Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_lists: Specifies the DNS server address list of a subnet. This field is required if you need to
-               use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-               address 2.
-        :param pulumi.Input[_builtins.str] gateway_ip: Specifies the gateway of the subnet. The value must be a valid IP address
-               in the subnet segment. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] ipv4_subnet_id: The ID of the IPv4 subnet (Native OpenStack API).
-        :param pulumi.Input[_builtins.str] ipv6_cidr: The IPv6 subnet CIDR block.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        :param pulumi.Input[_builtins.str] ipv6_gateway: The IPv6 subnet gateway.
-        :param pulumi.Input[_builtins.str] ipv6_subnet_id: The ID of the IPv6 subnet (Native OpenStack API).
-        :param pulumi.Input[_builtins.str] name: Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] primary_dns: Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[_builtins.str] region: Specifies tThe region in which to create the vpc subnet. If omitted, the
-               provider-level region will be used. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] secondary_dns: Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[_builtins.str] subnet_id: The subnet (Native OpenStack API) ID.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the subnet.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-               a new Subnet.
+        :param pulumi.Input[_builtins.str] subnet_id: schema: Deprecated
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
@@ -377,10 +272,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone (AZ) to which the subnet belongs.
-        The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -390,11 +281,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the network segment on which the subnet resides. The value must be in
-        CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-        new Subnet.
-        """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
@@ -404,10 +290,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies supplementary information about the subnet. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -417,9 +299,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="dhcpEnable")
     def dhcp_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        """
         return pulumi.get(self, "dhcp_enable")
 
     @dhcp_enable.setter
@@ -438,11 +317,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="dnsLists")
     def dns_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the DNS server address list of a subnet. This field is required if you need to
-        use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-        address 2.
-        """
         return pulumi.get(self, "dns_lists")
 
     @dns_lists.setter
@@ -452,10 +326,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the gateway of the subnet. The value must be a valid IP address
-        in the subnet segment. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "gateway_ip")
 
     @gateway_ip.setter
@@ -465,9 +335,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="ipv4SubnetId")
     def ipv4_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the IPv4 subnet (Native OpenStack API).
-        """
         return pulumi.get(self, "ipv4_subnet_id")
 
     @ipv4_subnet_id.setter
@@ -477,9 +344,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="ipv6Cidr")
     def ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IPv6 subnet CIDR block.
-        """
         return pulumi.get(self, "ipv6_cidr")
 
     @ipv6_cidr.setter
@@ -489,9 +353,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        """
         return pulumi.get(self, "ipv6_enable")
 
     @ipv6_enable.setter
@@ -501,9 +362,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The IPv6 subnet gateway.
-        """
         return pulumi.get(self, "ipv6_gateway")
 
     @ipv6_gateway.setter
@@ -513,9 +371,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="ipv6SubnetId")
     def ipv6_subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the IPv6 subnet (Native OpenStack API).
-        """
         return pulumi.get(self, "ipv6_subnet_id")
 
     @ipv6_subnet_id.setter
@@ -525,10 +380,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-        letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -547,10 +398,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="primaryDns")
     def primary_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-        IP address.
-        """
         return pulumi.get(self, "primary_dns")
 
     @primary_dns.setter
@@ -560,10 +407,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies tThe region in which to create the vpc subnet. If omitted, the
-        provider-level region will be used. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -573,10 +416,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="secondaryDns")
     def secondary_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-        IP address.
-        """
         return pulumi.get(self, "secondary_dns")
 
     @secondary_dns.setter
@@ -587,7 +426,7 @@ class _SubnetState:
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The subnet (Native OpenStack API) ID.
+        schema: Deprecated
         """
         return pulumi.get(self, "subnet_id")
 
@@ -598,9 +437,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        The key/value pairs to associate with the subnet.
-        """
         return pulumi.get(self, "tags")
 
     @tags.setter
@@ -610,10 +446,6 @@ class _SubnetState:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-        a new Subnet.
-        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -644,68 +476,9 @@ class Subnet(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Provides an VPC subnet resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        vpc = sbercloud.vpc.Vpc("vpc",
-            name=vpc_name,
-            cidr=vpc_cidr)
-        subnet = sbercloud.vpc.Subnet("subnet",
-            name=subnet_name,
-            cidr=subnet_cidr,
-            gateway_ip=subnet_gateway_ip,
-            vpc_id=vpc.id)
-        subnet_with_tags = sbercloud.vpc.Subnet("subnet_with_tags",
-            name=subnet_name,
-            cidr=subnet_cidr,
-            gateway_ip=subnet_gateway_ip,
-            vpc_id=vpc.id,
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        Subnets can be imported using the `subnet id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/subnet:Subnet sbercloud_vpc_subnet 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
-        ```
-
+        Create a Subnet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone (AZ) to which the subnet belongs.
-               The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the network segment on which the subnet resides. The value must be in
-               CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-               new Subnet.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the subnet. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.bool] dhcp_enable: Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_lists: Specifies the DNS server address list of a subnet. This field is required if you need to
-               use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-               address 2.
-        :param pulumi.Input[_builtins.str] gateway_ip: Specifies the gateway of the subnet. The value must be a valid IP address
-               in the subnet segment. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        :param pulumi.Input[_builtins.str] name: Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] primary_dns: Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[_builtins.str] region: Specifies tThe region in which to create the vpc subnet. If omitted, the
-               provider-level region will be used. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] secondary_dns: Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the subnet.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-               a new Subnet.
         """
         ...
     @overload
@@ -714,41 +487,7 @@ class Subnet(pulumi.CustomResource):
                  args: SubnetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an VPC subnet resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        vpc = sbercloud.vpc.Vpc("vpc",
-            name=vpc_name,
-            cidr=vpc_cidr)
-        subnet = sbercloud.vpc.Subnet("subnet",
-            name=subnet_name,
-            cidr=subnet_cidr,
-            gateway_ip=subnet_gateway_ip,
-            vpc_id=vpc.id)
-        subnet_with_tags = sbercloud.vpc.Subnet("subnet_with_tags",
-            name=subnet_name,
-            cidr=subnet_cidr,
-            gateway_ip=subnet_gateway_ip,
-            vpc_id=vpc.id,
-            tags={
-                "foo": "bar",
-                "key": "value",
-            })
-        ```
-
-        ## Import
-
-        Subnets can be imported using the `subnet id`, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:Vpc/subnet:Subnet sbercloud_vpc_subnet 4779ab1c-7c1a-44b1-a02e-93dfc361b32d
-        ```
-
+        Create a Subnet resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param SubnetArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -851,36 +590,7 @@ class Subnet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone (AZ) to which the subnet belongs.
-               The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] cidr: Specifies the network segment on which the subnet resides. The value must be in
-               CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-               new Subnet.
-        :param pulumi.Input[_builtins.str] description: Specifies supplementary information about the subnet. The value is a string of
-               no more than 255 characters and cannot contain angle brackets (< or >).
-        :param pulumi.Input[_builtins.bool] dhcp_enable: Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_lists: Specifies the DNS server address list of a subnet. This field is required if you need to
-               use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-               address 2.
-        :param pulumi.Input[_builtins.str] gateway_ip: Specifies the gateway of the subnet. The value must be a valid IP address
-               in the subnet segment. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] ipv4_subnet_id: The ID of the IPv4 subnet (Native OpenStack API).
-        :param pulumi.Input[_builtins.str] ipv6_cidr: The IPv6 subnet CIDR block.
-        :param pulumi.Input[_builtins.bool] ipv6_enable: Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        :param pulumi.Input[_builtins.str] ipv6_gateway: The IPv6 subnet gateway.
-        :param pulumi.Input[_builtins.str] ipv6_subnet_id: The ID of the IPv6 subnet (Native OpenStack API).
-        :param pulumi.Input[_builtins.str] name: Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-               letters, digits, underscores (_), and hyphens (-).
-        :param pulumi.Input[_builtins.str] primary_dns: Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[_builtins.str] region: Specifies tThe region in which to create the vpc subnet. If omitted, the
-               provider-level region will be used. Changing this creates a new Subnet.
-        :param pulumi.Input[_builtins.str] secondary_dns: Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-               IP address.
-        :param pulumi.Input[_builtins.str] subnet_id: The subnet (Native OpenStack API) ID.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: The key/value pairs to associate with the subnet.
-        :param pulumi.Input[_builtins.str] vpc_id: Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-               a new Subnet.
+        :param pulumi.Input[_builtins.str] subnet_id: schema: Deprecated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -911,37 +621,21 @@ class Subnet(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the availability zone (AZ) to which the subnet belongs.
-        The value must be an existing AZ in the system. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the network segment on which the subnet resides. The value must be in
-        CIDR format and within the CIDR block of the VPC. The subnet mask cannot be greater than 28. Changing this creates a
-        new Subnet.
-        """
         return pulumi.get(self, "cidr")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Specifies supplementary information about the subnet. The value is a string of
-        no more than 255 characters and cannot contain angle brackets (< or >).
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="dhcpEnable")
     def dhcp_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the DHCP function is enabled for the subnet. Defaults to true.
-        """
         return pulumi.get(self, "dhcp_enable")
 
     @_builtins.property
@@ -952,69 +646,41 @@ class Subnet(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="dnsLists")
     def dns_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:
-        """
-        Specifies the DNS server address list of a subnet. This field is required if you need to
-        use more than two DNS servers. This parameter value is the superset of both DNS server address 1 and DNS server
-        address 2.
-        """
         return pulumi.get(self, "dns_lists")
 
     @_builtins.property
     @pulumi.getter(name="gatewayIp")
     def gateway_ip(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the gateway of the subnet. The value must be a valid IP address
-        in the subnet segment. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "gateway_ip")
 
     @_builtins.property
     @pulumi.getter(name="ipv4SubnetId")
     def ipv4_subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the IPv4 subnet (Native OpenStack API).
-        """
         return pulumi.get(self, "ipv4_subnet_id")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Cidr")
     def ipv6_cidr(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IPv6 subnet CIDR block.
-        """
         return pulumi.get(self, "ipv6_cidr")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Enable")
     def ipv6_enable(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Specifies whether the IPv6 function is enabled for the subnet. Defaults to false.
-        """
         return pulumi.get(self, "ipv6_enable")
 
     @_builtins.property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> pulumi.Output[_builtins.str]:
-        """
-        The IPv6 subnet gateway.
-        """
         return pulumi.get(self, "ipv6_gateway")
 
     @_builtins.property
     @pulumi.getter(name="ipv6SubnetId")
     def ipv6_subnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The ID of the IPv6 subnet (Native OpenStack API).
-        """
         return pulumi.get(self, "ipv6_subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the subnet name. The value is a string of 1 to 64 characters that can contain
-        letters, digits, underscores (_), and hyphens (-).
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
@@ -1025,52 +691,33 @@ class Subnet(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="primaryDns")
     def primary_dns(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the IP address of DNS server 1 on the subnet. The value must be a valid
-        IP address.
-        """
         return pulumi.get(self, "primary_dns")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies tThe region in which to create the vpc subnet. If omitted, the
-        provider-level region will be used. Changing this creates a new Subnet.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="secondaryDns")
     def secondary_dns(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the IP address of DNS server 2 on the subnet. The value must be a valid
-        IP address.
-        """
         return pulumi.get(self, "secondary_dns")
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The subnet (Native OpenStack API) ID.
+        schema: Deprecated
         """
         return pulumi.get(self, "subnet_id")
 
     @_builtins.property
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
-        """
-        The key/value pairs to associate with the subnet.
-        """
         return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the ID of the VPC to which the subnet belongs. Changing this creates
-        a new Subnet.
-        """
         return pulumi.get(self, "vpc_id")
 

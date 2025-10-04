@@ -102,45 +102,11 @@ MYPY = False
 if not MYPY:
     class AddonValuesArgsDict(TypedDict):
         basic: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `basic_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-        """
         basic_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         custom: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `custom_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-        """
         custom_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         flavor: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `flavor_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-
-        Arguments which can be passed to the `basic_json`, `custom_json` and `flavor_json` add-on parameters depends on
-        the add-on type and version. For more detailed description of add-ons
-        see add-ons description
-        """
         flavor_json: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     AddonValuesArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -153,30 +119,6 @@ class AddonValuesArgs:
                  custom_json: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  flavor_json: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] basic: Specifies the key/value pairs vary depending on the add-on.
-               Only supports non-nested structure and only supports string type elements.
-               This is an alternative to `basic_json`, but it is not recommended.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] basic_json: Specifies the json string vary depending on the add-on.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom: Specifies the key/value pairs vary depending on the add-on.
-               Only supports non-nested structure and only supports string type elements.
-               This is an alternative to `custom_json`, but it is not recommended.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] custom_json: Specifies the json string vary depending on the add-on.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] flavor: Specifies the key/value pairs vary depending on the add-on.
-               Only supports non-nested structure and only supports string type elements.
-               This is an alternative to `flavor_json`, but it is not recommended.
-               Changing this parameter will create a new resource.
-               
-               Arguments which can be passed to the `basic_json`, `custom_json` and `flavor_json` add-on parameters depends on
-               the add-on type and version. For more detailed description of add-ons
-               see add-ons description
-        :param pulumi.Input[_builtins.str] flavor_json: Specifies the json string vary depending on the add-on.
-               Changing this parameter will create a new resource.
-        """
         if basic is not None:
             pulumi.set(__self__, "basic", basic)
         if basic_json is not None:
@@ -193,12 +135,6 @@ class AddonValuesArgs:
     @_builtins.property
     @pulumi.getter
     def basic(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `basic_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "basic")
 
     @basic.setter
@@ -208,10 +144,6 @@ class AddonValuesArgs:
     @_builtins.property
     @pulumi.getter(name="basicJson")
     def basic_json(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "basic_json")
 
     @basic_json.setter
@@ -221,12 +153,6 @@ class AddonValuesArgs:
     @_builtins.property
     @pulumi.getter
     def custom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `custom_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "custom")
 
     @custom.setter
@@ -236,10 +162,6 @@ class AddonValuesArgs:
     @_builtins.property
     @pulumi.getter(name="customJson")
     def custom_json(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "custom_json")
 
     @custom_json.setter
@@ -249,16 +171,6 @@ class AddonValuesArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the key/value pairs vary depending on the add-on.
-        Only supports non-nested structure and only supports string type elements.
-        This is an alternative to `flavor_json`, but it is not recommended.
-        Changing this parameter will create a new resource.
-
-        Arguments which can be passed to the `basic_json`, `custom_json` and `flavor_json` add-on parameters depends on
-        the add-on type and version. For more detailed description of add-ons
-        see add-ons description
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -268,10 +180,6 @@ class AddonValuesArgs:
     @_builtins.property
     @pulumi.getter(name="flavorJson")
     def flavor_json(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the json string vary depending on the add-on.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "flavor_json")
 
     @flavor_json.setter
@@ -282,18 +190,8 @@ class AddonValuesArgs:
 if not MYPY:
     class ClusterCertificateClusterArgsDict(TypedDict):
         certificate_authority_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate data.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         server: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The server IP address.
-        """
 elif False:
     ClusterCertificateClusterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -303,12 +201,6 @@ class ClusterCertificateClusterArgs:
                  certificate_authority_data: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] certificate_authority_data: The certificate data.
-        :param pulumi.Input[_builtins.str] name: Specifies the component name.
-               Changing this parameter will create a new cluster resource.
-        :param pulumi.Input[_builtins.str] server: The server IP address.
-        """
         if certificate_authority_data is not None:
             pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
         if name is not None:
@@ -319,9 +211,6 @@ class ClusterCertificateClusterArgs:
     @_builtins.property
     @pulumi.getter(name="certificateAuthorityData")
     def certificate_authority_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The certificate data.
-        """
         return pulumi.get(self, "certificate_authority_data")
 
     @certificate_authority_data.setter
@@ -331,10 +220,6 @@ class ClusterCertificateClusterArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -344,9 +229,6 @@ class ClusterCertificateClusterArgs:
     @_builtins.property
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The server IP address.
-        """
         return pulumi.get(self, "server")
 
     @server.setter
@@ -357,18 +239,8 @@ class ClusterCertificateClusterArgs:
 if not MYPY:
     class ClusterCertificateUserArgsDict(TypedDict):
         client_certificate_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client certificate data.
-        """
         client_key_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The client key data.
-        """
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
 elif False:
     ClusterCertificateUserArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -378,12 +250,6 @@ class ClusterCertificateUserArgs:
                  client_certificate_data: Optional[pulumi.Input[_builtins.str]] = None,
                  client_key_data: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] client_certificate_data: The client certificate data.
-        :param pulumi.Input[_builtins.str] client_key_data: The client key data.
-        :param pulumi.Input[_builtins.str] name: Specifies the component name.
-               Changing this parameter will create a new cluster resource.
-        """
         if client_certificate_data is not None:
             pulumi.set(__self__, "client_certificate_data", client_certificate_data)
         if client_key_data is not None:
@@ -394,9 +260,6 @@ class ClusterCertificateUserArgs:
     @_builtins.property
     @pulumi.getter(name="clientCertificateData")
     def client_certificate_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The client certificate data.
-        """
         return pulumi.get(self, "client_certificate_data")
 
     @client_certificate_data.setter
@@ -406,9 +269,6 @@ class ClusterCertificateUserArgs:
     @_builtins.property
     @pulumi.getter(name="clientKeyData")
     def client_key_data(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The client key data.
-        """
         return pulumi.get(self, "client_key_data")
 
     @client_key_data.setter
@@ -418,10 +278,6 @@ class ClusterCertificateUserArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -432,15 +288,7 @@ class ClusterCertificateUserArgs:
 if not MYPY:
     class ClusterComponentConfigurationArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         configurations: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies JSON string of the component configurations.
-        Changing this parameter will create a new cluster resource.
-        """
 elif False:
     ClusterComponentConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -449,12 +297,6 @@ class ClusterComponentConfigurationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  configurations: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the component name.
-               Changing this parameter will create a new cluster resource.
-        :param pulumi.Input[_builtins.str] configurations: Specifies JSON string of the component configurations.
-               Changing this parameter will create a new cluster resource.
-        """
         pulumi.set(__self__, "name", name)
         if configurations is not None:
             pulumi.set(__self__, "configurations", configurations)
@@ -462,10 +304,6 @@ class ClusterComponentConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the component name.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -475,10 +313,6 @@ class ClusterComponentConfigurationArgs:
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies JSON string of the component configurations.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "configurations")
 
     @configurations.setter
@@ -525,61 +359,11 @@ class ClusterEncryptionConfigArgs:
 if not MYPY:
     class ClusterExtendParamArgsDict(TypedDict):
         cluster_az: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the AZ of master nodes in the cluster. The value can be:
-        + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-        + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-        This parameter is mandatory for dedicated CCE clusters.
-
-        Changing this parameter will create a new cluster resource.
-        """
         cpu_manager_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the cluster CPU management policy.
-        The value can be:
-        + **none**: CPU cores will not be exclusively allocated to workload pods.
-        Select this value if you want a large pool of shareable CPU cores.
-        + **static**: CPU cores can be exclusively allocated to workload pods.
-        Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-        this setting is valid only for nodes where common containers, not Kata containers, run.
-
-        Defaults to none.
-        Changing this parameter will create a new cluster resource.
-
-        <a name="cce_cluster_component_configurations"></a>
-        The `component_configurations` block supports:
-        """
         dec_master_flavor: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the specifications of the master node
-        in the dedicated hybrid cluster.
-        Changing this parameter will create a new cluster resource.
-        """
         docker_umask_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the default UmaskMode configuration of Docker in a
-        cluster. The value can be **secure** or **normal**, defaults to normal.
-        Changing this parameter will create a new cluster resource.
-        """
         dss_master_volumes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies whether the system and data disks of a master node
-        use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-        This parameter is mandatory for dedicated CCE clusters.
-        It is in the following format:
-
-        ```bash
-        <rootVol.dssPoolID>.<rootVol.volType>;<dataVol.dssPoolID>.<dataVol.volType>
-        ```
-
-        Changing this parameter will create a new cluster resource.
-        """
         fix_pool_mask: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the number of mask bits of the fixed IP address pool
-        of the container network model. This field can only be used when `container_network_type` is set to **vpc-router**.
-        Changing this parameter will create a new cluster resource.
-        """
 elif False:
     ClusterExtendParamArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -592,46 +376,6 @@ class ClusterExtendParamArgs:
                  docker_umask_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  dss_master_volumes: Optional[pulumi.Input[_builtins.str]] = None,
                  fix_pool_mask: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] cluster_az: Specifies the AZ of master nodes in the cluster. The value can be:
-               + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-               + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-               This parameter is mandatory for dedicated CCE clusters.
-               
-               Changing this parameter will create a new cluster resource.
-        :param pulumi.Input[_builtins.str] cpu_manager_policy: Specifies the cluster CPU management policy.
-               The value can be:
-               + **none**: CPU cores will not be exclusively allocated to workload pods.
-               Select this value if you want a large pool of shareable CPU cores.
-               + **static**: CPU cores can be exclusively allocated to workload pods.
-               Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-               this setting is valid only for nodes where common containers, not Kata containers, run.
-               
-               Defaults to none.
-               Changing this parameter will create a new cluster resource.
-               
-               <a name="cce_cluster_component_configurations"></a>
-               The `component_configurations` block supports:
-        :param pulumi.Input[_builtins.str] dec_master_flavor: Specifies the specifications of the master node
-               in the dedicated hybrid cluster.
-               Changing this parameter will create a new cluster resource.
-        :param pulumi.Input[_builtins.str] docker_umask_mode: Specifies the default UmaskMode configuration of Docker in a
-               cluster. The value can be **secure** or **normal**, defaults to normal.
-               Changing this parameter will create a new cluster resource.
-        :param pulumi.Input[_builtins.str] dss_master_volumes: Specifies whether the system and data disks of a master node
-               use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-               This parameter is mandatory for dedicated CCE clusters.
-               It is in the following format:
-               
-               ```bash
-               <rootVol.dssPoolID>.<rootVol.volType>;<dataVol.dssPoolID>.<dataVol.volType>
-               ```
-               
-               Changing this parameter will create a new cluster resource.
-        :param pulumi.Input[_builtins.str] fix_pool_mask: Specifies the number of mask bits of the fixed IP address pool
-               of the container network model. This field can only be used when `container_network_type` is set to **vpc-router**.
-               Changing this parameter will create a new cluster resource.
-        """
         if cluster_az is not None:
             pulumi.set(__self__, "cluster_az", cluster_az)
         if cpu_manager_policy is not None:
@@ -648,14 +392,6 @@ class ClusterExtendParamArgs:
     @_builtins.property
     @pulumi.getter(name="clusterAz")
     def cluster_az(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the AZ of master nodes in the cluster. The value can be:
-        + **multi_az**: The cluster will span across AZs. This field is configurable only for high-availability clusters.
-        + **AZ of the dedicated cloud computing pool**: The cluster will be deployed in the AZ of Dedicated Cloud (DeC).
-        This parameter is mandatory for dedicated CCE clusters.
-
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "cluster_az")
 
     @cluster_az.setter
@@ -665,21 +401,6 @@ class ClusterExtendParamArgs:
     @_builtins.property
     @pulumi.getter(name="cpuManagerPolicy")
     def cpu_manager_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cluster CPU management policy.
-        The value can be:
-        + **none**: CPU cores will not be exclusively allocated to workload pods.
-        Select this value if you want a large pool of shareable CPU cores.
-        + **static**: CPU cores can be exclusively allocated to workload pods.
-        Select this value if your workload is sensitive to latency in CPU cache and scheduling.In a CCE Turbo cluster,
-        this setting is valid only for nodes where common containers, not Kata containers, run.
-
-        Defaults to none.
-        Changing this parameter will create a new cluster resource.
-
-        <a name="cce_cluster_component_configurations"></a>
-        The `component_configurations` block supports:
-        """
         return pulumi.get(self, "cpu_manager_policy")
 
     @cpu_manager_policy.setter
@@ -689,11 +410,6 @@ class ClusterExtendParamArgs:
     @_builtins.property
     @pulumi.getter(name="decMasterFlavor")
     def dec_master_flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the specifications of the master node
-        in the dedicated hybrid cluster.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "dec_master_flavor")
 
     @dec_master_flavor.setter
@@ -703,11 +419,6 @@ class ClusterExtendParamArgs:
     @_builtins.property
     @pulumi.getter(name="dockerUmaskMode")
     def docker_umask_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the default UmaskMode configuration of Docker in a
-        cluster. The value can be **secure** or **normal**, defaults to normal.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "docker_umask_mode")
 
     @docker_umask_mode.setter
@@ -717,18 +428,6 @@ class ClusterExtendParamArgs:
     @_builtins.property
     @pulumi.getter(name="dssMasterVolumes")
     def dss_master_volumes(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies whether the system and data disks of a master node
-        use dedicated distributed storage. If left unspecified, EVS disks are used by default.
-        This parameter is mandatory for dedicated CCE clusters.
-        It is in the following format:
-
-        ```bash
-        <rootVol.dssPoolID>.<rootVol.volType>;<dataVol.dssPoolID>.<dataVol.volType>
-        ```
-
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "dss_master_volumes")
 
     @dss_master_volumes.setter
@@ -738,11 +437,6 @@ class ClusterExtendParamArgs:
     @_builtins.property
     @pulumi.getter(name="fixPoolMask")
     def fix_pool_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the number of mask bits of the fixed IP address pool
-        of the container network model. This field can only be used when `container_network_type` is set to **vpc-router**.
-        Changing this parameter will create a new cluster resource.
-        """
         return pulumi.get(self, "fix_pool_mask")
 
     @fix_pool_mask.setter
@@ -753,13 +447,6 @@ class ClusterExtendParamArgs:
 if not MYPY:
     class ClusterMasterArgsDict(TypedDict):
         availability_zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the availability zone of the master node.
-        Changing this parameter will create a new cluster resource.
-
-        <a name="cce_cluster_extend_params"></a>
-        The `extend_params` block supports:
-        """
 elif False:
     ClusterMasterArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -767,26 +454,12 @@ elif False:
 class ClusterMasterArgs:
     def __init__(__self__, *,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] availability_zone: Specifies the availability zone of the master node.
-               Changing this parameter will create a new cluster resource.
-               
-               <a name="cce_cluster_extend_params"></a>
-               The `extend_params` block supports:
-        """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone of the master node.
-        Changing this parameter will create a new cluster resource.
-
-        <a name="cce_cluster_extend_params"></a>
-        The `extend_params` block supports:
-        """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
@@ -937,9 +610,6 @@ class NodeAttachDataVolumeArgs:
 if not MYPY:
     class NodeAttachExtensionNicArgsDict(TypedDict):
         subnet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
 elif False:
     NodeAttachExtensionNicArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -947,18 +617,12 @@ elif False:
 class NodeAttachExtensionNicArgs:
     def __init__(__self__, *,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] subnet_id: The ID of the subnet to which the NIC belongs.
-        """
         if subnet_id is not None:
             pulumi.set(__self__, "subnet_id", subnet_id)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The ID of the subnet to which the NIC belongs.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1165,9 +829,6 @@ class NodeAttachStorageArgs:
 if not MYPY:
     class NodeAttachStorageGroupArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the Node Name.
-        """
         selector_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
         virtual_spaces: pulumi.Input[Sequence[pulumi.Input['NodeAttachStorageGroupVirtualSpaceArgsDict']]]
         cce_managed: NotRequired[pulumi.Input[_builtins.bool]]
@@ -1181,9 +842,6 @@ class NodeAttachStorageGroupArgs:
                  selector_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  virtual_spaces: pulumi.Input[Sequence[pulumi.Input['NodeAttachStorageGroupVirtualSpaceArgs']]],
                  cce_managed: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "selector_names", selector_names)
         pulumi.set(__self__, "virtual_spaces", virtual_spaces)
@@ -1193,9 +851,6 @@ class NodeAttachStorageGroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1233,9 +888,6 @@ class NodeAttachStorageGroupArgs:
 if not MYPY:
     class NodeAttachStorageGroupVirtualSpaceArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the Node Name.
-        """
         size: pulumi.Input[_builtins.str]
         lvm_lv_type: NotRequired[pulumi.Input[_builtins.str]]
         lvm_path: NotRequired[pulumi.Input[_builtins.str]]
@@ -1251,9 +903,6 @@ class NodeAttachStorageGroupVirtualSpaceArgs:
                  lvm_lv_type: Optional[pulumi.Input[_builtins.str]] = None,
                  lvm_path: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime_lv_type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         if lvm_lv_type is not None:
@@ -1266,9 +915,6 @@ class NodeAttachStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1315,9 +961,6 @@ class NodeAttachStorageGroupVirtualSpaceArgs:
 if not MYPY:
     class NodeAttachStorageSelectorArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the Node Name.
-        """
         match_label_count: NotRequired[pulumi.Input[_builtins.str]]
         match_label_metadata_cmkid: NotRequired[pulumi.Input[_builtins.str]]
         match_label_metadata_encrypted: NotRequired[pulumi.Input[_builtins.str]]
@@ -1337,9 +980,6 @@ class NodeAttachStorageSelectorArgs:
                  match_label_size: Optional[pulumi.Input[_builtins.str]] = None,
                  match_label_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the Node Name.
-        """
         pulumi.set(__self__, "name", name)
         if match_label_count is not None:
             pulumi.set(__self__, "match_label_count", match_label_count)
@@ -1357,9 +997,6 @@ class NodeAttachStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the Node Name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1424,22 +1061,8 @@ class NodeAttachStorageSelectorArgs:
 if not MYPY:
     class NodeAttachTaintArgsDict(TypedDict):
         effect: pulumi.Input[_builtins.str]
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-        Changing this parameter will create a new resource.
-        """
         key: pulumi.Input[_builtins.str]
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit.
-        Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-        as the prefix of a key. Changing this parameter will create a new resource.
-        """
         value: pulumi.Input[_builtins.str]
-        """
-        A value must start with a letter or digit and can contain a maximum of 63
-        characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-        create a new resource.
-        """
 elif False:
     NodeAttachTaintArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1449,16 +1072,6 @@ class NodeAttachTaintArgs:
                  effect: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] effect: Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] key: A key must contain 1 to 63 characters starting with a letter or digit.
-               Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-               as the prefix of a key. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] value: A value must start with a letter or digit and can contain a maximum of 63
-               characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-               create a new resource.
-        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -1466,10 +1079,6 @@ class NodeAttachTaintArgs:
     @_builtins.property
     @pulumi.getter
     def effect(self) -> pulumi.Input[_builtins.str]:
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -1479,11 +1088,6 @@ class NodeAttachTaintArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit.
-        Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-        as the prefix of a key. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1493,11 +1097,6 @@ class NodeAttachTaintArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        A value must start with a letter or digit and can contain a maximum of 63
-        characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-        create a new resource.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1508,43 +1107,16 @@ class NodeAttachTaintArgs:
 if not MYPY:
     class NodeDataVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the disk size in GB.
-        Changing this parameter will create a new resource.
-        """
         volumetype: pulumi.Input[_builtins.str]
-        """
-        Specifies the disk type.
-        Changing this parameter will create a new resource.
-        """
         dss_pool_id: NotRequired[pulumi.Input[_builtins.str]]
         extend_param: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
-        """
         extend_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         hw_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
         """
         schema: Internal
         """
         iops: NotRequired[pulumi.Input[_builtins.int]]
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         throughput: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
     NodeDataVolumeArgsDict: TypeAlias = Mapping[str, Any]
@@ -1562,24 +1134,7 @@ class NodeDataVolumeArgs:
                  kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size in GB.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] volumetype: Specifies the disk type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] hw_passthrough: schema: Internal
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -1604,10 +1159,6 @@ class NodeDataVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the disk size in GB.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1617,10 +1168,6 @@ class NodeDataVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the disk type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @volumetype.setter
@@ -1640,17 +1187,6 @@ class NodeDataVolumeArgs:
     @pulumi.getter(name="extendParam")
     @_utilities.deprecated("""use extend_params instead""")
     def extend_param(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
-        """
         return pulumi.get(self, "extend_param")
 
     @extend_param.setter
@@ -1660,10 +1196,6 @@ class NodeDataVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @extend_params.setter
@@ -1694,10 +1226,6 @@ class NodeDataVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -1721,23 +1249,11 @@ if not MYPY:
         kube_reserved_mem: NotRequired[pulumi.Input[_builtins.int]]
         market_type: NotRequired[pulumi.Input[_builtins.str]]
         max_pods: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         nic_threshold: NotRequired[pulumi.Input[_builtins.str]]
         node_image_id: NotRequired[pulumi.Input[_builtins.str]]
         node_multi_queue: NotRequired[pulumi.Input[_builtins.str]]
         postinstall: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         preinstall: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         security_reinforcement_type: NotRequired[pulumi.Input[_builtins.str]]
         spot_price: NotRequired[pulumi.Input[_builtins.str]]
         system_reserved_mem: NotRequired[pulumi.Input[_builtins.int]]
@@ -1760,14 +1276,6 @@ class NodeExtendParamsArgs:
                  security_reinforcement_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_price: Optional[pulumi.Input[_builtins.str]] = None,
                  system_reserved_mem: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
         if docker_base_size is not None:
@@ -1834,10 +1342,6 @@ class NodeExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @max_pods.setter
@@ -1874,10 +1378,6 @@ class NodeExtendParamsArgs:
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @postinstall.setter
@@ -1887,10 +1387,6 @@ class NodeExtendParamsArgs:
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @preinstall.setter
@@ -1928,10 +1424,6 @@ class NodeExtendParamsArgs:
 if not MYPY:
     class NodeExtensionNicArgsDict(TypedDict):
         subnet_id: pulumi.Input[_builtins.str]
-        """
-        Specifies the ID of the subnet to which the NIC belongs.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     NodeExtensionNicArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1939,19 +1431,11 @@ elif False:
 class NodeExtensionNicArgs:
     def __init__(__self__, *,
                  subnet_id: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] subnet_id: Specifies the ID of the subnet to which the NIC belongs.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "subnet_id", subnet_id)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the ID of the subnet to which the NIC belongs.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -1962,10 +1446,6 @@ class NodeExtensionNicArgs:
 if not MYPY:
     class NodeHostnameConfigArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
 elif False:
     NodeHostnameConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1973,19 +1453,11 @@ elif False:
 class NodeHostnameConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] type: Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-               The default value is **evs**. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1996,45 +1468,17 @@ class NodeHostnameConfigArgs:
 if not MYPY:
     class NodePoolDataVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the disk size in GB. Changing this parameter will create a new resource.
-        """
         volumetype: pulumi.Input[_builtins.str]
-        """
-        Specifies the disk type. Changing this parameter will create a new resource.
-        """
         dss_pool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the DSS pool ID. This field is used only for dedicated storage.
-        Changing this parameter will create a new resource.
-        """
         extend_param: NotRequired[pulumi.Input[_builtins.str]]
         extend_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         hw_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
         """
         schema: Internal
         """
         iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the iops of the disk,
-        required when `volumetype` is **GPSSD2** or **ESSD2**.
-        """
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the KMS key ID. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         throughput: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the throughput of the disk in MiB/s,
-        required when `volumetype` is **GPSSD2**.
-
-        > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
-        """
 elif False:
     NodePoolDataVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2051,21 +1495,7 @@ class NodePoolDataVolumeArgs:
                  kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size in GB. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] volumetype: Specifies the disk type. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] dss_pool_id: Specifies the DSS pool ID. This field is used only for dedicated storage.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] hw_passthrough: schema: Internal
-        :param pulumi.Input[_builtins.int] iops: Specifies the iops of the disk,
-               required when `volumetype` is **GPSSD2** or **ESSD2**.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the KMS key ID. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] throughput: Specifies the throughput of the disk in MiB/s,
-               required when `volumetype` is **GPSSD2**.
-               
-               > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -2090,9 +1520,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the disk size in GB. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -2102,9 +1529,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the disk type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @volumetype.setter
@@ -2114,10 +1538,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="dssPoolId")
     def dss_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DSS pool ID. This field is used only for dedicated storage.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "dss_pool_id")
 
     @dss_pool_id.setter
@@ -2137,10 +1557,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @extend_params.setter
@@ -2162,10 +1578,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the iops of the disk,
-        required when `volumetype` is **GPSSD2** or **ESSD2**.
-        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -2175,10 +1587,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the KMS key ID. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -2188,12 +1596,6 @@ class NodePoolDataVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the throughput of the disk in MiB/s,
-        required when `volumetype` is **GPSSD2**.
-
-        > You need to create an agency (EVSAccessKMS) when disk encryption is used in the current project for the first time ever.
-        """
         return pulumi.get(self, "throughput")
 
     @throughput.setter
@@ -2204,58 +1606,18 @@ class NodePoolDataVolumeArgs:
 if not MYPY:
     class NodePoolExtendParamsArgsDict(TypedDict):
         agency_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the agency name.
-        Changing this parameter will create a new resource.
-        """
         docker_base_size: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the available disk space of a single container on a node,
-        in GB. Changing this parameter will create a new resource.
-        """
         kube_reserved_mem: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the reserved node memory, which is reserved for
-        Kubernetes-related components. Changing this parameter will create a new resource.
-        """
         market_type: NotRequired[pulumi.Input[_builtins.str]]
         max_pods: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         nic_threshold: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ENI pre-binding thresholds.
-        Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-        """
         node_image_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the image ID to create the node.
-        Changing this parameter will create a new resource.
-        """
         node_multi_queue: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the number of ENI queues.
-        Example setting: **"[{\\"queue\\":4}]"**. Changing this parameter will create a new resource.
-        """
         postinstall: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         preinstall: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         security_reinforcement_type: NotRequired[pulumi.Input[_builtins.str]]
         spot_price: NotRequired[pulumi.Input[_builtins.str]]
         system_reserved_mem: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the reserved node memory, which is reserved
-        value for system components. Changing this parameter will create a new resource.
-        """
 elif False:
     NodePoolExtendParamsArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2275,28 +1637,6 @@ class NodePoolExtendParamsArgs:
                  security_reinforcement_type: Optional[pulumi.Input[_builtins.str]] = None,
                  spot_price: Optional[pulumi.Input[_builtins.str]] = None,
                  system_reserved_mem: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.str] agency_name: Specifies the agency name.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] docker_base_size: Specifies the available disk space of a single container on a node,
-               in GB. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] kube_reserved_mem: Specifies the reserved node memory, which is reserved for
-               Kubernetes-related components. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] max_pods: Specifies the maximum number of instances a node is allowed to create.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] nic_threshold: Specifies the ENI pre-binding thresholds.
-               Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] node_image_id: Specifies the image ID to create the node.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] node_multi_queue: Specifies the number of ENI queues.
-               Example setting: **"[{\\"queue\\":4}]"**. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] postinstall: Specifies the script to be executed after installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] preinstall: Specifies the script to be executed before installation.
-               The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] system_reserved_mem: Specifies the reserved node memory, which is reserved
-               value for system components. Changing this parameter will create a new resource.
-        """
         if agency_name is not None:
             pulumi.set(__self__, "agency_name", agency_name)
         if docker_base_size is not None:
@@ -2327,10 +1667,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="agencyName")
     def agency_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the agency name.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "agency_name")
 
     @agency_name.setter
@@ -2340,10 +1676,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="dockerBaseSize")
     def docker_base_size(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the available disk space of a single container on a node,
-        in GB. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "docker_base_size")
 
     @docker_base_size.setter
@@ -2353,10 +1685,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="kubeReservedMem")
     def kube_reserved_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the reserved node memory, which is reserved for
-        Kubernetes-related components. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kube_reserved_mem")
 
     @kube_reserved_mem.setter
@@ -2375,10 +1703,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="maxPods")
     def max_pods(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum number of instances a node is allowed to create.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "max_pods")
 
     @max_pods.setter
@@ -2388,10 +1712,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="nicThreshold")
     def nic_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ENI pre-binding thresholds.
-        Example setting: **"0.3:0.6"**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "nic_threshold")
 
     @nic_threshold.setter
@@ -2401,10 +1721,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="nodeImageId")
     def node_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the image ID to create the node.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "node_image_id")
 
     @node_image_id.setter
@@ -2414,10 +1730,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="nodeMultiQueue")
     def node_multi_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the number of ENI queues.
-        Example setting: **"[{\\"queue\\":4}]"**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "node_multi_queue")
 
     @node_multi_queue.setter
@@ -2427,10 +1739,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter
     def postinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script to be executed after installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "postinstall")
 
     @postinstall.setter
@@ -2440,10 +1748,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter
     def preinstall(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the script to be executed before installation.
-        The input value can be a Base64 encoded string or not. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "preinstall")
 
     @preinstall.setter
@@ -2471,10 +1775,6 @@ class NodePoolExtendParamsArgs:
     @_builtins.property
     @pulumi.getter(name="systemReservedMem")
     def system_reserved_mem(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the reserved node memory, which is reserved
-        value for system components. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "system_reserved_mem")
 
     @system_reserved_mem.setter
@@ -2485,19 +1785,7 @@ class NodePoolExtendParamsArgs:
 if not MYPY:
     class NodePoolExtensionScaleGroupArgsDict(TypedDict):
         metadata: NotRequired[pulumi.Input['NodePoolExtensionScaleGroupMetadataArgsDict']]
-        """
-        Specifies the basic information about the extended scaling group.
-        The object structure is documented below.
-        """
         spec: NotRequired[pulumi.Input['NodePoolExtensionScaleGroupSpecArgsDict']]
-        """
-        Specifies the configurations of the extended scaling group,
-        which carry different configurations from those of the default scaling group.
-        The object structure is documented below.
-
-        <a name="metadata"></a>
-        The `metadata` block supports:
-        """
 elif False:
     NodePoolExtensionScaleGroupArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2506,16 +1794,6 @@ class NodePoolExtensionScaleGroupArgs:
     def __init__(__self__, *,
                  metadata: Optional[pulumi.Input['NodePoolExtensionScaleGroupMetadataArgs']] = None,
                  spec: Optional[pulumi.Input['NodePoolExtensionScaleGroupSpecArgs']] = None):
-        """
-        :param pulumi.Input['NodePoolExtensionScaleGroupMetadataArgs'] metadata: Specifies the basic information about the extended scaling group.
-               The object structure is documented below.
-        :param pulumi.Input['NodePoolExtensionScaleGroupSpecArgs'] spec: Specifies the configurations of the extended scaling group,
-               which carry different configurations from those of the default scaling group.
-               The object structure is documented below.
-               
-               <a name="metadata"></a>
-               The `metadata` block supports:
-        """
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if spec is not None:
@@ -2524,10 +1802,6 @@ class NodePoolExtensionScaleGroupArgs:
     @_builtins.property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input['NodePoolExtensionScaleGroupMetadataArgs']]:
-        """
-        Specifies the basic information about the extended scaling group.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "metadata")
 
     @metadata.setter
@@ -2537,14 +1811,6 @@ class NodePoolExtensionScaleGroupArgs:
     @_builtins.property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['NodePoolExtensionScaleGroupSpecArgs']]:
-        """
-        Specifies the configurations of the extended scaling group,
-        which carry different configurations from those of the default scaling group.
-        The object structure is documented below.
-
-        <a name="metadata"></a>
-        The `metadata` block supports:
-        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -2555,9 +1821,6 @@ class NodePoolExtensionScaleGroupArgs:
 if not MYPY:
     class NodePoolExtensionScaleGroupMetadataArgsDict(TypedDict):
         name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the node pool name.
-        """
 elif False:
     NodePoolExtensionScaleGroupMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2565,18 +1828,12 @@ elif False:
 class NodePoolExtensionScaleGroupMetadataArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the node pool name.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the node pool name.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -2587,28 +1844,9 @@ class NodePoolExtensionScaleGroupMetadataArgs:
 if not MYPY:
     class NodePoolExtensionScaleGroupSpecArgsDict(TypedDict):
         autoscaling: NotRequired[pulumi.Input['NodePoolExtensionScaleGroupSpecAutoscalingArgsDict']]
-        """
-        Specifies the auto scaling configurations of the extended scaling group.
-        The object structure is documented below.
-
-        <a name="capacity_reservation_specification"></a>
-        The `capacity_reservation_specification` block supports:
-        """
         az: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the availability zone of a node.
-        If this parameter is not specified or left blank, the default scaling group configurations take effect.
-        """
         capacity_reservation_specification: NotRequired[pulumi.Input['NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgsDict']]
-        """
-        Specifies the capacity reservation
-        configurations of the extended scaling group.
-        The object structure is documented below.
-        """
         flavor: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the node flavor.
-        """
 elif False:
     NodePoolExtensionScaleGroupSpecArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2619,19 +1857,6 @@ class NodePoolExtensionScaleGroupSpecArgs:
                  az: Optional[pulumi.Input[_builtins.str]] = None,
                  capacity_reservation_specification: Optional[pulumi.Input['NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs']] = None,
                  flavor: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input['NodePoolExtensionScaleGroupSpecAutoscalingArgs'] autoscaling: Specifies the auto scaling configurations of the extended scaling group.
-               The object structure is documented below.
-               
-               <a name="capacity_reservation_specification"></a>
-               The `capacity_reservation_specification` block supports:
-        :param pulumi.Input[_builtins.str] az: Specifies the availability zone of a node.
-               If this parameter is not specified or left blank, the default scaling group configurations take effect.
-        :param pulumi.Input['NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs'] capacity_reservation_specification: Specifies the capacity reservation
-               configurations of the extended scaling group.
-               The object structure is documented below.
-        :param pulumi.Input[_builtins.str] flavor: Specifies the node flavor.
-        """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
         if az is not None:
@@ -2644,13 +1869,6 @@ class NodePoolExtensionScaleGroupSpecArgs:
     @_builtins.property
     @pulumi.getter
     def autoscaling(self) -> Optional[pulumi.Input['NodePoolExtensionScaleGroupSpecAutoscalingArgs']]:
-        """
-        Specifies the auto scaling configurations of the extended scaling group.
-        The object structure is documented below.
-
-        <a name="capacity_reservation_specification"></a>
-        The `capacity_reservation_specification` block supports:
-        """
         return pulumi.get(self, "autoscaling")
 
     @autoscaling.setter
@@ -2660,10 +1878,6 @@ class NodePoolExtensionScaleGroupSpecArgs:
     @_builtins.property
     @pulumi.getter
     def az(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the availability zone of a node.
-        If this parameter is not specified or left blank, the default scaling group configurations take effect.
-        """
         return pulumi.get(self, "az")
 
     @az.setter
@@ -2673,11 +1887,6 @@ class NodePoolExtensionScaleGroupSpecArgs:
     @_builtins.property
     @pulumi.getter(name="capacityReservationSpecification")
     def capacity_reservation_specification(self) -> Optional[pulumi.Input['NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs']]:
-        """
-        Specifies the capacity reservation
-        configurations of the extended scaling group.
-        The object structure is documented below.
-        """
         return pulumi.get(self, "capacity_reservation_specification")
 
     @capacity_reservation_specification.setter
@@ -2687,9 +1896,6 @@ class NodePoolExtensionScaleGroupSpecArgs:
     @_builtins.property
     @pulumi.getter
     def flavor(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the node flavor.
-        """
         return pulumi.get(self, "flavor")
 
     @flavor.setter
@@ -2700,22 +1906,9 @@ class NodePoolExtensionScaleGroupSpecArgs:
 if not MYPY:
     class NodePoolExtensionScaleGroupSpecAutoscalingArgsDict(TypedDict):
         enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-        """
         extension_priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the priority of the scaling group, defaults to **0**.
-        A higher value indicates a greater priority.
-        """
         max_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the maximum number of nodes allowed if auto scaling is enabled.
-        """
         min_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the minimum number of nodes allowed if auto scaling is enabled.
-        """
 elif False:
     NodePoolExtensionScaleGroupSpecAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2726,13 +1919,6 @@ class NodePoolExtensionScaleGroupSpecAutoscalingArgs:
                  extension_priority: Optional[pulumi.Input[_builtins.int]] = None,
                  max_node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  min_node_count: Optional[pulumi.Input[_builtins.int]] = None):
-        """
-        :param pulumi.Input[_builtins.bool] enable: Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-        :param pulumi.Input[_builtins.int] extension_priority: Specifies the priority of the scaling group, defaults to **0**.
-               A higher value indicates a greater priority.
-        :param pulumi.Input[_builtins.int] max_node_count: Specifies the maximum number of nodes allowed if auto scaling is enabled.
-        :param pulumi.Input[_builtins.int] min_node_count: Specifies the minimum number of nodes allowed if auto scaling is enabled.
-        """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if extension_priority is not None:
@@ -2745,9 +1931,6 @@ class NodePoolExtensionScaleGroupSpecAutoscalingArgs:
     @_builtins.property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies whether to enable auto scaling for the scaling group, defaults to **false**.
-        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -2757,10 +1940,6 @@ class NodePoolExtensionScaleGroupSpecAutoscalingArgs:
     @_builtins.property
     @pulumi.getter(name="extensionPriority")
     def extension_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the priority of the scaling group, defaults to **0**.
-        A higher value indicates a greater priority.
-        """
         return pulumi.get(self, "extension_priority")
 
     @extension_priority.setter
@@ -2770,9 +1949,6 @@ class NodePoolExtensionScaleGroupSpecAutoscalingArgs:
     @_builtins.property
     @pulumi.getter(name="maxNodeCount")
     def max_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the maximum number of nodes allowed if auto scaling is enabled.
-        """
         return pulumi.get(self, "max_node_count")
 
     @max_node_count.setter
@@ -2782,9 +1958,6 @@ class NodePoolExtensionScaleGroupSpecAutoscalingArgs:
     @_builtins.property
     @pulumi.getter(name="minNodeCount")
     def min_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the minimum number of nodes allowed if auto scaling is enabled.
-        """
         return pulumi.get(self, "min_node_count")
 
     @min_node_count.setter
@@ -2795,18 +1968,7 @@ class NodePoolExtensionScaleGroupSpecAutoscalingArgs:
 if not MYPY:
     class NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The resource ID in UUID format.
-        """
         preference: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the capacity of a private storage pool. If the value is none,
-        the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-        In this case, the `id` cannot be left blank.
-
-        <a name="autoscaling"></a>
-        The `autoscaling` block supports:
-        """
 elif False:
     NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2815,15 +1977,6 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[_builtins.str]] = None,
                  preference: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] id: The resource ID in UUID format.
-        :param pulumi.Input[_builtins.str] preference: Specifies the capacity of a private storage pool. If the value is none,
-               the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-               In this case, the `id` cannot be left blank.
-               
-               <a name="autoscaling"></a>
-               The `autoscaling` block supports:
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if preference is not None:
@@ -2832,9 +1985,6 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The resource ID in UUID format.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -2844,14 +1994,6 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs:
     @_builtins.property
     @pulumi.getter
     def preference(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the capacity of a private storage pool. If the value is none,
-        the capacity reservation is not specified. If the value is targeted, the capacity reservation is specified.
-        In this case, the `id` cannot be left blank.
-
-        <a name="autoscaling"></a>
-        The `autoscaling` block supports:
-        """
         return pulumi.get(self, "preference")
 
     @preference.setter
@@ -2862,9 +2004,6 @@ class NodePoolExtensionScaleGroupSpecCapacityReservationSpecificationArgs:
 if not MYPY:
     class NodePoolHostnameConfigArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
-        """
-        Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-        """
 elif False:
     NodePoolHostnameConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2872,17 +2011,11 @@ elif False:
 class NodePoolHostnameConfigArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] type: Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-        """
         pulumi.set(__self__, "type", type)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the node pool type. Possible values are: **vm** and **ElasticBMS**.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -2893,43 +2026,17 @@ class NodePoolHostnameConfigArgs:
 if not MYPY:
     class NodePoolRootVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the disk size in GB. Changing this parameter will create a new resource.
-        """
         volumetype: pulumi.Input[_builtins.str]
-        """
-        Specifies the disk type. Changing this parameter will create a new resource.
-        """
         dss_pool_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the DSS pool ID. This field is used only for dedicated storage.
-        Changing this parameter will create a new resource.
-        """
         extend_param: NotRequired[pulumi.Input[_builtins.str]]
         extend_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         hw_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
         """
         schema: Internal
         """
         iops: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the iops of the disk,
-        required when `volumetype` is **GPSSD2** or **ESSD2**.
-        """
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the KMS key ID. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         throughput: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the throughput of the disk in MiB/s,
-        required when `volumetype` is **GPSSD2**.
-        """
 elif False:
     NodePoolRootVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -2946,19 +2053,7 @@ class NodePoolRootVolumeArgs:
                  kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size in GB. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] volumetype: Specifies the disk type. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] dss_pool_id: Specifies the DSS pool ID. This field is used only for dedicated storage.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] hw_passthrough: schema: Internal
-        :param pulumi.Input[_builtins.int] iops: Specifies the iops of the disk,
-               required when `volumetype` is **GPSSD2** or **ESSD2**.
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the KMS key ID. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.int] throughput: Specifies the throughput of the disk in MiB/s,
-               required when `volumetype` is **GPSSD2**.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -2983,9 +2078,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the disk size in GB. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -2995,9 +2087,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the disk type. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @volumetype.setter
@@ -3007,10 +2096,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="dssPoolId")
     def dss_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the DSS pool ID. This field is used only for dedicated storage.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "dss_pool_id")
 
     @dss_pool_id.setter
@@ -3030,10 +2115,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @extend_params.setter
@@ -3055,10 +2136,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def iops(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the iops of the disk,
-        required when `volumetype` is **GPSSD2** or **ESSD2**.
-        """
         return pulumi.get(self, "iops")
 
     @iops.setter
@@ -3068,10 +2145,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the KMS key ID. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -3081,10 +2154,6 @@ class NodePoolRootVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
-        """
-        Specifies the throughput of the disk in MiB/s,
-        required when `volumetype` is **GPSSD2**.
-        """
         return pulumi.get(self, "throughput")
 
     @throughput.setter
@@ -3095,17 +2164,7 @@ class NodePoolRootVolumeArgs:
 if not MYPY:
     class NodePoolStorageArgsDict(TypedDict):
         groups: pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupArgsDict']]]
-        """
-        Specifies the storage group consists of multiple storage devices.
-        This is used to divide storage space. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         selectors: pulumi.Input[Sequence[pulumi.Input['NodePoolStorageSelectorArgsDict']]]
-        """
-        Specifies the disk selection.
-        Matched disks are managed according to match labels and storage type. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     NodePoolStorageArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3114,25 +2173,12 @@ class NodePoolStorageArgs:
     def __init__(__self__, *,
                  groups: pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupArgs']]],
                  selectors: pulumi.Input[Sequence[pulumi.Input['NodePoolStorageSelectorArgs']]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupArgs']]] groups: Specifies the storage group consists of multiple storage devices.
-               This is used to divide storage space. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolStorageSelectorArgs']]] selectors: Specifies the disk selection.
-               Matched disks are managed according to match labels and storage type. Structure is documented below.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "groups", groups)
         pulumi.set(__self__, "selectors", selectors)
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupArgs']]]:
-        """
-        Specifies the storage group consists of multiple storage devices.
-        This is used to divide storage space. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -3142,11 +2188,6 @@ class NodePoolStorageArgs:
     @_builtins.property
     @pulumi.getter
     def selectors(self) -> pulumi.Input[Sequence[pulumi.Input['NodePoolStorageSelectorArgs']]]:
-        """
-        Specifies the disk selection.
-        Matched disks are managed according to match labels and storage type. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selectors")
 
     @selectors.setter
@@ -3157,31 +2198,9 @@ class NodePoolStorageArgs:
 if not MYPY:
     class NodePoolStorageGroupArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of an extended scaling group.
-        The value cannot be default and can contain a maximum of 55 characters.
-        Only digits, lowercase letters, and hyphens (-) are allowed.
-
-        <a name="spec"></a>
-        The `spec` block supports:
-        """
         selector_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the list of names of selectors to match.
-        This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-        but a selector can match only one group. Changing this parameter will create a new resource.
-        """
         virtual_spaces: pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupVirtualSpaceArgsDict']]]
-        """
-        Specifies the detailed management of space configuration in a group.
-        Changing this parameter will create a new resource.
-        """
         cce_managed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies the whether the storage space is for **kubernetes** and
-        **runtime** components. Only one group can be set to true. The default value is **false**.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     NodePoolStorageGroupArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3192,22 +2211,6 @@ class NodePoolStorageGroupArgs:
                  selector_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  virtual_spaces: pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupVirtualSpaceArgs']]],
                  cce_managed: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of an extended scaling group.
-               The value cannot be default and can contain a maximum of 55 characters.
-               Only digits, lowercase letters, and hyphens (-) are allowed.
-               
-               <a name="spec"></a>
-               The `spec` block supports:
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selector_names: Specifies the list of names of selectors to match.
-               This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-               but a selector can match only one group. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupVirtualSpaceArgs']]] virtual_spaces: Specifies the detailed management of space configuration in a group.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] cce_managed: Specifies the whether the storage space is for **kubernetes** and
-               **runtime** components. Only one group can be set to true. The default value is **false**.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "selector_names", selector_names)
         pulumi.set(__self__, "virtual_spaces", virtual_spaces)
@@ -3217,14 +2220,6 @@ class NodePoolStorageGroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of an extended scaling group.
-        The value cannot be default and can contain a maximum of 55 characters.
-        Only digits, lowercase letters, and hyphens (-) are allowed.
-
-        <a name="spec"></a>
-        The `spec` block supports:
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3234,11 +2229,6 @@ class NodePoolStorageGroupArgs:
     @_builtins.property
     @pulumi.getter(name="selectorNames")
     def selector_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the list of names of selectors to match.
-        This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-        but a selector can match only one group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selector_names")
 
     @selector_names.setter
@@ -3248,10 +2238,6 @@ class NodePoolStorageGroupArgs:
     @_builtins.property
     @pulumi.getter(name="virtualSpaces")
     def virtual_spaces(self) -> pulumi.Input[Sequence[pulumi.Input['NodePoolStorageGroupVirtualSpaceArgs']]]:
-        """
-        Specifies the detailed management of space configuration in a group.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "virtual_spaces")
 
     @virtual_spaces.setter
@@ -3261,11 +2247,6 @@ class NodePoolStorageGroupArgs:
     @_builtins.property
     @pulumi.getter(name="cceManaged")
     def cce_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies the whether the storage space is for **kubernetes** and
-        **runtime** components. Only one group can be set to true. The default value is **false**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cce_managed")
 
     @cce_managed.setter
@@ -3276,35 +2257,10 @@ class NodePoolStorageGroupArgs:
 if not MYPY:
     class NodePoolStorageGroupVirtualSpaceArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-        and **user** are supported. Changing this parameter will create a new resource.
-        """
         size: pulumi.Input[_builtins.str]
-        """
-        Specifies the size of a virtual space. Only an integer percentage is supported.
-        Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-        Changing this parameter will create a new resource.
-        """
         lvm_lv_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-        a new resource.
-        """
         lvm_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the absolute path to which the disk is attached.
-        This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        """
         runtime_lv_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-
-        <a name="hostname_config"></a>
-        The `hostname_config` block supports:
-        """
 elif False:
     NodePoolStorageGroupVirtualSpaceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3316,23 +2272,6 @@ class NodePoolStorageGroupVirtualSpaceArgs:
                  lvm_lv_type: Optional[pulumi.Input[_builtins.str]] = None,
                  lvm_path: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime_lv_type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-               and **user** are supported. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] size: Specifies the size of a virtual space. Only an integer percentage is supported.
-               Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] lvm_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-               a new resource.
-        :param pulumi.Input[_builtins.str] lvm_path: Specifies the absolute path to which the disk is attached.
-               This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-               
-               <a name="hostname_config"></a>
-               The `hostname_config` block supports:
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         if lvm_lv_type is not None:
@@ -3345,10 +2284,6 @@ class NodePoolStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-        and **user** are supported. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3358,11 +2293,6 @@ class NodePoolStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the size of a virtual space. Only an integer percentage is supported.
-        Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -3372,11 +2302,6 @@ class NodePoolStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter(name="lvmLvType")
     def lvm_lv_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "lvm_lv_type")
 
     @lvm_lv_type.setter
@@ -3386,10 +2311,6 @@ class NodePoolStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter(name="lvmPath")
     def lvm_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the absolute path to which the disk is attached.
-        This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "lvm_path")
 
     @lvm_path.setter
@@ -3399,13 +2320,6 @@ class NodePoolStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter(name="runtimeLvType")
     def runtime_lv_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-
-        <a name="hostname_config"></a>
-        The `hostname_config` block supports:
-        """
         return pulumi.get(self, "runtime_lv_type")
 
     @runtime_lv_type.setter
@@ -3416,42 +2330,12 @@ class NodePoolStorageGroupVirtualSpaceArgs:
 if not MYPY:
     class NodePoolStorageSelectorArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the selector name, used as the index of `selector_names` in storage group.
-        The name of each selector must be unique. Changing this parameter will create a new resource.
-        """
         match_label_count: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the number of disks to be selected. If omitted,
-        all disks of this type are selected. Changing this parameter will create a new resource.
-        """
         match_label_metadata_cmkid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the customer master key ID of an encrypted
-        disk. Changing this parameter will create a new resource.
-        """
         match_label_metadata_encrypted: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the disk encryption identifier.
-        Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-        If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        """
         match_label_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the matched disk size. If omitted,
-        the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        """
         match_label_volume_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the EVS disk type. Currently,
-        **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-        Changing this parameter will create a new resource.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
 elif False:
     NodePoolStorageSelectorArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3465,24 +2349,6 @@ class NodePoolStorageSelectorArgs:
                  match_label_size: Optional[pulumi.Input[_builtins.str]] = None,
                  match_label_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the selector name, used as the index of `selector_names` in storage group.
-               The name of each selector must be unique. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_count: Specifies the number of disks to be selected. If omitted,
-               all disks of this type are selected. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_metadata_cmkid: Specifies the customer master key ID of an encrypted
-               disk. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_metadata_encrypted: Specifies the disk encryption identifier.
-               Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-               If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_size: Specifies the matched disk size. If omitted,
-               the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_volume_type: Specifies the EVS disk type. Currently,
-               **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-               The default value is **evs**. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         if match_label_count is not None:
             pulumi.set(__self__, "match_label_count", match_label_count)
@@ -3500,10 +2366,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the selector name, used as the index of `selector_names` in storage group.
-        The name of each selector must be unique. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -3513,10 +2375,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelCount")
     def match_label_count(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the number of disks to be selected. If omitted,
-        all disks of this type are selected. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_count")
 
     @match_label_count.setter
@@ -3526,10 +2384,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataCmkid")
     def match_label_metadata_cmkid(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the customer master key ID of an encrypted
-        disk. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_cmkid")
 
     @match_label_metadata_cmkid.setter
@@ -3539,11 +2393,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataEncrypted")
     def match_label_metadata_encrypted(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk encryption identifier.
-        Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-        If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_encrypted")
 
     @match_label_metadata_encrypted.setter
@@ -3553,10 +2402,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelSize")
     def match_label_size(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the matched disk size. If omitted,
-        the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_size")
 
     @match_label_size.setter
@@ -3566,11 +2411,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelVolumeType")
     def match_label_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EVS disk type. Currently,
-        **SSD**, **GPSSD**, and **SAS** are supported. If omitted, the disk type is not limited.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_volume_type")
 
     @match_label_volume_type.setter
@@ -3580,10 +2420,6 @@ class NodePoolStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -3594,23 +2430,8 @@ class NodePoolStorageSelectorArgs:
 if not MYPY:
     class NodePoolTaintArgsDict(TypedDict):
         effect: pulumi.Input[_builtins.str]
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-
-        <a name="extend_params"></a>
-        The `extend_params` block supports:
-        """
         key: pulumi.Input[_builtins.str]
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-        digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-        prefix of a key.
-        """
         value: pulumi.Input[_builtins.str]
-        """
-        A value must start with a letter or digit and can contain a maximum of 63 characters,
-        including letters, digits, hyphens (-), underscores (_), and periods (.).
-        """
 elif False:
     NodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3620,17 +2441,6 @@ class NodePoolTaintArgs:
                  effect: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str]):
-        """
-        :param pulumi.Input[_builtins.str] effect: Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-               
-               <a name="extend_params"></a>
-               The `extend_params` block supports:
-        :param pulumi.Input[_builtins.str] key: A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-               digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-               prefix of a key.
-        :param pulumi.Input[_builtins.str] value: A value must start with a letter or digit and can contain a maximum of 63 characters,
-               including letters, digits, hyphens (-), underscores (_), and periods (.).
-        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -3638,12 +2448,6 @@ class NodePoolTaintArgs:
     @_builtins.property
     @pulumi.getter
     def effect(self) -> pulumi.Input[_builtins.str]:
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-
-        <a name="extend_params"></a>
-        The `extend_params` block supports:
-        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -3653,11 +2457,6 @@ class NodePoolTaintArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit. Only letters,
-        digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used as the
-        prefix of a key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -3667,10 +2466,6 @@ class NodePoolTaintArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
-        """
-        A value must start with a letter or digit and can contain a maximum of 63 characters,
-        including letters, digits, hyphens (-), underscores (_), and periods (.).
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -3681,43 +2476,16 @@ class NodePoolTaintArgs:
 if not MYPY:
     class NodeRootVolumeArgsDict(TypedDict):
         size: pulumi.Input[_builtins.int]
-        """
-        Specifies the disk size in GB.
-        Changing this parameter will create a new resource.
-        """
         volumetype: pulumi.Input[_builtins.str]
-        """
-        Specifies the disk type.
-        Changing this parameter will create a new resource.
-        """
         dss_pool_id: NotRequired[pulumi.Input[_builtins.str]]
         extend_param: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
-        """
         extend_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         hw_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
         """
         schema: Internal
         """
         iops: NotRequired[pulumi.Input[_builtins.int]]
         kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         throughput: NotRequired[pulumi.Input[_builtins.int]]
 elif False:
     NodeRootVolumeArgsDict: TypeAlias = Mapping[str, Any]
@@ -3735,24 +2503,7 @@ class NodeRootVolumeArgs:
                  kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
                  throughput: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] size: Specifies the disk size in GB.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] volumetype: Specifies the disk type.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] extend_param: Specifies the extended parameter.
-               Changing this parameter will create a new resource.
-               The available keys are as follows:
-               + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-               + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-               + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-               + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-               
-               The following is an example default configuration:
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extend_params: Specifies the disk expansion parameters.
-               Changing this parameter will create a new resource.
         :param pulumi.Input[_builtins.bool] hw_passthrough: schema: Internal
-        :param pulumi.Input[_builtins.str] kms_key_id: Specifies the ID of a KMS key. This is used to encrypt the volume.
-               Changing this parameter will create a new resource.
         """
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "volumetype", volumetype)
@@ -3777,10 +2528,6 @@ class NodeRootVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Specifies the disk size in GB.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -3790,10 +2537,6 @@ class NodeRootVolumeArgs:
     @_builtins.property
     @pulumi.getter
     def volumetype(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the disk type.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "volumetype")
 
     @volumetype.setter
@@ -3813,17 +2556,6 @@ class NodeRootVolumeArgs:
     @pulumi.getter(name="extendParam")
     @_utilities.deprecated("""use extend_params instead""")
     def extend_param(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the extended parameter.
-        Changing this parameter will create a new resource.
-        The available keys are as follows:
-        + **agency_name**: The agency name to provide temporary credentials for CCE node to access other cloud services.
-        + **alpha.cce/NodeImageID**: The custom image ID used to create the BMS nodes.
-        + **dockerBaseSize**: The available disk space of a single docker container on the node in device mapper mode.
-        + **DockerLVMConfigOverride**: Specifies the data disk configurations of Docker.
-
-        The following is an example default configuration:
-        """
         return pulumi.get(self, "extend_param")
 
     @extend_param.setter
@@ -3833,10 +2565,6 @@ class NodeRootVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="extendParams")
     def extend_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
-        """
-        Specifies the disk expansion parameters.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "extend_params")
 
     @extend_params.setter
@@ -3867,10 +2595,6 @@ class NodeRootVolumeArgs:
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the ID of a KMS key. This is used to encrypt the volume.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
@@ -3890,17 +2614,7 @@ class NodeRootVolumeArgs:
 if not MYPY:
     class NodeStorageArgsDict(TypedDict):
         groups: pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupArgsDict']]]
-        """
-        Specifies the storage group consists of multiple storage devices.
-        This is used to divide storage space. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         selectors: pulumi.Input[Sequence[pulumi.Input['NodeStorageSelectorArgsDict']]]
-        """
-        Specifies the disk selection.
-        Matched disks are managed according to match labels and storage type. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     NodeStorageArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3909,25 +2623,12 @@ class NodeStorageArgs:
     def __init__(__self__, *,
                  groups: pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupArgs']]],
                  selectors: pulumi.Input[Sequence[pulumi.Input['NodeStorageSelectorArgs']]]):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupArgs']]] groups: Specifies the storage group consists of multiple storage devices.
-               This is used to divide storage space. Structure is documented below.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeStorageSelectorArgs']]] selectors: Specifies the disk selection.
-               Matched disks are managed according to match labels and storage type. Structure is documented below.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "groups", groups)
         pulumi.set(__self__, "selectors", selectors)
 
     @_builtins.property
     @pulumi.getter
     def groups(self) -> pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupArgs']]]:
-        """
-        Specifies the storage group consists of multiple storage devices.
-        This is used to divide storage space. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "groups")
 
     @groups.setter
@@ -3937,11 +2638,6 @@ class NodeStorageArgs:
     @_builtins.property
     @pulumi.getter
     def selectors(self) -> pulumi.Input[Sequence[pulumi.Input['NodeStorageSelectorArgs']]]:
-        """
-        Specifies the disk selection.
-        Matched disks are managed according to match labels and storage type. Structure is documented below.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selectors")
 
     @selectors.setter
@@ -3952,27 +2648,9 @@ class NodeStorageArgs:
 if not MYPY:
     class NodeStorageGroupArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the name of a virtual storage group. Each group name must be unique.
-        Changing this parameter will create a new resource.
-        """
         selector_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Specifies the list of names of seletors to match.
-        This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-        but a selector can match only one group. Changing this parameter will create a new resource.
-        """
         virtual_spaces: pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupVirtualSpaceArgsDict']]]
-        """
-        Specifies the detailed management of space configuration in a group.
-        Changing this parameter will create a new resource.
-        """
         cce_managed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Specifies the whether the storage space is for **kubernetes** and
-        **runtime** components. Only one group can be set to true. The default value is **false**.
-        Changing this parameter will create a new resource.
-        """
 elif False:
     NodeStorageGroupArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -3983,18 +2661,6 @@ class NodeStorageGroupArgs:
                  selector_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  virtual_spaces: pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupVirtualSpaceArgs']]],
                  cce_managed: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the name of a virtual storage group. Each group name must be unique.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] selector_names: Specifies the list of names of seletors to match.
-               This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-               but a selector can match only one group. Changing this parameter will create a new resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupVirtualSpaceArgs']]] virtual_spaces: Specifies the detailed management of space configuration in a group.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.bool] cce_managed: Specifies the whether the storage space is for **kubernetes** and
-               **runtime** components. Only one group can be set to true. The default value is **false**.
-               Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "selector_names", selector_names)
         pulumi.set(__self__, "virtual_spaces", virtual_spaces)
@@ -4004,10 +2670,6 @@ class NodeStorageGroupArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the name of a virtual storage group. Each group name must be unique.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4017,11 +2679,6 @@ class NodeStorageGroupArgs:
     @_builtins.property
     @pulumi.getter(name="selectorNames")
     def selector_names(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        Specifies the list of names of seletors to match.
-        This parameter corresponds to name in `selectors`. A group can match multiple selectors,
-        but a selector can match only one group. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "selector_names")
 
     @selector_names.setter
@@ -4031,10 +2688,6 @@ class NodeStorageGroupArgs:
     @_builtins.property
     @pulumi.getter(name="virtualSpaces")
     def virtual_spaces(self) -> pulumi.Input[Sequence[pulumi.Input['NodeStorageGroupVirtualSpaceArgs']]]:
-        """
-        Specifies the detailed management of space configuration in a group.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "virtual_spaces")
 
     @virtual_spaces.setter
@@ -4044,11 +2697,6 @@ class NodeStorageGroupArgs:
     @_builtins.property
     @pulumi.getter(name="cceManaged")
     def cce_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Specifies the whether the storage space is for **kubernetes** and
-        **runtime** components. Only one group can be set to true. The default value is **false**.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "cce_managed")
 
     @cce_managed.setter
@@ -4059,32 +2707,10 @@ class NodeStorageGroupArgs:
 if not MYPY:
     class NodeStorageGroupVirtualSpaceArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-        and **user** are supported. Changing this parameter will create a new resource.
-        """
         size: pulumi.Input[_builtins.str]
-        """
-        Specifies the size of a virtual space. Only an integer percentage is supported.
-        Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-        Changing this parameter will create a new resource.
-        """
         lvm_lv_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-        a new resource.
-        """
         lvm_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the absolute path to which the disk is attached.
-        This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        """
         runtime_lv_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-        """
 elif False:
     NodeStorageGroupVirtualSpaceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4096,20 +2722,6 @@ class NodeStorageGroupVirtualSpaceArgs:
                  lvm_lv_type: Optional[pulumi.Input[_builtins.str]] = None,
                  lvm_path: Optional[pulumi.Input[_builtins.str]] = None,
                  runtime_lv_type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-               and **user** are supported. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] size: Specifies the size of a virtual space. Only an integer percentage is supported.
-               Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] lvm_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-               a new resource.
-        :param pulumi.Input[_builtins.str] lvm_path: Specifies the absolute path to which the disk is attached.
-               This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] runtime_lv_type: Specifies the LVM write mode, values can be **linear** and **striped**.
-               This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "size", size)
         if lvm_lv_type is not None:
@@ -4122,10 +2734,6 @@ class NodeStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the virtual space name. Currently, only **kubernetes**, **runtime**,
-        and **user** are supported. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4135,11 +2743,6 @@ class NodeStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the size of a virtual space. Only an integer percentage is supported.
-        Example: 90%. Note that the total percentage of all virtual spaces in a group cannot exceed 100%.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -4149,11 +2752,6 @@ class NodeStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter(name="lvmLvType")
     def lvm_lv_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **kubernetes** and **user** configuration. Changing this parameter will create
-        a new resource.
-        """
         return pulumi.get(self, "lvm_lv_type")
 
     @lvm_lv_type.setter
@@ -4163,10 +2761,6 @@ class NodeStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter(name="lvmPath")
     def lvm_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the absolute path to which the disk is attached.
-        This parameter takes effect only in **user** configuration. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "lvm_path")
 
     @lvm_path.setter
@@ -4176,10 +2770,6 @@ class NodeStorageGroupVirtualSpaceArgs:
     @_builtins.property
     @pulumi.getter(name="runtimeLvType")
     def runtime_lv_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the LVM write mode, values can be **linear** and **striped**.
-        This parameter takes effect only in **runtime** configuration. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "runtime_lv_type")
 
     @runtime_lv_type.setter
@@ -4190,42 +2780,12 @@ class NodeStorageGroupVirtualSpaceArgs:
 if not MYPY:
     class NodeStorageSelectorArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
-        """
-        Specifies the selector name, used as the index of `selector_names` in storage group.
-        The name of each selector must be unique. Changing this parameter will create a new resource.
-        """
         match_label_count: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the number of disks to be selected. If omitted,
-        all disks of this type are selected. Changing this parameter will create a new resource.
-        """
         match_label_metadata_cmkid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the cstomer master key ID of an encrypted
-        disk. Changing this parameter will create a new resource.
-        """
         match_label_metadata_encrypted: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the disk encryption identifier.
-        Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-        If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        """
         match_label_size: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the matched disk size. If omitted,
-        the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        """
         match_label_volume_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the EVS disk type. Currently,
-        **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-        Changing this parameter will create a new resource.
-        """
         type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
 elif False:
     NodeStorageSelectorArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4239,24 +2799,6 @@ class NodeStorageSelectorArgs:
                  match_label_size: Optional[pulumi.Input[_builtins.str]] = None,
                  match_label_volume_type: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] name: Specifies the selector name, used as the index of `selector_names` in storage group.
-               The name of each selector must be unique. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_count: Specifies the number of disks to be selected. If omitted,
-               all disks of this type are selected. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_metadata_cmkid: Specifies the cstomer master key ID of an encrypted
-               disk. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_metadata_encrypted: Specifies the disk encryption identifier.
-               Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-               If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_size: Specifies the matched disk size. If omitted,
-               the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] match_label_volume_type: Specifies the EVS disk type. Currently,
-               **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] type: Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-               The default value is **evs**. Changing this parameter will create a new resource.
-        """
         pulumi.set(__self__, "name", name)
         if match_label_count is not None:
             pulumi.set(__self__, "match_label_count", match_label_count)
@@ -4274,10 +2816,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Specifies the selector name, used as the index of `selector_names` in storage group.
-        The name of each selector must be unique. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -4287,10 +2825,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelCount")
     def match_label_count(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the number of disks to be selected. If omitted,
-        all disks of this type are selected. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_count")
 
     @match_label_count.setter
@@ -4300,10 +2834,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataCmkid")
     def match_label_metadata_cmkid(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the cstomer master key ID of an encrypted
-        disk. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_cmkid")
 
     @match_label_metadata_cmkid.setter
@@ -4313,11 +2843,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelMetadataEncrypted")
     def match_label_metadata_encrypted(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the disk encryption identifier.
-        Values can be: **0** indicates that the disk is not encrypted and **1** indicates that the disk is encrypted.
-        If omitted, whether the disk is encrypted is not limited. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_metadata_encrypted")
 
     @match_label_metadata_encrypted.setter
@@ -4327,10 +2852,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelSize")
     def match_label_size(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the matched disk size. If omitted,
-        the disk size is not limited. Example: 100. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_size")
 
     @match_label_size.setter
@@ -4340,11 +2861,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="matchLabelVolumeType")
     def match_label_volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the EVS disk type. Currently,
-        **SSD** and **SAS** are supported. If omitted, the disk type is not limited.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "match_label_volume_type")
 
     @match_label_volume_type.setter
@@ -4354,10 +2870,6 @@ class NodeStorageSelectorArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the storage type. Currently, only **evs (EVS volumes)** is supported.
-        The default value is **evs**. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -4368,22 +2880,8 @@ class NodeStorageSelectorArgs:
 if not MYPY:
     class NodeTaintArgsDict(TypedDict):
         effect: pulumi.Input[_builtins.str]
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-        Changing this parameter will create a new resource.
-        """
         key: pulumi.Input[_builtins.str]
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit.
-        Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-        as the prefix of a key. Changing this parameter will create a new resource.
-        """
         value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A value must start with a letter or digit and can contain a maximum of 63
-        characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-        create a new resource.
-        """
 elif False:
     NodeTaintArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4393,16 +2891,6 @@ class NodeTaintArgs:
                  effect: pulumi.Input[_builtins.str],
                  key: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] effect: Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-               Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] key: A key must contain 1 to 63 characters starting with a letter or digit.
-               Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-               as the prefix of a key. Changing this parameter will create a new resource.
-        :param pulumi.Input[_builtins.str] value: A value must start with a letter or digit and can contain a maximum of 63
-               characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-               create a new resource.
-        """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
         if value is not None:
@@ -4411,10 +2899,6 @@ class NodeTaintArgs:
     @_builtins.property
     @pulumi.getter
     def effect(self) -> pulumi.Input[_builtins.str]:
-        """
-        Available options are NoSchedule, PreferNoSchedule, and NoExecute.
-        Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "effect")
 
     @effect.setter
@@ -4424,11 +2908,6 @@ class NodeTaintArgs:
     @_builtins.property
     @pulumi.getter
     def key(self) -> pulumi.Input[_builtins.str]:
-        """
-        A key must contain 1 to 63 characters starting with a letter or digit.
-        Only letters, digits, hyphens (-), underscores (_), and periods (.) are allowed. A DNS subdomain name can be used
-        as the prefix of a key. Changing this parameter will create a new resource.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -4438,11 +2917,6 @@ class NodeTaintArgs:
     @_builtins.property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A value must start with a letter or digit and can contain a maximum of 63
-        characters, including letters, digits, hyphens (-), underscores (_), and periods (.). Changing this parameter will
-        create a new resource.
-        """
         return pulumi.get(self, "value")
 
     @value.setter

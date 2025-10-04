@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-/**
- * Use this data source to get the ID of an available Sbercloud port.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const port1 = sbercloud.Vpc.getPort({
- *     name: "port_1",
- * });
- * ```
- */
 export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promise<GetPortResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,58 +29,22 @@ export function getPort(args?: GetPortArgs, opts?: pulumi.InvokeOptions): Promis
  */
 export interface GetPortArgs {
     /**
-     * The administrative state of the port.
-     *
      * @deprecated this field is deprecated
      */
     adminStateUp?: boolean;
-    /**
-     * The ID of the device the port belongs to.
-     */
     deviceId?: string;
-    /**
-     * The device owner of the port.
-     */
     deviceOwner?: string;
-    /**
-     * The port IP address filter.
-     */
     fixedIp?: string;
-    /**
-     * The MAC address of the port.
-     */
     macAddress?: string;
-    /**
-     * The name of the port.
-     */
     name?: string;
-    /**
-     * The ID of the network the port belongs to.
-     */
     networkId?: string;
-    /**
-     * The ID of the port.
-     */
     portId?: string;
     /**
-     * The owner of the port.
-     *
      * @deprecated this field is deprecated
      */
     projectId?: string;
-    /**
-     * The region in which to obtain the V2 Neutron client.
-     * A Neutron client is needed to retrieve port ids. If omitted, the
-     * `region` argument of the provider is used.
-     */
     region?: string;
-    /**
-     * The list of port security group IDs to filter.
-     */
     securityGroupIds?: string[];
-    /**
-     * The status of the port.
-     */
     status?: string;
     /**
      * @deprecated this field is deprecated
@@ -111,14 +61,7 @@ export interface GetPortResult {
      */
     readonly adminStateUp: boolean;
     readonly allAllowedIps: string[];
-    /**
-     * The collection of Fixed IP addresses on the port in the
-     * order returned by the Network v2 API.
-     */
     readonly allFixedIps: string[];
-    /**
-     * The set of security group IDs applied on the port.
-     */
     readonly allSecurityGroupIds: string[];
     readonly deviceId: string;
     readonly deviceOwner: string;
@@ -143,20 +86,6 @@ export interface GetPortResult {
      */
     readonly tenantId?: string;
 }
-/**
- * Use this data source to get the ID of an available Sbercloud port.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const port1 = sbercloud.Vpc.getPort({
- *     name: "port_1",
- * });
- * ```
- */
 export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPortResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -182,58 +111,22 @@ export function getPortOutput(args?: GetPortOutputArgs, opts?: pulumi.InvokeOutp
  */
 export interface GetPortOutputArgs {
     /**
-     * The administrative state of the port.
-     *
      * @deprecated this field is deprecated
      */
     adminStateUp?: pulumi.Input<boolean>;
-    /**
-     * The ID of the device the port belongs to.
-     */
     deviceId?: pulumi.Input<string>;
-    /**
-     * The device owner of the port.
-     */
     deviceOwner?: pulumi.Input<string>;
-    /**
-     * The port IP address filter.
-     */
     fixedIp?: pulumi.Input<string>;
-    /**
-     * The MAC address of the port.
-     */
     macAddress?: pulumi.Input<string>;
-    /**
-     * The name of the port.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The ID of the network the port belongs to.
-     */
     networkId?: pulumi.Input<string>;
-    /**
-     * The ID of the port.
-     */
     portId?: pulumi.Input<string>;
     /**
-     * The owner of the port.
-     *
      * @deprecated this field is deprecated
      */
     projectId?: pulumi.Input<string>;
-    /**
-     * The region in which to obtain the V2 Neutron client.
-     * A Neutron client is needed to retrieve port ids. If omitted, the
-     * `region` argument of the provider is used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * The list of port security group IDs to filter.
-     */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The status of the port.
-     */
     status?: pulumi.Input<string>;
     /**
      * @deprecated this field is deprecated

@@ -6,30 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get a list of VPN connections.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const status = config.requireObject<any>("status");
- * const name = config.requireObject<any>("name");
- * const vpnType = config.requireObject<any>("vpnType");
- * const gatewayId = config.requireObject<any>("gatewayId");
- * const gatewayIp = config.requireObject<any>("gatewayIp");
- * const services = sbercloud.getVpnConnections({
- *     status: status,
- *     name: name,
- *     vpnType: vpnType,
- *     gatewayId: gatewayId,
- *     gatewayIp: gatewayIp,
- * });
- * ```
- */
 export function getVpnConnections(args?: GetVpnConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnConnectionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -48,34 +24,12 @@ export function getVpnConnections(args?: GetVpnConnectionsArgs, opts?: pulumi.In
  * A collection of arguments for invoking getVpnConnections.
  */
 export interface GetVpnConnectionsArgs {
-    /**
-     * Specifies the ID of the VPN connection.
-     */
     connectionId?: string;
-    /**
-     * Specifies the gateway ID of the VPN connection.
-     */
     gatewayId?: string;
-    /**
-     * Specifies the gateway IP of the VPN connection.
-     */
     gatewayIp?: string;
-    /**
-     * Specifies the name of the VPN connection.
-     */
     name?: string;
-    /**
-     * Specifies the region in which to obtain the VPN customer gateways.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
-    /**
-     * Specifies the status of the VPN connection.
-     */
     status?: string;
-    /**
-     * Specifies the VPN type of the VPN connection.
-     */
     vpnType?: string;
 }
 
@@ -84,61 +38,18 @@ export interface GetVpnConnectionsArgs {
  */
 export interface GetVpnConnectionsResult {
     readonly connectionId?: string;
-    /**
-     * All resource connection that match the filter parameters.
-     * The connections structure is documented below.
-     */
     readonly connections: outputs.GetVpnConnectionsConnection[];
-    /**
-     * Indicates the gateway ID of the connection.
-     */
     readonly gatewayId?: string;
-    /**
-     * Indicates the gateway IP of the connection.
-     */
     readonly gatewayIp?: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Indicates the name of the connection.
-     */
     readonly name?: string;
     readonly region: string;
-    /**
-     * Indicates the status of the connection.
-     */
     readonly status?: string;
-    /**
-     * Indicates the VPN type of the connection.
-     */
     readonly vpnType?: string;
 }
-/**
- * Use this data source to get a list of VPN connections.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const status = config.requireObject<any>("status");
- * const name = config.requireObject<any>("name");
- * const vpnType = config.requireObject<any>("vpnType");
- * const gatewayId = config.requireObject<any>("gatewayId");
- * const gatewayIp = config.requireObject<any>("gatewayIp");
- * const services = sbercloud.getVpnConnections({
- *     status: status,
- *     name: name,
- *     vpnType: vpnType,
- *     gatewayId: gatewayId,
- *     gatewayIp: gatewayIp,
- * });
- * ```
- */
 export function getVpnConnectionsOutput(args?: GetVpnConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnConnectionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -157,33 +68,11 @@ export function getVpnConnectionsOutput(args?: GetVpnConnectionsOutputArgs, opts
  * A collection of arguments for invoking getVpnConnections.
  */
 export interface GetVpnConnectionsOutputArgs {
-    /**
-     * Specifies the ID of the VPN connection.
-     */
     connectionId?: pulumi.Input<string>;
-    /**
-     * Specifies the gateway ID of the VPN connection.
-     */
     gatewayId?: pulumi.Input<string>;
-    /**
-     * Specifies the gateway IP of the VPN connection.
-     */
     gatewayIp?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the VPN connection.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to obtain the VPN customer gateways.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
-    /**
-     * Specifies the status of the VPN connection.
-     */
     status?: pulumi.Input<string>;
-    /**
-     * Specifies the VPN type of the VPN connection.
-     */
     vpnType?: pulumi.Input<string>;
 }

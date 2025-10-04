@@ -6,22 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of VPN gateways.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const gatewayName = config.requireObject<any>("gatewayName");
- * const test = sbercloud.getVpnGateways({
- *     name: gatewayName,
- * });
- * ```
- */
 export function getVpnGateways(args?: GetVpnGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetVpnGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -39,32 +23,11 @@ export function getVpnGateways(args?: GetVpnGatewaysArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getVpnGateways.
  */
 export interface GetVpnGatewaysArgs {
-    /**
-     * Specifies the attachment type of the gateway.
-     * The value can be: **vpc** and **er**.
-     */
     attachmentType?: string;
-    /**
-     * Specifies the enterprise project ID of the gateway.
-     */
     enterpriseProjectId?: string;
-    /**
-     * Specifies the ID of the gateway.
-     */
     gatewayId?: string;
-    /**
-     * Specifies the name of the gateway.
-     */
     name?: string;
-    /**
-     * Specifies the network type of the gateway.
-     * The value can be: **public** and **private**.
-     */
     networkType?: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -72,50 +35,18 @@ export interface GetVpnGatewaysArgs {
  * A collection of values returned by getVpnGateways.
  */
 export interface GetVpnGatewaysResult {
-    /**
-     * The attachment type.
-     */
     readonly attachmentType?: string;
-    /**
-     * The enterprise project ID
-     */
     readonly enterpriseProjectId?: string;
     readonly gatewayId?: string;
-    /**
-     * The list of gateways.
-     * The gateways structure is documented below.
-     */
     readonly gateways: outputs.GetVpnGatewaysGateway[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The name of the gateway.
-     */
     readonly name?: string;
-    /**
-     * The network type of the gateway.
-     */
     readonly networkType?: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of VPN gateways.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as sbercloud from "pulumi-cloudru";
- *
- * const config = new pulumi.Config();
- * const gatewayName = config.requireObject<any>("gatewayName");
- * const test = sbercloud.getVpnGateways({
- *     name: gatewayName,
- * });
- * ```
- */
 export function getVpnGatewaysOutput(args?: GetVpnGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpnGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -133,31 +64,10 @@ export function getVpnGatewaysOutput(args?: GetVpnGatewaysOutputArgs, opts?: pul
  * A collection of arguments for invoking getVpnGateways.
  */
 export interface GetVpnGatewaysOutputArgs {
-    /**
-     * Specifies the attachment type of the gateway.
-     * The value can be: **vpc** and **er**.
-     */
     attachmentType?: pulumi.Input<string>;
-    /**
-     * Specifies the enterprise project ID of the gateway.
-     */
     enterpriseProjectId?: pulumi.Input<string>;
-    /**
-     * Specifies the ID of the gateway.
-     */
     gatewayId?: pulumi.Input<string>;
-    /**
-     * Specifies the name of the gateway.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Specifies the network type of the gateway.
-     * The value can be: **public** and **private**.
-     */
     networkType?: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

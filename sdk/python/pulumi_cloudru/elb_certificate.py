@@ -32,20 +32,6 @@ class ElbCertificateArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ElbCertificate resource.
-        :param pulumi.Input[_builtins.str] certificate: The public encrypted key of the Certificate, PEM format.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the Certificate.
-        :param pulumi.Input[_builtins.str] domain: The domain of the Certificate. The value contains a maximum of 100 characters. This
-               parameter is valid only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the certificate.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the Certificate. Does not have to be unique.
-        :param pulumi.Input[_builtins.str] private_key: The private encrypted key of the Certificate, PEM format. This parameter is valid
-               and mandatory only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB certificate resource. If omitted, the
-               provider-level region will be used. Changing this creates a new certificate.
-        :param pulumi.Input[_builtins.str] type: Specifies the certificate type. The default value is "server". The value can be
-               one of the following:
-               + server: indicates the server certificate.
-               + client: indicates the CA certificate.
         """
         pulumi.set(__self__, "certificate", certificate)
         if description is not None:
@@ -72,9 +58,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Input[_builtins.str]:
-        """
-        The public encrypted key of the Certificate, PEM format.
-        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -84,9 +67,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the Certificate.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -96,10 +76,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The domain of the Certificate. The value contains a maximum of 100 characters. This
-        parameter is valid only when `type` is set to "server".
-        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -127,9 +103,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the certificate.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -139,9 +112,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the Certificate. Does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -151,10 +121,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private encrypted key of the Certificate, PEM format. This parameter is valid
-        and mandatory only when `type` is set to "server".
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -164,10 +130,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB certificate resource. If omitted, the
-        provider-level region will be used. Changing this creates a new certificate.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -186,12 +148,6 @@ class ElbCertificateArgs:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the certificate type. The default value is "server". The value can be
-        one of the following:
-        + server: indicates the server certificate.
-        + client: indicates the CA certificate.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -221,23 +177,6 @@ class _ElbCertificateState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ElbCertificate resources.
-        :param pulumi.Input[_builtins.str] certificate: The public encrypted key of the Certificate, PEM format.
-        :param pulumi.Input[_builtins.str] create_time: Indicates the creation time.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the Certificate.
-        :param pulumi.Input[_builtins.str] domain: The domain of the Certificate. The value contains a maximum of 100 characters. This
-               parameter is valid only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the certificate.
-        :param pulumi.Input[_builtins.str] expire_time: Indicates the expire time.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the Certificate. Does not have to be unique.
-        :param pulumi.Input[_builtins.str] private_key: The private encrypted key of the Certificate, PEM format. This parameter is valid
-               and mandatory only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB certificate resource. If omitted, the
-               provider-level region will be used. Changing this creates a new certificate.
-        :param pulumi.Input[_builtins.str] type: Specifies the certificate type. The default value is "server". The value can be
-               one of the following:
-               + server: indicates the server certificate.
-               + client: indicates the CA certificate.
-        :param pulumi.Input[_builtins.str] update_time: Indicates the update time.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
@@ -277,9 +216,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The public encrypted key of the Certificate, PEM format.
-        """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
@@ -298,9 +234,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the creation time.
-        """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
@@ -310,9 +243,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable description for the Certificate.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -322,10 +252,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The domain of the Certificate. The value contains a maximum of 100 characters. This
-        parameter is valid only when `type` is set to "server".
-        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -353,9 +279,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The enterprise project id of the certificate.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @enterprise_project_id.setter
@@ -365,9 +288,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the expire time.
-        """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
@@ -386,9 +306,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Human-readable name for the Certificate. Does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -398,10 +315,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The private encrypted key of the Certificate, PEM format. This parameter is valid
-        and mandatory only when `type` is set to "server".
-        """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
@@ -411,10 +324,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region in which to create the ELB certificate resource. If omitted, the
-        provider-level region will be used. Changing this creates a new certificate.
-        """
         return pulumi.get(self, "region")
 
     @region.setter
@@ -442,12 +351,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Specifies the certificate type. The default value is "server". The value can be
-        one of the following:
-        + server: indicates the server certificate.
-        + client: indicates the CA certificate.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -457,9 +360,6 @@ class _ElbCertificateState:
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Indicates the update time.
-        """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
@@ -486,121 +386,9 @@ class ElbCertificate(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages an ELB certificate resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        certificate1 = sbercloud.ElbCertificate("certificate_1",
-            name="certificate_1",
-            description="terraform test certificate",
-            domain="www.elb.com",
-            private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
-        MIIEowIBAAKCAQEAwZ5UJULAjWr7p6FVwGRQRjFN2s8tZ/6LC3X82fajpVsYqF1x
-        qEuUDndDXVD09E4u83MS6HO6a3bIVQDp6/klnYldiE6Vp8HH5BSKaCWKVg8lGWg1
-        UM9wZFnlryi14KgmpIFmcu9nA8yV/6MZAe6RSDmb3iyNBmiZ8aZhGw2pI1YwR+15
-        MVqFFGB+7ExkziROi7L8CFCyCezK2/oOOvQsH1dzQ8z1JXWdg8/9Zx7Ktvgwu5PQ
-        M3cJtSHX6iBPOkMU8Z8TugLlTqQXKZOEgwajwvQ5mf2DPkVgM08XAgaLJcLigwD5
-        13koAdtJd5v+9irw+5LAuO3JclqwTvwy7u/YwwIDAQABAoIBACU9S5fjD9/jTMXA
-        DRs08A+gGgZUxLn0xk+NAPX3LyB1tfdkCaFB8BccLzO6h3KZuwQOBPv6jkdvEDbx
-        Nwyw3eA/9GJsIvKiHc0rejdvyPymaw9I8MA7NbXHaJrY7KpqDQyk6sx+aUTcy5jg
-        iMXLWdwXYHhJ/1HVOo603oZyiS6HZeYU089NDUcX+1SJi3e5Ke0gPVXEqCq1O11/
-        rh24bMxnwZo4PKBWdcMBN5Zf/4ij9vrZE+fFzW7vGBO48A5lvZxWU2U5t/OZQRtN
-        1uLOHmMFa0FIF2aWbTVfwdUWAFsvAOkHj9VV8BXOUwKOUuEktdkfAlvrxmsFrO/H
-        yDeYYPkCgYEA/S55CBbR0sMXpSZ56uRn8JHApZJhgkgvYr+FqDlJq/e92nAzf01P
-        RoEBUajwrnf1ycevN/SDfbtWzq2XJGqhWdJmtpO16b7KBsC6BdRcH6dnOYh31jgA
-        vABMIP3wzI4zSVTyxRE8LDuboytF1mSCeV5tHYPQTZNwrplDnLQhywcCgYEAw8Yc
-        Uk/eiFr3hfH/ZohMfV5p82Qp7DNIGRzw8YtVG/3+vNXrAXW1VhugNhQY6L+zLtJC
-        aKn84ooup0m3YCg0hvINqJuvzfsuzQgtjTXyaE0cEwsjUusOmiuj09vVx/3U7siK
-        Hdjd2ICPCvQ6Q8tdi8jV320gMs05AtaBkZdsiWUCgYEAtLw4Kk4f+xTKDFsrLUNf
-        75wcqhWVBiwBp7yQ7UX4EYsJPKZcHMRTk0EEcAbpyaJZE3I44vjp5ReXIHNLMfPs
-        uvI34J4Rfot0LN3n7cFrAi2+wpNo+MOBwrNzpRmijGP2uKKrq4JiMjFbKV/6utGF
-        Up7VxfwS904JYpqGaZctiIECgYA1A6nZtF0riY6ry/uAdXpZHL8ONNqRZtWoT0kD
-        79otSVu5ISiRbaGcXsDExC52oKrSDAgFtbqQUiEOFg09UcXfoR6HwRkba2CiDwve
-        yHQLQI5Qrdxz8Mk0gIrNrSM4FAmcW9vi9z4kCbQyoC5C+4gqeUlJRpDIkQBWP2Y4
-        2ct/bQKBgHv8qCsQTZphOxc31BJPa2xVhuv18cEU3XLUrVfUZ/1f43JhLp7gynS2
-        ep++LKUi9D0VGXY8bqvfJjbECoCeu85vl8NpCXwe/LoVoIn+7KaVIZMwqoGMfgNl
-        nEqm7HWkNxHhf8A6En/IjleuddS1sf9e/x+TJN1Xhnt9W6pe7Fk1
-        -----END RSA PRIVATE KEY-----
-        \"\"\",
-            certificate=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDpTCCAo2gAwIBAgIJAKdmmOBYnFvoMA0GCSqGSIb3DQEBCwUAMGkxCzAJBgNV
-        BAYTAnh4MQswCQYDVQQIDAJ4eDELMAkGA1UEBwwCeHgxCzAJBgNVBAoMAnh4MQsw
-        CQYDVQQLDAJ4eDELMAkGA1UEAwwCeHgxGTAXBgkqhkiG9w0BCQEWCnh4QDE2My5j
-        b20wHhcNMTcxMjA0MDM0MjQ5WhcNMjAxMjAzMDM0MjQ5WjBpMQswCQYDVQQGEwJ4
-        eDELMAkGA1UECAwCeHgxCzAJBgNVBAcMAnh4MQswCQYDVQQKDAJ4eDELMAkGA1UE
-        CwwCeHgxCzAJBgNVBAMMAnh4MRkwFwYJKoZIhvcNAQkBFgp4eEAxNjMuY29tMIIB
-        IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwZ5UJULAjWr7p6FVwGRQRjFN
-        2s8tZ/6LC3X82fajpVsYqF1xqEuUDndDXVD09E4u83MS6HO6a3bIVQDp6/klnYld
-        iE6Vp8HH5BSKaCWKVg8lGWg1UM9wZFnlryi14KgmpIFmcu9nA8yV/6MZAe6RSDmb
-        3iyNBmiZ8aZhGw2pI1YwR+15MVqFFGB+7ExkziROi7L8CFCyCezK2/oOOvQsH1dz
-        Q8z1JXWdg8/9Zx7Ktvgwu5PQM3cJtSHX6iBPOkMU8Z8TugLlTqQXKZOEgwajwvQ5
-        mf2DPkVgM08XAgaLJcLigwD513koAdtJd5v+9irw+5LAuO3JclqwTvwy7u/YwwID
-        AQABo1AwTjAdBgNVHQ4EFgQUo5A2tIu+bcUfvGTD7wmEkhXKFjcwHwYDVR0jBBgw
-        FoAUo5A2tIu+bcUfvGTD7wmEkhXKFjcwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0B
-        AQsFAAOCAQEAWJ2rS6Mvlqk3GfEpboezx2J3X7l1z8Sxoqg6ntwB+rezvK3mc9H0
-        83qcVeUcoH+0A0lSHyFN4FvRQL6X1hEheHarYwJK4agb231vb5erasuGO463eYEG
-        r4SfTuOm7SyiV2xxbaBKrXJtpBp4WLL/s+LF+nklKjaOxkmxUX0sM4CTA7uFJypY
-        c8Tdr8lDDNqoUtMD8BrUCJi+7lmMXRcC3Qi3oZJW76ja+kZA5mKVFPd1ATih8TbA
-        i34R7EQDtFeiSvBdeKRsPp8c0KT8H1B4lXNkkCQs2WX5p4lm99+ZtLD4glw8x6Ic
-        i1YhgnQbn5E0hz55OLu5jvOkKQjPCW+8Kg==
-        -----END CERTIFICATE-----
-        \"\"\")
-        ```
-
-        ## Import
-
-        ELB certificate can be imported using the certificate ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbCertificate:ElbCertificate certificate_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `enterprise_project_id`.
-
-        It is generally recommended running `pulumi preview` after importing a certificate.
-
-        You can then decide if changes should be applied to the certificate, or the resource
-
-        definition should be updated to align with the certificate. Also you can ignore changes as below.
-
-        resource "sbercloud_elb_certificate" "certificate_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              enterprise_project_id,
-            
-            ]
-
-          }
-
-        }
-
+        Create a ElbCertificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate: The public encrypted key of the Certificate, PEM format.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the Certificate.
-        :param pulumi.Input[_builtins.str] domain: The domain of the Certificate. The value contains a maximum of 100 characters. This
-               parameter is valid only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the certificate.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the Certificate. Does not have to be unique.
-        :param pulumi.Input[_builtins.str] private_key: The private encrypted key of the Certificate, PEM format. This parameter is valid
-               and mandatory only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB certificate resource. If omitted, the
-               provider-level region will be used. Changing this creates a new certificate.
-        :param pulumi.Input[_builtins.str] type: Specifies the certificate type. The default value is "server". The value can be
-               one of the following:
-               + server: indicates the server certificate.
-               + client: indicates the CA certificate.
         """
         ...
     @overload
@@ -609,105 +397,7 @@ class ElbCertificate(pulumi.CustomResource):
                  args: ElbCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an ELB certificate resource within SberCloud.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudru as sbercloud
-
-        certificate1 = sbercloud.ElbCertificate("certificate_1",
-            name="certificate_1",
-            description="terraform test certificate",
-            domain="www.elb.com",
-            private_key=\"\"\"-----BEGIN RSA PRIVATE KEY-----
-        MIIEowIBAAKCAQEAwZ5UJULAjWr7p6FVwGRQRjFN2s8tZ/6LC3X82fajpVsYqF1x
-        qEuUDndDXVD09E4u83MS6HO6a3bIVQDp6/klnYldiE6Vp8HH5BSKaCWKVg8lGWg1
-        UM9wZFnlryi14KgmpIFmcu9nA8yV/6MZAe6RSDmb3iyNBmiZ8aZhGw2pI1YwR+15
-        MVqFFGB+7ExkziROi7L8CFCyCezK2/oOOvQsH1dzQ8z1JXWdg8/9Zx7Ktvgwu5PQ
-        M3cJtSHX6iBPOkMU8Z8TugLlTqQXKZOEgwajwvQ5mf2DPkVgM08XAgaLJcLigwD5
-        13koAdtJd5v+9irw+5LAuO3JclqwTvwy7u/YwwIDAQABAoIBACU9S5fjD9/jTMXA
-        DRs08A+gGgZUxLn0xk+NAPX3LyB1tfdkCaFB8BccLzO6h3KZuwQOBPv6jkdvEDbx
-        Nwyw3eA/9GJsIvKiHc0rejdvyPymaw9I8MA7NbXHaJrY7KpqDQyk6sx+aUTcy5jg
-        iMXLWdwXYHhJ/1HVOo603oZyiS6HZeYU089NDUcX+1SJi3e5Ke0gPVXEqCq1O11/
-        rh24bMxnwZo4PKBWdcMBN5Zf/4ij9vrZE+fFzW7vGBO48A5lvZxWU2U5t/OZQRtN
-        1uLOHmMFa0FIF2aWbTVfwdUWAFsvAOkHj9VV8BXOUwKOUuEktdkfAlvrxmsFrO/H
-        yDeYYPkCgYEA/S55CBbR0sMXpSZ56uRn8JHApZJhgkgvYr+FqDlJq/e92nAzf01P
-        RoEBUajwrnf1ycevN/SDfbtWzq2XJGqhWdJmtpO16b7KBsC6BdRcH6dnOYh31jgA
-        vABMIP3wzI4zSVTyxRE8LDuboytF1mSCeV5tHYPQTZNwrplDnLQhywcCgYEAw8Yc
-        Uk/eiFr3hfH/ZohMfV5p82Qp7DNIGRzw8YtVG/3+vNXrAXW1VhugNhQY6L+zLtJC
-        aKn84ooup0m3YCg0hvINqJuvzfsuzQgtjTXyaE0cEwsjUusOmiuj09vVx/3U7siK
-        Hdjd2ICPCvQ6Q8tdi8jV320gMs05AtaBkZdsiWUCgYEAtLw4Kk4f+xTKDFsrLUNf
-        75wcqhWVBiwBp7yQ7UX4EYsJPKZcHMRTk0EEcAbpyaJZE3I44vjp5ReXIHNLMfPs
-        uvI34J4Rfot0LN3n7cFrAi2+wpNo+MOBwrNzpRmijGP2uKKrq4JiMjFbKV/6utGF
-        Up7VxfwS904JYpqGaZctiIECgYA1A6nZtF0riY6ry/uAdXpZHL8ONNqRZtWoT0kD
-        79otSVu5ISiRbaGcXsDExC52oKrSDAgFtbqQUiEOFg09UcXfoR6HwRkba2CiDwve
-        yHQLQI5Qrdxz8Mk0gIrNrSM4FAmcW9vi9z4kCbQyoC5C+4gqeUlJRpDIkQBWP2Y4
-        2ct/bQKBgHv8qCsQTZphOxc31BJPa2xVhuv18cEU3XLUrVfUZ/1f43JhLp7gynS2
-        ep++LKUi9D0VGXY8bqvfJjbECoCeu85vl8NpCXwe/LoVoIn+7KaVIZMwqoGMfgNl
-        nEqm7HWkNxHhf8A6En/IjleuddS1sf9e/x+TJN1Xhnt9W6pe7Fk1
-        -----END RSA PRIVATE KEY-----
-        \"\"\",
-            certificate=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDpTCCAo2gAwIBAgIJAKdmmOBYnFvoMA0GCSqGSIb3DQEBCwUAMGkxCzAJBgNV
-        BAYTAnh4MQswCQYDVQQIDAJ4eDELMAkGA1UEBwwCeHgxCzAJBgNVBAoMAnh4MQsw
-        CQYDVQQLDAJ4eDELMAkGA1UEAwwCeHgxGTAXBgkqhkiG9w0BCQEWCnh4QDE2My5j
-        b20wHhcNMTcxMjA0MDM0MjQ5WhcNMjAxMjAzMDM0MjQ5WjBpMQswCQYDVQQGEwJ4
-        eDELMAkGA1UECAwCeHgxCzAJBgNVBAcMAnh4MQswCQYDVQQKDAJ4eDELMAkGA1UE
-        CwwCeHgxCzAJBgNVBAMMAnh4MRkwFwYJKoZIhvcNAQkBFgp4eEAxNjMuY29tMIIB
-        IjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwZ5UJULAjWr7p6FVwGRQRjFN
-        2s8tZ/6LC3X82fajpVsYqF1xqEuUDndDXVD09E4u83MS6HO6a3bIVQDp6/klnYld
-        iE6Vp8HH5BSKaCWKVg8lGWg1UM9wZFnlryi14KgmpIFmcu9nA8yV/6MZAe6RSDmb
-        3iyNBmiZ8aZhGw2pI1YwR+15MVqFFGB+7ExkziROi7L8CFCyCezK2/oOOvQsH1dz
-        Q8z1JXWdg8/9Zx7Ktvgwu5PQM3cJtSHX6iBPOkMU8Z8TugLlTqQXKZOEgwajwvQ5
-        mf2DPkVgM08XAgaLJcLigwD513koAdtJd5v+9irw+5LAuO3JclqwTvwy7u/YwwID
-        AQABo1AwTjAdBgNVHQ4EFgQUo5A2tIu+bcUfvGTD7wmEkhXKFjcwHwYDVR0jBBgw
-        FoAUo5A2tIu+bcUfvGTD7wmEkhXKFjcwDAYDVR0TBAUwAwEB/zANBgkqhkiG9w0B
-        AQsFAAOCAQEAWJ2rS6Mvlqk3GfEpboezx2J3X7l1z8Sxoqg6ntwB+rezvK3mc9H0
-        83qcVeUcoH+0A0lSHyFN4FvRQL6X1hEheHarYwJK4agb231vb5erasuGO463eYEG
-        r4SfTuOm7SyiV2xxbaBKrXJtpBp4WLL/s+LF+nklKjaOxkmxUX0sM4CTA7uFJypY
-        c8Tdr8lDDNqoUtMD8BrUCJi+7lmMXRcC3Qi3oZJW76ja+kZA5mKVFPd1ATih8TbA
-        i34R7EQDtFeiSvBdeKRsPp8c0KT8H1B4lXNkkCQs2WX5p4lm99+ZtLD4glw8x6Ic
-        i1YhgnQbn5E0hz55OLu5jvOkKQjPCW+8Kg==
-        -----END CERTIFICATE-----
-        \"\"\")
-        ```
-
-        ## Import
-
-        ELB certificate can be imported using the certificate ID, e.g.
-
-        ```sh
-        $ pulumi import sbercloud:index/elbCertificate:ElbCertificate certificate_1 5c20fdad-7288-11eb-b817-0255ac10158b
-        ```
-
-        Note that the imported state may not be identical to your resource definition, due to some attributes missing from the
-
-        API response, security or some other reason. The missing attributes include: `enterprise_project_id`.
-
-        It is generally recommended running `pulumi preview` after importing a certificate.
-
-        You can then decide if changes should be applied to the certificate, or the resource
-
-        definition should be updated to align with the certificate. Also you can ignore changes as below.
-
-        resource "sbercloud_elb_certificate" "certificate_1" {
-
-            ...
-
-          lifecycle {
-
-            ignore_changes = [
-            
-              enterprise_project_id,
-            
-            ]
-
-          }
-
-        }
-
+        Create a ElbCertificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ElbCertificateArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -796,23 +486,6 @@ class ElbCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate: The public encrypted key of the Certificate, PEM format.
-        :param pulumi.Input[_builtins.str] create_time: Indicates the creation time.
-        :param pulumi.Input[_builtins.str] description: Human-readable description for the Certificate.
-        :param pulumi.Input[_builtins.str] domain: The domain of the Certificate. The value contains a maximum of 100 characters. This
-               parameter is valid only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] enterprise_project_id: The enterprise project id of the certificate.
-        :param pulumi.Input[_builtins.str] expire_time: Indicates the expire time.
-        :param pulumi.Input[_builtins.str] name: Human-readable name for the Certificate. Does not have to be unique.
-        :param pulumi.Input[_builtins.str] private_key: The private encrypted key of the Certificate, PEM format. This parameter is valid
-               and mandatory only when `type` is set to "server".
-        :param pulumi.Input[_builtins.str] region: The region in which to create the ELB certificate resource. If omitted, the
-               provider-level region will be used. Changing this creates a new certificate.
-        :param pulumi.Input[_builtins.str] type: Specifies the certificate type. The default value is "server". The value can be
-               one of the following:
-               + server: indicates the server certificate.
-               + client: indicates the CA certificate.
-        :param pulumi.Input[_builtins.str] update_time: Indicates the update time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -840,9 +513,6 @@ class ElbCertificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:
-        """
-        The public encrypted key of the Certificate, PEM format.
-        """
         return pulumi.get(self, "certificate")
 
     @_builtins.property
@@ -853,26 +523,16 @@ class ElbCertificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the creation time.
-        """
         return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Human-readable description for the Certificate.
-        """
         return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter
     def domain(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The domain of the Certificate. The value contains a maximum of 100 characters. This
-        parameter is valid only when `type` is set to "server".
-        """
         return pulumi.get(self, "domain")
 
     @_builtins.property
@@ -888,17 +548,11 @@ class ElbCertificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="enterpriseProjectId")
     def enterprise_project_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The enterprise project id of the certificate.
-        """
         return pulumi.get(self, "enterprise_project_id")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the expire time.
-        """
         return pulumi.get(self, "expire_time")
 
     @_builtins.property
@@ -909,27 +563,16 @@ class ElbCertificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
-        """
-        Human-readable name for the Certificate. Does not have to be unique.
-        """
         return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The private encrypted key of the Certificate, PEM format. This parameter is valid
-        and mandatory only when `type` is set to "server".
-        """
         return pulumi.get(self, "private_key")
 
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
-        """
-        The region in which to create the ELB certificate resource. If omitted, the
-        provider-level region will be used. Changing this creates a new certificate.
-        """
         return pulumi.get(self, "region")
 
     @_builtins.property
@@ -945,19 +588,10 @@ class ElbCertificate(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
-        """
-        Specifies the certificate type. The default value is "server". The value can be
-        one of the following:
-        + server: indicates the server certificate.
-        + client: indicates the CA certificate.
-        """
         return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
-        """
-        Indicates the update time.
-        """
         return pulumi.get(self, "update_time")
 

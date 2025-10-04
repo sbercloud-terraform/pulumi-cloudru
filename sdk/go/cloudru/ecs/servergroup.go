@@ -11,73 +11,16 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Manages Server Group resource within SberCloud.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/ecs"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			instanceDemo, err := ecs.GetInstance(ctx, &ecs.GetInstanceArgs{
-//				Name: pulumi.StringRef("ecs-servergroup-demo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewServergroup(ctx, "test-sg", &ecs.ServergroupArgs{
-//				Name: pulumi.String("my-sg"),
-//				Policies: pulumi.StringArray{
-//					pulumi.String("anti-affinity"),
-//				},
-//				Members: pulumi.StringArray{
-//					pulumi.String(instanceDemo.Id),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Server Groups can be imported using the `id`, e.g.
-//
-// ```sh
-// $ pulumi import sbercloud:Ecs/servergroup:Servergroup test-sg 1bc30ee9-9d5b-4c30-bdd5-7f1e663f5edf
-// ```
 type Servergroup struct {
 	pulumi.CustomResourceState
 
 	// schema: Internal
 	FaultDomains pulumi.StringArrayOutput `pulumi:"faultDomains"`
-	// Specifies an array of one or more instance ID to attach server group.
-	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// Specifies a unique name for the server group. This parameter can contain a
-	// maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-	// creates a new server group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Specifies the set of policies for the server group. Only *anti-affinity*
-	// policies are supported.
-	//
-	// + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-	//   group.
+	Members      pulumi.StringArrayOutput `pulumi:"members"`
+	Name         pulumi.StringOutput      `pulumi:"name"`
+	// schema: Required
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
-	// Specifies the region in which to create the server group resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new server group.
-	Region pulumi.StringOutput `pulumi:"region"`
+	Region   pulumi.StringOutput      `pulumi:"region"`
 }
 
 // NewServergroup registers a new resource with the given unique name, arguments, and options.
@@ -112,41 +55,21 @@ func GetServergroup(ctx *pulumi.Context,
 type servergroupState struct {
 	// schema: Internal
 	FaultDomains []string `pulumi:"faultDomains"`
-	// Specifies an array of one or more instance ID to attach server group.
-	Members []string `pulumi:"members"`
-	// Specifies a unique name for the server group. This parameter can contain a
-	// maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-	// creates a new server group.
-	Name *string `pulumi:"name"`
-	// Specifies the set of policies for the server group. Only *anti-affinity*
-	// policies are supported.
-	//
-	// + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-	//   group.
+	Members      []string `pulumi:"members"`
+	Name         *string  `pulumi:"name"`
+	// schema: Required
 	Policies []string `pulumi:"policies"`
-	// Specifies the region in which to create the server group resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new server group.
-	Region *string `pulumi:"region"`
+	Region   *string  `pulumi:"region"`
 }
 
 type ServergroupState struct {
 	// schema: Internal
 	FaultDomains pulumi.StringArrayInput
-	// Specifies an array of one or more instance ID to attach server group.
-	Members pulumi.StringArrayInput
-	// Specifies a unique name for the server group. This parameter can contain a
-	// maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-	// creates a new server group.
-	Name pulumi.StringPtrInput
-	// Specifies the set of policies for the server group. Only *anti-affinity*
-	// policies are supported.
-	//
-	// + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-	//   group.
+	Members      pulumi.StringArrayInput
+	Name         pulumi.StringPtrInput
+	// schema: Required
 	Policies pulumi.StringArrayInput
-	// Specifies the region in which to create the server group resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new server group.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (ServergroupState) ElementType() reflect.Type {
@@ -154,40 +77,20 @@ func (ServergroupState) ElementType() reflect.Type {
 }
 
 type servergroupArgs struct {
-	// Specifies an array of one or more instance ID to attach server group.
 	Members []string `pulumi:"members"`
-	// Specifies a unique name for the server group. This parameter can contain a
-	// maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-	// creates a new server group.
-	Name *string `pulumi:"name"`
-	// Specifies the set of policies for the server group. Only *anti-affinity*
-	// policies are supported.
-	//
-	// + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-	//   group.
+	Name    *string  `pulumi:"name"`
+	// schema: Required
 	Policies []string `pulumi:"policies"`
-	// Specifies the region in which to create the server group resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new server group.
-	Region *string `pulumi:"region"`
+	Region   *string  `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Servergroup resource.
 type ServergroupArgs struct {
-	// Specifies an array of one or more instance ID to attach server group.
 	Members pulumi.StringArrayInput
-	// Specifies a unique name for the server group. This parameter can contain a
-	// maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-	// creates a new server group.
-	Name pulumi.StringPtrInput
-	// Specifies the set of policies for the server group. Only *anti-affinity*
-	// policies are supported.
-	//
-	// + `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-	//   group.
+	Name    pulumi.StringPtrInput
+	// schema: Required
 	Policies pulumi.StringArrayInput
-	// Specifies the region in which to create the server group resource. If omitted,
-	// the provider-level region will be used. Changing this creates a new server group.
-	Region pulumi.StringPtrInput
+	Region   pulumi.StringPtrInput
 }
 
 func (ServergroupArgs) ElementType() reflect.Type {
@@ -282,29 +185,19 @@ func (o ServergroupOutput) FaultDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Servergroup) pulumi.StringArrayOutput { return v.FaultDomains }).(pulumi.StringArrayOutput)
 }
 
-// Specifies an array of one or more instance ID to attach server group.
 func (o ServergroupOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Servergroup) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// Specifies a unique name for the server group. This parameter can contain a
-// maximum of 255 characters, which may consist of letters, digits, underscores (_), and hyphens (-). Changing this
-// creates a new server group.
 func (o ServergroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servergroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specifies the set of policies for the server group. Only *anti-affinity*
-// policies are supported.
-//
-//   - `anti-affinity`: All ECS in this group must be deployed on different hosts. Changing this creates a new server
-//     group.
+// schema: Required
 func (o ServergroupOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Servergroup) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the region in which to create the server group resource. If omitted,
-// the provider-level region will be used. Changing this creates a new server group.
 func (o ServergroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Servergroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

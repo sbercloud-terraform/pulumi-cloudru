@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the list of DMS rocketMQ broker.
- */
 export function getDmsRocketmqBroker(args: GetDmsRocketmqBrokerArgs, opts?: pulumi.InvokeOptions): Promise<GetDmsRocketmqBrokerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker", {
@@ -19,14 +16,7 @@ export function getDmsRocketmqBroker(args: GetDmsRocketmqBrokerArgs, opts?: pulu
  * A collection of arguments for invoking getDmsRocketmqBroker.
  */
 export interface GetDmsRocketmqBrokerArgs {
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: string;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: string;
 }
 
@@ -34,9 +24,6 @@ export interface GetDmsRocketmqBrokerArgs {
  * A collection of values returned by getDmsRocketmqBroker.
  */
 export interface GetDmsRocketmqBrokerResult {
-    /**
-     * Indicates the list of the brokers.
-     */
     readonly brokers: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -45,9 +32,6 @@ export interface GetDmsRocketmqBrokerResult {
     readonly instanceId: string;
     readonly region: string;
 }
-/**
- * Use this data source to get the list of DMS rocketMQ broker.
- */
 export function getDmsRocketmqBrokerOutput(args: GetDmsRocketmqBrokerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDmsRocketmqBrokerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("sbercloud:index/getDmsRocketmqBroker:getDmsRocketmqBroker", {
@@ -60,13 +44,6 @@ export function getDmsRocketmqBrokerOutput(args: GetDmsRocketmqBrokerOutputArgs,
  * A collection of arguments for invoking getDmsRocketmqBroker.
  */
 export interface GetDmsRocketmqBrokerOutputArgs {
-    /**
-     * Specifies the ID of the rocketMQ instance.
-     */
     instanceId: pulumi.Input<string>;
-    /**
-     * Specifies the region in which to query the data source.
-     * If omitted, the provider-level region will be used.
-     */
     region?: pulumi.Input<string>;
 }

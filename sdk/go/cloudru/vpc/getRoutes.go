@@ -11,33 +11,6 @@ import (
 	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/internal"
 )
 
-// Use this data source to get the list of VPC routes.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/sbercloud-terraform/pulumi-cloudru/sdk/go/cloudru/vpc"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vpc.GetRoutes(ctx, &vpc.GetRoutesArgs{
-//				Type: pulumi.StringRef("peering"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetRoutes(ctx *pulumi.Context, args *GetRoutesArgs, opts ...pulumi.InvokeOption) (*GetRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRoutesResult
@@ -50,30 +23,21 @@ func GetRoutes(ctx *pulumi.Context, args *GetRoutesArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getRoutes.
 type GetRoutesArgs struct {
-	// Specifies the route destination.
 	Destination *string `pulumi:"destination"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region *string `pulumi:"region"`
-	// Specifies the route type.
-	Type *string `pulumi:"type"`
-	// Specifies the ID of the VPC to which the route belongs.
-	VpcId *string `pulumi:"vpcId"`
+	Region      *string `pulumi:"region"`
+	Type        *string `pulumi:"type"`
+	VpcId       *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getRoutes.
 type GetRoutesResult struct {
-	// The route destination.
 	Destination *string `pulumi:"destination"`
 	// The provider-assigned unique ID for this managed resource.
-	Id     string `pulumi:"id"`
-	Region string `pulumi:"region"`
-	// The list of routes.
+	Id     string           `pulumi:"id"`
+	Region string           `pulumi:"region"`
 	Routes []GetRoutesRoute `pulumi:"routes"`
-	// The route type.
-	Type *string `pulumi:"type"`
-	// The ID of the VPC to which the route belongs.
-	VpcId *string `pulumi:"vpcId"`
+	Type   *string          `pulumi:"type"`
+	VpcId  *string          `pulumi:"vpcId"`
 }
 
 func GetRoutesOutput(ctx *pulumi.Context, args GetRoutesOutputArgs, opts ...pulumi.InvokeOption) GetRoutesResultOutput {
@@ -87,15 +51,10 @@ func GetRoutesOutput(ctx *pulumi.Context, args GetRoutesOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getRoutes.
 type GetRoutesOutputArgs struct {
-	// Specifies the route destination.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// Specifies the region in which to query the resource.
-	// If omitted, the provider-level region will be used.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Specifies the route type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Specifies the ID of the VPC to which the route belongs.
-	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
+	Region      pulumi.StringPtrInput `pulumi:"region"`
+	Type        pulumi.StringPtrInput `pulumi:"type"`
+	VpcId       pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (GetRoutesOutputArgs) ElementType() reflect.Type {
@@ -117,7 +76,6 @@ func (o GetRoutesResultOutput) ToGetRoutesResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// The route destination.
 func (o GetRoutesResultOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRoutesResult) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -131,17 +89,14 @@ func (o GetRoutesResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutesResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// The list of routes.
 func (o GetRoutesResultOutput) Routes() GetRoutesRouteArrayOutput {
 	return o.ApplyT(func(v GetRoutesResult) []GetRoutesRoute { return v.Routes }).(GetRoutesRouteArrayOutput)
 }
 
-// The route type.
 func (o GetRoutesResultOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRoutesResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VPC to which the route belongs.
 func (o GetRoutesResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRoutesResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
